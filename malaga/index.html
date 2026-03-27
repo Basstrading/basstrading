@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seminaire Trading Malaga — Septembre 2026 | BASS Trading</title>
+  <meta name="description" content="5 jours intensifs a Malaga avec Sebastien Constant. Market Profile, Order Flow, Footprint, live trading. 20 places max. 1290 euros en early bird avant le 30 mai 2026.">
+  <meta property="og:title" content="Seminaire Trading Malaga — Septembre 2026 | BASS Trading">
+  <meta property="og:description" content="5 jours intensifs avec Sebastien Constant a Malaga. Market Profile, Order Flow, live trading. 20 places. 1290 euros early bird.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://basstrading.fr/malaga/">
+  <meta property="og:site_name" content="BASS Trading">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://basstrading.fr/malaga/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{--bk:#1D1D1F;--bk2:#111;--bk3:#0A0A0A;--g1:#6E6E73;--g2:#86868B;--g3:#D2D2D7;--g4:#F5F5F7;--wh:#FBFBFD;--pure:#FFF;--green:#00B67A;--blue:#0066FF;--gold:#C9A84C;--red:#E84545}
+    html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}
+    body{font-family:'DM Sans',sans-serif;color:var(--bk);background:var(--pure);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+
+    /* NAV */
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 48px;display:flex;align-items:center;justify-content:space-between;background:rgba(10,10,10,.92);backdrop-filter:blur(20px) saturate(1.8);border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:1rem;letter-spacing:5px;text-transform:uppercase;color:var(--pure)}
+    .nav-cta{padding:10px 24px;background:var(--gold);color:var(--bk3);border:none;border-radius:980px;font-size:.82rem;font-weight:700;transition:all .3s;cursor:pointer;text-decoration:none;display:inline-block}
+    .nav-cta:hover{box-shadow:0 4px 20px rgba(201,168,76,.4);transform:translateY(-1px)}
+
+    /* HERO — FULL BLEED */
+    .hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;padding:0 48px 80px;overflow:hidden}
+    .hero-bg{position:absolute;inset:0;z-index:0}
+    .hero-bg img{width:100%;height:100%;object-fit:cover}
+    .hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,10,.95) 0%,rgba(10,10,10,.6) 40%,rgba(10,10,10,.3) 100%)}
+    .hero-content{position:relative;z-index:1;max-width:720px}
+    .hero-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 18px;background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.25);border-radius:980px;font-size:.7rem;font-weight:700;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-bottom:24px}
+    .hero-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse 2s infinite}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+    .hero-title{font-family:'Outfit',sans-serif;font-size:clamp(2.8rem,6vw,5rem);font-weight:900;line-height:.95;letter-spacing:-3px;color:var(--pure);margin-bottom:20px}
+    .hero-title em{font-style:normal;color:var(--gold)}
+    .hero-sub{font-size:1.1rem;color:rgba(255,255,255,.55);line-height:1.8;max-width:520px;margin-bottom:32px}
+    .hero-meta{display:flex;gap:32px;margin-bottom:36px;flex-wrap:wrap}
+    .hero-meta-item{display:flex;flex-direction:column;gap:2px}
+    .hero-meta-label{font-size:.6rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.25)}
+    .hero-meta-value{font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:800;color:var(--pure);letter-spacing:-.5px}
+    .hero-cta{display:inline-flex;align-items:center;gap:12px;padding:18px 36px;background:var(--gold);color:var(--bk3);border-radius:980px;font-size:1rem;font-weight:700;transition:all .3s;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;text-decoration:none}
+    .hero-cta:hover{transform:translateY(-2px);box-shadow:0 8px 40px rgba(201,168,76,.35)}
+    .hero-cta svg{width:16px;height:16px;transition:transform .3s}.hero-cta:hover svg{transform:translateX(4px)}
+
+    /* COUNTDOWN */
+    .countdown-bar{background:var(--bk3);border-bottom:1px solid rgba(201,168,76,.1);padding:16px 48px;display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap}
+    .countdown-label{font-size:.75rem;font-weight:600;color:var(--gold);letter-spacing:.5px}
+    .countdown-timer{display:flex;gap:12px}
+    .cd-block{text-align:center}
+    .cd-num{font-family:'Outfit',sans-serif;font-size:1.4rem;font-weight:900;color:var(--pure);letter-spacing:-1px;line-height:1}
+    .cd-unit{font-size:.55rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-top:2px}
+    .countdown-price{font-size:.82rem;color:rgba(255,255,255,.5)}.countdown-price strong{color:var(--gold);font-weight:700}
+
+    /* SECTION SHARED */
+    .sec{padding:120px 48px}.sec-dark{background:var(--bk3);color:var(--pure)}.sec-light{background:var(--pure)}
+    .sec-label{font-size:.65rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--g2);margin-bottom:12px}
+    .sec-label-gold{color:var(--gold)}
+    .sec-title{font-family:'Outfit',sans-serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:900;line-height:1.05;letter-spacing:-2px;margin-bottom:20px}
+    .sec-desc{font-size:1.05rem;color:var(--g1);line-height:1.8;max-width:560px}
+    .sec-center{text-align:center;max-width:720px;margin:0 auto}
+    .sec-center .sec-desc{margin:0 auto}
+
+    /* PAIN POINTS */
+    .pain-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1060px;margin:60px auto 0}
+    .pain-card{padding:32px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:16px;transition:all .4s}
+    .pain-card:hover{background:rgba(255,255,255,.05);border-color:rgba(201,168,76,.15)}
+    .pain-icon{font-family:'Outfit',sans-serif;font-size:2rem;font-weight:900;color:rgba(255,255,255,.08);margin-bottom:12px;line-height:1}
+    .pain-card h3{font-family:'Outfit',sans-serif;font-size:1rem;font-weight:700;color:var(--pure);margin-bottom:8px;letter-spacing:-.3px}
+    .pain-card p{font-size:.9rem;color:rgba(255,255,255,.4);line-height:1.7}
+
+    /* PROGRAMME */
+    .prog-grid{max-width:800px;margin:60px auto 0}
+    .prog-day{display:grid;grid-template-columns:80px 1fr;gap:24px;padding:28px 0;border-bottom:1px solid rgba(0,0,0,.06)}
+    .prog-day-num{font-family:'Outfit',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);padding-top:4px}
+    .prog-day h3{font-family:'Outfit',sans-serif;font-size:1.05rem;font-weight:700;letter-spacing:-.3px;margin-bottom:6px}
+    .prog-day p{font-size:.92rem;color:var(--g1);line-height:1.7}
+
+    /* PHOTOS GRID */
+    .photo-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin:80px 0;border-radius:20px;overflow:hidden}
+    .photo-grid img{width:100%;height:320px;object-fit:cover;transition:transform .6s}.photo-grid img:hover{transform:scale(1.03)}
+    .photo-full{grid-column:1/-1}
+    .photo-full img{height:400px}
+
+    /* SEBASTIEN */
+    .seb-grid{display:grid;grid-template-columns:340px 1fr;gap:60px;max-width:900px;margin:0 auto;align-items:center}
+    .seb-img{border-radius:16px;overflow:hidden}.seb-img img{width:100%;height:100%;object-fit:cover}
+    .seb-stat{display:flex;gap:24px;margin-top:24px}
+    .seb-stat-item{text-align:center;flex:1;padding:16px;background:var(--g4);border-radius:12px}
+    .seb-stat-num{font-family:'Outfit',sans-serif;font-size:1.3rem;font-weight:900;letter-spacing:-1px;color:var(--bk)}
+    .seb-stat-label{font-size:.65rem;color:var(--g2);margin-top:2px}
+
+    /* PRICING */
+    .price-card{max-width:520px;margin:60px auto 0;background:var(--bk3);border-radius:24px;padding:48px;text-align:center;position:relative;overflow:hidden;border:1px solid rgba(201,168,76,.15)}
+    .price-card::before{content:'';position:absolute;top:-80%;left:-30%;width:500px;height:500px;background:radial-gradient(circle,rgba(201,168,76,.08) 0%,transparent 70%);pointer-events:none}
+    .price-badge{display:inline-block;padding:6px 16px;background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.2);border-radius:980px;font-size:.6rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
+    .price-old{font-size:1.1rem;color:rgba(255,255,255,.3);text-decoration:line-through;margin-bottom:4px}
+    .price-amount{font-family:'Outfit',sans-serif;font-size:clamp(3rem,8vw,4.5rem);font-weight:900;color:var(--pure);letter-spacing:-3px;line-height:1}
+    .price-amount span{font-size:1.2rem;font-weight:600;letter-spacing:0;vertical-align:super;color:var(--gold)}
+    .price-period{font-size:.85rem;color:rgba(255,255,255,.35);margin-top:8px;margin-bottom:28px}
+    .price-includes{text-align:left;margin-bottom:32px}
+    .price-item{display:flex;align-items:center;gap:10px;padding:8px 0;font-size:.9rem;color:rgba(255,255,255,.6)}
+    .price-item svg{width:16px;height:16px;color:var(--gold);flex-shrink:0}
+    .price-cta{display:block;width:100%;padding:18px;background:var(--gold);color:var(--bk3);border:none;border-radius:14px;font-size:1rem;font-weight:700;cursor:pointer;transition:all .3s;font-family:'DM Sans',sans-serif;text-decoration:none;text-align:center}
+    .price-cta:hover{box-shadow:0 8px 30px rgba(201,168,76,.3);transform:translateY(-1px)}
+    .price-note{font-size:.7rem;color:rgba(255,255,255,.2);margin-top:14px;line-height:1.6}
+    .price-urgency{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:16px;font-size:.78rem;color:var(--red);font-weight:600}
+    .price-urgency svg{width:14px;height:14px}
+
+    /* TESTIMONIALS */
+    .test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1060px;margin:60px auto 0}
+    .test-card{padding:28px;background:var(--g4);border-radius:16px}
+    .test-stars{color:var(--gold);font-size:.8rem;margin-bottom:10px;letter-spacing:1px}
+    .test-text{font-size:.92rem;color:var(--g1);line-height:1.7;margin-bottom:14px;font-style:italic}
+    .test-author{font-size:.78rem;font-weight:600;color:var(--bk)}
+    .test-role{font-size:.65rem;color:var(--g2)}
+
+    /* GUARANTEE */
+    .guarantee{max-width:600px;margin:80px auto 0;padding:32px;border:1px solid rgba(0,0,0,.06);border-radius:16px;display:flex;gap:20px;align-items:start}
+    .guarantee-icon{width:48px;height:48px;border-radius:50%;background:rgba(0,182,122,.08);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .guarantee-icon svg{width:20px;height:20px;color:var(--green)}
+    .guarantee h3{font-family:'Outfit',sans-serif;font-size:1rem;font-weight:700;margin-bottom:4px;letter-spacing:-.3px}
+    .guarantee p{font-size:.88rem;color:var(--g1);line-height:1.7}
+
+    /* FAQ */
+    .faq-list{max-width:680px;margin:60px auto 0}
+    .fi{border-bottom:1px solid rgba(0,0,0,.06)}
+    .fq{width:100%;text-align:left;padding:18px 0;background:none;border:none;font-size:.95rem;font-weight:600;font-family:'DM Sans',sans-serif;color:var(--bk);display:flex;justify-content:space-between;align-items:center;cursor:pointer;gap:16px;transition:color .3s}.fq:hover{color:var(--g1)}
+    .fq-icon{width:22px;height:22px;border-radius:50%;background:rgba(0,0,0,.04);display:flex;align-items:center;justify-content:center;font-size:.75rem;transition:all .4s;flex-shrink:0;color:var(--g2)}
+    .fa{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1)}.fa.open{max-height:300px;padding-bottom:14px}
+    .fa p{font-size:.9rem;color:var(--g1);line-height:1.7;margin-bottom:0}
+    .fi.active .fq-icon{background:var(--bk);color:var(--pure);transform:rotate(45deg)}
+
+    /* FINAL CTA */
+    .final-cta{padding:120px 48px;background:var(--bk3);text-align:center;position:relative;overflow:hidden}
+    .final-cta::before{content:'';position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:800px;height:800px;background:radial-gradient(circle,rgba(201,168,76,.06) 0%,transparent 70%);pointer-events:none}
+    .final-cta .sec-title{color:var(--pure)}
+    .final-cta .sec-desc{color:rgba(255,255,255,.4);margin:0 auto 36px}
+
+    /* FOOTER */
+    .footer{background:var(--bk3);padding:28px 48px;border-top:1px solid rgba(255,255,255,.04);display:flex;justify-content:space-between;align-items:center;font-size:.65rem;color:rgba(255,255,255,.15);flex-wrap:wrap;gap:12px}
+    .footer a{color:rgba(255,255,255,.15);transition:color .3s;margin-left:16px}.footer a:hover{color:rgba(255,255,255,.4)}
+    .disclaimer{padding:12px 48px;background:var(--bk3);font-size:.58rem;color:rgba(255,255,255,.1);text-align:center;line-height:1.6;border-top:1px solid rgba(255,255,255,.03)}
+
+    /* RESPONSIVE */
+    @media(max-width:900px){
+      .nav{padding:14px 20px}
+      .hero{padding:0 20px 60px}.hero-title{font-size:clamp(2.2rem,8vw,3.5rem)}.hero-meta{gap:20px}
+      .sec{padding:80px 20px}
+      .pain-grid{grid-template-columns:1fr}
+      .prog-day{grid-template-columns:1fr;gap:8px}
+      .photo-grid{grid-template-columns:1fr}.photo-grid img,.photo-full img{height:240px}
+      .seb-grid{grid-template-columns:1fr;gap:32px}.seb-img{max-width:280px}
+      .test-grid{grid-template-columns:1fr}
+      .price-card{padding:32px 24px}
+      .guarantee{flex-direction:column}
+      .final-cta{padding:80px 20px}
+      .footer{padding:20px;flex-direction:column;text-align:center}
+      .disclaimer{padding:10px 16px}
+      .countdown-bar{padding:12px 20px;gap:16px}
+    }
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="https://basstrading.fr" class="nav-logo">BASS</a>
+  <a href="https://buy.stripe.com/14AeVc0IU6IhbGw1CO9EI0r" target="_blank" rel="noopener" class="nav-cta">Reserver ma place</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"><img src="../images/bass-malaga-group.jpg" alt="Seminaire BASS Trading Malaga" loading="eager"></div>
+  <div class="hero-content">
+    <div class="hero-badge"><span class="dot"></span> Septembre 2026 — 20 places</div>
+    <h1 class="hero-title">5 jours pour ne plus jamais<br>subir le marche. <em>Malaga.</em></h1>
+    <p class="hero-sub">Cours le matin. Trading live ensemble l'apres-midi. Pendant 5 jours, Sebastien vous transmet ce qu'il n'a jamais partage publiquement — et vous repartez avec un plan d'action clair que vous aurez deja mis en pratique.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><span class="hero-meta-label">Dates</span><span class="hero-meta-value">15 — 19 sept. 2026</span></div>
+      <div class="hero-meta-item"><span class="hero-meta-label">Lieu</span><span class="hero-meta-value">Malaga, Espagne</span></div>
+      <div class="hero-meta-item"><span class="hero-meta-label">Places</span><span class="hero-meta-value">20 max</span></div>
+    </div>
+    <a href="https://buy.stripe.com/14AeVc0IU6IhbGw1CO9EI0r" target="_blank" rel="noopener" class="hero-cta">Reserver ma place <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+  </div>
+</section>
+
+<!-- COUNTDOWN -->
+<div class="countdown-bar">
+  <span class="countdown-label">Early bird — offre limitee</span>
+  <div class="countdown-timer" id="countdown">
+    <div class="cd-block"><div class="cd-num" id="cd-days">--</div><div class="cd-unit">Jours</div></div>
+    <div class="cd-block"><div class="cd-num" id="cd-hours">--</div><div class="cd-unit">Heures</div></div>
+    <div class="cd-block"><div class="cd-num" id="cd-mins">--</div><div class="cd-unit">Min</div></div>
+  </div>
+  <span class="countdown-price"><strong>1 290 euros</strong> au lieu de 1 890 euros — avant le 30 mai 2026</span>
+</div>
+
+<!-- PAIN POINTS -->
+<section class="sec sec-dark">
+  <div class="sec-center">
+    <div class="sec-label sec-label-gold">Le constat</div>
+    <h2 class="sec-title" style="color:var(--pure)">Et si dans 5 jours,<br>tu ne subissais plus le marche ?</h2>
+    <p class="sec-desc" style="color:rgba(255,255,255,.45)">Imagine ouvrir tes ecrans le lundi matin et savoir exactement quoi regarder, ou attendre, et pourquoi. C'est ce que tu rameneras de Malaga.</p>
+  </div>
+  <div class="pain-grid">
+    <div class="pain-card"><div class="pain-icon">01</div><h3>Fini de trader dans le brouillard</h3><p>Tu ne sais plus par ou commencer quand tu ouvres tes ecrans ? En 5 jours, tu repars avec un processus clair — de la preparation de session a la derniere bougie — que tu auras deja applique chaque apres-midi en live.</p></div>
+    <div class="pain-card"><div class="pain-icon">02</div><h3>Comprendre enfin pourquoi le prix bouge</h3><p>Les marches ne sont pas aleatoires. Les operateurs ont des contraintes precises. Sebastien va te montrer exactement lesquelles — des elements qu'il n'a jamais partages publiquement — pour que tu cesses de subir et que tu commences a anticiper.</p></div>
+    <div class="pain-card"><div class="pain-icon">03</div><h3>Rentrer chez toi et savoir quoi faire</h3><p>Le vrai probleme, c'est le lundi d'apres. On construit ensemble ton plan etape par etape, et tu le mets en application pendant le seminaire. Le jour ou tu rentres, rien ne change — tu sais exactement quoi faire.</p></div>
+  </div>
+</section>
+
+<!-- PROGRAMME -->
+<section class="sec sec-light">
+  <div class="sec-center">
+    <div class="sec-label">Programme</div>
+    <h2 class="sec-title">Comprendre le matin.<br>Appliquer l'apres-midi.</h2>
+    <p class="sec-desc">Chaque journee : un concept cle le matin, puis on trade ensemble l'apres-midi sur les vrais marches. Pas de theorie en l'air. A la fin de chaque jour, tu sais faire quelque chose que tu ne savais pas faire le matin.</p>
+  </div>
+  <div class="prog-grid">
+    <div class="prog-day"><div class="prog-day-num">Jour 1</div><div><h3>Tu sauras lire le marche avant qu'il ouvre</h3><p>Market Profile : Value Area, POC, Initial Balance. Tu apprendras a preparer ta session comme un pro — savoir ou le marche peut aller avant meme la premiere bougie. L'apres-midi, on applique en direct.</p></div></div>
+    <div class="prog-day"><div class="prog-day-num">Jour 2</div><div><h3>Tu verras ce que les autres ne voient pas</h3><p>Footprint et CVD : l'activite reelle a chaque niveau de prix. Imbalances, absorption, divergences — tu ne regarderas plus jamais un chandelier de la meme facon. L'apres-midi, on trade ensemble avec ces nouveaux yeux.</p></div></div>
+    <div class="prog-day"><div class="prog-day-num">Jour 3</div><div><h3>Tu liras le flux en temps reel</h3><p>Tape Reading et VWAP : qui achete, qui vend, ou se trouvent les zones de decision. Tu sauras enfin lire l'agressivite des operateurs en direct. L'apres-midi : on met les mains dedans, ensemble.</p></div></div>
+    <div class="prog-day"><div class="prog-day-num">Jour 4</div><div><h3>Tu comprendras pourquoi le prix bouge vraiment</h3><p>Les contraintes des operateurs institutionnels — ce que Sebastien n'a jamais partage publiquement. Des grilles de lecture inedites qui changent definitivement ta comprehension du marche. L'apres-midi : on trade avec.</p></div></div>
+    <div class="prog-day" style="border:none"><div class="prog-day-num">Jour 5</div><div><h3>Tu repartiras avec ton plan — deja teste</h3><p>On construit ensemble TON plan de trading : preparation, execution, journal. Etape par etape. L'apres-midi, derniere session live — tu appliques ton plan complet. Le jour ou tu rentres, rien ne change. Tu sais quoi faire.</p></div></div>
+  </div>
+</section>
+
+<!-- PHOTOS -->
+<div class="photo-grid">
+  <div><img src="../images/bass-teaching.jpg" alt="Sebastien enseigne le trading" loading="lazy"></div>
+  <div><img src="../images/bass-tv-teaching.jpg" alt="Session live Market Profile" loading="lazy"></div>
+  <div class="photo-full"><img src="../images/bass-tv-closeup.jpg" alt="Analyse Market Profile en detail" loading="lazy"></div>
+</div>
+
+<!-- SEBASTIEN -->
+<section class="sec sec-light">
+  <div class="seb-grid">
+    <div class="seb-img"><img src="../images/bass-portrait.jpg" alt="Sebastien Constant" loading="lazy"></div>
+    <div>
+      <div class="sec-label">Ton formateur</div>
+      <h2 class="sec-title">Sebastien Constant</h2>
+      <p class="sec-desc">Trader actif depuis plus de 10 ans. Finance a plus de $700K en prop firms — son propre argent, ses propres resultats. Createur de x-trade.ai. Il trade tous les jours, en live, devant ses eleves. Un de ses eleves travaille aujourd'hui pour un fonds d'investissement.</p>
+      <p class="sec-desc" style="margin-top:16px">Lors de ce seminaire, Sebastien partagera des elements qu'il n'a jamais devoiles publiquement — sa lecture des contraintes des operateurs institutionnels, ses grilles de decision, et le processus exact qu'il applique chaque jour. Pas de theorie recyclee. Du contenu inedit, reserve aux participants.</p>
+      <div class="seb-stat">
+        <div class="seb-stat-item"><div class="seb-stat-num">$700K+</div><div class="seb-stat-label">Finance en prop firm</div></div>
+        <div class="seb-stat-item"><div class="seb-stat-num">4.9/5</div><div class="seb-stat-label">Trustpilot (126 avis)</div></div>
+        <div class="seb-stat-item"><div class="seb-stat-num">10+</div><div class="seb-stat-label">Ans d'experience</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="sec sec-light" style="padding-top:0">
+  <div class="sec-center">
+    <div class="sec-label">Temoignages</div>
+    <h2 class="sec-title">Ce qu'ils en disent.</h2>
+  </div>
+  <div class="test-grid">
+    <div class="test-card"><div class="test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="test-text">"Un stage intensif et immersif a Malaga en Market Profile entre les mains de Bass pour progresser et continuer l'apprentissage dans une ambiance incroyable. La qualite de l'enseignement de Bass est remarquable et remarquee. Merci pour tout. A quand le prochain ?"</p><div class="test-author">Laurent Ouanich</div><div class="test-role">Avis Trustpilot verifie</div></div>
+    <div class="test-card"><div class="test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="test-text">"Nous avons pu rencontrer Bass au seminaire a Malaga. Bass est une personne fort sympathique et bon pedagogue, fort d'avoir etabli une belle communaute. Nous avons pu ressentir un reel merite a son apprentissage et une grande reconnaissance de ses eleves envers lui !"</p><div class="test-author">Lorton</div><div class="test-role">Avis Trustpilot verifie</div></div>
+    <div class="test-card"><div class="test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="test-text">"Rencontre a un seminaire, Bass est un tres bon formateur et une tres bonne personne, bienveillant. Je vous recommande sa formation pour completer vos connaissances en bourse ou meme pour commencer dans ce domaine. Merci a toi Bass."</p><div class="test-author">Va Fr</div><div class="test-role">Avis Trustpilot verifie</div></div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="sec sec-light" id="inscription">
+  <div class="sec-center">
+    <div class="sec-label sec-label-gold">Inscription</div>
+    <h2 class="sec-title">Reserve ta place.</h2>
+    <p class="sec-desc">20 places maximum. Early bird jusqu'au 30 mai 2026.</p>
+  </div>
+  <div class="price-card">
+    <div class="price-badge">Early bird — offre limitee</div>
+    <div class="price-old">1 890 euros</div>
+    <div class="price-amount">1 290<span>euros</span></div>
+    <div class="price-period">Seminaire complet — 5 jours a Malaga</div>
+    <div class="price-includes">
+      <div class="price-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> 5 jours de formation intensive en presentiel</div>
+      <div class="price-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Market Profile, Order Flow, Footprint, CVD</div>
+      <div class="price-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Sessions live trading quotidiennes</div>
+      <div class="price-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> x-trade.ai inclus a vie</div>
+      <div class="price-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Preparation prop firms + plan de trading</div>
+      <div class="price-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Acces communaute + replays a vie</div>
+    </div>
+    <a href="https://buy.stripe.com/14AeVc0IU6IhbGw1CO9EI0r" target="_blank" rel="noopener" class="price-cta">Reserver ma place — 1 290 euros</a>
+    <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-top:12px;font-size:.75rem;color:rgba(255,255,255,.4)">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+      ou en 3x sans frais avec Klarna (430 euros/mois)
+    </div>
+    <div class="price-urgency"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Offre early bird jusqu'au 30 mai 2026</div>
+    <p class="price-note" style="font-size:.78rem;color:rgba(255,255,255,.35);line-height:1.7">Paiement en 3x sans frais disponible via Klarna — selectionne "Klarna" comme moyen de paiement lors du checkout. Hebergement et transport non inclus.</p>
+  </div>
+</section>
+
+<!-- GUARANTEE -->
+<section class="sec sec-light" style="padding-top:0">
+  <div class="guarantee">
+    <div class="guarantee-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+    <div>
+      <h3>Garantie satisfait ou rembourse</h3>
+      <p>Si a la fin de la premiere journee tu estimes que le seminaire ne correspond pas a tes attentes, tu es rembourse integralement. Zero risque. On est confiants parce que ca marche.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec sec-light" style="padding-top:0">
+  <div class="sec-center"><div class="sec-label">FAQ</div><h2 class="sec-title">Questions frequentes</h2></div>
+  <div class="faq-list">
+    <div class="fi"><button class="fq" onclick="tf(this)">Quel niveau faut-il pour participer ? <span class="fq-icon">+</span></button><div class="fa"><p>Tu dois avoir les bases du trading (chandeliers, supports/resistances, savoir passer un ordre). Le seminaire est fait pour les traders qui ont de l'experience mais qui stagnent. Si tu es debutant total, c'est premature.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">L'hebergement est-il inclus ? <span class="fq-icon">+</span></button><div class="fa"><p>Non, l'hebergement et le transport sont a ta charge. On peut te recommander des hotels et Airbnb proches du lieu du seminaire a Malaga. Compte 50-100 euros/nuit selon tes preferences.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Peut-on payer en plusieurs fois ? <span class="fq-icon">+</span></button><div class="fa"><p>Oui, paiement en 3x sans frais disponible. Les details sont communiques apres la reservation.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Que se passe-t-il si les places sont prises ? <span class="fq-icon">+</span></button><div class="fa"><p>Le seminaire est limite a 20 places. Si c'est complet, tu seras inscrit en liste d'attente pour la prochaine session. Les places partent generalement vite — d'ou l'interet de reserver tot avec le tarif early bird.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Quels marches sont trades pendant le seminaire ? <span class="fq-icon">+</span></button><div class="fa"><p>On trade principalement les Futures (marche reglemente et centralise), mais la methode s'applique a tous les marches : forex, indices, matieres premieres, crypto. Les concepts de Market Profile et Order Flow sont universels.</p></div></div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="sec-center">
+    <div class="sec-label sec-label-gold">Septembre 2026</div>
+    <h2 class="sec-title">Dans 5 jours, tu ouvriras<br>tes ecrans differemment.</h2>
+    <p class="sec-desc">Plus de brouillard. Plus de doute. Un plan clair, des outils que tu maitrises, et une comprehension du marche que 99% des traders n'auront jamais. Le tarif early bird expire le 30 mai.</p>
+    <a href="https://buy.stripe.com/14AeVc0IU6IhbGw1CO9EI0r" target="_blank" rel="noopener" class="hero-cta" style="display:inline-flex">Reserver — 1 290 euros <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+  </div>
+</section>
+
+<footer class="footer">
+  <span>&copy; 2026 BASS — Sebastien Constant</span>
+  <div>
+    <a href="https://basstrading.fr">Accueil</a>
+    <a href="https://basstrading.fr/mentions-legales.html">Mentions legales</a>
+    <a href="https://basstrading.fr/confidentialite.html">Confidentialite</a>
+    <a href="https://basstrading.fr/cgv.html">CGV</a>
+  </div>
+</footer>
+<div class="disclaimer">Le trading comporte des risques de perte en capital. Les performances passees ne prejugent pas des performances futures. Ce site ne constitue pas un conseil en investissement.</div>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+const lenis=new Lenis({duration:1.2,easing:t=>Math.min(1,1.001-Math.pow(2,-10*t))});
+function raf(t){lenis.raf(t);requestAnimationFrame(raf)}requestAnimationFrame(raf);
+lenis.on('scroll',ScrollTrigger.update);gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0);
+
+// Countdown to May 30, 2026
+function updateCountdown(){
+  const target=new Date('2026-05-30T23:59:59').getTime();
+  const now=Date.now();
+  const diff=target-now;
+  if(diff<=0){document.getElementById('countdown').innerHTML='<span style="color:var(--red);font-weight:700">Offre expiree</span>';return}
+  const d=Math.floor(diff/(1000*60*60*24));
+  const h=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+  const m=Math.floor((diff%(1000*60*60))/(1000*60));
+  document.getElementById('cd-days').textContent=d;
+  document.getElementById('cd-hours').textContent=h.toString().padStart(2,'0');
+  document.getElementById('cd-mins').textContent=m.toString().padStart(2,'0');
+}
+updateCountdown();setInterval(updateCountdown,60000);
+
+// Scroll animations
+gsap.utils.toArray('.pain-card,.test-card,.prog-day,.price-card,.guarantee').forEach((el,i)=>{
+  gsap.from(el,{y:30,opacity:0,duration:.5,delay:i*.05,ease:'power2.out',scrollTrigger:{trigger:el,start:'top 90%'}});
+});
+gsap.from('.seb-img',{x:-30,opacity:0,duration:.7,ease:'power2.out',scrollTrigger:{trigger:'.seb-grid',start:'top 80%'}});
+gsap.from('.seb-grid > div:last-child',{x:30,opacity:0,duration:.7,ease:'power2.out',scrollTrigger:{trigger:'.seb-grid',start:'top 80%'}});
+
+// FAQ
+function tf(b){const i=b.closest('.fi'),a=b.nextElementSibling,o=i.classList.contains('active');document.querySelectorAll('.fi').forEach(x=>{x.classList.remove('active');x.querySelector('.fa').classList.remove('open')});if(!o){i.classList.add('active');a.classList.add('open')}}
+
+// Smooth anchors
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();lenis.scrollTo(t,{offset:-60})}})});
+</script>
+</body>
+</html>
