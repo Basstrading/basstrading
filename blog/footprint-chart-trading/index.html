@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Footprint Chart : Lire le volume comme un professionnel — BASS Trading</title>
+  <meta name="description" content="Guide complet du Footprint Chart : delta, déséquilibres (imbalances), absorption, CVD. Apprenez à lire le volume par niveau de prix comme un trader professionnel. Par Sébastien Constant.">
+  <meta property="og:title" content="Footprint Chart : Lire le volume comme un professionnel — BASS Trading">
+  <meta property="og:description" content="Delta, imbalances, absorption, CVD — tout comprendre du Footprint Chart pour trader avec le volume réel.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://basstrading.fr/blog/footprint-chart-trading/">
+  <meta property="og:site_name" content="BASS Trading">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://basstrading.fr/blog/footprint-chart-trading/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","headline":"Footprint Chart : Lire le volume comme un professionnel","description":"Guide complet du Footprint Chart : delta, déséquilibres, absorption, CVD.","author":{"@type":"Person","name":"Sébastien Constant","jobTitle":"Trader et formateur Order Flow","url":"https://basstrading.fr"},"publisher":{"@type":"Organization","name":"BASS Trading","url":"https://basstrading.fr","logo":{"@type":"ImageObject","url":"https://basstrading.fr/images/bass-presenting.jpg"}},"datePublished":"2026-03-27","dateModified":"2026-03-27","mainEntityOfPage":{"@type":"WebPage","@id":"https://basstrading.fr/blog/footprint-chart-trading/"},"keywords":["footprint chart","delta","imbalance","absorption","CVD","order flow","volume","trading"]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://basstrading.fr"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://basstrading.fr/blog/"},{"@type":"ListItem","position":3,"name":"Footprint Chart"}]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"C'est quoi un Footprint Chart ?","acceptedAnswer":{"@type":"Answer","text":"Le Footprint Chart est un type de graphique avancé qui décompose chaque bougie en montrant le volume échangé côté acheteur (Ask) et vendeur (Bid) à chaque niveau de prix. Il révèle les déséquilibres de force entre acheteurs et vendeurs — invisible sur un chandelier classique."}},
+    {"@type":"Question","name":"Quelle différence entre Footprint et chandeliers classiques ?","acceptedAnswer":{"@type":"Answer","text":"Un chandelier classique montre uniquement Open, High, Low, Close et le volume total. Le Footprint montre le volume décomposé Bid/Ask à CHAQUE niveau de prix dans la bougie. Vous voyez exactement où les acheteurs et vendeurs ont été agressifs, pas juste le résultat final."}},
+    {"@type":"Question","name":"C'est quoi un déséquilibre (imbalance) ?","acceptedAnswer":{"@type":"Answer","text":"Un déséquilibre se produit quand le volume d'un côté (Bid ou Ask) dépasse largement l'autre à un niveau de prix donné — typiquement un ratio de 300% ou plus. Les imbalances empilées (stacked imbalances) sur 3+ niveaux consécutifs signalent une forte conviction directionnelle."}},
+    {"@type":"Question","name":"Quel logiciel pour le Footprint Chart ?","acceptedAnswer":{"@type":"Answer","text":"Sierra Chart est le standard professionnel pour le Footprint Chart. Il offre le Numbers Bars natif avec une personnalisation complète (couleurs, seuils d'imbalance, delta). ATAS et Quantower sont des alternatives, mais Sierra Chart reste la référence en fiabilité."}},
+    {"@type":"Question","name":"Le Footprint remplace-t-il le Market Profile ?","acceptedAnswer":{"@type":"Answer","text":"Non, ils sont complémentaires. Le Market Profile montre la structure macro (Value Area, POC, type de journée) — le contexte. Le Footprint montre l'activité micro en temps réel — l'exécution. Les professionnels utilisent les deux : le Market Profile pour savoir OÙ trader, le Footprint pour savoir QUAND entrer."}}
+  ]}
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{--bk:#1D1D1F;--bk2:#111;--bk3:#0A0A0A;--g1:#6E6E73;--g2:#86868B;--g3:#D2D2D7;--g4:#F5F5F7;--wh:#FBFBFD;--pure:#FFF;--green:#00B67A;--blue:#0066FF}
+    html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}
+    body{font-family:'DM Sans',sans-serif;color:var(--bk);background:var(--pure);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+    .preloader{position:fixed;inset:0;background:var(--bk3);z-index:10001;display:flex;align-items:center;justify-content:center}
+    .pre-word{font-family:'Outfit',sans-serif;font-size:clamp(3rem,8vw,5rem);font-weight:900;letter-spacing:16px;text-transform:uppercase;color:var(--pure);overflow:hidden}
+    .pre-word span{display:inline-block;transform:translateY(110%);opacity:0}
+    .pre-line{width:0;height:1px;background:rgba(255,255,255,.3);margin-top:20px}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 48px;display:flex;align-items:center;justify-content:space-between;background:rgba(245,245,247,.85);backdrop-filter:blur(20px) saturate(1.8);border-bottom:1px solid rgba(0,0,0,.04);transition:background .4s}
+    .nav-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase;color:var(--bk)}
+    .nav-links{display:flex;gap:28px;list-style:none}.nav-links a{font-size:.74rem;font-weight:500;letter-spacing:.3px;color:var(--g1);transition:color .3s}.nav-links a:hover{color:var(--bk)}
+    .nav-cta{padding:8px 20px;background:var(--bk);color:var(--pure);border:none;border-radius:980px;font-size:.72rem;font-weight:600;transition:all .3s;cursor:pointer;text-decoration:none;display:inline-block}.nav-cta:hover{background:var(--bk2)}
+    .blog-hero{padding:160px 48px 80px;background:var(--g4);position:relative;overflow:hidden}
+    .blog-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,transparent,var(--g4));pointer-events:none}
+    .blog-hero-inner{max-width:720px;margin:0 auto}
+    .breadcrumb{display:flex;gap:8px;align-items:center;margin-bottom:28px;flex-wrap:wrap}
+    .breadcrumb a,.breadcrumb span{font-size:.68rem;font-weight:500;letter-spacing:.3px;color:var(--g2);transition:color .3s}.breadcrumb a:hover{color:var(--bk)}.breadcrumb .sep{color:var(--g3)}
+    .blog-hero-cat{display:inline-block;padding:5px 14px;border:1px solid rgba(0,102,255,.15);border-radius:980px;font-size:.6rem;font-weight:700;color:var(--blue);letter-spacing:2px;text-transform:uppercase;margin-bottom:20px}
+    .blog-hero-title{font-family:'Outfit',sans-serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:900;line-height:1.05;letter-spacing:-2px;color:var(--bk);margin-bottom:20px}
+    .blog-hero-desc{font-size:.95rem;color:var(--g1);line-height:1.8;max-width:560px;margin-bottom:28px}
+    .blog-meta{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+    .blog-meta-author{display:flex;align-items:center;gap:10px}
+    .blog-meta-avatar{width:36px;height:36px;border-radius:50%;background:var(--bk3);overflow:hidden;flex-shrink:0}.blog-meta-avatar img{width:100%;height:100%;object-fit:cover}
+    .blog-meta-name{font-size:.78rem;font-weight:600;color:var(--bk)}.blog-meta-role{font-size:.65rem;color:var(--g2)}
+    .blog-meta-sep{width:1px;height:24px;background:var(--g3)}
+    .blog-meta-info{font-size:.7rem;color:var(--g2)}.blog-meta-info span{margin-right:16px}
+    .toc{position:sticky;top:90px;background:var(--pure);border:1px solid rgba(0,0,0,.04);border-radius:14px;padding:24px;margin-bottom:32px}
+    .toc-title{font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.5px;color:var(--bk);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+    .toc ol{list-style:none;counter-reset:toc}.toc li{counter-increment:toc}
+    .toc li a{display:flex;align-items:baseline;gap:8px;padding:6px 0;font-size:.76rem;color:var(--g1);transition:color .3s;border-bottom:1px solid rgba(0,0,0,.03)}.toc li a:hover{color:var(--blue)}
+    .toc li a::before{content:counter(toc,decimal-leading-zero);font-family:'Outfit',sans-serif;font-size:.65rem;font-weight:700;color:var(--g3);min-width:18px}
+    .toc li:last-child a{border-bottom:none}.toc li a.active{color:var(--blue);font-weight:600}.toc li a.active::before{color:var(--blue)}
+    .article-wrap{display:grid;grid-template-columns:220px 1fr;gap:40px;max-width:1020px;margin:0 auto;padding:60px 48px 120px}
+    .article-sidebar{position:relative}.article-body{max-width:700px}
+    .article-body h2{font-family:'Outfit',sans-serif;font-size:clamp(1.4rem,2.5vw,1.8rem);font-weight:800;line-height:1.1;letter-spacing:-1px;color:var(--bk);margin:56px 0 16px;padding-top:20px}.article-body h2:first-of-type{margin-top:0}
+    .article-body h3{font-family:'Outfit',sans-serif;font-size:1.05rem;font-weight:700;line-height:1.25;letter-spacing:-.3px;color:var(--bk);margin:36px 0 10px}
+    .article-body p{font-size:.9rem;color:var(--g1);line-height:1.85;margin-bottom:18px}
+    .article-body strong{color:var(--bk);font-weight:600}
+    .article-body ul,.article-body ol{margin:0 0 20px 0;padding-left:20px}
+    .article-body li{font-size:.88rem;color:var(--g1);line-height:1.8;margin-bottom:6px}.article-body li strong{color:var(--bk)}
+    .article-body blockquote{margin:28px 0;padding:20px 24px;background:var(--g4);border-left:3px solid var(--bk);border-radius:0 12px 12px 0;font-size:.88rem;color:var(--g1);line-height:1.8;font-style:italic}
+    .article-body blockquote strong{color:var(--bk);font-style:normal}
+    .article-body hr{border:none;border-top:1px solid var(--g4);margin:48px 0}
+    .info-box{margin:28px 0;padding:24px;background:rgba(0,102,255,.03);border:1px solid rgba(0,102,255,.08);border-radius:14px}
+    .info-box-title{font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:700;color:var(--blue);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+    .info-box p{font-size:.82rem;color:var(--g1);line-height:1.7;margin-bottom:0}
+    .key-concept{margin:32px 0;padding:28px;background:var(--bk3);border-radius:16px;color:var(--pure)}
+    .key-concept-label{font-size:.55rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:10px}
+    .key-concept h4{font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:800;letter-spacing:-.3px;margin-bottom:8px}
+    .key-concept p{font-size:.85rem;color:rgba(255,255,255,.5);line-height:1.8;margin-bottom:0}
+    .compare-table{width:100%;margin:24px 0 28px;border-collapse:collapse;border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,.06)}
+    .compare-table th{background:var(--bk3);color:var(--pure);font-family:'Outfit',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:14px 16px;text-align:left}
+    .compare-table td{padding:12px 16px;font-size:.82rem;color:var(--g1);line-height:1.6;border-bottom:1px solid rgba(0,0,0,.04);background:var(--pure)}
+    .compare-table tr:last-child td{border-bottom:none}.compare-table td:first-child{font-weight:600;color:var(--bk)}
+    .cta-card{margin:48px 0;padding:40px;background:var(--bk3);border-radius:20px;text-align:center;position:relative;overflow:hidden}
+    .cta-card::before{content:'';position:absolute;top:-50%;right:-30%;width:400px;height:400px;background:radial-gradient(circle,rgba(0,102,255,.08) 0%,transparent 70%);pointer-events:none}
+    .cta-card-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:12px}
+    .cta-card h3{font-family:'Outfit',sans-serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:800;color:var(--pure);letter-spacing:-.5px;margin-bottom:8px}
+    .cta-card p{font-size:.85rem;color:rgba(255,255,255,.4);line-height:1.7;max-width:380px;margin:0 auto 24px}
+    .cta-card .btn-p{background:var(--pure);color:var(--bk)}.cta-card .btn-p:hover{box-shadow:0 8px 30px rgba(255,255,255,.15)}
+    .faq-sec{padding:80px 48px 100px;background:var(--g4)}
+    .faq-list{max-width:680px;margin:40px auto 0}.fi{border-bottom:1px solid rgba(0,0,0,.06)}
+    .fq{width:100%;text-align:left;padding:18px 0;background:none;border:none;font-size:.85rem;font-weight:600;font-family:'DM Sans',sans-serif;color:var(--bk);display:flex;justify-content:space-between;align-items:center;cursor:pointer;gap:16px;transition:color .3s}.fq:hover{color:var(--g1)}
+    .fq-icon{width:22px;height:22px;border-radius:50%;background:rgba(0,0,0,.04);display:flex;align-items:center;justify-content:center;font-size:.75rem;transition:all .4s;flex-shrink:0;color:var(--g2)}
+    .fa{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1)}.fa.open{max-height:280px;padding-bottom:14px}
+    .fa p{font-size:.8rem;color:var(--g1);line-height:1.7;margin-bottom:0}.fi.active .fq-icon{background:var(--bk);color:var(--pure);transform:rotate(45deg)}
+    .related-sec{padding:80px 48px;background:var(--pure);border-top:1px solid var(--g4)}
+    .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1060px;margin:40px auto 0}
+    .related-card{display:block;padding:28px;background:var(--g4);border-radius:16px;transition:all .4s;text-decoration:none;color:var(--bk)}
+    .related-card:hover{background:var(--pure);box-shadow:0 8px 30px rgba(0,0,0,.06);transform:translateY(-2px)}
+    .related-cat{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+    .related-card h3{font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:700;line-height:1.3;letter-spacing:-.3px;margin-bottom:8px}
+    .related-card p{font-size:.78rem;color:var(--g1);line-height:1.6;margin-bottom:14px}
+    .related-link{font-size:.72rem;font-weight:600;color:var(--blue);letter-spacing:.3px}
+    .footer{background:var(--bk3);color:var(--pure);padding:56px 48px 28px}
+    .ft-top{display:flex;justify-content:space-between;align-items:start;margin-bottom:48px;flex-wrap:wrap;gap:32px}
+    .ft-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase}
+    .ft-cols{display:flex;gap:80px}
+    .ft-col-title{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:12px}
+    .ft-col a{display:block;font-size:.78rem;color:rgba(255,255,255,.5);margin-bottom:8px;transition:color .3s}.ft-col a:hover{color:var(--pure)}
+    .ft-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:20px;display:flex;justify-content:space-between;align-items:center;font-size:.6rem;color:rgba(255,255,255,.2)}
+    .ft-bottom a{color:rgba(255,255,255,.2);transition:color .3s;margin-left:20px}.ft-bottom a:hover{color:rgba(255,255,255,.5)}
+    .disclaimer{padding:12px 48px;background:var(--bk3);font-size:.58rem;color:rgba(255,255,255,.12);text-align:center;line-height:1.6;border-top:1px solid rgba(255,255,255,.03)}
+    .sec-center{text-align:center;max-width:680px;margin:0 auto}
+    .sec-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--g2);margin-bottom:10px}
+    .sec-title{font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;line-height:1.05;letter-spacing:-1.5px;color:var(--bk);margin-bottom:16px}
+    .btn-p{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--bk);color:var(--pure);border-radius:980px;font-size:.85rem;font-weight:600;transition:all .3s;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;text-decoration:none}
+    .btn-p:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(0,0,0,.1)}
+    .btn-p svg{width:13px;height:13px;transition:transform .3s}.btn-p:hover svg{transform:translateX(3px)}
+    .reading-progress{position:fixed;top:0;left:0;height:2px;background:var(--blue);z-index:9999;width:0;transition:width .1s linear}
+    @media(max-width:900px){.nav{padding:14px 20px}.nav-links{display:none}.blog-hero{padding:120px 20px 60px}.article-wrap{grid-template-columns:1fr;padding:40px 20px 80px}.article-sidebar{display:none}.related-grid{grid-template-columns:1fr}.related-sec,.faq-sec{padding:60px 20px}.ft-cols{flex-direction:column;gap:28px}.footer{padding:40px 20px 20px}.disclaimer{padding:10px 16px}.cta-card{padding:28px 20px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  </style>
+</head>
+<body>
+
+<div class="preloader" id="preloader"><div style="text-align:center"><div class="pre-word"><span>B</span><span>A</span><span>S</span><span>S</span></div><div class="pre-line" id="preLine"></div></div></div>
+<div class="reading-progress" id="readingProgress"></div>
+
+<nav class="nav" id="nav">
+  <a href="https://basstrading.fr" class="nav-logo">BASS</a>
+  <ul class="nav-links">
+    <li><a href="https://basstrading.fr#methode">Méthode</a></li>
+    <li><a href="https://basstrading.fr#resultats">Résultats</a></li>
+    <li><a href="https://basstrading.fr#avis">Avis</a></li>
+    <li><a href="https://basstrading.fr#faq">FAQ</a></li>
+    <li><a href="https://basstrading.fr/blog/">Blog</a></li>
+  </ul>
+  <a href="https://basstrading.fr#candidater" class="nav-cta">Candidater</a>
+</nav>
+
+<section class="blog-hero">
+  <div class="blog-hero-inner">
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <a href="https://basstrading.fr">Accueil</a><span class="sep">/</span>
+      <a href="https://basstrading.fr/blog/">Blog</a><span class="sep">/</span>
+      <span>Footprint Chart</span>
+    </nav>
+    <div class="blog-hero-cat">Analyse</div>
+    <h1 class="blog-hero-title">Footprint Chart :<br>Lire le volume comme un professionnel</h1>
+    <p class="blog-hero-desc">Le Footprint Chart décompose chaque bougie pour révéler ce que les chandeliers classiques cachent : qui achète, qui vend, et où se trouvent les déséquilibres de force. Guide complet.</p>
+    <div class="blog-meta">
+      <div class="blog-meta-author">
+        <div class="blog-meta-avatar"><img src="../../images/bass-presenting.jpg" alt="Sébastien Constant" loading="lazy"></div>
+        <div><div class="blog-meta-name">Sébastien Constant</div><div class="blog-meta-role">Trader & Formateur Order Flow</div></div>
+      </div>
+      <div class="blog-meta-sep"></div>
+      <div class="blog-meta-info"><span>Mars 2026</span><span>12 min de lecture</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="article-wrap">
+  <aside class="article-sidebar">
+    <div class="toc">
+      <div class="toc-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/></svg> Sommaire</div>
+      <ol>
+        <li><a href="#definition">Qu'est-ce qu'un Footprint ?</a></li>
+        <li><a href="#composants">Les composants du Footprint</a></li>
+        <li><a href="#imbalances">Lire les déséquilibres</a></li>
+        <li><a href="#absorption">L'absorption</a></li>
+        <li><a href="#cvd">Le Delta cumulatif (CVD)</a></li>
+        <li><a href="#patterns">Patterns concrets</a></li>
+        <li><a href="#logiciel">Quel logiciel utiliser</a></li>
+        <li><a href="#vs-mp">Footprint vs Market Profile</a></li>
+        <li><a href="#bass">Apprendre avec BASS</a></li>
+      </ol>
+    </div>
+  </aside>
+
+  <article class="article-body">
+    <h2 id="definition">Qu'est-ce qu'un Footprint Chart ?</h2>
+    <p>Un chandelier classique vous montre 4 chiffres : Open, High, Low, Close. Et le volume total de la bougie. C'est comme regarder le score final d'un match de foot sans avoir vu le match. Vous savez qui a gagné, mais pas <strong>comment</strong>.</p>
+    <p>Le Footprint Chart ouvre la bougie. Il décompose le volume échangé à <strong>chaque niveau de prix</strong>, séparé entre les ordres exécutés côté Bid (vendeurs agressifs) et côté Ask (acheteurs agressifs). Vous voyez la bataille tick par tick — qui pousse, qui absorbe, où la force bascule.</p>
+
+    <div class="key-concept">
+      <div class="key-concept-label">Concept clé</div>
+      <h4>Le Footprint révèle l'intention derrière le prix</h4>
+      <p>Une bougie verte ne signifie pas que les acheteurs ont gagné partout. Le Footprint peut montrer une forte absorption vendeuse dans le haut de la bougie — signe que le rallye est en train de s'essouffler. L'apparence trompe. Le volume ne ment pas.</p>
+    </div>
+
+    <p>Développé pour les marchés Futures (CME), le Footprint est devenu l'outil de référence des traders professionnels qui ont besoin de lire le flux d'ordres avec précision. Aujourd'hui, il est accessible à tout trader équipé de Sierra Chart et de données CME.</p>
+
+    <hr>
+
+    <h2 id="composants">Les composants du Footprint</h2>
+
+    <h3>Bid et Ask</h3>
+    <p>À chaque niveau de prix dans une bougie, le Footprint affiche deux chiffres : le volume exécuté au <strong>Bid</strong> (ordres de vente agressifs — le vendeur "tape" le Bid) et le volume exécuté à l'<strong>Ask</strong> (ordres d'achat agressifs — l'acheteur "tape" l'Ask).</p>
+    <p>Format typique : <strong>Bid × Ask</strong>. Par exemple, <strong>245 × 892</strong> signifie que 245 contrats ont été vendus agressivement et 892 achetés agressivement à ce niveau de prix. Le déséquilibre est clair — les acheteurs dominent.</p>
+
+    <h3>Le Delta</h3>
+    <p>Le delta est la différence entre le volume Ask et le volume Bid à un niveau de prix donné. <strong>Delta = Ask - Bid</strong>. Un delta positif signifie plus d'achats agressifs. Un delta négatif, plus de ventes agressives.</p>
+    <p>Le delta total de la bougie (somme de tous les deltas par niveau) indique la pression nette. Mais attention : <strong>le delta total peut cacher des réalités opposées</strong> à différents niveaux de prix. C'est pour ça qu'on regarde le Footprint niveau par niveau.</p>
+
+    <h3>Le volume par niveau de prix</h3>
+    <p>Le volume total à chaque niveau (Bid + Ask) révèle où l'activité est concentrée. Les niveaux avec le plus de volume sont souvent des <strong>niveaux d'intérêt institutionnel</strong> — des prix où les gros participants ont accumulé ou distribué.</p>
+
+    <hr>
+
+    <h2 id="imbalances">Lire les déséquilibres (Imbalances)</h2>
+    <p>Un déséquilibre (imbalance) se produit quand le ratio entre le volume Ask et le volume Bid (ou inversement) dépasse un seuil significatif — généralement <strong>300% ou plus</strong> (ratio 3:1).</p>
+
+    <h3>Comment les repérer</h3>
+    <p>Sierra Chart colore automatiquement les cellules déséquilibrées. Un déséquilibre acheteur (Ask >> Bid) apparaît quand le volume Ask à un niveau de prix est au moins 3 fois supérieur au volume Bid du niveau juste en dessous. L'inverse pour un déséquilibre vendeur.</p>
+
+    <h3>Stacked Imbalances</h3>
+    <p>Quand 3 déséquilibres ou plus sont empilés sur des niveaux de prix consécutifs, c'est un <strong>stacked imbalance</strong> — un signal de forte conviction directionnelle. C'est l'équivalent d'une troupe qui avance sur tous les fronts simultanément.</p>
+
+    <div class="info-box">
+      <div class="info-box-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg> En pratique</div>
+      <p>Les stacked imbalances acheteurs en bas d'une bougie, combinés à une zone de Value Area Low du Market Profile, sont un des setups les plus fiables en intraday. C'est la convergence entre la structure macro (Market Profile) et l'action micro (Footprint).</p>
+    </div>
+
+    <hr>
+
+    <h2 id="absorption">L'absorption</h2>
+    <p>L'absorption est le phénomène inverse du déséquilibre. Elle se produit quand un <strong>gros volume est échangé à un niveau de prix sans que le prix ne bouge significativement</strong>.</p>
+    <p>Concrètement : le prix arrive à un niveau, les vendeurs attaquent massivement (gros volume Bid), mais le prix ne descend pas. Quelqu'un absorbe toute cette pression vendeuse. C'est généralement un institutionnel qui accumule une position acheteuse.</p>
+
+    <h3>Absorption et retournement</h3>
+    <p>L'absorption en bas d'un mouvement baissier est souvent le <strong>premier signal d'un retournement</strong>. Le prix a été poussé vers le bas, les vendeurs agressifs ont vidé leur énergie, et un acheteur massif a tout absorbé. Le prochain mouvement sera probablement haussier.</p>
+    <p>Identifiez l'absorption dans le Footprint : un niveau de prix avec un volume total très élevé, un delta proche de zéro ou légèrement positif, et un prix qui refuse de descendre davantage.</p>
+
+    <hr>
+
+    <h2 id="cvd">Le Delta cumulatif (CVD)</h2>
+    <p>Le CVD (Cumulative Volume Delta) est le total cumulé de tous les deltas dans le temps. Il trace une courbe qui montre la pression nette acheteur/vendeur sur la durée.</p>
+
+    <h3>Divergences prix/CVD</h3>
+    <p>La divergence est le signal le plus puissant du CVD. Si le prix fait de nouveaux plus hauts mais que le CVD fait des plus bas, cela signifie que <strong>le rallye n'est plus soutenu par de vrais acheteurs agressifs</strong>. Le prix monte par manque de vendeurs, pas par force acheteuse. C'est un signe d'épuisement.</p>
+    <p>L'inverse est vrai : si le prix fait de nouveaux plus bas mais que le CVD remonte, les vendeurs perdent leur force — un retournement haussier est probable.</p>
+
+    <h3>Confirmation de tendance</h3>
+    <p>Quand le prix et le CVD évoluent dans la même direction, la tendance est saine. Les acheteurs (ou vendeurs) agressifs soutiennent activement le mouvement. C'est la configuration où il faut suivre la tendance, pas la contrer.</p>
+
+    <hr>
+
+    <h2 id="patterns">Patterns concrets</h2>
+
+    <table class="compare-table">
+      <thead><tr><th>Pattern</th><th>Ce qu'il montre</th><th>Signal</th></tr></thead>
+      <tbody>
+        <tr><td>Stacked Imbalances (acheteur)</td><td>3+ déséquilibres Ask consécutifs</td><td>Forte pression acheteuse, continuation haussière probable</td></tr>
+        <tr><td>Stacked Imbalances (vendeur)</td><td>3+ déséquilibres Bid consécutifs</td><td>Forte pression vendeuse, continuation baissière probable</td></tr>
+        <tr><td>Exhaustion</td><td>Gros volume + delta extrême en fin de mouvement</td><td>Épuisement de la tendance, retournement imminent</td></tr>
+        <tr><td>Absorption Reversal</td><td>Gros volume, delta faible, prix stable</td><td>Un participant massif absorbe — retournement probable</td></tr>
+        <tr><td>Divergence CVD</td><td>Prix fait des nouveaux extrêmes, CVD diverge</td><td>Mouvement non soutenu, retournement à anticiper</td></tr>
+        <tr><td>Unfinished Business</td><td>Niveau avec très peu de volume dans le Footprint</td><td>Le marché reviendra tester ce niveau (gap de liquidité)</td></tr>
+      </tbody>
+    </table>
+
+    <hr>
+
+    <h2 id="logiciel">Quel logiciel utiliser ?</h2>
+    <p><strong>Sierra Chart</strong> est le standard professionnel pour le Footprint Chart. Son "Numbers Bars" offre la visualisation la plus complète et configurable du marché : couleurs par delta, seuils d'imbalance personnalisables, affichage Bid × Ask, delta cumulatif par bougie.</p>
+    <p>Alternatives : ATAS offre une interface plus visuelle mais moins de profondeur. Quantower est un bon compromis. Bookmap excelle en visualisation de la liquidité. Mais pour la fiabilité des données et la personnalisation, Sierra Chart reste imbattable.</p>
+
+    <div class="info-box">
+      <div class="info-box-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg> Inclus dans le mentorat</div>
+      <p>Le mentorat BASS Trading fournit les templates Sierra Chart pré-configurés pour le Footprint, le Market Profile et le CVD. Vous n'avez pas besoin de passer des semaines à configurer — tout est prêt dès le premier jour.</p>
+    </div>
+
+    <hr>
+
+    <h2 id="vs-mp">Footprint vs Market Profile</h2>
+
+    <table class="compare-table">
+      <thead><tr><th>Critère</th><th>Market Profile</th><th>Footprint Chart</th></tr></thead>
+      <tbody>
+        <tr><td>Échelle de temps</td><td>Session entière (macro)</td><td>Bougie par bougie (micro)</td></tr>
+        <tr><td>Ce qu'il montre</td><td>Structure du marché, acceptation du prix</td><td>Flux d'ordres, agressivité acheteur/vendeur</td></tr>
+        <tr><td>Utilisation principale</td><td>Identifier les niveaux clés et le contexte</td><td>Timer les entrées et lire la force en temps réel</td></tr>
+        <tr><td>Analogie</td><td>La carte du territoire</td><td>Les mouvements des troupes sur le terrain</td></tr>
+        <tr><td>Complémentarité</td><td>Donne le "où" trader</td><td>Donne le "quand" entrer</td></tr>
+      </tbody>
+    </table>
+
+    <p>Les deux outils ne sont pas en compétition — ils sont <strong>complémentaires</strong>. Le Market Profile vous dit "le marché est en rotation autour du POC, la Value Area Low est un support important". Le Footprint vous dit "sur ce support, je vois de l'absorption acheteuse avec des stacked imbalances — c'est le moment d'entrer long".</p>
+
+    <hr>
+
+    <h2 id="bass">Apprendre le Footprint avec BASS Trading</h2>
+    <p>Le Footprint ne s'apprend pas en lisant un article. Il se pratique, se vit en temps réel, et nécessite un feedback constant. C'est un outil qui demande de l'entraînement visuel — comme apprendre à lire une radio médicale.</p>
+    <p>Le mentorat BASS Trading consacre des modules entiers au Footprint Chart, avec des sessions live quotidiennes où Sébastien analyse le flux en temps réel, commente les déséquilibres, et explique ses décisions d'entrée et de sortie.</p>
+
+    <div class="cta-card">
+      <div class="cta-card-label">Mentorat</div>
+      <h3>Apprenez à lire le volume comme un pro.</h3>
+      <p>70 heures de formation, Footprint + Market Profile + Order Flow. Sierra Chart configuré. 10 places max.</p>
+      <a href="https://basstrading.fr#candidater" class="btn-p">Vérifier mon éligibilité <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+    </div>
+  </article>
+</div>
+
+<!-- FAQ -->
+<section class="faq-sec">
+  <div class="sec-center"><div class="sec-label">FAQ</div><h2 class="sec-title">Questions fréquentes</h2></div>
+  <div class="faq-list">
+    <div class="fi"><button class="fq" onclick="tf(this)">C'est quoi un Footprint Chart ? <span class="fq-icon">+</span></button><div class="fa"><p>Un graphique avancé qui décompose chaque bougie en montrant le volume Bid et Ask à chaque niveau de prix. Il révèle les déséquilibres de force entre acheteurs et vendeurs — invisible sur un chandelier classique.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Quelle différence avec les chandeliers classiques ? <span class="fq-icon">+</span></button><div class="fa"><p>Les chandeliers montrent uniquement OHLC et le volume total. Le Footprint montre le volume décomposé Bid/Ask à CHAQUE niveau de prix. Vous voyez exactement où les acheteurs et vendeurs ont été agressifs.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">C'est quoi un déséquilibre (imbalance) ? <span class="fq-icon">+</span></button><div class="fa"><p>Un déséquilibre se produit quand le volume d'un côté dépasse largement l'autre — typiquement un ratio de 300%+. Les stacked imbalances sur 3+ niveaux consécutifs signalent une forte conviction directionnelle.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Quel logiciel pour le Footprint ? <span class="fq-icon">+</span></button><div class="fa"><p>Sierra Chart est le standard professionnel. Il offre le Numbers Bars natif avec personnalisation complète. Le mentorat BASS fournit les templates pré-configurés.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Le Footprint remplace-t-il le Market Profile ? <span class="fq-icon">+</span></button><div class="fa"><p>Non, ils sont complémentaires. Le Market Profile donne le contexte macro (où trader), le Footprint donne le timing micro (quand entrer). Les professionnels utilisent les deux.</p></div></div>
+  </div>
+</section>
+
+<!-- Related -->
+<section class="related-sec">
+  <div class="sec-center"><div class="sec-label">Continuer la lecture</div><h2 class="sec-title">Articles connexes</h2></div>
+  <div class="related-grid">
+    <a href="/blog/market-profile-guide-complet" class="related-card"><div class="related-cat">Guide</div><h3>Market Profile : le guide complet pour débutants</h3><p>Value Area, POC, types de journées — tout pour commencer.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/order-flow-trading-france" class="related-card"><div class="related-cat">Méthode</div><h3>Order Flow Trading : pourquoi personne ne l'enseigne en France</h3><p>Le carnet d'ordres et le flux institutionnel décryptés.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/sierra-chart-configuration" class="related-card"><div class="related-cat">Tutoriel</div><h3>Sierra Chart : configuration complète</h3><p>Le setup pas à pas pour le Market Profile et le Footprint.</p><span class="related-link">Lire &rarr;</span></a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="ft-top"><div class="ft-logo">BASS</div><div class="ft-cols">
+    <div class="ft-col"><div class="ft-col-title">Programme</div><a href="https://basstrading.fr#methode">Méthode</a><a href="https://basstrading.fr#programme">Programme</a><a href="https://basstrading.fr#certification">Certification</a><a href="https://basstrading.fr#candidater">Candidater</a></div>
+    <div class="ft-col"><div class="ft-col-title">Ressources</div><a href="/blog/market-profile-guide-complet">Market Profile</a><a href="/blog/footprint-chart-trading">Footprint Chart</a><a href="/blog/order-flow-trading-france">Order Flow</a><a href="/blog/formation-trading-cpf-qualiopi">Formation CPF</a></div>
+    <div class="ft-col"><div class="ft-col-title">Écosystème</div><a href="https://hubtrading.fr" target="_blank" rel="noopener">HubTrading.fr</a><a href="https://x-trade.ai" target="_blank" rel="noopener">x-trade.ai</a><a href="mailto:contact@basstrading.fr">Contact</a></div>
+  </div></div>
+  <div class="ft-bottom"><span>&copy; 2026 BASS — Sébastien Constant</span><div><a href="https://basstrading.fr/mentions-legales.html">Mentions légales</a><a href="https://basstrading.fr/confidentialite.html">Confidentialité</a><a href="https://basstrading.fr/cgv.html">CGV</a></div></div>
+</footer>
+<div class="disclaimer">Le trading comporte des risques de perte en capital. Les performances passées ne préjugent pas des performances futures. Ce site ne constitue pas un conseil en investissement.</div>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+const lenis=new Lenis({duration:1.2,easing:t=>Math.min(1,1.001-Math.pow(2,-10*t))});
+function raf(t){lenis.raf(t);requestAnimationFrame(raf)}requestAnimationFrame(raf);
+lenis.on('scroll',ScrollTrigger.update);gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0);
+const tl=gsap.timeline();
+tl.to('.pre-word span',{y:0,opacity:1,duration:.5,stagger:.1,ease:'power3.out',delay:.3}).to('#preLine',{width:'80px',duration:.7,ease:'power2.inOut'},'<+.2').to('.preloader',{yPercent:-100,duration:.8,ease:'power3.inOut',delay:.4}).set('.preloader',{display:'none'}).to('#nav',{opacity:1,y:0,duration:.5},'<+.1');
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);const h=document.documentElement.scrollHeight-window.innerHeight;document.getElementById('readingProgress').style.width=(window.scrollY/h*100)+'%'});
+const tocLinks=document.querySelectorAll('.toc a');const sections=Array.from(tocLinks).map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+window.addEventListener('scroll',()=>{let c='';sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)c=s.id});tocLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+c)})});
+function tf(b){const i=b.closest('.fi'),a=b.nextElementSibling,o=i.classList.contains('active');document.querySelectorAll('.fi').forEach(x=>{x.classList.remove('active');x.querySelector('.fa').classList.remove('open')});if(!o){i.classList.add('active');a.classList.add('open')}}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();lenis.scrollTo(t,{offset:-60})}})});
+</script>
+</body>
+</html>

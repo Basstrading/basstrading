@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Les Types de Trading : Lequel Choisir Selon Votre Profil ? (2026) — BASS Trading</title>
+  <meta name="description" content="Scalping, day trading, swing trading, position trading et Order Flow : comparatif complet des 5 styles de trading. Quel type correspond à votre profil, capital et disponibilité ?">
+  <meta property="og:title" content="Les Types de Trading : Lequel Choisir Selon Votre Profil ? (2026) — BASS Trading">
+  <meta property="og:description" content="Scalping, day trading, swing trading, position trading et Order Flow : comparatif complet des 5 styles de trading.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://basstrading.fr/blog/types-trading-differences/">
+  <meta property="og:site_name" content="BASS Trading">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Les Types de Trading : Lequel Choisir Selon Votre Profil ? (2026)">
+  <meta name="twitter:description" content="Scalping, day trading, swing trading, position trading et Order Flow : comparatif complet des 5 styles de trading.">
+  <link rel="canonical" href="https://basstrading.fr/blog/types-trading-differences/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Les Types de Trading : Lequel Choisir Selon Votre Profil ?",
+    "description": "Scalping, day trading, swing trading, position trading et Order Flow : comparatif complet des 5 styles de trading. Quel type correspond à votre profil, capital et disponibilité ?",
+    "author": {"@type": "Person","name": "Sébastien Constant","jobTitle": "Trader et formateur Order Flow","url": "https://basstrading.fr"},
+    "publisher": {"@type": "Organization","name": "BASS Trading","url": "https://basstrading.fr","logo": {"@type": "ImageObject","url": "https://basstrading.fr/images/bass-presenting.jpg"}},
+    "datePublished": "2026-03-28","dateModified": "2026-03-28",
+    "mainEntityOfPage": {"@type": "WebPage","@id": "https://basstrading.fr/blog/types-trading-differences/"},
+    "keywords": ["types de trading","scalping","day trading","swing trading","position trading","order flow","styles de trading","quel type de trading choisir","market profile","futures","forex","intraday"]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org","@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem","position": 1,"name": "Accueil","item": "https://basstrading.fr"},
+      {"@type": "ListItem","position": 2,"name": "Blog","item": "https://basstrading.fr/blog/"},
+      {"@type": "ListItem","position": 3,"name": "Les Types de Trading"}
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org","@type": "FAQPage",
+    "mainEntity": [
+      {"@type": "Question","name": "Quel est le type de trading le plus rentable ?","acceptedAnswer": {"@type": "Answer","text": "Aucun type n'est intrinsèquement plus rentable qu'un autre. La rentabilité dépend de la méthode, la discipline et la gestion du risque. Cependant, le day trading sur Futures offre le meilleur ratio capital/opportunités grâce à l'effet de levier des contrats et au feedback quotidien qui accélère la progression."}},
+      {"@type": "Question","name": "Peut-on combiner plusieurs types de trading ?","acceptedAnswer": {"@type": "Answer","text": "Oui, mais pas en même temps. Un swing trader peut aussi faire du day trading, mais sur des comptes séparés avec des plans distincts. Ne mélangez jamais les horizons sur un même trade — c'est l'une des erreurs les plus courantes chez les débutants."}},
+      {"@type": "Question","name": "Le scalping est-il le type de trading le plus risqué ?","acceptedAnswer": {"@type": "Answer","text": "Pas nécessairement en termes de perte par trade (qui est souvent petite), mais le volume de trades et la vitesse d'exécution requise en font le type le plus exigeant psychologiquement. Un mauvais contrôle émotionnel en scalping peut mener à des pertes rapides par accumulation."}},
+      {"@type": "Question","name": "Qu'est-ce que l'Order Flow Trading exactement ?","acceptedAnswer": {"@type": "Answer","text": "C'est une approche de lecture du marché basée sur le flux réel d'ordres (acheteurs vs vendeurs) plutôt que sur des indicateurs mathématiques dérivés du prix. Elle utilise des outils comme le Footprint Chart, le DOM (Depth of Market) et le Market Profile pour lire l'activité en temps réel."}},
+      {"@type": "Question","name": "Quel type de trading pour un débutant avec peu de capital ?","acceptedAnswer": {"@type": "Answer","text": "Le day trading sur Micro Futures (capital 500-2000€) ou via un challenge prop firm (100-300€). Ajoutez l'Order Flow dès que possible pour comprendre le marché en profondeur plutôt que de suivre aveuglément des indicateurs."}}
+    ]
+  }
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{--bk:#1D1D1F;--bk2:#111;--bk3:#0A0A0A;--g1:#6E6E73;--g2:#86868B;--g3:#D2D2D7;--g4:#F5F5F7;--wh:#FBFBFD;--pure:#FFF;--green:#00B67A;--blue:#0066FF}
+    html.lenis,html.lenis body{height:auto}
+    .lenis.lenis-smooth{scroll-behavior:auto!important}
+    body{font-family:'DM Sans',sans-serif;color:var(--bk);background:var(--pure);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+    .preloader{position:fixed;inset:0;background:var(--bk3);z-index:10001;display:flex;align-items:center;justify-content:center}
+    .pre-word{font-family:'Outfit',sans-serif;font-size:clamp(3rem,8vw,5rem);font-weight:900;letter-spacing:16px;text-transform:uppercase;color:var(--pure);overflow:hidden}
+    .pre-word span{display:inline-block;transform:translateY(110%);opacity:0}
+    .pre-line{width:0;height:1px;background:rgba(255,255,255,.3);margin-top:20px}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 48px;display:flex;align-items:center;justify-content:space-between;background:rgba(245,245,247,.85);backdrop-filter:blur(20px) saturate(1.8);border-bottom:1px solid rgba(0,0,0,.04);transition:background .4s,border .4s}
+    .nav-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase;color:var(--bk)}
+    .nav-links{display:flex;gap:28px;list-style:none}
+    .nav-links a{font-size:.74rem;font-weight:500;letter-spacing:.3px;color:var(--g1);transition:color .3s}
+    .nav-links a:hover{color:var(--bk)}
+    .nav-cta{padding:8px 20px;background:var(--bk);color:var(--pure);border:none;border-radius:980px;font-size:.72rem;font-weight:600;transition:all .3s;cursor:pointer;text-decoration:none;display:inline-block}
+    .nav-cta:hover{background:var(--bk2)}
+    .blog-hero{padding:160px 48px 80px;background:var(--g4);position:relative;overflow:hidden}
+    .blog-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,transparent,var(--g4));pointer-events:none}
+    .blog-hero-inner{max-width:720px;margin:0 auto}
+    .breadcrumb{display:flex;gap:8px;align-items:center;margin-bottom:28px;flex-wrap:wrap}
+    .breadcrumb a,.breadcrumb span{font-size:.68rem;font-weight:500;letter-spacing:.3px;color:var(--g2);transition:color .3s}
+    .breadcrumb a:hover{color:var(--bk)}
+    .breadcrumb .sep{color:var(--g3)}
+    .blog-hero-cat{display:inline-block;padding:5px 14px;border:1px solid rgba(0,102,255,.15);border-radius:980px;font-size:.6rem;font-weight:700;color:var(--blue);letter-spacing:2px;text-transform:uppercase;margin-bottom:20px}
+    .blog-hero-title{font-family:'Outfit',sans-serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:900;line-height:1.05;letter-spacing:-2px;color:var(--bk);margin-bottom:20px}
+    .blog-hero-desc{font-size:.95rem;color:var(--g1);line-height:1.8;max-width:560px;margin-bottom:28px}
+    .blog-meta{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+    .blog-meta-author{display:flex;align-items:center;gap:10px}
+    .blog-meta-avatar{width:36px;height:36px;border-radius:50%;background:var(--bk3);overflow:hidden;flex-shrink:0}
+    .blog-meta-avatar img{width:100%;height:100%;object-fit:cover}
+    .blog-meta-name{font-size:.78rem;font-weight:600;color:var(--bk)}
+    .blog-meta-role{font-size:.65rem;color:var(--g2)}
+    .blog-meta-sep{width:1px;height:24px;background:var(--g3)}
+    .blog-meta-info{font-size:.7rem;color:var(--g2)}
+    .blog-meta-info span{margin-right:16px}
+    .toc{position:sticky;top:90px;background:var(--pure);border:1px solid rgba(0,0,0,.04);border-radius:14px;padding:24px;margin-bottom:32px}
+    .toc-title{font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.5px;color:var(--bk);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+    .toc-title svg{width:14px;height:14px;color:var(--g2)}
+    .toc ol{list-style:none;counter-reset:toc}
+    .toc li{counter-increment:toc}
+    .toc li a{display:flex;align-items:baseline;gap:8px;padding:6px 0;font-size:.76rem;color:var(--g1);transition:color .3s;border-bottom:1px solid rgba(0,0,0,.03)}
+    .toc li a:hover{color:var(--blue)}
+    .toc li a::before{content:counter(toc,decimal-leading-zero);font-family:'Outfit',sans-serif;font-size:.65rem;font-weight:700;color:var(--g3);min-width:18px}
+    .toc li:last-child a{border-bottom:none}
+    .toc li a.active{color:var(--blue);font-weight:600}
+    .toc li a.active::before{color:var(--blue)}
+    .article-wrap{display:grid;grid-template-columns:220px 1fr;gap:40px;max-width:1020px;margin:0 auto;padding:60px 48px 120px}
+    .article-sidebar{position:relative}
+    .article-body{max-width:700px}
+    .article-body h2{font-family:'Outfit',sans-serif;font-size:clamp(1.4rem,2.5vw,1.8rem);font-weight:800;line-height:1.1;letter-spacing:-1px;color:var(--bk);margin:56px 0 16px;padding-top:20px}
+    .article-body h2:first-of-type{margin-top:0}
+    .article-body h3{font-family:'Outfit',sans-serif;font-size:1.05rem;font-weight:700;line-height:1.25;letter-spacing:-.3px;color:var(--bk);margin:36px 0 10px}
+    .article-body p{font-size:.9rem;color:var(--g1);line-height:1.85;margin-bottom:18px}
+    .article-body strong{color:var(--bk);font-weight:600}
+    .article-body ul,.article-body ol{margin:0 0 20px 0;padding-left:20px}
+    .article-body li{font-size:.88rem;color:var(--g1);line-height:1.8;margin-bottom:6px}
+    .article-body li strong{color:var(--bk)}
+    .article-body blockquote{margin:28px 0;padding:20px 24px;background:var(--g4);border-left:3px solid var(--bk);border-radius:0 12px 12px 0;font-size:.88rem;color:var(--g1);line-height:1.8;font-style:italic}
+    .article-body blockquote strong{color:var(--bk);font-style:normal}
+    .article-body hr{border:none;border-top:1px solid var(--g4);margin:48px 0}
+    .article-body a{color:var(--blue);text-decoration:underline;text-decoration-color:rgba(0,102,255,.2);text-underline-offset:2px;transition:text-decoration-color .3s}
+    .article-body a:hover{text-decoration-color:var(--blue)}
+    .info-box{margin:28px 0;padding:24px;background:rgba(0,102,255,.03);border:1px solid rgba(0,102,255,.08);border-radius:14px}
+    .info-box-title{font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:700;color:var(--blue);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+    .info-box-title svg{width:16px;height:16px}
+    .info-box p{font-size:.82rem;color:var(--g1);line-height:1.7;margin-bottom:0}
+    .key-concept{margin:32px 0;padding:28px;background:var(--bk3);border-radius:16px;color:var(--pure)}
+    .key-concept-label{font-size:.55rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:10px}
+    .key-concept h4{font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:800;letter-spacing:-.3px;margin-bottom:8px}
+    .key-concept p{font-size:.85rem;color:rgba(255,255,255,.5);line-height:1.8;margin-bottom:0}
+    .compare-table{width:100%;margin:24px 0 28px;border-collapse:collapse;border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,.06)}
+    .compare-table th{background:var(--bk3);color:var(--pure);font-family:'Outfit',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:14px 16px;text-align:left}
+    .compare-table td{padding:12px 16px;font-size:.82rem;color:var(--g1);line-height:1.6;border-bottom:1px solid rgba(0,0,0,.04);background:var(--pure)}
+    .compare-table tr:last-child td{border-bottom:none}
+    .compare-table td:first-child{font-weight:600;color:var(--bk)}
+    .shapes-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:24px 0 28px}
+    .shape-card{padding:24px;background:var(--g4);border-radius:14px;transition:all .4s}
+    .shape-card:hover{background:var(--pure);box-shadow:0 8px 30px rgba(0,0,0,.06)}
+    .shape-card h4{font-family:'Outfit',sans-serif;font-size:.88rem;font-weight:700;margin-bottom:6px;letter-spacing:-.2px}
+    .shape-card p{font-size:.78rem;color:var(--g1);line-height:1.7;margin-bottom:0}
+    .shape-icon{font-family:'Outfit',sans-serif;font-size:1.8rem;font-weight:900;color:var(--g3);margin-bottom:8px;line-height:1}
+    .cta-card{margin:48px 0;padding:40px;background:var(--bk3);border-radius:20px;text-align:center;position:relative;overflow:hidden}
+    .cta-card::before{content:'';position:absolute;top:-50%;right:-30%;width:400px;height:400px;background:radial-gradient(circle,rgba(0,102,255,.08) 0%,transparent 70%);pointer-events:none}
+    .cta-card-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:12px}
+    .cta-card h3{font-family:'Outfit',sans-serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:800;color:var(--pure);letter-spacing:-.5px;margin-bottom:8px}
+    .cta-card p{font-size:.85rem;color:rgba(255,255,255,.4);line-height:1.7;max-width:380px;margin:0 auto 24px}
+    .cta-card .btn-p{background:var(--pure);color:var(--bk)}
+    .cta-card .btn-p:hover{box-shadow:0 8px 30px rgba(255,255,255,.15)}
+    .faq-sec{padding:80px 48px 100px;background:var(--g4)}
+    .faq-list{max-width:680px;margin:40px auto 0}
+    .fi{border-bottom:1px solid rgba(0,0,0,.06)}
+    .fq{width:100%;text-align:left;padding:18px 0;background:none;border:none;font-size:.85rem;font-weight:600;font-family:'DM Sans',sans-serif;color:var(--bk);display:flex;justify-content:space-between;align-items:center;cursor:pointer;gap:16px;transition:color .3s}
+    .fq:hover{color:var(--g1)}
+    .fq-icon{width:22px;height:22px;border-radius:50%;background:rgba(0,0,0,.04);display:flex;align-items:center;justify-content:center;font-size:.75rem;transition:all .4s;flex-shrink:0;color:var(--g2)}
+    .fa{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1)}
+    .fa.open{max-height:280px;padding-bottom:14px}
+    .fa p{font-size:.8rem;color:var(--g1);line-height:1.7;margin-bottom:0}
+    .fi.active .fq-icon{background:var(--bk);color:var(--pure);transform:rotate(45deg)}
+    .related-sec{padding:80px 48px;background:var(--pure);border-top:1px solid var(--g4)}
+    .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1060px;margin:40px auto 0}
+    .related-card{display:block;padding:28px;background:var(--g4);border-radius:16px;transition:all .4s;text-decoration:none;color:var(--bk)}
+    .related-card:hover{background:var(--pure);box-shadow:0 8px 30px rgba(0,0,0,.06);transform:translateY(-2px)}
+    .related-cat{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+    .related-card h3{font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:700;line-height:1.3;letter-spacing:-.3px;margin-bottom:8px}
+    .related-card p{font-size:.78rem;color:var(--g1);line-height:1.6;margin-bottom:14px}
+    .related-link{font-size:.72rem;font-weight:600;color:var(--blue);letter-spacing:.3px}
+    .footer{background:var(--bk3);color:var(--pure);padding:56px 48px 28px}
+    .ft-top{display:flex;justify-content:space-between;align-items:start;margin-bottom:48px;flex-wrap:wrap;gap:32px}
+    .ft-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase}
+    .ft-cols{display:flex;gap:80px}
+    .ft-col-title{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:12px}
+    .ft-cols div a{display:block;font-size:.78rem;color:rgba(255,255,255,.5);margin-bottom:8px;transition:color .3s}
+    .ft-cols div a:hover{color:var(--pure)}
+    .ft-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:20px;display:flex;justify-content:space-between;align-items:center;font-size:.6rem;color:rgba(255,255,255,.2)}
+    .ft-bottom a{color:rgba(255,255,255,.2);transition:color .3s;margin-left:20px}
+    .ft-bottom a:hover{color:rgba(255,255,255,.5)}
+    .disclaimer{padding:12px 48px;background:var(--bk3);font-size:.58rem;color:rgba(255,255,255,.12);text-align:center;line-height:1.6;border-top:1px solid rgba(255,255,255,.03)}
+    .sec-center{text-align:center;max-width:680px;margin:0 auto}
+    .sec-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--g2);margin-bottom:10px}
+    .sec-title{font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;line-height:1.05;letter-spacing:-1.5px;color:var(--bk);margin-bottom:16px}
+    .btn-p{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--bk);color:var(--pure);border-radius:980px;font-size:.85rem;font-weight:600;transition:all .3s;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;text-decoration:none}
+    .btn-p:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(0,0,0,.1)}
+    .btn-p svg{width:13px;height:13px;transition:transform .3s}
+    .btn-p:hover svg{transform:translateX(3px)}
+    .reading-progress{position:fixed;top:0;left:0;height:2px;background:var(--blue);z-index:9999;width:0;transition:width .1s linear}
+    @media(max-width:900px){
+      .nav{padding:14px 20px}.nav-links{display:none}
+      .blog-hero{padding:120px 20px 60px}
+      .article-wrap{grid-template-columns:1fr;padding:40px 20px 80px}
+      .article-sidebar{display:none}
+      .shapes-grid{grid-template-columns:1fr}
+      .related-grid{grid-template-columns:1fr}
+      .related-sec,.faq-sec{padding:60px 20px}
+      .ft-cols{flex-direction:column;gap:28px}
+      .footer{padding:40px 20px 20px}
+      .disclaimer{padding:10px 16px}
+      .cta-card{padding:28px 20px}
+    }
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  </style>
+</head>
+<body>
+
+<div class="preloader" id="preloader">
+  <div style="text-align:center">
+    <div class="pre-word"><span>B</span><span>A</span><span>S</span><span>S</span></div>
+    <div class="pre-line" id="preLine"></div>
+  </div>
+</div>
+
+<div class="reading-progress" id="readingProgress"></div>
+
+<nav class="nav" id="nav">
+  <a href="https://basstrading.fr" class="nav-logo">BASS</a>
+  <ul class="nav-links">
+    <li><a href="https://basstrading.fr#methode">Méthode</a></li>
+    <li><a href="https://basstrading.fr#resultats">Résultats</a></li>
+    <li><a href="https://basstrading.fr#avis">Avis</a></li>
+    <li><a href="https://basstrading.fr#faq">FAQ</a></li>
+    <li><a href="https://basstrading.fr/blog/">Blog</a></li>
+  </ul>
+  <a href="https://basstrading.fr#candidater" class="nav-cta">Candidater</a>
+</nav>
+
+<section class="blog-hero">
+  <div class="blog-hero-inner">
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <a href="https://basstrading.fr">Accueil</a><span class="sep">/</span>
+      <a href="https://basstrading.fr/blog/">Blog</a><span class="sep">/</span>
+      <span>Les Types de Trading</span>
+    </nav>
+    <div class="blog-hero-cat">Guide débutant</div>
+    <h1 class="blog-hero-title">Les Types de Trading :<br>Lequel Choisir Selon Votre Profil ?</h1>
+    <p class="blog-hero-desc">Scalping, day trading, swing trading, position trading et Order Flow : les 5 styles de trading décryptés. Capital requis, temps nécessaire, niveau d'expérience — trouvez celui qui correspond à votre profil.</p>
+    <div class="blog-meta">
+      <div class="blog-meta-author">
+        <div class="blog-meta-avatar"><img src="../../images/bass-presenting.jpg" alt="Sébastien Constant" loading="lazy"></div>
+        <div>
+          <div class="blog-meta-name">Sébastien Constant</div>
+          <div class="blog-meta-role">Trader & Formateur Order Flow</div>
+        </div>
+      </div>
+      <div class="blog-meta-sep"></div>
+      <div class="blog-meta-info"><span>28 mars 2026</span><span>20 min de lecture</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="article-wrap">
+  <aside class="article-sidebar">
+    <div class="toc">
+      <div class="toc-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/></svg> Sommaire</div>
+      <ol>
+        <li><a href="#cinq-types">Les 5 types de trading</a></li>
+        <li><a href="#scalping">Le Scalping</a></li>
+        <li><a href="#day-trading">Le Day Trading</a></li>
+        <li><a href="#swing-trading">Le Swing Trading</a></li>
+        <li><a href="#position-trading">Le Position Trading</a></li>
+        <li><a href="#order-flow">L'Order Flow Trading</a></li>
+        <li><a href="#comparatif">Le grand comparatif</a></li>
+        <li><a href="#choisir">Comment choisir</a></li>
+        <li><a href="#recommandation">Notre recommandation</a></li>
+      </ol>
+    </div>
+  </aside>
+
+  <article class="article-body">
+
+    <h2 id="cinq-types">Les 5 types de trading (pas 4 — il en manque un partout)</h2>
+
+    <p>Tapez "types de trading" dans Google. Vous trouverez partout la même réponse : scalping, day trading, swing trading, position trading. Quatre types. Toujours les mêmes. Présentés de la même manière, avec les mêmes définitions recyclées d'un site à l'autre.</p>
+
+    <p>Le problème ? <strong>Il en manque un. Et c'est le plus important.</strong></p>
+
+    <p>Ces quatre types classiques répondent à une seule question : <em>combien de temps gardez-vous votre position ouverte ?</em> Quelques secondes (scalping), quelques heures (day trading), quelques jours (swing trading), quelques semaines ou mois (position trading). C'est un classement par horizon temporel. C'est utile, mais c'est incomplet.</p>
+
+    <p>Ce que personne ne mentionne — ni Xeilos, ni les autres sites qui traitent ce sujet — c'est qu'il existe un cinquième type de trading qui ne se définit pas par la durée de détention, mais par la <strong>méthode de lecture du marché</strong> : l'<a href="/blog/order-flow-trading-france/">Order Flow Trading</a>.</p>
+
+    <p>L'Order Flow Trading n'est pas un horizon temporel. C'est une approche fondamentalement différente qui consiste à lire le flux réel des ordres — qui achète, qui vend, en quelle quantité, à quel prix — plutôt que de se fier à des indicateurs mathématiques dérivés du prix passé. Et cette approche change tout, quel que soit votre horizon temporel.</p>
+
+    <div class="info-box">
+      <div class="info-box-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg> Ce que vous allez apprendre</div>
+      <p>Cet article détaille les 5 types de trading — les 4 classiques + l'Order Flow — avec pour chacun : la définition, les prérequis, le capital nécessaire, le temps écran quotidien, et le profil de trader idéal. Vous saurez exactement lequel choisir selon votre situation.</p>
+    </div>
+
+    <p>Voici les cinq types que nous allons détailler :</p>
+    <ol>
+      <li><strong>Le Scalping</strong> — positions de quelques secondes à quelques minutes</li>
+      <li><strong>Le Day Trading</strong> — positions ouvertes et fermées dans la journée</li>
+      <li><strong>Le Swing Trading</strong> — positions de plusieurs jours à plusieurs semaines</li>
+      <li><strong>Le Position Trading</strong> — positions de plusieurs semaines à plusieurs mois</li>
+      <li><strong>L'Order Flow Trading</strong> — lecture du flux réel d'ordres (applicable à tous les horizons)</li>
+    </ol>
+
+    <hr>
+
+    <h2 id="scalping">Le Scalping : le sprint du trading</h2>
+
+    <h3>Définition et fonctionnement</h3>
+
+    <p>Le scalping est la forme la plus rapide de trading. Un scalper ouvre et ferme des positions en quelques secondes à quelques minutes, parfois en une fraction de seconde sur les marchés les plus liquides. L'objectif n'est pas de capturer de grands mouvements de prix, mais de <strong>grappiller 2 à 10 ticks par trade</strong>, des dizaines de fois par jour.</p>
+
+    <p>Sur le contrat E-mini S&P 500 (ES), un tick vaut 12,50 $. Capturer 4 ticks sur un seul contrat génère 50 $. Répétez cela 20 fois dans la journée avec un taux de réussite de 60 %, et vous comprenez le modèle économique du scalping : <strong>une accumulation de petits gains nets</strong>, après soustraction des petites pertes et des commissions.</p>
+
+    <p>Les instruments privilégiés du scalper sont les <strong>Futures</strong> — en particulier le ES (S&P 500), le NQ (Nasdaq 100), et le FDAX (DAX allemand) — ainsi que certaines paires Forex majeures comme l'EUR/USD. Les Futures sont préférés car leur carnet d'ordres centralisé permet une lecture précise du flux, et les commissions par contrat restent faibles proportionnellement au potentiel de chaque trade.</p>
+
+    <h3>Ce qu'il faut pour réussir en scalping</h3>
+
+    <p>Le scalping est le type de trading le plus exigeant sur tous les plans. Voici ce qu'il nécessite concrètement :</p>
+
+    <ul>
+      <li><strong>Exécution ultra-rapide</strong> — vos réflexes doivent être aiguisés, et votre plateforme doit permettre un passage d'ordres en un clic directement depuis le DOM (carnet d'ordres). Chaque seconde de retard peut transformer un trade gagnant en trade perdant.</li>
+      <li><strong>Lecture du carnet d'ordres (DOM) en temps réel</strong> — le scalper vit dans le DOM. Il observe les ordres limites empilés, les iceberg orders, les absorptions, les pulls (retraits d'ordres). C'est une lecture de marché très technique qui ne s'improvise pas.</li>
+      <li><strong>Connexion internet très stable, latence faible</strong> — une connexion fibre est le minimum. Certains scalpers professionnels colocalisent leurs serveurs à proximité des datacenters du CME à Chicago pour gagner quelques millisecondes.</li>
+      <li><strong>Capital : 2 000 à 10 000 € minimum</strong> — le scalping nécessite un capital suffisant pour absorber les séries de petites pertes inévitables tout en conservant une marge confortable. Sur Micro Futures, on peut commencer avec moins, mais les commissions proportionnelles érodent la rentabilité.</li>
+      <li><strong>Temps écran : 4 à 8 heures par jour</strong> — le scalper doit être présent et concentré pendant les heures d'ouverture du marché, particulièrement lors des sessions de haute liquidité (ouverture US, 15h30-18h00 heure de Paris).</li>
+    </ul>
+
+    <h3>Pour qui ?</h3>
+
+    <p>Le scalping est réservé aux <strong>traders expérimentés avec au minimum 1 an de day trading actif</strong>. C'est une discipline qui exige une maîtrise technique avancée et une gestion émotionnelle à toute épreuve. Les personnalités qui gèrent bien le stress intense et qui ont des réflexes rapides s'y retrouveront. Mais soyons clairs : <strong>le scalping n'est pas pour les débutants</strong>. C'est le type de trading le plus exigeant psychologiquement, et commencer par le scalping est la meilleure façon de perdre rapidement son capital et sa confiance.</p>
+
+    <hr>
+
+    <h2 id="day-trading">Le Day Trading : le meilleur compromis</h2>
+
+    <h3>Définition et fonctionnement</h3>
+
+    <p>Le day trading consiste à ouvrir et fermer toutes ses positions au cours de la même journée de trading. Aucune position n'est conservée overnight (du jour au lendemain). Typiquement, un day trader réalise <strong>2 à 6 trades par session</strong>, en se concentrant sur les meilleures opportunités plutôt que sur la quantité.</p>
+
+    <p>L'avantage majeur du day trading par rapport au swing ou au position trading est simple : <strong>pas de position overnight signifie pas de risque de gap</strong>. Vous ne vous réveillez jamais le matin avec une mauvaise surprise due à une annonce économique nocturne ou un événement géopolitique. Votre risque est entièrement contrôlé pendant vos heures de trading.</p>
+
+    <p>Le day trader opère généralement sur des timeframes de 5 minutes à 30 minutes pour le timing de ses entrées, avec une vue d'ensemble sur le graphique horaire ou le <a href="/blog/market-profile-guide-complet/">Market Profile</a> pour le contexte structurel. Il prépare sa session la veille avec une analyse pré-marché qui identifie les niveaux clés, les zones de valeur, et les scénarios probables.</p>
+
+    <h3>Ce qu'il faut pour réussir</h3>
+
+    <ul>
+      <li><strong>Analyse pré-marché rigoureuse</strong> — chaque session commence la veille. Vous identifiez les niveaux clés du Market Profile (Value Area High, Value Area Low, POC), les niveaux de support/résistance, et le contexte macro. Vous arrivez devant l'écran avec un plan, pas avec des questions.</li>
+      <li><strong>Plan de trading écrit</strong> — entrées, sorties, stops, taille de position : tout est défini avant d'appuyer sur le bouton. Le plan élimine les décisions émotionnelles en temps réel.</li>
+      <li><strong>Journal de trading quotidien</strong> — chaque trade est documenté avec l'entrée, la sortie, le raisonnement, et l'évaluation a posteriori. Le journal est l'outil de progression le plus sous-estimé en trading.</li>
+      <li><strong>Capital : 500 à 5 000 € (Micro Futures)</strong> — les Micro Futures du CME ont démocratisé le day trading. Le Micro ES (MES) nécessite environ 50 $ de marge intraday. Alternativement, un <a href="/blog/prop-firm-funded-trader/">challenge prop firm</a> à 100-300 € permet de trader avec du capital externe.</li>
+      <li><strong>Temps : 2 à 4 heures par jour</strong> — concentrées pendant les heures de marché US (15h30-22h00 heure de Paris), avec un focus sur l'ouverture (15h30-18h00) qui offre le plus de volatilité et d'opportunités.</li>
+    </ul>
+
+    <h3>Pour qui ?</h3>
+
+    <p>Le day trading est <strong>notre recommandation pour les débutants sérieux</strong>. C'est le meilleur compromis entre engagement en temps, capital nécessaire, et vitesse de progression. Si vous disposez de 2 à 4 heures pendant les heures de marché US et que vous voulez apprendre à lire le marché en profondeur, le day trading est votre point d'entrée idéal.</p>
+
+    <p>Le feedback quotidien est un atout majeur : contrairement au swing trader qui attend des jours pour savoir si son analyse était correcte, le day trader obtient un verdict chaque jour. Cette boucle de rétroaction rapide accélère considérablement la courbe d'apprentissage. Si vous <a href="/blog/debuter-trading-zero-guide/">débutez le trading en partant de zéro</a>, c'est le style que nous vous recommandons d'explorer en priorité.</p>
+
+    <hr>
+
+    <h2 id="swing-trading">Le Swing Trading : le marathon patient</h2>
+
+    <h3>Définition et fonctionnement</h3>
+
+    <p>Le swing trading consiste à maintenir des positions pendant <strong>plusieurs jours à plusieurs semaines</strong>, en cherchant à capturer des "swings" — des mouvements de prix significatifs au sein d'une tendance plus large. Là où le day trader capture quelques points sur l'ES en quelques heures, le swing trader vise des mouvements de 50, 100, voire 200 points sur plusieurs jours.</p>
+
+    <p>L'analyse se fait principalement sur des <strong>timeframes élevés : Daily (journalier) et 4H</strong>. Le swing trader identifie la tendance dominante, repère les zones de repli (pullbacks), et place ses ordres d'entrée — souvent le soir ou le week-end — pour une exécution automatique en début de session suivante. Il n'a pas besoin d'être devant l'écran pendant les heures de marché.</p>
+
+    <p>Les instruments du swing trader sont plus variés que ceux du scalper ou du day trader : <strong>actions individuelles, ETF, Forex, et parfois Futures</strong>. Le swing trading fonctionne bien sur les marchés qui présentent des tendances claires et des mouvements lisibles sur les graphiques daily.</p>
+
+    <h3>Ce qu'il faut pour réussir</h3>
+
+    <ul>
+      <li><strong>Patience et discipline émotionnelle</strong> — le swing trader doit supporter les fluctuations overnight et les corrections temporaires sans paniquer. Un trade peut être "dans le rouge" pendant 2-3 jours avant de se développer dans la direction attendue. C'est psychologiquement exigeant d'une manière différente du scalping : pas le stress de la vitesse, mais celui de l'attente.</li>
+      <li><strong>Capital plus important : 5 000 à 25 000 €</strong> — les stops en swing trading sont plus larges (pour absorber la volatilité overnight), ce qui nécessite une taille de position plus petite proportionnellement et donc un capital de base plus conséquent pour générer des rendements significatifs.</li>
+      <li><strong>Bonne compréhension de l'analyse technique et du contexte macro</strong> — le swing trader doit lire les tendances sur les graphiques daily, identifier les niveaux de support/résistance clés, et comprendre l'impact potentiel des annonces économiques majeures sur ses positions ouvertes.</li>
+      <li><strong>Temps : 30 minutes à 1 heure par jour</strong> — une revue quotidienne le soir suffit pour ajuster les stops, vérifier les positions en cours, et scanner de nouvelles opportunités. C'est le type de trading le plus compatible avec un emploi à temps plein.</li>
+    </ul>
+
+    <h3>Pour qui ?</h3>
+
+    <p>Le swing trading est idéal pour les <strong>personnes qui travaillent à temps plein</strong> et ne peuvent pas être devant l'écran pendant les heures de marché. Les profils patients, analytiques, qui n'aiment pas le stress de l'intraday et qui disposent d'un capital de départ plus important trouveront dans le swing trading un style qui respecte leur rythme de vie.</p>
+
+    <p>Attention cependant : le swing trading n'est pas "plus facile" que le day trading. Le risque overnight est réel, les gaps d'ouverture peuvent faire sauter des stops, et la patience requise est un muscle que beaucoup de traders n'arrivent pas à développer. C'est un style <strong>possible pour les débutants</strong>, mais <a href="/blog/combien-temps-apprendre-trading/">la courbe d'apprentissage</a> reste significative.</p>
+
+    <hr>
+
+    <h2 id="position-trading">Le Position Trading : l'investissement actif</h2>
+
+    <h3>Définition</h3>
+
+    <p>Le position trading se situe à la frontière entre le trading et l'investissement. Les positions sont maintenues pendant <strong>plusieurs semaines à plusieurs mois</strong>, parfois même au-delà. Le position trader cherche à capturer les grandes tendances du marché — les mouvements de fond qui se développent sur des semaines ou des mois.</p>
+
+    <p>Contrairement au "buy and hold" classique (acheter et oublier), le position trader utilise une <strong>gestion active des risques</strong> : il place des stops de protection, ajuste ses positions en fonction de l'évolution du marché, et sait couper un trade perdant plutôt que d'attendre indéfiniment un retournement hypothétique.</p>
+
+    <p>L'analyse repose principalement sur les <strong>fondamentaux économiques</strong> (politique monétaire, données macro-économiques, résultats d'entreprises) combinés à l'analyse technique sur des graphiques weekly et monthly pour le timing. Les instruments privilégiés sont les <strong>actions, les ETF sectoriels et les indices</strong>.</p>
+
+    <h3>Pour qui ?</h3>
+
+    <ul>
+      <li><strong>Investisseurs qui veulent être plus actifs que le buy & hold</strong> — vous ne voulez pas simplement acheter un ETF et attendre 20 ans, mais vous ne voulez pas non plus être devant un écran 4 heures par jour.</li>
+      <li><strong>Gros capitaux (10 000 € et plus)</strong> — les mouvements capturés sont larges, ce qui nécessite des stops éloignés et donc un capital conséquent pour une gestion du risque appropriée.</li>
+      <li><strong>Forte connaissance macro-économique</strong> — comprendre les cycles économiques, l'impact des décisions de la BCE ou de la Fed, et la dynamique sectorielle est essentiel.</li>
+      <li><strong>Temps minimal : 15 à 30 minutes par jour</strong> — une revue hebdomadaire approfondie le week-end, et un suivi léger en semaine. C'est le type de trading le moins chronophage au quotidien.</li>
+    </ul>
+
+    <p>Le position trading est <strong>possible pour les débutants</strong> qui ont une culture financière solide et un capital suffisant. Cependant, il ne développe pas la compétence de lecture de marché en temps réel que procurent le day trading ou le scalping. C'est un style complémentaire, pas un substitut à l'apprentissage de la mécanique du marché.</p>
+
+    <hr>
+
+    <h2 id="order-flow">L'Order Flow Trading : le type que personne ne mentionne</h2>
+
+    <p>Voici la section qui rend cet article fondamentalement différent de tous les autres sur le sujet. Les quatre types précédents répondent à une question simple : <em>"Combien de temps je garde ma position ?"</em> L'Order Flow Trading répond à une question bien plus importante : <em>"Comment je lis ce que le marché fait réellement ?"</em></p>
+
+    <h3>Qu'est-ce que l'Order Flow Trading ?</h3>
+
+    <p>L'<a href="/blog/order-flow-trading-france/">Order Flow Trading</a> n'est pas un horizon temporel — c'est une <strong>méthode de lecture du marché</strong>. Au lieu de regarder des indicateurs mathématiques qui calculent des moyennes du passé (RSI, MACD, moyennes mobiles), l'Order Flow trader lit le flux réel d'ordres en temps réel : qui achète, qui vend, en quelle quantité, et avec quelle agressivité.</p>
+
+    <p>Concrètement, cela signifie observer :</p>
+
+    <ul>
+      <li><strong>Le carnet d'ordres (DOM)</strong> — les ordres limites empilés au Bid et à l'Ask, les absorptions massives, les retraits soudains qui révèlent l'intention des participants institutionnels.</li>
+      <li><strong>Le <a href="/blog/footprint-chart-trading/">Footprint Chart</a></strong> — le volume acheté versus vendu à chaque niveau de prix, les déséquilibres delta, les zones d'absorption qui signalent la présence de gros opérateurs.</li>
+      <li><strong>Le Time & Sales (Tape)</strong> — le ruban des transactions en temps réel, qui montre chaque ordre exécuté avec son volume, son prix et sa direction (achat agressif ou vente agressive).</li>
+      <li><strong>Le CVD (Cumulative Volume Delta)</strong> — la pression acheteuse cumulée versus la pression vendeuse, qui révèle les divergences entre prix et flux réel.</li>
+    </ul>
+
+    <p>L'Order Flow fonctionne sur tous les horizons — scalping, day trading, swing — mais il est surtout puissant en <strong>intraday sur les Futures du CME</strong> (ES, NQ, CL, 6E), car ces marchés centralisés offrent un carnet d'ordres transparent où chaque transaction est visible.</p>
+
+    <h3>Pourquoi c'est différent des 4 types classiques</h3>
+
+    <p>Imaginez deux day traders. Les deux gardent leurs positions quelques heures. Les deux tradent le ES (S&P 500 Futures). Les deux sont classés "day traders" selon la typologie classique. Mais leur approche est radicalement différente :</p>
+
+    <ul>
+      <li><strong>Le day trader classique</strong> regarde un graphique en chandeliers, trace des lignes de tendance, attend qu'un RSI passe sous 30 ou qu'un MACD croise. Il interprète le passé pour prédire le futur. Ses indicateurs sont des <em>formules mathématiques dérivées du prix</em> — ils ont un retard structurel.</li>
+      <li><strong>Le day trader Order Flow</strong> regarde le <a href="/blog/footprint-chart-trading/">Footprint Chart</a>, observe le DOM, lit le Tape. Il voit les acheteurs agressifs absorber les vendeurs limites en temps réel. Il voit un iceberg order masquer 500 contrats au niveau 4 500. Il lit le <em>présent</em>, pas une dérivée mathématique du passé.</li>
+    </ul>
+
+    <p>La différence est immense. <strong>Les indicateurs classiques vous disent ce qui s'est passé. L'Order Flow vous montre ce qui se passe maintenant.</strong> C'est la différence entre regarder le score d'un match de football à la mi-temps et être dans les vestiaires en train d'écouter les consignes du coach pour la seconde période.</p>
+
+    <h3>Les outils de l'Order Flow Trader</h3>
+
+    <p>L'Order Flow ne se pratique pas avec un graphique en chandeliers et trois indicateurs. Il nécessite des outils spécialisés, généralement disponibles sur des plateformes professionnelles comme <a href="/blog/sierra-chart-configuration/">Sierra Chart</a> :</p>
+
+    <ul>
+      <li><strong><a href="/blog/market-profile-guide-complet/">Market Profile</a></strong> — montre la structure du marché en termes de distribution du volume dans le temps. Il révèle où se trouve la "valeur" (la zone de prix où le plus de volume a été échangé), les niveaux d'acceptance et de rejection, et les types de journées (trend day, range day, etc.).</li>
+      <li><strong><a href="/blog/footprint-chart-trading/">Footprint Chart</a></strong> — le graphique le plus granulaire de l'Order Flow. Il montre le volume acheté et vendu à chaque niveau de prix, dans chaque bougie. Les déséquilibres, les absorptions et les exhaust patterns sont immédiatement visibles.</li>
+      <li><strong>DOM (Depth of Market / Carnet d'ordres)</strong> — affiche l'offre (Bid) et la demande (Ask) en temps réel, avec la profondeur des ordres limites à chaque niveau de prix. Essentiel pour le scalping et les entrées précises.</li>
+      <li><strong>CVD (Cumulative Volume Delta)</strong> — agrège la différence entre le volume acheté (au Ask) et le volume vendu (au Bid) sur la journée. Les divergences entre le CVD et le prix signalent souvent des retournements imminents.</li>
+      <li><strong>VWAP (Volume Weighted Average Price)</strong> — le prix moyen pondéré par le volume. C'est le benchmark utilisé par les institutionnels pour évaluer la qualité de leurs exécutions. Un prix au-dessus du VWAP est considéré "cher" par les gros acteurs, en dessous il est "bon marché".</li>
+    </ul>
+
+    <h3>Pour qui ?</h3>
+
+    <p>L'Order Flow Trading est fait pour les <strong>traders qui veulent comprendre le marché en profondeur</strong>, pas juste suivre des signaux. Les day traders et scalpers sur Futures CME en tirent le plus grand bénéfice, car les marchés centralisés offrent la transparence nécessaire. C'est aussi pour les traders qui sont <strong>frustrés par l'incohérence des indicateurs classiques</strong> — qui ont fait l'expérience du "le RSI disait survendu, mais le prix a continué de baisser" une fois de trop.</p>
+
+    <p>Contrairement à une idée reçue, l'Order Flow est <strong>accessible aux débutants</strong>, à condition de bénéficier d'une formation structurée. Le problème n'est pas la complexité intrinsèque — c'est le manque de ressources francophones de qualité sur le sujet. C'est exactement ce que le mentorat BASS Trading comble.</p>
+
+    <div class="key-concept">
+      <div class="key-concept-label">Concept clé</div>
+      <h4>L'Order Flow n'est pas un "type" au sens classique</h4>
+      <p>L'Order Flow Trading n'est pas un "type de trading" au sens classique. C'est la couche supérieure qui rend tous les autres types plus efficaces. Un day trader qui lit l'Order Flow a un avantage fondamental sur un day trader qui utilise uniquement des indicateurs. C'est comme passer de la 2D à la 3D : vous voyez une dimension du marché que la plupart des traders ignorent.</p>
+    </div>
+
+    <hr>
+
+    <h2 id="comparatif">Le grand comparatif : les 5 types face à face</h2>
+
+    <p>Ce tableau synthétise les caractéristiques de chaque type de trading. Utilisez-le comme référence pour identifier rapidement celui qui correspond à votre situation actuelle :</p>
+
+    <div style="overflow-x:auto">
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Critère</th>
+          <th>Scalping</th>
+          <th>Day Trading</th>
+          <th>Swing Trading</th>
+          <th>Position Trading</th>
+          <th>Order Flow</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Horizon temporel</td>
+          <td>Secondes — minutes</td>
+          <td>Minutes — heures</td>
+          <td>Jours — semaines</td>
+          <td>Semaines — mois</td>
+          <td>Adaptable (surtout intraday)</td>
+        </tr>
+        <tr>
+          <td>Trades par jour</td>
+          <td>20 — 100</td>
+          <td>2 — 6</td>
+          <td>0 — 2</td>
+          <td>0 — 1</td>
+          <td>2 — 8</td>
+        </tr>
+        <tr>
+          <td>Capital minimum</td>
+          <td>2 000 €</td>
+          <td>500 €</td>
+          <td>5 000 €</td>
+          <td>10 000 €</td>
+          <td>500 €</td>
+        </tr>
+        <tr>
+          <td>Temps écran / jour</td>
+          <td>4 — 8h</td>
+          <td>2 — 4h</td>
+          <td>30 min — 1h</td>
+          <td>15 — 30 min</td>
+          <td>2 — 4h</td>
+        </tr>
+        <tr>
+          <td>Niveau de stress</td>
+          <td>Très élevé</td>
+          <td>Modéré</td>
+          <td>Faible</td>
+          <td>Très faible</td>
+          <td>Modéré</td>
+        </tr>
+        <tr>
+          <td>Courbe d'apprentissage</td>
+          <td>12 — 24 mois</td>
+          <td>8 — 14 mois</td>
+          <td>6 — 10 mois</td>
+          <td>6 — 8 mois</td>
+          <td>8 — 14 mois</td>
+        </tr>
+        <tr>
+          <td>Instruments</td>
+          <td>Futures, Forex</td>
+          <td>Futures</td>
+          <td>Actions, ETF, Forex</td>
+          <td>Actions, ETF</td>
+          <td>Futures CME</td>
+        </tr>
+        <tr>
+          <td>Outils principaux</td>
+          <td>DOM, Tape Reading</td>
+          <td>Graphiques, Market Profile</td>
+          <td>Graphiques Daily</td>
+          <td>Fondamentaux + technique</td>
+          <td>Footprint, DOM, Market Profile</td>
+        </tr>
+        <tr>
+          <td>Adapté débutants</td>
+          <td>Non</td>
+          <td>Oui</td>
+          <td>Possible</td>
+          <td>Possible</td>
+          <td>Oui (avec formation)</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+    <p>Ce tableau révèle quelque chose d'important : <strong>l'Order Flow Trading a les mêmes prérequis que le day trading</strong> (capital, temps, courbe d'apprentissage), mais avec une dimension supplémentaire de compréhension du marché. C'est pourquoi la combinaison Day Trading + Order Flow est si puissante — vous n'ajoutez pas plus de contraintes, vous ajoutez plus de profondeur.</p>
+
+    <hr>
+
+    <h2 id="choisir">Comment choisir votre type de trading ?</h2>
+
+    <p>Il n'existe pas de type de trading "universellement meilleur". Le meilleur type est celui qui correspond à <strong>votre temps disponible, votre capital, et votre personnalité</strong>. Voici comment faire le tri :</p>
+
+    <h3>Selon votre temps disponible</h3>
+
+    <ul>
+      <li><strong>Moins d'1 heure par jour</strong> — orientez-vous vers le Swing Trading ou le Position Trading. Ces styles sont conçus pour être gérés en dehors des heures de marché, le soir ou le week-end.</li>
+      <li><strong>2 à 4 heures par jour</strong> — le Day Trading est votre terrain de jeu idéal. C'est notre recommandation pour la majorité des traders, débutants comme intermédiaires. Ajoutez l'Order Flow pour maximiser votre compréhension du marché.</li>
+      <li><strong>4 heures et plus par jour</strong> — le Scalping devient envisageable, mais uniquement après au moins 12 mois d'expérience en day trading. Ne sautez pas les étapes.</li>
+    </ul>
+
+    <h3>Selon votre capital</h3>
+
+    <ul>
+      <li><strong>Moins de 1 000 €</strong> — <a href="/blog/prop-firm-funded-trader/">challenge prop firm</a> (100-300 €) + Day Trading ou Order Flow. Les prop firms vous permettent de trader avec du capital externe après avoir prouvé vos compétences sur un compte de simulation.</li>
+      <li><strong>1 000 à 5 000 €</strong> — Micro Futures + Day Trading. Le Micro ES (MES) ne nécessite que 50 $ de marge intraday. Avec 2 000 €, vous pouvez trader 1-2 contrats Micro avec une gestion du risque appropriée.</li>
+      <li><strong>5 000 € et plus</strong> — Swing Trading ou Day Trading avec contrats standards. Vous avez la flexibilité de choisir votre style en fonction de vos préférences plutôt que de vos contraintes financières.</li>
+    </ul>
+
+    <h3>Selon votre personnalité</h3>
+
+    <p>La personnalité est le facteur le plus sous-estimé dans le choix du type de trading. Un trader impatient qui choisit le swing trading par rationalité finira par couper ses trades trop tôt. Un trader anxieux qui choisit le scalping par attrait du profit rapide finira par over-trader sous le stress. Soyez honnête avec vous-même :</p>
+
+    <ul>
+      <li><strong>Patient, détaché, discipliné</strong> — Swing Trading. Vous êtes capable de poser un trade et de ne pas le regarder pendant 3 jours. Vous ne vérifiez pas votre téléphone toutes les 10 minutes.</li>
+      <li><strong>Analytique, méthodique, curieux</strong> — Day Trading + Order Flow. Vous aimez comprendre le "pourquoi" derrière les mouvements. Vous êtes prêt à investir du temps dans l'apprentissage d'outils avancés.</li>
+      <li><strong>Réactif, vif, performant sous pression</strong> — Scalping (avec expérience). Vous excellez dans les environnements rapides. Mais attention : "j'aime l'adrénaline" n'est pas la même chose que "je performe sous pression".</li>
+      <li><strong>Orienté fondamentaux, vision macro</strong> — Position Trading. Vous suivez les décisions de la BCE, vous lisez les rapports trimestriels, vous comprenez les cycles économiques.</li>
+    </ul>
+
+    <div class="shapes-grid">
+      <div class="shape-card">
+        <div class="shape-icon">01</div>
+        <h4>Le Stratège</h4>
+        <p>Day Trading + Order Flow — 2-4h/jour, 500-5 000 €, profil méthodique et analytique. Veut comprendre le marché en profondeur.</p>
+      </div>
+      <div class="shape-card">
+        <div class="shape-icon">02</div>
+        <h4>Le Sprinter</h4>
+        <p>Scalping — 4-8h/jour, 2 000 €+, réflexes rapides, gestion du stress. Expérience préalable obligatoire.</p>
+      </div>
+      <div class="shape-card">
+        <div class="shape-icon">03</div>
+        <h4>Le Patient</h4>
+        <p>Swing Trading — 30 min-1h/jour, 5 000 €+, profil détaché et discipliné. Compatible avec un emploi à temps plein.</p>
+      </div>
+      <div class="shape-card">
+        <div class="shape-icon">04</div>
+        <h4>Le Macro</h4>
+        <p>Position Trading — 15-30 min/jour, 10 000 €+, vision fondamentale. Proche de l'investissement actif.</p>
+      </div>
+    </div>
+
+    <hr>
+
+    <h2 id="recommandation">Notre recommandation : Day Trading + Order Flow sur Futures</h2>
+
+    <p>Après avoir accompagné des centaines de traders francophones, notre conviction est claire : la combinaison <strong>Day Trading + Order Flow sur les Futures du CME</strong> est optimale pour la majorité des profils. Voici pourquoi :</p>
+
+    <p><strong>Le capital est accessible.</strong> Grâce aux Micro Futures (MES, MNQ, MCL), vous pouvez démarrer avec 500 à 2 000 €. Et grâce aux <a href="/blog/prop-firm-funded-trader/">prop firms</a>, même un capital de 100-300 € suffit pour commencer à prouver vos compétences. Aucun autre style de trading n'offre un ratio capital/opportunités aussi favorable.</p>
+
+    <p><strong>Le feedback est quotidien.</strong> Chaque jour, vous obtenez un verdict sur votre lecture du marché. Cette boucle de rétroaction rapide est le moteur de progression le plus puissant qui existe. Un swing trader attend des jours ou des semaines pour valider son analyse. Un day trader sait chaque soir s'il a bien lu le marché ou non. <a href="/blog/combien-temps-apprendre-trading/">Le temps d'apprentissage</a> s'en trouve considérablement réduit.</p>
+
+    <p><strong>L'Order Flow élimine les devinettes.</strong> Au lieu de tracer des lignes sur un graphique et d'espérer que le prix les respecte, vous lisez l'activité réelle du marché. Vous voyez les institutionnels accumuler des positions. Vous voyez les absorptions qui signalent un plancher. Vous voyez les exhaust patterns qui annoncent un essoufflement. Ce n'est plus de la prédiction — c'est de la lecture.</p>
+
+    <p><strong>Pas de risque overnight.</strong> Toutes vos positions sont fermées avant la fin de la session. Vous dormez tranquillement. Pas de gap surprise, pas de stress nocturne, pas de marge d'appel à 3h du matin.</p>
+
+    <p>C'est exactement cette combinaison — Day Trading + Order Flow sur Futures CME — qui est enseignée dans le <strong>mentorat BASS Trading</strong>. 70 heures d'accompagnement individuel, des sessions live quotidiennes, et une méthodologie éprouvée qui transforme des débutants en traders autonomes.</p>
+
+    <div class="cta-card">
+      <div class="cta-card-label">Mentorat BASS Trading</div>
+      <h3>Apprenez le Day Trading + Order Flow</h3>
+      <p>70h de mentorat individuel. Sessions live quotidiennes. La méthode qui forme des traders autonomes sur Futures.</p>
+      <a href="https://basstrading.fr#candidater" class="btn-p">Candidater au mentorat <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
+
+    <hr>
+
+    <h2>Conclusion : il n'y a pas de meilleur type — il y a le vôtre</h2>
+
+    <p>Chercher "le meilleur type de trading" est une impasse. <strong>Le meilleur type est celui qui correspond à votre profil</strong> — votre temps, votre capital, votre personnalité, vos objectifs. Un swing trader discipliné qui respecte son plan sera toujours plus rentable qu'un scalper qui over-trade sous le stress.</p>
+
+    <p>Ce que cet article vous a montré, en revanche, c'est qu'il y a un 5ème élément que personne d'autre ne mentionne : <strong>l'Order Flow Trading</strong>. Et cet élément n'est pas un type de plus à choisir — c'est une couche de compréhension qui rend n'importe quel type de trading plus efficace.</p>
+
+    <p>Un day trader qui lit l'Order Flow comprend mieux le marché. Un scalper qui lit l'Order Flow time mieux ses entrées. Même un swing trader peut utiliser le Market Profile pour identifier des zones de valeur plus précises.</p>
+
+    <p>Si vous débutez, commencez par le Day Trading. Si vous voulez aller plus loin, ajoutez l'Order Flow. Et si vous voulez accélérer le processus, le <a href="https://basstrading.fr#candidater">mentorat BASS Trading</a> est conçu exactement pour cela.</p>
+
+    <blockquote>
+      <strong>Récapitulatif en une phrase :</strong> Choisissez votre horizon temporel selon votre disponibilité et votre capital. Puis ajoutez l'Order Flow pour voir le marché comme un professionnel — quelle que soit la durée de vos trades.
+    </blockquote>
+
+  </article>
+</div>
+
+<!-- FAQ -->
+<section class="faq-sec">
+  <div class="sec-center"><div class="sec-label">FAQ</div><h2 class="sec-title">Questions fréquentes</h2></div>
+  <div class="faq-list">
+    <div class="fi"><button class="fq" onclick="tf(this)">Quel est le type de trading le plus rentable ? <span class="fq-icon">+</span></button><div class="fa"><p>Aucun type n'est intrinsèquement plus rentable qu'un autre. La rentabilité dépend de la méthode, de la discipline et de la gestion du risque. Cependant, le day trading sur Futures offre le meilleur ratio capital/opportunités grâce à l'effet de levier des contrats et au feedback quotidien qui accélère la progression.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Peut-on combiner plusieurs types de trading ? <span class="fq-icon">+</span></button><div class="fa"><p>Oui, mais pas en même temps. Un swing trader peut aussi faire du day trading, mais sur des comptes séparés avec des plans distincts. Ne mélangez jamais les horizons sur un même trade — c'est l'une des erreurs les plus courantes chez les débutants.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Le scalping est-il le type de trading le plus risqué ? <span class="fq-icon">+</span></button><div class="fa"><p>Pas nécessairement en termes de perte par trade (qui est souvent petite), mais le volume de trades et la vitesse d'exécution requise en font le type le plus exigeant psychologiquement. Un mauvais contrôle émotionnel en scalping peut mener à des pertes rapides par accumulation.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Qu'est-ce que l'Order Flow Trading exactement ? <span class="fq-icon">+</span></button><div class="fa"><p>C'est une approche de lecture du marché basée sur le flux réel d'ordres (acheteurs vs vendeurs) plutôt que sur des indicateurs mathématiques dérivés du prix. Elle utilise des outils comme le Footprint Chart, le DOM (Depth of Market) et le Market Profile pour lire l'activité en temps réel.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Quel type de trading pour un débutant avec peu de capital ? <span class="fq-icon">+</span></button><div class="fa"><p>Le day trading sur Micro Futures (capital 500-2 000 €) ou via un challenge prop firm (100-300 €). Ajoutez l'Order Flow dès que possible pour comprendre le marché en profondeur plutôt que de suivre aveuglément des indicateurs.</p></div></div>
+  </div>
+</section>
+
+<!-- Related Articles -->
+<section class="related-sec">
+  <div class="sec-center"><div class="sec-label">Continuer la lecture</div><h2 class="sec-title">Articles connexes</h2></div>
+  <div class="related-grid">
+    <a href="/blog/debuter-trading-zero-guide/" class="related-card">
+      <div class="related-cat">Guide débutant</div>
+      <h3>Débuter le Trading en Partant de Zéro : Le Guide Complet</h3>
+      <p>Par où commencer, quel capital, quelle plateforme, quelles erreurs éviter. Le guide pas à pas.</p>
+      <span class="related-link">Lire l'article &rarr;</span>
+    </a>
+    <a href="/blog/order-flow-trading-france/" class="related-card">
+      <div class="related-cat">Order Flow</div>
+      <h3>Order Flow Trading : Le Guide Complet pour les Traders Francophones</h3>
+      <p>Le carnet d'ordres, le Time & Sales, le DOM — décryptage complet de l'Order Flow Trading.</p>
+      <span class="related-link">Lire l'article &rarr;</span>
+    </a>
+    <a href="/blog/footprint-chart-trading/" class="related-card">
+      <div class="related-cat">Footprint</div>
+      <h3>Footprint Chart : Lire le Volume Comme un Professionnel</h3>
+      <p>Delta, déséquilibres et absorption pour anticiper les mouvements de prix.</p>
+      <span class="related-link">Lire l'article &rarr;</span>
+    </a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="ft-top">
+    <div class="ft-logo">BASS</div>
+    <div class="ft-cols">
+      <div class="ft-col">
+        <div class="ft-col-title">Programme</div>
+        <a href="https://basstrading.fr#methode">Méthode</a>
+        <a href="https://basstrading.fr#programme">Programme</a>
+        <a href="https://basstrading.fr#certification">Certification</a>
+        <a href="https://basstrading.fr#candidater">Candidater</a>
+      </div>
+      <div class="ft-col">
+        <div class="ft-col-title">Ressources</div>
+        <a href="/blog/market-profile-guide-complet">Market Profile</a>
+        <a href="/blog/footprint-chart-trading">Footprint Chart</a>
+        <a href="/blog/order-flow-trading-france">Order Flow</a>
+        <a href="/blog/formation-trading-cpf-qualiopi">Formation CPF</a>
+      </div>
+      <div class="ft-col">
+        <div class="ft-col-title">Écosystème</div>
+        <a href="https://hubtrading.fr" target="_blank" rel="noopener">HubTrading.fr</a>
+        <a href="https://x-trade.ai" target="_blank" rel="noopener">x-trade.ai</a>
+        <a href="mailto:contact@basstrading.fr">Contact</a>
+      </div>
+    </div>
+  </div>
+  <div class="ft-bottom">
+    <span>&copy; 2026 BASS — Sébastien Constant</span>
+    <div>
+      <a href="https://basstrading.fr/mentions-legales.html">Mentions légales</a>
+      <a href="https://basstrading.fr/confidentialite.html">Confidentialité</a>
+      <a href="https://basstrading.fr/cgv.html">CGV</a>
+    </div>
+  </div>
+</footer>
+<div class="disclaimer">Le trading comporte des risques de perte en capital. Les performances passées ne préjugent pas des performances futures. Ce site ne constitue pas un conseil en investissement.</div>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+const lenis=new Lenis({duration:1.2,easing:t=>Math.min(1,1.001-Math.pow(2,-10*t))});
+function raf(t){lenis.raf(t);requestAnimationFrame(raf)}requestAnimationFrame(raf);
+lenis.on('scroll',ScrollTrigger.update);gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0);
+
+const tl=gsap.timeline();
+tl.to('.pre-word span',{y:0,opacity:1,duration:.5,stagger:.1,ease:'power3.out',delay:.3})
+  .to('#preLine',{width:'80px',duration:.7,ease:'power2.inOut'},'<+.2')
+  .to('.preloader',{yPercent:-100,duration:.8,ease:'power3.inOut',delay:.4})
+  .set('.preloader',{display:'none'})
+  .to('#nav',{opacity:1,y:0,duration:.5},'<+.1');
+
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);
+  const h=document.documentElement.scrollHeight-window.innerHeight;
+  document.getElementById('readingProgress').style.width=(window.scrollY/h*100)+'%';
+});
+
+// TOC active state
+const tocLinks=document.querySelectorAll('.toc a');
+const sections=Array.from(tocLinks).map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+window.addEventListener('scroll',()=>{
+  let current='';
+  sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)current=s.id});
+  tocLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+current)});
+});
+
+function tf(b){const i=b.closest('.fi'),a=b.nextElementSibling,o=i.classList.contains('active');document.querySelectorAll('.fi').forEach(x=>{x.classList.remove('active');x.querySelector('.fa').classList.remove('open')});if(!o){i.classList.add('active');a.classList.add('open')}}
+
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();lenis.scrollTo(t,{offset:-60})}})});
+</script>
+</body>
+</html>

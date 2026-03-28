@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sierra Chart : Configuration complète pour le Market Profile — BASS Trading</title>
+  <meta name="description" content="Tutoriel complet pour configurer Sierra Chart : Market Profile (TPO), Volume Profile, Footprint Chart, Numbers Bars, CVD. Le setup pas à pas du standard professionnel. Par Sébastien Constant.">
+  <meta property="og:title" content="Sierra Chart : Configuration complète pour le Market Profile — BASS Trading">
+  <meta property="og:description" content="Le setup pas à pas pour configurer Sierra Chart avec le Market Profile, le Footprint Chart et le CVD.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://basstrading.fr/blog/sierra-chart-configuration/">
+  <meta property="og:site_name" content="BASS Trading">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://basstrading.fr/blog/sierra-chart-configuration/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","headline":"Sierra Chart : Configuration complète pour le Market Profile","description":"Tutoriel complet pour configurer Sierra Chart avec Market Profile, Footprint et CVD.","author":{"@type":"Person","name":"Sébastien Constant","jobTitle":"Trader et formateur","url":"https://basstrading.fr"},"publisher":{"@type":"Organization","name":"BASS Trading","url":"https://basstrading.fr","logo":{"@type":"ImageObject","url":"https://basstrading.fr/images/bass-presenting.jpg"}},"datePublished":"2026-03-27","dateModified":"2026-03-27","mainEntityOfPage":{"@type":"WebPage","@id":"https://basstrading.fr/blog/sierra-chart-configuration/"},"keywords":["Sierra Chart","configuration","Market Profile","Footprint Chart","Numbers Bars","CVD","TPO","trading"]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://basstrading.fr"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://basstrading.fr/blog/"},{"@type":"ListItem","position":3,"name":"Sierra Chart Configuration"}]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"Combien coûte Sierra Chart ?","acceptedAnswer":{"@type":"Answer","text":"Sierra Chart propose plusieurs packages. Le package 3 (le plus utilisé pour le Market Profile et l'Order Flow) coûte $46/mois. Il inclut le Market Profile natif, les Numbers Bars (Footprint), le CVD et l'accès aux données CME Denali. C'est un investissement modeste pour un outil professionnel."}},
+    {"@type":"Question","name":"Sierra Chart est-il difficile à configurer ?","acceptedAnswer":{"@type":"Answer","text":"Sierra Chart a une interface austère mais fonctionnelle. La courbe d'apprentissage pour la configuration est de 2-3 jours. Le mentorat BASS Trading fournit des templates pré-configurés qui éliminent cette étape — vous importez le workspace et tout est prêt en 5 minutes."}},
+    {"@type":"Question","name":"Pourquoi Sierra Chart plutôt que ATAS ou Quantower ?","acceptedAnswer":{"@type":"Answer","text":"Sierra Chart est le standard pour trois raisons : fiabilité des données (intégration native CME Denali), profondeur de personnalisation (chaque pixel est configurable), et stabilité (le logiciel ne plante quasiment jamais, même avec 20+ graphiques ouverts). ATAS a une interface plus jolie mais moins de profondeur. Quantower est un bon compromis."}},
+    {"@type":"Question","name":"Faut-il un abonnement aux données CME ?","acceptedAnswer":{"@type":"Answer","text":"Oui. Pour le Market Profile et l'Order Flow sur les Futures, vous avez besoin des données CME Level 1 minimum ($9/mois pour les non-professionnels via Denali Exchange). Le Level 2 (profondeur du carnet) coûte environ $25/mois supplémentaires. Sierra Chart facilite l'accès à ces données via son propre service Denali."}},
+    {"@type":"Question","name":"Les templates BASS sont-ils inclus dans le mentorat ?","acceptedAnswer":{"@type":"Answer","text":"Oui. Le mentorat BASS Trading inclut un workspace Sierra Chart complet pré-configuré : Market Profile (TPO + Volume Profile), Footprint Chart avec seuils d'imbalance optimisés, CVD, Numbers Bars, et les études personnalisées de Sébastien. Vous importez le fichier et tout est opérationnel en quelques minutes."}}
+  ]}
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}:root{--bk:#1D1D1F;--bk2:#111;--bk3:#0A0A0A;--g1:#6E6E73;--g2:#86868B;--g3:#D2D2D7;--g4:#F5F5F7;--wh:#FBFBFD;--pure:#FFF;--green:#00B67A;--blue:#0066FF}html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}body{font-family:'DM Sans',sans-serif;color:var(--bk);background:var(--pure);overflow-x:hidden;-webkit-font-smoothing:antialiased}img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+    .preloader{position:fixed;inset:0;background:var(--bk3);z-index:10001;display:flex;align-items:center;justify-content:center}.pre-word{font-family:'Outfit',sans-serif;font-size:clamp(3rem,8vw,5rem);font-weight:900;letter-spacing:16px;text-transform:uppercase;color:var(--pure);overflow:hidden}.pre-word span{display:inline-block;transform:translateY(110%);opacity:0}.pre-line{width:0;height:1px;background:rgba(255,255,255,.3);margin-top:20px}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 48px;display:flex;align-items:center;justify-content:space-between;background:rgba(245,245,247,.85);backdrop-filter:blur(20px) saturate(1.8);border-bottom:1px solid rgba(0,0,0,.04);transition:background .4s}.nav-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase;color:var(--bk)}.nav-links{display:flex;gap:28px;list-style:none}.nav-links a{font-size:.74rem;font-weight:500;letter-spacing:.3px;color:var(--g1);transition:color .3s}.nav-links a:hover{color:var(--bk)}.nav-cta{padding:8px 20px;background:var(--bk);color:var(--pure);border:none;border-radius:980px;font-size:.72rem;font-weight:600;transition:all .3s;cursor:pointer;text-decoration:none;display:inline-block}.nav-cta:hover{background:var(--bk2)}
+    .blog-hero{padding:160px 48px 80px;background:var(--g4);position:relative;overflow:hidden}.blog-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,transparent,var(--g4));pointer-events:none}.blog-hero-inner{max-width:720px;margin:0 auto}.breadcrumb{display:flex;gap:8px;align-items:center;margin-bottom:28px;flex-wrap:wrap}.breadcrumb a,.breadcrumb span{font-size:.68rem;font-weight:500;letter-spacing:.3px;color:var(--g2);transition:color .3s}.breadcrumb a:hover{color:var(--bk)}.breadcrumb .sep{color:var(--g3)}.blog-hero-cat{display:inline-block;padding:5px 14px;border:1px solid rgba(0,102,255,.15);border-radius:980px;font-size:.6rem;font-weight:700;color:var(--blue);letter-spacing:2px;text-transform:uppercase;margin-bottom:20px}.blog-hero-title{font-family:'Outfit',sans-serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:900;line-height:1.05;letter-spacing:-2px;color:var(--bk);margin-bottom:20px}.blog-hero-desc{font-size:.95rem;color:var(--g1);line-height:1.8;max-width:560px;margin-bottom:28px}.blog-meta{display:flex;align-items:center;gap:16px;flex-wrap:wrap}.blog-meta-author{display:flex;align-items:center;gap:10px}.blog-meta-avatar{width:36px;height:36px;border-radius:50%;background:var(--bk3);overflow:hidden;flex-shrink:0}.blog-meta-avatar img{width:100%;height:100%;object-fit:cover}.blog-meta-name{font-size:.78rem;font-weight:600;color:var(--bk)}.blog-meta-role{font-size:.65rem;color:var(--g2)}.blog-meta-sep{width:1px;height:24px;background:var(--g3)}.blog-meta-info{font-size:.7rem;color:var(--g2)}.blog-meta-info span{margin-right:16px}
+    .toc{position:sticky;top:90px;background:var(--pure);border:1px solid rgba(0,0,0,.04);border-radius:14px;padding:24px;margin-bottom:32px}.toc-title{font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.5px;color:var(--bk);margin-bottom:14px;display:flex;align-items:center;gap:8px}.toc ol{list-style:none;counter-reset:toc}.toc li{counter-increment:toc}.toc li a{display:flex;align-items:baseline;gap:8px;padding:6px 0;font-size:.76rem;color:var(--g1);transition:color .3s;border-bottom:1px solid rgba(0,0,0,.03)}.toc li a:hover{color:var(--blue)}.toc li a::before{content:counter(toc,decimal-leading-zero);font-family:'Outfit',sans-serif;font-size:.65rem;font-weight:700;color:var(--g3);min-width:18px}.toc li:last-child a{border-bottom:none}.toc li a.active{color:var(--blue);font-weight:600}.toc li a.active::before{color:var(--blue)}
+    .article-wrap{display:grid;grid-template-columns:220px 1fr;gap:40px;max-width:1020px;margin:0 auto;padding:60px 48px 120px}.article-sidebar{position:relative}.article-body{max-width:700px}
+    .article-body h2{font-family:'Outfit',sans-serif;font-size:clamp(1.4rem,2.5vw,1.8rem);font-weight:800;line-height:1.1;letter-spacing:-1px;color:var(--bk);margin:56px 0 16px;padding-top:20px}.article-body h2:first-of-type{margin-top:0}.article-body h3{font-family:'Outfit',sans-serif;font-size:1.05rem;font-weight:700;line-height:1.25;letter-spacing:-.3px;color:var(--bk);margin:36px 0 10px}.article-body p{font-size:.9rem;color:var(--g1);line-height:1.85;margin-bottom:18px}.article-body strong{color:var(--bk);font-weight:600}.article-body ul,.article-body ol{margin:0 0 20px 0;padding-left:20px}.article-body li{font-size:.88rem;color:var(--g1);line-height:1.8;margin-bottom:6px}.article-body li strong{color:var(--bk)}.article-body blockquote{margin:28px 0;padding:20px 24px;background:var(--g4);border-left:3px solid var(--bk);border-radius:0 12px 12px 0;font-size:.88rem;color:var(--g1);line-height:1.8;font-style:italic}.article-body blockquote strong{color:var(--bk);font-style:normal}.article-body hr{border:none;border-top:1px solid var(--g4);margin:48px 0}
+    .info-box{margin:28px 0;padding:24px;background:rgba(0,102,255,.03);border:1px solid rgba(0,102,255,.08);border-radius:14px}.info-box-title{font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:700;color:var(--blue);margin-bottom:8px;display:flex;align-items:center;gap:8px}.info-box p{font-size:.82rem;color:var(--g1);line-height:1.7;margin-bottom:0}
+    .key-concept{margin:32px 0;padding:28px;background:var(--bk3);border-radius:16px;color:var(--pure)}.key-concept-label{font-size:.55rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:10px}.key-concept h4{font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:800;letter-spacing:-.3px;margin-bottom:8px}.key-concept p{font-size:.85rem;color:rgba(255,255,255,.5);line-height:1.8;margin-bottom:0}
+    .compare-table{width:100%;margin:24px 0 28px;border-collapse:collapse;border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,.06)}.compare-table th{background:var(--bk3);color:var(--pure);font-family:'Outfit',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:14px 16px;text-align:left}.compare-table td{padding:12px 16px;font-size:.82rem;color:var(--g1);line-height:1.6;border-bottom:1px solid rgba(0,0,0,.04);background:var(--pure)}.compare-table tr:last-child td{border-bottom:none}.compare-table td:first-child{font-weight:600;color:var(--bk)}
+    .cta-card{margin:48px 0;padding:40px;background:var(--bk3);border-radius:20px;text-align:center;position:relative;overflow:hidden}.cta-card::before{content:'';position:absolute;top:-50%;right:-30%;width:400px;height:400px;background:radial-gradient(circle,rgba(0,102,255,.08) 0%,transparent 70%);pointer-events:none}.cta-card-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:12px}.cta-card h3{font-family:'Outfit',sans-serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:800;color:var(--pure);letter-spacing:-.5px;margin-bottom:8px}.cta-card p{font-size:.85rem;color:rgba(255,255,255,.4);line-height:1.7;max-width:380px;margin:0 auto 24px}.cta-card .btn-p{background:var(--pure);color:var(--bk)}.cta-card .btn-p:hover{box-shadow:0 8px 30px rgba(255,255,255,.15)}
+    .faq-sec{padding:80px 48px 100px;background:var(--g4)}.faq-list{max-width:680px;margin:40px auto 0}.fi{border-bottom:1px solid rgba(0,0,0,.06)}.fq{width:100%;text-align:left;padding:18px 0;background:none;border:none;font-size:.85rem;font-weight:600;font-family:'DM Sans',sans-serif;color:var(--bk);display:flex;justify-content:space-between;align-items:center;cursor:pointer;gap:16px;transition:color .3s}.fq:hover{color:var(--g1)}.fq-icon{width:22px;height:22px;border-radius:50%;background:rgba(0,0,0,.04);display:flex;align-items:center;justify-content:center;font-size:.75rem;transition:all .4s;flex-shrink:0;color:var(--g2)}.fa{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1)}.fa.open{max-height:280px;padding-bottom:14px}.fa p{font-size:.8rem;color:var(--g1);line-height:1.7;margin-bottom:0}.fi.active .fq-icon{background:var(--bk);color:var(--pure);transform:rotate(45deg)}
+    .related-sec{padding:80px 48px;background:var(--pure);border-top:1px solid var(--g4)}.related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1060px;margin:40px auto 0}.related-card{display:block;padding:28px;background:var(--g4);border-radius:16px;transition:all .4s;text-decoration:none;color:var(--bk)}.related-card:hover{background:var(--pure);box-shadow:0 8px 30px rgba(0,0,0,.06);transform:translateY(-2px)}.related-cat{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--blue);margin-bottom:10px}.related-card h3{font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:700;line-height:1.3;letter-spacing:-.3px;margin-bottom:8px}.related-card p{font-size:.78rem;color:var(--g1);line-height:1.6;margin-bottom:14px}.related-link{font-size:.72rem;font-weight:600;color:var(--blue);letter-spacing:.3px}
+    .footer{background:var(--bk3);color:var(--pure);padding:56px 48px 28px}.ft-top{display:flex;justify-content:space-between;align-items:start;margin-bottom:48px;flex-wrap:wrap;gap:32px}.ft-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase}.ft-cols{display:flex;gap:80px}.ft-col-title{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:12px}.ft-col a{display:block;font-size:.78rem;color:rgba(255,255,255,.5);margin-bottom:8px;transition:color .3s}.ft-col a:hover{color:var(--pure)}.ft-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:20px;display:flex;justify-content:space-between;align-items:center;font-size:.6rem;color:rgba(255,255,255,.2)}.ft-bottom a{color:rgba(255,255,255,.2);transition:color .3s;margin-left:20px}.ft-bottom a:hover{color:rgba(255,255,255,.5)}.disclaimer{padding:12px 48px;background:var(--bk3);font-size:.58rem;color:rgba(255,255,255,.12);text-align:center;line-height:1.6;border-top:1px solid rgba(255,255,255,.03)}
+    .sec-center{text-align:center;max-width:680px;margin:0 auto}.sec-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--g2);margin-bottom:10px}.sec-title{font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;line-height:1.05;letter-spacing:-1.5px;color:var(--bk);margin-bottom:16px}
+    .btn-p{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--bk);color:var(--pure);border-radius:980px;font-size:.85rem;font-weight:600;transition:all .3s;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;text-decoration:none}.btn-p:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(0,0,0,.1)}.btn-p svg{width:13px;height:13px;transition:transform .3s}.btn-p:hover svg{transform:translateX(3px)}
+    .reading-progress{position:fixed;top:0;left:0;height:2px;background:var(--blue);z-index:9999;width:0;transition:width .1s linear}
+    @media(max-width:900px){.nav{padding:14px 20px}.nav-links{display:none}.blog-hero{padding:120px 20px 60px}.article-wrap{grid-template-columns:1fr;padding:40px 20px 80px}.article-sidebar{display:none}.related-grid{grid-template-columns:1fr}.related-sec,.faq-sec{padding:60px 20px}.ft-cols{flex-direction:column;gap:28px}.footer{padding:40px 20px 20px}.disclaimer{padding:10px 16px}.cta-card{padding:28px 20px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  </style>
+</head>
+<body>
+
+<div class="preloader" id="preloader"><div style="text-align:center"><div class="pre-word"><span>B</span><span>A</span><span>S</span><span>S</span></div><div class="pre-line" id="preLine"></div></div></div>
+<div class="reading-progress" id="readingProgress"></div>
+
+<nav class="nav" id="nav">
+  <a href="https://basstrading.fr" class="nav-logo">BASS</a>
+  <ul class="nav-links"><li><a href="https://basstrading.fr#methode">Méthode</a></li><li><a href="https://basstrading.fr#resultats">Résultats</a></li><li><a href="https://basstrading.fr#avis">Avis</a></li><li><a href="https://basstrading.fr#faq">FAQ</a></li><li><a href="https://basstrading.fr/blog/">Blog</a></li></ul>
+  <a href="https://basstrading.fr#candidater" class="nav-cta">Candidater</a>
+</nav>
+
+<section class="blog-hero">
+  <div class="blog-hero-inner">
+    <nav class="breadcrumb" aria-label="Fil d'Ariane"><a href="https://basstrading.fr">Accueil</a><span class="sep">/</span><a href="https://basstrading.fr/blog/">Blog</a><span class="sep">/</span><span>Sierra Chart</span></nav>
+    <div class="blog-hero-cat">Tutoriel</div>
+    <h1 class="blog-hero-title">Sierra Chart :<br>Configuration complète pour le Market Profile</h1>
+    <p class="blog-hero-desc">Le guide pas à pas pour configurer Sierra Chart avec le Market Profile, le Footprint Chart, le Numbers Bars et le CVD. Le setup professionnel utilisé dans le mentorat BASS Trading.</p>
+    <div class="blog-meta">
+      <div class="blog-meta-author"><div class="blog-meta-avatar"><img src="../../images/bass-presenting.jpg" alt="Sébastien Constant" loading="lazy"></div><div><div class="blog-meta-name">Sébastien Constant</div><div class="blog-meta-role">Trader & Formateur</div></div></div>
+      <div class="blog-meta-sep"></div>
+      <div class="blog-meta-info"><span>Mars 2026</span><span>14 min de lecture</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="article-wrap">
+  <aside class="article-sidebar">
+    <div class="toc">
+      <div class="toc-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/></svg> Sommaire</div>
+      <ol>
+        <li><a href="#pourquoi">Pourquoi Sierra Chart</a></li>
+        <li><a href="#installation">Installation et données</a></li>
+        <li><a href="#market-profile">Configurer le Market Profile</a></li>
+        <li><a href="#volume-profile">Configurer le Volume Profile</a></li>
+        <li><a href="#footprint">Ajouter le Footprint Chart</a></li>
+        <li><a href="#numbers">Les Numbers Bars</a></li>
+        <li><a href="#cvd">Configurer le CVD</a></li>
+        <li><a href="#workspace">Le workspace optimal</a></li>
+        <li><a href="#erreurs">Erreurs courantes</a></li>
+      </ol>
+    </div>
+  </aside>
+
+  <article class="article-body">
+    <h2 id="pourquoi">Pourquoi Sierra Chart ?</h2>
+    <p>Sierra Chart est le logiciel de trading utilisé par les professionnels du Market Profile et de l'Order Flow. Pas le plus joli — mais <strong>le plus fiable, le plus configurable, et le plus stable</strong>.</p>
+    <p>Trois raisons qui en font le standard :</p>
+    <ul>
+      <li><strong>Intégration native CME Denali</strong> — Les données de marché les plus fiables, directement depuis la source. Pas de broker intermédiaire qui filtre ou retarde.</li>
+      <li><strong>Market Profile natif</strong> — Le TPO Chart est intégré avec une personnalisation complète (couleurs, périodes, Value Area, POC, Initial Balance).</li>
+      <li><strong>Numbers Bars (Footprint)</strong> — L'implémentation la plus complète du Footprint Chart : Bid × Ask, delta, imbalances, volume total par niveau.</li>
+    </ul>
+
+    <div class="key-concept">
+      <div class="key-concept-label">Le standard</div>
+      <h4>L'outil ne fait pas le trader — mais le mauvais outil le freine</h4>
+      <p>Sierra Chart est austère. Son interface ressemble à un logiciel des années 2000. Mais sous le capot, c'est le moteur le plus puissant du marché pour l'analyse du flux. La forme est secondaire — la fiabilité des données est tout.</p>
+    </div>
+
+    <hr>
+
+    <h2 id="installation">Installation et premier lancement</h2>
+
+    <h3>Téléchargement et licence</h3>
+    <ol>
+      <li>Téléchargez Sierra Chart sur le site officiel (sierrachart.com)</li>
+      <li>Installez le logiciel (Windows uniquement, fonctionne sous Wine/Parallels sur Mac)</li>
+      <li>Créez un compte et choisissez le <strong>Package 3</strong> ($46/mois) — c'est celui qui inclut le Market Profile, les Numbers Bars et le CVD</li>
+      <li>Activez le service de données <strong>Denali Exchange</strong> — c'est le flux CME natif de Sierra Chart</li>
+    </ol>
+
+    <h3>Connexion aux données</h3>
+    <p>Une fois le package activé, connectez-vous : <strong>File > Data/Trade Service Settings</strong>. Sélectionnez "SC Data - All Services" et entrez vos identifiants. La connexion est automatique.</p>
+    <p>Pour les données CME (Futures ES, NQ, CL, etc.), vous devrez accepter les accords d'échange CME. Coût : <strong>~$9/mois pour les non-professionnels</strong> (CME Non-Professional Market Data).</p>
+
+    <div class="info-box">
+      <div class="info-box-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg> Coût total</div>
+      <p>Sierra Chart Package 3 ($46) + CME Non-Pro ($9) = ~$55/mois. C'est le coût d'un outil professionnel complet. À comparer avec ATAS ($69/mois) ou Bookmap ($49/mois) qui offrent moins de profondeur.</p>
+    </div>
+
+    <hr>
+
+    <h2 id="market-profile">Configurer le Market Profile (TPO Chart)</h2>
+    <p>Le Market Profile dans Sierra Chart s'appelle <strong>TPO Profile Chart</strong>. Voici la configuration étape par étape :</p>
+
+    <h3>Créer un nouveau graphique TPO</h3>
+    <ol>
+      <li><strong>File > Find Symbol</strong> — Tapez le symbole (ex: ESH26.CME pour l'E-mini S&P 500)</li>
+      <li><strong>Chart > Chart Settings</strong> — Dans "Chart Type", sélectionnez "TPO Profile Chart"</li>
+      <li>Réglez la période TPO sur <strong>30 minutes</strong> (standard pour les Futures US)</li>
+    </ol>
+
+    <h3>Paramètres essentiels</h3>
+    <table class="compare-table">
+      <thead><tr><th>Paramètre</th><th>Valeur recommandée</th><th>Pourquoi</th></tr></thead>
+      <tbody>
+        <tr><td>TPO Letter Period</td><td>30 minutes</td><td>Standard du marché pour les Futures</td></tr>
+        <tr><td>Value Area %</td><td>70%</td><td>Règle de Steidlmayer (68.2% arrondi)</td></tr>
+        <tr><td>Display POC</td><td>Activé</td><td>Point of Control — le prix le plus échangé</td></tr>
+        <tr><td>Display VA Lines</td><td>Activé</td><td>Value Area High et Low</td></tr>
+        <tr><td>Initial Balance</td><td>Activé (60 min)</td><td>Le range de la première heure</td></tr>
+        <tr><td>Split Profile At</td><td>Daily</td><td>Un profil par jour de trading</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Couleurs et lisibilité</h3>
+    <p>Le défaut de Sierra Chart est moche. Personnalisez : fond noir ou gris très foncé, TPO en couleur par période (lettres colorées), POC en trait rouge ou blanc épais, Value Area en zone semi-transparente. <strong>La lisibilité prime sur l'esthétique.</strong></p>
+
+    <hr>
+
+    <h2 id="volume-profile">Configurer le Volume Profile</h2>
+    <p>Le Volume Profile complète le TPO en montrant le <strong>volume réel échangé</strong> à chaque niveau de prix (pas le temps passé).</p>
+    <p>Dans Sierra Chart : <strong>Studies > Add Study > Volume by Price</strong>. Configurez :</p>
+    <ul>
+      <li><strong>VPOC (Volume Point of Control)</strong> — Le prix avec le plus grand volume</li>
+      <li><strong>Value Area High/Low</strong> — La zone de 70% du volume total</li>
+      <li><strong>Histogramme</strong> — Barres horizontales montrant la distribution du volume</li>
+    </ul>
+    <p>Astuce : affichez le TPO et le Volume Profile sur le même graphique, l'un à gauche et l'autre à droite. La convergence entre le POC du TPO et le VPOC est un signal de haute conviction.</p>
+
+    <hr>
+
+    <h2 id="footprint">Ajouter le Footprint Chart</h2>
+    <p>Le Footprint Chart dans Sierra Chart s'appelle <strong>Numbers Bars</strong>. C'est l'implémentation la plus complète du marché.</p>
+
+    <h3>Activation</h3>
+    <ol>
+      <li><strong>Chart > Chart Settings > Chart Type</strong> — Sélectionnez un graphique en bougies classique (pas TPO)</li>
+      <li><strong>Studies > Add Study > Numbers Bars Calculated Values</strong></li>
+      <li>Dans les settings, choisissez le mode <strong>"AskVol x BidVol"</strong> — c'est le format Footprint standard</li>
+    </ol>
+
+    <h3>Paramètres clés</h3>
+    <ul>
+      <li><strong>Imbalance Ratio</strong> — Réglez sur 300% (3:1). C'est le seuil standard pour détecter les déséquilibres.</li>
+      <li><strong>Couleurs</strong> — Ask en vert/bleu, Bid en rouge, imbalances surlignées en couleur vive</li>
+      <li><strong>Delta total</strong> — Activez l'affichage du delta cumulé en bas de chaque bougie</li>
+      <li><strong>Volume total</strong> — Affichez le volume total par bougie à côté du delta</li>
+    </ul>
+
+    <hr>
+
+    <h2 id="numbers">Les Numbers Bars en détail</h2>
+    <p>Les Numbers Bars de Sierra Chart offrent plusieurs modes d'affichage :</p>
+
+    <table class="compare-table">
+      <thead><tr><th>Mode</th><th>Affichage</th><th>Utilisation</th></tr></thead>
+      <tbody>
+        <tr><td>AskVol x BidVol</td><td>Volume acheteur × vendeur par niveau</td><td>Footprint standard — déséquilibres et absorption</td></tr>
+        <tr><td>Delta</td><td>Ask - Bid par niveau</td><td>Pression nette à chaque prix</td></tr>
+        <tr><td>Total Volume</td><td>Volume total par niveau</td><td>Identifier les niveaux d'intérêt institutionnel</td></tr>
+        <tr><td>Bid/Ask Volume</td><td>Bid et Ask séparés en colonnes</td><td>Vue détaillée pour le tape reading avancé</td></tr>
+      </tbody>
+    </table>
+
+    <p>Pour commencer, utilisez <strong>"AskVol x BidVol"</strong>. C'est le mode le plus lisible et le plus utile pour repérer les imbalances et l'absorption.</p>
+
+    <hr>
+
+    <h2 id="cvd">Configurer le CVD</h2>
+    <p>Le CVD (Cumulative Volume Delta) trace la somme cumulée de tous les deltas dans le temps. C'est un indicateur de momentum basé sur le flux réel.</p>
+    <p>Configuration : <strong>Studies > Add Study > Cumulative Delta Bars - Volume</strong>. Affichez-le dans un sous-graphique séparé sous votre graphique principal.</p>
+    <p>Paramètres recommandés :</p>
+    <ul>
+      <li><strong>Reset period</strong> — Daily (reset à chaque session)</li>
+      <li><strong>Display</strong> — Barres colorées (vert si delta positif, rouge si négatif)</li>
+      <li><strong>MA overlay</strong> — Ajoutez une moyenne mobile 20 périodes pour lisser le signal</li>
+    </ul>
+
+    <div class="key-concept">
+      <div class="key-concept-label">Signal clé</div>
+      <h4>La divergence prix/CVD</h4>
+      <p>Si le prix fait de nouveaux plus hauts mais le CVD ne suit pas (divergence baissière), le rallye manque de conviction acheteuse. C'est un des signaux les plus fiables de retournement imminent. L'inverse est vrai pour les divergences haussières.</p>
+    </div>
+
+    <hr>
+
+    <h2 id="workspace">Le workspace optimal</h2>
+    <p>Un workspace Sierra Chart bien organisé est crucial pour l'efficacité. Voici la disposition recommandée pour un setup à 2 écrans :</p>
+
+    <h3>Écran 1 — Analyse</h3>
+    <ul>
+      <li><strong>Gauche</strong> — Market Profile TPO (session courante + veille)</li>
+      <li><strong>Centre</strong> — Footprint Chart (Numbers Bars) en 5 minutes</li>
+      <li><strong>Bas</strong> — CVD en sous-graphique</li>
+    </ul>
+
+    <h3>Écran 2 — Exécution</h3>
+    <ul>
+      <li><strong>Gauche</strong> — DOM (Depth of Market) avec ordres</li>
+      <li><strong>Centre</strong> — Graphique en bougies 1 minute (pour le timing)</li>
+      <li><strong>Droite</strong> — Time & Sales / Tape</li>
+    </ul>
+
+    <p>Sauvegardez votre workspace : <strong>File > Save Chartbook As</strong>. Créez des templates pour chaque marché (ES, NQ, CL) que vous tradez.</p>
+
+    <div class="info-box">
+      <div class="info-box-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg> Templates BASS</div>
+      <p>Le mentorat BASS Trading fournit un Chartbook Sierra Chart complet avec tous les graphiques pré-configurés : Market Profile, Footprint, CVD, DOM. Vous l'importez et tout est opérationnel en 5 minutes — sans passer 3 jours à configurer.</p>
+    </div>
+
+    <hr>
+
+    <h2 id="erreurs">Erreurs courantes de configuration</h2>
+
+    <h3>1. Trop d'indicateurs</h3>
+    <p>Sierra Chart permet d'ajouter des centaines d'études. <strong>N'en abusez pas.</strong> Market Profile + Footprint + CVD + DOM = suffisant. Chaque indicateur supplémentaire ajoute du bruit, pas du signal.</p>
+
+    <h3>2. Mauvaise période TPO</h3>
+    <p>30 minutes est le standard pour les Futures US. Ne passez pas à 15 minutes ou 1 heure sans raison — vous perdez la comparabilité avec les autres traders et les études historiques.</p>
+
+    <h3>3. Seuil d'imbalance trop bas</h3>
+    <p>Un seuil de 150% génère trop de faux signaux. Gardez <strong>300% minimum</strong>. Mieux vaut moins de signaux mais de meilleure qualité.</p>
+
+    <h3>4. Ne pas sauvegarder les templates</h3>
+    <p>Sierra Chart peut planter (rarement, mais ça arrive). Sauvegardez vos Chartbooks régulièrement et faites un backup de votre dossier Sierra Chart.</p>
+
+    <h3>5. Données retardées sans le savoir</h3>
+    <p>Si vous n'avez pas activé les données CME en temps réel, vous tradez avec un retard de 10-15 minutes. Vérifiez : <strong>Window > Message Log</strong> — si vous voyez "delayed data", activez les données CME Non-Professional.</p>
+
+    <div class="cta-card">
+      <div class="cta-card-label">Setup complet</div>
+      <h3>Recevez le workspace BASS pré-configuré.</h3>
+      <p>Market Profile, Footprint, CVD, DOM — tout configuré. Importez et tradez.</p>
+      <a href="https://basstrading.fr#candidater" class="btn-p">Rejoindre le mentorat <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+    </div>
+  </article>
+</div>
+
+<section class="faq-sec">
+  <div class="sec-center"><div class="sec-label">FAQ</div><h2 class="sec-title">Questions fréquentes</h2></div>
+  <div class="faq-list">
+    <div class="fi"><button class="fq" onclick="tf(this)">Combien coûte Sierra Chart ? <span class="fq-icon">+</span></button><div class="fa"><p>Le Package 3 coûte $46/mois. Avec les données CME Non-Professional (~$9/mois), le total est d'environ $35/mois pour un outil professionnel complet.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Sierra Chart est-il difficile à configurer ? <span class="fq-icon">+</span></button><div class="fa"><p>La courbe d'apprentissage est de 2-3 jours. Le mentorat BASS fournit des templates pré-configurés qui éliminent cette étape — tout est prêt en 5 minutes après import.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Pourquoi pas ATAS ou Quantower ? <span class="fq-icon">+</span></button><div class="fa"><p>Sierra Chart offre la meilleure fiabilité de données (CME Denali natif), la plus grande profondeur de personnalisation, et la meilleure stabilité. ATAS a une interface plus jolie, Quantower est un bon compromis.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Faut-il un abonnement CME ? <span class="fq-icon">+</span></button><div class="fa"><p>Oui, pour les données temps réel sur les Futures. ~$9/mois pour le CME Non-Professional via Denali Exchange. Sans ça, les données sont retardées de 10-15 minutes.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Les templates BASS sont-ils inclus ? <span class="fq-icon">+</span></button><div class="fa"><p>Oui. Le mentorat inclut un workspace complet : Market Profile, Footprint, CVD, DOM, et les études personnalisées de Sébastien. Import en 5 minutes.</p></div></div>
+  </div>
+</section>
+
+<section class="related-sec">
+  <div class="sec-center"><div class="sec-label">Continuer la lecture</div><h2 class="sec-title">Articles connexes</h2></div>
+  <div class="related-grid">
+    <a href="/blog/market-profile-guide-complet" class="related-card"><div class="related-cat">Guide</div><h3>Market Profile : le guide complet</h3><p>Tout comprendre du Market Profile en un article.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/footprint-chart-trading" class="related-card"><div class="related-cat">Analyse</div><h3>Footprint Chart : lire le volume</h3><p>Delta, imbalances et absorption décryptés.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/order-flow-trading-france" class="related-card"><div class="related-cat">Méthode</div><h3>Order Flow Trading en France</h3><p>Pourquoi personne ne l'enseigne — et comment l'apprendre.</p><span class="related-link">Lire &rarr;</span></a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="ft-top"><div class="ft-logo">BASS</div><div class="ft-cols">
+    <div class="ft-col"><div class="ft-col-title">Programme</div><a href="https://basstrading.fr#methode">Méthode</a><a href="https://basstrading.fr#programme">Programme</a><a href="https://basstrading.fr#certification">Certification</a><a href="https://basstrading.fr#candidater">Candidater</a></div>
+    <div class="ft-col"><div class="ft-col-title">Ressources</div><a href="/blog/market-profile-guide-complet">Market Profile</a><a href="/blog/footprint-chart-trading">Footprint Chart</a><a href="/blog/order-flow-trading-france">Order Flow</a><a href="/blog/formation-trading-cpf-qualiopi">Formation CPF</a></div>
+    <div class="ft-col"><div class="ft-col-title">Écosystème</div><a href="https://hubtrading.fr" target="_blank" rel="noopener">HubTrading.fr</a><a href="https://x-trade.ai" target="_blank" rel="noopener">x-trade.ai</a><a href="mailto:contact@basstrading.fr">Contact</a></div>
+  </div></div>
+  <div class="ft-bottom"><span>&copy; 2026 BASS — Sébastien Constant</span><div><a href="https://basstrading.fr/mentions-legales.html">Mentions légales</a><a href="https://basstrading.fr/confidentialite.html">Confidentialité</a><a href="https://basstrading.fr/cgv.html">CGV</a></div></div>
+</footer>
+<div class="disclaimer">Le trading comporte des risques de perte en capital. Les performances passées ne préjugent pas des performances futures. Ce site ne constitue pas un conseil en investissement.</div>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);const lenis=new Lenis({duration:1.2,easing:t=>Math.min(1,1.001-Math.pow(2,-10*t))});function raf(t){lenis.raf(t);requestAnimationFrame(raf)}requestAnimationFrame(raf);lenis.on('scroll',ScrollTrigger.update);gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0);
+const tl=gsap.timeline();tl.to('.pre-word span',{y:0,opacity:1,duration:.5,stagger:.1,ease:'power3.out',delay:.3}).to('#preLine',{width:'80px',duration:.7,ease:'power2.inOut'},'<+.2').to('.preloader',{yPercent:-100,duration:.8,ease:'power3.inOut',delay:.4}).set('.preloader',{display:'none'}).to('#nav',{opacity:1,y:0,duration:.5},'<+.1');
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);const h=document.documentElement.scrollHeight-window.innerHeight;document.getElementById('readingProgress').style.width=(window.scrollY/h*100)+'%'});
+const tocLinks=document.querySelectorAll('.toc a');const sections=Array.from(tocLinks).map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);window.addEventListener('scroll',()=>{let c='';sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)c=s.id});tocLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+c)})});
+function tf(b){const i=b.closest('.fi'),a=b.nextElementSibling,o=i.classList.contains('active');document.querySelectorAll('.fi').forEach(x=>{x.classList.remove('active');x.querySelector('.fa').classList.remove('open')});if(!o){i.classList.add('active');a.classList.add('open')}}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();lenis.scrollTo(t,{offset:-60})}})});
+</script>
+</body>
+</html>

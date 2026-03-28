@@ -60,7 +60,7 @@
       "name": "BASS Trading",
       "url": "https://basstrading.fr"
     },
-    "educationalCredentialAwarded": "Certificat de Compétences EMSCA — Expertise en Analyse des Marchés et Stratégies de Décision",
+    "educationalCredentialAwarded": "Certificat de Compétences EMSCA",
     "hasCourseInstance": {
       "@type": "CourseInstance",
       "courseMode": ["onsite", "online"],
@@ -103,7 +103,7 @@
         "name": "La formation BASS Trading est-elle éligible CPF ?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Oui. La formation BASS Trading est éligible au CPF grâce au partenariat avec EMSCA, organisme certifié Qualiopi. Le cursus de 70 heures est disponible en présentiel (région parisienne ou Malaga) ou en ligne. Un certificat de compétences EMSCA est délivré : Expertise en Analyse des Marchés et Stratégies de Décision."
+          "text": "Oui. La formation BASS Trading est éligible au CPF grâce au partenariat avec EMSCA, organisme certifié Qualiopi. Le cursus de 70 heures est disponible en présentiel (région parisienne ou Malaga) ou en ligne. Un certificat de compétences EMSCA est délivré."
         }
       },
       {
@@ -437,6 +437,7 @@
     <li><a href="#avis">Avis</a></li>
     <li><a href="/malaga/" style="color:var(--gold,#C9A84C);font-weight:600">Malaga 2026</a></li>
     <li><a href="#faq">FAQ</a></li>
+    <li><a href="/blog/">Blog</a></li>
   </ul>
   <a href="#candidater" class="nav-cta">Candidater</a>
   <button class="nav-burger" id="navBurger" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -604,7 +605,7 @@
   <div style="text-align:center">
     <div class="dark-pill">Certification</div>
     <h2 class="blue-title">Formation certifiée Qualiopi.<br>Éligible CPF.</h2>
-    <p class="blue-desc">En partenariat avec EMSCA. 70 heures de cursus. Certificat de compétences délivré : Expertise en Analyse des Marchés et Stratégies de Décision.</p>
+    <p class="blue-desc">En partenariat avec EMSCA. 70 heures de cursus. Certificat de compétences EMSCA délivré à l'issue du cursus.</p>
     <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap">
       <a href="#candidater" class="blue-cta">Candidater <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
     </div>
@@ -1118,7 +1119,16 @@ function appendMsg(role,text){
   const box=document.getElementById('chatMessages');
   const d=document.createElement('div');
   d.className='chat-msg chat-'+role;
-  d.textContent=text;
+  var urls=[];
+  var t2=text.replace(/(https?:\/\/[^\s]+)/g,function(u){var k='__URL'+urls.length+'__';urls.push(u);return k;});
+  var safe=t2.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  for(var i=0;i<urls.length;i++){
+    var u=urls[i].replace(/[.,;!?)]+$/,'');
+    var isStripe=u.indexOf('buy.stripe.com')!==-1;
+    var tag=isStripe?'<a href="'+u+'" target="_blank" rel="noopener" class="chat-link-btn">Reserver ma place &rarr;</a>':'<a href="'+u+'" target="_blank" rel="noopener" class="chat-link">'+u+'</a>';
+    safe=safe.replace('__URL'+i+'__',tag);
+  }
+  d.innerHTML=safe;
   box.appendChild(d);
   box.scrollTop=box.scrollHeight;
 }
@@ -1146,6 +1156,8 @@ async function sendChat(){
     const reply=data.choices?.[0]?.message?.content||"Desole, je n'ai pas pu repondre. N'hesite pas a candidater directement sur le site !";
     appendMsg('assistant',reply);
     chatMsgs.push({role:'assistant',content:reply});
+    // Re-scan all user messages for contact info (in case user gave it naturally in conversation)
+    if(!contactCaptured){chatMsgs.filter(m=>m.role==='user').forEach(m=>extractContact(m.content));}
   }catch(err){
     typing.remove();
     appendMsg('assistant',"Connexion perdue. Tu peux candidater directement via le formulaire sur le site !");
@@ -1201,6 +1213,10 @@ async function sendChat(){
 .chat-typing span{width:6px;height:6px;border-radius:50%;background:var(--g3);animation:typingBounce .6s infinite alternate}
 .chat-typing span:nth-child(2){animation-delay:.15s}
 .chat-typing span:nth-child(3){animation-delay:.3s}
+.chat-link{color:inherit;text-decoration:underline;word-break:break-all}
+.chat-link-btn{display:inline-block;margin-top:8px;padding:10px 20px;background:var(--bk);color:var(--pure);border-radius:10px;text-decoration:none;font-weight:700;font-size:.8rem;letter-spacing:.3px;text-align:center;transition:opacity .2s;-webkit-tap-highlight-color:transparent}
+.chat-link-btn:hover{opacity:.85}
+.chat-link-btn:active{opacity:.7}
 @keyframes typingBounce{to{opacity:.3;transform:translateY(-4px)}}
 .chat-input-wrap{padding:12px 16px;border-top:1px solid rgba(0,0,0,.04);display:flex;gap:8px;align-items:center;background:var(--pure)}
 #chatInput{flex:1;padding:10px 14px;border:1.5px solid var(--g3);border-radius:980px;font-size:.82rem;font-family:'DM Sans',sans-serif;outline:none;transition:border .3s;background:var(--pure);color:var(--bk)}
