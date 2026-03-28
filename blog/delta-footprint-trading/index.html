@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delta en Trading : Mesurer la Pression Directionnelle sur les Marchés — BASS Trading</title>
+  <meta name="description" content="Guide complet du Delta en trading : delta positif/négatif, divergences, delta absorbé, naked delta. Apprenez à mesurer la pression directionnelle réelle bougie par bougie sur le Footprint Chart. Par Sébastien Constant.">
+  <meta property="og:title" content="Delta : Mesurer la Pression Directionnelle — BASS Trading">
+  <meta property="og:description" content="Delta positif, négatif, divergences, absorption — tout comprendre du delta en order flow pour trader avec la pression directionnelle réelle du marché.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://basstrading.fr/blog/delta-footprint-trading/">
+  <meta property="og:site_name" content="BASS Trading">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://basstrading.fr/blog/delta-footprint-trading/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","headline":"Delta en Trading : Mesurer la Pression Directionnelle sur les Marchés","description":"Guide complet du Delta : delta positif/négatif, divergences, delta absorbé, naked delta sur le Footprint Chart.","author":{"@type":"Person","name":"Sébastien Constant","jobTitle":"Trader et formateur Order Flow","url":"https://basstrading.fr"},"publisher":{"@type":"Organization","name":"BASS Trading","url":"https://basstrading.fr","logo":{"@type":"ImageObject","url":"https://basstrading.fr/images/bass-presenting.jpg"}},"datePublished":"2026-03-28","dateModified":"2026-03-28","mainEntityOfPage":{"@type":"WebPage","@id":"https://basstrading.fr/blog/delta-footprint-trading/"},"keywords":["delta","footprint","order flow","divergence delta","delta absorbé","CVD","trading","sierra chart"]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://basstrading.fr"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://basstrading.fr/blog/"},{"@type":"ListItem","position":3,"name":"Delta : Pression Directionnelle"}]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"C'est quoi le delta en trading ?","acceptedAnswer":{"@type":"Answer","text":"Le delta est la différence entre le volume échangé côté Ask (achats agressifs) et côté Bid (ventes agressives) sur une bougie : Delta = Volume Ask − Volume Bid. Un delta positif indique une dominance acheteuse agressive. Un delta négatif indique une dominance vendeuse agressive. C'est la mesure directe de la pression directionnelle sur la bougie."}},
+    {"@type":"Question","name":"C'est quoi une divergence delta/prix ?","acceptedAnswer":{"@type":"Answer","text":"Une divergence se produit quand le delta et le prix vont dans des directions opposées. Exemple : bougie haussière (prix monte) avec un delta négatif (plus de ventes agressives que d'achats). Cela indique que le mouvement haussier est artificiel — poussé par la disparition des vendeurs plutôt que par l'agressivité des acheteurs. Signal d'alerte de retournement."}},
+    {"@type":"Question","name":"C'est quoi le delta absorbé ?","acceptedAnswer":{"@type":"Answer","text":"Le delta absorbé se produit quand un fort delta positif (nombreux achats agressifs) ne parvient pas à faire monter le prix — des vendeurs passifs (limit orders) absorbent chaque achat. Le prix reste stable malgré une forte pression acheteuse. C'est le signe de la présence d'un vendeur institutionnel massif à ce niveau. Signal baissier puissant."}},
+    {"@type":"Question","name":"Quelle différence entre delta et CVD ?","acceptedAnswer":{"@type":"Answer","text":"Le delta mesure la pression sur une seule bougie (micro). Le CVD accumule les deltas de toutes les bougies depuis le début de la session (macro). Utilisez le delta pour évaluer la conviction bougie par bougie. Utilisez le CVD pour évaluer la tendance de fond de la pression directionnelle sur la session."}}
+  ]}
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{--bk:#1D1D1F;--bk2:#111;--bk3:#0A0A0A;--g1:#6E6E73;--g2:#86868B;--g3:#D2D2D7;--g4:#F5F5F7;--wh:#FBFBFD;--pure:#FFF;--green:#00B67A;--blue:#0066FF}
+    html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}
+    body{font-family:'DM Sans',sans-serif;color:var(--bk);background:var(--pure);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+    .preloader{position:fixed;inset:0;background:var(--bk3);z-index:10001;display:flex;align-items:center;justify-content:center}
+    .pre-word{font-family:'Outfit',sans-serif;font-size:clamp(3rem,8vw,5rem);font-weight:900;letter-spacing:16px;text-transform:uppercase;color:var(--pure);overflow:hidden}
+    .pre-word span{display:inline-block;transform:translateY(110%);opacity:0}
+    .pre-line{width:0;height:1px;background:rgba(255,255,255,.3);margin-top:20px}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 48px;display:flex;align-items:center;justify-content:space-between;background:rgba(245,245,247,.85);backdrop-filter:blur(20px) saturate(1.8);border-bottom:1px solid rgba(0,0,0,.04);transition:background .4s}
+    .nav-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase;color:var(--bk)}
+    .nav-links{display:flex;gap:28px;list-style:none}.nav-links a{font-size:.74rem;font-weight:500;letter-spacing:.3px;color:var(--g1);transition:color .3s}.nav-links a:hover{color:var(--bk)}
+    .nav-cta{padding:8px 20px;background:var(--bk);color:var(--pure);border:none;border-radius:980px;font-size:.72rem;font-weight:600;transition:all .3s;cursor:pointer;text-decoration:none;display:inline-block}.nav-cta:hover{background:var(--bk2)}
+    .blog-hero{padding:160px 48px 80px;background:var(--g4);position:relative;overflow:hidden}
+    .blog-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,transparent,var(--g4));pointer-events:none}
+    .blog-hero-inner{max-width:720px;margin:0 auto}
+    .breadcrumb{display:flex;gap:8px;align-items:center;margin-bottom:28px;flex-wrap:wrap}
+    .breadcrumb a,.breadcrumb span{font-size:.68rem;font-weight:500;letter-spacing:.3px;color:var(--g2);transition:color .3s}.breadcrumb a:hover{color:var(--bk)}.breadcrumb .sep{color:var(--g3)}
+    .blog-hero-cat{display:inline-block;padding:5px 14px;border:1px solid rgba(0,102,255,.15);border-radius:980px;font-size:.6rem;font-weight:700;color:var(--blue);letter-spacing:2px;text-transform:uppercase;margin-bottom:20px}
+    .blog-hero-title{font-family:'Outfit',sans-serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:900;line-height:1.05;letter-spacing:-2px;color:var(--bk);margin-bottom:20px}
+    .blog-hero-desc{font-size:.95rem;color:var(--g1);line-height:1.8;max-width:560px;margin-bottom:28px}
+    .blog-meta{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+    .blog-meta-author{display:flex;align-items:center;gap:10px}
+    .blog-meta-avatar{width:36px;height:36px;border-radius:50%;background:var(--bk3);overflow:hidden;flex-shrink:0}.blog-meta-avatar img{width:100%;height:100%;object-fit:cover}
+    .blog-meta-name{font-size:.78rem;font-weight:600;color:var(--bk)}.blog-meta-role{font-size:.65rem;color:var(--g2)}
+    .blog-meta-sep{width:1px;height:24px;background:var(--g3)}
+    .blog-meta-info{font-size:.7rem;color:var(--g2)}.blog-meta-info span{margin-right:16px}
+    .toc{position:sticky;top:90px;background:var(--pure);border:1px solid rgba(0,0,0,.04);border-radius:14px;padding:24px;margin-bottom:32px}
+    .toc-title{font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.5px;color:var(--bk);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+    .toc ol{list-style:none;counter-reset:toc}.toc li{counter-increment:toc}
+    .toc li a{display:flex;align-items:baseline;gap:8px;padding:6px 0;font-size:.76rem;color:var(--g1);transition:color .3s;border-bottom:1px solid rgba(0,0,0,.03)}.toc li a:hover{color:var(--blue)}
+    .toc li a::before{content:counter(toc,decimal-leading-zero);font-family:'Outfit',sans-serif;font-size:.65rem;font-weight:700;color:var(--g3);min-width:18px}
+    .toc li:last-child a{border-bottom:none}.toc li a.active{color:var(--blue);font-weight:600}.toc li a.active::before{color:var(--blue)}
+    .article-wrap{display:grid;grid-template-columns:220px 1fr;gap:40px;max-width:1020px;margin:0 auto;padding:60px 48px 120px}
+    .article-sidebar{position:relative}.article-body{max-width:700px}
+    .article-body h2{font-family:'Outfit',sans-serif;font-size:clamp(1.4rem,2.5vw,1.8rem);font-weight:800;line-height:1.1;letter-spacing:-1px;color:var(--bk);margin:56px 0 16px;padding-top:20px}.article-body h2:first-of-type{margin-top:0}
+    .article-body h3{font-family:'Outfit',sans-serif;font-size:1.05rem;font-weight:700;line-height:1.25;letter-spacing:-.3px;color:var(--bk);margin:36px 0 10px}
+    .article-body p{font-size:.9rem;color:var(--g1);line-height:1.85;margin-bottom:18px}
+    .article-body strong{color:var(--bk);font-weight:600}
+    .article-body ul,.article-body ol{margin:0 0 20px 0;padding-left:20px}
+    .article-body li{font-size:.88rem;color:var(--g1);line-height:1.8;margin-bottom:6px}.article-body li strong{color:var(--bk)}
+    .article-body blockquote{margin:28px 0;padding:20px 24px;background:var(--g4);border-left:3px solid var(--bk);border-radius:0 12px 12px 0;font-size:.88rem;color:var(--g1);line-height:1.8;font-style:italic}
+    .article-body blockquote strong{color:var(--bk);font-style:normal}
+    .article-body hr{border:none;border-top:1px solid var(--g4);margin:48px 0}
+    .info-box{margin:28px 0;padding:24px;background:rgba(0,102,255,.03);border:1px solid rgba(0,102,255,.08);border-radius:14px}
+    .info-box-title{font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:700;color:var(--blue);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+    .info-box p{font-size:.82rem;color:var(--g1);line-height:1.7;margin-bottom:0}
+    .key-concept{margin:32px 0;padding:28px;background:var(--bk3);border-radius:16px;color:var(--pure)}
+    .key-concept-label{font-size:.55rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:10px}
+    .key-concept h4{font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:800;letter-spacing:-.3px;margin-bottom:8px}
+    .key-concept p{font-size:.85rem;color:rgba(255,255,255,.5);line-height:1.8;margin-bottom:0}
+    .compare-table{width:100%;margin:24px 0 28px;border-collapse:collapse;border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,.06)}
+    .compare-table th{background:var(--bk3);color:var(--pure);font-family:'Outfit',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:14px 16px;text-align:left}
+    .compare-table td{padding:12px 16px;font-size:.82rem;color:var(--g1);line-height:1.6;border-bottom:1px solid rgba(0,0,0,.04);background:var(--pure)}
+    .compare-table tr:last-child td{border-bottom:none}.compare-table td:first-child{font-weight:600;color:var(--bk)}
+    .cta-card{margin:48px 0;padding:40px;background:var(--bk3);border-radius:20px;text-align:center;position:relative;overflow:hidden}
+    .cta-card::before{content:'';position:absolute;top:-50%;right:-30%;width:400px;height:400px;background:radial-gradient(circle,rgba(0,102,255,.08) 0%,transparent 70%);pointer-events:none}
+    .cta-card-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:12px}
+    .cta-card h3{font-family:'Outfit',sans-serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:800;color:var(--pure);letter-spacing:-.5px;margin-bottom:8px}
+    .cta-card p{font-size:.85rem;color:rgba(255,255,255,.4);line-height:1.7;max-width:380px;margin:0 auto 24px}
+    .cta-card .btn-p{background:var(--pure);color:var(--bk)}.cta-card .btn-p:hover{box-shadow:0 8px 30px rgba(255,255,255,.15)}
+    .faq-sec{padding:80px 48px 100px;background:var(--g4)}
+    .faq-list{max-width:680px;margin:40px auto 0}.fi{border-bottom:1px solid rgba(0,0,0,.06)}
+    .fq{width:100%;text-align:left;padding:18px 0;background:none;border:none;font-size:.85rem;font-weight:600;font-family:'DM Sans',sans-serif;color:var(--bk);display:flex;justify-content:space-between;align-items:center;cursor:pointer;gap:16px;transition:color .3s}.fq:hover{color:var(--g1)}
+    .fq-icon{width:22px;height:22px;border-radius:50%;background:rgba(0,0,0,.04);display:flex;align-items:center;justify-content:center;font-size:.75rem;transition:all .4s;flex-shrink:0;color:var(--g2)}
+    .fa{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1)}.fa.open{max-height:280px;padding-bottom:14px}
+    .fa p{font-size:.8rem;color:var(--g1);line-height:1.7;margin-bottom:0}.fi.active .fq-icon{background:var(--bk);color:var(--pure);transform:rotate(45deg)}
+    .related-sec{padding:80px 48px;background:var(--pure);border-top:1px solid var(--g4)}
+    .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1060px;margin:40px auto 0}
+    .related-card{display:block;padding:28px;background:var(--g4);border-radius:16px;transition:all .4s;text-decoration:none;color:var(--bk)}
+    .related-card:hover{background:var(--pure);box-shadow:0 8px 30px rgba(0,0,0,.06);transform:translateY(-2px)}
+    .related-cat{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+    .related-card h3{font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:700;line-height:1.3;letter-spacing:-.3px;margin-bottom:8px}
+    .related-card p{font-size:.78rem;color:var(--g1);line-height:1.6;margin-bottom:14px}
+    .related-link{font-size:.72rem;font-weight:600;color:var(--blue);letter-spacing:.3px}
+    .footer{background:var(--bk3);color:var(--pure);padding:56px 48px 28px}
+    .ft-top{display:flex;justify-content:space-between;align-items:start;margin-bottom:48px;flex-wrap:wrap;gap:32px}
+    .ft-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase}
+    .ft-cols{display:flex;gap:80px}
+    .ft-col-title{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:12px}
+    .ft-col a{display:block;font-size:.78rem;color:rgba(255,255,255,.5);margin-bottom:8px;transition:color .3s}.ft-col a:hover{color:var(--pure)}
+    .ft-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:20px;display:flex;justify-content:space-between;align-items:center;font-size:.6rem;color:rgba(255,255,255,.2)}
+    .ft-bottom a{color:rgba(255,255,255,.2);transition:color .3s;margin-left:20px}.ft-bottom a:hover{color:rgba(255,255,255,.5)}
+    .disclaimer{padding:12px 48px;background:var(--bk3);font-size:.58rem;color:rgba(255,255,255,.12);text-align:center;line-height:1.6;border-top:1px solid rgba(255,255,255,.03)}
+    .sec-center{text-align:center;max-width:680px;margin:0 auto}
+    .sec-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--g2);margin-bottom:10px}
+    .sec-title{font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;line-height:1.05;letter-spacing:-1.5px;color:var(--bk);margin-bottom:16px}
+    .btn-p{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--bk);color:var(--pure);border-radius:980px;font-size:.85rem;font-weight:600;transition:all .3s;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;text-decoration:none}
+    .btn-p:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(0,0,0,.1)}
+    .btn-p svg{width:13px;height:13px;transition:transform .3s}.btn-p:hover svg{transform:translateX(3px)}
+    .reading-progress{position:fixed;top:0;left:0;height:2px;background:var(--blue);z-index:9999;width:0;transition:width .1s linear}
+    @media(max-width:900px){.nav{padding:14px 20px}.nav-links{display:none}.blog-hero{padding:120px 20px 60px}.article-wrap{grid-template-columns:1fr;padding:40px 20px 80px}.article-sidebar{display:none}.related-grid{grid-template-columns:1fr}.related-sec,.faq-sec{padding:60px 20px}.ft-cols{flex-direction:column;gap:28px}.footer{padding:40px 20px 20px}.disclaimer{padding:10px 16px}.cta-card{padding:28px 20px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  </style>
+</head>
+<body>
+
+<div class="preloader" id="preloader"><div style="text-align:center"><div class="pre-word"><span>B</span><span>A</span><span>S</span><span>S</span></div><div class="pre-line" id="preLine"></div></div></div>
+<div class="reading-progress" id="readingProgress"></div>
+
+<nav class="nav" id="nav">
+  <a href="https://basstrading.fr" class="nav-logo">BASS</a>
+  <ul class="nav-links">
+    <li><a href="https://basstrading.fr#methode">Méthode</a></li>
+    <li><a href="https://basstrading.fr#resultats">Résultats</a></li>
+    <li><a href="https://basstrading.fr#avis">Avis</a></li>
+    <li><a href="https://basstrading.fr#faq">FAQ</a></li>
+    <li><a href="https://basstrading.fr/blog/">Blog</a></li>
+  </ul>
+  <a href="https://basstrading.fr#candidater" class="nav-cta">Candidater</a>
+</nav>
+
+<section class="blog-hero">
+  <div class="blog-hero-inner">
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <a href="https://basstrading.fr">Accueil</a><span class="sep">/</span>
+      <a href="https://basstrading.fr/blog/">Blog</a><span class="sep">/</span>
+      <span>Delta — Pression Directionnelle</span>
+    </nav>
+    <div class="blog-hero-cat">Order Flow</div>
+    <h1 class="blog-hero-title">Delta :<br>Mesurer la Pression Directionnelle Bougie par Bougie</h1>
+    <p class="blog-hero-desc">Le delta mesure qui des acheteurs ou vendeurs agressifs a dominé sur chaque bougie. Une bougie verte avec un delta négatif ? Alerte rouge. Une bougie rouge avec un delta positif ? Opportunité potentielle. Voici comment lire le delta comme un professionnel.</p>
+    <div class="blog-meta">
+      <div class="blog-meta-author">
+        <div class="blog-meta-avatar"><img src="../../images/bass-presenting.jpg" alt="Sébastien Constant" loading="lazy"></div>
+        <div><div class="blog-meta-name">Sébastien Constant</div><div class="blog-meta-role">Trader & Formateur Order Flow</div></div>
+      </div>
+      <div class="blog-meta-sep"></div>
+      <div class="blog-meta-info"><span>Mars 2026</span><span>11 min de lecture</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="article-wrap">
+  <aside class="article-sidebar">
+    <div class="toc">
+      <div class="toc-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/></svg> Sommaire</div>
+      <ol>
+        <li><a href="#definition">Qu'est-ce que le delta ?</a></li>
+        <li><a href="#positif-negatif">Delta positif vs négatif</a></li>
+        <li><a href="#divergences">Divergences delta/prix</a></li>
+        <li><a href="#absorbe">Le delta absorbé</a></li>
+        <li><a href="#delta-footprint">Delta dans le Footprint</a></li>
+        <li><a href="#max-delta">Max delta et retournements</a></li>
+        <li><a href="#vs-cvd">Delta vs CVD</a></li>
+        <li><a href="#seuils">Seuils et calibration</a></li>
+        <li><a href="#bass">Apprendre avec BASS</a></li>
+      </ol>
+    </div>
+  </aside>
+
+  <article class="article-body">
+    <h2 id="definition">Qu'est-ce que le delta ?</h2>
+    <p>Le marché fonctionne avec deux types d'ordres : les <strong>ordres passifs</strong> (limit orders — ils attendent d'être exécutés) et les <strong>ordres agressifs</strong> (market orders — ils frappent immédiatement la meilleure contrepartie disponible). Le delta mesure l'équilibre entre ces deux types d'agressivité.</p>
+    <p><strong>Delta = Volume Ask − Volume Bid</strong></p>
+    <p>Volume Ask = tous les contrats exécutés contre des vendeurs passifs (acheteurs agressifs qui frappent l'Ask). Volume Bid = tous les contrats exécutés contre des acheteurs passifs (vendeurs agressifs qui frappent le Bid).</p>
+    <p>Un delta <strong>positif</strong> : plus d'achats agressifs que de ventes agressives. Des acheteurs ont décidé d'entrer maintenant, sans attendre. Un delta <strong>négatif</strong> : plus de ventes agressives. Des vendeurs veulent sortir ou shorter au marché. Un delta <strong>nul</strong> : parfait équilibre — autant d'acheteurs que de vendeurs agressifs.</p>
+
+    <div class="key-concept">
+      <div class="key-concept-label">Formule</div>
+      <h4>Delta = Ask Volume − Bid Volume</h4>
+      <p>Exemple concret sur ES (S&P 500 Futures) : bougie 5 minutes avec 45 000 contrats échangés côté Ask et 38 000 côté Bid → Delta = +7 000. Les acheteurs agressifs ont dominé cette bougie de 7 000 contrats nets.</p>
+    </div>
+
+    <h2 id="positif-negatif">Delta positif vs négatif : ce que ça signifie vraiment</h2>
+    <p>L'erreur classique des débutants : croire qu'un delta positif = bougie haussière et delta négatif = bougie baissière. C'est faux. Et cette incompréhension est exactement ce que les institutionnels exploitent.</p>
+
+    <h3>Delta positif + bougie haussière = confirmation saine</h3>
+    <p>Le prix monte, les acheteurs agressifs dominent. La tendance est saine — portée par une conviction réelle. Les ordres market buy confirment le mouvement. C'est le pattern à suivre en tendance : restez long, trailing stop.</p>
+
+    <h3>Delta positif + bougie baissière = signal d'alerte</h3>
+    <p>Plus d'acheteurs agressifs que de vendeurs, mais le prix baisse quand même. Ce paradoxe apparent s'explique : des <strong>vendeurs passifs massifs</strong> (limit orders) absorbent chaque achat agressif et font descendre le prix. C'est de la distribution institutionnelle. Les retail achètent en pensant que le marché va monter — les mains fortes vendent en limitant contre eux. Signal baissier puissant.</p>
+
+    <h3>Delta négatif + bougie haussière = signal d'alerte</h3>
+    <p>Le prix monte mais les vendeurs agressifs dominent. Des <strong>acheteurs passifs massifs</strong> absorbent les ventes et poussent le prix vers le haut. C'est de l'accumulation institutionnelle silencieuse. Signal haussier caché.</p>
+
+    <h3>Delta négatif + bougie baissière = confirmation saine</h3>
+    <p>Le prix baisse, les vendeurs agressifs dominent. La tendance baissière est portée par une conviction réelle. Restez short, trailing stop.</p>
+
+    <h2 id="divergences">Les divergences delta/prix</h2>
+    <p>Les divergences entre le delta et le prix sont parmi les signaux les plus puissants du <a href="/blog/footprint-chart-trading/">Footprint Chart</a>. Voici les patterns les plus importants.</p>
+
+    <h3>Divergence baissière classique</h3>
+    <p>Le prix fait un nouveau sommet. Le delta de la bougie de sommet est plus faible (moins positif ou même négatif) que le delta du sommet précédent. La poussée haussière s'essouffle — de moins en moins d'acheteurs agressifs pour atteindre ces nouveaux niveaux. Signal : retournement ou pause significative imminente. Confirmation : bougie suivante avec delta négatif fort et clôture en dessous du milieu de la bougie de sommet.</p>
+
+    <h3>Divergence haussière classique</h3>
+    <p>Le prix fait un nouveau creux. Le delta du creux est moins négatif que le creux précédent. La pression vendeuse s'épuise. Des acheteurs passifs absorbent de plus en plus efficacement. Signal : rebond imminent. Confirmation : bougie avec delta positif fort et cassure du plus haut de la bougie de creux.</p>
+
+    <div class="info-box">
+      <div class="info-box-title">⚡ Divergences sur niveaux clés = trades premium</div>
+      <p>Une divergence delta/prix sur un niveau structurel fort (VAH, VAL, POC, résistance horizontale) a une probabilité de réussite bien supérieure à une divergence en plein milieu d'un range. Le niveau donne le contexte, la divergence donne le timing. C'est la combinaison que les traders BASS recherchent quotidiennement.</p>
+    </div>
+
+    <h2 id="absorbe">Le delta absorbé : la signature des institutionnels</h2>
+    <p>Le <strong>delta absorbé</strong> est l'une des configurations les plus importantes de l'analyse delta. Elle se produit quand un fort delta dans une direction ne parvient pas à déplacer le prix de manière correspondante.</p>
+
+    <h3>Absorption vendeuse (delta positif absorbé)</h3>
+    <p>Scénario : +8 000 delta sur une bougie de 5 minutes, mais le prix ne monte que de 2 ticks. Des vendeurs institutionnels en limite ont absorbé 7 900 contrats d'achats agressifs — le prix n'a presque pas bougé malgré une pression acheteuse massive. Ce niveau est un plafond institutionnel. Les professionnels vendent massivement ici. Signal baissier de haute conviction.</p>
+
+    <h3>Absorption acheteuse (delta négatif absorbé)</h3>
+    <p>Inverse : −6 000 delta, prix monte de 1 tick. Des acheteurs institutionnels absorbent toutes les ventes agressives. Le plancher est défendu. Signal haussier de haute conviction — c'est exactement ici que les mains fortes accumulent. Surveiller le retournement.</p>
+
+    <h3>Comment quantifier l'absorption</h3>
+    <p>La règle empirique des professionnels : si le delta est supérieur à 2-3x le mouvement de prix habituel de la session sans déplacement correspondant du prix, vous avez de l'absorption. Sur Sierra Chart, vous pouvez afficher le "Delta per Tick" pour normaliser cette mesure.</p>
+
+    <h2 id="delta-footprint">Comment le delta s'affiche dans le Footprint</h2>
+    <p>Dans le <a href="/blog/footprint-chart-trading/">Footprint Chart</a>, le delta n'est pas un seul chiffre — il est décomposé <strong>niveau par niveau</strong>. Chaque cellule du Footprint montre le volume Ask et Bid à ce prix précis. Le delta de chaque cellule est la différence.</p>
+    <p>Cela permet de voir des choses qu'un delta de bougie agrégé masque :</p>
+    <ul>
+      <li><strong>Delta positif en bas de bougie, négatif en haut</strong> : des acheteurs ont poussé au milieu, mais des vendeurs ont pris le dessus en haut. Signe de résistance dans le haut de la bougie.</li>
+      <li><strong>Delta négatif concentré sur 2-3 niveaux de prix</strong> : de gros vendeurs se sont concentrés à ces niveaux précis — c'est une zone de résistance technique forte.</li>
+      <li><strong>Delta positif massif dans le bas d'une bougie baissière</strong> : acheteurs institutionnels en embuscade dans les bas — potentiel de rebond fort.</li>
+    </ul>
+
+    <h2 id="max-delta">Max delta et retournements intrabougie</h2>
+    <p>Le <strong>max delta</strong> est le delta maximum atteint pendant la formation de la bougie — pas le delta de clôture. La différence entre le max delta et le delta de clôture vous dit combien de pression directionnelle a été <em>absorbée</em> pendant la formation de la bougie.</p>
+    <p>Exemple : une bougie a atteint un delta de +12 000 contrats en cours de formation, mais clôture à +2 000. Cela signifie que 10 000 contrats de pression acheteuse ont été absorbés. C'est un signal de résistance forte dans cette bougie — les vendeurs passifs ont tenu leur position.</p>
+    <p>Le max delta est disponible dans Sierra Chart sous forme d'étude additionnelle. C'est l'un des outils les plus utilisés par les traders BASS pour qualifier la force réelle d'un mouvement.</p>
+
+    <h2 id="vs-cvd">Delta vs CVD : quelle différence ?</h2>
+
+    <table class="compare-table">
+      <thead><tr><th>Indicateur</th><th>Fenêtre temporelle</th><th>Usage principal</th></tr></thead>
+      <tbody>
+        <tr><td>Delta (bougie)</td><td>Une seule bougie</td><td>Conviction de la bougie actuelle, divergences ponctuelles</td></tr>
+        <tr><td>CVD (session)</td><td>Toute la session</td><td>Tendance de fond, divergences sur la journée entière</td></tr>
+        <tr><td>Delta (Footprint)</td><td>Niveau de prix dans une bougie</td><td>Analyse micro, absorption précise</td></tr>
+      </tbody>
+    </table>
+
+    <p>En pratique, utilisez le <a href="/blog/cvd-cumulative-volume-delta/">CVD</a> pour le biais directionnel de la session et le delta par bougie pour qualifier chaque signal d'entrée individuel. Le delta Footprint (niveau par niveau) est votre outil de précision pour les entrées et les stops.</p>
+
+    <h2 id="seuils">Seuils et calibration du delta</h2>
+    <p>Un delta de +500 contrats est-il significatif ? Tout dépend du marché et de la période. La calibration est essentielle.</p>
+    <ul>
+      <li><strong>ES (S&P 500 Futures) :</strong> en session principale, un delta significatif sur 5 min est généralement &gt;5 000 contrats. Aux heures creuses, 1 000 peut suffire.</li>
+      <li><strong>NQ (Nasdaq Futures) :</strong> volumes naturellement plus faibles. 2 000 à 3 000 contrats sur 5 min est déjà significatif.</li>
+      <li><strong>CL (Crude Oil) :</strong> très liquide en session US, delta significatif à partir de 500-1 000 contrats sur 5 min.</li>
+    </ul>
+    <p>La règle pratique : comparez le delta actuel aux deltas des bougies récentes. Un delta 2x à 3x supérieur à la moyenne des 10 dernières bougies est un signal à surveiller, quel que soit le marché.</p>
+
+    <h2 id="bass">Apprendre à lire le delta avec BASS Trading</h2>
+    <p>Le delta est l'ADN de chaque bougie dans l'analyse order flow. Dans le mentorat BASS, chaque entrée est validée par le delta : est-ce que la pression directionnelle confirme le setup ? Y a-t-il de l'absorption ? La divergence est-elle sur un niveau structurel ?</p>
+    <p>Cette discipline — vérifier le delta avant chaque entrée — élimine une grande partie des faux signaux qui coûtent des comptes aux traders retail. Le delta ne garantit pas le succès, mais il filtre les trades à faible conviction.</p>
+
+    <div class="cta-card">
+      <div class="cta-card-label">Mentorat</div>
+      <h3>Tradez avec la conviction, pas contre elle.</h3>
+      <p>Delta + Footprint + CVD + Volume Profile. 70h de formation order flow — la méthode complète de Sébastien Constant.</p>
+      <a href="https://basstrading.fr#candidater" class="btn-p">Vérifier mon éligibilité <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+    </div>
+  </article>
+</div>
+
+<section class="faq-sec">
+  <div class="sec-center"><div class="sec-label">FAQ</div><h2 class="sec-title">Questions fréquentes</h2></div>
+  <div class="faq-list">
+    <div class="fi"><button class="fq" onclick="tf(this)">C'est quoi le delta en trading ? <span class="fq-icon">+</span></button><div class="fa"><p>Delta = Volume Ask − Volume Bid. Positif = acheteurs agressifs ont dominé. Négatif = vendeurs agressifs ont dominé. C'est la mesure directe de la pression directionnelle sur une bougie.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Bougie verte avec delta négatif — que faire ? <span class="fq-icon">+</span></button><div class="fa"><p>Signal d'alerte baissier. Des acheteurs passifs (limit orders) ont fait monter le prix malgré la dominance vendeuse agressive. Ce type de mouvement est souvent fragile — pas de vrai momentum acheteur derrière. Prudence pour les longs.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">C'est quoi le delta absorbé ? <span class="fq-icon">+</span></button><div class="fa"><p>Fort delta dans une direction sans déplacement correspondant du prix. Des ordres passifs massifs absorbent chaque ordre agressif. C'est la signature d'une présence institutionnelle forte à ce niveau — l'un des signaux les plus puissants en order flow.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Quelle différence delta vs CVD ? <span class="fq-icon">+</span></button><div class="fa"><p>Delta = pression d'une bougie (micro). CVD = accumulation des deltas depuis le début de la session (macro). Delta pour qualifier l'entrée, CVD pour le biais directionnel de la journée.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Quel logiciel pour voir le delta ? <span class="fq-icon">+</span></button><div class="fa"><p>Sierra Chart avec le Numbers Bars / Footprint natif. ATAS et Quantower l'affichent également. Sierra Chart offre le max delta, delta par niveau de prix, et le CVD dans un package intégré.</p></div></div>
+  </div>
+</section>
+
+<section class="related-sec">
+  <div class="sec-center"><div class="sec-label">Continuer la lecture</div><h2 class="sec-title">Articles connexes</h2></div>
+  <div class="related-grid">
+    <a href="/blog/cvd-cumulative-volume-delta/" class="related-card"><div class="related-cat">Order Flow</div><h3>CVD : le delta cumulatif expliqué</h3><p>Du delta par bougie au CVD de session — la vision macro.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/footprint-chart-trading/" class="related-card"><div class="related-cat">Guide</div><h3>Footprint Chart : guide complet</h3><p>Le delta décomposé niveau par niveau — la lecture ultime.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/absorption-order-flow/" class="related-card"><div class="related-cat">Analyse</div><h3>Absorption : quand les institutionnels mangent les ordres</h3><p>Le delta absorbé en pratique — patterns et exemples concrets.</p><span class="related-link">Lire &rarr;</span></a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="ft-top"><div class="ft-logo">BASS</div><div class="ft-cols">
+    <div class="ft-col"><div class="ft-col-title">Programme</div><a href="https://basstrading.fr#methode">Méthode</a><a href="https://basstrading.fr#programme">Programme</a><a href="https://basstrading.fr#certification">Certification</a><a href="https://basstrading.fr#candidater">Candidater</a></div>
+    <div class="ft-col"><div class="ft-col-title">Ressources</div><a href="/blog/delta-footprint-trading/">Delta</a><a href="/blog/cvd-cumulative-volume-delta/">CVD</a><a href="/blog/footprint-chart-trading/">Footprint Chart</a><a href="/blog/absorption-order-flow/">Absorption</a></div>
+    <div class="ft-col"><div class="ft-col-title">Écosystème</div><a href="https://hubtrading.fr" target="_blank" rel="noopener">HubTrading.fr</a><a href="https://x-trade.ai" target="_blank" rel="noopener">x-trade.ai</a><a href="mailto:contact@basstrading.fr">Contact</a></div>
+  </div></div>
+  <div class="ft-bottom"><span>&copy; 2026 BASS — Sébastien Constant</span><div><a href="https://basstrading.fr/mentions-legales.html">Mentions légales</a><a href="https://basstrading.fr/confidentialite.html">Confidentialité</a><a href="https://basstrading.fr/cgv.html">CGV</a></div></div>
+</footer>
+<div class="disclaimer">Le trading comporte des risques de perte en capital. Les performances passées ne préjugent pas des performances futures. Ce site ne constitue pas un conseil en investissement.</div>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+const lenis=new Lenis({duration:1.2,easing:t=>Math.min(1,1.001-Math.pow(2,-10*t))});
+function raf(t){lenis.raf(t);requestAnimationFrame(raf)}requestAnimationFrame(raf);
+lenis.on('scroll',ScrollTrigger.update);gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0);
+const tl=gsap.timeline();
+tl.to('.pre-word span',{y:0,opacity:1,duration:.5,stagger:.1,ease:'power3.out',delay:.3}).to('#preLine',{width:'80px',duration:.7,ease:'power2.inOut'},'<+.2').to('.preloader',{yPercent:-100,duration:.8,ease:'power3.inOut',delay:.4}).set('.preloader',{display:'none'}).to('#nav',{opacity:1,y:0,duration:.5},'<+.1');
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);const h=document.documentElement.scrollHeight-window.innerHeight;document.getElementById('readingProgress').style.width=(window.scrollY/h*100)+'%'});
+const tocLinks=document.querySelectorAll('.toc a');const sections=Array.from(tocLinks).map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+window.addEventListener('scroll',()=>{let c='';sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)c=s.id});tocLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+c)})});
+function tf(b){const i=b.closest('.fi'),a=b.nextElementSibling,o=i.classList.contains('active');document.querySelectorAll('.fi').forEach(x=>{x.classList.remove('active');x.querySelector('.fa').classList.remove('open')});if(!o){i.classList.add('active');a.classList.add('open')}}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();lenis.scrollTo(t,{offset:-60})}})});
+</script>
+</body>
+</html>

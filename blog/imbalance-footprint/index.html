@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Imbalance Footprint : Guide Complet des Déséquilibres de Volume | Bass Trading</title>
+  <meta name="description" content="Maîtrisez les imbalances Footprint : déséquilibres bid/ask, stacked imbalances, zones non remplies et ratios. Guide expert pour trader les déséquilibres de volume en futures." />
+  <meta name="keywords" content="imbalance footprint, déséquilibre volume, stacked imbalances, bid ask imbalance, footprint chart, order flow trading" />
+  <link rel="canonical" href="https://basstrading.fr/blog/imbalance-footprint/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Imbalance Footprint : Guide Complet des Déséquilibres de Volume" />
+  <meta property="og:description" content="Maîtrisez les imbalances Footprint : déséquilibres bid/ask, stacked imbalances, zones non remplies et ratios. Guide expert pour trader les déséquilibres de volume." />
+  <meta property="og:url" content="https://basstrading.fr/blog/imbalance-footprint/" />
+  <meta property="og:site_name" content="Bass Trading" />
+  <meta property="og:image" content="https://basstrading.fr/assets/og-imbalance-footprint.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Imbalance Footprint : Guide Complet des Déséquilibres de Volume" />
+  <meta name="twitter:description" content="Maîtrisez les imbalances Footprint : déséquilibres bid/ask, stacked imbalances et zones non remplies." />
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "headline": "Imbalance Footprint : Guide Complet des Déséquilibres de Volume",
+        "description": "Maîtrisez les imbalances Footprint : déséquilibres bid/ask, stacked imbalances, zones non remplies et ratios.",
+        "author": {"@type": "Person", "name": "Bass Trading", "url": "https://basstrading.fr"},
+        "publisher": {"@type": "Organization", "name": "Bass Trading", "url": "https://basstrading.fr"},
+        "datePublished": "2026-03-28",
+        "dateModified": "2026-03-28",
+        "mainEntityOfPage": {"@type": "WebPage", "@id": "https://basstrading.fr/blog/imbalance-footprint/"},
+        "articleSection": "Order Flow Trading",
+        "inLanguage": "fr-FR"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://basstrading.fr/"},
+          {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://basstrading.fr/blog/"},
+          {"@type": "ListItem", "position": 3, "name": "Imbalance Footprint", "item": "https://basstrading.fr/blog/imbalance-footprint/"}
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Qu'est-ce qu'une imbalance sur un Footprint Chart ?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Une imbalance (déséquilibre) apparaît quand le volume d'un côté (bid ou ask) dépasse significativement l'autre, généralement selon un ratio de 3:1 ou 4:1. Cela indique une agressivité dominante d'un camp et préfigure souvent une continuation directionnelle."}
+          },
+          {
+            "@type": "Question",
+            "name": "C'est quoi les stacked imbalances ?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Les stacked imbalances sont plusieurs niveaux consécutifs d'imbalances dans la même direction sur une bougie Footprint. Elles créent des zones à haute probabilité de réaction car elles matérialisent un déséquilibre fort et persistant sur plusieurs prix."}
+          },
+          {
+            "@type": "Question",
+            "name": "Quel ratio utiliser pour identifier une imbalance ?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Le ratio standard est 3:1 (un côté représente 3 fois l'autre). Certains traders utilisent 4:1 pour des signaux plus forts. Sur Sierra Chart ou Bookmap, ce seuil est paramétrable. Plus le ratio est élevé, plus l'imbalance est significative mais moins fréquente."}
+          },
+          {
+            "@type": "Question",
+            "name": "Les zones d'imbalance non remplies sont-elles importantes ?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Oui, les zones d'imbalance non remplies (unfilled imbalances) agissent souvent comme des zones magnétiques. Le marché a tendance à revenir les 'combler' car elles représentent des prix où les échanges ont été déséquilibrés, créant un besoin de retour pour compléter l'enchère."}
+          },
+          {
+            "@type": "Question",
+            "name": "Comment combiner les imbalances avec d'autres outils ?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Les imbalances sont plus puissantes en confluence avec le Volume Profile (POC, VAH, VAL), le delta, et les niveaux de structure. Une stacked imbalance bullish au POC ou à la VAL d'une session est un setup haute probabilité. Évitez les imbalances isolées sans contexte."}
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bk: #1D1D1F;
+      --bk2: #111;
+      --bk3: #0A0A0A;
+      --g1: #6E6E73;
+      --g2: #86868B;
+      --g3: #D2D2D7;
+      --g4: #F5F5F7;
+      --pure: #FFF;
+      --green: #00B67A;
+      --blue: #0066FF;
+      --radius: 18px;
+      --radius-sm: 10px;
+      --transition: .45s cubic-bezier(.25,.46,.45,.94);
+    }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body { background: var(--bk3); color: var(--g4); font-family: 'DM Sans', sans-serif; font-size: 1rem; line-height: 1.7; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+
+    /* Preloader */
+    #preloader { position: fixed; inset: 0; background: var(--bk3); z-index: 9999; display: flex; align-items: center; justify-content: center; }
+    #preloader .pl-logo { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: clamp(1.5rem, 4vw, 2.5rem); color: var(--pure); letter-spacing: -.03em; }
+    #preloader .pl-logo span { color: var(--green); }
+
+    /* Nav */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; background: rgba(10,10,10,.85); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,.06); }
+    .nav-logo { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 1.25rem; color: var(--pure); text-decoration: none; letter-spacing: -.02em; }
+    .nav-logo span { color: var(--green); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { color: var(--g2); text-decoration: none; font-size: .9rem; font-weight: 500; transition: color var(--transition); }
+    .nav-links a:hover { color: var(--pure); }
+    .nav-cta { background: var(--green); color: #000; padding: .5rem 1.25rem; border-radius: 100px; font-weight: 600; font-size: .875rem; text-decoration: none; transition: opacity var(--transition); }
+    .nav-cta:hover { opacity: .85; }
+
+    /* Hero */
+    .blog-hero { padding: 9rem 2rem 4rem; max-width: 900px; margin: 0 auto; }
+    .hero-badge { display: inline-flex; align-items: center; gap: .5rem; background: rgba(0,182,122,.1); border: 1px solid rgba(0,182,122,.25); color: var(--green); padding: .35rem .9rem; border-radius: 100px; font-size: .8rem; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 1.5rem; }
+    .hero-badge::before { content: ''; width: 6px; height: 6px; background: var(--green); border-radius: 50%; }
+    .blog-hero h1 { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.1; letter-spacing: -.04em; color: var(--pure); margin-bottom: 1.25rem; }
+    .blog-hero .subtitle { font-size: 1.15rem; color: var(--g2); max-width: 680px; line-height: 1.65; margin-bottom: 2rem; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 1.5rem; font-size: .85rem; color: var(--g1); }
+    .hero-meta span { display: flex; align-items: center; gap: .4rem; }
+
+    /* Article layout */
+    .article-wrap { max-width: 1100px; margin: 0 auto; padding: 3rem 2rem 5rem; display: grid; grid-template-columns: 220px 1fr; gap: 4rem; align-items: start; }
+
+    /* TOC sidebar */
+    .toc-sidebar { position: sticky; top: 6rem; }
+    .toc-sidebar h3 { font-family: 'Outfit', sans-serif; font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--g1); margin-bottom: 1rem; }
+    .toc-list { list-style: none; display: flex; flex-direction: column; gap: .1rem; }
+    .toc-list a { display: block; color: var(--g2); text-decoration: none; font-size: .82rem; padding: .4rem .75rem; border-left: 2px solid rgba(255,255,255,.07); transition: all var(--transition); line-height: 1.4; }
+    .toc-list a:hover, .toc-list a.active { color: var(--pure); border-left-color: var(--green); }
+
+    /* Article body */
+    .article-body h2 { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: clamp(1.4rem, 3vw, 1.9rem); letter-spacing: -.03em; color: var(--pure); margin: 3rem 0 1rem; line-height: 1.25; }
+    .article-body h3 { font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 1.2rem; color: var(--g3); margin: 2rem 0 .75rem; }
+    .article-body p { margin-bottom: 1.25rem; color: var(--g3); }
+    .article-body strong { color: var(--pure); font-weight: 600; }
+    .article-body ul, .article-body ol { margin: 1rem 0 1.5rem 1.25rem; display: flex; flex-direction: column; gap: .5rem; color: var(--g3); }
+    .article-body li { line-height: 1.65; }
+    .article-body a { color: var(--green); text-decoration: none; border-bottom: 1px solid rgba(0,182,122,.3); transition: border-color var(--transition); }
+    .article-body a:hover { border-bottom-color: var(--green); }
+
+    /* Callout boxes */
+    .callout { background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.08); border-left: 3px solid var(--green); border-radius: var(--radius-sm); padding: 1.25rem 1.5rem; margin: 2rem 0; }
+    .callout.blue { border-left-color: var(--blue); }
+    .callout.warning { border-left-color: #F5A623; }
+    .callout p { margin: 0; font-size: .95rem; }
+    .callout strong { color: var(--green); }
+    .callout.blue strong { color: var(--blue); }
+    .callout.warning strong { color: #F5A623; }
+
+    /* Data table */
+    .data-table { width: 100%; border-collapse: collapse; margin: 2rem 0; font-size: .9rem; }
+    .data-table th { background: rgba(255,255,255,.05); color: var(--pure); font-family: 'Outfit', sans-serif; font-weight: 600; text-align: left; padding: .75rem 1rem; border-bottom: 1px solid rgba(255,255,255,.1); }
+    .data-table td { padding: .7rem 1rem; color: var(--g3); border-bottom: 1px solid rgba(255,255,255,.05); }
+    .data-table tr:hover td { background: rgba(255,255,255,.02); }
+    .tag-green { background: rgba(0,182,122,.15); color: var(--green); padding: .2rem .6rem; border-radius: 4px; font-size: .8rem; font-weight: 600; }
+    .tag-red { background: rgba(255,59,48,.15); color: #FF3B30; padding: .2rem .6rem; border-radius: 4px; font-size: .8rem; font-weight: 600; }
+    .tag-blue { background: rgba(0,102,255,.15); color: var(--blue); padding: .2rem .6rem; border-radius: 4px; font-size: .8rem; font-weight: 600; }
+
+    /* Key metric cards */
+    .metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin: 2rem 0; }
+    .metric-card { background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.07); border-radius: var(--radius-sm); padding: 1.25rem; text-align: center; }
+    .metric-card .val { font-family: 'Outfit', sans-serif; font-size: 1.75rem; font-weight: 800; color: var(--green); letter-spacing: -.04em; }
+    .metric-card .lbl { font-size: .8rem; color: var(--g1); margin-top: .25rem; }
+
+    /* FAQ */
+    .faq-section { max-width: 1100px; margin: 0 auto; padding: 3rem 2rem 5rem; border-top: 1px solid rgba(255,255,255,.07); }
+    .faq-section h2 { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: clamp(1.5rem, 3vw, 2rem); letter-spacing: -.04em; color: var(--pure); margin-bottom: 2rem; }
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,.07); }
+    .faq-q { width: 100%; background: none; border: none; color: var(--pure); font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 500; text-align: left; padding: 1.25rem 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem; transition: color var(--transition); }
+    .faq-q:hover { color: var(--green); }
+    .faq-icon { width: 22px; height: 22px; border-radius: 50%; border: 1px solid rgba(255,255,255,.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: .85rem; transition: transform var(--transition), background var(--transition); }
+    .faq-item.open .faq-icon { transform: rotate(45deg); background: rgba(0,182,122,.15); border-color: var(--green); color: var(--green); }
+    .faq-a { display: none; padding-bottom: 1.25rem; color: var(--g2); line-height: 1.7; font-size: .95rem; }
+    .faq-item.open .faq-a { display: block; }
+
+    /* Related articles */
+    .related-section { max-width: 1100px; margin: 0 auto; padding: 3rem 2rem 5rem; border-top: 1px solid rgba(255,255,255,.07); }
+    .related-section h2 { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 1.5rem; letter-spacing: -.03em; color: var(--pure); margin-bottom: 2rem; }
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; }
+    .related-card { background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.07); border-radius: var(--radius); padding: 1.5rem; text-decoration: none; transition: all var(--transition); display: block; }
+    .related-card:hover { background: rgba(255,255,255,.055); border-color: rgba(255,255,255,.13); transform: translateY(-3px); }
+    .related-card .rc-tag { font-size: .75rem; font-weight: 600; color: var(--green); text-transform: uppercase; letter-spacing: .07em; margin-bottom: .75rem; }
+    .related-card h3 { font-family: 'Outfit', sans-serif; font-size: 1rem; font-weight: 700; color: var(--pure); line-height: 1.35; margin-bottom: .5rem; border: none; }
+    .related-card p { font-size: .85rem; color: var(--g2); line-height: 1.5; margin: 0; }
+
+    /* Footer */
+    footer { background: var(--bk2); border-top: 1px solid rgba(255,255,255,.07); padding: 3rem 2rem; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1.5rem; }
+    .footer-logo { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 1.1rem; color: var(--pure); }
+    .footer-logo span { color: var(--green); }
+    .footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    .footer-links a { color: var(--g1); text-decoration: none; font-size: .85rem; transition: color var(--transition); }
+    .footer-links a:hover { color: var(--pure); }
+    .footer-copy { width: 100%; text-align: center; color: var(--g1); font-size: .8rem; margin-top: 1rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,.06); }
+
+    /* Disclaimer */
+    .disclaimer { max-width: 1100px; margin: 0 auto 3rem; padding: 0 2rem; }
+    .disclaimer p { font-size: .78rem; color: var(--g1); line-height: 1.6; }
+
+    @media (max-width: 768px) {
+      .article-wrap { grid-template-columns: 1fr; }
+      .toc-sidebar { display: none; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="pl-logo">Bass<span>.</span></div>
+  </div>
+
+  <!-- Nav -->
+  <nav>
+    <a href="/" class="nav-logo">Bass<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="/#formations">Formations</a></li>
+      <li><a href="/#apropos">À propos</a></li>
+    </ul>
+    <a href="/#contact" class="nav-cta">Rejoindre</a>
+  </nav>
+
+  <!-- Hero -->
+  <header class="blog-hero">
+    <div class="hero-badge">Order Flow Trading</div>
+    <h1>Imbalance Footprint : Guide Complet des Déséquilibres de Volume</h1>
+    <p class="subtitle">Les imbalances sont les empreintes laissées par les gros opérateurs sur le Footprint Chart. Apprenez à les identifier, les quantifier et les trader avec précision sur les marchés futures.</p>
+    <div class="hero-meta">
+      <span>📅 Mars 2026</span>
+      <span>⏱ 16 min de lecture</span>
+      <span>📊 Order Flow · Footprint · Futures</span>
+    </div>
+  </header>
+
+  <!-- Article -->
+  <div class="article-wrap">
+    <!-- TOC -->
+    <aside class="toc-sidebar">
+      <h3>Sommaire</h3>
+      <ul class="toc-list">
+        <li><a href="#definition">Qu'est-ce qu'une imbalance ?</a></li>
+        <li><a href="#lecture">Lire le Footprint</a></li>
+        <li><a href="#ratios">Ratios et seuils</a></li>
+        <li><a href="#stacked">Stacked imbalances</a></li>
+        <li><a href="#unfilled">Zones non remplies</a></li>
+        <li><a href="#bullish-bearish">Types d'imbalances</a></li>
+        <li><a href="#confluence">Confluence et contexte</a></li>
+        <li><a href="#setups">Setups concrets</a></li>
+        <li><a href="#erreurs">Erreurs fréquentes</a></li>
+      </ul>
+    </aside>
+
+    <!-- Body -->
+    <article class="article-body">
+
+      <h2 id="definition">Qu'est-ce qu'une imbalance Footprint ?</h2>
+      <p>Sur un <a href="/blog/footprint-chart-trading/">Footprint Chart</a>, chaque barre de prix affiche le volume transacté à chaque niveau de prix sous une forme bid×ask — par exemple <strong>250×820</strong>. Cela signifie que 250 contrats ont été vendus à ce prix (bid agressif) contre 820 achetés (ask agressif). Quand l'un des deux côtés domine massivement l'autre, on parle d'<strong>imbalance</strong> (déséquilibre).</p>
+
+      <p>Techniquement, une imbalance est définie comme un ratio où un côté dépasse l'autre d'un facteur prédéfini — généralement <strong>3:1 ou 4:1</strong>. Dans notre exemple 250×820, le ratio est 3,28 côté ask : c'est une imbalance bullish, signalant que les acheteurs ont frappé l'ask de façon disproportionnée à ce niveau de prix.</p>
+
+      <div class="callout">
+        <p><strong>Principe clé :</strong> Une imbalance n'indique pas forcément la direction finale du marché. Elle révèle <em>où</em> et <em>comment</em> les transactions ont eu lieu. Couplée au contexte (Volume Profile, structure, delta), elle devient un outil de précision redoutable.</p>
+      </div>
+
+      <p>Les imbalances sont particulièrement prisées par les traders order flow parce qu'elles cartographient visuellement l'agressivité des participants. Là où un chandelier japonais classique montre uniquement ouverture/haute/basse/clôture, le Footprint révèle chaque niveau de prix contesté et son déséquilibre — une information invisible aux traders conventionnels.</p>
+
+      <h2 id="lecture">Comment lire les imbalances sur un Footprint Chart</h2>
+      <p>Sur Sierra Chart ou Bookmap, les imbalances sont généralement surlignées en couleur. Les imbalances bullish (côté ask dominant) apparaissent en <strong>vert ou bleu</strong>, les imbalances bearish (côté bid dominant) en <strong>rouge ou orange</strong>. Cette visualisation permet d'identifier d'un coup d'œil les zones de déséquilibre sans calculer chaque ratio manuellement.</p>
+
+      <h3>Structure d'une bougie Footprint avec imbalances</h3>
+      <p>Imaginez une bougie haussière sur l'ES. Au niveau de prix le plus bas, on lit <strong>180×620</strong> — imbalance bullish forte (ratio 3,4). Au niveau suivant, <strong>210×890</strong> — encore une imbalance bullish (ratio 4,2). Au sommet, <strong>340×1100</strong> — ratio 3,2. Ces trois niveaux consécutifs avec des imbalances dans la même direction forment des <strong>stacked imbalances</strong>, un signal de forte conviction directionnelle.</p>
+
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <div class="val">3:1</div>
+          <div class="lbl">Ratio standard imbalance</div>
+        </div>
+        <div class="metric-card">
+          <div class="val">4:1</div>
+          <div class="lbl">Ratio fort / haute conviction</div>
+        </div>
+        <div class="metric-card">
+          <div class="val">3+</div>
+          <div class="lbl">Niveaux pour stacked imbalance</div>
+        </div>
+        <div class="metric-card">
+          <div class="val">70%</div>
+          <div class="lbl">Taux de retour sur zones unfilled</div>
+        </div>
+      </div>
+
+      <h3>Les deux types fondamentaux</h3>
+      <ul>
+        <li><strong>Ask imbalance (bullish) :</strong> Les acheteurs frappent l'ask agressivement. Volume ask >> Volume bid. Marque une zone d'absorption des vendeurs ou d'initiation haussière.</li>
+        <li><strong>Bid imbalance (bearish) :</strong> Les vendeurs frappent le bid agressivement. Volume bid >> Volume ask. Marque une zone d'absorption des acheteurs ou d'initiation baissière.</li>
+      </ul>
+
+      <h2 id="ratios">Ratios et seuils : calibrer votre sensibilité</h2>
+      <p>Le choix du ratio conditionne directement votre lecture du marché. Un ratio trop bas (2:1) générera des faux signaux en quantité ; trop élevé (5:1), vous passerez à côté de nombreuses imbalances valides. La calibration optimale dépend de l'instrument et de la période.</p>
+
+      <table class="data-table">
+        <thead>
+          <tr><th>Instrument</th><th>Ratio recommandé</th><th>Tick size</th><th>Contexte</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>ES (S&P 500 Futures)</td><td>3:1 à 4:1</td><td>0.25</td><td>Liquide, nombreuses imbalances</td></tr>
+          <tr><td>NQ (Nasdaq Futures)</td><td>3:1</td><td>0.25</td><td>Volatil, imbalances fréquentes</td></tr>
+          <tr><td>CL (Crude Oil)</td><td>4:1 à 5:1</td><td>0.01</td><td>Moins liquide, seuil plus strict</td></tr>
+          <tr><td>GC (Gold)</td><td>3:1</td><td>0.10</td><td>Mouvements lents, imbalances nettes</td></tr>
+          <tr><td>ZB (T-Bond)</td><td>4:1</td><td>1/32</td><td>Institutionnel, seuil élevé recommandé</td></tr>
+        </tbody>
+      </table>
+
+      <p>En pratique, la plupart des traders order flow utilisent <strong>3:1 comme filtre de base</strong> puis affinent avec le contexte. Une imbalance 3:1 en plein milieu d'un range a moins de valeur qu'une imbalance 3:1 sur un niveau de support clé du <a href="/blog/volume-profile-guide/">Volume Profile</a>.</p>
+
+      <div class="callout warning">
+        <p><strong>Attention :</strong> Sur des sessions à faible volume (pre-market, après 16h sur l'ES), les ratios sont naturellement exagérés. Un 10:1 sur 50 contrats n'a pas la même signification qu'un 4:1 sur 800 contrats. Contextualisez toujours par le volume absolu, pas uniquement le ratio.</p>
+      </div>
+
+      <h2 id="stacked">Stacked Imbalances : la puissance des déséquilibres empilés</h2>
+      <p>Les stacked imbalances sont la version amplifiée de l'imbalance classique. Elles se produisent quand <strong>3 niveaux de prix consécutifs ou plus</strong> présentent des imbalances dans la même direction au sein d'une même bougie. Cette configuration indique une conviction directionnelle exceptionnelle et crée des zones de haute probabilité pour les retours de prix.</p>
+
+      <h3>Pourquoi les stacked imbalances sont-elles importantes ?</h3>
+      <p>La logique sous-jacente est celle des enchères : quand un camp a frappé de façon répétée et disproportionnée sur plusieurs niveaux consécutifs, il a créé un déséquilibre structurel. Le marché, qui fonctionne comme un mécanisme d'enchères bilatérales (cf. <a href="/blog/auction-market-theory/">Auction Market Theory</a>), a tendance à revenir tester ces zones pour compléter l'enchère — c'est-à-dire pour permettre à l'autre camp de répondre.</p>
+
+      <ul>
+        <li><strong>Stacked bullish imbalances :</strong> Plusieurs niveaux avec ask >> bid dans une bougie haussière. Zone de support future. Le prix y reviendra souvent pour trouver des acheteurs.</li>
+        <li><strong>Stacked bearish imbalances :</strong> Plusieurs niveaux avec bid >> ask dans une bougie baissière. Zone de résistance future. Le prix y reviendra souvent pour trouver des vendeurs.</li>
+      </ul>
+
+      <h3>Identifier les stacked imbalances sur Sierra Chart</h3>
+      <p>Dans Sierra Chart, activez l'affichage des imbalances dans les paramètres du Footprint. Les stacked imbalances se visualisent comme une colonne de cellules surlignées de la même couleur sur plusieurs niveaux verticaux. Plus la colonne est longue, plus le déséquilibre empilé est significatif. Une colonne de 5-6 niveaux consécutifs est un signal rare mais très puissant.</p>
+
+      <div class="callout blue">
+        <p><strong>Setup classique :</strong> Identifier une stacked bearish imbalance dans une bougie de vente impulsive, noter la zone de prix concernée, puis attendre que le prix remonte vers cette zone en session suivante pour initier une position short avec un risk/reward favorable.</p>
+      </div>
+
+      <h2 id="unfilled">Zones non remplies : les aimants du marché</h2>
+      <p>Une zone d'imbalance "non remplie" (unfilled imbalance) est une zone où le déséquilibre initial n'a jamais été comblé par un retour de prix. Elle reste marquée sur le Footprint jusqu'à ce que le marché y revienne et que les transactions se déroulent de façon plus équilibrée à ces niveaux.</p>
+
+      <h3>La théorie du retour sur les unfilled zones</h3>
+      <p>Selon la théorie des enchères, le marché cherche en permanence à <strong>faciliter les échanges</strong>. Un prix où les transactions ont été fortement déséquilibrées est un prix où l'enchère était "incomplète" — un camp a dominé mais l'autre n'a pas pu ou voulu répondre à ce moment. Lors d'un retour futur sur cette zone, on s'attend à voir le camp perdant revenir tenter de corriger ce déséquilibre.</p>
+
+      <p>En pratique, les statistiques montrent que <strong>60-75% des unfilled imbalances</strong> sont revisitées dans les sessions suivantes. Ce taux varie selon :</p>
+      <ul>
+        <li>La distance parcourue depuis la création de l'imbalance</li>
+        <li>Le contexte de marché global (tendance forte vs range)</li>
+        <li>Le volume absolu lors de la création de l'imbalance</li>
+        <li>La présence d'autres niveaux techniques confluents</li>
+      </ul>
+
+      <h3>Comment trader les unfilled imbalances</h3>
+      <p>La méthode la plus commune consiste à noter les zones d'unfilled imbalances sur les séances précédentes et à les utiliser comme <strong>niveaux de prix cibles</strong> ou comme <strong>zones de réaction</strong> lors d'une extension. Si le marché a créé une stacked bearish imbalance à 5600-5602 sur l'ES hier, ces niveaux deviennent des zones de surveillance prioritaires pour aujourd'hui.</p>
+
+      <h2 id="bullish-bearish">Types d'imbalances : bullish, bearish et absorptions</h2>
+      <p>Au-delà de la simple classification bid/ask, les imbalances prennent différentes significations selon leur position dans la structure de prix et la dynamique globale de la bougie.</p>
+
+      <table class="data-table">
+        <thead>
+          <tr><th>Type</th><th>Position</th><th>Signification</th><th>Signal</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><span class="tag-green">Ask imbalance</span></td><td>Bas de bougie haussière</td><td>Initiation d'achat agressif</td><td>Continuation haussière</td></tr>
+          <tr><td><span class="tag-green">Ask imbalance</span></td><td>Bas de bougie baissière</td><td>Absorption des vendeurs par acheteurs</td><td>Possible retournement</td></tr>
+          <tr><td><span class="tag-red">Bid imbalance</span></td><td>Haut de bougie baissière</td><td>Initiation de vente agressive</td><td>Continuation baissière</td></tr>
+          <tr><td><span class="tag-red">Bid imbalance</span></td><td>Haut de bougie haussière</td><td>Absorption des acheteurs par vendeurs</td><td>Possible retournement</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Imbalances d'absorption</h3>
+      <p>Le cas le plus intéressant est celui des imbalances contra-tendance — quand on trouve une ask imbalance dans une bougie baissière, ou une bid imbalance dans une bougie haussière. Ces configurations indiquent de l'<a href="/blog/absorption-order-flow/">absorption</a> : le camp dominant de la bougie tente d'avancer mais rencontre une résistance disproportionnée de l'autre camp. Si cette absorption est suffisamment importante, elle peut mener à un retournement ou au moins à une pause de la tendance.</p>
+
+      <h2 id="confluence">Confluence avec Volume Profile, Delta et structure</h2>
+      <p>Les imbalances seules peuvent générer des faux signaux. C'est en les combinant avec d'autres outils que leur valeur prédictive augmente significativement. Les meilleures opportunités apparaissent quand plusieurs éléments convergent.</p>
+
+      <h3>Imbalances + Volume Profile</h3>
+      <p>Une stacked imbalance bullish qui se forme exactement sur la VAL (Value Area Low) ou le POC d'une session précédente est un signal de forte conviction. Elle confirme que des acheteurs ont défendu activement un niveau de valeur reconnu par le marché. À l'inverse, une stacked bearish imbalance sur la VAH (Value Area High) valide une résistance technique par des données order flow concrètes.</p>
+
+      <h3>Imbalances + Delta</h3>
+      <p>Le <a href="/blog/delta-footprint-trading/">delta</a> et les imbalances sont complémentaires. Le delta mesure le déséquilibre global d'une bougie (somme de tous les ask trades moins tous les bid trades). Les imbalances localisent précisément à quels niveaux de prix ce déséquilibre s'est manifesté. Une bougie avec un delta négatif qui présente des stacked bearish imbalances dans sa partie haute confirme une distribution institutionnelle organisée.</p>
+
+      <h3>Imbalances + CVD</h3>
+      <p>Le <a href="/blog/cvd-cumulative-volume-delta/">CVD (Cumulative Volume Delta)</a> révèle les tendances de long terme du déséquilibre. Si le CVD chute régulièrement depuis plusieurs jours ET que les bougies récentes montrent des stacked bearish imbalances récurrentes, la configuration de vente est robuste et multi-timeframe.</p>
+
+      <div class="callout">
+        <p><strong>Règle des 3 confluences :</strong> Ne tradez une imbalance que si au moins 2 autres éléments convergent — niveau de Volume Profile, delta, CVD, structure horizontale (support/résistance), ou contexte de session (ouverture, clôture Europe, CME open). Deux signaux = setup valide ; un seul = trop risqué.</p>
+      </div>
+
+      <h2 id="setups">Setups concrets basés sur les imbalances</h2>
+      <p>Voyons maintenant comment construire des entrées précises à partir des imbalances en conditions réelles de marché.</p>
+
+      <h3>Setup 1 : Retour sur stacked imbalance + Volume Profile</h3>
+      <p><strong>Contexte :</strong> Marché ES en session de nuit. Bougie impulsive baissière avec stacked bearish imbalances entre 5598 et 5602. Le POC du jour précédent se situe à 5600.</p>
+      <p><strong>Plan :</strong> Attendre le retour sur la zone 5598-5602 en session régulière. Observer le comportement (delta, tape reading, absorption). Si le prix arrive sur la zone avec un delta neutre à positif mais que les vendeurs reprennent la main (delta se retourne négatif, bougies avec bid imbalances), initier un short avec stop au-dessus de 5603 (au-dessus de la stacked zone).</p>
+
+      <h3>Setup 2 : Unfilled imbalance comme target</h3>
+      <p><strong>Contexte :</strong> Le marché NQ présente une unfilled bullish imbalance à 21480-21490 créée deux sessions plus tôt lors d'un move haussier fort. Le marché a retracé depuis et approche de cette zone.</p>
+      <p><strong>Plan :</strong> Utiliser la zone 21480-21490 comme cible pour une position longue ouverte plus bas. Surveiller si le prix ralentit ou accélère sur cette zone. Un ralentissement avec delta négatif (vendeurs réagissent à leur unfilled zone) invite à alléger la position. Une traversée nette (delta positif maintenu) suggère une continuation vers les zones d'imbalances suivantes.</p>
+
+      <h3>Setup 3 : Exhaustion via imbalances contradictoires</h3>
+      <p><strong>Contexte :</strong> Le CL monte depuis l'ouverture. La dernière bougie bullish montre une ask imbalance forte sur les 3 premiers niveaux mais une bid imbalance au niveau le plus haut (le haut de la bougie). Le delta de la bougie commence à diverger (moins positif que les bougies précédentes malgré la continuité haussière).</p>
+      <p><strong>Plan :</strong> L'imbalance contra-tendance au sommet de la bougie combinée à la divergence de delta signale une possible exhaustion. Réduire les positions longues, serrer les stops, ne pas initier de nouveaux longs jusqu'à confirmation.</p>
+
+      <h2 id="erreurs">Erreurs fréquentes dans l'analyse des imbalances</h2>
+      <p>L'analyse des imbalances est puissante mais comporte des pièges courants qui peuvent conduire à des pertes évitables.</p>
+
+      <h3>1. Traiter chaque imbalance comme un signal</h3>
+      <p>Dans une session active sur l'ES, des dizaines d'imbalances se forment à la minute. La grande majorité n'ont aucune signification opérationnelle. Seules les imbalances en confluence avec des niveaux de prix importants méritent attention.</p>
+
+      <h3>2. Ignorer le volume absolu</h3>
+      <p>Un ratio 5:1 sur 40 contrats est statistiquement moins fiable qu'un ratio 3:1 sur 600 contrats. Le volume absolu valide la signification du déséquilibre. Fixer un seuil minimum de volume (ex : 200 contrats sur l'ES) pour qu'une imbalance soit prise en compte.</p>
+
+      <h3>3. Anticiper avant confirmation</h3>
+      <p>L'erreur classique est d'entrer en position dès que le prix approche d'une unfilled imbalance, sans attendre de signal de réaction (tape reading, delta, comportement tick). Attendez que le marché <em>montre</em> sa réaction avant d'entrer.</p>
+
+      <div class="callout warning">
+        <p><strong>Rappel important :</strong> Les imbalances ne sont pas des niveaux magiques. Ce sont des zones où le marché a montré un déséquilibre passé. Les marchés évoluent et ces zones peuvent être traversées sans réaction si le contexte macro ou la structure globale ont changé depuis leur création.</p>
+      </div>
+
+      <h3>4. Sur-paramétrer les outils</h3>
+      <p>Il est tentant d'ajuster constamment les ratios pour que les imbalances "collent" aux mouvements passés. Cette approche de curve-fitting rend l'outil inutilisable en temps réel. Définissez votre ratio, testez-le pendant 30 jours minimum, et n'ajustez qu'avec des données statistiques solides.</p>
+
+      <h3>5. Négliger la temporalité des unfilled zones</h3>
+      <p>Une unfilled imbalance créée il y a 3 mois a beaucoup moins de pertinence qu'une créée il y a 2 sessions. Plus les zones sont récentes et le volume absolu élevé, plus elles sont fiables. Certains traders n'utilisent que les zones des 5 dernières sessions.</p>
+
+    </article>
+  </div>
+
+  <!-- FAQ -->
+  <section class="faq-section">
+    <h2>Questions fréquentes sur les imbalances Footprint</h2>
+    <div class="faq-item">
+      <button class="faq-q">Qu'est-ce qu'une imbalance sur un Footprint Chart ? <span class="faq-icon">+</span></button>
+      <div class="faq-a">Une imbalance (déséquilibre) apparaît quand le volume d'un côté (bid ou ask) dépasse significativement l'autre, généralement selon un ratio de 3:1 ou 4:1. Cela indique une agressivité dominante d'un camp et préfigure souvent une continuation directionnelle.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">C'est quoi les stacked imbalances ? <span class="faq-icon">+</span></button>
+      <div class="faq-a">Les stacked imbalances sont plusieurs niveaux consécutifs d'imbalances dans la même direction sur une bougie Footprint. Elles créent des zones à haute probabilité de réaction car elles matérialisent un déséquilibre fort et persistant sur plusieurs prix.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Quel ratio utiliser pour identifier une imbalance ? <span class="faq-icon">+</span></button>
+      <div class="faq-a">Le ratio standard est 3:1 (un côté représente 3 fois l'autre). Certains traders utilisent 4:1 pour des signaux plus forts. Sur Sierra Chart ou Bookmap, ce seuil est paramétrable. Plus le ratio est élevé, plus l'imbalance est significative mais moins fréquente.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Les zones d'imbalance non remplies sont-elles importantes ? <span class="faq-icon">+</span></button>
+      <div class="faq-a">Oui, les zones d'imbalance non remplies (unfilled imbalances) agissent souvent comme des zones magnétiques. Le marché a tendance à revenir les "combler" car elles représentent des prix où les échanges ont été déséquilibrés, créant un besoin de retour pour compléter l'enchère.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Comment combiner les imbalances avec d'autres outils ? <span class="faq-icon">+</span></button>
+      <div class="faq-a">Les imbalances sont plus puissantes en confluence avec le Volume Profile (POC, VAH, VAL), le delta, et les niveaux de structure. Une stacked imbalance bullish au POC ou à la VAL d'une session est un setup haute probabilité. Évitez les imbalances isolées sans contexte.</div>
+    </div>
+  </section>
+
+  <!-- Related -->
+  <section class="related-section">
+    <h2>Articles connexes</h2>
+    <div class="related-grid">
+      <a href="/blog/footprint-chart-trading/" class="related-card">
+        <div class="rc-tag">Order Flow</div>
+        <h3>Footprint Chart : Maîtriser la Lecture du Flux d'Ordres</h3>
+        <p>Le guide complet du Footprint Chart pour comprendre la structure interne des bougies et lire les transactions en temps réel.</p>
+      </a>
+      <a href="/blog/delta-footprint-trading/" class="related-card">
+        <div class="rc-tag">Order Flow</div>
+        <h3>Delta Footprint : Lire l'Agressivité du Marché</h3>
+        <p>Maîtrisez le delta, ses divergences et les configurations d'absorption pour identifier les retournements avant qu'ils se produisent.</p>
+      </a>
+      <a href="/blog/absorption-order-flow/" class="related-card">
+        <div class="rc-tag">Order Flow</div>
+        <h3>Absorption en Order Flow : Détecter les Retournements</h3>
+        <p>Comprendre les mécanismes d'absorption bullish et bearish pour anticiper les fins de tendance sur les marchés futures.</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- Disclaimer -->
+  <div class="disclaimer">
+    <p><strong>Avertissement :</strong> Le trading de futures implique un risque substantiel de perte. Les informations présentées ici sont à titre éducatif uniquement et ne constituent pas des conseils financiers. Les performances passées ne garantissent pas les résultats futurs. N'investissez que ce que vous pouvez vous permettre de perdre.</p>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">Bass<span>.</span></div>
+      <div class="footer-links">
+        <a href="/blog/">Blog</a>
+        <a href="/#formations">Formations</a>
+        <a href="/#apropos">À propos</a>
+        <a href="/#contact">Contact</a>
+      </div>
+    </div>
+    <div class="footer-copy">© 2026 Bass Trading — Tous droits réservés</div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script>
+    // Preloader
+    window.addEventListener('load', () => {
+      gsap.to('#preloader', { opacity: 0, duration: .6, delay: .4, onComplete: () => {
+        document.getElementById('preloader').style.display = 'none';
+      }});
+      gsap.from('.blog-hero > *', { y: 30, opacity: 0, duration: .8, stagger: .12, delay: .6, ease: 'power3.out' });
+    });
+
+    // Lenis smooth scroll
+    const lenis = new Lenis({ lerp: .1, smooth: true });
+    function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+    requestAnimationFrame(raf);
+
+    // TOC active state
+    const sections = document.querySelectorAll('.article-body h2[id]');
+    const tocLinks = document.querySelectorAll('.toc-list a');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          tocLinks.forEach(l => l.classList.remove('active'));
+          const active = document.querySelector(`.toc-list a[href="#${entry.target.id}"]`);
+          if (active) active.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+    sections.forEach(s => observer.observe(s));
+
+    // FAQ
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+
+    // Article animations
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.utils.toArray('.article-body h2, .callout, .data-table, .metrics-grid').forEach(el => {
+      gsap.from(el, { opacity: 0, y: 20, duration: .6, scrollTrigger: { trigger: el, start: 'top 85%' }, ease: 'power2.out' });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auction Market Theory : Comprendre la Logique du Marché — BASS Trading</title>
+  <meta name="description" content="L'Auction Market Theory (AMT) explique pourquoi le marché se comporte comme il le fait. Acceptation, rejet, équilibre, déséquilibre — la logique profonde derrière chaque mouvement de prix. Par Sébastien Constant.">
+  <meta property="og:title" content="Auction Market Theory : Comprendre la Logique du Marché — BASS Trading">
+  <meta property="og:description" content="AMT, acceptation de prix, Value Area, déséquilibre — comprendre la mécanique profonde des marchés financiers pour trader avec le flux institutionnel.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://basstrading.fr/blog/auction-market-theory/">
+  <meta property="og:site_name" content="BASS Trading">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://basstrading.fr/blog/auction-market-theory/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","headline":"Auction Market Theory : Comprendre la Logique du Marché","description":"L'Auction Market Theory explique pourquoi le marché se comporte comme il le fait. Acceptation, rejet, équilibre, déséquilibre.","author":{"@type":"Person","name":"Sébastien Constant","jobTitle":"Trader et formateur Order Flow","url":"https://basstrading.fr"},"publisher":{"@type":"Organization","name":"BASS Trading","url":"https://basstrading.fr","logo":{"@type":"ImageObject","url":"https://basstrading.fr/images/bass-presenting.jpg"}},"datePublished":"2026-03-28","dateModified":"2026-03-28","mainEntityOfPage":{"@type":"WebPage","@id":"https://basstrading.fr/blog/auction-market-theory/"},"keywords":["auction market theory","AMT","market profile","value area","acceptation de prix","order flow","trading"]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://basstrading.fr"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://basstrading.fr/blog/"},{"@type":"ListItem","position":3,"name":"Auction Market Theory"}]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"C'est quoi l'Auction Market Theory ?","acceptedAnswer":{"@type":"Answer","text":"L'Auction Market Theory (AMT) est un cadre conceptuel développé par J. Peter Steidlmayer qui explique le comportement des marchés financiers comme un mécanisme d'enchères bilatérales. Le marché cherche constamment à faciliter les échanges en trouvant un prix 'juste' — la zone où acheteurs et vendeurs acceptent de transacter. Les deux concepts clés sont l'acceptation (le marché reste à un prix) et le rejet (le marché repart rapidement)."}},
+    {"@type":"Question","name":"Quelle différence entre marché en équilibre et en déséquilibre ?","acceptedAnswer":{"@type":"Answer","text":"Un marché en équilibre oscille dans une Value Area bien définie — les deux camps (acheteurs et vendeurs) sont d'accord sur la valeur. Un marché en déséquilibre est en tendance directionnelle — un camp domine et pousse le prix vers de nouvelles zones pour trouver un niveau où l'autre camp accepte de trader. La Value Area s'élargit progressivement jusqu'à ce qu'un nouvel équilibre soit trouvé."}},
+    {"@type":"Question","name":"Comment utiliser l'AMT pour trader ?","acceptedAnswer":{"@type":"Answer","text":"L'AMT se traduit en règles de trading concrètes : (1) Dans un marché en équilibre, tradez les extrêmes de la Value Area vers le centre (POC). (2) Dans un marché en déséquilibre, suivez la tendance jusqu'à ce que le marché montre des signes d'acceptation au nouveau niveau. (3) Un rejet rapide d'un extrême (tail long) indique une opportunité de retour vers la VA."}},
+    {"@type":"Question","name":"C'est quoi une 'tail' en Market Profile AMT ?","acceptedAnswer":{"@type":"Answer","text":"Une tail (queue) est une zone de rejet visible dans le profil Market Profile — des TPO isolés dans le bas ou le haut du profil, indiquant que le marché a rapidement rejeté ces niveaux. Une buying tail (bas du profil) montre que les acheteurs ont défendu agressivement ce niveau. Une selling tail (haut) montre le rejet par les vendeurs. Les tails sont des niveaux de référence pour les trades en retour."}}
+  ]}
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{--bk:#1D1D1F;--bk2:#111;--bk3:#0A0A0A;--g1:#6E6E73;--g2:#86868B;--g3:#D2D2D7;--g4:#F5F5F7;--wh:#FBFBFD;--pure:#FFF;--green:#00B67A;--blue:#0066FF}
+    html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}
+    body{font-family:'DM Sans',sans-serif;color:var(--bk);background:var(--pure);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+    .preloader{position:fixed;inset:0;background:var(--bk3);z-index:10001;display:flex;align-items:center;justify-content:center}
+    .pre-word{font-family:'Outfit',sans-serif;font-size:clamp(3rem,8vw,5rem);font-weight:900;letter-spacing:16px;text-transform:uppercase;color:var(--pure);overflow:hidden}
+    .pre-word span{display:inline-block;transform:translateY(110%);opacity:0}
+    .pre-line{width:0;height:1px;background:rgba(255,255,255,.3);margin-top:20px}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 48px;display:flex;align-items:center;justify-content:space-between;background:rgba(245,245,247,.85);backdrop-filter:blur(20px) saturate(1.8);border-bottom:1px solid rgba(0,0,0,.04);transition:background .4s}
+    .nav-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase;color:var(--bk)}
+    .nav-links{display:flex;gap:28px;list-style:none}.nav-links a{font-size:.74rem;font-weight:500;letter-spacing:.3px;color:var(--g1);transition:color .3s}.nav-links a:hover{color:var(--bk)}
+    .nav-cta{padding:8px 20px;background:var(--bk);color:var(--pure);border:none;border-radius:980px;font-size:.72rem;font-weight:600;transition:all .3s;cursor:pointer;text-decoration:none;display:inline-block}.nav-cta:hover{background:var(--bk2)}
+    .blog-hero{padding:160px 48px 80px;background:var(--g4);position:relative;overflow:hidden}
+    .blog-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,transparent,var(--g4));pointer-events:none}
+    .blog-hero-inner{max-width:720px;margin:0 auto}
+    .breadcrumb{display:flex;gap:8px;align-items:center;margin-bottom:28px;flex-wrap:wrap}
+    .breadcrumb a,.breadcrumb span{font-size:.68rem;font-weight:500;letter-spacing:.3px;color:var(--g2);transition:color .3s}.breadcrumb a:hover{color:var(--bk)}.breadcrumb .sep{color:var(--g3)}
+    .blog-hero-cat{display:inline-block;padding:5px 14px;border:1px solid rgba(0,102,255,.15);border-radius:980px;font-size:.6rem;font-weight:700;color:var(--blue);letter-spacing:2px;text-transform:uppercase;margin-bottom:20px}
+    .blog-hero-title{font-family:'Outfit',sans-serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:900;line-height:1.05;letter-spacing:-2px;color:var(--bk);margin-bottom:20px}
+    .blog-hero-desc{font-size:.95rem;color:var(--g1);line-height:1.8;max-width:560px;margin-bottom:28px}
+    .blog-meta{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+    .blog-meta-author{display:flex;align-items:center;gap:10px}
+    .blog-meta-avatar{width:36px;height:36px;border-radius:50%;background:var(--bk3);overflow:hidden;flex-shrink:0}.blog-meta-avatar img{width:100%;height:100%;object-fit:cover}
+    .blog-meta-name{font-size:.78rem;font-weight:600;color:var(--bk)}.blog-meta-role{font-size:.65rem;color:var(--g2)}
+    .blog-meta-sep{width:1px;height:24px;background:var(--g3)}
+    .blog-meta-info{font-size:.7rem;color:var(--g2)}.blog-meta-info span{margin-right:16px}
+    .toc{position:sticky;top:90px;background:var(--pure);border:1px solid rgba(0,0,0,.04);border-radius:14px;padding:24px;margin-bottom:32px}
+    .toc-title{font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.5px;color:var(--bk);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+    .toc ol{list-style:none;counter-reset:toc}.toc li{counter-increment:toc}
+    .toc li a{display:flex;align-items:baseline;gap:8px;padding:6px 0;font-size:.76rem;color:var(--g1);transition:color .3s;border-bottom:1px solid rgba(0,0,0,.03)}.toc li a:hover{color:var(--blue)}
+    .toc li a::before{content:counter(toc,decimal-leading-zero);font-family:'Outfit',sans-serif;font-size:.65rem;font-weight:700;color:var(--g3);min-width:18px}
+    .toc li:last-child a{border-bottom:none}.toc li a.active{color:var(--blue);font-weight:600}.toc li a.active::before{color:var(--blue)}
+    .article-wrap{display:grid;grid-template-columns:220px 1fr;gap:40px;max-width:1020px;margin:0 auto;padding:60px 48px 120px}
+    .article-sidebar{position:relative}.article-body{max-width:700px}
+    .article-body h2{font-family:'Outfit',sans-serif;font-size:clamp(1.4rem,2.5vw,1.8rem);font-weight:800;line-height:1.1;letter-spacing:-1px;color:var(--bk);margin:56px 0 16px;padding-top:20px}.article-body h2:first-of-type{margin-top:0}
+    .article-body h3{font-family:'Outfit',sans-serif;font-size:1.05rem;font-weight:700;line-height:1.25;letter-spacing:-.3px;color:var(--bk);margin:36px 0 10px}
+    .article-body p{font-size:.9rem;color:var(--g1);line-height:1.85;margin-bottom:18px}
+    .article-body strong{color:var(--bk);font-weight:600}
+    .article-body ul,.article-body ol{margin:0 0 20px 0;padding-left:20px}
+    .article-body li{font-size:.88rem;color:var(--g1);line-height:1.8;margin-bottom:6px}.article-body li strong{color:var(--bk)}
+    .article-body blockquote{margin:28px 0;padding:20px 24px;background:var(--g4);border-left:3px solid var(--bk);border-radius:0 12px 12px 0;font-size:.88rem;color:var(--g1);line-height:1.8;font-style:italic}
+    .article-body blockquote strong{color:var(--bk);font-style:normal}
+    .article-body hr{border:none;border-top:1px solid var(--g4);margin:48px 0}
+    .info-box{margin:28px 0;padding:24px;background:rgba(0,102,255,.03);border:1px solid rgba(0,102,255,.08);border-radius:14px}
+    .info-box-title{font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:700;color:var(--blue);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+    .info-box p{font-size:.82rem;color:var(--g1);line-height:1.7;margin-bottom:0}
+    .key-concept{margin:32px 0;padding:28px;background:var(--bk3);border-radius:16px;color:var(--pure)}
+    .key-concept-label{font-size:.55rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:10px}
+    .key-concept h4{font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:800;letter-spacing:-.3px;margin-bottom:8px}
+    .key-concept p{font-size:.85rem;color:rgba(255,255,255,.5);line-height:1.8;margin-bottom:0}
+    .compare-table{width:100%;margin:24px 0 28px;border-collapse:collapse;border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,.06)}
+    .compare-table th{background:var(--bk3);color:var(--pure);font-family:'Outfit',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:14px 16px;text-align:left}
+    .compare-table td{padding:12px 16px;font-size:.82rem;color:var(--g1);line-height:1.6;border-bottom:1px solid rgba(0,0,0,.04);background:var(--pure)}
+    .compare-table tr:last-child td{border-bottom:none}.compare-table td:first-child{font-weight:600;color:var(--bk)}
+    .cta-card{margin:48px 0;padding:40px;background:var(--bk3);border-radius:20px;text-align:center;position:relative;overflow:hidden}
+    .cta-card::before{content:'';position:absolute;top:-50%;right:-30%;width:400px;height:400px;background:radial-gradient(circle,rgba(0,102,255,.08) 0%,transparent 70%);pointer-events:none}
+    .cta-card-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:12px}
+    .cta-card h3{font-family:'Outfit',sans-serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:800;color:var(--pure);letter-spacing:-.5px;margin-bottom:8px}
+    .cta-card p{font-size:.85rem;color:rgba(255,255,255,.4);line-height:1.7;max-width:380px;margin:0 auto 24px}
+    .cta-card .btn-p{background:var(--pure);color:var(--bk)}.cta-card .btn-p:hover{box-shadow:0 8px 30px rgba(255,255,255,.15)}
+    .faq-sec{padding:80px 48px 100px;background:var(--g4)}
+    .faq-list{max-width:680px;margin:40px auto 0}.fi{border-bottom:1px solid rgba(0,0,0,.06)}
+    .fq{width:100%;text-align:left;padding:18px 0;background:none;border:none;font-size:.85rem;font-weight:600;font-family:'DM Sans',sans-serif;color:var(--bk);display:flex;justify-content:space-between;align-items:center;cursor:pointer;gap:16px;transition:color .3s}.fq:hover{color:var(--g1)}
+    .fq-icon{width:22px;height:22px;border-radius:50%;background:rgba(0,0,0,.04);display:flex;align-items:center;justify-content:center;font-size:.75rem;transition:all .4s;flex-shrink:0;color:var(--g2)}
+    .fa{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1)}.fa.open{max-height:300px;padding-bottom:14px}
+    .fa p{font-size:.8rem;color:var(--g1);line-height:1.7;margin-bottom:0}.fi.active .fq-icon{background:var(--bk);color:var(--pure);transform:rotate(45deg)}
+    .related-sec{padding:80px 48px;background:var(--pure);border-top:1px solid var(--g4)}
+    .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1060px;margin:40px auto 0}
+    .related-card{display:block;padding:28px;background:var(--g4);border-radius:16px;transition:all .4s;text-decoration:none;color:var(--bk)}
+    .related-card:hover{background:var(--pure);box-shadow:0 8px 30px rgba(0,0,0,.06);transform:translateY(-2px)}
+    .related-cat{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+    .related-card h3{font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:700;line-height:1.3;letter-spacing:-.3px;margin-bottom:8px}
+    .related-card p{font-size:.78rem;color:var(--g1);line-height:1.6;margin-bottom:14px}
+    .related-link{font-size:.72rem;font-weight:600;color:var(--blue);letter-spacing:.3px}
+    .footer{background:var(--bk3);color:var(--pure);padding:56px 48px 28px}
+    .ft-top{display:flex;justify-content:space-between;align-items:start;margin-bottom:48px;flex-wrap:wrap;gap:32px}
+    .ft-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase}
+    .ft-cols{display:flex;gap:80px}
+    .ft-col-title{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:12px}
+    .ft-col a{display:block;font-size:.78rem;color:rgba(255,255,255,.5);margin-bottom:8px;transition:color .3s}.ft-col a:hover{color:var(--pure)}
+    .ft-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:20px;display:flex;justify-content:space-between;align-items:center;font-size:.6rem;color:rgba(255,255,255,.2)}
+    .ft-bottom a{color:rgba(255,255,255,.2);transition:color .3s;margin-left:20px}.ft-bottom a:hover{color:rgba(255,255,255,.5)}
+    .disclaimer{padding:12px 48px;background:var(--bk3);font-size:.58rem;color:rgba(255,255,255,.12);text-align:center;line-height:1.6;border-top:1px solid rgba(255,255,255,.03)}
+    .sec-center{text-align:center;max-width:680px;margin:0 auto}
+    .sec-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--g2);margin-bottom:10px}
+    .sec-title{font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;line-height:1.05;letter-spacing:-1.5px;color:var(--bk);margin-bottom:16px}
+    .btn-p{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--bk);color:var(--pure);border-radius:980px;font-size:.85rem;font-weight:600;transition:all .3s;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;text-decoration:none}
+    .btn-p:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(0,0,0,.1)}
+    .btn-p svg{width:13px;height:13px;transition:transform .3s}.btn-p:hover svg{transform:translateX(3px)}
+    .reading-progress{position:fixed;top:0;left:0;height:2px;background:var(--blue);z-index:9999;width:0;transition:width .1s linear}
+    @media(max-width:900px){.nav{padding:14px 20px}.nav-links{display:none}.blog-hero{padding:120px 20px 60px}.article-wrap{grid-template-columns:1fr;padding:40px 20px 80px}.article-sidebar{display:none}.related-grid{grid-template-columns:1fr}.related-sec,.faq-sec{padding:60px 20px}.ft-cols{flex-direction:column;gap:28px}.footer{padding:40px 20px 20px}.disclaimer{padding:10px 16px}.cta-card{padding:28px 20px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  </style>
+</head>
+<body>
+
+<div class="preloader" id="preloader"><div style="text-align:center"><div class="pre-word"><span>B</span><span>A</span><span>S</span><span>S</span></div><div class="pre-line" id="preLine"></div></div></div>
+<div class="reading-progress" id="readingProgress"></div>
+
+<nav class="nav" id="nav">
+  <a href="https://basstrading.fr" class="nav-logo">BASS</a>
+  <ul class="nav-links">
+    <li><a href="https://basstrading.fr#methode">Méthode</a></li>
+    <li><a href="https://basstrading.fr#resultats">Résultats</a></li>
+    <li><a href="https://basstrading.fr#avis">Avis</a></li>
+    <li><a href="https://basstrading.fr#faq">FAQ</a></li>
+    <li><a href="https://basstrading.fr/blog/">Blog</a></li>
+  </ul>
+  <a href="https://basstrading.fr#candidater" class="nav-cta">Candidater</a>
+</nav>
+
+<section class="blog-hero">
+  <div class="blog-hero-inner">
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <a href="https://basstrading.fr">Accueil</a><span class="sep">/</span>
+      <a href="https://basstrading.fr/blog/">Blog</a><span class="sep">/</span>
+      <span>Auction Market Theory</span>
+    </nav>
+    <div class="blog-hero-cat">Théorie</div>
+    <h1 class="blog-hero-title">Auction Market Theory :<br>Comprendre la Logique Profonde du Marché</h1>
+    <p class="blog-hero-desc">Pourquoi le marché monte, consolide, puis repart ? Pourquoi certains niveaux tiennent alors que d'autres cèdent ? L'AMT répond à ces questions — et change radicalement votre lecture du graphique.</p>
+    <div class="blog-meta">
+      <div class="blog-meta-author">
+        <div class="blog-meta-avatar"><img src="../../images/bass-presenting.jpg" alt="Sébastien Constant" loading="lazy"></div>
+        <div><div class="blog-meta-name">Sébastien Constant</div><div class="blog-meta-role">Trader & Formateur Order Flow</div></div>
+      </div>
+      <div class="blog-meta-sep"></div>
+      <div class="blog-meta-info"><span>Mars 2026</span><span>13 min de lecture</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="article-wrap">
+  <aside class="article-sidebar">
+    <div class="toc">
+      <div class="toc-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/></svg> Sommaire</div>
+      <ol>
+        <li><a href="#marche-encheres">Le marché comme enchère</a></li>
+        <li><a href="#acceptation-rejet">Acceptation vs Rejet</a></li>
+        <li><a href="#equilibre">Équilibre et déséquilibre</a></li>
+        <li><a href="#value-area">La Value Area et l'efficience</a></li>
+        <li><a href="#types-journees">Les types de journées AMT</a></li>
+        <li><a href="#rotation">Rotation et tendance</a></li>
+        <li><a href="#application">Applications pratiques</a></li>
+        <li><a href="#outils">AMT avec le Volume Profile</a></li>
+        <li><a href="#bass">Apprendre avec BASS</a></li>
+      </ol>
+    </div>
+  </aside>
+
+  <article class="article-body">
+    <h2 id="marche-encheres">Le marché comme mécanisme d'enchères</h2>
+    <p>La plupart des traders voient le marché comme un affrontement : haussiers contre baissiers, acheteurs contre vendeurs, bulls contre bears. Cette vision binaire est vraie à l'échelle de la milliseconde. Elle est profondément fausse à l'échelle qui compte pour prendre des décisions.</p>
+    <p>L'<strong>Auction Market Theory</strong> (AMT), développée par J. Peter Steidlmayer dans les années 1980 au Chicago Board of Trade, propose une autre lecture : le marché est un <strong>mécanisme d'enchères bilatérales</strong> dont l'objectif unique est de <strong>faciliter les échanges</strong>. Comme une salle des ventes, il cherche en permanence un prix "juste" — un prix où assez d'acheteurs et de vendeurs se rencontrent pour que les transactions aient lieu.</p>
+    <p>Ce changement de paradigme est fondamental. Le marché ne monte pas "parce que les acheteurs sont plus forts". Il monte parce qu'à un niveau donné, <strong>les vendeurs ont refusé de vendre</strong> — le marché doit explorer des niveaux plus hauts pour trouver de nouveaux vendeurs disposés à fermer leurs positions. La direction du prix révèle la recherche de nouveaux participants, pas la force brute d'un camp.</p>
+
+    <div class="key-concept">
+      <div class="key-concept-label">Concept fondateur</div>
+      <h4>Le prix ne fait qu'une chose : faciliter les échanges</h4>
+      <p>Le marché monte pour trouver des vendeurs. Il baisse pour trouver des acheteurs. Quand il trouve suffisamment des deux, il s'arrête et oscille — c'est l'équilibre. Quand il n'en trouve pas assez, il continue à explorer — c'est le déséquilibre. Tout le reste n'est que variation sur ce thème.</p>
+    </div>
+
+    <h2 id="acceptation-rejet">Acceptation vs Rejet de prix : la clé de lecture</h2>
+    <p>Le concept le plus opérationnel de l'AMT est la distinction entre <strong>acceptation</strong> et <strong>rejet</strong> d'un niveau de prix.</p>
+
+    <h3>L'acceptation</h3>
+    <p>Un prix est <em>accepté</em> quand le marché y passe du temps — quand il y a suffisamment d'acheteurs et de vendeurs à ce niveau pour que les échanges durent. Visuellement : le marché consolide, oscille, forme une Value Area autour de ce prix. Le <a href="/blog/market-profile-guide-complet/">Market Profile</a> affichera de nombreux TPO. Le <a href="/blog/volume-profile-guide/">Volume Profile</a> montrera un HVN (High Volume Node). L'acceptance est une signature de consensus — les deux camps acceptent que ce prix est "correct".</p>
+
+    <h3>Le rejet</h3>
+    <p>Un prix est <em>rejeté</em> quand le marché y passe très peu de temps — il y arrive, ne trouve pas suffisamment de contrepartie, et repart. Visuellement : un long wick, une tail dans le profil Market Profile, un LVN dans le Volume Profile, un spike de volume sans suite. Le rejet est une signature de désaccord — l'un des camps refuse d'accepter ce prix et le marché doit repartir chercher ailleurs.</p>
+
+    <div class="info-box">
+      <div class="info-box-title">💡 Règle d'or AMT</div>
+      <p>Apprenez à distinguer les bougies de rejet (longs wicks, retours rapides) des bougies d'acceptance (corps larges, consolidation au niveau). Les premières indiquent des retournements potentiels. Les secondes confirment la continuation. Cette distinction seule améliore radicalement la qualité de vos entrées.</p>
+    </div>
+
+    <h2 id="equilibre">Équilibre et déséquilibre : les deux états du marché</h2>
+    <p>Comprendre dans quel état se trouve le marché à un instant donné est la compétence centrale de l'AMT. Les deux états sont fondamentalement différents et nécessitent des approches de trading opposées.</p>
+
+    <h3>Le marché en équilibre (Balancing)</h3>
+    <p>Un marché en équilibre a trouvé son prix juste. Il oscille dans une range bien définie, alternant entre VAH et VAL. Les deux camps sont présents et actifs. Le volume est distribué uniformément dans la Value Area, créant un profil en cloche (distribution normale).</p>
+    <p><strong>Comment trader l'équilibre :</strong> vendre les extrêmes hauts (VAH, résistances), acheter les extrêmes bas (VAL, supports), avec pour objectif le POC central. Les probabilités favorisent le retour vers le centre — c'est la <em>mean reversion</em> dans son expression la plus pure.</p>
+
+    <h3>Le marché en déséquilibre (Trending)</h3>
+    <p>Un marché en déséquilibre explore des nouveaux territoires. Un camp domine, et le marché crée de nouvelles Value Areas successives, chacune légèrement décalée dans la direction dominante. Le profil est allongé, asymétrique — une série de "D" empilés en haussier, de "P" en baissier.</p>
+    <p><strong>Comment trader le déséquilibre :</strong> suivre la tendance, acheter les retours dans la VA lors des pullbacks, ne pas vendre contre la tendance. En déséquilibre, la mean reversion tue les comptes — le marché cherche un NOUVEL équilibre plus haut (ou plus bas), pas l'ancien.</p>
+
+    <blockquote>
+      <strong>L'erreur classique :</strong> trader en mode mean reversion dans un marché en déséquilibre. La Value Area monte, le trader vend au VAH, le marché n'inverse jamais, le stop saute. Reconnaître l'état du marché avant de choisir votre approche est plus important que n'importe quelle technique d'entrée.
+    </blockquote>
+
+    <h2 id="value-area">La Value Area et l'efficience du marché</h2>
+    <p>Dans le cadre de l'AMT, la <strong>Value Area</strong> (70% du volume ou des TPO) représente la <em>zone d'efficience</em> du marché — le territoire où les deux camps estiment que le prix est "juste". Sortir de la Value Area est une inefficience temporaire que le marché cherche à corriger.</p>
+
+    <h3>Le principe du retour à la valeur</h3>
+    <p>Statistiquement, un marché qui sort de sa Value Area revient dans cette zone 70 à 80% du temps (selon les études sur les marchés futures). Ce n'est pas un hasard — c'est la mécanique de l'enchère : sortir de la VA, c'est aller à un prix que la majorité des participants juge "trop cher" ou "trop bon marché". Le consensus rappelle le prix vers la valeur.</p>
+
+    <h3>Quand le retour à la valeur échoue</h3>
+    <p>Quand le marché sort de la VA et <em>n'y revient pas</em> — quand il accepte le nouveau niveau (via de l'activité, du volume, des TPO dans la nouvelle zone) — c'est le signal d'un vrai changement de Value Area. Le marché a trouvé un nouveau consensus. C'est le moment où les traders institutionnels repositionnent leurs books. Sur le <a href="/blog/volume-profile-guide/">Volume Profile</a>, vous verrez un nouveau HVN se former au niveau du breakout.</p>
+
+    <h2 id="types-journees">Les types de journées AMT</h2>
+    <p>L'AMT a été à l'origine du concept de "types de journées" — une classification des comportements quotidiens du marché qui permet d'anticiper les probabilités du reste de la session.</p>
+
+    <table class="compare-table">
+      <thead><tr><th>Type</th><th>Caractéristique</th><th>Approche</th></tr></thead>
+      <tbody>
+        <tr><td>Normal</td><td>Range établie dans l'Initial Balance, extensions modérées</td><td>Mean reversion dans la range</td></tr>
+        <tr><td>Normal Variation</td><td>Extension d'un seul côté de l'IB</td><td>Trend following du côté de l'extension</td></tr>
+        <tr><td>Trend Day</td><td>Marché en tendance toute la journée, peu de rotation</td><td>Suivre la tendance, ne pas vendre contre</td></tr>
+        <tr><td>Double Distribution</td><td>Deux VA distinctes séparées par un LVN</td><td>Attendre la direction entre les deux VA</td></tr>
+        <tr><td>Non-Trend</td><td>Range étroite, faible volume, peu de mouvement</td><td>Éviter ou scalper les extrêmes</td></tr>
+      </tbody>
+    </table>
+
+    <p>La clé pour identifier le type de journée : l'<strong>Initial Balance</strong> (IB) — le range des premières 30 minutes à 1 heure de trading. Une IB large suggère une journée normale ou de range. Une IB étroite avec un breakout fort indique un potential Trend Day. <strong>Adapter sa stratégie au type de journée est plus important qu'avoir le meilleur setup technique.</strong></p>
+
+    <h2 id="rotation">Rotation et tendance : lire le flux directionnel</h2>
+    <p>Dans le cadre AMT, la tendance se manifeste par des <strong>rotations directionnelles</strong> — chaque rotation emporte le prix vers un niveau plus haut (haussier) ou plus bas (baissier) que la précédente.</p>
+    <p>Une rotation haussière en cours : le marché monte depuis le VAL, teste le VAH, repart légèrement sous le VAH (pullback), puis repart à la hausse — vers un nouveau plus haut et une nouvelle VA plus haute. Chaque creux de pullback est plus haut que le précédent. C'est le pattern des tendances saines en AMT.</p>
+    <p>La rupture du pattern (un pullback qui revient sous le VAL précédent) est le premier signal que la tendance s'essouffle. Combiné avec un <a href="/blog/footprint-chart-trading/">Footprint</a> montrant de l'absorption aux nouveaux hauts, c'est une alerte de retournement potentiel.</p>
+
+    <h2 id="application">Applications pratiques de l'AMT</h2>
+    <p>L'AMT n'est pas qu'une théorie — elle se traduit en règles de trading concrètes que les professionnels appliquent quotidiennement.</p>
+
+    <h3>Règle 1 : Identifier l'état avant d'entrer</h3>
+    <p>Avant chaque session, posez-vous la question : le marché est-il en équilibre ou en déséquilibre ? Regardez le profil composite des 5 dernières sessions. Un profil en cloche = équilibre (mean reversion). Un profil allongé asymétrique = déséquilibre (trend following). Cette décision binaire conditionne tout le reste.</p>
+
+    <h3>Règle 2 : Les tails comme zones d'entrée</h3>
+    <p>Une tail (buying tail en bas, selling tail en haut) dans le profil Market Profile est une zone de rejet fort. Les institutionnels placent souvent des ordres limites à ces niveaux pour les retests. Sur le <a href="/blog/footprint-chart-trading/">Footprint Chart</a>, un retest d'une tail avec absorption confirme l'entrée.</p>
+
+    <h3>Règle 3 : Le POC comme aimant</h3>
+    <p>Dans un marché en équilibre, le POC est l'objectif naturel de tout mouvement. Si vous êtes à 20 ticks du POC, ne vous attendez pas à ce que le marché s'arrête avant d'y avoir touché. Placez vos targets sur le POC, pas sur des niveaux arbitraires.</p>
+
+    <h3>Règle 4 : Valider les breakouts par l'acceptance</h3>
+    <p>Un breakout sans acceptance est un piège. Un vrai breakout doit être suivi d'au moins 2-3 périodes de trading au-delà de la VA — le marché doit "rester" à ces nouveaux niveaux. Si le prix revient dans la VA en moins d'une bougie, c'est un faux breakout. Ce pattern est l'un des plus tradés par les institutionnels.</p>
+
+    <h2 id="outils">AMT et Volume Profile : une alliance naturelle</h2>
+    <p>L'AMT est la théorie. Le <a href="/blog/market-profile-guide-complet/">Market Profile</a> et le <a href="/blog/volume-profile-guide/">Volume Profile</a> sont ses outils de visualisation. Ensemble, ils forment un système cohérent de lecture du marché.</p>
+    <p>Le Market Profile traduit l'AMT en lettres TPO : l'équilibre devient un profil en cloche, le déséquilibre devient un profil allongé, les zones de rejet deviennent des tails visibles. Le Volume Profile ajoute la dimension financière : là où l'AMT dit "le marché a accepté ce niveau", le Volume Profile dit "voici combien d'argent s'y est échangé".</p>
+    <p>Pour compléter l'analyse, le <a href="/blog/footprint-chart-trading/">Footprint Chart</a> apporte la dimension micro : à chaque niveau d'acceptance ou de rejet identifié par l'AMT, le Footprint révèle la mécanique sous-jacente — <a href="/blog/absorption-order-flow/">absorption</a>, <a href="/blog/imbalance-footprint/">déséquilibres</a>, <a href="/blog/delta-footprint-trading/">delta</a>. C'est l'union du macro et du micro.</p>
+
+    <h2 id="bass">Apprendre l'AMT avec BASS Trading</h2>
+    <p>L'Auction Market Theory est le socle conceptuel de toute la méthode BASS Trading. Avant d'apprendre à lire un Footprint ou à utiliser Sierra Chart, vous devez comprendre <em>pourquoi</em> le marché se comporte comme il le fait. L'AMT répond à cette question.</p>
+    <p>Dans le mentorat, chaque morning briefing commence par une lecture AMT de la session précédente : quel était l'état du marché ? Équilibre ou déséquilibre ? Quel type de journée s'est développé ? Y a-t-il eu acceptance ou rejet aux niveaux clés ? Ce rituel quotidien construit progressivement un "œil" qui voit le marché différemment.</p>
+
+    <div class="cta-card">
+      <div class="cta-card-label">Mentorat</div>
+      <h3>Voyez le marché comme les institutionnels.</h3>
+      <p>AMT + Market Profile + Volume Profile + Footprint. 70h de formation, sessions live quotidiennes. Méthode complète et cohérente.</p>
+      <a href="https://basstrading.fr#candidater" class="btn-p">Vérifier mon éligibilité <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+    </div>
+  </article>
+</div>
+
+<section class="faq-sec">
+  <div class="sec-center"><div class="sec-label">FAQ</div><h2 class="sec-title">Questions fréquentes</h2></div>
+  <div class="faq-list">
+    <div class="fi"><button class="fq" onclick="tf(this)">C'est quoi l'Auction Market Theory ? <span class="fq-icon">+</span></button><div class="fa"><p>L'AMT est un cadre conceptuel qui explique le marché comme un mécanisme d'enchères bilatérales cherchant à faciliter les échanges. Le prix monte pour trouver des vendeurs, baisse pour trouver des acheteurs, et oscille quand il a trouvé les deux.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Équilibre vs déséquilibre : comment les distinguer ? <span class="fq-icon">+</span></button><div class="fa"><p>Un marché en équilibre affiche un profil en cloche — la Value Area est stable et le prix oscille entre VAH et VAL. Un marché en déséquilibre affiche un profil allongé — des VA successives décalées dans la même direction.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">C'est quoi l'acceptation de prix ? <span class="fq-icon">+</span></button><div class="fa"><p>L'acceptation se produit quand le marché passe du temps à un niveau — volume élevé, nombreux TPO, consolidation. C'est le consensus des participants. Le rejet est l'opposé : le marché passe rapidement, peu de volume, wick ou tail.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Comment utiliser l'AMT pour trader concrètement ? <span class="fq-icon">+</span></button><div class="fa"><p>En équilibre : vendre VAH, acheter VAL, target POC. En déséquilibre : suivre la tendance, acheter les pullbacks dans la VA. Valider les breakouts par l'acceptance avant d'entrer. Ne jamais trader contre un déséquilibre confirmé.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">L'AMT fonctionne sur quels marchés ? <span class="fq-icon">+</span></button><div class="fa"><p>L'AMT est universelle — elle s'applique sur tous les marchés liquides (futures, forex, actions, crypto). La mécanique d'enchères est la même partout. Plus le marché est liquide et professionnel (ES, NQ, CL), plus l'AMT est précise.</p></div></div>
+  </div>
+</section>
+
+<section class="related-sec">
+  <div class="sec-center"><div class="sec-label">Continuer la lecture</div><h2 class="sec-title">Articles connexes</h2></div>
+  <div class="related-grid">
+    <a href="/blog/market-profile-guide-complet/" class="related-card"><div class="related-cat">Guide</div><h3>Market Profile : le guide complet</h3><p>La visualisation de l'AMT — TPO, Value Area, types de journées.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/volume-profile-guide/" class="related-card"><div class="related-cat">Analyse</div><h3>Volume Profile : identifier les vrais niveaux</h3><p>POC, VAH, VAL, HVN, LVN — les niveaux de l'AMT mesurés en volume.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/order-flow-trading-france/" class="related-card"><div class="related-cat">Méthode</div><h3>Order Flow Trading en France</h3><p>Comment lire le flux d'ordres pour confirmer les signaux AMT.</p><span class="related-link">Lire &rarr;</span></a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="ft-top"><div class="ft-logo">BASS</div><div class="ft-cols">
+    <div class="ft-col"><div class="ft-col-title">Programme</div><a href="https://basstrading.fr#methode">Méthode</a><a href="https://basstrading.fr#programme">Programme</a><a href="https://basstrading.fr#certification">Certification</a><a href="https://basstrading.fr#candidater">Candidater</a></div>
+    <div class="ft-col"><div class="ft-col-title">Ressources</div><a href="/blog/market-profile-guide-complet/">Market Profile</a><a href="/blog/volume-profile-guide/">Volume Profile</a><a href="/blog/footprint-chart-trading/">Footprint Chart</a><a href="/blog/auction-market-theory/">Auction Market Theory</a></div>
+    <div class="ft-col"><div class="ft-col-title">Écosystème</div><a href="https://hubtrading.fr" target="_blank" rel="noopener">HubTrading.fr</a><a href="https://x-trade.ai" target="_blank" rel="noopener">x-trade.ai</a><a href="mailto:contact@basstrading.fr">Contact</a></div>
+  </div></div>
+  <div class="ft-bottom"><span>&copy; 2026 BASS — Sébastien Constant</span><div><a href="https://basstrading.fr/mentions-legales.html">Mentions légales</a><a href="https://basstrading.fr/confidentialite.html">Confidentialité</a><a href="https://basstrading.fr/cgv.html">CGV</a></div></div>
+</footer>
+<div class="disclaimer">Le trading comporte des risques de perte en capital. Les performances passées ne préjugent pas des performances futures. Ce site ne constitue pas un conseil en investissement.</div>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+const lenis=new Lenis({duration:1.2,easing:t=>Math.min(1,1.001-Math.pow(2,-10*t))});
+function raf(t){lenis.raf(t);requestAnimationFrame(raf)}requestAnimationFrame(raf);
+lenis.on('scroll',ScrollTrigger.update);gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0);
+const tl=gsap.timeline();
+tl.to('.pre-word span',{y:0,opacity:1,duration:.5,stagger:.1,ease:'power3.out',delay:.3}).to('#preLine',{width:'80px',duration:.7,ease:'power2.inOut'},'<+.2').to('.preloader',{yPercent:-100,duration:.8,ease:'power3.inOut',delay:.4}).set('.preloader',{display:'none'}).to('#nav',{opacity:1,y:0,duration:.5},'<+.1');
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);const h=document.documentElement.scrollHeight-window.innerHeight;document.getElementById('readingProgress').style.width=(window.scrollY/h*100)+'%'});
+const tocLinks=document.querySelectorAll('.toc a');const sections=Array.from(tocLinks).map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+window.addEventListener('scroll',()=>{let c='';sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)c=s.id});tocLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+c)})});
+function tf(b){const i=b.closest('.fi'),a=b.nextElementSibling,o=i.classList.contains('active');document.querySelectorAll('.fi').forEach(x=>{x.classList.remove('active');x.querySelector('.fa').classList.remove('open')});if(!o){i.classList.add('active');a.classList.add('open')}}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();lenis.scrollTo(t,{offset:-60})}})});
+</script>
+</body>
+</html>

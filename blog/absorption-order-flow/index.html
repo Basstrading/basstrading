@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Absorption en Order Flow : Quand les Institutionnels Mangent les Ordres — BASS Trading</title>
+  <meta name="description" content="Guide complet de l'absorption en order flow : mécanismes, identification sur le Footprint, patterns bullish et bearish, exemples sur ES et NQ. Apprenez à détecter quand les gros joueurs absorbent silencieusement. Par Sébastien Constant.">
+  <meta property="og:title" content="Absorption Order Flow : Détecter les Institutionnels — BASS Trading">
+  <meta property="og:description" content="Absorption bullish, bearish, sur le Footprint et le CVD — identifier quand les mains fortes absorbent les ordres pour anticiper les retournements.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://basstrading.fr/blog/absorption-order-flow/">
+  <meta property="og:site_name" content="BASS Trading">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://basstrading.fr/blog/absorption-order-flow/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","headline":"Absorption en Order Flow : Quand les Institutionnels Mangent les Ordres","description":"Guide complet de l'absorption : mécanismes, identification sur Footprint, patterns bullish et bearish.","author":{"@type":"Person","name":"Sébastien Constant","jobTitle":"Trader et formateur Order Flow","url":"https://basstrading.fr"},"publisher":{"@type":"Organization","name":"BASS Trading","url":"https://basstrading.fr","logo":{"@type":"ImageObject","url":"https://basstrading.fr/images/bass-presenting.jpg"}},"datePublished":"2026-03-28","dateModified":"2026-03-28","mainEntityOfPage":{"@type":"WebPage","@id":"https://basstrading.fr/blog/absorption-order-flow/"},"keywords":["absorption","order flow","footprint","delta absorbé","institutionnels","retournement","trading","CVD"]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://basstrading.fr"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://basstrading.fr/blog/"},{"@type":"ListItem","position":3,"name":"Absorption en Order Flow"}]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"C'est quoi l'absorption en trading ?","acceptedAnswer":{"@type":"Answer","text":"L'absorption se produit quand des ordres passifs (limit orders) de grande taille absorbent des ordres agressifs (market orders) en sens opposé sans déplacer significativement le prix. Un acheteur institutionnel massif peut absorber des milliers de contrats de ventes agressives tout en maintenant le prix stable — c'est de l'accumulation silencieuse. L'inverse (absorption vendeuse) précède souvent une baisse."}},
+    {"@type":"Question","name":"Comment détecter l'absorption sur le Footprint ?","acceptedAnswer":{"@type":"Answer","text":"Sur le Footprint Chart, l'absorption se manifeste par : (1) un fort delta dans une direction sans mouvement de prix correspondant, (2) des volumes élevés côté Bid à un niveau qui devrait faire baisser le prix mais ne le fait pas, (3) un CVD qui diverge du prix. Sur Sierra Chart, le 'delta absorbé' (max delta minus close delta) est une mesure quantitative directe de l'absorption."}},
+    {"@type":"Question","name":"Absorption bullish vs bearish : quelle différence ?","acceptedAnswer":{"@type":"Answer","text":"Absorption bullish : des acheteurs passifs absorbent les ventes agressives — le prix résiste à la baisse malgré un delta négatif fort. Signal haussier — des mains fortes accumulent. Absorption bearish : des vendeurs passifs absorbent les achats agressifs — le prix résiste à la hausse malgré un delta positif fort. Signal baissier — des mains fortes distribuent."}}
+  ]}
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{--bk:#1D1D1F;--bk2:#111;--bk3:#0A0A0A;--g1:#6E6E73;--g2:#86868B;--g3:#D2D2D7;--g4:#F5F5F7;--wh:#FBFBFD;--pure:#FFF;--green:#00B67A;--blue:#0066FF}
+    html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}
+    body{font-family:'DM Sans',sans-serif;color:var(--bk);background:var(--pure);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+    .preloader{position:fixed;inset:0;background:var(--bk3);z-index:10001;display:flex;align-items:center;justify-content:center}
+    .pre-word{font-family:'Outfit',sans-serif;font-size:clamp(3rem,8vw,5rem);font-weight:900;letter-spacing:16px;text-transform:uppercase;color:var(--pure);overflow:hidden}
+    .pre-word span{display:inline-block;transform:translateY(110%);opacity:0}
+    .pre-line{width:0;height:1px;background:rgba(255,255,255,.3);margin-top:20px}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 48px;display:flex;align-items:center;justify-content:space-between;background:rgba(245,245,247,.85);backdrop-filter:blur(20px) saturate(1.8);border-bottom:1px solid rgba(0,0,0,.04);transition:background .4s}
+    .nav-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase;color:var(--bk)}
+    .nav-links{display:flex;gap:28px;list-style:none}.nav-links a{font-size:.74rem;font-weight:500;letter-spacing:.3px;color:var(--g1);transition:color .3s}.nav-links a:hover{color:var(--bk)}
+    .nav-cta{padding:8px 20px;background:var(--bk);color:var(--pure);border:none;border-radius:980px;font-size:.72rem;font-weight:600;transition:all .3s;cursor:pointer;text-decoration:none;display:inline-block}.nav-cta:hover{background:var(--bk2)}
+    .blog-hero{padding:160px 48px 80px;background:var(--g4);position:relative;overflow:hidden}
+    .blog-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,transparent,var(--g4));pointer-events:none}
+    .blog-hero-inner{max-width:720px;margin:0 auto}
+    .breadcrumb{display:flex;gap:8px;align-items:center;margin-bottom:28px;flex-wrap:wrap}
+    .breadcrumb a,.breadcrumb span{font-size:.68rem;font-weight:500;letter-spacing:.3px;color:var(--g2);transition:color .3s}.breadcrumb a:hover{color:var(--bk)}.breadcrumb .sep{color:var(--g3)}
+    .blog-hero-cat{display:inline-block;padding:5px 14px;border:1px solid rgba(0,102,255,.15);border-radius:980px;font-size:.6rem;font-weight:700;color:var(--blue);letter-spacing:2px;text-transform:uppercase;margin-bottom:20px}
+    .blog-hero-title{font-family:'Outfit',sans-serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:900;line-height:1.05;letter-spacing:-2px;color:var(--bk);margin-bottom:20px}
+    .blog-hero-desc{font-size:.95rem;color:var(--g1);line-height:1.8;max-width:560px;margin-bottom:28px}
+    .blog-meta{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+    .blog-meta-author{display:flex;align-items:center;gap:10px}
+    .blog-meta-avatar{width:36px;height:36px;border-radius:50%;background:var(--bk3);overflow:hidden;flex-shrink:0}.blog-meta-avatar img{width:100%;height:100%;object-fit:cover}
+    .blog-meta-name{font-size:.78rem;font-weight:600;color:var(--bk)}.blog-meta-role{font-size:.65rem;color:var(--g2)}
+    .blog-meta-sep{width:1px;height:24px;background:var(--g3)}
+    .blog-meta-info{font-size:.7rem;color:var(--g2)}.blog-meta-info span{margin-right:16px}
+    .toc{position:sticky;top:90px;background:var(--pure);border:1px solid rgba(0,0,0,.04);border-radius:14px;padding:24px;margin-bottom:32px}
+    .toc-title{font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.5px;color:var(--bk);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+    .toc ol{list-style:none;counter-reset:toc}.toc li{counter-increment:toc}
+    .toc li a{display:flex;align-items:baseline;gap:8px;padding:6px 0;font-size:.76rem;color:var(--g1);transition:color .3s;border-bottom:1px solid rgba(0,0,0,.03)}.toc li a:hover{color:var(--blue)}
+    .toc li a::before{content:counter(toc,decimal-leading-zero);font-family:'Outfit',sans-serif;font-size:.65rem;font-weight:700;color:var(--g3);min-width:18px}
+    .toc li:last-child a{border-bottom:none}.toc li a.active{color:var(--blue);font-weight:600}.toc li a.active::before{color:var(--blue)}
+    .article-wrap{display:grid;grid-template-columns:220px 1fr;gap:40px;max-width:1020px;margin:0 auto;padding:60px 48px 120px}
+    .article-sidebar{position:relative}.article-body{max-width:700px}
+    .article-body h2{font-family:'Outfit',sans-serif;font-size:clamp(1.4rem,2.5vw,1.8rem);font-weight:800;line-height:1.1;letter-spacing:-1px;color:var(--bk);margin:56px 0 16px;padding-top:20px}.article-body h2:first-of-type{margin-top:0}
+    .article-body h3{font-family:'Outfit',sans-serif;font-size:1.05rem;font-weight:700;line-height:1.25;letter-spacing:-.3px;color:var(--bk);margin:36px 0 10px}
+    .article-body p{font-size:.9rem;color:var(--g1);line-height:1.85;margin-bottom:18px}
+    .article-body strong{color:var(--bk);font-weight:600}
+    .article-body ul,.article-body ol{margin:0 0 20px 0;padding-left:20px}
+    .article-body li{font-size:.88rem;color:var(--g1);line-height:1.8;margin-bottom:6px}.article-body li strong{color:var(--bk)}
+    .article-body blockquote{margin:28px 0;padding:20px 24px;background:var(--g4);border-left:3px solid var(--bk);border-radius:0 12px 12px 0;font-size:.88rem;color:var(--g1);line-height:1.8;font-style:italic}
+    .article-body blockquote strong{color:var(--bk);font-style:normal}
+    .article-body hr{border:none;border-top:1px solid var(--g4);margin:48px 0}
+    .info-box{margin:28px 0;padding:24px;background:rgba(0,102,255,.03);border:1px solid rgba(0,102,255,.08);border-radius:14px}
+    .info-box-title{font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:700;color:var(--blue);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+    .info-box p{font-size:.82rem;color:var(--g1);line-height:1.7;margin-bottom:0}
+    .key-concept{margin:32px 0;padding:28px;background:var(--bk3);border-radius:16px;color:var(--pure)}
+    .key-concept-label{font-size:.55rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:10px}
+    .key-concept h4{font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:800;letter-spacing:-.3px;margin-bottom:8px}
+    .key-concept p{font-size:.85rem;color:rgba(255,255,255,.5);line-height:1.8;margin-bottom:0}
+    .compare-table{width:100%;margin:24px 0 28px;border-collapse:collapse;border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,.06)}
+    .compare-table th{background:var(--bk3);color:var(--pure);font-family:'Outfit',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:14px 16px;text-align:left}
+    .compare-table td{padding:12px 16px;font-size:.82rem;color:var(--g1);line-height:1.6;border-bottom:1px solid rgba(0,0,0,.04);background:var(--pure)}
+    .compare-table tr:last-child td{border-bottom:none}.compare-table td:first-child{font-weight:600;color:var(--bk)}
+    .cta-card{margin:48px 0;padding:40px;background:var(--bk3);border-radius:20px;text-align:center;position:relative;overflow:hidden}
+    .cta-card::before{content:'';position:absolute;top:-50%;right:-30%;width:400px;height:400px;background:radial-gradient(circle,rgba(0,102,255,.08) 0%,transparent 70%);pointer-events:none}
+    .cta-card-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:12px}
+    .cta-card h3{font-family:'Outfit',sans-serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:800;color:var(--pure);letter-spacing:-.5px;margin-bottom:8px}
+    .cta-card p{font-size:.85rem;color:rgba(255,255,255,.4);line-height:1.7;max-width:380px;margin:0 auto 24px}
+    .cta-card .btn-p{background:var(--pure);color:var(--bk)}.cta-card .btn-p:hover{box-shadow:0 8px 30px rgba(255,255,255,.15)}
+    .faq-sec{padding:80px 48px 100px;background:var(--g4)}
+    .faq-list{max-width:680px;margin:40px auto 0}.fi{border-bottom:1px solid rgba(0,0,0,.06)}
+    .fq{width:100%;text-align:left;padding:18px 0;background:none;border:none;font-size:.85rem;font-weight:600;font-family:'DM Sans',sans-serif;color:var(--bk);display:flex;justify-content:space-between;align-items:center;cursor:pointer;gap:16px;transition:color .3s}.fq:hover{color:var(--g1)}
+    .fq-icon{width:22px;height:22px;border-radius:50%;background:rgba(0,0,0,.04);display:flex;align-items:center;justify-content:center;font-size:.75rem;transition:all .4s;flex-shrink:0;color:var(--g2)}
+    .fa{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1)}.fa.open{max-height:280px;padding-bottom:14px}
+    .fa p{font-size:.8rem;color:var(--g1);line-height:1.7;margin-bottom:0}.fi.active .fq-icon{background:var(--bk);color:var(--pure);transform:rotate(45deg)}
+    .related-sec{padding:80px 48px;background:var(--pure);border-top:1px solid var(--g4)}
+    .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1060px;margin:40px auto 0}
+    .related-card{display:block;padding:28px;background:var(--g4);border-radius:16px;transition:all .4s;text-decoration:none;color:var(--bk)}
+    .related-card:hover{background:var(--pure);box-shadow:0 8px 30px rgba(0,0,0,.06);transform:translateY(-2px)}
+    .related-cat{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+    .related-card h3{font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:700;line-height:1.3;letter-spacing:-.3px;margin-bottom:8px}
+    .related-card p{font-size:.78rem;color:var(--g1);line-height:1.6;margin-bottom:14px}
+    .related-link{font-size:.72rem;font-weight:600;color:var(--blue);letter-spacing:.3px}
+    .footer{background:var(--bk3);color:var(--pure);padding:56px 48px 28px}
+    .ft-top{display:flex;justify-content:space-between;align-items:start;margin-bottom:48px;flex-wrap:wrap;gap:32px}
+    .ft-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase}
+    .ft-cols{display:flex;gap:80px}
+    .ft-col-title{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:12px}
+    .ft-col a{display:block;font-size:.78rem;color:rgba(255,255,255,.5);margin-bottom:8px;transition:color .3s}.ft-col a:hover{color:var(--pure)}
+    .ft-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:20px;display:flex;justify-content:space-between;align-items:center;font-size:.6rem;color:rgba(255,255,255,.2)}
+    .ft-bottom a{color:rgba(255,255,255,.2);transition:color .3s;margin-left:20px}.ft-bottom a:hover{color:rgba(255,255,255,.5)}
+    .disclaimer{padding:12px 48px;background:var(--bk3);font-size:.58rem;color:rgba(255,255,255,.12);text-align:center;line-height:1.6;border-top:1px solid rgba(255,255,255,.03)}
+    .sec-center{text-align:center;max-width:680px;margin:0 auto}
+    .sec-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--g2);margin-bottom:10px}
+    .sec-title{font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;line-height:1.05;letter-spacing:-1.5px;color:var(--bk);margin-bottom:16px}
+    .btn-p{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--bk);color:var(--pure);border-radius:980px;font-size:.85rem;font-weight:600;transition:all .3s;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;text-decoration:none}
+    .btn-p:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(0,0,0,.1)}
+    .btn-p svg{width:13px;height:13px;transition:transform .3s}.btn-p:hover svg{transform:translateX(3px)}
+    .reading-progress{position:fixed;top:0;left:0;height:2px;background:var(--blue);z-index:9999;width:0;transition:width .1s linear}
+    @media(max-width:900px){.nav{padding:14px 20px}.nav-links{display:none}.blog-hero{padding:120px 20px 60px}.article-wrap{grid-template-columns:1fr;padding:40px 20px 80px}.article-sidebar{display:none}.related-grid{grid-template-columns:1fr}.related-sec,.faq-sec{padding:60px 20px}.ft-cols{flex-direction:column;gap:28px}.footer{padding:40px 20px 20px}.disclaimer{padding:10px 16px}.cta-card{padding:28px 20px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  </style>
+</head>
+<body>
+
+<div class="preloader" id="preloader"><div style="text-align:center"><div class="pre-word"><span>B</span><span>A</span><span>S</span><span>S</span></div><div class="pre-line" id="preLine"></div></div></div>
+<div class="reading-progress" id="readingProgress"></div>
+
+<nav class="nav" id="nav">
+  <a href="https://basstrading.fr" class="nav-logo">BASS</a>
+  <ul class="nav-links">
+    <li><a href="https://basstrading.fr#methode">Méthode</a></li>
+    <li><a href="https://basstrading.fr#resultats">Résultats</a></li>
+    <li><a href="https://basstrading.fr#avis">Avis</a></li>
+    <li><a href="https://basstrading.fr#faq">FAQ</a></li>
+    <li><a href="https://basstrading.fr/blog/">Blog</a></li>
+  </ul>
+  <a href="https://basstrading.fr#candidater" class="nav-cta">Candidater</a>
+</nav>
+
+<section class="blog-hero">
+  <div class="blog-hero-inner">
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <a href="https://basstrading.fr">Accueil</a><span class="sep">/</span>
+      <a href="https://basstrading.fr/blog/">Blog</a><span class="sep">/</span>
+      <span>Absorption en Order Flow</span>
+    </nav>
+    <div class="blog-hero-cat">Order Flow</div>
+    <h1 class="blog-hero-title">Absorption :<br>Quand les Gros Joueurs Mangent Silencieusement les Ordres</h1>
+    <p class="blog-hero-desc">L'absorption est l'une des signatures les plus puissantes des institutionnels sur les marchés. Des milliers de contrats avalés sans déplacer le prix — voici comment la détecter sur le Footprint avant que le marché ne retourne.</p>
+    <div class="blog-meta">
+      <div class="blog-meta-author">
+        <div class="blog-meta-avatar"><img src="../../images/bass-presenting.jpg" alt="Sébastien Constant" loading="lazy"></div>
+        <div><div class="blog-meta-name">Sébastien Constant</div><div class="blog-meta-role">Trader & Formateur Order Flow</div></div>
+      </div>
+      <div class="blog-meta-sep"></div>
+      <div class="blog-meta-info"><span>Mars 2026</span><span>12 min de lecture</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="article-wrap">
+  <aside class="article-sidebar">
+    <div class="toc">
+      <div class="toc-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/></svg> Sommaire</div>
+      <ol>
+        <li><a href="#definition">Qu'est-ce que l'absorption ?</a></li>
+        <li><a href="#mecanique">La mécanique de l'absorption</a></li>
+        <li><a href="#bullish-bearish">Absorption bullish vs bearish</a></li>
+        <li><a href="#footprint">Détecter l'absorption sur le Footprint</a></li>
+        <li><a href="#cvd">Absorption et CVD</a></li>
+        <li><a href="#niveaux">Absorption aux niveaux clés</a></li>
+        <li><a href="#fin-tendance">Absorption en fin de tendance</a></li>
+        <li><a href="#exemples">Patterns concrets sur ES/NQ</a></li>
+        <li><a href="#bass">Apprendre avec BASS</a></li>
+      </ol>
+    </div>
+  </aside>
+
+  <article class="article-body">
+    <h2 id="definition">Qu'est-ce que l'absorption ?</h2>
+    <p>Sur les marchés financiers, chaque transaction nécessite un acheteur et un vendeur. Quand un trader agressif envoie un market order, il doit trouver un trader passif (limit order) du côté opposé pour être exécuté. L'<strong>absorption</strong> se produit quand ces ordres passifs sont tellement nombreux et volumineux qu'ils "mangent" les ordres agressifs opposés sans laisser le prix bouger significativement.</p>
+    <p>Imaginez un mur d'acheteurs en limite à 4500 sur l'ES. Des vendeurs agressifs arrivent : 500 contrats, 800 contrats, 1 200 contrats. Chaque fois, le mur absorbe et tient. Le prix descend légèrement mais rebondit immédiatement. Des milliers de contrats sont échangés à ce niveau, mais le prix reste ancré à 4500. C'est de l'absorption bullish.</p>
+    <p>L'absorption est fondamentalement différente d'un simple support ou résistance technique. Elle implique une <strong>présence active</strong> d'un acteur de grande taille — pas juste des ordres en attente, mais un participant qui renouvelle activement ses ordres pour défendre ce niveau. Ce n'est pas passif, c'est intentionnel.</p>
+
+    <div class="key-concept">
+      <div class="key-concept-label">Principe</div>
+      <h4>L'absorption révèle où les mains fortes ont décidé de défendre un niveau</h4>
+      <p>Quand un niveau est défendu par absorption, c'est qu'un participant de taille significative a décidé que ce niveau est important. Il place des ordres limites, les renouvelle quand ils sont exécutés, et absorbe tout ce que le marché lui envoie. Ce niveau devient un point de référence pour les semaines suivantes.</p>
+    </div>
+
+    <h2 id="mecanique">La mécanique de l'absorption</h2>
+    <p>Pour comprendre l'absorption, vous devez visualiser l'interaction entre les ordres agressifs et les ordres passifs à un moment précis.</p>
+    <p>Scénario d'absorption bullish à 4500 :</p>
+    <ol>
+      <li>L'acheteur institutionnel place 5 000 contrats en limite à 4500 (Buy Limit à 4500)</li>
+      <li>Des vendeurs agressifs arrivent avec 500 contrats market sell → exécutés à 4500</li>
+      <li>L'institutionnel renouvelle : 500 nouveaux contrats en limite à 4500</li>
+      <li>Autre vague : 800 contrats market sell → exécutés à 4500</li>
+      <li>Renouvellement : 800 nouveaux contrats en limite à 4500</li>
+      <li>Ce processus se répète jusqu'à ce que le flux vendeur s'épuise</li>
+    </ol>
+    <p>Résultat dans le <a href="/blog/footprint-chart-trading/">Footprint</a> : vous voyez un volume Bid énorme à 4500 (toutes les ventes agressives exécutées), mais le prix n'est pas descendu significativement. Le delta de ces bougies sera très négatif (beaucoup de ventes agressives), mais le prix reste stable ou remonte légèrement — c'est la signature de l'absorption.</p>
+
+    <h2 id="bullish-bearish">Absorption bullish vs absorption bearish</h2>
+
+    <table class="compare-table">
+      <thead><tr><th>Type</th><th>Mécanisme</th><th>Signal</th><th>Suite probable</th></tr></thead>
+      <tbody>
+        <tr><td>Absorption Bullish</td><td>Acheteurs passifs absorbent ventes agressives</td><td>Fort volume Bid, prix stable ou remonte</td><td>Rebond haussier</td></tr>
+        <tr><td>Absorption Bearish</td><td>Vendeurs passifs absorbent achats agressifs</td><td>Fort volume Ask, prix stable ou descend</td><td>Retournement baissier</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Absorption bullish — l'accumulation silencieuse</h3>
+    <p>Le contexte type : une tendance baissière approche d'un niveau de support important (VAL, POC, HVN). Les vendeurs poussent avec force (delta négatif fort), mais le niveau tient. Volume Bid élevé à ce prix. Le <a href="/blog/cvd-cumulative-volume-delta/">CVD</a> est très négatif mais le prix ne cède pas. Quelqu'un de gros accumule ici. Quand les vendeurs s'épuisent, le rebond peut être violent.</p>
+
+    <h3>Absorption bearish — la distribution silencieuse</h3>
+    <p>Contexte inverse : une tendance haussière approche d'une résistance (VAH, résistance structurelle, Naked POC). Les acheteurs poussent avec force (delta positif fort), mais le niveau tient. Volume Ask élevé. CVD très positif mais le prix n'avance pas. Des mains fortes distribuent (vendent) à ce niveau. Quand les acheteurs retail s'épuisent — tous ceux qui voulaient acheter l'ont fait — la résistance cède vers le bas.</p>
+
+    <h2 id="footprint">Détecter l'absorption sur le Footprint Chart</h2>
+    <p>Le <a href="/blog/footprint-chart-trading/">Footprint Chart</a> est l'outil de prédilection pour visualiser l'absorption. Voici les signatures à rechercher.</p>
+
+    <h3>Signature 1 : Volume anormalement élevé à un niveau fixe</h3>
+    <p>Sur le Footprint, zoomez sur un niveau de prix spécifique. Si vous voyez le même prix avec des volumes 3x à 5x supérieurs aux autres niveaux de la bougie, bougie après bougie, c'est une zone d'absorption active. Quelqu'un renouvelle ses ordres à ce prix pour absorber le flux opposé.</p>
+
+    <h3>Signature 2 : Delta fort sans déplacement de prix</h3>
+    <p>Bougie avec <a href="/blog/delta-footprint-trading/">delta</a> de −8 000 contrats mais prix stable ou en légère hausse ? C'est de l'absorption bullish quantifiable. La formule : <strong>Volume absorbé = max delta négatif atteint + mouvement de prix correspondant × conversion</strong>. En pratique, regardez simplement le ratio delta/mouvement de prix.</p>
+
+    <h3>Signature 3 : Les wicks sans suivi</h3>
+    <p>Des wicks répétés dans une direction (bougies qui testent un niveau et reviennent immédiatement) sont une forme visuelle d'absorption. Chaque wick représente une tentative de percée — et l'absorption d'un acteur passif qui repoussait le prix. Ces zones sont des emplacements idéaux pour les trades de retournement.</p>
+
+    <h2 id="cvd">Absorption et CVD : la combinaison diagnostique</h2>
+    <p>Combiné au <a href="/blog/cvd-cumulative-volume-delta/">CVD</a>, l'absorption devient encore plus lisible. Le pattern classique d'absorption bullish dans le CVD :</p>
+    <ul>
+      <li>CVD descend fortement (nombreuses ventes agressives accumulées)</li>
+      <li>Prix reste stable ou descend légèrement</li>
+      <li>CVD atteint un extrême bas (jamais vu depuis plusieurs sessions)</li>
+      <li>Puis le CVD commence à remonter (les ventes agressives s'épuisent)</li>
+      <li>Le prix suit avec un retard de quelques bougies</li>
+    </ul>
+    <p>Ce pattern — CVD extrême négatif + prix résistant + CVD qui remonte — est l'une des configurations les plus fiables pour les trades de retournement haussier en day trading sur futures.</p>
+
+    <h2 id="niveaux">Absorption aux niveaux clés : les confluences premium</h2>
+    <p>L'absorption seule est un signal. L'absorption <em>à un niveau structurel fort</em> est un signal premium. Les meilleures confluences :</p>
+    <ul>
+      <li><strong>Absorption bullish au VAL :</strong> le bas de la Value Area de la session — zone de défense institutionnelle par excellence</li>
+      <li><strong>Absorption bullish au Naked POC :</strong> un prix d'équilibre non retesté attire naturellement les défenseurs</li>
+      <li><strong>Absorption bearish au VAH :</strong> le haut de la Value Area — zone de distribution prioritaire</li>
+      <li><strong>Absorption aux HVN du Volume Profile :</strong> les zones de fort volume historical sont souvent les zones d'absorption les plus importantes</li>
+    </ul>
+    <p>Quand le <a href="/blog/volume-profile-guide/">Volume Profile</a> confirme un niveau et que le Footprint montre de l'absorption à ce même niveau, la probabilité de tenue du niveau monte considérablement. C'est le type de confluence que le mentorat BASS enseigne à identifier et exploiter.</p>
+
+    <h2 id="fin-tendance">Absorption en fin de tendance : le retournement annoncé</h2>
+    <p>L'absorption est particulièrement puissante comme signal de fin de tendance. Le scénario classique :</p>
+    <p>Une tendance haussière forte arrive sur une résistance historique. Le marché y pousse pendant 20-30 minutes. On voit :</p>
+    <ul>
+      <li>Bougies avec fort delta positif mais progression de prix qui ralentit</li>
+      <li>CVD qui monte en flèche mais prix qui n'avance plus</li>
+      <li>Volume Ask massif sur 2-3 niveaux de prix dans la résistance</li>
+      <li>Puis delta qui commence à baisser même si le prix est encore haut</li>
+    </ul>
+    <p>C'est la signature d'une distribution terminale. Tous les acheteurs qui voulaient entrer sont entrés. Les vendeurs institutionnels ont absorbé toute la demande. Il n'y a plus d'acheteurs nouveaux pour pousser plus haut. La prochaine bougie avec fort delta négatif marque souvent le début du retournement.</p>
+
+    <blockquote>
+      <strong>La règle BASS :</strong> Ne jamais vendre un marché qui monte sans preuve d'absorption. Et quand l'absorption est confirmée, le stop est naturellement placé juste au-dessus de la zone d'absorption — là où le scénario est invalidé.
+    </blockquote>
+
+    <h2 id="exemples">Patterns concrets sur ES et NQ</h2>
+    <p>Sur l'ES (S&P 500 Futures), l'absorption se produit régulièrement aux niveaux suivants :</p>
+    <ul>
+      <li><strong>Pre-market high/low :</strong> les niveaux formés avant l'ouverture US sont souvent défendus par absorption lors de la session principale</li>
+      <li><strong>VWAP :</strong> le VWAP est une référence institutionnelle — les market makers défendent souvent ce niveau par absorption</li>
+      <li><strong>Previous Day VAH/VAL :</strong> les extrêmes de Value Area de la veille sont des zones d'absorption naturelles</li>
+      <li><strong>Overnight high/low :</strong> les extrêmes de la session overnight attirent systématiquement les défenseurs</li>
+    </ul>
+    <p>Sur le NQ (Nasdaq Futures), les patterns d'absorption sont similaires mais plus amplifiés — le NQ est plus volatile et les absorptions sont souvent plus nettes et plus tranchées, car les mains fortes s'y positionnent avec plus d'agressivité.</p>
+
+    <h2 id="bass">Apprendre à détecter l'absorption avec BASS Trading</h2>
+    <p>L'absorption est une compétence visuelle. La première fois que vous voyez un Footprint avec une vraie absorption, c'est une révélation — vous comprenez soudainement pourquoi le marché s'est comporté comme il l'a fait. Mais développer l'automatisme de la détecter en temps réel prend des semaines d'observation intensive.</p>
+    <p>Le mentorat BASS consacre plusieurs sessions entières à l'absorption — des exercices de reconnaissance de patterns sur des données historiques, puis de l'observation en live, puis des entrées réelles avec l'absorption comme signal de confirmation. Cette progression structurée compresse considérablement la courbe d'apprentissage.</p>
+
+    <div class="cta-card">
+      <div class="cta-card-label">Mentorat</div>
+      <h3>Voyez ce que le retail ne voit pas.</h3>
+      <p>Absorption + Footprint + Delta + CVD — détecter les institutionnels avant que le marché ne bouge. 70h de formation, 10 places.</p>
+      <a href="https://basstrading.fr#candidater" class="btn-p">Vérifier mon éligibilité <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+    </div>
+  </article>
+</div>
+
+<section class="faq-sec">
+  <div class="sec-center"><div class="sec-label">FAQ</div><h2 class="sec-title">Questions fréquentes</h2></div>
+  <div class="faq-list">
+    <div class="fi"><button class="fq" onclick="tf(this)">C'est quoi l'absorption en trading ? <span class="fq-icon">+</span></button><div class="fa"><p>Quand des ordres passifs (limit) de grande taille absorbent des ordres agressifs (market) en sens opposé sans déplacer le prix. Signal de présence institutionnelle forte à un niveau. Précède souvent un retournement ou un renforcement de tendance.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Comment identifier l'absorption sur le Footprint ? <span class="fq-icon">+</span></button><div class="fa"><p>Volume anormalement élevé à un niveau de prix fixe, delta fort sans déplacement correspondant du prix, wicks répétés sans suivi. Le CVD en extrême avec prix résistant est la signature la plus fiable.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Absorption bullish ou bearish — comment les distinguer ? <span class="fq-icon">+</span></button><div class="fa"><p>Bullish : fort volume Bid (ventes agressives), prix tient ou remonte. Des acheteurs passifs absorbent → accumulation. Bearish : fort volume Ask (achats agressifs), prix tient ou descend. Des vendeurs passifs absorbent → distribution.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">L'absorption garantit-elle le retournement ? <span class="fq-icon">+</span></button><div class="fa"><p>Non — c'est un signal de probabilité élevée, pas une certitude. L'absorption peut être "épuisée" si le flux agressif opposé est encore plus massif. Toujours combiner avec un niveau structurel fort et un contexte favorable (type de journée, phase du marché).</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Où se produit l'absorption le plus souvent ? <span class="fq-icon">+</span></button><div class="fa"><p>Aux niveaux structurels clés : VAH, VAL, POC, Naked POC, HVN du Volume Profile, VWAP, Previous Day High/Low. Plus le niveau est "reconnu" par les institutionnels, plus il est susceptible d'être défendu par absorption.</p></div></div>
+  </div>
+</section>
+
+<section class="related-sec">
+  <div class="sec-center"><div class="sec-label">Continuer la lecture</div><h2 class="sec-title">Articles connexes</h2></div>
+  <div class="related-grid">
+    <a href="/blog/footprint-chart-trading/" class="related-card"><div class="related-cat">Guide</div><h3>Footprint Chart : guide complet</h3><p>L'outil principal pour visualiser l'absorption niveau par niveau.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/delta-footprint-trading/" class="related-card"><div class="related-cat">Order Flow</div><h3>Delta : mesurer la pression directionnelle</h3><p>Le delta absorbé — quantifier l'absorption bougie par bougie.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/imbalance-footprint/" class="related-card"><div class="related-cat">Analyse</div><h3>Imbalances Footprint : les déséquilibres de volume</h3><p>Imbalances et absorption — deux signatures complémentaires.</p><span class="related-link">Lire &rarr;</span></a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="ft-top"><div class="ft-logo">BASS</div><div class="ft-cols">
+    <div class="ft-col"><div class="ft-col-title">Programme</div><a href="https://basstrading.fr#methode">Méthode</a><a href="https://basstrading.fr#programme">Programme</a><a href="https://basstrading.fr#certification">Certification</a><a href="https://basstrading.fr#candidater">Candidater</a></div>
+    <div class="ft-col"><div class="ft-col-title">Ressources</div><a href="/blog/absorption-order-flow/">Absorption</a><a href="/blog/footprint-chart-trading/">Footprint Chart</a><a href="/blog/delta-footprint-trading/">Delta</a><a href="/blog/imbalance-footprint/">Imbalances</a></div>
+    <div class="ft-col"><div class="ft-col-title">Écosystème</div><a href="https://hubtrading.fr" target="_blank" rel="noopener">HubTrading.fr</a><a href="https://x-trade.ai" target="_blank" rel="noopener">x-trade.ai</a><a href="mailto:contact@basstrading.fr">Contact</a></div>
+  </div></div>
+  <div class="ft-bottom"><span>&copy; 2026 BASS — Sébastien Constant</span><div><a href="https://basstrading.fr/mentions-legales.html">Mentions légales</a><a href="https://basstrading.fr/confidentialite.html">Confidentialité</a><a href="https://basstrading.fr/cgv.html">CGV</a></div></div>
+</footer>
+<div class="disclaimer">Le trading comporte des risques de perte en capital. Les performances passées ne préjugent pas des performances futures. Ce site ne constitue pas un conseil en investissement.</div>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+const lenis=new Lenis({duration:1.2,easing:t=>Math.min(1,1.001-Math.pow(2,-10*t))});
+function raf(t){lenis.raf(t);requestAnimationFrame(raf)}requestAnimationFrame(raf);
+lenis.on('scroll',ScrollTrigger.update);gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0);
+const tl=gsap.timeline();
+tl.to('.pre-word span',{y:0,opacity:1,duration:.5,stagger:.1,ease:'power3.out',delay:.3}).to('#preLine',{width:'80px',duration:.7,ease:'power2.inOut'},'<+.2').to('.preloader',{yPercent:-100,duration:.8,ease:'power3.inOut',delay:.4}).set('.preloader',{display:'none'}).to('#nav',{opacity:1,y:0,duration:.5},'<+.1');
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);const h=document.documentElement.scrollHeight-window.innerHeight;document.getElementById('readingProgress').style.width=(window.scrollY/h*100)+'%'});
+const tocLinks=document.querySelectorAll('.toc a');const sections=Array.from(tocLinks).map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+window.addEventListener('scroll',()=>{let c='';sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)c=s.id});tocLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+c)})});
+function tf(b){const i=b.closest('.fi'),a=b.nextElementSibling,o=i.classList.contains('active');document.querySelectorAll('.fi').forEach(x=>{x.classList.remove('active');x.querySelector('.fa').classList.remove('open')});if(!o){i.classList.add('active');a.classList.add('open')}}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();lenis.scrollTo(t,{offset:-60})}})});
+</script>
+</body>
+</html>
