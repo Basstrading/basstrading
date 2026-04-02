@@ -1,4 +1,6 @@
 {
+  "framework": "nextjs",
+  "buildCommand": "next build",
   "redirects": [
     { "source": "/cgv.html", "destination": "/cgv/", "statusCode": 301 },
     { "source": "/mentions-legales.html", "destination": "/mentions-legales/", "statusCode": 301 },
