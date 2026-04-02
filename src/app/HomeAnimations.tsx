@@ -83,10 +83,10 @@ export default function HomeAnimations() {
       gsap.to(c, { y: 0, opacity: 1, duration: 0.4, delay: i * 0.05, ease: "power2.out", scrollTrigger: { trigger: c, start: "top 92%" } });
     });
 
-    // Hero image reveal
-    gsap.to("#heroImg", { opacity: 1, scale: 1, duration: 1.6, ease: "power2.out", delay: 2 });
-    gsap.to("#heroContent", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out", delay: 2.3 });
-    gsap.to("#heroScroll", { opacity: 1, duration: 0.4, delay: 2.5 });
+    // Hero image reveal (after preloader ~1.2s)
+    gsap.to("#heroImg", { opacity: 1, scale: 1, duration: 1.2, ease: "power2.out", delay: 1.2 });
+    gsap.to("#heroContent", { opacity: 1, y: 0, duration: 0.7, ease: "power2.out", delay: 1.4 });
+    gsap.to("#heroScroll", { opacity: 1, duration: 0.3, delay: 1.6 });
 
     return () => {
       ScrollTrigger.getAll().forEach((st) => st.kill());

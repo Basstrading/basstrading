@@ -16,19 +16,19 @@ export default function Preloader() {
     tl.to(".pre-word span", {
       y: 0,
       opacity: 1,
-      duration: 0.5,
-      stagger: 0.1,
+      duration: 0.35,
+      stagger: 0.07,
       ease: "power3.out",
-      delay: 0.3,
+      delay: 0.1,
     })
       .to(
         "#preLine",
-        { width: "80px", duration: 0.7, ease: "power2.inOut" },
-        "<+0.2"
+        { width: "80px", duration: 0.4, ease: "power2.inOut" },
+        "<+0.1"
       )
       .to(
         ".preloader",
-        { yPercent: -100, duration: 0.8, ease: "power3.inOut", delay: 0.4 },
+        { yPercent: -100, duration: 0.6, ease: "power3.inOut", delay: 0.15 },
       )
       .set(".preloader", { display: "none" });
   }, []);

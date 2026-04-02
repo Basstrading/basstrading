@@ -10,7 +10,7 @@ export default function Nav() {
 
   useEffect(() => {
     // Show nav after preloader (delay 2s) or immediately if no preloader
-    const timer = setTimeout(() => setVisible(true), 2000);
+    const timer = setTimeout(() => setVisible(true), 1200);
 
     const onScroll = () => setScrolled(window.scrollY > 60);
     window.addEventListener("scroll", onScroll);

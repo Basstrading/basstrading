@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { generateSeoMetadata } from "@/lib/seo";
 import { OrganizationJsonLd, CourseJsonLd, FaqJsonLd } from "@/lib/jsonld";
 import Preloader from "@/components/Preloader";
@@ -33,7 +34,7 @@ export default function HomePage() {
       <HomeAnimations />
 <section className="hero" id="hero">
   <div className="hero-portrait" id="heroPortrait">
-    <img src="images/bass-presenting.jpg" alt="Sébastien Constant" id="heroImg" />
+    <Image src="/images/bass-presenting.jpg" alt="Sebastien Constant" id="heroImg" fill sizes="52vw" priority style={{objectFit:"cover",objectPosition:"center 20%"}} />
   </div>
   <div className="hero-content" id="heroContent">
     <div className="hero-brand">bass trading</div>
@@ -75,7 +76,7 @@ export default function HomePage() {
     <div className="method-card"><div className="method-num">06</div><h3>Live Trading</h3><p>Une session par jour, ensemble, sur les marchés réels. On le prend — ou pas.</p></div>
   </div>
   <div className="dark-img" id="darkImg1">
-    <img src="images/bass-tv-closeup.jpg" alt="Analyse Market Profile en direct" loading="lazy" />
+    <img src="/images/bass-tv-closeup.jpg" alt="Analyse Market Profile en direct" loading="lazy" />
   </div>
   <div className="feat-grid">
     <div className="feat-col" id="feat1">
@@ -94,7 +95,7 @@ export default function HomePage() {
     L'approche<br /><span className="line2">invisible.</span>
   </div>
   <div className="overlap-img" id="overlapImg">
-    <img src="images/bass-tv-teaching.jpg" alt="Formation Market Profile" loading="lazy" />
+    <img src="/images/bass-tv-teaching.jpg" alt="Formation Market Profile" loading="lazy" />
   </div>
   <div className="overlap-sub" id="overlapSub">
     Pas de signal Telegram. Pas d&apos;indicateur magique. Vous apprenez à lire le marché par vous-même — pour ne plus jamais dépendre de personne.
@@ -122,33 +123,33 @@ export default function HomePage() {
   </div>
   <div className="ed-video">
     <video controls playsInline preload="metadata" poster="images/bass-tv-closeup.jpg">
-      <source src="images/bass-malaga-video.mp4" type="video/mp4" />
+      <source src="/images/bass-malaga-video.mp4" type="video/mp4" />
     </video>
   </div>
 </section>
 
 <div className="gallery">
   <div className="gallery-track">
-    <div className="gi"><img src="images/bass-tv-closeup.jpg" alt="Bass Market Profile" height="300" /></div>
-    <div className="gi"><img src="images/bass-presenting.jpg" alt="Bass présentation" height="300" /></div>
-    <div className="gi"><img src="images/bass-tv-teaching.jpg" alt="Formation TV" height="300" /></div>
-    <div className="gi"><img src="images/bass-group-screens.jpg" alt="Groupe écrans" height="300" /></div>
-    <div className="gi"><img src="images/bass-pointing.jpg" alt="Bass niveau clé" height="300" /></div>
-    <div className="gi"><img src="images/bass-classroom.jpg" alt="Salle formation" height="300" /></div>
-    <div className="gi"><img src="images/bass-closeup-screen.jpg" alt="Analyse Market Profile" height="300" /></div>
-    <div className="gi"><img src="images/bass-teaching.jpg" alt="Coaching" height="300" /></div>
-    <div className="gi"><img src="images/bass-portrait.jpg" alt="Bass portrait" height="300" /></div>
-    <div className="gi"><img src="images/bass-malaga-group.jpg" alt="Malaga" height="300" /></div>
-    <div className="gi"><img src="images/bass-tv-closeup.jpg" alt="" height="300" /></div>
-    <div className="gi"><img src="images/bass-presenting.jpg" alt="" height="300" /></div>
-    <div className="gi"><img src="images/bass-tv-teaching.jpg" alt="" height="300" /></div>
-    <div className="gi"><img src="images/bass-group-screens.jpg" alt="" height="300" /></div>
-    <div className="gi"><img src="images/bass-pointing.jpg" alt="" height="300" /></div>
-    <div className="gi"><img src="images/bass-classroom.jpg" alt="" height="300" /></div>
-    <div className="gi"><img src="images/bass-closeup-screen.jpg" alt="" height="300" /></div>
-    <div className="gi"><img src="images/bass-teaching.jpg" alt="" height="300" /></div>
-    <div className="gi"><img src="images/bass-portrait.jpg" alt="" height="300" /></div>
-    <div className="gi"><img src="images/bass-malaga-group.jpg" alt="" height="300" /></div>
+    <div className="gi"><img src="/images/bass-tv-closeup.jpg" alt="Bass Market Profile" height="300" loading="lazy" /></div>
+    <div className="gi"><img src="/images/bass-presenting.jpg" alt="Bass présentation" height="300" loading="lazy" /></div>
+    <div className="gi"><img src="/images/bass-tv-teaching.jpg" alt="Formation TV" height="300" loading="lazy" /></div>
+    <div className="gi"><img src="/images/bass-group-screens.jpg" alt="Groupe écrans" height="300" loading="lazy" /></div>
+    <div className="gi"><img src="/images/bass-pointing.jpg" alt="Bass niveau clé" height="300" loading="lazy" /></div>
+    <div className="gi"><img src="/images/bass-classroom.jpg" alt="Salle formation" height="300" loading="lazy" /></div>
+    <div className="gi"><img src="/images/bass-closeup-screen.jpg" alt="Analyse Market Profile" height="300" loading="lazy" /></div>
+    <div className="gi"><img src="/images/bass-teaching.jpg" alt="Coaching" height="300" loading="lazy" /></div>
+    <div className="gi"><img src="/images/bass-portrait.jpg" alt="Bass portrait" height="300" loading="lazy" /></div>
+    <div className="gi"><img src="/images/bass-malaga-group.jpg" alt="Malaga" height="300" loading="lazy" /></div>
+    <div className="gi"><img src="/images/bass-tv-closeup.jpg" alt="" height="300" loading="lazy" /></div>
+    <div className="gi"><img src="/images/bass-presenting.jpg" alt="" height="300" loading="lazy" /></div>
+    <div className="gi"><img src="/images/bass-tv-teaching.jpg" alt="" height="300" loading="lazy" /></div>
+    <div className="gi"><img src="/images/bass-group-screens.jpg" alt="" height="300" loading="lazy" /></div>
+    <div className="gi"><img src="/images/bass-pointing.jpg" alt="" height="300" loading="lazy" /></div>
+    <div className="gi"><img src="/images/bass-classroom.jpg" alt="" height="300" loading="lazy" /></div>
+    <div className="gi"><img src="/images/bass-closeup-screen.jpg" alt="" height="300" loading="lazy" /></div>
+    <div className="gi"><img src="/images/bass-teaching.jpg" alt="" height="300" loading="lazy" /></div>
+    <div className="gi"><img src="/images/bass-portrait.jpg" alt="" height="300" loading="lazy" /></div>
+    <div className="gi"><img src="/images/bass-malaga-group.jpg" alt="" height="300" loading="lazy" /></div>
   </div>
 </div>
 
@@ -236,7 +237,7 @@ export default function HomePage() {
     <a href="/malaga/" className="btn-p">Découvrir le séminaire <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
   </div>
   <div className="dark-img">
-    <img src="images/bass-malaga-group.jpg" alt="Formation à Malaga" loading="lazy" />
+    <img src="/images/bass-malaga-group.jpg" alt="Formation à Malaga" loading="lazy" />
   </div>
 </section>
 
@@ -250,7 +251,7 @@ export default function HomePage() {
     </div>
     <div className="ed-right">
       <div>
-        <img src="images/bass-portrait.jpg" alt="Sébastien Constant — fondateur BASS Trading" loading="lazy" />
+        <img src="/images/bass-portrait.jpg" alt="Sébastien Constant — fondateur BASS Trading" loading="lazy" />
       </div>
     </div>
   </div>
@@ -316,32 +317,32 @@ export default function HomePage() {
   </div>
   <div className="retraits-grid">
     <div className="retrait-card">
-      <img src="images/retraits/kevin-ftmo-6006.jpg" alt="Kevin — retrait $6 006 via FTMO" loading="lazy" />
+      <img src="/images/retraits/kevin-ftmo-6006.jpg" alt="Kevin — retrait $6 006 via FTMO" loading="lazy" />
       <div>$6 006</div>
       <div>Kevin — FTMO</div>
     </div>
     <div className="retrait-card">
-      <img src="images/retraits/fouad-ftt-6000.jpg" alt="Fouad — retrait $6 000 via Fast Track Trading" loading="lazy" />
+      <img src="/images/retraits/fouad-ftt-6000.jpg" alt="Fouad — retrait $6 000 via Fast Track Trading" loading="lazy" />
       <div>$6 000</div>
       <div>Fouad — Fast Track Trading</div>
     </div>
     <div className="retrait-card">
-      <img src="images/retraits/fouad-topstep-5000.jpg" alt="Fouad — retrait $5 000 via Topstep" loading="lazy" />
+      <img src="/images/retraits/fouad-topstep-5000.jpg" alt="Fouad — retrait $5 000 via Topstep" loading="lazy" />
       <div>$5 000</div>
       <div>Fouad — Topstep</div>
     </div>
     <div className="retrait-card">
-      <img src="images/retraits/damien-deel-3553.jpg" alt="Damien — retrait 3 553€ via Deel" loading="lazy" />
+      <img src="/images/retraits/damien-deel-3553.jpg" alt="Damien — retrait 3 553€ via Deel" loading="lazy" />
       <div>3 553 €</div>
       <div>Damien — Deel</div>
     </div>
     <div className="retrait-card">
-      <img src="images/retraits/benjamin-bulenox-3000.jpg" alt="Benjamin — retrait $3 000 via Bulenox" loading="lazy" />
+      <img src="/images/retraits/benjamin-bulenox-3000.jpg" alt="Benjamin — retrait $3 000 via Bulenox" loading="lazy" />
       <div>$3 000</div>
       <div>Benjamin — Bulenox</div>
     </div>
     <div className="retrait-card">
-      <img src="images/retraits/moufidath-2300.jpg" alt="Moufidath — retrait $2 300" loading="lazy" />
+      <img src="/images/retraits/moufidath-2300.jpg" alt="Moufidath — retrait $2 300" loading="lazy" />
       <div>$2 300</div>
       <div>Moufidath — Prop Firm</div>
     </div>
@@ -359,7 +360,7 @@ export default function HomePage() {
   <div className="video-grid">
     <div className="vid-card">
       <video controls playsInline preload="metadata">
-        <source src="images/temoignages/samy.mp4" type="video/mp4" />
+        <source src="/images/temoignages/samy.mp4" type="video/mp4" />
       </video>
       <div>
         <div>Samy</div>
@@ -368,7 +369,7 @@ export default function HomePage() {
     </div>
     <div className="vid-card">
       <video controls playsInline preload="metadata">
-        <source src="images/temoignages/bruno.mp4" type="video/mp4" />
+        <source src="/images/temoignages/bruno.mp4" type="video/mp4" />
       </video>
       <div>
         <div>Bruno</div>
@@ -377,7 +378,7 @@ export default function HomePage() {
     </div>
     <div className="vid-card">
       <video controls playsInline preload="metadata">
-        <source src="images/temoignages/damien.mp4" type="video/mp4" />
+        <source src="/images/temoignages/damien.mp4" type="video/mp4" />
       </video>
       <div>
         <div>Damien</div>
@@ -386,7 +387,7 @@ export default function HomePage() {
     </div>
     <div className="vid-card">
       <video controls playsInline preload="metadata">
-        <source src="images/temoignages/laurent.mp4" type="video/mp4" />
+        <source src="/images/temoignages/laurent.mp4" type="video/mp4" />
       </video>
       <div>
         <div>Laurent</div>
