@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { generateSeoMetadata } from "@/lib/seo";
 import { OrganizationJsonLd, CourseJsonLd, FaqJsonLd } from "@/lib/jsonld";
-import Preloader from "@/components/Preloader";
 import FAQ from "@/components/FAQ";
 import HomeAnimations from "./HomeAnimations";
 import ApplyForm from "./ApplyForm";
@@ -27,7 +26,6 @@ const homeFaq = [
 export default function HomePage() {
   return (
     <>
-      <Preloader />
       <OrganizationJsonLd />
       <CourseJsonLd />
       <FaqJsonLd items={homeFaq} />

@@ -7,8 +7,8 @@
   mask-image:linear-gradient(to right,transparent 0%,black 20%),linear-gradient(to top,transparent 0%,black 10%),linear-gradient(to bottom,transparent 0%,black 5%);
   mask-composite:intersect;
   mix-blend-mode:multiply;
-  transform:scale(1.03);opacity:0}
-.hero-content{position:relative;z-index:2;max-width:500px;padding-left:48px;opacity:0;transform:translateY(30px)}
+  transform:scale(1.03)}
+.hero-content{position:relative;z-index:2;max-width:500px;padding-left:48px}
 .hero-brand{font-family:var(--font-outfit),sans-serif;font-size:.65rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--g2);margin-bottom:12px}
 .hero-title{font-family:var(--font-outfit),sans-serif;font-size:clamp(2.8rem,5vw,4.2rem);font-weight:900;line-height:.95;letter-spacing:-2.5px;color:var(--bk);margin-bottom:16px}
 .hero-sub{font-size:1.02rem;color:var(--g1);line-height:1.7;margin-bottom:24px;max-width:400px}

@@ -5,25 +5,17 @@ import Link from "next/link";
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
-  const [visible, setVisible] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    // Show nav after preloader (delay 2s) or immediately if no preloader
-    const timer = setTimeout(() => setVisible(true), 1200);
-
     const onScroll = () => setScrolled(window.scrollY > 60);
     window.addEventListener("scroll", onScroll);
-
-    return () => {
-      clearTimeout(timer);
-      window.removeEventListener("scroll", onScroll);
-    };
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
     <nav
-      className={`nav${scrolled ? " scrolled" : ""}${visible ? " visible" : ""}`}
+      className={`nav${scrolled ? " scrolled" : ""}`}
       id="nav"
     >
       <Link href="/" className="nav-logo">
