@@ -40,6 +40,9 @@ export default function Nav() {
           <Link href="/#avis">Avis</Link>
         </li>
         <li>
+          <Link href="/malaga/" style={{ color: "var(--gold, #C9A84C)", fontWeight: 600 }}>Malaga 2026</Link>
+        </li>
+        <li>
           <Link href="/#faq">FAQ</Link>
         </li>
         <li>
