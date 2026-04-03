@@ -108,10 +108,10 @@ export default async function FormationVillePage({
             Session à {v.ville} — 8 participants maximum.
           </p>
           <div className="v-hero-ctas">
-            <Link href="/#candidater" className="v-cta-primary">
+            <Link href={`/candidater-presentiel/?ville=${v.slug}`} className="v-cta-primary">
               Réserver ma place <Arrow />
             </Link>
-            <Link href="/#candidater" className="v-cta-secondary">
+            <Link href="/candidater-en-ligne/" className="v-cta-secondary">
               Formation en ligne disponible immédiatement
             </Link>
           </div>
@@ -263,7 +263,7 @@ export default async function FormationVillePage({
           </div>
         </div>
         <div style={{ textAlign: "center", marginTop: 40 }}>
-          <Link href="/#candidater" className="btn-p">
+          <Link href={`/candidater-presentiel/?ville=${v.slug}`} className="btn-p">
             Rejoindre la liste d&apos;attente {v.ville} <Arrow />
           </Link>
         </div>
@@ -329,7 +329,7 @@ export default async function FormationVillePage({
           ))}
         </div>
         <div className="v-maillage-extra">
-          <Link href="/#candidater" className="btn-p">
+          <Link href="/candidater/" className="btn-p">
             Candidater au mentorat BASS <Arrow />
           </Link>
         </div>
