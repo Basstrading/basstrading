@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import Image from "next/image";
 import Link from "next/link";
 import { generateSeoMetadata } from "@/lib/seo";
 import { BreadcrumbJsonLd, FaqJsonLd } from "@/lib/jsonld";
@@ -92,27 +93,38 @@ export default async function FormationVillePage({
 
       {/* HERO */}
       <section className="v-hero">
+        <div className="v-hero-portrait">
+          <Image
+            src="/images/bass-presenting.jpg"
+            alt={`Sébastien Constant — Formation Trading ${v.ville}`}
+            fill
+            sizes="52vw"
+            priority
+            style={{ objectFit: "cover", objectPosition: "center 20%" }}
+          />
+        </div>
         <div className="v-hero-content">
           <div className="v-hero-badge">
             <span className="v-dot" /> 8 places max — Présentiel
           </div>
           <h1 className="v-hero-title">
-            Formation Trading à{" "}
-            <em>{v.ville}</em>
-            <br />
-            <span>Présentiel &amp; En ligne</span>
+            Formation Trading<br />à <em>{v.ville}</em>
           </h1>
           <p className="v-hero-sub">
             Apprenez à lire les marchés comme les institutionnels.
-            <br />
             Session à {v.ville} — 8 participants maximum.
           </p>
+          <div className="v-hero-tags">
+            <span className="v-hero-tag">Market Profile</span>
+            <span className="v-hero-tag">Order Flow</span>
+            <span className="v-hero-tag">Gamma</span>
+          </div>
           <div className="v-hero-ctas">
-            <Link href={`/candidater-presentiel/?ville=${v.slug}`} className="v-cta-primary">
+            <Link href={`/candidater-presentiel/?ville=${v.slug}`} className="btn-p">
               Réserver ma place <Arrow />
             </Link>
-            <Link href="/candidater-en-ligne/" className="v-cta-secondary">
-              Formation en ligne disponible immédiatement
+            <Link href="/candidater-en-ligne/" className="v-cta-secondary-light">
+              Formation en ligne disponible
             </Link>
           </div>
         </div>
