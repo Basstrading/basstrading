@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { articles } from "@/content/blog/_meta";
+import { villes } from "@/content/pages/villes/_data";
 import { SITE } from "@/lib/constants";
 
 export const dynamic = "force-static";
@@ -10,6 +11,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(a.dateModified),
     changeFrequency: "monthly" as const,
     priority: 0.8,
+  }));
+
+  const villeUrls = villes.map((v) => ({
+    url: `${SITE.url}/formation-trading/${v.slug}/`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.85,
   }));
 
   return [
@@ -31,6 +39,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.9,
     },
+    ...villeUrls,
     ...blogUrls,
     {
       url: `${SITE.url}/cgv/`,

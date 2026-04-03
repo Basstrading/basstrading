@@ -35,6 +35,19 @@ a{color:inherit;text-decoration:none}
 .nav-cta{padding:10px 24px;background:var(--bk);color:var(--pure);border:none;border-radius:980px;font-size:.82rem;font-weight:600;transition:all .3s;cursor:pointer;text-decoration:none;display:inline-block}
 .nav-cta:hover{background:var(--bk2)}
 
+/* Nav Dropdown */
+.nav-drop-wrap{position:relative}
+.nav-drop-trigger{display:inline-flex;align-items:center;gap:4px;font-size:.84rem;font-weight:500;letter-spacing:.3px;color:var(--g1);background:none;border:none;cursor:pointer;font-family:inherit;padding:0;transition:color .3s}
+.nav-drop-trigger:hover{color:var(--bk)}
+.nav-drop-chevron{width:12px;height:12px;transition:transform .2s}
+.nav-drop-chevron.open{transform:rotate(180deg)}
+.nav-dropdown{position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%);background:var(--pure);border:1px solid rgba(0,0,0,.06);border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,.1);padding:20px;z-index:200;min-width:480px}
+.nav-drop-inner{display:grid;grid-template-columns:repeat(3,1fr);gap:4px 20px}
+.nav-drop-group{margin-bottom:12px}
+.nav-drop-region{font-size:.55rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--g2);padding:4px 8px;margin-bottom:2px}
+.nav-drop-link{display:block;padding:6px 8px;font-size:.78rem;font-weight:500;color:var(--g1);border-radius:8px;transition:all .15s}
+.nav-drop-link:hover{background:var(--g4);color:var(--bk)}
+
 /* Hamburger */
 .nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;z-index:102;background:none;border:none}
 .nav-burger span{display:block;width:22px;height:2px;background:var(--bk);border-radius:2px;transition:all .3s}
