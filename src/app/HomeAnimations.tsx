@@ -78,6 +78,16 @@ export default function HomeAnimations() {
       gsap.to(c, { y: 0, opacity: 1, duration: 0.4, delay: i * 0.04, ease: "power2.out", scrollTrigger: { trigger: c, start: "top 92%" } });
     });
 
+    // Retrait cards
+    gsap.utils.toArray<HTMLElement>(".retrait-card").forEach((c, i) => {
+      gsap.to(c, { y: 0, opacity: 1, duration: 0.4, delay: i * 0.05, ease: "power2.out", scrollTrigger: { trigger: c, start: "top 92%" } });
+    });
+
+    // Video testimonial cards
+    gsap.utils.toArray<HTMLElement>(".vid-card").forEach((c, i) => {
+      gsap.to(c, { y: 0, opacity: 1, duration: 0.5, delay: i * 0.08, ease: "power2.out", scrollTrigger: { trigger: c, start: "top 92%" } });
+    });
+
     // Blog cards
     gsap.utils.toArray<HTMLElement>(".blog-card").forEach((c, i) => {
       gsap.to(c, { y: 0, opacity: 1, duration: 0.4, delay: i * 0.05, ease: "power2.out", scrollTrigger: { trigger: c, start: "top 92%" } });
