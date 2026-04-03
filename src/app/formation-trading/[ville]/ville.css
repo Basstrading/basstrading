@@ -214,6 +214,13 @@
   line-height: 1.5;
 }
 
+/* PILIER VILLE CARD */
+.pilier-ville-card:hover {
+  background: var(--bk) !important;
+}
+.pilier-ville-card:hover span { color: var(--pure) !important; }
+.pilier-ville-card:hover p { color: rgba(255,255,255,.5) !important; }
+
 /* FINANCEMENT */
 .v-financement {
   display: flex;

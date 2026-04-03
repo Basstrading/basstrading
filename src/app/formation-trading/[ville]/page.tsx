@@ -20,8 +20,8 @@ export async function generateMetadata({
   const v = getVilleBySlug(slug);
   if (!v) return {};
   return generateSeoMetadata({
-    title: `Formation Trading ${v.ville} | Presentiel + CPF | BASS Trading`,
-    description: `Formation trading a ${v.ville} avec Sebastien Constant. Market Profile, Order Flow, Gamma. 8 places max. Eligible CPF. Session confirmee des 8 inscrits.`,
+    title: `Formation Trading ${v.ville} | Présentiel + CPF`,
+    description: `Formation trading à ${v.ville} avec Sébastien Constant. Market Profile, Order Flow, Gamma. 8 places max. Éligible CPF. Session confirmée dès 8 inscrits.`,
     path: `/formation-trading/${v.slug}/`,
   });
 }
@@ -52,29 +52,29 @@ export default async function FormationVillePage({
 
   const faqItems = [
     {
-      question: `Sebastien Constant vient-il vraiment a ${v.ville} ?`,
-      answer: `Oui. Je me deplace dans toute la France. La session a ${v.ville} est animee par moi, en direct, pas par un formateur delegue.`,
+      question: `Sébastien Constant vient-il vraiment à ${v.ville} ?`,
+      answer: `Oui. Je me déplace dans toute la France. La session à ${v.ville} est animée par moi, en direct, pas par un formateur délégué.`,
     },
     {
-      question: `Quand est la prochaine session a ${v.ville} ?`,
+      question: `Quand est la prochaine session à ${v.ville} ?`,
       answer:
-        "La session se confirme des 8 inscrits. Rejoignez la liste d'attente pour etre prevenu en premier.",
+        "La session se confirme dès 8 inscrits. Rejoignez la liste d\u2019attente pour être prévenu en premier.",
     },
     {
-      question: `La formation est-elle eligible CPF depuis ${v.ville} ?`,
+      question: `La formation est-elle éligible CPF depuis ${v.ville} ?`,
       answer:
-        "Oui. La formation est certifiee Qualiopi via EMSCA, eligible CPF sur tout le territoire francais.",
+        "Oui. La formation est certifiée Qualiopi via EMSCA, éligible CPF sur tout le territoire français.",
     },
     {
-      question: `Je suis debutant, puis-je faire la session a ${v.ville} ?`,
+      question: `Je suis débutant, puis-je faire la session à ${v.ville} ?`,
       answer:
-        "Le mentorat BASS s'adresse aux traders qui ont les bases mais stagnent. Un minimum de 6 mois de pratique est recommande.",
+        "Le mentorat BASS s\u2019adresse aux traders qui ont les bases mais stagnent. Un minimum de 6 mois de pratique est recommandé.",
     },
     {
       question:
-        "Quelle est la difference avec une formation classique ?",
+        "Quelle est la différence avec une formation classique ?",
       answer:
-        "Les formations classiques enseignent des indicateurs. BASS enseigne la structure du marche — Market Profile, Order Flow, Gamma — les outils des institutionnels.",
+        "Les formations classiques enseignent des indicateurs. BASS enseigne la structure du marché — Market Profile, Order Flow, Gamma — les outils des institutionnels.",
     },
   ];
 
@@ -83,7 +83,7 @@ export default async function FormationVillePage({
       <BreadcrumbJsonLd
         items={[
           { name: "Accueil", url: "/" },
-          { name: "Formation Presentiel" },
+          { name: "Formation Présentiel", url: "/formation-trading/" },
           { name: `Formation Trading ${v.ville}` },
         ]}
       />
@@ -94,25 +94,25 @@ export default async function FormationVillePage({
       <section className="v-hero">
         <div className="v-hero-content">
           <div className="v-hero-badge">
-            <span className="v-dot" /> 8 places max — Presentiel
+            <span className="v-dot" /> 8 places max — Présentiel
           </div>
           <h1 className="v-hero-title">
-            Formation Trading a{" "}
+            Formation Trading à{" "}
             <em>{v.ville}</em>
             <br />
-            <span>Presentiel &amp; En ligne</span>
+            <span>Présentiel &amp; En ligne</span>
           </h1>
           <p className="v-hero-sub">
-            Apprenez a lire les marches comme les institutionnels.
+            Apprenez à lire les marchés comme les institutionnels.
             <br />
-            Session a {v.ville} — 8 participants maximum.
+            Session à {v.ville} — 8 participants maximum.
           </p>
           <div className="v-hero-ctas">
             <Link href="/#candidater" className="v-cta-primary">
-              Reserver ma place <Arrow />
+              Réserver ma place <Arrow />
             </Link>
             <Link href="/#candidater" className="v-cta-secondary">
-              Formation en ligne disponible immediatement
+              Formation en ligne disponible immédiatement
             </Link>
           </div>
         </div>
@@ -125,19 +125,19 @@ export default async function FormationVillePage({
         </div>
       </section>
 
-      {/* METHODE BASS */}
+      {/* MÉTHODE BASS */}
       <section className="v-sec v-sec-dark">
         <div className="sec-center">
           <div className="sec-label" style={{ color: "rgba(255,255,255,.25)" }}>
-            La methode
+            La méthode
           </div>
           <h2 className="sec-title" style={{ color: "var(--pure)" }}>
-            Une methode. Pas des indicateurs.
+            Une méthode. Pas des indicateurs.
           </h2>
           <p className="v-method-intro">
             La plupart des formations vous apprennent des patterns et des
-            indicateurs. BASS vous apprend a lire ce que font les
-            institutionnels — puis a vous proteger comme eux.
+            indicateurs. BASS vous apprend à lire ce que font les
+            institutionnels — puis à vous protéger comme eux.
           </p>
         </div>
 
@@ -150,29 +150,29 @@ export default async function FormationVillePage({
             <div className="v-method-card">
               <h3>Options &amp; Gamma</h3>
               <p>
-                Avant meme de regarder un graphique, on analyse le
-                positionnement des options. Gamma negatif ou positif ? Ou sont
-                les walls gamma ? Ou est le flip ? Ces niveaux dictent le
+                Avant même de regarder un graphique, on analyse le
+                positionnement des options. Gamma négatif ou positif ? Où sont
+                les walls gamma ? Où est le flip ? Ces niveaux dictent le
                 comportement des market makers — et donc du prix.
               </p>
             </div>
             <div className="v-method-card">
               <h3>Market Profile</h3>
               <p>
-                Le marche est un mecanisme d&apos;encheres. Le Market Profile
-                rend visible ou le marche a accepte la valeur, ou il l&apos;a
-                rejetee, et si on est en equilibre ou en desequilibre. C&apos;est
+                Le marché est un mécanisme d&apos;enchères. Le Market Profile
+                rend visible où le marché a accepté la valeur, où il l&apos;a
+                rejetée, et si on est en équilibre ou en déséquilibre. C&apos;est
                 la carte du terrain avant d&apos;entrer dans la bataille.
               </p>
             </div>
             <div className="v-method-card">
               <h3>VWAP Multi-Timeframe</h3>
               <p>
-                On analyse 4 niveaux de VWAP avec ecarts-types : Annuel (le
+                On analyse 4 niveaux de VWAP avec écarts-types : Annuel (le
                 contexte institutionnel de fond), Mensuel (la tendance de fond),
                 Hebdomadaire (la dynamique en cours), Daily (le niveau
-                d&apos;execution du jour). Quand ces niveaux convergent, on a
-                une zone a fort enjeu.
+                d&apos;exécution du jour). Quand ces niveaux convergent, on a
+                une zone à fort enjeu.
               </p>
             </div>
           </div>
@@ -180,32 +180,32 @@ export default async function FormationVillePage({
           <div className="v-method-result">
             <Check />
             <p>
-              A ce stade, on sait si on veut acheter, vendre, ou potentiellement
+              À ce stade, on sait si on veut acheter, vendre, ou potentiellement
               les deux selon le contexte. Pas une intuition. Une lecture
-              structuree.
+              structurée.
             </p>
           </div>
         </div>
 
-        {/* BLOC 2 — EXECUTION */}
+        {/* BLOC 2 — EXÉCUTION */}
         <div className="v-method-block">
-          <div className="v-method-label">Bloc 2 — Execution</div>
-          <p className="v-method-sublabel">Le moment precis</p>
+          <div className="v-method-label">Bloc 2 — Exécution</div>
+          <p className="v-method-sublabel">Le moment précis</p>
 
           <div className="v-method-grid v-method-grid-2">
             <div className="v-method-card">
               <h3>CVD — Cumulative Volume Delta</h3>
               <p>
-                Le CVD mesure la pression directionnelle reelle — pas ce que le
+                Le CVD mesure la pression directionnelle réelle — pas ce que le
                 prix fait, mais ce que les ordres font. Une divergence CVD/prix
-                est souvent le meilleur signal d&apos;entree disponible.
+                est souvent le meilleur signal d&apos;entrée disponible.
               </p>
             </div>
             <div className="v-method-card">
               <h3>Tape Reading</h3>
               <p>
-                La confirmation finale vient du tape. Time &amp; Sales, activite
-                institutionnelle en temps reel. On entre quand tout est aligne —
+                La confirmation finale vient du tape. Time &amp; Sales, activité
+                institutionnelle en temps réel. On entre quand tout est aligné —
                 pas avant.
               </p>
             </div>
@@ -221,10 +221,10 @@ export default async function FormationVillePage({
             <h3>x-trade.ai — Risk Manager Institutionnel</h3>
             <p>
               Inclus dans le mentorat. x-trade.ai coupe automatiquement vos
-              positions avant que vos emotions ne le fassent. Limite journaliere,
+              positions avant que vos émotions ne le fassent. Limite journalière,
               drawdown max, verrouillage automatique. C&apos;est ce
-              qu&apos;utilisent les desks institutionnels — adapte au prop firm
-              francais.
+              qu&apos;utilisent les desks institutionnels — adapté au prop firm
+              français.
             </p>
           </div>
         </div>
@@ -234,13 +234,13 @@ export default async function FormationVillePage({
       <section className="v-sec v-sec-light">
         <div className="sec-center">
           <div className="sec-label">Format</div>
-          <h2 className="sec-title">Session BASS a {v.ville}</h2>
+          <h2 className="sec-title">Session BASS à {v.ville}</h2>
         </div>
         <div className="v-format-grid">
           <div className="v-format-item">
             <div className="v-format-label">Format</div>
             <div className="v-format-value">
-              Presentiel intensif, 3-4 jours consecutifs
+              Présentiel intensif, 3-4 jours consécutifs
             </div>
           </div>
           <div className="v-format-item">
@@ -252,13 +252,13 @@ export default async function FormationVillePage({
           <div className="v-format-item">
             <div className="v-format-label">Lieu</div>
             <div className="v-format-value">
-              Centre-ville de {v.ville} — confirme 2 semaines avant
+              Centre-ville de {v.ville} — confirmé 2 semaines avant
             </div>
           </div>
           <div className="v-format-item">
             <div className="v-format-label">Prochaine session</div>
             <div className="v-format-value">
-              Ouverte aux inscriptions — demarre des 8 participants confirmes
+              Ouverte aux inscriptions — démarre dès 8 participants confirmés
             </div>
           </div>
         </div>
@@ -295,14 +295,14 @@ export default async function FormationVillePage({
           </div>
           <div className="v-stat">
             <div className="v-stat-num">10+</div>
-            <div className="v-stat-label">Ans d&apos;experience</div>
+            <div className="v-stat-label">Ans d&apos;expérience</div>
           </div>
         </div>
         <div className="v-testimonial">
           <div className="v-testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
           <p>&quot;{v.testimonial.text}&quot;</p>
           <div className="v-testimonial-author">{v.testimonial.author}</div>
-          <div className="v-testimonial-src">Avis Trustpilot verifie</div>
+          <div className="v-testimonial-src">Avis Trustpilot vérifié</div>
         </div>
       </section>
 
@@ -339,17 +339,17 @@ export default async function FormationVillePage({
       <section className="v-final-cta">
         <div className="sec-center">
           <h2 className="sec-title" style={{ color: "var(--pure)" }}>
-            Pret a trader comme un institutionnel ?
+            Prêt à trader comme un institutionnel ?
           </h2>
           <p style={{ color: "rgba(255,255,255,.4)", marginBottom: 36 }}>
-            Session a {v.ville} — 8 places maximum. Demarre des 8 inscrits.
+            Session à {v.ville} — 8 places maximum. Démarre dès 8 inscrits.
           </p>
           <Link
             href="/#candidater"
             className="v-cta-primary"
             style={{ display: "inline-flex" }}
           >
-            Reserver ma place <Arrow />
+            Réserver ma place <Arrow />
           </Link>
         </div>
       </section>
