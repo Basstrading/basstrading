@@ -154,33 +154,81 @@ em { font-style: italic; color: #c8ccd8; }
   margin-top: 32px;
 }
 
-/* ===== COMPARISON IMAGE ===== */
-.comparison {
+/* ===== COMPARISON VISUAL ===== */
+.comparison-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  margin: 40px 0;
   border-radius: 12px;
   overflow: hidden;
-  margin: 40px 0;
   border: 1px solid rgba(255,255,255,0.08);
+}
+.comparison-panel {
+  padding: 32px 28px 28px;
   position: relative;
 }
-.comparison img { width: 100%; }
-.comparison__labels {
-  display: flex;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
+.comparison-panel--bad {
+  background: linear-gradient(180deg, #1a0a0a 0%, #120808 100%);
+  border-right: 1px solid rgba(255,255,255,0.06);
 }
-.comparison__label {
-  flex: 1;
-  padding: 12px;
-  text-align: center;
-  font-size: 13px;
-  font-weight: 600;
+.comparison-panel--good {
+  background: linear-gradient(180deg, #0a1208 0%, #08120a 100%);
+}
+.comparison-panel__tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
+  padding: 5px 12px;
+  border-radius: 4px;
+  margin-bottom: 20px;
 }
-.comparison__label--bad { background: rgba(239,68,68,0.85); color: #fff; }
-.comparison__label--good { background: rgba(245,158,11,0.85); color: #000; }
+.comparison-panel--bad .comparison-panel__tag {
+  background: rgba(239,68,68,0.2);
+  color: #ef4444;
+}
+.comparison-panel--good .comparison-panel__tag {
+  background: rgba(245,158,11,0.2);
+  color: #f59e0b;
+}
+.comparison-panel h4 {
+  color: #fff;
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+.comparison-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 8px 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.comparison-panel--bad .comparison-item { color: #9ca3af; }
+.comparison-panel--good .comparison-item { color: #d1d5db; }
+.comparison-icon {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+}
+.comparison-panel--bad .comparison-icon { fill: #ef4444; }
+.comparison-panel--good .comparison-icon { fill: #4ade80; }
+.comparison-panel__bottom {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  font-size: 13px;
+  font-style: italic;
+}
+.comparison-panel--bad .comparison-panel__bottom { color: #ef4444; }
+.comparison-panel--good .comparison-panel__bottom { color: #4ade80; }
+@media (max-width: 640px) {
+  .comparison-grid { grid-template-columns: 1fr; }
+  .comparison-panel--bad { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
+}
 
 /* ===== MECHANISM / 3 PILLARS ===== */
 .pillars { display: grid; gap: 24px; margin: 40px 0; }
@@ -505,12 +553,58 @@ em { font-style: italic; color: #c8ccd8; }
 
     <p class="problem__punchline">Elle n'a pas arrêté de marcher.<br>Tu arrives juste après la fête, à chaque fois.</p>
 
-    <!-- COMPARISON IMAGE -->
-    <div class="comparison">
-      <img src="images/chart-comparison.jpg" alt="Indicateurs classiques vs Market Profile">
-      <div class="comparison__labels">
-        <div class="comparison__label comparison__label--bad">Ce que tu vois aujourd'hui</div>
-        <div class="comparison__label comparison__label--good">Ce que le Market Profile te montre</div>
+    <!-- COMPARISON VISUAL -->
+    <div class="comparison-grid">
+      <div class="comparison-panel comparison-panel--bad">
+        <div class="comparison-panel__tag">Indicateurs classiques</div>
+        <h4>Ce que tu vois aujourd'hui</h4>
+        <div class="comparison-item">
+          <svg class="comparison-icon" viewBox="0 0 20 20"><path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z"/></svg>
+          <span>RSI dit "suracheté" — le mouvement est déjà terminé</span>
+        </div>
+        <div class="comparison-item">
+          <svg class="comparison-icon" viewBox="0 0 20 20"><path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z"/></svg>
+          <span>MACD croise — les pros sont positionnés depuis 45 min</span>
+        </div>
+        <div class="comparison-item">
+          <svg class="comparison-icon" viewBox="0 0 20 20"><path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z"/></svg>
+          <span>Supports/résistances tracés à l'oeil, sans logique</span>
+        </div>
+        <div class="comparison-item">
+          <svg class="comparison-icon" viewBox="0 0 20 20"><path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z"/></svg>
+          <span>Impossible de savoir qui pousse le prix</span>
+        </div>
+        <div class="comparison-item">
+          <svg class="comparison-icon" viewBox="0 0 20 20"><path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z"/></svg>
+          <span>Même stratégie, jour de trend ou de range</span>
+        </div>
+        <div class="comparison-panel__bottom">Tu devines. Tu perds.</div>
+      </div>
+
+      <div class="comparison-panel comparison-panel--good">
+        <div class="comparison-panel__tag">Market Profile</div>
+        <h4>Ce que tu vas voir demain</h4>
+        <div class="comparison-item">
+          <svg class="comparison-icon" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+          <span>Zone de valeur visible — tu sais si le prix est cher ou pas</span>
+        </div>
+        <div class="comparison-item">
+          <svg class="comparison-icon" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+          <span>POC, VAH, VAL — des niveaux basés sur le volume réel</span>
+        </div>
+        <div class="comparison-item">
+          <svg class="comparison-icon" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+          <span>Type de journée identifié dès l'ouverture (trend, range, rotation)</span>
+        </div>
+        <div class="comparison-item">
+          <svg class="comparison-icon" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+          <span>Empreintes des institutionnels visibles (single prints, POC vierges)</span>
+        </div>
+        <div class="comparison-item">
+          <svg class="comparison-icon" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+          <span>Tu sais quand rester en dehors du marché</span>
+        </div>
+        <div class="comparison-panel__bottom">Tu lis. Tu décides.</div>
       </div>
     </div>
   </div>
