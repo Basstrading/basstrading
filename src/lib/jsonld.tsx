@@ -233,13 +233,23 @@ export function EventJsonLd() {
           "@type": "Person",
           name: SITE.author.name,
         },
-        offers: {
-          "@type": "Offer",
-          price: "1290",
-          priceCurrency: "EUR",
-          availability: "https://schema.org/LimitedAvailability",
-          validFrom: "2026-01-01",
-        },
+        offers: [
+          {
+            "@type": "Offer",
+            price: "1290",
+            priceCurrency: "EUR",
+            availability: "https://schema.org/LimitedAvailability",
+            validFrom: "2026-01-01",
+            validThrough: "2026-05-01T23:59:59+02:00",
+          },
+          {
+            "@type": "Offer",
+            price: "1490",
+            priceCurrency: "EUR",
+            availability: "https://schema.org/LimitedAvailability",
+            validFrom: "2026-05-02",
+          },
+        ],
       }}
     />
   );

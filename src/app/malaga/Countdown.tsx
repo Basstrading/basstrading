@@ -10,7 +10,7 @@ export default function Countdown() {
 
   useEffect(() => {
     function update() {
-      const target = new Date("2026-05-30T23:59:59").getTime();
+      const target = new Date("2026-05-01T23:59:59").getTime();
       const diff = target - Date.now();
       if (diff <= 0) {
         setExpired(true);
@@ -53,8 +53,8 @@ export default function Countdown() {
         </div>
       )}
       <span className="countdown-price">
-        <strong>1 290 euros</strong> au lieu de 1 890 euros — avant le 30 mai
-        2026
+        <strong>1 290 euros</strong> au lieu de 1 890 euros — avant le 2 mai
+        2026 (puis 1 490 euros)
       </span>
     </div>
   );

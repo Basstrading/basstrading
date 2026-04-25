@@ -9,7 +9,7 @@ import "./malaga.css";
 export const metadata = generateSeoMetadata({
   title: "Seminaire Trading Malaga — 28 sept. au 2 oct. 2026",
   description:
-    "5 jours intensifs a Malaga avec Sebastien Constant. Market Profile, Order Flow, Footprint, live trading. 20 places max. 1290 euros en early bird avant le 30 mai 2026.",
+    "5 jours intensifs a Malaga avec Sebastien Constant. Market Profile, Order Flow, Footprint, live trading. 20 places max. 1290 euros en early bird jusqu'au 1er mai 2026 — puis 1490 euros a partir du 2 mai.",
   path: "/malaga/",
 });
 
@@ -355,10 +355,25 @@ export default function MalagaPage() {
           <div className="sec-label m-sec-label-gold">Inscription</div>
           <h2 className="sec-title">Reserve ta place.</h2>
           <p className="sec-desc" style={{ margin: "0 auto" }}>
-            20 places maximum. Early bird jusqu&apos;au 30 mai 2026.
+            20 places maximum. Tarif a 1 290 euros jusqu&apos;au 1er mai 2026, puis 1 490 euros a partir du 2 mai.
           </p>
         </div>
         <div className="price-card">
+          <div className="price-alert">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <polyline points="12 6 12 12 16 14" />
+            </svg>
+            <div>
+              <strong>Le prix passe a 1 490 euros</strong>
+              <span>a partir du 2 mai 2026 — derniers jours a 1 290 euros</span>
+            </div>
+          </div>
           <div className="price-badge">Early bird — offre limitee</div>
           <div className="price-old">1 890 euros</div>
           <div className="price-amount">
@@ -429,7 +444,7 @@ export default function MalagaPage() {
               <circle cx="12" cy="12" r="10" />
               <polyline points="12 6 12 12 16 14" />
             </svg>{" "}
-            Offre early bird jusqu&apos;au 30 mai 2026
+            Tarif 1 290 euros jusqu&apos;au 1er mai — puis 1 490 euros le 2 mai
           </div>
           <p className="price-note">
             Paiement en 3x sans frais disponible via Klarna — selectionne
@@ -486,7 +501,7 @@ export default function MalagaPage() {
           >
             Plus de brouillard. Plus de doute. Un plan clair, des outils que tu
             maitrises, et une comprehension du marche que 99% des traders
-            n&apos;auront jamais. Le tarif early bird expire le 30 mai.
+            n&apos;auront jamais. Le tarif a 1 290 euros expire le 1er mai — passage a 1 490 euros le 2 mai.
           </p>
           <a
             href={STRIPE_URL}
