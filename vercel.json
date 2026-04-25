@@ -1,0 +1,19 @@
+{
+  "framework": "nextjs",
+  "buildCommand": "next build",
+  "redirects": [
+    { "source": "/cgv.html", "destination": "/cgv/", "statusCode": 301 },
+    { "source": "/mentions-legales.html", "destination": "/mentions-legales/", "statusCode": 301 },
+    { "source": "/confidentialite.html", "destination": "/confidentialite/", "statusCode": 301 }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+      ]
+    }
+  ]
+}

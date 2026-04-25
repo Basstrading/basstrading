@@ -1,0 +1,135 @@
+/* ===================== CANDIDATER CHOICE PAGE ===================== */
+.cand-page { background: var(--bk3); min-height: 100vh; }
+
+.cand-hero {
+  padding: 180px 48px 60px;
+  text-align: center;
+}
+.cand-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  background: rgba(201,168,76,.08);
+  border: 1px solid rgba(201,168,76,.2);
+  border-radius: 980px;
+  font-size: .65rem;
+  font-weight: 700;
+  color: var(--gold, #C9A84C);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+.cand-title {
+  font-family: var(--font-outfit), sans-serif;
+  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -2px;
+  color: var(--pure);
+  margin-bottom: 16px;
+}
+.cand-title em { font-style: normal; color: var(--gold, #C9A84C); }
+.cand-sub {
+  font-size: 1.05rem;
+  color: rgba(255,255,255,.4);
+  line-height: 1.7;
+}
+
+/* CARDS */
+.cand-cards-sec { padding: 0 48px 120px; }
+.cand-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  max-width: 880px;
+  margin: 0 auto;
+}
+.cand-card {
+  padding: 48px 40px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.cand-card-presentiel {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+}
+.cand-card-enligne {
+  background: rgba(30,40,80,.3);
+  border: 1px solid rgba(60,80,160,.2);
+}
+.cand-card-label {
+  font-size: .55rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.3);
+  margin-bottom: 16px;
+}
+.cand-card-title {
+  font-family: var(--font-outfit), sans-serif;
+  font-size: 1.6rem;
+  font-weight: 900;
+  letter-spacing: -1px;
+  color: var(--pure);
+  margin-bottom: 12px;
+}
+.cand-card-desc {
+  font-size: .9rem;
+  color: rgba(255,255,255,.4);
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+.cand-card-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 32px;
+  flex: 1;
+}
+.cand-card-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: .85rem;
+  color: rgba(255,255,255,.55);
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255,255,255,.04);
+}
+.cand-card-list li svg { color: var(--green); }
+.cand-card-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 32px;
+  border-radius: 980px;
+  font-size: .9rem;
+  font-weight: 700;
+  transition: all .3s;
+  text-decoration: none;
+  text-align: center;
+}
+.cand-cta-gold {
+  background: var(--gold, #C9A84C);
+  color: var(--bk3);
+}
+.cand-cta-gold:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 40px rgba(201,168,76,.3);
+}
+.cand-cta-blue {
+  background: #3B5BDB;
+  color: var(--pure);
+}
+.cand-cta-blue:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 40px rgba(59,91,219,.3);
+}
+
+@media (max-width: 768px) {
+  .cand-hero { padding: 140px 24px 40px; }
+  .cand-cards-sec { padding: 0 24px 80px; }
+  .cand-cards { grid-template-columns: 1fr; }
+  .cand-card { padding: 32px 24px; }
+}
