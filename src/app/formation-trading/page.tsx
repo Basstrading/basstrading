@@ -317,6 +317,276 @@ export default function FormationTradingIndex() {
         </div>
       </section>
 
+      {/* CONTENU PILIER — POURQUOI CETTE FORMATION */}
+      <section className="v-sec v-sec-light">
+        <div className="sec-center">
+          <div className="sec-label">Pourquoi cette formation</div>
+          <h2 className="sec-title">
+            Une formation trading conçue pour la rentabilité durable
+          </h2>
+        </div>
+        <div
+          style={{
+            maxWidth: 760,
+            margin: "0 auto",
+            color: "var(--g1)",
+            lineHeight: 1.85,
+            fontSize: "1rem",
+          }}
+        >
+          <p style={{ marginBottom: 24 }}>
+            La majorité des formations trading vendent une promesse — gagner sa
+            vie en quelques mois, retrouver sa liberté financière, devenir
+            indépendant. La formation BassTrading vend l&apos;inverse : une
+            méthode rigoureuse, une pratique exigeante et une discipline
+            construite jour après jour. C&apos;est moins glamour, mais c&apos;est
+            ce qui produit des traders rentables sur la durée.
+          </p>
+          <p style={{ marginBottom: 24 }}>
+            Sébastien Constant trade en live tous les jours sur les Futures
+            (Nasdaq, S&amp;P 500, DAX). $700 000+ ont été financés en prop firms
+            via la méthode enseignée. Quand on enseigne ce qu&apos;on pratique
+            réellement, le programme reste calibré sur la réalité du marché —
+            pas sur la théorie qu&apos;on trouve dans les livres.
+          </p>
+
+          <h3
+            style={{
+              color: "var(--bk)",
+              fontSize: "1.4rem",
+              fontWeight: 800,
+              marginTop: 40,
+              marginBottom: 16,
+            }}
+          >
+            Ce qui distingue cette formation
+          </h3>
+          <p style={{ marginBottom: 16 }}>
+            Quatre piliers structurent l&apos;intégralité du programme — chacun
+            travaillé en profondeur, avec sessions live et exercices pratiques.
+          </p>
+          <ul
+            style={{
+              marginBottom: 24,
+              paddingLeft: 22,
+              listStyle: "disc",
+            }}
+          >
+            <li style={{ marginBottom: 12 }}>
+              <strong style={{ color: "var(--bk)" }}>
+                Lecture de la structure du marché.
+              </strong>{" "}
+              Vous apprenez à identifier les zones où le marché accepte la
+              valeur (Value Area, POC) et celles où il la rejette. C&apos;est la
+              base de toute prise de décision rationnelle. Sans cette lecture,
+              vous tradez à l&apos;aveugle, en suivant des indicateurs en
+              retard.
+            </li>
+            <li style={{ marginBottom: 12 }}>
+              <strong style={{ color: "var(--bk)" }}>
+                Compréhension du flux d&apos;ordres.
+              </strong>{" "}
+              Order Flow et CVD vous montrent la pression directionnelle
+              réelle. Vous voyez qui achète, qui vend, et à quel prix. C&apos;est
+              le timing d&apos;exécution précis qui transforme un setup correct
+              en trade gagnant.
+            </li>
+            <li style={{ marginBottom: 12 }}>
+              <strong style={{ color: "var(--bk)" }}>
+                Maîtrise du risque institutionnel.
+              </strong>{" "}
+              x-trade.ai (inclus dans la formation) coupe automatiquement vos
+              positions quand vous dépassez vos limites journalières ou votre
+              drawdown maximum. Plus de revenge trading, plus de tilt qui
+              détruit un compte en une après-midi.
+            </li>
+            <li style={{ marginBottom: 12 }}>
+              <strong style={{ color: "var(--bk)" }}>
+                Préparation prop firm.
+              </strong>{" "}
+              Si vous voulez trader avec du capital institutionnel, la formation
+              vous prépare aux combines des principales prop firms (Apex, Topstep,
+              MyFundedFutures). Évaluation, drawdown trailing, scaling — tout y
+              passe.
+            </li>
+          </ul>
+
+          <h3
+            style={{
+              color: "var(--bk)",
+              fontSize: "1.4rem",
+              fontWeight: 800,
+              marginTop: 40,
+              marginBottom: 16,
+            }}
+          >
+            Le parcours pédagogique
+          </h3>
+          <p style={{ marginBottom: 16 }}>
+            La formation se déroule en trois phases distinctes — chacune
+            essentielle, aucune ne peut être sautée.
+          </p>
+          <ul
+            style={{
+              marginBottom: 24,
+              paddingLeft: 22,
+              listStyle: "decimal",
+            }}
+          >
+            <li style={{ marginBottom: 12 }}>
+              <strong style={{ color: "var(--bk)" }}>
+                Phase 1 — Immersion (3-4 jours présentiel ou équivalent
+                distanciel).
+              </strong>{" "}
+              Sessions intensives en groupe restreint (8 participants max).
+              Présentation complète de la méthode, premières analyses encadrées,
+              démonstrations live de Sébastien sur les marchés du jour. À la
+              fin, vous savez lire un graphique avec les outils
+              institutionnels.
+            </li>
+            <li style={{ marginBottom: 12 }}>
+              <strong style={{ color: "var(--bk)" }}>
+                Phase 2 — Application encadrée (8 à 12 semaines).
+              </strong>{" "}
+              Vous tradez sur démo en appliquant la méthode. Sessions live
+              hebdomadaires de débriefing avec Sébastien et les autres
+              participants. Chaque trade est journalisé, analysé, corrigé.
+              C&apos;est la phase où vos défauts cachés remontent à la
+              surface.
+            </li>
+            <li style={{ marginBottom: 12 }}>
+              <strong style={{ color: "var(--bk)" }}>
+                Phase 3 — Autonomie progressive (3 à 6 mois).
+              </strong>{" "}
+              Passage en réel avec un capital limité. x-trade.ai protège votre
+              compte. Vous ajustez votre style à votre tempérament. Objectif :
+              être prêt pour une combine prop firm avec un edge mesurable et
+              une discipline éprouvée.
+            </li>
+          </ul>
+
+          <h3
+            style={{
+              color: "var(--bk)",
+              fontSize: "1.4rem",
+              fontWeight: 800,
+              marginTop: 40,
+              marginBottom: 16,
+            }}
+          >
+            À qui s&apos;adresse cette formation
+          </h3>
+          <p style={{ marginBottom: 16 }}>
+            La formation est conçue pour trois profils précis. Si vous ne vous
+            reconnaissez dans aucun, mieux vaut commencer par les ressources
+            gratuites de l&apos;écosystème (HubTrading.fr, Guide-Trading.fr)
+            avant d&apos;investir dans un programme premium.
+          </p>
+          <ul
+            style={{
+              marginBottom: 24,
+              paddingLeft: 22,
+              listStyle: "disc",
+            }}
+          >
+            <li style={{ marginBottom: 12 }}>
+              <strong style={{ color: "var(--bk)" }}>
+                Le trader intermédiaire qui plafonne.
+              </strong>{" "}
+              Vous tradez depuis 6-24 mois, vos résultats sont incohérents,
+              vous savez que la méthode autodidacte a atteint sa limite. La
+              formation vous fournit le cadre institutionnel et l&apos;encadrement
+              qui manquent.
+            </li>
+            <li style={{ marginBottom: 12 }}>
+              <strong style={{ color: "var(--bk)" }}>
+                Le candidat prop firm.
+              </strong>{" "}
+              Vous voulez trader avec du capital institutionnel et passer les
+              combines (Apex, Topstep, MyFundedFutures). La formation prépare
+              spécifiquement à ces évaluations, avec x-trade.ai comme garde-fou.
+            </li>
+            <li style={{ marginBottom: 12 }}>
+              <strong style={{ color: "var(--bk)" }}>
+                Le professionnel en reconversion.
+              </strong>{" "}
+              Vous quittez votre métier pour vivre du trading dans 12-24 mois.
+              Vous avez un capital de transition (10-50K€), de la discipline
+              acquise dans votre vie pro, et besoin d&apos;un parcours
+              structuré. La formation vous fait gagner 12-18 mois sur la
+              courbe d&apos;apprentissage.
+            </li>
+          </ul>
+
+          <h3
+            style={{
+              color: "var(--bk)",
+              fontSize: "1.4rem",
+              fontWeight: 800,
+              marginTop: 40,
+              marginBottom: 16,
+            }}
+          >
+            Financement CPF, France Travail et plan formation
+          </h3>
+          <p style={{ marginBottom: 16 }}>
+            La formation est dispensée en partenariat avec EMSCA, organisme
+            certifié <strong style={{ color: "var(--bk)" }}>Qualiopi</strong>.
+            Cette certification ouvre l&apos;accès au financement CPF, France
+            Travail (ex-Pôle Emploi), et au plan de formation employeur si
+            vous êtes salarié.
+          </p>
+          <p style={{ marginBottom: 16 }}>
+            Concrètement, plusieurs options existent : utiliser vos droits CPF
+            (avec un reste à charge forfaitaire de 150 € depuis avril 2026),
+            obtenir un financement France Travail si vous êtes en transition
+            pro, négocier une prise en charge dans le plan de formation de
+            votre entreprise, ou opter pour un paiement direct en plusieurs
+            fois. Les modalités exactes sont discutées lors du rendez-vous
+            d&apos;orientation préalable à toute candidature.
+          </p>
+
+          <h3
+            style={{
+              color: "var(--bk)",
+              fontSize: "1.4rem",
+              fontWeight: 800,
+              marginTop: 40,
+              marginBottom: 16,
+            }}
+          >
+            Présentiel ou distanciel ?
+          </h3>
+          <p style={{ marginBottom: 16 }}>
+            La formation existe dans deux formats équivalents en contenu, mais
+            différents en expérience.
+          </p>
+          <p style={{ marginBottom: 16 }}>
+            Le <strong style={{ color: "var(--bk)" }}>présentiel</strong> se
+            déroule dans 20 villes en France, en sessions intensives de 3-4
+            jours. Sébastien se déplace, le groupe est limité à 8 participants,
+            l&apos;immersion est totale. C&apos;est le format le plus efficace
+            pour absorber rapidement une grande quantité de contenu et créer un
+            réseau de pairs durable. Les sessions se confirment dès 8 inscrits
+            par ville — rejoignez la liste d&apos;attente de votre ville pour
+            être prévenu.
+          </p>
+          <p style={{ marginBottom: 16 }}>
+            Le <strong style={{ color: "var(--bk)" }}>distanciel</strong> se
+            fait via sessions live hebdomadaires en visioconférence sur la
+            même durée totale. Format adapté si vous ne pouvez pas vous
+            déplacer, ou si vous préférez étaler l&apos;apprentissage sur 3-4
+            mois. Les sessions sont enregistrées et accessibles à vie.
+          </p>
+          <p style={{ marginBottom: 16 }}>
+            Une troisième option, plus exclusive, est le programme immersif à
+            Málaga — quelques jours en résidence avec Sébastien, sessions
+            trading le matin, debrief l&apos;après-midi. Format réservé aux
+            traders confirmés ou aux candidats prop firm.
+          </p>
+        </div>
+      </section>
+
       {/* LISTE DES 20 VILLES */}
       <section className="v-sec v-sec-light">
         <div className="sec-center">
