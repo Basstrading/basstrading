@@ -15,18 +15,16 @@ export default function Footer() {
               <Link href="/#candidater">Candidater</Link>
             </div>
             <div className="ft-col">
-              <div className="ft-col-title">Ressources</div>
-              <Link href="/blog/market-profile-guide-complet/">
-                Market Profile
-              </Link>
-              <Link href="/blog/footprint-chart-trading/">Footprint Chart</Link>
-              <Link href="/blog/order-flow-trading-france/">Order Flow</Link>
-              <Link href="/blog/formation-trading-cpf-qualiopi/">
-                Formation CPF
-              </Link>
+              <div className="ft-col-title">Methodes</div>
+              <Link href="/market-profile/">Market Profile</Link>
+              <Link href="/order-flow/">Order Flow</Link>
+              <Link href="/footprint/">Footprint Chart</Link>
+              <Link href="/volume-profile/">Volume Profile</Link>
+              <Link href="/blog/">Tous les guides</Link>
             </div>
             <div className="ft-col">
               <div className="ft-col-title">Ecosysteme</div>
+              <Link href="/sebastien-constant/">Sebastien Constant</Link>
               <a href="https://hubtrading.fr" target="_blank" rel="noopener">
                 HubTrading.fr
               </a>

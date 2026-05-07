@@ -8,11 +8,19 @@ Sébastien Constant trade en direct chaque jour devant ses élèves depuis plus 
 
 - [Accueil](https://basstrading.fr/) : Présentation du mentorat, méthode, programme, témoignages, candidature.
 - [Formation Trading en France — présentiel + CPF](https://basstrading.fr/formation-trading/) : Hub des 20+ villes en présentiel. Sessions intensives 3-4 jours, 8 places maximum, éligible CPF.
+- [Sébastien Constant — biographie auteur](https://basstrading.fr/sebastien-constant/) : Parcours, expertise, crédibilité, articles signés.
 - [Séminaire Malaga 2026](https://basstrading.fr/malaga/) : Formation intensive 5 jours à Malaga, 28 sept – 2 oct 2026, 20 places max. Tarif 1 290 € early bird (jusqu'au 1 mai), 1 490 € après.
 - [Candidater au mentorat (choix format)](https://basstrading.fr/candidater/) : Page d'orientation entre formation en ligne et présentielle.
 - [Candidater — formation en ligne](https://basstrading.fr/candidater-en-ligne/) : Inscription au mentorat 100 % distanciel.
 - [Candidater — formation présentielle](https://basstrading.fr/candidater-presentiel/) : Inscription aux sessions présentielles dans les 20 villes.
 - [Blog trading](https://basstrading.fr/blog/) : Guides de référence Market Profile, Order Flow, Footprint, prop firms, formation.
+
+## Hubs thématiques (clusters de méthode)
+
+- [Market Profile — hub complet](https://basstrading.fr/market-profile/) : Value Area, POC, Initial Balance, types de journées, composite profile, single prints, applications.
+- [Order Flow — hub complet](https://basstrading.fr/order-flow/) : DOM, Tape Reading, Footprint, CVD, absorption, imbalance, spoofing, applications.
+- [Footprint Chart — hub complet](https://basstrading.fr/footprint/) : delta, imbalance, absorption, CVD en parallèle, applications.
+- [Volume Profile — hub complet](https://basstrading.fr/volume-profile/) : HVN, LVN, Naked POC, Session/Daily/Composite, applications.
 
 ## Villes — sessions présentielles (20+)
 

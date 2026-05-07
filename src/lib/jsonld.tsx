@@ -208,6 +208,39 @@ export function CollectionPageJsonLd({
   );
 }
 
+interface PersonMeta {
+  name: string;
+  jobTitle: string;
+  description: string;
+  url: string;
+  image: string;
+  sameAs?: string[];
+  knowsAbout?: string[];
+}
+
+export function PersonJsonLd(person: PersonMeta) {
+  return (
+    <JsonLd
+      data={{
+        "@context": "https://schema.org",
+        "@type": "Person",
+        name: person.name,
+        jobTitle: person.jobTitle,
+        description: person.description,
+        url: person.url.startsWith("http") ? person.url : `${SITE.url}${person.url}`,
+        image: person.image.startsWith("http") ? person.image : `${SITE.url}${person.image}`,
+        worksFor: {
+          "@type": "Organization",
+          name: SITE.name,
+          url: SITE.url,
+        },
+        ...(person.knowsAbout && { knowsAbout: person.knowsAbout }),
+        ...(person.sameAs && { sameAs: person.sameAs }),
+      }}
+    />
+  );
+}
+
 export function EventJsonLd() {
   return (
     <JsonLd
