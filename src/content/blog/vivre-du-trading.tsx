@@ -468,6 +468,28 @@ export default function VivreduTrading() {
 
       <p>Le mentorat BASS Trading est &eacute;ligible au <strong>Compte Personnel de Formation (CPF)</strong> gr&acirc;ce &agrave; la certification Qualiopi et d&eacute;livre la certification EMSCA. Cela signifie que vous pouvez financer tout ou partie de votre formation avec vos droits &agrave; la formation — un avantage consid&eacute;rable que tr&egrave;s peu de formations de trading offrent en France.</p>
 
+      <h2 id="capital-realiste">Quel capital pour vivre du trading en 2026 ?</h2>
+      <p>La question du capital nécessaire est centrale et souvent mal traitée. Hypothèse de rendement annuel d&apos;un trader rentable : <strong>40 à 80 %/an</strong> sur compte propre.</p>
+      <ul>
+        <li><strong>Revenu cible 2 000 €/mois</strong> avec rendement 60 % : capital nécessaire = <strong>40 000 €</strong></li>
+        <li><strong>Revenu cible 3 500 €/mois</strong> avec rendement 60 % : capital nécessaire = <strong>70 000 €</strong></li>
+        <li><strong>Revenu cible 5 000 €/mois</strong> avec rendement 60 % : capital nécessaire = <strong>100 000 €</strong></li>
+        <li><strong>Revenu cible 10 000 €/mois</strong> avec rendement 50 % : capital nécessaire = <strong>240 000 €</strong></li>
+      </ul>
+      <p><strong>Règle de prudence</strong> : votre capital trading ne doit pas représenter plus de 30 % de votre patrimoine total. La solution prop firm contourne cette contrainte — avec 10 comptes financés à 100 K$, le revenu peut atteindre 40 000 $/mois sans capital propre exposé. Détails dans notre guide <a href="/blog/combien-gagne-trader/">Combien gagne un trader en France en 2026</a>.</p>
+
+      <h2 id="routine">Routine d&apos;une journée type de trader pro</h2>
+      <p>Vivre du trading n&apos;est pas une vie de loisir — c&apos;est une routine professionnelle stricte.</p>
+      <ul>
+        <li><strong>7 h 30 — 9 h 00</strong> : préparation. News macro, calendrier économique, niveaux Market Profile veille, Naked POC.</li>
+        <li><strong>9 h 00 — 14 h 00</strong> : pause / sport / projets perso. Sessions Asie/Europe peu actionnables.</li>
+        <li><strong>14 h 00 — 15 h 30</strong> : reconnexion, validation des niveaux, mise en place des alertes.</li>
+        <li><strong>15 h 30 — 18 h 00</strong> : ouverture US, fenêtre principale. Trades selon setups préparés. Stop journalier respecté.</li>
+        <li><strong>18 h 00 — 20 h 00</strong> : journal de trading, analyse post-séance, niveaux du lendemain.</li>
+        <li><strong>20 h 00 — 22 h 00</strong> : repos. Pas de marché.</li>
+      </ul>
+      <p>Le trading pro demande une <strong>routine en silos</strong> — préparation, exécution, débriefing, repos. Mélanger ces phases détruit la discipline.</p>
+
       <blockquote>
         <strong>&quot;Mon objectif n&apos;est pas de vous vendre un r&ecirc;ve. Mon objectif est de vous donner la m&eacute;thode, les outils et la discipline pour que le trading devienne votre m&eacute;tier — pas un fantasme.&quot;</strong> — S&eacute;bastien Constant
       </blockquote>

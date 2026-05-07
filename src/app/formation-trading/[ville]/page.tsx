@@ -137,6 +137,36 @@ export default async function FormationVillePage({
         </div>
       </section>
 
+      {/* CONTEXTE ÉCONOMIQUE LOCAL — affiché uniquement pour les villes prioritaires enrichies */}
+      {v.economicContext ? (
+        <section className="v-sec v-sec-light" style={{ paddingTop: 0 }}>
+          <div className="v-narrow">
+            <div className="sec-label">Contexte économique</div>
+            <h2 className="sec-title" style={{ marginBottom: 16, fontSize: "clamp(1.4rem, 2.4vw, 2rem)" }}>
+              Le marché financier à {v.ville}
+            </h2>
+            <p style={{ lineHeight: 1.75, color: "var(--g1)" }}>
+              {v.economicContext}
+            </p>
+          </div>
+        </section>
+      ) : null}
+
+      {/* POURQUOI SE FORMER À [VILLE] — affiché uniquement pour les villes prioritaires enrichies */}
+      {v.whyTrade ? (
+        <section className="v-sec v-sec-light" style={{ paddingTop: 0 }}>
+          <div className="v-narrow">
+            <div className="sec-label">Spécificité locale</div>
+            <h2 className="sec-title" style={{ marginBottom: 16, fontSize: "clamp(1.4rem, 2.4vw, 2rem)" }}>
+              Pourquoi se former au trading à {v.ville}
+            </h2>
+            <p style={{ lineHeight: 1.75, color: "var(--g1)" }}>
+              {v.whyTrade}
+            </p>
+          </div>
+        </section>
+      ) : null}
+
       {/* MÉTHODE BASS */}
       <section className="v-sec v-sec-dark">
         <div className="sec-center">
