@@ -208,6 +208,63 @@ export function CollectionPageJsonLd({
   );
 }
 
+interface DefinedTermMeta {
+  name: string;
+  description: string;
+  url: string;
+  termCode?: string; // acronyme
+  inDefinedTermSet?: string; // url du set parent
+}
+
+export function DefinedTermJsonLd(term: DefinedTermMeta) {
+  return (
+    <JsonLd
+      data={{
+        "@context": "https://schema.org",
+        "@type": "DefinedTerm",
+        name: term.name,
+        description: term.description,
+        url: term.url.startsWith("http") ? term.url : `${SITE.url}${term.url}`,
+        ...(term.termCode && { termCode: term.termCode }),
+        ...(term.inDefinedTermSet && {
+          inDefinedTermSet: term.inDefinedTermSet.startsWith("http")
+            ? term.inDefinedTermSet
+            : `${SITE.url}${term.inDefinedTermSet}`,
+        }),
+        inLanguage: "fr-FR",
+      }}
+    />
+  );
+}
+
+interface DefinedTermSetMeta {
+  name: string;
+  description: string;
+  url: string;
+  hasDefinedTerms: { name: string; url: string; termCode?: string }[];
+}
+
+export function DefinedTermSetJsonLd(set: DefinedTermSetMeta) {
+  return (
+    <JsonLd
+      data={{
+        "@context": "https://schema.org",
+        "@type": "DefinedTermSet",
+        name: set.name,
+        description: set.description,
+        url: `${SITE.url}${set.url}`,
+        inLanguage: "fr-FR",
+        hasDefinedTerm: set.hasDefinedTerms.map((t) => ({
+          "@type": "DefinedTerm",
+          name: t.name,
+          url: `${SITE.url}${t.url}`,
+          ...(t.termCode && { termCode: t.termCode }),
+        })),
+      }}
+    />
+  );
+}
+
 interface PersonMeta {
   name: string;
   jobTitle: string;

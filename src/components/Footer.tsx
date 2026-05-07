@@ -20,6 +20,7 @@ export default function Footer() {
               <Link href="/order-flow/">Order Flow</Link>
               <Link href="/footprint/">Footprint Chart</Link>
               <Link href="/volume-profile/">Volume Profile</Link>
+              <Link href="/glossaire/">Glossaire</Link>
               <Link href="/blog/">Tous les guides</Link>
             </div>
             <div className="ft-col">

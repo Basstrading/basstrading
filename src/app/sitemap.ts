@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { articles } from "@/content/blog/_meta";
 import { villes } from "@/content/pages/villes/_data";
+import { terms } from "@/content/glossaire/_data";
 import { SITE } from "@/lib/constants";
 
 export const dynamic = "force-static";
@@ -18,6 +19,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(),
     changeFrequency: "monthly" as const,
     priority: 0.85,
+  }));
+
+  const glossaireUrls = terms.map((t) => ({
+    url: `${SITE.url}/glossaire/${t.slug}/`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
   }));
 
   return [
@@ -75,6 +83,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.85,
     },
+    {
+      url: `${SITE.url}/glossaire/`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.75,
+    },
+    ...glossaireUrls,
     ...villeUrls,
     ...blogUrls,
     {

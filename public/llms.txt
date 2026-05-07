@@ -22,6 +22,24 @@ Sébastien Constant trade en direct chaque jour devant ses élèves depuis plus 
 - [Footprint Chart — hub complet](https://basstrading.fr/footprint/) : delta, imbalance, absorption, CVD en parallèle, applications.
 - [Volume Profile — hub complet](https://basstrading.fr/volume-profile/) : HVN, LVN, Naked POC, Session/Daily/Composite, applications.
 
+## Glossaire — vocabulaire institutionnel
+
+Définitions concises avec exemples concrets sur Futures (ES, NQ).
+
+- [Glossaire — index](https://basstrading.fr/glossaire/) : 12 termes de référence du Market Profile, Order Flow et Footprint.
+- [Absorption](https://basstrading.fr/glossaire/absorption/) : ordres passifs absorbant les agressifs sans déplacement du prix.
+- [CVD — Cumulative Volume Delta](https://basstrading.fr/glossaire/cvd/) : delta cumulé sur séance, divergences avec le prix.
+- [Delta](https://basstrading.fr/glossaire/delta/) : différence volume bid/ask, pression directionnelle.
+- [HVN — High Volume Node](https://basstrading.fr/glossaire/hvn/) : pic local de volume, support/résistance majeur.
+- [Imbalance](https://basstrading.fr/glossaire/imbalance/) : déséquilibre fort entre bid et ask sur un niveau.
+- [LVN — Low Volume Node](https://basstrading.fr/glossaire/lvn/) : creux local de volume, zone de transit rapide.
+- [Naked POC](https://basstrading.fr/glossaire/naked-poc/) : POC de séance précédente non encore retesté — cible institutionnelle.
+- [POC — Point of Control](https://basstrading.fr/glossaire/poc/) : niveau de plus fort volume — centre de gravité du profil.
+- [TPO — Time Price Opportunity](https://basstrading.fr/glossaire/tpo/) : unité de mesure du Market Profile — une lettre par demi-heure.
+- [VAH — Value Area High](https://basstrading.fr/glossaire/vah/) : borne haute de la Value Area, résistance majeure.
+- [VAL — Value Area Low](https://basstrading.fr/glossaire/val/) : borne basse de la Value Area, support majeur.
+- [VWAP — Volume Weighted Average Price](https://basstrading.fr/glossaire/vwap/) : prix moyen pondéré volumes, référence d'exécution institutionnelle.
+
 ## Villes — sessions présentielles (20+)
 
 Sessions confirmées dès 8 inscrits par ville, animées en personne par Sébastien Constant, éligibles CPF via EMSCA (Qualiopi) :
