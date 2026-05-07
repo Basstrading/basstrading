@@ -7,6 +7,9 @@ export interface VilleData {
   shortDesc: string;
   financement: string;
   testimonial: { text: string; author: string };
+  // Champs optionnels pour villes prioritaires — boost contenu unique SEO
+  economicContext?: string;
+  whyTrade?: string;
 }
 
 export const villes: VilleData[] = [

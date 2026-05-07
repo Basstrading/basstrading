@@ -95,6 +95,74 @@ export default function FootprintChartTrading() {
 
       <hr />
 
+      <h2 id="patterns">Les 6 patterns clés à reconnaître sur le Footprint</h2>
+      <p>La lecture du Footprint repose sur un nombre limité de patterns récurrents. Les maîtriser vous permet d&apos;identifier les opportunités en quelques secondes, sans surcharger votre processus de décision.</p>
+
+      <h3>1. Stacked Imbalances (déséquilibres empilés)</h3>
+      <p>Plusieurs imbalances consécutives dans la même direction sur 3 niveaux de prix ou plus. Sur le Footprint, vous voyez 4-5 niveaux successifs avec un ratio Ask/Bid (ou Bid/Ask) supérieur à 3:1. C&apos;est le signal le plus puissant d&apos;une accélération directionnelle institutionnelle. Setup : entrée dans le sens des stacked imbalances avec stop sous le dernier niveau, target HVN suivant.</p>
+
+      <h3>2. Absorption (la défense d&apos;un niveau)</h3>
+      <p>Volume anormalement élevé à un niveau de prix, avec delta extrême dans une direction, mais le prix ne bouge pas. C&apos;est le signal qu&apos;une grosse main absorbe les ordres agressifs. <strong>Trois signatures visuelles</strong> : (1) volume 3-5 fois supérieur aux niveaux voisins, (2) delta de -2000+ sans déplacement de prix, (3) wicks répétés au même niveau sur plusieurs bougies. L&apos;absorption précède statistiquement un retournement.</p>
+
+      <h3>3. Exhaustion (épuisement du mouvement)</h3>
+      <p>Pic de volume massif à l&apos;extrême d&apos;un mouvement, suivi d&apos;une chute brutale du delta. Sur le Footprint, la dernière bougie d&apos;une tendance affiche un volume record sur le high (en haussier) ou sur le low (en baissier), puis les bougies suivantes montrent un delta neutre ou inverse. Signal de retournement à haute probabilité, surtout combiné avec un Naked POC ou une zone de Value Area majeure.</p>
+
+      <h3>4. Footprint en P (distribution)</h3>
+      <p>Volume concentré dans la partie haute des bougies sur 3-5 bougies consécutives, avec absorption en haut et delta qui s&apos;essouffle. Distribution institutionnelle classique — les vendeurs déchargent leurs positions tout en maintenant l&apos;apparence d&apos;une tendance haussière. Setup : short sur cassure de la VAL formée par cette structure, target POC ou Naked POC inférieur.</p>
+
+      <h3>5. Footprint en b (accumulation)</h3>
+      <p>Inverse du P : volume concentré dans la partie basse des bougies, avec absorption en bas et delta qui se redresse. Accumulation institutionnelle — les acheteurs construisent leur position pendant la baisse. Setup : long sur retest VAL avec confluence absorption, target POC.</p>
+
+      <h3>6. Initiative + Continuation</h3>
+      <p>Une bougie d&apos;initiative (delta extrême + volume très élevé + déplacement franc du prix) suivie de bougies de continuation (delta aligné, volume soutenu). C&apos;est le pattern de tendance le plus fiable : ne pas trader contre cette structure tant qu&apos;elle est en place. Setup : ajouter à la position dans le sens de l&apos;initiative sur les pullbacks.</p>
+
+      <hr />
+
+      <h2 id="setups">Setups Footprint sur les niveaux Market Profile</h2>
+      <p>Le Footprint isolé donne des signaux. Combiné avec les niveaux du <a href="/market-profile/">Market Profile</a> et du <a href="/volume-profile/">Volume Profile</a>, il devient redoutable. Voici les 4 setups de référence.</p>
+
+      <h3>Setup 1 : Rebond sur VAL avec absorption</h3>
+      <p><strong>Contexte</strong> : marché en équilibre, prix descend tester la VAL. <strong>Signal Footprint</strong> : volume élevé sur les 2-3 derniers ticks de la VAL, delta très négatif (-1500+) mais le prix tient. Stacked imbalances acheteuses qui apparaissent juste au-dessus. <strong>Entrée</strong> : long à VAL+1 tick. <strong>Stop</strong> : sous le low de la bougie d&apos;absorption. <strong>Target</strong> : POC en T1, VAH en T2.</p>
+
+      <h3>Setup 2 : Rejet sur VAH avec exhaustion</h3>
+      <p><strong>Contexte</strong> : prix monte tester la VAH par le bas. <strong>Signal Footprint</strong> : pic de volume sur la VAH, delta extrême (+2000+), puis bougie suivante avec delta neutre ou négatif. <strong>Entrée</strong> : short à VAH-1 tick après confirmation. <strong>Stop</strong> : au-dessus du high d&apos;exhaustion. <strong>Target</strong> : POC en T1, VAL en T2.</p>
+
+      <h3>Setup 3 : Cassure d&apos;Initial Balance avec stacked imbalances</h3>
+      <p><strong>Contexte</strong> : Initial Balance définie sur la première heure. Cassure haussière avec volume. <strong>Signal Footprint</strong> : 3+ niveaux consécutifs de stacked imbalances acheteuses au-dessus de l&apos;IB high. Delta cumulé en hausse. <strong>Entrée</strong> : long sur retest IB high. <strong>Stop</strong> : sous l&apos;IB high. <strong>Target</strong> : extension IB (1.5x range IB).</p>
+
+      <h3>Setup 4 : Retest de Naked POC avec absorption</h3>
+      <p><strong>Contexte</strong> : Naked POC d&apos;une session précédente non encore retesté. Le prix s&apos;en approche après plusieurs séances. <strong>Signal Footprint</strong> : sur le test du Naked POC, volume anormalement élevé + delta divergent du prix + wicks répétés. <strong>Entrée</strong> : dans le sens du retournement. <strong>Stop</strong> : juste au-delà du Naked POC. <strong>Target</strong> : POC du jour ou VAH/VAL opposée.</p>
+
+      <hr />
+
+      <h2 id="par-marche">Le Footprint par marché : ES, NQ, GC, CL</h2>
+      <p>Tous les marchés Futures ne se lisent pas de la même façon sur le Footprint. Voici les spécificités des 4 marchés majeurs.</p>
+
+      <h3>E-mini S&amp;P 500 (ES)</h3>
+      <p>Marché de référence pour apprendre le Footprint. Volume massif et propre, ratios d&apos;imbalance fiables (3:1 standard), absorption nette aux niveaux structurels. Les setups Footprint y fonctionnent avec une régularité élevée. Idéal pour démarrer.</p>
+
+      <h3>Nasdaq E-mini (NQ)</h3>
+      <p>Plus volatil que l&apos;ES, mouvements plus rapides. Le Footprint y demande une lecture plus rapide — les imbalances apparaissent et disparaissent vite. Les ratios doivent être ajustés (4:1 plutôt que 3:1 pour filtrer le bruit). L&apos;absorption sur NQ est explosive quand elle se confirme.</p>
+
+      <h3>Gold (GC)</h3>
+      <p>Marché plus calme que les indices. Le Footprint sur GC est utile mais moins critique — le Volume Profile et les niveaux structurels long terme dominent. Le Footprint sert principalement à timer les entrées sur les niveaux institutionnels (Composite POC mensuel).</p>
+
+      <h3>Crude Oil (CL)</h3>
+      <p>Marché à fort régime news (rapports EIA mercredi 16h30). Hors news, le Footprint fonctionne bien et révèle les manipulations institutionnelles fréquentes. Pendant les news, le Footprint devient illisible — éviter de trader dans ces fenêtres.</p>
+
+      <hr />
+
+      <h2 id="erreurs">5 erreurs débutants à éviter avec le Footprint</h2>
+      <ol>
+        <li><strong>Surcharger l&apos;écran avec trop de timeframes</strong>. Un seul Footprint à la fois suffit. Volume-based (500-2000 contrats) est généralement plus lisible que time-based pour le scalping.</li>
+        <li><strong>Confondre delta total et delta par niveau</strong>. Une bougie peut avoir un delta total positif tout en montrant de l&apos;absorption vendeuse en haut. C&apos;est l&apos;information par niveau qui compte, pas le total seul.</li>
+        <li><strong>Trader chaque imbalance isolément</strong>. Une imbalance solitaire est du bruit. Seules les stacked imbalances (3+ consécutives) ou les imbalances aux niveaux Market Profile méritent un trade.</li>
+        <li><strong>Ignorer le contexte structurel</strong>. Un signal Footprint sans niveau Market Profile/Volume Profile en confluence est moins fiable. Toujours valider d&apos;abord OÙ vous êtes (structure), puis QUOI faire (Footprint).</li>
+        <li><strong>Trader le Footprint pendant les news</strong>. Les bougies de news (EIA, FOMC, NFP) affichent du volume colossal mais peu interprétable. Attendre la stabilisation post-news avant de revenir au Footprint.</li>
+      </ol>
+
+      <hr />
+
       <h2 id="vs-mp">Footprint vs Market Profile</h2>
 
       <table className="compare-table">
