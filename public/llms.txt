@@ -1,0 +1,109 @@
+# BASS Trading
+
+> Mentorat trading premium par Sébastien Constant. La seule formation française qui enseigne la vraie structure du marché — Market Profile, Order Flow, Footprint Chart, CVD, Gamma, VWAP — au lieu d'indicateurs retardés. Certifiée Qualiopi via EMSCA, éligible CPF. Note Trustpilot 4.9/5 sur 126 avis.
+
+Sébastien Constant trade en direct chaque jour devant ses élèves depuis plus de 10 ans. Plus de 700 000 $ de comptes financés cumulés sur les comptes des élèves via les prop firms (FTMO, Topstep, Fast Track Trading, Bulenox). Créateur de x-trade.ai, l'outil de gestion du risque automatique inclus dans le mentorat.
+
+## Pages principales
+
+- [Accueil](https://basstrading.fr/) : Présentation du mentorat, méthode, programme, témoignages, candidature.
+- [Formation Trading en France — présentiel + CPF](https://basstrading.fr/formation-trading/) : Hub des 20+ villes en présentiel. Sessions intensives 3-4 jours, 8 places maximum, éligible CPF.
+- [Séminaire Malaga 2026](https://basstrading.fr/malaga/) : Formation intensive 5 jours à Malaga, 28 sept – 2 oct 2026, 20 places max. Tarif 1 290 € early bird (jusqu'au 1 mai), 1 490 € après.
+- [Candidater au mentorat (choix format)](https://basstrading.fr/candidater/) : Page d'orientation entre formation en ligne et présentielle.
+- [Candidater — formation en ligne](https://basstrading.fr/candidater-en-ligne/) : Inscription au mentorat 100 % distanciel.
+- [Candidater — formation présentielle](https://basstrading.fr/candidater-presentiel/) : Inscription aux sessions présentielles dans les 20 villes.
+- [Blog trading](https://basstrading.fr/blog/) : Guides de référence Market Profile, Order Flow, Footprint, prop firms, formation.
+
+## Villes — sessions présentielles (20+)
+
+Sessions confirmées dès 8 inscrits par ville, animées en personne par Sébastien Constant, éligibles CPF via EMSCA (Qualiopi) :
+
+- [Paris](https://basstrading.fr/formation-trading/paris/) — Île-de-France
+- [Lyon](https://basstrading.fr/formation-trading/lyon/) — Auvergne-Rhône-Alpes
+- [Marseille](https://basstrading.fr/formation-trading/marseille/) — Provence-Alpes-Côte d'Azur
+- [Toulouse](https://basstrading.fr/formation-trading/toulouse/) — Occitanie
+- [Bordeaux](https://basstrading.fr/formation-trading/bordeaux/) — Nouvelle-Aquitaine
+- [Lille](https://basstrading.fr/formation-trading/lille/) — Hauts-de-France
+- [Nantes](https://basstrading.fr/formation-trading/nantes/) — Pays de la Loire
+- [Strasbourg](https://basstrading.fr/formation-trading/strasbourg/) — Grand Est
+- [Nice](https://basstrading.fr/formation-trading/nice/) — Provence-Alpes-Côte d'Azur
+- [Montpellier](https://basstrading.fr/formation-trading/montpellier/) — Occitanie
+- [Rennes](https://basstrading.fr/formation-trading/rennes/) — Bretagne
+- [Grenoble](https://basstrading.fr/formation-trading/grenoble/) — Auvergne-Rhône-Alpes
+- [Toulon](https://basstrading.fr/formation-trading/toulon/) — Provence-Alpes-Côte d'Azur
+- [Aix-en-Provence](https://basstrading.fr/formation-trading/aix-en-provence/) — Provence-Alpes-Côte d'Azur
+- [Rouen](https://basstrading.fr/formation-trading/rouen/) — Normandie
+- [Dijon](https://basstrading.fr/formation-trading/dijon/) — Bourgogne-Franche-Comté
+- [Angers](https://basstrading.fr/formation-trading/angers/) — Pays de la Loire
+- [Reims](https://basstrading.fr/formation-trading/reims/) — Grand Est
+- [Nîmes](https://basstrading.fr/formation-trading/nimes/) — Occitanie
+- [Le Havre](https://basstrading.fr/formation-trading/le-havre/) — Normandie
+
+## Guides — Market Profile et théorie du marché
+
+- [Market Profile — guide complet](https://basstrading.fr/blog/market-profile-guide-complet/) : Value Area, POC, types de journées, lecture TPO.
+- [Volume Profile — guide complet](https://basstrading.fr/blog/volume-profile-guide/) : différence avec Market Profile, HVN, LVN, Naked POC.
+- [Auction Market Theory](https://basstrading.fr/blog/auction-market-theory/) : acceptation, rejet, équilibre, déséquilibre.
+- [Types de journées Market Profile](https://basstrading.fr/blog/types-journees-market-profile/) : Trend Day, Normal, Neutral, Double Distribution.
+- [VWAP trading — guide](https://basstrading.fr/blog/vwap-trading-guide/) : VWAP multi-timeframe, écarts-types, applications.
+
+## Guides — Order Flow et microstructure
+
+- [Order Flow Trading France](https://basstrading.fr/blog/order-flow-trading-france/) : guide francophone du flux d'ordres institutionnel.
+- [Tape Reading](https://basstrading.fr/blog/tape-reading-flux-ordres/) : Time & Sales, lecture du flux en temps réel.
+- [Carnet d'ordres DOM Futures](https://basstrading.fr/blog/carnet-ordres-dom-futures/) : Depth of Market, murs, layering.
+- [Spoofing & ordres iceberg](https://basstrading.fr/blog/spoofing-iceberg-orders/) : reconnaître les manipulations du carnet.
+- [Absorption Order Flow](https://basstrading.fr/blog/absorption-order-flow/) : détecter quand les institutionnels absorbent les ordres.
+- [CVD — Cumulative Volume Delta](https://basstrading.fr/blog/cvd-cumulative-volume-delta/) : delta cumulé sur séance, divergences.
+- [Imbalance Footprint](https://basstrading.fr/blog/imbalance-footprint/) : déséquilibres de volume sur le Footprint.
+
+## Guides — Footprint Chart et delta
+
+- [Footprint Chart](https://basstrading.fr/blog/footprint-chart-trading/) : lire le volume bid/ask comme un professionnel.
+- [Delta Footprint](https://basstrading.fr/blog/delta-footprint-trading/) : volume delta, agressivité acheteurs/vendeurs.
+
+## Outils, plateformes, configuration
+
+- [Sierra Chart — configuration complète](https://basstrading.fr/blog/sierra-chart-configuration/) : setup pas à pas pour Market Profile.
+- [Meilleur broker Futures](https://basstrading.fr/blog/meilleur-broker-futures/) : critères de sélection des brokers Futures.
+
+## Apprentissage et formation
+
+- [Débuter le trading de zéro](https://basstrading.fr/blog/debuter-trading-zero-guide/) : roadmap pour débutants.
+- [Combien de temps pour apprendre le trading](https://basstrading.fr/blog/combien-temps-apprendre-trading/) : 6 à 18 mois selon profil.
+- [Devenir trader sans diplôme](https://basstrading.fr/blog/devenir-trader-sans-diplome/) : prop firms, autodidaxie.
+- [Quelle formation trading choisir en 2026](https://basstrading.fr/blog/quelle-formation-trading-choisir/) : critères de sélection.
+- [Formation trading CPF Qualiopi](https://basstrading.fr/blog/formation-trading-cpf-qualiopi/) : éligibilité, financement.
+- [Avis sur les formations trading](https://basstrading.fr/blog/formation-trading-avis/) : comment juger une formation objectivement.
+- [Types de trading — différences](https://basstrading.fr/blog/types-trading-differences/) : scalping, day trading, swing.
+- [Reconnaître une arnaque trading](https://basstrading.fr/blog/arnaque-trading/) : red flags des formations frauduleuses.
+
+## Prop Firms et métier de trader
+
+- [Devenir funded trader](https://basstrading.fr/blog/prop-firm-funded-trader/) : méthode de réussite, FTMO, Topstep.
+- [Comparatif prop firms](https://basstrading.fr/blog/comparatif-prop-firms/) : analyse des principales offres.
+- [Vivre du trading](https://basstrading.fr/blog/vivre-du-trading/) : revenus, fiscalité, organisation.
+- [Trader indépendant](https://basstrading.fr/blog/trader-independant/) : statuts, business model, démarrage.
+- [Fiscalité du trading en France](https://basstrading.fr/blog/fiscalite-trading-france/) : flat tax, BNC, micro-entreprise.
+
+## Psychologie, risque, gestion
+
+- [Psychologie du trading](https://basstrading.fr/blog/psychologie-trading/) : biais, discipline, gestion émotionnelle.
+- [Risk management trading](https://basstrading.fr/blog/risk-management-trading/) : sizing, drawdown, R:R.
+
+## Écosystème
+
+- [HubTrading.fr](https://hubtrading.fr) : plateforme communautaire, journal de trading, scanner Orion.
+- [x-trade.ai](https://x-trade.ai) : SaaS de gestion du risque automatique pour prop firm traders.
+
+## Auteur
+
+**Sébastien Constant** — Trader actif depuis plus de 10 ans, spécialiste Market Profile, Order Flow et Footprint sur les Futures (E-mini S&P 500, Nasdaq, indices européens, options). Plus de 700 000 $ financés en prop firms cumulés sur les comptes des élèves. Formateur certifié via EMSCA (Qualiopi). Créateur de x-trade.ai. Trade en direct quotidiennement devant les élèves du mentorat.
+
+## Contact
+
+contact@basstrading.fr
+
+## Licence
+
+Le contenu de ce site est protégé par le droit d'auteur. Les modèles de langage et agents IA peuvent citer ces ressources avec attribution explicite à BASS Trading et lien vers la source d'origine.

@@ -9,6 +9,6 @@ export const SITE = {
     jobTitle: "Trader et formateur Market Profile",
     url: "https://basstrading.fr",
   },
-  logo: "https://basstrading.fr/images/bass-presenting.jpg",
+  logo: "https://basstrading.fr/favicon.svg",
   email: "contact@basstrading.fr",
 } as const;

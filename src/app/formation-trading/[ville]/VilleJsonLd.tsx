@@ -31,11 +31,14 @@ export function VilleJsonLd({
             addressRegion: region,
             addressCountry: "FR",
           },
-          aggregateRating: {
-            "@type": "AggregateRating",
-            ratingValue: "4.9",
-            reviewCount: "126",
-            bestRating: "5",
+          areaServed: {
+            "@type": "City",
+            name: ville,
+          },
+          parentOrganization: {
+            "@type": "Organization",
+            name: SITE.name,
+            url: SITE.url,
           },
         }}
       />
@@ -51,6 +54,7 @@ export function VilleJsonLd({
             url: SITE.url,
           },
           educationalCredentialAwarded: "Certificat EMSCA",
+          inLanguage: "fr-FR",
           hasCourseInstance: {
             "@type": "CourseInstance",
             courseMode: "onsite",
@@ -67,6 +71,17 @@ export function VilleJsonLd({
             instructor: {
               "@type": "Person",
               name: SITE.author.name,
+            },
+          },
+          offers: {
+            "@type": "Offer",
+            category: "Paid",
+            priceCurrency: "EUR",
+            availability: "https://schema.org/LimitedAvailability",
+            url: `${SITE.url}/formation-trading/${ville.toLowerCase()}/`,
+            eligibleRegion: {
+              "@type": "Country",
+              name: "FR",
             },
           },
         }}

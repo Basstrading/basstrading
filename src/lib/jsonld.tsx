@@ -17,7 +17,12 @@ export function OrganizationJsonLd() {
         "@type": "Organization",
         name: SITE.name,
         url: SITE.url,
-        logo: SITE.logo,
+        logo: {
+          "@type": "ImageObject",
+          url: SITE.logo,
+          width: "512",
+          height: "512",
+        },
         description: SITE.description,
         founder: {
           "@type": "Person",
@@ -26,17 +31,17 @@ export function OrganizationJsonLd() {
           description:
             "Trader depuis plus de 10 ans, specialiste Market Profile, Order Flow et Footprint. Createur de x-trade.ai. Formateur certifie via EMSCA (Qualiopi).",
         },
-        sameAs: ["https://hubtrading.fr", "https://x-trade.ai"],
-        aggregateRating: {
-          "@type": "AggregateRating",
-          ratingValue: "4.9",
-          reviewCount: "126",
-          bestRating: "5",
-        },
+        sameAs: [
+          "https://hubtrading.fr",
+          "https://x-trade.ai",
+          "https://fr.trustpilot.com/review/basstrading.fr",
+        ],
         contactPoint: {
           "@type": "ContactPoint",
           email: SITE.email,
           contactType: "customer service",
+          areaServed: "FR",
+          availableLanguage: ["French"],
         },
       }}
     />
@@ -72,11 +77,13 @@ export function CourseJsonLd() {
         },
         numberOfCredits: "70",
         timeRequired: "PT70H",
+        inLanguage: "fr-FR",
         aggregateRating: {
           "@type": "AggregateRating",
           ratingValue: "4.9",
           reviewCount: "126",
           bestRating: "5",
+          worstRating: "1",
         },
       }}
     />
