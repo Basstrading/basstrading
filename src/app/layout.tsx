@@ -5,7 +5,7 @@ import { SITE } from "@/lib/constants";
 import LenisProvider from "@/components/LenisProvider";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
-import AIChatWidget from "@/components/AIChatWidget";
+import AIChatLazy from "@/components/AIChatLazy";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -46,7 +46,7 @@ export default function RootLayout({
           <Nav />
           <main>{children}</main>
           <Footer />
-          <AIChatWidget />
+          <AIChatLazy />
         </LenisProvider>
       </body>
     </html>

@@ -24,13 +24,17 @@ export function generateSeoMetadata({
 }: SeoOptions): Metadata {
   const url = `${SITE.url}${path}`;
   const isHomepage = path === "/";
-  const image = ogImage || `${SITE.url}/images/bass-presenting.jpg`;
 
   // Homepage uses absolute title, other pages use the template from root layout
-  const titleValue = isHomepage
-    ? { absolute: title }
-    : title;
+  const titleValue = isHomepage ? { absolute: title } : title;
   const ogTitle = isHomepage ? title : `${title} | ${SITE.name}`;
+
+  // When ogImage is not explicitly provided, omit images from the metadata
+  // so the file-based opengraph-image.tsx convention populates them
+  // automatically. Explicit ogImage still wins when passed.
+  const explicitImage = ogImage
+    ? [{ url: ogImage, width: 1200, height: 630 }]
+    : undefined;
 
   return {
     title: titleValue,
@@ -42,7 +46,7 @@ export function generateSeoMetadata({
       siteName: SITE.name,
       locale: SITE.locale,
       type,
-      images: [{ url: image, width: 1200, height: 630 }],
+      ...(explicitImage && { images: explicitImage }),
       ...(publishedTime && { publishedTime }),
       ...(modifiedTime && { modifiedTime }),
     },
@@ -50,7 +54,7 @@ export function generateSeoMetadata({
       card: "summary_large_image",
       title: ogTitle,
       description,
-      images: [image],
+      ...(ogImage && { images: [ogImage] }),
     },
     alternates: {
       canonical: url,
