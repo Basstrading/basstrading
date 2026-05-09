@@ -9,7 +9,7 @@ import "./malaga.css";
 export const metadata = generateSeoMetadata({
   title: "Seminaire Trading Malaga — 28 sept. au 2 oct. 2026",
   description:
-    "5 jours intensifs a Malaga avec Sebastien Constant. Market Profile, Order Flow, Footprint, live trading. 20 places max. 1290 euros en early bird jusqu'au 1er mai 2026 — puis 1490 euros a partir du 2 mai.",
+    "5 jours intensifs a Malaga avec Sebastien Constant. Market Profile, Order Flow, Footprint, live trading. 20 places max. 1 490 euros le seminaire complet (paiement 3x sans frais Klarna).",
   path: "/malaga/",
 });
 
@@ -60,7 +60,7 @@ const malagaFaq = [
   {
     question: "Que se passe-t-il si les places sont prises ?",
     answer:
-      "Le seminaire est limite a 20 places. Si c'est complet, tu seras inscrit en liste d'attente pour la prochaine session. Les places partent generalement vite — d'ou l'interet de reserver tot avec le tarif early bird.",
+      "Le seminaire est limite a 20 places. Si c'est complet, tu seras inscrit en liste d'attente pour la prochaine session. Les places partent generalement vite — d'ou l'interet de reserver tot.",
   },
   {
     question: "Quels marches sont trades pendant le seminaire ?",
@@ -355,7 +355,8 @@ export default function MalagaPage() {
           <div className="sec-label m-sec-label-gold">Inscription</div>
           <h2 className="sec-title">Reserve ta place.</h2>
           <p className="sec-desc" style={{ margin: "0 auto" }}>
-            20 places maximum. Tarif a 1 290 euros jusqu&apos;au 1er mai 2026, puis 1 490 euros a partir du 2 mai.
+            20 places maximum pour le seminaire complet. Paiement 3x sans frais
+            disponible via Klarna.
           </p>
         </div>
         <div className="price-card">
@@ -370,14 +371,13 @@ export default function MalagaPage() {
               <polyline points="12 6 12 12 16 14" />
             </svg>
             <div>
-              <strong>Le prix passe a 1 490 euros</strong>
-              <span>a partir du 2 mai 2026 — derniers jours a 1 290 euros</span>
+              <strong>20 places maximum — places limitees</strong>
+              <span>Lun. 28 sept. — Ven. 2 oct. 2026 — Malaga, Espagne</span>
             </div>
           </div>
-          <div className="price-badge">Early bird — offre limitee</div>
-          <div className="price-old">1 890 euros</div>
+          <div className="price-badge">Seminaire 5 jours</div>
           <div className="price-amount">
-            1 290<span>euros</span>
+            1 490<span>euros</span>
           </div>
           <div className="price-period">
             Seminaire complet — 5 jours a Malaga
@@ -408,7 +408,7 @@ export default function MalagaPage() {
             rel="noopener"
             className="price-cta"
           >
-            Reserver ma place — 1 290 euros
+            Reserver ma place — 1 490 euros
           </a>
           <div
             style={{
@@ -432,7 +432,7 @@ export default function MalagaPage() {
               <rect x="1" y="4" width="22" height="16" rx="2" />
               <line x1="1" y1="10" x2="23" y2="10" />
             </svg>
-            ou en 3x sans frais avec Klarna (430 euros/mois)
+            ou en 3x sans frais avec Klarna (497 euros/mois)
           </div>
           <div className="price-urgency">
             <svg
@@ -444,7 +444,7 @@ export default function MalagaPage() {
               <circle cx="12" cy="12" r="10" />
               <polyline points="12 6 12 12 16 14" />
             </svg>{" "}
-            Tarif 1 290 euros jusqu&apos;au 1er mai — puis 1 490 euros le 2 mai
+            20 places maximum — derniers seats avant la session de septembre
           </div>
           <p className="price-note">
             Paiement en 3x sans frais disponible via Klarna — selectionne
@@ -501,7 +501,8 @@ export default function MalagaPage() {
           >
             Plus de brouillard. Plus de doute. Un plan clair, des outils que tu
             maitrises, et une comprehension du marche que 99% des traders
-            n&apos;auront jamais. Le tarif a 1 290 euros expire le 1er mai — passage a 1 490 euros le 2 mai.
+            n&apos;auront jamais. Tarif 1 490 euros — paiement 3x sans frais
+            disponible via Klarna. 20 places maximum.
           </p>
           <a
             href={STRIPE_URL}
@@ -510,7 +511,7 @@ export default function MalagaPage() {
             className="m-hero-cta"
             style={{ display: "inline-flex" }}
           >
-            Reserver — 1 290 euros <Arrow />
+            Reserver — 1 490 euros <Arrow />
           </a>
         </div>
       </section>

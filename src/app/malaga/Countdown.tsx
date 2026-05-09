@@ -6,14 +6,14 @@ export default function Countdown() {
   const [days, setDays] = useState("--");
   const [hours, setHours] = useState("--");
   const [mins, setMins] = useState("--");
-  const [expired, setExpired] = useState(false);
+  const [started, setStarted] = useState(false);
 
   useEffect(() => {
     function update() {
-      const target = new Date("2026-05-01T23:59:59").getTime();
+      const target = new Date("2026-09-28T09:00:00+02:00").getTime();
       const diff = target - Date.now();
       if (diff <= 0) {
-        setExpired(true);
+        setStarted(true);
         return;
       }
       setDays(String(Math.floor(diff / (1000 * 60 * 60 * 24))));
@@ -31,10 +31,10 @@ export default function Countdown() {
 
   return (
     <div className="countdown-bar">
-      <span className="countdown-label">Early bird — offre limitee</span>
-      {expired ? (
-        <span style={{ color: "var(--red)", fontWeight: 700 }}>
-          Offre expiree
+      <span className="countdown-label">Debut du seminaire dans</span>
+      {started ? (
+        <span style={{ color: "var(--gold)", fontWeight: 700 }}>
+          Seminaire en cours
         </span>
       ) : (
         <div className="countdown-timer">
@@ -53,8 +53,8 @@ export default function Countdown() {
         </div>
       )}
       <span className="countdown-price">
-        <strong>1 290 euros</strong> au lieu de 1 890 euros — avant le 2 mai
-        2026 (puis 1 490 euros)
+        <strong>1 490 euros</strong> — 20 places max — paiement 3x sans frais
+        Klarna
       </span>
     </div>
   );

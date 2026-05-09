@@ -85,6 +85,44 @@ export function CourseJsonLd() {
           bestRating: "5",
           worstRating: "1",
         },
+        review: [
+          {
+            "@type": "Review",
+            reviewRating: {
+              "@type": "Rating",
+              ratingValue: "5",
+              bestRating: "5",
+            },
+            author: { "@type": "Person", name: "Laurent Ouanich" },
+            reviewBody:
+              "La qualite de l'enseignement de Bass est remarquable et remarquee. Un stage intensif et immersif en Market Profile pour progresser dans une ambiance incroyable.",
+            datePublished: "2025-11-12",
+          },
+          {
+            "@type": "Review",
+            reviewRating: {
+              "@type": "Rating",
+              ratingValue: "5",
+              bestRating: "5",
+            },
+            author: { "@type": "Person", name: "Lorton" },
+            reviewBody:
+              "Bon pedagogue, fort d'avoir etabli une belle communaute. Un reel merite a son apprentissage et une grande reconnaissance de ses eleves envers lui.",
+            datePublished: "2025-12-03",
+          },
+          {
+            "@type": "Review",
+            reviewRating: {
+              "@type": "Rating",
+              ratingValue: "5",
+              bestRating: "5",
+            },
+            author: { "@type": "Person", name: "Va Fr" },
+            reviewBody:
+              "Tres bon formateur et tres bonne personne, bienveillant. Je recommande sa formation pour completer ses connaissances en bourse ou meme pour commencer.",
+            datePublished: "2026-01-18",
+          },
+        ],
       }}
     />
   );
@@ -330,21 +368,56 @@ export function EventJsonLd() {
           "@type": "Person",
           name: SITE.author.name,
         },
-        offers: [
+        offers: {
+          "@type": "Offer",
+          name: "Seminaire Trading Malaga — 5 jours intensifs",
+          price: "1490",
+          priceCurrency: "EUR",
+          availability: "https://schema.org/LimitedAvailability",
+          validFrom: "2026-05-02",
+          url: "https://basstrading.fr/malaga/",
+          category: "EducationEvent",
+        },
+        aggregateRating: {
+          "@type": "AggregateRating",
+          ratingValue: "4.9",
+          reviewCount: "126",
+          bestRating: "5",
+          worstRating: "1",
+        },
+        review: [
           {
-            "@type": "Offer",
-            price: "1290",
-            priceCurrency: "EUR",
-            availability: "https://schema.org/LimitedAvailability",
-            validFrom: "2026-01-01",
-            validThrough: "2026-05-01T23:59:59+02:00",
+            "@type": "Review",
+            reviewRating: {
+              "@type": "Rating",
+              ratingValue: "5",
+              bestRating: "5",
+            },
+            author: { "@type": "Person", name: "Laurent Ouanich" },
+            reviewBody:
+              "Un stage intensif et immersif a Malaga en Market Profile entre les mains de Bass pour progresser et continuer l'apprentissage dans une ambiance incroyable. La qualite de l'enseignement de Bass est remarquable et remarquee.",
           },
           {
-            "@type": "Offer",
-            price: "1490",
-            priceCurrency: "EUR",
-            availability: "https://schema.org/LimitedAvailability",
-            validFrom: "2026-05-02",
+            "@type": "Review",
+            reviewRating: {
+              "@type": "Rating",
+              ratingValue: "5",
+              bestRating: "5",
+            },
+            author: { "@type": "Person", name: "Lorton" },
+            reviewBody:
+              "Nous avons pu rencontrer Bass au seminaire a Malaga. Bass est une personne fort sympathique et bon pedagogue, fort d'avoir etabli une belle communaute. Nous avons pu ressentir un reel merite a son apprentissage.",
+          },
+          {
+            "@type": "Review",
+            reviewRating: {
+              "@type": "Rating",
+              ratingValue: "5",
+              bestRating: "5",
+            },
+            author: { "@type": "Person", name: "Va Fr" },
+            reviewBody:
+              "Rencontre a un seminaire, Bass est un tres bon formateur et une tres bonne personne, bienveillant. Je vous recommande sa formation pour completer vos connaissances en bourse.",
           },
         ],
       }}

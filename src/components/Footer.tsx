@@ -24,14 +24,22 @@ export default function Footer() {
               <Link href="/blog/">Tous les guides</Link>
             </div>
             <div className="ft-col">
-              <div className="ft-col-title">Ecosysteme</div>
+              <div className="ft-col-title">A propos</div>
               <Link href="/sebastien-constant/">Sebastien Constant</Link>
+              <Link href="/avis-bass-trading/">Avis BASS Trading</Link>
+              <Link href="/prix-formation-trading/">Prix formation</Link>
+              <Link href="/bass-trading-arnaque-ou-pas/">Arnaque ou pas ?</Link>
+              <Link href="/formation-trading-qui-marche/">Quelle formation ?</Link>
+            </div>
+            <div className="ft-col">
+              <div className="ft-col-title">Ecosysteme</div>
               <a href="https://hubtrading.fr" target="_blank" rel="noopener">
                 HubTrading.fr
               </a>
               <a href="https://x-trade.ai" target="_blank" rel="noopener">
                 x-trade.ai
               </a>
+              <Link href="/bass-trading-vs-xeilos/">vs Xeilos</Link>
               <a href="mailto:contact@basstrading.fr">Contact</a>
             </div>
           </div>
