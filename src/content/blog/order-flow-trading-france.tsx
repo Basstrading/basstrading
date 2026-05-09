@@ -448,6 +448,74 @@ export default function OrderFlowTradingFrance() {
         eligible CPF. 10 places maximum par session pour garantir un
         accompagnement personnalise.
       </p>
+
+      <hr />
+
+      <h2 id="pour-aller-plus-loin">Pour aller plus loin sur l&apos;Order Flow</h2>
+
+      <p>
+        L&apos;Order Flow est un domaine vaste qui necessite plusieurs entrees
+        pour le maitriser. Voici les ressources principales sur basstrading.fr,
+        organisees par profondeur :
+      </p>
+
+      <h3>Hubs thematiques approfondis</h3>
+      <ul>
+        <li>
+          <a href="/order-flow/">Hub Order Flow complet</a> — vue d&apos;ensemble structuree (DOM, Tape, Footprint, CVD).
+        </li>
+        <li>
+          <a href="/footprint/">Hub Footprint Chart</a> — l&apos;outil principal de l&apos;Order Flow visuel.
+        </li>
+        <li>
+          <a href="/liquidite-marches/">Hub Liquidite des marches</a> — comment les institutionnels chassent les pools de stops.
+        </li>
+        <li>
+          <a href="/auction-market-theory/">Hub Auction Market Theory</a> — le cadre theorique Steidlmayer derriere l&apos;Order Flow.
+        </li>
+        <li>
+          <a href="/bookmap/">Hub Bookmap</a> — heatmap de liquidite, complement visuel du DOM.
+        </li>
+      </ul>
+
+      <h3>Cours pedagogiques structures</h3>
+      <ul>
+        <li>
+          <a href="/cours/lecture-carnet-ordres-pro/">Cours Lecture du carnet d&apos;ordres pro</a> — 6 lecons sur le DOM, spoofing, iceberg, T&amp;S.
+        </li>
+        <li>
+          <a href="/cours/footprint-mastery/">Cours Footprint mastery</a> — 6 lecons avancees sur les imbalances, absorption, exhaustion.
+        </li>
+        <li>
+          <a href="/cours/liquidite-marches-pro/">Cours Liquidite des marches pro</a> — 7 lecons sur les pools, sweeps, stop hunts.
+        </li>
+      </ul>
+
+      <h3>Outils et configuration</h3>
+      <ul>
+        <li>
+          <a href="/sierra-chart/">Hub Sierra Chart francophone</a> — la plateforme de reference des traders Order Flow pros.
+        </li>
+        <li>
+          <a href="/tutoriels/configurer-sierra-chart-footprint/">Tutoriel : configurer le Footprint sur Sierra Chart</a>.
+        </li>
+        <li>
+          <a href="/tutoriels/indicateurs-essentiels-sierra-chart/">10 indicateurs essentiels Sierra Chart</a>.
+        </li>
+      </ul>
+
+      <h3>Application en prop firm</h3>
+      <p>
+        L&apos;Order Flow est particulierement efficace sur les Futures CME ou
+        les volumes Bid/Ask sont reels et publics. Voir{" "}
+        <a href="/prop-firm/">le hub des 10 prop firms reviewees</a> pour
+        choisir celle adaptee au trading Order Flow.{" "}
+        <a href="/prop-firm/topstep/">Topstep</a>,{" "}
+        <a href="/prop-firm/apex-trader-funding/">Apex</a>,{" "}
+        <a href="/prop-firm/my-funded-futures/">My Funded Futures</a> et{" "}
+        <a href="/prop-firm/bulenox/">Bulenox</a> sont les plus utilisees par
+        les traders Order Flow francophones.
+      </p>
     </>
   );
 }

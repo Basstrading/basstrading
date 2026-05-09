@@ -465,6 +465,107 @@ export default function MeilleurBrokerFutures() {
       <blockquote>
         <strong>Mon conseil :</strong> commencez avec AMP Futures + Sierra Chart + Denali. Tradez les Micro ES (MES) ou Micro NQ (MNQ) avec un capital de $500 &agrave; $1 000. Ma&icirc;trisez votre m&eacute;thode, votre discipline, vos niveaux. Puis augmentez progressivement. C&apos;est exactement le parcours que je recommande dans le mentorat BASS Trading, et c&apos;est celui qui a le meilleur taux de r&eacute;ussite chez mes &eacute;l&egrave;ves.
       </blockquote>
+
+      <hr />
+
+      <h2 id="alternative-prop-firms">Alternative au broker classique : les prop firms Futures</h2>
+
+      <p>Si tu cherches &agrave; trader les Futures sans engager ton propre capital, les prop firms sont l&apos;alternative pertinente. Au lieu de d&eacute;poser 5 000-10 000 USD chez AMP ou NinjaTrader Brokerage, tu paies une evaluation 49-150 USD une fois (ou 49 USD/mois chez Topstep) et tu trades avec le capital de la firme.</p>
+
+      <h3>Les 5 prop firms Futures principales en 2026</h3>
+      <ul>
+        <li>
+          <a href="/prop-firm/topstep/"><strong>Topstep</strong></a> — Le standard institutionnel depuis 2012. Profit split 100% sur les 10K premiers $, puis 90%. Abonnement mensuel 49-165 USD. Le plus utilise des francophones.
+        </li>
+        <li>
+          <a href="/prop-firm/apex-trader-funding/"><strong>Apex Trader Funding</strong></a> — Frais one-time 147-657 USD. Jusqu&apos;a 20 comptes simultanes. Ideal pour scaler.
+        </li>
+        <li>
+          <a href="/prop-firm/my-funded-futures/"><strong>My Funded Futures (MFFU)</strong></a> — Alternative directe a Topstep avec frais one-time. Profit split equivalent.
+        </li>
+        <li>
+          <a href="/prop-firm/bulenox/"><strong>Bulenox</strong></a> — Drawdown statique disponible (Master Account) — pas de trailing.
+        </li>
+        <li>
+          <a href="/prop-firm/fast-track-trading/"><strong>Fast Track Trading</strong></a> — Drawdown plus permissif sur certains plans, frais one-time.
+        </li>
+      </ul>
+
+      <p>Le hub complet :{" "}
+        <a href="/prop-firm/">10 prop firms compares en detail</a>{" "}
+        avec frais, profit split, max funding, plateformes supportees.
+      </p>
+
+      <h3>Broker classique vs prop firm : que choisir ?</h3>
+
+      <p><strong>Broker classique (AMP, NinjaTrader, IB)</strong> :</p>
+      <ul>
+        <li>Tu trades avec TON capital. Tous les gains sont 100% pour toi.</li>
+        <li>Capital minimum : 500-2 000 USD pour les Micros, 5 000+ USD pour les Mini.</li>
+        <li>Pas de regles imposees (sauf marge broker). Liberte totale.</li>
+        <li>Marge intraday : 50-500 USD/contrat.</li>
+        <li>Risque : tu peux perdre TON capital reel.</li>
+      </ul>
+
+      <p><strong>Prop firm (Topstep, Apex, etc.)</strong> :</p>
+      <ul>
+        <li>Tu trades avec le capital de la firme. Profit split 80-90%.</li>
+        <li>Cout : evaluation 49-150 USD (one-time ou mensuel).</li>
+        <li>Regles strictes : Daily Loss Limit, Max Drawdown, profit target a atteindre.</li>
+        <li>Risque : tu perds l&apos;evaluation (49-150 USD), pas plus.</li>
+        <li>Idem en cas d&apos;echec : tu refais une eval &mdash; pas de capital personnel a risque.</li>
+      </ul>
+
+      <p>
+        Strategie courante des traders pros francophones : commencer avec un
+        compte Topstep 50K (49 USD/mois) pour valider la methode, puis ouvrir
+        plusieurs comptes Apex en parallele pour scaler. Quand le capital
+        personnel s&apos;accumule, ouvrir un compte AMP en plus pour les
+        marges les plus fines (100% des gains).
+      </p>
+
+      <p>
+        Pour la methode pas a pas pour passer une evaluation prop firm, voir{" "}
+        <a href="/tutoriels/comment-passer-evaluation-prop-firm/">Comment passer une evaluation prop firm</a>.
+      </p>
+
+      <hr />
+
+      <h2 id="comparatifs-detailles">Comparatifs detailles broker vs prop firm</h2>
+
+      <ul>
+        <li>
+          <a href="/comparatif/topstep-vs-apex/">Topstep vs Apex</a> &mdash; le duel des 2 prop firms Futures principales.
+        </li>
+        <li>
+          <a href="/comparatif/topstep-vs-my-funded-futures/">Topstep vs My Funded Futures</a> &mdash; mensuel ou one-time ?
+        </li>
+        <li>
+          <a href="/comparatif/apex-vs-bulenox/">Apex vs Bulenox</a> &mdash; trailing ou drawdown statique ?
+        </li>
+        <li>
+          <a href="/comparatif/topstep-vs-fast-track-trading/">Topstep vs Fast Track</a> &mdash; standard ou alternative permissive.
+        </li>
+      </ul>
+
+      <hr />
+
+      <h2 id="ressources-broker">Ressources complementaires</h2>
+
+      <ul>
+        <li>
+          <a href="/sierra-chart/">Hub Sierra Chart francophone</a> &mdash; configuration plateforme + data feeds.
+        </li>
+        <li>
+          <a href="/tutoriels/sierra-chart-prix/">Sierra Chart Prix : combien ca coute vraiment</a> &mdash; calcul detaille du cout total mensuel.
+        </li>
+        <li>
+          <a href="/tutoriels/sierra-chart-vs-ninjatrader/">Sierra Chart vs NinjaTrader</a> &mdash; comparatif des 2 plateformes pros.
+        </li>
+        <li>
+          <a href="/cours/risk-management-pro/">Cours Risk Management Pro</a> &mdash; sizing, drawdown, automatisation x-trade.ai.
+        </li>
+      </ul>
     </>
   );
 }

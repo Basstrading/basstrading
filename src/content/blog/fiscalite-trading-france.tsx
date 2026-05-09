@@ -320,6 +320,123 @@ export default function FiscaliteTrading() {
 
       <hr />
 
+      <h2 id="calcul-concret">Calcul concret : combien tu paies vraiment (3 cas)</h2>
+
+      <p>Trois exemples chiffr&eacute;s pour 2026, qui couvrent 90% des situations des traders fran&ccedil;ais. Tous les chiffres sont arrondis pour clart&eacute;, mais r&eacute;alistes.</p>
+
+      <h3>Cas 1 : Trader particulier, 15 000 &euro; de gains nets sur compte personnel</h3>
+      <ul>
+        <li>R&eacute;gime : flat tax 30% (PFU).</li>
+        <li>Gains imposables : 15 000 &euro;.</li>
+        <li>Imp&ocirc;t sur le revenu (12.8%) : 1 920 &euro;.</li>
+        <li>Pr&eacute;l&egrave;vements sociaux (17.2%) : 2 580 &euro;.</li>
+        <li><strong>Total imp&ocirc;t : 4 500 &euro;</strong>. Net en poche : 10 500 &euro;.</li>
+      </ul>
+      <p>D&eacute;claration : formulaire 2042, case 3VG (plus-values mobili&egrave;res). Si compte broker &eacute;tranger : formulaire 3916 EN PLUS, par compte.</p>
+
+      <h3>Cas 2 : Trader prop firm, 30 000 USD de payouts cumul&eacute;s sur l&apos;ann&eacute;e</h3>
+      <ul>
+        <li>Conversion en euros : ~27 500 &euro; (taux moyen BCE 2026 ~0.92 USD/EUR).</li>
+        <li>R&eacute;gime : <strong>BNC obligatoire</strong> (pas la flat tax — c&apos;est une r&eacute;mun&eacute;ration de prestation, pas une plus-value mobili&egrave;re).</li>
+        <li>Si micro-BNC (en dessous de 77 700 &euro;/an) : abattement forfaitaire 34%, base imposable = 27 500 x 66% = 18 150 &euro;.</li>
+        <li>Imp&ocirc;t sur le revenu : d&eacute;pend de ta TMI. Si TMI 30%, ~5 445 &euro; d&apos;IR sur les 18 150 &euro;.</li>
+        <li>Cotisations sociales BNC (~22% en micro-BNC) : sur les 27 500 &euro; bruts = ~6 050 &euro;.</li>
+        <li><strong>Total : ~11 500 &euro;</strong>. Net en poche : ~16 000 &euro;.</li>
+      </ul>
+      <p>D&eacute;claration : formulaire 2042-C-PRO, micro-BNC. Si comptes prop firms &eacute;trangers (Topstep, Apex US) : formulaire 3916 par compte.</p>
+
+      <p><strong>Important</strong> : si tu d&eacute;passes 77 700 &euro; de payouts/an, sortie automatique du micro-BNC vers le r&eacute;gime r&eacute;el. Comptabilit&eacute; obligatoire, expert-comptable conseill&eacute;.</p>
+
+      <h3>Cas 3 : Trader mix (trading personnel 8 000 &euro; + prop firm 12 000 USD)</h3>
+      <ul>
+        <li>Trading personnel : 8 000 &euro; en flat tax 30% = 2 400 &euro; d&apos;imp&ocirc;t (case 3VG).</li>
+        <li>Prop firm : ~11 000 &euro; en micro-BNC, abattement 34% = base 7 260 &euro;.</li>
+        <li>IR sur prop firm (TMI 30%) : ~2 178 &euro;.</li>
+        <li>Cotisations sociales prop firm (22%) : ~2 420 &euro;.</li>
+        <li><strong>Total imp&ocirc;ts : ~7 000 &euro;</strong>. Net en poche : ~12 000 &euro; sur 19 000 &euro; bruts.</li>
+      </ul>
+      <p>D&eacute;claration : 2042 (flat tax) + 2042-C-PRO (micro-BNC) + 3916 (pour les comptes prop firms am&eacute;ricains).</p>
+
+      <hr />
+
+      <h2 id="formulaires-precis">Les formulaires exacts &agrave; remplir (2026)</h2>
+
+      <p>Voici la liste exacte par cat&eacute;gorie. Tout est en ligne sur impots.gouv.fr.</p>
+
+      <h3>Formulaire 2042 (D&eacute;claration de revenus principale)</h3>
+      <ul>
+        <li>Case <strong>3VG</strong> : plus-values mobili&egrave;res en flat tax (gains nets de trading particulier).</li>
+        <li>Case <strong>3VH</strong> : moins-values mobili&egrave;res (pertes nettes &agrave; reporter).</li>
+        <li>Case <strong>2OP</strong> : optionnel — choix d&apos;imposer au bar&egrave;me progressif au lieu de la flat tax (rare, sauf si tr&egrave;s petit revenu).</li>
+      </ul>
+
+      <h3>Formulaire 2074 (D&eacute;tail des plus-values mobili&egrave;res)</h3>
+      <p>Compl&eacute;mentaire de 2042. D&eacute;tail trade par trade ou par compte. Pas obligatoire si ton broker fran&ccedil;ais (Boursorama, Saxo France) fournit l&apos;IFU. Obligatoire si trading sur brokers &eacute;trangers (Interactive Brokers, AMP, etc.).</p>
+
+      <h3>Formulaire 2042-C-PRO (BNC professionnel)</h3>
+      <p>Pour les revenus prop firms et toute activit&eacute; trading consid&eacute;r&eacute;e comme professionnelle. Cases sp&eacute;cifiques : 5HQ (recettes brutes), 5HP (charges si r&eacute;gime r&eacute;el).</p>
+
+      <h3>Formulaire 3916 (Comptes &agrave; l&apos;&eacute;tranger)</h3>
+      <p><strong>1 formulaire par compte broker &eacute;tranger</strong>. Si tu as un compte Interactive Brokers + un compte AMP + un compte Topstep + un compte Apex = 4 formulaires 3916. Information requise : num&eacute;ro de compte, nom du broker, pays, dates d&apos;ouverture/cl&ocirc;ture.</p>
+
+      <p>Oubli = <strong>1 500 &euro; d&apos;amende par compte par ann&eacute;e</strong>. Le contr&ocirc;le fiscal r&eacute;cupere automatiquement les listes de comptes &eacute;trangers via les &eacute;changes de donn&eacute;es FATCA / CRS.</p>
+
+      <hr />
+
+      <h2 id="optimisation-fiscale">Optimisations fiscales l&eacute;gales</h2>
+
+      <p>Pas de magie, juste les leviers connus des fiscalistes sp&eacute;cialis&eacute;s :</p>
+
+      <h3>1. Le PEA pour le trading actions long terme</h3>
+      <p>Si tu fais du swing trading sur actions europ&eacute;ennes (CAC 40, DAX, etc.), un PEA permet l&apos;exon&eacute;ration totale d&apos;imp&ocirc;t sur le revenu apr&egrave;s 5 ans (juste les pr&eacute;l&egrave;vements sociaux 17.2% restent). Plafond 150 000 &euro; de versements. Pas adapt&eacute; au scalping intraday — le trading frequent peut requalifier le PEA en BNC.</p>
+
+      <h3>2. La SASU pour les hauts revenus prop firm</h3>
+      <p>Si tu d&eacute;passes 80-100K&euro; de gains nets r&eacute;guliers (sur 2 ann&eacute;es cons&eacute;cutives), passer en SASU peut &ecirc;tre rentable. La SASU est impos&eacute;e &agrave; l&apos;IS (15% jusqu&apos;&agrave; 42 500 &euro;, 25% au-dessus). Tu peux ensuite te verser un salaire optimis&eacute; ou des dividendes (flat tax 30%). Comptabilit&eacute; obligatoire mais charges d&eacute;ductibles : abonnement Sierra Chart, formation, mat&eacute;riel, internet, loyer pro, etc.</p>
+
+      <p>Co&ucirc;t comptable d&apos;une SASU : ~1 800 &euro;/an. Rentable au-del&agrave; de ~80K&euro; de revenus annuels.</p>
+
+      <h3>3. Le report de moins-values sur 10 ans</h3>
+      <p>Si tu as une mauvaise ann&eacute;e (perte nette), <strong>d&eacute;clare-la</strong>. Tes moins-values sont reportables sur les 10 ann&eacute;es suivantes. Si tu fais -5 000 &euro; en 2026 puis +20 000 &euro; en 2027, tu seras impos&eacute; uniquement sur 15 000 &euro;. Imp&ocirc;t &eacute;conomis&eacute; : 1 500 &euro;.</p>
+
+      <h3>4. Optimisation par devise</h3>
+      <p>Convertir tes gains en euros au taux moyen BCE annuel (et non au taux du jour de chaque retrait) peut &ecirc;tre avantageux fiscalement si l&apos;USD a baiss&eacute; durant l&apos;ann&eacute;e. M&eacute;thode autoris&eacute;e par l&apos;administration. Documenter ton choix de m&eacute;thode (taux journalier ou taux moyen) et le maintenir constant d&apos;une ann&eacute;e &agrave; l&apos;autre.</p>
+
+      <h3>5. La donation et la transmission</h3>
+      <p>Pour les traders avec capital significatif (200K&euro;+), la donation aux enfants permet de figer la fiscalit&eacute; aux conditions du moment. Strat&eacute;gie de fond, &agrave; voir avec un notaire. Pas pertinente pour la majorit&eacute; des traders.</p>
+
+      <hr />
+
+      <h2 id="cas-prop-firms-fr">Cas prop firms : Topstep, Apex, Bulenox, FTMO</h2>
+
+      <p>Toutes les prop firms am&eacute;ricaines (Topstep, Apex, Bulenox, MFFU, etc.) reportent les paiements via le formulaire 1099 US. Tu n&apos;es PAS imposable aux US si tu es r&eacute;sident fran&ccedil;ais (formulaire W-8BEN &agrave; remplir une fois). Mais tu DOIS d&eacute;clarer en France.</p>
+
+      <p>Pour le d&eacute;tail par prop firm, voir le{" "}
+        <a href="/prop-firm/">hub Prop Firms</a>{" "}
+        et les avis individuels :{" "}
+        <a href="/prop-firm/topstep/">Topstep</a>,{" "}
+        <a href="/prop-firm/apex-trader-funding/">Apex</a>,{" "}
+        <a href="/prop-firm/bulenox/">Bulenox</a>,{" "}
+        <a href="/prop-firm/ftmo/">FTMO</a>.
+      </p>
+
+      <p>FTMO est r&eacute;publique tch&egrave;que (Prague). M&ecirc;me r&egrave;gle : pas d&apos;imp&ocirc;t en R&eacute;publique tch&egrave;que pour r&eacute;sident fran&ccedil;ais, d&eacute;claration en France obligatoire.</p>
+
+      <hr />
+
+      <h2 id="checklist">Checklist annuelle du trader fran&ccedil;ais (avril-juin)</h2>
+
+      <ol>
+        <li><strong>Janvier</strong> : t&eacute;l&eacute;charger les relev&eacute;s annuels de tous les brokers et prop firms (PDF, CSV).</li>
+        <li><strong>F&eacute;vrier</strong> : convertir tous les montants en euros (taux moyen BCE annuel ou taux journalier — choisir une m&eacute;thode et s&apos;y tenir).</li>
+        <li><strong>Mars</strong> : calculer les gains nets par cat&eacute;gorie (plus-values vs BNC prop firm).</li>
+        <li><strong>Avril</strong> : remplir formulaires 2042 (case 3VG ou 3VH), 2042-C-PRO si prop firm, 3916 par compte &eacute;tranger.</li>
+        <li><strong>Mai-juin</strong> : valider la d&eacute;claration en ligne sur impots.gouv.fr. Date limite g&eacute;n&eacute;ralement 25 mai (papier) ou d&eacute;but juin (en ligne, varie par d&eacute;partement).</li>
+        <li><strong>Septembre</strong> : recevoir l&apos;avis d&apos;imposition. V&eacute;rifier que les montants correspondent &agrave; tes calculs.</li>
+        <li><strong>Toute l&apos;ann&eacute;e</strong> : conserver les justificatifs (relev&eacute;s, screenshots, mails de prop firms) pendant 6 ans minimum.</li>
+      </ol>
+
+      <hr />
+
       <h2 id="conclusion">En r&eacute;sum&eacute;</h2>
       <p>La fiscalit&eacute; du trading en France n&apos;est pas compliqu&eacute;e — elle est juste mal expliqu&eacute;e. Voici les points essentiels &agrave; retenir :</p>
       <ul>

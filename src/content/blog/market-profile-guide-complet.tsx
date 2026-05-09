@@ -681,6 +681,81 @@ export default function MarketProfileGuideComplet() {
         <strong>mentorat BASS Trading</strong>. Pas de la theorie. De la lecture
         de marche appliquee, en temps reel, chaque jour.
       </p>
+
+      <hr />
+
+      <h2 id="ressources-mp">Pour aller plus loin sur le Market Profile</h2>
+
+      <p>
+        Le Market Profile est un domaine vaste. Voici les ressources organisees
+        par profondeur sur basstrading.fr :
+      </p>
+
+      <h3>Hubs thematiques relies</h3>
+      <ul>
+        <li>
+          <a href="/market-profile/">Hub Market Profile</a> &mdash; vue d&apos;ensemble structuree avec tous les articles satellites.
+        </li>
+        <li>
+          <a href="/auction-market-theory/">Hub Auction Market Theory</a> &mdash; le cadre theorique Steidlmayer derriere le Market Profile.
+        </li>
+        <li>
+          <a href="/volume-profile/">Hub Volume Profile</a> &mdash; complementaire du Market Profile (volume vs temps).
+        </li>
+        <li>
+          <a href="/liquidite-marches/">Hub Liquidite des marches</a> &mdash; comment les institutionnels chassent les pools de stops aux niveaux Market Profile.
+        </li>
+      </ul>
+
+      <h3>Articles satellites cles</h3>
+      <ul>
+        <li>
+          <a href="/blog/value-area-trading/">Value Area Trading</a> &mdash; VAH, VAL, POC en detail.
+        </li>
+        <li>
+          <a href="/blog/poc-point-of-control/">POC Point of Control</a> &mdash; le centre gravitationnel.
+        </li>
+        <li>
+          <a href="/blog/initial-balance-trading/">Initial Balance</a> &mdash; les 60 premieres minutes RTH.
+        </li>
+        <li>
+          <a href="/blog/types-journees-market-profile/">Types de journees Market Profile</a> &mdash; classification Steidlmayer.
+        </li>
+        <li>
+          <a href="/blog/composite-profile-market-profile/">Composite Profile</a> &mdash; profil multi-jours.
+        </li>
+        <li>
+          <a href="/blog/single-prints-market-profile/">Single Prints</a> &mdash; les TPO uniques.
+        </li>
+        <li>
+          <a href="/blog/poor-high-low-market-profile/">Poor High / Poor Low</a> &mdash; les extremes faibles a re-tester.
+        </li>
+      </ul>
+
+      <h3>Outils pour le Market Profile</h3>
+      <ul>
+        <li>
+          <a href="/sierra-chart/">Hub Sierra Chart francophone</a> &mdash; la plateforme de reference.
+        </li>
+        <li>
+          <a href="/tutoriels/configurer-sierra-chart-market-profile/">Tutoriel : configurer Sierra Chart pour le Market Profile</a> &mdash; pas a pas avec parametres optimaux.
+        </li>
+        <li>
+          <a href="/tutoriels/indicateurs-essentiels-sierra-chart/">10 indicateurs essentiels Sierra Chart</a> incluant TPO Profile, Volume Profile, VWAP.
+        </li>
+      </ul>
+
+      <h3>Application pratique en prop firm</h3>
+      <p>
+        Le Market Profile est particulierement efficace sur les Futures CME (ES, NQ, GC, CL). Voir{" "}
+        <a href="/prop-firm/">les 10 prop firms Futures comparees</a> pour
+        choisir celle adaptee. Les eleves BASS utilisent principalement{" "}
+        <a href="/prop-firm/topstep/">Topstep</a> (le standard),{" "}
+        <a href="/prop-firm/apex-trader-funding/">Apex</a> (multi-comptes),{" "}
+        <a href="/prop-firm/my-funded-futures/">MFFU</a> (alternative one-time)
+        et{" "}
+        <a href="/prop-firm/bulenox/">Bulenox</a> (drawdown statique).
+      </p>
     </>
   );
 }
