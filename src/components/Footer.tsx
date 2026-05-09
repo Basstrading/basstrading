@@ -20,6 +20,14 @@ export default function Footer() {
               <Link href="/order-flow/">Order Flow</Link>
               <Link href="/footprint/">Footprint Chart</Link>
               <Link href="/volume-profile/">Volume Profile</Link>
+              <Link href="/auction-market-theory/">Auction Market Theory</Link>
+              <Link href="/liquidite-marches/">Liquidite</Link>
+              <Link href="/vwap-institutionnel/">VWAP institutionnel</Link>
+            </div>
+            <div className="ft-col">
+              <div className="ft-col-title">Outils</div>
+              <Link href="/sierra-chart/">Sierra Chart</Link>
+              <Link href="/bookmap/">Bookmap</Link>
               <Link href="/glossaire/">Glossaire</Link>
               <Link href="/blog/">Tous les guides</Link>
             </div>
