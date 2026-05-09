@@ -40,10 +40,10 @@ export default function Footer() {
             </div>
             <div className="ft-col">
               <div className="ft-col-title">Ressources</div>
+              <Link href="/cours/">Cours techniques</Link>
               <Link href="/prop-firm/">Prop firms</Link>
               <Link href="/comparatif/">Comparatifs</Link>
               <Link href="/tutoriels/">Tutoriels Sierra Chart</Link>
-              <Link href="/cours/">Cours techniques</Link>
             </div>
             <div className="ft-col">
               <div className="ft-col-title">Ecosysteme</div>

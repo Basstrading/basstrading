@@ -5,6 +5,7 @@ import { terms } from "@/content/glossaire/_data";
 import { propFirms } from "@/content/prop-firms/_data";
 import { comparatifs } from "@/content/comparatifs/_data";
 import { tutoriels } from "@/content/tutoriels/_data";
+import { cours } from "@/content/cours/_data";
 import { SITE } from "@/lib/constants";
 
 export const dynamic = "force-static";
@@ -50,6 +51,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(),
     changeFrequency: "monthly" as const,
     priority: 0.85,
+  }));
+
+  const coursUrls = cours.map((c) => ({
+    url: `${SITE.url}/cours/${c.slug}/`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.9,
   }));
 
   return [
@@ -185,11 +193,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.9,
     },
+    {
+      url: `${SITE.url}/cours/`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.95,
+    },
     ...glossaireUrls,
     ...villeUrls,
     ...propFirmUrls,
     ...comparatifUrls,
     ...tutorielUrls,
+    ...coursUrls,
     ...blogUrls,
     {
       url: `${SITE.url}/cgv/`,
