@@ -159,9 +159,9 @@ export default function HomePage() {
   </div>
   <div className="dark-split">
     <div className="ds-left">
-      <div className="ds-label">Comptes financés</div>
-      <div className="ds-val">$700K+</div>
-      <div className="ds-desc">Montants cumulés des comptes financés par les élèves du programme BASS.</div>
+      <div className="ds-label">Méthode</div>
+      <div className="ds-val">Institutionnelle</div>
+      <div className="ds-desc">Market Profile, Order Flow, Footprint — la lecture exacte qu&apos;utilisent les desks de trading institutionnels.</div>
     </div>
     <div className="ds-right">
       <div className="ds-label">Expérience</div>
@@ -431,7 +431,7 @@ export default function HomePage() {
     <a href="/blog/prop-firm-funded-trader" className="blog-card">
       <div className="blog-cat">Prop Firm</div>
       <h3>Devenir funded trader : la méthode qui fonctionne vraiment</h3>
-      <p>Comment nos élèves ont décroché plus de $700K de comptes financés — et ce qu&apos;ils font différemment.</p>
+      <p>La méthode pas-à-pas pour passer une évaluation prop firm — préparation, règles, gestion du risque, erreurs à éviter.</p>
       <span className="blog-link">Lire l&apos;article &rarr;</span>
     </a>
     <a href="/blog/sierra-chart-configuration" className="blog-card">

@@ -100,7 +100,7 @@ export default function FormationTradingCpfQualiopi() {
       <p>La formation couvre : Market Profile et Order Flow (Footprint, CVD, Tape Reading), gestion du risque avec x-trade.ai, pr&eacute;paration aux prop firms. <strong>10 places maximum</strong> par session pour garantir un accompagnement personnalis&eacute;.</p>
 
       <blockquote>
-        <strong>4.9/5 sur Trustpilot</strong> — 126 avis v&eacute;rifi&eacute;s. Plus de $700K de comptes funded obtenus personnellement par le formateur. C&apos;est le track record le plus solide pour une formation trading en France.
+        <strong>4.9/5 sur Trustpilot</strong> — 126 avis v&eacute;rifi&eacute;s. Sebastien Constant trade en direct chaque jour devant ses &eacute;l&egrave;ves — c&apos;est le track record le plus transparent pour une formation trading en France.
       </blockquote>
 
       <hr />

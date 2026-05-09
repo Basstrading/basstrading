@@ -10,6 +10,6 @@ export default function Image() {
     title: "Sebastien Constant.\nTrader. Formateur. Auteur.",
     category: "Auteur",
     subtitle:
-      "10+ ans de trading. 700K $+ financés en prop firms. Créateur de x-trade.ai.",
+      "10+ ans de trading. Spécialiste Market Profile, Order Flow, Footprint. Créateur de x-trade.ai.",
   });
 }

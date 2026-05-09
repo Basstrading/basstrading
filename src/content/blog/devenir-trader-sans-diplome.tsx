@@ -9,7 +9,7 @@ export default function DevenirTraderSansDiplome() {
 
       <p>Les dipl&ocirc;mes en finance forment des analystes, des gestionnaires de portefeuille et des risk managers pour les banques d&apos;investissement. Ce sont des m&eacute;tiers respectables et n&eacute;cessaires. Mais ce ne sont <strong>pas</strong> des m&eacute;tiers de trader intraday. L&apos;analyse fondamentale, la th&eacute;orie du portefeuille optimal et la r&eacute;gulation bancaire sont des comp&eacute;tences utiles dans un bureau de Soci&eacute;t&eacute; G&eacute;n&eacute;rale — pas devant un carnet d&apos;ordres sur le E-mini S&amp;P 500.</p>
 
-      <p>La preuve vivante : <strong>S&eacute;bastien Constant</strong>, fondateur de BASS Trading, n&apos;est pas issu d&apos;une grande &eacute;cole de finance. Il n&apos;a pas de Master en math&eacute;matiques financi&egrave;res. Ce qu&apos;il a, c&apos;est plus de <strong>10 ans de trading professionnel</strong>, une m&eacute;thode fond&eacute;e sur le Market Profile et l&apos;Order Flow, et <strong>$700K+ en comptes funded</strong> obtenus personnellement aupr&egrave;s de prop firms. Ses &eacute;l&egrave;ves, pour la plupart, n&apos;avaient aucun dipl&ocirc;me en finance avant de commencer.</p>
+      <p>La preuve vivante : <strong>S&eacute;bastien Constant</strong>, fondateur de BASS Trading, n&apos;est pas issu d&apos;une grande &eacute;cole de finance. Il n&apos;a pas de Master en math&eacute;matiques financi&egrave;res. Ce qu&apos;il a, c&apos;est plus de <strong>10 ans de trading professionnel</strong>, une m&eacute;thode fond&eacute;e sur le Market Profile, l&apos;Order Flow et le Footprint Chart, et un live trading quotidien devant ses &eacute;l&egrave;ves. Ses &eacute;l&egrave;ves, pour la plupart, n&apos;avaient aucun dipl&ocirc;me en finance avant de commencer.</p>
 
       <blockquote>
         <strong>&quot;Le march&eacute; ne vous demande pas d&apos;o&ugrave; vous venez. Il vous demande si vous comprenez ce qu&apos;il fait.&quot;</strong> — S&eacute;bastien Constant, fondateur BASS Trading
@@ -273,8 +273,8 @@ export default function DevenirTraderSansDiplome() {
 
       <ul>
         <li><strong>126 avis &agrave; 4.9/5 sur Trustpilot</strong> — La note la plus &eacute;lev&eacute;e parmi les formations trading francophones</li>
-        <li><strong>$700K+ en comptes funded</strong> obtenus personnellement par S&eacute;bastien Constant aupr&egrave;s de prop firms (TopStep, Apex, Earn2Trade)</li>
         <li><strong>10+ ans d&apos;exp&eacute;rience</strong> du fondateur en trading professionnel et en mentorat</li>
+        <li><strong>Live trading quotidien</strong> devant les &eacute;l&egrave;ves — analyse Market Profile, lecture Order Flow et d&eacute;cisions en temps r&eacute;el</li>
       </ul>
 
       <h3>Des profils vari&eacute;s, aucun dipl&ocirc;me en finance</h3>

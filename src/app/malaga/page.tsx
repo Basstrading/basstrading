@@ -290,8 +290,8 @@ export default function MalagaPage() {
             <div className="sec-label">Ton formateur</div>
             <h2 className="sec-title">Sebastien Constant</h2>
             <p className="sec-desc">
-              Trader actif depuis plus de 10 ans. Finance a plus de $700K en prop
-              firms — son propre argent, ses propres resultats. Createur de
+              Trader actif depuis plus de 10 ans. Specialiste Market Profile,
+              Order Flow et Footprint sur les Futures CME. Createur de
               x-trade.ai. Il trade tous les jours, en live, devant ses eleves.
             </p>
             <p className="sec-desc" style={{ marginTop: "16px" }}>
@@ -301,10 +301,6 @@ export default function MalagaPage() {
               processus exact qu&apos;il applique chaque jour.
             </p>
             <div className="seb-stat">
-              <div className="seb-stat-item">
-                <div className="seb-stat-num">$700K+</div>
-                <div className="seb-stat-label">Finance en prop firm</div>
-              </div>
               <div className="seb-stat-item">
                 <div className="seb-stat-num">4.9/5</div>
                 <div className="seb-stat-label">Trustpilot (126 avis)</div>

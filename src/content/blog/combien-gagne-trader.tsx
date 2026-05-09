@@ -378,9 +378,10 @@ export default function CombienGagneTrader() {
         </li>
       </ul>
       <p>
-        Plus de 700 000 $ ont été financés en prop firms par les élèves du
-        programme BASS — preuve documentée par captures de retraits
-        authentiques. Le mentorat est dispensé en{" "}
+        Le programme BASS Trading prépare ses élèves au passage en prop firm
+        Futures (FTMO, Topstep, Apex, Bulenox) avec une méthode
+        institutionnelle (Market Profile, Order Flow, Footprint). Le mentorat
+        est dispensé en{" "}
         <a href="/formation-trading/">20 villes en France</a> et en ligne,
         certifié Qualiopi via EMSCA, éligible CPF.
       </p>

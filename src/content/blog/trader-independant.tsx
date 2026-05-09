@@ -23,7 +23,7 @@ export default function TraderIndependant() {
         <li><strong>Les outils professionnels accessibles</strong> — Sierra Chart, Bookmap, ATAS : des plateformes qui &eacute;taient r&eacute;serv&eacute;es aux institutionnels il y a 10 ans sont aujourd&apos;hui accessibles pour 30-50 euros par mois.</li>
       </ul>
 
-      <p>Mon exp&eacute;rience personnelle le confirme. Apr&egrave;s plus de <strong>10 ans de trading professionnel</strong> et <strong>$700K+ en comptes funded</strong>, je peux affirmer une chose : devenir trader ind&eacute;pendant est possible en 2026, &agrave; condition d&apos;accepter que c&apos;est un vrai m&eacute;tier — avec une courbe d&apos;apprentissage, des co&ucirc;ts, et un taux d&apos;&eacute;chec &eacute;lev&eacute; pour ceux qui refusent de travailler s&eacute;rieusement.</p>
+      <p>Mon exp&eacute;rience personnelle le confirme. Apr&egrave;s plus de <strong>10 ans de trading professionnel</strong> et de live trading quotidien devant mes &eacute;l&egrave;ves, je peux affirmer une chose : devenir trader ind&eacute;pendant est possible en 2026, &agrave; condition d&apos;accepter que c&apos;est un vrai m&eacute;tier — avec une courbe d&apos;apprentissage, des co&ucirc;ts, et un taux d&apos;&eacute;chec &eacute;lev&eacute; pour ceux qui refusent de travailler s&eacute;rieusement.</p>
 
       <blockquote>
         <strong>&quot;Le trading ind&eacute;pendant n&apos;est pas un raccourci vers la richesse. C&apos;est un m&eacute;tier exigeant avec une libert&eacute; exceptionnelle pour ceux qui acceptent de le ma&icirc;triser.&quot;</strong> — S&eacute;bastien Constant, fondateur BASS Trading

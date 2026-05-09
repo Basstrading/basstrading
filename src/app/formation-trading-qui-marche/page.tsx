@@ -29,7 +29,7 @@ const faq = [
   {
     question: "Faut-il un capital pour suivre une formation trading ?",
     answer:
-      "Non. Tu peux apprendre en compte demo pendant ta formation, puis passer en prop firm pour trader avec un capital fourni (FTMO, Topstep, Fast Track). Les eleves BASS ont cumule 700 000 dollars de comptes finances en prop firm. Pas besoin de capital personnel pour commencer a vivre du trading.",
+      "Non. Tu peux apprendre en compte demo pendant ta formation, puis passer en prop firm pour trader avec un capital fourni (FTMO, Topstep, Fast Track). C'est le modele standard du trading professionnel : la prop firm fournit le capital, tu fournis la methode et la discipline. Pas besoin de capital personnel pour commencer.",
   },
 ];
 
@@ -161,8 +161,9 @@ export default function FormationQuiMarchePage() {
               Profile, Order Flow, Footprint, CVD, Tape Reading, Options.
             </li>
             <li>
-              <strong>Formateur actif :</strong> Sebastien trade 10+ ans, live
-              quotidien, 700K $+ finances en prop firm par les eleves.
+              <strong>Formateur actif :</strong> Sebastien trade 10+ ans, en
+              live chaque jour devant les eleves, sur les memes marches que
+              ceux qu&apos;il enseigne (Futures CME).
             </li>
             <li>
               <strong>Live trading :</strong> Sessions quotidiennes en groupe.

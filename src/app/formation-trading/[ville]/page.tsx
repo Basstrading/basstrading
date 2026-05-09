@@ -328,10 +328,6 @@ export default async function FormationVillePage({
       <section className="v-sec v-sec-light" style={{ paddingTop: 0 }}>
         <div className="v-stats">
           <div className="v-stat">
-            <div className="v-stat-num">$700K+</div>
-            <div className="v-stat-label">Comptes funded</div>
-          </div>
-          <div className="v-stat">
             <div className="v-stat-num">4.9/5</div>
             <div className="v-stat-label">126 avis Trustpilot</div>
           </div>

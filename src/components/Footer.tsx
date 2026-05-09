@@ -28,8 +28,14 @@ export default function Footer() {
               <Link href="/sebastien-constant/">Sebastien Constant</Link>
               <Link href="/avis-bass-trading/">Avis BASS Trading</Link>
               <Link href="/prix-formation-trading/">Prix formation</Link>
-              <Link href="/bass-trading-arnaque-ou-pas/">Arnaque ou pas ?</Link>
               <Link href="/formation-trading-qui-marche/">Quelle formation ?</Link>
+            </div>
+            <div className="ft-col">
+              <div className="ft-col-title">Ressources</div>
+              <Link href="/prop-firm/">Prop firms</Link>
+              <Link href="/comparatif/">Comparatifs</Link>
+              <Link href="/tutoriels/">Tutoriels Sierra Chart</Link>
+              <Link href="/cours/">Cours techniques</Link>
             </div>
             <div className="ft-col">
               <div className="ft-col-title">Ecosysteme</div>
@@ -39,7 +45,6 @@ export default function Footer() {
               <a href="https://x-trade.ai" target="_blank" rel="noopener">
                 x-trade.ai
               </a>
-              <Link href="/bass-trading-vs-xeilos/">vs Xeilos</Link>
               <a href="mailto:contact@basstrading.fr">Contact</a>
             </div>
           </div>

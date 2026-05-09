@@ -439,7 +439,7 @@ export default function OrderFlowTradingFrance() {
         </li>
         <li>
           <strong>Prop Firms</strong> — Preparation specifique aux challenges
-          ($700K+ de comptes funded obtenus par le formateur)
+          (FTMO, Topstep, Apex, Bulenox, Fast Track Trading)
         </li>
       </ul>
 

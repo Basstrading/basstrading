@@ -147,7 +147,7 @@ export default function VivreduTrading() {
 
       <p><strong>Profil 3 — Le trader confirm&eacute; (5-10+ ans, multi-comptes funded)</strong></p>
       <ul>
-        <li>Comptes funded cumul&eacute;s : 300K &agrave; 700K$+</li>
+        <li>Comptes funded cumul&eacute;s : variables selon le scaling (souvent 300K&euro;+ via plusieurs prop firms simultan&eacute;es)</li>
         <li>Rendement r&eacute;aliste : 3 &agrave; 8%/mois</li>
         <li>Revenu mensuel : 7 000 &agrave; 40 000&euro;+ brut (selon nombre de comptes et split)</li>
         <li><strong>Verdict :</strong> vit confortablement du trading. C&apos;est le profil BASS Trading.</li>
@@ -292,8 +292,8 @@ export default function VivreduTrading() {
 
       <div className="key-concept">
         <div className="key-concept-label">L&apos;exp&eacute;rience BASS Trading</div>
-        <h4>$700K+ en comptes funded</h4>
-        <p>S&eacute;bastien Constant a obtenu personnellement plus de <strong>$700 000 en comptes funded</strong> aupr&egrave;s de prop firms. Ce n&apos;est pas th&eacute;orique — ce sont des payouts r&eacute;els, document&eacute;s et v&eacute;rifiables. Le mentorat BASS Trading est con&ccedil;u sp&eacute;cifiquement pour pr&eacute;parer les &eacute;l&egrave;ves &agrave; ce parcours. Pour tout comprendre sur cette voie, lisez notre <a href="/blog/prop-firm-funded-trader/">guide complet sur les prop firms et le funded trading</a>.</p>
+        <h4>Pr&eacute;paration sp&eacute;cifique aux prop firms Futures</h4>
+        <p>Le mentorat BASS Trading est con&ccedil;u sp&eacute;cifiquement pour pr&eacute;parer les &eacute;l&egrave;ves au passage en prop firm Futures (Topstep, Apex, Bulenox, Fast Track). La m&eacute;thode institutionnelle — Market Profile, Order Flow, Footprint — s&apos;applique directement aux contraintes des challenges (drawdown trailing, daily loss, profit target). Pour tout comprendre sur cette voie, lisez notre <a href="/blog/prop-firm-funded-trader/">guide complet sur les prop firms et le funded trading</a>.</p>
       </div>
 
       <h3>Les limites des prop firms</h3>
@@ -462,7 +462,7 @@ export default function VivreduTrading() {
 
       <h3>Des r&eacute;sultats v&eacute;rifiables</h3>
 
-      <p>Trustpilot : <strong>4.9/5 sur 126+ avis</strong>. Ce ne sont pas des avis achet&eacute;s — ce sont des &eacute;l&egrave;ves r&eacute;els, avec des profils v&eacute;rifi&eacute;s, qui partagent leur exp&eacute;rience. S&eacute;bastien Constant a personnellement obtenu <strong>$700K+ en comptes funded</strong>. Les &eacute;l&egrave;ves du mentorat passent r&eacute;guli&egrave;rement des challenges et re&ccedil;oivent des payouts document&eacute;s.</p>
+      <p>Trustpilot : <strong>4.9/5 sur 126+ avis</strong>. Ce ne sont pas des avis achet&eacute;s — ce sont des &eacute;l&egrave;ves r&eacute;els, avec des profils v&eacute;rifi&eacute;s, qui partagent leur exp&eacute;rience. S&eacute;bastien Constant trade en direct chaque jour devant ses &eacute;l&egrave;ves — analyse Market Profile, lecture Order Flow et d&eacute;cisions en temps r&eacute;el, sur les m&ecirc;mes march&eacute;s que ceux qu&apos;il enseigne.</p>
 
       <h3>&Eacute;ligible CPF</h3>
 

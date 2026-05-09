@@ -69,9 +69,8 @@ export default function PropFirmFundedTrader() {
 
       <hr />
 
-      <h2 id="resultats">$700K+ de comptes funded</h2>
-      <p>S&eacute;bastien Constant a obtenu personnellement plus de <strong>$700 000 de comptes funded</strong> aupr&egrave;s de prop firms. Ce chiffre est v&eacute;rifiable — les retraits sont document&eacute;s. Les avis du mentorat sont sur Trustpilot (4.9/5, 126 avis).</p>
-      <p>Ce n&apos;est pas un hasard. C&apos;est le r&eacute;sultat d&apos;une m&eacute;thode structur&eacute;e et d&apos;outils professionnels. Les traders qui r&eacute;ussissent en prop firm ont tous les m&ecirc;mes caract&eacute;ristiques :</p>
+      <h2 id="resultats">Le profil du trader funded qui reussit</h2>
+      <p>Reussir un challenge prop firm n&apos;est pas une question de chance. C&apos;est le r&eacute;sultat d&apos;une m&eacute;thode structur&eacute;e et d&apos;outils professionnels. Les traders qui passent leurs evaluations et tiennent leur compte funded sur la dur&eacute;e ont tous les m&ecirc;mes caract&eacute;ristiques :</p>
       <ul>
         <li>Un plan de trading &eacute;crit et suivi &agrave; la lettre</li>
         <li>Un risque par trade de 0.5 &agrave; 1% maximum</li>

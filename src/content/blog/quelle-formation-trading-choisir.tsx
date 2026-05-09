@@ -551,12 +551,13 @@ export default function QuelleFormationTradingChoisir() {
           eleves reels
         </li>
         <li>
-          <strong>$700K+ de comptes funded</strong> obtenus personnellement par
-          le formateur
+          <strong>Live trading quotidien</strong> par le formateur, devant les
+          eleves — analyse Market Profile, lecture Order Flow et decisions en
+          temps reel
         </li>
         <li>
-          Des dizaines d&apos;eleves ayant obtenu leurs propres comptes funded
-          apres la formation
+          Des eleves ayant passe leurs evaluations prop firms (FTMO, Topstep,
+          Apex, Bulenox) apres la formation
         </li>
       </ul>
 

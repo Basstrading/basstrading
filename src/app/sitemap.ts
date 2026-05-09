@@ -2,6 +2,9 @@ import type { MetadataRoute } from "next";
 import { articles } from "@/content/blog/_meta";
 import { villes } from "@/content/pages/villes/_data";
 import { terms } from "@/content/glossaire/_data";
+import { propFirms } from "@/content/prop-firms/_data";
+import { comparatifs } from "@/content/comparatifs/_data";
+import { tutoriels } from "@/content/tutoriels/_data";
 import { SITE } from "@/lib/constants";
 
 export const dynamic = "force-static";
@@ -26,6 +29,27 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(),
     changeFrequency: "monthly" as const,
     priority: 0.7,
+  }));
+
+  const propFirmUrls = propFirms.map((p) => ({
+    url: `${SITE.url}/prop-firm/${p.slug}/`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.85,
+  }));
+
+  const comparatifUrls = comparatifs.map((c) => ({
+    url: `${SITE.url}/comparatif/${c.slug}/`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+  }));
+
+  const tutorielUrls = tutoriels.map((t) => ({
+    url: `${SITE.url}/tutoriels/${t.slug}/`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.85,
   }));
 
   return [
@@ -72,12 +96,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.85,
     },
     {
-      url: `${SITE.url}/bass-trading-vs-xeilos/`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
       url: `${SITE.url}/bass-trading-arnaque-ou-pas/`,
       lastModified: new Date(),
       changeFrequency: "monthly",
@@ -119,8 +137,29 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.75,
     },
+    {
+      url: `${SITE.url}/prop-firm/`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
+      url: `${SITE.url}/comparatif/`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.85,
+    },
+    {
+      url: `${SITE.url}/tutoriels/`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
     ...glossaireUrls,
     ...villeUrls,
+    ...propFirmUrls,
+    ...comparatifUrls,
+    ...tutorielUrls,
     ...blogUrls,
     {
       url: `${SITE.url}/cgv/`,

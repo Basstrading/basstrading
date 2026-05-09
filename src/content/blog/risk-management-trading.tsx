@@ -688,10 +688,9 @@ export default function RiskManagementTrading() {
       </p>
 
       <p>
-        Sur mes 700K+ de comptes funded, chaque challenge r&eacute;ussi a
-        suivi la m&ecirc;me formule : niveaux Market Profile + confirmation
-        Footprint + protection x-trade.ai active en permanence. Si vous envisagez
-        de{" "}
+        Chaque challenge prop firm r&eacute;ussi suit la m&ecirc;me formule :
+        niveaux Market Profile + confirmation Footprint + protection x-trade.ai
+        active en permanence. Si vous envisagez de{" "}
         <a href="/blog/vivre-du-trading/">vivre du trading</a> via les prop firms,
         le risk management automatis&eacute; n&apos;est pas un luxe &mdash;
         c&apos;est une n&eacute;cessit&eacute;.

@@ -24,7 +24,7 @@ const faq = [
   {
     question: "Sebastien Constant trade-t-il vraiment ?",
     answer:
-      "Oui. Sebastien Constant est trader actif depuis plus de 10 ans et trade en live chaque jour devant ses eleves. Plus de 700 000 dollars de comptes finances cumules par les eleves en prop firms (FTMO, Topstep, Fast Track Trading, Bulenox). Son outil x-trade.ai est utilise par les eleves pour automatiser la gestion du risque.",
+      "Oui. Sebastien Constant est trader actif depuis plus de 10 ans et trade en live chaque jour devant ses eleves. Il prepare les eleves au passage en prop firm (FTMO, Topstep, Fast Track Trading, Bulenox) avec la methode Market Profile et Order Flow. Son outil x-trade.ai est utilise par les eleves pour automatiser la gestion du risque.",
   },
   {
     question: "Quels sont les drapeaux rouges des arnaques au trading ?",
@@ -200,9 +200,9 @@ export default function ArnaquePage() {
           </h3>
           <p>
             Sebastien Constant trade en direct <strong>chaque jour</strong>{" "}
-            devant ses eleves. Plus de 700 000 $ de comptes finances cumules
-            par les eleves en prop firms. Une arnaque a un &quot;coach&quot;
-            qui ne trade jamais et qui parle uniquement marketing.{" "}
+            devant ses eleves — analyse Market Profile, lecture Order Flow et
+            decisions en temps reel. Une arnaque a un &quot;coach&quot; qui
+            ne trade jamais et qui parle uniquement marketing.{" "}
             <Link href="/sebastien-constant/">
               Voir le parcours de Sebastien →
             </Link>

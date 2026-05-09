@@ -1,7 +1,7 @@
 export default function ComparatifPropFirms() {
   return (
     <>
-      <p>J&apos;ai personnellement obtenu plus de <strong>$700 000 de comptes funded</strong> aupr&egrave;s de diff&eacute;rentes prop firms. Mes &eacute;l&egrave;ves tradent quotidiennement sur des comptes financ&eacute;s. Ce comparatif n&apos;est pas une compilation d&apos;avis trouv&eacute;s sur internet &mdash; c&apos;est un retour d&apos;exp&eacute;rience concret, bas&eacute; sur des centaines de challenges pass&eacute;s et des dizaines de retraits effectu&eacute;s.</p>
+      <p>Ce comparatif n&apos;est pas une compilation d&apos;avis trouv&eacute;s sur internet &mdash; c&apos;est un retour d&apos;exp&eacute;rience concret de Sebastien Constant, trader actif depuis 10+ ans, bas&eacute; sur l&apos;observation quotidienne des r&eacute;sultats des &eacute;l&egrave;ves du mentorat sur les diff&eacute;rentes prop firms Futures CME.</p>
       <p>Le march&eacute; des prop firms a consid&eacute;rablement &eacute;volu&eacute; en 2025 et 2026. Certaines firmes ont ferm&eacute;, d&apos;autres ont durci leurs r&egrave;gles, et de nouveaux acteurs s&eacute;rieux sont apparus. Voici le guide le plus complet et le plus honn&ecirc;te que vous trouverez sur le sujet.</p>
 
       <hr />
@@ -218,7 +218,7 @@ export default function ComparatifPropFirms() {
       <p>Un challenge n&apos;est pas le moment d&apos;exp&eacute;rimenter. Tradez exactement ce que vous avez backtest&eacute; et pratiqu&eacute; en d&eacute;mo. M&ecirc;mes march&eacute;s, m&ecirc;mes setups, m&ecirc;mes horaires, m&ecirc;me sizing. La consistance bat l&apos;innovation.</p>
 
       <blockquote>
-        <strong>Mon exp&eacute;rience :</strong> sur mes $700K+ de comptes funded, chaque challenge r&eacute;ussi a &eacute;t&eacute; pass&eacute; en suivant les m&ecirc;mes niveaux Market Profile + confirmation Footprint + protection x-trade.ai. Pas de secret, pas de raccourci. Juste de la m&eacute;thode et de la discipline.
+        <strong>Mon exp&eacute;rience :</strong> chaque challenge r&eacute;ussi a &eacute;t&eacute; pass&eacute; en suivant les m&ecirc;mes niveaux Market Profile + confirmation Footprint + protection x-trade.ai. Pas de secret, pas de raccourci. Juste de la m&eacute;thode et de la discipline.
       </blockquote>
 
       <hr />

@@ -309,8 +309,9 @@ export default function FormationTradingIndex() {
             <div className="v-method-card">
               <h3>Prop Firms</h3>
               <p>
-                Préparation complète aux combines. $700K+ financés en prop firms
-                par Sébastien — la méthode est prouvée.
+                Préparation complète aux évaluations FTMO, Topstep, Apex,
+                Bulenox — méthode institutionnelle adaptée aux règles
+                spécifiques de chaque firm.
               </p>
             </div>
           </div>
@@ -344,10 +345,11 @@ export default function FormationTradingIndex() {
           </p>
           <p style={{ marginBottom: 24 }}>
             Sébastien Constant trade en live tous les jours sur les Futures
-            (Nasdaq, S&amp;P 500, DAX). $700 000+ ont été financés en prop firms
-            via la méthode enseignée. Quand on enseigne ce qu&apos;on pratique
-            réellement, le programme reste calibré sur la réalité du marché —
-            pas sur la théorie qu&apos;on trouve dans les livres.
+            (Nasdaq, S&amp;P 500, DAX). Quand on enseigne ce qu&apos;on
+            pratique réellement, le programme reste calibré sur la réalité du
+            marché — pas sur la théorie qu&apos;on trouve dans les livres. La
+            méthode institutionnelle (Market Profile, Order Flow, Footprint)
+            est celle qu&apos;utilisent les desks de trading professionnels.
           </p>
 
           <h3
@@ -679,10 +681,6 @@ export default function FormationTradingIndex() {
       {/* PREUVES */}
       <section className="v-sec v-sec-light" style={{ paddingTop: 0 }}>
         <div className="v-stats">
-          <div className="v-stat">
-            <div className="v-stat-num">$700K+</div>
-            <div className="v-stat-label">Comptes funded</div>
-          </div>
           <div className="v-stat">
             <div className="v-stat-num">4.9/5</div>
             <div className="v-stat-label">126 avis Trustpilot</div>

@@ -7,7 +7,7 @@ import { articles } from "@/content/blog/_meta";
 export const metadata = generateSeoMetadata({
   title: "Sébastien Constant — Trader, Formateur Market Profile, Fondateur BASS",
   description:
-    "Sébastien Constant : trader actif depuis 10+ ans, spécialiste Market Profile, Order Flow, Footprint. Fondateur du mentorat BASS Trading et créateur de x-trade.ai. 700K $+ financés en prop firms par les élèves.",
+    "Sébastien Constant : trader actif depuis 10+ ans, spécialiste Market Profile, Order Flow, Footprint. Fondateur du mentorat BASS Trading et créateur de x-trade.ai. Formation certifiée Qualiopi via EMSCA, éligible CPF.",
   path: "/sebastien-constant/",
 });
 
@@ -116,10 +116,9 @@ export default function SebastienConstantPage() {
                 <strong>Sébastien Constant</strong> est trader actif depuis
                 plus de 10 ans, spécialiste Market Profile, Order Flow et
                 Footprint sur les Futures (E-mini S&amp;P 500, Nasdaq, indices
-                européens). Plus de <strong>700 000 $ financés en prop firms</strong>
-                {" "}cumulés sur les comptes des élèves du programme — preuve
-                documentée par captures de retraits authentiques (FTMO,
-                Topstep, Bulenox, Fast Track Trading, Deel).
+                européens). Il prépare ses élèves au passage en prop firm
+                (FTMO, Topstep, Bulenox, Fast Track Trading) avec une méthode
+                institutionnelle et un suivi en live trading quotidien.
               </p>
               <p>
                 Il a fondé le mentorat <Link href="/">BASS Trading</Link>, le
@@ -238,10 +237,6 @@ export default function SebastienConstantPage() {
                 voir les avis
               </a>
               )
-            </li>
-            <li>
-              <strong>700 000 $+ financés en prop firms</strong> par les élèves
-              du programme BASS, documenté par captures de retraits réels
             </li>
             <li>
               <strong>Certification EMSCA Qualiopi</strong> — formation
