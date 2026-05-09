@@ -14,7 +14,7 @@ export const metadata = generateSeoMetadata({
 });
 
 const STRIPE_URL =
-  "https://buy.stripe.com/14AeVc0IU6IhbGw1CO9EI0r";
+  "https://buy.stripe.com/00w00i4Za0jT25W0yK9EI0t";
 
 const Check = () => (
   <svg
