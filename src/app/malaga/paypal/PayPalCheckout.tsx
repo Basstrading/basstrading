@@ -3,9 +3,10 @@
 import { useEffect, useRef } from "react";
 
 const SDK_SRC =
-  "https://www.paypal.com/sdk/js?client-id=BAAjqwOHWV7_5QE2n8z25lKD3UIIPZx6JU3UU5_fXXm-eUsAezGGClGuWIjNiPVDdNQBnoQmV-G3i7Z6_k&components=hosted-buttons&disable-funding=venmo&currency=EUR";
+  "https://www.paypal.com/sdk/js?client-id=BAAjqwOHWV7_5QE2n8z25lKD3UIIPZx6JU3UU5_fXXm-eUsAezGGClGuWIjNiPVDdNQBnoQmV-G3i7Z6_k&components=hosted-buttons,messages&enable-funding=paylater&disable-funding=venmo&currency=EUR&buyer-country=FR";
 const HOSTED_BUTTON_ID = "U27PJUA65WXU4";
 const CONTAINER_ID = `paypal-container-${HOSTED_BUTTON_ID}`;
+const AMOUNT = "1290.00";
 
 declare global {
   interface Window {
@@ -13,11 +14,12 @@ declare global {
       HostedButtons: (opts: { hostedButtonId: string }) => {
         render: (selector: string) => void;
       };
+      Messages?: (opts: Record<string, unknown>) => { render: (sel: string) => void };
     };
   }
 }
 
-export default function PayPalButton() {
+export default function PayPalCheckout() {
   const rendered = useRef(false);
 
   useEffect(() => {
@@ -54,8 +56,18 @@ export default function PayPalButton() {
 
   return (
     <>
-      <div className="price-divider">ou</div>
-      <div className="paypal-wrap">
+      <div className="pp-msg-wrap">
+        <div
+          data-pp-message
+          data-pp-amount={AMOUNT}
+          data-pp-currency="EUR"
+          data-pp-buyer-country="FR"
+          data-pp-style-layout="text"
+          data-pp-style-logo-type="primary"
+          data-pp-style-text-color="white"
+        />
+      </div>
+      <div className="pp-wrap">
         <div id={CONTAINER_ID} />
       </div>
     </>

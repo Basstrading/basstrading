@@ -4,7 +4,6 @@ import { EventJsonLd, BreadcrumbJsonLd } from "@/lib/jsonld";
 import FAQ from "@/components/FAQ";
 import Countdown from "./Countdown";
 import MalagaAnimations from "./MalagaAnimations";
-import PayPalButton from "./PayPalButton";
 import "./malaga.css";
 
 export const metadata = generateSeoMetadata({
@@ -405,7 +404,7 @@ export default function MalagaPage() {
             rel="noopener"
             className="price-cta"
           >
-            Reserver par CB / Klarna — 1 490 euros
+            Reserver ma place — 1 490 euros
           </a>
           <div
             style={{
@@ -431,7 +430,6 @@ export default function MalagaPage() {
             </svg>
             ou en 3x sans frais avec Klarna (497 euros/mois)
           </div>
-          <PayPalButton />
           <div className="price-urgency">
             <svg
               viewBox="0 0 24 24"
