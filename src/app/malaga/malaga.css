@@ -102,6 +102,10 @@
 .price-note{font-size:.7rem;color:rgba(255,255,255,.2);margin-top:14px;line-height:1.6}
 .price-urgency{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:16px;font-size:.78rem;color:var(--red);font-weight:600}
 .price-urgency svg{width:14px;height:14px}
+.price-divider{display:flex;align-items:center;gap:12px;margin:16px 0;color:rgba(255,255,255,.25);font-size:.7rem;font-weight:600;letter-spacing:2px;text-transform:uppercase}
+.price-divider::before,.price-divider::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.08)}
+.paypal-wrap{background:var(--pure);border-radius:14px;padding:8px;min-height:48px}
+.paypal-wrap > div{min-height:0}
 .price-alert{position:relative;display:flex;align-items:center;gap:14px;margin:-12px -12px 24px;padding:16px 20px;background:linear-gradient(135deg,rgba(229,57,53,.18),rgba(201,168,76,.14));border:1px solid rgba(229,57,53,.45);border-radius:16px;text-align:left;animation:price-alert-pulse 2.4s ease-in-out infinite}
 .price-alert svg{width:22px;height:22px;color:var(--red);flex-shrink:0}
 .price-alert strong{display:block;font-family:var(--font-outfit),sans-serif;font-size:1.05rem;font-weight:800;color:var(--pure);letter-spacing:-.3px;line-height:1.2}
