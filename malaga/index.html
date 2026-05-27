@@ -115,10 +115,6 @@
     .price-note{font-size:.7rem;color:rgba(255,255,255,.2);margin-top:14px;line-height:1.6}
     .price-urgency{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:16px;font-size:.78rem;color:var(--red);font-weight:600}
     .price-urgency svg{width:14px;height:14px}
-    .price-divider{display:flex;align-items:center;gap:12px;margin:16px 0;color:rgba(255,255,255,.25);font-size:.7rem;font-weight:600;letter-spacing:2px;text-transform:uppercase}
-    .price-divider::before,.price-divider::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.08)}
-    .paypal-wrap{background:var(--pure);border-radius:14px;padding:8px;min-height:48px}
-    .paypal-wrap > div{min-height:0}
     .price-alert{position:relative;display:flex;align-items:center;gap:14px;margin:-12px -12px 24px;padding:16px 20px;background:linear-gradient(135deg,rgba(229,57,53,.18),rgba(201,168,76,.14));border:1px solid rgba(229,57,53,.45);border-radius:16px;text-align:left;animation:price-alert-pulse 2.4s ease-in-out infinite}
     .price-alert svg{width:22px;height:22px;color:var(--red);flex-shrink:0}
     .price-alert strong{display:block;font-family:var(--font-outfit),sans-serif;font-size:1.05rem;font-weight:800;color:var(--pure);letter-spacing:-.3px;line-height:1.2}
@@ -311,14 +307,10 @@
       <div class="price-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Preparation prop firms + plan de trading</div>
       <div class="price-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Acces communaute + replays a vie</div>
     </div>
-    <a href="https://buy.stripe.com/14AeVc0IU6IhbGw1CO9EI0r" target="_blank" rel="noopener" class="price-cta">Reserver par CB / Klarna — 1 290 euros</a>
+    <a href="https://buy.stripe.com/14AeVc0IU6IhbGw1CO9EI0r" target="_blank" rel="noopener" class="price-cta">Reserver ma place — 1 290 euros</a>
     <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-top:12px;font-size:.75rem;color:rgba(255,255,255,.4)">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
       ou en 3x sans frais avec Klarna (430 euros/mois)
-    </div>
-    <div class="price-divider">ou</div>
-    <div class="paypal-wrap">
-      <div id="paypal-container-U27PJUA65WXU4"></div>
     </div>
     <div class="price-urgency"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Tarif 1 290 euros jusqu'au 1er mai — puis 1 490 euros le 2 mai</div>
     <p class="price-note" style="font-size:.78rem;color:rgba(255,255,255,.35);line-height:1.7">Paiement en 3x sans frais disponible via Klarna — selectionne "Klarna" comme moyen de paiement lors du checkout. Hebergement et transport non inclus.</p>
@@ -402,14 +394,6 @@ function tf(b){const i=b.closest('.fi'),a=b.nextElementSibling,o=i.classList.con
 
 // Smooth anchors
 document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();lenis.scrollTo(t,{offset:-60})}})});
-</script>
-
-<!-- PayPal Hosted Button -->
-<script src="https://www.paypal.com/sdk/js?client-id=BAAjqwOHWV7_5QE2n8z25lKD3UIIPZx6JU3UU5_fXXm-eUsAezGGClGuWIjNiPVDdNQBnoQmV-G3i7Z6_k&components=hosted-buttons&disable-funding=venmo&currency=EUR"></script>
-<script>
-  paypal.HostedButtons({
-    hostedButtonId: "U27PJUA65WXU4"
-  }).render("#paypal-container-U27PJUA65WXU4");
 </script>
 </body>
 </html>
