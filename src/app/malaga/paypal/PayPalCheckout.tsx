@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 
 const SDK_SRC =
-  "https://www.paypal.com/sdk/js?client-id=BAAjqwOHWV7_5QE2n8z25lKD3UIIPZx6JU3UU5_fXXm-eUsAezGGClGuWIjNiPVDdNQBnoQmV-G3i7Z6_k&components=hosted-buttons,messages&enable-funding=paylater&disable-funding=venmo&currency=EUR&buyer-country=FR";
+  "https://www.paypal.com/sdk/js?client-id=BAAjqwOHWV7_5QE2n8z25lKD3UIIPZx6JU3UU5_fXXm-eUsAezGGClGuWIjNiPVDdNQBnoQmV-G3i7Z6_k&components=hosted-buttons,messages&enable-funding=paylater&disable-funding=venmo&currency=EUR";
 const HOSTED_BUTTON_ID = "U27PJUA65WXU4";
 const CONTAINER_ID = `paypal-container-${HOSTED_BUTTON_ID}`;
 const AMOUNT = "1290.00";
