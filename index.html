@@ -322,6 +322,20 @@
     .sub-btn:hover{background:var(--bk);box-shadow:0 6px 24px rgba(0,0,0,.1)}
     .form-note{font-size:.65rem;color:var(--g2);text-align:center;margin-top:10px;line-height:1.6}
     .places{margin:0 auto 28px;max-width:420px;text-align:left}
+    .sessions{margin:0 auto 26px;max-width:460px;text-align:left;display:grid;gap:8px}
+    .sess{display:grid;grid-template-columns:1fr auto;gap:6px 14px;align-items:center;padding:14px 16px;border:1.5px solid var(--g3);border-radius:12px;background:var(--pure)}
+    .sess.hot{border-color:var(--bk)}
+    .sess.open{border-color:var(--green);background:#F2FBF7}
+    .sess h3{font-family:'Outfit',sans-serif;font-size:1rem;font-weight:800;letter-spacing:-.3px}
+    .sess p{font-size:.76rem;color:var(--g1);line-height:1.45;grid-column:1/-1}
+    .sess .tag{font-size:.68rem;font-weight:700;padding:5px 10px;border-radius:980px;white-space:nowrap}
+    .sess.hot .tag{background:var(--bk);color:var(--pure)}
+    .sess.open .tag{background:var(--green);color:#fff}
+    .sess.wait .tag{background:var(--g4);color:var(--g1)}
+    .choice{display:grid;gap:8px;margin-bottom:14px}
+    .choice label{display:flex;align-items:center;gap:10px;padding:11px 14px;border:1.5px solid var(--g3);border-radius:10px;font-size:.86rem;cursor:pointer}
+    .choice label:has(input:checked){border-color:var(--bk);background:var(--g4)}
+    .choice input{accent-color:var(--bk);width:16px;height:16px;margin:0}
     .places-row{display:flex;justify-content:space-between;align-items:baseline;font-size:.78rem;color:var(--g1);margin-bottom:8px}
     .places-row strong{color:var(--bk);font-weight:700}
     .places-row .left{color:var(--green);font-weight:700}
@@ -846,12 +860,12 @@
 <section class="form-sec" id="candidater">
   <div class="form-inner">
     <div class="sec-label">Réserver ma place</div>
-    <h2 class="sec-title">Il reste 2 places à Malaga.<br>Les 18 autres sont prises.</h2>
-    <p class="sec-desc">Session en salle du <strong>28 sept. au 2 oct. 2026</strong>. Vous remplissez le formulaire, on s'appelle 20 minutes, et vous savez si vous partez à Malaga ou si vous démarrez en ligne le 5 octobre.</p>
-    <div class="places">
-      <div class="places-row"><span><strong>18 / 20</strong> places prises</span><span class="left">2 restantes</span></div>
-      <div class="places-bar"><div class="places-fill"></div></div>
-      <p class="places-sub">Les places partent à l'appel, pas au formulaire : le premier qui réserve a la place. Malaga complet ? Vous passez en tête de liste du groupe en ligne du 5 octobre (10 places).</p>
+    <h2 class="sec-title">2 places à Malaga.<br>Un groupe en ligne le 5 octobre.</h2>
+    <p class="sec-desc">Un groupe de 10 chaque mois, en direct. Vous remplissez le formulaire, on s'appelle 20 minutes, et on choisit ensemble votre session.</p>
+    <div class="sessions" aria-label="Sessions">
+      <div class="sess hot"><h3>Malaga, en salle · 28 sept. au 2 oct.</h3><span class="tag">2 places restantes</span><p>Cinq jours en direct sur le marché. 18 places sur 20 sont prises.</p></div>
+      <div class="sess open"><h3>En ligne · à partir du 5 octobre</h3><span class="tag">Inscriptions ouvertes</span><p>Groupe de 10, en direct, chaque semaine. C'est le groupe qui démarre.</p></div>
+      <div class="sess wait"><h3>En ligne · novembre</h3><span class="tag">Liste d'attente</span><p>Un groupe de 10 chaque mois. Réserver maintenant, c'est être appelé en premier.</p></div>
     </div>
     <form class="form" id="applyForm">
       <input type="hidden" name="_subject" value="Nouvelle candidature BASS Trading">
@@ -861,6 +875,14 @@
       <div class="field"><label>Prénom et nom</label><input type="text" name="name" placeholder="Votre nom complet" required></div>
       <div class="field"><label>Email</label><input type="email" name="email" id="mainEmail" placeholder="votre@email.com" required></div>
       <div class="field"><label>Téléphone</label><input type="tel" name="phone" id="mainPhone" placeholder="+33 6 12 34 56 78" inputmode="tel" autocomplete="tel" required minlength="8"><p id="phoneError" style="display:none;color:#d33;font-size:.78rem;margin-top:6px">Entrez un numéro de téléphone valide (8 chiffres minimum, indicatif accepté).</p></div>
+      <div class="field"><label>Ma préférence</label>
+        <div class="choice">
+          <label><input type="radio" name="session" value="Malaga 28 sept. - 2 oct. (2 places)" required> Malaga, en salle, 28 sept. au 2 oct.</label>
+          <label><input type="radio" name="session" value="En ligne 5 octobre" checked> En ligne, groupe du 5 octobre</label>
+          <label><input type="radio" name="session" value="En ligne novembre (liste d'attente)"> En ligne, novembre</label>
+          <label><input type="radio" name="session" value="A decider pendant l'appel"> Je ne sais pas encore, on en parle à l'appel</label>
+        </div>
+      </div>
       <div class="field"><label>Expérience trading</label><select name="experience" required><option value="" disabled selected>Sélectionnez</option><option>Moins de 6 mois</option><option>6 mois à 2 ans</option><option>2 à 5 ans</option><option>Plus de 5 ans</option></select></div>
       <div class="field"><label>Motivation (facultatif)</label><textarea name="motivation" placeholder="Où en êtes-vous et que cherchez-vous ?"></textarea></div>
       <button type="submit" class="sub-btn" id="submitBtn">Réserver mon appel de 20 min</button>
@@ -1077,7 +1099,7 @@ document.getElementById('applyForm').addEventListener('submit',async function(e)
   const form=this;
   btn.disabled=true;btn.textContent='Envoi en cours...';
   const data=new FormData(form);
-  const name=data.get('name'),email=data.get('email'),exp=data.get('experience'),motiv=data.get('motivation')||'Non renseigne';
+  const name=data.get('name'),email=data.get('email'),exp=data.get('experience'),motiv=data.get('motivation')||'Non renseigne',sess=data.get('session')||'Non renseigne';
   // Telephone obligatoire : 8 a 15 chiffres, indicatif + espaces/points/tirets acceptes
   const phoneInput=document.getElementById('mainPhone'),phoneErr=document.getElementById('phoneError');
   const phoneRaw=(data.get('phone')||'').trim(),phoneDigits=phoneRaw.replace(/\D/g,'');
@@ -1088,7 +1110,7 @@ document.getElementById('applyForm').addEventListener('submit',async function(e)
   phoneErr.style.display='none';phoneInput.style.borderColor='';
   const phone=phoneRaw;
   // Envoi email + Telegram en parallele
-  const tgText='Nouvelle candidature BASS Trading\n\nNom: '+name+'\nEmail: '+email+'\nTelephone: '+phone+'\nExperience: '+exp+'\nMotivation: '+motiv;
+  const tgText='Nouvelle candidature BASS Trading\n\nNom: '+name+'\nEmail: '+email+'\nTelephone: '+phone+'\nSession: '+sess+'\nExperience: '+exp+'\nMotivation: '+motiv;
   const emailReq=fetch('https://formsubmit.co/ajax/support@iftrading.fr',{method:'POST',body:data,headers:{'Accept':'application/json'}});
   const tgReq=fetch('https://api.telegram.org/bot8226810369:AAFi8mLA7jrQzP_5mIIuQcsAzeX-6am300Y/sendMessage',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:5216224966,text:tgText})});
   try{
