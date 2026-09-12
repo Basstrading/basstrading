@@ -1,0 +1,9 @@
+.next
+out
+node_modules
+_archive
+.claude
+next-env.d.ts
+gen_images.py
+cloudflare-worker
+emails
