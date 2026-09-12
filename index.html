@@ -448,7 +448,7 @@
     <li><a href="#faq">FAQ</a></li>
     <li><a href="/blog/">Blog</a></li>
   </ul>
-  <a href="#candidater" class="nav-cta">Réserver ma place</a>
+  <a href="/candidater/" class="nav-cta">Réserver ma place</a>
   <button class="nav-burger" id="navBurger" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 
@@ -469,7 +469,7 @@
       <span class="hero-tag">Footprint</span>
     </div>
     <div class="hero-cta-row">
-      <a href="#candidater" class="btn-p">Réserver ma place — 2 restantes <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+      <a href="/candidater/" class="btn-p">Réserver ma place — 2 restantes <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
       <a href="#resultats" class="btn-s">Voir les résultats</a>
     </div>
   </div>
@@ -533,7 +533,7 @@
   </div>
   <!-- Mini-form inline — captures l'email et redirige vers le formulaire complet -->
   <div class="mini-form-wrap" id="overlapCta">
-    <form class="mini-form" onsubmit="event.preventDefault();document.getElementById('mainEmail').value=this.querySelector('input').value;document.getElementById('candidater').scrollIntoView({behavior:'smooth',block:'start'})">
+    <form class="mini-form" onsubmit="event.preventDefault();location.href='/candidater/?email='+encodeURIComponent(this.querySelector('input').value)">
       <input type="email" placeholder="Votre email" required>
       <button type="submit" class="btn-p" style="flex-shrink:0;padding:14px 24px">Vérifier mon éligibilité <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
     </form>
@@ -616,7 +616,7 @@
     <h2 class="blue-title">Formation certifiée Qualiopi.<br>Éligible CPF.</h2>
     <p class="blue-desc">En partenariat avec EMSCA. 70 heures de cursus. Certificat de compétences EMSCA délivré à l'issue du cursus.</p>
     <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap">
-      <a href="#candidater" class="blue-cta">Réserver ma place <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+      <a href="/candidater/" class="blue-cta">Réserver ma place <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
     </div>
   </div>
 </section>
@@ -748,7 +748,7 @@
     </div>
   </div>
   <div style="text-align:center;margin-top:36px">
-    <a href="#candidater" class="btn-p" style="background:var(--pure);color:var(--bk)">Réserver ma place — 2 restantes à Malaga <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    <a href="/candidater/" class="btn-p" style="background:var(--pure);color:var(--bk)">Réserver ma place — 2 restantes à Malaga <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
   </div>
 </section>
 
@@ -955,7 +955,7 @@
         <a href="#programme">Programme</a>
         <a href="#certification">Certification</a>
         <a href="/malaga/">Malaga</a>
-        <a href="#candidater">Candidater</a>
+        <a href="/candidater/">Candidater</a>
       </div>
       <div>
         <div class="ft-col-title">Ressources</div>
