@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Réserver ma place — 2 places restantes à Malaga | BASS Trading</title>
+  <meta name="description" content="Il reste 2 places à Malaga (28 sept. au 2 oct. 2026). Remplissez le formulaire, on s'appelle 20 minutes, et vous savez si vous partez à Malaga ou si vous démarrez en ligne le 5 octobre.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://basstrading.fr/candidater/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta property="og:title" content="Il reste 2 places à Malaga">
+  <meta property="og:description" content="20 minutes au téléphone, et vous savez si vous partez à Malaga ou si vous démarrez en ligne le 5 octobre.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://basstrading.fr/candidater/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root{--bk:#1D1D1F;--g1:#6E6E73;--g2:#86868B;--g3:#D2D2D7;--g4:#F5F5F7;--pure:#FFF;--green:#00B67A}
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:'DM Sans',sans-serif;color:var(--bk);background:var(--pure);-webkit-font-smoothing:antialiased;min-height:100vh;display:flex;flex-direction:column}
+    a{color:inherit}
+    .top{display:flex;justify-content:space-between;align-items:center;padding:22px 48px;border-bottom:1px solid var(--g4)}
+    .logo{font-family:'Outfit',sans-serif;font-weight:900;letter-spacing:6px;font-size:.95rem;text-decoration:none}
+    .top-note{font-size:.72rem;color:var(--g2)}
+    .top-note b{color:var(--green);font-weight:700}
+    main{flex:1;padding:72px 24px 96px}
+    .inner{max-width:480px;margin:0 auto;text-align:center}
+    .sec-label{font-size:.65rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--g2);margin-bottom:10px}
+    .sec-title{font-family:'Outfit',sans-serif;font-size:clamp(2rem,3.8vw,3rem);font-weight:900;line-height:1.05;letter-spacing:-1.5px;margin-bottom:16px}
+    .sec-desc{font-size:1.02rem;color:var(--g1);line-height:1.75;max-width:460px;margin:0 auto 28px}
+    .places{margin:0 auto 30px;max-width:420px;text-align:left}
+    .places-row{display:flex;justify-content:space-between;align-items:baseline;font-size:.78rem;color:var(--g1);margin-bottom:8px}
+    .places-row strong{color:var(--bk);font-weight:700}
+    .places-row .left{color:var(--green);font-weight:700}
+    .places-bar{height:8px;border-radius:980px;background:var(--g4);overflow:hidden}
+    .places-fill{height:100%;width:90%;border-radius:980px;background:var(--bk);transform-origin:left;animation:fillbar 1.2s cubic-bezier(.2,.8,.2,1) both}
+    @keyframes fillbar{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+    @media (prefers-reduced-motion:reduce){.places-fill{animation:none}}
+    .places-sub{font-size:.72rem;color:var(--g2);margin-top:8px;line-height:1.5}
+    .form{text-align:left}
+    .field{margin-bottom:14px}
+    .field label{display:block;font-size:.72rem;font-weight:600;letter-spacing:.3px;color:var(--g1);margin-bottom:6px}
+    .field input,.field select,.field textarea{width:100%;padding:13px 16px;border:1.5px solid var(--g3);border-radius:10px;font-size:.9rem;font-family:'DM Sans',sans-serif;outline:none;transition:border .3s;background:var(--pure);color:var(--bk)}
+    .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--bk)}
+    .field textarea{min-height:90px;resize:vertical}
+    .err{display:none;color:#d33;font-size:.76rem;margin-top:6px}
+    .sub-btn{width:100%;padding:17px;background:var(--bk);color:var(--pure);border:none;border-radius:10px;font-size:1rem;font-weight:700;cursor:pointer;transition:all .3s;font-family:'DM Sans',sans-serif;margin-top:4px}
+    .sub-btn:hover{background:#000;transform:translateY(-1px)}
+    .sub-btn:disabled{opacity:.6;cursor:wait;transform:none}
+    .form-note{font-size:.68rem;color:var(--g2);text-align:center;margin-top:14px;line-height:1.6}
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:36px auto 0;max-width:480px}
+    .step{background:var(--g4);border-radius:12px;padding:14px 12px;text-align:left}
+    .step b{display:block;font-family:'Outfit',sans-serif;font-size:1.2rem;font-weight:900;margin-bottom:4px}
+    .step span{font-size:.74rem;color:var(--g1);line-height:1.45;display:block}
+    #formSuccess{display:none;text-align:center;padding:40px 20px}
+    .ok-circle{width:56px;height:56px;border-radius:50%;background:var(--green);margin:0 auto 20px;display:flex;align-items:center;justify-content:center}
+    .wa{display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#fff;text-decoration:none;padding:15px 22px;border-radius:10px;font-weight:700;font-size:.95rem}
+    footer{padding:20px 48px;border-top:1px solid var(--g4);font-size:.68rem;color:var(--g2);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    footer a{text-decoration:none}
+    @media (max-width:640px){.top,footer{padding-left:20px;padding-right:20px}.steps{grid-template-columns:1fr}main{padding-top:48px}}
+  </style>
+</head>
+<body>
+<header class="top">
+  <a class="logo" href="/">BASS</a>
+  <span class="top-note">Malaga, 28 sept. au 2 oct. · <b>2 places restantes</b></span>
+</header>
+
+<main>
+  <div class="inner">
+    <div class="sec-label">Réserver ma place</div>
+    <h1 class="sec-title">Il reste 2 places à Malaga.<br>Les 18 autres sont prises.</h1>
+    <p class="sec-desc">Vous remplissez le formulaire, on s'appelle 20 minutes, et vous savez si vous partez à Malaga ou si vous démarrez en ligne le 5 octobre.</p>
+
+    <div class="places">
+      <div class="places-row"><span><strong>18 / 20</strong> places prises</span><span class="left">2 restantes</span></div>
+      <div class="places-bar"><div class="places-fill"></div></div>
+      <p class="places-sub">Les places partent à l'appel, pas au formulaire : le premier qui réserve a la place. Malaga complet ? Vous passez en tête de liste du groupe en ligne du 5 octobre (10 places).</p>
+    </div>
+
+    <form class="form" id="applyForm">
+      <input type="hidden" name="_subject" value="Nouvelle candidature BASS Trading (page /candidater)">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+      <div class="field"><label for="fName">Prénom et nom</label><input type="text" name="name" id="fName" placeholder="Votre nom complet" autocomplete="name" required></div>
+      <div class="field"><label for="mainEmail">Email</label><input type="email" name="email" id="mainEmail" placeholder="votre@email.com" autocomplete="email" required></div>
+      <div class="field"><label for="mainPhone">Téléphone</label><input type="tel" name="phone" id="mainPhone" placeholder="+33 6 12 34 56 78" inputmode="tel" autocomplete="tel" required minlength="8"><p id="phoneError" class="err">Entrez un numéro de téléphone valide (8 chiffres minimum, indicatif accepté).</p></div>
+      <div class="field"><label for="fExp">Expérience trading</label><select name="experience" id="fExp" required><option value="" disabled selected>Sélectionnez</option><option>Moins de 6 mois</option><option>6 mois à 2 ans</option><option>2 à 5 ans</option><option>Plus de 5 ans</option></select></div>
+      <div class="field"><label for="fMotiv">Où en êtes-vous ? (facultatif)</label><textarea name="motivation" id="fMotiv" placeholder="Ce que vous avez déjà essayé, le temps que vous avez devant vous."></textarea></div>
+      <button type="submit" class="sub-btn" id="submitBtn">Réserver mon appel de 20 min</button>
+      <p class="form-note"><span style="color:var(--green)">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 4.9/5 sur Trustpilot (126 avis) — On vous rappelle sous 48h. Aucun engagement, aucun paiement à cette étape.</p>
+    </form>
+
+    <div id="formSuccess">
+      <div class="ok-circle"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <h2 style="font-family:'Outfit',sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:-1px;margin-bottom:8px">Vous êtes dans la file.</h2>
+      <p style="font-size:.9rem;color:var(--g1);line-height:1.7;max-width:380px;margin:0 auto 24px">On vous rappelle sous 48h pour les 20 minutes. Pour passer devant, écrivez-nous maintenant sur WhatsApp : les 2 places de Malaga partent à l'appel.</p>
+      <a href="https://wa.me/34604400885?text=Bonjour%2C%20je%20viens%20de%20r%C3%A9server%20mon%20appel%20sur%20basstrading.fr%2Fcandidater%20et%20je%20veux%20une%20des%202%20places%20de%20Malaga." target="_blank" rel="noopener" class="wa">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.138.562 4.135 1.534 5.871L0 24l6.304-1.654A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.82c-1.956 0-3.83-.528-5.47-1.528l-.392-.232-4.064 1.066 1.084-3.962-.255-.405A9.786 9.786 0 012.18 12C2.18 6.58 6.58 2.18 12 2.18S21.82 6.58 21.82 12 17.42 21.82 12 21.82z"/></svg>
+        Passer devant sur WhatsApp
+      </a>
+    </div>
+
+    <div class="steps">
+      <div class="step"><b>1</b><span>Vous remplissez le formulaire. Deux minutes.</span></div>
+      <div class="step"><b>2</b><span>On s'appelle 20 minutes. Où vous en êtes, le temps que vous avez, ce que vous avez essayé.</span></div>
+      <div class="step"><b>3</b><span>On choisit ensemble : Malaga fin septembre, ou en ligne dès le 5 octobre.</span></div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <span>© BASS Trading</span>
+  <span><a href="/mentions-legales.html">Mentions légales</a> · <a href="/confidentialite.html">Confidentialité</a></span>
+</footer>
+
+<script>
+document.getElementById('applyForm').addEventListener('submit',async function(e){
+  e.preventDefault();
+  const btn=document.getElementById('submitBtn');
+  const form=this;
+  const data=new FormData(form);
+  const name=data.get('name'),email=data.get('email'),exp=data.get('experience'),motiv=data.get('motivation')||'Non renseigne';
+  // Telephone obligatoire : 8 a 15 chiffres, indicatif + espaces/points/tirets acceptes
+  const phoneInput=document.getElementById('mainPhone'),phoneErr=document.getElementById('phoneError');
+  const phoneRaw=(data.get('phone')||'').trim(),phoneDigits=phoneRaw.replace(/\D/g,'');
+  if(!/^\+?[0-9 .()-]+$/.test(phoneRaw)||phoneDigits.length<8||phoneDigits.length>15){
+    phoneErr.style.display='block';phoneInput.style.borderColor='#d33';phoneInput.focus();return;
+  }
+  phoneErr.style.display='none';phoneInput.style.borderColor='';
+  btn.disabled=true;btn.textContent='Envoi en cours...';
+  const tgText='Nouvelle candidature BASS Trading (page /candidater)\n\nNom: '+name+'\nEmail: '+email+'\nTelephone: '+phoneRaw+'\nExperience: '+exp+'\nMotivation: '+motiv;
+  const emailReq=fetch('https://formsubmit.co/ajax/support@iftrading.fr',{method:'POST',body:data,headers:{'Accept':'application/json'}});
+  const tgReq=fetch('https://api.telegram.org/bot8226810369:AAFi8mLA7jrQzP_5mIIuQcsAzeX-6am300Y/sendMessage',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:5216224966,text:tgText})});
+  try{
+    const [emailRes]=await Promise.all([emailReq,tgReq]);
+    if(emailRes.ok){
+      form.style.display='none';
+      document.querySelector('.places').style.display='none';
+      document.getElementById('formSuccess').style.display='block';
+      window.scrollTo({top:0,behavior:'smooth'});
+    }else{
+      btn.textContent='Erreur — Réessayez';btn.disabled=false;
+    }
+  }catch(err){
+    btn.textContent='Erreur réseau — Réessayez';btn.disabled=false;
+  }
+});
+</script>
+</body>
+</html>
