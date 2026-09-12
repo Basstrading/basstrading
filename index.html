@@ -846,6 +846,7 @@
       <input type="text" name="_honey" style="display:none">
       <div class="field"><label>Prénom et nom</label><input type="text" name="name" placeholder="Votre nom complet" required></div>
       <div class="field"><label>Email</label><input type="email" name="email" id="mainEmail" placeholder="votre@email.com" required></div>
+      <div class="field"><label>Téléphone</label><input type="tel" name="phone" id="mainPhone" placeholder="+33 6 12 34 56 78" inputmode="tel" autocomplete="tel" required minlength="8"><p id="phoneError" style="display:none;color:#d33;font-size:.78rem;margin-top:6px">Entrez un numéro de téléphone valide (8 chiffres minimum, indicatif accepté).</p></div>
       <div class="field"><label>Expérience trading</label><select name="experience" required><option value="" disabled selected>Sélectionnez</option><option>Moins de 6 mois</option><option>6 mois à 2 ans</option><option>2 à 5 ans</option><option>Plus de 5 ans</option></select></div>
       <div class="field"><label>Motivation (facultatif)</label><textarea name="motivation" placeholder="Où en êtes-vous et que cherchez-vous ?"></textarea></div>
       <button type="submit" class="sub-btn" id="submitBtn">Vérifier mon éligibilité</button>
@@ -1063,8 +1064,17 @@ document.getElementById('applyForm').addEventListener('submit',async function(e)
   btn.disabled=true;btn.textContent='Envoi en cours...';
   const data=new FormData(form);
   const name=data.get('name'),email=data.get('email'),exp=data.get('experience'),motiv=data.get('motivation')||'Non renseigne';
+  // Telephone obligatoire : 8 a 15 chiffres, indicatif + espaces/points/tirets acceptes
+  const phoneInput=document.getElementById('mainPhone'),phoneErr=document.getElementById('phoneError');
+  const phoneRaw=(data.get('phone')||'').trim(),phoneDigits=phoneRaw.replace(/\D/g,'');
+  if(!/^\+?[0-9 .()-]+$/.test(phoneRaw)||phoneDigits.length<8||phoneDigits.length>15){
+    phoneErr.style.display='block';phoneInput.style.borderColor='#d33';phoneInput.focus();
+    btn.disabled=false;btn.textContent='Vérifier mon éligibilité';return;
+  }
+  phoneErr.style.display='none';phoneInput.style.borderColor='';
+  const phone=phoneRaw;
   // Envoi email + Telegram en parallele
-  const tgText='Nouvelle candidature BASS Trading\n\nNom: '+name+'\nEmail: '+email+'\nExperience: '+exp+'\nMotivation: '+motiv;
+  const tgText='Nouvelle candidature BASS Trading\n\nNom: '+name+'\nEmail: '+email+'\nTelephone: '+phone+'\nExperience: '+exp+'\nMotivation: '+motiv;
   const emailReq=fetch('https://formsubmit.co/ajax/support@iftrading.fr',{method:'POST',body:data,headers:{'Accept':'application/json'}});
   const tgReq=fetch('https://api.telegram.org/bot8226810369:AAFi8mLA7jrQzP_5mIIuQcsAzeX-6am300Y/sendMessage',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:5216224966,text:tgText})});
   try{
