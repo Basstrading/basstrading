@@ -3,17 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Seminaire Trading Malaga — 29 mars au 2 avril 2027 | BASS Trading</title>
-  <meta name="description" content="5 jours intensifs a Malaga avec Sebastien Constant. Market Profile, Order Flow, Footprint, live trading. 20 places max — inscriptions ouvertes. 1490 euros, payable en 3 fois.">
-  <meta property="og:title" content="Seminaire Trading Malaga — 29 mars au 2 avril 2027 | BASS Trading">
-  <meta property="og:description" content="5 jours intensifs avec Sebastien Constant a Malaga. Market Profile, Order Flow, live trading. 20 places — inscriptions ouvertes. 1490 euros.">
+  <title>Séminaire Trading Malaga — 29 mars au 2 avril 2027 | BASS Trading</title>
+  <meta name="description" content="Cinq jours en salle à Malaga avec Sébastien Constant. Ton portrait de trader, ta méthode écrite et validée, tes trades jugés chaque jour, des séances réelles du Nasdaq rejouées. 20 places — 1 490 euros, payable en 3 fois.">
+  <meta property="og:title" content="Séminaire Trading Malaga — 29 mars au 2 avril 2027 | BASS Trading">
+  <meta property="og:description" content="Cinq jours en salle à Malaga. Le déroulé réel de la session de septembre 2026 : 35 chapitres filmés, 17 heures, 16 élèves, chacun reparti avec sa méthode. 20 places pour mars 2027.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://basstrading.fr/malaga/">
+  <meta property="og:image" content="https://basstrading.fr/images/bass-malaga-group.jpg">
   <meta property="og:site_name" content="BASS Trading">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://basstrading.fr/malaga/">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
@@ -21,36 +24,42 @@
 
   <style>
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-    :root{--bk:#1D1D1F;--bk2:#111;--bk3:#0A0A0A;--g1:#6E6E73;--g2:#86868B;--g3:#D2D2D7;--g4:#F5F5F7;--wh:#FBFBFD;--pure:#FFF;--green:#00B67A;--blue:#0066FF;--gold:#C9A84C;--red:#E84545}
+    :root{--bk:#1D1D1F;--bk2:#111;--bk3:#0A0A0A;--g1:#6E6E73;--g2:#86868B;--g3:#D2D2D7;--g4:#F5F5F7;--wh:#FBFBFD;--pure:#FFF;--green:#00B67A;--blue:#0066FF;--gold:#C9A84C;--gold2:#E6C877;--red:#E84545}
     html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}
     body{font-family:'DM Sans',sans-serif;color:var(--bk);background:var(--pure);overflow-x:hidden;-webkit-font-smoothing:antialiased}
     img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+    strong{font-weight:700}
 
     /* NAV */
     .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 48px;display:flex;align-items:center;justify-content:space-between;background:rgba(10,10,10,.92);backdrop-filter:blur(20px) saturate(1.8);border-bottom:1px solid rgba(255,255,255,.06)}
     .nav-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:1rem;letter-spacing:5px;text-transform:uppercase;color:var(--pure)}
+    .nav-links{display:flex;gap:28px;font-size:.78rem;font-weight:600;color:rgba(255,255,255,.55)}
+    .nav-links a:hover{color:var(--pure)}
     .nav-cta{padding:10px 24px;background:var(--gold);color:var(--bk3);border:none;border-radius:980px;font-size:.82rem;font-weight:700;transition:all .3s;cursor:pointer;text-decoration:none;display:inline-block}
     .nav-cta:hover{box-shadow:0 4px 20px rgba(201,168,76,.4);transform:translateY(-1px)}
 
-    /* HERO — FULL BLEED */
-    .hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;padding:0 48px 80px;overflow:hidden}
+    /* HERO */
+    .hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;padding:0 48px 80px;overflow:hidden;background:var(--bk3)}
     .hero-bg{position:absolute;inset:0;z-index:0}
-    .hero-bg img{width:100%;height:100%;object-fit:cover}
-    .hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,10,.95) 0%,rgba(10,10,10,.6) 40%,rgba(10,10,10,.3) 100%)}
-    .hero-content{position:relative;z-index:1;max-width:720px}
+    .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 40%}
+    .hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,10,.97) 0%,rgba(10,10,10,.7) 45%,rgba(10,10,10,.25) 100%)}
+    .hero-content{position:relative;z-index:1;max-width:820px}
     .hero-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 18px;background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.25);border-radius:980px;font-size:.7rem;font-weight:700;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-bottom:24px}
     .hero-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse 2s infinite}
     @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
-    .hero-title{font-family:'Outfit',sans-serif;font-size:clamp(2.8rem,6vw,5rem);font-weight:900;line-height:.95;letter-spacing:-3px;color:var(--pure);margin-bottom:20px}
+    .hero-title{font-family:'Outfit',sans-serif;font-size:clamp(2.6rem,6vw,5rem);font-weight:900;line-height:.98;letter-spacing:-3px;color:var(--pure);margin-bottom:22px}
     .hero-title em{font-style:normal;color:var(--gold)}
-    .hero-sub{font-size:1.1rem;color:rgba(255,255,255,.55);line-height:1.8;max-width:520px;margin-bottom:32px}
+    .hero-sub{font-size:1.1rem;color:rgba(255,255,255,.6);line-height:1.8;max-width:600px;margin-bottom:32px}
     .hero-meta{display:flex;gap:32px;margin-bottom:36px;flex-wrap:wrap}
     .hero-meta-item{display:flex;flex-direction:column;gap:2px}
-    .hero-meta-label{font-size:.6rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.25)}
+    .hero-meta-label{font-size:.6rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.3)}
     .hero-meta-value{font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:800;color:var(--pure);letter-spacing:-.5px}
+    .hero-actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
     .hero-cta{display:inline-flex;align-items:center;gap:12px;padding:18px 36px;background:var(--gold);color:var(--bk3);border-radius:980px;font-size:1rem;font-weight:700;transition:all .3s;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;text-decoration:none}
     .hero-cta:hover{transform:translateY(-2px);box-shadow:0 8px 40px rgba(201,168,76,.35)}
     .hero-cta svg{width:16px;height:16px;transition:transform .3s}.hero-cta:hover svg{transform:translateX(4px)}
+    .hero-ghost{display:inline-flex;align-items:center;gap:10px;padding:17px 28px;border:1px solid rgba(255,255,255,.2);color:var(--pure);border-radius:980px;font-size:.95rem;font-weight:600;transition:all .3s}
+    .hero-ghost:hover{border-color:rgba(255,255,255,.5);background:rgba(255,255,255,.05)}
 
     /* COUNTDOWN */
     .countdown-bar{background:var(--bk3);border-bottom:1px solid rgba(201,168,76,.1);padding:16px 48px;display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap}
@@ -66,41 +75,105 @@
     .sec-label{font-size:.65rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--g2);margin-bottom:12px}
     .sec-label-gold{color:var(--gold)}
     .sec-title{font-family:'Outfit',sans-serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:900;line-height:1.05;letter-spacing:-2px;margin-bottom:20px}
-    .sec-desc{font-size:1.05rem;color:var(--g1);line-height:1.8;max-width:560px}
-    .sec-center{text-align:center;max-width:720px;margin:0 auto}
+    .sec-desc{font-size:1.05rem;color:var(--g1);line-height:1.8;max-width:600px}
+    .sec-center{text-align:center;max-width:760px;margin:0 auto}
     .sec-center .sec-desc{margin:0 auto}
 
-    /* PAIN POINTS */
-    .pain-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1060px;margin:60px auto 0}
-    .pain-card{padding:32px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:16px;transition:all .4s}
-    .pain-card:hover{background:rgba(255,255,255,.05);border-color:rgba(201,168,76,.15)}
-    .pain-icon{font-family:'Outfit',sans-serif;font-size:2rem;font-weight:900;color:rgba(255,255,255,.08);margin-bottom:12px;line-height:1}
-    .pain-card h3{font-family:'Outfit',sans-serif;font-size:1rem;font-weight:700;color:var(--pure);margin-bottom:8px;letter-spacing:-.3px}
-    .pain-card p{font-size:.9rem;color:rgba(255,255,255,.4);line-height:1.7}
+    /* PREUVE : les chiffres de septembre */
+    .preuve{background:var(--bk3);color:var(--pure);padding:96px 48px 110px;border-top:1px solid rgba(255,255,255,.05)}
+    .preuve-head{max-width:1060px;margin:0 auto 56px;display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:end}
+    .preuve-head .sec-desc{color:rgba(255,255,255,.5)}
+    .chiffres{max-width:1060px;margin:0 auto;display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08);border-radius:18px;overflow:hidden}
+    .chiffre{background:var(--bk3);padding:30px 22px 26px;transition:background .4s}
+    .chiffre:hover{background:#111}
+    .chiffre-num{font-family:'Outfit',sans-serif;font-size:clamp(2rem,3.4vw,2.8rem);font-weight:900;letter-spacing:-2px;line-height:1;color:var(--pure)}
+    .chiffre-num span{color:var(--gold);font-size:.6em;letter-spacing:0;margin-left:2px}
+    .chiffre-label{font-size:.78rem;color:rgba(255,255,255,.45);margin-top:10px;line-height:1.5}
+    .preuve-note{max-width:1060px;margin:22px auto 0;font-size:.72rem;color:rgba(255,255,255,.28);line-height:1.6}
 
-    /* PROGRAMME */
-    .jours{max-width:1060px;margin:64px auto 0;display:grid;gap:18px}
-    .jour{display:grid;grid-template-columns:1fr 1.15fr;background:var(--g4);border-radius:22px;overflow:hidden;align-items:stretch}
-    .jour:nth-child(even){grid-template-columns:1.15fr 1fr}
-    .jour:nth-child(even) .jour-media{order:2}
-    .jour-media{position:relative;min-height:300px;background:var(--bk3)}
-    .jour-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s cubic-bezier(.2,.8,.2,1)}
-    .jour:hover .jour-media img{transform:scale(1.03)}
-    .jour-num{position:absolute;left:20px;top:18px;font-family:'Outfit',sans-serif;font-size:.62rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--bk3);background:var(--gold);padding:7px 12px;border-radius:980px}
-    .jour-body{padding:40px 44px}
-    .jour-label{font-family:'Outfit',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
-    .jour h3{font-family:'Outfit',sans-serif;font-size:clamp(1.25rem,1.9vw,1.6rem);font-weight:800;letter-spacing:-.6px;line-height:1.12;margin-bottom:16px;color:var(--bk)}
-    .jour p{font-size:.9rem;color:var(--g1);line-height:1.7;margin-bottom:10px}
-    .jour p strong{color:var(--bk);font-weight:700}
-    .jour-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
-    .jour-tags span{padding:6px 12px;border:1px solid rgba(0,0,0,.08);border-radius:980px;font-size:.66rem;font-weight:600;color:var(--g1);letter-spacing:.2px;background:var(--pure)}
-    @media (max-width:860px){.jour,.jour:nth-child(even){grid-template-columns:1fr}.jour:nth-child(even) .jour-media{order:0}.jour-media{min-height:220px;aspect-ratio:16/9}.jour-body{padding:28px 22px 30px}}
+    /* DIFFÉRENCE */
+    .diff-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;max-width:1060px;margin:60px auto 0}
+    .diff-card{padding:36px;background:var(--g4);border-radius:20px;position:relative;overflow:hidden;transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+    .diff-card:hover{transform:translateY(-3px)}
+    .diff-num{font-family:'Outfit',sans-serif;font-size:.62rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+    .diff-card h3{font-family:'Outfit',sans-serif;font-size:1.3rem;font-weight:800;letter-spacing:-.6px;line-height:1.15;margin-bottom:12px}
+    .diff-card p{font-size:.92rem;color:var(--g1);line-height:1.75}
+    .diff-card p strong{color:var(--bk)}
 
-    /* PHOTOS GRID */
-    .photo-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin:80px 0;border-radius:20px;overflow:hidden}
-    .photo-grid img{width:100%;height:320px;object-fit:cover;transition:transform .6s}.photo-grid img:hover{transform:scale(1.03)}
-    .photo-full{grid-column:1/-1}
-    .photo-full img{height:400px}
+    /* PROGRAMME : LES CINQ JOURNÉES */
+    .prog{background:var(--pure);padding:120px 48px 80px}
+    .prog-head{max-width:1060px;margin:0 auto 24px}
+    .prog-head .sec-desc{max-width:680px}
+    .rituel{max-width:1060px;margin:40px auto 0;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+    .rituel-item{padding:18px 20px;border:1px solid rgba(0,0,0,.08);border-radius:14px;display:flex;gap:14px;align-items:flex-start}
+    .rituel-h{font-family:'Outfit',sans-serif;font-weight:900;font-size:1.05rem;letter-spacing:-.5px;color:var(--gold);white-space:nowrap;line-height:1.3}
+    .rituel-item p{font-size:.82rem;color:var(--g1);line-height:1.55}
+    .rituel-item p strong{color:var(--bk)}
+
+    .jours{max-width:1060px;margin:72px auto 0}
+    .jour{display:grid;grid-template-columns:1fr 1.25fr;gap:0;border-top:1px solid rgba(0,0,0,.08);padding:64px 0}
+    .jour:last-child{border-bottom:1px solid rgba(0,0,0,.08)}
+    .jour-side{padding-right:48px;position:relative}
+    .jour-sticky{position:sticky;top:96px}
+    .jour-big{font-family:'Outfit',sans-serif;font-size:clamp(5rem,11vw,9rem);font-weight:900;letter-spacing:-6px;line-height:.8;color:var(--bk);margin-bottom:6px}
+    .jour-big small{font-size:.28em;letter-spacing:-1px;color:var(--gold);vertical-align:top;margin-left:4px}
+    .jour-dow{font-family:'Outfit',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--g2);margin-bottom:22px}
+    .jour-media{position:relative;border-radius:18px;overflow:hidden;background:var(--bk3);aspect-ratio:16/10}
+    .jour-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.2,.8,.2,1)}
+    .jour:hover .jour-media img{transform:scale(1.04)}
+    .jour-stamp{position:absolute;left:14px;bottom:14px;font-family:'Outfit',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--bk3);background:var(--gold);padding:7px 12px;border-radius:980px}
+    .jour-stat{display:flex;gap:20px;margin-top:18px}
+    .jour-stat div{display:flex;flex-direction:column}
+    .jour-stat b{font-family:'Outfit',sans-serif;font-size:1.25rem;font-weight:900;letter-spacing:-.8px;line-height:1}
+    .jour-stat span{font-size:.62rem;letter-spacing:2px;text-transform:uppercase;color:var(--g2);margin-top:4px;font-weight:700}
+
+    .jour-body h3{font-family:'Outfit',sans-serif;font-size:clamp(1.6rem,2.8vw,2.3rem);font-weight:900;letter-spacing:-1.2px;line-height:1.05;margin-bottom:18px;color:var(--bk)}
+    .jour-body h3 em{font-style:normal;color:var(--gold)}
+    .jour-lead{font-size:1.02rem;color:var(--g1);line-height:1.8;margin-bottom:34px;max-width:580px}
+    .jour-lead strong{color:var(--bk)}
+
+    .tl{list-style:none;position:relative;padding-left:0}
+    .tl li{display:grid;grid-template-columns:72px 1fr;gap:18px;padding:14px 0;border-top:1px dashed rgba(0,0,0,.1);align-items:start}
+    .tl li:first-child{border-top:none;padding-top:0}
+    .tl .t{font-family:'Outfit',sans-serif;font-weight:900;font-size:1rem;letter-spacing:-.5px;color:var(--bk);padding-top:1px;white-space:nowrap}
+    .tl .t.gold{color:var(--gold)}
+    .tl .w{font-size:.92rem;color:var(--g1);line-height:1.7}
+    .tl .w strong{color:var(--bk)}
+    .tl .w .tag{display:inline-block;font-family:'Outfit',sans-serif;font-size:.58rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,168,76,.4);padding:3px 8px;border-radius:980px;margin-right:6px;vertical-align:middle;position:relative;top:-1px}
+
+    .chap{margin-top:26px;border:1px solid rgba(0,0,0,.08);border-radius:14px;background:var(--g4);overflow:hidden}
+    .chap summary{list-style:none;cursor:pointer;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;gap:12px;font-family:'Outfit',sans-serif;font-weight:700;font-size:.85rem;letter-spacing:-.2px;color:var(--bk)}
+    .chap summary::-webkit-details-marker{display:none}
+    .chap summary span.ic{width:22px;height:22px;border-radius:50%;background:var(--bk);color:var(--pure);display:flex;align-items:center;justify-content:center;font-size:.8rem;transition:transform .4s;flex-shrink:0}
+    .chap[open] summary span.ic{transform:rotate(45deg)}
+    .chap ol{list-style:none;padding:0 20px 18px;counter-reset:c}
+    .chap li{display:grid;grid-template-columns:28px 1fr auto;gap:10px;padding:8px 0;border-top:1px solid rgba(0,0,0,.06);font-size:.86rem;color:var(--bk);align-items:baseline;counter-increment:c}
+    .chap li::before{content:counter(c,decimal-leading-zero);font-family:'Outfit',sans-serif;font-weight:700;color:var(--g2);font-size:.72rem}
+    .chap li .d{font-family:'Outfit',sans-serif;font-weight:700;color:var(--g2);font-size:.75rem;white-space:nowrap}
+    .chap li.demi{display:block;padding:12px 0 4px;border-top:none;font-family:'Outfit',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);counter-increment:none}
+    .chap li.demi::before{content:none}
+    .chap li.demi:first-child{padding-top:0}
+
+    .jour-out{margin-top:26px;padding:20px 22px;border-left:3px solid var(--gold);background:linear-gradient(90deg,rgba(201,168,76,.08),transparent);border-radius:0 12px 12px 0;font-size:.95rem;line-height:1.7;color:var(--bk)}
+    .jour-out b{font-family:'Outfit',sans-serif;font-weight:800;color:var(--gold);letter-spacing:-.2px;display:block;font-size:.72rem;text-transform:uppercase;letter-spacing:2.5px;margin-bottom:6px}
+
+    .prog-foot{max-width:1060px;margin:40px auto 0;display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center;padding:28px 32px;background:var(--bk3);color:var(--pure);border-radius:20px}
+    .prog-foot p{font-size:.92rem;color:rgba(255,255,255,.6);line-height:1.7;max-width:640px}
+    .prog-foot p strong{color:var(--pure)}
+
+    @media (max-width:900px){
+      .jour{grid-template-columns:1fr;padding:48px 0}
+      .jour-side{padding-right:0;margin-bottom:28px}
+      .jour-sticky{position:static}
+      .jour-big{font-size:4.2rem;letter-spacing:-3px}
+      .rituel{grid-template-columns:1fr 1fr}
+      .diff-grid{grid-template-columns:1fr}
+      .chiffres{grid-template-columns:repeat(3,1fr)}
+      .preuve-head{grid-template-columns:1fr;gap:20px}
+      .prog-foot{grid-template-columns:1fr}
+      .tl li{grid-template-columns:58px 1fr;gap:12px}
+    }
+    @media (max-width:560px){.rituel{grid-template-columns:1fr}.chiffres{grid-template-columns:repeat(2,1fr)}}
 
     /* SEBASTIEN */
     .seb-grid{display:grid;grid-template-columns:340px 1fr;gap:60px;max-width:900px;margin:0 auto;align-items:center}
@@ -119,24 +192,19 @@
     .price-amount span{font-size:1.2rem;font-weight:600;letter-spacing:0;vertical-align:super;color:var(--gold)}
     .price-period{font-size:.85rem;color:rgba(255,255,255,.35);margin-top:8px;margin-bottom:28px}
     .price-includes{text-align:left;margin-bottom:32px}
-    .price-item{display:flex;align-items:center;gap:10px;padding:8px 0;font-size:.9rem;color:rgba(255,255,255,.6)}
-    .price-item svg{width:16px;height:16px;color:var(--gold);flex-shrink:0}
+    .price-item{display:flex;align-items:flex-start;gap:10px;padding:8px 0;font-size:.9rem;color:rgba(255,255,255,.65);line-height:1.5}
+    .price-item svg{width:16px;height:16px;color:var(--gold);flex-shrink:0;margin-top:3px}
     .price-cta{display:block;width:100%;padding:18px;background:var(--gold);color:var(--bk3);border:none;border-radius:14px;font-size:1rem;font-weight:700;cursor:pointer;transition:all .3s;font-family:'DM Sans',sans-serif;text-decoration:none;text-align:center}
     .price-cta:hover{box-shadow:0 8px 30px rgba(201,168,76,.3);transform:translateY(-1px)}
     .price-note{font-size:.7rem;color:rgba(255,255,255,.2);margin-top:14px;line-height:1.6}
-    .price-urgency{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:16px;font-size:.78rem;color:var(--red);font-weight:600}
-    .price-urgency svg{width:14px;height:14px}
     .price-alert{position:relative;display:flex;align-items:center;gap:14px;margin:-12px -12px 24px;padding:16px 20px;background:linear-gradient(135deg,rgba(229,57,53,.18),rgba(201,168,76,.14));border:1px solid rgba(229,57,53,.45);border-radius:16px;text-align:left;animation:price-alert-pulse 2.4s ease-in-out infinite}
     .price-alert svg{width:22px;height:22px;color:var(--red);flex-shrink:0}
-    .price-alert strong{display:block;font-family:var(--font-outfit),sans-serif;font-size:1.05rem;font-weight:800;color:var(--pure);letter-spacing:-.3px;line-height:1.2}
+    .price-alert strong{display:block;font-family:'Outfit',sans-serif;font-size:1.05rem;font-weight:800;color:var(--pure);letter-spacing:-.3px;line-height:1.2}
     .price-alert span{display:block;font-size:.78rem;color:rgba(255,255,255,.65);margin-top:3px;font-weight:500}
     @keyframes price-alert-pulse{0%,100%{box-shadow:0 0 0 0 rgba(229,57,53,.35)}50%{box-shadow:0 0 0 10px rgba(229,57,53,0)}}
-    @media (prefers-reduced-motion:reduce){.price-alert{animation:none}}
 
-    /* TESTIMONIALS */
-
-    /* Témoignages vidéo */
-    .vt{padding:120px 48px;background:var(--pure);border-top:1px solid var(--g4);position:relative;z-index:1}
+    /* TÉMOIGNAGES VIDÉO */
+    .vt{padding:120px 48px;background:var(--pure);position:relative;z-index:1}
     .vt-feature{max-width:1060px;margin:48px auto 0;border-radius:20px;overflow:hidden;box-shadow:0 20px 80px rgba(0,0,0,.08)}
     .yt{position:relative;aspect-ratio:16/9;background:var(--bk3);cursor:pointer;overflow:hidden}
     .yt img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
@@ -155,12 +223,12 @@
     .vt-card .yt-play{width:48px;height:48px}
     .vt-body{padding:16px 18px 20px}
     .vt-name{font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:800;letter-spacing:-.3px;margin-bottom:6px;color:var(--bk)}
-    .vt-quote{font-size:.8rem;color:var(--g1);line-height:1.6;font-style:normal}
+    .vt-quote{font-size:.8rem;color:var(--g1);line-height:1.6}
     .vt-note{font-size:.68rem;color:var(--g2);text-align:center;max-width:560px;margin:28px auto 0;line-height:1.6}
     @media (max-width:900px){.vt-grid{grid-template-columns:repeat(2,1fr)}}
     @media (max-width:640px){.vt{padding:80px 20px}.vt-grid{grid-template-columns:1fr}.vt-feature{border-radius:14px}}
-    @media (prefers-reduced-motion:reduce){.yt img,.yt-play{transition:none}}
 
+    /* LA SALLE */
     .salle{padding:0 48px 120px;background:var(--pure)}
     .salle-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;max-width:1060px;margin:48px auto 0}
     .salle-item{margin:0;border-radius:14px;overflow:hidden;aspect-ratio:16/10;background:var(--g4)}
@@ -169,6 +237,7 @@
     .salle-grid .salle-item:first-child{grid-column:span 2;grid-row:span 2;aspect-ratio:auto}
     @media (max-width:900px){.salle-grid{grid-template-columns:repeat(2,1fr)}.salle-grid .salle-item:first-child{grid-column:span 2;grid-row:auto;aspect-ratio:16/10}}
     @media (max-width:640px){.salle{padding:0 20px 80px}}
+
     .test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1060px;margin:60px auto 0}
     .test-card{padding:28px;background:var(--g4);border-radius:16px}
     .test-stars{color:var(--gold);font-size:.8rem;margin-bottom:10px;letter-spacing:1px}
@@ -188,7 +257,7 @@
     .fi{border-bottom:1px solid rgba(0,0,0,.06)}
     .fq{width:100%;text-align:left;padding:18px 0;background:none;border:none;font-size:.95rem;font-weight:600;font-family:'DM Sans',sans-serif;color:var(--bk);display:flex;justify-content:space-between;align-items:center;cursor:pointer;gap:16px;transition:color .3s}.fq:hover{color:var(--g1)}
     .fq-icon{width:22px;height:22px;border-radius:50%;background:rgba(0,0,0,.04);display:flex;align-items:center;justify-content:center;font-size:.75rem;transition:all .4s;flex-shrink:0;color:var(--g2)}
-    .fa{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1)}.fa.open{max-height:300px;padding-bottom:14px}
+    .fa{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1)}.fa.open{max-height:400px;padding-bottom:14px}
     .fa p{font-size:.9rem;color:var(--g1);line-height:1.7;margin-bottom:0}
     .fi.active .fq-icon{background:var(--bk);color:var(--pure);transform:rotate(45deg)}
 
@@ -196,7 +265,7 @@
     .final-cta{padding:120px 48px;background:var(--bk3);text-align:center;position:relative;overflow:hidden}
     .final-cta::before{content:'';position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:800px;height:800px;background:radial-gradient(circle,rgba(201,168,76,.06) 0%,transparent 70%);pointer-events:none}
     .final-cta .sec-title{color:var(--pure)}
-    .final-cta .sec-desc{color:rgba(255,255,255,.4);margin:0 auto 36px}
+    .final-cta .sec-desc{color:rgba(255,255,255,.45);margin:0 auto 36px}
 
     /* FOOTER */
     .footer{background:var(--bk3);padding:28px 48px;border-top:1px solid rgba(255,255,255,.04);display:flex;justify-content:space-between;align-items:center;font-size:.65rem;color:rgba(255,255,255,.15);flex-wrap:wrap;gap:12px}
@@ -205,12 +274,9 @@
 
     /* RESPONSIVE */
     @media(max-width:900px){
-      .nav{padding:14px 20px}
-      .hero{padding:0 20px 60px}.hero-title{font-size:clamp(2.2rem,8vw,3.5rem)}.hero-meta{gap:20px}
-      .sec{padding:80px 20px}
-      .pain-grid{grid-template-columns:1fr}
-
-      .photo-grid{grid-template-columns:1fr}.photo-grid img,.photo-full img{height:240px}
+      .nav{padding:14px 20px}.nav-links{display:none}
+      .hero{padding:0 20px 60px}.hero-title{font-size:clamp(2.2rem,8vw,3.5rem);letter-spacing:-1.5px}.hero-meta{gap:20px}
+      .sec{padding:80px 20px}.prog{padding:80px 20px 60px}.preuve{padding:72px 20px 80px}
       .seb-grid{grid-template-columns:1fr;gap:32px}.seb-img{max-width:280px}
       .test-grid{grid-template-columns:1fr}
       .price-card{padding:32px 24px}
@@ -220,7 +286,7 @@
       .disclaimer{padding:10px 16px}
       .countdown-bar{padding:12px 20px;gap:16px}
     }
-    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}.vt-card{opacity:1;transform:none}}
   </style>
 </head>
 <body>
@@ -228,28 +294,36 @@
 <!-- NAV -->
 <nav class="nav">
   <a href="https://basstrading.fr" class="nav-logo">BASS</a>
-  <a href="https://buy.stripe.com/aFa9ASezKgiRfWMbdo9EI0B" target="_blank" rel="noopener" class="nav-cta">Reserver ma place</a>
+  <div class="nav-links">
+    <a href="#programme">Les cinq journées</a>
+    <a href="#temoignages">Témoignages</a>
+    <a href="#inscription">Inscription</a>
+  </div>
+  <a href="https://buy.stripe.com/aFa9ASezKgiRfWMbdo9EI0B" target="_blank" rel="noopener" class="nav-cta">Réserver ma place</a>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-bg"><img src="../images/bass-malaga-group.jpg" alt="Seminaire BASS Trading Malaga" loading="eager"></div>
+  <div class="hero-bg"><img src="../images/bass-malaga-group.jpg" alt="Le groupe de la formation présentielle BASS Trading à Malaga, septembre 2026" loading="eager"></div>
   <div class="hero-content">
-    <div class="hero-badge"><span class="dot"></span> 29 mars — 2 avril 2027 — 20 places</div>
-    <h1 class="hero-title">5 jours pour ne plus jamais<br>subir le marche. <em>Malaga.</em></h1>
-    <p class="hero-sub">Cours le matin. Trading live ensemble l'apres-midi. Pendant 5 jours, Sebastien vous transmet ce qu'il n'a jamais partage publiquement — et vous repartez avec un plan d'action clair que vous aurez deja mis en pratique.</p>
+    <div class="hero-badge"><span class="dot"></span> Malaga · 29 mars — 2 avril 2027 · 20 places</div>
+    <h1 class="hero-title">Cinq jours en salle.<br>Tu repars avec <em>ta</em> méthode,<br>écrite, testée, jugée.</h1>
+    <p class="hero-sub">Pas un stage de plus où l'on regarde quelqu'un trader. À Malaga, chaque élève sort avec son portrait de trader, une méthode qui porte son nom, et cinq jours de trades jugés contre cette méthode. Voici le déroulé réel de la dernière session, jour par jour.</p>
     <div class="hero-meta">
       <div class="hero-meta-item"><span class="hero-meta-label">Dates</span><span class="hero-meta-value">Lun. 29 mars — Ven. 2 avril 2027</span></div>
-      <div class="hero-meta-item"><span class="hero-meta-label">Lieu</span><span class="hero-meta-value">Malaga, Espagne</span></div>
+      <div class="hero-meta-item"><span class="hero-meta-label">Horaires</span><span class="hero-meta-value">9 h — 18 h 30, chaque jour</span></div>
       <div class="hero-meta-item"><span class="hero-meta-label">Places</span><span class="hero-meta-value">20 max</span></div>
     </div>
-    <a href="https://buy.stripe.com/aFa9ASezKgiRfWMbdo9EI0B" target="_blank" rel="noopener" class="hero-cta">Reserver ma place <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+    <div class="hero-actions">
+      <a href="https://buy.stripe.com/aFa9ASezKgiRfWMbdo9EI0B" target="_blank" rel="noopener" class="hero-cta">Réserver ma place <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      <a href="#programme" class="hero-ghost">Voir les cinq journées</a>
+    </div>
   </div>
 </section>
 
 <!-- COUNTDOWN -->
 <div class="countdown-bar">
-  <span class="countdown-label">Seminaire Malaga — 29 mars au 2 avril 2027</span>
+  <span class="countdown-label">Séminaire Malaga — 29 mars au 2 avril 2027</span>
   <div class="countdown-timer" id="countdown">
     <div class="cd-block"><div class="cd-num" id="cd-days">--</div><div class="cd-unit">Jours</div></div>
     <div class="cd-block"><div class="cd-num" id="cd-hours">--</div><div class="cd-unit">Heures</div></div>
@@ -258,95 +332,259 @@
   <span class="countdown-price"><strong>20 places — inscriptions ouvertes</strong> — 1 490 euros au lieu de 1 890 euros</span>
 </div>
 
-<!-- PAIN POINTS -->
-<section class="sec sec-dark">
-  <div class="sec-center">
-    <div class="sec-label sec-label-gold">Le constat</div>
-    <h2 class="sec-title" style="color:var(--pure)">Et si dans 5 jours,<br>tu ne subissais plus le marche ?</h2>
-    <p class="sec-desc" style="color:rgba(255,255,255,.45)">Imagine ouvrir tes ecrans le lundi matin et savoir exactement quoi regarder, ou attendre, et pourquoi. C'est ce que tu rameneras de Malaga.</p>
+<!-- PREUVE : CE QUE SEPTEMBRE A DONNÉ -->
+<section class="preuve" aria-labelledby="preuve-title">
+  <div class="preuve-head">
+    <div>
+      <div class="sec-label sec-label-gold">La dernière session, en chiffres</div>
+      <h2 class="sec-title" id="preuve-title">Du 28 septembre au 2 octobre 2026,<br>voilà ce qui s'est passé dans la salle.</h2>
+    </div>
+    <p class="sec-desc">Rien ici n'est une promesse. Ce sont les chiffres de la session qui vient de se terminer, avec seize élèves de tous niveaux. Mars 2027 suit exactement la même trame.</p>
   </div>
-  <div class="pain-grid">
-    <div class="pain-card"><div class="pain-icon">01</div><h3>Fini de trader dans le brouillard</h3><p>Tu ne sais plus par ou commencer quand tu ouvres tes ecrans ? En 5 jours, tu repars avec un processus clair — de la preparation de session a la derniere bougie — que tu auras deja applique chaque apres-midi en live.</p></div>
-    <div class="pain-card"><div class="pain-icon">02</div><h3>Comprendre enfin pourquoi le prix bouge</h3><p>Les marches ne sont pas aleatoires. Les operateurs ont des contraintes precises. Sebastien va te montrer exactement lesquelles — des elements qu'il n'a jamais partages publiquement — pour que tu cesses de subir et que tu commences a anticiper.</p></div>
-    <div class="pain-card"><div class="pain-icon">03</div><h3>Rentrer chez toi et savoir quoi faire</h3><p>Le vrai probleme, c'est le lundi d'apres. On construit ensemble ton plan etape par etape, et tu le mets en application pendant le seminaire. Le jour ou tu rentres, rien ne change — tu sais exactement quoi faire.</p></div>
+  <div class="chiffres">
+    <div class="chiffre"><div class="chiffre-num">16</div><div class="chiffre-label">élèves dans la salle, un seul formateur</div></div>
+    <div class="chiffre"><div class="chiffre-num">35</div><div class="chiffre-label">chapitres de cours filmés et découpés</div></div>
+    <div class="chiffre"><div class="chiffre-num">17<span>h</span></div><div class="chiffre-label">de cours enregistrés, remis aux élèves</div></div>
+    <div class="chiffre"><div class="chiffre-num">4</div><div class="chiffre-label">séances réelles du Nasdaq rejouées trade par trade</div></div>
+    <div class="chiffre"><div class="chiffre-num">16</div><div class="chiffre-label">portraits de trader et cartes de méthode écrites</div></div>
+    <div class="chiffre"><div class="chiffre-num">8</div><div class="chiffre-label">témoignages filmés le dernier jour, à chaud</div></div>
+  </div>
+  <p class="preuve-note">Chapitres et durées : enregistrements de la session du 28/09 au 02/10/2026, tels qu'ils ont été découpés pour les élèves. Séances rejouées sur Tradovate Market Replay. Témoignages visibles plus bas sur cette page.</p>
+</section>
+
+<!-- CE QUI EST DIFFÉRENT -->
+<section class="sec sec-light">
+  <div class="sec-center">
+    <div class="sec-label">Pourquoi c'est différent</div>
+    <h2 class="sec-title">Ce n'est pas un cours.<br>C'est une enquête sur toi.</h2>
+    <p class="sec-desc">Un cours te donne la méthode du formateur. Ces cinq jours cherchent la tienne, et la mettent à l'épreuve devant un vrai marché, sous tes yeux et sous les siens.</p>
+  </div>
+  <div class="diff-grid">
+    <div class="diff-card"><div class="diff-num">01 · Le lundi</div><h3>Ton portrait de trader, avant le premier trade.</h3><p>Dix minutes de questionnaire, lu par un agent IA profileur puis par un psychologue du trading. Il ne recopie pas tes réponses : il affirme qui tu es, et <strong>où tu lâches sous pression</strong>. Bass le lit avant de te revoir.</p></div>
+    <div class="diff-card"><div class="diff-num">02 · Le mardi</div><h3>Une méthode avec ton nom dessus.</h3><p>À huis clos, chaque élève avec Bass et l'agent IA : ton portrait, tes trades de la veille, ta façon de réagir. On détermine ensemble la méthode qui est la tienne, et <strong>elle est écrite en une page</strong> : déclencheur, stop, sortie. C'est ta carte.</p></div>
+    <div class="diff-card"><div class="diff-num">03 · Chaque jour</div><h3>Jugé contre ta carte, jamais contre ton P&amp;L.</h3><p>Chaque après-midi, tu exportes tes trades. L'analyste les lit un par un : <strong>le déclencheur était-il là ? le stop à l'endroit annoncé ? la sortie selon ta règle ?</strong> Le soir, tu sais exactement où tu as tenu et où tu as dérapé.</p></div>
+    <div class="diff-card"><div class="diff-num">04 · Le marché</div><h3>Des séances réelles du Nasdaq, rejouées.</h3><p>Pas de simulateur abstrait : quatre vraies séances du NQ, choisies par Bass pour leur caractère très différent, rejouées tick par tick sur Tradovate. <strong>Tu découvres laquelle au moment de la trader</strong>, comme un vrai lundi matin.</p></div>
   </div>
 </section>
 
-<!-- PROGRAMME -->
-<section class="sec sec-light" id="programme">
-  <div class="sec-center">
-    <div class="sec-label">Programme</div>
-    <h2 class="sec-title">Comprendre le matin.<br>Appliquer l'après-midi.</h2>
-    <p class="sec-desc">Cinq journées construites sur ce qui s'est réellement passé en salle lors de la dernière session. Un fil par jour, et à la fin de chaque journée, quelque chose que tu sais faire et que tu ne savais pas faire le matin. Mars 2027 suit la même trame, ajustée au groupe.</p>
+<!-- PROGRAMME : LES CINQ JOURNÉES -->
+<section class="prog" id="programme">
+  <div class="prog-head">
+    <div class="sec-label sec-label-gold">Le programme, jour par jour</div>
+    <h2 class="sec-title">Cinq journées,<br>telles qu'elles ont eu lieu.</h2>
+    <p class="sec-desc">Le déroulé ci-dessous est celui de la session de septembre 2026, heure par heure, avec les chapitres filmés chaque jour et leur durée. Comprendre le matin, appliquer l'après-midi, et chaque soir quelque chose que tu sais faire et que tu ne savais pas faire le matin.</p>
   </div>
+  <div class="rituel">
+    <div class="rituel-item"><div class="rituel-h">9 h</div><p><strong>Micro-test du matin.</strong> Cinq minutes, trois jeux. Ce qui compte, c'est l'écart entre ce que tu déclares et ce que tu fais.</p></div>
+    <div class="rituel-item"><div class="rituel-h">13 h 15</div><p><strong>Export de tes trades.</strong> Dépôt dans ton espace, lecture par l'analyste pendant la pause, fiche prête à 15 h.</p></div>
+    <div class="rituel-item"><div class="rituel-h">15 h</div><p><strong>Retours individuels.</strong> Bass reprend les fiches, élève par élève, devant le graphique.</p></div>
+    <div class="rituel-item"><div class="rituel-h">18 h 15</div><p><strong>Journal du soir, à la voix.</strong> Trois questions, une minute chacune. Transcrit, relu par l'analyste pour le lendemain.</p></div>
+  </div>
+
   <div class="jours">
-    <article class="jour">
-      <div class="jour-media"><img src="../images/malaga-2026/cours-01.jpg" alt="Bass en formation à Malaga, journée 1" loading="lazy" width="1600" height="900"><span class="jour-num">Journée 1</span></div>
+
+    <!-- JOUR 1 -->
+    <article class="jour" id="jour-1">
+      <div class="jour-side"><div class="jour-sticky">
+        <div class="jour-big">1<small>/5</small></div>
+        <div class="jour-dow">Lundi · l'hypothèse</div>
+        <div class="jour-media"><img src="../images/malaga-2026/cours-01.jpg" alt="Bass devant le carnet d'ordres Tradovate, lundi 28 septembre 2026, Malaga" loading="lazy" width="1600" height="900"><span class="jour-stamp">Lundi 28/09/2026</span></div>
+        <div class="jour-stat"><div><b>7</b><span>chapitres</span></div><div><b>3 h 10</b><span>filmées</span></div><div><b>9 h → 18 h 30</b><span>en salle</span></div></div>
+      </div></div>
       <div class="jour-body">
-        <div class="jour-label">Journée 1</div>
-        <h3>Comprendre qui bouge le marché.<br>Et s'installer pour l'exécuter.</h3>
-        <p><strong>Le matin.</strong> On commence par les acteurs : qui achète, qui vend, et ce que les institutionnels sont obligés de faire, options et couverture comprises. Tu comprends enfin pourquoi certains niveaux tiennent et d'autres cassent.</p>
-        <p><strong>L'après-midi.</strong> On règle ton poste, on lit les volumes, et on exécute : repérer les blocages du prix, entrer vite, tenir un rythme, suivre tes statistiques, maîtriser le levier et valider une cassure au lieu de la subir.</p>
-        <div class="jour-tags"><span>Acteurs du marché</span><span>Options et couverture</span><span>Exécution</span><span>Levier</span></div>
+        <h3>D'abord, qui tu es comme trader.<br>Ensuite, <em>qui bouge vraiment le marché</em>.</h3>
+        <p class="jour-lead">La semaine commence par toi, pas par un graphique. Puis le cours attaque le fond : qui achète, qui vend, et ce que les institutionnels sont <strong>obligés</strong> de faire, options et couverture comprises. Le soir, tu comprends enfin pourquoi certains niveaux tiennent et d'autres cassent.</p>
+        <ol class="tl">
+          <li><span class="t">9 h</span><span class="w"><strong>Accueil et questionnaire</strong> dans ton espace : parcours, situations de vie, mini-tests. Pendant que le cours commence, l'agent profileur dresse ton portrait.</span></li>
+          <li><span class="t">9 h 30</span><span class="w"><strong>Cours.</strong> Maîtriser son exécution et comprendre les acteurs du marché. Puis l'impact des options et la couverture institutionnelle : ce que Bass n'avait jamais détaillé publiquement.</span></li>
+          <li><span class="t">11 h</span><span class="w"><strong>Atelier.</strong> Configuration du poste sur Tradovate et lecture des volumes, écran par écran, jusqu'à ce que chacun ait un poste prêt à exécuter.</span></li>
+          <li><span class="t">13 h 30</span><span class="w"><strong>Pause.</strong> Les seize portraits sont prêts. Bass les lit avant de revoir chacun.</span></li>
+          <li><span class="t">15 h</span><span class="w"><strong>Cours et atelier.</strong> Détecter les blocages du prix et exécuter vite. Tenir un rythme d'exécution et suivre ses statistiques. Comprendre l'équilibre du marché et maîtriser le levier. Repérer les compressions et valider une cassure au lieu de la subir.</span></li>
+          <li><span class="t gold">18 h 15</span><span class="w"><strong>Journal du soir</strong>, à la voix. Fin à 18 h 30.</span></li>
+        </ol>
+        <details class="chap"><summary>Les 7 chapitres filmés ce jour-là · 3 h 10 <span class="ic">+</span></summary>
+          <ol>
+            <li class="demi">Matin · 2 chapitres · 0 h 51</li>
+            <li>Maîtriser son exécution et comprendre les acteurs du marché<span class="d">24 min</span></li>
+            <li>Comprendre l'impact des options et la couverture institutionnelle<span class="d">27 min</span></li>
+            <li class="demi">Après-midi · 5 chapitres · 2 h 19</li>
+            <li>Configuration du poste et analyse des volumes<span class="d">30 min</span></li>
+            <li>Détecter les blocages du prix et exécuter rapidement<span class="d">35 min</span></li>
+            <li>Maîtriser le rythme d'exécution et suivre ses statistiques<span class="d">34 min</span></li>
+            <li>Comprendre l'équilibre du marché et maîtriser le levier<span class="d">30 min</span></li>
+            <li>Repérer les compressions de prix et valider les cassures<span class="d">10 min</span></li>
+          </ol>
+        </details>
+        <div class="jour-out"><b>Le soir, tu sais</b>pourquoi un niveau tient ou casse, et tu as un poste réglé pour l'exécuter. Et quelqu'un a lu qui tu es avant même ton premier trade de la semaine.</div>
       </div>
     </article>
-    <article class="jour">
-      <div class="jour-media"><img src="../images/malaga-2026/cours-02.jpg" alt="Bass en formation à Malaga, journée 2" loading="lazy" width="1600" height="900"><span class="jour-num">Journée 2</span></div>
+
+    <!-- JOUR 2 -->
+    <article class="jour" id="jour-2">
+      <div class="jour-side"><div class="jour-sticky">
+        <div class="jour-big">2<small>/5</small></div>
+        <div class="jour-dow">Mardi · le huis clos</div>
+        <div class="jour-media"><img src="../images/malaga-2026/cours-08.jpg" alt="Bass en cours devant le carnet d'ordres, session de septembre 2026" loading="lazy" width="1600" height="900"><span class="jour-stamp">Mardi 29/09/2026</span></div>
+        <div class="jour-stat"><div><b>4</b><span>chapitres</span></div><div><b>1 h 58</b><span>filmées</span></div><div><b>16</b><span>entretiens</span></div></div>
+      </div></div>
       <div class="jour-body">
-        <div class="jour-label">Journée 2</div>
-        <h3>Lire l'ouverture.<br>Puis se regarder en face.</h3>
-        <p><strong>Le matin.</strong> L'ouverture : cadrer la séance, observer l'activité acheteurs-vendeurs, lire l'histogramme de volume et la répartition des volumes, s'appuyer sur les statistiques. Puis le risque et le choix des actifs, pour simplifier ton exécution.</p>
-        <p><strong>L'après-midi.</strong> À huis clos : l'analyse individuelle de chaque élève avec l'agent IA. Tes réponses, tes trades, ta façon de réagir. On te connaît, et on détermine ensemble la méthode qui est la tienne.</p>
-        <div class="jour-tags"><span>Ouverture</span><span>Histogramme de volume</span><span>Gestion du risque</span><span>Ton profil avec l'IA</span></div>
+        <h3>Lire l'ouverture.<br>Puis, à huis clos, <em>ta méthode</em>.</h3>
+        <p class="jour-lead">Le matin, la demi-heure où tout se joue : l'ouverture. L'après-midi, le format qui n'existe nulle part ailleurs : <strong>chaque élève, un par un, avec Bass et l'agent IA</strong>. Ton portrait, tes réponses, ta façon de réagir à la perte. On se connaît, et on détermine ensemble la méthode qui est la tienne. Elle est écrite. Elle a ton nom.</p>
+        <ol class="tl">
+          <li><span class="t">9 h</span><span class="w"><strong>Micro-test du matin.</strong></span></li>
+          <li><span class="t">9 h 15</span><span class="w"><strong>Cours.</strong> Cadrer l'ouverture et observer l'activité acheteurs-vendeurs. Lire l'histogramme de volume pour simplifier son exécution. S'appuyer sur les statistiques et la répartition des volumes. Gestion du risque et choix des actifs.</span></li>
+          <li><span class="t">11 h</span><span class="w"><span class="tag">Replay</span><strong>Première séance réelle du NQ</strong>, rejouée sur Tradovate. Tu la trades comme tu trades aujourd'hui : c'est le point de départ.</span></li>
+          <li><span class="t">13 h 15</span><span class="w"><strong>Export Tradovate</strong> et dépôt dans ton espace. L'analyste lit tes trades pendant la pause.</span></li>
+          <li><span class="t">15 h</span><span class="w"><strong>Huis clos.</strong> Analyse individuelle de chaque élève avec l'agent IA : portrait du lundi, trades du matin, journal. On tranche ensemble, et <strong>ta carte de méthode est écrite et validée par toi</strong> : déclencheur, stop, sortie, en une page.</span></li>
+          <li><span class="t gold">18 h 15</span><span class="w"><strong>Journal du soir.</strong> Fin à 18 h 30.</span></li>
+        </ol>
+        <details class="chap"><summary>Les 4 chapitres filmés ce jour-là · 1 h 58 <span class="ic">+</span></summary>
+          <ol>
+            <li class="demi">Matin · 4 chapitres · 1 h 58</li>
+            <li>Cadrer l'ouverture et observer l'activité acheteurs-vendeurs<span class="d">36 min</span></li>
+            <li>Analyser l'histogramme de volume et simplifier son exécution<span class="d">30 min</span></li>
+            <li>Utiliser les statistiques et la répartition des volumes<span class="d">31 min</span></li>
+            <li>Maîtriser la gestion du risque et le choix des actifs<span class="d">21 min</span></li>
+            <li class="demi">Après-midi · huis clos, non filmé</li>
+          </ol>
+        </details>
+        <div class="jour-out"><b>Le soir, tu as</b>une méthode qui te ressemble, écrite noir sur blanc. À partir de là, chaque trade de la semaine sera jugé contre elle, et contre rien d'autre.</div>
       </div>
     </article>
-    <article class="jour">
-      <div class="jour-media"><img src="../images/malaga-2026/cours-04.jpg" alt="Bass en formation à Malaga, journée 3" loading="lazy" width="1600" height="900"><span class="jour-num">Journée 3</span></div>
+
+    <!-- JOUR 3 -->
+    <article class="jour" id="jour-3">
+      <div class="jour-side"><div class="jour-sticky">
+        <div class="jour-big">3<small>/5</small></div>
+        <div class="jour-dow">Mercredi · la carte à l'épreuve</div>
+        <div class="jour-media"><img src="../images/malaga-2026/cours-04.jpg" alt="Bass pointe une zone sur le graphique Tradovate, session de septembre 2026" loading="lazy" width="1600" height="900"><span class="jour-stamp">Mercredi 30/09/2026</span></div>
+        <div class="jour-stat"><div><b>3</b><span>chapitres</span></div><div><b>1 h 28</b><span>filmées</span></div><div><b>1</b><span>séance rejouée</span></div></div>
+      </div></div>
       <div class="jour-body">
-        <div class="jour-label">Journée 3</div>
-        <h3>Vendre à découvert.<br>Et prendre de la hauteur.</h3>
-        <p><strong>Le matin.</strong> La vente à découvert, que presque personne ne travaille vraiment : comment exécuter sur les niveaux clés quand le marché descend.</p>
-        <p><strong>L'après-midi.</strong> On sort du bruit : analyser les grands actifs, repérer les bons signaux et prendre du recul pour ne garder que les meilleures opportunités.</p>
-        <div class="jour-tags"><span>Vente à découvert</span><span>Niveaux clés</span><span>Grands actifs</span><span>Sélection des opportunités</span></div>
+        <h3>Vendre à découvert.<br>Et tenir ta carte quand <em>le marché ne fait rien</em>.</h3>
+        <p class="jour-lead">Le matin, ce que presque personne ne travaille vraiment : la vente à découvert sur niveaux clés. Puis une deuxième séance réelle, d'un tout autre caractère que celle de la veille. C'est là qu'on voit si une carte tient : <strong>quand chaque cassure est fausse et que l'ennui pousse à cliquer</strong>.</p>
+        <ol class="tl">
+          <li><span class="t">9 h</span><span class="w"><strong>Micro-test du matin.</strong></span></li>
+          <li><span class="t">9 h 15</span><span class="w"><strong>Cours.</strong> Maîtriser la vente à découvert et exécuter sur niveaux clés quand le marché descend.</span></li>
+          <li><span class="t">—</span><span class="w"><span class="tag">Replay</span><strong>Deuxième séance réelle du NQ.</strong> Tu la trades avec ta carte, et seulement avec ta carte.</span></li>
+          <li><span class="t">13 h 15</span><span class="w"><strong>Export et dépôt.</strong> Chaque trade jugé contre ta carte : déclencheur présent ? stop à l'endroit annoncé ? sortie selon ta règle ? Jamais contre le résultat.</span></li>
+          <li><span class="t">15 h</span><span class="w"><strong>Retours individuels</strong>, puis cours : analyser les grands actifs et repérer les bons signaux ; prendre du recul pour ne garder que les meilleures opportunités. Ceux dont la carte a craqué en écrivent une deuxième avec Bass, et retournent sur le replay.</span></li>
+          <li><span class="t gold">18 h 15</span><span class="w"><strong>Journal du soir.</strong> Fin à 18 h 30.</span></li>
+        </ol>
+        <details class="chap"><summary>Les 3 chapitres filmés ce jour-là · 1 h 28 <span class="ic">+</span></summary>
+          <ol>
+            <li class="demi">Matin · 1 chapitre · 0 h 27</li>
+            <li>Maîtriser la vente à découvert et exécuter sur niveaux clés<span class="d">27 min</span></li>
+            <li class="demi">Après-midi · 2 chapitres · 1 h 01</li>
+            <li>Comment analyser les grands actifs et repérer les bons signaux<span class="d">29 min</span></li>
+            <li>Prendre du recul pour trouver les meilleures opportunités<span class="d">32 min</span></li>
+          </ol>
+        </details>
+        <div class="jour-out"><b>Le soir, tu sais</b>ce que ta méthode exige de toi, et à quel moment précis tu lâches. C'est daté, c'est écrit, et ce n'est pas une opinion.</div>
       </div>
     </article>
-    <article class="jour">
-      <div class="jour-media"><img src="../images/malaga-2026/cours-05.jpg" alt="Bass en formation à Malaga, journée 4" loading="lazy" width="1600" height="900"><span class="jour-num">Journée 4</span></div>
+
+    <!-- JOUR 4 -->
+    <article class="jour" id="jour-4">
+      <div class="jour-side"><div class="jour-sticky">
+        <div class="jour-big">4<small>/5</small></div>
+        <div class="jour-dow">Jeudi · le choc</div>
+        <div class="jour-media"><img src="../images/malaga-2026/cours-05.jpg" alt="Bass en cours devant le graphique du Nasdaq, jeudi 1er octobre 2026" loading="lazy" width="1600" height="900"><span class="jour-stamp">Jeudi 01/10/2026</span></div>
+        <div class="jour-stat"><div><b>9</b><span>chapitres</span></div><div><b>4 h 35</b><span>filmées</span></div><div><b>2</b><span>séances rejouées</span></div></div>
+      </div></div>
       <div class="jour-body">
-        <div class="jour-label">Journée 4</div>
-        <h3>Un plan clair.<br>Des sorties propres. Plusieurs comptes.</h3>
-        <p><strong>Le matin.</strong> Ton plan : structurer et sécuriser tes ordres sur graphique nu, optimiser tes sorties, piloter ton risque, gérer plusieurs comptes financés en même temps, et filtrer tes entrées avec l'équilibre des prix.</p>
-        <p><strong>L'après-midi.</strong> La routine : maîtriser ton ouverture et protéger ton capital, choisir la stratégie qui te va, trouver les opportunités avec un screener, anticiper les retournements avec les probabilités, placer ton timing et tes niveaux de protection.</p>
-        <div class="jour-tags"><span>Plan de trading</span><span>Sorties de position</span><span>Comptes financés</span><span>Screener et probabilités</span></div>
+        <h3>Le choc. Le plan.<br>Et <em>plusieurs comptes financés</em> à la fois.</h3>
+        <p class="jour-lead">La journée la plus dense de la semaine : neuf chapitres, deux séances rejouées. Le matin, le plan qui sécurise tes ordres sur un graphique nu. À l'écran, une séance avec un choc dedans, <strong>celui qu'on n'annonce pas</strong>. L'après-midi, la routine complète, de l'ouverture aux niveaux de protection.</p>
+        <ol class="tl">
+          <li><span class="t">9 h</span><span class="w"><strong>Micro-test du matin.</strong></span></li>
+          <li><span class="t">9 h 15</span><span class="w"><strong>Cours.</strong> Structurer son plan et sécuriser ses ordres sur graphique nu. Optimiser ses sorties et piloter son risque. Gérer plusieurs comptes financés en même temps et faire évoluer son risque. Exploiter l'équilibre des prix pour filtrer ses entrées.</span></li>
+          <li><span class="t">—</span><span class="w"><span class="tag">Replay</span><strong>Troisième séance réelle du NQ.</strong> Volume multiplié, aller-retour violent : tu la traverses avec ton plan, ou sans.</span></li>
+          <li><span class="t">13 h 15</span><span class="w"><strong>Export, dépôt, jugement</strong> pendant la pause.</span></li>
+          <li><span class="t">15 h</span><span class="w"><span class="tag">Replay</span><strong>Seconde séance de l'après-midi</strong>, puis cours : maîtriser son ouverture et sécuriser son capital ; choisir la bonne stratégie et organiser sa routine ; trouver les opportunités avec un screener ; anticiper les retournements avec les probabilités ; placer son timing et ses niveaux de protection.</span></li>
+          <li><span class="t">17 h</span><span class="w"><strong>Retours individuels.</strong></span></li>
+          <li><span class="t gold">18 h 15</span><span class="w"><strong>Journal du soir.</strong> Fin à 18 h 30.</span></li>
+        </ol>
+        <details class="chap"><summary>Les 9 chapitres filmés ce jour-là · 4 h 35 <span class="ic">+</span></summary>
+          <ol>
+            <li class="demi">Matin · 4 chapitres · 2 h 14</li>
+            <li>Structurer son plan et sécuriser ses ordres sur graphique nu<span class="d">32 min</span></li>
+            <li>Optimiser ses sorties de position et piloter son risque<span class="d">30 min</span></li>
+            <li>Gérer plusieurs comptes financés et faire évoluer son risque<span class="d">34 min</span></li>
+            <li>Exploiter l'équilibre des prix et filtrer ses points d'entrée<span class="d">38 min</span></li>
+            <li class="demi">Après-midi · 5 chapitres · 2 h 21</li>
+            <li>Maîtriser son ouverture et sécuriser son capital<span class="d">26 min</span></li>
+            <li>Choisir la bonne stratégie et organiser sa routine<span class="d">24 min</span></li>
+            <li>Trouver les meilleures opportunités avec un screener<span class="d">30 min</span></li>
+            <li>Utiliser les probabilités pour anticiper les retournements<span class="d">35 min</span></li>
+            <li>Optimiser son timing et placer ses niveaux de protection<span class="d">26 min</span></li>
+          </ol>
+        </details>
+        <div class="jour-out"><b>Le soir, tu as</b>traversé un choc avec un plan écrit, et tu sais piloter plusieurs comptes financés sans te brûler. Ta carte a maintenant trois journées très différentes derrière elle.</div>
       </div>
     </article>
-    <article class="jour">
-      <div class="jour-media"><img src="../images/malaga-2026/cours-06.jpg" alt="Bass en formation à Malaga, journée 5" loading="lazy" width="1600" height="900"><span class="jour-num">Journée 5</span></div>
+
+    <!-- JOUR 5 -->
+    <article class="jour" id="jour-5">
+      <div class="jour-side"><div class="jour-sticky">
+        <div class="jour-big">5<small>/5</small></div>
+        <div class="jour-dow">Vendredi · le verdict</div>
+        <div class="jour-media"><img src="../images/malaga-2026/cours-06.jpg" alt="Bass désigne les niveaux de la séance sur l'écran, vendredi 2 octobre 2026" loading="lazy" width="1600" height="900"><span class="jour-stamp">Vendredi 02/10/2026</span></div>
+        <div class="jour-stat"><div><b>12</b><span>chapitres</span></div><div><b>6 h 04</b><span>filmées</span></div><div><b>8</b><span>témoignages</span></div></div>
+      </div></div>
       <div class="jour-body">
-        <div class="jour-label">Journée 5</div>
-        <h3>Protéger le capital.<br>Repartir avec sa méthode.</h3>
-        <p><strong>Le matin.</strong> Tout ce qui fait durer un trader : protéger son capital, structurer sa gestion du risque, bâtir sa régularité, tenir son levier au quotidien, simplifier son analyse, cadrer ses objectifs, couvrir ses positions, lire la volatilité et les corrélations d'indices, épurer son environnement, s'appuyer sur les assistants virtuels.</p>
-        <p><strong>L'après-midi.</strong> La lecture du marché : structure du prix, zones d'équilibre, structures d'enchères et types d'ouverture, cartographier la séance à partir de la veille, reconnaître le rôle des intervenants. Et pour finir, chacun personnalise sa méthode et écrit son plan d'action autonome.</p>
-        <div class="jour-tags"><span>Gestion du risque</span><span>Régularité</span><span>Market Profile</span><span>Méthode personnalisée</span></div>
+        <h3>Le bilan. Ta carte de trader.<br>Et tout ce qui <em>fait durer</em>.</h3>
+        <p class="jour-lead">Douze chapitres, six heures filmées : le jour où tout s'assemble. Le matin, le bilan de ta semaine, fidélité à ta carte et moments où ça a déraillé. Puis <strong>ta carte de trader, une page qui te suit en rentrant</strong>. L'après-midi, la lecture du marché de bout en bout, et le plan d'action que tu appliques seul dès le lundi.</p>
+        <ol class="tl">
+          <li><span class="t">9 h</span><span class="w"><strong>Micro-test du matin</strong>, le dernier. Comparé à celui du lundi.</span></li>
+          <li><span class="t">9 h 15</span><span class="w"><strong>Bilan de la semaine</strong>, élève par élève. Puis cours : protéger son capital et structurer sa gestion du risque ; bâtir sa régularité et tenir son levier au quotidien ; simplifier son analyse et cadrer ses objectifs ; filtrer les exécutions et couvrir ses positions ; volatilité et corrélations d'indices ; zones de rejet et environnement épuré ; pression du marché et assistants virtuels.</span></li>
+          <li><span class="t">11 h</span><span class="w"><strong>Ta carte de trader.</strong> Qui tu es, ta méthode, les pièges que la semaine a révélés, ton rituel. Une page, la tienne.</span></li>
+          <li><span class="t">15 h</span><span class="w"><strong>Cours.</strong> Structure du prix et zones d'équilibre. Structures d'enchères et types d'ouvertures. Cartographier la séance à partir des repères de la veille. Reconnaître le rôle des intervenants. Et pour finir : personnaliser sa méthode et établir son plan d'action autonome.</span></li>
+          <li><span class="t">—</span><span class="w"><strong>Derniers retours</strong>, témoignages filmés dans la salle, photo du groupe.</span></li>
+          <li><span class="t gold">18 h 30</span><span class="w"><strong>Fin de la semaine.</strong></span></li>
+        </ol>
+        <details class="chap"><summary>Les 12 chapitres filmés ce jour-là · 6 h 04 <span class="ic">+</span></summary>
+          <ol>
+            <li class="demi">Matin · 7 chapitres · 3 h 19</li>
+            <li>Protéger son capital et structurer sa gestion du risque<span class="d">34 min</span></li>
+            <li>Bâtir sa régularité et maîtriser son levier au quotidien<span class="d">30 min</span></li>
+            <li>Simplifier son analyse et cadrer ses objectifs financiers<span class="d">31 min</span></li>
+            <li>Filtrer les exécutions et couvrir ses positions sur le marché<span class="d">33 min</span></li>
+            <li>Gérer la volatilité et exploiter les corrélations d'indices<span class="d">23 min</span></li>
+            <li>Anticiper les zones de rejet et épurer son environnement<span class="d">30 min</span></li>
+            <li>Analyser la pression du marché et utiliser des assistants virtuels<span class="d">18 min</span></li>
+            <li class="demi">Après-midi · 5 chapitres · 2 h 45</li>
+            <li>Structure du prix et lecture des zones d'équilibre<span class="d">29 min</span></li>
+            <li>Identifier les structures d'enchères et les types d'ouvertures<span class="d">35 min</span></li>
+            <li>Cartographier la séance à partir des repères de la veille<span class="d">32 min</span></li>
+            <li>Reconnaître le rôle des intervenants et structurer son avantage<span class="d">36 min</span></li>
+            <li>Personnaliser sa méthode et établir son plan d'action autonome<span class="d">33 min</span></li>
+          </ol>
+        </details>
+        <div class="jour-out"><b>Le soir, tu rentres avec</b>une carte de trader signée, un plan d'action pour le lundi, et dix-sept heures de cours découpées en chapitres dans ton espace. Le jour où tu rentres, rien ne change : tu sais quoi faire.</div>
       </div>
     </article>
+
+  </div>
+
+  <div class="prog-foot">
+    <p><strong>Mars 2027 suit la même trame</strong>, ajustée au groupe : mêmes horaires, mêmes rituels, mêmes séances réelles rejouées, et les chapitres filmés remis dans ton espace après la session. Seuls les élèves changent, et donc les cartes.</p>
+    <a href="https://buy.stripe.com/aFa9ASezKgiRfWMbdo9EI0B" target="_blank" rel="noopener" class="hero-cta">Réserver ma place <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
   </div>
 </section>
-
 
 <!-- SEBASTIEN -->
-<section class="sec sec-light">
+<section class="sec sec-light" style="padding-top:60px">
   <div class="seb-grid">
-    <div class="seb-img"><img src="../images/bass-portrait.jpg" alt="Sebastien Constant" loading="lazy"></div>
+    <div class="seb-img"><img src="../images/bass-portrait.jpg" alt="Sébastien Constant" loading="lazy"></div>
     <div>
       <div class="sec-label">Ton formateur</div>
-      <h2 class="sec-title">Sebastien Constant</h2>
-      <p class="sec-desc">Trader actif depuis plus de 10 ans. Il trade tous les jours, en live, devant ses eleves — son propre argent, ses propres resultats. Un de ses eleves travaille aujourd'hui pour un fonds d'investissement.</p>
-      <p class="sec-desc" style="margin-top:16px">Lors de ce seminaire, Sebastien partagera des elements qu'il n'a jamais devoiles publiquement — sa lecture des contraintes des operateurs institutionnels, ses grilles de decision, et le processus exact qu'il applique chaque jour. Pas de theorie recyclee. Du contenu inedit, reserve aux participants.</p>
+      <h2 class="sec-title">Sébastien Constant</h2>
+      <p class="sec-desc">Trader actif depuis plus de dix ans. Il trade tous les jours, en direct, devant ses élèves : son propre argent, ses propres résultats. Un de ses élèves travaille aujourd'hui pour un fonds d'investissement.</p>
+      <p class="sec-desc" style="margin-top:16px">À Malaga, il ne fait pas que donner le cours. Il lit les seize portraits avant de revoir chacun, reçoit chaque élève à huis clos le mardi, et reprend les fiches de l'analyste chaque après-midi devant le graphique. Seize élèves, un seul formateur, toute la semaine.</p>
       <div class="seb-stat">
-        <div class="seb-stat-item"><div class="seb-stat-num">Live</div><div class="seb-stat-label">Chaque jour devant ses eleves</div></div>
+        <div class="seb-stat-item"><div class="seb-stat-num">Live</div><div class="seb-stat-label">Chaque jour devant ses élèves</div></div>
         <div class="seb-stat-item"><div class="seb-stat-num">4.9/5</div><div class="seb-stat-label">Trustpilot (126 avis)</div></div>
-        <div class="seb-stat-item"><div class="seb-stat-num">10+</div><div class="seb-stat-label">Ans d'experience</div></div>
+        <div class="seb-stat-item"><div class="seb-stat-num">10+</div><div class="seb-stat-label">Ans d'expérience</div></div>
       </div>
     </div>
   </div>
@@ -361,26 +599,25 @@
   </div>
   <div class="salle-grid">
     <figure class="salle-item"><img src="../images/malaga-2026/cours-01.jpg" alt="Bass en formation à Malaga, devant l'écran de trading" loading="lazy" width="1600" height="900"></figure>
-    <figure class="salle-item"><img src="../images/malaga-2026/cours-02.jpg" alt="Bass montre un niveau clé sur le graphique" loading="lazy" width="1600" height="900"></figure>
-    <figure class="salle-item"><img src="../images/malaga-2026/cours-03.jpg" alt="Bass explique le Market Profile en salle" loading="lazy" width="1600" height="900"></figure>
+    <figure class="salle-item"><img src="../images/malaga-2026/cours-02.jpg" alt="Bass montre un niveau clé sur le carnet d'ordres" loading="lazy" width="1600" height="900"></figure>
+    <figure class="salle-item"><img src="../images/malaga-2026/cours-03.jpg" alt="Bass explique une séance du Nasdaq en salle" loading="lazy" width="1600" height="900"></figure>
     <figure class="salle-item"><img src="../images/malaga-2026/cours-04.jpg" alt="Bass pointe une zone sur le graphique en direct" loading="lazy" width="1600" height="900"></figure>
-    <figure class="salle-item"><img src="../images/malaga-2026/cours-05.jpg" alt="Bass en cours, session de septembre 2026" loading="lazy" width="1600" height="900"></figure>
-    <figure class="salle-item"><img src="../images/malaga-2026/cours-06.jpg" alt="Bass désigne un niveau sur le carnet d'ordres" loading="lazy" width="1600" height="900"></figure>
-    <figure class="salle-item"><img src="../images/malaga-2026/cours-07.jpg" alt="Lecture du footprint en salle" loading="lazy" width="1600" height="900"></figure>
-    <figure class="salle-item"><img src="../images/malaga-2026/cours-08.jpg" alt="Le cours du lundi matin, Malaga" loading="lazy" width="1600" height="900"></figure>
+    <figure class="salle-item"><img src="../images/malaga-2026/cours-05.jpg" alt="Bass en cours, jeudi 1er octobre 2026" loading="lazy" width="1600" height="900"></figure>
+    <figure class="salle-item"><img src="../images/malaga-2026/cours-06.jpg" alt="Bass désigne les niveaux de la séance, vendredi 2 octobre 2026" loading="lazy" width="1600" height="900"></figure>
+    <figure class="salle-item"><img src="../images/malaga-2026/cours-07.jpg" alt="Lecture du carnet d'ordres en salle, vendredi 2 octobre 2026" loading="lazy" width="1600" height="900"></figure>
+    <figure class="salle-item"><img src="../images/malaga-2026/cours-08.jpg" alt="Le cours du lundi, Malaga" loading="lazy" width="1600" height="900"></figure>
     <figure class="salle-item"><img src="../images/bass-malaga-group.jpg" alt="Le groupe de la formation présentielle à Malaga" loading="lazy" width="1600" height="900"></figure>
   </div>
 </section>
 
-
-<!-- ======================== TÉMOIGNAGES VIDÉO — MALAGA SEPT. 2026 ======================== -->
-<section class="vt" id="temoignages" style="padding-top:0;border-top:none">
+<!-- TÉMOIGNAGES VIDÉO -->
+<section class="vt" id="temoignages" style="padding-top:0">
   <div class="sec-center">
     <div class="sec-label">Témoignages vidéo · septembre 2026</div>
     <h2 class="sec-title">Ils en sortent.<br>Écoute-les.</h2>
-    <p class="sec-desc">Filmés le dernier jour de la session, à chaud, dans la salle. Huit témoignages entiers et les meilleurs moments.</p>
+    <p class="sec-desc">Filmés le vendredi 2 octobre, dernier jour de la session, à chaud, dans la salle. Huit témoignages entiers et les meilleurs moments.</p>
   </div>
-  <div class="vt-feature"><div class="yt" data-id="bRggZkAIXDY" data-title="Pourquoi venir en présentiel, les élèves de Malaga racontent"><img src="../images/temoignages/teaser-presentiel.jpg" alt="Les élèves de la formation présentielle BASS Trading à Malaga, septembre 2026" loading="lazy" width="960" height="540"><button class="yt-play" type="button" aria-label="Lire : Pourquoi venir en présentiel, les élèves de Malaga racontent"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button><span class="yt-dur">1:15</span></div></div></div>
+  <div class="vt-feature"><div class="yt" data-id="bRggZkAIXDY" data-title="Pourquoi venir en présentiel, les élèves de Malaga racontent"><img src="../images/temoignages/teaser-presentiel.jpg" alt="Les élèves de la formation présentielle BASS Trading à Malaga, septembre 2026" loading="lazy" width="960" height="540"><button class="yt-play" type="button" aria-label="Lire : Pourquoi venir en présentiel, les élèves de Malaga racontent"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button><span class="yt-dur">1:15</span></div></div>
   <div class="vt-grid">
     <article class="vt-card"><div class="yt" data-id="yRUOM6Awdtw" data-title="Témoignage de Christian"><img src="../images/temoignages/christian.jpg" alt="Christian, élève de la formation présentielle BASS Trading à Malaga, septembre 2026" loading="lazy" width="960" height="540"><button class="yt-play" type="button" aria-label="Lire : Témoignage de Christian"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button><span class="yt-dur">1:51</span></div><div class="vt-body"><h3 class="vt-name">Christian</h3><p class="vt-quote">« Je repars avec une technique clé en main. Le plus important, ça a été d'être sincère avec soi-même. »</p></div></article>
     <article class="vt-card"><div class="yt" data-id="xGhvjg1om4g" data-title="Témoignage de Frédérique"><img src="../images/temoignages/mamie.jpg" alt="Frédérique, élève de la formation présentielle BASS Trading à Malaga, septembre 2026" loading="lazy" width="960" height="540"><button class="yt-play" type="button" aria-label="Lire : Témoignage de Frédérique"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button><span class="yt-dur">2:22</span></div><div class="vt-body"><h3 class="vt-name">Frédérique</h3><p class="vt-quote">« Je sentais qu'il y avait quelque chose de caché derrière les bougies. Je repars avec quelque chose de très simple. »</p></div></article>
@@ -394,16 +631,16 @@
   <p class="vt-note">Filmés le vendredi 2 octobre 2026, dernier jour de la session. Les questions de Bass sont coupées, les réponses sont entières.</p>
 </section>
 
-<!-- TESTIMONIALS -->
+<!-- TRUSTPILOT -->
 <section class="sec sec-light" style="padding-top:0">
   <div class="sec-center">
     <div class="sec-label">Avis Trustpilot</div>
     <h2 class="sec-title">Ce qu'ils en disent.</h2>
   </div>
   <div class="test-grid">
-    <div class="test-card"><div class="test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="test-text">"Un stage intensif et immersif a Malaga en Market Profile entre les mains de Bass pour progresser et continuer l'apprentissage dans une ambiance incroyable. La qualite de l'enseignement de Bass est remarquable et remarquee. Merci pour tout. A quand le prochain ?"</p><div class="test-author">Laurent Ouanich</div><div class="test-role">Avis Trustpilot verifie</div></div>
-    <div class="test-card"><div class="test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="test-text">"Nous avons pu rencontrer Bass au seminaire a Malaga. Bass est une personne fort sympathique et bon pedagogue, fort d'avoir etabli une belle communaute. Nous avons pu ressentir un reel merite a son apprentissage et une grande reconnaissance de ses eleves envers lui !"</p><div class="test-author">Lorton</div><div class="test-role">Avis Trustpilot verifie</div></div>
-    <div class="test-card"><div class="test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="test-text">"Rencontre a un seminaire, Bass est un tres bon formateur et une tres bonne personne, bienveillant. Je vous recommande sa formation pour completer vos connaissances en bourse ou meme pour commencer dans ce domaine. Merci a toi Bass."</p><div class="test-author">Va Fr</div><div class="test-role">Avis Trustpilot verifie</div></div>
+    <div class="test-card"><div class="test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="test-text">"Un stage intensif et immersif à Malaga en Market Profile entre les mains de Bass pour progresser et continuer l'apprentissage dans une ambiance incroyable. La qualité de l'enseignement de Bass est remarquable et remarquée. Merci pour tout. À quand le prochain ?"</p><div class="test-author">Laurent Ouanich</div><div class="test-role">Avis Trustpilot vérifié</div></div>
+    <div class="test-card"><div class="test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="test-text">"Nous avons pu rencontrer Bass au séminaire à Malaga. Bass est une personne fort sympathique et bon pédagogue, fort d'avoir établi une belle communauté. Nous avons pu ressentir un réel mérite à son apprentissage et une grande reconnaissance de ses élèves envers lui !"</p><div class="test-author">Lorton</div><div class="test-role">Avis Trustpilot vérifié</div></div>
+    <div class="test-card"><div class="test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="test-text">"Rencontré à un séminaire, Bass est un très bon formateur et une très bonne personne, bienveillant. Je vous recommande sa formation pour compléter vos connaissances en bourse ou même pour commencer dans ce domaine. Merci à toi Bass."</p><div class="test-author">Va Fr</div><div class="test-role">Avis Trustpilot vérifié</div></div>
   </div>
 </section>
 
@@ -411,34 +648,35 @@
 <section class="sec sec-light" id="inscription">
   <div class="sec-center">
     <div class="sec-label sec-label-gold">Inscription</div>
-    <h2 class="sec-title">Reserve ta place.</h2>
-    <p class="sec-desc">20 places maximum — inscriptions ouvertes.</p>
+    <h2 class="sec-title">Réserve ta place.</h2>
+    <p class="sec-desc">20 places maximum, inscriptions ouvertes.</p>
   </div>
   <div class="price-card">
     <div class="price-alert">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
       <div>
         <strong>Inscriptions ouvertes — 20 places</strong>
-        <span>Seminaire du 29 mars au 2 avril 2027 a Malaga</span>
+        <span>Séminaire du 29 mars au 2 avril 2027 à Malaga</span>
       </div>
     </div>
-    <div class="price-badge">Offre limitee — 20 places</div>
+    <div class="price-badge">Offre limitée — 20 places</div>
     <div class="price-old">1 890 euros</div>
     <div class="price-amount">1 490<span>euros</span></div>
-    <div class="price-period">Seminaire complet — 5 jours a Malaga</div>
+    <div class="price-period">Séminaire complet — 5 jours à Malaga, 9 h à 18 h 30</div>
     <div class="price-includes">
-      <div class="price-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> 5 jours de formation intensive en presentiel</div>
-      <div class="price-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Market Profile, Order Flow, Footprint, CVD</div>
-      <div class="price-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Sessions live trading quotidiennes</div>
-      <div class="price-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Preparation prop firms + plan de trading</div>
-      <div class="price-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Acces communaute + replays a vie</div>
+      <div class="price-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Cinq journées complètes en salle, seize élèves maximum par formateur</div>
+      <div class="price-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Ton portrait de trader et ton entretien à huis clos du mardi</div>
+      <div class="price-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Ta carte de méthode, tes trades jugés chaque jour contre elle</div>
+      <div class="price-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Quatre séances réelles du Nasdaq rejouées sur Tradovate</div>
+      <div class="price-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Ta carte de trader et ton plan d'action du vendredi</div>
+      <div class="price-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Tous les chapitres filmés dans ton espace, après la session, et l'accès à la communauté</div>
     </div>
-    <a href="https://buy.stripe.com/aFa9ASezKgiRfWMbdo9EI0B" target="_blank" rel="noopener" class="price-cta">Reserver ma place — 1 490 euros</a>
+    <a href="https://buy.stripe.com/aFa9ASezKgiRfWMbdo9EI0B" target="_blank" rel="noopener" class="price-cta">Réserver ma place — 1 490 euros</a>
     <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-top:12px;font-size:.75rem;color:rgba(255,255,255,.4)">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
-      ou possibilite de payer en 3 fois
+      ou possibilité de payer en 3 fois
     </div>
-    <p class="price-note" style="font-size:.78rem;color:rgba(255,255,255,.35);line-height:1.7">Paiement en 3 fois disponible lors du checkout. Hebergement et transport non inclus.</p>
+    <p class="price-note" style="font-size:.78rem;color:rgba(255,255,255,.35);line-height:1.7">Paiement en 3 fois disponible lors du checkout. Hébergement et transport non inclus.</p>
   </div>
 </section>
 
@@ -447,21 +685,23 @@
   <div class="guarantee">
     <div class="guarantee-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
     <div>
-      <h3>Garantie satisfait ou rembourse</h3>
-      <p>Si a la fin de la premiere journee tu estimes que le seminaire ne correspond pas a tes attentes, tu es rembourse integralement. Zero risque. On est confiants parce que ca marche.</p>
+      <h3>Garantie satisfait ou remboursé</h3>
+      <p>Si à la fin de la première journée tu estimes que le séminaire ne correspond pas à tes attentes, tu es remboursé intégralement. Zéro risque. On est confiants parce que ça marche.</p>
     </div>
   </div>
 </section>
 
 <!-- FAQ -->
 <section class="sec sec-light" style="padding-top:0">
-  <div class="sec-center"><div class="sec-label">FAQ</div><h2 class="sec-title">Questions frequentes</h2></div>
+  <div class="sec-center"><div class="sec-label">FAQ</div><h2 class="sec-title">Questions fréquentes</h2></div>
   <div class="faq-list">
-    <div class="fi"><button class="fq" onclick="tf(this)">Quel niveau faut-il pour participer ? <span class="fq-icon">+</span></button><div class="fa"><p>Tu dois avoir les bases du trading (chandeliers, supports/resistances, savoir passer un ordre). Le seminaire est fait pour les traders qui ont de l'experience mais qui stagnent. Si tu es debutant total, c'est premature.</p></div></div>
-    <div class="fi"><button class="fq" onclick="tf(this)">L'hebergement est-il inclus ? <span class="fq-icon">+</span></button><div class="fa"><p>Non, l'hebergement et le transport sont a ta charge. On peut te recommander des hotels et Airbnb proches du lieu du seminaire a Malaga. Compte 50-100 euros/nuit selon tes preferences.</p></div></div>
-    <div class="fi"><button class="fq" onclick="tf(this)">Peut-on payer en plusieurs fois ? <span class="fq-icon">+</span></button><div class="fa"><p>Oui, paiement en 3x sans frais disponible. Les details sont communiques apres la reservation.</p></div></div>
-    <div class="fi"><button class="fq" onclick="tf(this)">Que se passe-t-il si les places sont prises ? <span class="fq-icon">+</span></button><div class="fa"><p>Le seminaire est limite a 20 places. Si c'est complet, tu seras inscrit en liste d'attente pour la prochaine session. Les places partent generalement vite — d'ou l'interet de reserver tot.</p></div></div>
-    <div class="fi"><button class="fq" onclick="tf(this)">Quels marches sont trades pendant le seminaire ? <span class="fq-icon">+</span></button><div class="fa"><p>On trade principalement les Futures (marche reglemente et centralise), mais la methode s'applique a tous les marches : forex, indices, matieres premieres, crypto. Les concepts de Market Profile et Order Flow sont universels.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Quel niveau faut-il pour participer ? <span class="fq-icon">+</span></button><div class="fa"><p>Tu dois avoir les bases du trading (chandeliers, supports et résistances, savoir passer un ordre). Le séminaire est fait pour les traders qui ont de l'expérience mais qui stagnent. En septembre, le groupe allait du trader qui débutait sur le carnet à celui qui tradait depuis des années : chacun est reparti avec sa carte. Si tu es débutant total, c'est prématuré.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Comment se passe l'entretien à huis clos du mardi ? <span class="fq-icon">+</span></button><div class="fa"><p>Chaque élève passe seul avec Bass et l'agent IA. Sur la table : ton portrait du lundi, tes trades du matin, ton journal. On regarde ce que tu déclares et ce que tu fais, on tranche ensemble, et ta carte de méthode est écrite et validée par toi. Elle sert de référence pour tout le reste de la semaine.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Qui juge mes trades, et sur quoi ? <span class="fq-icon">+</span></button><div class="fa"><p>Un analyste IA, relu par Bass, lit chaque trade contre ta carte de méthode : le déclencheur était-il présent, le stop à l'endroit annoncé, la sortie selon ta règle. Jamais contre le résultat en euros. Deux élèves ne sont jamais comparés sur leur P&amp;L, seulement sur leur fidélité à leur propre plan.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">L'hébergement est-il inclus ? <span class="fq-icon">+</span></button><div class="fa"><p>Non, l'hébergement et le transport sont à ta charge. On peut te recommander des hôtels et Airbnb proches du lieu du séminaire à Malaga. Compte 50 à 100 euros par nuit selon tes préférences.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Peut-on payer en plusieurs fois ? <span class="fq-icon">+</span></button><div class="fa"><p>Oui, paiement en 3 fois sans frais disponible. Les détails sont communiqués après la réservation.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Que se passe-t-il si les places sont prises ? <span class="fq-icon">+</span></button><div class="fa"><p>Le séminaire est limité à 20 places. Si c'est complet, tu seras inscrit en liste d'attente pour la prochaine session. Les places partent généralement vite, d'où l'intérêt de réserver tôt.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Quels marchés sont tradés pendant le séminaire ? <span class="fq-icon">+</span></button><div class="fa"><p>Les séances rejouées sont celles du Nasdaq (NQ et micro MNQ), sur Tradovate. La méthode s'applique aux autres futures et aux indices : les concepts de lecture du marché, de carnet d'ordres et de gestion du risque sont universels.</p></div></div>
   </div>
 </section>
 
@@ -469,22 +709,22 @@
 <section class="final-cta">
   <div class="sec-center">
     <div class="sec-label sec-label-gold">Lundi 29 mars — Vendredi 2 avril 2027</div>
-    <h2 class="sec-title">Dans 5 jours, tu ouvriras<br>tes ecrans differemment.</h2>
-    <p class="sec-desc">Plus de brouillard. Plus de doute. Un plan clair, des outils que tu maitrises, et une comprehension du marche que 99% des traders n'auront jamais. 20 places, pas une de plus.</p>
-    <a href="https://buy.stripe.com/aFa9ASezKgiRfWMbdo9EI0B" target="_blank" rel="noopener" class="hero-cta" style="display:inline-flex">Reserver — 1 490 euros <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+    <h2 class="sec-title">En septembre, seize personnes<br>sont reparties avec leur méthode.</h2>
+    <p class="sec-desc">En mars, vingt places. Cinq jours, un formateur, ton portrait, ta carte, tes trades jugés chaque jour, et le lundi d'après tu sais quoi faire.</p>
+    <a href="https://buy.stripe.com/aFa9ASezKgiRfWMbdo9EI0B" target="_blank" rel="noopener" class="hero-cta" style="display:inline-flex">Réserver — 1 490 euros <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
   </div>
 </section>
 
 <footer class="footer">
-  <span>&copy; 2026 BASS — Sebastien Constant</span>
+  <span>&copy; 2026 BASS — Sébastien Constant</span>
   <div>
     <a href="https://basstrading.fr">Accueil</a>
-    <a href="https://basstrading.fr/mentions-legales.html">Mentions legales</a>
-    <a href="https://basstrading.fr/confidentialite.html">Confidentialite</a>
+    <a href="https://basstrading.fr/mentions-legales.html">Mentions légales</a>
+    <a href="https://basstrading.fr/confidentialite.html">Confidentialité</a>
     <a href="https://basstrading.fr/cgv.html">CGV</a>
   </div>
 </footer>
-<div class="disclaimer">Le trading comporte des risques de perte en capital. Les performances passees ne prejugent pas des performances futures. Ce site ne constitue pas un conseil en investissement.</div>
+<div class="disclaimer">Le trading comporte des risques de perte en capital. Les performances passées ne préjugent pas des performances futures. Ce site ne constitue pas un conseil en investissement.</div>
 
 <script>
 gsap.registerPlugin(ScrollTrigger);
@@ -492,25 +732,26 @@ const lenis=new Lenis({duration:1.2,easing:t=>Math.min(1,1.001-Math.pow(2,-10*t)
 function raf(t){lenis.raf(t);requestAnimationFrame(raf)}requestAnimationFrame(raf);
 lenis.on('scroll',ScrollTrigger.update);gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0);
 
-// Countdown to seminar start (March 29, 2027)
+// Compte à rebours (29 mars 2027, 9 h)
 function updateCountdown(){
   const target=new Date('2027-03-29T09:00:00').getTime();
-  const now=Date.now();
-  const diff=target-now;
-  if(diff<=0){document.getElementById('countdown').innerHTML='<span style="color:var(--gold);font-weight:700">Seminaire en cours</span>';return}
-  const d=Math.floor(diff/(1000*60*60*24));
-  const h=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
-  const m=Math.floor((diff%(1000*60*60))/(1000*60));
+  const diff=target-Date.now();
+  if(diff<=0){document.getElementById('countdown').innerHTML='<span style="color:var(--gold);font-weight:700">Séminaire en cours</span>';return}
+  const d=Math.floor(diff/864e5),h=Math.floor((diff%864e5)/36e5),m=Math.floor((diff%36e5)/6e4);
   document.getElementById('cd-days').textContent=d;
-  document.getElementById('cd-hours').textContent=h.toString().padStart(2,'0');
-  document.getElementById('cd-mins').textContent=m.toString().padStart(2,'0');
+  document.getElementById('cd-hours').textContent=String(h).padStart(2,'0');
+  document.getElementById('cd-mins').textContent=String(m).padStart(2,'0');
 }
 updateCountdown();setInterval(updateCountdown,60000);
 
-// Scroll animations
+// Animations au défilement
 gsap.utils.toArray('.vt-card').forEach((c,i)=>{gsap.to(c,{y:0,opacity:1,duration:.4,delay:i*.04,ease:'power2.out',scrollTrigger:{trigger:c,start:'top 92%'}})});
-gsap.utils.toArray('.pain-card,.test-card,.jour,.price-card,.guarantee,.salle-item').forEach((el,i)=>{
-  gsap.from(el,{y:30,opacity:0,duration:.5,delay:i*.05,ease:'power2.out',scrollTrigger:{trigger:el,start:'top 90%'}});
+gsap.utils.toArray('.chiffre,.diff-card,.rituel-item,.test-card,.price-card,.guarantee,.salle-item').forEach((el,i)=>{
+  gsap.from(el,{y:30,opacity:0,duration:.5,delay:(i%6)*.05,ease:'power2.out',scrollTrigger:{trigger:el,start:'top 90%'}});
+});
+gsap.utils.toArray('.jour').forEach(j=>{
+  gsap.from(j.querySelector('.jour-big'),{x:-24,opacity:0,duration:.6,ease:'power2.out',scrollTrigger:{trigger:j,start:'top 80%'}});
+  gsap.from(j.querySelectorAll('.tl li'),{y:16,opacity:0,duration:.4,stagger:.06,ease:'power2.out',scrollTrigger:{trigger:j.querySelector('.tl'),start:'top 85%'}});
 });
 gsap.from('.seb-img',{x:-30,opacity:0,duration:.7,ease:'power2.out',scrollTrigger:{trigger:'.seb-grid',start:'top 80%'}});
 gsap.from('.seb-grid > div:last-child',{x:30,opacity:0,duration:.7,ease:'power2.out',scrollTrigger:{trigger:'.seb-grid',start:'top 80%'}});
@@ -518,8 +759,10 @@ gsap.from('.seb-grid > div:last-child',{x:30,opacity:0,duration:.7,ease:'power2.
 // FAQ
 function tf(b){const i=b.closest('.fi'),a=b.nextElementSibling,o=i.classList.contains('active');document.querySelectorAll('.fi').forEach(x=>{x.classList.remove('active');x.querySelector('.fa').classList.remove('open')});if(!o){i.classList.add('active');a.classList.add('open')}}
 
-// Smooth anchors
-document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();lenis.scrollTo(t,{offset:-60})}})});
+// Ancres
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();lenis.scrollTo(t,{offset:-70})}})});
+// Les chapitres dépliés changent la hauteur de page : on prévient ScrollTrigger
+document.querySelectorAll('details.chap').forEach(d=>d.addEventListener('toggle',()=>ScrollTrigger.refresh()));
 </script>
 
 <script>
