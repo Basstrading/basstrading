@@ -157,6 +157,21 @@
     .jour-out{margin-top:26px;padding:20px 22px;border-left:3px solid var(--gold);background:linear-gradient(90deg,rgba(201,168,76,.08),transparent);border-radius:0 12px 12px 0;font-size:.95rem;line-height:1.7;color:var(--bk)}
     .jour-out b{font-family:'Outfit',sans-serif;font-weight:800;color:var(--gold);letter-spacing:-.2px;display:block;font-size:.72rem;text-transform:uppercase;letter-spacing:2.5px;margin-bottom:6px}
 
+    .vu{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .vu-item{padding:20px 22px;border:1px solid rgba(0,0,0,.08);border-radius:14px;background:var(--pure);transition:border-color .3s,transform .3s}
+    .vu-item:hover{border-color:rgba(201,168,76,.5);transform:translateY(-2px)}
+    .vu-item h4{font-family:'Outfit',sans-serif;font-size:1rem;font-weight:800;letter-spacing:-.4px;margin-bottom:6px;color:var(--bk)}
+    .vu-item p{font-size:.86rem;color:var(--g1);line-height:1.65}
+    .arc{max-width:1060px;margin:72px auto 0;display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center;padding:44px 48px;background:var(--g4);border-radius:22px}
+    .arc-head h3{font-family:'Outfit',sans-serif;font-size:clamp(1.6rem,2.6vw,2.2rem);font-weight:900;letter-spacing:-1px;line-height:1.05;margin-bottom:14px}
+    .arc-head p{font-size:.95rem;color:var(--g1);line-height:1.75}
+    .arc-steps{list-style:none;display:grid;gap:8px}
+    .arc-steps li{display:flex;align-items:center;gap:14px;padding:12px 16px;background:var(--pure);border-radius:12px;font-family:'Outfit',sans-serif;font-weight:800;font-size:1rem;letter-spacing:-.3px;color:var(--bk)}
+    .arc-steps li span{width:30px;height:30px;border-radius:50%;background:var(--bk3);color:var(--gold);display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:900;flex-shrink:0}
+    .arc-steps li:nth-child(n+3){margin-left:calc((var(--i,0))*0px)}
+    .arc-steps li:nth-child(2){margin-left:10px}.arc-steps li:nth-child(3){margin-left:20px}.arc-steps li:nth-child(4){margin-left:30px}.arc-steps li:nth-child(5){margin-left:40px;background:var(--bk3);color:var(--pure)}
+    .arc-steps li:nth-child(5) span{background:var(--gold);color:var(--bk3)}
+    @media (max-width:900px){.vu{grid-template-columns:1fr}.arc{grid-template-columns:1fr;padding:28px 22px;gap:24px}.arc-steps li:nth-child(n){margin-left:0}}
     .prog-foot{max-width:1060px;margin:40px auto 0;display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center;padding:28px 32px;background:var(--bk3);color:var(--pure);border-radius:20px}
     .prog-foot p{font-size:.92rem;color:rgba(255,255,255,.6);line-height:1.7;max-width:640px}
     .prog-foot p strong{color:var(--pure)}
@@ -372,7 +387,7 @@
   <div class="prog-head">
     <div class="sec-label sec-label-gold">Le programme, jour par jour</div>
     <h2 class="sec-title">Cinq journées,<br>telles qu'elles ont eu lieu.</h2>
-    <p class="sec-desc">Le déroulé ci-dessous est celui de la session de septembre 2026, heure par heure, avec les chapitres filmés chaque jour et leur durée. Comprendre le matin, appliquer l'après-midi, et chaque soir quelque chose que tu sais faire et que tu ne savais pas faire le matin.</p>
+    <p class="sec-desc">Le déroulé ci-dessous est celui de la session de septembre 2026. Deux premiers jours pour savoir qui tu es et écrire ta méthode, puis trois jours qui montent d'un cran chaque matin. Comprendre, puis pratiquer, et chaque soir quelque chose que tu sais faire et que tu ne savais pas faire la veille.</p>
   </div>
   <div class="rituel">
     <div class="rituel-item"><div class="rituel-h">9 h</div><p><strong>Micro-test du matin.</strong> Cinq minutes, trois jeux. Ce qui compte, c'est l'écart entre ce que tu déclares et ce que tu fais.</p></div>
@@ -456,31 +471,19 @@
     <article class="jour" id="jour-3">
       <div class="jour-side"><div class="jour-sticky">
         <div class="jour-big">3<small>/5</small></div>
-        <div class="jour-dow">Mercredi · la carte à l'épreuve</div>
+        <div class="jour-dow">Mercredi · lire et exécuter</div>
         <div class="jour-media"><img src="../images/malaga-2026/cours-04.jpg" alt="Bass pointe une zone sur le graphique Tradovate, session de septembre 2026" loading="lazy" width="1600" height="900"><span class="jour-stamp">Mercredi 30/09/2026</span></div>
-        <div class="jour-stat"><div><b>3</b><span>chapitres</span></div><div><b>1 h 28</b><span>filmées</span></div><div><b>1</b><span>séance rejouée</span></div></div>
       </div></div>
       <div class="jour-body">
-        <h3>Vendre à découvert.<br>Et tenir ta carte quand <em>le marché ne fait rien</em>.</h3>
-        <p class="jour-lead">Le matin, ce que presque personne ne travaille vraiment : la vente à découvert sur niveaux clés. Puis une deuxième séance réelle, d'un tout autre caractère que celle de la veille. C'est là qu'on voit si une carte tient : <strong>quand chaque cassure est fausse et que l'ennui pousse à cliquer</strong>.</p>
-        <ol class="tl">
-          <li><span class="t">9 h</span><span class="w"><strong>Micro-test du matin.</strong></span></li>
-          <li><span class="t">9 h 15</span><span class="w"><strong>Cours.</strong> Maîtriser la vente à découvert et exécuter sur niveaux clés quand le marché descend.</span></li>
-          <li><span class="t">—</span><span class="w"><span class="tag">Replay</span><strong>Deuxième séance réelle du NQ.</strong> Tu la trades avec ta carte, et seulement avec ta carte.</span></li>
-          <li><span class="t">13 h 15</span><span class="w"><strong>Export et dépôt.</strong> Chaque trade jugé contre ta carte : déclencheur présent ? stop à l'endroit annoncé ? sortie selon ta règle ? Jamais contre le résultat.</span></li>
-          <li><span class="t">15 h</span><span class="w"><strong>Retours individuels</strong>, puis cours : analyser les grands actifs et repérer les bons signaux ; prendre du recul pour ne garder que les meilleures opportunités. Ceux dont la carte a craqué en écrivent une deuxième avec Bass, et retournent sur le replay.</span></li>
-          <li><span class="t gold">18 h 15</span><span class="w"><strong>Journal du soir.</strong> Fin à 18 h 30.</span></li>
-        </ol>
-        <details class="chap"><summary>Les 3 chapitres filmés ce jour-là · 1 h 28 <span class="ic">+</span></summary>
-          <ol>
-            <li class="demi">Matin · 1 chapitre · 0 h 27</li>
-            <li>Maîtriser la vente à découvert et exécuter sur niveaux clés<span class="d">27 min</span></li>
-            <li class="demi">Après-midi · 2 chapitres · 1 h 01</li>
-            <li>Comment analyser les grands actifs et repérer les bons signaux<span class="d">29 min</span></li>
-            <li>Prendre du recul pour trouver les meilleures opportunités<span class="d">32 min</span></li>
-          </ol>
-        </details>
-        <div class="jour-out"><b>Le soir, tu sais</b>ce que ta méthode exige de toi, et à quel moment précis tu lâches. C'est daté, c'est écrit, et ce n'est pas une opinion.</div>
+        <h3>Lire le marché.<br>Et l'exécuter <em>au carnet</em>.</h3>
+        <p class="jour-lead">À partir de mercredi, on monte d'un cran chaque jour. D'abord la lecture : l'analyse technique sur les grands actifs, pour ne garder que les bons signaux. Puis l'exécution, là où ça se joue vraiment : <strong>le carnet d'ordres, avec une stratégie différente selon le type de carnet</strong> que tu as devant toi.</p>
+        <div class="vu">
+          <div class="vu-item"><h4>Analyse technique</h4><p>Les grands actifs, les bons signaux, et prendre du recul pour ne garder que les meilleures opportunités.</p></div>
+          <div class="vu-item"><h4>Le carnet d'ordres</h4><p>Plusieurs stratégies, une par type de carnet : on ne trade pas un carnet fin comme un carnet épais.</p></div>
+          <div class="vu-item"><h4>La vente à découvert</h4><p>Exécuter sur les niveaux clés quand le marché descend. Ce que presque personne ne travaille.</p></div>
+          <div class="vu-item"><h4>Deuxième séance réelle</h4><p>Une vraie séance du Nasdaq rejouée sur Tradovate, tradée avec ta carte. Export, lecture, retours.</p></div>
+        </div>
+        <div class="jour-out"><b>Le soir, tu sais</b>lire un graphique et un carnet, et choisir la façon de rentrer qui va avec ce que tu vois.</div>
       </div>
     </article>
 
@@ -488,38 +491,19 @@
     <article class="jour" id="jour-4">
       <div class="jour-side"><div class="jour-sticky">
         <div class="jour-big">4<small>/5</small></div>
-        <div class="jour-dow">Jeudi · le choc</div>
+        <div class="jour-dow">Jeudi · gérer</div>
         <div class="jour-media"><img src="../images/malaga-2026/cours-05.jpg" alt="Bass en cours devant le graphique du Nasdaq, jeudi 1er octobre 2026" loading="lazy" width="1600" height="900"><span class="jour-stamp">Jeudi 01/10/2026</span></div>
-        <div class="jour-stat"><div><b>9</b><span>chapitres</span></div><div><b>4 h 35</b><span>filmées</span></div><div><b>2</b><span>séances rejouées</span></div></div>
       </div></div>
       <div class="jour-body">
-        <h3>Le choc. Le plan.<br>Et <em>plusieurs comptes financés</em> à la fois.</h3>
-        <p class="jour-lead">La journée la plus dense de la semaine : neuf chapitres, deux séances rejouées. Le matin, le plan qui sécurise tes ordres sur un graphique nu. À l'écran, une séance avec un choc dedans, <strong>celui qu'on n'annonce pas</strong>. L'après-midi, la routine complète, de l'ouverture aux niveaux de protection.</p>
-        <ol class="tl">
-          <li><span class="t">9 h</span><span class="w"><strong>Micro-test du matin.</strong></span></li>
-          <li><span class="t">9 h 15</span><span class="w"><strong>Cours.</strong> Structurer son plan et sécuriser ses ordres sur graphique nu. Optimiser ses sorties et piloter son risque. Gérer plusieurs comptes financés en même temps et faire évoluer son risque. Exploiter l'équilibre des prix pour filtrer ses entrées.</span></li>
-          <li><span class="t">—</span><span class="w"><span class="tag">Replay</span><strong>Troisième séance réelle du NQ.</strong> Volume multiplié, aller-retour violent : tu la traverses avec ton plan, ou sans.</span></li>
-          <li><span class="t">13 h 15</span><span class="w"><strong>Export, dépôt, jugement</strong> pendant la pause.</span></li>
-          <li><span class="t">15 h</span><span class="w"><span class="tag">Replay</span><strong>Seconde séance de l'après-midi</strong>, puis cours : maîtriser son ouverture et sécuriser son capital ; choisir la bonne stratégie et organiser sa routine ; trouver les opportunités avec un screener ; anticiper les retournements avec les probabilités ; placer son timing et ses niveaux de protection.</span></li>
-          <li><span class="t">17 h</span><span class="w"><strong>Retours individuels.</strong></span></li>
-          <li><span class="t gold">18 h 15</span><span class="w"><strong>Journal du soir.</strong> Fin à 18 h 30.</span></li>
-        </ol>
-        <details class="chap"><summary>Les 9 chapitres filmés ce jour-là · 4 h 35 <span class="ic">+</span></summary>
-          <ol>
-            <li class="demi">Matin · 4 chapitres · 2 h 14</li>
-            <li>Structurer son plan et sécuriser ses ordres sur graphique nu<span class="d">32 min</span></li>
-            <li>Optimiser ses sorties de position et piloter son risque<span class="d">30 min</span></li>
-            <li>Gérer plusieurs comptes financés et faire évoluer son risque<span class="d">34 min</span></li>
-            <li>Exploiter l'équilibre des prix et filtrer ses points d'entrée<span class="d">38 min</span></li>
-            <li class="demi">Après-midi · 5 chapitres · 2 h 21</li>
-            <li>Maîtriser son ouverture et sécuriser son capital<span class="d">26 min</span></li>
-            <li>Choisir la bonne stratégie et organiser sa routine<span class="d">24 min</span></li>
-            <li>Trouver les meilleures opportunités avec un screener<span class="d">30 min</span></li>
-            <li>Utiliser les probabilités pour anticiper les retournements<span class="d">35 min</span></li>
-            <li>Optimiser son timing et placer ses niveaux de protection<span class="d">26 min</span></li>
-          </ol>
-        </details>
-        <div class="jour-out"><b>Le soir, tu as</b>traversé un choc avec un plan écrit, et tu sais piloter plusieurs comptes financés sans te brûler. Ta carte a maintenant trois journées très différentes derrière elle.</div>
+        <h3>Gérer le risque.<br>Et <em>les prop firms</em>.</h3>
+        <p class="jour-lead">Jeudi, on passe à ce qui sépare le trader qui gagne un jour de celui qui dure : la gestion. Le risque, le levier, les sorties. Et les prop firms, avec <strong>des stratégies de gestion faites pour les comptes financés</strong>, jusqu'à en piloter plusieurs en même temps.</p>
+        <div class="vu">
+          <div class="vu-item"><h4>Gestion du risque</h4><p>Sécuriser ses ordres sur graphique nu, piloter ses sorties, faire évoluer son risque sans se brûler.</p></div>
+          <div class="vu-item"><h4>Prop firms</h4><p>Des stratégies de gestion pensées pour les comptes financés : tenir le drawdown, faire grandir le risque au bon rythme, gérer plusieurs comptes à la fois.</p></div>
+          <div class="vu-item"><h4>VWAP et écarts-types</h4><p>L'équilibre des prix, les probabilités de retournement, le timing et les niveaux de protection.</p></div>
+          <div class="vu-item"><h4>La séance de choc</h4><p>Une vraie journée de choc rejouée sur Tradovate, traversée avec un plan. Puis une seconde séance l'après-midi.</p></div>
+        </div>
+        <div class="jour-out"><b>Le soir, tu as</b>un plan de gestion écrit, et tu sais ce que tu fais d'un compte financé, puis de plusieurs.</div>
       </div>
     </article>
 
@@ -527,47 +511,41 @@
     <article class="jour" id="jour-5">
       <div class="jour-side"><div class="jour-sticky">
         <div class="jour-big">5<small>/5</small></div>
-        <div class="jour-dow">Vendredi · le verdict</div>
+        <div class="jour-dow">Vendredi · voir plus grand</div>
         <div class="jour-media"><img src="../images/malaga-2026/cours-06.jpg" alt="Bass désigne les niveaux de la séance sur l'écran, vendredi 2 octobre 2026" loading="lazy" width="1600" height="900"><span class="jour-stamp">Vendredi 02/10/2026</span></div>
-        <div class="jour-stat"><div><b>12</b><span>chapitres</span></div><div><b>6 h 04</b><span>filmées</span></div><div><b>8</b><span>témoignages</span></div></div>
       </div></div>
       <div class="jour-body">
-        <h3>Le bilan. Ta carte de trader.<br>Et tout ce qui <em>fait durer</em>.</h3>
-        <p class="jour-lead">Douze chapitres, six heures filmées : le jour où tout s'assemble. Le matin, le bilan de ta semaine, fidélité à ta carte et moments où ça a déraillé. Puis <strong>ta carte de trader, une page qui te suit en rentrant</strong>. L'après-midi, la lecture du marché de bout en bout, et le plan d'action que tu appliques seul dès le lundi.</p>
-        <ol class="tl">
-          <li><span class="t">9 h</span><span class="w"><strong>Micro-test du matin</strong>, le dernier. Comparé à celui du lundi.</span></li>
-          <li><span class="t">9 h 15</span><span class="w"><strong>Bilan de la semaine</strong>, élève par élève. Puis cours : protéger son capital et structurer sa gestion du risque ; bâtir sa régularité et tenir son levier au quotidien ; simplifier son analyse et cadrer ses objectifs ; filtrer les exécutions et couvrir ses positions ; volatilité et corrélations d'indices ; zones de rejet et environnement épuré ; pression du marché et assistants virtuels.</span></li>
-          <li><span class="t">11 h</span><span class="w"><strong>Ta carte de trader.</strong> Qui tu es, ta méthode, les pièges que la semaine a révélés, ton rituel. Une page, la tienne.</span></li>
-          <li><span class="t">15 h</span><span class="w"><strong>Cours.</strong> Structure du prix et zones d'équilibre. Structures d'enchères et types d'ouvertures. Cartographier la séance à partir des repères de la veille. Reconnaître le rôle des intervenants. Et pour finir : personnaliser sa méthode et établir son plan d'action autonome.</span></li>
-          <li><span class="t">—</span><span class="w"><strong>Derniers retours</strong>, témoignages filmés dans la salle, photo du groupe.</span></li>
-          <li><span class="t gold">18 h 30</span><span class="w"><strong>Fin de la semaine.</strong></span></li>
-        </ol>
-        <details class="chap"><summary>Les 12 chapitres filmés ce jour-là · 6 h 04 <span class="ic">+</span></summary>
-          <ol>
-            <li class="demi">Matin · 7 chapitres · 3 h 19</li>
-            <li>Protéger son capital et structurer sa gestion du risque<span class="d">34 min</span></li>
-            <li>Bâtir sa régularité et maîtriser son levier au quotidien<span class="d">30 min</span></li>
-            <li>Simplifier son analyse et cadrer ses objectifs financiers<span class="d">31 min</span></li>
-            <li>Filtrer les exécutions et couvrir ses positions sur le marché<span class="d">33 min</span></li>
-            <li>Gérer la volatilité et exploiter les corrélations d'indices<span class="d">23 min</span></li>
-            <li>Anticiper les zones de rejet et épurer son environnement<span class="d">30 min</span></li>
-            <li>Analyser la pression du marché et utiliser des assistants virtuels<span class="d">18 min</span></li>
-            <li class="demi">Après-midi · 5 chapitres · 2 h 45</li>
-            <li>Structure du prix et lecture des zones d'équilibre<span class="d">29 min</span></li>
-            <li>Identifier les structures d'enchères et les types d'ouvertures<span class="d">35 min</span></li>
-            <li>Cartographier la séance à partir des repères de la veille<span class="d">32 min</span></li>
-            <li>Reconnaître le rôle des intervenants et structurer son avantage<span class="d">36 min</span></li>
-            <li>Personnaliser sa méthode et établir son plan d'action autonome<span class="d">33 min</span></li>
-          </ol>
-        </details>
-        <div class="jour-out"><b>Le soir, tu rentres avec</b>une carte de trader signée, un plan d'action pour le lundi, et dix-sept heures de cours découpées en chapitres dans ton espace. Le jour où tu rentres, rien ne change : tu sais quoi faire.</div>
+        <h3>Les options. Le Market Profile.<br>Et <em>ta méthode</em>.</h3>
+        <p class="jour-lead">Vendredi, les deux couches de lecture qui changent tout : <strong>les options</strong>, pour comprendre ce que les gros acteurs sont obligés de faire, et <strong>le Market Profile</strong>, pour cartographier la séance avant qu'elle commence. Puis le bilan de la semaine, ta carte de trader, et chacun repart avec sa méthode.</p>
+        <div class="vu">
+          <div class="vu-item"><h4>Les options</h4><p>La couverture des gros acteurs et ce qu'elle impose au prix : pourquoi certains niveaux tiennent et d'autres cassent.</p></div>
+          <div class="vu-item"><h4>Market Profile</h4><p>Structure du prix, zones d'équilibre, structures d'enchères, types d'ouverture, cartographier la séance à partir de la veille.</p></div>
+          <div class="vu-item"><h4>Volatilité et régularité</h4><p>Lire la volatilité, s'appuyer sur les corrélations d'indices, tenir son levier et sa régularité au quotidien.</p></div>
+          <div class="vu-item"><h4>Ta carte de trader</h4><p>Le bilan de ta semaine, ta méthode personnalisée, ton plan d'action autonome. Puis les témoignages filmés et la photo du groupe.</p></div>
+        </div>
+        <div class="jour-out"><b>Le soir, tu rentres avec</b>une carte de trader, un plan d'action pour le lundi, et dix-sept heures de cours découpées en chapitres dans ton espace. Le jour où tu rentres, rien ne change : tu sais quoi faire.</div>
       </div>
     </article>
 
   </div>
 
+  <div class="arc">
+    <div class="arc-head">
+      <div class="sec-label sec-label-gold">Du lundi au vendredi</div>
+      <h3>Tout dans un ordre croissant.</h3>
+      <p>Chaque journée s'appuie sur la veille : d'abord qui tu es, puis ta méthode, puis lire et exécuter, puis gérer, puis voir plus grand. Les élèves de septembre sont repartis heureux d'avoir compris, appris et pratiqué des choses différentes, chacun à sa place dans cette montée.</p>
+    </div>
+    <ol class="arc-steps">
+      <li><span>1</span>Qui tu es</li>
+      <li><span>2</span>Ta méthode</li>
+      <li><span>3</span>Lire et exécuter</li>
+      <li><span>4</span>Gérer</li>
+      <li><span>5</span>Voir plus grand</li>
+    </ol>
+  </div>
+
   <div class="prog-foot">
-    <p><strong>Mars 2027 suit la même trame</strong>, ajustée au groupe : mêmes horaires, mêmes rituels, mêmes séances réelles rejouées, et les chapitres filmés remis dans ton espace après la session. Seuls les élèves changent, et donc les cartes.</p>
+    <p><strong>Mars 2027 suit la même montée</strong>, ajustée au groupe : même salle, mêmes séances réelles rejouées, mêmes chapitres filmés remis dans ton espace après la session. Seuls les élèves changent, et donc les cartes.</p>
     <a href="https://buy.stripe.com/aFa9ASezKgiRfWMbdo9EI0B" target="_blank" rel="noopener" class="hero-cta">Réserver ma place <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
   </div>
 </section>
@@ -746,7 +724,7 @@ updateCountdown();setInterval(updateCountdown,60000);
 
 // Animations au défilement
 gsap.utils.toArray('.vt-card').forEach((c,i)=>{gsap.to(c,{y:0,opacity:1,duration:.4,delay:i*.04,ease:'power2.out',scrollTrigger:{trigger:c,start:'top 92%'}})});
-gsap.utils.toArray('.chiffre,.diff-card,.rituel-item,.test-card,.price-card,.guarantee,.salle-item').forEach((el,i)=>{
+gsap.utils.toArray('.chiffre,.diff-card,.rituel-item,.vu-item,.arc-steps li,.test-card,.price-card,.guarantee,.salle-item').forEach((el,i)=>{
   gsap.from(el,{y:30,opacity:0,duration:.5,delay:(i%6)*.05,ease:'power2.out',scrollTrigger:{trigger:el,start:'top 90%'}});
 });
 gsap.utils.toArray('.jour').forEach(j=>{
