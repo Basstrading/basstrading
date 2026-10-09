@@ -28,6 +28,7 @@
     h1{font-family:'Outfit',sans-serif;font-size:1.7rem;font-weight:900;letter-spacing:-1px;line-height:1.15;margin-bottom:10px;color:var(--pure)}
     .sub{font-size:.92rem;color:rgba(255,255,255,.55);line-height:1.6;margin-bottom:28px}
 
+    .price-old{font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:600;color:rgba(255,255,255,.35);text-decoration:line-through;margin-bottom:4px}
     .price{font-family:'Outfit',sans-serif;font-size:3rem;font-weight:900;color:var(--pure);letter-spacing:-2px;line-height:1;margin-bottom:6px;display:inline-flex;align-items:flex-start;gap:8px}
     .price span{font-size:1rem;font-weight:600;color:var(--gold);letter-spacing:0;margin-top:8px}
     .price-sub{font-size:.78rem;color:rgba(255,255,255,.4);margin-bottom:28px}
@@ -72,8 +73,9 @@
   <h1>Reglement par PayPal</h1>
   <p class="sub">Page de paiement dediee. Tu seras redirige vers PayPal pour finaliser ta reservation en toute securite.</p>
 
-  <div class="price">1 290<span>euros</span></div>
-  <div class="price-sub">Seminaire complet — 5 jours a Malaga, 28 sept. au 2 oct. 2026</div>
+  <div class="price-old">1 890 &euro;</div>
+  <div class="price">1 490<span>euros</span></div>
+  <div class="price-sub">Seminaire complet — 5 jours a Malaga, 29 mars au 2 avril 2027</div>
 
   <div class="info-4x">
     <div class="info-4x-icon">
@@ -87,11 +89,11 @@
 
   <!-- PayPal Pay Later messaging -->
   <div class="pp-msg-wrap">
-    <div data-pp-message data-pp-amount="1290.00" data-pp-currency="EUR" data-pp-buyer-country="FR" data-pp-style-layout="text" data-pp-style-logo-type="primary" data-pp-style-text-color="white"></div>
+    <div data-pp-message data-pp-amount="1490.00" data-pp-currency="EUR" data-pp-buyer-country="FR" data-pp-style-layout="text" data-pp-style-logo-type="primary" data-pp-style-text-color="white"></div>
   </div>
 
   <div class="pp-wrap">
-    <div id="paypal-container-U27PJUA65WXU4"></div>
+    <div id="paypal-container-LUEG68563KGVG"></div>
   </div>
 
   <div class="secure">
@@ -100,8 +102,8 @@
   </div>
 
   <div class="alt">
-    Tu preferes payer par CB ou Klarna ?<br>
-    <a href="https://basstrading.fr/malaga/#inscription">Retour vers les options CB / Klarna 3x &rarr;</a>
+    Tu preferes payer par CB ou en 3x ?<br>
+    <a href="https://basstrading.fr/malaga/#inscription">Retour vers les options CB / paiement 3x &rarr;</a>
   </div>
 </div>
 
@@ -109,8 +111,8 @@
 <script src="https://www.paypal.com/sdk/js?client-id=BAAjqwOHWV7_5QE2n8z25lKD3UIIPZx6JU3UU5_fXXm-eUsAezGGClGuWIjNiPVDdNQBnoQmV-G3i7Z6_k&components=hosted-buttons,messages&enable-funding=paylater&disable-funding=venmo&currency=EUR&locale=fr_FR"></script>
 <script>
   paypal.HostedButtons({
-    hostedButtonId: "U27PJUA65WXU4"
-  }).render("#paypal-container-U27PJUA65WXU4");
+    hostedButtonId: "LUEG68563KGVG"
+  }).render("#paypal-container-LUEG68563KGVG");
 </script>
 </body>
 </html>
