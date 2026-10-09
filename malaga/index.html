@@ -79,17 +79,22 @@
     .pain-card p{font-size:.9rem;color:rgba(255,255,255,.4);line-height:1.7}
 
     /* PROGRAMME */
-    .prog-grid{max-width:960px;margin:60px auto 0}
-    .prog-day{display:grid;grid-template-columns:150px 1fr;gap:24px;padding:32px 0;border-bottom:1px solid rgba(0,0,0,.06)}
-    .prog-day-num{font-family:'Outfit',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);padding-top:4px}
-    .prog-date{font-family:'Outfit',sans-serif;font-size:1.05rem;font-weight:800;letter-spacing:-.3px;color:var(--bk);margin-top:6px;line-height:1.2}
-    .prog-half{display:grid;grid-template-columns:1fr 1fr;gap:28px}
-    .prog-half h4{font-family:'Outfit',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--g2);margin-bottom:8px}
-    .prog-half ol{list-style:none;margin:0;padding:0}
-    .prog-half li{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-top:1px solid var(--g4);font-size:.86rem;color:var(--bk);line-height:1.45}
-    .prog-half li .d{color:var(--g2);font-size:.7rem;white-space:nowrap;padding-top:3px;font-variant-numeric:tabular-nums}
-    .prog-live{font-size:.86rem;color:var(--g1);line-height:1.6;padding-top:8px;border-top:1px solid var(--g4)}
-    .prog-note{font-size:.72rem;color:var(--g2);text-align:center;max-width:560px;margin:36px auto 0;line-height:1.6}
+    .jours{max-width:1060px;margin:64px auto 0;display:grid;gap:18px}
+    .jour{display:grid;grid-template-columns:1fr 1.15fr;background:var(--g4);border-radius:22px;overflow:hidden;align-items:stretch}
+    .jour:nth-child(even){grid-template-columns:1.15fr 1fr}
+    .jour:nth-child(even) .jour-media{order:2}
+    .jour-media{position:relative;min-height:300px;background:var(--bk3)}
+    .jour-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+    .jour:hover .jour-media img{transform:scale(1.03)}
+    .jour-num{position:absolute;left:20px;top:18px;font-family:'Outfit',sans-serif;font-size:.62rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--bk3);background:var(--gold);padding:7px 12px;border-radius:980px}
+    .jour-body{padding:40px 44px}
+    .jour-label{font-family:'Outfit',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+    .jour h3{font-family:'Outfit',sans-serif;font-size:clamp(1.25rem,1.9vw,1.6rem);font-weight:800;letter-spacing:-.6px;line-height:1.12;margin-bottom:16px;color:var(--bk)}
+    .jour p{font-size:.9rem;color:var(--g1);line-height:1.7;margin-bottom:10px}
+    .jour p strong{color:var(--bk);font-weight:700}
+    .jour-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+    .jour-tags span{padding:6px 12px;border:1px solid rgba(0,0,0,.08);border-radius:980px;font-size:.66rem;font-weight:600;color:var(--g1);letter-spacing:.2px;background:var(--pure)}
+    @media (max-width:860px){.jour,.jour:nth-child(even){grid-template-columns:1fr}.jour:nth-child(even) .jour-media{order:0}.jour-media{min-height:220px;aspect-ratio:16/9}.jour-body{padding:28px 22px 30px}}
 
     /* PHOTOS GRID */
     .photo-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin:80px 0;border-radius:20px;overflow:hidden}
@@ -204,7 +209,7 @@
       .hero{padding:0 20px 60px}.hero-title{font-size:clamp(2.2rem,8vw,3.5rem)}.hero-meta{gap:20px}
       .sec{padding:80px 20px}
       .pain-grid{grid-template-columns:1fr}
-      .prog-day{grid-template-columns:1fr;gap:12px}.prog-half{grid-template-columns:1fr;gap:18px}
+
       .photo-grid{grid-template-columns:1fr}.photo-grid img,.photo-full img{height:240px}
       .seb-grid{grid-template-columns:1fr;gap:32px}.seb-img{max-width:280px}
       .test-grid{grid-template-columns:1fr}
@@ -271,25 +276,63 @@
 <section class="sec sec-light" id="programme">
   <div class="sec-center">
     <div class="sec-label">Programme</div>
-    <h2 class="sec-title">Cinq jours. 35 chapitres.<br>17 heures filmées.</h2>
-    <p class="sec-desc">Le déroulé réel de la session du 28 septembre au 2 octobre 2026, tel qu'il a été enregistré et découpé en chapitres pour les élèves. Comprendre le matin, appliquer l'après-midi sur le marché réel. Mars 2027 suit la même trame, ajustée au groupe.</p>
+    <h2 class="sec-title">Comprendre le matin.<br>Appliquer l'après-midi.</h2>
+    <p class="sec-desc">Cinq journées construites sur ce qui s'est réellement passé en salle lors de la dernière session. Un fil par jour, et à la fin de chaque journée, quelque chose que tu sais faire et que tu ne savais pas faire le matin. Mars 2027 suit la même trame, ajustée au groupe.</p>
   </div>
-  <div class="prog-grid">
-    <div class="prog-day"><div><div class="prog-day-num">Jour 1</div><div class="prog-date">Lundi 28 septembre</div></div><div class="prog-half"><div class="prog-half-col"><h4>Matin · 2 chapitres · 0 h 51</h4><ol><li><span>Maîtriser son exécution et comprendre les acteurs du marché</span><span class="d">24 min</span></li><li><span>Comprendre l'impact des options et la couverture institutionnelle</span><span class="d">27 min</span></li></ol></div><div class="prog-half-col"><h4>Après-midi · 5 chapitres · 2 h 19</h4><ol><li><span>Configuration du poste et analyse des volumes</span><span class="d">30 min</span></li><li><span>Détecter les blocages du prix et exécuter rapidement</span><span class="d">35 min</span></li><li><span>Maîtriser le rythme d'exécution et suivre ses statistiques</span><span class="d">34 min</span></li><li><span>Comprendre l'équilibre du marché et maîtriser le levier</span><span class="d">30 min</span></li><li><span>Repérer les compressions de prix et valider les cassures</span><span class="d">10 min</span></li></ol></div></div></div>
-    <div class="prog-day"><div><div class="prog-day-num">Jour 2</div><div class="prog-date">Mardi 29 septembre</div></div><div class="prog-half"><div class="prog-half-col"><h4>Matin · 4 chapitres · 1 h 58</h4><ol><li><span>Cadrer l'ouverture et observer l'activité acheteurs-vendeurs</span><span class="d">36 min</span></li><li><span>Analyser l'histogramme de volume et simplifier son exécution</span><span class="d">30 min</span></li><li><span>Utiliser les statistiques et la répartition des volumes</span><span class="d">31 min</span></li><li><span>Maîtriser la gestion du risque et le choix des actifs</span><span class="d">21 min</span></li></ol></div><div class="prog-half-col"><h4>Après-midi</h4><p class="prog-live">Analyse individuelle de chaque élève avec l'agent IA, pour le connaître et déterminer ensemble sa méthode. Séance à huis clos, non filmée.</p></div></div></div>
-    <div class="prog-day"><div><div class="prog-day-num">Jour 3</div><div class="prog-date">Mercredi 30 septembre</div></div><div class="prog-half"><div class="prog-half-col"><h4>Matin · 1 chapitre · 0 h 27</h4><ol><li><span>Maîtriser la vente à découvert et exécuter sur niveaux clés</span><span class="d">27 min</span></li></ol></div><div class="prog-half-col"><h4>Après-midi · 2 chapitres · 1 h 01</h4><ol><li><span>Comment analyser les grands actifs et repérer les bons signaux</span><span class="d">29 min</span></li><li><span>Prendre du recul pour trouver les meilleures opportunités</span><span class="d">32 min</span></li></ol></div></div></div>
-    <div class="prog-day"><div><div class="prog-day-num">Jour 4</div><div class="prog-date">Jeudi 1er octobre</div></div><div class="prog-half"><div class="prog-half-col"><h4>Matin · 4 chapitres · 2 h 14</h4><ol><li><span>Structurer son plan et sécuriser ses ordres sur graphique nu</span><span class="d">32 min</span></li><li><span>Optimiser ses sorties de position et piloter son risque</span><span class="d">30 min</span></li><li><span>Gérer plusieurs comptes financés et faire évoluer son risque</span><span class="d">34 min</span></li><li><span>Exploiter l'équilibre des prix et filtrer ses points d'entrée</span><span class="d">38 min</span></li></ol></div><div class="prog-half-col"><h4>Après-midi · 5 chapitres · 2 h 21</h4><ol><li><span>Maîtriser son ouverture et sécuriser son capital</span><span class="d">26 min</span></li><li><span>Choisir la bonne stratégie et organiser sa routine</span><span class="d">24 min</span></li><li><span>Trouver les meilleures opportunités avec un screener</span><span class="d">30 min</span></li><li><span>Utiliser les probabilités pour anticiper les retournements</span><span class="d">35 min</span></li><li><span>Optimiser son timing et placer ses niveaux de protection</span><span class="d">26 min</span></li></ol></div></div></div>
-    <div class="prog-day" style="border:none"><div><div class="prog-day-num">Jour 5</div><div class="prog-date">Vendredi 2 octobre</div></div><div class="prog-half"><div class="prog-half-col"><h4>Matin · 7 chapitres · 3 h 19</h4><ol><li><span>Protéger son capital et structurer sa gestion du risque</span><span class="d">34 min</span></li><li><span>Bâtir sa régularité et maîtriser son levier au quotidien</span><span class="d">30 min</span></li><li><span>Simplifier son analyse et cadrer ses objectifs financiers</span><span class="d">31 min</span></li><li><span>Filtrer les exécutions et couvrir ses positions sur le marché</span><span class="d">33 min</span></li><li><span>Gérer la volatilité et exploiter les corrélations d'indices</span><span class="d">23 min</span></li><li><span>Anticiper les zones de rejet et épurer son environnement</span><span class="d">30 min</span></li><li><span>Analyser la pression du marché et utiliser des assistants virtuels</span><span class="d">18 min</span></li></ol></div><div class="prog-half-col"><h4>Après-midi · 5 chapitres · 2 h 45</h4><ol><li><span>Structure du prix et lecture des zones d'équilibre</span><span class="d">29 min</span></li><li><span>Identifier les structures d'enchères et les types d'ouvertures</span><span class="d">35 min</span></li><li><span>Cartographier la séance à partir des repères de la veille</span><span class="d">32 min</span></li><li><span>Reconnaître le rôle des intervenants et structurer son avantage</span><span class="d">36 min</span></li><li><span>Personnaliser sa méthode et établir son plan d'action autonome</span><span class="d">33 min</span></li></ol></div></div></div>
+  <div class="jours">
+    <article class="jour">
+      <div class="jour-media"><img src="../images/malaga-2026/cours-01.jpg" alt="Bass en formation à Malaga, journée 1" loading="lazy" width="1600" height="900"><span class="jour-num">Journée 1</span></div>
+      <div class="jour-body">
+        <div class="jour-label">Journée 1</div>
+        <h3>Comprendre qui bouge le marché.<br>Et s'installer pour l'exécuter.</h3>
+        <p><strong>Le matin.</strong> On commence par les acteurs : qui achète, qui vend, et ce que les institutionnels sont obligés de faire, options et couverture comprises. Tu comprends enfin pourquoi certains niveaux tiennent et d'autres cassent.</p>
+        <p><strong>L'après-midi.</strong> On règle ton poste, on lit les volumes, et on exécute : repérer les blocages du prix, entrer vite, tenir un rythme, suivre tes statistiques, maîtriser le levier et valider une cassure au lieu de la subir.</p>
+        <div class="jour-tags"><span>Acteurs du marché</span><span>Options et couverture</span><span>Exécution</span><span>Levier</span></div>
+      </div>
+    </article>
+    <article class="jour">
+      <div class="jour-media"><img src="../images/malaga-2026/cours-02.jpg" alt="Bass en formation à Malaga, journée 2" loading="lazy" width="1600" height="900"><span class="jour-num">Journée 2</span></div>
+      <div class="jour-body">
+        <div class="jour-label">Journée 2</div>
+        <h3>Lire l'ouverture.<br>Puis se regarder en face.</h3>
+        <p><strong>Le matin.</strong> L'ouverture : cadrer la séance, observer l'activité acheteurs-vendeurs, lire l'histogramme de volume et la répartition des volumes, s'appuyer sur les statistiques. Puis le risque et le choix des actifs, pour simplifier ton exécution.</p>
+        <p><strong>L'après-midi.</strong> À huis clos : l'analyse individuelle de chaque élève avec l'agent IA. Tes réponses, tes trades, ta façon de réagir. On te connaît, et on détermine ensemble la méthode qui est la tienne.</p>
+        <div class="jour-tags"><span>Ouverture</span><span>Histogramme de volume</span><span>Gestion du risque</span><span>Ton profil avec l'IA</span></div>
+      </div>
+    </article>
+    <article class="jour">
+      <div class="jour-media"><img src="../images/malaga-2026/cours-04.jpg" alt="Bass en formation à Malaga, journée 3" loading="lazy" width="1600" height="900"><span class="jour-num">Journée 3</span></div>
+      <div class="jour-body">
+        <div class="jour-label">Journée 3</div>
+        <h3>Vendre à découvert.<br>Et prendre de la hauteur.</h3>
+        <p><strong>Le matin.</strong> La vente à découvert, que presque personne ne travaille vraiment : comment exécuter sur les niveaux clés quand le marché descend.</p>
+        <p><strong>L'après-midi.</strong> On sort du bruit : analyser les grands actifs, repérer les bons signaux et prendre du recul pour ne garder que les meilleures opportunités.</p>
+        <div class="jour-tags"><span>Vente à découvert</span><span>Niveaux clés</span><span>Grands actifs</span><span>Sélection des opportunités</span></div>
+      </div>
+    </article>
+    <article class="jour">
+      <div class="jour-media"><img src="../images/malaga-2026/cours-05.jpg" alt="Bass en formation à Malaga, journée 4" loading="lazy" width="1600" height="900"><span class="jour-num">Journée 4</span></div>
+      <div class="jour-body">
+        <div class="jour-label">Journée 4</div>
+        <h3>Un plan clair.<br>Des sorties propres. Plusieurs comptes.</h3>
+        <p><strong>Le matin.</strong> Ton plan : structurer et sécuriser tes ordres sur graphique nu, optimiser tes sorties, piloter ton risque, gérer plusieurs comptes financés en même temps, et filtrer tes entrées avec l'équilibre des prix.</p>
+        <p><strong>L'après-midi.</strong> La routine : maîtriser ton ouverture et protéger ton capital, choisir la stratégie qui te va, trouver les opportunités avec un screener, anticiper les retournements avec les probabilités, placer ton timing et tes niveaux de protection.</p>
+        <div class="jour-tags"><span>Plan de trading</span><span>Sorties de position</span><span>Comptes financés</span><span>Screener et probabilités</span></div>
+      </div>
+    </article>
+    <article class="jour">
+      <div class="jour-media"><img src="../images/malaga-2026/cours-06.jpg" alt="Bass en formation à Malaga, journée 5" loading="lazy" width="1600" height="900"><span class="jour-num">Journée 5</span></div>
+      <div class="jour-body">
+        <div class="jour-label">Journée 5</div>
+        <h3>Protéger le capital.<br>Repartir avec sa méthode.</h3>
+        <p><strong>Le matin.</strong> Tout ce qui fait durer un trader : protéger son capital, structurer sa gestion du risque, bâtir sa régularité, tenir son levier au quotidien, simplifier son analyse, cadrer ses objectifs, couvrir ses positions, lire la volatilité et les corrélations d'indices, épurer son environnement, s'appuyer sur les assistants virtuels.</p>
+        <p><strong>L'après-midi.</strong> La lecture du marché : structure du prix, zones d'équilibre, structures d'enchères et types d'ouverture, cartographier la séance à partir de la veille, reconnaître le rôle des intervenants. Et pour finir, chacun personnalise sa méthode et écrit son plan d'action autonome.</p>
+        <div class="jour-tags"><span>Gestion du risque</span><span>Régularité</span><span>Market Profile</span><span>Méthode personnalisée</span></div>
+      </div>
+    </article>
   </div>
-  <p class="prog-note">Chaque chapitre dure environ 30 minutes. Les élèves retrouvent l'intégralité des enregistrements dans leur espace, après la session.</p>
 </section>
 
-<!-- PHOTOS -->
-<div class="photo-grid">
-  <div><img src="../images/malaga-2026/cours-03.jpg" alt="Bass explique le Market Profile en salle, Malaga 2026" loading="lazy"></div>
-  <div><img src="../images/malaga-2026/cours-06.jpg" alt="Bass désigne un niveau sur le carnet d'ordres" loading="lazy"></div>
-  <div class="photo-full"><img src="../images/malaga-2026/cours-02.jpg" alt="Bass montre un niveau clé sur le graphique, salle de Malaga" loading="lazy"></div>
-</div>
 
 <!-- SEBASTIEN -->
 <section class="sec sec-light">
@@ -466,7 +509,7 @@ updateCountdown();setInterval(updateCountdown,60000);
 
 // Scroll animations
 gsap.utils.toArray('.vt-card').forEach((c,i)=>{gsap.to(c,{y:0,opacity:1,duration:.4,delay:i*.04,ease:'power2.out',scrollTrigger:{trigger:c,start:'top 92%'}})});
-gsap.utils.toArray('.pain-card,.test-card,.prog-day,.price-card,.guarantee,.salle-item').forEach((el,i)=>{
+gsap.utils.toArray('.pain-card,.test-card,.jour,.price-card,.guarantee,.salle-item').forEach((el,i)=>{
   gsap.from(el,{y:30,opacity:0,duration:.5,delay:i*.05,ease:'power2.out',scrollTrigger:{trigger:el,start:'top 90%'}});
 });
 gsap.from('.seb-img',{x:-30,opacity:0,duration:.7,ease:'power2.out',scrollTrigger:{trigger:'.seb-grid',start:'top 80%'}});
