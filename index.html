@@ -184,6 +184,32 @@
     .diff-bad svg{color:#FF3B30}.diff-good svg{color:var(--bk)}
 
     /* ===================== REVIEWS ===================== */
+
+    /* Témoignages vidéo */
+    .vt{padding:120px 48px;background:var(--pure);border-top:1px solid var(--g4);position:relative;z-index:1}
+    .vt-feature{max-width:1060px;margin:48px auto 0;border-radius:20px;overflow:hidden;box-shadow:0 20px 80px rgba(0,0,0,.08)}
+    .yt{position:relative;aspect-ratio:16/9;background:var(--bk3);cursor:pointer;overflow:hidden}
+    .yt img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+    .yt:hover img{transform:scale(1.03)}
+    .yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+    .yt-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:60px;height:60px;border-radius:50%;background:rgba(255,255,255,.94);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 8px 30px rgba(0,0,0,.28);transition:transform .3s,background .3s}
+    .vt-feature .yt-play{width:84px;height:84px}
+    .yt:hover .yt-play{transform:translate(-50%,-50%) scale(1.08);background:#fff}
+    .yt-play:focus-visible{outline:3px solid var(--green);outline-offset:3px}
+    .yt-play svg{width:40%;height:40%;margin-left:6%;fill:var(--bk)}
+    .yt-dur{position:absolute;right:12px;bottom:12px;padding:4px 8px;border-radius:6px;background:rgba(0,0,0,.6);color:#fff;font-size:.65rem;font-weight:600;letter-spacing:.3px;pointer-events:none}
+    .vt-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:1060px;margin:14px auto 0}
+    .vt-card{background:var(--g4);border-radius:16px;overflow:hidden;opacity:0;transform:translateY(16px);transition:box-shadow .4s}
+    .vt-card:hover{box-shadow:0 8px 30px rgba(0,0,0,.06)}
+    .vt-card .yt{aspect-ratio:16/10}
+    .vt-card .yt-play{width:48px;height:48px}
+    .vt-body{padding:16px 18px 20px}
+    .vt-name{font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:800;letter-spacing:-.3px;margin-bottom:6px;color:var(--bk)}
+    .vt-quote{font-size:.8rem;color:var(--g1);line-height:1.6;font-style:normal}
+    .vt-note{font-size:.68rem;color:var(--g2);text-align:center;max-width:560px;margin:28px auto 0;line-height:1.6}
+    @media (max-width:900px){.vt-grid{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:640px){.vt{padding:80px 20px}.vt-grid{grid-template-columns:1fr}.vt-feature{border-radius:14px}}
+    @media (prefers-reduced-motion:reduce){.yt img,.yt-play{transition:none}}
     .reviews{padding:120px 48px;background:var(--g4)}
     .reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:1060px;margin:48px auto 0}
     .rc{background:var(--pure);border-radius:16px;padding:28px;transition:all .4s;opacity:0;transform:translateY(16px)}
@@ -479,7 +505,7 @@
   <ul class="nav-links">
     <li><a href="#profileur">Agent IA</a></li><li><a href="#methode">Typologies</a></li>
     <li><a href="#resultats">Résultats</a></li>
-    <li><a href="#avis">Avis</a></li>
+    <li><a href="#temoignages">Témoignages</a></li>
     <li><a href="/malaga/" style="color:var(--gold,#C9A84C);font-weight:600">Malaga 2027</a></li>
     <li><a href="#faq">FAQ</a></li>
     <li><a href="/blog/">Blog</a></li>
@@ -667,26 +693,24 @@
 <!-- ======================== GALLERY ======================== -->
 <div class="gallery">
   <div class="gallery-track">
-    <div class="gi"><img src="images/bass-tv-closeup.jpg" alt="Bass Market Profile" height="300"></div>
-    <div class="gi"><img src="images/bass-presenting.jpg" alt="Bass présentation" height="300"></div>
-    <div class="gi"><img src="images/bass-tv-teaching.jpg" alt="Formation TV" height="300"></div>
-    <div class="gi"><img src="images/bass-group-screens.jpg" alt="Groupe écrans" height="300"></div>
-    <div class="gi"><img src="images/bass-pointing.jpg" alt="Bass niveau clé" height="300"></div>
-    <div class="gi"><img src="images/bass-classroom.jpg" alt="Salle formation" height="300"></div>
-    <div class="gi"><img src="images/bass-closeup-screen.jpg" alt="Analyse Market Profile" height="300"></div>
-    <div class="gi"><img src="images/bass-teaching.jpg" alt="Coaching" height="300"></div>
-    <div class="gi"><img src="images/bass-portrait.jpg" alt="Bass portrait" height="300"></div>
-    <div class="gi"><img src="images/bass-malaga-group.jpg" alt="Malaga" height="300"></div>
-    <div class="gi"><img src="images/bass-tv-closeup.jpg" alt="" height="300"></div>
-    <div class="gi"><img src="images/bass-presenting.jpg" alt="" height="300"></div>
-    <div class="gi"><img src="images/bass-tv-teaching.jpg" alt="" height="300"></div>
-    <div class="gi"><img src="images/bass-group-screens.jpg" alt="" height="300"></div>
-    <div class="gi"><img src="images/bass-pointing.jpg" alt="" height="300"></div>
-    <div class="gi"><img src="images/bass-classroom.jpg" alt="" height="300"></div>
-    <div class="gi"><img src="images/bass-closeup-screen.jpg" alt="" height="300"></div>
-    <div class="gi"><img src="images/bass-teaching.jpg" alt="" height="300"></div>
-    <div class="gi"><img src="images/bass-portrait.jpg" alt="" height="300"></div>
-    <div class="gi"><img src="images/bass-malaga-group.jpg" alt="" height="300"></div>
+    <div class="gi"><img src="images/malaga-2026/cours-01.jpg" alt="Bass en formation à Malaga, devant l'écran de trading" height="300" loading="lazy"></div>
+    <div class="gi"><img src="images/malaga-2026/cours-02.jpg" alt="Bass montre un niveau clé sur le graphique, salle de Malaga" height="300" loading="lazy"></div>
+    <div class="gi"><img src="images/malaga-2026/cours-03.jpg" alt="Bass explique le Market Profile, formation présentielle Malaga 2026" height="300" loading="lazy"></div>
+    <div class="gi"><img src="images/malaga-2026/cours-04.jpg" alt="Bass pointe une zone sur le graphique en direct" height="300" loading="lazy"></div>
+    <div class="gi"><img src="images/malaga-2026/cours-05.jpg" alt="Bass en cours, formation présentielle BASS Trading" height="300" loading="lazy"></div>
+    <div class="gi"><img src="images/malaga-2026/cours-06.jpg" alt="Bass désigne un niveau sur le carnet d'ordres, Malaga" height="300" loading="lazy"></div>
+    <div class="gi"><img src="images/malaga-2026/cours-07.jpg" alt="Lecture du footprint en salle, Malaga 2026" height="300" loading="lazy"></div>
+    <div class="gi"><img src="images/malaga-2026/cours-08.jpg" alt="Bass anime le cours du lundi matin, Malaga" height="300" loading="lazy"></div>
+    <div class="gi"><img src="images/bass-malaga-group.jpg" alt="Le groupe de la formation présentielle à Malaga" height="300" loading="lazy"></div>
+    <div class="gi"><img src="images/malaga-2026/cours-01.jpg" alt="" height="300" loading="lazy" aria-hidden="true"></div>
+    <div class="gi"><img src="images/malaga-2026/cours-02.jpg" alt="" height="300" loading="lazy" aria-hidden="true"></div>
+    <div class="gi"><img src="images/malaga-2026/cours-03.jpg" alt="" height="300" loading="lazy" aria-hidden="true"></div>
+    <div class="gi"><img src="images/malaga-2026/cours-04.jpg" alt="" height="300" loading="lazy" aria-hidden="true"></div>
+    <div class="gi"><img src="images/malaga-2026/cours-05.jpg" alt="" height="300" loading="lazy" aria-hidden="true"></div>
+    <div class="gi"><img src="images/malaga-2026/cours-06.jpg" alt="" height="300" loading="lazy" aria-hidden="true"></div>
+    <div class="gi"><img src="images/malaga-2026/cours-07.jpg" alt="" height="300" loading="lazy" aria-hidden="true"></div>
+    <div class="gi"><img src="images/malaga-2026/cours-08.jpg" alt="" height="300" loading="lazy" aria-hidden="true"></div>
+    <div class="gi"><img src="images/bass-malaga-group.jpg" alt="" height="300" loading="lazy" aria-hidden="true"></div>
   </div>
 </div>
 
@@ -882,13 +906,35 @@
   </div>
 </section>
 
-<!-- ======================== VIDÉOS TÉMOIGNAGES ======================== -->
-<section class="reviews" style="background:var(--pure);border-top:1px solid var(--g4)">
+
+<!-- ======================== TÉMOIGNAGES VIDÉO — MALAGA SEPT. 2026 ======================== -->
+<section class="vt" id="temoignages">
   <div class="sec-center">
-    <div class="sec-label">En vidéo</div>
-    <h2 class="sec-title">Ils te le disent<br>eux-mêmes.</h2>
+    <div class="sec-label">Malaga, septembre 2026</div>
+    <h2 class="sec-title">Ils sont venus à Malaga.<br>Voilà ce qu'ils en disent.</h2>
+    <p class="sec-desc">Treize élèves filmés le dernier jour, à la fin des cinq jours en salle. Sans script. Voici les huit témoignages les plus parlants.</p>
   </div>
-  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;max-width:900px;margin:48px auto 0" class="video-grid">
+  <div class="vt-feature"><div class="yt" data-id="aOAg7VQxKJc" data-title="Ils sont venus à Malaga, les meilleurs moments des témoignages"><img src="images/temoignages/teaser.jpg" alt="Les élèves de la formation présentielle BASS Trading à Malaga, septembre 2026" loading="lazy" width="960" height="540"><button class="yt-play" type="button" aria-label="Lire : Ils sont venus à Malaga, les meilleurs moments des témoignages"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button><span class="yt-dur">1:40</span></div></div>
+  <div class="vt-grid">
+    <article class="vt-card"><div class="yt" data-id="yRUOM6Awdtw" data-title="Témoignage de Christian"><img src="images/temoignages/christian.jpg" alt="Christian, élève de la formation présentielle BASS Trading à Malaga, septembre 2026" loading="lazy" width="960" height="540"><button class="yt-play" type="button" aria-label="Lire : Témoignage de Christian"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button><span class="yt-dur">1:51</span></div><div class="vt-body"><h3 class="vt-name">Christian</h3><p class="vt-quote">« Je repars avec une technique clé en main. Le plus important, ça a été d'être sincère avec soi-même. »</p></div></article>
+    <article class="vt-card"><div class="yt" data-id="xGhvjg1om4g" data-title="Témoignage de « Mamie »"><img src="images/temoignages/mamie.jpg" alt="« Mamie », élève de la formation présentielle BASS Trading à Malaga, septembre 2026" loading="lazy" width="960" height="540"><button class="yt-play" type="button" aria-label="Lire : Témoignage de « Mamie »"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button><span class="yt-dur">2:22</span></div><div class="vt-body"><h3 class="vt-name">« Mamie »</h3><p class="vt-quote">« Je sentais qu'il y avait quelque chose de caché derrière les bougies. Je repars avec quelque chose de très simple. »</p></div></article>
+    <article class="vt-card"><div class="yt" data-id="H9BpIZ5s0u0" data-title="Témoignage de Morgan"><img src="images/temoignages/morgan.jpg" alt="Morgan, élève de la formation présentielle BASS Trading à Malaga, septembre 2026" loading="lazy" width="960" height="540"><button class="yt-play" type="button" aria-label="Lire : Témoignage de Morgan"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button><span class="yt-dur">1:34</span></div><div class="vt-body"><h3 class="vt-name">Morgan</h3><p class="vt-quote">« Pas de Lamborghini au bout de six mois. Une méthode plus simple, plus facile à tenir. »</p></div></article>
+    <article class="vt-card"><div class="yt" data-id="6xAY2W79XJ4" data-title="Témoignage de Joël"><img src="images/temoignages/joel.jpg" alt="Joël, élève de la formation présentielle BASS Trading à Malaga, septembre 2026" loading="lazy" width="960" height="540"><button class="yt-play" type="button" aria-label="Lire : Témoignage de Joël"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button><span class="yt-dur">1:00</span></div><div class="vt-body"><h3 class="vt-name">Joël</h3><p class="vt-quote">« Débutant ou moyen, il faut y aller. Vous allez gagner du temps et de l'argent. »</p></div></article>
+    <article class="vt-card"><div class="yt" data-id="EdF_qqrlHYI" data-title="Témoignage de Éric"><img src="images/temoignages/eric.jpg" alt="Éric, élève de la formation présentielle BASS Trading à Malaga, septembre 2026" loading="lazy" width="960" height="540"><button class="yt-play" type="button" aria-label="Lire : Témoignage de Éric"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button><span class="yt-dur">4:17</span></div><div class="vt-body"><h3 class="vt-name">Éric</h3><p class="vt-quote">« J'ai d'abord trouvé ce qui me faisait perdre. Le présentiel, c'est beaucoup plus fort que la vidéo. »</p></div></article>
+    <article class="vt-card"><div class="yt" data-id="3Zi-U3Pa7OA" data-title="Témoignage de Ilyas"><img src="images/temoignages/ilyas.jpg" alt="Ilyas, élève de la formation présentielle BASS Trading à Malaga, septembre 2026" loading="lazy" width="960" height="540"><button class="yt-play" type="button" aria-label="Lire : Témoignage de Ilyas"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button><span class="yt-dur">1:51</span></div><div class="vt-body"><h3 class="vt-name">Ilyas</h3><p class="vt-quote">« Je suis venu chercher le déclic. Le contact humain y est pour beaucoup. Je recommande à 100 %. »</p></div></article>
+    <article class="vt-card"><div class="yt" data-id="3soiDXyu0Kk" data-title="Témoignage de Élève depuis avril 2025"><img src="images/temoignages/eleve-avril-2025.jpg" alt="Élève depuis avril 2025, élève de la formation présentielle BASS Trading à Malaga, septembre 2026" loading="lazy" width="960" height="540"><button class="yt-play" type="button" aria-label="Lire : Témoignage de Élève depuis avril 2025"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button><span class="yt-dur">3:01</span></div><div class="vt-body"><h3 class="vt-name">Élève depuis avril 2025</h3><p class="vt-quote">« Je rentre dans les marchés serein. Avant, j'étais stressé à fond, les stops trop serrés. »</p></div></article>
+    <article class="vt-card"><div class="yt" data-id="QoQoVrOSCtc" data-title="Témoignage de Élève de la promo"><img src="images/temoignages/eleve-promo.jpg" alt="Élève de la promo, élève de la formation présentielle BASS Trading à Malaga, septembre 2026" loading="lazy" width="960" height="540"><button class="yt-play" type="button" aria-label="Lire : Témoignage de Élève de la promo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button><span class="yt-dur">2:33</span></div><div class="vt-body"><h3 class="vt-name">Élève de la promo</h3><p class="vt-quote">« On était 16, tous les profils, et chacun est reparti avec une méthode. »</p></div></article>
+  </div>
+  <p class="vt-note">Filmés le vendredi 2 octobre 2026, dernier jour de la session. Les questions de Bass sont coupées, les réponses sont entières.</p>
+</section>
+
+<!-- ======================== VIDÉOS TÉMOIGNAGES (programme en ligne) ======================== -->
+<section class="reviews" style="background:var(--pure);padding-top:0">
+  <div class="sec-center">
+    <div class="sec-label">Et en ligne</div>
+    <h2 class="sec-title" style="font-size:clamp(1.5rem,2.6vw,2.2rem)">Le programme BASS,<br>raconté par eux.</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;max-width:900px;margin:40px auto 0" class="video-grid">
     <div style="border-radius:16px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.06);opacity:0;transform:translateY(16px)" class="vid-card">
       <video controls playsinline preload="metadata" style="width:100%;display:block">
         <source src="images/temoignages/samy.mp4" type="video/mp4">
@@ -1130,7 +1176,7 @@ gsap.to('#overlapGiant',{yPercent:-10,ease:'none',scrollTrigger:{trigger:'#overl
 gsap.utils.toArray('.diff-item').forEach((d,i)=>{gsap.to(d,{y:0,opacity:1,duration:.4,delay:i*.03,ease:'power2.out',scrollTrigger:{trigger:d,start:'top 92%'}})});
 
 // ==================== REVIEWS ====================
-gsap.utils.toArray('.rc').forEach((c,i)=>{gsap.to(c,{y:0,opacity:1,duration:.4,delay:i*.04,ease:'power2.out',scrollTrigger:{trigger:c,start:'top 92%'}})});
+gsap.utils.toArray('.rc,.vt-card').forEach((c,i)=>{gsap.to(c,{y:0,opacity:1,duration:.4,delay:i*.04,ease:'power2.out',scrollTrigger:{trigger:c,start:'top 92%'}})});
 
 // ==================== RETRAIT CARDS ====================
 gsap.utils.toArray('.retrait-card').forEach((c,i)=>{gsap.to(c,{y:0,opacity:1,duration:.5,delay:i*.06,ease:'power2.out',scrollTrigger:{trigger:c,start:'top 92%'}})});
@@ -1309,7 +1355,7 @@ document.getElementById('applyForm').addEventListener('submit',async function(e)
     ScrollTrigger.create({trigger:el,start:'top 88%',once:true,onEnter:()=>{nums.forEach(n=>{const raw=n.dataset.v,dec=(raw.split(/[.,]/)[1]||'').length,sep=raw.includes(',')?',':'.',target=parseFloat(raw.replace(',','.'));const o={v:0};gsap.to(o,{v:target,duration:1.4,ease:'power3.out',onUpdate:()=>{n.textContent=o.v.toFixed(dec).replace('.',sep)}});});}});});
 
   /* ---- 8. RETRAITS, VIDÉOS, AVIS : perspective + tilt ---- */
-  gsap.utils.toArray('.rc').forEach((c,i)=>{gsap.fromTo(c,{rotateX:16,y:40,transformPerspective:900,transformOrigin:'50% 100%'},{rotateX:0,y:0,duration:.9,delay:(i%3)*.08,ease:'power3.out',scrollTrigger:{trigger:c,start:'top 92%',once:true}});});
+  gsap.utils.toArray('.rc,.vt-card').forEach((c,i)=>{gsap.fromTo(c,{rotateX:16,y:40,transformPerspective:900,transformOrigin:'50% 100%'},{rotateX:0,y:0,duration:.9,delay:(i%3)*.08,ease:'power3.out',scrollTrigger:{trigger:c,start:'top 92%',once:true}});});
   gsap.utils.toArray('.retrait-card,.vid-card').forEach((c,i)=>{gsap.fromTo(c,{rotateX:22,y:60,opacity:0,transformPerspective:900,transformOrigin:'50% 100%'},{rotateX:0,y:0,opacity:1,duration:.9,delay:(i%6)*.06,ease:'power3.out',scrollTrigger:{trigger:c,start:'top 92%',once:true}});
     if(fine){c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect();const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;gsap.to(c,{rotateY:x*8,rotateX:-y*8,transformPerspective:900,duration:.5,ease:'power2.out',overwrite:'auto'});});c.addEventListener('mouseleave',()=>gsap.to(c,{rotateY:0,rotateX:0,duration:.7,ease:'power3.out'}));}});
 
@@ -1609,5 +1655,23 @@ async function sendChat(){
 .chat-send:hover{background:var(--bk2);transform:scale(1.05)}
 @media(max-width:480px){.chat-window{width:calc(100vw - 32px);right:-8px;bottom:66px;max-height:70vh}.chat-widget{bottom:16px;right:16px}}
 </style>
+
+<script>
+(function(){
+  var warmed=false;
+  function warm(){if(warmed)return;warmed=true;['https://www.youtube-nocookie.com','https://www.google.com','https://i.ytimg.com'].forEach(function(u){var l=document.createElement('link');l.rel='preconnect';l.href=u;document.head.appendChild(l);});}
+  document.querySelectorAll('.yt').forEach(function(el){
+    el.addEventListener('pointerover',warm,{once:true});
+    el.addEventListener('click',function(){
+      if(el.classList.contains('is-playing'))return;
+      var id=el.getAttribute('data-id'),t=el.getAttribute('data-title')||'Vidéo';
+      var f=document.createElement('iframe');
+      f.src='https://www.youtube-nocookie.com/embed/'+encodeURIComponent(id)+'?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+      f.title=t;f.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';f.setAttribute('allowfullscreen','');
+      el.innerHTML='';el.appendChild(f);el.classList.add('is-playing');
+    });
+  });
+})();
+</script>
 </body>
 </html>
