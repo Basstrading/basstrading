@@ -220,7 +220,8 @@
 
     /* TÉMOIGNAGES VIDÉO */
     .vt{padding:120px 48px;background:var(--pure);position:relative;z-index:1}
-    .vt-feature{max-width:1060px;margin:48px auto 0;border-radius:20px;overflow:hidden;box-shadow:0 20px 80px rgba(0,0,0,.08)}
+    .vt-feature{max-width:1060px;margin:48px auto 0;border-radius:20px;overflow:hidden;box-shadow:0 20px 80px rgba(0,0,0,.08);background:var(--bk3)}
+    .vt-video{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
     .yt{position:relative;aspect-ratio:16/9;background:var(--bk3);cursor:pointer;overflow:hidden}
     .yt img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
     .yt:hover img{transform:scale(1.03)}
@@ -390,10 +391,10 @@
     <p class="sec-desc">Le déroulé ci-dessous est celui de la session de septembre 2026. Deux premiers jours pour savoir qui tu es et écrire ta méthode, puis trois jours qui montent d'un cran chaque matin. Comprendre, puis pratiquer, et chaque soir quelque chose que tu sais faire et que tu ne savais pas faire la veille.</p>
   </div>
   <div class="rituel">
-    <div class="rituel-item"><div class="rituel-h">9 h</div><p><strong>Micro-test du matin.</strong> Cinq minutes, trois jeux. Ce qui compte, c'est l'écart entre ce que tu déclares et ce que tu fais.</p></div>
-    <div class="rituel-item"><div class="rituel-h">13 h 15</div><p><strong>Export de tes trades.</strong> Dépôt dans ton espace, lecture par l'analyste pendant la pause, fiche prête à 15 h.</p></div>
-    <div class="rituel-item"><div class="rituel-h">15 h</div><p><strong>Retours individuels.</strong> Bass reprend les fiches, élève par élève, devant le graphique.</p></div>
-    <div class="rituel-item"><div class="rituel-h">18 h 15</div><p><strong>Journal du soir, à la voix.</strong> Trois questions, une minute chacune. Transcrit, relu par l'analyste pour le lendemain.</p></div>
+    <div class="rituel-item"><div class="rituel-h">Matin</div><p><strong>Comprendre.</strong> Le cours, devant le marché, avec un fil par jour.</p></div>
+    <div class="rituel-item"><div class="rituel-h">Après-midi</div><p><strong>Pratiquer.</strong> Une vraie séance rejouée, tes trades exportés et lus contre ta carte.</p></div>
+    <div class="rituel-item"><div class="rituel-h">Retours</div><p><strong>Élève par élève.</strong> Bass reprend les fiches de l'analyste devant le graphique.</p></div>
+    <div class="rituel-item"><div class="rituel-h">Le soir</div><p><strong>Ton journal, à la voix.</strong> Trois questions, relues par l'analyste pour le lendemain.</p></div>
   </div>
 
   <div class="jours">
@@ -402,34 +403,18 @@
     <article class="jour" id="jour-1">
       <div class="jour-side"><div class="jour-sticky">
         <div class="jour-big">1<small>/5</small></div>
-        <div class="jour-dow">Lundi · l'hypothèse</div>
+        <div class="jour-dow">Lundi · qui tu es</div>
         <div class="jour-media"><img src="../images/malaga-2026/cours-01.jpg" alt="Bass devant le carnet d'ordres Tradovate, lundi 28 septembre 2026, Malaga" loading="lazy" width="1600" height="900"><span class="jour-stamp">Lundi 28/09/2026</span></div>
-        <div class="jour-stat"><div><b>7</b><span>chapitres</span></div><div><b>3 h 10</b><span>filmées</span></div><div><b>9 h → 18 h 30</b><span>en salle</span></div></div>
       </div></div>
       <div class="jour-body">
         <h3>D'abord, qui tu es comme trader.<br>Ensuite, <em>qui bouge vraiment le marché</em>.</h3>
-        <p class="jour-lead">La semaine commence par toi, pas par un graphique. Puis le cours attaque le fond : qui achète, qui vend, et ce que les institutionnels sont <strong>obligés</strong> de faire, options et couverture comprises. Le soir, tu comprends enfin pourquoi certains niveaux tiennent et d'autres cassent.</p>
-        <ol class="tl">
-          <li><span class="t">9 h</span><span class="w"><strong>Accueil et questionnaire</strong> dans ton espace : parcours, situations de vie, mini-tests. Pendant que le cours commence, l'agent profileur dresse ton portrait.</span></li>
-          <li><span class="t">9 h 30</span><span class="w"><strong>Cours.</strong> Maîtriser son exécution et comprendre les acteurs du marché. Puis l'impact des options et la couverture institutionnelle : ce que Bass n'avait jamais détaillé publiquement.</span></li>
-          <li><span class="t">11 h</span><span class="w"><strong>Atelier.</strong> Configuration du poste sur Tradovate et lecture des volumes, écran par écran, jusqu'à ce que chacun ait un poste prêt à exécuter.</span></li>
-          <li><span class="t">13 h 30</span><span class="w"><strong>Pause.</strong> Les seize portraits sont prêts. Bass les lit avant de revoir chacun.</span></li>
-          <li><span class="t">15 h</span><span class="w"><strong>Cours et atelier.</strong> Détecter les blocages du prix et exécuter vite. Tenir un rythme d'exécution et suivre ses statistiques. Comprendre l'équilibre du marché et maîtriser le levier. Repérer les compressions et valider une cassure au lieu de la subir.</span></li>
-          <li><span class="t gold">18 h 15</span><span class="w"><strong>Journal du soir</strong>, à la voix. Fin à 18 h 30.</span></li>
-        </ol>
-        <details class="chap"><summary>Les 7 chapitres filmés ce jour-là · 3 h 10 <span class="ic">+</span></summary>
-          <ol>
-            <li class="demi">Matin · 2 chapitres · 0 h 51</li>
-            <li>Maîtriser son exécution et comprendre les acteurs du marché<span class="d">24 min</span></li>
-            <li>Comprendre l'impact des options et la couverture institutionnelle<span class="d">27 min</span></li>
-            <li class="demi">Après-midi · 5 chapitres · 2 h 19</li>
-            <li>Configuration du poste et analyse des volumes<span class="d">30 min</span></li>
-            <li>Détecter les blocages du prix et exécuter rapidement<span class="d">35 min</span></li>
-            <li>Maîtriser le rythme d'exécution et suivre ses statistiques<span class="d">34 min</span></li>
-            <li>Comprendre l'équilibre du marché et maîtriser le levier<span class="d">30 min</span></li>
-            <li>Repérer les compressions de prix et valider les cassures<span class="d">10 min</span></li>
-          </ol>
-        </details>
+        <p class="jour-lead">La semaine commence par toi, pas par un graphique. Un questionnaire, lu par un agent IA profileur, dresse ton portrait de trader avant ton premier trade. Puis le cours attaque le fond : qui achète, qui vend, et <strong>ce que les institutionnels sont obligés de faire</strong>. Le soir, tu comprends enfin pourquoi certains niveaux tiennent et d'autres cassent.</p>
+        <div class="vu">
+          <div class="vu-item"><h4>Ton portrait de trader</h4><p>Dix minutes de questionnaire, et un portrait qui dit qui tu es et où tu lâches sous pression. Bass le lit avant de te revoir.</p></div>
+          <div class="vu-item"><h4>Les acteurs du marché</h4><p>Qui achète, qui vend, et l'impact des options et de la couverture institutionnelle sur le prix.</p></div>
+          <div class="vu-item"><h4>Ton poste, réglé</h4><p>Configuration du poste sur Tradovate et lecture des volumes, jusqu'à ce que chacun ait un poste prêt à exécuter.</p></div>
+          <div class="vu-item"><h4>Exécuter</h4><p>Repérer les blocages du prix, entrer vite, tenir un rythme, suivre ses statistiques, maîtriser le levier, valider une cassure au lieu de la subir.</p></div>
+        </div>
         <div class="jour-out"><b>Le soir, tu sais</b>pourquoi un niveau tient ou casse, et tu as un poste réglé pour l'exécuter. Et quelqu'un a lu qui tu es avant même ton premier trade de la semaine.</div>
       </div>
     </article>
@@ -438,31 +423,18 @@
     <article class="jour" id="jour-2">
       <div class="jour-side"><div class="jour-sticky">
         <div class="jour-big">2<small>/5</small></div>
-        <div class="jour-dow">Mardi · le huis clos</div>
+        <div class="jour-dow">Mardi · ta méthode</div>
         <div class="jour-media"><img src="../images/malaga-2026/cours-08.jpg" alt="Bass en cours devant le carnet d'ordres, session de septembre 2026" loading="lazy" width="1600" height="900"><span class="jour-stamp">Mardi 29/09/2026</span></div>
-        <div class="jour-stat"><div><b>4</b><span>chapitres</span></div><div><b>1 h 58</b><span>filmées</span></div><div><b>16</b><span>entretiens</span></div></div>
       </div></div>
       <div class="jour-body">
         <h3>Lire l'ouverture.<br>Puis, à huis clos, <em>ta méthode</em>.</h3>
-        <p class="jour-lead">Le matin, la demi-heure où tout se joue : l'ouverture. L'après-midi, le format qui n'existe nulle part ailleurs : <strong>chaque élève, un par un, avec Bass et l'agent IA</strong>. Ton portrait, tes réponses, ta façon de réagir à la perte. On se connaît, et on détermine ensemble la méthode qui est la tienne. Elle est écrite. Elle a ton nom.</p>
-        <ol class="tl">
-          <li><span class="t">9 h</span><span class="w"><strong>Micro-test du matin.</strong></span></li>
-          <li><span class="t">9 h 15</span><span class="w"><strong>Cours.</strong> Cadrer l'ouverture et observer l'activité acheteurs-vendeurs. Lire l'histogramme de volume pour simplifier son exécution. S'appuyer sur les statistiques et la répartition des volumes. Gestion du risque et choix des actifs.</span></li>
-          <li><span class="t">11 h</span><span class="w"><span class="tag">Replay</span><strong>Première séance réelle du NQ</strong>, rejouée sur Tradovate. Tu la trades comme tu trades aujourd'hui : c'est le point de départ.</span></li>
-          <li><span class="t">13 h 15</span><span class="w"><strong>Export Tradovate</strong> et dépôt dans ton espace. L'analyste lit tes trades pendant la pause.</span></li>
-          <li><span class="t">15 h</span><span class="w"><strong>Huis clos.</strong> Analyse individuelle de chaque élève avec l'agent IA : portrait du lundi, trades du matin, journal. On tranche ensemble, et <strong>ta carte de méthode est écrite et validée par toi</strong> : déclencheur, stop, sortie, en une page.</span></li>
-          <li><span class="t gold">18 h 15</span><span class="w"><strong>Journal du soir.</strong> Fin à 18 h 30.</span></li>
-        </ol>
-        <details class="chap"><summary>Les 4 chapitres filmés ce jour-là · 1 h 58 <span class="ic">+</span></summary>
-          <ol>
-            <li class="demi">Matin · 4 chapitres · 1 h 58</li>
-            <li>Cadrer l'ouverture et observer l'activité acheteurs-vendeurs<span class="d">36 min</span></li>
-            <li>Analyser l'histogramme de volume et simplifier son exécution<span class="d">30 min</span></li>
-            <li>Utiliser les statistiques et la répartition des volumes<span class="d">31 min</span></li>
-            <li>Maîtriser la gestion du risque et le choix des actifs<span class="d">21 min</span></li>
-            <li class="demi">Après-midi · huis clos, non filmé</li>
-          </ol>
-        </details>
+        <p class="jour-lead">Le matin, la demi-heure où tout se joue : l'ouverture. L'après-midi, le format qui n'existe nulle part ailleurs : <strong>chaque élève, un par un, avec Bass et l'agent IA</strong>. Ton portrait, tes trades du matin, ta façon de réagir à la perte. On se connaît, et on détermine ensemble la méthode qui est la tienne. Elle est écrite. Elle a ton nom.</p>
+        <div class="vu">
+          <div class="vu-item"><h4>L'ouverture</h4><p>Cadrer la séance, observer l'activité acheteurs-vendeurs, lire l'histogramme de volume et la répartition des volumes, s'appuyer sur les statistiques.</p></div>
+          <div class="vu-item"><h4>Première séance réelle</h4><p>Une vraie séance du Nasdaq rejouée sur Tradovate, tradée comme tu trades aujourd'hui. C'est le point de départ.</p></div>
+          <div class="vu-item"><h4>Le huis clos</h4><p>Analyse individuelle de chaque élève avec l'agent IA : portrait, trades, journal. On tranche ensemble.</p></div>
+          <div class="vu-item"><h4>Ta carte de méthode</h4><p>Déclencheur, stop, sortie, en une page, écrite et validée par toi. Tout le reste de la semaine sera jugé contre elle.</p></div>
+        </div>
         <div class="jour-out"><b>Le soir, tu as</b>une méthode qui te ressemble, écrite noir sur blanc. À partir de là, chaque trade de la semaine sera jugé contre elle, et contre rien d'autre.</div>
       </div>
     </article>
@@ -593,9 +565,13 @@
   <div class="sec-center">
     <div class="sec-label">Témoignages vidéo · septembre 2026</div>
     <h2 class="sec-title">Ils en sortent.<br>Écoute-les.</h2>
-    <p class="sec-desc">Filmés le vendredi 2 octobre, dernier jour de la session, à chaud, dans la salle. Huit témoignages entiers et les meilleurs moments.</p>
+    <p class="sec-desc">Filmés le vendredi 2 octobre, dernier jour de la session, à chaud, dans la salle. Le déclic en une minute, puis huit témoignages entiers.</p>
   </div>
-  <div class="vt-feature"><div class="yt" data-id="bRggZkAIXDY" data-title="Pourquoi venir en présentiel, les élèves de Malaga racontent"><img src="../images/temoignages/teaser-presentiel.jpg" alt="Les élèves de la formation présentielle BASS Trading à Malaga, septembre 2026" loading="lazy" width="960" height="540"><button class="yt-play" type="button" aria-label="Lire : Pourquoi venir en présentiel, les élèves de Malaga racontent"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button><span class="yt-dur">1:15</span></div></div>
+  <div class="vt-feature">
+    <video class="vt-video" controls playsinline preload="metadata" poster="../images/temoignages/teaser-declic.jpg" aria-label="Le déclic : ce qui a changé dans leur tête à Malaga, septembre 2026">
+      <source src="../images/temoignages/teaser-declic.mp4" type="video/mp4">
+    </video>
+  </div>
   <div class="vt-grid">
     <article class="vt-card"><div class="yt" data-id="yRUOM6Awdtw" data-title="Témoignage de Christian"><img src="../images/temoignages/christian.jpg" alt="Christian, élève de la formation présentielle BASS Trading à Malaga, septembre 2026" loading="lazy" width="960" height="540"><button class="yt-play" type="button" aria-label="Lire : Témoignage de Christian"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button><span class="yt-dur">1:51</span></div><div class="vt-body"><h3 class="vt-name">Christian</h3><p class="vt-quote">« Je repars avec une technique clé en main. Le plus important, ça a été d'être sincère avec soi-même. »</p></div></article>
     <article class="vt-card"><div class="yt" data-id="xGhvjg1om4g" data-title="Témoignage de Frédérique"><img src="../images/temoignages/mamie.jpg" alt="Frédérique, élève de la formation présentielle BASS Trading à Malaga, septembre 2026" loading="lazy" width="960" height="540"><button class="yt-play" type="button" aria-label="Lire : Témoignage de Frédérique"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button><span class="yt-dur">2:22</span></div><div class="vt-body"><h3 class="vt-name">Frédérique</h3><p class="vt-quote">« Je sentais qu'il y avait quelque chose de caché derrière les bougies. Je repars avec quelque chose de très simple. »</p></div></article>
@@ -729,7 +705,6 @@ gsap.utils.toArray('.chiffre,.diff-card,.rituel-item,.vu-item,.arc-steps li,.tes
 });
 gsap.utils.toArray('.jour').forEach(j=>{
   gsap.from(j.querySelector('.jour-big'),{x:-24,opacity:0,duration:.6,ease:'power2.out',scrollTrigger:{trigger:j,start:'top 80%'}});
-  gsap.from(j.querySelectorAll('.tl li'),{y:16,opacity:0,duration:.4,stagger:.06,ease:'power2.out',scrollTrigger:{trigger:j.querySelector('.tl'),start:'top 85%'}});
 });
 gsap.from('.seb-img',{x:-30,opacity:0,duration:.7,ease:'power2.out',scrollTrigger:{trigger:'.seb-grid',start:'top 80%'}});
 gsap.from('.seb-grid > div:last-child',{x:30,opacity:0,duration:.7,ease:'power2.out',scrollTrigger:{trigger:'.seb-grid',start:'top 80%'}});
@@ -739,8 +714,6 @@ function tf(b){const i=b.closest('.fi'),a=b.nextElementSibling,o=i.classList.con
 
 // Ancres
 document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();lenis.scrollTo(t,{offset:-70})}})});
-// Les chapitres dépliés changent la hauteur de page : on prévient ScrollTrigger
-document.querySelectorAll('details.chap').forEach(d=>d.addEventListener('toggle',()=>ScrollTrigger.refresh()));
 </script>
 
 <script>
