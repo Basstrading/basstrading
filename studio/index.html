@@ -213,8 +213,6 @@ const API = "https://api.basstrading.fr";
 const app = document.getElementById("app");
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const euros = c => (c / 100).toLocaleString("fr-FR", {style: "currency", currency: "EUR", maximumFractionDigits: c % 100 ? 2 : 0});
-const date = d => d ? new Date(d).toLocaleDateString("fr-FR", {day: "numeric", month: "short", year: "numeric"}) : "—";
-const dateh = d => d ? new Date(d).toLocaleString("fr-FR", {day: "numeric", month: "short", hour: "2-digit", minute: "2-digit"}) : "—";
 const STATUT = {draft: ["Brouillon", ""], scheduled: ["Programmée", "blue"], running: ["En cours d'envoi", "warn"], paused: ["En pause", "warn"], finished: ["Envoyée", "ok"], cancelled: ["Annulée", "err"]};
 const ETAT_VENTE = {payee: ["Payée", "ok"], en_cours: ["Mensualités en cours", "blue"], terminee: ["Payée en totalité", "ok"], interrompue: ["Interrompue — accès retiré", "err"], remboursee: ["Remboursée — accès retiré", "warn"]};
 const PAIEMENT = n => n === 1 ? "Paiement unique" : n === 0 ? "Mensuel sans fin" : n + " mensualités";
@@ -512,7 +510,8 @@ async function contactFiche(cle) {
   const champ = ([k, l, oblig]) => {
     const v = a[k] ?? "";
     let input = `<input data-c="${k}" value="${esc(v)}" placeholder="${esc(l)}">`;
-    if (k === "country") input = `<select data-c="country"><option value="">Pays</option>${PAYS.map(([code, n]) => `<option value="${code}" ${String(v).toUpperCase() === code ? "selected" : ""}>${esc(n)}</option>`).join("")}</select>`;
+    if (k === "country") { const connu = PAYS.some(([code]) => code === String(v).toUpperCase());
+      input = `<select data-c="country"><option value="">Pays</option>${v && !connu ? `<option value="${esc(v)}" selected>${esc(v)}</option>` : ""}${PAYS.map(([code, n]) => `<option value="${code}" ${String(v).toUpperCase() === code ? "selected" : ""}>${esc(n)}</option>`).join("")}</select>`; }
     if (k === "locale") input = `<select data-c="locale">${[["fr", "Français"], ["en", "English"], ["es", "Español"], ["it", "Italiano"], ["de", "Deutsch"], ["pt", "Português"]].map(([x, n]) => `<option value="${x}" ${(v || "fr") === x ? "selected" : ""}>${n}</option>`).join("")}</select>`;
     if (k === "phone_number") input = `<div style="display:flex;align-items:center;border:1px solid var(--line2);border-radius:6px;background:#fff"><span style="padding:0 6px 0 14px;white-space:nowrap">🇫🇷 ⌄</span><input data-c="${k}" value="${esc(v)}" placeholder="${esc(l)}" style="border:0;min-height:48px"></div>`;
     return `<div><label style="font-weight:400;color:#3b4660;font-size:16px">${l}${oblig ? ` <span class="rq">*</span>` : ""}</label>${input}</div>`;
@@ -1312,18 +1311,6 @@ async function workflowEditeur(id) {
   };
 }
 
-function pagesFixes() {
-  const P = [
-    ["Formation offerte (inscription)", "/formation-offerte/", "Capte un email, débloque la formation offerte, ajoute aux listes."],
-    ["Merci — formation offerte", "/formation-offerte/merci/", "Après l'inscription : propose Market Profile."],
-    ["Market Profile (page de vente)", "/marketprofile/", "Page de vente à 57 €."],
-    ["Paiement — Market Profile", "/paiement/?offre=market-profile", "Bouton PayPal, 4 fois sans frais."],
-    ["Paiement — Sierra Chart", "/paiement/?offre=sierra-chart", "Proposé juste après l'achat de Market Profile."],
-    ["Espace élèves", "/espace/", "Connexion par lien email, formations, vidéos."],
-  ];
-  app.innerHTML = `<h1>Pages</h1><div class="wrap"><table><tr><th>Page</th><th>Rôle</th><th>Adresse</th></tr>
-  ${P.map(([n, u, r]) => `<tr><td><strong>${esc(n)}</strong></td><td class="mute">${esc(r)}</td><td><a href="${u}" target="_blank">basstrading.fr${esc(u)} ↗</a></td></tr>`).join("")}</table></div>`;
-}
 
 async function route() {
   const h = location.hash.replace(/^#\/?/, "");

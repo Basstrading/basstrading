@@ -55,7 +55,10 @@
     if (!b || /show-popup|close-popup/.test(b.getAttribute("data-test-id") || "")) return; // ouvrir/fermer une fenêtre : Systeme.io s'en charge
     const href = b.getAttribute && b.getAttribute("href");
     if (b.tagName === "A" && href && !href.startsWith("#") && !href.startsWith("javascript")) return; // vrai lien : on laisse
-    if (COMMANDE && b.tagName !== "A") { e.preventDefault(); e.stopImmediatePropagation(); payer(); return; } // bon de commande → notre paiement
+    if (COMMANDE && b.tagName !== "A") { // bon de commande → notre paiement (sauf boutons de fenêtre, vidéo, quantité…)
+      const t = ((b.getAttribute("data-test-id") || "") + " " + (b.getAttribute("aria-label") || "") + " " + (b.className || "")).toLowerCase();
+      if (/close|ferm|video|play|pause|mute|volume|fullscreen|quantity|qty|minus|plus|carousel|slider|arrow|prev|next|tab/.test(t) || b.closest("video, audio, [data-test-id*=video]")) return;
+      e.preventDefault(); e.stopImmediatePropagation(); payer(); return; }
     const z = zoneFormulaire(b);
     if (!z) return;
     e.preventDefault(); e.stopImmediatePropagation();
