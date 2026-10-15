@@ -556,12 +556,24 @@ async function route() {
     else if (h.startsWith("f/")) await formation(decodeURIComponent(h.slice(2)), param === "reprendre");
     else if (h.startsWith("l/")) await lecon(+h.slice(2), param);
     else await bibliotheque();
+    connecte = true; signalerPresence();
     if (!param) window.scrollTo(0, 0);
   } catch (x) {
+    if (x.auth) connecte = false;
     if (x.auth) login(new URLSearchParams(location.search).get("info") || "");
     else page(`<div class="card"><p>${esc(x.msg || "Une erreur est survenue.")}</p><a href="#/">← Retour</a></div>`);
   }
 }
+/* Présence : visible par Bass dans le Studio (« En ligne »), seulement quand l'onglet est au premier plan */
+let connecte = false;
+function signalerPresence() {
+  if (!connecte || document.hidden) return;
+  const h = location.hash.replace(/^#\/?/, "").split("?")[0];
+  fetch(API + "/espace/presence", {method: "POST", credentials: "include", headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({page: h || "accueil", lecon_id: h.startsWith("l/") ? +h.slice(2) || null : null})}).catch(() => {});
+}
+setInterval(signalerPresence, 30000);
+document.addEventListener("visibilitychange", signalerPresence);
 document.getElementById("out").onclick = async () => { await post("/auth/deconnexion").catch(() => {}); location.hash = ""; login("Tu es déconnecté."); };
 addEventListener("hashchange", route);
 route();

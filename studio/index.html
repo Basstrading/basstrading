@@ -202,7 +202,7 @@ button.card:hover{box-shadow:0 0 0 2px var(--blue)}
     <div class="menu liste" data-m="sites"><button>Sites</button><div class="sous"><a href="#/tunnels">Tunnels de vente</a><a href="#/pages">Pages</a></div></div>
     <div class="menu liste" data-m="emails"><button>Emails</button><div class="sous"><a href="#/emails">Newsletters</a><a href="#/sequences">Campagnes</a></div></div>
     <div class="menu liste" data-m="auto"><button>Automatisations</button><div class="sous"><a href="#/regles">Règles</a><a href="#/workflows">Workflows</a></div></div>
-    <div class="menu liste" data-m="ressources"><button>Ressources <span class="bq" hidden style="background:#f23f6d;color:#fff;border-radius:10px;padding:0 7px;font-size:12px;line-height:18px"></span></button><div class="sous"><a href="#/formations">Formations</a><a href="#/questions">Questions des élèves <span class="bq" hidden style="background:#f23f6d;color:#fff;border-radius:10px;padding:0 7px;font-size:12px;margin-left:4px"></span></a></div></div>
+    <div class="menu liste" data-m="ressources"><button>Ressources <span class="bq" hidden style="background:#f23f6d;color:#fff;border-radius:10px;padding:0 7px;font-size:12px;line-height:18px"></span></button><div class="sous"><a href="#/formations">Formations</a><a href="#/en-ligne">Élèves en ligne <span class="bl" hidden style="background:#22c55e;color:#fff;border-radius:10px;padding:0 7px;font-size:12px;margin-left:4px"></span></a><a href="#/questions">Questions des élèves <span class="bq" hidden style="background:#f23f6d;color:#fff;border-radius:10px;padding:0 7px;font-size:12px;margin-left:4px"></span></a></div></div>
     <div class="menu liste" data-m="ventes"><button>Ventes</button><div class="sous"><a href="#/transactions">Transactions</a><a href="#/ventes">Offres et liens de paiement</a></div></div>
     <div class="menu avatar" data-m="compte"><button><span class="rond" style="background:#1d9bf0;align-items:center;color:#fff;font:700 22px Outfit">B</span><span>⌄</span></button>
       <div class="sous"><a href="https://listes.hubtrading.fr/admin/" target="_blank" rel="noopener">Listmonk ↗</a><a href="/espace/" target="_blank">Espace élèves ↗</a><a href="/" target="_blank">basstrading.fr ↗</a></div></div>
@@ -586,6 +586,34 @@ async function contactFiche(cle) {
       ${F.notes.map(n => `<div style="border-top:1px solid var(--line);padding:10px 0;margin-top:10px"><div class="mute">${dmyh(n.created_at)} <a href="javascript:void 0" data-sn="${n.id}" style="color:var(--mute)">✕</a></div><div style="white-space:pre-wrap">${esc(n.texte)}</div></div>`).join("")}`);
   document.getElementById("na").onclick = async () => { const t = document.getElementById("nt").value.trim(); if (!t) return; await post("/studio/contact/notes", {email: c.email, texte: t}); contactFiche(String(c.id)); };
   document.querySelectorAll("[data-sn]").forEach(x => x.onclick = async () => { if (confirm("Supprimer cette note ?")) { await api("/studio/contact/notes/" + x.dataset.sn, {method: "DELETE"}); contactFiche(String(c.id)); } });
+}
+
+/* ── Ressources : élèves en ligne ───────────────── */
+async function majBadgeEnLigne() {
+  try { const r = await api("/studio/en-ligne/compte"); document.querySelectorAll(".bl").forEach(b => { b.textContent = r.n; b.hidden = !r.n; }); } catch {}
+}
+setInterval(majBadgeEnLigne, 30000);
+let rafraichirEnLigne = null;
+const depuis = d => { const s = Math.max(0, (Date.now() - new Date(d)) / 1000); return s < 60 ? "moins d'1 min" : s < 3600 ? `${Math.floor(s / 60)} min` : `${Math.floor(s / 3600)} h ${String(Math.floor(s % 3600 / 60)).padStart(2, "0")}`; };
+const lieu = x => x.lecon ? `▶ <b style="font-weight:600;color:var(--txt)">${esc(x.lecon)}</b><div class="mute">${esc(x.formation || "")}</div>`
+  : `<span class="mute">${{accueil: "Mes formations", notes: "Ses notes", compte: "Mon compte"}[x.page] || (String(x.page || "").startsWith("f/") ? "Page d'une formation" : "Espace")}</span>`;
+async function elevesEnLigne() {
+  const d = await api("/studio/en-ligne");
+  if (location.hash !== "#/en-ligne") return;
+  const nom = x => `<b style="font-weight:600;color:var(--txt)">${esc(x.prenom || x.email.split("@")[0])}</b><div class="mute">${esc(x.email)}</div>`;
+  const carte = (v, t) => `<div class="card" style="flex:1;min-width:170px;padding:16px"><div style="font:700 26px Outfit">${(+v).toLocaleString("fr-FR")}</div><div class="mute">${t}</div></div>`;
+  app.innerHTML = `${entete("Élèves en ligne", null, "", `<span class="mute">Mise à jour toutes les 15 s</span>`)}
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:18px">${carte(d.maintenant.length, "🟢 en ligne maintenant")}${carte(d.venus_aujourdhui, "élèves venus aujourd'hui")}
+      ${carte(d.comptes_aujourdhui, "comptes activés aujourd'hui (mot de passe créé)")}${carte(d.comptes_total, "comptes activés au total")}${carte(d.telegram_total, "Telegram reliés")}</div>
+    <div class="card" style="padding:0;overflow:auto"><table><thead><tr><th>🟢 En ligne maintenant</th><th>Ce qu'il regarde</th><th>Depuis</th></tr></thead><tbody>
+      ${d.maintenant.map(x => `<tr><td>${nom(x)}${x.telegram ? ' <span class="mute" title="Telegram relié">✈️</span>' : ""}</td><td>${lieu(x)}</td><td>${depuis(x.arrive_at)}</td></tr>`).join("")
+        || `<tr><td colspan="3" class="mute" style="padding:22px">Personne en ce moment.</td></tr>`}</tbody></table></div>
+    <div class="card" style="padding:0;overflow:auto;margin-top:18px"><table><thead><tr><th>Passés ces dernières 24 h</th><th>Dernière leçon</th><th>Vu il y a</th></tr></thead><tbody>
+      ${d.recents.map(x => `<tr><td>${nom(x)}</td><td>${x.lecon ? `${esc(x.lecon)}<div class="mute">${esc(x.formation || "")}</div>` : '<span class="mute">—</span>'}</td><td>${depuis(x.vu_at)}</td></tr>`).join("")
+        || `<tr><td colspan="3" class="mute" style="padding:22px">Personne d'autre aujourd'hui.</td></tr>`}</tbody></table></div>`;
+  document.querySelectorAll(".bl").forEach(b => { b.textContent = d.maintenant.length; b.hidden = !d.maintenant.length; });
+  clearTimeout(rafraichirEnLigne);
+  rafraichirEnLigne = setTimeout(() => { if (location.hash === "#/en-ligne") elevesEnLigne().catch(() => {}); }, 15000);
 }
 
 /* ── Ressources : questions des élèves ───────────────── */
@@ -1398,7 +1426,7 @@ async function workflowEditeur(id) {
 
 
 async function route() {
-  majBadgeQuestions();
+  majBadgeQuestions(); majBadgeEnLigne();
   const h = location.hash.replace(/^#\/?/, "");
   onglet(h);
   document.getElementById("nav").style.visibility = "";
@@ -1418,6 +1446,7 @@ async function route() {
     else if (h === "formations") await formations();
     else if (/^formations\/\d+$/.test(h)) await formationPlan(+h.slice(11));
     else if (h.startsWith("questions")) await questionsEleves(h.split("?")[1]);
+    else if (h === "en-ligne") await elevesEnLigne();
     else if (h === "ventes") await ventes();
     else if (h === "transactions") await ventes("transactions");
     else if (h === "sequences") await sequencesListe();
