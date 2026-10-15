@@ -266,26 +266,62 @@ function login(code) {
 }
 
 /* ── Tableau de bord ─────────────────────────────────── */
-async function accueil() {
-  const d = await api("/studio/resume");
+const COURBES = {};
+function activerCourbes(jours) {
+  document.querySelectorAll(".graphe").forEach(g => {
+    const C = COURBES[g.id], svg = g.querySelector("svg"), bulle = g.querySelector(".gb"), ligne = g.querySelector(".gl"), point = g.querySelector(".gp");
+    const indice = e => { const m = svg.getScreenCTM(); if (!m) return -1; const x = (e.clientX - m.e) / m.a; return Math.max(0, Math.min(C.v.length - 1, Math.round(x / C.pas))); };
+    g.onmousemove = e => {
+      const i = indice(e); if (i < 0) return;
+      const [x, y] = C.pts[i];
+      ligne.setAttribute("x1", x); ligne.setAttribute("x2", x); ligne.setAttribute("visibility", "visible");
+      point.setAttribute("cx", x); point.setAttribute("cy", y); point.setAttribute("visibility", "visible");
+      const date = new Date(jours[i] + "T12:00:00").toLocaleDateString("fr-FR", {weekday: "long", day: "numeric", month: "long", year: "numeric"});
+      bulle.innerHTML = `<div class="mute" style="font-size:12px">${date}</div><div>${C.fmt(C.v[i])}</div>${C.lien && C.v[i] ? `<div class="mute" style="font-size:11px">Clique pour les voir</div>` : ""}`;
+      bulle.hidden = false;
+      const r = g.getBoundingClientRect(), bx = e.clientX - r.left, by = e.clientY - r.top;
+      bulle.style.left = Math.min(Math.max(bx - bulle.offsetWidth / 2, 0), r.width - bulle.offsetWidth) + "px";
+      bulle.style.top = Math.max(by - bulle.offsetHeight - 14, 0) + "px";
+    };
+    g.onmouseleave = () => { bulle.hidden = true; ligne.setAttribute("visibility", "hidden"); point.setAttribute("visibility", "hidden"); };
+    if (C.lien) g.onclick = e => { const i = indice(e); if (i >= 0 && C.v[i]) location.hash = C.lien(jours[i]); };
+  });
+}
+async function accueil(params) {
+  const P = new URLSearchParams(params || "");
+  const d = await api("/studio/resume" + (P.get("du") ? `?du=${P.get("du")}&au=${P.get("au") || ""}` : ""));
   const jourCourt = j => new Date(j).toLocaleDateString("fr-FR", {day: "2-digit", month: "short"});
   // Courbe lissée bleu clair, points sur la ligne, dates en oblique : comme l'ancien tableau de bord.
-  const courbe = (v, fmt) => {
-    const W = 620, H = 230, max = Math.max(1, ...v), pas = W / (v.length - 1);
+  // Courbe façon Systeme.io : au survol, ligne verticale + point du jour + bulle (date, valeur) ; clic = voir les contacts du jour.
+  const courbe = (v, fmt, lien) => {
+    const W = 620, H = 230, max = Math.max(1, ...v), pas = W / Math.max(1, v.length - 1);
     const pts = v.map((y, i) => [i * pas, H - 6 - (y / max) * (H - 20)]);
     const lisse = pts.map((p, i) => i ? `C${pts[i - 1][0] + pas / 2},${pts[i - 1][1]} ${p[0] - pas / 2},${p[1]} ${p[0]},${p[1]}` : `M${p[0]},${p[1]}`).join(" ");
-    return `<svg viewBox="-12 0 ${W + 24} ${H + 58}" style="width:100%;height:auto;display:block;margin-top:24px;font:12px Outfit;fill:#99a2b4">
+    const id = "g" + Math.random().toString(36).slice(2, 8);
+    COURBES[id] = {pts, v, fmt, lien, pas};
+    return `<div class="graphe" id="${id}" style="position:relative;margin-top:24px;${lien ? "cursor:pointer" : ""}">
+      <svg viewBox="-12 0 ${W + 24} ${H + 58}" style="width:100%;height:auto;display:block;font:12px Outfit;fill:#99a2b4">
       <path d="${lisse} L${W},${H} L0,${H} Z" fill="#f2f8fe"/><path d="${lisse}" fill="none" stroke="#cfe3fb" stroke-width="3"/>
-      ${pts.map((p, i) => `<circle cx="${p[0]}" cy="${p[1]}" r="3.2" fill="#cfe3fb"><title>${jourCourt(d.jours[i])} : ${fmt(v[i])}</title></circle>`).join("")}
-      ${d.jours.map((j, i) => i % 2 === 0 ? `<text transform="translate(${i * pas + 4},${H + 14}) rotate(-50)" text-anchor="end">${jourCourt(j)}</text>` : "").join("")}</svg>`;
+      ${v.length <= 62 ? pts.map(p => `<circle cx="${p[0]}" cy="${p[1]}" r="3.2" fill="#cfe3fb"/>`).join("") : ""}
+      <line class="gl" x1="0" x2="0" y1="0" y2="${H}" stroke="#1aa1f5" stroke-width="1" stroke-dasharray="4 3" visibility="hidden"/>
+      <circle class="gp" r="6" fill="#1aa1f5" stroke="#fff" stroke-width="2" visibility="hidden"/>
+      ${d.jours.map((j, i) => i % Math.max(2, Math.ceil(v.length / 16)) === 0 ? `<text transform="translate(${i * pas + 4},${H + 14}) rotate(-50)" text-anchor="end">${jourCourt(j)}</text>` : "").join("")}
+      <rect x="-12" y="0" width="${W + 24}" height="${H + 10}" fill="transparent"/></svg>
+      <div class="gb" hidden style="position:absolute;pointer-events:none;background:#fff;border-radius:6px;box-shadow:0 4px 16px rgba(20,40,79,.18);padding:8px 12px;font-size:13px;color:var(--txt);white-space:nowrap;z-index:5"></div></div>`;
   };
-  const evol = (n, avant) => { const p = avant ? Math.round((n - avant) / avant * 100) : (n ? 100 : 0);
-    return `<div class="evol ${p < 0 ? "bas" : ""}"><b>${p < 0 ? "▼" : "▲"} ${Math.abs(p)}%</b><span>30 derniers jours</span></div>`; };
+  const nbjours = d.jours.length;
+  const evol = (n, avant) => { const nbj = nbjours; const p = avant ? Math.round((n - avant) / avant * 100) : (n ? 100 : 0);
+    return `<div class="evol ${p < 0 ? "bas" : ""}" title="Par rapport aux ${nbj} jours précédents"><b>${p < 0 ? "▼" : "▲"} ${Math.abs(p)}%</b><span>${nbj} dernier${nbj > 1 ? "s" : ""} jour${nbj > 1 ? "s" : ""}</span></div>`; };
   const jour = x => x.toLocaleDateString("fr-FR", {day: "numeric", month: "long", year: "numeric"});
-  app.innerHTML = `${entete("Tableau de bord", null, "", `<div class="periode"><span>${jour(new Date(Date.now() - 30 * 864e5))} &nbsp;–&nbsp; ${jour(new Date())}</span><i>📅</i></div>`)}
+  app.innerHTML = `${entete("Tableau de bord", null, "", `<div style="position:relative"><button class="periode" id="per" style="cursor:pointer;font:inherit"><span>${jour(new Date(d.du + "T12:00:00"))} &nbsp;–&nbsp; ${jour(new Date(d.au + "T12:00:00"))}</span><i>📅</i></button>
+    <div class="card" id="cal" hidden style="position:absolute;right:0;top:calc(100% + 8px);z-index:20;width:min(560px,92vw);padding:0;box-shadow:0 8px 28px rgba(20,40,79,.18);display:grid;grid-template-columns:190px 1fr">
+      <div style="border-right:1px solid var(--line);padding:8px 0">${[["auj", "Aujourd'hui"], ["hier", "Hier"], ["7", "7 derniers jours"], ["30", "30 derniers jours"], ["mois", "Ce mois-ci"], ["moisp", "Le mois dernier"], ["90", "3 derniers mois"], ["an", "Cette année"], ["anp", "L'année dernière"]]
+        .map(([k, l]) => `<button data-p="${k}" style="display:block;width:100%;text-align:left;background:none;border:0;padding:9px 18px;font:15px Outfit;color:var(--txt);cursor:pointer">${l}</button>`).join("")}</div>
+      <div style="padding:18px 20px"><label style="margin-top:0">Du</label><input type="date" id="cdu" value="${d.du}" min="2022-01-01"><label>Au</label><input type="date" id="cau" value="${d.au}" min="2022-01-01">
+        <div class="row" style="margin-top:16px;gap:8px"><button class="btn" id="cok" style="flex:0 0 auto;min-width:0">Appliquer</button><button class="btn sec" id="cx" style="flex:0 0 auto;min-width:0">Fermer</button></div></div></div></div>`)}
   <div class="dash">
-    <div class="card kpi">${evol(d.nouveaux_contacts_30j, d.contacts_prec)}<div class="l">Nouveaux contacts</div><div class="v">${d.nouveaux_contacts_30j.toLocaleString("fr-FR")}</div>${courbe(d.serie_contacts, n => n + " contact(s)")}</div>
-    <div class="card kpi">${evol(d.ca_30j, d.ca_prec)}<div class="l">Ventes totales</div><div class="v">${euros(d.ca_30j)}</div>${courbe(d.serie_paiements, euros)}</div>
+    <div class="card kpi">${evol(d.nouveaux_contacts_30j, d.contacts_prec)}<div class="l">Nouveaux contacts</div><div class="v">${d.nouveaux_contacts_30j.toLocaleString("fr-FR")}</div>${courbe(d.serie_contacts, n => `<b>${n}</b> nouveau${n > 1 ? "x" : ""} contact${n > 1 ? "s" : ""}`, j => `#/contacts?du=${j}&au=${j}`)}</div>
+    <div class="card kpi">${evol(d.ca_30j, d.ca_prec)}<div class="l">Ventes totales</div><div class="v">${euros(d.ca_30j)}</div>${courbe(d.serie_paiements, n => `<b>${euros(n)}</b> de ventes`, null)}</div>
     <div class="card direct" style="grid-row:span 2"><h3>En direct</h3><div class="liste">
       ${d.direct.map(e => e.type === "remboursement"
         ? `<div class="evt"><div class="ic pay" style="color:var(--err)">↺</div><div style="min-width:0;flex:1"><span class="d">${dmyh(e.quand)}</span><b>Remboursement</b><div class="q">${lienContact(0, e.email, e.nom || e.email)} — ${euros(e.montant)} · ${esc(e.detail)}</div></div></div>`
@@ -296,6 +332,25 @@ async function accueil() {
     <div class="card kpi"><div class="l">Nouveaux élèves</div><div class="v">${d.nouveaux_eleves_30j}</div><div class="mute">30 derniers jours — inscriptions et achats · ${d.connectes_30j} élève(s) connecté(s)</div></div>
     <div class="card kpi"><div class="l">Contacts au total</div><div class="v">${d.contacts.toLocaleString("fr-FR")}</div><div class="mute">dans toutes tes listes</div></div>
   </div>`;
+  activerCourbes(d.jours);
+  const cal = document.getElementById("cal"), iso = x => new Date(x.getTime() - x.getTimezoneOffset() * 6e4).toISOString().slice(0, 10);
+  document.getElementById("per").onclick = e => { e.stopPropagation(); cal.hidden = !cal.hidden; };
+  cal.onclick = e => e.stopPropagation();
+  document.addEventListener("click", () => { if (cal) cal.hidden = true; }, {once: true});
+  document.getElementById("cx").onclick = () => cal.hidden = true;
+  const aller = (a, b) => { location.hash = `#/?du=${a}&au=${b}`; };
+  document.getElementById("cok").onclick = () => { const a = document.getElementById("cdu").value, b = document.getElementById("cau").value; if (a && b) aller(a <= b ? a : b, a <= b ? b : a); };
+  document.querySelectorAll("#cal [data-p]").forEach(b => b.onclick = () => {
+    const t = new Date(), j = (n) => { const x = new Date(t); x.setDate(x.getDate() - n); return iso(x); };
+    const k = b.dataset.p;
+    if (k === "auj") aller(iso(t), iso(t));
+    if (k === "hier") aller(j(1), j(1));
+    if (["7", "30", "90"].includes(k)) aller(j(+k - 1), iso(t));
+    if (k === "mois") aller(iso(new Date(t.getFullYear(), t.getMonth(), 1)), iso(t));
+    if (k === "moisp") aller(iso(new Date(t.getFullYear(), t.getMonth() - 1, 1)), iso(new Date(t.getFullYear(), t.getMonth(), 0)));
+    if (k === "an") aller(`${t.getFullYear()}-01-01`, iso(t));
+    if (k === "anp") aller(`${t.getFullYear() - 1}-01-01`, `${t.getFullYear() - 1}-12-31`);
+  });
 }
 
 /* ── CRM : contacts (filtres de Systeme.io) ──────────── */
@@ -380,6 +435,7 @@ async function contacts(params) {
       f.querySelectorAll(".multi").forEach(x => x.checked = (c.valeurs || []).includes(x.value)); }); charger(1); };
   document.getElementById("raz").onclick = () => appliquer([]);
   if (p.get("liste")) appliquer([{champ: "tag", op: "a", valeur: p.get("liste")}]);
+  else if (p.get("du")) appliquer([{champ: "date_ajout", du: p.get("du"), au: p.get("au") || p.get("du")}]);
   // filtres enregistrés
   const enregistres = async () => { const F = await api("/studio/filtres");
     document.getElementById("fe").innerHTML = F.map(f => `<div class="filtre" style="padding:0"><div class="t"><a href="javascript:void 0" data-f="${f.id}">${esc(f.nom)}</a><button class="mini" data-x="${f.id}" title="Supprimer">✕</button></div></div>`).join("") || `<p class="mute">Aucun filtre enregistré. Coche des filtres puis « Enregistrer filtre ».</p>`;
@@ -436,7 +492,7 @@ async function contacts(params) {
   };
   document.getElementById("cc").onclick = () => formulaire(false);
   document.getElementById("ic").onclick = () => formulaire(true);
-  if (!p.get("liste")) charger(1);
+  if (!p.get("liste") && !p.get("du")) charger(1);
 }
 
 /* ── CRM : fiche contact (comme la fiche Systeme.io fin 2025 : une longue page, formulaire 2 colonnes, tags) ── */
@@ -1293,7 +1349,7 @@ async function route() {
     else if (h.startsWith("sequences/")) { const [sid, , v] = h.slice(10).split("/"); await editeurSequence(+sid, v); }
     else if (h === "pages") await pagesListe();
     else if (h.startsWith("pages/")) await editeurPage(+h.slice(6));
-    else await accueil();
+    else await accueil(h.split("?")[1]);
     window.scrollTo(0, 0);
   } catch (x) {
     if (x.auth) login(x.auth);
