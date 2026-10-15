@@ -10,21 +10,22 @@
 <style>
 /* Ancien Systeme.io (captures FR 2020–2022 du centre d'aide) : barre bleu marine, logo en lettres bleu clair, menu à droite,
    onglet actif blanc souligné de bleu, fond #f0f3f8, titres « 51 Contacts » (nombre bleu), tableaux à bande d'en-tête grise. */
-:root{--nav:#162b5c;--bg:#f0f3f8;--card:#fff;--line:#eef0f4;--line2:#dfe3ea;--band:#f7f8fb;--txt:#2a2f3a;--txt2:#5c6370;--mute:#99a2b4;--blue:#1e9bf0;--blue-fonce:#1b2f63;--blue2:#e8f4fe;--ok:#22b573;--ok-bg:#e6f8ee;--warn:#f5a623;--err:#f0466b;--err-bg:#fdecf0}
+:root{--nav:#142a5c;--bg:#f0f3f8;--card:#fff;--line:#edf0f5;--line2:#dde3ec;--band:#f7f9fc;--txt:#14284f;--txt2:#5f6b85;--mute:#8a94a8;--blue:#1aa1f5;--blue-fonce:#1b2f63;--blue2:#e8f4fe;--ok:#22b573;--ok-bg:#e6f8ee;--warn:#f5a623;--err:#f23f6d;--err-bg:#fdecf0}
 *{box-sizing:border-box}
 html,body{margin:0;background:var(--bg);color:var(--txt);font:400 15px/1.5 'Outfit','Gilroy','Avenir Next',system-ui,sans-serif}
 a{color:var(--blue);text-decoration:none}
 a:hover{text-decoration:underline}
 header{background:var(--nav);position:sticky;top:0;z-index:20}
-.bar{display:flex;align-items:stretch;gap:4px;padding:0 28px 0 32px;height:70px}
-.logo{display:flex;align-items:center;color:#31a8f5!important;font:600 27px Outfit;letter-spacing:-.5px;margin-right:24px;white-space:nowrap;text-decoration:none!important}
+.bar{display:flex;align-items:stretch;gap:4px;padding:0 40px 0 48px;height:72px}
+.logo{display:flex;align-items:center;gap:9px;color:#fff!important;font:600 21px Outfit;margin-right:24px;white-space:nowrap;text-decoration:none!important}
+.logo i{width:38px;height:38px;border-radius:50%;background:#fff;color:var(--nav);display:flex;align-items:center;justify-content:center;font:800 22px Outfit;font-style:normal}
 nav{display:flex;align-items:stretch;gap:6px;margin-left:auto}
 .menu{position:relative;display:flex}
-.menu>button,nav>a{display:flex;align-items:center;gap:9px;background:none;border:0;border-bottom:3px solid transparent;border-top:3px solid transparent;padding:0 9px;font:500 16px Outfit;color:#aab4cc;cursor:pointer;white-space:nowrap;text-decoration:none!important}
-.menu>button:hover,nav>a:hover{color:#fff}
+.menu>button,nav>a{display:flex;align-items:center;gap:9px;background:none;border:0;border-bottom:3px solid transparent;border-top:3px solid transparent;padding:0 8px;font:600 16px Outfit;color:#fff;cursor:pointer;white-space:nowrap;text-decoration:none!important}
+.menu>button:hover,nav>a:hover{color:#cfe6fb}
 .menu.liste>button::after{content:"";width:6px;height:6px;border-right:1.6px solid currentColor;border-bottom:1.6px solid currentColor;transform:rotate(45deg) translateY(-3px)}
-.menu.on>button,nav>a.on{color:#fff;font-weight:600;border-bottom-color:#2196f3}
-.sous{display:none;position:absolute;top:calc(100% + 4px);left:50%;transform:translateX(-50%);min-width:170px;background:#fff;border-radius:4px;box-shadow:0 4px 18px rgba(22,43,92,.18);padding:10px 0;z-index:30}
+.menu.on>button,nav>a.on{color:#fff;border-bottom-color:#1d9bf0}
+.sous{display:none;position:absolute;top:calc(100% + 4px);left:50%;transform:translateX(-50%);min-width:170px;background:#fff;border-radius:8px;box-shadow:0 4px 18px rgba(22,43,92,.18);padding:12px 0;z-index:30}
 .sous::before{content:"";position:absolute;top:-7px;left:50%;margin-left:-7px;border:7px solid transparent;border-top:0;border-bottom-color:#fff}
 .menu.open .sous,.pts.open .sous{display:block}
 .sous a,.sous button{display:block;width:100%;text-align:left;background:none;border:0;padding:6px 22px;color:var(--txt2);font:400 16px Outfit;white-space:nowrap;cursor:pointer}
@@ -35,32 +36,32 @@ nav{display:flex;align-items:stretch;gap:6px;margin-left:auto}
 .rond{width:42px;height:42px;border-radius:50%;background:#e9ecf2;display:flex;align-items:flex-end;justify-content:center;overflow:hidden}
 .avatar .sous{left:auto;right:-10px;transform:none}.avatar .sous::before{left:auto;right:30px}
 main{padding:30px 32px 90px}
-h1{font-size:25px;font-weight:400;line-height:32px;margin:0 0 22px;color:var(--txt);display:flex;align-items:center;gap:8px}
-h1 .nb{color:var(--blue)}
+h1{font-size:28px;font-weight:600;line-height:36px;margin:0 0 22px;color:var(--txt);display:flex;align-items:center;gap:8px}
+h1 .nb{color:var(--txt)}
 h1 .aide{width:20px;height:20px;border-radius:50%;background:#c3c9d4;color:#fff;font:600 13px Outfit;display:inline-flex;align-items:center;justify-content:center}
-h1.ariane{color:#8a93a3}h1.ariane a{color:#8a93a3}h1.ariane .sep{font-size:18px;margin:0 4px}
+h1.ariane{color:#8a94a8;font-weight:500}h1.ariane a{color:#8a94a8}h1.ariane>span:last-child{color:var(--txt)}h1.ariane .sep{font-size:18px;margin:0 4px}
 h2{font-size:18px;font-weight:500;margin:28px 0 12px}
 .entete{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 22px;min-height:46px}
 .entete h1{margin:0}
 .entete .droite{margin-left:auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-.card{background:var(--card);border-radius:4px;padding:24px 30px;box-shadow:0 1px 4px rgba(22,43,92,.06)}
+.card{background:var(--card);border-radius:8px;padding:24px 30px;box-shadow:0 1px 4px rgba(22,43,92,.06)}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:22px}
-.kpi .l{font-size:15px;text-transform:uppercase;color:#5c6370;letter-spacing:.01em}
+.kpi .l{font-size:16px;text-transform:uppercase;color:#5f6b85;letter-spacing:.01em}
 .kpi .v{font-size:44px;font-weight:300;color:var(--blue);line-height:1.15}
 .evol{float:right;background:var(--ok-bg);color:var(--ok);border-radius:4px;padding:8px 18px;text-align:center;line-height:1.2}
 .evol b{font-size:24px;font-weight:600}.evol span{display:block;font-size:13px}
 .evol.bas{background:var(--err-bg);color:var(--err)}
-.wrap{overflow-x:auto;background:#fff;border-radius:4px;box-shadow:0 1px 4px rgba(22,43,92,.06)}
+.wrap{overflow-x:auto;background:#fff;border-radius:8px;box-shadow:0 1px 4px rgba(22,43,92,.06)}
 table{width:100%;border-collapse:collapse;background:#fff}
 th,td{text-align:left;padding:14px 20px;border-bottom:1px solid var(--line);vertical-align:middle}
-th{font-size:13px;font-weight:400;text-transform:uppercase;color:var(--mute);background:var(--band);white-space:nowrap;height:56px}
+th{font-size:16px;font-weight:600;color:var(--txt);background:var(--band);white-space:nowrap;height:56px}
 th.tri{color:var(--blue)}
-td{color:var(--txt);height:66px}
+td{color:#3b4660;height:72px}
 tr:last-child td{border-bottom:0}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:42px;background:var(--blue);color:#fff;border:1px solid var(--blue);border-radius:4px;padding:8px 22px;font:600 15px Outfit;cursor:pointer;white-space:nowrap;text-decoration:none!important;box-shadow:0 2px 6px rgba(30,155,240,.25)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;background:var(--blue);color:#fff;border:1px solid var(--blue);border-radius:6px;padding:8px 20px;font:600 16px Outfit;cursor:pointer;white-space:nowrap;text-decoration:none!important;box-shadow:0 2px 6px rgba(30,155,240,.25)}
 .btn:hover{filter:brightness(.95)}
 .btn.fonce{background:var(--blue-fonce);border-color:var(--blue-fonce);box-shadow:none}
-.btn.sec{background:#fff;color:var(--txt2);border:1px solid #fff;box-shadow:0 1px 4px rgba(22,43,92,.1);font-weight:500}
+.btn.sec{background:#fff;color:var(--txt);border:1px solid var(--line2);box-shadow:none;font-weight:600}
 .btn.ok{background:var(--ok);border-color:var(--ok)}
 .btn.dang{background:var(--err);border-color:var(--err);color:#fff;box-shadow:none}
 .btn.petit{min-height:32px;padding:4px 12px;font-size:14px}
@@ -98,7 +99,7 @@ button.card:hover{box-shadow:0 0 0 2px var(--blue)}
 .dash{display:grid;grid-template-columns:minmax(0,1fr);gap:24px}
 @media (min-width:1100px){.dash{grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(300px,.62fr)}}
 .direct{padding:0;align-self:stretch}
-.direct h3{font-size:21px;font-weight:400;margin:0;padding:26px 32px;border-bottom:1px solid var(--line)}
+.direct h3{font-size:24px;font-weight:600;margin:0;padding:26px 32px;border-bottom:1px solid var(--line)}
 .direct .liste{padding:0 32px;max-height:640px;overflow:auto}
 .evt{display:flex;gap:16px;padding:18px 0;border-bottom:1px solid var(--line)}
 .evt:last-child{border-bottom:0}
@@ -108,17 +109,18 @@ button.card:hover{box-shadow:0 0 0 2px var(--blue)}
 .evt .d{font-size:12px;color:var(--mute);float:right}
 .evt .q{color:var(--txt2);font-size:13px;margin-top:4px}
 .evt .q a{text-decoration:underline}
-.periode{display:flex;align-items:center;background:#fff;border-radius:4px;box-shadow:0 1px 4px rgba(22,43,92,.06);font-size:16px;color:var(--txt2)}
+.periode{display:flex;align-items:center;background:#fff;border-radius:6px;border:1px solid var(--line2);font-size:16px;color:var(--txt2)}
 .periode span{padding:11px 22px}.periode i{border-left:1px solid var(--line);padding:11px 14px;color:#c3c9d4;font-style:normal}
 /* listes avec filtres à gauche (Contacts, Transactions) */
 .deux{display:grid;grid-template-columns:minmax(0,1fr);gap:24px;align-items:start}
 @media (min-width:1000px){.deux{grid-template-columns:320px minmax(0,1fr)}}
 .filtres{padding:0}
 .onglets{display:flex;border-bottom:1px solid var(--line)}
-.onglets span{flex:1;text-align:center;padding:18px 10px;color:var(--mute);font-size:15px;cursor:default}
+.onglets span{flex:1;text-align:center;padding:18px 10px;color:#a9b2c3;font-size:17px;font-weight:600;cursor:pointer}
 .onglets span.on{color:var(--txt);box-shadow:inset 0 -3px 0 var(--blue)}
 .filtre{border-bottom:1px solid var(--line);padding:0 24px}
-.filtre .t{display:flex;align-items:center;justify-content:space-between;min-height:62px;color:var(--txt2);font-size:15px}
+.filtre .t{display:flex;align-items:center;justify-content:space-between;min-height:50px;color:#5f6b85;font-size:15px;cursor:pointer}
+.filtre.on .t{color:var(--txt);font-weight:600}
 .filtre .c{padding:0 0 16px}
 .inter{position:relative;width:38px;height:22px;border-radius:11px;background:#e3e7ee;border:0;cursor:pointer;flex:0 0 auto}
 .inter::after{content:"";position:absolute;top:2px;left:2px;width:18px;height:18px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.2);transition:left .15s}
@@ -150,20 +152,57 @@ button.card:hover{box-shadow:0 0 0 2px var(--blue)}
 @media (max-width:900px){.bar{padding:0 12px;overflow-x:auto}main{padding:20px 16px 90px}.sous{position:fixed;top:66px;left:12px;right:12px;transform:none}.logo{font-size:22px}}
 .recherche{width:260px!important;padding-right:38px!important;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%232a2f3a' stroke-width='2' viewBox='0 0 24 24'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-3.5-3.5'/%3E%3C/svg%3E") no-repeat right 14px center}
 .entete select{width:auto}
+
+/* version 2026 : cases à cocher des filtres, tags en pastilles, éditeur de workflow, intérieur de tunnel */
+.case{width:20px;height:20px;border:1.5px solid #a9b2c3;border-radius:5px;background:#fff;flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center}
+.filtre.on .case{background:var(--txt);border-color:var(--txt)}
+.filtre.on .case::after{content:"";width:5px;height:9px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg) translate(-1px,-1px)}
+[hidden]{display:none!important}
+.filtres .liste{max-height:560px;overflow:auto;padding:0 8px}
+.filtre{padding:0 14px}
+.tagp{display:inline-block;background:#eef1f6;color:#14284f;border-radius:16px;padding:5px 13px;font-size:14px;margin:2px 6px 2px 0;white-space:nowrap}
+.cond{border:1.5px dashed #22b07d;border-radius:6px;color:#22b07d;padding:8px;text-align:center;cursor:pointer;margin-top:10px;font-weight:500}
+.wf{display:flex;flex-direction:column;align-items:center;padding:30px 20px 60px;min-width:max-content}
+.wf .n{border-radius:6px;padding:12px 22px;font:500 16px Outfit;color:#fff;cursor:pointer;max-width:520px;text-align:center;position:relative;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.wf .n.dec{background:#22b07d}.wf .n.act{background:#0ea5f0}.wf .n.del{background:#fff;color:var(--txt)}.wf .n.cnd{background:#1b2f63}
+.wf .n .x{position:absolute;top:-8px;right:-8px;width:18px;height:18px;border-radius:50%;background:#f23f6d;color:#fff;font:700 11px/18px Outfit;text-align:center;display:none}
+.wf .n:hover .x{display:block}
+.wf .t{width:0;border-left:1.5px dashed #a9b2c3;height:20px}
+.wf .plus{width:20px;height:20px;border-radius:50%;background:#a9b2c3;color:#fff;font:700 15px/20px Outfit;text-align:center;cursor:pointer;border:0;padding:0}
+.wf .plus:hover{background:var(--blue)}
+.wf .br{display:flex;gap:60px;align-items:flex-start}
+.wf .br>div{display:flex;flex-direction:column;align-items:center}
+.wf .oui{color:var(--txt);font-size:15px;padding:2px 10px}
+.etapes{padding:0}
+.etape{display:flex;gap:14px;align-items:center;padding:18px 20px;border-bottom:1px solid var(--line);cursor:pointer}
+.etape.on{background:#f2f8fe}
+.etape b{display:block;font-weight:600;color:var(--txt);font-size:17px}
+.etape span{color:#8a94a8;font-size:15px}
+.ongl{display:flex;gap:6px;border-bottom:1px solid var(--line);padding:0 16px;overflow-x:auto}
+.ongl a{padding:20px 14px;color:#5f6b85;font-size:17px;white-space:nowrap;cursor:pointer;text-decoration:none!important}
+.ongl a.on{color:var(--txt);font-weight:600;box-shadow:inset 0 -3px 0 var(--blue)}
+.modal{position:fixed;inset:0;background:rgba(20,40,79,.35);display:flex;align-items:flex-start;justify-content:center;z-index:50;padding:60px 16px;overflow:auto}
+.modal>.card{width:min(620px,100%)}
+.choix{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px;margin-top:12px}
+.choix button{display:flex;gap:10px;text-align:left;background:#fff;border:1px solid var(--line2);border-radius:8px;padding:14px;cursor:pointer;font:inherit;color:var(--txt)}
+.choix button:hover{border-color:var(--blue)}
+.choix small{display:block;color:#8a94a8;font-size:13px;margin-top:3px}
 </style>
 </head>
 <body>
 <header><div class="bar">
-  <a class="logo" href="#/">bass studio</a>
+  <a class="logo" href="#/"><i>B</i>studio</a>
   <nav id="nav">
     <div class="menu liste" data-m="tableau"><button>Tableau de bord</button><div class="sous"><a href="#/">Tableau de bord</a></div></div>
-    <div class="menu liste" data-m="contacts"><button>Contacts</button><div class="sous"><a href="#/contacts">Contacts</a></div></div>
-    <a href="#/pages" data-m="tunnels">Tunnels de vente</a>
+    <div class="menu liste" data-m="crm"><button>CRM</button><div class="sous"><a href="#/contacts">Contacts</a><a href="#/tags">Tags</a></div></div>
+    <div class="menu liste" data-m="sites"><button>Sites</button><div class="sous"><a href="#/tunnels">Tunnels de vente</a><a href="#/pages">Pages</a></div></div>
     <div class="menu liste" data-m="emails"><button>Emails</button><div class="sous"><a href="#/emails">Newsletters</a><a href="#/sequences">Campagnes</a></div></div>
-    <div class="menu liste" data-m="ventes"><button>Ventes</button><div class="sous"><a href="#/ventes">Produits</a><a href="#/transactions">Transactions</a><a href="#/formations">Mes formations</a></div></div>
-    <div class="menu avatar" data-m="compte"><button><span class="rond"><svg width="30" height="34" viewBox="0 0 30 34" fill="#c3c9d4"><circle cx="15" cy="12" r="8"/><path d="M0 34c0-9 7-13 15-13s15 4 15 13z"/></svg></span><span style="color:#aab4cc">⌄</span></button>
+    <div class="menu liste" data-m="auto"><button>Automatisations</button><div class="sous"><a href="#/regles">Règles</a><a href="#/workflows">Workflows</a></div></div>
+    <div class="menu liste" data-m="ressources"><button>Ressources</button><div class="sous"><a href="#/formations">Formations</a></div></div>
+    <div class="menu liste" data-m="ventes"><button>Ventes</button><div class="sous"><a href="#/transactions">Transactions</a><a href="#/ventes">Offres et liens de paiement</a></div></div>
+    <div class="menu avatar" data-m="compte"><button><span class="rond" style="background:#1d9bf0;align-items:center;color:#fff;font:700 22px Outfit">B</span><span>⌄</span></button>
       <div class="sous"><a href="https://listes.hubtrading.fr/admin/" target="_blank" rel="noopener">Listmonk ↗</a><a href="/espace/" target="_blank">Espace élèves ↗</a><a href="/" target="_blank">basstrading.fr ↗</a></div></div>
-    <div class="avatar" style="margin-left:4px;color:#fff">FR</div>
+    <div class="avatar" style="margin-left:4px;color:#fff;font-weight:600">FR</div>
   </nav>
 </div></header>
 
@@ -187,7 +226,7 @@ async function api(path, opts = {}) {
 }
 const post = (p, b) => api(p, {method: "POST", body: JSON.stringify(b)});
 const put = (p, b) => api(p, {method: "PUT", body: JSON.stringify(b)});
-const MENU = {"": "tableau", contacts: "contacts", pages: "tunnels", emails: "emails", sequences: "emails", formations: "ventes", ventes: "ventes", transactions: "ventes"};
+const MENU = {"": "tableau", contacts: "crm", tags: "crm", tunnels: "sites", pages: "sites", emails: "emails", sequences: "emails", regles: "auto", workflows: "auto", formations: "ressources", ventes: "ventes", transactions: "ventes"};
 function onglet(h) {
   const r = h.split(/[/?]/)[0];
   document.querySelectorAll("#nav [data-m]").forEach(m => { m.classList.toggle("on", m.dataset.m === MENU[r]); m.classList.remove("open"); });
@@ -205,7 +244,7 @@ addEventListener("keydown", e => { if (e.key === "Escape") fermerMenus(); });
 const entete = (titre, compte, milieu = "", droite = "") => `<div class="entete"><h1>${compte !== null && compte !== undefined ? `<span class="nb">${(+compte).toLocaleString("fr-FR")}</span> ` : ""}${titre}${compte !== null && compte !== undefined ? ` <span class="aide">?</span>` : ""}</h1>${milieu}${droite ? `<div class="droite">${droite}</div>` : ""}</div>`;
 const ariane = (...p) => `<h1 class="ariane">${p.map(([l, n]) => l ? `<a href="${l}">${n}</a>` : `<span>${n}</span>`).join(`<span class="sep">›</span>`)}</h1>`;
 const dmy = d => d ? new Date(d).toLocaleDateString("fr-FR") : "—";
-const dmyh = d => d ? new Date(d).toLocaleString("fr-FR", {day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit"}) : "—";
+const dmyh = d => d ? new Date(d).toLocaleString("fr-FR", {day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit"}).replace(" ", ", ") : "—";
 const ROND = `<span class="rond"><svg width="24" height="28" viewBox="0 0 30 34" fill="#c3c9d4"><circle cx="15" cy="12" r="8"/><path d="M0 34c0-9 7-13 15-13s15 4 15 13z"/></svg></span>`;
 const statut = (ok, cl = "") => `<span class="statut ${ok ? "" : cl || "non"}" title="${ok ? "Actif(ve)" : "Inactif(ve)"}"></span>`;
 const points = items => `<div class="pts"><button title="Actions">•••</button><div class="sous">${items.join("")}</div></div>`;
@@ -242,7 +281,7 @@ async function accueil() {
   const evol = (n, avant) => { const p = avant ? Math.round((n - avant) / avant * 100) : (n ? 100 : 0);
     return `<div class="evol ${p < 0 ? "bas" : ""}"><b>${p < 0 ? "▼" : "▲"} ${Math.abs(p)}%</b><span>30 derniers jours</span></div>`; };
   const jour = x => x.toLocaleDateString("fr-FR", {day: "numeric", month: "long", year: "numeric"});
-  app.innerHTML = `${entete("Tableau de bord", null, "", `<div class="periode"><span>${jour(new Date(Date.now() - 29 * 864e5))} &nbsp;–&nbsp; ${jour(new Date())}</span><i>☰</i></div>`)}
+  app.innerHTML = `${entete("Tableau de bord", null, "", `<div class="periode"><span>${jour(new Date(Date.now() - 29 * 864e5))} &nbsp;–&nbsp; ${jour(new Date())}</span><i>📅</i></div>`)}
   <div class="dash">
     <div class="card kpi">${evol(d.nouveaux_contacts_30j, d.contacts_prec)}<div class="l">Nouveaux contacts</div><div class="v">${d.nouveaux_contacts_30j.toLocaleString("fr-FR")}</div>${courbe(d.serie_contacts, n => n + " contact(s)")}</div>
     <div class="card kpi">${evol(d.ca_30j, d.ca_prec)}<div class="l">Ventes totales</div><div class="v">${euros(d.ca_30j)}</div>${courbe(d.serie_paiements, euros)}</div>
@@ -256,91 +295,248 @@ async function accueil() {
   </div>`;
 }
 
-/* ── Contacts ────────────────────────────────────────── */
+/* ── CRM : contacts (filtres de Systeme.io) ──────────── */
 let listesCache;
 async function listes(frais) { if (!listesCache || frais) listesCache = await api("/studio/listes"); return listesCache; }
+const FILTRES = [
+  ["email", "Email", "texte"], ["prenom", "Prénom", "texte"], ["nom", "Nom", "texte"], ["telephone", "Numéro de téléphone", "texte"],
+  ["pays", "Pays", "texte"], ["adresse", "Adresse", "texte"], ["code_postal", "Code postal", "texte"], ["entreprise", "Nom de l'entreprise", "texte"],
+  ["tva", "Numéro d'identification fiscale", "texte"], ["region", "Région", "texte"], ["ville", "Ville", "texte"], ["tag", "Tag", "tag"],
+  ["date_ajout", "Date d'ajout", "date"], ["activite", "Activité email", "activite"], ["etat", "Etat du contact", "etat"], ["campagne", "Campagne", "campagne"],
+];
+const telecharger = async (chemin, corps, nom) => {
+  const r = await fetch(API + chemin, {method: "POST", credentials: "include", headers: {"Content-Type": "application/json"}, body: JSON.stringify(corps)});
+  if (!r.ok) throw {msg: "Erreur " + r.status};
+  const a = document.createElement("a"); a.href = URL.createObjectURL(await r.blob()); a.download = nom; a.click();
+};
 async function contacts(params) {
-  const L = await listes();
+  const [L, S] = await Promise.all([listes(), api("/studio/sequences")]);
   const p = new URLSearchParams(params || "");
-  const filtre = (nom, contenu, on) => `<div class="filtre"><div class="t">${nom}<button class="inter ${on ? "on" : ""}"></button></div><div class="c" ${on ? "" : "hidden"}>${contenu}</div></div>`;
-  const optListes = sel => L.map(l => `<option value="${l.id}" ${sel === l.id ? "selected" : ""}>${esc(l.nom)} (${l.abonnes})</option>`).join("");
-  app.innerHTML = `${entete("Contacts", 0, "", `<button class="btn" id="cc">+ &nbsp;Créer un contact</button><button class="btn sec" id="ic">Importer des contacts</button>`)}
+  const optL = L.map(l => `<option value="${l.id}">${esc(l.nom)} (${l.abonnes})</option>`).join("");
+  const optS = S.map(s => `<option value="${s.id}">${esc(s.nom)}</option>`).join("");
+  const champ = ([k, nom, genre]) => {
+    let c = "";
+    if (genre === "texte") c = `<select data-k="op"><option value="contient">contient</option><option value="est">est égal à</option><option value="ne_contient_pas">ne contient pas</option><option value="vide">est vide</option><option value="non_vide">n'est pas vide</option></select><input data-k="valeur" placeholder="${esc(nom)}">`;
+    if (genre === "tag") c = `<select data-k="op"><option value="a">a le tag</option><option value="n_a_pas">n'a pas le tag</option></select><select data-k="valeur"><option value="">Sélectionner</option>${optL}</select>`;
+    if (genre === "date") c = `<label style="margin:6px 0 4px;font-weight:400">Du</label><input type="date" data-k="du"><label style="margin:6px 0 4px;font-weight:400">Au</label><input type="date" data-k="au">`;
+    if (genre === "activite") c = `<label style="margin:6px 0 4px;font-weight:400">Aucune activité depuis</label><input type="date" data-k="valeur">`;
+    if (genre === "etat") c = `<select data-k="valeur"><option value="">Sélectionner</option><option value="actif">Actif</option><option value="desinscrit">Désinscrits</option><option value="bounced">Bounced</option><option value="a_paye">A fait au moins un paiement</option><option value="jamais_paye">N'a encore fait aucun paiement</option></select>`;
+    if (genre === "campagne") c = `<select data-k="op"><option value="a">est inscrit à</option><option value="n_a_pas">n'est pas inscrit à</option></select><select data-k="valeur"><option value="">Sélectionner</option>${optS}</select>`;
+    return `<div class="filtre" data-champ="${k}"><div class="t">${nom}<span class="case"></span></div><div class="c" hidden style="display:grid;gap:8px">${c}</div></div>`;
+  };
+  app.innerHTML = `${entete("Contacts", 0, "", `<button class="btn" id="cc">⊕ &nbsp;Ajouter un contact</button><button class="btn sec" id="ic">🪪 &nbsp;Importer des contacts</button>`)}
   <div id="form"></div>
-  <div class="deux">
-    <div class="card filtres"><div class="onglets"><span class="on">Filtrer par</span><span title="Bientôt">Filtres enregistrés</span></div>
-      ${filtre("Email ou nom", `<input id="t" placeholder="contient…" value="${esc(p.get("texte") || "")}">`, !!p.get("texte"))}
-      ${filtre("Tag", `<select id="l"><option value="0">Choisir un tag</option>${optListes(+p.get("liste"))}</select>`, !!+p.get("liste"))}
-      <div class="pied"><button class="btn" id="go" style="flex:1">Filtrer</button><button class="btn sec" id="raz">Réinitialiser</button></div></div>
+  <div class="deux" style="grid-template-columns:minmax(0,1fr)">
+    <div class="card filtres" id="pf"><div class="onglets"><span class="on" data-o="f">Filtrer par</span><span data-o="e">Filtres enregistrés</span></div>
+      <div id="of"><div class="liste">${FILTRES.map(champ).join("")}</div>
+        <div class="pied"><button class="btn sec" id="enr" style="flex:1">Enregistrer filtre</button><button class="btn sec" id="raz" style="flex:1">Réinitialiser</button></div></div>
+      <div id="oe" hidden><div class="liste" id="fe" style="padding:10px 14px"></div></div></div>
     <div id="res"><div class="wrap"><p class="vide">Chargement…</p></div></div>
   </div>
-  <div class="selection" id="sel"><span class="n"><b id="sn">0</b>Contacts sélectionnés</span>
-    <select id="sa" style="width:auto;min-width:200px"><option value="">Plus d'actions</option><option value="add">Ajouter un tag</option><option value="remove">Retirer un tag</option></select>
-    <select id="st" style="width:auto;min-width:220px" hidden>${optListes(0)}</select><button class="btn" id="sg" hidden>Appliquer</button><span class="msg" id="sm"></span></div>`;
-  app.querySelectorAll(".inter").forEach(b => b.onclick = () => { b.classList.toggle("on"); const c = b.closest(".filtre").querySelector(".c"); c.hidden = !b.classList.contains("on");
-    if (c.hidden) c.querySelectorAll("input,select").forEach(x => x.value = x.tagName === "SELECT" ? "0" : ""); });
-  const choisis = new Set();
+  <div class="selection" id="sel"><span class="n">Contacts sélectionnés: <b id="sn" style="background:none;color:var(--ok);padding:0">0</b></span>
+    <button class="btn dang" id="sup">Supprimer</button>
+    <div class="pts" id="pa"><button class="btn sec" style="background:#fff;letter-spacing:0;font:600 15px Outfit;padding:10px 18px;border-radius:6px;color:var(--txt)">Plus d'actions ⌃</button><div class="sous" style="top:auto;bottom:calc(100% + 8px)">
+      <button data-a="add">Ajouter un tag</button><button data-a="remove">Supprimer le tag</button><button data-a="inscrire_campagne">Inscrire à la campagne</button>
+      <button data-a="desabonner_campagne">Se désabonner de la campagne</button><button data-a="reinscrire">Réinscrire à votre liste email</button>
+      <button data-a="desinscrire">Se désinscrire des emails marketing</button><button data-a="exporter">Exporter</button></div></div>
+    <span id="choix" hidden style="display:flex;gap:8px"><select id="cl" style="width:auto;min-width:220px"></select><button class="btn" id="cg">Appliquer</button></span><span class="msg" id="sm"></span></div>`;
+  // mise en page : panneau de filtres à gauche sur grand écran
+  if (innerWidth >= 1000) document.querySelector(".deux").style.gridTemplateColumns = "380px minmax(0,1fr)";
+  const conditions = () => [...document.querySelectorAll(".filtre.on")].map(f => { const c = {champ: f.dataset.champ}; f.querySelectorAll("[data-k]").forEach(x => c[x.dataset.k] = x.value); return c; })
+    .filter(c => c.valeur || c.du || c.au || ["vide", "non_vide"].includes(c.op));
+  let page = 1, minuteur;
+  const choisis = new Map();
   const majSel = () => { document.getElementById("sn").textContent = choisis.size; document.getElementById("sel").classList.toggle("on", choisis.size > 0); };
-  const charger = async (page = 1) => {
-    const t = document.getElementById("t").value.trim(), l = document.getElementById("l").value;
-    const d = await api(`/studio/contacts?texte=${encodeURIComponent(t)}&liste=${l}&page=${page}`);
+  const charger = async (pg = 1) => {
+    page = pg;
+    const d = await post("/studio/contacts/recherche", {conditions: conditions(), page});
     document.querySelector(".entete .nb").textContent = d.total.toLocaleString("fr-FR");
-    document.getElementById("res").innerHTML = `<div class="wrap"><table><tr><th style="width:56px"><button class="coche" id="tout" title="Tout sélectionner"></button></th><th class="tri">Ajouté le ⌄</th><th>Adresse email</th><th>Tag</th></tr>
-      ${d.contacts.map(c => `<tr><td><button class="coche ${choisis.has(c.id) ? "on" : ""}" data-id="${c.id}"></button></td><td>${dmy(c.cree)}</td>
-        <td><div class="mail">${ROND}<div><a>${esc(c.email)}</a>${c.statut !== "enabled" ? ` <span class="pill err">Bloqué</span>` : ""}<div class="mute">${esc(c.nom)}</div></div></div></td>
-        <td class="tag">${c.listes.slice(0, 4).map(x => `<span${x.statut === "unsubscribed" ? ` style="text-decoration:line-through" title="désinscrit"` : ""}>${esc(x.nom)}</span>`).join(", ")}${c.listes.length > 4 ? ` <span class="mute">+${c.listes.length - 4}</span>` : ""}</td></tr>`).join("") || `<tr><td colspan="4" class="vide">Aucun contact.</td></tr>`}
+    document.getElementById("res").innerHTML = `<div class="wrap"><table><tr><th style="width:56px"><button class="coche" id="tout" title="Tout sélectionner"></button></th><th>Ajouté le</th><th>Email du client</th><th>Tags</th></tr>
+      ${d.contacts.map(c => `<tr><td><button class="coche ${choisis.has(c.id) ? "on" : ""}" data-id="${c.id}" data-e="${esc(c.email)}"></button></td><td style="white-space:nowrap">${dmyh(c.cree)}</td>
+        <td><div class="mail">${ROND}<div><a>${esc(c.email)}</a>${c.statut !== "enabled" ? ` <span class="pill err">Désinscrit</span>` : ""}<div class="mute">${esc(c.prenom || c.nom)}</div></div></div></td>
+        <td>${c.listes.filter(x => x.statut !== "unsubscribed").slice(0, 5).map(x => `<span class="tagp">${esc(x.nom)}</span>`).join("")}${c.listes.length > 5 ? `<span class="mute">+${c.listes.length - 5}</span>` : ""}</td></tr>`).join("") || `<tr><td colspan="4" class="vide">Oups ! Il semble que votre écran soit vide.</td></tr>`}
       </table></div>
       <div class="row" style="margin-top:14px;justify-content:space-between">${page > 1 ? `<button class="btn sec" id="prev" style="flex:0">← Précédents</button>` : "<span></span>"}<span class="mute" style="flex:0;white-space:nowrap;align-self:center">Page ${page} / ${Math.max(1, Math.ceil(d.total / 50))}</span>${d.total > page * 50 ? `<button class="btn sec" id="next" style="flex:0">Suivants →</button>` : "<span></span>"}</div>`;
-    document.querySelectorAll("#res .coche[data-id]").forEach(b => b.onclick = () => { const i = +b.dataset.id; choisis.has(i) ? choisis.delete(i) : choisis.add(i); b.classList.toggle("on"); majSel(); });
+    document.querySelectorAll("#res .coche[data-id]").forEach(b => b.onclick = () => { const i = +b.dataset.id; choisis.has(i) ? choisis.delete(i) : choisis.set(i, b.dataset.e); b.classList.toggle("on"); majSel(); });
     document.getElementById("tout").onclick = () => { const bs = [...document.querySelectorAll("#res .coche[data-id]")], tous = bs.every(b => b.classList.contains("on"));
-      bs.forEach(b => { b.classList.toggle("on", !tous); tous ? choisis.delete(+b.dataset.id) : choisis.add(+b.dataset.id); }); majSel(); };
+      bs.forEach(b => { b.classList.toggle("on", !tous); tous ? choisis.delete(+b.dataset.id) : choisis.set(+b.dataset.id, b.dataset.e); }); majSel(); };
     document.getElementById("prev")?.addEventListener("click", () => charger(page - 1));
     document.getElementById("next")?.addEventListener("click", () => charger(page + 1));
   };
-  document.getElementById("go").onclick = () => charger(1);
-  document.getElementById("raz").onclick = () => { document.getElementById("t").value = ""; document.getElementById("l").value = "0"; charger(1); };
-  document.getElementById("t").onkeydown = e => { if (e.key === "Enter") charger(1); };
-  document.getElementById("sa").onchange = e => { document.getElementById("st").hidden = document.getElementById("sg").hidden = !e.target.value; };
-  document.getElementById("sg").onclick = async () => {
-    const m = document.getElementById("sm");
-    try { await post("/studio/contacts/listes", {ids: [...choisis], liste: +document.getElementById("st").value, action: document.getElementById("sa").value});
-      m.className = "msg ok"; m.textContent = "Fait."; choisis.clear(); majSel(); listes(true); charger(1); }
-    catch (x) { m.className = "msg err"; m.textContent = x.msg || "Erreur"; }
+  const relancer = () => { clearTimeout(minuteur); minuteur = setTimeout(() => charger(1), 450); };
+  document.querySelectorAll(".filtre .t").forEach(t => t.onclick = () => { const f = t.parentElement; f.classList.toggle("on"); f.querySelector(".c").hidden = !f.classList.contains("on"); relancer(); });
+  document.querySelectorAll(".filtre [data-k]").forEach(x => x.addEventListener(x.tagName === "INPUT" && x.type === "text" || !x.type ? "input" : "change", relancer));
+  document.querySelectorAll(".filtre input[data-k]").forEach(x => x.addEventListener("input", relancer));
+  const appliquer = conds => { document.querySelectorAll(".filtre").forEach(f => { f.classList.remove("on"); f.querySelector(".c").hidden = true; });
+    conds.forEach(c => { const f = document.querySelector(`.filtre[data-champ="${c.champ}"]`); if (!f) return; f.classList.add("on"); f.querySelector(".c").hidden = false;
+      f.querySelectorAll("[data-k]").forEach(x => { if (c[x.dataset.k] !== undefined) x.value = c[x.dataset.k]; }); }); charger(1); };
+  document.getElementById("raz").onclick = () => appliquer([]);
+  if (p.get("liste")) appliquer([{champ: "tag", op: "a", valeur: p.get("liste")}]);
+  // filtres enregistrés
+  const enregistres = async () => { const F = await api("/studio/filtres");
+    document.getElementById("fe").innerHTML = F.map(f => `<div class="filtre" style="padding:0"><div class="t"><a href="javascript:void 0" data-f="${f.id}">${esc(f.nom)}</a><button class="mini" data-x="${f.id}" title="Supprimer">✕</button></div></div>`).join("") || `<p class="mute">Aucun filtre enregistré. Coche des filtres puis « Enregistrer filtre ».</p>`;
+    document.querySelectorAll("#fe [data-f]").forEach(a => a.onclick = () => { appliquer(F.find(f => f.id === +a.dataset.f).conditions); document.querySelector('.onglets [data-o="f"]').click(); });
+    document.querySelectorAll("#fe [data-x]").forEach(b => b.onclick = async () => { if (confirm("Supprimer ce filtre enregistré ?")) { await api("/studio/filtres/" + b.dataset.x, {method: "DELETE"}); enregistres(); } }); };
+  document.querySelectorAll(".onglets [data-o]").forEach(o => o.onclick = () => { document.querySelectorAll(".onglets [data-o]").forEach(x => x.classList.toggle("on", x === o));
+    document.getElementById("of").hidden = o.dataset.o !== "f"; document.getElementById("oe").hidden = o.dataset.o !== "e"; if (o.dataset.o === "e") enregistres(); });
+  document.getElementById("enr").onclick = async () => { const c = conditions(); if (!c.length) { alert("Coche et remplis au moins un filtre."); return; }
+    const nom = prompt("Nom du filtre :"); if (!nom) return; await post("/studio/filtres", {nom, conditions: c}); document.querySelector('.onglets [data-o="e"]').click(); };
+  // actions groupées
+  const m = document.getElementById("sm");
+  let actionChoisie = "";
+  document.querySelectorAll("#pa .sous button").forEach(b => b.onclick = async () => {
+    fermerMenus(); actionChoisie = b.dataset.a; m.textContent = "";
+    const ids = [...choisis.keys()], emails = [...choisis.values()];
+    if (actionChoisie === "exporter") { await telecharger("/studio/contacts/export", {conditions: conditions()}, "contacts.csv"); return; }
+    if (["reinscrire", "desinscrire"].includes(actionChoisie)) {
+      if (!confirm(`${b.textContent} : ${ids.length} contact(s) ?`)) return;
+      try { await post("/studio/contacts/action", {ids, emails, action: actionChoisie}); m.className = "msg ok"; m.textContent = "Fait."; charger(page); } catch (x) { m.className = "msg err"; m.textContent = x.msg || "Erreur"; }
+      return;
+    }
+    document.getElementById("cl").innerHTML = ["add", "remove"].includes(actionChoisie) ? optL : optS;
+    document.getElementById("choix").hidden = false;
+  });
+  document.getElementById("cg").onclick = async () => {
+    const ids = [...choisis.keys()], emails = [...choisis.values()], v = +document.getElementById("cl").value;
+    try {
+      if (["add", "remove"].includes(actionChoisie)) await post("/studio/contacts/listes", {ids, liste: v, action: actionChoisie});
+      else await post("/studio/contacts/action", {ids, emails, action: actionChoisie, sequence_id: v});
+      m.className = "msg ok"; m.textContent = "Fait."; document.getElementById("choix").hidden = true; listes(true); charger(page);
+    } catch (x) { m.className = "msg err"; m.textContent = x.msg || "Erreur"; }
   };
-  // « Créer un contact » / « Importer des contacts »
+  document.getElementById("sup").onclick = async () => {
+    if (!confirm(`Supprimer définitivement ${choisis.size} contact(s) ?`)) return;
+    try { await post("/studio/contacts/action", {ids: [...choisis.keys()], action: "supprimer"}); choisis.clear(); majSel(); charger(page); } catch (x) { m.className = "msg err"; m.textContent = x.msg || "Erreur"; }
+  };
+  // « Ajouter un contact » / « Importer des contacts »
   const formulaire = imp => {
-    document.getElementById("form").innerHTML = `<div class="card" style="margin-bottom:22px"><h2 style="margin-top:0">${imp ? "Importer des contacts" : "Créer un contact"}</h2>
+    document.getElementById("form").innerHTML = `<div class="card" style="margin-bottom:22px"><h2 style="margin-top:0">${imp ? "Importer des contacts" : "Ajouter un contact"}</h2>
       ${imp ? `<label>Contacts <span class="mute">— un par ligne : email, ou email;prénom (copié d'un tableur)</span></label><textarea id="fx" rows="7" placeholder="jean@exemple.fr;Jean"></textarea>`
-            : `<div class="row"><div><label>Email <span class="rq">*</span></label><input id="fe" type="email"></div><div><label>Prénom</label><input id="fp"></div></div>`}
+            : `<div class="row"><div><label>Email <span class="rq">*</span></label><input id="fe2" type="email"></div><div><label>Prénom</label><input id="fp"></div></div>`}
       <label>Tags</label><div class="checks">${L.map(l => `<label><input type="checkbox" value="${l.id}"> ${esc(l.nom)}</label>`).join("")}</div>
       <div class="row" style="margin-top:16px;gap:10px"><button class="btn" id="fs" style="flex:0">Enregistrer</button><button class="btn sec" id="fa" style="flex:0">Annuler</button></div><div class="msg" id="fm"></div></div>`;
     document.getElementById("fa").onclick = () => document.getElementById("form").innerHTML = "";
     document.getElementById("fs").onclick = async () => {
-      const m = document.getElementById("fm"), b = document.getElementById("fs"); b.disabled = true;
+      const fm = document.getElementById("fm"), b = document.getElementById("fs"); b.disabled = true;
       const lignes = imp ? document.getElementById("fx").value.split(/\n/).map(x => x.trim()).filter(Boolean).map(x => { const [email, nom] = x.split(/[;,\t]/); return {email: email.trim(), nom: (nom || "").trim()}; })
-                         : [{email: document.getElementById("fe").value.trim(), nom: document.getElementById("fp").value.trim()}];
+                         : [{email: document.getElementById("fe2").value.trim(), nom: document.getElementById("fp").value.trim()}];
       try { const r = await post("/studio/contacts", {contacts: lignes, listes: [...document.querySelectorAll("#form .checks input:checked")].map(i => +i.value)});
-        m.className = "msg ok"; m.textContent = `${r.crees} créé(s)${r.existants ? `, ${r.existants} déjà présent(s) (tags ajoutés)` : ""}${r.invalides ? `, ${r.invalides} adresse(s) invalide(s)` : ""}.`; listes(true); charger(1); }
-      catch (x) { m.className = "msg err"; m.textContent = x.msg || "Erreur"; }
+        fm.className = "msg ok"; fm.textContent = `${r.crees} créé(s)${r.existants ? `, ${r.existants} déjà présent(s) (tags ajoutés)` : ""}${r.invalides ? `, ${r.invalides} adresse(s) invalide(s)` : ""}.`; listes(true); charger(1); }
+      catch (x) { fm.className = "msg err"; fm.textContent = x.msg || "Erreur"; }
       b.disabled = false;
     };
   };
   document.getElementById("cc").onclick = () => formulaire(false);
   document.getElementById("ic").onclick = () => formulaire(true);
-  charger(1);
+  if (!p.get("liste")) charger(1);
 }
 
-/* ── Newsletters ─────────────────────────────────────── */
-async function emails() {
-  const C = await api("/studio/campagnes");
-  const taux = (n, total) => `${total ? Math.round(n / total * 1000) / 10 : 0}% (${n || 0})`;
-  app.innerHTML = `${entete("Newsletters", C.length, "", `<a class="btn" href="#/emails/nouveau">+ &nbsp;Créer une newsletter</a>`)}
-  <div class="wrap"><table><tr><th>Titre de la newsletter</th><th>Tags sélectionnés</th><th>Emails envoyés</th><th>Vues</th><th>Clics</th><th>Date d'envoi</th></tr>
-  ${C.map(c => `<tr><td><a href="#/emails/${c.id}">${esc(c.subject)}</a>${c.status !== "finished" ? `<div><span class="pill ${STATUT[c.status]?.[1] || ""}">${STATUT[c.status]?.[0] || c.status}${c.send_at && c.status === "scheduled" ? " — " + dateh(c.send_at) : ""}</span></div>` : ""}</td>
-    <td class="tag">${c.listes.map(esc).join(", ")}</td>
-    <td>${c.sent || 0}${c.toSend && c.status !== "finished" ? " / " + c.toSend : ""}</td><td>${taux(c.views, c.sent)}</td><td>${taux(c.clicks, c.sent)}</td>
-    <td>${c.status === "finished" || c.status === "running" ? dmyh(c.started_at || c.updated_at || c.created_at) : ""}</td></tr>`).join("") || `<tr><td colspan="6" class="vide">Aucune newsletter. Crée ta première newsletter.</td></tr>`}
-  </table></div>`;
+/* ── CRM : tags ──────────────────────────────────────── */
+async function tags() {
+  const L = await listes(true);
+  app.innerHTML = `${entete("Tags", L.length, `<input class="recherche" id="tq" placeholder="Rechercher">`, `<button class="btn" id="nt">⊕ &nbsp;Créer</button>`)}
+  <div class="wrap"><table><tr><th>Nom</th><th>Contacts</th><th></th></tr><tbody id="tl"></tbody></table></div>`;
+  const dessiner = () => { const t = document.getElementById("tq").value.trim().toLowerCase();
+    document.getElementById("tl").innerHTML = L.filter(l => !t || l.nom.toLowerCase().includes(t)).map(l => `<tr><td><a href="#/contacts?liste=${l.id}">${esc(l.nom)}</a></td><td>${l.abonnes.toLocaleString("fr-FR")}</td>
+      <td style="text-align:right">${points([`<a href="#/contacts?liste=${l.id}">Voir les contacts</a>`, `<button data-r="${l.id}">Renommer</button>`, `<button data-s="${l.id}" style="color:var(--err)">Supprimer</button>`])}</td></tr>`).join("");
+    document.querySelectorAll("[data-r]").forEach(b => b.onclick = async () => { const l = L.find(x => x.id === +b.dataset.r), n = prompt("Nouveau nom :", l.nom); if (n) { await put("/studio/tags/" + l.id, {nom: n}); tags(); } });
+    document.querySelectorAll("[data-s]").forEach(b => b.onclick = async () => { const l = L.find(x => x.id === +b.dataset.s); if (confirm(`Supprimer le tag « ${l.nom} » ? Les contacts restent, seul le tag disparaît.`)) { await api("/studio/tags/" + l.id, {method: "DELETE"}); tags(); } }); };
+  document.getElementById("tq").oninput = dessiner; dessiner();
+  document.getElementById("nt").onclick = async () => { const n = prompt("Nom du nouveau tag :"); if (n) { await post("/studio/tags", {nom: n}); tags(); } };
 }
+
+/* ── Newsletters : Studio + historique Systeme.io ────── */
+async function emails() {
+  const [C, H] = await Promise.all([api("/studio/campagnes"), api("/studio/newsletters-sio")]);
+  const taux = (n, total) => `${total ? Math.round(n / total * 10000) / 100 : 0}% (${n || 0})`;
+  const lignes = [
+    ...C.map(c => ({lien: `#/emails/${c.id}`, sujet: c.subject, tags: c.listes.join(", "), envoyes: c.sent || 0, ouverts: c.views || 0, clics: c.clicks || 0,
+      date: c.started_at || c.send_at || c.created_at, statut: STATUT[c.status] || [c.status, ""], studio: true})),
+    ...H.map(h => ({lien: `#/emails/sio/${h.id}`, sujet: h.sujet, tags: h.tags || "", nb_tags: h.nb_tags, exclus: h.exclus, envoyes: h.envoyes || 0, ouverts: h.ouverts || 0, clics: h.clics || 0,
+      date: h.date, statut: h.envoyee ? ["Envoyée", "ok"] : ["Programmée", "blue"], sio: h.id})),
+  ];
+  app.innerHTML = `${entete("Newsletters", lignes.length, "", `<input class="recherche" id="nq" placeholder="Rechercher"><a class="btn" href="#/emails/nouveau">⊕ &nbsp;Créer</a>`)}
+  <div class="wrap"><table><tr><th>Sujet de la newsletter</th><th>Tags sélectionnés</th><th>Emails envoyés</th><th>Ouvertures</th><th>Clics</th><th>Statut</th><th></th></tr><tbody id="nl"></tbody></table></div>
+  <div class="row" style="margin-top:14px;justify-content:center"><button class="btn sec" id="plus" style="flex:0">Afficher plus</button></div>`;
+  let n = 50;
+  const dessiner = () => {
+    const t = document.getElementById("nq").value.trim().toLowerCase();
+    const V = lignes.filter(l => !t || (l.sujet || "").toLowerCase().includes(t));
+    document.getElementById("nl").innerHTML = V.slice(0, n).map(l => `<tr><td><a href="${l.lien}">${esc(l.sujet)}</a><div class="mute">${dmyh(l.date)}${l.sio ? " · Systeme.io" : ""}</div></td>
+      <td class="tag" style="max-width:320px">${l.nb_tags > 3 ? esc(l.tags.split(", ").slice(0, 2).join(", ")) + ` <a href="${l.lien}">+${l.nb_tags - 2} tags</a>` : esc(l.tags)}</td>
+      <td>${l.envoyes.toLocaleString("fr-FR")}</td><td>${taux(l.ouverts, l.envoyes)}</td><td>${taux(l.clics, l.envoyes)}</td>
+      <td><span class="pill ${l.statut[1]}">${l.statut[0]}</span></td>
+      <td style="text-align:right">${points([`<a href="${l.lien}">${l.sio ? "Voir et statistiques" : "Ouvrir"}</a>`, l.sio ? `<button data-dup="${l.sio}">Dupliquer</button>` : ""])}</td></tr>`).join("")
+      || `<tr><td colspan="7" class="vide">Oups ! Il semble que votre écran soit vide.</td></tr>`;
+    document.getElementById("plus").style.display = V.length > n ? "" : "none";
+    document.querySelectorAll("[data-dup]").forEach(b => b.onclick = async () => { const r = await post(`/studio/newsletters-sio/${b.dataset.dup}/dupliquer`, {}); location.hash = "#/emails/" + r.id; });
+  };
+  document.getElementById("nq").oninput = () => { n = 50; dessiner(); };
+  document.getElementById("plus").onclick = () => { n += 100; dessiner(); };
+  dessiner();
+}
+async function newsletterSio(id) {
+  const H = await api("/studio/newsletters-sio"), h = H.find(x => x.id === +id);
+  if (!h) throw {msg: "Newsletter introuvable."};
+  const pc = (a, b) => b ? (Math.round(a / b * 10000) / 100) + " %" : "0 %";
+  app.innerHTML = `<div class="entete">${ariane(["#/emails", "Newsletters"], ["", esc(h.sujet)])}<div class="droite"><button class="btn" id="dup">Dupliquer pour la renvoyer</button></div></div>
+  <div class="grid" style="margin-bottom:22px">
+    <div class="card kpi"><div class="l">Emails envoyés</div><div class="v">${(h.envoyes || 0).toLocaleString("fr-FR")}</div><div class="mute">le ${dmyh(h.date)}</div></div>
+    <div class="card kpi"><div class="l">Ouvertures</div><div class="v">${pc(h.ouverts, h.envoyes)}</div><div class="mute">${(h.ouverts || 0).toLocaleString("fr-FR")} contacts</div></div>
+    <div class="card kpi"><div class="l">Clics</div><div class="v">${pc(h.clics, h.envoyes)}</div><div class="mute">${(h.clics || 0).toLocaleString("fr-FR")} clics</div></div>
+  </div>
+  <div class="cartes2"><div class="card" style="padding:0;overflow:hidden"><iframe id="nf" style="width:100%;height:78vh;border:0;background:#fff"></iframe></div>
+    <div class="card reglages"><h3>Paramètres</h3><div class="c"><label>Tags sélectionnés (${h.nb_tags})</label><div>${(h.tags || "—").split(", ").map(t => `<span class="tagp">${esc(t)}</span>`).join("")}</div>
+      ${h.exclus ? `<label>Tags exclus</label><div>${h.exclus.split(", ").map(t => `<span class="tagp">${esc(t)}</span>`).join("")}</div>` : ""}
+      <p class="mute" style="margin-top:18px">Envoyée par Systeme.io. Copie conservée ici avec ses statistiques.</p></div></div></div>`;
+  const r = await fetch(API + "/studio/newsletters-sio/" + id, {credentials: "include"});
+  document.getElementById("nf").srcdoc = await r.text();
+  document.getElementById("dup").onclick = async () => { const x = await post(`/studio/newsletters-sio/${id}/dupliquer`, {}); location.hash = "#/emails/" + x.id; };
+}
+
+/* ── Sites : tunnels de vente ────────────────────────── */
+async function tunnels() {
+  const T = await api("/studio/tunnels");
+  app.innerHTML = `${entete("Tunnels", T.length, "", `<input class="recherche" id="tq" placeholder="Chercher"><select id="te" style="width:170px"><option value="">Tous</option><option value="1" selected>Actif(ve)</option><option value="0">Inactif(ve)</option></select><button class="btn" id="tf">⏷ &nbsp;Filtre</button><a class="btn" href="#/pages">⊕ &nbsp;Créer</a>`)}
+  <div class="wrap"><table><tr><th>Nom</th><th>Statut</th><th>Étapes</th><th>Date de création</th><th></th></tr><tbody id="tl"></tbody></table></div>
+  <p class="mute" style="margin-top:14px">Tes tunnels Systeme.io, rapatriés avec chaque étape et une copie de chaque page. Pour créer une nouvelle page sur basstrading.fr, passe par « Créer » (éditeur de pages).</p>`;
+  const dessiner = () => { const t = document.getElementById("tq").value.trim().toLowerCase(), e = document.getElementById("te").value;
+    document.getElementById("tl").innerHTML = T.filter(x => (!t || x.nom.toLowerCase().includes(t)) && (e === "" || +x.active === +e)).map(x => `<tr><td><a href="#/tunnels/${x.id}">${esc(x.nom)}</a></td>
+      <td>${statut(x.active)}</td><td>${x.nb_etapes}</td><td>${dmyh(x.created_at)}</td>
+      <td style="text-align:right">${points([`<a href="#/tunnels/${x.id}">Ouvrir</a>`, x.url ? `<a href="${esc(x.url)}" target="_blank">Voir le tunnel</a>` : ""])}</td></tr>`).join("") || `<tr><td colspan="5" class="vide">Oups ! Il semble que votre écran soit vide.</td></tr>`; };
+  document.getElementById("tf").onclick = dessiner; document.getElementById("tq").oninput = dessiner; document.getElementById("te").onchange = dessiner; dessiner();
+}
+async function tunnel(id, etapeId) {
+  const t = await api("/studio/tunnels/" + id);
+  const E = t.etapes, e = E.find(x => x.id === +etapeId) || E[0];
+  const ICO = {"offer-form": "🛒", upsell: "🛒", downsell: "🛒", order_thank_you_page: "🛒", squeeze: "📄", opt_in_thank_you_page: "📄", sales_page: "📄"};
+  app.innerHTML = `<div class="entete">${ariane(["#/tunnels", "Liste des tunnels de vente"], ["", esc(t.nom)], ...(e ? [["", esc(e.nom)]] : []))}
+    <div class="droite">${t.url ? `<a class="btn" href="${esc(t.url)}" target="_blank">👁 &nbsp;Voir le tunnel</a>` : ""}</div></div>
+  <div class="deux" style="grid-template-columns:minmax(0,1fr)">
+    <div class="card etapes">${E.map(x => `<div class="etape ${e && x.id === e.id ? "on" : ""}" data-e="${x.id}"><span style="font-size:22px;opacity:.6">${ICO[x.type] || "📄"}</span><div style="min-width:0"><b>${esc(x.nom)}</b><span>${esc(x.type_nom)}</span></div></div>`).join("")}
+      <div class="etape" style="cursor:default"><span style="font-size:22px;opacity:.6">⊘</span><div><b>Page inactive</b><span>La page qui est affichée lorsque le tunnel de ventes est désactivé</span></div></div></div>
+    <div class="card" style="padding:0">${e ? `<div class="ongl"><a class="on" data-o="p">⚙ Paramètres</a><a data-o="v">👁 Aperçu</a><a data-o="r">⚡ Règles d'automatisation</a></div>
+      <div id="zo" style="padding:24px 30px"></div>` : `<p class="vide">Ce tunnel n'a aucune étape.</p>`}</div>
+  </div>`;
+  if (innerWidth >= 1000) document.querySelector(".deux").style.gridTemplateColumns = "400px minmax(0,1fr)";
+  document.querySelectorAll(".etape[data-e]").forEach(x => x.onclick = () => location.hash = `#/tunnels/${id}/${x.dataset.e}`);
+  if (!e) return;
+  const zone = document.getElementById("zo");
+  const onglet_ = o => {
+    document.querySelectorAll(".ongl a").forEach(a => a.classList.toggle("on", a.dataset.o === o));
+    if (o === "p") zone.innerHTML = `<div class="row"><div><label style="margin-top:0">Nom</label><input value="${esc(e.nom)}" disabled></div><div><label style="margin-top:0">Type</label><input value="${esc(e.type_nom)}" disabled></div></div>
+      <label>Adresse de la page</label><div class="row"><input value="${esc(e.url || "—")}" disabled style="flex:4">${e.url ? `<a class="btn" href="${esc(e.url)}" target="_blank" style="flex:0">🔗</a>` : ""}</div>
+      ${e.offre ? `<label>Offre</label><input value="${esc(e.offre)}" disabled>` : ""}
+      <p class="mute" style="margin-top:18px">${e.copie ? "✅ Copie de la page conservée sur ton serveur (onglet Aperçu)." : "Copie de la page en cours ou impossible (page privée ou supprimée)."} Cette page est encore servie par Systeme.io : pour la faire vivre sur basstrading.fr, recrée-la dans « Pages » (je peux la reconstruire pour toi).</p>`;
+    if (o === "v") { zone.innerHTML = `<iframe id="vf" style="width:100%;height:75vh;border:1px solid var(--line);border-radius:8px;background:#fff"></iframe>`;
+      fetch(API + "/studio/tunnels/page/" + e.id, {credentials: "include"}).then(r => r.text()).then(h => document.getElementById("vf").srcdoc = h); }
+    if (o === "r") zone.innerHTML = (t.regles || []).length ? `<table><tr><th>Actif ?</th><th>Déclencheur</th><th>Action</th></tr>${t.regles.map(r => `<tr><td>${statut(r.active)}</td><td>${r.declencheurs.map(d => esc(d.nom + (d.detail ? " — " + d.detail : ""))).join("<br>")}</td><td>${r.actions.map(a => esc(a.nom + (a.detail ? " : " + a.detail : ""))).join("<br>")}</td></tr>`).join("")}</table><p><a href="#/regles">Gérer les règles →</a></p>`
+      : `<p class="vide">Aucune règle d'automatisation sur ce tunnel.</p>`;
+  };
+  document.querySelectorAll(".ongl a").forEach(a => a.onclick = () => onglet_(a.dataset.o));
+  onglet_("p");
+}
+
 async function editeurEmail(id) {
   const L = await listes();
   const c = id === "nouveau" ? {titre: "", sujet: "", corps: "<p>Bonjour {{ .Subscriber.FirstName }},</p><p></p>", listes: [], statut: "draft"} : await api("/studio/campagnes/" + id);
@@ -521,7 +717,7 @@ async function pagesListe() {
     ["Formation offerte (inscription)", "/formation-offerte/"], ["Merci — formation offerte", "/formation-offerte/merci/"],
     ["Market Profile (page de vente)", "/marketprofile/"], ["Paiement", "/paiement/?offre=market-profile"], ["Espace élèves", "/espace/"],
   ];
-  app.innerHTML = `${entete("Tunnels", L.length, "", `<input class="recherche" id="cherche" placeholder="Chercher" style="width:240px!important">
+  app.innerHTML = `${entete("Pages", L.length, "", `<input class="recherche" id="cherche" placeholder="Chercher" style="width:240px!important">
     <select id="etat" style="width:180px"><option value="">Tous</option><option value="1">Actif(ve)</option><option value="0">Inactif(ve)</option></select>
     <button class="btn" id="filtre">⏷ &nbsp;Filtre</button><button class="btn fonce" id="np">⊕ &nbsp;Créer</button>`)}
   <div id="modeles"></div>
@@ -556,7 +752,7 @@ async function pagesListe() {
 async function editeurPage(id) {
   const [P, L, O, PG] = await Promise.all([api("/studio/pages/" + id), listes(), api("/admin/offres"), api("/studio/pages")]);
   const champ = (lab, html) => `<label>${lab}</label>${html}`;
-  app.innerHTML = `${ariane(["#/pages", "Tunnels"], ["", esc(P.titre)])}
+  app.innerHTML = `${ariane(["#/pages", "Pages"], ["", esc(P.titre)])}
   <div class="row" style="align-items:center;margin:0 0 14px"><h1 style="margin:0">${esc(P.titre)}</h1>
     <div style="flex:0 0 auto;min-width:0;display:flex;gap:8px;white-space:nowrap;align-items:center"><label style="margin:0;display:flex;gap:6px;align-items:center;color:var(--txt)"><input type="checkbox" id="pub" style="width:auto" ${P.publiee ? "checked" : ""}> En ligne</label>
     <button class="btn" id="sv">Enregistrer</button><a class="btn sec" id="voir" target="_blank" href="/p/${esc(P.slug)}/">Voir ↗</a></div></div>
@@ -754,6 +950,206 @@ async function editeurSequence(id, vue) {
   document.getElementById("sd").onclick = async () => { if (!confirm(`Supprimer la campagne « ${S.nom} » et ses ${E.length} emails ?`)) return; await api("/studio/sequences/" + id, {method: "DELETE"}); location.hash = "#/sequences"; };
 }
 
+/* ── Automatisations : règles et workflows ───────────── */
+let OPTA;
+async function optionsAuto() { if (!OPTA) OPTA = await api("/studio/automatisations/options"); return OPTA; }
+const DESC_DEC = {
+  tag_added: "Se produit quand un tag est ajouté à un contact", tag_removed: "Se produit quand un tag est retiré d'un contact",
+  form_subscribed: "Se produit quand un contact s'inscrit via le formulaire d'une page", new_sale: "Se produit quand une vente est faite",
+  enrolled_in_course: "Se produit quand un contact reçoit l'accès à une formation", campaign_completed: "Se produit quand un contact a reçu tous les emails d'une campagne",
+  sale_canceled: "Se produit quand une vente est annulée (Systeme.io)", page_visited: "Se produit quand un contact visite une page (Systeme.io)",
+  registered_to_webinar: "Se produit quand un contact s'inscrit à un webinaire (Systeme.io)",
+};
+const DESC_ACT = {
+  add_tag: "Ajoute un tag au contact", remove_tag: "Retire un tag du contact", subscribe_to_campaign: "Inscrit le contact à une campagne d'emails",
+  unsubscribe_from_campaign: "Désabonne le contact d'une campagne", send_email: "Envoie un email au contact",
+  send_email_to_specific_address: "Envoie un email à l'adresse de ton choix (ex. toi)", enroll_in_course: "Donne accès à une formation et envoie le lien",
+  send_webhook: "Envoie les informations du contact à une adresse web",
+};
+const ICO_A = {add_tag: "🏷", remove_tag: "🏷", subscribe_to_campaign: "✉", unsubscribe_from_campaign: "✉", send_email: "✉", send_email_to_specific_address: "✉", enroll_in_course: "🎓", send_webhook: "🔗"};
+const libelle = x => x.objectType === "delay" ? `🕓 Attendre ${x.duree} ${({minute: "minute(s)", hour: "heure(s)", day: "jour(s)"})[x.unite] || x.unite}`
+  : x.objectType === "condition" ? `ⓘ ${(x.conditions || []).map(c => c.detail).join(" et ") || "Condition"} ?`
+  : `${x.nom || ""}${x.detail ? ` « ${x.detail} »` : ""}`;
+
+// Formulaire d'un déclencheur ou d'une action (fenêtre)
+function fenetre(titre, html, ok) {
+  const m = document.createElement("div"); m.className = "modal";
+  m.innerHTML = `<div class="card"><div class="row" style="align-items:center;margin-bottom:6px"><h2 style="margin:0">${titre}</h2><button class="mini" style="flex:0 0 30px;min-width:0" id="mx">✕</button></div>${html}
+    ${ok ? `<div class="row" style="margin-top:18px;gap:10px"><button class="btn" id="mo" style="flex:0">Enregistrer</button><button class="btn sec" id="ma" style="flex:0">Annuler</button></div>` : ""}</div>`;
+  document.body.appendChild(m);
+  const fermer = () => m.remove();
+  m.querySelector("#mx").onclick = fermer; m.onclick = e => { if (e.target === m) fermer(); };
+  if (ok) { m.querySelector("#ma").onclick = fermer; m.querySelector("#mo").onclick = () => { if (ok(m) !== false) fermer(); }; }
+  return m;
+}
+function choisirType(titre, types, desc, fait) {
+  const m = fenetre(titre, `<div class="choix">${Object.entries(types).map(([k, v]) => `<button data-t="${k}"><span>${ICO_A[k] || "⚡"}</span><span><b>${v}</b><small>${desc[k] || ""}</small></span></button>`).join("")}</div>`);
+  m.querySelectorAll("[data-t]").forEach(b => b.onclick = () => { m.remove(); fait(b.dataset.t); });
+}
+function champsElement(x, O, genre) {
+  const sel = (k, liste, vide = "— choisir —") => `<select data-k="${k}"><option value="">${vide}</option>${liste.map(o => `<option value="${o.id}" ${String(x[k]) === String(o.id) ? "selected" : ""}>${esc(o.nom)}</option>`).join("")}</select>`;
+  const t = x.type;
+  let h = "";
+  if (["tag_added", "tag_removed", "add_tag", "remove_tag"].includes(t)) h = `<label>Tag</label>${sel("liste_id", O.listes)}`;
+  if (["campaign_completed", "subscribe_to_campaign", "unsubscribe_from_campaign"].includes(t)) h = `<label>Campagne</label>${sel("sequence_id", O.sequences)}`;
+  if (["enrolled_in_course", "enroll_in_course"].includes(t)) h = `<label>Formation</label>${sel("formation_id", O.formations)}`;
+  if (t === "form_subscribed") h = `<label>Page (formulaire)</label>${sel("page_id", O.pages)}${x.sio_etape_id ? `<p class="mute">Systeme.io : ${esc(x.detail || "")}</p>` : ""}`;
+  if (t === "new_sale") h = `<label>Offre</label>${sel("offre_slug", O.offres, "Toutes les offres")}${x.sio_etape_id ? `<p class="mute">Systeme.io : ${esc(x.detail || "")}</p>` : ""}`;
+  if (t === "send_email_to_specific_address") h = `<label>Adresse du destinataire</label><input data-k="adresse" type="email" value="${esc(x.adresse || "")}">`;
+  if (["send_email", "send_email_to_specific_address"].includes(t)) h += `<label>Objet</label><input data-k="sujet" value="${esc(x.sujet || "")}">
+    <label>Message <span class="mute">— {first_name} = prénom</span></label><div class="editeur" data-k="corps" contenteditable="true" style="min-height:200px;border-radius:6px">${x.corps || "<p>Salut {first_name},</p><p></p>"}</div>`;
+  if (t === "send_webhook") h = `<label>Adresse web (URL)</label><input data-k="url" value="${esc(x.url || "")}" placeholder="https://…">`;
+  if (genre === "dec" && !O.geres.includes(t)) h += `<p class="msg err">Ce déclencheur n'existait que dans Systeme.io : il est conservé pour mémoire mais ne se déclenche pas ici.</p>`;
+  return h || `<p class="mute">Rien à régler.</p>`;
+}
+function lireElement(m, x) {
+  m.querySelectorAll("[data-k]").forEach(el => {
+    const k = el.dataset.k, v = el.isContentEditable ? el.innerHTML : el.value;
+    x[k] = ["liste_id", "sequence_id", "formation_id", "page_id"].includes(k) ? (+v || null) : v;
+    if (el.tagName === "SELECT") x.detail = el.value ? el.options[el.selectedIndex].text : (k === "offre_slug" ? "toutes les offres" : x.detail);
+    if (k === "liste_id" && el.value) x.tag = el.options[el.selectedIndex].text;
+  });
+  if (x.sujet && ["send_email", "send_email_to_specific_address"].includes(x.type)) x.detail = x.sujet;
+  if (x.type === "send_webhook") x.detail = x.url;
+}
+function editerElement(x, O, genre, fait) {
+  const m = fenetre((genre === "dec" ? O.declencheurs : O.actions)[x.type] || x.type, champsElement(x, O, genre), m => { lireElement(m, x); fait(x); });
+  return m;
+}
+
+async function reglesListe() {
+  const [R, O] = await Promise.all([api("/studio/regles"), optionsAuto()]);
+  app.innerHTML = `${entete("Règles d'automatisation", R.length, "", `<button class="btn" id="nr">⊕ &nbsp;Créer</button>`)}
+  <div class="deux" style="grid-template-columns:minmax(0,1fr)">
+    <div class="card filtres"><div class="onglets"><span class="on">Filtrer par</span></div><div style="padding:20px 24px;display:grid;gap:14px">
+      <select id="fd"><option value="">Choisissez le type de déclencheur</option>${Object.entries(O.declencheurs).map(([k, v]) => `<option value="${k}">${v}</option>`).join("")}</select>
+      <select id="fa"><option value="">Choisissez le type d'action</option>${Object.entries(O.actions).map(([k, v]) => `<option value="${k}">${v}</option>`).join("")}</select>
+      <select id="fe"><option value="">Actif(ve) ou non</option><option value="1">Actif(ve)</option><option value="0">Inactif(ve)</option></select>
+      <button class="btn" id="ff">⏷ &nbsp;Filtre</button></div></div>
+    <div id="rl"></div></div>
+  <p class="mute" style="margin-top:14px">Règles importées de Systeme.io : <b>toutes désactivées</b> tant que Systeme.io tourne (sinon les contacts recevraient tout en double). Le point gris « Systeme.io » indique si la règle était active là-bas. Le moteur passe toutes les 10 minutes.</p>`;
+  if (innerWidth >= 1000) document.querySelector(".deux").style.gridTemplateColumns = "340px minmax(0,1fr)";
+  const dessiner = () => {
+    const d = document.getElementById("fd").value, a = document.getElementById("fa").value, e = document.getElementById("fe").value;
+    const V = R.filter(r => (!d || r.declencheurs.some(x => x.type === d)) && (!a || r.actions.some(x => x.type === a)) && (e === "" || +r.active === +e));
+    document.getElementById("rl").innerHTML = `<div class="wrap"><table><tr><th>Actif ?</th><th>Créé le</th><th>Déclencheur</th><th>Action</th><th></th></tr>
+      ${V.map(r => `<tr><td>${statut(r.active)}${r.sio_active !== null ? `<div class="mute" style="margin-top:4px"><span class="pastille-r ${r.sio_active ? "on" : ""}"></span>Systeme.io</div>` : ""}</td><td style="white-space:nowrap">${dmyh(r.created_at)}</td>
+        <td><a href="#/regles/${r.id}">${r.declencheurs.map(x => `<b style="font-weight:600">${esc(x.nom)}</b>${x.detail ? `<div class="mute">${esc(x.detail)}</div>` : ""}`).join("")}</a></td>
+        <td>${r.actions.map(x => `<div>${esc(x.nom)}${x.detail ? ` <span class="mute">« ${esc(x.detail)} »</span>` : ""}</div>`).join("")}</td>
+        <td style="text-align:right">${points([`<a href="#/regles/${r.id}">Editer</a>`, `<button data-act="${r.id}">${r.active ? "Désactiver" : "Activer"}</button>`, `<button data-sup="${r.id}" style="color:var(--err)">Supprimer</button>`])}</td></tr>`).join("") || `<tr><td colspan="5" class="vide">Oups ! Il semble que votre écran soit vide.</td></tr>`}</table></div>`;
+    document.querySelectorAll("[data-act]").forEach(b => b.onclick = async () => { const r = R.find(x => x.id === +b.dataset.act);
+      if (!r.active && !confirm("Activer cette règle ? Elle agira sur les nouveaux événements à partir de maintenant.")) return;
+      await put("/studio/regles/" + r.id, {active: !r.active, declencheurs: r.declencheurs, actions: r.actions}); reglesListe(); });
+    document.querySelectorAll("[data-sup]").forEach(b => b.onclick = async () => { if (confirm("Supprimer cette règle ?")) { await api("/studio/regles/" + b.dataset.sup, {method: "DELETE"}); reglesListe(); } });
+  };
+  document.getElementById("ff").onclick = dessiner; dessiner();
+  document.getElementById("nr").onclick = () => location.hash = "#/regles/nouvelle";
+}
+
+async function regleEditeur(id) {
+  const O = await optionsAuto();
+  const R = id === "nouvelle" ? {active: false, declencheurs: [], actions: []} : (await api("/studio/regles")).find(r => r.id === +id);
+  if (!R) throw {msg: "Règle introuvable."};
+  app.innerHTML = `<div class="entete">${ariane(["#/regles", "Règles d'automatisation"], ["", id === "nouvelle" ? "Créer une règle" : "Modifier la règle"])}
+    <div class="droite"><label style="margin:0;display:flex;gap:10px;align-items:center"><button class="inter ${R.active ? "on" : ""}" id="ra"></button> Active</label></div></div>
+  <div class="card" style="padding:0"><div style="display:grid;grid-template-columns:1fr auto 1fr">
+    <div style="padding:26px 30px"><div class="row" style="align-items:center"><h2 style="margin:0;color:var(--blue)">⚡ Déclencheur <div class="mute" style="font-weight:400">Quand cet événement se produit…</div></h2><button class="plus btn sec" id="ad" style="flex:0 0 40px;min-width:0;border-radius:50%;width:40px;min-height:40px;padding:0">+</button></div><div id="ld"></div></div>
+    <div style="border-left:1px solid var(--line);display:flex;align-items:center"><span style="margin-left:-12px;background:#fff;color:var(--mute);font-size:20px">➜</span></div>
+    <div style="padding:26px 30px"><div class="row" style="align-items:center"><h2 style="margin:0;color:var(--blue)">Action <div class="mute" style="font-weight:400">…fais ceci</div></h2><button class="plus btn sec" id="aa" style="flex:0 0 40px;min-width:0;border-radius:50%;width:40px;min-height:40px;padding:0">+</button></div><div id="la"></div></div>
+  </div><div class="row" style="padding:0 30px 26px;justify-content:flex-end;gap:10px"><span class="msg" id="rm"></span><button class="btn" id="rs" style="flex:0">💾 &nbsp;Enregistrer la règle</button></div></div>`;
+  const carte = (x, i, genre) => `<div class="card" style="border:1px solid var(--line2);box-shadow:none;margin-top:14px;padding:16px 18px"><div class="row" style="align-items:flex-start">
+    <div style="min-width:0;cursor:pointer" data-ed="${genre}${i}"><b style="font-weight:600">${esc((genre === "d" ? O.declencheurs : O.actions)[x.type] || x.type)}</b><div class="mute">${esc(x.detail || (genre === "d" ? DESC_DEC : DESC_ACT)[x.type] || "")}</div>
+    ${genre === "d" && !O.geres.includes(x.type) ? `<div class="msg err" style="font-size:13px">Non pris en charge hors Systeme.io</div>` : ""}</div>
+    <button class="mini" style="flex:0 0 30px;min-width:0" data-x="${genre}${i}">✕</button></div></div>`;
+  const dessiner = () => {
+    document.getElementById("ld").innerHTML = R.declencheurs.map((x, i) => carte(x, i, "d")).join(`<p class="mute" style="text-align:center;margin:8px 0">ou</p>`) || `<p class="mute" style="margin-top:14px">Ajoute un déclencheur avec +</p>`;
+    document.getElementById("la").innerHTML = R.actions.map((x, i) => carte(x, i, "a")).join("") || `<p class="mute" style="margin-top:14px">Ajoute une action avec +</p>`;
+    document.querySelectorAll("[data-x]").forEach(b => b.onclick = () => { const g = b.dataset.x[0], i = +b.dataset.x.slice(1); (g === "d" ? R.declencheurs : R.actions).splice(i, 1); dessiner(); });
+    document.querySelectorAll("[data-ed]").forEach(b => b.onclick = () => { const g = b.dataset.ed[0], i = +b.dataset.ed.slice(1); editerElement((g === "d" ? R.declencheurs : R.actions)[i], O, g === "d" ? "dec" : "act", dessiner); });
+  };
+  dessiner();
+  document.getElementById("ra").onclick = e => e.target.classList.toggle("on");
+  document.getElementById("ad").onclick = () => choisirType("Ajouter un déclencheur", O.declencheurs, DESC_DEC, t => { const x = {type: t, nom: O.declencheurs[t]}; editerElement(x, O, "dec", y => { R.declencheurs.push(y); dessiner(); }); });
+  document.getElementById("aa").onclick = () => choisirType("Ajouter une action", O.actions, DESC_ACT, t => { const x = {type: t, nom: O.actions[t]}; editerElement(x, O, "act", y => { R.actions.push(y); dessiner(); }); });
+  document.getElementById("rs").onclick = async () => {
+    const m = document.getElementById("rm"), corps = {active: document.getElementById("ra").classList.contains("on"), declencheurs: R.declencheurs, actions: R.actions};
+    if (!corps.declencheurs.length || !corps.actions.length) { m.className = "msg err"; m.textContent = "Il faut au moins un déclencheur et une action."; return; }
+    try { if (id === "nouvelle") await post("/studio/regles", corps); else await put("/studio/regles/" + id, corps);
+      m.className = "msg ok"; m.textContent = "Règle enregistrée."; setTimeout(() => location.hash = "#/regles", 700); } catch (x) { m.className = "msg err"; m.textContent = x.msg || "Erreur"; }
+  };
+}
+
+async function workflowsListe() {
+  const W = await api("/studio/workflows");
+  app.innerHTML = `${entete("Workflows", W.length, "", `<button class="btn" id="nw">⊕ &nbsp;Créer</button>`)}
+  <div class="wrap"><table><tr><th>Nom</th><th>Statut</th><th>Contacts en cours</th><th>Date de création</th><th></th></tr>
+  ${W.map(w => `<tr><td><a href="#/workflows/${w.id}">${esc(w.nom)}</a>${w.sio_active !== null ? `<div class="mute"><span class="pastille-r ${w.sio_active ? "on" : ""}"></span>Systeme.io : ${w.sio_active ? "actif" : "inactif"}</div>` : ""}</td>
+    <td><span class="pill ${w.active ? "ok" : ""}">${w.active ? "• Actif(ve)" : "• Inactif(ve)"}</span></td><td>${w.en_cours} <span class="mute">/ ${w.entres} entrés</span></td><td>${dmyh(w.created_at)}</td>
+    <td style="text-align:right">${points([`<button data-act="${w.id}">${w.active ? "Désactiver" : "Activer"}</button>`, `<a href="#/workflows/${w.id}">Editer</a>`, `<button data-sup="${w.id}" style="color:var(--err)">Supprimer</button>`])}</td></tr>`).join("") || `<tr><td colspan="5" class="vide">Oups ! Il semble que votre écran soit vide.</td></tr>`}</table></div>
+  <p class="mute" style="margin-top:14px">Workflows importés de Systeme.io : désactivés ici tant que Systeme.io tourne.</p>`;
+  document.getElementById("nw").onclick = async () => { const r = await post("/studio/workflows", {nom: "Nouveau workflow", active: false, declencheurs: [], etapes: []}); location.hash = "#/workflows/" + r.id; };
+  document.querySelectorAll("[data-act]").forEach(b => b.onclick = async () => { const w = await api("/studio/workflows/" + b.dataset.act);
+    if (!w.active && !confirm("Activer ce workflow ? Il agira sur les nouveaux événements à partir de maintenant.")) return;
+    await put("/studio/workflows/" + w.id, {nom: w.nom, active: !w.active, declencheurs: w.declencheurs, etapes: w.etapes}); workflowsListe(); });
+  document.querySelectorAll("[data-sup]").forEach(b => b.onclick = async () => { if (confirm("Supprimer ce workflow ?")) { await api("/studio/workflows/" + b.dataset.sup, {method: "DELETE"}); workflowsListe(); } });
+}
+
+async function workflowEditeur(id) {
+  const [W, O] = await Promise.all([api("/studio/workflows/" + id), optionsAuto()]);
+  app.innerHTML = `<div class="entete">${ariane(["#/workflows", "Workflows"], ["", ""])}<input id="wn" value="${esc(W.nom)}" style="max-width:420px;font:600 22px Outfit;color:var(--txt)">
+    <div class="droite"><label style="margin:0;display:flex;gap:10px;align-items:center"><button class="inter ${W.active ? "on" : ""}" id="wa"></button> Actif</label><span class="msg" id="wm"></span><button class="btn" id="ws">💾 &nbsp;Enregistrer</button></div></div>
+  <div class="card" style="padding:0;overflow:auto;background:#f6f8fb;background-image:radial-gradient(#dfe5ee 1px,transparent 1px);background-size:18px 18px"><div class="wf" id="wf"></div></div>`;
+  const cibles = [];
+  const plus = (liste, i) => { cibles.push({liste, i}); return `<div class="t"></div><button class="plus" data-p="${cibles.length - 1}" title="Ajouter">+</button><div class="t"></div>`; };
+  const branche = liste => liste.map((s, i) => { cibles.push({liste, i, noeud: true});
+    const k = cibles.length - 1;
+    if (s.objectType === "condition") return `<div class="n cnd" data-n="${k}">${esc(libelle(s))}<span class="x" data-x="${k}">✕</span></div>
+      <div class="br"><div><div class="oui">Oui</div>${plus(s.oui, 0)}${branche(s.oui)}</div><div><div class="oui">Non</div>${plus(s.non, 0)}${branche(s.non)}</div></div>${plus(liste, i + 1)}`;
+    return `<div class="n ${s.objectType === "delay" ? "del" : "act"}" data-n="${k}">${s.objectType === "action" ? (ICO_A[s.type] || "") + " " : ""}${esc(libelle(s))}<span class="x" data-x="${k}">✕</span></div>${plus(liste, i + 1)}`; }).join("");
+  const dessiner = () => {
+    cibles.length = 0;
+    const dec = W.declencheurs.map((d, i) => `<div class="n dec" data-d="${i}">⚡ ${esc(d.nom)}${d.detail ? ` « ${esc(d.detail)} »` : ""}<span class="x" data-dx="${i}">✕</span></div>`).join(`<div class="oui">ou</div>`);
+    document.getElementById("wf").innerHTML = `${dec || `<div class="mute">Commence par un déclencheur</div>`}<div class="t"></div><button class="plus" id="pd" title="Ajouter un déclencheur" style="background:#22b07d">+</button>${plus(W.etapes, 0)}${branche(W.etapes)}`;
+    document.getElementById("pd").onclick = () => choisirType("Quand ceci se produit", O.declencheurs, DESC_DEC, t => editerElement({type: t, nom: O.declencheurs[t]}, O, "dec", y => { W.declencheurs.push(y); dessiner(); }));
+    document.querySelectorAll("[data-d]").forEach(n => n.onclick = e => { if (e.target.dataset.dx !== undefined) return; editerElement(W.declencheurs[+n.dataset.d], O, "dec", dessiner); });
+    document.querySelectorAll("[data-dx]").forEach(x => x.onclick = e => { e.stopPropagation(); W.declencheurs.splice(+x.dataset.dx, 1); dessiner(); });
+    document.querySelectorAll("[data-x]").forEach(x => x.onclick = e => { e.stopPropagation(); const c = cibles[+x.dataset.x]; if (confirm("Supprimer ce bloc ?")) { c.liste.splice(c.i, 1); dessiner(); } });
+    document.querySelectorAll("[data-n]").forEach(n => n.onclick = () => { const c = cibles[+n.dataset.n]; modifierEtape(c.liste[c.i], () => dessiner()); });
+    document.querySelectorAll("[data-p]").forEach(b => b.onclick = () => { const c = cibles[+b.dataset.p];
+      const m = fenetre("Ajouter", `<div class="choix"><button data-k="action"><span>▶</span><span><b>Action</b><small>Ajouter un tag, inscrire à une campagne, envoyer un email…</small></span></button>
+        <button data-k="delay"><span>🕓</span><span><b>Délai</b><small>Attendre avant l'étape suivante</small></span></button>
+        <button data-k="condition"><span>ⓘ</span><span><b>Décision</b><small>Séparer en « Oui » / « Non » selon un tag ou l'état du contact</small></span></button></div>`);
+      m.querySelectorAll("[data-k]").forEach(x => x.onclick = () => { m.remove();
+        const k = x.dataset.k, inserer = s => { c.liste.splice(c.i, 0, s); dessiner(); };
+        if (k === "action") choisirType("Ajouter une action", O.actions, DESC_ACT, t => editerElement({objectType: "action", type: t, nom: O.actions[t]}, O, "act", inserer));
+        else modifierEtape(k === "delay" ? {objectType: "delay", duree: 1, unite: "day"} : {objectType: "condition", conditions: [{champ: "tag", op: "a", liste_id: null}], oui: [], non: []}, inserer);
+      });
+    });
+  };
+  const modifierEtape = (s, fait) => {
+    if (s.objectType === "action") return editerElement(s, O, "act", fait);
+    if (s.objectType === "delay") return fenetre("Délai", `<label>Attendre</label><div class="row"><input type="number" min="0" id="dn" value="${s.duree}"><select id="du"><option value="minute">minute(s)</option><option value="hour">heure(s)</option><option value="day">jour(s)</option></select></div>`,
+      m => { s.duree = +m.querySelector("#dn").value || 0; s.unite = m.querySelector("#du").value; fait(s); }).querySelector("#du").value = s.unite;
+    const c = (s.conditions || [])[0] || {champ: "tag", op: "a"};
+    const m = fenetre("Décision", `<label>La personne…</label><select id="cc"><option value="tag_a">est taguée avec</option><option value="tag_n_a_pas">n'est pas taguée avec</option><option value="etat_actif">est un contact actif</option><option value="etat_desinscrit">est désinscrite</option></select>
+      <div id="ct"><label>Tag</label><select id="cl"><option value="">— choisir —</option>${O.listes.map(l => `<option value="${l.id}" ${c.liste_id === l.id ? "selected" : ""}>${esc(l.nom)}</option>`).join("")}</select></div>`,
+      m => { const v = m.querySelector("#cc").value;
+        if (v.startsWith("tag")) { const l = m.querySelector("#cl"); if (!l.value) { alert("Choisis un tag."); return false; }
+          s.conditions = [{champ: "tag", op: v === "tag_a" ? "a" : "n_a_pas", liste_id: +l.value, detail: `La personne ${v === "tag_a" ? "est taguée" : "n'est pas taguée"} avec « ${l.options[l.selectedIndex].text} »`}]; }
+        else s.conditions = [{champ: "etat", valeur: v === "etat_actif" ? "actif" : "desinscrit", detail: v === "etat_actif" ? "Contact actif" : "Contact désinscrit"}];
+        s.oui = s.oui || []; s.non = s.non || []; fait(s); });
+    m.querySelector("#cc").value = c.champ === "etat" ? "etat_" + c.valeur : "tag_" + (c.op || "a");
+    const maj = () => m.querySelector("#ct").hidden = !m.querySelector("#cc").value.startsWith("tag"); m.querySelector("#cc").onchange = maj; maj();
+  };
+  dessiner();
+  document.getElementById("wa").onclick = e => e.target.classList.toggle("on");
+  document.getElementById("ws").onclick = async () => {
+    const m = document.getElementById("wm");
+    try { await put("/studio/workflows/" + id, {nom: document.getElementById("wn").value, active: document.getElementById("wa").classList.contains("on"), declencheurs: W.declencheurs, etapes: W.etapes});
+      m.className = "msg ok"; m.textContent = "Enregistré."; } catch (x) { m.className = "msg err"; m.textContent = x.msg || "Erreur"; }
+  };
+}
+
 function pagesFixes() {
   const P = [
     ["Formation offerte (inscription)", "/formation-offerte/", "Capte un email, débloque la formation offerte, ajoute aux listes."],
@@ -773,7 +1169,15 @@ async function route() {
   document.getElementById("nav").style.visibility = "";
   try {
     if (h.startsWith("contacts")) await contacts(h.split("?")[1]);
+    else if (h === "tags") await tags();
     else if (h === "emails") await emails();
+    else if (h.startsWith("emails/sio/")) await newsletterSio(h.slice(11));
+    else if (h === "tunnels") await tunnels();
+    else if (h.startsWith("tunnels/")) { const [t, e] = h.slice(8).split("/"); await tunnel(+t, e); }
+    else if (h === "regles") await reglesListe();
+    else if (h.startsWith("regles/")) await regleEditeur(h.slice(7));
+    else if (h === "workflows") await workflowsListe();
+    else if (h.startsWith("workflows/")) await workflowEditeur(+h.slice(10));
     else if (h.startsWith("emails/")) await editeurEmail(h.slice(7));
     else if (h === "formations") await formations();
     else if (h === "ventes") await ventes();
