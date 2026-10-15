@@ -87,27 +87,65 @@ async function accueil() {
   document.getElementById("out").hidden = false;
   const items = d.formations.map(f => { const p = f.lecons ? Math.round(100 * f.vues / f.lecons) : 0;
     return `<a class="fo card" href="#/f/${esc(f.slug)}"><h3>${esc(f.titre)}</h3><div class="small">${f.vues} / ${f.lecons} leçons vues</div><div class="bar"><i style="width:${p}%"></i></div></a>`; }).join("");
-  app.innerHTML = `<h1>Bonjour${d.eleve.prenom ? " " + esc(d.eleve.prenom) : ""}</h1><p class="sub">Tes formations</p>
+  app.innerHTML = `<h1>Bonjour${d.eleve.prenom ? " " + esc(d.eleve.prenom) : ""}</h1><p class="sub">Tes formations${d.eleve.admin ? ` · <a href="#/admin">Administration</a>` : ""}</p>
     ${items ? `<div class="grid">${items}</div>` : `<div class="card">Aucune formation n'est encore liée à ${esc(d.eleve.email)}. Écris-nous si c'est une erreur.</div>`}`;
 }
 async function formation(slug) {
   const f = await api("/formations/" + encodeURIComponent(slug));
+  document.getElementById("out").hidden = false;
   const mods = f.modules.map((m, i) => `<details class="mod card" ${i === 0 ? "open" : ""}><summary>${esc(m.titre)} <span class="small">· ${m.lecons.length} leçons</span></summary>
     ${m.lecons.map(l => `<a class="lec ${l.vue ? "vue" : ""}" href="#/l/${l.id}"><span class="dot"></span>${esc(l.titre)}</a>`).join("")}</details>`).join("");
   app.innerHTML = `<a class="back" href="#/">← Mes formations</a><h1>${esc(f.titre)}</h1><p class="sub">${esc(f.description)}</p>${mods}`;
 }
 async function lecon(id) {
   const l = await api("/lecons/" + id);
+  document.getElementById("out").hidden = false;
   app.innerHTML = `<a class="back" href="#/f/${esc(l.formation.slug)}">← ${esc(l.formation.titre)}</a><h1>${esc(l.titre)}</h1>
     ${l.video_url ? `<video controls playsinline preload="metadata" src="${esc(l.video_url)}"></video>` : ""}
     <div class="desc">${l.description_html || ""}</div>
     <div class="nav">${l.precedente ? `<a href="#/l/${l.precedente}">← Leçon précédente</a>` : "<span></span>"}${l.suivante ? `<a href="#/l/${l.suivante}">Leçon suivante →</a>` : ""}</div>`;
   api(`/lecons/${id}/vue`, {method: "POST"}).catch(() => {});
 }
+async function admin() {
+  const d = await api("/admin/resume");
+  document.getElementById("out").hidden = false;
+  const c = d.chiffres;
+  const opts = d.formations.map(f => `<option value="${esc(f.slug)}">${esc(f.titre)} (${f.eleves})</option>`).join("");
+  app.innerHTML = `<a class="back" href="#/">← Mes formations</a><h1>Administration</h1>
+    <div class="grid" style="margin:18px 0 8px">
+      <div class="card"><div class="small">Élèves</div><h3 style="font:700 26px Outfit;margin:4px 0">${c.eleves}</h3></div>
+      <div class="card"><div class="small">Connectés (30 j)</div><h3 style="font:700 26px Outfit;margin:4px 0">${c.connectes_30j}</h3></div>
+      <div class="card"><div class="small">Nouveaux (30 j)</div><h3 style="font:700 26px Outfit;margin:4px 0">${c.nouveaux_30j}</h3></div>
+    </div>
+    <h2>Ouvrir un accès</h2>
+    <form class="card" id="fa"><input type="email" id="ae" required placeholder="email de l'élève">
+      <input type="email" id="ap" placeholder="prénom (facultatif)" style="width:100%;padding:13px 14px;border-radius:10px;border:1px solid var(--line);background:#0E0E0E;color:var(--txt);font:inherit;margin:0 0 12px">
+      <select id="af" style="width:100%;padding:12px;border-radius:10px;background:#0E0E0E;color:var(--txt);border:1px solid var(--line);margin-bottom:12px">${opts}</select>
+      <button class="btn">Ouvrir l'accès et envoyer le lien</button><div class="msg" id="am"></div></form>
+    <h2>Chercher un élève</h2>
+    <input type="email" id="aq" placeholder="email ou prénom" autocomplete="off"><div id="ar"></div>`;
+  document.getElementById("ap").type = "text";
+  document.getElementById("fa").onsubmit = async ev => {
+    ev.preventDefault(); const m = document.getElementById("am");
+    try { const r = await api("/admin/acces", {method: "POST", body: JSON.stringify({email: document.getElementById("ae").value,
+        prenom: document.getElementById("ap").value, formation: document.getElementById("af").value})});
+      m.className = "msg"; m.textContent = "Accès ouvert à « " + r.formation + " », lien envoyé."; }
+    catch (x) { m.className = "msg err"; m.textContent = x.msg || "Erreur"; }
+  };
+  const aq = document.getElementById("aq"); aq.type = "text"; let t;
+  aq.oninput = () => { clearTimeout(t); t = setTimeout(async () => {
+    if (aq.value.trim().length < 3) { document.getElementById("ar").innerHTML = ""; return; }
+    const rows = await api("/admin/eleves?q_=" + encodeURIComponent(aq.value.trim()));
+    document.getElementById("ar").innerHTML = rows.map(r => `<div class="card" style="margin-top:10px"><strong>${esc(r.email)}</strong> ${esc(r.prenom)}
+      <div class="small">Dernière connexion : ${r.derniere_connexion ? new Date(r.derniere_connexion).toLocaleDateString("fr-FR") : "jamais"}</div>
+      <div class="small">${r.formations.map(esc).join(" · ") || "aucune formation"}</div></div>`).join("") || `<p class="small">Aucun résultat.</p>`;
+  }, 300); };
+}
 async function route() {
   const h = location.hash.replace(/^#\/?/, "");
   try {
-    if (h.startsWith("f/")) await formation(h.slice(2));
+    if (h === "admin") await admin();
+    else if (h.startsWith("f/")) await formation(h.slice(2));
     else if (h.startsWith("l/")) await lecon(h.slice(2));
     else await accueil();
     window.scrollTo(0, 0);
