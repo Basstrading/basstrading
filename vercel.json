@@ -44,8 +44,12 @@
   ],
   "rewrites": [
     {
-      "source": "/p/:path*",
-      "destination": "https://api.basstrading.fr/p/:path*"
+      "source": "/p/:slug/",
+      "destination": "https://api.basstrading.fr/p/:slug"
+    },
+    {
+      "source": "/p/:slug",
+      "destination": "https://api.basstrading.fr/p/:slug"
     }
   ]
 }
