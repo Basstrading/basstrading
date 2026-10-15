@@ -200,8 +200,9 @@ function login(info) {
 function pasEleve(email) {
   page(`<div class="login card"><h1>Pas encore de formation</h1>
     <p class="sub">Aucune formation n'est liée à <b>${esc(email)}</b>.</p>
-    <p class="sub">Tu as peut-être acheté avec une autre adresse : essaie-la. Sinon, découvre les formations, dont une offerte.</p>
-    <a class="btn" style="width:100%" href="/">Découvrir les formations</a>
+    <p class="sub">Tu as peut-être acheté avec une autre adresse : essaie-la. Sinon, commence par la formation offerte : accès immédiat.</p>
+    <a class="btn" style="width:100%" href="/t/973c6e22/">🎁 Recevoir la formation offerte</a>
+    <a class="btn sec" style="width:100%;margin-top:10px" href="/">Voir toutes les formations</a>
     <button class="btn sec" id="r" style="width:100%;margin-top:10px">Essayer une autre adresse</button>
     <p class="small" style="margin-top:16px">Tu es sûr d'avoir acheté avec cette adresse ? Écris à <a href="mailto:contact@basstrading.fr">contact@basstrading.fr</a>.</p></div>`);
   document.getElementById("r").onclick = () => login();
