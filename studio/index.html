@@ -545,7 +545,7 @@ async function contactFiche(cle) {
   <div style="max-width:1260px;margin:22px auto 0;display:grid;gap:22px" id="hist"></div>`;
   // tags à cocher
   const dessinerTags = () => { const t = document.getElementById("tq").value.trim().toLowerCase();
-    document.getElementById("tl").innerHTML = L.filter(l => !t || l.nom.toLowerCase().includes(t)).map(l => `<label style="min-width:260px"><input type="checkbox" data-t="${l.id}" ${coches.has(l.id) ? "checked" : ""}> ${esc(l.nom)}</label>`).join("");
+    document.getElementById("tl").innerHTML = L.filter(l => !TECHNIQUE(l.nom) && (!t || l.nom.toLowerCase().includes(t))).map(l => `<label style="min-width:260px"><input type="checkbox" data-t="${l.id}" ${coches.has(l.id) ? "checked" : ""}> ${esc(l.nom)}</label>`).join("");
     document.querySelectorAll("#tl [data-t]").forEach(x => x.onchange = () => x.checked ? coches.add(+x.dataset.t) : coches.delete(+x.dataset.t)); };
   document.getElementById("tq").oninput = dessinerTags; dessinerTags();
   document.getElementById("tx").onclick = () => { coches.clear(); avant.forEach(x => coches.add(x)); document.querySelectorAll("[data-c]").forEach(i => i.value = i.dataset.c === "email" ? c.email : (a[i.dataset.c] ?? "")); dessinerTags(); };
@@ -594,7 +594,7 @@ async function tags() {
   app.innerHTML = `${entete("Tags", L.length, `<input class="recherche" id="tq" placeholder="Rechercher">`, `<button class="btn" id="nt">⊕ &nbsp;Créer</button>`)}
   <div class="wrap"><table><tr><th>Nom</th><th>Contacts</th><th></th></tr><tbody id="tl"></tbody></table></div>`;
   const dessiner = () => { const t = document.getElementById("tq").value.trim().toLowerCase();
-    document.getElementById("tl").innerHTML = L.filter(l => !t || l.nom.toLowerCase().includes(t)).map(l => `<tr><td><a href="#/contacts?liste=${l.id}">${esc(l.nom)}</a></td><td>${l.abonnes.toLocaleString("fr-FR")}</td>
+    document.getElementById("tl").innerHTML = L.filter(l => !TECHNIQUE(l.nom) && (!t || l.nom.toLowerCase().includes(t))).map(l => `<tr><td><a href="#/contacts?liste=${l.id}">${esc(l.nom)}</a></td><td>${l.abonnes.toLocaleString("fr-FR")}</td>
       <td style="text-align:right">${points([`<a href="#/contacts?liste=${l.id}">Voir les contacts</a>`, `<button data-r="${l.id}">Renommer</button>`, `<button data-s="${l.id}" style="color:var(--err)">Supprimer</button>`])}</td></tr>`).join("");
     document.querySelectorAll("[data-r]").forEach(b => b.onclick = async () => { const l = L.find(x => x.id === +b.dataset.r), n = prompt("Nouveau nom :", l.nom); if (n) { await put("/studio/tags/" + l.id, {nom: n}); tags(); } });
     document.querySelectorAll("[data-s]").forEach(b => b.onclick = async () => { const l = L.find(x => x.id === +b.dataset.s); if (confirm(`Supprimer le tag « ${l.nom} » ? Les contacts restent, seul le tag disparaît.`)) { await api("/studio/tags/" + l.id, {method: "DELETE"}); tags(); } }); };
