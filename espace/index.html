@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mon espace — Bass Trading</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0A0A0A;--card:#141414;--line:#262626;--txt:#EDEDED;--mute:#9A9A9A;--gold:#C9A84C;--ok:#3FB37F;--err:#E5484D}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.6 'DM Sans',system-ui,sans-serif}
+a{color:var(--gold);text-decoration:none}
+header{display:flex;justify-content:space-between;align-items:center;padding:18px 16px;border-bottom:1px solid var(--line);max-width:1100px;margin:0 auto}
+header .logo{font:700 18px 'Outfit';letter-spacing:.04em;color:var(--txt)}
+header .logo b{color:var(--gold)}
+header button{background:none;border:1px solid var(--line);color:var(--mute);padding:6px 12px;border-radius:8px;cursor:pointer;font:inherit;font-size:14px}
+main{max-width:1100px;margin:0 auto;padding:28px 16px 80px}
+h1{font:700 30px/1.2 'Outfit';margin:0 0 6px}
+h2{font:600 19px 'Outfit';margin:28px 0 10px;color:var(--gold)}
+.sub{color:var(--mute);margin:0 0 24px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px}
+.login{max-width:440px;margin:60px auto}
+input[type=email]{width:100%;padding:13px 14px;border-radius:10px;border:1px solid var(--line);background:#0E0E0E;color:var(--txt);font:inherit;margin:12px 0}
+.btn{display:inline-block;background:var(--gold);color:#111;border:0;border-radius:10px;padding:13px 18px;font:600 16px 'Outfit';cursor:pointer;width:100%}
+.btn:disabled{opacity:.6}
+.msg{margin-top:14px;color:var(--mute);font-size:15px}
+.msg.err{color:var(--err)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+.fo{display:block;color:var(--txt)}
+.fo h3{font:600 18px 'Outfit';margin:0 0 6px}
+.bar{height:6px;background:#222;border-radius:9px;overflow:hidden;margin-top:12px}
+.bar i{display:block;height:100%;background:var(--gold)}
+.small{font-size:14px;color:var(--mute)}
+.mod{margin-bottom:10px}
+.mod summary{cursor:pointer;font:600 16px 'Outfit';padding:12px 0;list-style:none}
+.mod summary::before{content:'▸ ';color:var(--gold)}
+.mod[open] summary::before{content:'▾ '}
+.lec{display:flex;gap:10px;align-items:center;padding:9px 10px;border-radius:8px;color:var(--txt)}
+.lec:hover{background:#1B1B1B}
+.lec .dot{width:10px;height:10px;border-radius:50%;border:2px solid var(--line);flex:none}
+.lec.vue .dot{background:var(--ok);border-color:var(--ok)}
+video{width:100%;border-radius:12px;background:#000;aspect-ratio:16/9}
+.nav{display:flex;justify-content:space-between;gap:12px;margin-top:16px}
+.nav a{border:1px solid var(--line);padding:10px 14px;border-radius:10px}
+.desc{margin-top:18px;color:#cfcfcf}
+.desc img{max-width:100%}
+.back{display:inline-block;margin-bottom:14px;font-size:14px}
+@media (max-width:600px){h1{font-size:24px}}
+</style>
+</head>
+<body>
+<header><a class="logo" href="/espace/">BASS <b>TRADING</b></a><button id="out" hidden>Se déconnecter</button></header>
+<main id="app"><p class="sub">Chargement…</p></main>
+<script>
+const API = "https://api.basstrading.fr";
+const app = document.getElementById("app");
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+async function api(path, opts = {}) {
+  const r = await fetch(API + path, {credentials: "include", headers: {"Content-Type": "application/json"}, ...opts});
+  if (r.status === 401) { throw {auth: true}; }
+  if (!r.ok) { let d = ""; try { d = (await r.json()).detail } catch {} throw {msg: d || "Erreur " + r.status}; }
+  return r.json();
+}
+function login(info) {
+  document.getElementById("out").hidden = true;
+  app.innerHTML = `<div class="login card"><h1>Mon espace</h1>
+    <p class="sub">Entre l'adresse email utilisée lors de ton achat. Tu reçois un lien de connexion, sans mot de passe.</p>
+    <form id="f"><input type="email" id="e" required placeholder="ton@email.com" autocomplete="email">
+    <button class="btn" id="b">Recevoir mon lien</button></form><div class="msg" id="m">${esc(info || "")}</div></div>`;
+  document.getElementById("f").onsubmit = async ev => {
+    ev.preventDefault(); const b = document.getElementById("b"), m = document.getElementById("m");
+    b.disabled = true; m.className = "msg"; m.textContent = "Envoi…";
+    try { const r = await api("/auth/lien", {method: "POST", body: JSON.stringify({email: document.getElementById("e").value})});
+      m.textContent = r.message + " Pense à regarder tes spams."; }
+    catch (x) { m.className = "msg err"; m.textContent = x.msg || "Impossible d'envoyer le lien. Réessaie dans une minute."; }
+    b.disabled = false;
+  };
+}
+async function accueil() {
+  const d = await api("/moi");
+  document.getElementById("out").hidden = false;
+  const items = d.formations.map(f => { const p = f.lecons ? Math.round(100 * f.vues / f.lecons) : 0;
+    return `<a class="fo card" href="#/f/${esc(f.slug)}"><h3>${esc(f.titre)}</h3><div class="small">${f.vues} / ${f.lecons} leçons vues</div><div class="bar"><i style="width:${p}%"></i></div></a>`; }).join("");
+  app.innerHTML = `<h1>Bonjour${d.eleve.prenom ? " " + esc(d.eleve.prenom) : ""}</h1><p class="sub">Tes formations</p>
+    ${items ? `<div class="grid">${items}</div>` : `<div class="card">Aucune formation n'est encore liée à ${esc(d.eleve.email)}. Écris-nous si c'est une erreur.</div>`}`;
+}
+async function formation(slug) {
+  const f = await api("/formations/" + encodeURIComponent(slug));
+  const mods = f.modules.map((m, i) => `<details class="mod card" ${i === 0 ? "open" : ""}><summary>${esc(m.titre)} <span class="small">· ${m.lecons.length} leçons</span></summary>
+    ${m.lecons.map(l => `<a class="lec ${l.vue ? "vue" : ""}" href="#/l/${l.id}"><span class="dot"></span>${esc(l.titre)}</a>`).join("")}</details>`).join("");
+  app.innerHTML = `<a class="back" href="#/">← Mes formations</a><h1>${esc(f.titre)}</h1><p class="sub">${esc(f.description)}</p>${mods}`;
+}
+async function lecon(id) {
+  const l = await api("/lecons/" + id);
+  app.innerHTML = `<a class="back" href="#/f/${esc(l.formation.slug)}">← ${esc(l.formation.titre)}</a><h1>${esc(l.titre)}</h1>
+    ${l.video_url ? `<video controls playsinline preload="metadata" src="${esc(l.video_url)}"></video>` : `<div class="card small">Pas de vidéo pour cette leçon.</div>`}
+    <div class="desc">${l.description_html || ""}</div>
+    <div class="nav">${l.precedente ? `<a href="#/l/${l.precedente}">← Leçon précédente</a>` : "<span></span>"}${l.suivante ? `<a href="#/l/${l.suivante}">Leçon suivante →</a>` : ""}</div>`;
+  api(`/lecons/${id}/vue`, {method: "POST"}).catch(() => {});
+}
+async function route() {
+  const h = location.hash.replace(/^#\/?/, "");
+  try {
+    if (h.startsWith("f/")) await formation(h.slice(2));
+    else if (h.startsWith("l/")) await lecon(h.slice(2));
+    else await accueil();
+    window.scrollTo(0, 0);
+  } catch (x) {
+    if (x.auth) login(new URLSearchParams(location.search).get("info") || "");
+    else app.innerHTML = `<div class="card"><p>${esc(x.msg || "Une erreur est survenue.")}</p><a href="#/">← Retour</a></div>`;
+  }
+}
+document.getElementById("out").onclick = async () => { await api("/auth/deconnexion", {method: "POST"}).catch(() => {}); location.hash = ""; login("Tu es déconnecté."); };
+addEventListener("hashchange", route);
+route();
+</script>
+</body>
+</html>
