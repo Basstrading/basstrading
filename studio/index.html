@@ -6,72 +6,113 @@
 <title>Studio — Bass Trading</title>
 <meta name="robots" content="noindex">
 <link rel="icon" href="/favicon.svg">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#f4f6f9;--card:#fff;--line:#e3e7ee;--txt:#1d2433;--mute:#6b7385;--blue:#2f6fed;--blue2:#e8f0fe;--ok:#1f9d55;--warn:#d97706;--err:#d64545}
+/* Look de l'ANCIEN Systeme.io (avant refonte) : barre bleu marine, menu blanc, fond gris-bleu, cartes blanches, chiffres bleus. */
+:root{--nav:#182e60;--bg:#f3f4f8;--card:#fff;--line:#e6e9ef;--line2:#d5dae3;--txt:#2d3436;--txt2:#5c6370;--mute:#8a8f98;--blue:#3d8fe0;--blue-btn:#3d8fe0;--blue2:#eaf3fd;--ok:#2fb36b;--ok-bg:#eef8f0;--warn:#e69a1e;--err:#e5484d;--err-bg:#fdedf0}
 *{box-sizing:border-box}
-html,body{margin:0;background:var(--bg);color:var(--txt);font:15px/1.5 'Inter',system-ui,sans-serif}
+html,body{margin:0;background:var(--bg);color:var(--txt);font:400 14px/1.5 'Mulish','Avenir Next',system-ui,sans-serif}
 a{color:var(--blue);text-decoration:none}
-header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
-.bar{max-width:1240px;margin:0 auto;display:flex;align-items:center;gap:6px;padding:0 16px;height:58px;overflow-x:auto}
-.logo{font-weight:700;font-size:17px;margin-right:18px;white-space:nowrap}
-.logo b{color:var(--blue)}
-nav a{color:var(--txt);padding:8px 12px;border-radius:8px;font-weight:500;white-space:nowrap}
-nav a.on,nav a:hover{background:var(--blue2);color:var(--blue)}
+a:hover{text-decoration:underline}
+header{background:var(--nav);position:sticky;top:0;z-index:20}
+.bar{max-width:1600px;margin:0 auto;display:flex;align-items:stretch;gap:4px;padding:0 24px;height:54px}
+.logo{display:flex;align-items:center;gap:8px;color:#fff!important;font:700 19px Mulish;margin-right:22px;white-space:nowrap;text-decoration:none!important}
+.logo i{width:26px;height:26px;border-radius:50%;background:#fff;color:var(--nav);display:flex;align-items:center;justify-content:center;font:800 15px Mulish;font-style:normal}
+nav{display:flex;align-items:stretch;gap:2px}
+.menu{position:relative;display:flex}
+.menu>button{display:flex;align-items:center;gap:6px;background:none;border:0;border-bottom:3px solid transparent;border-top:3px solid transparent;padding:0 12px;font:600 13px Mulish;color:#fff;cursor:pointer;white-space:nowrap}
+.menu>button:hover{color:#cfe3fb}
+.menu>button::after{content:"";width:5px;height:5px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg) translateY(-2px);opacity:.8}
+.menu.on>button{border-bottom-color:#429ff6}
+.sous{display:none;position:absolute;top:100%;left:0;min-width:200px;background:#fff;border-radius:0 0 4px 4px;box-shadow:0 6px 18px rgba(24,46,96,.18);padding:6px 0;z-index:30}
+.menu.open .sous{display:block}
+.sous a{display:block;padding:9px 18px;color:var(--txt);font-size:14px;white-space:nowrap}
+.sous a:hover{background:var(--blue2);color:var(--blue);text-decoration:none}
+.sous a.on{color:var(--blue);font-weight:600}
 .droite{margin-left:auto;display:flex;gap:10px;align-items:center;white-space:nowrap}
-main{max-width:1240px;margin:0 auto;padding:24px 16px 80px}
-h1{font-size:22px;margin:0 0 18px}
-h2{font-size:17px;margin:26px 0 12px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
-.kpi .v{font-size:26px;font-weight:700;margin-top:4px}
-.kpi .l{color:var(--mute);font-size:13px}
-table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
-th,td{text-align:left;padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top}
-th{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--mute);background:#fafbfc}
+.bar .droite a{color:#cfd8ea;font-size:13px}
+main{max-width:1600px;margin:0 auto;padding:22px 24px 80px}
+h1{font-size:20px;font-weight:600;line-height:28px;margin:0 0 20px;color:var(--txt)}
+h2{font-size:16px;font-weight:600;margin:28px 0 12px}
+.entete{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 18px;min-height:34px}
+.entete h1{margin:0}
+.entete .droite{margin-left:auto}
+.recherche{width:280px!important;padding-left:32px!important;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' fill='none' stroke='%238a8f98' stroke-width='2' viewBox='0 0 24 24'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-3.5-3.5'/%3E%3C/svg%3E") no-repeat 10px center}
+.entete select{width:auto!important;max-width:260px}
+.compte{font-size:12px;background:#e3e7ef;border-radius:10px;padding:1px 8px;color:var(--txt2)}
+.card{background:var(--card);border:0;border-radius:4px;padding:20px 22px;box-shadow:0 1px 3px rgba(24,46,96,.08)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px}
+.kpi .l{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.02em;color:var(--mute)}
+.kpi .v{font-size:30px;font-weight:600;color:var(--blue);margin:6px 0 2px}
+.wrap{overflow-x:auto;background:#fff;border-radius:4px;box-shadow:0 1px 3px rgba(24,46,96,.08)}
+table{width:100%;border-collapse:collapse;background:#fff}
+th,td{text-align:left;padding:12px 16px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.02em;color:var(--mute);background:#fff;white-space:nowrap}
+td{color:var(--txt)}
 tr:last-child td{border-bottom:0}
-.wrap{overflow-x:auto}
-.btn{display:inline-block;background:var(--blue);color:#fff;border:0;border-radius:8px;padding:9px 16px;font:600 14px Inter;cursor:pointer}
-.btn.sec{background:#fff;color:var(--txt);border:1px solid var(--line)}
-.btn.ok{background:var(--ok)}
-.btn.dang{background:#fff;color:var(--err);border:1px solid #f0c9c9}
+tbody tr:hover td,tr:hover td{background:#fafbfd}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:36px;background:var(--blue-btn);color:#fff;border:1px solid var(--blue-btn);border-radius:4px;padding:7px 16px;font:600 14px Mulish;cursor:pointer;white-space:nowrap;text-decoration:none!important}
+.btn:hover{filter:brightness(.95)}
+.btn.creer{background:var(--blue-btn)}
+.btn.sec{background:#fff;color:var(--txt);border:1px solid var(--line2)}
+.btn.ok{background:var(--ok);border-color:var(--ok)}
+.btn.dang{background:#fff;color:var(--err);border:1px solid #f5c2c7}
 .btn:disabled{opacity:.55;cursor:wait}
-input,select,textarea{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font:inherit;background:#fff;color:var(--txt)}
-label{display:block;font-size:13px;color:var(--mute);margin:12px 0 5px;font-weight:500}
+input,select,textarea{width:100%;padding:8px 12px;min-height:38px;border:1px solid var(--line2);border-radius:4px;font:inherit;background:#fff;color:var(--txt)}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--blue)}
+label{display:block;font-size:14px;color:var(--txt);margin:14px 0 6px;font-weight:600}
 .row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end}
 .row>*{flex:1;min-width:180px}
-.pill{display:inline-block;font-size:12px;padding:2px 8px;border-radius:99px;background:#eef1f5;color:var(--mute);margin:2px 4px 2px 0}
-.pill.ok{background:#e3f6ec;color:var(--ok)}.pill.warn{background:#fdf1dd;color:var(--warn)}.pill.err{background:#fbe6e6;color:var(--err)}.pill.blue{background:var(--blue2);color:var(--blue)}
-.mute{color:var(--mute);font-size:13px}
+.pill{display:inline-block;font-size:12px;padding:2px 9px;border-radius:3px;background:#eef1f6;color:var(--txt2);margin:2px 4px 2px 0;white-space:nowrap}
+.pill.ok{background:var(--ok-bg);color:var(--ok)}.pill.warn{background:#fdf3e1;color:var(--warn)}.pill.err{background:var(--err-bg);color:var(--err)}.pill.blue{background:var(--blue2);color:var(--blue)}
+.mute{color:var(--mute);font-size:12px}
 .msg{margin-top:10px;font-size:14px}
 .msg.err{color:var(--err)}.msg.ok{color:var(--ok)}
-.toolbar{display:flex;gap:4px;flex-wrap:wrap;border:1px solid var(--line);border-bottom:0;border-radius:8px 8px 0 0;padding:6px;background:#fafbfc}
-.toolbar button{border:1px solid var(--line);background:#fff;border-radius:6px;padding:4px 9px;cursor:pointer;font:600 13px Inter}
-.editeur{min-height:320px;border:1px solid var(--line);border-radius:0 0 8px 8px;padding:16px;background:#fff;font-family:verdana,geneva,sans-serif;font-size:15px;line-height:1.65;outline:none}
-.checks{display:flex;flex-wrap:wrap;gap:6px 14px;max-height:220px;overflow:auto;border:1px solid var(--line);border-radius:8px;padding:10px;background:#fff}
+.toolbar{display:flex;gap:4px;flex-wrap:wrap;border:1px solid var(--line2);border-bottom:0;border-radius:4px 4px 0 0;padding:6px;background:#f7f8fb}
+.toolbar button{border:1px solid var(--line2);background:#fff;border-radius:3px;padding:4px 9px;cursor:pointer;font:600 13px Mulish}
+.editeur{min-height:320px;border:1px solid var(--line2);border-radius:0 0 4px 4px;padding:16px;background:#fff;font-family:verdana,geneva,sans-serif;font-size:15px;line-height:1.65;outline:none}
+.checks{display:flex;flex-wrap:wrap;gap:6px 14px;max-height:220px;overflow:auto;border:1px solid var(--line2);border-radius:4px;padding:10px;background:#fff}
 .checks label{margin:0;color:var(--txt);font-weight:400;display:flex;gap:6px;align-items:center;font-size:14px}
-.checks input{width:auto}
-.lien{font-family:monospace;font-size:13px;background:#f3f5f8;border-radius:6px;padding:4px 8px;word-break:break-all}
+.checks input,input[type=checkbox]{width:auto;min-height:0;accent-color:var(--blue)}
+.lien{font-family:monospace;font-size:12px;background:#f0f2f6;border-radius:3px;padding:4px 8px;word-break:break-all}
 .login{max-width:420px;margin:80px auto}
 .vide{color:var(--mute);text-align:center;padding:30px}
+.ariane{display:flex;gap:8px;align-items:center;font-size:14px;color:var(--mute);margin-bottom:14px}
+.ariane a{color:var(--mute)}
 .edgrid{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;margin-top:16px}
 .edgrid .card{margin-bottom:12px}
-.apercu iframe{width:100%;height:75vh;border:1px solid var(--line);border-radius:12px;background:#fff}
-@media (min-width:1100px){.edgrid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.apercu{position:sticky;top:74px;align-self:start}}
-.mini{border:1px solid var(--line);background:#fff;border-radius:6px;width:30px;height:28px;cursor:pointer;margin-left:3px;font:600 14px Inter}
-button.card:hover{border-color:var(--blue)}
-@media (max-width:640px){h1{font-size:19px}}
+.apercu iframe{width:100%;height:75vh;border:0;border-radius:4px;background:#fff;box-shadow:0 1px 3px rgba(24,46,96,.08)}
+@media (min-width:1100px){.edgrid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.apercu{position:sticky;top:70px;align-self:start}}
+.mini{border:1px solid var(--line2);background:#fff;border-radius:3px;width:30px;height:28px;cursor:pointer;margin-left:3px;font:600 14px Mulish}
+button.card:hover{box-shadow:0 0 0 2px var(--blue)}
+.dash{display:grid;grid-template-columns:minmax(0,1fr);gap:18px}
+@media (min-width:1100px){.dash{grid-template-columns:minmax(0,1fr) 300px}}
+.direct{padding:16px 16px 6px}
+.direct h3{font-size:15px;font-weight:600;margin:0 0 8px}
+.evt{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}
+.evt:last-child{border-bottom:0}
+.evt .ic{width:22px;flex:0 0 auto;color:var(--ok);font-size:15px;text-align:center}
+.evt .ic.pay{color:var(--blue)}
+.evt b{font-weight:700;font-size:13px;color:var(--txt)}
+.evt .d{font-size:11px;color:var(--mute);margin-left:4px}
+.evt .q{color:var(--txt2);font-size:12px}
+@media (max-width:900px){.bar{padding:0 12px;overflow-x:auto}main{padding:18px 16px 80px}.sous{position:fixed;top:54px;left:12px;right:12px}}
 </style>
 </head>
 <body>
 <header><div class="bar">
-  <div class="logo">BASS <b>STUDIO</b></div>
+  <a class="logo" href="#/"><i>B</i>studio</a>
   <nav id="nav">
-    <a href="#/">Tableau de bord</a><a href="#/contacts">Contacts</a><a href="#/emails">Emails</a><a href="#/sequences">Séquences</a>
-    <a href="#/formations">Formations</a><a href="#/ventes">Ventes</a><a href="#/pages">Pages</a>
+    <div class="menu" data-m="tableau"><button>Tableau de bord</button><div class="sous"><a href="#/">Tableau de bord</a></div></div>
+    <div class="menu" data-m="contacts"><button>Contacts</button><div class="sous"><a href="#/contacts">Contacts</a></div></div>
+    <div class="menu" data-m="tunnels"><button>Tunnels</button><div class="sous"><a href="#/pages">Pages et tunnels</a></div></div>
+    <div class="menu" data-m="emails"><button>Emails</button><div class="sous"><a href="#/emails">Newsletters</a><a href="#/sequences">Campagnes</a></div></div>
+    <div class="menu" data-m="formations"><button>Formations</button><div class="sous"><a href="#/formations">Formations</a></div></div>
+    <div class="menu" data-m="ventes"><button>Produits / Ventes</button><div class="sous"><a href="#/ventes">Offres et liens de paiement</a><a href="#/transactions">Ventes</a></div></div>
   </nav>
-  <div class="droite"><a class="mute" href="https://listes.hubtrading.fr/admin/" target="_blank" rel="noopener">Listmonk ↗</a></div>
+  <div class="droite"><a href="https://listes.hubtrading.fr/admin/" target="_blank" rel="noopener">Listmonk ↗</a></div>
 </div></header>
+
 <main id="app"><p class="mute">Chargement…</p></main>
 <script>
 const API = "https://api.basstrading.fr";
@@ -92,7 +133,20 @@ async function api(path, opts = {}) {
 }
 const post = (p, b) => api(p, {method: "POST", body: JSON.stringify(b)});
 const put = (p, b) => api(p, {method: "PUT", body: JSON.stringify(b)});
-function onglet(h) { document.querySelectorAll("#nav a").forEach(a => a.classList.toggle("on", a.getAttribute("href") === "#/" + h.split("/")[0])); }
+const MENU = {"": "tableau", contacts: "contacts", pages: "tunnels", emails: "emails", sequences: "emails", formations: "formations", ventes: "ventes", transactions: "ventes"};
+function onglet(h) {
+  const r = h.split(/[/?]/)[0];
+  document.querySelectorAll("#nav .menu").forEach(m => { m.classList.toggle("on", m.dataset.m === MENU[r]); m.classList.remove("open"); });
+  document.querySelectorAll("#nav .sous a").forEach(a => a.classList.toggle("on", a.getAttribute("href") === "#/" + r));
+}
+// Menus déroulants au clic, comme Systeme.io.
+document.querySelectorAll("#nav .menu>button").forEach(b => b.onclick = e => { e.stopPropagation(); const m = b.parentElement, o = !m.classList.contains("open");
+  document.querySelectorAll("#nav .menu").forEach(x => x.classList.remove("open")); m.classList.toggle("open", o); });
+addEventListener("click", () => document.querySelectorAll("#nav .menu").forEach(x => x.classList.remove("open")));
+addEventListener("keydown", e => { if (e.key === "Escape") document.querySelectorAll("#nav .menu").forEach(x => x.classList.remove("open")); });
+// En-tête de page : titre, compteur, recherche, bouton à droite.
+const entete = (titre, compte, milieu = "", droite = "") => `<div class="entete"><h1>${titre}</h1>${compte !== null && compte !== undefined ? `<span class="compte">${(+compte).toLocaleString("fr-FR")}</span>` : ""}${milieu}${droite ? `<div class="droite">${droite}</div>` : ""}</div>`;
+const ariane = (lien, nom, titre) => `<div class="ariane"><a href="${lien}">${nom}</a><span>›</span><span>${titre}</span></div>`;
 
 function login(code) {
   // Pas connecté : les onglets sont masqués (sinon chaque onglet ramène ici et semble « ne pas marcher »).
@@ -112,18 +166,38 @@ function login(code) {
 /* ── Tableau de bord ─────────────────────────────────── */
 async function accueil() {
   const d = await api("/studio/resume");
-  app.innerHTML = `<h1>Tableau de bord</h1>
-  <div class="grid">
-    <div class="card kpi"><div class="l">Ventes (30 jours)</div><div class="v">${euros(d.ca_30j)}</div><div class="mute">${d.ventes_30j} vente(s)</div></div>
-    <div class="card kpi"><div class="l">Nouveaux contacts (30 jours)</div><div class="v">${d.nouveaux_contacts_30j}</div><div class="mute">${d.contacts.toLocaleString("fr-FR")} contacts au total</div></div>
-    <div class="card kpi"><div class="l">Nouveaux élèves (30 jours)</div><div class="v">${d.nouveaux_eleves_30j}</div><div class="mute">inscriptions et achats</div></div>
-    <div class="card kpi"><div class="l">Élèves connectés (30 jours)</div><div class="v">${d.connectes_30j}</div><div class="mute">dans leur espace</div></div>
-  </div>
-  <h2>Derniers emails</h2>
-  <div class="wrap"><table><tr><th>Sujet</th><th>Statut</th><th>Envoyés</th><th>Ouvertures</th><th>Clics</th></tr>
-  ${d.campagnes.map(c => `<tr><td><a href="#/emails/${c.id}">${esc(c.subject)}</a><div class="mute">${dateh(c.created_at)}</div></td>
-    <td><span class="pill ${STATUT[c.status]?.[1] || ""}">${STATUT[c.status]?.[0] || c.status}</span></td><td>${c.sent || 0}</td><td>${c.views || 0}</td><td>${c.clicks || 0}</td></tr>`).join("") || `<tr><td colspan="5" class="vide">Aucun email pour l'instant.</td></tr>`}
-  </table></div>`;
+  // Courbe en aire, bleu clair, comme l'ancien tableau de bord Systeme.io.
+  const courbe = (v, fmt) => {
+    const W = 600, H = 150, max = Math.max(1, ...v), pas = W / (v.length - 1);
+    const pts = v.map((y, i) => [i * pas, H - 8 - (y / max) * (H - 24)]);
+    const lisse = pts.map((p, i) => i ? `C${pts[i - 1][0] + pas / 2},${pts[i - 1][1]} ${p[0] - pas / 2},${p[1]} ${p[0]},${p[1]}` : `M${p[0]},${p[1]}`).join(" ");
+    const etiquettes = d.jours.map((j, i) => i % 5 === 2 ? `<text x="${i * pas}" y="${H + 16}" text-anchor="middle">${new Date(j).toLocaleDateString("fr-FR", {day: "numeric", month: "short"})}</text>` : "").join("");
+    return `<svg viewBox="0 -4 ${W} ${H + 24}" preserveAspectRatio="none" style="width:100%;height:190px;display:block;margin-top:10px;font:11px Mulish;fill:#8a8f98">
+      <path d="${lisse} L${W},${H} L0,${H} Z" fill="#eaf3fd"/><path d="${lisse}" fill="none" stroke="#9fc8f3" stroke-width="2"/>${etiquettes}
+      ${pts.map((p, i) => `<rect x="${p[0] - pas / 2}" y="0" width="${pas}" height="${H}" fill="transparent"><title>${new Date(d.jours[i]).toLocaleDateString("fr-FR", {day: "numeric", month: "long"})} : ${fmt(v[i])}</title></rect>`).join("")}</svg>`;
+  };
+  const fin = new Date(), debut = new Date(Date.now() - 29 * 864e5), jour = x => x.toLocaleDateString("fr-FR", {day: "numeric", month: "long", year: "numeric"});
+  const quand = q => new Date(q).toLocaleString("fr-FR", {day: "numeric", month: "short", hour: "2-digit", minute: "2-digit"});
+  app.innerHTML = `${entete("Tableau de bord", null, "", `<span class="card" style="padding:7px 14px;font-size:13px;color:var(--txt2)">${jour(debut)} &nbsp;→&nbsp; ${jour(fin)}</span>`)}
+  <div class="dash"><div>
+    <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
+      <div class="card kpi"><div class="l">Nouveaux contacts</div><div class="v">${d.nouveaux_contacts_30j.toLocaleString("fr-FR")}</div><div class="mute">${d.contacts.toLocaleString("fr-FR")} contacts au total</div>${courbe(d.serie_contacts, n => n + " contact(s)")}</div>
+      <div class="card kpi"><div class="l">Paiements</div><div class="v">${euros(d.ca_30j)}</div><div class="mute">${d.ventes_30j} vente(s) sur 30 jours</div>${courbe(d.serie_paiements, euros)}</div>
+    </div>
+    <div class="grid" style="margin-top:18px">
+      <div class="card kpi"><div class="l">Nouveaux élèves (30 jours)</div><div class="v">${d.nouveaux_eleves_30j}</div><div class="mute">inscriptions et achats</div></div>
+      <div class="card kpi"><div class="l">Élèves connectés (30 jours)</div><div class="v">${d.connectes_30j}</div><div class="mute">dans leur espace</div></div>
+    </div>
+    <h2>Derniers emails</h2>
+    <div class="wrap"><table><tr><th>Sujet</th><th>Statut</th><th>Envoyés</th><th>Ouvertures</th><th>Clics</th></tr>
+    ${d.campagnes.map(c => `<tr><td><a href="#/emails/${c.id}">${esc(c.subject)}</a><div class="mute">${dateh(c.created_at)}</div></td>
+      <td><span class="pill ${STATUT[c.status]?.[1] || ""}">${STATUT[c.status]?.[0] || c.status}</span></td><td>${c.sent || 0}</td><td>${c.views || 0}</td><td>${c.clicks || 0}</td></tr>`).join("") || `<tr><td colspan="5" class="vide">Aucun email pour l'instant.</td></tr>`}
+    </table></div></div>
+    <div class="card direct" style="align-self:start"><h3>Mises à jour en direct</h3>
+      ${d.direct.map(e => e.type === "paiement"
+        ? `<div class="evt"><div class="ic pay"><svg width="18" height="16" viewBox="0 0 26 22" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="20" height="14" rx="2"/><path d="M1 8h20"/><circle cx="21" cy="16" r="4.5" fill="#fff"/><path d="M19.5 16h3M21 14.5v3"/></svg></div><div style="min-width:0"><b>Paiement</b><span class="d">${quand(e.quand)}</span><div class="q"><a>${esc(e.nom || e.email)}</a></div><div class="q">${euros(e.montant)} pour <a>${esc(e.detail)}</a></div></div></div>`
+        : `<div class="evt"><div class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="7" r="4.5"/><path d="M3 22c0-5 4-8 9-8s9 3 9 8z"/></svg></div><div style="min-width:0"><b>Nouveau contact</b><span class="d">${quand(e.quand)}</span><div class="q"><a>${esc(e.nom || e.email)}</a> ${e.detail ? "inscrit à " + esc(e.detail) : ""}</div><div class="q">${esc(e.email)}</div></div></div>`).join("") || `<p class="mute">Rien pour l'instant.</p>`}
+    </div></div>`;
 }
 
 /* ── Contacts ────────────────────────────────────────── */
@@ -132,17 +206,17 @@ async function listes() { if (!listesCache) listesCache = await api("/studio/lis
 async function contacts(params) {
   const L = await listes();
   const p = new URLSearchParams(params || "");
-  app.innerHTML = `<h1>Contacts</h1>
-  <div class="row card"><div><label>Rechercher</label><input id="t" placeholder="email ou nom" value="${esc(p.get("texte") || "")}"></div>
-    <div><label>Liste / tag</label><select id="l"><option value="0">Toutes les listes</option>${L.map(l => `<option value="${l.id}" ${+p.get("liste") === l.id ? "selected" : ""}>${esc(l.nom)} (${l.abonnes})</option>`).join("")}</select></div>
-    <div style="flex:0"><button class="btn" id="go">Filtrer</button></div></div>
+  app.innerHTML = `${entete("Contacts", null, `<span class="compte" id="nb">…</span>
+    <input class="recherche" id="t" placeholder="Rechercher : email ou nom" value="${esc(p.get("texte") || "")}">
+    <select id="l" style="width:240px"><option value="0">Tous les tags / listes</option>${L.map(l => `<option value="${l.id}" ${+p.get("liste") === l.id ? "selected" : ""}>${esc(l.nom)} (${l.abonnes})</option>`).join("")}</select>
+    <button class="btn sec" id="go">Filtrer</button>`)}
   <div id="res"><p class="mute">Chargement…</p></div>`;
   const charger = async (page = 1) => {
     const t = document.getElementById("t").value.trim(), l = document.getElementById("l").value;
     const d = await api(`/studio/contacts?texte=${encodeURIComponent(t)}&liste=${l}&page=${page}`);
-    document.getElementById("res").innerHTML = `<p class="mute">${d.total.toLocaleString("fr-FR")} contact(s)</p>
-      <div class="wrap"><table><tr><th>Contact</th><th>Listes</th><th>Statut</th><th>Inscrit le</th></tr>
-      ${d.contacts.map(c => `<tr><td><strong>${esc(c.email)}</strong><div class="mute">${esc(c.nom)}</div></td>
+    document.getElementById("nb").textContent = d.total.toLocaleString("fr-FR");
+    document.getElementById("res").innerHTML = `<div class="wrap"><table><tr><th>Email</th><th>Tags</th><th>Statut</th><th>Inscrit le</th></tr>
+      ${d.contacts.map(c => `<tr><td><a>${esc(c.email)}</a><div class="mute">${esc(c.nom)}</div></td>
         <td>${c.listes.slice(0, 6).map(x => `<span class="pill ${x.statut === "unsubscribed" ? "err" : ""}">${esc(x.nom)}</span>`).join("")}${c.listes.length > 6 ? `<span class="mute">+${c.listes.length - 6}</span>` : ""}</td>
         <td><span class="pill ${c.statut === "enabled" ? "ok" : "err"}">${c.statut === "enabled" ? "Actif" : "Bloqué"}</span></td><td>${date(c.cree)}</td></tr>`).join("") || `<tr><td colspan="4" class="vide">Aucun contact.</td></tr>`}
       </table></div>
@@ -151,6 +225,7 @@ async function contacts(params) {
     document.getElementById("next")?.addEventListener("click", () => charger(page + 1));
   };
   document.getElementById("go").onclick = () => charger(1);
+  document.getElementById("l").onchange = () => charger(1);
   document.getElementById("t").onkeydown = e => { if (e.key === "Enter") charger(1); };
   charger(1);
 }
@@ -158,8 +233,8 @@ async function contacts(params) {
 /* ── Emails ──────────────────────────────────────────── */
 async function emails() {
   const C = await api("/studio/campagnes");
-  app.innerHTML = `<div class="row" style="justify-content:space-between;align-items:center"><h1 style="margin:0">Emails</h1><a class="btn" href="#/emails/nouveau" style="flex:0;white-space:nowrap">+ Nouvelle newsletter</a></div><br>
-  <div class="wrap"><table><tr><th>Sujet</th><th>Listes</th><th>Statut</th><th>Envoyés</th><th>Ouvertures</th><th>Clics</th></tr>
+  app.innerHTML = `${entete("Newsletters", C.length, "", `<a class="btn" href="#/emails/nouveau">+ Créer</a>`)}
+  <div class="wrap"><table><tr><th>Sujet de la newsletter</th><th>Tags sélectionnés</th><th>Statut</th><th>Emails envoyés</th><th>Ouvertures</th><th>Clics</th></tr>
   ${C.map(c => `<tr><td><a href="#/emails/${c.id}">${esc(c.subject)}</a><div class="mute">${c.send_at && c.status === "scheduled" ? "programmée le " + dateh(c.send_at) : dateh(c.created_at)}</div></td>
     <td>${c.listes.map(l => `<span class="pill">${esc(l)}</span>`).join("")}</td>
     <td><span class="pill ${STATUT[c.status]?.[1] || ""}">${STATUT[c.status]?.[0] || c.status}</span></td>
@@ -170,7 +245,7 @@ async function editeurEmail(id) {
   const L = await listes();
   const c = id === "nouveau" ? {titre: "", sujet: "", corps: "<p>Bonjour {{ .Subscriber.FirstName }},</p><p></p>", listes: [], statut: "draft"} : await api("/studio/campagnes/" + id);
   const modifiable = ["draft", "scheduled", "paused"].includes(c.statut);
-  app.innerHTML = `<a href="#/emails">← Emails</a><h1>${id === "nouveau" ? "Nouvelle newsletter" : esc(c.sujet)}</h1>
+  app.innerHTML = `${ariane("#/emails", "Newsletters", id === "nouveau" ? "Nouvelle newsletter" : esc(c.sujet))}
   <div class="card">
     <div class="row"><div><label>Sujet de l'email</label><input id="s" value="${esc(c.sujet)}" placeholder="Ce que le lecteur voit dans sa boîte"></div>
       <div><label>Nom interne (facultatif)</label><input id="n" value="${esc(c.titre)}"></div></div>
@@ -232,7 +307,7 @@ async function editeurEmail(id) {
 /* ── Formations ──────────────────────────────────────── */
 async function formations() {
   const d = await api("/admin/resume");
-  app.innerHTML = `<h1>Formations</h1>
+  app.innerHTML = `${entete("Formations", d.formations.length)}
   <div class="card"><h2 style="margin-top:0">Ouvrir un accès à un élève</h2>
     <div class="row"><div><label>Email</label><input id="ae" type="email" placeholder="email de l'élève"></div>
     <div><label>Prénom</label><input id="ap" placeholder="facultatif"></div>
@@ -258,21 +333,19 @@ async function formations() {
 }
 
 /* ── Ventes : offres + liens de paiement ─────────────── */
-async function ventes() {
+async function ventes(mode) {
   const [d, V] = await Promise.all([api("/admin/offres"), api("/admin/ventes")]);
   const nomsF = Object.fromEntries(d.formations.map(f => [f.id, f.titre]));
-  app.innerHTML = `<div class="row" style="justify-content:space-between;align-items:center"><h1 style="margin:0">Ventes</h1><button class="btn" id="nv" style="flex:0;white-space:nowrap">+ Nouvelle offre</button></div>
+  app.innerHTML = `${mode === "transactions" ? entete("Ventes", V.length) : entete("Offres et liens de paiement", d.offres.length, "", `<button class="btn" id="nv">+ Créer</button>`)}
   <div id="form"></div>
-  <h2>Offres et liens de paiement</h2>
-  <div class="wrap"><table><tr><th>Offre</th><th>Prix</th><th>Débloque</th><th>Ventes</th><th>Lien à envoyer</th><th></th></tr>
+  <div class="wrap" id="z-offres"><table><tr><th>Offre</th><th>Prix</th><th>Débloque</th><th>Ventes</th><th>Lien à envoyer</th><th></th></tr>
   ${d.offres.map(o => { const lien = `${d.site}/paiement/?offre=${o.slug}`;
     return `<tr><td><strong>${esc(o.titre)}</strong>${o.active ? "" : ` <span class="pill err">Désactivée</span>`}</td>
     <td>${euros(o.prix_cents)}<div class="mute">${PAIEMENT(o.echeances)}${o.echeances > 1 ? " · total " + euros(o.prix_cents * o.echeances) : ""}</div></td>
     <td>${(o.formation_ids || []).map(i => `<span class="pill">${esc(nomsF[i] || i)}</span>`).join("") || "—"}</td><td>${o.ventes}</td>
     <td><span class="lien">${esc(lien)}</span> <button class="btn sec cp" data-l="${esc(lien)}" style="padding:4px 9px">Copier</button></td>
     <td><button class="btn sec ed" data-s="${esc(o.slug)}" style="padding:4px 9px">Modifier</button></td></tr>`; }).join("") || `<tr><td colspan="6" class="vide">Aucune offre.</td></tr>`}</table></div>
-  <h2>Dernières ventes</h2>
-  <div class="wrap"><table><tr><th>Date</th><th>Client</th><th>Offre</th><th>Encaissé</th><th>Statut</th></tr>
+  <div class="wrap" id="z-ventes"><table><tr><th>Date</th><th>Client</th><th>Offre</th><th>Encaissé</th><th>Statut</th></tr>
   ${V.map(v => { const [lib, cl] = ETAT_VENTE[v.statut] || [v.statut, ""];
     return `<tr><td>${dateh(v.created_at)}</td><td>${esc(v.email)}<div class="mute">${esc(v.prenom)}</div></td><td>${esc(v.titre || "—")}</td>
     <td>${euros(v.encaisse)}${v.echeances !== 1 ? `<div class="mute">${v.payees}${v.echeances > 1 ? "/" + v.echeances : ""} × ${euros(v.montant_cents)}</div>` : ""}</td>
@@ -304,6 +377,8 @@ async function ventes() {
     };
     document.getElementById("form").scrollIntoView({behavior: "smooth"});
   };
+  document.getElementById(mode === "transactions" ? "z-offres" : "z-ventes").remove();
+  if (mode === "transactions") return;
   document.getElementById("nv").onclick = () => ouvrir();
   document.querySelectorAll(".ed").forEach(b => b.onclick = () => ouvrir(d.offres.find(o => o.slug === b.dataset.s)));
 }
@@ -326,7 +401,7 @@ async function pagesListe() {
     ["Formation offerte (inscription)", "/formation-offerte/"], ["Merci — formation offerte", "/formation-offerte/merci/"],
     ["Market Profile (page de vente)", "/marketprofile/"], ["Paiement", "/paiement/?offre=market-profile"], ["Espace élèves", "/espace/"],
   ];
-  app.innerHTML = `<div class="row" style="justify-content:space-between;align-items:center"><h1 style="margin:0">Pages</h1><button class="btn" id="np" style="flex:0;white-space:nowrap">+ Nouvelle page</button></div>
+  app.innerHTML = `${entete("Pages et tunnels", L.length, "", `<button class="btn" id="np">+ Créer</button>`)}
   <div id="modeles"></div><br>
   <div class="wrap"><table><tr><th>Page</th><th>Statut</th><th>Vues</th><th>Inscrits</th><th></th></tr>
   ${L.map(p => `<tr><td><a href="#/pages/${p.id}"><strong>${esc(p.titre)}</strong></a><div class="mute">basstrading.fr/p/${esc(p.slug)}/</div></td>
@@ -355,9 +430,9 @@ async function pagesListe() {
 async function editeurPage(id) {
   const [P, L, O, PG] = await Promise.all([api("/studio/pages/" + id), listes(), api("/admin/offres"), api("/studio/pages")]);
   const champ = (lab, html) => `<label>${lab}</label>${html}`;
-  app.innerHTML = `<a href="#/pages">← Pages</a>
-  <div class="row" style="align-items:center;margin:10px 0 14px"><h1 style="margin:0">${esc(P.titre)}</h1>
-    <div style="flex:0;display:flex;gap:8px;white-space:nowrap"><label style="margin:0;display:flex;gap:6px;align-items:center;color:var(--txt)"><input type="checkbox" id="pub" style="width:auto" ${P.publiee ? "checked" : ""}> En ligne</label>
+  app.innerHTML = `${ariane("#/pages", "Pages et tunnels", esc(P.titre))}
+  <div class="row" style="align-items:center;margin:0 0 14px"><h1 style="margin:0">${esc(P.titre)}</h1>
+    <div style="flex:0 0 auto;min-width:0;display:flex;gap:8px;white-space:nowrap;align-items:center"><label style="margin:0;display:flex;gap:6px;align-items:center;color:var(--txt)"><input type="checkbox" id="pub" style="width:auto" ${P.publiee ? "checked" : ""}> En ligne</label>
     <button class="btn" id="sv">Enregistrer</button><a class="btn sec" id="voir" target="_blank" href="/p/${esc(P.slug)}/">Voir ↗</a></div></div>
   <div class="card"><div class="row">
     <div>${champ("Titre (onglet du navigateur, Google)", `<input id="pt" value="${esc(P.titre)}">`)}</div>
@@ -450,9 +525,9 @@ async function sequencesListe() {
   const [S, L, O] = await Promise.all([api("/studio/sequences"), listes(), api("/admin/offres")]);
   const nomL = Object.fromEntries(L.map(l => [l.id, l.nom])), nomO = Object.fromEntries(O.offres.map(o => [o.slug, o.titre]));
   const decl = s => s.declencheur === "achat" ? (s.offre_slug ? "Achat : " + (nomO[s.offre_slug] || s.offre_slug) : "—") : (s.liste_id ? "Liste : " + (nomL[s.liste_id] || s.liste_id) : "—");
-  app.innerHTML = `<div class="row" style="justify-content:space-between;align-items:center"><h1 style="margin:0">Séquences</h1><button class="btn" id="ns" style="flex:0;white-space:nowrap">+ Nouvelle séquence</button></div>
-  <p class="mute">Une séquence envoie une suite d'emails automatiquement, à J+1, J+3… après l'entrée du contact (inscription à une liste ou achat d'une offre). Seuls les contacts arrivés <strong>après</strong> l'activation la reçoivent. Envois de 8 h à 21 h.</p>
-  <div class="wrap"><table><tr><th>Séquence</th><th>Démarre sur</th><th>Mails</th><th>En cours</th><th>Envoyés</th><th>Statut</th></tr>
+  app.innerHTML = `${entete("Campagnes", S.length, "", `<button class="btn" id="ns">+ Créer</button>`)}
+  <p class="mute" style="margin-top:-6px">Une campagne envoie une suite d'emails automatiquement, à J+1, J+3… après l'entrée du contact (inscription à une liste ou achat d'une offre). Seuls les contacts arrivés <strong>après</strong> l'activation la reçoivent. Envois de 8 h à 21 h.</p>
+  <div class="wrap"><table><tr><th>Nom</th><th>Démarre sur</th><th>Nombre d'emails</th><th>En cours</th><th>Envoyés</th><th>Statut</th></tr>
   ${S.map(s => `<tr><td><a href="#/sequences/${s.id}"><strong>${esc(s.nom)}</strong></a>${s.note ? `<div class="mute">${esc(s.note).slice(0, 140)}</div>` : ""}</td><td>${esc(decl(s))}</td><td>${s.mails}</td><td>${s.en_cours}</td><td>${s.envoyes}</td>
     <td><span class="pill ${s.active ? "ok" : ""}">${s.active ? "Active" : "Désactivée"}</span></td></tr>`).join("") || `<tr><td colspan="6" class="vide">Aucune séquence.</td></tr>`}</table></div>`;
   document.getElementById("ns").onclick = async () => { const r = await post("/studio/sequences", {}); location.hash = "#/sequences/" + r.id; };
@@ -461,9 +536,9 @@ async function sequencesListe() {
 async function editeurSequence(id) {
   const [S, L, O] = await Promise.all([api("/studio/sequences/" + id), listes(), api("/admin/offres")]);
   const E = S.etapes;
-  app.innerHTML = `<a href="#/sequences">← Séquences</a>
-  <div class="row" style="align-items:center;margin:10px 0 14px"><h1 style="margin:0">${esc(S.nom)}</h1>
-    <div style="flex:0;display:flex;gap:8px;white-space:nowrap;align-items:center"><label style="margin:0;display:flex;gap:6px;align-items:center;color:var(--txt)"><input type="checkbox" id="sa" style="width:auto" ${S.active ? "checked" : ""}> Active</label>
+  app.innerHTML = `${ariane("#/sequences", "Campagnes", esc(S.nom))}
+  <div class="row" style="align-items:center;margin:0 0 14px"><h1 style="margin:0">${esc(S.nom)}</h1>
+    <div style="flex:0 0 auto;min-width:0;display:flex;gap:8px;white-space:nowrap;align-items:center"><label style="margin:0;display:flex;gap:6px;align-items:center;color:var(--txt)"><input type="checkbox" id="sa" style="width:auto" ${S.active ? "checked" : ""}> Active</label>
     <button class="btn" id="ss">Enregistrer</button><button class="btn dang" id="sd">Supprimer</button></div></div>
   ${S.note ? `<p class="mute">${esc(S.note)}</p>` : ""}
   <div class="card"><div class="row"><div><label>Nom</label><input id="sn" value="${esc(S.nom)}"></div>
@@ -481,17 +556,22 @@ async function editeurSequence(id) {
   const dessiner = () => {
     let cumul = 0;
     const duree = h => { h = +h || 0; const j = Math.floor(h / 24), r = h % 24; return h === 0 ? "immédiatement" : [j ? j + " j" : "", r ? r + " h" : ""].filter(Boolean).join(" "); };
-    document.getElementById("et").innerHTML = E.map((e, i) => { cumul += e.active ? (+e.delai_heures || 0) : 0;
-      return `<div class="card" style="margin-bottom:10px;${e.active ? "" : "opacity:.6"}"><div class="row" style="align-items:center">
-        <div><strong>${i + 1}. ${esc(e.sujet)}</strong><div class="mute">${e.active ? `Envoyé ${cumul ? "à J+" + duree(cumul).replace(" j", "") : "dès l'entrée"}` : "Désactivé"} · ${duree(e.delai_heures)} ${i === 0 ? "après l'entrée dans la séquence" : "après le mail précédent"}${e.envoyes ? ` · ${e.envoyes} envoyé(s)` : ""}</div></div>
-        <div style="flex:0;white-space:nowrap"><button class="mini" data-a="haut" data-i="${i}">↑</button><button class="mini" data-a="bas" data-i="${i}">↓</button><button class="mini" data-a="sup" data-i="${i}">✕</button>
-        <button class="btn sec" data-a="ouv" data-i="${i}" style="padding:4px 10px;margin-left:6px">${ouvert === i ? "Fermer" : "Modifier"}</button></div></div>
-        ${ouvert === i ? `<div class="row"><div><label>Sujet</label><input id="es" value="${esc(e.sujet)}"></div><div style="flex:0;min-width:110px"><label>Délai : jours</label><input id="edj" type="number" min="0" value="${Math.floor((+e.delai_heures || 0) / 24)}"></div><div style="flex:0;min-width:110px"><label>+ heures</label><input id="edh" type="number" min="0" max="23" value="${(+e.delai_heures || 0) % 24}"></div></div>
+    const lignes = E.map((e, i) => { cumul += e.active ? (+e.delai_heures || 0) : 0;
+      return `<tr style="${e.active ? "" : "opacity:.55"}${ouvert === i ? ";background:#f5f9fe" : ""}"><td><a href="javascript:void 0" data-a="ouv" data-i="${i}">${esc(e.sujet)}</a></td>
+        <td>${duree(e.delai_heures)}<div class="mute">${i === 0 ? "après l'entrée" : "après le précédent"} · J+${Math.round(cumul / 24 * 10) / 10}</div></td>
+        <td>${e.envoyes || 0}</td><td><span class="pill ${e.active ? "ok" : ""}">${e.active ? "Actif(ve)" : "Inactif"}</span></td>
+        <td style="white-space:nowrap;text-align:right"><button class="mini" data-a="haut" data-i="${i}" title="Monter">↑</button><button class="mini" data-a="bas" data-i="${i}" title="Descendre">↓</button><button class="mini" data-a="sup" data-i="${i}" title="Supprimer">✕</button>
+        <button class="btn sec" data-a="ouv" data-i="${i}" style="min-height:28px;padding:3px 10px;margin-left:6px">${ouvert === i ? "Fermer" : "Modifier"}</button></td></tr>`; }).join("");
+    const e = E[ouvert];
+    document.getElementById("et").innerHTML = `<div class="wrap"><table><tr><th>Objet de l'email</th><th>Délai</th><th>Emails envoyés</th><th>Statut</th><th></th></tr>
+      ${lignes || `<tr><td colspan="5" class="vide">Aucun email. Clique sur « + Ajouter un email ».</td></tr>`}</table></div>
+      ${e ? `<div class="card" style="margin-top:14px"><h2 style="margin:0 0 4px">Email ${ouvert + 1} — ${esc(e.sujet)}</h2>
+          <div class="row"><div><label>Objet de l'email</label><input id="es" value="${esc(e.sujet)}"></div><div style="flex:0;min-width:110px"><label>Délai : jours</label><input id="edj" type="number" min="0" value="${Math.floor((+e.delai_heures || 0) / 24)}"></div><div style="flex:0;min-width:110px"><label>+ heures</label><input id="edh" type="number" min="0" max="23" value="${(+e.delai_heures || 0) % 24}"></div></div>
           <label><input type="checkbox" id="ea" style="width:auto" ${e.active ? "checked" : ""}> Email actif</label>
           <label>Message <span class="mute">— {first_name} = prénom du lecteur</span></label>
           <div class="toolbar"><button data-c="bold"><b>G</b></button><button data-c="italic"><i>I</i></button><button data-c="underline"><u>S</u></button><button data-c="insertUnorderedList">• Liste</button><button data-c="createLink">Lien</button></div>
           <div class="editeur" id="ec" contenteditable="true">${e.corps}</div>
-          <div class="row" style="margin-top:10px"><button class="btn sec" id="et1" style="flex:0;white-space:nowrap">M'envoyer ce mail en test</button><span class="msg" id="em"></span></div>` : ""}</div>`; }).join("") || `<p class="mute">Aucun email.</p>`;
+          <div class="row" style="margin-top:10px"><button class="btn sec" id="et1" style="flex:0;white-space:nowrap">M'envoyer ce mail en test</button><span class="msg" id="em"></span></div></div>` : ""}`;
     document.querySelectorAll("#et [data-a]").forEach(b => b.onclick = () => {
       const i = +b.dataset.i;
       if (b.dataset.a === "ouv") ouvert = ouvert === i ? -1 : i;
@@ -529,7 +609,7 @@ async function editeurSequence(id) {
     catch (x) { m.className = "msg err"; m.textContent = x.msg || "Erreur"; }
     b.disabled = false;
   };
-  document.getElementById("sd").onclick = async () => { if (!confirm(`Supprimer la séquence « ${S.nom} » et ses ${E.length} emails ?`)) return; await api("/studio/sequences/" + id, {method: "DELETE"}); location.hash = "#/sequences"; };
+  document.getElementById("sd").onclick = async () => { if (!confirm(`Supprimer la campagne « ${S.nom} » et ses ${E.length} emails ?`)) return; await api("/studio/sequences/" + id, {method: "DELETE"}); location.hash = "#/sequences"; };
 }
 
 function pagesFixes() {
@@ -555,6 +635,7 @@ async function route() {
     else if (h.startsWith("emails/")) await editeurEmail(h.slice(7));
     else if (h === "formations") await formations();
     else if (h === "ventes") await ventes();
+    else if (h === "transactions") await ventes("transactions");
     else if (h === "sequences") await sequencesListe();
     else if (h.startsWith("sequences/")) await editeurSequence(+h.slice(10));
     else if (h === "pages") await pagesListe();
