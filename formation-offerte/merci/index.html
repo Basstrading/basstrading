@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Merci pour ton inscription | Bass Trading</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;color:#e0e0e0;background:#0a0e17;line-height:1.7}
+.container{max-width:720px;margin:0 auto;padding:64px 20px}
+h1{font-size:clamp(26px,5vw,38px);font-weight:800;color:#fff;margin-bottom:16px;line-height:1.2}
+h2{font-size:22px;color:#fff;margin:36px 0 12px}
+p{font-size:17px;color:#b8bcc8;margin-bottom:14px}
+ol{margin:6px 0 0 22px;color:#d1d5db}
+ol li{margin:8px 0}
+.card{background:#111827;border:1px solid #1f2937;border-radius:14px;padding:24px;margin-top:28px}
+.btn{display:inline-block;background:linear-gradient(135deg,#f59e0b 0%,#d97706 100%);color:#000;font-size:17px;font-weight:700;padding:15px 28px;border-radius:8px;text-decoration:none;margin-top:8px}
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>🎉 Merci <span id="p"></span> ! Ta formation est en route.</h1>
+  <p>Elle est déjà débloquée dans ton espace. Un email vient de partir avec ton lien de connexion, sans mot de passe.</p>
+  <h2>🚀 Prochaine étape</h2>
+  <ol>
+    <li>Ouvre ton email « Ta formation offerte est prête » et clique sur <strong>Commencer la formation</strong>.</li>
+    <li>Pas d'email d'ici quelques minutes ? Regarde dans tes spams ou dans l'onglet Promotions.</li>
+    <li>Garde cette page dans tes favoris si tu veux y revenir.</li>
+  </ol>
+  <div class="card">
+    <h2 style="margin-top:0">📊 Tu veux aller plus loin ?</h2>
+    <p>La formation complète Market Profile détaille les stratégies et les outils des traders institutionnels : lire les volumes, repérer les zones à forte probabilité, anticiper les mouvements avant tout le monde.</p>
+    <a class="btn" href="/marketprofile/">Découvrir la formation Market Profile</a>
+  </div>
+</div>
+<script>
+const p = new URLSearchParams(location.search).get("p");
+if (p) document.getElementById("p").textContent = p.slice(0, 40);
+</script>
+</body>
+</html>
