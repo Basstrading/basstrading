@@ -24,7 +24,9 @@ a{color:var(--gold)}
     const r = await fetch("https://api.basstrading.fr/auth/session", {method: "POST", credentials: "include",
       headers: {"Content-Type": "application/json"}, body: JSON.stringify({t})});
     if (!r.ok) throw await r.json();
-    location.replace("/espace/");
+    let retour = "/espace/";
+    try { const x = localStorage.getItem("bt_retour"); if (x && x.startsWith("/")) { retour = x; localStorage.removeItem("bt_retour"); } } catch {}
+    location.replace(retour);
   } catch (e) {
     m.innerHTML = (e && e.detail ? e.detail : "Ce lien n'est plus valable.") + '<br><br><a href="/espace/">Recevoir un nouveau lien</a>';
   }

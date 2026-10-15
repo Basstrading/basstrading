@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Studio — Bass Trading</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4f6f9;--card:#fff;--line:#e3e7ee;--txt:#1d2433;--mute:#6b7385;--blue:#2f6fed;--blue2:#e8f0fe;--ok:#1f9d55;--warn:#d97706;--err:#d64545}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--txt);font:15px/1.5 'Inter',system-ui,sans-serif}
+a{color:var(--blue);text-decoration:none}
+header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+.bar{max-width:1240px;margin:0 auto;display:flex;align-items:center;gap:6px;padding:0 16px;height:58px;overflow-x:auto}
+.logo{font-weight:700;font-size:17px;margin-right:18px;white-space:nowrap}
+.logo b{color:var(--blue)}
+nav a{color:var(--txt);padding:8px 12px;border-radius:8px;font-weight:500;white-space:nowrap}
+nav a.on,nav a:hover{background:var(--blue2);color:var(--blue)}
+.droite{margin-left:auto;display:flex;gap:10px;align-items:center;white-space:nowrap}
+main{max-width:1240px;margin:0 auto;padding:24px 16px 80px}
+h1{font-size:22px;margin:0 0 18px}
+h2{font-size:17px;margin:26px 0 12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
+.kpi .v{font-size:26px;font-weight:700;margin-top:4px}
+.kpi .l{color:var(--mute);font-size:13px}
+table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+th,td{text-align:left;padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--mute);background:#fafbfc}
+tr:last-child td{border-bottom:0}
+.wrap{overflow-x:auto}
+.btn{display:inline-block;background:var(--blue);color:#fff;border:0;border-radius:8px;padding:9px 16px;font:600 14px Inter;cursor:pointer}
+.btn.sec{background:#fff;color:var(--txt);border:1px solid var(--line)}
+.btn.ok{background:var(--ok)}
+.btn.dang{background:#fff;color:var(--err);border:1px solid #f0c9c9}
+.btn:disabled{opacity:.55;cursor:wait}
+input,select,textarea{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font:inherit;background:#fff;color:var(--txt)}
+label{display:block;font-size:13px;color:var(--mute);margin:12px 0 5px;font-weight:500}
+.row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end}
+.row>*{flex:1;min-width:180px}
+.pill{display:inline-block;font-size:12px;padding:2px 8px;border-radius:99px;background:#eef1f5;color:var(--mute);margin:2px 4px 2px 0}
+.pill.ok{background:#e3f6ec;color:var(--ok)}.pill.warn{background:#fdf1dd;color:var(--warn)}.pill.err{background:#fbe6e6;color:var(--err)}.pill.blue{background:var(--blue2);color:var(--blue)}
+.mute{color:var(--mute);font-size:13px}
+.msg{margin-top:10px;font-size:14px}
+.msg.err{color:var(--err)}.msg.ok{color:var(--ok)}
+.toolbar{display:flex;gap:4px;flex-wrap:wrap;border:1px solid var(--line);border-bottom:0;border-radius:8px 8px 0 0;padding:6px;background:#fafbfc}
+.toolbar button{border:1px solid var(--line);background:#fff;border-radius:6px;padding:4px 9px;cursor:pointer;font:600 13px Inter}
+.editeur{min-height:320px;border:1px solid var(--line);border-radius:0 0 8px 8px;padding:16px;background:#fff;font-family:verdana,geneva,sans-serif;font-size:15px;line-height:1.65;outline:none}
+.checks{display:flex;flex-wrap:wrap;gap:6px 14px;max-height:220px;overflow:auto;border:1px solid var(--line);border-radius:8px;padding:10px;background:#fff}
+.checks label{margin:0;color:var(--txt);font-weight:400;display:flex;gap:6px;align-items:center;font-size:14px}
+.checks input{width:auto}
+.lien{font-family:monospace;font-size:13px;background:#f3f5f8;border-radius:6px;padding:4px 8px;word-break:break-all}
+.login{max-width:420px;margin:80px auto}
+.vide{color:var(--mute);text-align:center;padding:30px}
+@media (max-width:640px){h1{font-size:19px}}
+</style>
+</head>
+<body>
+<header><div class="bar">
+  <div class="logo">BASS <b>STUDIO</b></div>
+  <nav id="nav">
+    <a href="#/">Tableau de bord</a><a href="#/contacts">Contacts</a><a href="#/emails">Emails</a>
+    <a href="#/formations">Formations</a><a href="#/ventes">Ventes</a><a href="#/pages">Pages</a>
+  </nav>
+  <div class="droite"><a class="mute" href="https://listes.hubtrading.fr/admin/" target="_blank" rel="noopener">Listmonk ↗</a></div>
+</div></header>
+<main id="app"><p class="mute">Chargement…</p></main>
+<script>
+const API = "https://api.basstrading.fr";
+const app = document.getElementById("app");
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const euros = c => (c / 100).toLocaleString("fr-FR", {style: "currency", currency: "EUR", maximumFractionDigits: c % 100 ? 2 : 0});
+const date = d => d ? new Date(d).toLocaleDateString("fr-FR", {day: "numeric", month: "short", year: "numeric"}) : "—";
+const dateh = d => d ? new Date(d).toLocaleString("fr-FR", {day: "numeric", month: "short", hour: "2-digit", minute: "2-digit"}) : "—";
+const STATUT = {draft: ["Brouillon", ""], scheduled: ["Programmée", "blue"], running: ["En cours d'envoi", "warn"], paused: ["En pause", "warn"], finished: ["Envoyée", "ok"], cancelled: ["Annulée", "err"]};
+const PAIEMENT = n => n === 1 ? "Paiement unique" : n === 0 ? "Mensuel sans fin" : n + " mensualités";
+async function api(path, opts = {}) {
+  const r = await fetch(API + path, {credentials: "include", headers: {"Content-Type": "application/json"}, ...opts});
+  if (r.status === 401 || r.status === 403) throw {auth: r.status};
+  const d = await r.json().catch(() => ({}));
+  if (!r.ok) throw {msg: d.detail || "Erreur " + r.status};
+  return d;
+}
+const post = (p, b) => api(p, {method: "POST", body: JSON.stringify(b)});
+const put = (p, b) => api(p, {method: "PUT", body: JSON.stringify(b)});
+function onglet(h) { document.querySelectorAll("#nav a").forEach(a => a.classList.toggle("on", a.getAttribute("href") === "#/" + h.split("/")[0])); }
+
+function login(code) {
+  app.innerHTML = `<div class="login card"><h1>Studio</h1>
+    <p class="mute">${code === 403 ? "Cet accès est réservé à l'administrateur." : "Entre ton adresse administrateur : tu reçois un lien de connexion."}</p>
+    <form id="f"><input type="email" id="e" required placeholder="ton@email.com"><br><br><button class="btn">Recevoir mon lien</button></form><div class="msg" id="m"></div></div>`;
+  document.getElementById("f").onsubmit = async ev => {
+    ev.preventDefault();
+    try { localStorage.setItem("bt_retour", "/studio/"); } catch {}
+    const r = await post("/auth/lien", {email: document.getElementById("e").value});
+    document.getElementById("m").textContent = r.message;
+  };
+}
+
+/* ── Tableau de bord ─────────────────────────────────── */
+async function accueil() {
+  const d = await api("/studio/resume");
+  app.innerHTML = `<h1>Tableau de bord</h1>
+  <div class="grid">
+    <div class="card kpi"><div class="l">Ventes (30 jours)</div><div class="v">${euros(d.ca_30j)}</div><div class="mute">${d.ventes_30j} vente(s)</div></div>
+    <div class="card kpi"><div class="l">Nouveaux contacts (30 jours)</div><div class="v">${d.nouveaux_contacts_30j}</div><div class="mute">${d.contacts.toLocaleString("fr-FR")} contacts au total</div></div>
+    <div class="card kpi"><div class="l">Nouveaux élèves (30 jours)</div><div class="v">${d.nouveaux_eleves_30j}</div><div class="mute">inscriptions et achats</div></div>
+    <div class="card kpi"><div class="l">Élèves connectés (30 jours)</div><div class="v">${d.connectes_30j}</div><div class="mute">dans leur espace</div></div>
+  </div>
+  <h2>Derniers emails</h2>
+  <div class="wrap"><table><tr><th>Sujet</th><th>Statut</th><th>Envoyés</th><th>Ouvertures</th><th>Clics</th></tr>
+  ${d.campagnes.map(c => `<tr><td><a href="#/emails/${c.id}">${esc(c.subject)}</a><div class="mute">${dateh(c.created_at)}</div></td>
+    <td><span class="pill ${STATUT[c.status]?.[1] || ""}">${STATUT[c.status]?.[0] || c.status}</span></td><td>${c.sent || 0}</td><td>${c.views || 0}</td><td>${c.clicks || 0}</td></tr>`).join("") || `<tr><td colspan="5" class="vide">Aucun email pour l'instant.</td></tr>`}
+  </table></div>`;
+}
+
+/* ── Contacts ────────────────────────────────────────── */
+let listesCache;
+async function listes() { if (!listesCache) listesCache = await api("/studio/listes"); return listesCache; }
+async function contacts(params) {
+  const L = await listes();
+  const p = new URLSearchParams(params || "");
+  app.innerHTML = `<h1>Contacts</h1>
+  <div class="row card"><div><label>Rechercher</label><input id="t" placeholder="email ou nom" value="${esc(p.get("texte") || "")}"></div>
+    <div><label>Liste / tag</label><select id="l"><option value="0">Toutes les listes</option>${L.map(l => `<option value="${l.id}" ${+p.get("liste") === l.id ? "selected" : ""}>${esc(l.nom)} (${l.abonnes})</option>`).join("")}</select></div>
+    <div style="flex:0"><button class="btn" id="go">Filtrer</button></div></div>
+  <div id="res"><p class="mute">Chargement…</p></div>`;
+  const charger = async (page = 1) => {
+    const t = document.getElementById("t").value.trim(), l = document.getElementById("l").value;
+    const d = await api(`/studio/contacts?texte=${encodeURIComponent(t)}&liste=${l}&page=${page}`);
+    document.getElementById("res").innerHTML = `<p class="mute">${d.total.toLocaleString("fr-FR")} contact(s)</p>
+      <div class="wrap"><table><tr><th>Contact</th><th>Listes</th><th>Statut</th><th>Inscrit le</th></tr>
+      ${d.contacts.map(c => `<tr><td><strong>${esc(c.email)}</strong><div class="mute">${esc(c.nom)}</div></td>
+        <td>${c.listes.slice(0, 6).map(x => `<span class="pill ${x.statut === "unsubscribed" ? "err" : ""}">${esc(x.nom)}</span>`).join("")}${c.listes.length > 6 ? `<span class="mute">+${c.listes.length - 6}</span>` : ""}</td>
+        <td><span class="pill ${c.statut === "enabled" ? "ok" : "err"}">${c.statut === "enabled" ? "Actif" : "Bloqué"}</span></td><td>${date(c.cree)}</td></tr>`).join("") || `<tr><td colspan="4" class="vide">Aucun contact.</td></tr>`}
+      </table></div>
+      <div class="row" style="margin-top:12px;justify-content:space-between">${page > 1 ? `<button class="btn sec" id="prev">← Précédents</button>` : "<span></span>"}${d.total > page * 50 ? `<button class="btn sec" id="next" style="flex:0">Suivants →</button>` : ""}</div>`;
+    document.getElementById("prev")?.addEventListener("click", () => charger(page - 1));
+    document.getElementById("next")?.addEventListener("click", () => charger(page + 1));
+  };
+  document.getElementById("go").onclick = () => charger(1);
+  document.getElementById("t").onkeydown = e => { if (e.key === "Enter") charger(1); };
+  charger(1);
+}
+
+/* ── Emails ──────────────────────────────────────────── */
+async function emails() {
+  const C = await api("/studio/campagnes");
+  app.innerHTML = `<div class="row" style="justify-content:space-between;align-items:center"><h1 style="margin:0">Emails</h1><a class="btn" href="#/emails/nouveau" style="flex:0;white-space:nowrap">+ Nouvelle newsletter</a></div><br>
+  <div class="wrap"><table><tr><th>Sujet</th><th>Listes</th><th>Statut</th><th>Envoyés</th><th>Ouvertures</th><th>Clics</th></tr>
+  ${C.map(c => `<tr><td><a href="#/emails/${c.id}">${esc(c.subject)}</a><div class="mute">${c.send_at && c.status === "scheduled" ? "programmée le " + dateh(c.send_at) : dateh(c.created_at)}</div></td>
+    <td>${c.listes.map(l => `<span class="pill">${esc(l)}</span>`).join("")}</td>
+    <td><span class="pill ${STATUT[c.status]?.[1] || ""}">${STATUT[c.status]?.[0] || c.status}</span></td>
+    <td>${c.sent || 0}${c.toSend ? " / " + c.toSend : ""}</td><td>${c.views || 0}</td><td>${c.clicks || 0}</td></tr>`).join("") || `<tr><td colspan="6" class="vide">Aucun email. Crée ta première newsletter.</td></tr>`}
+  </table></div>`;
+}
+async function editeurEmail(id) {
+  const L = await listes();
+  const c = id === "nouveau" ? {titre: "", sujet: "", corps: "<p>Bonjour {{ .Subscriber.FirstName }},</p><p></p>", listes: [], statut: "draft"} : await api("/studio/campagnes/" + id);
+  const modifiable = ["draft", "scheduled", "paused"].includes(c.statut);
+  app.innerHTML = `<a href="#/emails">← Emails</a><h1>${id === "nouveau" ? "Nouvelle newsletter" : esc(c.sujet)}</h1>
+  <div class="card">
+    <div class="row"><div><label>Sujet de l'email</label><input id="s" value="${esc(c.sujet)}" placeholder="Ce que le lecteur voit dans sa boîte"></div>
+      <div><label>Nom interne (facultatif)</label><input id="n" value="${esc(c.titre)}"></div></div>
+    <label>Destinataires</label>
+    <div class="checks">${L.map(l => `<label><input type="checkbox" value="${l.id}" ${c.listes.includes(l.id) ? "checked" : ""}> ${esc(l.nom)} <span class="mute">(${l.abonnes})</span></label>`).join("")}</div>
+    <label>Message <span class="mute">— {{ .Subscriber.FirstName }} = prénom du lecteur</span></label>
+    <div class="toolbar">
+      <button data-c="bold"><b>G</b></button><button data-c="italic"><i>I</i></button><button data-c="underline"><u>S</u></button>
+      <button data-c="formatBlock" data-v="h2">Titre</button><button data-c="formatBlock" data-v="p">Texte</button>
+      <button data-c="insertUnorderedList">• Liste</button><button data-c="createLink">Lien</button><button data-c="removeFormat">Effacer</button>
+    </div>
+    <div class="editeur" id="corps" contenteditable="${modifiable}">${c.corps}</div>
+    <div class="row" style="margin-top:14px"><div><label>Programmer l'envoi (facultatif)</label><input type="datetime-local" id="d" value="${c.envoyer_le ? c.envoyer_le.slice(0, 16) : ""}"></div><div></div></div>
+    <div class="row" style="margin-top:16px;gap:8px">
+      ${modifiable ? `<button class="btn sec" id="save" style="flex:0;white-space:nowrap">Enregistrer le brouillon</button>
+      <button class="btn sec" id="test" style="flex:0;white-space:nowrap">M'envoyer un test</button>
+      <button class="btn" id="prog" style="flex:0;white-space:nowrap">Programmer</button>
+      <button class="btn ok" id="now" style="flex:0;white-space:nowrap">Envoyer maintenant</button>` : `<span class="pill ${STATUT[c.statut]?.[1] || ""}">${STATUT[c.statut]?.[0] || c.statut}</span>`}
+      ${c.statut === "running" ? `<button class="btn dang" id="pause" style="flex:0">Mettre en pause</button>` : ""}
+    </div><div class="msg" id="m"></div>
+  </div>`;
+  const m = document.getElementById("m");
+  const dire = (t, ok) => { m.className = "msg " + (ok ? "ok" : "err"); m.textContent = t; };
+  document.querySelectorAll(".toolbar button").forEach(b => b.onclick = e => {
+    e.preventDefault();
+    if (b.dataset.c === "createLink") { const u = prompt("Adresse du lien (https://…)"); if (u) document.execCommand("createLink", false, u); }
+    else document.execCommand(b.dataset.c, false, b.dataset.v || null);
+  });
+  let cid = id === "nouveau" ? null : +id;
+  const donnees = () => ({titre: document.getElementById("n").value, sujet: document.getElementById("s").value.trim(),
+    corps: document.getElementById("corps").innerHTML, listes: [...document.querySelectorAll(".checks input:checked")].map(i => +i.value),
+    envoyer_le: document.getElementById("d").value ? new Date(document.getElementById("d").value).toISOString() : ""});
+  const enregistrer = async () => {
+    const x = donnees();
+    if (!x.sujet) throw {msg: "Indique un sujet."};
+    if (!x.listes.length) throw {msg: "Choisis au moins une liste."};
+    if (cid) await put("/studio/campagnes/" + cid, x); else { cid = (await post("/studio/campagnes", x)).id; history.replaceState(null, "", "#/emails/" + cid); }
+    return x;
+  };
+  const action = (el, fn) => el && (el.onclick = async () => { el.disabled = true; try { await fn(); } catch (x) { dire(x.msg || "Erreur"); } el.disabled = false; });
+  action(document.getElementById("save"), async () => { await enregistrer(); dire("Brouillon enregistré.", true); });
+  action(document.getElementById("test"), async () => {
+    await enregistrer(); const e = prompt("Envoyer le test à quelle adresse ?", localStorage.getItem("bt_test") || "");
+    if (!e) return; try { localStorage.setItem("bt_test", e); } catch {}
+    await post(`/studio/campagnes/${cid}/test`, {email: e}); dire("Test envoyé à " + e + ".", true);
+  });
+  action(document.getElementById("prog"), async () => {
+    const x = await enregistrer(); if (!x.envoyer_le) throw {msg: "Choisis la date et l'heure d'envoi."};
+    await put(`/studio/campagnes/${cid}/statut`, {statut: "scheduled"}); dire("Envoi programmé.", true); setTimeout(() => location.hash = "#/emails", 900);
+  });
+  action(document.getElementById("now"), async () => {
+    const x = await enregistrer(); const n = L.filter(l => x.listes.includes(l.id)).reduce((a, l) => a + l.abonnes, 0);
+    if (!confirm(`Envoyer maintenant à environ ${n} contact(s) ? (les doublons et désinscrits sont retirés automatiquement)`)) return;
+    await put(`/studio/campagnes/${cid}/statut`, {statut: "running"}); dire("Envoi lancé.", true); setTimeout(() => location.hash = "#/emails", 900);
+  });
+  action(document.getElementById("pause"), async () => { await put(`/studio/campagnes/${cid}/statut`, {statut: "paused"}); dire("Envoi en pause.", true); });
+}
+
+/* ── Formations ──────────────────────────────────────── */
+async function formations() {
+  const d = await api("/admin/resume");
+  app.innerHTML = `<h1>Formations</h1>
+  <div class="card"><h2 style="margin-top:0">Ouvrir un accès à un élève</h2>
+    <div class="row"><div><label>Email</label><input id="ae" type="email" placeholder="email de l'élève"></div>
+    <div><label>Prénom</label><input id="ap" placeholder="facultatif"></div>
+    <div><label>Formation</label><select id="af">${d.formations.map(f => `<option value="${esc(f.slug)}">${esc(f.titre)}</option>`).join("")}</select></div>
+    <div style="flex:0"><button class="btn" id="ao" style="white-space:nowrap">Ouvrir + envoyer le lien</button></div></div><div class="msg" id="am"></div></div>
+  <h2>Chercher un élève</h2><input id="q" placeholder="email ou prénom (3 lettres minimum)"><div id="qr"></div>
+  <h2>Tes formations</h2>
+  <div class="wrap"><table><tr><th>Formation</th><th>Élèves</th><th></th></tr>
+  ${d.formations.map(f => `<tr><td>${esc(f.titre)}</td><td>${f.eleves.toLocaleString("fr-FR")}</td><td><a href="/espace/#/f/${esc(f.slug)}" target="_blank">Voir comme un élève ↗</a></td></tr>`).join("")}</table></div>`;
+  document.getElementById("ao").onclick = async () => {
+    const m = document.getElementById("am");
+    try { const r = await post("/admin/acces", {email: document.getElementById("ae").value, prenom: document.getElementById("ap").value, formation: document.getElementById("af").value});
+      m.className = "msg ok"; m.textContent = "Accès ouvert à « " + r.formation + " », lien envoyé."; }
+    catch (x) { m.className = "msg err"; m.textContent = x.msg || "Erreur"; }
+  };
+  let t; const q = document.getElementById("q");
+  q.oninput = () => { clearTimeout(t); t = setTimeout(async () => {
+    if (q.value.trim().length < 3) { document.getElementById("qr").innerHTML = ""; return; }
+    const rows = await api("/admin/eleves?q_=" + encodeURIComponent(q.value.trim()));
+    document.getElementById("qr").innerHTML = `<div class="wrap" style="margin-top:10px"><table><tr><th>Élève</th><th>Formations</th><th>Dernière connexion</th></tr>
+      ${rows.map(r => `<tr><td><strong>${esc(r.email)}</strong><div class="mute">${esc(r.prenom)} ${esc(r.nom)}</div></td><td>${r.formations.map(f => `<span class="pill">${esc(f)}</span>`).join("") || "—"}</td><td>${date(r.derniere_connexion)}</td></tr>`).join("") || `<tr><td colspan="3" class="vide">Aucun élève.</td></tr>`}</table></div>`;
+  }, 300); };
+}
+
+/* ── Ventes : offres + liens de paiement ─────────────── */
+async function ventes() {
+  const [d, V] = await Promise.all([api("/admin/offres"), api("/admin/ventes")]);
+  const nomsF = Object.fromEntries(d.formations.map(f => [f.id, f.titre]));
+  app.innerHTML = `<div class="row" style="justify-content:space-between;align-items:center"><h1 style="margin:0">Ventes</h1><button class="btn" id="nv" style="flex:0;white-space:nowrap">+ Nouvelle offre</button></div>
+  <div id="form"></div>
+  <h2>Offres et liens de paiement</h2>
+  <div class="wrap"><table><tr><th>Offre</th><th>Prix</th><th>Débloque</th><th>Ventes</th><th>Lien à envoyer</th><th></th></tr>
+  ${d.offres.map(o => { const lien = `${d.site}/paiement/?offre=${o.slug}`;
+    return `<tr><td><strong>${esc(o.titre)}</strong>${o.active ? "" : ` <span class="pill err">Désactivée</span>`}</td>
+    <td>${euros(o.prix_cents)}<div class="mute">${PAIEMENT(o.echeances)}${o.echeances > 1 ? " · total " + euros(o.prix_cents * o.echeances) : ""}</div></td>
+    <td>${(o.formation_ids || []).map(i => `<span class="pill">${esc(nomsF[i] || i)}</span>`).join("") || "—"}</td><td>${o.ventes}</td>
+    <td><span class="lien">${esc(lien)}</span> <button class="btn sec cp" data-l="${esc(lien)}" style="padding:4px 9px">Copier</button></td>
+    <td><button class="btn sec ed" data-s="${esc(o.slug)}" style="padding:4px 9px">Modifier</button></td></tr>`; }).join("") || `<tr><td colspan="6" class="vide">Aucune offre.</td></tr>`}</table></div>
+  <h2>Dernières ventes</h2>
+  <div class="wrap"><table><tr><th>Date</th><th>Client</th><th>Offre</th><th>Montant</th></tr>
+  ${V.map(v => `<tr><td>${dateh(v.created_at)}</td><td>${esc(v.email)}<div class="mute">${esc(v.prenom)}</div></td><td>${esc(v.titre || "—")}</td><td>${euros(v.montant_cents)}${v.echeances !== 1 ? `<div class="mute">${PAIEMENT(v.echeances)}</div>` : ""}</td></tr>`).join("") || `<tr><td colspan="4" class="vide">Aucune vente enregistrée ici pour l'instant.</td></tr>`}</table></div>`;
+  document.querySelectorAll(".cp").forEach(b => b.onclick = async () => { try { await navigator.clipboard.writeText(b.dataset.l); b.textContent = "Copié ✓"; } catch { prompt("Copie ce lien :", b.dataset.l); } });
+  const ouvrir = o => {
+    o = o || {slug: "", titre: "", prix_cents: 0, echeances: 1, formation_ids: [], active: true};
+    document.getElementById("form").innerHTML = `<div class="card" style="margin-top:16px"><h2 style="margin-top:0">${o.slug ? "Modifier l'offre" : "Nouvelle offre"}</h2>
+      <div class="row"><div><label>Nom de l'offre (vu par le client)</label><input id="ot" value="${esc(o.titre)}" placeholder="ex. Financial Market Pro — Paul"></div>
+      <div><label>Prix par paiement (€)</label><input id="op" type="number" min="1" step="0.01" value="${o.prix_cents ? o.prix_cents / 100 : ""}"></div>
+      <div><label>Paiement</label><select id="oe">${[[1, "En une fois"], [2, "2 fois"], [3, "3 fois"], [4, "4 fois"], [5, "5 fois"], [6, "6 fois"], [8, "8 fois"], [10, "10 fois"], [12, "12 fois"], [0, "Abonnement mensuel sans fin"]].map(([v, l]) => `<option value="${v}" ${o.echeances === v ? "selected" : ""}>${l}</option>`).join("")}</select></div></div>
+      <p class="mute" id="tot"></p>
+      <label>Formations débloquées après paiement</label>
+      <div class="checks">${d.formations.map(f => `<label><input type="checkbox" value="${f.id}" ${(o.formation_ids || []).includes(f.id) ? "checked" : ""}> ${esc(f.titre)}</label>`).join("")}</div>
+      <label><input type="checkbox" id="oa" style="width:auto" ${o.active ? "checked" : ""}> Offre active (le lien de paiement fonctionne)</label>
+      <div class="row" style="margin-top:14px;gap:8px"><button class="btn" id="os" style="flex:0;white-space:nowrap">${o.slug ? "Enregistrer" : "Créer l'offre et le lien"}</button><button class="btn sec" id="oc" style="flex:0">Annuler</button></div>
+      <div class="msg" id="om"></div></div>`;
+    const tot = () => { const p = +document.getElementById("op").value || 0, n = +document.getElementById("oe").value;
+      document.getElementById("tot").textContent = n > 1 ? `Le client paiera ${n} × ${p.toLocaleString("fr-FR")} € = ${(p * n).toLocaleString("fr-FR")} € au total, un prélèvement par mois.` : n === 0 ? `Prélèvement de ${p.toLocaleString("fr-FR")} € chaque mois, jusqu'à résiliation.` : "Paiement en une fois (PayPal propose aussi le 4 fois sans frais au client)."; };
+    document.getElementById("op").oninput = tot; document.getElementById("oe").onchange = tot; tot();
+    document.getElementById("oc").onclick = () => document.getElementById("form").innerHTML = "";
+    document.getElementById("os").onclick = async () => {
+      const m = document.getElementById("om"), b = document.getElementById("os"); b.disabled = true;
+      try { const r = await post("/admin/offres", {slug: o.slug, titre: document.getElementById("ot").value, prix: +document.getElementById("op").value,
+          echeances: +document.getElementById("oe").value, formations: [...document.querySelectorAll("#form .checks input:checked")].map(i => +i.value), active: document.getElementById("oa").checked});
+        m.className = "msg ok"; m.innerHTML = `Offre enregistrée. Lien à envoyer : <span class="lien">${esc(r.lien)}</span>`; setTimeout(ventes, 2500); }
+      catch (x) { m.className = "msg err"; m.textContent = x.msg || "Erreur"; }
+      b.disabled = false;
+    };
+    document.getElementById("form").scrollIntoView({behavior: "smooth"});
+  };
+  document.getElementById("nv").onclick = () => ouvrir();
+  document.querySelectorAll(".ed").forEach(b => b.onclick = () => ouvrir(d.offres.find(o => o.slug === b.dataset.s)));
+}
+
+/* ── Pages ───────────────────────────────────────────── */
+function pages() {
+  const P = [
+    ["Formation offerte (inscription)", "/formation-offerte/", "Capte un email, débloque la formation offerte, ajoute aux listes."],
+    ["Merci — formation offerte", "/formation-offerte/merci/", "Après l'inscription : propose Market Profile."],
+    ["Market Profile (page de vente)", "/marketprofile/", "Page de vente à 57 €."],
+    ["Paiement — Market Profile", "/paiement/?offre=market-profile", "Bouton PayPal, 4 fois sans frais."],
+    ["Paiement — Sierra Chart", "/paiement/?offre=sierra-chart", "Proposé juste après l'achat de Market Profile."],
+    ["Espace élèves", "/espace/", "Connexion par lien email, formations, vidéos."],
+  ];
+  app.innerHTML = `<h1>Pages</h1><div class="wrap"><table><tr><th>Page</th><th>Rôle</th><th>Adresse</th></tr>
+  ${P.map(([n, u, r]) => `<tr><td><strong>${esc(n)}</strong></td><td class="mute">${esc(r)}</td><td><a href="${u}" target="_blank">basstrading.fr${esc(u)} ↗</a></td></tr>`).join("")}</table></div>`;
+}
+
+async function route() {
+  const h = location.hash.replace(/^#\/?/, "");
+  onglet(h);
+  try {
+    if (h.startsWith("contacts")) await contacts(h.split("?")[1]);
+    else if (h === "emails") await emails();
+    else if (h.startsWith("emails/")) await editeurEmail(h.slice(7));
+    else if (h === "formations") await formations();
+    else if (h === "ventes") await ventes();
+    else if (h === "pages") pages();
+    else await accueil();
+    window.scrollTo(0, 0);
+  } catch (x) {
+    if (x.auth) login(x.auth);
+    else app.innerHTML = `<div class="card"><p>${esc(x.msg || "Une erreur est survenue.")}</p><a href="#/">← Tableau de bord</a></div>`;
+  }
+}
+addEventListener("hashchange", route);
+route();
+</script>
+</body>
+</html>
