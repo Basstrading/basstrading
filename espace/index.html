@@ -99,7 +99,7 @@ async function formation(slug) {
 async function lecon(id) {
   const l = await api("/lecons/" + id);
   app.innerHTML = `<a class="back" href="#/f/${esc(l.formation.slug)}">← ${esc(l.formation.titre)}</a><h1>${esc(l.titre)}</h1>
-    ${l.video_url ? `<video controls playsinline preload="metadata" src="${esc(l.video_url)}"></video>` : `<div class="card small">Pas de vidéo pour cette leçon.</div>`}
+    ${l.video_url ? `<video controls playsinline preload="metadata" src="${esc(l.video_url)}"></video>` : ""}
     <div class="desc">${l.description_html || ""}</div>
     <div class="nav">${l.precedente ? `<a href="#/l/${l.precedente}">← Leçon précédente</a>` : "<span></span>"}${l.suivante ? `<a href="#/l/${l.suivante}">Leçon suivante →</a>` : ""}</div>`;
   api(`/lecons/${id}/vue`, {method: "POST"}).catch(() => {});
