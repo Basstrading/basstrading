@@ -35,6 +35,11 @@ h2{font:600 21px 'Outfit';margin:34px 0 14px}
 .small{font-size:14px;color:var(--mute)}
 .msg{margin-top:12px;color:var(--mute);font-size:15px}.msg.err{color:var(--err)}.msg.ok{color:var(--ok)}
 .login{max-width:440px;margin:60px auto}
+.fo.verrou{position:relative}.fo.verrou .couv{filter:grayscale(.85) brightness(.55)}
+.cadenas{position:absolute;top:14px;right:14px;font-size:22px;background:rgba(0,0,0,.6);border-radius:50%;width:42px;height:42px;display:flex;align-items:center;justify-content:center}
+.prix{font:700 16px 'Outfit';color:var(--gold)}
+.decouvrir{display:grid;grid-template-columns:minmax(0,320px) 1fr;gap:28px;align-items:start;margin:14px 0 30px}
+@media (max-width:760px){.decouvrir{grid-template-columns:1fr}}
 .ou{display:flex;align-items:center;gap:12px;color:var(--mute);font-size:13px;margin:18px 0}.ou:before,.ou:after{content:"";flex:1;height:1px;background:var(--line)}
 .lien-btn{display:block;margin:14px auto 0;background:none;border:0;color:var(--mute);font:inherit;font-size:14px;cursor:pointer;text-decoration:underline}
 .btn.tg{background:#2AABEE;color:#fff;width:100%}.btn.tg:hover{background:#229ED9}
@@ -283,14 +288,17 @@ async function connexionTelegram(relier) {
   m.className = "msg"; m.innerHTML = `Telegram s'ouvre : appuie sur <b>Démarrer</b> puis <b>✅ Oui, c'est moi</b>. Cette page se met à jour toute seule.<br><a href="${esc(d.lien)}" target="_blank" rel="noopener">Telegram ne s'est pas ouvert ? Clique ici</a>`;
   stopTg();
   const debut = Date.now();
-  attenteTg = setInterval(async () => {
+  const verifier = async () => {
+    if (!attenteTg) return;
     if (Date.now() - debut > 15 * 60000) { stopTg(); m.className = "msg err"; m.textContent = "Délai dépassé. Réessaie."; return; }
     let r; try { r = await api("/auth/telegram/etat?cle=" + encodeURIComponent(d.cle)); } catch { return; }
     if (r.etat === "attente") return;
     stopTg();
     if (r.etat === "ok") { toast(relier ? "Telegram relié ✅" : "Connecté ✅"); route(); }
     else { m.className = "msg err"; m.textContent = r.message || "Demande expirée. Réessaie."; }
-  }, 2000);
+  };
+  attenteTg = setInterval(verifier, 2000);
+  document.addEventListener("visibilitychange", () => { if (!document.hidden) verifier(); });
 }
 
 async function monCompte() {
@@ -316,8 +324,28 @@ async function monCompte() {
 
 /* ── Bibliothèque ─────────────────────────────────────── */
 const mmss = s => { s = Math.max(0, Math.round(s || 0)); const h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60), x = String(s % 60).padStart(2, "0"); return h ? `${h}:${String(m).padStart(2, "0")}:${x}` : `${m}:${x}`; };
+const carteVerrou = f => `<a class="fo verrou" href="#/d/${esc(f.slug)}">${couv(f.slug, f.titre)}<span class="cadenas">🔒</span><div class="corps"><div class="small">${f.lecons} leçon${f.lecons > 1 ? "s" : ""}</div>
+  <div class="bas"><span class="prix">${f.offre ? esc(f.offre.prix_txt) : "Sur demande"}</span><span class="btn" style="padding:7px 14px;font-size:14px">${f.offre && f.offre.prix_txt === "Gratuit" ? "🎁 Obtenir" : "🔓 Débloquer"}</span></div></div></a>`;
+
+async function decouvrir(slug) {
+  const f = await api("/espace/apercu/" + encodeURIComponent(slug));
+  if (f.possedee) { location.hash = "#/f/" + slug; return; }
+  entete({});
+  const o = f.offre, nb = f.modules.reduce((n, m) => n + m.lecons.length, 0);
+  const cta = o ? `<a class="btn" style="width:100%;font-size:18px;padding:15px" href="${esc(o.lien)}">${o.prix_txt === "Gratuit" ? "🎁 Obtenir gratuitement" : "🔓 Débloquer pour " + esc(o.prix_txt)}</a>`
+    : `<a class="btn" style="width:100%" href="mailto:contact@basstrading.fr?subject=${encodeURIComponent("Formation " + f.titre)}">Me contacter pour cette formation</a>`;
+  page(`<a href="#/" class="small">← Mes formations</a>
+    <div class="decouvrir">${couv(f.slug, f.titre, "grand")}<div><h1 style="margin:8px 0">${esc(f.titre)}</h1>
+      <p class="sub">${nb} leçon${nb > 1 ? "s" : ""} · ${f.modules.length} module${f.modules.length > 1 ? "s" : ""}${f.eleves > 5 ? ` · ${f.eleves.toLocaleString("fr-FR")} élèves l'ont déjà` : ""}</p>
+      ${f.description ? `<div class="sub">${f.description}</div>` : ""}<div style="max-width:420px;margin-top:18px">${cta}
+      ${o && o.prix_txt !== "Gratuit" ? `<p class="small" style="margin-top:10px">Paiement sécurisé PayPal · accès immédiat après le paiement, avec ce même email.</p>` : ""}</div></div></div>
+    <h2>Programme</h2>
+    ${f.modules.map(m => `<div class="card" style="margin-bottom:12px"><b>${esc(m.titre)}</b>${m.lecons.map(t => `<div class="small" style="padding:7px 0;border-top:1px solid var(--line);margin-top:7px">🔒 ${esc(t)}</div>`).join("")}</div>`).join("")}
+    <div style="max-width:420px;margin:24px 0">${cta}</div>`);
+}
+
 async function bibliotheque() {
-  const [d, A_] = await Promise.all([api("/moi"), api("/espace/accueil")]);
+  const [d, A_, C_] = await Promise.all([api("/moi"), api("/espace/accueil"), api("/espace/catalogue").catch(() => ({formations: []}))]);
   entete(d.eleve);
   const F = d.formations, finies = F.filter(f => f.lecons && f.vues >= f.lecons).length;
   const der = A_.derniere;
@@ -332,7 +360,9 @@ async function bibliotheque() {
       <div class="small">${esc(der.formation)}</div>${der.duree ? `<div class="barre"><i style="width:${pct(der.secondes, der.duree)}%"></i></div><div class="small">${mmss(der.secondes)} / ${mmss(der.duree)}</div>` : ""}
       <div><a class="btn" href="#/l/${der.lecon_id}">▶ Reprendre à ${mmss(der.secondes)}</a></div></div></div>` : ""}
     <h2>Mes formations</h2>
-    ${F.length ? `<div class="grille">${F.map(carte).join("")}</div>` : `<div class="card">Aucune formation n'est encore liée à ${esc(d.eleve.email)}. Écris-moi à <a href="mailto:contact@basstrading.fr">contact@basstrading.fr</a> si c'est une erreur.</div>`}`);
+    ${F.length ? `<div class="grille">${F.map(carte).join("")}</div>` : `<div class="card">Aucune formation n'est encore liée à ${esc(d.eleve.email)}. Écris-moi à <a href="mailto:contact@basstrading.fr">contact@basstrading.fr</a> si c'est une erreur.</div>`}
+    ${C_.formations.length ? `<h2 style="margin-top:38px">🔒 Formations à débloquer</h2><p class="sub">Découvre le programme et débloque la formation pour y accéder tout de suite.</p>
+      <div class="grille">${C_.formations.map(carteVerrou).join("")}</div>` : ""}`);
 }
 
 /* ── Page d'une formation ─────────────────────────────── */
@@ -553,6 +583,7 @@ async function route() {
     if (h !== "") stopTg();
     if (h === "notes") await mesNotes();
     else if (h === "compte") await monCompte();
+    else if (h.startsWith("d/")) await decouvrir(decodeURIComponent(h.slice(2)));
     else if (h.startsWith("f/")) await formation(decodeURIComponent(h.slice(2)), param === "reprendre");
     else if (h.startsWith("l/")) await lecon(+h.slice(2), param);
     else await bibliotheque();
