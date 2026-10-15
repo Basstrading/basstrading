@@ -202,7 +202,7 @@ button.card:hover{box-shadow:0 0 0 2px var(--blue)}
     <div class="menu liste" data-m="sites"><button>Sites</button><div class="sous"><a href="#/tunnels">Tunnels de vente</a><a href="#/pages">Pages</a></div></div>
     <div class="menu liste" data-m="emails"><button>Emails</button><div class="sous"><a href="#/emails">Newsletters</a><a href="#/sequences">Campagnes</a></div></div>
     <div class="menu liste" data-m="auto"><button>Automatisations</button><div class="sous"><a href="#/regles">Règles</a><a href="#/workflows">Workflows</a></div></div>
-    <div class="menu liste" data-m="ressources"><button>Ressources</button><div class="sous"><a href="#/formations">Formations</a></div></div>
+    <div class="menu liste" data-m="ressources"><button>Ressources <span class="bq" hidden style="background:#f23f6d;color:#fff;border-radius:10px;padding:0 7px;font-size:12px;line-height:18px"></span></button><div class="sous"><a href="#/formations">Formations</a><a href="#/questions">Questions des élèves <span class="bq" hidden style="background:#f23f6d;color:#fff;border-radius:10px;padding:0 7px;font-size:12px;margin-left:4px"></span></a></div></div>
     <div class="menu liste" data-m="ventes"><button>Ventes</button><div class="sous"><a href="#/transactions">Transactions</a><a href="#/ventes">Offres et liens de paiement</a></div></div>
     <div class="menu avatar" data-m="compte"><button><span class="rond" style="background:#1d9bf0;align-items:center;color:#fff;font:700 22px Outfit">B</span><span>⌄</span></button>
       <div class="sous"><a href="https://listes.hubtrading.fr/admin/" target="_blank" rel="noopener">Listmonk ↗</a><a href="/espace/" target="_blank">Espace élèves ↗</a><a href="/" target="_blank">basstrading.fr ↗</a></div></div>
@@ -228,7 +228,7 @@ async function api(path, opts = {}) {
 }
 const post = (p, b) => api(p, {method: "POST", body: JSON.stringify(b)});
 const put = (p, b) => api(p, {method: "PUT", body: JSON.stringify(b)});
-const MENU = {"": "tableau", contacts: "crm", tags: "crm", tunnels: "sites", pages: "sites", emails: "emails", sequences: "emails", regles: "auto", workflows: "auto", formations: "ressources", ventes: "ventes", transactions: "ventes"};
+const MENU = {"": "tableau", contacts: "crm", tags: "crm", tunnels: "sites", pages: "sites", emails: "emails", sequences: "emails", regles: "auto", workflows: "auto", formations: "ressources", questions: "ressources", ventes: "ventes", transactions: "ventes"};
 function onglet(h) {
   const r = h.split(/[/?]/)[0];
   document.querySelectorAll("#nav [data-m]").forEach(m => { m.classList.toggle("on", m.dataset.m === MENU[r]); m.classList.remove("open"); });
@@ -588,6 +588,88 @@ async function contactFiche(cle) {
   document.querySelectorAll("[data-sn]").forEach(x => x.onclick = async () => { if (confirm("Supprimer cette note ?")) { await api("/studio/contact/notes/" + x.dataset.sn, {method: "DELETE"}); contactFiche(String(c.id)); } });
 }
 
+/* ── Ressources : questions des élèves ───────────────── */
+async function majBadgeQuestions() {
+  try { const r = await api("/studio/questions/compte"); document.querySelectorAll(".bq").forEach(b => { b.textContent = r.n; b.hidden = !r.n; }); } catch {}
+}
+async function questionsEleves(params) {
+  const P = new URLSearchParams(params || ""), tout = P.get("tout") === "1", focus = +(P.get("id") || 0);
+  const d = await api("/studio/questions" + (tout || focus ? "?filtre=toutes" : ""));
+  const Q = focus ? d.questions.filter(x => x.id === focus).concat(d.questions.filter(x => x.id !== focus)) : d.questions;
+  const msg = x => `<div style="display:flex;gap:12px;margin-top:12px"><span class="rond" style="width:34px;height:34px;flex:0 0 auto;${x.auteur === "admin" ? "background:#1d9bf0;color:#fff;align-items:center;font:700 15px Outfit" : ""}">${x.auteur === "admin" ? "B" : ROND.replace(/<\/?span[^>]*>/g, "")}</span>
+    <div style="min-width:0"><b style="font-weight:600;color:var(--txt)">${x.auteur === "admin" ? "Toi (Bass)" : esc(x.nom)}</b> <span class="mute">· ${dmyh(x.created_at)}</span><div style="white-space:pre-wrap">${esc(x.texte)}</div></div></div>`;
+  app.innerHTML = `${entete("Questions des élèves", d.a_traiter, "", `<a class="btn ${tout ? "" : "sec"}" href="#/questions${tout ? "" : "?tout=1"}">${tout ? "Seulement à traiter" : "Voir toutes les questions"}</a>`)}
+  <p class="mute" style="margin-top:-8px">Tu reçois un message Telegram à chaque nouvelle question. Ta réponse s'affiche sous la leçon et l'élève est prévenu par email.</p>
+  ${Q.map(x => `<div class="card" style="margin-bottom:18px;${x.id === focus ? "box-shadow:0 0 0 2px var(--blue)" : ""}" id="q${x.id}">
+    <div class="row" style="align-items:center"><div style="min-width:0;flex:1"><span class="pill ${x.a_traiter ? "warn" : "ok"}">${x.a_traiter ? "À traiter" : "Traitée"}</span>
+      <a href="/espace/#/l/${x.lecon_id}?questions" target="_blank" style="margin-left:6px">${esc(x.formation)} › ${esc(x.lecon)} ↗</a></div>
+      <div style="flex:0 0 auto;min-width:0">${lienContact(0, x.email, (x.prenom || x.email))}</div></div>
+    ${msg({...x, nom: x.prenom || x.email, auteur: "eleve"})}${x.reponses.map(msg).join("")}
+    <textarea data-r="${x.id}" rows="3" placeholder="Ta réponse à ${esc(x.prenom || "l'élève")}…" style="margin-top:14px"></textarea>
+    <div class="row" style="margin-top:10px;gap:8px;align-items:center"><button class="btn" data-env="${x.id}" style="flex:0 0 auto;min-width:0">Répondre</button>
+      <button class="btn sec" data-ok="${x.id}" style="flex:0 0 auto;min-width:0">${x.a_traiter ? "Marquer comme traitée" : "Remettre à traiter"}</button>
+      <button class="btn dang" data-sup="${x.id}" style="flex:0 0 auto;min-width:0">Supprimer</button><span class="msg" data-m="${x.id}" style="margin:0"></span></div></div>`).join("")
+    || `<div class="card"><p class="vide">${tout ? "Aucune question pour l'instant." : "Aucune question en attente. 👌"}</p></div>`}`;
+  if (focus) document.getElementById("q" + focus)?.scrollIntoView({block: "center"});
+  document.querySelectorAll("[data-env]").forEach(b => b.onclick = async () => { const i = b.dataset.env, t = document.querySelector(`[data-r="${i}"]`).value.trim(), m = document.querySelector(`[data-m="${i}"]`);
+    if (!t) { m.className = "msg err"; m.textContent = "Écris ta réponse."; return; }
+    b.disabled = true;
+    try { const r = await post(`/studio/questions/${i}/reponse`, {texte: t}); m.className = "msg ok"; m.textContent = r.email ? "Réponse publiée, élève prévenu par email." : "Réponse publiée (email non envoyé)."; setTimeout(() => { questionsEleves(params); majBadgeQuestions(); }, 900); }
+    catch (x) { m.className = "msg err"; m.textContent = x.msg || "Erreur"; b.disabled = false; } });
+  document.querySelectorAll("[data-ok]").forEach(b => b.onclick = async () => { await post(`/studio/questions/${b.dataset.ok}/traitee`, {}); questionsEleves(params); majBadgeQuestions(); });
+  document.querySelectorAll("[data-sup]").forEach(b => b.onclick = async () => { if (confirm("Supprimer cette question et ses réponses ?")) { await api(`/studio/questions/${b.dataset.sup}`, {method: "DELETE"}); questionsEleves(params); majBadgeQuestions(); } });
+}
+
+/* ── Ressources : programme d'une formation + quiz ──── */
+async function formationPlan(fid) {
+  const f = await api(`/studio/formations/${fid}/plan`);
+  app.innerHTML = `<div class="entete">${ariane(["#/formations", "Mes formations"], ["", esc(f.titre)])}
+    <div class="droite"><a class="btn" href="/espace/#/f/${esc(f.slug)}" target="_blank">👁 &nbsp;Voir comme un élève</a></div></div>
+  <p class="mute" style="margin-top:-10px">${f.eleves.toLocaleString("fr-FR")} élèves · clique sur « Quiz » pour ajouter ou modifier le quiz d'une leçon, ou ajoute une leçon quiz à la fin d'un module.</p>
+  ${f.modules.map(m => `<div class="card" style="margin-bottom:18px;padding:0"><div class="row" style="align-items:center;padding:18px 24px;border-bottom:1px solid var(--line)">
+      <b style="font-size:18px;font-weight:600;color:var(--txt);flex:1">⌄ ${esc(m.titre)}</b><button class="btn sec petit" data-nq="${m.id}" style="flex:0 0 auto;min-width:0">⊕ Ajouter un quiz de fin de module</button></div>
+    <table><tr><th>Leçon</th><th>Élèves l'ayant terminée</th><th>Questions</th><th>Quiz</th></tr>
+    ${m.lecons.map(l => `<tr style="${l.active ? "" : "opacity:.5"}"><td><a href="/espace/#/l/${l.id}" target="_blank">${esc(l.titre)}</a><div class="mute">${l.video ? "▶ Vidéo" : "📄 Texte"}${l.active ? "" : " · désactivée"}</div></td>
+      <td>${l.vues}</td><td>${l.questions ? `<a href="#/questions?tout=1">${l.questions}</a>` : "0"}</td>
+      <td>${l.quiz_id ? `<a href="javascript:void 0" data-qz="${l.id}">📝 ${l.nb_questions} question${l.nb_questions > 1 ? "s" : ""}</a><div class="mute">${l.quiz_eleves} élève(s) · moyenne ${l.quiz_moyenne ?? "—"} %</div>`
+        : `<button class="btn sec petit" data-qz="${l.id}">+ Quiz</button>`}</td></tr>`).join("")}</table></div>`).join("")}`;
+  document.querySelectorAll("[data-qz]").forEach(b => b.onclick = () => editeurQuiz(+b.dataset.qz, () => formationPlan(fid)));
+  document.querySelectorAll("[data-nq]").forEach(b => b.onclick = async () => { const t = prompt("Titre de la leçon quiz :", "Quiz — " + b.closest(".card").querySelector("b").textContent.replace("⌄", "").trim()); if (!t) return;
+    const r = await post(`/studio/modules/${b.dataset.nq}/lecon-quiz`, {titre: t}); editeurQuiz(r.id, () => formationPlan(fid)); });
+}
+async function editeurQuiz(lid, fini) {
+  const d = await api(`/studio/lecons/${lid}/quiz`), z = d.quiz;
+  const Q = (z.questions || []).map(x => ({...x})); if (!Q.length) Q.push({q: "", choix: ["", ""], bonnes: [], explication: ""});
+  const m = document.createElement("div"); m.className = "modal"; document.body.appendChild(m);
+  const dessiner = () => {
+    m.innerHTML = `<div class="card" style="width:min(820px,100%)"><div class="row" style="align-items:center"><h2 style="margin:0;flex:1">📝 Quiz — ${esc(d.lecon.titre)}</h2><button class="mini" id="zx" style="flex:0 0 30px;min-width:0">✕</button></div>
+      <div class="row"><div><label>Titre du quiz</label><input id="zt" value="${esc(z.titre)}"></div><div style="flex:0 0 200px;min-width:0"><label>Score pour réussir (%)</label><input id="zs" type="number" min="0" max="100" value="${z.seuil}"></div></div>
+      <p class="mute">Coche la ou les bonnes réponses. Plusieurs cochées = question à choix multiples. Un quiz réussi marque la leçon comme terminée.</p>
+      ${Q.map((x, i) => `<div class="card" style="border:1px solid var(--line2);box-shadow:none;margin-top:14px;padding:16px 18px">
+        <div class="row" style="align-items:center"><b style="flex:1;font-weight:600">Question ${i + 1}</b><button class="mini" data-sq="${i}" title="Supprimer la question" style="flex:0 0 30px;min-width:0">✕</button></div>
+        <input data-q="${i}" value="${esc(x.q)}" placeholder="Ta question" style="margin-top:8px">
+        ${x.choix.map((c, j) => `<div class="row" style="align-items:center;margin-top:8px;gap:8px"><input type="checkbox" data-b="${i}:${j}" ${x.bonnes.includes(j) ? "checked" : ""} title="Bonne réponse" style="flex:0 0 auto;min-width:0;width:20px;height:20px">
+          <input data-c="${i}:${j}" value="${esc(c)}" placeholder="Réponse ${j + 1}" style="flex:1"><button class="mini" data-sc="${i}:${j}" style="flex:0 0 30px;min-width:0">✕</button></div>`).join("")}
+        <button class="btn sec petit" data-ac="${i}" style="margin-top:10px">+ Réponse</button>
+        <input data-e="${i}" value="${esc(x.explication || "")}" placeholder="Explication affichée après la réponse (facultatif)" style="margin-top:10px"></div>`).join("")}
+      <div class="row" style="margin-top:16px;gap:8px;align-items:center"><button class="btn sec" id="zq" style="flex:0 0 auto;min-width:0">+ Ajouter une question</button><span style="flex:1"></span>
+        ${z.id ? `<button class="btn dang" id="zd" style="flex:0 0 auto;min-width:0">Supprimer le quiz</button>` : ""}<button class="btn" id="zo" style="flex:0 0 auto;min-width:0">💾 Enregistrer</button></div><div class="msg" id="zm"></div></div>`;
+    const lire = () => { z.titre = m.querySelector("#zt").value; z.seuil = +m.querySelector("#zs").value || 0;
+      Q.forEach((x, i) => { x.q = m.querySelector(`[data-q="${i}"]`).value; x.explication = m.querySelector(`[data-e="${i}"]`).value;
+        x.choix = x.choix.map((_, j) => m.querySelector(`[data-c="${i}:${j}"]`).value); x.bonnes = x.choix.map((_, j) => j).filter(j => m.querySelector(`[data-b="${i}:${j}"]`).checked); }); };
+    m.querySelector("#zx").onclick = () => m.remove();
+    m.querySelector("#zq").onclick = () => { lire(); Q.push({q: "", choix: ["", ""], bonnes: [], explication: ""}); dessiner(); };
+    m.querySelectorAll("[data-sq]").forEach(b => b.onclick = () => { lire(); Q.splice(+b.dataset.sq, 1); if (!Q.length) Q.push({q: "", choix: ["", ""], bonnes: [], explication: ""}); dessiner(); });
+    m.querySelectorAll("[data-ac]").forEach(b => b.onclick = () => { lire(); Q[+b.dataset.ac].choix.push(""); dessiner(); });
+    m.querySelectorAll("[data-sc]").forEach(b => b.onclick = () => { lire(); const [i, j] = b.dataset.sc.split(":").map(Number); Q[i].choix.splice(j, 1); Q[i].bonnes = Q[i].bonnes.filter(x => x !== j).map(x => x > j ? x - 1 : x); dessiner(); });
+    m.querySelector("#zo").onclick = async () => { lire(); const msg = m.querySelector("#zm");
+      try { const r = await put(`/studio/lecons/${lid}/quiz`, {titre: z.titre, seuil: z.seuil, questions: Q}); msg.className = "msg ok"; msg.textContent = `Quiz enregistré (${r.questions} question${r.questions > 1 ? "s" : ""}).`; setTimeout(() => { m.remove(); fini && fini(); }, 700); }
+      catch (x) { msg.className = "msg err"; msg.textContent = x.msg || "Erreur"; } };
+    m.querySelector("#zd")?.addEventListener("click", async () => { if (confirm("Supprimer ce quiz ?")) { await api(`/studio/lecons/${lid}/quiz`, {method: "DELETE"}); m.remove(); fini && fini(); } });
+  };
+  dessiner();
+}
+
 /* ── CRM : tags ──────────────────────────────────────── */
 async function tags() {
   const L = await listes(true);
@@ -770,8 +852,8 @@ async function formations() {
     <div style="flex:0"><button class="btn" id="ao">+ &nbsp;Ajouter</button></div></div><div class="msg" id="am"></div></div></div>
   <div id="ze" hidden><div class="card" style="margin-bottom:22px"><h2 style="margin-top:0">Elèves</h2><input id="q" class="recherche" placeholder="Chercher : email ou prénom (3 lettres minimum)"><div id="qr"></div></div></div>
   <div class="wrap"><table><tr><th>Nom</th><th>Elèves</th><th>Statut</th><th></th></tr>
-  ${d.formations.map(f => `<tr><td><a href="/espace/#/f/${esc(f.slug)}" target="_blank">${esc(f.titre)}</a></td><td>${f.eleves.toLocaleString("fr-FR")}</td><td>${statut(true)}</td>
-    <td style="text-align:right">${points([`<a href="/espace/#/f/${esc(f.slug)}" target="_blank">Voir comme un élève</a>`, `<button data-f="${esc(f.slug)}" class="donner">Ajouter un élève</button>`])}</td></tr>`).join("")}</table></div>`;
+  ${d.formations.map(f => `<tr><td><a href="#/formations/${f.id}">${esc(f.titre)}</a></td><td>${f.eleves.toLocaleString("fr-FR")}</td><td>${statut(true)}</td>
+    <td style="text-align:right">${points([`<a href="#/formations/${f.id}">Programme et quiz</a>`, `<a href="/espace/#/f/${esc(f.slug)}" target="_blank">Voir comme un élève</a>`, `<button data-f="${esc(f.slug)}" class="donner">Ajouter un élève</button>`])}</td></tr>`).join("")}</table></div>`;
   document.getElementById("ba").onclick = () => { const z = document.getElementById("za"); z.hidden = !z.hidden; };
   document.getElementById("be").onclick = () => { const z = document.getElementById("ze"); z.hidden = !z.hidden; if (!z.hidden) document.getElementById("q").focus(); };
   document.querySelectorAll(".donner").forEach(b => b.onclick = () => { document.getElementById("za").hidden = false; document.getElementById("af").value = b.dataset.f; document.getElementById("ae").focus(); });
@@ -1316,6 +1398,7 @@ async function workflowEditeur(id) {
 
 
 async function route() {
+  majBadgeQuestions();
   const h = location.hash.replace(/^#\/?/, "");
   onglet(h);
   document.getElementById("nav").style.visibility = "";
@@ -1333,6 +1416,8 @@ async function route() {
     else if (h.startsWith("workflows/")) await workflowEditeur(+h.slice(10));
     else if (h.startsWith("emails/")) await editeurEmail(h.slice(7));
     else if (h === "formations") await formations();
+    else if (/^formations\/\d+$/.test(h)) await formationPlan(+h.slice(11));
+    else if (h.startsWith("questions")) await questionsEleves(h.split("?")[1]);
     else if (h === "ventes") await ventes();
     else if (h === "transactions") await ventes("transactions");
     else if (h === "sequences") await sequencesListe();

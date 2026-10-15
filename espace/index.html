@@ -9,152 +9,415 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0A0A0A;--card:#141414;--line:#262626;--txt:#EDEDED;--mute:#9A9A9A;--gold:#C9A84C;--ok:#3FB37F;--err:#E5484D}
+/* Espace formation façon Kajabi (15/10/2026) : bibliothèque, page formation, lecteur avec sommaire, quiz, questions. */
+:root{--bg:#0A0A0A;--panel:#111;--card:#151515;--line:#262626;--txt:#EDEDED;--mute:#9A9A9A;--gold:#C9A84C;--gold2:#E3C46A;--ok:#3FB37F;--err:#E5484D}
 *{box-sizing:border-box}
 html,body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.6 'DM Sans',system-ui,sans-serif}
 a{color:var(--gold);text-decoration:none}
-header{display:flex;justify-content:space-between;align-items:center;padding:18px 16px;border-bottom:1px solid var(--line);max-width:1100px;margin:0 auto}
+button{font:inherit}
+header{position:sticky;top:0;z-index:30;background:rgba(10,10,10,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header .in{display:flex;align-items:center;gap:18px;max-width:1280px;margin:0 auto;padding:14px 20px}
 header .logo{font:700 18px 'Outfit';letter-spacing:.04em;color:var(--txt)}
 header .logo b{color:var(--gold)}
-header button{background:none;border:1px solid var(--line);color:var(--mute);padding:6px 12px;border-radius:8px;cursor:pointer;font:inherit;font-size:14px}
-main{max-width:1100px;margin:0 auto;padding:28px 16px 80px}
-h1{font:700 30px/1.2 'Outfit';margin:0 0 6px}
-h2{font:600 19px 'Outfit';margin:28px 0 10px;color:var(--gold)}
+header nav{display:flex;gap:16px;margin-left:auto;align-items:center}
+header nav a{color:var(--mute);font-size:15px}header nav a:hover,header nav a.on{color:var(--txt)}
+header nav button{background:none;border:1px solid var(--line);color:var(--mute);padding:6px 12px;border-radius:8px;cursor:pointer;font-size:14px}
+main{max-width:1280px;margin:0 auto;padding:28px 20px 80px}
+h1{font:700 32px/1.15 'Outfit';margin:0 0 8px}
+h2{font:600 21px 'Outfit';margin:34px 0 14px}
 .sub{color:var(--mute);margin:0 0 24px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px}
-.login{max-width:440px;margin:60px auto}
-input[type=email]{width:100%;padding:13px 14px;border-radius:10px;border:1px solid var(--line);background:#0E0E0E;color:var(--txt);font:inherit;margin:12px 0}
-.btn{display:inline-block;background:var(--gold);color:#111;border:0;border-radius:10px;padding:13px 18px;font:600 16px 'Outfit';cursor:pointer;width:100%}
-.btn:disabled{opacity:.6}
-.msg{margin-top:14px;color:var(--mute);font-size:15px}
-.msg.err{color:var(--err)}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
-.fo{display:block;color:var(--txt)}
-.fo h3{font:600 18px 'Outfit';margin:0 0 6px}
-.bar{height:6px;background:#222;border-radius:9px;overflow:hidden;margin-top:12px}
-.bar i{display:block;height:100%;background:var(--gold)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--gold);color:#111;border:0;border-radius:10px;padding:12px 20px;font:600 16px 'Outfit';cursor:pointer;text-decoration:none}
+.btn:hover{background:var(--gold2)}.btn:disabled{opacity:.55;cursor:wait}
+.btn.sec{background:transparent;color:var(--txt);border:1px solid var(--line)}.btn.sec:hover{border-color:var(--gold)}
+.btn.ok{background:var(--ok);color:#fff}
 .small{font-size:14px;color:var(--mute)}
-.mod{margin-bottom:10px}
-.mod summary{cursor:pointer;font:600 16px 'Outfit';padding:12px 0;list-style:none}
-.mod summary::before{content:'▸ ';color:var(--gold)}
-.mod[open] summary::before{content:'▾ '}
-.lec{display:flex;gap:10px;align-items:center;padding:9px 10px;border-radius:8px;color:var(--txt)}
-.lec:hover{background:#1B1B1B}
-.lec .dot{width:10px;height:10px;border-radius:50%;border:2px solid var(--line);flex:none}
-.lec.vue .dot{background:var(--ok);border-color:var(--ok)}
-video{width:100%;border-radius:12px;background:#000;aspect-ratio:16/9}
-.nav{display:flex;justify-content:space-between;gap:12px;margin-top:16px}
-.nav a{border:1px solid var(--line);padding:10px 14px;border-radius:10px}
-.desc{margin-top:18px;color:#cfcfcf}
-.desc img{max-width:100%}
-.desc .embed{position:relative;aspect-ratio:16/9;margin:0 0 16px}
-.desc .embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:12px}
-.desc .fichiers li{margin:6px 0}
-.back{display:inline-block;margin-bottom:14px;font-size:14px}
-@media (max-width:600px){h1{font-size:24px}}
+.msg{margin-top:12px;color:var(--mute);font-size:15px}.msg.err{color:var(--err)}.msg.ok{color:var(--ok)}
+.login{max-width:440px;margin:60px auto}
+input[type=email],textarea{width:100%;padding:13px 14px;border-radius:10px;border:1px solid var(--line);background:#0E0E0E;color:var(--txt);font:inherit;margin:12px 0}
+textarea{resize:vertical;min-height:90px}
+.barre{height:6px;background:#242424;border-radius:9px;overflow:hidden}.barre i{display:block;height:100%;background:var(--gold);border-radius:9px}
+/* couvertures générées */
+.couv{position:relative;aspect-ratio:16/9;border-radius:12px 12px 0 0;overflow:hidden;display:flex;align-items:flex-end;padding:18px}
+.couv::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(0,0,0,.7))}
+.couv span{position:relative;z-index:1;font:700 22px/1.15 'Outfit';color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.5)}
+/* bibliothèque */
+.grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:20px}
+.fo{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:14px;color:var(--txt);transition:transform .15s,border-color .15s}
+.fo:hover{transform:translateY(-3px);border-color:#3a3a3a}
+.fo .corps{padding:16px 18px 18px;display:flex;flex-direction:column;gap:10px;flex:1}
+.fo .corps .bas{margin-top:auto;display:flex;justify-content:space-between;align-items:center}
+.reprise{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:0;overflow:hidden;padding:0;margin-bottom:10px}
+.reprise .couv{border-radius:0;aspect-ratio:auto;min-height:220px}
+.reprise .txt{padding:28px;display:flex;flex-direction:column;justify-content:center;gap:12px}
+/* page formation */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:28px;align-items:center;margin-bottom:10px}
+.hero .couv{border-radius:14px}
+.module{border:1px solid var(--line);border-radius:12px;margin-bottom:12px;background:var(--card);overflow:hidden}
+.module summary{display:flex;align-items:center;gap:12px;padding:16px 18px;cursor:pointer;list-style:none;font:600 17px 'Outfit'}
+.module summary::-webkit-details-marker{display:none}
+.module summary .n{margin-left:auto;font:400 14px 'DM Sans';color:var(--mute)}
+.module summary::before{content:"›";color:var(--gold);font-size:22px;transition:transform .15s}
+.module[open] summary::before{transform:rotate(90deg)}
+.lec{display:flex;align-items:center;gap:12px;padding:12px 18px;border-top:1px solid var(--line);color:var(--txt)}
+.lec:hover{background:#1b1b1b}
+.coche{width:22px;height:22px;border-radius:50%;border:2px solid #3a3a3a;flex:none;display:flex;align-items:center;justify-content:center;font-size:12px;color:#111}
+.vue .coche{background:var(--ok);border-color:var(--ok);color:#fff}
+.lec .ty{margin-left:auto;font-size:13px;color:var(--mute);white-space:nowrap}
+/* lecteur */
+.lecteur{display:grid;grid-template-columns:330px minmax(0,1fr);gap:0;max-width:1440px;margin:0 auto;min-height:calc(100vh - 62px)}
+.cote{border-right:1px solid var(--line);background:var(--panel);position:sticky;top:62px;height:calc(100vh - 62px);overflow:auto}
+.cote .tete{padding:20px 18px;border-bottom:1px solid var(--line)}
+.cote .tete a{color:var(--mute);font-size:14px}
+.cote h3{font:600 17px/1.3 'Outfit';margin:8px 0 12px}
+.cote .module{border:0;border-radius:0;margin:0;background:transparent;border-bottom:1px solid var(--line)}
+.cote .module summary{font-size:15px;padding:14px 18px}
+.cote .lec{padding:10px 18px 10px 22px;border-top:0;font-size:14px}
+.cote .lec.ici{background:#1f1a0d;box-shadow:inset 3px 0 0 var(--gold)}
+.cote .coche{width:18px;height:18px;font-size:10px}
+.scene{padding:24px 32px 80px;min-width:0}
+.ecran{position:relative;background:#000;border-radius:14px;overflow:hidden;aspect-ratio:16/9}
+.ecran video{width:100%;height:100%;display:block}
+.actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:18px 0 6px}
+.actions .esp{flex:1}
+.onglets{display:flex;gap:6px;border-bottom:1px solid var(--line);margin:26px 0 20px}
+.onglets a{padding:12px 16px;color:var(--mute);font:500 16px 'Outfit';cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px}
+.onglets a.on{color:var(--txt);border-color:var(--gold)}
+.desc{color:#d2d2d2}.desc img{max-width:100%}
+.desc .embed{position:relative;aspect-ratio:16/9;margin:0 0 16px}.desc .embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:12px}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--ok);color:#fff;padding:12px 20px;border-radius:10px;font-weight:600;z-index:50;box-shadow:0 8px 24px rgba(0,0,0,.4)}
+/* quiz */
+.quiz .qst{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin-bottom:14px}
+.quiz .qst h4{font:600 17px 'Outfit';margin:0 0 12px}
+.quiz label{display:flex;gap:12px;align-items:flex-start;padding:10px 12px;border:1px solid var(--line);border-radius:10px;margin-bottom:8px;cursor:pointer}
+.quiz label:hover{border-color:#3a3a3a}
+.quiz input{accent-color:var(--gold);margin-top:5px}
+.quiz label.bon{border-color:var(--ok);background:rgba(63,179,127,.08)}.quiz label.faux{border-color:var(--err);background:rgba(229,72,77,.08)}
+.quiz .expl{font-size:14px;color:var(--mute);margin-top:6px}
+.resultat{border-radius:12px;padding:18px 20px;margin-bottom:18px;font:600 18px 'Outfit'}
+.resultat.ok{background:rgba(63,179,127,.12);color:var(--ok)}.resultat.ko{background:rgba(229,72,77,.1);color:var(--err)}
+/* questions */
+.fil{border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:12px;background:var(--card)}
+.qq{display:flex;gap:12px}
+.av{width:36px;height:36px;border-radius:50%;background:#2a2a2a;color:var(--txt);display:flex;align-items:center;justify-content:center;font:600 15px 'Outfit';flex:none}
+.av.bass{background:var(--gold);color:#111}
+.qq .nom{font-weight:600}.qq .nom .badge{background:var(--gold);color:#111;border-radius:6px;padding:1px 7px;font-size:12px;margin-left:6px}
+.qq .t{white-space:pre-wrap;margin-top:4px}
+.rep{margin:14px 0 0 48px;padding-top:14px;border-top:1px solid var(--line)}
+.lien-mini{background:none;border:0;color:var(--mute);cursor:pointer;font-size:13px;padding:0;margin-right:12px}
+.lien-mini:hover{color:var(--gold)}
+.sommaire-mobile{display:none}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:0 0 22px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;color:var(--txt)}
+.stat b{display:block;font:700 22px 'Outfit'}.stat span{font-size:13px;color:var(--mute)}
+a.stat:hover{border-color:var(--gold)}
+.outils{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:10px}
+.outils .esp{flex:1}
+.vit{background:transparent;border:1px solid var(--line);color:var(--mute);border-radius:8px;padding:4px 10px;cursor:pointer;font-size:13px}
+.vit.on{border-color:var(--gold);color:var(--gold)}
+.suite{position:absolute;inset:0;background:rgba(0,0,0,.82);display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;z-index:5}
+.suite h3{font:600 24px 'Outfit';margin:6px 0 18px}
+.row-h{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin:34px 0 14px}
+.recherche{flex:1;min-width:240px;max-width:460px;margin-left:auto;padding:11px 14px;border-radius:10px;border:1px solid var(--line);background:#0E0E0E;color:var(--txt);font:inherit}
+mark{background:rgba(201,168,76,.35);color:inherit;border-radius:3px;padding:0 2px}
+@media (max-width:960px){.raccourcis{display:none}}
+@media (max-width:960px){
+  .lecteur{grid-template-columns:minmax(0,1fr)}
+  .cote{position:fixed;inset:62px 0 0 0;height:auto;z-index:25;transform:translateX(-100%);transition:transform .2s;width:min(360px,90vw)}
+  .cote.ouvert{transform:none;box-shadow:0 0 40px rgba(0,0,0,.6)}
+  .scene{padding:16px 16px 70px}
+  .sommaire-mobile{display:inline-flex}
+  .hero,.reprise{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:600px){h1{font-size:26px}}
 </style>
 </head>
 <body>
-<header><a class="logo" href="/espace/">BASS <b>TRADING</b></a><button id="out" hidden>Se déconnecter</button></header>
-<main id="app"><p class="sub">Chargement…</p></main>
+<header><div class="in"><a class="logo" href="#/">BASS <b>TRADING</b></a>
+  <nav><a href="#/" id="nl">Mes formations</a><a href="/studio/" id="ns" hidden>Studio</a><button id="out" hidden>Se déconnecter</button></nav></div></header>
+<div id="app"><main><p class="sub">Chargement…</p></main></div>
 <script>
 const API = "https://api.basstrading.fr";
 const app = document.getElementById("app");
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const pct = (a, b) => b ? Math.round(100 * a / b) : 0;
+const quand = d => { const s = (Date.now() - new Date(d)) / 1000; if (s < 60) return "à l'instant"; if (s < 3600) return `il y a ${Math.floor(s / 60)} min`;
+  if (s < 86400) return `il y a ${Math.floor(s / 3600)} h`; if (s < 7 * 86400) return `il y a ${Math.floor(s / 86400)} j`; return new Date(d).toLocaleDateString("fr-FR"); };
+const duree = s => s ? (s >= 3600 ? `${Math.floor(s / 3600)} h ${String(Math.round(s % 3600 / 60)).padStart(2, "0")}` : `${Math.max(1, Math.round(s / 60))} min`) : "";
 async function api(path, opts = {}) {
   const r = await fetch(API + path, {credentials: "include", headers: {"Content-Type": "application/json"}, ...opts});
-  if (r.status === 401) { throw {auth: true}; }
+  if (r.status === 401) throw {auth: true};
   if (!r.ok) { let d = ""; try { d = (await r.json()).detail } catch {} throw {msg: d || "Erreur " + r.status}; }
   return r.json();
 }
+const post = (p, b) => api(p, {method: "POST", body: JSON.stringify(b || {})});
+const toast = t => { const d = document.createElement("div"); d.className = "toast"; d.textContent = t; document.body.appendChild(d); setTimeout(() => d.remove(), 2600); };
+// Couverture générée à partir du nom de la formation (couleurs stables)
+const COULEURS = [["#3a2a08", "#C9A84C"], ["#0b2a3a", "#2b8fc9"], ["#2a0b2a", "#b0489c"], ["#0b3a24", "#2fb37b"], ["#3a0b0b", "#d0573f"], ["#1b1b3a", "#6b6bd6"]];
+const couv = (slug, titre, cls = "") => { let h = 0; for (const c of slug) h = (h * 31 + c.charCodeAt(0)) >>> 0; const [a, b] = COULEURS[h % COULEURS.length];
+  return `<div class="couv ${cls}" style="background:radial-gradient(circle at 80% 10%, ${b}55, transparent 55%),linear-gradient(135deg, ${a}, #0b0b0b 75%)"><span>${esc(titre)}</span></div>`; };
+const page = html => { app.innerHTML = `<main>${html}</main>`; };
+const entete = moi => { document.getElementById("out").hidden = false; document.getElementById("ns").hidden = !(moi && moi.admin); };
+
 function login(info) {
   document.getElementById("out").hidden = true;
-  app.innerHTML = `<div class="login card"><h1>Mon espace</h1>
+  page(`<div class="login card"><h1>Mon espace</h1>
     <p class="sub">Entre l'adresse email utilisée lors de ton achat. Tu reçois un lien de connexion, sans mot de passe.</p>
     <form id="f"><input type="email" id="e" required placeholder="ton@email.com" autocomplete="email">
-    <button class="btn" id="b">Recevoir mon lien</button></form><div class="msg" id="m">${esc(info || "")}</div></div>`;
+    <button class="btn" id="b" style="width:100%">Recevoir mon lien</button></form><div class="msg" id="m">${esc(info || "")}</div></div>`);
   document.getElementById("f").onsubmit = async ev => {
     ev.preventDefault(); const b = document.getElementById("b"), m = document.getElementById("m");
     b.disabled = true; m.className = "msg"; m.textContent = "Envoi…";
-    try { const r = await api("/auth/lien", {method: "POST", body: JSON.stringify({email: document.getElementById("e").value})});
-      m.textContent = r.message + " Pense à regarder tes spams."; }
+    try { const r = await post("/auth/lien", {email: document.getElementById("e").value}); m.textContent = r.message + " Pense à regarder tes spams."; }
     catch (x) { m.className = "msg err"; m.textContent = x.msg || "Impossible d'envoyer le lien. Réessaie dans une minute."; }
     b.disabled = false;
   };
 }
-async function accueil() {
-  const d = await api("/moi");
-  document.getElementById("out").hidden = false;
-  const items = d.formations.map(f => { const p = f.lecons ? Math.round(100 * f.vues / f.lecons) : 0;
-    return `<a class="fo card" href="#/f/${esc(f.slug)}"><h3>${esc(f.titre)}</h3><div class="small">${f.vues} / ${f.lecons} leçons vues</div><div class="bar"><i style="width:${p}%"></i></div></a>`; }).join("");
-  app.innerHTML = `<h1>Bonjour${d.eleve.prenom ? " " + esc(d.eleve.prenom) : ""}</h1><p class="sub">Tes formations${d.eleve.admin ? ` · <a href="#/admin">Administration</a>` : ""}</p>
-    ${items ? `<div class="grid">${items}</div>` : `<div class="card">Aucune formation n'est encore liée à ${esc(d.eleve.email)}. Écris-nous si c'est une erreur.</div>`}`;
+
+/* ── Bibliothèque ─────────────────────────────────────── */
+const mmss = s => { s = Math.max(0, Math.round(s || 0)); const h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60), x = String(s % 60).padStart(2, "0"); return h ? `${h}:${String(m).padStart(2, "0")}:${x}` : `${m}:${x}`; };
+async function bibliotheque() {
+  const [d, A_] = await Promise.all([api("/moi"), api("/espace/accueil")]);
+  entete(d.eleve);
+  const F = d.formations, finies = F.filter(f => f.lecons && f.vues >= f.lecons).length;
+  const der = A_.derniere;
+  const carte = f => { const p = pct(f.vues, f.lecons);
+    return `<a class="fo" href="#/f/${esc(f.slug)}">${couv(f.slug, f.titre)}<div class="corps"><div class="small">${f.lecons} leçon${f.lecons > 1 ? "s" : ""}</div>
+      <div class="barre"><i style="width:${p}%"></i></div><div class="bas"><span class="small">${p === 100 ? "🏆 Terminée" : p ? `${p} % terminé` : "Pas encore commencée"}</span>
+      <span class="btn sec" style="padding:7px 14px;font-size:14px">${p ? (p === 100 ? "Revoir" : "Continuer") : "Commencer"}</span></div></div></a>`; };
+  page(`<h1>Bonjour${d.eleve.prenom ? " " + esc(d.eleve.prenom) : ""} 👋</h1><p class="sub">${A_.serie > 1 ? `Tu es sur une série de <b style="color:var(--gold)">${A_.serie} jours</b> d'affilée. Continue !` : "Content de te revoir. Reprends là où tu t'étais arrêté."}</p>
+    <div class="stats"><div class="stat"><b>🔥 ${A_.serie}</b><span>jour${A_.serie > 1 ? "s" : ""} d'affilée</span></div><div class="stat"><b>⏱ ${A_.minutes >= 60 ? Math.floor(A_.minutes / 60) + " h " + String(A_.minutes % 60).padStart(2, "0") : A_.minutes + " min"}</b><span>de vidéo suivies</span></div>
+      <a class="stat" href="#/notes"><b>📝 ${A_.notes}</b><span>note${A_.notes > 1 ? "s" : ""} personnelle${A_.notes > 1 ? "s" : ""}</span></a><div class="stat"><b>🏆 ${finies}</b><span>formation${finies > 1 ? "s" : ""} terminée${finies > 1 ? "s" : ""}</span></div></div>
+    ${der ? `<div class="card reprise">${couv(der.slug, der.formation)}<div class="txt"><div class="small">Reprendre là où tu t'es arrêté</div><h2 style="margin:0">${esc(der.titre)}</h2>
+      <div class="small">${esc(der.formation)}</div>${der.duree ? `<div class="barre"><i style="width:${pct(der.secondes, der.duree)}%"></i></div><div class="small">${mmss(der.secondes)} / ${mmss(der.duree)}</div>` : ""}
+      <div><a class="btn" href="#/l/${der.lecon_id}">▶ Reprendre à ${mmss(der.secondes)}</a></div></div></div>` : ""}
+    <h2>Mes formations</h2>
+    ${F.length ? `<div class="grille">${F.map(carte).join("")}</div>` : `<div class="card">Aucune formation n'est encore liée à ${esc(d.eleve.email)}. Écris-moi à <a href="mailto:contact@basstrading.fr">contact@basstrading.fr</a> si c'est une erreur.</div>`}`);
 }
-async function formation(slug) {
-  const f = await api("/formations/" + encodeURIComponent(slug));
-  document.getElementById("out").hidden = false;
-  const mods = f.modules.map((m, i) => `<details class="mod card" ${i === 0 ? "open" : ""}><summary>${esc(m.titre)} <span class="small">· ${m.lecons.length} leçons</span></summary>
-    ${m.lecons.map(l => `<a class="lec ${l.vue ? "vue" : ""}" href="#/l/${l.id}"><span class="dot"></span>${esc(l.titre)}</a>`).join("")}</details>`).join("");
-  app.innerHTML = `<a class="back" href="#/">← Mes formations</a><h1>${esc(f.titre)}</h1><p class="sub">${esc(f.description)}</p>${mods}`;
+
+/* ── Page d'une formation ─────────────────────────────── */
+async function formation(slug, reprendre) {
+  const f = await api("/espace/formation/" + encodeURIComponent(slug));
+  if (reprendre && f.reprendre) { location.replace(`#/l/${f.reprendre}`); return; }
+  const moi = await api("/moi"); entete(moi.eleve);
+  const p = pct(f.vues, f.total);
+  const programme = () => f.modules.map((m, i) => { const fait = m.lecons.filter(l => l.vue).length;
+    return `<details class="module" ${i === 0 || m.lecons.some(l => l.id === f.reprendre) ? "open" : ""}><summary>${fait === m.lecons.length ? "✓ " : ""}${esc(m.titre)}<span class="n">${fait} / ${m.lecons.length}</span></summary>
+    ${m.lecons.map(l => `<a class="lec ${l.vue ? "vue" : ""}" href="#/l/${l.id}"><span class="coche">${l.vue ? "✓" : ""}</span>${esc(l.titre)}
+      <span class="ty">${l.quiz ? "📝 Quiz" : l.video ? "▶ " + duree(l.duree_s) : "📄 Texte"}</span></a>`).join("")}</details>`; }).join("");
+  page(`<a class="small" href="#/">← Mes formations</a>
+    <div class="hero" style="margin-top:14px"><div><h1>${esc(f.titre)}</h1><p class="sub">${esc(f.description || "")}</p>
+      <div class="barre" style="max-width:420px"><i style="width:${p}%"></i></div><p class="small">${f.vues} / ${f.total} leçons terminées · ${p} %</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">${f.reprendre ? `<a class="btn" href="#/l/${f.reprendre}">▶ ${f.vues ? (p === 100 ? "Revoir la formation" : "Continuer") : "Commencer la formation"}</a>` : ""}
+      ${p === 100 ? `<button class="btn sec" id="cert">🏆 Mon certificat</button>` : ""}</div></div>
+      ${couv(f.slug, f.titre)}</div>
+    <div class="row-h"><h2 style="margin:0">Programme</h2><input id="rq" class="recherche" placeholder="🔍 Rechercher dans la formation et mes notes…"></div>
+    <div id="zr"></div><div id="zp">${programme()}</div>`);
+  if (p === 100) document.getElementById("cert").onclick = () => certificat(moi.eleve, f.titre);
+  let t;
+  document.getElementById("rq").oninput = e => { clearTimeout(t); t = setTimeout(async () => { const v = e.target.value.trim(), zr = document.getElementById("zr");
+    if (v.length < 2) { zr.innerHTML = ""; document.getElementById("zp").hidden = false; return; }
+    const R = await api(`/espace/formation/${encodeURIComponent(slug)}/recherche?q_=${encodeURIComponent(v)}`);
+    document.getElementById("zp").hidden = true;
+    const marque = s => esc(s || "").replace(new RegExp(v.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "gi"), x => `<mark>${x}</mark>`);
+    zr.innerHTML = R.length ? R.map(r => `<a class="lec" href="#/l/${r.id}" style="border:1px solid var(--line);border-radius:10px;margin-bottom:8px;background:var(--card);display:block">
+      <div style="font-weight:600">${marque(r.titre)}</div><div class="small">${esc(r.module)}</div>${r.extrait && r.extrait.toLowerCase().includes(v.toLowerCase()) ? `<div class="small" style="margin-top:4px">… ${marque(r.extrait.trim())} …</div>` : ""}
+      ${r.notes ? `<div class="small" style="margin-top:4px">📝 ${marque(r.notes)}</div>` : ""}</a>`).join("") : `<p class="small">Aucun résultat pour « ${esc(v)} ».</p>`; }, 250); };
 }
-async function lecon(id) {
-  const l = await api("/lecons/" + id);
-  document.getElementById("out").hidden = false;
-  app.innerHTML = `<a class="back" href="#/f/${esc(l.formation.slug)}">← ${esc(l.formation.titre)}</a><h1>${esc(l.titre)}</h1>
-    ${l.video_url ? `<video controls playsinline preload="metadata" src="${esc(l.video_url)}"></video>` : ""}
-    <div class="desc">${l.description_html || ""}</div>
-    <div class="nav">${l.precedente ? `<a href="#/l/${l.precedente}">← Leçon précédente</a>` : "<span></span>"}${l.suivante ? `<a href="#/l/${l.suivante}">Leçon suivante →</a>` : ""}</div>`;
-  api(`/lecons/${id}/vue`, {method: "POST"}).catch(() => {});
+
+/* ── Certificat de fin de formation ───────────────────── */
+function certificat(el, titre) {
+  const nom = el.prenom || el.email.split("@")[0], date = new Date().toLocaleDateString("fr-FR", {day: "numeric", month: "long", year: "numeric"});
+  const w = window.open("", "_blank");
+  w.document.write(`<!doctype html><html lang="fr"><head><meta charset="utf-8"><title>Certificat — ${esc(titre)}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+    <style>@page{size:A4 landscape;margin:0}body{margin:0;background:#0a0a0a;font-family:Outfit,sans-serif}
+    .c{width:297mm;height:210mm;margin:auto;box-sizing:border-box;padding:22mm;background:radial-gradient(circle at 85% 0%,#3a2a08,transparent 50%),#0d0d0d;color:#ededed;position:relative;display:flex;flex-direction:column;justify-content:center;text-align:center;border:3mm solid #0d0d0d;outline:1px solid #C9A84C;outline-offset:-8mm}
+    .t{letter-spacing:.35em;color:#C9A84C;font-size:14px;font-weight:600}h1{font:italic 600 54px 'Playfair Display';margin:18px 0 6px;color:#fff}.n{font:700 38px Outfit;color:#C9A84C;margin:26px 0 8px}
+    p{color:#bdbdbd;font-size:18px;margin:6px 0}.s{display:flex;justify-content:space-between;margin-top:46px;padding:0 30mm;color:#9a9a9a;font-size:14px}.s b{display:block;color:#ededed;font-size:20px;font-family:'Playfair Display';font-style:italic}
+    @media print{body{background:none}.btn{display:none}}.btn{position:fixed;top:14px;right:14px;background:#C9A84C;border:0;border-radius:8px;padding:10px 16px;font:600 15px Outfit;cursor:pointer}</style></head>
+    <body><button class="btn" onclick="print()">Télécharger / imprimer</button><div class="c"><div class="t">BASS TRADING · CERTIFICAT DE RÉUSSITE</div><h1>Certificat</h1><p>décerné à</p>
+    <div class="n">${esc(nom)}</div><p>pour avoir suivi l'intégralité de la formation</p><p style="color:#fff;font-size:24px;font-weight:600;margin-top:10px">${esc(titre)}</p>
+    <div class="s"><div>Le ${date}</div><div><b>Bass</b>Formateur</div></div></div></body></html>`);
+  w.document.close();
 }
-async function admin() {
-  const d = await api("/admin/resume");
-  document.getElementById("out").hidden = false;
-  const c = d.chiffres;
-  const opts = d.formations.map(f => `<option value="${esc(f.slug)}">${esc(f.titre)} (${f.eleves})</option>`).join("");
-  app.innerHTML = `<a class="back" href="#/">← Mes formations</a><h1>Administration</h1>
-    <div class="grid" style="margin:18px 0 8px">
-      <div class="card"><div class="small">Élèves</div><h3 style="font:700 26px Outfit;margin:4px 0">${c.eleves}</h3></div>
-      <div class="card"><div class="small">Connectés (30 j)</div><h3 style="font:700 26px Outfit;margin:4px 0">${c.connectes_30j}</h3></div>
-      <div class="card"><div class="small">Nouveaux (30 j)</div><h3 style="font:700 26px Outfit;margin:4px 0">${c.nouveaux_30j}</h3></div>
-    </div>
-    <h2>Ouvrir un accès</h2>
-    <form class="card" id="fa"><input type="email" id="ae" required placeholder="email de l'élève">
-      <input type="email" id="ap" placeholder="prénom (facultatif)" style="width:100%;padding:13px 14px;border-radius:10px;border:1px solid var(--line);background:#0E0E0E;color:var(--txt);font:inherit;margin:0 0 12px">
-      <select id="af" style="width:100%;padding:12px;border-radius:10px;background:#0E0E0E;color:var(--txt);border:1px solid var(--line);margin-bottom:12px">${opts}</select>
-      <button class="btn">Ouvrir l'accès et envoyer le lien</button><div class="msg" id="am"></div></form>
-    <h2>Chercher un élève</h2>
-    <input type="email" id="aq" placeholder="email ou prénom" autocomplete="off"><div id="ar"></div>`;
-  document.getElementById("ap").type = "text";
-  document.getElementById("fa").onsubmit = async ev => {
-    ev.preventDefault(); const m = document.getElementById("am");
-    try { const r = await api("/admin/acces", {method: "POST", body: JSON.stringify({email: document.getElementById("ae").value,
-        prenom: document.getElementById("ap").value, formation: document.getElementById("af").value})});
-      m.className = "msg"; m.textContent = "Accès ouvert à « " + r.formation + " », lien envoyé."; }
-    catch (x) { m.className = "msg err"; m.textContent = x.msg || "Erreur"; }
+
+/* ── Mes notes ────────────────────────────────────────── */
+async function mesNotes() {
+  const [N, moi] = await Promise.all([api("/espace/notes"), api("/moi")]);
+  entete(moi.eleve);
+  const par = {};
+  N.forEach(n => (par[n.formation] = par[n.formation] || []).push(n));
+  page(`<a class="small" href="#/">← Mes formations</a><h1 style="margin-top:12px">📝 Mes notes</h1><p class="sub">Tes notes personnelles, prises pendant les vidéos. Clique sur une note pour revoir le passage exact.</p>
+    ${Object.keys(par).length ? Object.entries(par).map(([f, L]) => `<h2>${esc(f)}</h2>${L.map(n => `<a class="fil" href="#/l/${n.lecon_id}?t=${Math.floor(n.secondes)}" style="display:block;color:var(--txt)">
+      <div class="small">${esc(n.lecon)} · <span style="color:var(--gold)">▶ ${mmss(n.secondes)}</span></div><div style="white-space:pre-wrap;margin-top:4px">${esc(n.texte)}</div></a>`).join("")}`).join("")
+      : `<div class="card"><p>Aucune note pour l'instant. Pendant une vidéo, ouvre l'onglet « Mes notes » ou appuie sur la touche <b>N</b> : la note garde le moment exact de la vidéo.</p></div>`}`);
+}
+
+/* ── Lecteur de leçon ─────────────────────────────────── */
+const VITESSES = [0.75, 1, 1.25, 1.5, 1.75, 2];
+let quitterLecon = null;
+async function lecon(id, param) {
+  const l = await api("/espace/lecon/" + id);
+  entete(l.moi);
+  const P = new URLSearchParams(param && param.includes("=") ? param : ""), onglet0 = param && !param.includes("=") ? param : (P.get("o") || "");
+  const p = pct(l.vues, l.total);
+  const sommaire = l.modules.map(m => `<details class="module" ${m.lecons.some(x => x.id === l.id) ? "open" : ""}><summary>${esc(m.titre)}<span class="n">${m.lecons.filter(x => x.vue).length}/${m.lecons.length}</span></summary>
+    ${m.lecons.map(x => `<a class="lec ${x.vue ? "vue" : ""} ${x.id === l.id ? "ici" : ""}" href="#/l/${x.id}"><span class="coche">${x.vue ? "✓" : ""}</span><span>${esc(x.titre)}</span>
+      <span class="ty">${x.quiz ? "📝" : x.video ? duree(x.duree_s) : ""}</span></a>`).join("")}</details>`).join("");
+  const nbQ = l.questions.length;
+  const ONG = [["desc", "Description"], ...(l.video_url ? [["notes", `Mes notes${l.notes.length ? ` (${l.notes.length})` : ""}`]] : []), ...(l.quiz ? [["quiz", "Quiz"]] : []), ["questions", `Questions${nbQ ? ` (${nbQ})` : ""}`]];
+  const vit = +(localStorage.getItem("bt_vitesse") || 1);
+  app.innerHTML = `<div class="lecteur"><aside class="cote" id="cote"><div class="tete"><a href="#/f/${esc(l.formation.slug)}">← ${esc(l.formation.titre)}</a>
+      <h3>${esc(l.formation.titre)}</h3><div class="barre"><i style="width:${p}%"></i></div><div class="small" style="margin-top:6px">${p} % terminé · ${l.vues}/${l.total} leçons${l.serie > 1 ? ` · 🔥 ${l.serie} j` : ""}</div></div>${sommaire}</aside>
+    <section class="scene"><button class="btn sec sommaire-mobile" id="som" style="margin-bottom:14px">☰ Sommaire</button>
+      ${l.video_url ? `<div class="ecran"><video id="vid" controls playsinline preload="metadata" src="${esc(l.video_url)}"></video><div class="suite" id="suite" hidden></div></div>
+        <div class="outils"><span class="small">Vitesse</span>${VITESSES.map(v => `<button class="vit ${v === vit ? "on" : ""}" data-v="${v}">${v}×</button>`).join("")}
+          <span class="esp"></span><span class="small raccourcis" title="Espace : lecture/pause · ← → : 10 s · N : note · F : plein écran">⌨ Raccourcis : espace, ← →, N, F</span></div>` : ""}
+      <h1 style="margin-top:${l.video_url ? 18 : 0}px">${esc(l.titre)}</h1>
+      <div class="actions">${l.precedente ? `<a class="btn sec" href="#/l/${l.precedente}">← Précédente</a>` : ""}<span class="esp"></span>
+        <button class="btn ${l.terminee ? "ok" : "sec"}" id="fin">${l.terminee ? "✓ Leçon terminée" : "Marquer comme terminée"}</button>
+        ${l.suivante ? `<a class="btn" href="#/l/${l.suivante}">Suivante →</a>` : `<a class="btn" href="#/f/${esc(l.formation.slug)}">Fin du programme 🏆</a>`}</div>
+      <div class="onglets">${ONG.map(([k, t]) => `<a data-o="${k}">${t}</a>`).join("")}</div><div id="zo"></div></section></div>`;
+  document.getElementById("som").onclick = () => document.getElementById("cote").classList.toggle("ouvert");
+  let terminee = l.terminee;
+  const btn = document.getElementById("fin");
+  const marquer = async (oui, auto) => {
+    if (oui === terminee) return;
+    terminee = oui;
+    btn.className = "btn " + (oui ? "ok" : "sec"); btn.textContent = oui ? "✓ Leçon terminée" : "Marquer comme terminée";
+    const c = document.querySelector(".lec.ici"); if (c) { c.classList.toggle("vue", oui); c.querySelector(".coche").textContent = oui ? "✓" : ""; }
+    try { oui ? await post(`/lecons/${l.id}/vue`) : await api(`/espace/lecon/${l.id}/vue`, {method: "DELETE"}); if (oui && auto) toast("Leçon terminée ✓"); } catch {}
+    if (oui && !l.suivante && auto) setTimeout(() => toast("🏆 Formation terminée ! Ton certificat t'attend sur la page de la formation."), 1500);
   };
-  const aq = document.getElementById("aq"); aq.type = "text"; let t;
-  aq.oninput = () => { clearTimeout(t); t = setTimeout(async () => {
-    if (aq.value.trim().length < 3) { document.getElementById("ar").innerHTML = ""; return; }
-    const rows = await api("/admin/eleves?q_=" + encodeURIComponent(aq.value.trim()));
-    document.getElementById("ar").innerHTML = rows.map(r => `<div class="card" style="margin-top:10px"><strong>${esc(r.email)}</strong> ${esc(r.prenom)}
-      <div class="small">Dernière connexion : ${r.derniere_connexion ? new Date(r.derniere_connexion).toLocaleDateString("fr-FR") : "jamais"}</div>
-      <div class="small">${r.formations.map(esc).join(" · ") || "aucune formation"}</div></div>`).join("") || `<p class="small">Aucun résultat.</p>`;
-  }, 300); };
+  btn.onclick = () => marquer(!terminee);
+  const v = document.getElementById("vid");
+  if (quitterLecon) quitterLecon();
+  quitterLecon = null;
+  if (v) {
+    v.playbackRate = vit;
+    // reprise à la seconde près (ou au moment demandé par une note : ?t=…)
+    const depart = P.get("t") ? +P.get("t") : (l.position && l.position.duree && l.position.secondes < l.position.duree * 0.95 ? l.position.secondes : 0);
+    if (depart > 5) v.addEventListener("loadedmetadata", () => { v.currentTime = depart; if (!P.get("t")) toast(`Reprise à ${mmss(depart)}`); }, {once: true});
+    if (P.get("t")) v.addEventListener("loadedmetadata", () => v.play().catch(() => {}), {once: true});
+    let dernier = 0;
+    const sauver = () => { if (v.currentTime > 1 && Math.abs(v.currentTime - dernier) > 2) { dernier = v.currentTime; post(`/espace/lecon/${l.id}/position`, {s: v.currentTime, duree: v.duration || 0}).catch(() => {}); } };
+    const minuteur = setInterval(sauver, 10000);
+    v.addEventListener("pause", sauver);
+    v.addEventListener("timeupdate", () => { if (v.duration && v.currentTime / v.duration > .9) marquer(true, true); });
+    document.querySelectorAll(".vit").forEach(b => b.onclick = () => { v.playbackRate = +b.dataset.v; localStorage.setItem("bt_vitesse", b.dataset.v);
+      document.querySelectorAll(".vit").forEach(x => x.classList.toggle("on", x === b)); });
+    // enchaînement automatique sur la leçon suivante
+    let compte = null;
+    v.addEventListener("ended", () => { marquer(true, true); sauver(); if (!l.suivante) return;
+      const s = document.getElementById("suite"), titre = l.modules.flatMap(m => m.lecons).find(x => x.id === l.suivante)?.titre || "Leçon suivante";
+      let n = 6; s.hidden = false;
+      const dessiner = () => { s.innerHTML = `<div><div class="small">Leçon suivante dans ${n} s</div><h3>${esc(titre)}</h3>
+        <div style="display:flex;gap:10px;justify-content:center"><a class="btn" href="#/l/${l.suivante}">▶ Lancer maintenant</a><button class="btn sec" id="ann">Annuler</button></div></div>`;
+        document.getElementById("ann").onclick = () => { clearInterval(compte); s.hidden = true; }; };
+      dessiner(); compte = setInterval(() => { n--; if (n <= 0) { clearInterval(compte); location.hash = `#/l/${l.suivante}`; } else dessiner(); }, 1000); });
+    // raccourcis clavier
+    const touches = e => { if (/INPUT|TEXTAREA/.test(document.activeElement.tagName)) return;
+      if (e.key === " " || e.key === "k") { e.preventDefault(); v.paused ? v.play() : v.pause(); }
+      else if (e.key === "ArrowRight" || e.key === "l") v.currentTime += 10;
+      else if (e.key === "ArrowLeft" || e.key === "j") v.currentTime -= 10;
+      else if (e.key === "f") document.fullscreenElement ? document.exitFullscreen() : v.requestFullscreen();
+      else if (e.key === "n") { e.preventDefault(); ouvrir("notes"); setTimeout(() => document.getElementById("nt")?.focus(), 50); } };
+    document.addEventListener("keydown", touches);
+    quitterLecon = () => { sauver(); clearInterval(minuteur); clearInterval(compte); document.removeEventListener("keydown", touches); };
+  } else if (!l.quiz) marquer(true);  // leçon texte : lue en l'ouvrant
+  const notesHtml = () => `<div class="card" style="margin-bottom:18px"><b>Prendre une note</b> <span class="small">— elle garde le moment de la vidéo ; touche <b>N</b> pendant la lecture</span>
+      <textarea id="nt" placeholder="Ce que tu veux retenir…" style="min-height:70px"></textarea><button class="btn" id="na">📌 Ajouter à <span id="nh">${mmss(v ? v.currentTime : 0)}</span></button></div>
+    ${l.notes.map(n => `<div class="fil" style="display:flex;gap:14px;align-items:flex-start"><button class="btn sec" data-t="${n.secondes}" style="padding:6px 12px;font-size:14px">▶ ${mmss(n.secondes)}</button>
+      <div style="flex:1;white-space:pre-wrap">${esc(n.texte)}</div><button class="lien-mini" data-sn="${n.id}">Supprimer</button></div>`).join("") || `<p class="small">Aucune note sur cette leçon.</p>`}
+    <p class="small"><a href="#/notes">Voir toutes mes notes →</a></p>`;
+  const brancherNotes = () => {
+    const nh = document.getElementById("nh"), maj = () => { if (nh && v) nh.textContent = mmss(v.currentTime); };
+    if (v) v.addEventListener("timeupdate", maj);
+    document.getElementById("na").onclick = async () => { const t = document.getElementById("nt").value.trim(); if (!t) return;
+      const s = v ? v.currentTime : 0; const r = await post(`/espace/lecon/${l.id}/notes`, {s, texte: t});
+      l.notes.push({id: r.id, secondes: s, texte: t}); l.notes.sort((a, b) => a.secondes - b.secondes); toast("Note enregistrée 📌"); ouvrir("notes"); };
+    document.querySelectorAll("[data-t]").forEach(b => b.onclick = () => { if (v) { v.currentTime = +b.dataset.t; v.play(); v.scrollIntoView({behavior: "smooth", block: "center"}); } });
+    document.querySelectorAll("[data-sn]").forEach(b => b.onclick = async () => { await api(`/espace/notes/${b.dataset.sn}`, {method: "DELETE"}); l.notes = l.notes.filter(n => n.id !== +b.dataset.sn); ouvrir("notes"); });
+  };
+  const ONGLETS = {desc: () => `<div class="desc">${l.description_html || `<p class="small">Pas de description pour cette leçon.</p>`}</div>`, notes: notesHtml, quiz: () => quizHtml(l.quiz), questions: () => questionsHtml(l)};
+  const ouvrir = o => { if (!ONGLETS[o]) o = "desc"; document.querySelectorAll(".onglets a").forEach(a => a.classList.toggle("on", a.dataset.o === o)); document.getElementById("zo").innerHTML = ONGLETS[o]();
+    if (o === "quiz") brancherQuiz(l, marquer); if (o === "questions") brancherQuestions(l); if (o === "notes") brancherNotes(); };
+  document.querySelectorAll(".onglets a").forEach(a => a.onclick = () => ouvrir(a.dataset.o));
+  ouvrir(onglet0 === "questions" ? "questions" : (l.quiz && !l.video_url ? "quiz" : (!l.description_html && l.quiz ? "quiz" : "desc")));
+  if (onglet0 === "questions") document.querySelector(".onglets").scrollIntoView({behavior: "smooth"});
 }
+
+/* ── Quiz ─────────────────────────────────────────────── */
+function quizHtml(z) {
+  return `<div class="quiz"><h2 style="margin-top:0">${esc(z.titre)}</h2>
+    <p class="small">${z.questions.length} question${z.questions.length > 1 ? "s" : ""} · ${z.seuil} % de bonnes réponses pour réussir${z.dernier ? ` · dernier essai : ${z.dernier.score} % ${z.dernier.reussi ? "✓" : ""}` : ""}</p>
+    <div id="qres"></div>
+    ${z.questions.map((x, i) => `<div class="qst" data-i="${i}"><h4>${i + 1}. ${esc(x.q)}</h4>${x.multiple ? `<p class="small" style="margin:-6px 0 10px">Plusieurs réponses possibles</p>` : ""}
+      ${x.choix.map((c, j) => `<label><input type="${x.multiple ? "checkbox" : "radio"}" name="q${i}" value="${j}"><span>${esc(c)}</span></label>`).join("")}<div class="expl"></div></div>`).join("")}
+    <button class="btn" id="qv">Valider mes réponses</button></div>`;
+}
+function brancherQuiz(l, marquer) {
+  const z = l.quiz;
+  document.getElementById("qv").onclick = async () => {
+    const rep = z.questions.map((_, i) => [...document.querySelectorAll(`[name=q${i}]:checked`)].map(x => +x.value));
+    if (rep.some(r => !r.length)) { document.getElementById("qres").innerHTML = `<div class="resultat ko">Réponds à toutes les questions avant de valider.</div>`; return; }
+    const r = await post(`/espace/quiz/${z.id}`, {reponses: rep});
+    document.getElementById("qres").innerHTML = `<div class="resultat ${r.reussi ? "ok" : "ko"}">${r.reussi ? "🎉 Bravo, quiz réussi" : "Pas encore… tu peux recommencer"} — ${r.score} % (${r.bons}/${r.total})</div>`;
+    r.corrections.forEach((c, i) => { const q_ = document.querySelector(`.qst[data-i="${i}"]`);
+      q_.querySelectorAll("label").forEach((lab, j) => { lab.classList.toggle("bon", c.bonnes.includes(j)); lab.classList.toggle("faux", !c.bonnes.includes(j) && lab.querySelector("input").checked); });
+      q_.querySelector(".expl").textContent = (c.juste ? "✓ Juste. " : "✗ ") + (c.explication || ""); });
+    const b = document.getElementById("qv"); b.textContent = "Recommencer"; b.onclick = () => lecon(l.id);
+    if (r.reussi) marquer(true, true);
+    document.getElementById("qres").scrollIntoView({behavior: "smooth", block: "center"});
+  };
+}
+
+/* ── Questions ────────────────────────────────────────── */
+const initiale = n => esc((n || "?").trim()[0] || "?").toUpperCase();
+function message(x) {
+  const bass = x.auteur === "admin";
+  return `<div class="qq"><div class="av ${bass ? "bass" : ""}">${bass ? "B" : initiale(x.nom)}</div><div style="min-width:0;flex:1">
+    <div><span class="nom">${bass ? "Bass" : esc(x.nom)}${bass ? `<span class="badge">Formateur</span>` : ""}</span> <span class="small">· ${quand(x.created_at)}</span></div>
+    <div class="t">${esc(x.texte)}</div>${x.mienne && !bass ? `<button class="lien-mini" data-sup="${x.id}">Supprimer</button>` : ""}</div></div>`;
+}
+function questionsHtml(l) {
+  return `<div class="card" style="margin-bottom:22px"><b>Une question sur cette leçon ?</b><p class="small" style="margin:4px 0 0">Bass la reçoit tout de suite et te répond ici (tu es aussi prévenu par email). Les élèves de la formation voient les questions et les réponses.</p>
+    <textarea id="qt" placeholder="Écris ta question…"></textarea><button class="btn" id="qe">Envoyer ma question</button><div class="msg" id="qm"></div></div>
+    ${l.questions.map(x => `<div class="fil">${message(x)}${x.reponses.map(r => `<div class="rep">${message(r)}</div>`).join("")}
+      <div style="margin:10px 0 0 48px"><button class="lien-mini" data-rep="${x.id}">Répondre</button></div><div class="zr" data-z="${x.id}" hidden style="margin-left:48px">
+      <textarea placeholder="Ta réponse…" style="min-height:70px"></textarea><button class="btn sec" data-env="${x.id}" style="padding:8px 14px">Envoyer</button></div></div>`).join("")
+      || `<p class="small">Aucune question pour l'instant. Sois le premier à demander !</p>`}`;
+}
+function brancherQuestions(l) {
+  const envoyer = async (texte, parent, m) => {
+    try { await post(`/espace/lecon/${l.id}/questions`, {texte, parent_id: parent}); toast(l.moi.admin ? "Réponse publiée" : "Question envoyée à Bass ✓"); lecon(l.id, "questions"); }
+    catch (x) { if (m) { m.className = "msg err"; m.textContent = x.msg || "Erreur, réessaie."; } }
+  };
+  document.getElementById("qe").onclick = () => { const t = document.getElementById("qt").value.trim(), m = document.getElementById("qm");
+    if (t.length < 3) { m.className = "msg err"; m.textContent = "Écris ta question."; return; } envoyer(t, null, m); };
+  document.querySelectorAll("[data-rep]").forEach(b => b.onclick = () => { const z = document.querySelector(`[data-z="${b.dataset.rep}"]`); z.hidden = !z.hidden; if (!z.hidden) z.querySelector("textarea").focus(); });
+  document.querySelectorAll("[data-env]").forEach(b => b.onclick = () => { const t = b.previousElementSibling.value.trim(); if (t.length >= 2) envoyer(t, +b.dataset.env); });
+  document.querySelectorAll("[data-sup]").forEach(b => b.onclick = async () => { if (confirm("Supprimer ce message ?")) { await api(`/espace/questions/${b.dataset.sup}`, {method: "DELETE"}); lecon(l.id, "questions"); } });
+}
+
 async function route() {
-  const h = location.hash.replace(/^#\/?/, "");
+  const brut = location.hash.replace(/^#\/?/, ""), [h, param] = brut.split("?");
+  document.getElementById("nl").classList.toggle("on", !h);
   try {
-    if (h === "admin") await admin();
-    else if (h.startsWith("f/")) await formation(h.slice(2));
-    else if (h.startsWith("l/")) await lecon(h.slice(2));
-    else await accueil();
-    window.scrollTo(0, 0);
+    if (h === "admin") { location.href = "/studio/"; return; }
+    if (quitterLecon && !h.startsWith("l/")) { quitterLecon(); quitterLecon = null; }
+    if (h === "notes") await mesNotes();
+    else if (h.startsWith("f/")) await formation(decodeURIComponent(h.slice(2)), param === "reprendre");
+    else if (h.startsWith("l/")) await lecon(+h.slice(2), param);
+    else await bibliotheque();
+    if (!param) window.scrollTo(0, 0);
   } catch (x) {
     if (x.auth) login(new URLSearchParams(location.search).get("info") || "");
-    else app.innerHTML = `<div class="card"><p>${esc(x.msg || "Une erreur est survenue.")}</p><a href="#/">← Retour</a></div>`;
+    else page(`<div class="card"><p>${esc(x.msg || "Une erreur est survenue.")}</p><a href="#/">← Retour</a></div>`);
   }
 }
-document.getElementById("out").onclick = async () => { await api("/auth/deconnexion", {method: "POST"}).catch(() => {}); location.hash = ""; login("Tu es déconnecté."); };
+document.getElementById("out").onclick = async () => { await post("/auth/deconnexion").catch(() => {}); location.hash = ""; login("Tu es déconnecté."); };
 addEventListener("hashchange", route);
 route();
 </script>
