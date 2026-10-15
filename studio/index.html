@@ -281,12 +281,14 @@ async function accueil() {
   const evol = (n, avant) => { const p = avant ? Math.round((n - avant) / avant * 100) : (n ? 100 : 0);
     return `<div class="evol ${p < 0 ? "bas" : ""}"><b>${p < 0 ? "▼" : "▲"} ${Math.abs(p)}%</b><span>30 derniers jours</span></div>`; };
   const jour = x => x.toLocaleDateString("fr-FR", {day: "numeric", month: "long", year: "numeric"});
-  app.innerHTML = `${entete("Tableau de bord", null, "", `<div class="periode"><span>${jour(new Date(Date.now() - 29 * 864e5))} &nbsp;–&nbsp; ${jour(new Date())}</span><i>📅</i></div>`)}
+  app.innerHTML = `${entete("Tableau de bord", null, "", `<div class="periode"><span>${jour(new Date(Date.now() - 30 * 864e5))} &nbsp;–&nbsp; ${jour(new Date())}</span><i>📅</i></div>`)}
   <div class="dash">
     <div class="card kpi">${evol(d.nouveaux_contacts_30j, d.contacts_prec)}<div class="l">Nouveaux contacts</div><div class="v">${d.nouveaux_contacts_30j.toLocaleString("fr-FR")}</div>${courbe(d.serie_contacts, n => n + " contact(s)")}</div>
     <div class="card kpi">${evol(d.ca_30j, d.ca_prec)}<div class="l">Ventes totales</div><div class="v">${euros(d.ca_30j)}</div>${courbe(d.serie_paiements, euros)}</div>
     <div class="card direct" style="grid-row:span 2"><h3>En direct</h3><div class="liste">
-      ${d.direct.map(e => e.type === "paiement"
+      ${d.direct.map(e => e.type === "remboursement"
+        ? `<div class="evt"><div class="ic pay" style="color:var(--err)">↺</div><div style="min-width:0;flex:1"><span class="d">${dmyh(e.quand)}</span><b>Remboursement</b><div class="q">${lienContact(0, e.email, e.nom || e.email)} — ${euros(e.montant)} · ${esc(e.detail)}</div></div></div>`
+        : e.type === "paiement"
         ? `<div class="evt"><div class="ic pay"><svg width="22" height="20" viewBox="0 0 26 22" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="1" y="3" width="20" height="14" rx="2"/><path d="M1 8h20"/></svg></div><div style="min-width:0;flex:1"><span class="d">${dmyh(e.quand)}</span><b>Paiement</b><div class="q">${lienContact(0, e.email, e.nom || e.email)} — ${euros(e.montant)} pour <a>${esc(e.detail)}</a></div></div></div>`
         : `<div class="evt"><div class="ic"><svg width="20" height="22" viewBox="0 0 30 34" fill="currentColor"><circle cx="15" cy="9" r="8"/><path d="M0 34c0-10 7-14 15-14s15 4 15 14z"/></svg></div><div style="min-width:0;flex:1"><span class="d">${dmyh(e.quand)}</span><b>Nouveau contact</b><div class="q">${lienContact(e.id, e.email)}${e.detail ? ` s'est inscrit à <a>${esc(e.detail)}</a>` : ""}</div></div></div>`).join("") || `<p class="mute" style="padding:20px 0">Rien pour l'instant.</p>`}
     </div></div>
@@ -478,11 +480,15 @@ async function contactFiche(cle, onglet0) {
   const vide = `<p class="vide">Oups ! Il semble que votre écran soit vide.</p>`;
   const tableau = (t, l) => l.length ? `<table><tr>${t.map(x => `<th>${x}</th>`).join("")}</tr>${l.join("")}</table>` : vide;
   const ONGLETS = {
-    abonnements: () => tableau(["Date", "Offre", "Paiements", "Statut"], F.commandes.filter(x => x.echeances !== 1).map(x => { const [lib, cl] = ETAT_VENTE[x.statut] || [x.statut, ""];
-      return `<tr><td>${dmyh(x.created_at)}</td><td>${esc(x.titre || "—")}</td><td>${x.payees}${x.echeances > 1 ? " / " + x.echeances : ""} × ${euros(x.montant_cents)}</td><td><span class="pill ${cl}">${lib}</span></td></tr>`; })),
-    paiements: () => tableau(["Date", "Offre", "Encaissé", "Statut"], F.commandes.map(x => { const [lib, cl] = ETAT_VENTE[x.statut] || [x.statut, ""];
-      return `<tr><td>${dmyh(x.created_at)}</td><td>${esc(x.titre || "—")}${x.bump ? `<div class="mute">+ ${esc(x.bump)}</div>` : ""}</td><td class="montant">+ ${euros(x.encaisse)}</td><td><span class="pill ${cl}">${lib}</span></td></tr>`; }))
-      + `<p class="mute" style="margin-top:12px">Paiements encaissés par ton PayPal. Les achats faits chez Systeme.io sont visibles dans « Mes formations » et dans le tag « Clients — ont payé (auto) ».</p>`,
+    abonnements: () => tableau(["Date", "Offre", "Paiements", "Statut"], [...F.commandes.filter(x => x.echeances !== 1).map(x => { const [lib, cl] = ETAT_VENTE[x.statut] || [x.statut, ""];
+      return `<tr><td>${dmyh(x.created_at)}</td><td>${esc(x.titre || "—")}</td><td>${x.payees}${x.echeances > 1 ? " / " + x.echeances : ""} × ${euros(x.montant_cents)}</td><td><span class="pill ${cl}">${lib}</span></td></tr>`; }),
+      ...F.sio_abonnements.map(x => `<tr><td>${dmyh(x.date)}</td><td>${esc(x.offre || "—")}<div class="mute">Systeme.io · ${esc(x.moyen || "")}</div></td><td>${x.nb ? x.nb + " × " : ""}${euros(x.montant || 0)}${x.intervalle === "month" ? " / mois" : ""}</td>
+        <td><span class="pill ${x.statut === "completed" ? "ok" : x.statut === "cancelled" ? "err" : "blue"}">${({completed: "Terminé", cancelled: "Annulé", active: "Actif"})[x.statut] || esc(x.statut)}</span></td></tr>`)]),
+    paiements: () => { const tot = F.commandes.reduce((t, x) => t + x.encaisse, 0) + F.sio_transactions.reduce((t, x) => t + (x.type === "refund" ? -x.total : x.total), 0);
+      return `<p style="margin:0 0 12px">Total encaissé : <b>${euros(tot)}</b></p>` + tableau(["Date", "Transaction", "Offre", "Montant", "Statut"], [...F.commandes.map(x => { const [lib, cl] = ETAT_VENTE[x.statut] || [x.statut, ""];
+      return `<tr><td>${dmyh(x.created_at)}</td><td>Commande #${x.id}<div class="mute">PayPal (Studio)</div></td><td>${esc(x.titre || "—")}${x.bump ? `<div class="mute">+ ${esc(x.bump)}</div>` : ""}</td><td class="montant">+ ${euros(x.encaisse)}</td><td><span class="pill ${cl}">${lib}</span></td></tr>`; }),
+      ...F.sio_transactions.map(x => `<tr><td>${dmyh(x.date)}</td><td>${x.type === "refund" ? "Remboursement" : "Facture"} #${esc(x.num)}<div class="mute">Systeme.io · ${esc(({"paypal-rest": "PayPal", paypal: "PayPal", "stripe": "Stripe", "stripe:card": "Carte (Stripe)"})[x.moyen] || x.moyen || "")}</div></td>
+        <td>${esc(x.offre || "—")}</td><td class="montant ${x.type === "refund" ? "neg" : ""}">${x.type === "refund" ? "−" : "+"} ${euros(x.total)}</td><td><span class="pill ${x.type === "refund" ? "err" : "ok"}">${x.type === "refund" ? "Remboursé" : "Payée"}</span></td></tr>`)]); },
     emails: () => tableau(["Date", "Sujet", "Envoyé par"], F.emails.map(x => `<tr><td style="white-space:nowrap">${dmyh(x.quand)}</td><td>${esc(x.sujet)}</td><td class="mute">${esc(x.source)}</td></tr>`)),
     campagnes: () => tableau(["Campagne", "Progression", "Statut", "Prochain email"], F.campagnes.map(x => `<tr><td><a href="#/sequences/${x.sequence_id}">${esc(x.nom)}</a></td><td>${x.etape} / ${x.total} emails</td>
       <td><span class="pill ${x.statut === "active" ? "ok" : x.statut === "terminee" ? "blue" : ""}">${({active: "En cours", terminee: "Terminée", arretee: "Arrêtée"})[x.statut] || x.statut}</span>${x.erreur ? `<div class="mute">${esc(x.erreur)}</div>` : ""}</td>
@@ -495,7 +501,7 @@ async function contactFiche(cle, onglet0) {
   };
   const ouvrir = o => { document.querySelectorAll(".ongl a").forEach(x => x.classList.toggle("on", x.dataset.o === o)); document.getElementById("zo").innerHTML = ONGLETS[o](); };
   document.querySelectorAll(".ongl a").forEach(x => x.onclick = () => ouvrir(x.dataset.o));
-  ouvrir(onglet0 || (F.commandes.length ? "paiements" : F.formations.length ? "formations" : "abonnements"));
+  ouvrir(onglet0 || (F.commandes.length || F.sio_transactions.length ? "paiements" : F.formations.length ? "formations" : "abonnements"));
   const recharger = () => contactFiche(String(c.id), document.querySelector(".ongl a.on")?.dataset.o);
   document.getElementById("ht").onclick = () => { const z = document.getElementById("zh"); z.hidden = !z.hidden; };
   document.getElementById("at").onclick = () => { const z = document.getElementById("zt"); z.hidden = !z.hidden; };
@@ -721,7 +727,12 @@ async function ventes(mode) {
   const [d, V] = await Promise.all([api("/admin/offres"), api("/admin/ventes")]);
   const nomsF = Object.fromEntries(d.formations.map(f => [f.id, f.titre]));
   if (mode === "transactions") {
-    const offres = [...new Set(V.map(v => v.titre).filter(Boolean))];
+    const H = await api("/studio/transactions-sio");
+    V.forEach(v => v.source = "studio");
+    H.forEach(h => V.push({source: "sio", id: h.num, created_at: h.date, email: h.email, prenom: h.nom, encaisse: h.total, montant_cents: h.total, echeances: 1,
+      payees: 1, titre: h.offre, moyen: h.moyen, statut: h.type === "refund" ? "remboursee" : "payee", rembt: h.type === "refund"}));
+    V.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+    const offres = [...new Set(V.map(v => v.titre).filter(Boolean))].sort();
     app.innerHTML = `${entete("Transactions", V.length)}
     <div class="deux"><div class="card filtres"><div class="onglets"><span class="on">Filtrer par</span></div><div style="padding:20px 24px;display:grid;gap:14px">
       <input id="fe" placeholder="Email du client"><select id="fo"><option value="">Toutes les offres</option>${offres.map(o => `<option>${esc(o)}</option>`).join("")}</select>
@@ -730,14 +741,16 @@ async function ventes(mode) {
       <div id="tr"></div></div>`;
     const dessiner = () => {
       const e = document.getElementById("fe").value.trim().toLowerCase(), o = document.getElementById("fo").value, s = document.getElementById("fs").value;
-      const W = V.filter(v => (!e || v.email.includes(e)) && (!o || v.titre === o) && (!s || v.statut === s));
+      const W = V.filter(v => (!e || (v.email || "").includes(e) || (v.prenom || "").toLowerCase().includes(e)) && (!o || v.titre === o) && (!s || v.statut === s));
+      document.querySelector(".entete .nb").textContent = W.length.toLocaleString("fr-FR");
       document.getElementById("tr").innerHTML = `<div class="wrap"><table><tr><th style="width:56px"><span class="statut"></span></th><th>Date de transaction</th><th>Client</th><th>Montant</th><th>Nom</th><th>Statut</th></tr>
-      ${W.map(v => { const [lib, cl] = ETAT_VENTE[v.statut] || [v.statut, ""]; const neg = v.statut === "remboursee";
+      ${W.slice(0, 300).map(v => { const [lib, cl] = v.source === "sio" ? (v.rembt ? ["Remboursement", "err"] : ["Payée (Systeme.io)", "ok"]) : (ETAT_VENTE[v.statut] || [v.statut, ""]); const neg = v.statut === "remboursee";
         return `<tr><td>${statut(!["interrompue", "remboursee"].includes(v.statut), "err")}</td><td class="facture"><b>${neg ? "Remboursement" : "Facture"} #${v.id}</b>${dmyh(v.created_at)}</td>
         <td><div class="mail">${ROND}<div>${esc(v.prenom)}<div>${lienContact(0, v.email)}</div></div></div></td>
         <td class="montant ${neg ? "neg" : ""}">${neg ? "−" : "+"} ${euros(v.encaisse)}${v.echeances !== 1 ? `<div class="mute">${v.payees}${v.echeances > 1 ? "/" + v.echeances : ""} × ${euros(v.montant_cents)}</div>` : ""}</td>
-        <td><a>${esc(v.titre || "—")}</a><div class="mute">${esc(v.moyen || "")}</div></td>
-        <td><span class="pill ${cl}">${lib}</span>${v.fin_raison ? `<div class="mute">${esc(v.fin_raison)}</div>` : ""}</td></tr>`; }).join("") || `<tr><td colspan="6" class="vide">Aucune transaction enregistrée ici pour l'instant.</td></tr>`}</table></div>`;
+        <td><a>${esc(v.titre || "—")}</a><div class="mute">${esc(({"paypal-rest": "PayPal", paypal: "PayPal", "stripe": "Stripe", "stripe:card": "Carte (Stripe)"})[v.moyen] || v.moyen || "")}</div></td>
+        <td><span class="pill ${cl}">${lib}</span>${v.fin_raison ? `<div class="mute">${esc(v.fin_raison)}</div>` : ""}</td></tr>`; }).join("") || `<tr><td colspan="6" class="vide">Aucune transaction enregistrée ici pour l'instant.</td></tr>`}</table></div>
+      ${W.length > 300 ? `<p class="mute" style="margin-top:12px">300 premières transactions affichées sur ${W.length.toLocaleString("fr-FR")} : filtre par email ou par offre pour retrouver les autres.</p>` : ""}`;
     };
     document.getElementById("fg").onclick = dessiner; dessiner();
     return;
