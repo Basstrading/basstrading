@@ -35,6 +35,12 @@ h2{font:600 21px 'Outfit';margin:34px 0 14px}
 .small{font-size:14px;color:var(--mute)}
 .msg{margin-top:12px;color:var(--mute);font-size:15px}.msg.err{color:var(--err)}.msg.ok{color:var(--ok)}
 .login{max-width:440px;margin:60px auto}
+.ou{display:flex;align-items:center;gap:12px;color:var(--mute);font-size:13px;margin:18px 0}.ou:before,.ou:after{content:"";flex:1;height:1px;background:var(--line)}
+.lien-btn{display:block;margin:14px auto 0;background:none;border:0;color:var(--mute);font:inherit;font-size:14px;cursor:pointer;text-decoration:underline}
+.btn.tg{background:#2AABEE;color:#fff;width:100%}.btn.tg:hover{background:#229ED9}
+input[type=password],input.code{width:100%;padding:13px 14px;border-radius:10px;border:1px solid var(--line);background:#0E0E0E;color:var(--txt);font:inherit;margin:12px 0}
+input.code{font:700 28px 'Outfit';letter-spacing:10px;text-align:center}
+
 input[type=email],textarea{width:100%;padding:13px 14px;border-radius:10px;border:1px solid var(--line);background:#0E0E0E;color:var(--txt);font:inherit;margin:12px 0}
 textarea{resize:vertical;min-height:90px}
 .barre{height:6px;background:#242424;border-radius:9px;overflow:hidden}.barre i{display:block;height:100%;background:var(--gold);border-radius:9px}
@@ -137,7 +143,7 @@ mark{background:rgba(201,168,76,.35);color:inherit;border-radius:3px;padding:0 2
 </head>
 <body>
 <header><div class="in"><a class="logo" href="#/">BASS <b>TRADING</b></a>
-  <nav><a href="#/" id="nl">Mes formations</a><a href="/studio/" id="ns" hidden>Studio</a><button id="out" hidden>Se déconnecter</button></nav></div></header>
+  <nav><a href="#/" id="nl">Mes formations</a><a href="#/compte" id="nc" hidden>Mon compte</a><a href="/studio/" id="ns" hidden>Studio</a><button id="out" hidden>Se déconnecter</button></nav></div></header>
 <div id="app"><main><p class="sub">Chargement…</p></main></div>
 <script>
 const API = "https://api.basstrading.fr";
@@ -160,21 +166,151 @@ const COULEURS = [["#3a2a08", "#C9A84C"], ["#0b2a3a", "#2b8fc9"], ["#2a0b2a", "#
 const couv = (slug, titre, cls = "") => { let h = 0; for (const c of slug) h = (h * 31 + c.charCodeAt(0)) >>> 0; const [a, b] = COULEURS[h % COULEURS.length];
   return `<div class="couv ${cls}" style="background:radial-gradient(circle at 80% 10%, ${b}55, transparent 55%),linear-gradient(135deg, ${a}, #0b0b0b 75%)"><span>${esc(titre)}</span></div>`; };
 const page = html => { app.innerHTML = `<main>${html}</main>`; };
-const entete = moi => { document.getElementById("out").hidden = false; document.getElementById("ns").hidden = !(moi && moi.admin); };
+const entete = moi => { document.getElementById("out").hidden = false; document.getElementById("nc").hidden = false; document.getElementById("ns").hidden = !(moi && moi.admin); };
+
+/* ── Connexion : email → code à 6 chiffres ou mot de passe, création du mot de passe, Telegram ── */
+let attenteTg = null;
+const stopTg = () => { if (attenteTg) { clearInterval(attenteTg); attenteTg = null; } };
+const BOUTON_TG = `<button class="btn tg" id="tg" type="button"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9.8 15.2l-.4 5.2c.6 0 .8-.2 1.1-.5l2.7-2.6 5.6 4.1c1 .6 1.8.3 2-.9l3.7-17.2c.3-1.5-.6-2.1-1.6-1.7L1.2 9.8c-1.5.6-1.4 1.4-.3 1.7l5.6 1.7L19.6 5c.6-.4 1.2-.2.7.2z"/></svg>Se connecter avec Telegram</button>`;
 
 function login(info) {
-  document.getElementById("out").hidden = true;
-  page(`<div class="login card"><h1>Mon espace</h1>
-    <p class="sub">Entre l'adresse email utilisée lors de ton achat. Tu reçois un lien de connexion, sans mot de passe.</p>
-    <form id="f"><input type="email" id="e" required placeholder="ton@email.com" autocomplete="email">
-    <button class="btn" id="b" style="width:100%">Recevoir mon lien</button></form><div class="msg" id="m">${esc(info || "")}</div></div>`);
+  stopTg();
+  document.getElementById("out").hidden = true; document.getElementById("nc").hidden = true;
+  page(`<div class="login card"><h1>Mon espace formation</h1>
+    <p class="sub">Entre l'adresse email utilisée lors de ton achat ou de ton inscription.</p>
+    <form id="f"><input type="email" id="e" required placeholder="ton@email.com" autocomplete="email" value="${esc(sessionStorage.getItem("bt_email") || "")}">
+    <button class="btn" id="b" style="width:100%">Continuer</button></form>
+    <div class="ou"><span>ou</span></div>${BOUTON_TG}
+    <div class="msg" id="m">${esc(info || "")}</div></div>`);
+  document.getElementById("tg").onclick = () => connexionTelegram(false);
   document.getElementById("f").onsubmit = async ev => {
     ev.preventDefault(); const b = document.getElementById("b"), m = document.getElementById("m");
-    b.disabled = true; m.className = "msg"; m.textContent = "Envoi…";
-    try { const r = await post("/auth/lien", {email: document.getElementById("e").value}); m.textContent = r.message + " Pense à regarder tes spams."; }
-    catch (x) { m.className = "msg err"; m.textContent = x.msg || "Impossible d'envoyer le lien. Réessaie dans une minute."; }
-    b.disabled = false;
+    const email = document.getElementById("e").value.trim();
+    try { sessionStorage.setItem("bt_email", email); } catch {}
+    b.disabled = true; m.className = "msg"; m.textContent = "Vérification…";
+    try {
+      const r = await post("/auth/code", {email, envoyer: false});
+      if (!r.eleve) return pasEleve(email);
+      if (r.a_mdp) return ecranMdp(email, r.prenom);
+      await envoyerCode(email, r.prenom);
+    } catch (x) { m.className = "msg err"; m.textContent = x.msg || "Réessaie dans une minute."; b.disabled = false; }
   };
+}
+
+function pasEleve(email) {
+  page(`<div class="login card"><h1>Pas encore de formation</h1>
+    <p class="sub">Aucune formation n'est liée à <b>${esc(email)}</b>.</p>
+    <p class="sub">Tu as peut-être acheté avec une autre adresse : essaie-la. Sinon, découvre les formations, dont une offerte.</p>
+    <a class="btn" style="width:100%" href="/">Découvrir les formations</a>
+    <button class="btn sec" id="r" style="width:100%;margin-top:10px">Essayer une autre adresse</button>
+    <p class="small" style="margin-top:16px">Tu es sûr d'avoir acheté avec cette adresse ? Écris à <a href="mailto:contact@basstrading.fr">contact@basstrading.fr</a>.</p></div>`);
+  document.getElementById("r").onclick = () => login();
+}
+
+function ecranMdp(email, prenom) {
+  page(`<div class="login card"><h1>${prenom ? "Re-bonjour " + esc(prenom) : "Re-bonjour"} 👋</h1>
+    <p class="sub">${esc(email)} · <a href="#" id="autre">changer</a></p>
+    <form id="f"><input type="password" id="p" required placeholder="Ton mot de passe" autocomplete="current-password">
+    <button class="btn" id="b" style="width:100%">Me connecter</button></form>
+    <button class="btn sec" id="c" style="width:100%;margin-top:10px">Mot de passe oublié ? Recevoir un code</button>
+    <div class="msg" id="m"></div></div>`);
+  document.getElementById("autre").onclick = ev => { ev.preventDefault(); login(); };
+  document.getElementById("c").onclick = () => envoyerCode(email, prenom);
+  document.getElementById("f").onsubmit = async ev => {
+    ev.preventDefault(); const b = document.getElementById("b"), m = document.getElementById("m");
+    b.disabled = true; m.className = "msg"; m.textContent = "Connexion…";
+    try { await post("/auth/connexion", {email, mdp: document.getElementById("p").value}); route(); }
+    catch (x) { m.className = "msg err"; m.textContent = x.msg || "Réessaie."; b.disabled = false; }
+  };
+}
+
+async function envoyerCode(email, prenom) {
+  const m = document.getElementById("m"); if (m) { m.className = "msg"; m.textContent = "Envoi du code…"; }
+  try { await post("/auth/code", {email}); }
+  catch (x) { if (m) { m.className = "msg err"; m.textContent = x.msg || "Impossible d'envoyer le code."; } return; }
+  page(`<div class="login card"><h1>Vérifie tes emails 📬</h1>
+    <p class="sub">On vient d'envoyer un code à 6 chiffres à <b>${esc(email)}</b>. Il est valable 15 minutes (pense aux spams).</p>
+    <form id="f"><input type="text" id="c" inputmode="numeric" autocomplete="one-time-code" maxlength="7" required placeholder="000000" class="code">
+    <button class="btn" id="b" style="width:100%">Valider</button></form>
+    <button class="btn sec" id="re" style="width:100%;margin-top:10px">Renvoyer un code</button>
+    <div class="msg" id="m"></div></div>`);
+  const c = document.getElementById("c"); c.focus();
+  c.oninput = () => { if (c.value.replace(/\D/g, "").length === 6) document.getElementById("f").requestSubmit(); };
+  document.getElementById("re").onclick = () => envoyerCode(email, prenom);
+  document.getElementById("f").onsubmit = async ev => {
+    ev.preventDefault(); const b = document.getElementById("b"), m = document.getElementById("m");
+    b.disabled = true; m.className = "msg"; m.textContent = "Vérification…";
+    try { const r = await post("/auth/code/verifier", {email, code: c.value}); r.a_mdp ? route() : creerMdp(prenom); }
+    catch (x) { m.className = "msg err"; m.textContent = x.msg || "Code incorrect."; b.disabled = false; c.select(); }
+  };
+}
+
+function creerMdp(prenom) {
+  page(`<div class="login card"><h1>Bienvenue${prenom ? " " + esc(prenom) : ""} 🎉</h1>
+    <p class="sub">Choisis un mot de passe : la prochaine fois, tu te connectes directement, sans attendre d'email.</p>
+    <form id="f"><input type="password" id="p" required minlength="8" placeholder="Au moins 8 caractères" autocomplete="new-password">
+    <button class="btn" id="b" style="width:100%">Enregistrer et accéder à mes formations</button></form>
+    <button type="button" class="lien-btn" id="tard">Plus tard</button>
+    <div class="msg" id="m"></div></div>`);
+  document.getElementById("tard").onclick = () => route();
+  document.getElementById("f").onsubmit = async ev => {
+    ev.preventDefault(); const b = document.getElementById("b"), m = document.getElementById("m");
+    b.disabled = true;
+    try { await post("/auth/mot-de-passe", {mdp: document.getElementById("p").value}); proposerTelegram(); }
+    catch (x) { m.className = "msg err"; m.textContent = x.msg || "Réessaie."; b.disabled = false; }
+  };
+}
+
+function proposerTelegram() {
+  page(`<div class="login card"><h1>Mot de passe enregistré ✅</h1>
+    <p class="sub">Encore plus simple : relie ton Telegram et connecte-toi ensuite d'un seul tap, sans mot de passe.</p>
+    <button class="btn tg" id="tg" type="button" style="width:100%">Relier mon Telegram</button>
+    <button type="button" class="btn sec" id="non" style="width:100%;margin-top:10px">Non merci, voir mes formations</button>
+    <div class="msg" id="m"></div></div>`);
+  document.getElementById("tg").onclick = () => connexionTelegram(true);
+  document.getElementById("non").onclick = () => route();
+}
+
+async function connexionTelegram(relier) {
+  const m = document.getElementById("m");
+  // Fenêtre ouverte tout de suite (sinon bloquée comme pop-up), redirigée vers le bot une fois le lien reçu
+  const w = window.open("about:blank", "_blank");
+  let d;
+  try { d = await post("/auth/telegram/demarrer", {relier}); }
+  catch (x) { if (w) w.close(); m.className = "msg err"; m.textContent = x.msg || "Telegram indisponible pour le moment."; return; }
+  if (w) w.location.href = d.lien; else location.href = d.lien;
+  m.className = "msg"; m.innerHTML = `Telegram s'ouvre : appuie sur <b>Démarrer</b> puis <b>✅ Oui, c'est moi</b>. Cette page se met à jour toute seule.<br><a href="${esc(d.lien)}" target="_blank" rel="noopener">Telegram ne s'est pas ouvert ? Clique ici</a>`;
+  stopTg();
+  const debut = Date.now();
+  attenteTg = setInterval(async () => {
+    if (Date.now() - debut > 15 * 60000) { stopTg(); m.className = "msg err"; m.textContent = "Délai dépassé. Réessaie."; return; }
+    let r; try { r = await api("/auth/telegram/etat?cle=" + encodeURIComponent(d.cle)); } catch { return; }
+    if (r.etat === "attente") return;
+    stopTg();
+    if (r.etat === "ok") { toast(relier ? "Telegram relié ✅" : "Connecté ✅"); route(); }
+    else { m.className = "msg err"; m.textContent = r.message || "Demande expirée. Réessaie."; }
+  }, 2000);
+}
+
+async function monCompte() {
+  const c = await api("/auth/moi"); entete({});
+  page(`<a href="#/" class="small">← Mes formations</a><h1>Mon compte</h1><p class="sub">${esc(c.email)}</p>
+    <div class="card" style="max-width:520px"><h2 style="margin-top:0">Mot de passe</h2>
+      <p class="small">${c.a_mdp ? "Tu as un mot de passe. Tu peux le changer ici." : "Tu n'as pas encore de mot de passe : tu te connectes avec un code reçu par email."}</p>
+      <form id="f"><input type="password" id="p" required minlength="8" placeholder="Nouveau mot de passe (8 caractères min.)" autocomplete="new-password">
+      <button class="btn" id="b">${c.a_mdp ? "Changer" : "Créer"} mon mot de passe</button></form><div class="msg" id="m1"></div></div>
+    <div class="card" style="max-width:520px;margin-top:16px"><h2 style="margin-top:0">Telegram</h2>
+      ${c.telegram ? `<p class="small">Relié à <b>@${esc(c.telegram)}</b> : tu peux te connecter d'un tap avec « Se connecter avec Telegram ».</p>
+        <button class="btn sec" id="del">Délier mon Telegram</button>`
+      : `<p class="small">Relie ton Telegram pour te connecter d'un tap, sans mot de passe ni email.</p><button class="btn tg" id="tg" type="button">Relier mon Telegram</button>`}
+      <div class="msg" id="m"></div></div>`);
+  document.getElementById("f").onsubmit = async ev => {
+    ev.preventDefault(); const m = document.getElementById("m1");
+    try { await post("/auth/mot-de-passe", {mdp: document.getElementById("p").value}); toast("Mot de passe enregistré ✅"); monCompte(); }
+    catch (x) { m.className = "msg err"; m.textContent = x.msg || "Réessaie."; }
+  };
+  if (c.telegram) document.getElementById("del").onclick = async () => { await post("/auth/telegram/delier"); toast("Telegram délié"); monCompte(); };
+  else document.getElementById("tg").onclick = () => connexionTelegram(true);
 }
 
 /* ── Bibliothèque ─────────────────────────────────────── */
@@ -413,7 +549,9 @@ async function route() {
   try {
     if (h === "admin") { location.href = "/studio/"; return; }
     if (quitterLecon && !h.startsWith("l/")) { quitterLecon(); quitterLecon = null; }
+    if (h !== "") stopTg();
     if (h === "notes") await mesNotes();
+    else if (h === "compte") await monCompte();
     else if (h.startsWith("f/")) await formation(decodeURIComponent(h.slice(2)), param === "reprendre");
     else if (h.startsWith("l/")) await lecon(+h.slice(2), param);
     else await bibliotheque();
