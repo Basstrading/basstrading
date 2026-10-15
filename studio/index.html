@@ -67,7 +67,7 @@ button.card:hover{border-color:var(--blue)}
 <header><div class="bar">
   <div class="logo">BASS <b>STUDIO</b></div>
   <nav id="nav">
-    <a href="#/">Tableau de bord</a><a href="#/contacts">Contacts</a><a href="#/emails">Emails</a>
+    <a href="#/">Tableau de bord</a><a href="#/contacts">Contacts</a><a href="#/emails">Emails</a><a href="#/sequences">Séquences</a>
     <a href="#/formations">Formations</a><a href="#/ventes">Ventes</a><a href="#/pages">Pages</a>
   </nav>
   <div class="droite"><a class="mute" href="https://listes.hubtrading.fr/admin/" target="_blank" rel="noopener">Listmonk ↗</a></div>
@@ -441,6 +441,91 @@ async function editeurPage(id) {
   };
 }
 
+/* ── Séquences ───────────────────────────────────────── */
+async function sequencesListe() {
+  const [S, L, O] = await Promise.all([api("/studio/sequences"), listes(), api("/admin/offres")]);
+  const nomL = Object.fromEntries(L.map(l => [l.id, l.nom])), nomO = Object.fromEntries(O.offres.map(o => [o.slug, o.titre]));
+  const decl = s => s.declencheur === "achat" ? (s.offre_slug ? "Achat : " + (nomO[s.offre_slug] || s.offre_slug) : "—") : (s.liste_id ? "Liste : " + (nomL[s.liste_id] || s.liste_id) : "—");
+  app.innerHTML = `<div class="row" style="justify-content:space-between;align-items:center"><h1 style="margin:0">Séquences</h1><button class="btn" id="ns" style="flex:0;white-space:nowrap">+ Nouvelle séquence</button></div>
+  <p class="mute">Une séquence envoie une suite d'emails automatiquement, à J+1, J+3… après l'entrée du contact (inscription à une liste ou achat d'une offre). Seuls les contacts arrivés <strong>après</strong> l'activation la reçoivent. Envois de 8 h à 21 h.</p>
+  <div class="wrap"><table><tr><th>Séquence</th><th>Démarre sur</th><th>Mails</th><th>En cours</th><th>Envoyés</th><th>Statut</th></tr>
+  ${S.map(s => `<tr><td><a href="#/sequences/${s.id}"><strong>${esc(s.nom)}</strong></a>${s.note ? `<div class="mute">${esc(s.note).slice(0, 140)}</div>` : ""}</td><td>${esc(decl(s))}</td><td>${s.mails}</td><td>${s.en_cours}</td><td>${s.envoyes}</td>
+    <td><span class="pill ${s.active ? "ok" : ""}">${s.active ? "Active" : "Désactivée"}</span></td></tr>`).join("") || `<tr><td colspan="6" class="vide">Aucune séquence.</td></tr>`}</table></div>`;
+  document.getElementById("ns").onclick = async () => { const r = await post("/studio/sequences", {}); location.hash = "#/sequences/" + r.id; };
+}
+
+async function editeurSequence(id) {
+  const [S, L, O] = await Promise.all([api("/studio/sequences/" + id), listes(), api("/admin/offres")]);
+  const E = S.etapes;
+  app.innerHTML = `<a href="#/sequences">← Séquences</a>
+  <div class="row" style="align-items:center;margin:10px 0 14px"><h1 style="margin:0">${esc(S.nom)}</h1>
+    <div style="flex:0;display:flex;gap:8px;white-space:nowrap;align-items:center"><label style="margin:0;display:flex;gap:6px;align-items:center;color:var(--txt)"><input type="checkbox" id="sa" style="width:auto" ${S.active ? "checked" : ""}> Active</label>
+    <button class="btn" id="ss">Enregistrer</button><button class="btn dang" id="sd">Supprimer</button></div></div>
+  ${S.note ? `<p class="mute">${esc(S.note)}</p>` : ""}
+  <div class="card"><div class="row"><div><label>Nom</label><input id="sn" value="${esc(S.nom)}"></div>
+    <div style="flex:0;min-width:200px"><label>Démarre quand le contact…</label><select id="sdc"><option value="liste">entre dans une liste</option><option value="achat" ${S.declencheur === "achat" ? "selected" : ""}>achète une offre</option></select></div>
+    <div id="zl"><label>Liste</label><select id="sl"><option value="">— choisir —</option>${L.map(l => `<option value="${l.id}" ${S.liste_id === l.id ? "selected" : ""}>${esc(l.nom)} (${l.abonnes})</option>`).join("")}</select></div>
+    <div id="zo"><label>Offre</label><select id="so"><option value="">— choisir —</option>${O.offres.map(o => `<option value="${esc(o.slug)}" ${S.offre_slug === o.slug ? "selected" : ""}>${esc(o.titre)}</option>`).join("")}</select></div></div>
+    <label>Arrêter la séquence si le contact achète :</label>
+    <div class="checks">${O.offres.map(o => `<label><input type="checkbox" class="arr" value="${esc(o.slug)}" ${(S.arret_offres || []).includes(o.slug) ? "checked" : ""}> ${esc(o.titre)}</label>`).join("")}</div>
+    <div class="msg" id="sm"></div></div>
+  <h2>Les emails</h2><div id="et"></div>
+  <button class="btn sec" id="ae">+ Ajouter un email</button>`;
+  const zones = () => { const a = document.getElementById("sdc").value === "achat"; document.getElementById("zl").style.display = a ? "none" : ""; document.getElementById("zo").style.display = a ? "" : "none"; };
+  document.getElementById("sdc").onchange = zones; zones();
+  let ouvert = -1;
+  const dessiner = () => {
+    let jour = 0;
+    document.getElementById("et").innerHTML = E.map((e, i) => { jour += e.active ? (+e.delai_jours || 0) : 0;
+      return `<div class="card" style="margin-bottom:10px;${e.active ? "" : "opacity:.6"}"><div class="row" style="align-items:center">
+        <div><strong>${i + 1}. ${esc(e.sujet)}</strong><div class="mute">${e.active ? `Jour ${jour}` : "Désactivé"} · ${i === 0 ? "après l'entrée dans la séquence" : "après le mail précédent"} : ${e.delai_jours} jour(s)${e.envoyes ? ` · ${e.envoyes} envoyé(s)` : ""}</div></div>
+        <div style="flex:0;white-space:nowrap"><button class="mini" data-a="haut" data-i="${i}">↑</button><button class="mini" data-a="bas" data-i="${i}">↓</button><button class="mini" data-a="sup" data-i="${i}">✕</button>
+        <button class="btn sec" data-a="ouv" data-i="${i}" style="padding:4px 10px;margin-left:6px">${ouvert === i ? "Fermer" : "Modifier"}</button></div></div>
+        ${ouvert === i ? `<div class="row"><div><label>Sujet</label><input id="es" value="${esc(e.sujet)}"></div><div style="flex:0;min-width:150px"><label>Délai (jours)</label><input id="ed" type="number" min="0" value="${e.delai_jours}"></div></div>
+          <label><input type="checkbox" id="ea" style="width:auto" ${e.active ? "checked" : ""}> Email actif</label>
+          <label>Message <span class="mute">— {first_name} = prénom du lecteur</span></label>
+          <div class="toolbar"><button data-c="bold"><b>G</b></button><button data-c="italic"><i>I</i></button><button data-c="underline"><u>S</u></button><button data-c="insertUnorderedList">• Liste</button><button data-c="createLink">Lien</button></div>
+          <div class="editeur" id="ec" contenteditable="true">${e.corps}</div>
+          <div class="row" style="margin-top:10px"><button class="btn sec" id="et1" style="flex:0;white-space:nowrap">M'envoyer ce mail en test</button><span class="msg" id="em"></span></div>` : ""}</div>`; }).join("") || `<p class="mute">Aucun email.</p>`;
+    document.querySelectorAll("#et [data-a]").forEach(b => b.onclick = () => {
+      const i = +b.dataset.i;
+      if (b.dataset.a === "ouv") ouvert = ouvert === i ? -1 : i;
+      if (b.dataset.a === "haut" && i > 0) [E[i - 1], E[i]] = [E[i], E[i - 1]];
+      if (b.dataset.a === "bas" && i < E.length - 1) [E[i + 1], E[i]] = [E[i], E[i + 1]];
+      if (b.dataset.a === "sup" && confirm("Supprimer cet email de la séquence ?")) { E.splice(i, 1); ouvert = -1; }
+      dessiner();
+    });
+    if (ouvert >= 0) {
+      const e = E[ouvert];
+      document.getElementById("es").oninput = ev => e.sujet = ev.target.value;
+      document.getElementById("ed").oninput = ev => e.delai_jours = Math.max(0, +ev.target.value || 0);
+      document.getElementById("ea").onchange = ev => e.active = ev.target.checked;
+      const ec = document.getElementById("ec"); ec.oninput = () => e.corps = ec.innerHTML;
+      document.querySelectorAll("#et .toolbar button").forEach(t => t.onclick = ev => { ev.preventDefault();
+        if (t.dataset.c === "createLink") { const u = prompt("Adresse du lien (https://…)"); if (u) document.execCommand("createLink", false, u); } else document.execCommand(t.dataset.c);
+        e.corps = ec.innerHTML; });
+      document.getElementById("et1").onclick = async () => {
+        const m = document.getElementById("em"), a = prompt("Envoyer le test à quelle adresse ?", localStorage.getItem("bt_test") || ""); if (!a) return;
+        try { localStorage.setItem("bt_test", a); } catch {}
+        try { await post("/studio/sequences/test", {email: a, sujet: e.sujet, corps: e.corps}); m.className = "msg ok"; m.textContent = "Test envoyé à " + a + "."; }
+        catch (x) { m.className = "msg err"; m.textContent = x.msg || "Erreur"; }
+      };
+    }
+  };
+  dessiner();
+  document.getElementById("ae").onclick = () => { E.push({id: 0, delai_jours: 1, sujet: "Nouvel email", corps: "<p>Salut {first_name},</p><p></p><p>Bass</p>", active: true}); ouvert = E.length - 1; dessiner(); };
+  document.getElementById("ss").onclick = async () => {
+    const m = document.getElementById("sm"), b = document.getElementById("ss"); b.disabled = true;
+    const d = {nom: document.getElementById("sn").value, declencheur: document.getElementById("sdc").value, liste_id: +document.getElementById("sl").value || null,
+      offre_slug: document.getElementById("so").value, arret_offres: [...document.querySelectorAll(".arr:checked")].map(x => x.value), active: document.getElementById("sa").checked,
+      etapes: E.map(e => ({id: e.id || 0, delai_jours: +e.delai_jours || 0, sujet: e.sujet, corps: e.corps, active: e.active !== false}))};
+    try { await put("/studio/sequences/" + id, d); m.className = "msg ok"; m.textContent = d.active ? "Enregistré. La séquence est active : les nouveaux contacts la recevront." : "Enregistré (séquence désactivée)."; setTimeout(() => editeurSequence(id), 1200); }
+    catch (x) { m.className = "msg err"; m.textContent = x.msg || "Erreur"; }
+    b.disabled = false;
+  };
+  document.getElementById("sd").onclick = async () => { if (!confirm(`Supprimer la séquence « ${S.nom} » et ses ${E.length} emails ?`)) return; await api("/studio/sequences/" + id, {method: "DELETE"}); location.hash = "#/sequences"; };
+}
+
 function pagesFixes() {
   const P = [
     ["Formation offerte (inscription)", "/formation-offerte/", "Capte un email, débloque la formation offerte, ajoute aux listes."],
@@ -464,6 +549,8 @@ async function route() {
     else if (h.startsWith("emails/")) await editeurEmail(h.slice(7));
     else if (h === "formations") await formations();
     else if (h === "ventes") await ventes();
+    else if (h === "sequences") await sequencesListe();
+    else if (h.startsWith("sequences/")) await editeurSequence(+h.slice(10));
     else if (h === "pages") await pagesListe();
     else if (h.startsWith("pages/")) await editeurPage(+h.slice(6));
     else await accueil();
