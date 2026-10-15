@@ -41,14 +41,16 @@ const prix = cents => (cents / 100).toLocaleString("fr-FR", {minimumFractionDigi
   try { const r = await fetch(API + "/offres/" + encodeURIComponent(slug)); if (!r.ok) throw 0; o = await r.json(); }
   catch { c.innerHTML = `<h1>Offre introuvable</h1><p class="sub">Ce lien de paiement n'est plus valable. Écris-nous à contact@basstrading.fr.</p>`; return; }
   c.innerHTML = `${o.mode !== "live" ? `<div class="essai">Mode essai : aucun vrai paiement n'est effectué.</div>` : ""}
-    <h1>${esc(o.titre)}</h1><div class="prix">${prix(o.prix_cents)}</div>
-    <p class="sub">Paiement en une fois, ou en 4 fois sans frais avec PayPal.</p>
+    <h1>${esc(o.titre)}</h1><div class="prix">${prix(o.prix_cents)}${o.echeances !== 1 ? `<span style="font-size:18px;color:#9ca3af"> / mois</span>` : ""}</div>
+    <p class="sub">${o.echeances > 1 ? `${o.echeances} mensualités de ${prix(o.prix_cents)}, soit ${prix(o.prix_cents * o.echeances)} au total. Le prélèvement s'arrête tout seul après la dernière.`
+      : o.echeances === 0 ? "Prélèvement mensuel, résiliable à tout moment depuis ton compte PayPal." : "Paiement en une fois, ou en 4 fois sans frais avec PayPal."}</p>
     <label for="e">Ton adresse email (elle ouvrira ton accès)</label><input id="e" type="email" autocomplete="email" placeholder="ton@email.com">
     <label for="p">Ton prénom</label><input id="p" autocomplete="given-name" maxlength="60" placeholder="Prénom">
-    <div data-pp-message data-pp-amount="${(o.prix_cents/100).toFixed(2)}" data-pp-style-text-color="white" style="margin-top:16px"></div>
+    ${o.paypal_plan_id ? "" : `<div data-pp-message data-pp-amount="${(o.prix_cents/100).toFixed(2)}" data-pp-style-text-color="white" style="margin-top:16px"></div>`}
     <div id="pp"></div><div class="msg" id="m"></div>`;
   const s = document.createElement("script");
-  s.src = `https://www.paypal.com/sdk/js?client-id=${encodeURIComponent(o.paypal_client_id)}&currency=EUR&locale=fr_FR&components=buttons,messages&enable-funding=paylater`;
+  s.src = `https://www.paypal.com/sdk/js?client-id=${encodeURIComponent(o.paypal_client_id)}&currency=EUR&locale=fr_FR` +
+    (o.paypal_plan_id ? "&vault=true&intent=subscription&components=buttons" : "&components=buttons,messages&enable-funding=paylater");
   s.onload = () => afficherBoutons(o);
   document.head.appendChild(s);
 })();
@@ -56,12 +58,30 @@ const prix = cents => (cents / 100).toLocaleString("fr-FR", {minimumFractionDigi
 function afficherBoutons(o) {
   const m = document.getElementById("m");
   const email = () => document.getElementById("e").value.trim();
+  const onClick = (data, actions) => {
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email())) { m.className = "msg err"; m.textContent = "Indique ton adresse email avant de payer."; return actions.reject(); }
+    m.className = "msg"; m.textContent = ""; return actions.resolve();
+  };
+  const onError = () => { m.className = "msg err"; m.textContent = "PayPal a rencontré un problème. Aucun montant n'a été prélevé, réessaie."; };
+  if (o.paypal_plan_id) {
+    // Paiement en plusieurs fois : abonnement PayPal à durée limitée, créé depuis le Studio.
+    paypal.Buttons({
+      style: {layout: "vertical", color: "gold", shape: "rect", label: "subscribe"}, onClick, onError,
+      createSubscription: (data, actions) => actions.subscription.create({plan_id: o.paypal_plan_id, custom_id: email().toLowerCase(),
+        application_context: {brand_name: "Bass Trading", shipping_preference: "NO_SHIPPING", user_action: "SUBSCRIBE_NOW"}}),
+      onApprove: async (data) => {
+        m.className = "msg"; m.textContent = "Validation du paiement…";
+        const r = await fetch(API + "/paiement/abonnement", {method: "POST", headers: {"Content-Type": "application/json"},
+          body: JSON.stringify({id: data.subscriptionID, offre: o.slug, email: email(), prenom: document.getElementById("p").value.trim()})});
+        const d = await r.json().catch(() => ({}));
+        if (!r.ok) { m.className = "msg err"; m.textContent = d.detail || "Le paiement n'a pas abouti."; return; }
+        location.href = "/paiement/merci/?offre=" + encodeURIComponent(o.slug);
+      },
+    }).render("#pp");
+    return;
+  }
   paypal.Buttons({
-    style: {layout: "vertical", color: "gold", shape: "rect", label: "pay"},
-    onClick: (data, actions) => {
-      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email())) { m.className = "msg err"; m.textContent = "Indique ton adresse email avant de payer."; return actions.reject(); }
-      m.className = "msg"; m.textContent = ""; return actions.resolve();
-    },
+    style: {layout: "vertical", color: "gold", shape: "rect", label: "pay"}, onClick,
     createOrder: async () => {
       const r = await fetch(API + "/paiement/commande", {method: "POST", headers: {"Content-Type": "application/json"},
         body: JSON.stringify({offre: o.slug, email: email(), prenom: document.getElementById("p").value.trim()})});
@@ -75,7 +95,7 @@ function afficherBoutons(o) {
       if (!r.ok) { m.className = "msg err"; m.textContent = d.detail || "Le paiement n'a pas abouti."; return; }
       location.href = "/paiement/merci/?offre=" + encodeURIComponent(o.slug);
     },
-    onError: () => { m.className = "msg err"; m.textContent = "PayPal a rencontré un problème. Aucun montant n'a été prélevé, réessaie."; },
+    onError,
   }).render("#pp");
 }
 </script>
