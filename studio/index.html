@@ -6,111 +6,165 @@
 <title>Studio — Bass Trading</title>
 <meta name="robots" content="noindex">
 <link rel="icon" href="/favicon.svg">
-<link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-/* Look de l'ANCIEN Systeme.io (avant refonte) : barre bleu marine, menu blanc, fond gris-bleu, cartes blanches, chiffres bleus. */
-:root{--nav:#182e60;--bg:#f3f4f8;--card:#fff;--line:#e6e9ef;--line2:#d5dae3;--txt:#2d3436;--txt2:#5c6370;--mute:#8a8f98;--blue:#3d8fe0;--blue-btn:#3d8fe0;--blue2:#eaf3fd;--ok:#2fb36b;--ok-bg:#eef8f0;--warn:#e69a1e;--err:#e5484d;--err-bg:#fdedf0}
+/* Ancien Systeme.io (captures FR 2020–2022 du centre d'aide) : barre bleu marine, logo en lettres bleu clair, menu à droite,
+   onglet actif blanc souligné de bleu, fond #f0f3f8, titres « 51 Contacts » (nombre bleu), tableaux à bande d'en-tête grise. */
+:root{--nav:#162b5c;--bg:#f0f3f8;--card:#fff;--line:#eef0f4;--line2:#dfe3ea;--band:#f7f8fb;--txt:#2a2f3a;--txt2:#5c6370;--mute:#99a2b4;--blue:#1e9bf0;--blue-fonce:#1b2f63;--blue2:#e8f4fe;--ok:#22b573;--ok-bg:#e6f8ee;--warn:#f5a623;--err:#f0466b;--err-bg:#fdecf0}
 *{box-sizing:border-box}
-html,body{margin:0;background:var(--bg);color:var(--txt);font:400 14px/1.5 'Mulish','Avenir Next',system-ui,sans-serif}
+html,body{margin:0;background:var(--bg);color:var(--txt);font:400 15px/1.5 'Outfit','Gilroy','Avenir Next',system-ui,sans-serif}
 a{color:var(--blue);text-decoration:none}
 a:hover{text-decoration:underline}
 header{background:var(--nav);position:sticky;top:0;z-index:20}
-.bar{max-width:1600px;margin:0 auto;display:flex;align-items:stretch;gap:4px;padding:0 24px;height:54px}
-.logo{display:flex;align-items:center;gap:8px;color:#fff!important;font:700 19px Mulish;margin-right:22px;white-space:nowrap;text-decoration:none!important}
-.logo i{width:26px;height:26px;border-radius:50%;background:#fff;color:var(--nav);display:flex;align-items:center;justify-content:center;font:800 15px Mulish;font-style:normal}
-nav{display:flex;align-items:stretch;gap:2px}
+.bar{display:flex;align-items:stretch;gap:4px;padding:0 28px 0 32px;height:70px}
+.logo{display:flex;align-items:center;color:#31a8f5!important;font:600 27px Outfit;letter-spacing:-.5px;margin-right:24px;white-space:nowrap;text-decoration:none!important}
+nav{display:flex;align-items:stretch;gap:6px;margin-left:auto}
 .menu{position:relative;display:flex}
-.menu>button{display:flex;align-items:center;gap:6px;background:none;border:0;border-bottom:3px solid transparent;border-top:3px solid transparent;padding:0 12px;font:600 13px Mulish;color:#fff;cursor:pointer;white-space:nowrap}
-.menu>button:hover{color:#cfe3fb}
-.menu>button::after{content:"";width:5px;height:5px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg) translateY(-2px);opacity:.8}
-.menu.on>button{border-bottom-color:#429ff6}
-.sous{display:none;position:absolute;top:100%;left:0;min-width:200px;background:#fff;border-radius:0 0 4px 4px;box-shadow:0 6px 18px rgba(24,46,96,.18);padding:6px 0;z-index:30}
-.menu.open .sous{display:block}
-.sous a{display:block;padding:9px 18px;color:var(--txt);font-size:14px;white-space:nowrap}
-.sous a:hover{background:var(--blue2);color:var(--blue);text-decoration:none}
-.sous a.on{color:var(--blue);font-weight:600}
-.droite{margin-left:auto;display:flex;gap:10px;align-items:center;white-space:nowrap}
-.bar .droite a{color:#cfd8ea;font-size:13px}
-main{max-width:1600px;margin:0 auto;padding:22px 24px 80px}
-h1{font-size:20px;font-weight:600;line-height:28px;margin:0 0 20px;color:var(--txt)}
-h2{font-size:16px;font-weight:600;margin:28px 0 12px}
-.entete{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 18px;min-height:34px}
+.menu>button,nav>a{display:flex;align-items:center;gap:9px;background:none;border:0;border-bottom:3px solid transparent;border-top:3px solid transparent;padding:0 9px;font:500 16px Outfit;color:#aab4cc;cursor:pointer;white-space:nowrap;text-decoration:none!important}
+.menu>button:hover,nav>a:hover{color:#fff}
+.menu.liste>button::after{content:"";width:6px;height:6px;border-right:1.6px solid currentColor;border-bottom:1.6px solid currentColor;transform:rotate(45deg) translateY(-3px)}
+.menu.on>button,nav>a.on{color:#fff;font-weight:600;border-bottom-color:#2196f3}
+.sous{display:none;position:absolute;top:calc(100% + 4px);left:50%;transform:translateX(-50%);min-width:170px;background:#fff;border-radius:4px;box-shadow:0 4px 18px rgba(22,43,92,.18);padding:10px 0;z-index:30}
+.sous::before{content:"";position:absolute;top:-7px;left:50%;margin-left:-7px;border:7px solid transparent;border-top:0;border-bottom-color:#fff}
+.menu.open .sous,.pts.open .sous{display:block}
+.sous a,.sous button{display:block;width:100%;text-align:left;background:none;border:0;padding:6px 22px;color:var(--txt2);font:400 16px Outfit;white-space:nowrap;cursor:pointer}
+.sous a:hover,.sous button:hover{color:var(--blue);text-decoration:none}
+.sous a.on{color:var(--blue)}
+.avatar{display:flex;align-items:center;gap:10px;margin-left:14px;color:#fff;font:500 15px Outfit}
+.avatar>button{display:flex;align-items:center;gap:10px;background:none;border:0;color:#fff;cursor:pointer;font:500 16px Outfit;padding:0}
+.rond{width:42px;height:42px;border-radius:50%;background:#e9ecf2;display:flex;align-items:flex-end;justify-content:center;overflow:hidden}
+.avatar .sous{left:auto;right:-10px;transform:none}.avatar .sous::before{left:auto;right:30px}
+main{padding:30px 32px 90px}
+h1{font-size:25px;font-weight:400;line-height:32px;margin:0 0 22px;color:var(--txt);display:flex;align-items:center;gap:8px}
+h1 .nb{color:var(--blue)}
+h1 .aide{width:20px;height:20px;border-radius:50%;background:#c3c9d4;color:#fff;font:600 13px Outfit;display:inline-flex;align-items:center;justify-content:center}
+h1.ariane{color:#8a93a3}h1.ariane a{color:#8a93a3}h1.ariane .sep{font-size:18px;margin:0 4px}
+h2{font-size:18px;font-weight:500;margin:28px 0 12px}
+.entete{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 22px;min-height:46px}
 .entete h1{margin:0}
-.entete .droite{margin-left:auto}
-.recherche{width:280px!important;padding-left:32px!important;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' fill='none' stroke='%238a8f98' stroke-width='2' viewBox='0 0 24 24'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-3.5-3.5'/%3E%3C/svg%3E") no-repeat 10px center}
-.entete select{width:auto!important;max-width:260px}
-.compte{font-size:12px;background:#e3e7ef;border-radius:10px;padding:1px 8px;color:var(--txt2)}
-.card{background:var(--card);border:0;border-radius:4px;padding:20px 22px;box-shadow:0 1px 3px rgba(24,46,96,.08)}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px}
-.kpi .l{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.02em;color:var(--mute)}
-.kpi .v{font-size:30px;font-weight:600;color:var(--blue);margin:6px 0 2px}
-.wrap{overflow-x:auto;background:#fff;border-radius:4px;box-shadow:0 1px 3px rgba(24,46,96,.08)}
+.entete .droite{margin-left:auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.card{background:var(--card);border-radius:4px;padding:24px 30px;box-shadow:0 1px 4px rgba(22,43,92,.06)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:22px}
+.kpi .l{font-size:15px;text-transform:uppercase;color:#5c6370;letter-spacing:.01em}
+.kpi .v{font-size:44px;font-weight:300;color:var(--blue);line-height:1.15}
+.evol{float:right;background:var(--ok-bg);color:var(--ok);border-radius:4px;padding:8px 18px;text-align:center;line-height:1.2}
+.evol b{font-size:24px;font-weight:600}.evol span{display:block;font-size:13px}
+.evol.bas{background:var(--err-bg);color:var(--err)}
+.wrap{overflow-x:auto;background:#fff;border-radius:4px;box-shadow:0 1px 4px rgba(22,43,92,.06)}
 table{width:100%;border-collapse:collapse;background:#fff}
-th,td{text-align:left;padding:12px 16px;border-bottom:1px solid var(--line);vertical-align:middle}
-th{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.02em;color:var(--mute);background:#fff;white-space:nowrap}
-td{color:var(--txt)}
+th,td{text-align:left;padding:14px 20px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-size:13px;font-weight:400;text-transform:uppercase;color:var(--mute);background:var(--band);white-space:nowrap;height:56px}
+th.tri{color:var(--blue)}
+td{color:var(--txt);height:66px}
 tr:last-child td{border-bottom:0}
-tbody tr:hover td,tr:hover td{background:#fafbfd}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:36px;background:var(--blue-btn);color:#fff;border:1px solid var(--blue-btn);border-radius:4px;padding:7px 16px;font:600 14px Mulish;cursor:pointer;white-space:nowrap;text-decoration:none!important}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:42px;background:var(--blue);color:#fff;border:1px solid var(--blue);border-radius:4px;padding:8px 22px;font:600 15px Outfit;cursor:pointer;white-space:nowrap;text-decoration:none!important;box-shadow:0 2px 6px rgba(30,155,240,.25)}
 .btn:hover{filter:brightness(.95)}
-.btn.creer{background:var(--blue-btn)}
-.btn.sec{background:#fff;color:var(--txt);border:1px solid var(--line2)}
+.btn.fonce{background:var(--blue-fonce);border-color:var(--blue-fonce);box-shadow:none}
+.btn.sec{background:#fff;color:var(--txt2);border:1px solid #fff;box-shadow:0 1px 4px rgba(22,43,92,.1);font-weight:500}
 .btn.ok{background:var(--ok);border-color:var(--ok)}
-.btn.dang{background:#fff;color:var(--err);border:1px solid #f5c2c7}
+.btn.dang{background:var(--err);border-color:var(--err);color:#fff;box-shadow:none}
+.btn.petit{min-height:32px;padding:4px 12px;font-size:14px}
 .btn:disabled{opacity:.55;cursor:wait}
-input,select,textarea{width:100%;padding:8px 12px;min-height:38px;border:1px solid var(--line2);border-radius:4px;font:inherit;background:#fff;color:var(--txt)}
+input,select,textarea{width:100%;padding:9px 14px;min-height:44px;border:1px solid var(--line2);border-radius:4px;font:inherit;background:#fff;color:var(--txt)}
+input::placeholder{color:#a0a8b8}
 input:focus,select:focus,textarea:focus{outline:none;border-color:var(--blue)}
-label{display:block;font-size:14px;color:var(--txt);margin:14px 0 6px;font-weight:600}
-.row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end}
+label{display:block;font-size:15px;color:var(--txt);margin:16px 0 7px;font-weight:500}
+label .rq{color:var(--err)}
+.row{display:flex;gap:16px;flex-wrap:wrap;align-items:flex-end}
 .row>*{flex:1;min-width:180px}
-.pill{display:inline-block;font-size:12px;padding:2px 9px;border-radius:3px;background:#eef1f6;color:var(--txt2);margin:2px 4px 2px 0;white-space:nowrap}
-.pill.ok{background:var(--ok-bg);color:var(--ok)}.pill.warn{background:#fdf3e1;color:var(--warn)}.pill.err{background:var(--err-bg);color:var(--err)}.pill.blue{background:var(--blue2);color:var(--blue)}
-.mute{color:var(--mute);font-size:12px}
-.msg{margin-top:10px;font-size:14px}
+.pill{display:inline-block;font-size:13px;padding:2px 9px;border-radius:3px;background:#eef1f6;color:var(--txt2);margin:2px 4px 2px 0;white-space:nowrap}
+.pill.ok{background:var(--ok-bg);color:var(--ok)}.pill.warn{background:#fdf3e1;color:#c27c0e}.pill.err{background:var(--err-bg);color:var(--err)}.pill.blue{background:var(--blue2);color:var(--blue)}
+.tag{color:var(--txt2)}
+.mute{color:var(--mute);font-size:13px}
+.msg{margin-top:10px;font-size:15px}
 .msg.err{color:var(--err)}.msg.ok{color:var(--ok)}
-.toolbar{display:flex;gap:4px;flex-wrap:wrap;border:1px solid var(--line2);border-bottom:0;border-radius:4px 4px 0 0;padding:6px;background:#f7f8fb}
-.toolbar button{border:1px solid var(--line2);background:#fff;border-radius:3px;padding:4px 9px;cursor:pointer;font:600 13px Mulish}
-.editeur{min-height:320px;border:1px solid var(--line2);border-radius:0 0 4px 4px;padding:16px;background:#fff;font-family:verdana,geneva,sans-serif;font-size:15px;line-height:1.65;outline:none}
-.checks{display:flex;flex-wrap:wrap;gap:6px 14px;max-height:220px;overflow:auto;border:1px solid var(--line2);border-radius:4px;padding:10px;background:#fff}
-.checks label{margin:0;color:var(--txt);font-weight:400;display:flex;gap:6px;align-items:center;font-size:14px}
+.toolbar{display:flex;gap:2px;flex-wrap:wrap;border:1px solid var(--line2);border-bottom:0;border-radius:4px 4px 0 0;padding:8px;background:#fff}
+.toolbar button{border:0;background:#fff;border-radius:3px;padding:4px 10px;cursor:pointer;font:500 14px Outfit;color:#454b57}
+.toolbar button:hover{background:#eef1f6}
+.editeur{min-height:360px;border:1px solid var(--line2);border-radius:0 0 4px 4px;padding:18px;background:#fff;font-family:verdana,geneva,sans-serif;font-size:15px;line-height:1.65;outline:none}
+.checks{display:flex;flex-wrap:wrap;gap:8px 16px;max-height:240px;overflow:auto;border:1px solid var(--line2);border-radius:4px;padding:12px;background:#fff}
+.checks label{margin:0;color:var(--txt);font-weight:400;display:flex;gap:7px;align-items:center;font-size:15px}
 .checks input,input[type=checkbox]{width:auto;min-height:0;accent-color:var(--blue)}
 .lien{font-family:monospace;font-size:12px;background:#f0f2f6;border-radius:3px;padding:4px 8px;word-break:break-all}
-.login{max-width:420px;margin:80px auto}
-.vide{color:var(--mute);text-align:center;padding:30px}
-.ariane{display:flex;gap:8px;align-items:center;font-size:14px;color:var(--mute);margin-bottom:14px}
-.ariane a{color:var(--mute)}
+.login{max-width:440px;margin:80px auto}
+.vide{color:var(--mute);text-align:center;padding:34px}
 .edgrid{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;margin-top:16px}
 .edgrid .card{margin-bottom:12px}
-.apercu iframe{width:100%;height:75vh;border:0;border-radius:4px;background:#fff;box-shadow:0 1px 3px rgba(24,46,96,.08)}
-@media (min-width:1100px){.edgrid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.apercu{position:sticky;top:70px;align-self:start}}
-.mini{border:1px solid var(--line2);background:#fff;border-radius:3px;width:30px;height:28px;cursor:pointer;margin-left:3px;font:600 14px Mulish}
+.apercu iframe{width:100%;height:75vh;border:0;border-radius:4px;background:#fff;box-shadow:0 1px 4px rgba(22,43,92,.06)}
+@media (min-width:1100px){.edgrid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.apercu{position:sticky;top:86px;align-self:start}}
+.mini{border:1px solid var(--line2);background:#fff;border-radius:3px;width:30px;height:28px;cursor:pointer;margin-left:3px;font:500 14px Outfit}
 button.card:hover{box-shadow:0 0 0 2px var(--blue)}
-.dash{display:grid;grid-template-columns:minmax(0,1fr);gap:18px}
-@media (min-width:1100px){.dash{grid-template-columns:minmax(0,1fr) 300px}}
-.direct{padding:16px 16px 6px}
-.direct h3{font-size:15px;font-weight:600;margin:0 0 8px}
-.evt{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}
+/* tableau de bord */
+.dash{display:grid;grid-template-columns:minmax(0,1fr);gap:24px}
+@media (min-width:1100px){.dash{grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(300px,.62fr)}}
+.direct{padding:0;align-self:stretch}
+.direct h3{font-size:21px;font-weight:400;margin:0;padding:26px 32px;border-bottom:1px solid var(--line)}
+.direct .liste{padding:0 32px;max-height:640px;overflow:auto}
+.evt{display:flex;gap:16px;padding:18px 0;border-bottom:1px solid var(--line)}
 .evt:last-child{border-bottom:0}
-.evt .ic{width:22px;flex:0 0 auto;color:var(--ok);font-size:15px;text-align:center}
+.evt .ic{width:22px;flex:0 0 auto;color:#3fcf86;padding-top:2px}
 .evt .ic.pay{color:var(--blue)}
-.evt b{font-weight:700;font-size:13px;color:var(--txt)}
-.evt .d{font-size:11px;color:var(--mute);margin-left:4px}
-.evt .q{color:var(--txt2);font-size:12px}
-@media (max-width:900px){.bar{padding:0 12px;overflow-x:auto}main{padding:18px 16px 80px}.sous{position:fixed;top:54px;left:12px;right:12px}}
+.evt b{font-weight:600;font-size:16px;color:var(--txt)}
+.evt .d{font-size:12px;color:var(--mute);float:right}
+.evt .q{color:var(--txt2);font-size:13px;margin-top:4px}
+.evt .q a{text-decoration:underline}
+.periode{display:flex;align-items:center;background:#fff;border-radius:4px;box-shadow:0 1px 4px rgba(22,43,92,.06);font-size:16px;color:var(--txt2)}
+.periode span{padding:11px 22px}.periode i{border-left:1px solid var(--line);padding:11px 14px;color:#c3c9d4;font-style:normal}
+/* listes avec filtres à gauche (Contacts, Transactions) */
+.deux{display:grid;grid-template-columns:minmax(0,1fr);gap:24px;align-items:start}
+@media (min-width:1000px){.deux{grid-template-columns:320px minmax(0,1fr)}}
+.filtres{padding:0}
+.onglets{display:flex;border-bottom:1px solid var(--line)}
+.onglets span{flex:1;text-align:center;padding:18px 10px;color:var(--mute);font-size:15px;cursor:default}
+.onglets span.on{color:var(--txt);box-shadow:inset 0 -3px 0 var(--blue)}
+.filtre{border-bottom:1px solid var(--line);padding:0 24px}
+.filtre .t{display:flex;align-items:center;justify-content:space-between;min-height:62px;color:var(--txt2);font-size:15px}
+.filtre .c{padding:0 0 16px}
+.inter{position:relative;width:38px;height:22px;border-radius:11px;background:#e3e7ee;border:0;cursor:pointer;flex:0 0 auto}
+.inter::after{content:"";position:absolute;top:2px;left:2px;width:18px;height:18px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.2);transition:left .15s}
+.inter.on{background:var(--blue)}.inter.on::after{left:18px}
+.filtres .pied{padding:20px 24px;display:flex;gap:10px}
+.coche{width:20px;height:20px;border-radius:50%;border:1.5px solid #c3c9d4;background:#fff;cursor:pointer;padding:0;display:inline-flex;align-items:center;justify-content:center;vertical-align:middle}
+.coche.on{background:var(--ok);border-color:var(--ok)}
+.coche.on::after{content:"";width:5px;height:9px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg) translate(-1px,-1px)}
+.statut{display:inline-flex;width:24px;height:24px;border-radius:50%;align-items:center;justify-content:center;background:var(--ok)}
+.statut::after{content:"";width:6px;height:11px;border:solid #fff;border-width:0 2.4px 2.4px 0;transform:rotate(45deg) translate(-1px,-1px)}
+.statut.non{background:#c3c9d4}.statut.non::after{width:10px;height:0;border-width:0 0 2.4px 0;transform:none}
+.statut.err{background:var(--err)}.statut.err::after{width:10px;height:0;border-width:0 0 2.4px 0;transform:rotate(45deg)}
+.mail{display:flex;align-items:center;gap:10px}
+.mail .rond{width:34px;height:34px;flex:0 0 auto}
+.selection{position:fixed;left:0;right:0;bottom:0;background:#fff;box-shadow:0 -2px 12px rgba(22,43,92,.12);padding:14px 32px;display:none;align-items:center;justify-content:center;gap:16px;z-index:15;flex-wrap:wrap}
+.selection.on{display:flex}
+.selection .n{color:var(--ok);font-weight:500}.selection .n b{background:var(--ok);color:#fff;border-radius:4px;padding:1px 8px;margin-right:8px;font-weight:600}
+.pts{position:relative;display:inline-block}
+.pts>button{background:#f0f2f6;border:0;border-radius:10px;padding:2px 12px;font:700 16px Outfit;color:#1b2f63;cursor:pointer;letter-spacing:1px}
+.pts.open>button{background:var(--blue);color:#fff}
+.pts .sous{left:auto;right:0;transform:none;top:calc(100% + 8px)}.pts .sous::before{left:auto;right:16px}
+.montant{color:var(--ok)}.montant.neg{color:var(--err)}
+.facture b{font-weight:500;display:block}
+.cartes2{display:grid;grid-template-columns:minmax(0,1fr);gap:24px;align-items:start}
+@media (min-width:1100px){.cartes2{grid-template-columns:minmax(0,2fr) minmax(320px,1fr)}}
+.reglages{padding:0}.reglages h3{margin:0;padding:22px 30px;font-size:19px;font-weight:500;border-bottom:1px solid var(--line)}
+.reglages .c{padding:6px 30px 24px}
+.var{color:var(--err);font-family:monospace}
+@media (max-width:900px){.bar{padding:0 12px;overflow-x:auto}main{padding:20px 16px 90px}.sous{position:fixed;top:66px;left:12px;right:12px;transform:none}.logo{font-size:22px}}
+.recherche{width:260px!important;padding-right:38px!important;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%232a2f3a' stroke-width='2' viewBox='0 0 24 24'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-3.5-3.5'/%3E%3C/svg%3E") no-repeat right 14px center}
+.entete select{width:auto}
 </style>
 </head>
 <body>
 <header><div class="bar">
-  <a class="logo" href="#/"><i>B</i>studio</a>
+  <a class="logo" href="#/">bass studio</a>
   <nav id="nav">
-    <div class="menu" data-m="tableau"><button>Tableau de bord</button><div class="sous"><a href="#/">Tableau de bord</a></div></div>
-    <div class="menu" data-m="contacts"><button>Contacts</button><div class="sous"><a href="#/contacts">Contacts</a></div></div>
-    <div class="menu" data-m="tunnels"><button>Tunnels</button><div class="sous"><a href="#/pages">Pages et tunnels</a></div></div>
-    <div class="menu" data-m="emails"><button>Emails</button><div class="sous"><a href="#/emails">Newsletters</a><a href="#/sequences">Campagnes</a></div></div>
-    <div class="menu" data-m="formations"><button>Formations</button><div class="sous"><a href="#/formations">Formations</a></div></div>
-    <div class="menu" data-m="ventes"><button>Produits / Ventes</button><div class="sous"><a href="#/ventes">Offres et liens de paiement</a><a href="#/transactions">Ventes</a></div></div>
+    <div class="menu liste" data-m="tableau"><button>Tableau de bord</button><div class="sous"><a href="#/">Tableau de bord</a></div></div>
+    <div class="menu liste" data-m="contacts"><button>Contacts</button><div class="sous"><a href="#/contacts">Contacts</a></div></div>
+    <a href="#/pages" data-m="tunnels">Tunnels de vente</a>
+    <div class="menu liste" data-m="emails"><button>Emails</button><div class="sous"><a href="#/emails">Newsletters</a><a href="#/sequences">Campagnes</a></div></div>
+    <div class="menu liste" data-m="ventes"><button>Ventes</button><div class="sous"><a href="#/ventes">Produits</a><a href="#/transactions">Transactions</a><a href="#/formations">Mes formations</a></div></div>
+    <div class="menu avatar" data-m="compte"><button><span class="rond"><svg width="30" height="34" viewBox="0 0 30 34" fill="#c3c9d4"><circle cx="15" cy="12" r="8"/><path d="M0 34c0-9 7-13 15-13s15 4 15 13z"/></svg></span><span style="color:#aab4cc">⌄</span></button>
+      <div class="sous"><a href="https://listes.hubtrading.fr/admin/" target="_blank" rel="noopener">Listmonk ↗</a><a href="/espace/" target="_blank">Espace élèves ↗</a><a href="/" target="_blank">basstrading.fr ↗</a></div></div>
+    <div class="avatar" style="margin-left:4px;color:#fff">FR</div>
   </nav>
-  <div class="droite"><a href="https://listes.hubtrading.fr/admin/" target="_blank" rel="noopener">Listmonk ↗</a></div>
 </div></header>
 
 <main id="app"><p class="mute">Chargement…</p></main>
@@ -133,20 +187,28 @@ async function api(path, opts = {}) {
 }
 const post = (p, b) => api(p, {method: "POST", body: JSON.stringify(b)});
 const put = (p, b) => api(p, {method: "PUT", body: JSON.stringify(b)});
-const MENU = {"": "tableau", contacts: "contacts", pages: "tunnels", emails: "emails", sequences: "emails", formations: "formations", ventes: "ventes", transactions: "ventes"};
+const MENU = {"": "tableau", contacts: "contacts", pages: "tunnels", emails: "emails", sequences: "emails", formations: "ventes", ventes: "ventes", transactions: "ventes"};
 function onglet(h) {
   const r = h.split(/[/?]/)[0];
-  document.querySelectorAll("#nav .menu").forEach(m => { m.classList.toggle("on", m.dataset.m === MENU[r]); m.classList.remove("open"); });
+  document.querySelectorAll("#nav [data-m]").forEach(m => { m.classList.toggle("on", m.dataset.m === MENU[r]); m.classList.remove("open"); });
   document.querySelectorAll("#nav .sous a").forEach(a => a.classList.toggle("on", a.getAttribute("href") === "#/" + r));
 }
-// Menus déroulants au clic, comme Systeme.io.
-document.querySelectorAll("#nav .menu>button").forEach(b => b.onclick = e => { e.stopPropagation(); const m = b.parentElement, o = !m.classList.contains("open");
-  document.querySelectorAll("#nav .menu").forEach(x => x.classList.remove("open")); m.classList.toggle("open", o); });
-addEventListener("click", () => document.querySelectorAll("#nav .menu").forEach(x => x.classList.remove("open")));
-addEventListener("keydown", e => { if (e.key === "Escape") document.querySelectorAll("#nav .menu").forEach(x => x.classList.remove("open")); });
-// En-tête de page : titre, compteur, recherche, bouton à droite.
-const entete = (titre, compte, milieu = "", droite = "") => `<div class="entete"><h1>${titre}</h1>${compte !== null && compte !== undefined ? `<span class="compte">${(+compte).toLocaleString("fr-FR")}</span>` : ""}${milieu}${droite ? `<div class="droite">${droite}</div>` : ""}</div>`;
-const ariane = (lien, nom, titre) => `<div class="ariane"><a href="${lien}">${nom}</a><span>›</span><span>${titre}</span></div>`;
+// Menus déroulants au clic (barre du haut et boutons « ••• »), comme Systeme.io.
+const fermerMenus = () => document.querySelectorAll(".menu.open,.pts.open").forEach(x => x.classList.remove("open"));
+addEventListener("click", e => {
+  const b = e.target.closest(".menu>button,.pts>button");
+  if (!b) { fermerMenus(); return; }
+  e.stopPropagation(); const m = b.parentElement, o = !m.classList.contains("open"); fermerMenus(); m.classList.toggle("open", o);
+});
+addEventListener("keydown", e => { if (e.key === "Escape") fermerMenus(); });
+// Titre de page à l'ancienne : « 51 Contacts ? », boutons à droite.
+const entete = (titre, compte, milieu = "", droite = "") => `<div class="entete"><h1>${compte !== null && compte !== undefined ? `<span class="nb">${(+compte).toLocaleString("fr-FR")}</span> ` : ""}${titre}${compte !== null && compte !== undefined ? ` <span class="aide">?</span>` : ""}</h1>${milieu}${droite ? `<div class="droite">${droite}</div>` : ""}</div>`;
+const ariane = (...p) => `<h1 class="ariane">${p.map(([l, n]) => l ? `<a href="${l}">${n}</a>` : `<span>${n}</span>`).join(`<span class="sep">›</span>`)}</h1>`;
+const dmy = d => d ? new Date(d).toLocaleDateString("fr-FR") : "—";
+const dmyh = d => d ? new Date(d).toLocaleString("fr-FR", {day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit"}) : "—";
+const ROND = `<span class="rond"><svg width="24" height="28" viewBox="0 0 30 34" fill="#c3c9d4"><circle cx="15" cy="12" r="8"/><path d="M0 34c0-9 7-13 15-13s15 4 15 13z"/></svg></span>`;
+const statut = (ok, cl = "") => `<span class="statut ${ok ? "" : cl || "non"}" title="${ok ? "Actif(ve)" : "Inactif(ve)"}"></span>`;
+const points = items => `<div class="pts"><button title="Actions">•••</button><div class="sous">${items.join("")}</div></div>`;
 
 function login(code) {
   // Pas connecté : les onglets sont masqués (sinon chaque onglet ramène ici et semble « ne pas marcher »).
@@ -166,109 +228,149 @@ function login(code) {
 /* ── Tableau de bord ─────────────────────────────────── */
 async function accueil() {
   const d = await api("/studio/resume");
-  // Courbe en aire, bleu clair, comme l'ancien tableau de bord Systeme.io.
+  const jourCourt = j => new Date(j).toLocaleDateString("fr-FR", {day: "2-digit", month: "short"});
+  // Courbe lissée bleu clair, points sur la ligne, dates en oblique : comme l'ancien tableau de bord.
   const courbe = (v, fmt) => {
-    const W = 600, H = 150, max = Math.max(1, ...v), pas = W / (v.length - 1);
-    const pts = v.map((y, i) => [i * pas, H - 8 - (y / max) * (H - 24)]);
+    const W = 620, H = 230, max = Math.max(1, ...v), pas = W / (v.length - 1);
+    const pts = v.map((y, i) => [i * pas, H - 6 - (y / max) * (H - 20)]);
     const lisse = pts.map((p, i) => i ? `C${pts[i - 1][0] + pas / 2},${pts[i - 1][1]} ${p[0] - pas / 2},${p[1]} ${p[0]},${p[1]}` : `M${p[0]},${p[1]}`).join(" ");
-    const etiquettes = d.jours.map((j, i) => i % 5 === 2 ? `<text x="${i * pas}" y="${H + 16}" text-anchor="middle">${new Date(j).toLocaleDateString("fr-FR", {day: "numeric", month: "short"})}</text>` : "").join("");
-    return `<svg viewBox="0 -4 ${W} ${H + 24}" preserveAspectRatio="none" style="width:100%;height:190px;display:block;margin-top:10px;font:11px Mulish;fill:#8a8f98">
-      <path d="${lisse} L${W},${H} L0,${H} Z" fill="#eaf3fd"/><path d="${lisse}" fill="none" stroke="#9fc8f3" stroke-width="2"/>${etiquettes}
-      ${pts.map((p, i) => `<rect x="${p[0] - pas / 2}" y="0" width="${pas}" height="${H}" fill="transparent"><title>${new Date(d.jours[i]).toLocaleDateString("fr-FR", {day: "numeric", month: "long"})} : ${fmt(v[i])}</title></rect>`).join("")}</svg>`;
+    return `<svg viewBox="-12 0 ${W + 24} ${H + 58}" style="width:100%;height:auto;display:block;margin-top:24px;font:12px Outfit;fill:#99a2b4">
+      <path d="${lisse} L${W},${H} L0,${H} Z" fill="#f2f8fe"/><path d="${lisse}" fill="none" stroke="#cfe3fb" stroke-width="3"/>
+      ${pts.map((p, i) => `<circle cx="${p[0]}" cy="${p[1]}" r="3.2" fill="#cfe3fb"><title>${jourCourt(d.jours[i])} : ${fmt(v[i])}</title></circle>`).join("")}
+      ${d.jours.map((j, i) => i % 2 === 0 ? `<text transform="translate(${i * pas + 4},${H + 14}) rotate(-50)" text-anchor="end">${jourCourt(j)}</text>` : "").join("")}</svg>`;
   };
-  const fin = new Date(), debut = new Date(Date.now() - 29 * 864e5), jour = x => x.toLocaleDateString("fr-FR", {day: "numeric", month: "long", year: "numeric"});
-  const quand = q => new Date(q).toLocaleString("fr-FR", {day: "numeric", month: "short", hour: "2-digit", minute: "2-digit"});
-  app.innerHTML = `${entete("Tableau de bord", null, "", `<span class="card" style="padding:7px 14px;font-size:13px;color:var(--txt2)">${jour(debut)} &nbsp;→&nbsp; ${jour(fin)}</span>`)}
-  <div class="dash"><div>
-    <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
-      <div class="card kpi"><div class="l">Nouveaux contacts</div><div class="v">${d.nouveaux_contacts_30j.toLocaleString("fr-FR")}</div><div class="mute">${d.contacts.toLocaleString("fr-FR")} contacts au total</div>${courbe(d.serie_contacts, n => n + " contact(s)")}</div>
-      <div class="card kpi"><div class="l">Paiements</div><div class="v">${euros(d.ca_30j)}</div><div class="mute">${d.ventes_30j} vente(s) sur 30 jours</div>${courbe(d.serie_paiements, euros)}</div>
-    </div>
-    <div class="grid" style="margin-top:18px">
-      <div class="card kpi"><div class="l">Nouveaux élèves (30 jours)</div><div class="v">${d.nouveaux_eleves_30j}</div><div class="mute">inscriptions et achats</div></div>
-      <div class="card kpi"><div class="l">Élèves connectés (30 jours)</div><div class="v">${d.connectes_30j}</div><div class="mute">dans leur espace</div></div>
-    </div>
-    <h2>Derniers emails</h2>
-    <div class="wrap"><table><tr><th>Sujet</th><th>Statut</th><th>Envoyés</th><th>Ouvertures</th><th>Clics</th></tr>
-    ${d.campagnes.map(c => `<tr><td><a href="#/emails/${c.id}">${esc(c.subject)}</a><div class="mute">${dateh(c.created_at)}</div></td>
-      <td><span class="pill ${STATUT[c.status]?.[1] || ""}">${STATUT[c.status]?.[0] || c.status}</span></td><td>${c.sent || 0}</td><td>${c.views || 0}</td><td>${c.clicks || 0}</td></tr>`).join("") || `<tr><td colspan="5" class="vide">Aucun email pour l'instant.</td></tr>`}
-    </table></div></div>
-    <div class="card direct" style="align-self:start"><h3>Mises à jour en direct</h3>
+  const evol = (n, avant) => { const p = avant ? Math.round((n - avant) / avant * 100) : (n ? 100 : 0);
+    return `<div class="evol ${p < 0 ? "bas" : ""}"><b>${p < 0 ? "▼" : "▲"} ${Math.abs(p)}%</b><span>30 derniers jours</span></div>`; };
+  const jour = x => x.toLocaleDateString("fr-FR", {day: "numeric", month: "long", year: "numeric"});
+  app.innerHTML = `${entete("Tableau de bord", null, "", `<div class="periode"><span>${jour(new Date(Date.now() - 29 * 864e5))} &nbsp;–&nbsp; ${jour(new Date())}</span><i>☰</i></div>`)}
+  <div class="dash">
+    <div class="card kpi">${evol(d.nouveaux_contacts_30j, d.contacts_prec)}<div class="l">Nouveaux contacts</div><div class="v">${d.nouveaux_contacts_30j.toLocaleString("fr-FR")}</div>${courbe(d.serie_contacts, n => n + " contact(s)")}</div>
+    <div class="card kpi">${evol(d.ca_30j, d.ca_prec)}<div class="l">Ventes totales</div><div class="v">${euros(d.ca_30j)}</div>${courbe(d.serie_paiements, euros)}</div>
+    <div class="card direct" style="grid-row:span 2"><h3>En direct</h3><div class="liste">
       ${d.direct.map(e => e.type === "paiement"
-        ? `<div class="evt"><div class="ic pay"><svg width="18" height="16" viewBox="0 0 26 22" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="20" height="14" rx="2"/><path d="M1 8h20"/><circle cx="21" cy="16" r="4.5" fill="#fff"/><path d="M19.5 16h3M21 14.5v3"/></svg></div><div style="min-width:0"><b>Paiement</b><span class="d">${quand(e.quand)}</span><div class="q"><a>${esc(e.nom || e.email)}</a></div><div class="q">${euros(e.montant)} pour <a>${esc(e.detail)}</a></div></div></div>`
-        : `<div class="evt"><div class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="7" r="4.5"/><path d="M3 22c0-5 4-8 9-8s9 3 9 8z"/></svg></div><div style="min-width:0"><b>Nouveau contact</b><span class="d">${quand(e.quand)}</span><div class="q"><a>${esc(e.nom || e.email)}</a> ${e.detail ? "inscrit à " + esc(e.detail) : ""}</div><div class="q">${esc(e.email)}</div></div></div>`).join("") || `<p class="mute">Rien pour l'instant.</p>`}
-    </div></div>`;
+        ? `<div class="evt"><div class="ic pay"><svg width="22" height="20" viewBox="0 0 26 22" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="1" y="3" width="20" height="14" rx="2"/><path d="M1 8h20"/></svg></div><div style="min-width:0;flex:1"><span class="d">${dmyh(e.quand)}</span><b>Paiement</b><div class="q"><a>${esc(e.nom || e.email)}</a> — ${euros(e.montant)} pour <a>${esc(e.detail)}</a></div></div></div>`
+        : `<div class="evt"><div class="ic"><svg width="20" height="22" viewBox="0 0 30 34" fill="currentColor"><circle cx="15" cy="9" r="8"/><path d="M0 34c0-10 7-14 15-14s15 4 15 14z"/></svg></div><div style="min-width:0;flex:1"><span class="d">${dmyh(e.quand)}</span><b>Nouveau contact</b><div class="q"><a>${esc(e.email)}</a>${e.detail ? ` s'est inscrit à <a>${esc(e.detail)}</a>` : ""}</div></div></div>`).join("") || `<p class="mute" style="padding:20px 0">Rien pour l'instant.</p>`}
+    </div></div>
+    <div class="card kpi"><div class="l">Nouveaux élèves</div><div class="v">${d.nouveaux_eleves_30j}</div><div class="mute">30 derniers jours — inscriptions et achats · ${d.connectes_30j} élève(s) connecté(s)</div></div>
+    <div class="card kpi"><div class="l">Contacts au total</div><div class="v">${d.contacts.toLocaleString("fr-FR")}</div><div class="mute">dans toutes tes listes</div></div>
+  </div>`;
 }
 
 /* ── Contacts ────────────────────────────────────────── */
 let listesCache;
-async function listes() { if (!listesCache) listesCache = await api("/studio/listes"); return listesCache; }
+async function listes(frais) { if (!listesCache || frais) listesCache = await api("/studio/listes"); return listesCache; }
 async function contacts(params) {
   const L = await listes();
   const p = new URLSearchParams(params || "");
-  app.innerHTML = `${entete("Contacts", null, `<span class="compte" id="nb">…</span>
-    <input class="recherche" id="t" placeholder="Rechercher : email ou nom" value="${esc(p.get("texte") || "")}">
-    <select id="l" style="width:240px"><option value="0">Tous les tags / listes</option>${L.map(l => `<option value="${l.id}" ${+p.get("liste") === l.id ? "selected" : ""}>${esc(l.nom)} (${l.abonnes})</option>`).join("")}</select>
-    <button class="btn sec" id="go">Filtrer</button>`)}
-  <div id="res"><p class="mute">Chargement…</p></div>`;
+  const filtre = (nom, contenu, on) => `<div class="filtre"><div class="t">${nom}<button class="inter ${on ? "on" : ""}"></button></div><div class="c" ${on ? "" : "hidden"}>${contenu}</div></div>`;
+  const optListes = sel => L.map(l => `<option value="${l.id}" ${sel === l.id ? "selected" : ""}>${esc(l.nom)} (${l.abonnes})</option>`).join("");
+  app.innerHTML = `${entete("Contacts", 0, "", `<button class="btn" id="cc">+ &nbsp;Créer un contact</button><button class="btn sec" id="ic">Importer des contacts</button>`)}
+  <div id="form"></div>
+  <div class="deux">
+    <div class="card filtres"><div class="onglets"><span class="on">Filtrer par</span><span title="Bientôt">Filtres enregistrés</span></div>
+      ${filtre("Email ou nom", `<input id="t" placeholder="contient…" value="${esc(p.get("texte") || "")}">`, !!p.get("texte"))}
+      ${filtre("Tag", `<select id="l"><option value="0">Choisir un tag</option>${optListes(+p.get("liste"))}</select>`, !!+p.get("liste"))}
+      <div class="pied"><button class="btn" id="go" style="flex:1">Filtrer</button><button class="btn sec" id="raz">Réinitialiser</button></div></div>
+    <div id="res"><div class="wrap"><p class="vide">Chargement…</p></div></div>
+  </div>
+  <div class="selection" id="sel"><span class="n"><b id="sn">0</b>Contacts sélectionnés</span>
+    <select id="sa" style="width:auto;min-width:200px"><option value="">Plus d'actions</option><option value="add">Ajouter un tag</option><option value="remove">Retirer un tag</option></select>
+    <select id="st" style="width:auto;min-width:220px" hidden>${optListes(0)}</select><button class="btn" id="sg" hidden>Appliquer</button><span class="msg" id="sm"></span></div>`;
+  app.querySelectorAll(".inter").forEach(b => b.onclick = () => { b.classList.toggle("on"); const c = b.closest(".filtre").querySelector(".c"); c.hidden = !b.classList.contains("on");
+    if (c.hidden) c.querySelectorAll("input,select").forEach(x => x.value = x.tagName === "SELECT" ? "0" : ""); });
+  const choisis = new Set();
+  const majSel = () => { document.getElementById("sn").textContent = choisis.size; document.getElementById("sel").classList.toggle("on", choisis.size > 0); };
   const charger = async (page = 1) => {
     const t = document.getElementById("t").value.trim(), l = document.getElementById("l").value;
     const d = await api(`/studio/contacts?texte=${encodeURIComponent(t)}&liste=${l}&page=${page}`);
-    document.getElementById("nb").textContent = d.total.toLocaleString("fr-FR");
-    document.getElementById("res").innerHTML = `<div class="wrap"><table><tr><th>Email</th><th>Tags</th><th>Statut</th><th>Inscrit le</th></tr>
-      ${d.contacts.map(c => `<tr><td><a>${esc(c.email)}</a><div class="mute">${esc(c.nom)}</div></td>
-        <td>${c.listes.slice(0, 6).map(x => `<span class="pill ${x.statut === "unsubscribed" ? "err" : ""}">${esc(x.nom)}</span>`).join("")}${c.listes.length > 6 ? `<span class="mute">+${c.listes.length - 6}</span>` : ""}</td>
-        <td><span class="pill ${c.statut === "enabled" ? "ok" : "err"}">${c.statut === "enabled" ? "Actif" : "Bloqué"}</span></td><td>${date(c.cree)}</td></tr>`).join("") || `<tr><td colspan="4" class="vide">Aucun contact.</td></tr>`}
+    document.querySelector(".entete .nb").textContent = d.total.toLocaleString("fr-FR");
+    document.getElementById("res").innerHTML = `<div class="wrap"><table><tr><th style="width:56px"><button class="coche" id="tout" title="Tout sélectionner"></button></th><th class="tri">Ajouté le ⌄</th><th>Adresse email</th><th>Tag</th></tr>
+      ${d.contacts.map(c => `<tr><td><button class="coche ${choisis.has(c.id) ? "on" : ""}" data-id="${c.id}"></button></td><td>${dmy(c.cree)}</td>
+        <td><div class="mail">${ROND}<div><a>${esc(c.email)}</a>${c.statut !== "enabled" ? ` <span class="pill err">Bloqué</span>` : ""}<div class="mute">${esc(c.nom)}</div></div></div></td>
+        <td class="tag">${c.listes.slice(0, 4).map(x => `<span${x.statut === "unsubscribed" ? ` style="text-decoration:line-through" title="désinscrit"` : ""}>${esc(x.nom)}</span>`).join(", ")}${c.listes.length > 4 ? ` <span class="mute">+${c.listes.length - 4}</span>` : ""}</td></tr>`).join("") || `<tr><td colspan="4" class="vide">Aucun contact.</td></tr>`}
       </table></div>
-      <div class="row" style="margin-top:12px;justify-content:space-between">${page > 1 ? `<button class="btn sec" id="prev">← Précédents</button>` : "<span></span>"}${d.total > page * 50 ? `<button class="btn sec" id="next" style="flex:0">Suivants →</button>` : ""}</div>`;
+      <div class="row" style="margin-top:14px;justify-content:space-between">${page > 1 ? `<button class="btn sec" id="prev" style="flex:0">← Précédents</button>` : "<span></span>"}<span class="mute" style="flex:0;white-space:nowrap;align-self:center">Page ${page} / ${Math.max(1, Math.ceil(d.total / 50))}</span>${d.total > page * 50 ? `<button class="btn sec" id="next" style="flex:0">Suivants →</button>` : "<span></span>"}</div>`;
+    document.querySelectorAll("#res .coche[data-id]").forEach(b => b.onclick = () => { const i = +b.dataset.id; choisis.has(i) ? choisis.delete(i) : choisis.add(i); b.classList.toggle("on"); majSel(); });
+    document.getElementById("tout").onclick = () => { const bs = [...document.querySelectorAll("#res .coche[data-id]")], tous = bs.every(b => b.classList.contains("on"));
+      bs.forEach(b => { b.classList.toggle("on", !tous); tous ? choisis.delete(+b.dataset.id) : choisis.add(+b.dataset.id); }); majSel(); };
     document.getElementById("prev")?.addEventListener("click", () => charger(page - 1));
     document.getElementById("next")?.addEventListener("click", () => charger(page + 1));
   };
   document.getElementById("go").onclick = () => charger(1);
-  document.getElementById("l").onchange = () => charger(1);
+  document.getElementById("raz").onclick = () => { document.getElementById("t").value = ""; document.getElementById("l").value = "0"; charger(1); };
   document.getElementById("t").onkeydown = e => { if (e.key === "Enter") charger(1); };
+  document.getElementById("sa").onchange = e => { document.getElementById("st").hidden = document.getElementById("sg").hidden = !e.target.value; };
+  document.getElementById("sg").onclick = async () => {
+    const m = document.getElementById("sm");
+    try { await post("/studio/contacts/listes", {ids: [...choisis], liste: +document.getElementById("st").value, action: document.getElementById("sa").value});
+      m.className = "msg ok"; m.textContent = "Fait."; choisis.clear(); majSel(); listes(true); charger(1); }
+    catch (x) { m.className = "msg err"; m.textContent = x.msg || "Erreur"; }
+  };
+  // « Créer un contact » / « Importer des contacts »
+  const formulaire = imp => {
+    document.getElementById("form").innerHTML = `<div class="card" style="margin-bottom:22px"><h2 style="margin-top:0">${imp ? "Importer des contacts" : "Créer un contact"}</h2>
+      ${imp ? `<label>Contacts <span class="mute">— un par ligne : email, ou email;prénom (copié d'un tableur)</span></label><textarea id="fx" rows="7" placeholder="jean@exemple.fr;Jean"></textarea>`
+            : `<div class="row"><div><label>Email <span class="rq">*</span></label><input id="fe" type="email"></div><div><label>Prénom</label><input id="fp"></div></div>`}
+      <label>Tags</label><div class="checks">${L.map(l => `<label><input type="checkbox" value="${l.id}"> ${esc(l.nom)}</label>`).join("")}</div>
+      <div class="row" style="margin-top:16px;gap:10px"><button class="btn" id="fs" style="flex:0">Enregistrer</button><button class="btn sec" id="fa" style="flex:0">Annuler</button></div><div class="msg" id="fm"></div></div>`;
+    document.getElementById("fa").onclick = () => document.getElementById("form").innerHTML = "";
+    document.getElementById("fs").onclick = async () => {
+      const m = document.getElementById("fm"), b = document.getElementById("fs"); b.disabled = true;
+      const lignes = imp ? document.getElementById("fx").value.split(/\n/).map(x => x.trim()).filter(Boolean).map(x => { const [email, nom] = x.split(/[;,\t]/); return {email: email.trim(), nom: (nom || "").trim()}; })
+                         : [{email: document.getElementById("fe").value.trim(), nom: document.getElementById("fp").value.trim()}];
+      try { const r = await post("/studio/contacts", {contacts: lignes, listes: [...document.querySelectorAll("#form .checks input:checked")].map(i => +i.value)});
+        m.className = "msg ok"; m.textContent = `${r.crees} créé(s)${r.existants ? `, ${r.existants} déjà présent(s) (tags ajoutés)` : ""}${r.invalides ? `, ${r.invalides} adresse(s) invalide(s)` : ""}.`; listes(true); charger(1); }
+      catch (x) { m.className = "msg err"; m.textContent = x.msg || "Erreur"; }
+      b.disabled = false;
+    };
+  };
+  document.getElementById("cc").onclick = () => formulaire(false);
+  document.getElementById("ic").onclick = () => formulaire(true);
   charger(1);
 }
 
-/* ── Emails ──────────────────────────────────────────── */
+/* ── Newsletters ─────────────────────────────────────── */
 async function emails() {
   const C = await api("/studio/campagnes");
-  app.innerHTML = `${entete("Newsletters", C.length, "", `<a class="btn" href="#/emails/nouveau">+ Créer</a>`)}
-  <div class="wrap"><table><tr><th>Sujet de la newsletter</th><th>Tags sélectionnés</th><th>Statut</th><th>Emails envoyés</th><th>Ouvertures</th><th>Clics</th></tr>
-  ${C.map(c => `<tr><td><a href="#/emails/${c.id}">${esc(c.subject)}</a><div class="mute">${c.send_at && c.status === "scheduled" ? "programmée le " + dateh(c.send_at) : dateh(c.created_at)}</div></td>
-    <td>${c.listes.map(l => `<span class="pill">${esc(l)}</span>`).join("")}</td>
-    <td><span class="pill ${STATUT[c.status]?.[1] || ""}">${STATUT[c.status]?.[0] || c.status}</span></td>
-    <td>${c.sent || 0}${c.toSend ? " / " + c.toSend : ""}</td><td>${c.views || 0}</td><td>${c.clicks || 0}</td></tr>`).join("") || `<tr><td colspan="6" class="vide">Aucun email. Crée ta première newsletter.</td></tr>`}
+  const taux = (n, total) => `${total ? Math.round(n / total * 1000) / 10 : 0}% (${n || 0})`;
+  app.innerHTML = `${entete("Newsletters", C.length, "", `<a class="btn" href="#/emails/nouveau">+ &nbsp;Créer une newsletter</a>`)}
+  <div class="wrap"><table><tr><th>Titre de la newsletter</th><th>Tags sélectionnés</th><th>Emails envoyés</th><th>Vues</th><th>Clics</th><th>Date d'envoi</th></tr>
+  ${C.map(c => `<tr><td><a href="#/emails/${c.id}">${esc(c.subject)}</a>${c.status !== "finished" ? `<div><span class="pill ${STATUT[c.status]?.[1] || ""}">${STATUT[c.status]?.[0] || c.status}${c.send_at && c.status === "scheduled" ? " — " + dateh(c.send_at) : ""}</span></div>` : ""}</td>
+    <td class="tag">${c.listes.map(esc).join(", ")}</td>
+    <td>${c.sent || 0}${c.toSend && c.status !== "finished" ? " / " + c.toSend : ""}</td><td>${taux(c.views, c.sent)}</td><td>${taux(c.clicks, c.sent)}</td>
+    <td>${c.status === "finished" || c.status === "running" ? dmyh(c.started_at || c.updated_at || c.created_at) : ""}</td></tr>`).join("") || `<tr><td colspan="6" class="vide">Aucune newsletter. Crée ta première newsletter.</td></tr>`}
   </table></div>`;
 }
 async function editeurEmail(id) {
   const L = await listes();
   const c = id === "nouveau" ? {titre: "", sujet: "", corps: "<p>Bonjour {{ .Subscriber.FirstName }},</p><p></p>", listes: [], statut: "draft"} : await api("/studio/campagnes/" + id);
   const modifiable = ["draft", "scheduled", "paused"].includes(c.statut);
-  app.innerHTML = `${ariane("#/emails", "Newsletters", id === "nouveau" ? "Nouvelle newsletter" : esc(c.sujet))}
-  <div class="card">
-    <div class="row"><div><label>Sujet de l'email</label><input id="s" value="${esc(c.sujet)}" placeholder="Ce que le lecteur voit dans sa boîte"></div>
-      <div><label>Nom interne (facultatif)</label><input id="n" value="${esc(c.titre)}"></div></div>
-    <label>Destinataires</label>
-    <div class="checks">${L.map(l => `<label><input type="checkbox" value="${l.id}" ${c.listes.includes(l.id) ? "checked" : ""}> ${esc(l.nom)} <span class="mute">(${l.abonnes})</span></label>`).join("")}</div>
-    <label>Message <span class="mute">— {{ .Subscriber.FirstName }} = prénom du lecteur</span></label>
-    <div class="toolbar">
-      <button data-c="bold"><b>G</b></button><button data-c="italic"><i>I</i></button><button data-c="underline"><u>S</u></button>
-      <button data-c="formatBlock" data-v="h2">Titre</button><button data-c="formatBlock" data-v="p">Texte</button>
-      <button data-c="insertUnorderedList">• Liste</button><button data-c="createLink">Lien</button><button data-c="removeFormat">Effacer</button>
-    </div>
-    <div class="editeur" id="corps" contenteditable="${modifiable}">${c.corps}</div>
-    <div class="row" style="margin-top:14px"><div><label>Programmer l'envoi (facultatif)</label><input type="datetime-local" id="d" value="${c.envoyer_le ? c.envoyer_le.slice(0, 16) : ""}"></div><div></div></div>
-    <div class="row" style="margin-top:16px;gap:8px">
-      ${modifiable ? `<button class="btn sec" id="save" style="flex:0;white-space:nowrap">Enregistrer le brouillon</button>
-      <button class="btn sec" id="test" style="flex:0;white-space:nowrap">M'envoyer un test</button>
-      <button class="btn" id="prog" style="flex:0;white-space:nowrap">Programmer</button>
-      <button class="btn ok" id="now" style="flex:0;white-space:nowrap">Envoyer maintenant</button>` : `<span class="pill ${STATUT[c.statut]?.[1] || ""}">${STATUT[c.statut]?.[0] || c.statut}</span>`}
-      ${c.statut === "running" ? `<button class="btn dang" id="pause" style="flex:0">Mettre en pause</button>` : ""}
-    </div><div class="msg" id="m"></div>
+  app.innerHTML = `<div class="entete">${ariane(["#/emails", "Newsletters"], ["", id === "nouveau" ? "Nouvelle newsletter" : esc(c.sujet)])}
+    <div class="droite">${modifiable ? `<button class="btn" id="test">✈ &nbsp;Enregistrer et envoyer un email de test</button><button class="btn" id="save">Enregistrer</button>` : `<span class="pill ${STATUT[c.statut]?.[1] || ""}">${STATUT[c.statut]?.[0] || c.statut}</span>`}
+      ${c.statut === "running" ? `<button class="btn dang" id="pause">Mettre en pause</button>` : ""}<a class="btn sec" href="#/emails">Annuler</a></div></div>
+  <div class="msg" id="m" style="margin:-10px 0 14px"></div>
+  <div class="cartes2">
+    <div class="card"><label style="margin-top:0">Objet <span class="rq">*</span></label><input id="s" value="${esc(c.sujet)}" placeholder="Ce que le lecteur voit dans sa boîte">
+      <label>Nom interne <span class="mute">(facultatif)</span></label><input id="n" value="${esc(c.titre)}">
+      <label>Corps <span class="rq">*</span></label>
+      <div class="toolbar">
+        <button data-c="bold"><b>B</b></button><button data-c="italic"><i>I</i></button><button data-c="underline"><u>U</u></button>
+        <button data-c="formatBlock" data-v="h2">Titre</button><button data-c="formatBlock" data-v="p">Normal</button>
+        <button data-c="insertUnorderedList">• Liste</button><button data-c="insertOrderedList">1. Liste</button><button data-c="justifyLeft">⯇</button><button data-c="justifyCenter">≡</button><button data-c="createLink">🔗 Lien</button><button data-c="removeFormat">Effacer</button>
+      </div>
+      <div class="editeur" id="corps" contenteditable="${modifiable}">${c.corps}</div></div>
+    <div><div class="card reglages"><h3>Paramètres <span class="aide" style="display:inline-flex;width:18px;height:18px;border-radius:50%;background:#c3c9d4;color:#fff;font-size:12px;align-items:center;justify-content:center">?</span></h3><div class="c">
+      <label>Inclure les tags suivants : <a href="javascript:void 0" id="tt">tout sélectionner</a> | <a href="javascript:void 0" id="tn">tout désélectionner</a></label>
+      <div class="checks" style="flex-direction:column;max-height:300px">${L.map(l => `<label><input type="checkbox" value="${l.id}" ${c.listes.includes(l.id) ? "checked" : ""}> ${esc(l.nom)} <span class="mute">(${l.abonnes})</span></label>`).join("")}</div>
+      <label>Date d'envoi <span class="mute">(vide = tout de suite)</span></label><input type="datetime-local" id="d" value="${c.envoyer_le ? c.envoyer_le.slice(0, 16) : ""}">
+      ${modifiable ? `<div class="row" style="margin-top:18px;gap:10px"><button class="btn" id="prog" style="flex:1">Programmer</button><button class="btn ok" id="now" style="flex:1">Envoyer maintenant</button></div>` : ""}
+    </div></div>
+    <div class="card reglages" style="margin-top:22px"><h3>Variables disponibles</h3><div class="c"><p><span class="var">{{ .Subscriber.FirstName }}</span> - Prénom</p><p><span class="var">{{ .Subscriber.Email }}</span> - Email</p></div></div></div>
   </div>`;
   const m = document.getElementById("m");
   const dire = (t, ok) => { m.className = "msg " + (ok ? "ok" : "err"); m.textContent = t; };
+  document.getElementById("tt").onclick = () => document.querySelectorAll(".checks input").forEach(i => i.checked = true);
+  document.getElementById("tn").onclick = () => document.querySelectorAll(".checks input").forEach(i => i.checked = false);
   document.querySelectorAll(".toolbar button").forEach(b => b.onclick = e => {
     e.preventDefault();
     if (b.dataset.c === "createLink") { const u = prompt("Adresse du lien (https://…)"); if (u) document.execCommand("createLink", false, u); }
@@ -280,13 +382,13 @@ async function editeurEmail(id) {
     envoyer_le: document.getElementById("d").value ? new Date(document.getElementById("d").value).toISOString() : ""});
   const enregistrer = async () => {
     const x = donnees();
-    if (!x.sujet) throw {msg: "Indique un sujet."};
-    if (!x.listes.length) throw {msg: "Choisis au moins une liste."};
+    if (!x.sujet) throw {msg: "Indique un objet."};
+    if (!x.listes.length) throw {msg: "Choisis au moins un tag."};
     if (cid) await put("/studio/campagnes/" + cid, x); else { cid = (await post("/studio/campagnes", x)).id; history.replaceState(null, "", "#/emails/" + cid); }
     return x;
   };
   const action = (el, fn) => el && (el.onclick = async () => { el.disabled = true; try { await fn(); } catch (x) { dire(x.msg || "Erreur"); } el.disabled = false; });
-  action(document.getElementById("save"), async () => { await enregistrer(); dire("Brouillon enregistré.", true); });
+  action(document.getElementById("save"), async () => { await enregistrer(); dire("Newsletter enregistrée.", true); });
   action(document.getElementById("test"), async () => {
     await enregistrer(); const e = prompt("Envoyer le test à quelle adresse ?", localStorage.getItem("bt_test") || "");
     if (!e) return; try { localStorage.setItem("bt_test", e); } catch {}
@@ -304,19 +406,22 @@ async function editeurEmail(id) {
   action(document.getElementById("pause"), async () => { await put(`/studio/campagnes/${cid}/statut`, {statut: "paused"}); dire("Envoi en pause.", true); });
 }
 
-/* ── Formations ──────────────────────────────────────── */
+/* ── Mes formations ──────────────────────────────────── */
 async function formations() {
   const d = await api("/admin/resume");
-  app.innerHTML = `${entete("Formations", d.formations.length)}
-  <div class="card"><h2 style="margin-top:0">Ouvrir un accès à un élève</h2>
+  app.innerHTML = `${entete("Mes formations", d.formations.length, "", `<button class="btn" id="ba">+ &nbsp;Ajouter un élève</button><button class="btn" id="be">Elèves</button>`)}
+  <div id="za" hidden><div class="card" style="margin-bottom:22px"><h2 style="margin-top:0">Donner accès à une formation</h2>
     <div class="row"><div><label>Email</label><input id="ae" type="email" placeholder="email de l'élève"></div>
     <div><label>Prénom</label><input id="ap" placeholder="facultatif"></div>
     <div><label>Formation</label><select id="af">${d.formations.map(f => `<option value="${esc(f.slug)}">${esc(f.titre)}</option>`).join("")}</select></div>
-    <div style="flex:0"><button class="btn" id="ao" style="white-space:nowrap">Ouvrir + envoyer le lien</button></div></div><div class="msg" id="am"></div></div>
-  <h2>Chercher un élève</h2><input id="q" placeholder="email ou prénom (3 lettres minimum)"><div id="qr"></div>
-  <h2>Tes formations</h2>
-  <div class="wrap"><table><tr><th>Formation</th><th>Élèves</th><th></th></tr>
-  ${d.formations.map(f => `<tr><td>${esc(f.titre)}</td><td>${f.eleves.toLocaleString("fr-FR")}</td><td><a href="/espace/#/f/${esc(f.slug)}" target="_blank">Voir comme un élève ↗</a></td></tr>`).join("")}</table></div>`;
+    <div style="flex:0"><button class="btn" id="ao">+ &nbsp;Ajouter</button></div></div><div class="msg" id="am"></div></div></div>
+  <div id="ze" hidden><div class="card" style="margin-bottom:22px"><h2 style="margin-top:0">Elèves</h2><input id="q" class="recherche" placeholder="Chercher : email ou prénom (3 lettres minimum)"><div id="qr"></div></div></div>
+  <div class="wrap"><table><tr><th>Nom</th><th>Elèves</th><th>Statut</th><th></th></tr>
+  ${d.formations.map(f => `<tr><td><a href="/espace/#/f/${esc(f.slug)}" target="_blank">${esc(f.titre)}</a></td><td>${f.eleves.toLocaleString("fr-FR")}</td><td>${statut(true)}</td>
+    <td style="text-align:right">${points([`<a href="/espace/#/f/${esc(f.slug)}" target="_blank">Voir comme un élève</a>`, `<button data-f="${esc(f.slug)}" class="donner">Ajouter un élève</button>`])}</td></tr>`).join("")}</table></div>`;
+  document.getElementById("ba").onclick = () => { const z = document.getElementById("za"); z.hidden = !z.hidden; };
+  document.getElementById("be").onclick = () => { const z = document.getElementById("ze"); z.hidden = !z.hidden; if (!z.hidden) document.getElementById("q").focus(); };
+  document.querySelectorAll(".donner").forEach(b => b.onclick = () => { document.getElementById("za").hidden = false; document.getElementById("af").value = b.dataset.f; document.getElementById("ae").focus(); });
   document.getElementById("ao").onclick = async () => {
     const m = document.getElementById("am");
     try { const r = await post("/admin/acces", {email: document.getElementById("ae").value, prenom: document.getElementById("ap").value, formation: document.getElementById("af").value});
@@ -327,41 +432,58 @@ async function formations() {
   q.oninput = () => { clearTimeout(t); t = setTimeout(async () => {
     if (q.value.trim().length < 3) { document.getElementById("qr").innerHTML = ""; return; }
     const rows = await api("/admin/eleves?q_=" + encodeURIComponent(q.value.trim()));
-    document.getElementById("qr").innerHTML = `<div class="wrap" style="margin-top:10px"><table><tr><th>Élève</th><th>Formations</th><th>Dernière connexion</th></tr>
-      ${rows.map(r => `<tr><td><strong>${esc(r.email)}</strong><div class="mute">${esc(r.prenom)} ${esc(r.nom)}</div></td><td>${r.formations.map(f => `<span class="pill">${esc(f)}</span>`).join("") || "—"}</td><td>${date(r.derniere_connexion)}</td></tr>`).join("") || `<tr><td colspan="3" class="vide">Aucun élève.</td></tr>`}</table></div>`;
+    document.getElementById("qr").innerHTML = `<div class="wrap" style="margin-top:14px;box-shadow:none"><table><tr><th>Nom</th><th>Email</th><th>Formations</th><th>Dernière connexion</th></tr>
+      ${rows.map(r => `<tr><td>${esc(r.prenom)} ${esc(r.nom)}</td><td><a>${esc(r.email)}</a></td><td class="tag">${r.formations.map(esc).join(", ") || "—"}</td><td>${dmy(r.derniere_connexion)}</td></tr>`).join("") || `<tr><td colspan="4" class="vide">Aucun élève.</td></tr>`}</table></div>`;
   }, 300); };
 }
 
-/* ── Ventes : offres + liens de paiement ─────────────── */
+/* ── Ventes : produits (offres + liens de paiement) et transactions ── */
 async function ventes(mode) {
   const [d, V] = await Promise.all([api("/admin/offres"), api("/admin/ventes")]);
   const nomsF = Object.fromEntries(d.formations.map(f => [f.id, f.titre]));
-  app.innerHTML = `${mode === "transactions" ? entete("Ventes", V.length) : entete("Offres et liens de paiement", d.offres.length, "", `<button class="btn" id="nv">+ Créer</button>`)}
+  if (mode === "transactions") {
+    const offres = [...new Set(V.map(v => v.titre).filter(Boolean))];
+    app.innerHTML = `${entete("Transactions", V.length)}
+    <div class="deux"><div class="card filtres"><div class="onglets"><span class="on">Filtrer par</span></div><div style="padding:20px 24px;display:grid;gap:14px">
+      <input id="fe" placeholder="Email du client"><select id="fo"><option value="">Toutes les offres</option>${offres.map(o => `<option>${esc(o)}</option>`).join("")}</select>
+      <select id="fs"><option value="">Tous les types de transaction</option>${Object.entries(ETAT_VENTE).map(([k, [l]]) => `<option value="${k}">${l}</option>`).join("")}</select>
+      <button class="btn" id="fg">Filtrer</button></div></div>
+      <div id="tr"></div></div>`;
+    const dessiner = () => {
+      const e = document.getElementById("fe").value.trim().toLowerCase(), o = document.getElementById("fo").value, s = document.getElementById("fs").value;
+      const W = V.filter(v => (!e || v.email.includes(e)) && (!o || v.titre === o) && (!s || v.statut === s));
+      document.getElementById("tr").innerHTML = `<div class="wrap"><table><tr><th style="width:56px"><span class="statut"></span></th><th>Date de transaction</th><th>Client</th><th>Montant</th><th>Nom</th><th>Statut</th></tr>
+      ${W.map(v => { const [lib, cl] = ETAT_VENTE[v.statut] || [v.statut, ""]; const neg = v.statut === "remboursee";
+        return `<tr><td>${statut(!["interrompue", "remboursee"].includes(v.statut), "err")}</td><td class="facture"><b>${neg ? "Remboursement" : "Facture"} #${v.id}</b>${dmyh(v.created_at)}</td>
+        <td><div class="mail">${ROND}<div>${esc(v.prenom)}<div><a>${esc(v.email)}</a></div></div></div></td>
+        <td class="montant ${neg ? "neg" : ""}">${neg ? "−" : "+"} ${euros(v.encaisse)}${v.echeances !== 1 ? `<div class="mute">${v.payees}${v.echeances > 1 ? "/" + v.echeances : ""} × ${euros(v.montant_cents)}</div>` : ""}</td>
+        <td><a>${esc(v.titre || "—")}</a><div class="mute">${esc(v.moyen || "")}</div></td>
+        <td><span class="pill ${cl}">${lib}</span>${v.fin_raison ? `<div class="mute">${esc(v.fin_raison)}</div>` : ""}</td></tr>`; }).join("") || `<tr><td colspan="6" class="vide">Aucune transaction enregistrée ici pour l'instant.</td></tr>`}</table></div>`;
+    };
+    document.getElementById("fg").onclick = dessiner; dessiner();
+    return;
+  }
+  app.innerHTML = `${entete("Produits", d.offres.length, "", `<button class="btn" id="nv">+ &nbsp;Créer un produit</button>`)}
   <div id="form"></div>
-  <div class="wrap" id="z-offres"><table><tr><th>Offre</th><th>Prix</th><th>Débloque</th><th>Ventes</th><th>Lien à envoyer</th><th></th></tr>
+  <div class="wrap"><table><tr><th>Nom</th><th>Prix</th><th>Formations débloquées</th><th>Ventes</th><th>Lien de paiement</th><th>Statut</th><th></th></tr>
   ${d.offres.map(o => { const lien = `${d.site}/paiement/?offre=${o.slug}`;
-    return `<tr><td><strong>${esc(o.titre)}</strong>${o.active ? "" : ` <span class="pill err">Désactivée</span>`}</td>
+    return `<tr><td><a href="javascript:void 0" class="ed" data-s="${esc(o.slug)}">${esc(o.titre)}</a></td>
     <td>${euros(o.prix_cents)}<div class="mute">${PAIEMENT(o.echeances)}${o.echeances > 1 ? " · total " + euros(o.prix_cents * o.echeances) : ""}</div></td>
-    <td>${(o.formation_ids || []).map(i => `<span class="pill">${esc(nomsF[i] || i)}</span>`).join("") || "—"}</td><td>${o.ventes}</td>
-    <td><span class="lien">${esc(lien)}</span> <button class="btn sec cp" data-l="${esc(lien)}" style="padding:4px 9px">Copier</button></td>
-    <td><button class="btn sec ed" data-s="${esc(o.slug)}" style="padding:4px 9px">Modifier</button></td></tr>`; }).join("") || `<tr><td colspan="6" class="vide">Aucune offre.</td></tr>`}</table></div>
-  <div class="wrap" id="z-ventes"><table><tr><th>Date</th><th>Client</th><th>Offre</th><th>Encaissé</th><th>Statut</th></tr>
-  ${V.map(v => { const [lib, cl] = ETAT_VENTE[v.statut] || [v.statut, ""];
-    return `<tr><td>${dateh(v.created_at)}</td><td>${esc(v.email)}<div class="mute">${esc(v.prenom)}</div></td><td>${esc(v.titre || "—")}</td>
-    <td>${euros(v.encaisse)}${v.echeances !== 1 ? `<div class="mute">${v.payees}${v.echeances > 1 ? "/" + v.echeances : ""} × ${euros(v.montant_cents)}</div>` : ""}</td>
-    <td><span class="pill ${cl}">${lib}</span>${v.fin_raison ? `<div class="mute">${esc(v.fin_raison)}</div>` : ""}</td></tr>`; }).join("") || `<tr><td colspan="5" class="vide">Aucune vente enregistrée ici pour l'instant.</td></tr>`}</table></div>`;
+    <td class="tag">${(o.formation_ids || []).map(i => esc(nomsF[i] || i)).join(", ") || "—"}</td><td>${o.ventes}</td>
+    <td><span class="lien">${esc(lien)}</span></td><td>${statut(o.active, "err")}</td>
+    <td style="text-align:right">${points([`<button class="cp" data-l="${esc(lien)}">Copier le lien</button>`, `<a href="${esc(lien)}" target="_blank">Voir la page de paiement</a>`, `<button class="ed" data-s="${esc(o.slug)}">Modifier</button>`])}</td></tr>`; }).join("") || `<tr><td colspan="7" class="vide">Aucun produit.</td></tr>`}</table></div>`;
   document.querySelectorAll(".cp").forEach(b => b.onclick = async () => { try { await navigator.clipboard.writeText(b.dataset.l); b.textContent = "Copié ✓"; } catch { prompt("Copie ce lien :", b.dataset.l); } });
   const ouvrir = o => {
     o = o || {slug: "", titre: "", prix_cents: 0, echeances: 1, formation_ids: [], active: true};
-    document.getElementById("form").innerHTML = `<div class="card" style="margin-top:16px"><h2 style="margin-top:0">${o.slug ? "Modifier l'offre" : "Nouvelle offre"}</h2>
-      <div class="row"><div><label>Nom de l'offre (vu par le client)</label><input id="ot" value="${esc(o.titre)}" placeholder="ex. Financial Market Pro — Paul"></div>
-      <div><label>Prix par paiement (€)</label><input id="op" type="number" min="1" step="0.01" value="${o.prix_cents ? o.prix_cents / 100 : ""}"></div>
+    document.getElementById("form").innerHTML = `<div class="card" style="margin-bottom:22px"><h2 style="margin-top:0">${o.slug ? "Modifier le produit" : "Nouveau produit"}</h2>
+      <div class="row"><div><label>Nom du produit (vu par le client) <span class="rq">*</span></label><input id="ot" value="${esc(o.titre)}" placeholder="ex. Financial Market Pro — Paul"></div>
+      <div><label>Prix par paiement (€) <span class="rq">*</span></label><input id="op" type="number" min="1" step="0.01" value="${o.prix_cents ? o.prix_cents / 100 : ""}"></div>
       <div><label>Paiement</label><select id="oe">${[[1, "En une fois"], [2, "2 fois"], [3, "3 fois"], [4, "4 fois"], [5, "5 fois"], [6, "6 fois"], [8, "8 fois"], [10, "10 fois"], [12, "12 fois"], [0, "Abonnement mensuel sans fin"]].map(([v, l]) => `<option value="${v}" ${o.echeances === v ? "selected" : ""}>${l}</option>`).join("")}</select></div></div>
       <p class="mute" id="tot"></p>
       <label>Formations débloquées après paiement</label>
       <div class="checks">${d.formations.map(f => `<label><input type="checkbox" value="${f.id}" ${(o.formation_ids || []).includes(f.id) ? "checked" : ""}> ${esc(f.titre)}</label>`).join("")}</div>
-      <label><input type="checkbox" id="oa" style="width:auto" ${o.active ? "checked" : ""}> Offre active (le lien de paiement fonctionne)</label>
-      <div class="row" style="margin-top:14px;gap:8px"><button class="btn" id="os" style="flex:0;white-space:nowrap">${o.slug ? "Enregistrer" : "Créer l'offre et le lien"}</button><button class="btn sec" id="oc" style="flex:0">Annuler</button></div>
+      <label><input type="checkbox" id="oa" style="width:auto" ${o.active ? "checked" : ""}> Produit actif (le lien de paiement fonctionne)</label>
+      <div class="row" style="margin-top:16px;gap:10px"><button class="btn" id="os" style="flex:0">${o.slug ? "Enregistrer" : "Créer le produit et le lien"}</button><button class="btn sec" id="oc" style="flex:0">Annuler</button></div>
       <div class="msg" id="om"></div></div>`;
     const tot = () => { const p = +document.getElementById("op").value || 0, n = +document.getElementById("oe").value;
       document.getElementById("tot").textContent = n > 1 ? `Le client paiera ${n} × ${p.toLocaleString("fr-FR")} € = ${(p * n).toLocaleString("fr-FR")} € au total, un prélèvement par mois.` : n === 0 ? `Prélèvement de ${p.toLocaleString("fr-FR")} € chaque mois, jusqu'à résiliation.` : "Paiement en une fois (PayPal propose aussi le 4 fois sans frais au client)."; };
@@ -371,14 +493,12 @@ async function ventes(mode) {
       const m = document.getElementById("om"), b = document.getElementById("os"); b.disabled = true;
       try { const r = await post("/admin/offres", {slug: o.slug, titre: document.getElementById("ot").value, prix: +document.getElementById("op").value,
           echeances: +document.getElementById("oe").value, formations: [...document.querySelectorAll("#form .checks input:checked")].map(i => +i.value), active: document.getElementById("oa").checked});
-        m.className = "msg ok"; m.innerHTML = `Offre enregistrée. Lien à envoyer : <span class="lien">${esc(r.lien)}</span>`; setTimeout(ventes, 2500); }
+        m.className = "msg ok"; m.innerHTML = `Produit enregistré. Lien à envoyer : <span class="lien">${esc(r.lien)}</span>`; setTimeout(() => ventes(), 2500); }
       catch (x) { m.className = "msg err"; m.textContent = x.msg || "Erreur"; }
       b.disabled = false;
     };
     document.getElementById("form").scrollIntoView({behavior: "smooth"});
   };
-  document.getElementById(mode === "transactions" ? "z-offres" : "z-ventes").remove();
-  if (mode === "transactions") return;
   document.getElementById("nv").onclick = () => ouvrir();
   document.querySelectorAll(".ed").forEach(b => b.onclick = () => ouvrir(d.offres.find(o => o.slug === b.dataset.s)));
 }
@@ -401,36 +521,42 @@ async function pagesListe() {
     ["Formation offerte (inscription)", "/formation-offerte/"], ["Merci — formation offerte", "/formation-offerte/merci/"],
     ["Market Profile (page de vente)", "/marketprofile/"], ["Paiement", "/paiement/?offre=market-profile"], ["Espace élèves", "/espace/"],
   ];
-  app.innerHTML = `${entete("Pages et tunnels", L.length, "", `<button class="btn" id="np">+ Créer</button>`)}
-  <div id="modeles"></div><br>
-  <div class="wrap"><table><tr><th>Page</th><th>Statut</th><th>Vues</th><th>Inscrits</th><th></th></tr>
-  ${L.map(p => `<tr><td><a href="#/pages/${p.id}"><strong>${esc(p.titre)}</strong></a><div class="mute">basstrading.fr/p/${esc(p.slug)}/</div></td>
-    <td><span class="pill ${p.publiee ? "ok" : ""}">${p.publiee ? "En ligne" : "Brouillon"}</span></td><td>${p.vues}</td><td>${p.inscrits}</td>
-    <td style="white-space:nowrap"><a class="btn sec" style="padding:4px 9px" href="#/pages/${p.id}">Modifier</a>
-      <button class="btn sec dup" data-i="${p.id}" style="padding:4px 9px">Dupliquer</button>
-      ${p.publiee ? `<a class="btn sec" style="padding:4px 9px" href="/p/${esc(p.slug)}/" target="_blank">Voir ↗</a>` : ""}
-      <button class="btn dang sup" data-i="${p.id}" data-t="${esc(p.titre)}" style="padding:4px 9px">Supprimer</button></td></tr>`).join("") || `<tr><td colspan="5" class="vide">Aucune page. Crée ta première page en 2 clics.</td></tr>`}
-  </table></div>
+  app.innerHTML = `${entete("Tunnels", L.length, "", `<input class="recherche" id="cherche" placeholder="Chercher" style="width:240px!important">
+    <select id="etat" style="width:180px"><option value="">Tous</option><option value="1">Actif(ve)</option><option value="0">Inactif(ve)</option></select>
+    <button class="btn" id="filtre">⏷ &nbsp;Filtre</button><button class="btn fonce" id="np">⊕ &nbsp;Créer</button>`)}
+  <div id="modeles"></div>
+  <div class="wrap"><table><tr><th>Nom</th><th>Statut</th><th>Vues</th><th>Inscrits</th><th>Date de création</th><th></th></tr><tbody id="lp"></tbody></table></div>
   <h2>Pages fixes du site</h2><p class="mute">Ces pages existaient avant le Studio. Dis-moi lesquelles tu veux pouvoir modifier ici et je les reconstruis dans l'éditeur.</p>
   <div class="wrap"><table>${fixes.map(([n, u]) => `<tr><td>${esc(n)}</td><td><a href="${u}" target="_blank">basstrading.fr${esc(u)} ↗</a></td></tr>`).join("")}</table></div>`;
+  const dessiner = () => {
+    const t = document.getElementById("cherche").value.trim().toLowerCase(), e = document.getElementById("etat").value;
+    const P = L.filter(p => (!t || p.titre.toLowerCase().includes(t)) && (e === "" || +p.publiee === +e));
+    document.getElementById("lp").innerHTML = P.map(p => `<tr><td><a href="#/pages/${p.id}">${esc(p.titre)}</a><div class="mute">basstrading.fr/p/${esc(p.slug)}/</div></td>
+      <td>${statut(p.publiee)}</td><td>${p.vues}</td><td>${p.inscrits}</td><td>${dmyh(p.created_at || p.updated_at)}</td>
+      <td style="text-align:right">${points([`<a href="#/pages/${p.id}">Modifier</a>`, p.publiee ? `<a href="/p/${esc(p.slug)}/" target="_blank">Voir</a>` : "", `<button class="dup" data-i="${p.id}">Dupliquer</button>`, `<button class="sup" data-i="${p.id}" data-t="${esc(p.titre)}" style="color:var(--err)">Supprimer</button>`])}</td></tr>`).join("")
+      || `<tr><td colspan="6" class="vide">Aucun tunnel. Clique sur « Créer » pour faire ta première page en 2 clics.</td></tr>`;
+    document.querySelectorAll(".dup").forEach(b => b.onclick = async () => { const r = await post("/studio/pages", {copie_de: +b.dataset.i}); location.hash = "#/pages/" + r.id; });
+    document.querySelectorAll(".sup").forEach(b => b.onclick = async () => {
+      if (!confirm(`Supprimer définitivement la page « ${b.dataset.t} » ?`)) return;
+      await api("/studio/pages/" + b.dataset.i, {method: "DELETE"}); pagesListe();
+    });
+  };
+  document.getElementById("filtre").onclick = dessiner;
+  document.getElementById("cherche").onkeydown = e => { if (e.key === "Enter") dessiner(); };
+  dessiner();
   document.getElementById("np").onclick = () => {
-    const M = [["capture", "Page d'inscription", "Un titre, des promesses, un formulaire : capte des emails."], ["vente", "Page de vente", "Vidéo, arguments, témoignage et bouton de paiement."],
-      ["merci", "Page de remerciement", "Après une inscription ou un achat."], ["vide", "Page vide", "Tu pars de zéro."]];
-    document.getElementById("modeles").innerHTML = `<div class="card" style="margin-top:16px"><h2 style="margin-top:0">Choisis un modèle</h2><div class="grid">
-      ${M.map(([k, t, d]) => `<button class="card mod" data-m="${k}" style="text-align:left;cursor:pointer;font:inherit"><strong>${t}</strong><div class="mute">${d}</div></button>`).join("")}</div></div>`;
+    const M = [["capture", "Page d'inscription", "Construire une audience : un titre, des promesses, un formulaire."], ["vente", "Page de vente", "Vendre : vidéo, arguments, témoignage et bouton de paiement."],
+      ["merci", "Page de remerciement", "Après une inscription ou un achat."], ["vide", "Page vide", "Personnalisé : tu pars de zéro."]];
+    document.getElementById("modeles").innerHTML = `<div class="card" style="margin-bottom:22px"><h2 style="margin-top:0">Créer un tunnel — choisis l'objectif</h2><div class="grid">
+      ${M.map(([k, t, d]) => `<button class="card mod" data-m="${k}" style="text-align:left;cursor:pointer;font:inherit;border:1px solid var(--line2)"><strong style="font-weight:600">${t}</strong><div class="mute" style="margin-top:6px">${d}</div></button>`).join("")}</div></div>`;
     document.querySelectorAll(".mod").forEach(b => b.onclick = async () => { const r = await post("/studio/pages", {modele: b.dataset.m}); location.hash = "#/pages/" + r.id; });
   };
-  document.querySelectorAll(".dup").forEach(b => b.onclick = async () => { const r = await post("/studio/pages", {copie_de: +b.dataset.i}); location.hash = "#/pages/" + r.id; });
-  document.querySelectorAll(".sup").forEach(b => b.onclick = async () => {
-    if (!confirm(`Supprimer définitivement la page « ${b.dataset.t} » ?`)) return;
-    await api("/studio/pages/" + b.dataset.i, {method: "DELETE"}); pagesListe();
-  });
 }
 
 async function editeurPage(id) {
   const [P, L, O, PG] = await Promise.all([api("/studio/pages/" + id), listes(), api("/admin/offres"), api("/studio/pages")]);
   const champ = (lab, html) => `<label>${lab}</label>${html}`;
-  app.innerHTML = `${ariane("#/pages", "Pages et tunnels", esc(P.titre))}
+  app.innerHTML = `${ariane(["#/pages", "Tunnels"], ["", esc(P.titre)])}
   <div class="row" style="align-items:center;margin:0 0 14px"><h1 style="margin:0">${esc(P.titre)}</h1>
     <div style="flex:0 0 auto;min-width:0;display:flex;gap:8px;white-space:nowrap;align-items:center"><label style="margin:0;display:flex;gap:6px;align-items:center;color:var(--txt)"><input type="checkbox" id="pub" style="width:auto" ${P.publiee ? "checked" : ""}> En ligne</label>
     <button class="btn" id="sv">Enregistrer</button><a class="btn sec" id="voir" target="_blank" href="/p/${esc(P.slug)}/">Voir ↗</a></div></div>
@@ -520,92 +646,108 @@ async function editeurPage(id) {
   };
 }
 
-/* ── Séquences ───────────────────────────────────────── */
+/* ── Campagnes (séquences d'emails) ──────────────────── */
 async function sequencesListe() {
   const [S, L, O] = await Promise.all([api("/studio/sequences"), listes(), api("/admin/offres")]);
   const nomL = Object.fromEntries(L.map(l => [l.id, l.nom])), nomO = Object.fromEntries(O.offres.map(o => [o.slug, o.titre]));
-  const decl = s => s.declencheur === "achat" ? (s.offre_slug ? "Achat : " + (nomO[s.offre_slug] || s.offre_slug) : "—") : (s.liste_id ? "Liste : " + (nomL[s.liste_id] || s.liste_id) : "—");
-  app.innerHTML = `${entete("Campagnes", S.length, "", `<button class="btn" id="ns">+ Créer</button>`)}
-  <p class="mute" style="margin-top:-6px">Une campagne envoie une suite d'emails automatiquement, à J+1, J+3… après l'entrée du contact (inscription à une liste ou achat d'une offre). Seuls les contacts arrivés <strong>après</strong> l'activation la reçoivent. Envois de 8 h à 21 h.</p>
-  <div class="wrap"><table><tr><th>Nom</th><th>Démarre sur</th><th>Nombre d'emails</th><th>En cours</th><th>Envoyés</th><th>Statut</th></tr>
-  ${S.map(s => `<tr><td><a href="#/sequences/${s.id}"><strong>${esc(s.nom)}</strong></a>${s.note ? `<div class="mute">${esc(s.note).slice(0, 140)}</div>` : ""}</td><td>${esc(decl(s))}</td><td>${s.mails}</td><td>${s.en_cours}</td><td>${s.envoyes}</td>
-    <td><span class="pill ${s.active ? "ok" : ""}">${s.active ? "Active" : "Désactivée"}</span></td></tr>`).join("") || `<tr><td colspan="6" class="vide">Aucune séquence.</td></tr>`}</table></div>`;
+  const decl = s => s.declencheur === "achat" ? (s.offre_slug ? "Achat : " + (nomO[s.offre_slug] || s.offre_slug) : "—") : (s.liste_id ? "Tag : " + (nomL[s.liste_id] || s.liste_id) : "—");
+  app.innerHTML = `${entete("Campagnes", S.length, "", `<button class="btn" id="ns">+ &nbsp;Créer</button>`)}
+  <div class="wrap"><table><tr><th>Nom</th><th>Description</th><th>Nombre d'emails</th><th>Contacts en cours</th><th>Emails envoyés</th><th>Statut</th></tr>
+  ${S.map(s => `<tr><td><a href="#/sequences/${s.id}">${esc(s.nom)}</a><div class="mute">Démarre sur ${esc(decl(s))}</div></td><td class="tag" style="max-width:380px">${esc(s.note || "").slice(0, 120)}</td><td>${s.mails}</td><td>${s.en_cours}</td><td>${s.envoyes}</td>
+    <td>${statut(s.active)}</td></tr>`).join("") || `<tr><td colspan="6" class="vide">Aucune campagne.</td></tr>`}</table></div>
+  <p class="mute" style="margin-top:14px">Une campagne envoie une suite d'emails automatiquement après l'entrée du contact (ajout d'un tag ou achat d'un produit). Seuls les contacts arrivés <strong>après</strong> l'activation la reçoivent. Envois de 8 h à 21 h.</p>`;
   document.getElementById("ns").onclick = async () => { const r = await post("/studio/sequences", {}); location.hash = "#/sequences/" + r.id; };
 }
 
-async function editeurSequence(id) {
+async function editeurSequence(id, vue) {
   const [S, L, O] = await Promise.all([api("/studio/sequences/" + id), listes(), api("/admin/offres")]);
   const E = S.etapes;
-  app.innerHTML = `${ariane("#/sequences", "Campagnes", esc(S.nom))}
-  <div class="row" style="align-items:center;margin:0 0 14px"><h1 style="margin:0">${esc(S.nom)}</h1>
-    <div style="flex:0 0 auto;min-width:0;display:flex;gap:8px;white-space:nowrap;align-items:center"><label style="margin:0;display:flex;gap:6px;align-items:center;color:var(--txt)"><input type="checkbox" id="sa" style="width:auto" ${S.active ? "checked" : ""}> Active</label>
-    <button class="btn" id="ss">Enregistrer</button><button class="btn dang" id="sd">Supprimer</button></div></div>
-  ${S.note ? `<p class="mute">${esc(S.note)}</p>` : ""}
-  <div class="card"><div class="row"><div><label>Nom</label><input id="sn" value="${esc(S.nom)}"></div>
-    <div style="flex:0;min-width:200px"><label>Démarre quand le contact…</label><select id="sdc"><option value="liste">entre dans une liste</option><option value="achat" ${S.declencheur === "achat" ? "selected" : ""}>achète une offre</option></select></div>
-    <div id="zl"><label>Liste</label><select id="sl"><option value="">— choisir —</option>${L.map(l => `<option value="${l.id}" ${S.liste_id === l.id ? "selected" : ""}>${esc(l.nom)} (${l.abonnes})</option>`).join("")}</select></div>
-    <div id="zo"><label>Offre</label><select id="so"><option value="">— choisir —</option>${O.offres.map(o => `<option value="${esc(o.slug)}" ${S.offre_slug === o.slug ? "selected" : ""}>${esc(o.titre)}</option>`).join("")}</select></div></div>
-    <label>Arrêter la séquence si le contact achète :</label>
+  const duree = h => { h = +h || 0; const j = Math.floor(h / 24), r = h % 24; return h === 0 ? "0 heure" : [j ? j + (j > 1 ? " jours" : " jour") : "", r ? r + (r > 1 ? " heures" : " heure") : ""].filter(Boolean).join(" "); };
+  const donnees = () => ({nom: S.nom, declencheur: S.declencheur, liste_id: S.liste_id || null, offre_slug: S.offre_slug || "", arret_offres: S.arret_offres || [], active: S.active,
+    etapes: E.map(e => ({id: e.id || 0, delai_heures: +e.delai_heures || 0, sujet: e.sujet, corps: e.corps, active: e.active !== false}))});
+  const sauver = async () => { await put("/studio/sequences/" + id, donnees()); };
+
+  // Éditeur d'un email (comme « Campaigns > campagne > » dans l'ancien Systeme.io)
+  if (vue !== undefined) {
+    const i = vue === "nouveau" ? E.push({id: 0, delai_heures: 24, sujet: "", corps: "<p>Salut {first_name},</p><p></p><p>Bass</p>", active: true}) - 1 : +vue, e = E[i];
+    if (!e) { location.hash = "#/sequences/" + id; return; }
+    app.innerHTML = `<div class="entete">${ariane(["#/sequences", "Campagnes"], ["#/sequences/" + id, esc(S.nom)], ["", ""])}
+      <div class="droite"><button class="btn" id="et1">✈ &nbsp;Enregistrer et envoyer un email de test</button><button class="btn" id="es1">💾 &nbsp;Enregistrer</button><a class="btn sec" href="#/sequences/${id}">Annuler</a></div></div>
+    <div class="msg" id="em" style="margin:-10px 0 14px"></div>
+    <div class="cartes2">
+      <div class="card"><label style="margin-top:0">Objet <span class="rq">*</span></label><input id="es" value="${esc(e.sujet)}" placeholder="Insère l'objet de ton email ici">
+        <label>Corps <span class="rq">*</span></label>
+        <div class="toolbar"><button data-c="bold"><b>B</b></button><button data-c="italic"><i>I</i></button><button data-c="underline"><u>U</u></button><button data-c="insertOrderedList">1. Liste</button><button data-c="insertUnorderedList">• Liste</button><button data-c="justifyLeft">⯇</button><button data-c="justifyCenter">≡</button><button data-c="formatBlock" data-v="p">Normal</button><button data-c="createLink">🔗 Lien</button></div>
+        <div class="editeur" id="ec" contenteditable="true">${e.corps}</div></div>
+      <div><div class="card reglages"><h3>Paramètres</h3><div class="c">
+        <label>Délai avant l'envoi de l'email <span class="rq">*</span></label>
+        <div class="row"><input id="edn" type="number" min="0" style="flex:1"><select id="edu" style="flex:1.6"><option value="1">heures</option><option value="24">jours</option></select></div>
+        <label>Après</label><input disabled value="${i === 0 ? "l'entrée dans la campagne" : "l'email " + i + " : " + esc(E[i - 1].sujet)}">
+        <label style="display:flex;gap:10px;align-items:center;margin-top:22px"><button class="inter ${e.active ? "on" : ""}" id="ea"></button> Email actif</label>
+        <p class="mute" style="margin-top:16px">Les emails partent entre 8 h et 21 h (heure de Paris).</p>
+      </div></div>
+      <div class="card reglages" style="margin-top:22px"><h3>Variables disponibles</h3><div class="c"><p><span class="var">{first_name}</span> - Prénom</p></div></div></div>
+    </div>`;
+    const h = +e.delai_heures || 0, enJours = h && h % 24 === 0;
+    document.getElementById("edn").value = enJours ? h / 24 : h; document.getElementById("edu").value = enJours ? "24" : "1";
+    document.getElementById("ea").onclick = ev => ev.target.classList.toggle("on");
+    const ec = document.getElementById("ec");
+    document.querySelectorAll(".toolbar button").forEach(t => t.onclick = ev => { ev.preventDefault();
+      if (t.dataset.c === "createLink") { const u = prompt("Adresse du lien (https://…)"); if (u) document.execCommand("createLink", false, u); } else document.execCommand(t.dataset.c, false, t.dataset.v || null); });
+    const lire = () => { e.sujet = document.getElementById("es").value.trim(); e.corps = ec.innerHTML; e.active = document.getElementById("ea").classList.contains("on");
+      e.delai_heures = Math.max(0, Math.round((+document.getElementById("edn").value || 0) * +document.getElementById("edu").value)); if (!e.sujet) throw {msg: "Indique l'objet de l'email."}; };
+    const m = document.getElementById("em");
+    document.getElementById("es1").onclick = async () => { try { lire(); await sauver(); m.className = "msg ok"; m.textContent = "Enregistré."; setTimeout(() => location.hash = "#/sequences/" + id, 700); } catch (x) { m.className = "msg err"; m.textContent = x.msg || "Erreur"; } };
+    document.getElementById("et1").onclick = async () => {
+      try { lire(); await sauver(); const a = prompt("Envoyer le test à quelle adresse ?", localStorage.getItem("bt_test") || ""); if (!a) return;
+        try { localStorage.setItem("bt_test", a); } catch {}
+        await post("/studio/sequences/test", {email: a, sujet: e.sujet, corps: e.corps}); m.className = "msg ok"; m.textContent = "Enregistré, test envoyé à " + a + ".";
+        if (vue === "nouveau") history.replaceState(null, "", `#/sequences/${id}`); }
+      catch (x) { m.className = "msg err"; m.textContent = x.msg || "Erreur"; }
+    };
+    return;
+  }
+
+  // Intérieur de la campagne : tableau des emails
+  let cumul = 0;
+  app.innerHTML = `<div class="entete">${ariane(["#/sequences", "Campagnes"], ["", esc(S.nom)])}
+    <div class="droite"><button class="btn sec" id="mc">✎ &nbsp;Modifier la campagne</button><a class="btn" href="#/sequences/${id}/email/nouveau">+ &nbsp;Ajouter un email</a></div></div>
+  <div id="zc" hidden><div class="card" style="margin-bottom:22px">
+    <div class="row"><div><label style="margin-top:0">Nom <span class="rq">*</span></label><input id="sn" value="${esc(S.nom)}"></div>
+      <div style="flex:0 0 auto;min-width:220px"><label style="margin-top:0">Démarre quand le contact…</label><select id="sdc"><option value="liste">reçoit un tag</option><option value="achat" ${S.declencheur === "achat" ? "selected" : ""}>achète un produit</option></select></div>
+      <div id="zl"><label style="margin-top:0">Tag</label><select id="sl"><option value="">— choisir —</option>${L.map(l => `<option value="${l.id}" ${S.liste_id === l.id ? "selected" : ""}>${esc(l.nom)} (${l.abonnes})</option>`).join("")}</select></div>
+      <div id="zo"><label style="margin-top:0">Produit</label><select id="so"><option value="">— choisir —</option>${O.offres.map(o => `<option value="${esc(o.slug)}" ${S.offre_slug === o.slug ? "selected" : ""}>${esc(o.titre)}</option>`).join("")}</select></div></div>
+    <label>Arrêter la campagne si le contact achète :</label>
     <div class="checks">${O.offres.map(o => `<label><input type="checkbox" class="arr" value="${esc(o.slug)}" ${(S.arret_offres || []).includes(o.slug) ? "checked" : ""}> ${esc(o.titre)}</label>`).join("")}</div>
-    <div class="msg" id="sm"></div></div>
-  <h2>Les emails</h2><div id="et"></div>
-  <button class="btn sec" id="ae">+ Ajouter un email</button>`;
+    ${S.note ? `<p class="mute">${esc(S.note)}</p>` : ""}
+    <div class="row" style="margin-top:18px;gap:10px;align-items:center"><label style="margin:0;flex:0 0 auto;display:flex;gap:10px;align-items:center"><button class="inter ${S.active ? "on" : ""}" id="sa"></button> Campagne active</label>
+      <span></span><button class="btn" id="ss" style="flex:0">Enregistrer</button><button class="btn dang" id="sd" style="flex:0">Supprimer</button></div>
+    <div class="msg" id="sm"></div></div></div>
+  <div class="wrap"><table><tr><th>Titre de l'email</th><th>Délai</th><th>Contacts à cette étape</th><th>Emails envoyés</th><th>Ouverts</th><th>Total clics</th><th>Commentaire</th><th></th></tr>
+  ${E.map((e, i) => { cumul += e.active ? (+e.delai_heures || 0) : 0;
+    return `<tr style="${e.active ? "" : "opacity:.55"}"><td><a href="#/sequences/${id}/email/${i}">${esc(e.sujet)}</a></td><td>${duree(e.delai_heures)}</td>
+      <td>${(S.en_attente || {})[i] || 0}</td><td>${e.envoyes || 0}</td><td class="mute">—</td><td class="mute">—</td>
+      <td class="mute">${e.active ? `J+${Math.round(cumul / 24 * 10) / 10} après l'entrée` : "Désactivé"}</td>
+      <td style="text-align:right;white-space:nowrap">${points([`<a href="#/sequences/${id}/email/${i}">Modifier</a>`, i > 0 ? `<button data-a="haut" data-i="${i}">Monter</button>` : "", i < E.length - 1 ? `<button data-a="bas" data-i="${i}">Descendre</button>` : "",
+        `<button data-a="act" data-i="${i}">${e.active ? "Désactiver" : "Activer"}</button>`, `<button data-a="sup" data-i="${i}" style="color:var(--err)">Supprimer</button>`])}</td></tr>`; }).join("") || `<tr><td colspan="8" class="vide">Aucun email. Clique sur « + Ajouter un email ».</td></tr>`}</table></div>
+  <div class="msg" id="tm"></div>`;
+  document.getElementById("mc").onclick = () => { const z = document.getElementById("zc"); z.hidden = !z.hidden; };
   const zones = () => { const a = document.getElementById("sdc").value === "achat"; document.getElementById("zl").style.display = a ? "none" : ""; document.getElementById("zo").style.display = a ? "" : "none"; };
   document.getElementById("sdc").onchange = zones; zones();
-  let ouvert = -1;
-  const dessiner = () => {
-    let cumul = 0;
-    const duree = h => { h = +h || 0; const j = Math.floor(h / 24), r = h % 24; return h === 0 ? "immédiatement" : [j ? j + " j" : "", r ? r + " h" : ""].filter(Boolean).join(" "); };
-    const lignes = E.map((e, i) => { cumul += e.active ? (+e.delai_heures || 0) : 0;
-      return `<tr style="${e.active ? "" : "opacity:.55"}${ouvert === i ? ";background:#f5f9fe" : ""}"><td><a href="javascript:void 0" data-a="ouv" data-i="${i}">${esc(e.sujet)}</a></td>
-        <td>${duree(e.delai_heures)}<div class="mute">${i === 0 ? "après l'entrée" : "après le précédent"} · J+${Math.round(cumul / 24 * 10) / 10}</div></td>
-        <td>${e.envoyes || 0}</td><td><span class="pill ${e.active ? "ok" : ""}">${e.active ? "Actif(ve)" : "Inactif"}</span></td>
-        <td style="white-space:nowrap;text-align:right"><button class="mini" data-a="haut" data-i="${i}" title="Monter">↑</button><button class="mini" data-a="bas" data-i="${i}" title="Descendre">↓</button><button class="mini" data-a="sup" data-i="${i}" title="Supprimer">✕</button>
-        <button class="btn sec" data-a="ouv" data-i="${i}" style="min-height:28px;padding:3px 10px;margin-left:6px">${ouvert === i ? "Fermer" : "Modifier"}</button></td></tr>`; }).join("");
-    const e = E[ouvert];
-    document.getElementById("et").innerHTML = `<div class="wrap"><table><tr><th>Objet de l'email</th><th>Délai</th><th>Emails envoyés</th><th>Statut</th><th></th></tr>
-      ${lignes || `<tr><td colspan="5" class="vide">Aucun email. Clique sur « + Ajouter un email ».</td></tr>`}</table></div>
-      ${e ? `<div class="card" style="margin-top:14px"><h2 style="margin:0 0 4px">Email ${ouvert + 1} — ${esc(e.sujet)}</h2>
-          <div class="row"><div><label>Objet de l'email</label><input id="es" value="${esc(e.sujet)}"></div><div style="flex:0;min-width:110px"><label>Délai : jours</label><input id="edj" type="number" min="0" value="${Math.floor((+e.delai_heures || 0) / 24)}"></div><div style="flex:0;min-width:110px"><label>+ heures</label><input id="edh" type="number" min="0" max="23" value="${(+e.delai_heures || 0) % 24}"></div></div>
-          <label><input type="checkbox" id="ea" style="width:auto" ${e.active ? "checked" : ""}> Email actif</label>
-          <label>Message <span class="mute">— {first_name} = prénom du lecteur</span></label>
-          <div class="toolbar"><button data-c="bold"><b>G</b></button><button data-c="italic"><i>I</i></button><button data-c="underline"><u>S</u></button><button data-c="insertUnorderedList">• Liste</button><button data-c="createLink">Lien</button></div>
-          <div class="editeur" id="ec" contenteditable="true">${e.corps}</div>
-          <div class="row" style="margin-top:10px"><button class="btn sec" id="et1" style="flex:0;white-space:nowrap">M'envoyer ce mail en test</button><span class="msg" id="em"></span></div></div>` : ""}`;
-    document.querySelectorAll("#et [data-a]").forEach(b => b.onclick = () => {
-      const i = +b.dataset.i;
-      if (b.dataset.a === "ouv") ouvert = ouvert === i ? -1 : i;
-      if (b.dataset.a === "haut" && i > 0) [E[i - 1], E[i]] = [E[i], E[i - 1]];
-      if (b.dataset.a === "bas" && i < E.length - 1) [E[i + 1], E[i]] = [E[i], E[i + 1]];
-      if (b.dataset.a === "sup" && confirm("Supprimer cet email de la séquence ?")) { E.splice(i, 1); ouvert = -1; }
-      dessiner();
-    });
-    if (ouvert >= 0) {
-      const e = E[ouvert];
-      document.getElementById("es").oninput = ev => e.sujet = ev.target.value;
-      const delai = () => e.delai_heures = Math.max(0, (+document.getElementById("edj").value || 0) * 24 + (+document.getElementById("edh").value || 0));
-      document.getElementById("edj").oninput = delai; document.getElementById("edh").oninput = delai;
-      document.getElementById("ea").onchange = ev => e.active = ev.target.checked;
-      const ec = document.getElementById("ec"); ec.oninput = () => e.corps = ec.innerHTML;
-      document.querySelectorAll("#et .toolbar button").forEach(t => t.onclick = ev => { ev.preventDefault();
-        if (t.dataset.c === "createLink") { const u = prompt("Adresse du lien (https://…)"); if (u) document.execCommand("createLink", false, u); } else document.execCommand(t.dataset.c);
-        e.corps = ec.innerHTML; });
-      document.getElementById("et1").onclick = async () => {
-        const m = document.getElementById("em"), a = prompt("Envoyer le test à quelle adresse ?", localStorage.getItem("bt_test") || ""); if (!a) return;
-        try { localStorage.setItem("bt_test", a); } catch {}
-        try { await post("/studio/sequences/test", {email: a, sujet: e.sujet, corps: e.corps}); m.className = "msg ok"; m.textContent = "Test envoyé à " + a + "."; }
-        catch (x) { m.className = "msg err"; m.textContent = x.msg || "Erreur"; }
-      };
-    }
-  };
-  dessiner();
-  document.getElementById("ae").onclick = () => { E.push({id: 0, delai_heures: 24, sujet: "Nouvel email", corps: "<p>Salut {first_name},</p><p></p><p>Bass</p>", active: true}); ouvert = E.length - 1; dessiner(); };
+  document.getElementById("sa").onclick = ev => ev.target.classList.toggle("on");
+  document.querySelectorAll(".pts [data-a]").forEach(b => b.onclick = async () => {
+    const i = +b.dataset.i;
+    if (b.dataset.a === "haut") [E[i - 1], E[i]] = [E[i], E[i - 1]];
+    if (b.dataset.a === "bas") [E[i + 1], E[i]] = [E[i], E[i + 1]];
+    if (b.dataset.a === "act") E[i].active = !E[i].active;
+    if (b.dataset.a === "sup") { if (!confirm(`Supprimer l'email « ${E[i].sujet} » de la campagne ?`)) return; E.splice(i, 1); }
+    try { await sauver(); editeurSequence(id); } catch (x) { const m = document.getElementById("tm"); m.className = "msg err"; m.textContent = x.msg || "Erreur"; }
+  });
   document.getElementById("ss").onclick = async () => {
     const m = document.getElementById("sm"), b = document.getElementById("ss"); b.disabled = true;
-    const d = {nom: document.getElementById("sn").value, declencheur: document.getElementById("sdc").value, liste_id: +document.getElementById("sl").value || null,
-      offre_slug: document.getElementById("so").value, arret_offres: [...document.querySelectorAll(".arr:checked")].map(x => x.value), active: document.getElementById("sa").checked,
-      etapes: E.map(e => ({id: e.id || 0, delai_heures: +e.delai_heures || 0, sujet: e.sujet, corps: e.corps, active: e.active !== false}))};
-    try { await put("/studio/sequences/" + id, d); m.className = "msg ok"; m.textContent = d.active ? "Enregistré. La séquence est active : les nouveaux contacts la recevront." : "Enregistré (séquence désactivée)."; setTimeout(() => editeurSequence(id), 1200); }
+    Object.assign(S, {nom: document.getElementById("sn").value, declencheur: document.getElementById("sdc").value, liste_id: +document.getElementById("sl").value || null,
+      offre_slug: document.getElementById("so").value, arret_offres: [...document.querySelectorAll(".arr:checked")].map(x => x.value), active: document.getElementById("sa").classList.contains("on")});
+    try { await sauver(); m.className = "msg ok"; m.textContent = S.active ? "Enregistré. La campagne est active : les nouveaux contacts la recevront." : "Enregistré (campagne désactivée)."; setTimeout(() => editeurSequence(id), 1200); }
     catch (x) { m.className = "msg err"; m.textContent = x.msg || "Erreur"; }
     b.disabled = false;
   };
@@ -637,7 +779,7 @@ async function route() {
     else if (h === "ventes") await ventes();
     else if (h === "transactions") await ventes("transactions");
     else if (h === "sequences") await sequencesListe();
-    else if (h.startsWith("sequences/")) await editeurSequence(+h.slice(10));
+    else if (h.startsWith("sequences/")) { const [sid, , v] = h.slice(10).split("/"); await editeurSequence(+sid, v); }
     else if (h === "pages") await pagesListe();
     else if (h.startsWith("pages/")) await editeurPage(+h.slice(6));
     else await accueil();
