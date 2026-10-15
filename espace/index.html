@@ -115,6 +115,8 @@ a.stat:hover{border-color:var(--gold)}
 .outils .esp{flex:1}
 .vit{background:transparent;border:1px solid var(--line);color:var(--mute);border-radius:8px;padding:4px 10px;cursor:pointer;font-size:13px}
 .vit.on{border-color:var(--gold);color:var(--gold)}
+.gros-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:86px;height:86px;border-radius:50%;border:0;background:var(--gold);color:#111;font-size:34px;padding-left:8px;cursor:pointer;box-shadow:0 10px 40px rgba(0,0,0,.55);z-index:4;transition:transform .15s}
+.gros-play:hover{transform:translate(-50%,-50%) scale(1.07);background:var(--gold2)}
 .suite{position:absolute;inset:0;background:rgba(0,0,0,.82);display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;z-index:5}
 .suite h3{font:600 24px 'Outfit';margin:6px 0 18px}
 .row-h{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin:34px 0 14px}
@@ -271,7 +273,7 @@ async function lecon(id, param) {
   app.innerHTML = `<div class="lecteur"><aside class="cote" id="cote"><div class="tete"><a href="#/f/${esc(l.formation.slug)}">← ${esc(l.formation.titre)}</a>
       <h3>${esc(l.formation.titre)}</h3><div class="barre"><i style="width:${p}%"></i></div><div class="small" style="margin-top:6px">${p} % terminé · ${l.vues}/${l.total} leçons${l.serie > 1 ? ` · 🔥 ${l.serie} j` : ""}</div></div>${sommaire}</aside>
     <section class="scene"><button class="btn sec sommaire-mobile" id="som" style="margin-bottom:14px">☰ Sommaire</button>
-      ${l.video_url ? `<div class="ecran"><video id="vid" controls playsinline preload="metadata" src="${esc(l.video_url)}"></video><div class="suite" id="suite" hidden></div></div>
+      ${l.video_url ? `<div class="ecran"><video id="vid" controls playsinline preload="metadata" src="${esc(l.video_url)}"></video><button class="gros-play" id="gp" aria-label="Lancer la vidéo">▶</button><div class="suite" id="suite" hidden></div></div>
         <div class="outils"><span class="small">Vitesse</span>${VITESSES.map(v => `<button class="vit ${v === vit ? "on" : ""}" data-v="${v}">${v}×</button>`).join("")}
           <span class="esp"></span><span class="small raccourcis" title="Espace : lecture/pause · ← → : 10 s · N : note · F : plein écran">⌨ Raccourcis : espace, ← →, N, F</span></div>` : ""}
       <h1 style="margin-top:${l.video_url ? 18 : 0}px">${esc(l.titre)}</h1>
@@ -296,6 +298,9 @@ async function lecon(id, param) {
   quitterLecon = null;
   if (v) {
     v.playbackRate = vit;
+    const gp = document.getElementById("gp");
+    gp.onclick = () => v.play();
+    v.addEventListener("play", () => gp.hidden = true);
     // reprise à la seconde près (ou au moment demandé par une note : ?t=…)
     const depart = P.get("t") ? +P.get("t") : (l.position && l.position.duree && l.position.secondes < l.position.duree * 0.95 ? l.position.secondes : 0);
     if (depart > 5) v.addEventListener("loadedmetadata", () => { v.currentTime = depart; if (!P.get("t")) toast(`Reprise à ${mmss(depart)}`); }, {once: true});
