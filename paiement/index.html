@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paiement sécurisé | Bass Trading</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;color:#e0e0e0;background:#0a0e17;line-height:1.6}
+.container{max-width:520px;margin:0 auto;padding:48px 16px 80px}
+.card{background:#111827;border:1px solid #1f2937;border-radius:14px;padding:24px}
+h1{font-size:24px;font-weight:800;color:#fff;margin-bottom:6px}
+.prix{font-size:34px;font-weight:800;color:#f59e0b;margin:10px 0 4px}
+.sub{color:#9ca3af;font-size:15px;margin-bottom:18px}
+label{display:block;font-size:14px;color:#9ca3af;margin:12px 0 6px}
+input{width:100%;padding:13px;border-radius:8px;border:1px solid #374151;background:#0b1220;color:#fff;font:inherit;font-size:16px}
+#pp{margin-top:20px;min-height:120px}
+.msg{margin-top:14px;font-size:14px;color:#9ca3af}
+.err{color:#f87171}
+.garanties{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:18px;font-size:13px;color:#9ca3af}
+.essai{background:#3b2f0b;border:1px solid #a16207;color:#fde68a;border-radius:8px;padding:10px 12px;font-size:13px;margin-bottom:16px}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="card" id="c"><p class="sub">Chargement de l'offre…</p></div>
+  <div class="garanties"><span>🔒 Paiement sécurisé par PayPal</span><span>✅ Garantie 30 jours</span><span>⚡ Accès immédiat</span></div>
+</div>
+<script>
+const API = "https://api.basstrading.fr";
+const slug = new URLSearchParams(location.search).get("offre") || "";
+const c = document.getElementById("c");
+const esc = s => String(s ?? "").replace(/[&<>"']/g, x => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[x]));
+const prix = cents => (cents / 100).toLocaleString("fr-FR", {minimumFractionDigits: cents % 100 ? 2 : 0}) + " €";
+
+(async () => {
+  let o;
+  try { const r = await fetch(API + "/offres/" + encodeURIComponent(slug)); if (!r.ok) throw 0; o = await r.json(); }
+  catch { c.innerHTML = `<h1>Offre introuvable</h1><p class="sub">Ce lien de paiement n'est plus valable. Écris-nous à contact@basstrading.fr.</p>`; return; }
+  c.innerHTML = `${o.mode !== "live" ? `<div class="essai">Mode essai : aucun vrai paiement n'est effectué.</div>` : ""}
+    <h1>${esc(o.titre)}</h1><div class="prix">${prix(o.prix_cents)}</div>
+    <p class="sub">Paiement en une fois, ou en 4 fois sans frais avec PayPal.</p>
+    <label for="e">Ton adresse email (elle ouvrira ton accès)</label><input id="e" type="email" autocomplete="email" placeholder="ton@email.com">
+    <label for="p">Ton prénom</label><input id="p" autocomplete="given-name" maxlength="60" placeholder="Prénom">
+    <div data-pp-message data-pp-amount="${(o.prix_cents/100).toFixed(2)}" data-pp-style-text-color="white" style="margin-top:16px"></div>
+    <div id="pp"></div><div class="msg" id="m"></div>`;
+  const s = document.createElement("script");
+  s.src = `https://www.paypal.com/sdk/js?client-id=${encodeURIComponent(o.paypal_client_id)}&currency=EUR&locale=fr_FR&components=buttons,messages&enable-funding=paylater`;
+  s.onload = () => afficherBoutons(o);
+  document.head.appendChild(s);
+})();
+
+function afficherBoutons(o) {
+  const m = document.getElementById("m");
+  const email = () => document.getElementById("e").value.trim();
+  paypal.Buttons({
+    style: {layout: "vertical", color: "gold", shape: "rect", label: "pay"},
+    onClick: (data, actions) => {
+      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email())) { m.className = "msg err"; m.textContent = "Indique ton adresse email avant de payer."; return actions.reject(); }
+      m.className = "msg"; m.textContent = ""; return actions.resolve();
+    },
+    createOrder: async () => {
+      const r = await fetch(API + "/paiement/commande", {method: "POST", headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({offre: o.slug, email: email(), prenom: document.getElementById("p").value.trim()})});
+      const d = await r.json(); if (!r.ok) throw new Error(d.detail || "commande");
+      return d.id;
+    },
+    onApprove: async (data) => {
+      m.className = "msg"; m.textContent = "Validation du paiement…";
+      const r = await fetch(API + "/paiement/capture", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({id: data.orderID})});
+      const d = await r.json().catch(() => ({}));
+      if (!r.ok) { m.className = "msg err"; m.textContent = d.detail || "Le paiement n'a pas abouti."; return; }
+      location.href = "/paiement/merci/?offre=" + encodeURIComponent(o.slug);
+    },
+    onError: () => { m.className = "msg err"; m.textContent = "PayPal a rencontré un problème. Aucun montant n'a été prélevé, réessaie."; },
+  }).render("#pp");
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Merci pour ta commande | Bass Trading</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;color:#e0e0e0;background:#0a0e17;line-height:1.7}
+.container{max-width:680px;margin:0 auto;padding:64px 16px}
+h1{font-size:clamp(26px,5vw,36px);font-weight:800;color:#fff;margin-bottom:14px;line-height:1.2}
+p{font-size:17px;color:#b8bcc8;margin-bottom:14px}
+.card{background:#111827;border:1px solid #1f2937;border-radius:14px;padding:24px;margin-top:28px}
+.btn{display:inline-block;background:linear-gradient(135deg,#f59e0b 0%,#d97706 100%);color:#000;font-weight:700;padding:15px 26px;border-radius:8px;text-decoration:none;margin-top:6px}
+.lien{color:#f59e0b}
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>🎉 Merci, ta commande est validée !</h1>
+  <p>Ton accès est ouvert. Un email vient de partir avec ton lien de connexion à ton espace de formation, sans mot de passe.</p>
+  <p>Pas d'email d'ici quelques minutes ? Regarde dans tes spams, ou demande un nouveau lien sur <a class="lien" href="/espace/">basstrading.fr/espace</a> avec la même adresse email.</p>
+  <div class="card" id="suite" hidden></div>
+</div>
+<script>
+// Offre suivante proposée après chaque achat (le tunnel de Systeme.io : Market Profile → Sierra Chart).
+const SUITE = {
+  "market-profile": {titre: "Une dernière chose avant de commencer…",
+    texte: "Le Market Profile n'est vraiment précis que sur une plateforme bien paramétrée. Je t'ai préparé la formation Sierra Chart avec mes templates : les mêmes niveaux que moi, sans passer des semaines à tout régler.",
+    bouton: "Découvrir Sierra Chart + mes templates", lien: "/paiement/?offre=sierra-chart"},
+};
+const o = new URLSearchParams(location.search).get("offre");
+const s = SUITE[o];
+if (s) {
+  const el = document.getElementById("suite");
+  el.innerHTML = `<h2 style="color:#fff;font-size:21px;margin-bottom:10px"></h2><p></p><a class="btn"></a>`;
+  el.querySelector("h2").textContent = s.titre; el.querySelector("p").textContent = s.texte;
+  const a = el.querySelector("a"); a.textContent = s.bouton; a.href = s.lien;
+  el.hidden = false;
+}
+</script>
+</body>
+</html>
