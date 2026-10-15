@@ -320,7 +320,7 @@ async function contacts(params) {
     if (genre === "tag") c = `<select data-k="op"><option value="a">a le tag</option><option value="n_a_pas">n'a pas le tag</option></select><select data-k="valeur"><option value="">Sélectionner</option>${optL}</select>`;
     if (genre === "date") c = `<label style="margin:6px 0 4px;font-weight:400">Du</label><input type="date" data-k="du"><label style="margin:6px 0 4px;font-weight:400">Au</label><input type="date" data-k="au">`;
     if (genre === "activite") c = `<label style="margin:6px 0 4px;font-weight:400">Aucune activité depuis</label><input type="date" data-k="valeur">`;
-    if (genre === "etat") c = `<select data-k="valeur"><option value="">Sélectionner</option><option value="actif">Actif</option><option value="desinscrit">Désinscrits</option><option value="bounced">Bounced</option><option value="a_paye">A fait au moins un paiement</option><option value="jamais_paye">N'a encore fait aucun paiement</option></select>`;
+    if (genre === "etat") c = `<div class="checks" style="flex-direction:column;gap:8px">${[["actif", "Actif"], ["desinscrit", "Désinscrits"], ["bounced", "Bounced"], ["a_paye", "A fait au moins un paiement"], ["jamais_paye", "N'a encore fait aucun paiement"]].map(([v, l]) => `<label><input type="checkbox" class="multi" value="${v}"> ${l}</label>`).join("")}</div>`;
     if (genre === "campagne") c = `<select data-k="op"><option value="a">est inscrit à</option><option value="n_a_pas">n'est pas inscrit à</option></select><select data-k="valeur"><option value="">Sélectionner</option>${optS}</select>`;
     return `<div class="filtre" data-champ="${k}"><div class="t">${nom}<span class="case"></span></div><div class="c" hidden style="display:grid;gap:8px">${c}</div></div>`;
   };
@@ -342,8 +342,9 @@ async function contacts(params) {
     <span id="choix" hidden style="display:flex;gap:8px"><select id="cl" style="width:auto;min-width:220px"></select><button class="btn" id="cg">Appliquer</button></span><span class="msg" id="sm"></span></div>`;
   // mise en page : panneau de filtres à gauche sur grand écran
   if (innerWidth >= 1000) document.querySelector(".deux").style.gridTemplateColumns = "380px minmax(0,1fr)";
-  const conditions = () => [...document.querySelectorAll(".filtre.on")].map(f => { const c = {champ: f.dataset.champ}; f.querySelectorAll("[data-k]").forEach(x => c[x.dataset.k] = x.value); return c; })
-    .filter(c => c.valeur || c.du || c.au || ["vide", "non_vide"].includes(c.op));
+  const conditions = () => [...document.querySelectorAll(".filtre.on")].map(f => { const c = {champ: f.dataset.champ}; f.querySelectorAll("[data-k]").forEach(x => c[x.dataset.k] = x.value);
+      const m = [...f.querySelectorAll(".multi:checked")].map(x => x.value); if (m.length) c.valeurs = m; return c; })
+    .filter(c => c.valeur || c.valeurs || c.du || c.au || ["vide", "non_vide"].includes(c.op));
   let page = 1, minuteur;
   const choisis = new Map();
   const majSel = () => { document.getElementById("sn").textContent = choisis.size; document.getElementById("sel").classList.toggle("on", choisis.size > 0); };
@@ -367,9 +368,11 @@ async function contacts(params) {
   document.querySelectorAll(".filtre .t").forEach(t => t.onclick = () => { const f = t.parentElement; f.classList.toggle("on"); f.querySelector(".c").hidden = !f.classList.contains("on"); relancer(); });
   document.querySelectorAll(".filtre [data-k]").forEach(x => x.addEventListener(x.tagName === "INPUT" && x.type === "text" || !x.type ? "input" : "change", relancer));
   document.querySelectorAll(".filtre input[data-k]").forEach(x => x.addEventListener("input", relancer));
+  document.querySelectorAll(".filtre .multi").forEach(x => x.addEventListener("change", relancer));
   const appliquer = conds => { document.querySelectorAll(".filtre").forEach(f => { f.classList.remove("on"); f.querySelector(".c").hidden = true; });
     conds.forEach(c => { const f = document.querySelector(`.filtre[data-champ="${c.champ}"]`); if (!f) return; f.classList.add("on"); f.querySelector(".c").hidden = false;
-      f.querySelectorAll("[data-k]").forEach(x => { if (c[x.dataset.k] !== undefined) x.value = c[x.dataset.k]; }); }); charger(1); };
+      f.querySelectorAll("[data-k]").forEach(x => { if (c[x.dataset.k] !== undefined) x.value = c[x.dataset.k]; });
+      f.querySelectorAll(".multi").forEach(x => x.checked = (c.valeurs || []).includes(x.value)); }); charger(1); };
   document.getElementById("raz").onclick = () => appliquer([]);
   if (p.get("liste")) appliquer([{champ: "tag", op: "a", valeur: p.get("liste")}]);
   // filtres enregistrés
@@ -499,7 +502,7 @@ async function tunnels() {
   const T = await api("/studio/tunnels");
   app.innerHTML = `${entete("Tunnels", T.length, "", `<input class="recherche" id="tq" placeholder="Chercher"><select id="te" style="width:170px"><option value="">Tous</option><option value="1" selected>Actif(ve)</option><option value="0">Inactif(ve)</option></select><button class="btn" id="tf">⏷ &nbsp;Filtre</button><a class="btn" href="#/pages">⊕ &nbsp;Créer</a>`)}
   <div class="wrap"><table><tr><th>Nom</th><th>Statut</th><th>Étapes</th><th>Date de création</th><th></th></tr><tbody id="tl"></tbody></table></div>
-  <p class="mute" style="margin-top:14px">Tes tunnels Systeme.io, rapatriés avec chaque étape et une copie de chaque page. Pour créer une nouvelle page sur basstrading.fr, passe par « Créer » (éditeur de pages).</p>`;
+  <p class="mute" style="margin-top:14px">Tes tunnels, en ligne sur basstrading.fr/t/… avec leurs images et vidéos sur ton serveur. Pour créer une nouvelle page, passe par « Créer » (éditeur de pages).</p>`;
   const dessiner = () => { const t = document.getElementById("tq").value.trim().toLowerCase(), e = document.getElementById("te").value;
     document.getElementById("tl").innerHTML = T.filter(x => (!t || x.nom.toLowerCase().includes(t)) && (e === "" || +x.active === +e)).map(x => `<tr><td><a href="#/tunnels/${x.id}">${esc(x.nom)}</a></td>
       <td>${statut(x.active)}</td><td>${x.nb_etapes}</td><td>${dmyh(x.created_at)}</td>
@@ -527,7 +530,7 @@ async function tunnel(id, etapeId) {
     if (o === "p") zone.innerHTML = `<div class="row"><div><label style="margin-top:0">Nom</label><input value="${esc(e.nom)}" disabled></div><div><label style="margin-top:0">Type</label><input value="${esc(e.type_nom)}" disabled></div></div>
       <label>Adresse de la page</label><div class="row"><input value="${esc(e.url || "—")}" disabled style="flex:4">${e.url ? `<a class="btn" href="${esc(e.url)}" target="_blank" style="flex:0">🔗</a>` : ""}</div>
       ${e.offre ? `<label>Offre</label><input value="${esc(e.offre)}" disabled>` : ""}
-      <p class="mute" style="margin-top:18px">${e.copie ? "✅ Copie de la page conservée sur ton serveur (onglet Aperçu)." : "Copie de la page en cours ou impossible (page privée ou supprimée)."} Cette page est encore servie par Systeme.io : pour la faire vivre sur basstrading.fr, recrée-la dans « Pages » (je peux la reconstruire pour toi).</p>`;
+      <p class="mute" style="margin-top:18px">${e.copie ? "✅ Page en ligne sur basstrading.fr, avec ses images et vidéos hébergées sur ton serveur. Les formulaires inscrivent dans ton Studio (tag « Tunnel — nom du tunnel ») et déclenchent tes automatisations ; les bons de commande passent par ton paiement PayPal." : "Cette étape était inactive chez Systeme.io : pas de page à publier."}</p>`;
     if (o === "v") { zone.innerHTML = `<iframe id="vf" style="width:100%;height:75vh;border:1px solid var(--line);border-radius:8px;background:#fff"></iframe>`;
       fetch(API + "/studio/tunnels/page/" + e.id, {credentials: "include"}).then(r => r.text()).then(h => document.getElementById("vf").srcdoc = h); }
     if (o === "r") zone.innerHTML = (t.regles || []).length ? `<table><tr><th>Actif ?</th><th>Déclencheur</th><th>Action</th></tr>${t.regles.map(r => `<tr><td>${statut(r.active)}</td><td>${r.declencheurs.map(d => esc(d.nom + (d.detail ? " — " + d.detail : ""))).join("<br>")}</td><td>${r.actions.map(a => esc(a.nom + (a.detail ? " : " + a.detail : ""))).join("<br>")}</td></tr>`).join("")}</table><p><a href="#/regles">Gérer les règles →</a></p>`

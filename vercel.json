@@ -50,6 +50,14 @@
     {
       "source": "/p/:slug",
       "destination": "https://api.basstrading.fr/p/:slug"
+    },
+    {
+      "source": "/t/:chemin/",
+      "destination": "https://api.basstrading.fr/t/:chemin"
+    },
+    {
+      "source": "/t/:chemin",
+      "destination": "https://api.basstrading.fr/t/:chemin"
     }
   ]
 }

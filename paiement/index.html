@@ -32,6 +32,8 @@ input{width:100%;padding:13px;border-radius:8px;border:1px solid #374151;backgro
 <script>
 const API = "https://api.basstrading.fr";
 const slug = new URLSearchParams(location.search).get("offre") || "";
+// Venu d'un tunnel : après paiement, on enchaîne sur l'étape suivante du tunnel (remerciement, offre complémentaire).
+const suite = (s => s && /^https:\/\/basstrading\.fr\/t\/[a-z0-9_-]+\/?$/i.test(s) ? s : "")(new URLSearchParams(location.search).get("suite"));
 const c = document.getElementById("c");
 const esc = s => String(s ?? "").replace(/[&<>"']/g, x => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[x]));
 const prix = cents => (cents / 100).toLocaleString("fr-FR", {minimumFractionDigits: cents % 100 ? 2 : 0}) + " €";
@@ -58,6 +60,9 @@ const prix = cents => (cents / 100).toLocaleString("fr-FR", {minimumFractionDigi
 function afficherBoutons(o) {
   const m = document.getElementById("m");
   const email = () => document.getElementById("e").value.trim();
+  { const u = new URLSearchParams(location.search); // pré-rempli depuis le bon de commande du tunnel
+    if (u.get("email")) document.getElementById("e").value = u.get("email");
+    if (u.get("prenom")) document.getElementById("p").value = u.get("prenom"); }
   const onClick = (data, actions) => {
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email())) { m.className = "msg err"; m.textContent = "Indique ton adresse email avant de payer."; return actions.reject(); }
     m.className = "msg"; m.textContent = ""; return actions.resolve();
@@ -75,7 +80,7 @@ function afficherBoutons(o) {
           body: JSON.stringify({id: data.subscriptionID, offre: o.slug, email: email(), prenom: document.getElementById("p").value.trim()})});
         const d = await r.json().catch(() => ({}));
         if (!r.ok) { m.className = "msg err"; m.textContent = d.detail || "Le paiement n'a pas abouti."; return; }
-        location.href = "/paiement/merci/?offre=" + encodeURIComponent(o.slug);
+        location.href = suite || "/paiement/merci/?offre=" + encodeURIComponent(o.slug);
       },
     }).render("#pp");
     return;
@@ -93,7 +98,7 @@ function afficherBoutons(o) {
       const r = await fetch(API + "/paiement/capture", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({id: data.orderID})});
       const d = await r.json().catch(() => ({}));
       if (!r.ok) { m.className = "msg err"; m.textContent = d.detail || "Le paiement n'a pas abouti."; return; }
-      location.href = "/paiement/merci/?offre=" + encodeURIComponent(o.slug);
+      location.href = suite || "/paiement/merci/?offre=" + encodeURIComponent(o.slug);
     },
     onError,
   }).render("#pp");
