@@ -54,6 +54,12 @@ label{display:block;font-size:13px;color:var(--mute);margin:12px 0 5px;font-weig
 .lien{font-family:monospace;font-size:13px;background:#f3f5f8;border-radius:6px;padding:4px 8px;word-break:break-all}
 .login{max-width:420px;margin:80px auto}
 .vide{color:var(--mute);text-align:center;padding:30px}
+.edgrid{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;margin-top:16px}
+.edgrid .card{margin-bottom:12px}
+.apercu iframe{width:100%;height:75vh;border:1px solid var(--line);border-radius:12px;background:#fff}
+@media (min-width:1100px){.edgrid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.apercu{position:sticky;top:74px;align-self:start}}
+.mini{border:1px solid var(--line);background:#fff;border-radius:6px;width:30px;height:28px;cursor:pointer;margin-left:3px;font:600 14px Inter}
+button.card:hover{border-color:var(--blue)}
 @media (max-width:640px){h1{font-size:19px}}
 </style>
 </head>
@@ -299,7 +305,143 @@ async function ventes() {
 }
 
 /* ── Pages ───────────────────────────────────────────── */
-function pages() {
+const BLOCS = {
+  titre: "Titre", texte: "Texte", image: "Image", video: "Vidéo", bouton: "Bouton", formulaire: "Formulaire d'inscription",
+  offre: "Offre + bouton de paiement", liste: "Liste à puces ✅", temoignage: "Témoignage", espace: "Espace", separateur: "Séparateur", html: "Code HTML (avancé)",
+};
+const NOUVEAU_BLOC = {
+  titre: {texte: "Nouveau titre", niveau: 2}, texte: {html: "<p>Ton texte ici.</p>"}, image: {src: "", alt: ""}, video: {url: ""},
+  bouton: {texte: "Je commence", lien: "", align: "centre"}, formulaire: {titre: "", bouton: "Je m'inscris", prenom: true, listes: [], formations: [], redirection: ""},
+  offre: {offre: "", accroche: "", bouton: "Je passe commande"}, liste: {items: ["Premier point", "Deuxième point"]},
+  temoignage: {texte: "", auteur: ""}, espace: {hauteur: 32}, separateur: {}, html: {code: ""},
+};
+
+async function pagesListe() {
+  const L = await api("/studio/pages");
+  const fixes = [
+    ["Formation offerte (inscription)", "/formation-offerte/"], ["Merci — formation offerte", "/formation-offerte/merci/"],
+    ["Market Profile (page de vente)", "/marketprofile/"], ["Paiement", "/paiement/?offre=market-profile"], ["Espace élèves", "/espace/"],
+  ];
+  app.innerHTML = `<div class="row" style="justify-content:space-between;align-items:center"><h1 style="margin:0">Pages</h1><button class="btn" id="np" style="flex:0;white-space:nowrap">+ Nouvelle page</button></div>
+  <div id="modeles"></div><br>
+  <div class="wrap"><table><tr><th>Page</th><th>Statut</th><th>Vues</th><th>Inscrits</th><th></th></tr>
+  ${L.map(p => `<tr><td><a href="#/pages/${p.id}"><strong>${esc(p.titre)}</strong></a><div class="mute">basstrading.fr/p/${esc(p.slug)}/</div></td>
+    <td><span class="pill ${p.publiee ? "ok" : ""}">${p.publiee ? "En ligne" : "Brouillon"}</span></td><td>${p.vues}</td><td>${p.inscrits}</td>
+    <td style="white-space:nowrap"><a class="btn sec" style="padding:4px 9px" href="#/pages/${p.id}">Modifier</a>
+      <button class="btn sec dup" data-i="${p.id}" style="padding:4px 9px">Dupliquer</button>
+      ${p.publiee ? `<a class="btn sec" style="padding:4px 9px" href="/p/${esc(p.slug)}/" target="_blank">Voir ↗</a>` : ""}
+      <button class="btn dang sup" data-i="${p.id}" data-t="${esc(p.titre)}" style="padding:4px 9px">Supprimer</button></td></tr>`).join("") || `<tr><td colspan="5" class="vide">Aucune page. Crée ta première page en 2 clics.</td></tr>`}
+  </table></div>
+  <h2>Pages fixes du site</h2><p class="mute">Ces pages existaient avant le Studio. Dis-moi lesquelles tu veux pouvoir modifier ici et je les reconstruis dans l'éditeur.</p>
+  <div class="wrap"><table>${fixes.map(([n, u]) => `<tr><td>${esc(n)}</td><td><a href="${u}" target="_blank">basstrading.fr${esc(u)} ↗</a></td></tr>`).join("")}</table></div>`;
+  document.getElementById("np").onclick = () => {
+    const M = [["capture", "Page d'inscription", "Un titre, des promesses, un formulaire : capte des emails."], ["vente", "Page de vente", "Vidéo, arguments, témoignage et bouton de paiement."],
+      ["merci", "Page de remerciement", "Après une inscription ou un achat."], ["vide", "Page vide", "Tu pars de zéro."]];
+    document.getElementById("modeles").innerHTML = `<div class="card" style="margin-top:16px"><h2 style="margin-top:0">Choisis un modèle</h2><div class="grid">
+      ${M.map(([k, t, d]) => `<button class="card mod" data-m="${k}" style="text-align:left;cursor:pointer;font:inherit"><strong>${t}</strong><div class="mute">${d}</div></button>`).join("")}</div></div>`;
+    document.querySelectorAll(".mod").forEach(b => b.onclick = async () => { const r = await post("/studio/pages", {modele: b.dataset.m}); location.hash = "#/pages/" + r.id; });
+  };
+  document.querySelectorAll(".dup").forEach(b => b.onclick = async () => { const r = await post("/studio/pages", {copie_de: +b.dataset.i}); location.hash = "#/pages/" + r.id; });
+  document.querySelectorAll(".sup").forEach(b => b.onclick = async () => {
+    if (!confirm(`Supprimer définitivement la page « ${b.dataset.t} » ?`)) return;
+    await api("/studio/pages/" + b.dataset.i, {method: "DELETE"}); pagesListe();
+  });
+}
+
+async function editeurPage(id) {
+  const [P, L, O, PG] = await Promise.all([api("/studio/pages/" + id), listes(), api("/admin/offres"), api("/studio/pages")]);
+  const champ = (lab, html) => `<label>${lab}</label>${html}`;
+  app.innerHTML = `<a href="#/pages">← Pages</a>
+  <div class="row" style="align-items:center;margin:10px 0 14px"><h1 style="margin:0">${esc(P.titre)}</h1>
+    <div style="flex:0;display:flex;gap:8px;white-space:nowrap"><label style="margin:0;display:flex;gap:6px;align-items:center;color:var(--txt)"><input type="checkbox" id="pub" style="width:auto" ${P.publiee ? "checked" : ""}> En ligne</label>
+    <button class="btn" id="sv">Enregistrer</button><a class="btn sec" id="voir" target="_blank" href="/p/${esc(P.slug)}/">Voir ↗</a></div></div>
+  <div class="card"><div class="row">
+    <div>${champ("Titre (onglet du navigateur, Google)", `<input id="pt" value="${esc(P.titre)}">`)}</div>
+    <div>${champ("Adresse : basstrading.fr/p/…/", `<input id="ps" value="${esc(P.slug)}">`)}</div>
+    <div style="flex:0;min-width:140px">${champ("Thème", `<select id="pth"><option value="sombre">Sombre (or)</option><option value="clair" ${P.theme === "clair" ? "selected" : ""}>Clair (bleu)</option></select>`)}</div></div>
+    ${champ("Description (aperçu Google et réseaux sociaux)", `<input id="pd" value="${esc(P.description)}">`)}<div class="msg" id="pm"></div></div>
+  <div class="edgrid"><div id="blocs"></div><div class="apercu"><div class="mute" style="margin:0 0 6px">Aperçu en direct</div><iframe id="ap"></iframe></div></div>
+  <datalist id="dl-liens">${O.offres.map(o => `<option value="offre:${esc(o.slug)}">Paiement : ${esc(o.titre)}</option>`).join("")}${PG.map(p => `<option value="${location.origin}/p/${esc(p.slug)}/">Page : ${esc(p.titre)}</option>`).join("")}<option value="${location.origin}/espace/">Espace élèves</option></datalist>`;
+  const blocs = P.blocs;
+  const m = document.getElementById("pm");
+  let minuteur;
+  const etat = () => ({slug: document.getElementById("ps").value, titre: document.getElementById("pt").value, description: document.getElementById("pd").value,
+    theme: document.getElementById("pth").value, publiee: document.getElementById("pub").checked, blocs});
+  const apercu = () => { clearTimeout(minuteur); minuteur = setTimeout(async () => {
+    const r = await fetch(API + "/studio/pages/apercu", {method: "POST", credentials: "include", headers: {"Content-Type": "application/json"}, body: JSON.stringify(etat())});
+    if (r.ok) document.getElementById("ap").srcdoc = await r.text();
+  }, 500); };
+  ["pt", "ps", "pd", "pth"].forEach(i => document.getElementById(i).oninput = apercu);
+  const cases = (items, coches, attr) => `<div class="checks">${items.map(x => `<label><input type="checkbox" data-${attr}="${x.id}" ${coches.includes(x.id) ? "checked" : ""}> ${esc(x.nom || x.titre)}</label>`).join("")}</div>`;
+  const ALIGN = b => champ("Alignement", `<select data-k="align"><option value="">Gauche</option><option value="centre" ${b.align === "centre" ? "selected" : ""}>Centré</option></select>`);
+  const champs = b => {
+    switch (b.type) {
+      case "titre": return champ("Texte", `<input data-k="texte" value="${esc(b.texte)}">`) + `<div class="row"><div>${champ("Taille", `<select data-k="niveau" data-n="1"><option value="1">Grand titre</option><option value="2" ${b.niveau === 2 ? "selected" : ""}>Sous-titre</option></select>`)}</div><div>${ALIGN(b)}</div></div>`;
+      case "texte": return `<div class="toolbar"><button data-c="bold"><b>G</b></button><button data-c="italic"><i>I</i></button><button data-c="underline"><u>S</u></button><button data-c="insertUnorderedList">• Liste</button><button data-c="createLink">Lien</button></div><div class="editeur" contenteditable="true" data-k="html" style="min-height:110px">${b.html || ""}</div>` + ALIGN(b);
+      case "image": return champ("Image", `<div class="row"><input data-k="src" value="${esc(b.src)}" placeholder="https://… ou téléverse →"><label class="btn sec" style="flex:0;margin:0;white-space:nowrap;color:var(--txt)">Téléverser<input type="file" accept="image/*" data-up="src" hidden></label></div>`) + champ("Description de l'image (accessibilité, Google)", `<input data-k="alt" value="${esc(b.alt)}">`);
+      case "video": return champ("Lien YouTube (ou lien direct d'une vidéo MP4)", `<input data-k="url" value="${esc(b.url)}" placeholder="https://youtu.be/…">`);
+      case "bouton": return `<div class="row"><div>${champ("Texte du bouton", `<input data-k="texte" value="${esc(b.texte)}">`)}</div><div>${champ("Lien (une offre, une page ou une adresse)", `<input data-k="lien" list="dl-liens" value="${esc(b.lien)}" placeholder="offre:market-profile ou https://…">`)}</div></div>` + ALIGN(b);
+      case "offre": return champ("Offre", `<select data-k="offre"><option value="">— choisir —</option>${O.offres.map(o => `<option value="${esc(o.slug)}" ${b.offre === o.slug ? "selected" : ""}>${esc(o.titre)} — ${euros(o.prix_cents)}${o.echeances !== 1 ? " (" + PAIEMENT(o.echeances) + ")" : ""}</option>`).join("")}</select>`) +
+        `<div class="row"><div>${champ("Phrase au-dessus du prix (facultatif)", `<input data-k="accroche" value="${esc(b.accroche)}">`)}</div><div>${champ("Texte du bouton", `<input data-k="bouton" value="${esc(b.bouton)}">`)}</div></div>`;
+      case "formulaire": return `<div class="row"><div>${champ("Titre au-dessus (facultatif)", `<input data-k="titre" value="${esc(b.titre)}">`)}</div><div>${champ("Texte du bouton", `<input data-k="bouton" value="${esc(b.bouton)}">`)}</div></div>
+        <label><input type="checkbox" data-k="prenom" data-b="1" style="width:auto" ${b.prenom !== false ? "checked" : ""}> Demander le prénom</label>
+        ${champ("Ajouter l'inscrit à ces listes (une séquence peut démarrer sur une liste)", cases(L.map(l => ({id: l.id, nom: `${l.nom} (${l.abonnes})`})), b.listes || [], "liste"))}
+        ${champ("Lui ouvrir ces formations (il reçoit son lien de connexion)", cases(O.formations, b.formations || [], "form"))}
+        ${champ("Après l'inscription, l'envoyer vers (facultatif)", `<input data-k="redirection" list="dl-liens" value="${esc(b.redirection)}" placeholder="page de remerciement">`)}`;
+      case "liste": return champ("Un point par ligne", `<textarea data-k="items" data-l="1" rows="4">${esc((b.items || []).join("\n"))}</textarea>`);
+      case "temoignage": return champ("Témoignage", `<textarea data-k="texte" rows="3">${esc(b.texte)}</textarea>`) + champ("Auteur", `<input data-k="auteur" value="${esc(b.auteur)}">`);
+      case "espace": return champ("Hauteur (pixels)", `<input type="number" data-k="hauteur" data-n="1" value="${b.hauteur || 32}">`);
+      case "html": return champ("Code HTML", `<textarea data-k="code" rows="5" style="font-family:monospace">${esc(b.code)}</textarea>`);
+      default: return `<p class="mute">Une ligne de séparation.</p>`;
+    }
+  };
+  const dessiner = () => {
+    const z = document.getElementById("blocs");
+    z.innerHTML = blocs.map((b, i) => `<div class="card bloc" data-i="${i}"><div class="row" style="align-items:center;margin-bottom:4px"><strong>${BLOCS[b.type] || b.type}</strong>
+      <div style="flex:0;white-space:nowrap"><button class="mini" data-a="haut" title="Monter">↑</button><button class="mini" data-a="bas" title="Descendre">↓</button><button class="mini" data-a="dup" title="Dupliquer">⧉</button><button class="mini" data-a="sup" title="Supprimer">✕</button></div></div>${champs(b)}</div>`).join("") +
+      `<div class="card"><div class="row"><select id="nb">${Object.entries(BLOCS).map(([k, v]) => `<option value="${k}">${v}</option>`).join("")}</select><button class="btn" id="ab" style="flex:0;white-space:nowrap">+ Ajouter ce bloc</button></div></div>`;
+    z.querySelectorAll(".bloc").forEach(c => {
+      const b = blocs[+c.dataset.i];
+      c.querySelectorAll("[data-k]").forEach(el => {
+        const k = el.dataset.k;
+        const maj = () => { b[k] = el.dataset.b ? el.checked : el.dataset.n ? +el.value : el.dataset.l ? el.value.split("\n") : el.isContentEditable ? el.innerHTML : el.value; apercu(); };
+        el.addEventListener(el.isContentEditable ? "input" : el.type === "checkbox" || el.tagName === "SELECT" ? "change" : "input", maj);
+      });
+      c.querySelectorAll("[data-liste]").forEach(el => el.onchange = () => { b.listes = [...c.querySelectorAll("[data-liste]:checked")].map(x => +x.dataset.liste); apercu(); });
+      c.querySelectorAll("[data-form]").forEach(el => el.onchange = () => { b.formations = [...c.querySelectorAll("[data-form]:checked")].map(x => +x.dataset.form); apercu(); });
+      c.querySelectorAll(".toolbar button").forEach(t => t.onclick = e => { e.preventDefault();
+        if (t.dataset.c === "createLink") { const u = prompt("Adresse du lien (https://…)"); if (u) document.execCommand("createLink", false, u); } else document.execCommand(t.dataset.c);
+        b.html = c.querySelector("[data-k=html]").innerHTML; apercu(); });
+      c.querySelectorAll("[data-up]").forEach(f => f.onchange = async () => {
+        const fichier = f.files[0]; if (!fichier) return;
+        if (fichier.size > 8 * 1024 * 1024) { alert("Image trop lourde (8 Mo maximum)."); return; }
+        const b64 = await new Promise(ok => { const r = new FileReader(); r.onload = () => ok(r.result); r.readAsDataURL(fichier); });
+        const r = await post("/studio/medias", {nom: fichier.name, type: fichier.type, base64: b64});
+        b[f.dataset.up] = r.url; dessiner(); apercu();
+      });
+      c.querySelectorAll(".mini").forEach(a => a.onclick = () => {
+        const i = +c.dataset.i;
+        if (a.dataset.a === "haut" && i > 0) [blocs[i - 1], blocs[i]] = [blocs[i], blocs[i - 1]];
+        if (a.dataset.a === "bas" && i < blocs.length - 1) [blocs[i + 1], blocs[i]] = [blocs[i], blocs[i + 1]];
+        if (a.dataset.a === "dup") blocs.splice(i + 1, 0, JSON.parse(JSON.stringify(blocs[i])));
+        if (a.dataset.a === "sup" && confirm("Supprimer ce bloc ?")) blocs.splice(i, 1);
+        dessiner(); apercu();
+      });
+    });
+    document.getElementById("ab").onclick = () => { const t = document.getElementById("nb").value; blocs.push({type: t, ...JSON.parse(JSON.stringify(NOUVEAU_BLOC[t]))}); dessiner(); apercu();
+      document.querySelector(".bloc:last-of-type")?.scrollIntoView({behavior: "smooth", block: "center"}); };
+  };
+  dessiner(); apercu();
+  document.getElementById("sv").onclick = async () => {
+    const b = document.getElementById("sv"); b.disabled = true;
+    try { const r = await put("/studio/pages/" + id, etat()); document.getElementById("ps").value = r.slug; document.getElementById("voir").href = "/p/" + r.slug + "/";
+      m.className = "msg ok"; m.innerHTML = etat().publiee ? `Enregistré. La page est en ligne : <a href="${esc(r.lien)}" target="_blank">${esc(r.lien)}</a>` : "Enregistré (brouillon : coche « En ligne » pour la publier)."; }
+    catch (x) { m.className = "msg err"; m.textContent = x.msg || "Erreur"; }
+    b.disabled = false;
+  };
+}
+
+function pagesFixes() {
   const P = [
     ["Formation offerte (inscription)", "/formation-offerte/", "Capte un email, débloque la formation offerte, ajoute aux listes."],
     ["Merci — formation offerte", "/formation-offerte/merci/", "Après l'inscription : propose Market Profile."],
@@ -322,7 +464,8 @@ async function route() {
     else if (h.startsWith("emails/")) await editeurEmail(h.slice(7));
     else if (h === "formations") await formations();
     else if (h === "ventes") await ventes();
-    else if (h === "pages") pages();
+    else if (h === "pages") await pagesListe();
+    else if (h.startsWith("pages/")) await editeurPage(+h.slice(6));
     else await accueil();
     window.scrollTo(0, 0);
   } catch (x) {

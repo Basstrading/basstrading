@@ -41,5 +41,11 @@
         }
       ]
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/p/:path*",
+      "destination": "https://api.basstrading.fr/p/:path*"
+    }
   ]
 }
