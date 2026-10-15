@@ -287,8 +287,8 @@ async function accueil() {
     <div class="card kpi">${evol(d.ca_30j, d.ca_prec)}<div class="l">Ventes totales</div><div class="v">${euros(d.ca_30j)}</div>${courbe(d.serie_paiements, euros)}</div>
     <div class="card direct" style="grid-row:span 2"><h3>En direct</h3><div class="liste">
       ${d.direct.map(e => e.type === "paiement"
-        ? `<div class="evt"><div class="ic pay"><svg width="22" height="20" viewBox="0 0 26 22" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="1" y="3" width="20" height="14" rx="2"/><path d="M1 8h20"/></svg></div><div style="min-width:0;flex:1"><span class="d">${dmyh(e.quand)}</span><b>Paiement</b><div class="q"><a>${esc(e.nom || e.email)}</a> — ${euros(e.montant)} pour <a>${esc(e.detail)}</a></div></div></div>`
-        : `<div class="evt"><div class="ic"><svg width="20" height="22" viewBox="0 0 30 34" fill="currentColor"><circle cx="15" cy="9" r="8"/><path d="M0 34c0-10 7-14 15-14s15 4 15 14z"/></svg></div><div style="min-width:0;flex:1"><span class="d">${dmyh(e.quand)}</span><b>Nouveau contact</b><div class="q"><a>${esc(e.email)}</a>${e.detail ? ` s'est inscrit à <a>${esc(e.detail)}</a>` : ""}</div></div></div>`).join("") || `<p class="mute" style="padding:20px 0">Rien pour l'instant.</p>`}
+        ? `<div class="evt"><div class="ic pay"><svg width="22" height="20" viewBox="0 0 26 22" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="1" y="3" width="20" height="14" rx="2"/><path d="M1 8h20"/></svg></div><div style="min-width:0;flex:1"><span class="d">${dmyh(e.quand)}</span><b>Paiement</b><div class="q">${lienContact(0, e.email, e.nom || e.email)} — ${euros(e.montant)} pour <a>${esc(e.detail)}</a></div></div></div>`
+        : `<div class="evt"><div class="ic"><svg width="20" height="22" viewBox="0 0 30 34" fill="currentColor"><circle cx="15" cy="9" r="8"/><path d="M0 34c0-10 7-14 15-14s15 4 15 14z"/></svg></div><div style="min-width:0;flex:1"><span class="d">${dmyh(e.quand)}</span><b>Nouveau contact</b><div class="q">${lienContact(e.id, e.email)}${e.detail ? ` s'est inscrit à <a>${esc(e.detail)}</a>` : ""}</div></div></div>`).join("") || `<p class="mute" style="padding:20px 0">Rien pour l'instant.</p>`}
     </div></div>
     <div class="card kpi"><div class="l">Nouveaux élèves</div><div class="v">${d.nouveaux_eleves_30j}</div><div class="mute">30 derniers jours — inscriptions et achats · ${d.connectes_30j} élève(s) connecté(s)</div></div>
     <div class="card kpi"><div class="l">Contacts au total</div><div class="v">${d.contacts.toLocaleString("fr-FR")}</div><div class="mute">dans toutes tes listes</div></div>
@@ -356,7 +356,7 @@ async function contacts(params) {
     document.querySelector(".entete .nb").textContent = d.total.toLocaleString("fr-FR");
     document.getElementById("res").innerHTML = `<div class="wrap"><table><tr><th style="width:56px"><button class="coche" id="tout" title="Tout sélectionner"></button></th><th>Ajouté le</th><th>Email du client</th><th>Tags</th></tr>
       ${d.contacts.map(c => `<tr><td><button class="coche ${choisis.has(c.id) ? "on" : ""}" data-id="${c.id}" data-e="${esc(c.email)}"></button></td><td style="white-space:nowrap">${dmyh(c.cree)}</td>
-        <td><div class="mail">${ROND}<div><a>${esc(c.email)}</a>${c.statut !== "enabled" ? ` <span class="pill err">Désinscrit</span>` : ""}<div class="mute">${esc(c.prenom || c.nom)}</div></div></div></td>
+        <td><div class="mail">${ROND}<div>${lienContact(c.id, c.email)}${c.statut !== "enabled" ? ` <span class="pill err">Désinscrit</span>` : ""}<div class="mute">${esc(c.prenom || c.nom)}</div></div></div></td>
         <td>${c.listes.filter(x => x.statut !== "unsubscribed").slice(0, 5).map(x => `<span class="tagp">${esc(x.nom)}</span>`).join("")}${c.listes.length > 5 ? `<span class="mute">+${c.listes.length - 5}</span>` : ""}</td></tr>`).join("") || `<tr><td colspan="4" class="vide">Oups ! Il semble que votre écran soit vide.</td></tr>`}
       </table></div>
       <div class="row" style="margin-top:14px;justify-content:space-between">${page > 1 ? `<button class="btn sec" id="prev" style="flex:0">← Précédents</button>` : "<span></span>"}<span class="mute" style="flex:0;white-space:nowrap;align-self:center">Page ${page} / ${Math.max(1, Math.ceil(d.total / 50))}</span>${d.total > page * 50 ? `<button class="btn sec" id="next" style="flex:0">Suivants →</button>` : "<span></span>"}</div>`;
@@ -434,6 +434,84 @@ async function contacts(params) {
   document.getElementById("cc").onclick = () => formulaire(false);
   document.getElementById("ic").onclick = () => formulaire(true);
   if (!p.get("liste")) charger(1);
+}
+
+/* ── CRM : fiche contact (comme Systeme.io) ──────────── */
+const lienContact = (id, email, texte) => `<a href="#/contacts/${id ? id : "e/" + encodeURIComponent(email)}">${esc(texte || email)}</a>`;
+const CHAMPS_CONTACT = [["first_name", "Prénom"], ["surname", "Nom"], ["phone_number", "Numéro de téléphone"], ["country", "Pays"], ["street_address", "Adresse"],
+  ["postcode", "Code postal"], ["city", "Ville"], ["state", "Région"], ["company_name", "Nom de l'entreprise"], ["vat_number", "Numéro d'identification fiscale"]];
+async function contactFiche(cle, onglet0) {
+  const [F, L] = await Promise.all([api(cle.startsWith("e/") ? "/studio/contact?email=" + cle.slice(2) : "/studio/contact?id=" + cle), listes()]);
+  const c = F.contact, a = c.attribs || {};
+  const nom = [a.first_name, a.surname].filter(Boolean).join(" ") || c.nom;
+  const actives = c.listes.filter(l => l.statut !== "unsubscribed");
+  const etat = c.statut !== "enabled" ? ["Désinscrit des emails marketing", "err"] : c.listes.some(l => l.statut === "unsubscribed") ? ["Désabonné de certains tags", "warn"] : ["Actif", "ok"];
+  const ONG = [["abonnements", "Abonnements"], ["paiements", "Paiements"], ["emails", "E-mails"], ["campagnes", "Campagnes"], ["formations", "Mes formations"], ["taches", "Tâches d'automatisation"], ["workflows", "Workflows"]];
+  app.innerHTML = `<div class="entete">${ariane(["#/contacts", "Contacts"], ["", esc(c.email)])}
+    <div class="droite"><div class="pts"><button class="btn sec" style="letter-spacing:0;font:600 15px Outfit;padding:10px 18px;border-radius:6px;color:var(--txt);background:#fff">⌄ &nbsp;Actions</button><div class="sous">
+      ${c.statut === "enabled" ? `<button data-x="desinscrire">Se désinscrire des emails marketing</button>` : `<button data-x="reinscrire">Réinscrire à votre liste email</button>`}
+      <button data-x="supprimer" style="color:var(--err)">Supprimer le contact</button></div></div></div></div>
+  <div class="deux" id="fc" style="grid-template-columns:minmax(0,1fr)">
+    <div class="card" style="padding:22px 24px">
+      <div class="mail" style="gap:14px">${ROND.replace('class="rond"', 'class="rond" style="width:56px;height:56px"')}<div style="min-width:0"><b style="font-size:20px;font-weight:600;color:var(--txt)">${esc(nom)}</b><div class="mute" style="font-size:14px;word-break:break-all">${esc(c.email)}</div></div></div>
+      <p style="margin:14px 0 4px">Contact ajouté le : ${dmyh(c.cree)}</p><span class="pill ${etat[1]}">${etat[0]}</span>
+      ${F.eleve ? `<p class="mute" style="margin:8px 0 0">Élève · dernière connexion : ${F.eleve.derniere_connexion ? dmyh(F.eleve.derniere_connexion) : "jamais"}</p>` : ""}
+      <hr style="border:0;border-top:1px solid var(--line);margin:18px 0">
+      <div class="row" style="align-items:center"><b style="font-weight:600;flex:0 0 auto;min-width:0">🏷 Tags</b><a href="javascript:void 0" id="ht" style="flex:0 0 auto;min-width:0;margin-left:auto">Historique des tags</a></div>
+      <div style="margin-top:10px">${actives.map(l => `<span class="tagp">${esc(l.nom)} <a href="javascript:void 0" data-rt="${l.id}" title="Retirer" style="color:var(--mute);text-decoration:none">✕</a></span>`).join("")}<button class="mini" id="at" title="Ajouter un tag" style="margin:2px 0">+</button></div>
+      <div id="zt" hidden style="margin-top:10px"><div class="row"><select id="tl"><option value="">Choisir un tag</option>${L.filter(l => !actives.some(x => x.id === l.id)).map(l => `<option value="${l.id}">${esc(l.nom)}</option>`).join("")}</select><button class="btn petit" id="tg" style="flex:0">Ajouter</button></div></div>
+      <div id="zh" hidden style="margin-top:10px">${c.listes.map(l => `<div class="mute" style="padding:3px 0">${l.depuis ? dmyh(l.depuis) : "—"} · ${esc(l.nom)} ${l.statut === "unsubscribed" ? "(désabonné)" : ""}</div>`).join("")}</div>
+      <hr style="border:0;border-top:1px solid var(--line);margin:18px 0">
+      <div class="row" style="align-items:center"><b style="font-weight:600;flex:0 0 auto;min-width:0">👤 Coordonnées</b><a href="javascript:void 0" id="ec" title="Modifier" style="flex:0 0 auto;min-width:0;margin-left:auto">✎</a></div>
+      <div id="vc" style="margin-top:8px;line-height:1.9"><div>Email : ${esc(c.email)}</div>${CHAMPS_CONTACT.filter(([k]) => a[k]).map(([k, l]) => `<div>${l} : ${esc(a[k])}</div>`).join("")}
+        ${a.locale ? `<div>Langue : ${a.locale === "fr" ? "Français" : esc(a.locale)}</div>` : ""}</div>
+      <div id="fcf" hidden><label>Email</label><input id="c_email" value="${esc(c.email)}">${CHAMPS_CONTACT.map(([k, l]) => `<label>${l}</label><input data-c="${k}" value="${esc(a[k] || "")}">`).join("")}
+        <div class="row" style="margin-top:14px;gap:8px"><button class="btn petit" id="cs" style="flex:0">Enregistrer</button><button class="btn sec petit" id="ca" style="flex:0">Annuler</button></div><div class="msg" id="cm"></div></div>
+      <hr style="border:0;border-top:1px solid var(--line);margin:18px 0">
+      <b style="font-weight:600">📝 Notes</b>
+      <textarea id="nt" rows="2" placeholder="Ajouter une note…" style="margin-top:10px"></textarea><button class="btn petit" id="na" style="margin-top:8px">Ajouter la note</button>
+      <div style="margin-top:10px">${F.notes.map(n => `<div style="border-top:1px solid var(--line);padding:8px 0"><div class="mute">${dmyh(n.created_at)} <a href="javascript:void 0" data-sn="${n.id}" style="color:var(--mute)">✕</a></div><div style="white-space:pre-wrap">${esc(n.texte)}</div></div>`).join("")}</div>
+    </div>
+    <div class="card" style="padding:0;align-self:start"><div class="ongl">${ONG.map(([k, l]) => `<a data-o="${k}">${l}</a>`).join("")}</div><div id="zo" style="padding:18px 22px"></div></div>
+  </div>`;
+  if (innerWidth >= 1000) document.getElementById("fc").style.gridTemplateColumns = "390px minmax(0,1fr)";
+  const vide = `<p class="vide">Oups ! Il semble que votre écran soit vide.</p>`;
+  const tableau = (t, l) => l.length ? `<table><tr>${t.map(x => `<th>${x}</th>`).join("")}</tr>${l.join("")}</table>` : vide;
+  const ONGLETS = {
+    abonnements: () => tableau(["Date", "Offre", "Paiements", "Statut"], F.commandes.filter(x => x.echeances !== 1).map(x => { const [lib, cl] = ETAT_VENTE[x.statut] || [x.statut, ""];
+      return `<tr><td>${dmyh(x.created_at)}</td><td>${esc(x.titre || "—")}</td><td>${x.payees}${x.echeances > 1 ? " / " + x.echeances : ""} × ${euros(x.montant_cents)}</td><td><span class="pill ${cl}">${lib}</span></td></tr>`; })),
+    paiements: () => tableau(["Date", "Offre", "Encaissé", "Statut"], F.commandes.map(x => { const [lib, cl] = ETAT_VENTE[x.statut] || [x.statut, ""];
+      return `<tr><td>${dmyh(x.created_at)}</td><td>${esc(x.titre || "—")}${x.bump ? `<div class="mute">+ ${esc(x.bump)}</div>` : ""}</td><td class="montant">+ ${euros(x.encaisse)}</td><td><span class="pill ${cl}">${lib}</span></td></tr>`; }))
+      + `<p class="mute" style="margin-top:12px">Paiements encaissés par ton PayPal. Les achats faits chez Systeme.io sont visibles dans « Mes formations » et dans le tag « Clients — ont payé (auto) ».</p>`,
+    emails: () => tableau(["Date", "Sujet", "Envoyé par"], F.emails.map(x => `<tr><td style="white-space:nowrap">${dmyh(x.quand)}</td><td>${esc(x.sujet)}</td><td class="mute">${esc(x.source)}</td></tr>`)),
+    campagnes: () => tableau(["Campagne", "Progression", "Statut", "Prochain email"], F.campagnes.map(x => `<tr><td><a href="#/sequences/${x.sequence_id}">${esc(x.nom)}</a></td><td>${x.etape} / ${x.total} emails</td>
+      <td><span class="pill ${x.statut === "active" ? "ok" : x.statut === "terminee" ? "blue" : ""}">${({active: "En cours", terminee: "Terminée", arretee: "Arrêtée"})[x.statut] || x.statut}</span>${x.erreur ? `<div class="mute">${esc(x.erreur)}</div>` : ""}</td>
+      <td>${x.statut === "active" ? dmyh(x.prochain_at) : "—"}</td></tr>`)),
+    formations: () => tableau(["Formation", "Progression", "Accès donné le", "Origine"], F.formations.map(x => `<tr><td><a href="/espace/#/f/${esc(x.slug)}" target="_blank">${esc(x.titre)}</a></td>
+      <td><div style="border:1px solid var(--blue);border-radius:10px;height:18px;width:140px;position:relative;overflow:hidden"><div style="background:var(--blue2);height:100%;width:${x.lecons ? Math.round(x.vues / x.lecons * 100) : 0}%"></div><span style="position:absolute;inset:0;text-align:center;font-size:12px">${x.lecons ? Math.round(x.vues / x.lecons * 100) : 0}%</span></div></td>
+      <td>${dmyh(x.created_at)}</td><td class="mute">${esc(({systemeio: "Systeme.io", paypal: "Achat PayPal", manuel: "Ajouté à la main", automatisation: "Automatisation"})[x.source] || x.source)}</td></tr>`)),
+    taches: () => tableau(["Date", "Source", "Détail"], F.taches.map(x => `<tr><td style="white-space:nowrap">${dmyh(x.quand)}</td><td>${x.source === "regle" ? `<a href="#/regles/${x.ref}">Règle</a>` : x.source === "workflow" ? `<a href="#/workflows/${x.ref}">Workflow</a>` : esc(x.source)}</td><td>${esc(x.detail)}</td></tr>`)),
+    workflows: () => tableau(["Workflow", "Statut", "Entré le", "Prochaine étape"], F.workflows.map(x => `<tr><td><a href="#/workflows/${x.workflow_id}">${esc(x.nom)}</a></td><td><span class="pill ${x.statut === "active" ? "ok" : "blue"}">${x.statut === "active" ? "En cours" : "Terminé"}</span>${x.erreur ? `<div class="mute">${esc(x.erreur)}</div>` : ""}</td><td>${dmyh(x.created_at)}</td><td>${x.statut === "active" ? dmyh(x.prochain_at) : "—"}</td></tr>`)),
+  };
+  const ouvrir = o => { document.querySelectorAll(".ongl a").forEach(x => x.classList.toggle("on", x.dataset.o === o)); document.getElementById("zo").innerHTML = ONGLETS[o](); };
+  document.querySelectorAll(".ongl a").forEach(x => x.onclick = () => ouvrir(x.dataset.o));
+  ouvrir(onglet0 || (F.commandes.length ? "paiements" : F.formations.length ? "formations" : "abonnements"));
+  const recharger = () => contactFiche(String(c.id), document.querySelector(".ongl a.on")?.dataset.o);
+  document.getElementById("ht").onclick = () => { const z = document.getElementById("zh"); z.hidden = !z.hidden; };
+  document.getElementById("at").onclick = () => { const z = document.getElementById("zt"); z.hidden = !z.hidden; };
+  document.getElementById("tg").onclick = async () => { const v = +document.getElementById("tl").value; if (!v) return; await post("/studio/contacts/listes", {ids: [c.id], liste: v, action: "add"}); listes(true); recharger(); };
+  document.querySelectorAll("[data-rt]").forEach(x => x.onclick = async () => { if (!confirm("Retirer ce tag du contact ?")) return; await post("/studio/contacts/listes", {ids: [c.id], liste: +x.dataset.rt, action: "remove"}); listes(true); recharger(); });
+  document.getElementById("ec").onclick = () => { document.getElementById("vc").hidden = !document.getElementById("vc").hidden; document.getElementById("fcf").hidden = !document.getElementById("fcf").hidden; };
+  document.getElementById("ca").onclick = () => document.getElementById("ec").click();
+  document.getElementById("cs").onclick = async () => { const m = document.getElementById("cm"), at = {};
+    document.querySelectorAll("[data-c]").forEach(i => at[i.dataset.c] = i.value);
+    try { await put("/studio/contact/" + c.id, {email: document.getElementById("c_email").value, attribs: at}); recharger(); } catch (x) { m.className = "msg err"; m.textContent = x.msg || "Erreur"; } };
+  document.getElementById("na").onclick = async () => { const t = document.getElementById("nt").value.trim(); if (!t) return; await post("/studio/contact/notes", {email: c.email, texte: t}); recharger(); };
+  document.querySelectorAll("[data-sn]").forEach(x => x.onclick = async () => { if (confirm("Supprimer cette note ?")) { await api("/studio/contact/notes/" + x.dataset.sn, {method: "DELETE"}); recharger(); } });
+  document.querySelectorAll("[data-x]").forEach(b => b.onclick = async () => { fermerMenus(); const a_ = b.dataset.x;
+    if (!confirm(({desinscrire: "Désinscrire ce contact de tous les emails marketing ?", reinscrire: "Réinscrire ce contact à ta liste email ?", supprimer: "Supprimer définitivement ce contact ? (ses accès aux formations restent)"})[a_])) return;
+    await post("/studio/contacts/action", {ids: [c.id], emails: [c.email], action: a_});
+    if (a_ === "supprimer") location.hash = "#/contacts"; else recharger(); });
 }
 
 /* ── CRM : tags ──────────────────────────────────────── */
@@ -634,7 +712,7 @@ async function formations() {
     if (q.value.trim().length < 3) { document.getElementById("qr").innerHTML = ""; return; }
     const rows = await api("/admin/eleves?q_=" + encodeURIComponent(q.value.trim()));
     document.getElementById("qr").innerHTML = `<div class="wrap" style="margin-top:14px;box-shadow:none"><table><tr><th>Nom</th><th>Email</th><th>Formations</th><th>Dernière connexion</th></tr>
-      ${rows.map(r => `<tr><td>${esc(r.prenom)} ${esc(r.nom)}</td><td><a>${esc(r.email)}</a></td><td class="tag">${r.formations.map(esc).join(", ") || "—"}</td><td>${dmy(r.derniere_connexion)}</td></tr>`).join("") || `<tr><td colspan="4" class="vide">Aucun élève.</td></tr>`}</table></div>`;
+      ${rows.map(r => `<tr><td>${esc(r.prenom)} ${esc(r.nom)}</td><td>${lienContact(0, r.email)}</td><td class="tag">${r.formations.map(esc).join(", ") || "—"}</td><td>${dmy(r.derniere_connexion)}</td></tr>`).join("") || `<tr><td colspan="4" class="vide">Aucun élève.</td></tr>`}</table></div>`;
   }, 300); };
 }
 
@@ -656,7 +734,7 @@ async function ventes(mode) {
       document.getElementById("tr").innerHTML = `<div class="wrap"><table><tr><th style="width:56px"><span class="statut"></span></th><th>Date de transaction</th><th>Client</th><th>Montant</th><th>Nom</th><th>Statut</th></tr>
       ${W.map(v => { const [lib, cl] = ETAT_VENTE[v.statut] || [v.statut, ""]; const neg = v.statut === "remboursee";
         return `<tr><td>${statut(!["interrompue", "remboursee"].includes(v.statut), "err")}</td><td class="facture"><b>${neg ? "Remboursement" : "Facture"} #${v.id}</b>${dmyh(v.created_at)}</td>
-        <td><div class="mail">${ROND}<div>${esc(v.prenom)}<div><a>${esc(v.email)}</a></div></div></div></td>
+        <td><div class="mail">${ROND}<div>${esc(v.prenom)}<div>${lienContact(0, v.email)}</div></div></div></td>
         <td class="montant ${neg ? "neg" : ""}">${neg ? "−" : "+"} ${euros(v.encaisse)}${v.echeances !== 1 ? `<div class="mute">${v.payees}${v.echeances > 1 ? "/" + v.echeances : ""} × ${euros(v.montant_cents)}</div>` : ""}</td>
         <td><a>${esc(v.titre || "—")}</a><div class="mute">${esc(v.moyen || "")}</div></td>
         <td><span class="pill ${cl}">${lib}</span>${v.fin_raison ? `<div class="mute">${esc(v.fin_raison)}</div>` : ""}</td></tr>`; }).join("") || `<tr><td colspan="6" class="vide">Aucune transaction enregistrée ici pour l'instant.</td></tr>`}</table></div>`;
@@ -1173,7 +1251,8 @@ async function route() {
   onglet(h);
   document.getElementById("nav").style.visibility = "";
   try {
-    if (h.startsWith("contacts")) await contacts(h.split("?")[1]);
+    if (/^contacts\/(\d+|e\/.+)$/.test(h)) await contactFiche(h.slice(9));
+    else if (h.startsWith("contacts")) await contacts(h.split("?")[1]);
     else if (h === "tags") await tags();
     else if (h === "emails") await emails();
     else if (h.startsWith("emails/sio/")) await newsletterSio(h.slice(11));
