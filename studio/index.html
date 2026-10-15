@@ -414,7 +414,7 @@ async function contacts(params) {
     document.getElementById("res").innerHTML = `<div class="wrap"><table><tr><th style="width:56px"><button class="coche" id="tout" title="Tout sélectionner"></button></th><th>Ajouté le</th><th>Email du client</th><th>Tags</th></tr>
       ${d.contacts.map(c => `<tr><td><button class="coche ${choisis.has(c.id) ? "on" : ""}" data-id="${c.id}" data-e="${esc(c.email)}"></button></td><td style="white-space:nowrap">${dmyh(c.cree)}</td>
         <td><div class="mail">${ROND}<div>${lienContact(c.id, c.email)}${c.statut !== "enabled" ? ` <span class="pill err">Désinscrit</span>` : ""}<div class="mute">${esc(c.prenom || c.nom)}</div></div></div></td>
-        <td>${c.listes.filter(x => x.statut !== "unsubscribed").slice(0, 5).map(x => `<span class="tagp">${esc(x.nom)}</span>`).join("")}${c.listes.length > 5 ? `<span class="mute">+${c.listes.length - 5}</span>` : ""}</td></tr>`).join("") || `<tr><td colspan="4" class="vide">Oups ! Il semble que votre écran soit vide.</td></tr>`}
+        <td>${(T => T.slice(0, 5).map(x => `<span class="tagp">${esc(x.nom)}</span>`).join("") + (T.length > 5 ? `<span class="mute">+${T.length - 5}</span>` : ""))(c.listes.filter(x => x.statut !== "unsubscribed" && !TECHNIQUE(x.nom)))}</td></tr>`).join("") || `<tr><td colspan="4" class="vide">Oups ! Il semble que votre écran soit vide.</td></tr>`}
       </table></div>
       <div class="row" style="margin-top:14px;justify-content:space-between">${page > 1 ? `<button class="btn sec" id="prev" style="flex:0">← Précédents</button>` : "<span></span>"}<span class="mute" style="flex:0;white-space:nowrap;align-self:center">Page ${page} / ${Math.max(1, Math.ceil(d.total / 50))}</span>${d.total > page * 50 ? `<button class="btn sec" id="next" style="flex:0">Suivants →</button>` : "<span></span>"}</div>`;
     document.querySelectorAll("#res .coche[data-id]").forEach(b => b.onclick = () => { const i = +b.dataset.id; choisis.has(i) ? choisis.delete(i) : choisis.set(i, b.dataset.e); b.classList.toggle("on"); majSel(); });
@@ -495,6 +495,8 @@ async function contacts(params) {
 }
 
 /* ── CRM : fiche contact (comme la fiche Systeme.io fin 2025 : une longue page, formulaire 2 colonnes, tags) ── */
+// Listes techniques (pas des tags) : jamais affichées comme tags
+const TECHNIQUE = n => n.startsWith("Tous les contacts") || n.endsWith("(auto)");
 const lienContact = (id, email, texte) => `<a href="#/contacts/${id ? id : "e/" + encodeURIComponent(email)}">${esc(texte || email)}</a>`;
 const CHAMPS_FICHE = [["email", "Email", 1], ["first_name", "Prénom"], ["surname", "Nom"], ["street_address", "Adresse"], ["street_number", "Numéro de rue"],
   ["neighborhood", "Quartier"], ["postcode", "Code postal"], ["city", "Ville"], ["state", "Région"], ["country", "Pays"], ["phone_number", "Numéro de téléphone"],
