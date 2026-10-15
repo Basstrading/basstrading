@@ -25,8 +25,8 @@ a{color:var(--gold)}
       headers: {"Content-Type": "application/json"}, body: JSON.stringify({t})});
     if (!r.ok) throw await r.json();
     let retour = "/espace/";
-    const r = new URLSearchParams(location.search).get("r");
-    if (r && /^\/[a-z0-9\/_-]*$/.test(r)) retour = r;
+    const dest = new URLSearchParams(location.search).get("r");
+    if (dest && /^\/[a-z0-9\/_-]*$/.test(dest)) retour = dest;
     else try { const x = localStorage.getItem("bt_retour"); if (x && x.startsWith("/")) { retour = x; localStorage.removeItem("bt_retour"); } } catch {}
     location.replace(retour);
   } catch (e) {
