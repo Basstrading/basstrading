@@ -479,13 +479,14 @@ async function editeurSequence(id) {
   document.getElementById("sdc").onchange = zones; zones();
   let ouvert = -1;
   const dessiner = () => {
-    let jour = 0;
-    document.getElementById("et").innerHTML = E.map((e, i) => { jour += e.active ? (+e.delai_jours || 0) : 0;
+    let cumul = 0;
+    const duree = h => { h = +h || 0; const j = Math.floor(h / 24), r = h % 24; return h === 0 ? "immédiatement" : [j ? j + " j" : "", r ? r + " h" : ""].filter(Boolean).join(" "); };
+    document.getElementById("et").innerHTML = E.map((e, i) => { cumul += e.active ? (+e.delai_heures || 0) : 0;
       return `<div class="card" style="margin-bottom:10px;${e.active ? "" : "opacity:.6"}"><div class="row" style="align-items:center">
-        <div><strong>${i + 1}. ${esc(e.sujet)}</strong><div class="mute">${e.active ? `Jour ${jour}` : "Désactivé"} · ${i === 0 ? "après l'entrée dans la séquence" : "après le mail précédent"} : ${e.delai_jours} jour(s)${e.envoyes ? ` · ${e.envoyes} envoyé(s)` : ""}</div></div>
+        <div><strong>${i + 1}. ${esc(e.sujet)}</strong><div class="mute">${e.active ? `Envoyé ${cumul ? "à J+" + duree(cumul).replace(" j", "") : "dès l'entrée"}` : "Désactivé"} · ${duree(e.delai_heures)} ${i === 0 ? "après l'entrée dans la séquence" : "après le mail précédent"}${e.envoyes ? ` · ${e.envoyes} envoyé(s)` : ""}</div></div>
         <div style="flex:0;white-space:nowrap"><button class="mini" data-a="haut" data-i="${i}">↑</button><button class="mini" data-a="bas" data-i="${i}">↓</button><button class="mini" data-a="sup" data-i="${i}">✕</button>
         <button class="btn sec" data-a="ouv" data-i="${i}" style="padding:4px 10px;margin-left:6px">${ouvert === i ? "Fermer" : "Modifier"}</button></div></div>
-        ${ouvert === i ? `<div class="row"><div><label>Sujet</label><input id="es" value="${esc(e.sujet)}"></div><div style="flex:0;min-width:150px"><label>Délai (jours)</label><input id="ed" type="number" min="0" value="${e.delai_jours}"></div></div>
+        ${ouvert === i ? `<div class="row"><div><label>Sujet</label><input id="es" value="${esc(e.sujet)}"></div><div style="flex:0;min-width:110px"><label>Délai : jours</label><input id="edj" type="number" min="0" value="${Math.floor((+e.delai_heures || 0) / 24)}"></div><div style="flex:0;min-width:110px"><label>+ heures</label><input id="edh" type="number" min="0" max="23" value="${(+e.delai_heures || 0) % 24}"></div></div>
           <label><input type="checkbox" id="ea" style="width:auto" ${e.active ? "checked" : ""}> Email actif</label>
           <label>Message <span class="mute">— {first_name} = prénom du lecteur</span></label>
           <div class="toolbar"><button data-c="bold"><b>G</b></button><button data-c="italic"><i>I</i></button><button data-c="underline"><u>S</u></button><button data-c="insertUnorderedList">• Liste</button><button data-c="createLink">Lien</button></div>
@@ -502,7 +503,8 @@ async function editeurSequence(id) {
     if (ouvert >= 0) {
       const e = E[ouvert];
       document.getElementById("es").oninput = ev => e.sujet = ev.target.value;
-      document.getElementById("ed").oninput = ev => e.delai_jours = Math.max(0, +ev.target.value || 0);
+      const delai = () => e.delai_heures = Math.max(0, (+document.getElementById("edj").value || 0) * 24 + (+document.getElementById("edh").value || 0));
+      document.getElementById("edj").oninput = delai; document.getElementById("edh").oninput = delai;
       document.getElementById("ea").onchange = ev => e.active = ev.target.checked;
       const ec = document.getElementById("ec"); ec.oninput = () => e.corps = ec.innerHTML;
       document.querySelectorAll("#et .toolbar button").forEach(t => t.onclick = ev => { ev.preventDefault();
@@ -517,12 +519,12 @@ async function editeurSequence(id) {
     }
   };
   dessiner();
-  document.getElementById("ae").onclick = () => { E.push({id: 0, delai_jours: 1, sujet: "Nouvel email", corps: "<p>Salut {first_name},</p><p></p><p>Bass</p>", active: true}); ouvert = E.length - 1; dessiner(); };
+  document.getElementById("ae").onclick = () => { E.push({id: 0, delai_heures: 24, sujet: "Nouvel email", corps: "<p>Salut {first_name},</p><p></p><p>Bass</p>", active: true}); ouvert = E.length - 1; dessiner(); };
   document.getElementById("ss").onclick = async () => {
     const m = document.getElementById("sm"), b = document.getElementById("ss"); b.disabled = true;
     const d = {nom: document.getElementById("sn").value, declencheur: document.getElementById("sdc").value, liste_id: +document.getElementById("sl").value || null,
       offre_slug: document.getElementById("so").value, arret_offres: [...document.querySelectorAll(".arr:checked")].map(x => x.value), active: document.getElementById("sa").checked,
-      etapes: E.map(e => ({id: e.id || 0, delai_jours: +e.delai_jours || 0, sujet: e.sujet, corps: e.corps, active: e.active !== false}))};
+      etapes: E.map(e => ({id: e.id || 0, delai_heures: +e.delai_heures || 0, sujet: e.sujet, corps: e.corps, active: e.active !== false}))};
     try { await put("/studio/sequences/" + id, d); m.className = "msg ok"; m.textContent = d.active ? "Enregistré. La séquence est active : les nouveaux contacts la recevront." : "Enregistré (séquence désactivée)."; setTimeout(() => editeurSequence(id), 1200); }
     catch (x) { m.className = "msg err"; m.textContent = x.msg || "Erreur"; }
     b.disabled = false;
