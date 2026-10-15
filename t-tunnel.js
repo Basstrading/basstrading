@@ -41,10 +41,13 @@
       location.href = lien && lien.startsWith("/t/") || (lien || "").includes("/t/") ? lien : (R.suite || "/");
     } catch (e) { message(zone, (e && e.detail) || "Oups, réessaie dans un instant.", false); enCours = false; if (bouton) bouton.style.opacity = ""; }
   };
+  // Case « Oui, je le veux ! » du bon de commande (produit additionnel) : une case cochée hors conditions générales.
+  const bumpCoche = () => [...document.querySelectorAll("input[type=checkbox]:checked")].some(i => !/condition|cgv|agree|accept/i.test((i.closest("label, div") || i).textContent + (i.name || "")));
   const payer = () => {
     const c = champs(document.body);
     if (R.offre && R.offre.lien) location.href = R.offre.lien + (R.suite ? "&suite=" + encodeURIComponent(R.suite) : "")
-      + (c.email ? "&email=" + encodeURIComponent(c.email) : "") + (c.first_name ? "&prenom=" + encodeURIComponent(c.first_name) : "");
+      + (c.email ? "&email=" + encodeURIComponent(c.email) : "") + (c.first_name ? "&prenom=" + encodeURIComponent(c.first_name) : "")
+      + (R.offre.bump ? "&bump=" + encodeURIComponent(R.offre.bump) + (bumpCoche() ? "&ajout=1" : "") : "");
     else alert("Le paiement de cette offre se fait désormais en me contactant : contact@basstrading.fr");
   };
   document.addEventListener("click", e => {

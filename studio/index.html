@@ -350,7 +350,9 @@ async function contacts(params) {
   const majSel = () => { document.getElementById("sn").textContent = choisis.size; document.getElementById("sel").classList.toggle("on", choisis.size > 0); };
   const charger = async (pg = 1) => {
     page = pg;
-    const d = await post("/studio/contacts/recherche", {conditions: conditions(), page});
+    let d;
+    try { d = await post("/studio/contacts/recherche", {conditions: conditions(), page}); }
+    catch (x) { document.getElementById("res").innerHTML = `<div class="wrap"><p class="vide msg err">La recherche a échoué : ${esc(x.msg || "erreur")}</p></div>`; return; }
     document.querySelector(".entete .nb").textContent = d.total.toLocaleString("fr-FR");
     document.getElementById("res").innerHTML = `<div class="wrap"><table><tr><th style="width:56px"><button class="coche" id="tout" title="Tout sélectionner"></button></th><th>Ajouté le</th><th>Email du client</th><th>Tags</th></tr>
       ${d.contacts.map(c => `<tr><td><button class="coche ${choisis.has(c.id) ? "on" : ""}" data-id="${c.id}" data-e="${esc(c.email)}"></button></td><td style="white-space:nowrap">${dmyh(c.cree)}</td>

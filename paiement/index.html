@@ -40,12 +40,16 @@ const prix = cents => (cents / 100).toLocaleString("fr-FR", {minimumFractionDigi
 
 (async () => {
   let o;
-  try { const r = await fetch(API + "/offres/" + encodeURIComponent(slug)); if (!r.ok) throw 0; o = await r.json(); }
+  const u0 = new URLSearchParams(location.search);
+  try { const r = await fetch(API + "/offres/" + encodeURIComponent(slug) + (u0.get("bump") ? "?bump=" + encodeURIComponent(u0.get("bump")) : "")); if (!r.ok) throw 0; o = await r.json(); }
   catch { c.innerHTML = `<h1>Offre introuvable</h1><p class="sub">Ce lien de paiement n'est plus valable. Écris-nous à contact@basstrading.fr.</p>`; return; }
   c.innerHTML = `${o.mode !== "live" ? `<div class="essai">Mode essai : aucun vrai paiement n'est effectué.</div>` : ""}
-    <h1>${esc(o.titre)}</h1><div class="prix">${prix(o.prix_cents)}${o.echeances !== 1 ? `<span style="font-size:18px;color:#9ca3af"> / mois</span>` : ""}</div>
+    <h1>${esc(o.titre)}</h1><div class="prix" id="total">${prix(o.prix_cents)}${o.echeances !== 1 ? `<span style="font-size:18px;color:#9ca3af"> / mois</span>` : ""}</div>
     <p class="sub">${o.echeances > 1 ? `${o.echeances} mensualités de ${prix(o.prix_cents)}, soit ${prix(o.prix_cents * o.echeances)} au total. Le prélèvement s'arrête tout seul après la dernière.`
       : o.echeances === 0 ? "Prélèvement mensuel, résiliable à tout moment depuis ton compte PayPal." : "Paiement en une fois, ou en 4 fois sans frais avec PayPal."}</p>
+    ${o.bump ? `<label class="bump" style="display:flex;gap:10px;align-items:flex-start;border:2px dashed #f59e0b;border-radius:10px;padding:14px;margin:14px 0;cursor:pointer;background:rgba(245,158,11,.08);color:inherit">
+      <input type="checkbox" id="bump" style="width:20px;height:20px;margin-top:2px;flex:0 0 auto" ${u0.get("ajout") === "1" ? "checked" : ""}>
+      <span><b style="color:#f59e0b">Oui, je le veux !</b> Ajouter « ${esc(o.bump.titre)} » à ma commande pour <b>${prix(o.bump.prix_cents)}</b> de plus.</span></label>` : ""}
     <label for="e">Ton adresse email (elle ouvrira ton accès)</label><input id="e" type="email" autocomplete="email" placeholder="ton@email.com">
     <label for="p">Ton prénom</label><input id="p" autocomplete="given-name" maxlength="60" placeholder="Prénom">
     ${o.paypal_plan_id ? "" : `<div data-pp-message data-pp-amount="${(o.prix_cents/100).toFixed(2)}" data-pp-style-text-color="white" style="margin-top:16px"></div>`}
@@ -63,6 +67,10 @@ function afficherBoutons(o) {
   { const u = new URLSearchParams(location.search); // pré-rempli depuis le bon de commande du tunnel
     if (u.get("email")) document.getElementById("e").value = u.get("email");
     if (u.get("prenom")) document.getElementById("p").value = u.get("prenom"); }
+  const bump = () => !!(o.bump && document.getElementById("bump") && document.getElementById("bump").checked);
+  const majTotal = () => { const t = o.prix_cents + (bump() ? o.bump.prix_cents : 0); document.getElementById("total").textContent = prix(t);
+    const msg = document.querySelector("[data-pp-message]"); if (msg) msg.setAttribute("data-pp-amount", (t / 100).toFixed(2)); };
+  if (o.bump) { document.getElementById("bump").onchange = majTotal; majTotal(); }
   const onClick = (data, actions) => {
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email())) { m.className = "msg err"; m.textContent = "Indique ton adresse email avant de payer."; return actions.reject(); }
     m.className = "msg"; m.textContent = ""; return actions.resolve();
@@ -89,7 +97,7 @@ function afficherBoutons(o) {
     style: {layout: "vertical", color: "gold", shape: "rect", label: "pay"}, onClick,
     createOrder: async () => {
       const r = await fetch(API + "/paiement/commande", {method: "POST", headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({offre: o.slug, email: email(), prenom: document.getElementById("p").value.trim()})});
+        body: JSON.stringify({offre: o.slug, email: email(), prenom: document.getElementById("p").value.trim(), bump: bump() ? o.bump.slug : ""})});
       const d = await r.json(); if (!r.ok) throw new Error(d.detail || "commande");
       return d.id;
     },
