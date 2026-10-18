@@ -44,20 +44,20 @@
   ],
   "rewrites": [
     {
-      "source": "/p/:slug/",
-      "destination": "https://api.basstrading.fr/p/:slug"
-    },
-    {
-      "source": "/p/:slug",
-      "destination": "https://api.basstrading.fr/p/:slug"
-    },
-    {
       "source": "/t/:chemin/",
       "destination": "https://api.basstrading.fr/t/:chemin"
     },
     {
       "source": "/t/:chemin",
       "destination": "https://api.basstrading.fr/t/:chemin"
+    },
+    {
+      "source": "/p/:path*/",
+      "destination": "https://studio.hubtrading.fr/p/:path*"
+    },
+    {
+      "source": "/p/:path*",
+      "destination": "https://studio.hubtrading.fr/p/:path*"
     }
   ]
 }
