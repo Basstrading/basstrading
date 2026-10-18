@@ -44,6 +44,10 @@
   ],
   "rewrites": [
     {
+      "source": "/p/:path*/",
+      "destination": "https://studio.hubtrading.fr/p/:path*"
+    },
+    {
       "source": "/p/:path*",
       "destination": "https://studio.hubtrading.fr/p/:path*"
     }
