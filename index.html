@@ -1222,7 +1222,7 @@ document.getElementById('applyForm').addEventListener('submit',async function(e)
   // Envoi email + Telegram en parallele
   const tgText='Nouvelle candidature BASS Trading\n\nNom: '+name+'\nEmail: '+email+'\nTelephone: '+phone+'\nSession: '+sess+'\nExperience: '+exp+'\nMotivation: '+motiv;
   const emailReq=fetch('https://formsubmit.co/ajax/support@iftrading.fr',{method:'POST',body:data,headers:{'Accept':'application/json'}});
-  const tgReq=fetch('https://api.telegram.org/bot8226810369:AAFi8mLA7jrQzP_5mIIuQcsAzeX-6am300Y/sendMessage',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:5216224966,text:tgText})});
+  const tgReq=fetch('https://api.basstrading.fr/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({type:'candidature',nom:name,email:email,telephone:phone,message:motiv,details:{Session:String(sess||''),'Expérience':String(exp||'')}})}).catch(()=>null);
   try{
     const [emailRes]=await Promise.all([emailReq,tgReq]);
     if(emailRes.ok){
@@ -1517,14 +1517,12 @@ document.getElementById('applyForm').addEventListener('submit',async function(e)
 
 // ==================== AI CHAT WIDGET ====================
 const WORKER_URL='https://patient-mouse-5034.officiel-bassgma.workers.dev';
-const TG_BOT='8226810369:AAFi8mLA7jrQzP_5mIIuQcsAzeX-6am300Y';
-const TG_CHAT=5216224966;
 let chatMsgs=[];
 let chatOpen=false;
 let contactCaptured=false;
 
-function sendTgNotif(text){
-  fetch('https://api.telegram.org/bot'+TG_BOT+'/sendMessage',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:TG_CHAT,text:text})});
+function sendTgNotif(text,email,tel){
+  fetch('https://api.basstrading.fr/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({type:'chat',email:email||'',telephone:tel||'',message:text})}).catch(()=>{});
 }
 
 // Detect contact info in messages
@@ -1537,7 +1535,7 @@ function extractContact(text){
     if(emailMatch)msg+='Email: '+emailMatch[0]+'\n';
     if(phoneMatch)msg+='Tel: '+phoneMatch[0]+'\n';
     msg+='Conversation:\n'+chatMsgs.filter(m=>m.role==='user').map(m=>'> '+m.content).join('\n');
-    if(!contactCaptured){contactCaptured=true;sendTgNotif(msg);}
+    if(!contactCaptured){contactCaptured=true;sendTgNotif(msg,emailMatch&&emailMatch[0],phoneMatch&&phoneMatch[0]);}
   }
 }
 
