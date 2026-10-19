@@ -3,6 +3,17 @@
   "trailingSlash": true,
   "redirects": [
     {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.basstrading.fr"
+        }
+      ],
+      "destination": "https://basstrading.fr/:path*",
+      "permanent": true
+    },
+    {
       "source": "/blog/formation-trading-cpf-qualiopi",
       "destination": "/blog/",
       "permanent": true
