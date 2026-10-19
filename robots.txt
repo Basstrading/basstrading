@@ -1,0 +1,15 @@
+# basstrading.fr — exploration ouverte (Google et moteurs IA), sauf les espaces privés.
+User-agent: *
+Allow: /
+Disallow: /studio/
+Disallow: /espace/
+Disallow: /paiement/
+Disallow: /_archive/
+Disallow: /emails/
+Disallow: /out/
+Disallow: /t/
+Disallow: /formation-offerte/merci/
+Disallow: /malaga/paypal/
+Disallow: /malaga/paypal-special/
+
+Sitemap: https://basstrading.fr/sitemap.xml
