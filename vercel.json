@@ -60,6 +60,10 @@
       "destination": "https://studio.hubtrading.fr/p/:path*"
     },
     {
+      "source": "/l/:code/",
+      "destination": "https://studio.hubtrading.fr/l/:code"
+    },
+    {
       "source": "/l/:code",
       "destination": "https://studio.hubtrading.fr/l/:code"
     }
