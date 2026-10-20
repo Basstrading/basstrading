@@ -144,6 +144,48 @@ mark{background:rgba(201,168,76,.35);color:inherit;border-radius:3px;padding:0 2
   .hero,.reprise{grid-template-columns:minmax(0,1fr)}
 }
 @media (max-width:600px){h1{font-size:26px}}
+/* téléphone : la barre du haut dépassait de 5 px à 390 px et Chrome dézoomait toute la page (marges latérales seulement : le lecteur compte sur 62 px de haut) */
+@media (max-width:600px){header .in{gap:12px;padding-left:14px;padding-right:14px}header nav{gap:12px}}
+/* assistant « Besoin d'aide pour choisir ? » (20/10/2026) : bulle en bas à droite, panneau guidé sans IA ; téléphone d'abord */
+.aide-bulle{position:fixed;right:12px;bottom:12px;z-index:40;display:inline-flex;align-items:center;gap:8px;max-width:calc(100vw - 24px);background:var(--gold);color:#111;border:0;border-radius:999px;padding:12px 18px;font:600 15px 'Outfit';cursor:pointer;box-shadow:0 10px 30px rgba(0,0,0,.55)}
+.aide-bulle:hover{background:var(--gold2)}
+.aide-voile{position:fixed;inset:0;z-index:44;background:rgba(0,0,0,.6)}
+.aide-panneau{position:fixed;inset:auto 0 0 0;z-index:45;display:flex;flex-direction:column;max-height:88vh;max-height:88dvh;background:var(--panel);border:1px solid var(--line);border-bottom:0;border-radius:16px 16px 0 0;box-shadow:0 -10px 40px rgba(0,0,0,.6)}
+.aide-tete{display:flex;align-items:center;gap:12px;padding:14px 16px;border-bottom:1px solid var(--line)}
+.aide-tete h2{flex:1;margin:0;font:600 18px/1.3 'Outfit'}
+.aide-fermer{flex:none;width:40px;height:40px;border-radius:10px;border:1px solid #5f5f5f;background:transparent;color:var(--txt);font-size:22px;line-height:1;cursor:pointer}
+.aide-corps{overflow-y:auto;overscroll-behavior:contain;padding:14px 16px 22px}
+.aide-deja{margin:0;color:var(--mute);font-size:15px}.aide-deja b{color:var(--txt)}
+.aide-fo{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;margin-top:12px}
+.aide-fo h3{margin:0;font:600 17px/1.3 'Outfit'}
+.aide-fo .meta{font-size:13px;color:var(--mute);margin-top:2px}
+.aide-fo p{margin:8px 0 0;font-size:14px;line-height:1.5;color:#d2d2d2}
+.aide-fo p.aide-raison{color:var(--gold2)}
+.aide-fo .prix{margin-top:8px}
+.aide-boutons{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.aide-boutons .btn{flex:1 1 auto;padding:10px 12px;font-size:14px}
+.aide-panneau .btn.sec{border-color:#5f5f5f}
+.aide-envoyee{opacity:.7;cursor:default}
+.aide-form{margin-top:12px;padding-top:12px;border-top:1px solid var(--line)}
+.aide-form label{display:block;font-size:14px;margin-top:8px}
+.aide-form .champ,.aide-form textarea{margin:6px 0 0;border-color:#5f5f5f}
+.aide-form textarea{min-height:76px}
+.aide-form fieldset{border:0;padding:0;margin:12px 0 0;min-width:0}
+.aide-form legend{font-size:14px;padding:0;margin-bottom:6px}
+.aide-choix{display:flex;flex-wrap:wrap;gap:8px}
+.aide-choix label{display:inline-flex;align-items:center;gap:8px;margin:0;padding:8px 12px;border:1px solid #5f5f5f;border-radius:10px;cursor:pointer}
+.aide-choix input{accent-color:var(--gold);margin:0}
+.aide-form .small{margin:10px 0 0}
+.aide-form .btn{width:100%;margin-top:12px}
+.aide-fo .msg:empty{margin:0}.aide-panneau .msg.err{color:#ff7a7d}
+.aide-autres{margin-top:18px;border-top:1px solid var(--line);padding-top:6px}
+.aide-autres summary{cursor:pointer;padding:10px 0;font:600 16px 'Outfit';color:var(--txt)}
+.aide-bulle:focus-visible,.aide-panneau :focus-visible{outline:2px solid var(--gold2);outline-offset:2px}
+body.aide-ouverte{overflow:hidden}
+@media (min-width:601px){
+  .aide-bulle{right:20px;bottom:20px}
+  .aide-panneau{inset:auto 20px 84px auto;width:420px;max-height:min(76vh,720px);border-bottom:1px solid var(--line);border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+}
 </style>
 </head>
 <body>
@@ -587,6 +629,137 @@ function brancherQuestions(l) {
   document.querySelectorAll("[data-sup]").forEach(b => b.onclick = async () => { if (confirm("Supprimer ce message ?")) { await api(`/espace/questions/${b.dataset.sup}`, {method: "DELETE"}); lecon(l.id, "questions"); } });
 }
 
+/* ── Assistant « Besoin d'aide pour choisir ? » (Bass 20/10/2026) ─────────────
+   Sans IA, sans promesse : ce que l'élève a déjà, puis les formations de GET /espace/conseil dans l'ordre reçu (repli sur
+   le catalogue « cadenas » tant que la route n'existe pas). « Je la veux » mène à l'offre ; questions, rappels et demandes
+   des formations sur demande passent par POST /espace/demande (Telegram de Bass). Caché à la connexion et pendant une leçon.
+   Téléphone : panneau plein écran, le reste de la page inerte ; ordinateur : panneau flottant, la page reste utilisable. */
+const aide = (() => {
+  const ENVOYE = "C'est envoyé. Bass reçoit ta demande et te répond.";
+  let donnees = null;
+  const bulle = document.createElement("button"), voile = document.createElement("div"), panneau = document.createElement("div");
+  bulle.type = "button"; bulle.className = "aide-bulle"; bulle.hidden = true;
+  bulle.setAttribute("aria-expanded", "false"); bulle.setAttribute("aria-controls", "aide-panneau");
+  bulle.innerHTML = `<span aria-hidden="true">💬</span>Besoin d'aide pour choisir ?`;
+  voile.className = "aide-voile"; voile.hidden = true;
+  panneau.id = "aide-panneau"; panneau.className = "aide-panneau"; panneau.hidden = true;
+  panneau.setAttribute("role", "dialog"); panneau.setAttribute("aria-labelledby", "aide-titre");
+  panneau.innerHTML = `<div class="aide-tete"><h2 id="aide-titre" tabindex="-1">Choisir ta prochaine formation</h2>
+    <button type="button" class="aide-fermer" aria-label="Fermer">×</button></div><div class="aide-corps" id="aide-corps"></div>`;
+  document.body.append(bulle, voile, panneau);
+  const corps = panneau.querySelector("#aide-corps"), fond = () => [document.querySelector("header"), app, bulle];
+
+  function ouvrir() {
+    const plein = matchMedia("(max-width:600px)").matches;
+    panneau.hidden = false; voile.hidden = !plein;
+    bulle.setAttribute("aria-expanded", "true"); panneau.setAttribute("aria-modal", String(plein));
+    document.body.classList.toggle("aide-ouverte", plein);
+    fond().forEach(el => { el.inert = plein; });
+    panneau.querySelector("#aide-titre").focus();
+    if (!donnees) charger();
+  }
+  function fermer(rendreFocus = true) {
+    if (panneau.hidden) return;
+    panneau.hidden = voile.hidden = true; bulle.setAttribute("aria-expanded", "false");
+    document.body.classList.remove("aide-ouverte");
+    fond().forEach(el => { el.inert = false; });
+    if (rendreFocus && !bulle.hidden) bulle.focus();
+  }
+  bulle.onclick = () => panneau.hidden ? ouvrir() : fermer();
+  voile.onclick = () => fermer();
+  panneau.querySelector(".aide-fermer").onclick = () => fermer();
+  document.addEventListener("keydown", ev => { if (ev.key === "Escape" && !panneau.hidden) { ev.preventDefault(); fermer(); } });
+
+  async function conseil() {
+    const r = await fetch(API + "/espace/conseil", {credentials: "include", headers: {"Content-Type": "application/json"}});
+    if (r.status === 401) throw {auth: true};
+    if (r.ok) return r.json();
+    if (r.status !== 404) { let d = ""; try { d = (await r.json()).detail } catch {} throw {msg: d || "Erreur " + r.status}; }
+    // Route pas encore en ligne : le catalogue « cadenas » et les formations de l'élève, comme la bibliothèque.
+    const [c, moi] = await Promise.all([api("/espace/catalogue"), api("/moi").catch(() => null)]);
+    return {possedees: ((moi && moi.formations) || []).map(f => f.titre), formations: c.formations.map(f => ({slug: f.slug, titre: f.titre,
+      contenu: `${f.lecons} leçon${f.lecons > 1 ? "s" : ""}`, offre: f.offre || null, sur_demande: !f.offre}))};
+  }
+  async function charger() {
+    corps.innerHTML = `<p class="small">Chargement des formations…</p>`;
+    try { donnees = await conseil(); rendu(); }
+    catch (x) {
+      corps.innerHTML = x.auth ? `<p>Ta session a expiré : reconnecte-toi pour voir les formations.</p>`
+        : `<p class="msg err">Impossible de charger les formations pour l'instant.</p><button type="button" class="btn sec" id="aide-reessayer">Réessayer</button>`;
+      const b = corps.querySelector("#aide-reessayer"); if (b) b.onclick = charger;
+    }
+  }
+  const ident = slug => "af-" + String(slug).replace(/[^a-z0-9-]/gi, "-");
+  function carte(f) {
+    const id = ident(f.slug), s = esc(f.slug), infos = [f.niveau, f.contenu].filter(Boolean).map(esc).join(" · ");
+    return `<article class="aide-fo" aria-labelledby="${id}"><h3 id="${id}">${esc(f.titre)}</h3>${infos ? `<div class="meta">${infos}</div>` : ""}
+      ${f.pour_qui ? `<p>${esc(f.pour_qui)}</p>` : ""}${f.raison ? `<p class="aide-raison">${esc(f.raison)}</p>` : ""}${f.offre ? `<div class="prix">${esc(f.offre.prix_txt)}</div>` : ""}
+      <div class="aide-boutons">${f.offre ? `<a class="btn" href="${esc(f.offre.lien)}">Je la veux</a>` : `<button type="button" class="btn" data-veux="${s}">Je la veux</button>`}
+        <button type="button" class="btn sec" data-ouvre="${id}-q" aria-expanded="false" aria-controls="${id}-q">J'ai une question</button>
+        <button type="button" class="btn sec" data-ouvre="${id}-r" aria-expanded="false" aria-controls="${id}-r">Être rappelé</button></div>
+      <form class="aide-form" id="${id}-q" data-slug="${s}" hidden><label for="${id}-qt">Ta question sur « ${esc(f.titre)} »</label>
+        <textarea id="${id}-qt" name="question" rows="3" maxlength="1400" required></textarea><button class="btn">Envoyer ma question</button></form>
+      <form class="aide-form" id="${id}-r" data-slug="${s}" hidden><label for="${id}-rt">Ton numéro de téléphone</label>
+        <input type="tel" id="${id}-rt" name="telephone" class="champ" autocomplete="tel" required>
+        <fieldset><legend>Je préfère être rappelé par</legend><div class="aide-choix">
+          <label><input type="radio" name="canal" value="téléphone" checked> Téléphone</label><label><input type="radio" name="canal" value="WhatsApp"> WhatsApp</label></div></fieldset>
+        <label for="${id}-rm">Ton message (facultatif)</label><textarea id="${id}-rm" name="message" rows="2" maxlength="1400"></textarea>
+        <p class="small">Ton numéro sert seulement à te rappeler pour cette demande.</p><button class="btn">Être rappelé</button></form>
+      <div class="msg" role="status"></div></article>`;
+  }
+  function rendu() {
+    const F = donnees.formations || [], deja = donnees.possedees || [], surDemande = F.filter(f => f.sur_demande);
+    corps.innerHTML = `<p class="aide-deja">${deja.length ? `<b>Tu as déjà :</b> ${deja.map(esc).join(", ")}.` : "Tu n'as pas encore de formation."}</p>
+      ${F.length ? "" : `<p class="small">Tu as déjà toutes les formations proposées. Une question : <a href="mailto:contact@basstrading.fr">contact@basstrading.fr</a>.</p>`}
+      ${F.filter(f => !f.sur_demande).map(carte).join("")}
+      ${surDemande.length ? `<details class="aide-autres"><summary>Autres formations, sur demande (${surDemande.length})</summary>${surDemande.map(carte).join("")}</details>` : ""}`;
+  }
+  // Envoi d'une demande : le bouton garde le focus (pas de disabled), le résultat s'annonce dans la zone « status » de la carte.
+  async function envoyer(fo, bouton, demande) {
+    if (bouton.dataset.envoi) return false;
+    const statut = fo.querySelector(".msg");
+    bouton.dataset.envoi = "1"; bouton.setAttribute("aria-busy", "true"); statut.className = "msg"; statut.textContent = "Envoi…";
+    try { await post("/espace/demande", demande); statut.className = "msg ok"; statut.textContent = ENVOYE; return true; }
+    catch (x) { statut.className = "msg err"; statut.textContent = x.auth ? "Ta session a expiré : reconnecte-toi, puis réessaie." : x.msg || "Envoi impossible, réessaie."; return false; }
+    finally { delete bouton.dataset.envoi; bouton.removeAttribute("aria-busy"); }
+  }
+  corps.addEventListener("click", async ev => {
+    const ouvre = ev.target.closest("[data-ouvre]"), veux = ev.target.closest("[data-veux]");
+    if (ouvre) {
+      const fo = ouvre.closest(".aide-fo"), form = fo.querySelector("#" + ouvre.dataset.ouvre), montrer = form.hidden;
+      fo.querySelectorAll("[data-ouvre]").forEach(b => { b.setAttribute("aria-expanded", "false"); fo.querySelector("#" + b.dataset.ouvre).hidden = true; });
+      form.hidden = !montrer; ouvre.setAttribute("aria-expanded", String(montrer));
+      if (montrer) form.querySelector("textarea, input").focus();
+    } else if (veux && veux.getAttribute("aria-disabled") !== "true") {
+      if (await envoyer(veux.closest(".aide-fo"), veux, {slug: veux.dataset.veux, message: "Je veux cette formation", telephone: ""})) {
+        veux.textContent = "Demande envoyée"; veux.setAttribute("aria-disabled", "true"); veux.classList.add("aide-envoyee");
+      }
+    }
+  });
+  corps.addEventListener("submit", async ev => {
+    ev.preventDefault();
+    const form = ev.target, fo = form.closest(".aide-fo"), statut = fo.querySelector(".msg");
+    let demande;
+    if (form.id.endsWith("-q")) {
+      const t = form.question.value.trim();
+      if (t.length < 2) { statut.className = "msg err"; statut.textContent = "Écris ta question."; form.question.focus(); return; }
+      demande = {slug: form.dataset.slug, message: "Question : " + t, telephone: ""};
+    } else {
+      const tel = form.telephone.value.trim(), m = form.message.value.trim();
+      if ((tel.match(/\d/g) || []).length < 6) { statut.className = "msg err"; statut.textContent = "Indique un numéro de téléphone valide."; form.telephone.focus(); return; }
+      demande = {slug: form.dataset.slug, telephone: tel, message: `Être rappelé par ${form.canal.value}.` + (m ? "\n" + m : "")};
+    }
+    if (await envoyer(fo, form.querySelector(".btn"), demande)) {
+      form.reset(); form.hidden = true;
+      const b = fo.querySelector(`[data-ouvre="${form.id}"]`); b.setAttribute("aria-expanded", "false"); b.focus();
+    }
+  });
+  return {
+    montrer(h) { bulle.hidden = h.startsWith("l/"); if (bulle.hidden) fermer(false); },
+    cacher() { fermer(false); bulle.hidden = true; donnees = null; },
+  };
+})();
+
 async function route() {
   const brut = location.hash.replace(/^#\/?/, ""), [h, param] = brut.split("?");
   document.getElementById("nl").classList.toggle("on", !h);
@@ -600,10 +773,10 @@ async function route() {
     else if (h.startsWith("f/")) await formation(decodeURIComponent(h.slice(2)), param === "reprendre");
     else if (h.startsWith("l/")) await lecon(+h.slice(2), param);
     else await bibliotheque();
-    connecte = true; signalerPresence();
+    connecte = true; signalerPresence(); aide.montrer(h);
     if (!param) window.scrollTo(0, 0);
   } catch (x) {
-    if (x.auth) connecte = false;
+    if (x.auth) { connecte = false; aide.cacher(); }
     if (x.auth) login(new URLSearchParams(location.search).get("info") || "");
     else page(`<div class="card"><p>${esc(x.msg || "Une erreur est survenue.")}</p><a href="#/">← Retour</a></div>`);
   }
@@ -618,7 +791,7 @@ function signalerPresence() {
 }
 setInterval(signalerPresence, 30000);
 document.addEventListener("visibilitychange", signalerPresence);
-document.getElementById("out").onclick = async () => { await post("/auth/deconnexion").catch(() => {}); location.hash = ""; login("Tu es déconnecté."); };
+document.getElementById("out").onclick = async () => { await post("/auth/deconnexion").catch(() => {}); aide.cacher(); location.hash = ""; login("Tu es déconnecté."); };
 addEventListener("hashchange", route);
 route();
 </script>
