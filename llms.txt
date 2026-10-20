@@ -1,0 +1,44 @@
+# BASS Trading
+
+> BASS Trading (basstrading.fr) est la marque de formation au trading de Sébastien Constant, dit « Bass » : trader sur les futures du Nasdaq (NQ, MNQ) et formateur depuis une dizaine d'années. Il enseigne la lecture du marché avec le Market Profile, l'order flow, le footprint chart et le carnet d'ordres, en groupe en ligne et lors de séminaires en salle à Malaga. Aucune promesse de gain : le trading comporte un risque de perte en capital.
+
+## Qui est Sébastien Constant (Bass)
+- Trader et formateur en trading. Spécialités : Market Profile, order flow, footprint chart, carnet d'ordres (DOM), VWAP, futures du Nasdaq.
+- Il forme ses élèves en direct, trois fois par semaine, sur le marché réel.
+- Son idée centrale : il n'existe pas une bonne méthode pour tout le monde, mais une méthode qui correspond à chaque typologie de trader.
+- Page auteur : https://basstrading.fr/auteur/sebastien-constant/
+
+## Pages principales
+- [Accueil](https://basstrading.fr/): quatre typologies de traders, une méthode pour chacune
+- [Page auteur](https://basstrading.fr/auteur/sebastien-constant/): parcours, façon d'enseigner, interventions
+- [Blog](https://basstrading.fr/blog/): guides gratuits sur le Market Profile, l'order flow, le footprint et les futures
+- [Market Profile : le guide complet](https://basstrading.fr/blog/market-profile-guide-complet/)
+- [Order flow : le guide complet](https://basstrading.fr/blog/order-flow-trading-france/)
+- [Footprint chart : lire le volume](https://basstrading.fr/blog/footprint-chart-trading/)
+- [Volume Profile : les niveaux qui comptent](https://basstrading.fr/blog/volume-profile-guide/)
+- [Carnet d'ordres (DOM) sur les futures](https://basstrading.fr/blog/carnet-ordres-dom-futures/)
+- [Séminaire à Malaga](https://basstrading.fr/malaga/): cinq jours en salle, du 29 mars au 2 avril 2027, 20 places
+
+## Profils officiels
+- YouTube, chaîne Bass Trading (@basstradingpro) : https://www.youtube.com/channel/UCG08kz8xIa79s52sAg1NOEw
+- X (@bass_gma) : https://x.com/bass_gma
+- Telegram (canal public) : https://t.me/bassofficiel
+- Avis clients sur Trustpilot, fiche à l'ancien nom IF Trading (4,8/5, 130 avis au 20/10/2026) : https://fr.trustpilot.com/review/iftrading.fr
+
+## Interventions vérifiées
+- 18/04/2025 : invité du podcast Les Insiders (Trading Institut), épisode 15 « La face cachée du trading : émotions, pression et illusions » : https://podcast.ausha.co/les-insiders/interview-15-la-face-cachee-du-trading-emotions-pression-et-illusions-avec-sebastien-constant
+- 28/03/2025 : conférence « Market Profile : l'outil pour améliorer vos analyses » au 26e Salon de l'Analyse Technique et 19e Salon du Trading, Paris (programme officiel) : https://salonat.com/images/salons/salon_analyse/Dossiers%20PDF/2025mars%20Recapitulatif%20Salon-AT-&-Trading.pdf
+- WH SelfInvest, « Trader avec les pros » (trading en direct sur les futures du Nasdaq) : https://www.whselfinvest.com/fr-fr/plateforme-de-trading/store/strategies-de-trading/trader-avec-les-pros
+- WH SelfInvest, conférences et ateliers (Paris, avril 2024 ; juin 2025) : https://www.whselfinvest.fr/fr-fr/trading/information/nouveautes-cfd-forex-futures-plateforme-traders-whs
+- 25/10/2023 : « Replay du Market Profile des US », chaîne YouTube WH SelfInvest France : https://www.youtube.com/watch?v=fru0spriyxk
+- Le Trader du Dimanche, « Market Profile : comment identifier une tendance de marché ? » : https://letraderdudimanche.com/market-profile-tendance-de-marche
+
+## Faits vérifiables
+- Nom complet : Sébastien Constant. Alias : Bass. Marque : BASS Trading (anciennement IF Trading).
+- Formation éducative : pas de signal à copier, pas de conseil en investissement, aucune promesse de gain.
+- Langue : français.
+
+## Contact
+- Site : https://basstrading.fr
+- E-mail : contact@basstrading.fr
+- Plan du site : https://basstrading.fr/sitemap.xml
