@@ -21,61 +21,7 @@
 
   <!-- JSON-LD -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Article",
-        "headline": "Carnet d'Ordres DOM Futures : Guide Complet du Depth of Market",
-        "description": "Maîtrisez le DOM (Depth of Market) en trading futures : structure du carnet d'ordres, murs d'achat/vente, DOM dynamique, spoofing et confluence Footprint.",
-        "author": {"@type": "Person", "name": "Bass Trading", "url": "https://basstrading.fr"},
-        "publisher": {"@type": "Organization", "name": "Bass Trading", "url": "https://basstrading.fr"},
-        "datePublished": "2026-03-28",
-        "dateModified": "2026-03-28",
-        "mainEntityOfPage": {"@type": "WebPage", "@id": "https://basstrading.fr/blog/carnet-ordres-dom-futures/"},
-        "articleSection": "Order Flow Trading",
-        "inLanguage": "fr-FR"
-      },
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://basstrading.fr/"},
-          {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://basstrading.fr/blog/"},
-          {"@type": "ListItem", "position": 3, "name": "Carnet d'Ordres DOM", "item": "https://basstrading.fr/blog/carnet-ordres-dom-futures/"}
-        ]
-      },
-      {
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Qu'est-ce que le DOM (Depth of Market) en trading ?",
-            "acceptedAnswer": {"@type": "Answer", "text": "Le DOM (Depth of Market), aussi appelé Level 2 ou carnet d'ordres, affiche en temps réel tous les ordres limites en attente sur le marché — les bids (acheteurs) en dessous du prix actuel et les asks (vendeurs) au-dessus. Il révèle l'intention des participants et les zones de liquidité concentrée."}
-          },
-          {
-            "@type": "Question",
-            "name": "Comment identifier un mur dans le DOM ?",
-            "acceptedAnswer": {"@type": "Answer", "text": "Un mur (wall) dans le DOM est une concentration anormalement élevée d'ordres limites sur un niveau de prix spécifique. Par exemple, 2000 contrats en attente sur un seul prix de l'ES alors que les niveaux environnants n'affichent que 50-200 contrats. Ces murs agissent comme des supports ou résistances potentiels."}
-          },
-          {
-            "@type": "Question",
-            "name": "C'est quoi le spoofing dans le carnet d'ordres ?",
-            "acceptedAnswer": {"@type": "Answer", "text": "Le spoofing consiste à placer de gros ordres limites dans le DOM pour créer une apparence de liquidité, puis à les retirer avant que le prix ne les atteigne. L'objectif est de manipuler la perception du marché. Bien qu'illégal, il est fréquent. Se repère par des ordres qui disparaissent quand le prix approche."}
-          },
-          {
-            "@type": "Question",
-            "name": "DOM ou Footprint : lequel utiliser ?",
-            "acceptedAnswer": {"@type": "Answer", "text": "Les deux sont complémentaires. Le DOM montre les ordres en attente (intentions futures) ; le Footprint montre les transactions réellement exécutées (passé récent). Le DOM est utile pour les entrées précises et la gestion des stops ; le Footprint pour analyser l'agressivité et les déséquilibres de volume."}
-          },
-          {
-            "@type": "Question",
-            "name": "Le DOM est-il utile pour les traders retail ?",
-            "acceptedAnswer": {"@type": "Answer", "text": "Oui, à condition de comprendre ses limites. Le DOM affiche une vision partielle du marché car les dark pools et ordres iceberg ne sont pas visibles. Pour les traders retail sur futures liquides (ES, NQ), le DOM reste utile pour les entrées de précision, la lecture des murs et la surveillance du spoofing."}
-          }
-        ]
-      }
-    ]
-  }
+  {"@context": "https://schema.org", "@graph": [{"@type": "Article", "headline": "Carnet d'Ordres DOM Futures : Guide Complet du Depth of Market", "description": "Maîtrisez le DOM (Depth of Market) en trading futures : structure du carnet d'ordres, murs d'achat/vente, DOM dynamique, spoofing et confluence Footprint.", "author": {"@type": "Person", "name": "Bass Trading", "url": "https://basstrading.fr"}, "publisher": {"@type": "Organization", "name": "Bass Trading", "url": "https://basstrading.fr", "logo": {"@type": "ImageObject", "url": "https://basstrading.fr/images/logo-basstrading.png", "width": 512, "height": 512}}, "datePublished": "2026-03-28", "dateModified": "2026-03-28", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://basstrading.fr/blog/carnet-ordres-dom-futures/"}, "articleSection": "Order Flow Trading", "inLanguage": "fr-FR", "image": "https://basstrading.fr/assets/og-carnet-ordres-dom.jpg"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://basstrading.fr/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://basstrading.fr/blog/"}, {"@type": "ListItem", "position": 3, "name": "Carnet d'Ordres DOM", "item": "https://basstrading.fr/blog/carnet-ordres-dom-futures/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Qu'est-ce que le DOM (Depth of Market) en trading ?", "acceptedAnswer": {"@type": "Answer", "text": "Le DOM (Depth of Market), aussi appelé Level 2 ou carnet d'ordres, affiche en temps réel tous les ordres limites en attente sur le marché — les bids (acheteurs) en dessous du prix actuel et les asks (vendeurs) au-dessus. Il révèle l'intention des participants et les zones de liquidité concentrée."}}, {"@type": "Question", "name": "Comment identifier un mur dans le DOM ?", "acceptedAnswer": {"@type": "Answer", "text": "Un mur (wall) dans le DOM est une concentration anormalement élevée d'ordres limites sur un niveau de prix spécifique. Par exemple, 2000 contrats en attente sur un seul prix de l'ES alors que les niveaux environnants n'affichent que 50-200 contrats. Ces murs agissent comme des supports ou résistances potentiels."}}, {"@type": "Question", "name": "C'est quoi le spoofing dans le carnet d'ordres ?", "acceptedAnswer": {"@type": "Answer", "text": "Le spoofing consiste à placer de gros ordres limites dans le DOM pour créer une apparence de liquidité, puis à les retirer avant que le prix ne les atteigne. L'objectif est de manipuler la perception du marché. Bien qu'illégal, il est fréquent. Se repère par des ordres qui disparaissent quand le prix approche."}}, {"@type": "Question", "name": "DOM ou Footprint : lequel utiliser ?", "acceptedAnswer": {"@type": "Answer", "text": "Les deux sont complémentaires. Le DOM montre les ordres en attente (intentions futures) ; le Footprint montre les transactions réellement exécutées (passé récent). Le DOM est utile pour les entrées précises et la gestion des stops ; le Footprint pour analyser l'agressivité et les déséquilibres de volume."}}, {"@type": "Question", "name": "Le DOM est-il utile pour les traders retail ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui, à condition de comprendre ses limites. Le DOM affiche une vision partielle du marché car les dark pools et ordres iceberg ne sont pas visibles. Pour les traders retail sur futures liquides (ES, NQ), le DOM reste utile pour les entrées de précision, la lecture des murs et la surveillance du spoofing."}}]}]}
   </script>
 
   <!-- Fonts -->

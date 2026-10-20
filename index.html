@@ -25,7 +25,7 @@
  <script type="application/ld+json">
   {"@context":"https://schema.org","@graph":[
     {"@type":"Organization","@id":"https://basstrading.fr/#org","name":"BASS Trading","url":"https://basstrading.fr/","logo":"https://basstrading.fr/images/logo-basstrading.png","description":"Trouve ton trading : quatre typologies de traders, une méthode pour chacune, avec Sébastien Constant. Carnet d'ordres, Market Profile, Footprint sur le Nasdaq.","founder":{"@id":"https://basstrading.fr/#person"}},
-    {"@type":"Person","@id":"https://basstrading.fr/#person","name":"Sébastien Constant","alternateName":"Bass","jobTitle":"Trader et formateur","description":"Plus de dix ans de marché. En direct, chaque jour, devant ses élèves. Le carnet d'ordres, le Market Profile, le Footprint.","url":"https://basstrading.fr/","image":"https://basstrading.fr/images/bass-portrait.jpg","worksFor":{"@id":"https://basstrading.fr/#org"}},
+    {"@type":"Person","@id":"https://basstrading.fr/#person","name":"Sébastien Constant","alternateName":"Bass","jobTitle":"Trader et formateur","description":"Plus de dix ans de marché. En direct, chaque jour, devant ses élèves. Le carnet d'ordres, le Market Profile, le Footprint.","url":"https://basstrading.fr/auteur/sebastien-constant/","sameAs":["https://www.youtube.com/channel/UCG08kz8xIa79s52sAg1NOEw"],"image":"https://basstrading.fr/images/bass-portrait.jpg","worksFor":{"@id":"https://basstrading.fr/#org"}},
     {"@type":"FAQPage","mainEntity":[
       {"@type":"Question","name":"Je suis débutant, c'est pour moi ?","acceptedAnswer":{"@type":"Answer","text":"Tu es dans l'une des quatre typologies, débutant ou pas. L'expérience change le rythme de ta semaine de test, pas ta case."}},
       {"@type":"Question","name":"Et si je ne me reconnais dans aucun des quatre ?","acceptedAnswer":{"@type":"Answer","text":"Ça n'arrive pas. Ce qui arrive, c'est d'hésiter entre deux, et l'appel tranche."}},
@@ -529,7 +529,7 @@
 <section class="hero scan" id="hero"><div class="scan-wrap" id="scanWrap"><div class="scan-pin" id="scanPin">
   <!-- Portrait — right side, masked into background -->
   <div class="hero-portrait" id="heroPortrait">
-    <img src="images/bass-presenting.jpg" alt="Sébastien Constant" id="heroImg" crossorigin="anonymous">
+    <img src="images/bass-presenting.jpg" alt="Sébastien Constant" id="heroImg" crossorigin="anonymous" width="960" height="1280" fetchpriority="high" decoding="async">
     <canvas class="scan-cv" id="scanCv" aria-hidden="true"></canvas>
     <div class="scan-ann" id="scanAnn" aria-hidden="true">
       <div class="scan-hud" id="scanHud"><div>Agent IA profileur</div><div>Scan <b id="scanPct">0 %</b></div><div class="bar"><i id="scanBar"></i></div><div id="scanStatus">en attente</div></div>
@@ -1070,7 +1070,19 @@
     <a href="/blog/order-flow-trading-france/" class="blog-card">
       <div class="blog-cat">Méthode</div>
       <h3>Order Flow Trading : le guide complet pour les traders francophones</h3>
-      <p>Le carnet d'ordres, le Time & Sales et la lecture du flux institutionnel — décryptage.</p>
+      <p>Le carnet d'ordres, le Time & Sales et la lecture du flux institutionnel, avec ses 8 guides détaillés.</p>
+      <span class="blog-link">Lire l'article &rarr;</span>
+    </a>
+    <a href="/blog/carnet-ordres-dom-futures/" class="blog-card">
+      <div class="blog-cat">Order flow</div>
+      <h3>Carnet d'ordres (DOM) : lire la profondeur du marché</h3>
+      <p>Les murs d'achat et de vente, le DOM dynamique, le spoofing : ce que montre vraiment le carnet sur les futures.</p>
+      <span class="blog-link">Lire l'article &rarr;</span>
+    </a>
+    <a href="/blog/volume-profile-guide/" class="blog-card">
+      <div class="blog-cat">Guide</div>
+      <h3>Volume Profile : les niveaux qui comptent vraiment</h3>
+      <p>VAH, VAL, POC, HVN, LVN : trouver les prix où le marché a vraiment échangé, et s'en servir.</p>
       <span class="blog-link">Lire l'article &rarr;</span>
     </a>
     <a href="/blog/prop-firm-funded-trader/" class="blog-card">
@@ -1113,9 +1125,9 @@
   <div class="ft-bottom">
     <span>&copy; 2026 BASS — Sébastien Constant</span>
     <div>
-      <a href="mentions-legales.html">Mentions légales</a>
-      <a href="confidentialite.html">Confidentialité</a>
-      <a href="cgv.html">CGV</a>
+      <a href="/mentions-legales/">Mentions légales</a>
+      <a href="/confidentialite/">Confidentialité</a>
+      <a href="/cgv/">CGV</a>
     </div>
   </div>
 </footer>

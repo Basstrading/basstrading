@@ -1,10 +1,11 @@
 """Plan du site (sitemap.xml) de basstrading.fr : les pages publiques et tous les articles du blog, avec la date de
-dernière modification réelle (git). Relancé à chaque publication d'article (Studio Créateur, blogsite.js).
+dernière modification réelle (dateModified de la page, sinon git). Relancé à chaque publication d'article (Studio Créateur, blogsite.js).
 Exclus : pages privées (studio, espace, paiement), pages « merci » et de paiement, pages marquées noindex, archives.
 
 Usage : python gen_sitemap.py   (depuis la racine du site)
 """
 import pathlib
+import re
 import subprocess
 from datetime import date
 
@@ -12,10 +13,15 @@ RACINE = pathlib.Path(__file__).parent
 SITE = "https://basstrading.fr"
 PAGES = [("index.html", "/", "1.0"), ("blog/index.html", "/blog/", "0.9"), ("formation-offerte/index.html", "/formation-offerte/", "0.9"),
          ("malaga/index.html", "/malaga/", "0.8"), ("cgv.html", "/cgv/", "0.2"), ("confidentialite.html", "/confidentialite/", "0.2"),
-         ("mentions-legales.html", "/mentions-legales/", "0.2")]
+         ("mentions-legales.html", "/mentions-legales/", "0.2"), ("auteur/sebastien-constant/index.html", "/auteur/sebastien-constant/", "0.6")]
 
 
 def derniere_modif(fichier: pathlib.Path) -> str:
+    # La vraie date de mise à jour annoncée par la page (dateModified de ses données structurées) ; à défaut, la date
+    # du dernier commit. (Ticket SEO P1-c, 20/10/2026 : la date git datait des retouches techniques, faux signal de fraîcheur.)
+    m = re.search(r'"dateModified"\s*:\s*"(\d{4}-\d{2}-\d{2})', fichier.read_text(encoding="utf-8", errors="ignore"))
+    if m:
+        return m.group(1)
     r = subprocess.run(["git", "log", "-1", "--format=%cs", "--", str(fichier)], cwd=RACINE, capture_output=True, text=True)
     return r.stdout.strip() or date.today().isoformat()
 
