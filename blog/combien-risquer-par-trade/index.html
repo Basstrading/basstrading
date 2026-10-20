@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Combien risquer par trade : le calcul sur Nasdaq (NQ, MNQ) — BASS Trading</title>
+  <meta name="description" content="Combien risquer par trade ? Point mort win rate/RR, taille de position sur NQ et MNQ, cas des prop firms : ma méthode, chiffrée pas à pas.">
+  <meta property="og:title" content="Combien risquer par trade : le calcul sur Nasdaq (NQ, MNQ) — BASS Trading">
+  <meta property="og:description" content="Combien risquer par trade ? Point mort win rate/RR, taille de position sur NQ et MNQ, cas des prop firms : ma méthode, chiffrée pas à pas.">
+  <meta property="og:image" content="https://basstrading.fr/blog/combien-risquer-par-trade/blog-combien-risquer-par-trade-1.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://basstrading.fr/blog/combien-risquer-par-trade/blog-combien-risquer-par-trade-1.webp">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://basstrading.fr/blog/combien-risquer-par-trade/">
+  <meta property="og:site_name" content="BASS Trading">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://basstrading.fr/blog/combien-risquer-par-trade/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","headline":"Combien risquer par trade : le calcul sur Nasdaq (NQ, MNQ)","description":"Combien risquer par trade ? Point mort win rate/RR, taille de position sur NQ et MNQ, cas des prop firms : ma méthode, chiffrée pas à pas.","datePublished":"2026-10-20","dateModified":"2026-10-20","image":"https://basstrading.fr/blog/combien-risquer-par-trade/blog-combien-risquer-par-trade-1.webp","author":{"@type":"Person","@id":"https://basstrading.fr/#person","name":"Sébastien Constant","url":"https://basstrading.fr/auteur/sebastien-constant/"},"publisher":{"@type":"Organization","name":"BASS Trading","url":"https://basstrading.fr","logo":{"@type":"ImageObject","url":"https://basstrading.fr/images/logo-basstrading.png","width":512,"height":512}},"mainEntityOfPage":"https://basstrading.fr/blog/combien-risquer-par-trade/"}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://basstrading.fr"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://basstrading.fr/blog/"},{"@type":"ListItem","position":3,"name":"Combien risquer par trade","item":"https://basstrading.fr/blog/combien-risquer-par-trade/"}]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Quel pourcentage de son capital risquer par trade ?","acceptedAnswer":{"@type":"Answer","text":"Il n'existe pas de pourcentage officiel. Le bon montant est celui qui te permet d'encaisser une longue série de pertes (20 d'affilée, par exemple) sans perdre ton compte. Sur un compte de prop firm, calcule-le sur ton drawdown, pas sur la taille affichée : 100 $ par trade sur 2 000 $ de drawdown, c'est déjà 5 % de ton capital réel."}},{"@type":"Question","name":"Quel win rate faut-il pour être rentable ?","acceptedAnswer":{"@type":"Answer","text":"Ça dépend de ton risk-reward. Le win rate minimum pour être au point mort vaut 1 ÷ (1 + RR) : 50 % avec un RR de 1, 33 % avec un RR de 2, 25 % avec un RR de 3, mais 67 % avec un RR de 0,5. Ajoute les frais, qui remontent ce seuil, et mesure sur au moins 100 trades."}},{"@type":"Question","name":"Combien vaut un point sur le MNQ et le NQ ?","acceptedAnswer":{"@type":"Answer","text":"Un point vaut 2 $ sur le Micro E-mini Nasdaq-100 (MNQ) et 20 $ sur l'E-mini Nasdaq-100 (NQ). Le plus petit mouvement est de 0,25 point, soit 0,50 $ sur le MNQ et 5 $ sur le NQ. Un stop de 20 points coûte donc 40 $ par micro et 400 $ par contrat complet."}},{"@type":"Question","name":"Faut-il mettre une perte maximale par jour ?","acceptedAnswer":{"@type":"Answer","text":"Oui, fixe-la avant d'ouvrir ta plateforme, mais rends-la cohérente avec ta taille de position. Une limite de 300 $ avec 5 micros et un stop de 20 points, c'est moins de deux trades complets : tu passeras tes journées à la toucher. Calcule combien de trades entiers elle te laisse."}},{"@type":"Question","name":"Peut-on ajouter des contrats pendant un trade ?","acceptedAnswer":{"@type":"Answer","text":"Dans ma façon de faire (vidéo, vers 35:00), uniquement dans un trade gagnant, par petits paquets, avec un stop remonté au point d'entrée dès que possible. Ajouter à une position perdante ou doubler la taille pour se refaire, c'est augmenter son risque au pire moment : c'est le chemin le plus court vers un compte perdu."}},{"@type":"Question","name":"Vaut-il mieux un stop loss fixe en dollars ou un stop technique ?","acceptedAnswer":{"@type":"Answer","text":"Les deux se combinent. Le stop se place là où ton idée est fausse, sur la structure du marché (absorption, zone de valeur, niveau clé) : c'est le stop technique. Ce qui reste fixe, c'est le montant en dollars que tu acceptes de perdre. Le nombre de contrats s'ajuste à la distance du stop pour que la perte maximale reste la même d'un trade à l'autre."}}]}
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{--bk:#1D1D1F;--bk2:#111;--bk3:#0A0A0A;--g1:#6E6E73;--g2:#86868B;--g3:#D2D2D7;--g4:#F5F5F7;--wh:#FBFBFD;--pure:#FFF;--green:#00B67A;--blue:#0066FF}
+    html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}
+    body{font-family:'DM Sans',sans-serif;color:var(--bk);background:var(--pure);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+    .preloader{position:fixed;inset:0;background:var(--bk3);z-index:10001;display:flex;align-items:center;justify-content:center}
+    .pre-word{font-family:'Outfit',sans-serif;font-size:clamp(3rem,8vw,5rem);font-weight:900;letter-spacing:16px;text-transform:uppercase;color:var(--pure);overflow:hidden}
+    .pre-word span{display:inline-block;transform:translateY(110%);opacity:0}
+    .pre-line{width:0;height:1px;background:rgba(255,255,255,.3);margin-top:20px}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 48px;display:flex;align-items:center;justify-content:space-between;background:rgba(245,245,247,.85);backdrop-filter:blur(20px) saturate(1.8);border-bottom:1px solid rgba(0,0,0,.04);transition:background .4s}
+    .nav-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase;color:var(--bk)}
+    .nav-links{display:flex;gap:28px;list-style:none}.nav-links a{font-size:.74rem;font-weight:500;letter-spacing:.3px;color:var(--g1);transition:color .3s}.nav-links a:hover{color:var(--bk)}
+    .nav-cta{padding:8px 20px;background:var(--bk);color:var(--pure);border:none;border-radius:980px;font-size:.72rem;font-weight:600;transition:all .3s;cursor:pointer;text-decoration:none;display:inline-block}.nav-cta:hover{background:var(--bk2)}
+    .blog-hero{padding:160px 48px 80px;background:var(--g4);position:relative;overflow:hidden}
+    .blog-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,transparent,var(--g4));pointer-events:none}
+    .blog-hero-inner{max-width:720px;margin:0 auto}
+    .breadcrumb{display:flex;gap:8px;align-items:center;margin-bottom:28px;flex-wrap:wrap}
+    .breadcrumb a,.breadcrumb span{font-size:.68rem;font-weight:500;letter-spacing:.3px;color:var(--g2);transition:color .3s}.breadcrumb a:hover{color:var(--bk)}.breadcrumb .sep{color:var(--g3)}
+    .blog-hero-cat{display:inline-block;padding:5px 14px;border:1px solid rgba(0,102,255,.15);border-radius:980px;font-size:.6rem;font-weight:700;color:var(--blue);letter-spacing:2px;text-transform:uppercase;margin-bottom:20px}
+    .blog-hero-title{font-family:'Outfit',sans-serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:900;line-height:1.05;letter-spacing:-2px;color:var(--bk);margin-bottom:20px}
+    .blog-hero-desc{font-size:.95rem;color:var(--g1);line-height:1.8;max-width:560px;margin-bottom:28px}
+    .blog-meta{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+    .blog-meta-author{display:flex;align-items:center;gap:10px}
+    .blog-meta-avatar{width:36px;height:36px;border-radius:50%;background:var(--bk3);overflow:hidden;flex-shrink:0}.blog-meta-avatar img{width:100%;height:100%;object-fit:cover}
+    .blog-meta-name{font-size:.78rem;font-weight:600;color:var(--bk)}.blog-meta-role{font-size:.65rem;color:var(--g2)}
+    .blog-meta-sep{width:1px;height:24px;background:var(--g3)}
+    .blog-meta-info{font-size:.7rem;color:var(--g2)}.blog-meta-info span{margin-right:16px}
+    .toc{position:sticky;top:90px;background:var(--pure);border:1px solid rgba(0,0,0,.04);border-radius:14px;padding:24px;margin-bottom:32px}
+    .toc-title{font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.5px;color:var(--bk);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+    .toc ol{list-style:none;counter-reset:toc}.toc li{counter-increment:toc}
+    .toc li a{display:flex;align-items:baseline;gap:8px;padding:6px 0;font-size:.76rem;color:var(--g1);transition:color .3s;border-bottom:1px solid rgba(0,0,0,.03)}.toc li a:hover{color:var(--blue)}
+    .toc li a::before{content:counter(toc,decimal-leading-zero);font-family:'Outfit',sans-serif;font-size:.65rem;font-weight:700;color:var(--g3);min-width:18px}
+    .toc li:last-child a{border-bottom:none}.toc li a.active{color:var(--blue);font-weight:600}.toc li a.active::before{color:var(--blue)}
+    .article-wrap{display:grid;grid-template-columns:220px 1fr;gap:40px;max-width:1020px;margin:0 auto;padding:60px 48px 120px}
+    .article-sidebar{position:relative}.article-body{max-width:700px}
+    .article-body h2{font-family:'Outfit',sans-serif;font-size:clamp(1.4rem,2.5vw,1.8rem);font-weight:800;line-height:1.1;letter-spacing:-1px;color:var(--bk);margin:56px 0 16px;padding-top:20px}.article-body h2:first-of-type{margin-top:0}
+    .article-body h3{font-family:'Outfit',sans-serif;font-size:1.05rem;font-weight:700;line-height:1.25;letter-spacing:-.3px;color:var(--bk);margin:36px 0 10px}
+    .article-body p{font-size:.9rem;color:var(--g1);line-height:1.85;margin-bottom:18px}
+    .article-body strong{color:var(--bk);font-weight:600}
+    .article-body ul,.article-body ol{margin:0 0 20px 0;padding-left:20px}
+    .article-body li{font-size:.88rem;color:var(--g1);line-height:1.8;margin-bottom:6px}.article-body li strong{color:var(--bk)}
+    .article-body blockquote{margin:28px 0;padding:20px 24px;background:var(--g4);border-left:3px solid var(--bk);border-radius:0 12px 12px 0;font-size:.88rem;color:var(--g1);line-height:1.8;font-style:italic}
+    .article-body blockquote strong{color:var(--bk);font-style:normal}
+    .article-body hr{border:none;border-top:1px solid var(--g4);margin:48px 0}
+    .info-box{margin:28px 0;padding:24px;background:rgba(0,102,255,.03);border:1px solid rgba(0,102,255,.08);border-radius:14px}
+    .info-box-title{font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:700;color:var(--blue);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+    .info-box p{font-size:.82rem;color:var(--g1);line-height:1.7;margin-bottom:0}
+    .key-concept{margin:32px 0;padding:28px;background:var(--bk3);border-radius:16px;color:var(--pure)}
+    .key-concept-label{font-size:.55rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:10px}
+    .key-concept h4{font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:800;letter-spacing:-.3px;margin-bottom:8px}
+    .key-concept p{font-size:.85rem;color:rgba(255,255,255,.5);line-height:1.8;margin-bottom:0}
+    .compare-table{width:100%;margin:24px 0 28px;border-collapse:collapse;border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,.06)}
+    .compare-table th{background:var(--bk3);color:var(--pure);font-family:'Outfit',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:14px 16px;text-align:left}
+    .compare-table td{padding:12px 16px;font-size:.82rem;color:var(--g1);line-height:1.6;border-bottom:1px solid rgba(0,0,0,.04);background:var(--pure)}
+    .compare-table tr:last-child td{border-bottom:none}.compare-table td:first-child{font-weight:600;color:var(--bk)}
+    .cta-card{margin:48px 0;padding:40px;background:var(--bk3);border-radius:20px;text-align:center;position:relative;overflow:hidden}
+    .cta-card::before{content:'';position:absolute;top:-50%;right:-30%;width:400px;height:400px;background:radial-gradient(circle,rgba(0,102,255,.08) 0%,transparent 70%);pointer-events:none}
+    .cta-card-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:12px}
+    .cta-card h3{font-family:'Outfit',sans-serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:800;color:var(--pure);letter-spacing:-.5px;margin-bottom:8px}
+    .cta-card p{font-size:.85rem;color:rgba(255,255,255,.4);line-height:1.7;max-width:380px;margin:0 auto 24px}
+    .cta-card .btn-p{background:var(--pure);color:var(--bk)}.cta-card .btn-p:hover{box-shadow:0 8px 30px rgba(255,255,255,.15)}
+    .faq-sec{padding:80px 48px 100px;background:var(--g4)}
+    .faq-list{max-width:680px;margin:40px auto 0}.fi{border-bottom:1px solid rgba(0,0,0,.06)}
+    .fq{width:100%;text-align:left;padding:18px 0;background:none;border:none;font-size:.85rem;font-weight:600;font-family:'DM Sans',sans-serif;color:var(--bk);display:flex;justify-content:space-between;align-items:center;cursor:pointer;gap:16px;transition:color .3s}.fq:hover{color:var(--g1)}
+    .fq-icon{width:22px;height:22px;border-radius:50%;background:rgba(0,0,0,.04);display:flex;align-items:center;justify-content:center;font-size:.75rem;transition:all .4s;flex-shrink:0;color:var(--g2)}
+    .fa{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1)}.fa.open{max-height:280px;padding-bottom:14px}
+    .fa p{font-size:.8rem;color:var(--g1);line-height:1.7;margin-bottom:0}.fi.active .fq-icon{background:var(--bk);color:var(--pure);transform:rotate(45deg)}
+    .related-sec{padding:80px 48px;background:var(--pure);border-top:1px solid var(--g4)}
+    .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1060px;margin:40px auto 0}
+    .related-card{display:block;padding:28px;background:var(--g4);border-radius:16px;transition:all .4s;text-decoration:none;color:var(--bk)}
+    .related-card:hover{background:var(--pure);box-shadow:0 8px 30px rgba(0,0,0,.06);transform:translateY(-2px)}
+    .related-cat{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+    .related-card h3{font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:700;line-height:1.3;letter-spacing:-.3px;margin-bottom:8px}
+    .related-card p{font-size:.78rem;color:var(--g1);line-height:1.6;margin-bottom:14px}
+    .related-link{font-size:.72rem;font-weight:600;color:var(--blue);letter-spacing:.3px}
+    .footer{background:var(--bk3);color:var(--pure);padding:56px 48px 28px}
+    .ft-top{display:flex;justify-content:space-between;align-items:start;margin-bottom:48px;flex-wrap:wrap;gap:32px}
+    .ft-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase}
+    .ft-cols{display:flex;gap:80px}
+    .ft-col-title{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:12px}
+    .ft-col a{display:block;font-size:.78rem;color:rgba(255,255,255,.5);margin-bottom:8px;transition:color .3s}.ft-col a:hover{color:var(--pure)}
+    .ft-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:20px;display:flex;justify-content:space-between;align-items:center;font-size:.6rem;color:rgba(255,255,255,.2)}
+    .ft-bottom a{color:rgba(255,255,255,.2);transition:color .3s;margin-left:20px}.ft-bottom a:hover{color:rgba(255,255,255,.5)}
+    .disclaimer{padding:12px 48px;background:var(--bk3);font-size:.58rem;color:rgba(255,255,255,.12);text-align:center;line-height:1.6;border-top:1px solid rgba(255,255,255,.03)}
+    .sec-center{text-align:center;max-width:680px;margin:0 auto}
+    .sec-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--g2);margin-bottom:10px}
+    .sec-title{font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;line-height:1.05;letter-spacing:-1.5px;color:var(--bk);margin-bottom:16px}
+    .btn-p{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--bk);color:var(--pure);border-radius:980px;font-size:.85rem;font-weight:600;transition:all .3s;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;text-decoration:none}
+    .btn-p:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(0,0,0,.1)}
+    .btn-p svg{width:13px;height:13px;transition:transform .3s}.btn-p:hover svg{transform:translateX(3px)}
+    .reading-progress{position:fixed;top:0;left:0;height:2px;background:var(--blue);z-index:9999;width:0;transition:width .1s linear}
+    @media(max-width:900px){.nav{padding:14px 20px}.nav-links{display:none}.blog-hero{padding:120px 20px 60px}.article-wrap{grid-template-columns:1fr;padding:40px 20px 80px}.article-sidebar{display:none}.related-grid{grid-template-columns:1fr}.related-sec,.faq-sec{padding:60px 20px}.ft-cols{flex-direction:column;gap:28px}.footer{padding:40px 20px 20px}.disclaimer{padding:10px 16px}.cta-card{padding:28px 20px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  .article-body a{color:var(--blue);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;font-weight:500}.article-body a:hover{text-decoration-thickness:2px}
+</style>
+</head>
+<body>
+
+<div class="preloader" id="preloader"><div style="text-align:center"><div class="pre-word"><span>B</span><span>A</span><span>S</span><span>S</span></div><div class="pre-line" id="preLine"></div></div></div>
+<div class="reading-progress" id="readingProgress"></div>
+
+<nav class="nav" id="nav">
+  <a href="https://basstrading.fr" class="nav-logo">BASS</a>
+  <ul class="nav-links">
+    <li><a href="https://basstrading.fr/#methodes">Méthode</a></li>
+    <li><a href="https://basstrading.fr#resultats">Résultats</a></li>
+    <li><a href="https://basstrading.fr#avis">Avis</a></li>
+    <li><a href="https://basstrading.fr#faq">FAQ</a></li>
+    <li><a href="https://basstrading.fr/blog/">Blog</a></li>
+  </ul>
+  <a href="https://basstrading.fr#candidater" class="nav-cta">Candidater</a>
+</nav>
+
+<section class="blog-hero">
+  <div class="blog-hero-inner">
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <a href="https://basstrading.fr">Accueil</a><span class="sep">/</span>
+      <a href="https://basstrading.fr/blog/">Blog</a><span class="sep">/</span>
+      <span>Combien risquer par trade</span>
+    </nav>
+    <div class="blog-hero-cat">Gestion du risque</div>
+    <h1 class="blog-hero-title">Combien risquer par trade : le calcul sur Nasdaq (NQ, MNQ)</h1>
+    <p class="blog-hero-desc">Combien risquer par trade ? Pas un pourcentage magique : un montant fixé AVANT d&#39;entrer, qui te laisse survivre à une longue série de pertes, et une taille de position calculée à partir de ton stop. Ton win rate ne vaut rien sans ton risk-reward : les deux ensemble disent si ta méthode tient. Je te donne les maths, le calcul sur NQ et MNQ, et le cas des prop firms.</p>
+    <div class="blog-meta">
+      <div class="blog-meta-author">
+        <div class="blog-meta-avatar"><img src="../../images/bass-presenting.jpg" alt="Sébastien Constant" loading="lazy"></div>
+        <div><div class="blog-meta-name"><a href="/auteur/sebastien-constant/" rel="author" style="color:inherit;text-decoration:none">Sébastien Constant</a></div><div class="blog-meta-role">Trader & Formateur Order Flow</div></div>
+      </div>
+      <div class="blog-meta-sep"></div>
+      <div class="blog-meta-info"><span>Octobre 2026</span><span>17 min de lecture</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="article-wrap">
+  <aside class="article-sidebar">
+    <div class="toc">
+      <div class="toc-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/></svg> Sommaire</div>
+      <ol>
+        <li><a href="#combien-risquer-par-trade-en-une-phrase">Combien risquer par trade, en une phrase ?</a></li>
+        <li><a href="#pourquoi-ton-win-rate-tout-seul-ne-veut-">Pourquoi ton win rate tout seul ne veut rien dire ?</a></li>
+        <li><a href="#quel-couple-win-rate-risk-reward-selon-t">Quel couple win rate / risk-reward selon ta façon de trader ?</a></li>
+        <li><a href="#comment-calculer-la-taille-de-position-s">Comment calculer la taille de position sur le Nasdaq (NQ et MNQ) ?</a></li>
+        <li><a href="#combien-risquer-par-trade-sur-un-compte-">Combien risquer par trade sur un compte de prop firm ?</a></li>
+        <li><a href="#comment-je-gere-le-risque-sur-un-compte-">Comment je gère le risque sur un compte de prop firm (ma méthode, pas une règle)</a></li>
+        <li><a href="#quelles-sont-les-limites-et-les-erreurs-">Quelles sont les limites et les erreurs fréquentes ?</a></li>
+        <li><a href="#que-faire-ce-soir-pour-fixer-ton-risque-">Que faire ce soir pour fixer ton risque par trade ?</a></li>
+      </ol>
+    </div>
+  </aside>
+
+  <article class="article-body">
+    <h2 id="combien-risquer-par-trade-en-une-phrase">Combien risquer par trade, en une phrase ?</h2>
+    <p><em>Par l&#39;auteur, trader de futures Nasdaq et formateur en trading depuis une dizaine d&#39;années · mis à jour le 20/10/2026</em></p>
+<p>Tu as peut-être déjà vécu ça : une bonne semaine, cinq trades gagnants d&#39;affilée, puis une seule journée qui efface tout. Le problème n&#39;était pas ta lecture du marché. C&#39;était ta taille de position.</p>
+<p><b>Le risque par trade est le montant maximal que tu acceptes de perdre sur une position, fixé avant d&#39;entrer, qui détermine ta taille de position à partir de la distance de ton stop et qui doit te permettre d&#39;encaisser une longue série de pertes sans sortir du jeu.</b></p>
+<p>Tout ce qui suit vient d&#39;une vidéo où je déroule ces calculs sur une matrice, écran partagé (vidéo, vers 5:00) : <a href="https://www.youtube.com/watch?v=3YvoeD-_BEc">« Combien risquer par trade : la règle que 90 % des traders ignorent »</a>. Je te donne les maths, pas une recette. Comme je le dis dans la vidéo : « Il n&#39;y a pas de recette magique. On va parler concret, avec des mathématiques, et je vais te donner des choses factuelles que tu seras libre d&#39;utiliser ou pas. » (vidéo, avant 1:00)</p>
+<p><b>Avertissement :</b> le trading de contrats à terme comporte un risque élevé de perte, pouvant dépasser la mise initiale. Ce contenu est éducatif : ce n&#39;est pas un conseil en investissement, et les exemples chiffrés sont des illustrations mathématiques, pas des résultats.</p>
+<p>Avant de parler de montant, il faut régler une confusion qui coûte cher à beaucoup de traders : croire qu&#39;un bon taux de réussite suffit.</p>
+
+    <hr>
+
+    <h2 id="pourquoi-ton-win-rate-tout-seul-ne-veut-">Pourquoi ton win rate tout seul ne veut rien dire ?</h2>
+    <p>Parce qu&#39;un taux de réussite ne dit rien de ce que tu gagnes quand tu as raison ni de ce que tu perds quand tu as tort. Un trader qui gagne 9 trades sur 10 peut perdre de l&#39;argent, et un trader qui en perd 6 sur 10 peut en gagner : tout dépend du rapport entre le gain moyen et la perte moyenne.</p>
+<h3>Les deux chiffres qui comptent</h3>
+<ul><li><b>Le win rate :</b> la fréquence de tes trades gagnants. 90 % veut dire 9 trades gagnants sur 10.</li><li><b>Le risk-reward (RR) :</b> combien tu vises par rapport à ce que tu risques. Si tu risques 100 $ pour en viser 200, ton RR est de 2. Si tu risques 100 $ pour en viser 50, il est de 0,5.</li></ul>
+<p>Ces deux métriques fonctionnent ensemble. Les regarder séparément, c&#39;est regarder un seul côté d&#39;une balance.</p>
+<h3>La formule du point mort</h3>
+<p>Le win rate minimum pour ne ni gagner ni perdre (frais exclus) se calcule ainsi :</p>
+<p><b>Win rate minimum = 1 ÷ (1 + RR)</b></p>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Risk-reward</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Win rate minimum (point mort)</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Ce que ça veut dire</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">0,5</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">66,7 %</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Tu dois gagner 2 trades sur 3 juste pour être à zéro</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">1</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">50 %</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Un trade sur deux suffit à être à zéro</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">1,5</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">40 %</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">4 trades sur 10</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">2</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">33,3 %</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Un trade sur trois</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">3</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">25 %</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Un trade sur quatre</td></tr></tbody></table></div>
+<p>C&#39;est de l&#39;arithmétique pure. Elle ne dit pas qu&#39;un RR de 3 est « meilleur » : elle dit seulement quel taux de réussite il te faut pour ne pas perdre avec ce RR. Et attention, ce tableau ignore les commissions et le glissement (slippage) : dans la vraie vie, ton point mort est un peu plus haut, surtout si tu vises de petits gains.</p>
+<h3>« J&#39;ai fait des payouts, donc je suis rentable »</h3>
+<p>C&#39;est une objection fréquente. Ma réponse dans la vidéo : « C&#39;est pas parce que tu as fait des payouts de temps en temps, 2, 5, 8, 10, 15, que tu es rentable. La rentabilité, c&#39;est sur le long terme, c&#39;est pas sur un mois ou six mois, c&#39;est sur des années. » (vidéo, vers 4:00)</p>
+<p>Ces deux chiffres se mesurent sur un échantillon sérieux : au moins une centaine de trades du même type. Sur 15 trades, le hasard pèse plus lourd que ta méthode.</p>
+<h3>À retenir</h3>
+<ul><li>Le win rate seul ne prouve rien ; il faut toujours le lire avec le RR.</li><li>Point mort = 1 ÷ (1 + RR).</li><li>Mesure sur 100 trades au moins, frais compris.</li></ul>
+<p>Reste une question : quel couple viser ? La réponse dépend moins des maths que de ta façon de trader.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/combien-risquer-par-trade/blog-combien-risquer-par-trade-1.webp" alt="Tableau du point mort en trading : win rate minimum de 67 %, 50 %, 33 % et 25 % pour un risk-reward de 0,5, 1, 2 et 3" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Win rate minimum = 1 ÷ (1 + RR). En dessous, la méthode perd de l&#39;argent sur la durée, frais non compris.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="quel-couple-win-rate-risk-reward-selon-t">Quel couple win rate / risk-reward selon ta façon de trader ?</h2>
+    <p>Il n&#39;y a pas de bon couple universel : un win rate élevé s&#39;obtient presque toujours avec un RR faible, et un RR élevé s&#39;accompagne d&#39;un win rate plus bas. Ce n&#39;est pas un défaut de méthode, c&#39;est la nature du marché.</p>
+<h3>Pourquoi les deux se tirent dans des sens opposés</h3>
+<p>Le marché est fractal : les petits mouvements arrivent beaucoup plus souvent que les grands. Si tu entres à 20 000 sur le Nasdaq et que tu vises 20 010, ton objectif a de grandes chances d&#39;être touché. Si tu vises 20 100, il faut que le marché fasse un effort bien plus important, le trade dure plus longtemps, et la probabilité d&#39;arriver à ta cible baisse.</p>
+<p>Donc plus tu vises petit, plus tu gagnes souvent. Mais il te faut quand même un stop assez large pour encaisser la volatilité du Nasdaq : tu finis avec un RR inférieur à 1.</p>
+<h3>Le profil « petits gains fréquents » (scalping)</h3>
+<p>Dans ma matrice, je prends un scalper avec un RR de 0,5 (il risque 100 pour viser 50) (vidéo, vers 9:00). Voici ce que donnent 100 trades, exprimés en « R » (1 R = le montant risqué par trade) :</p>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Win rate</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">RR</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Résultat sur 100 trades</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">90 %</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">0,5</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">+35 R</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">80 %</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">0,5</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">+20 R</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">75 %</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">0,5</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">+12,5 R</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">70 %</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">0,5</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">+5 R</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">60 %</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">0,5</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">−10 R</td></tr></tbody></table></div>
+<p>Regarde la chute entre 70 % et 60 %. Pour ce profil, quelques points de win rate font la différence entre une méthode qui tient et une méthode qui perd. <b>Le travail du scalper, c&#39;est donc de protéger son taux de réussite</b> (moins de trades, seulement les meilleurs) et de ne pas descendre sous 0,5 de RR.</p>
+<h3>Le profil « moins de trades, plus d&#39;amplitude » (day trading)</h3>
+<p>Le day trader cherche des mouvements de 80, 100, 150 points ou plus sur le Nasdaq. Il y en a moins, il attend des niveaux clés, et il doit parfois s&#39;y reprendre à plusieurs fois. Son win rate tourne plutôt entre 40 et 60 %, mais son RR est de 2 ou plus.</p>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Win rate</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">RR</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Résultat sur 100 trades</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">50 %</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">3</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">+100 R</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">50 %</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">2</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">+50 R</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">40 %</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">2,5</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">+40 R</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">40 %</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">2</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">+20 R</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">30 %</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">2,5</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">+5 R</td></tr></tbody></table></div>
+<p>Avec 40 % de réussite, tu perds 6 trades sur 10. C&#39;est inconfortable, mais mathématiquement viable si ton RR tient. Le piège, c&#39;est l&#39;inverse : couper un trade gagnant trop tôt parce que tu as peur de rendre ce que tu as gagné. Chaque sortie précoce rabote ton RR et casse l&#39;équilibre.</p>
+<h3>Ces chiffres ne sont pas des promesses</h3>
+<p>Ces tableaux sont des simulations arithmétiques, pas des résultats. Ils supposent que tu exécutes ton plan sans dévier, sans frais, sur un marché qui se comporte comme dans ton historique. La réalité est plus dure : selon l&#39;<a href="https://www.amf-france.org/sites/institutionnel/files/contenu_simple/lettre_ou_cahier/lettre_observatoire/La%20lettre%20de%20l%27Observatoire%20de%20l%27epargne%20de%20l%27AMF%20-%20ndeg%2010%20-%20Octobre%202014.pdf">étude de l&#39;AMF publiée en octobre 2014</a> sur près de 15 000 particuliers, 89 % des clients actifs sur le Forex et les CFD ont perdu de l&#39;argent entre 2009 et 2012 (<a href="https://www.lafinancepourtous.com/2014/10/13/forex-attention-danger/">résumé de l&#39;Institut pour l&#39;éducation financière du public</a>). Le chiffre concerne d&#39;autres produits que les futures, mais il rappelle une chose : sans gestion du risque, les maths jouent contre toi.</p>
+<p>Tu ne sais pas encore si tu es plutôt l&#39;un ou l&#39;autre ? Lis d&#39;abord mon article sur <a href="https://basstrading.fr/blog/types-trading-differences/">les différents types de trading et leurs différences</a> : comme je le répète dans la vidéo, tu ne peux pas être scalper, day trader et swing trader dans la même séance (vidéo, vers 39:00).</p>
+<h3>À retenir</h3>
+<ul><li>Win rate élevé = RR faible, et inversement : c&#39;est structurel.</li><li>Scalper : protège ton win rate, garde un RR ≥ 0,5.</li><li>Day trader : protège ton RR, ne coupe pas tes gagnants par peur.</li></ul>
+<p>Une fois ton couple choisi, il faut passer du « R » abstrait à un vrai nombre de contrats.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/combien-risquer-par-trade/blog-combien-risquer-par-trade-2.webp" alt="Tableau de l&#39;espérance en R par trade selon le win rate (30 à 80 %) et le risk-reward (1 à 3), d&#39;après ma matrice" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Un R = le montant risqué sur un trade. À 40 % de réussite, un risk-reward de 2 suffit à rester positif ; à 1, tu perds.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="comment-calculer-la-taille-de-position-s">Comment calculer la taille de position sur le Nasdaq (NQ et MNQ) ?</h2>
+    <p><b>Taille de position = montant risqué ÷ (distance du stop en points × valeur du point du contrat).</b> Le stop se place là où le marché invalide ton idée ; le nombre de contrats s&#39;ajuste ensuite pour que la perte au stop reste égale au montant que tu as décidé de risquer.</p>
+<h3>La valeur du point, la base de tout</h3>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Contrat</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Valeur d&#39;un point</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Plus petit mouvement (tick)</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Valeur d&#39;un tick</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">MNQ (Micro E-mini Nasdaq-100)</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">2 $</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">0,25 point</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">0,50 $</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">NQ (E-mini Nasdaq-100)</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">20 $</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">0,25 point</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">5 $</td></tr></tbody></table></div>
+<p>Le MNQ vaut un dixième du NQ. Les spécifications sont fixées par le CME Group, la bourse qui liste ces contrats : voir la <a href="https://www.cmegroup.com/markets/equities/nasdaq/micro-e-mini-nasdaq-100.contractSpecs.html">fiche officielle du Micro E-mini Nasdaq-100 (MNQ) sur le site du CME</a> et celle de l&#39;<a href="https://www.cmegroup.com/markets/equities/nasdaq/e-mini-nasdaq-100.contractSpecs.html">E-mini Nasdaq-100 (NQ)</a>. La <a href="https://www.ironbeam.com/knowledge-base/micro-e-mini-nasdaq-100-futures-mnq-contract-specifications/">fiche technique du MNQ publiée par le courtier Ironbeam</a> reprend les mêmes valeurs (tick de 0,25 point pour 0,50 $).</p>
+<h3>Le calcul pas à pas</h3>
+<ul><li><b>Place ton stop d&#39;abord</b>, sur la structure du marché : sous un niveau d&#39;absorption, sous le bas de la zone de valeur, derrière un niveau clé. Disons 20 points.</li><li><b>Calcule la perte par contrat :</b> 20 points × 2 $ = 40 $ par micro.</li><li><b>Divise ton montant de risque par cette perte :</b> pour 80 $ de risque, 80 ÷ 40 = 2 micros.</li><li><b>Arrondis toujours vers le bas.</b> 2,7 contrats, c&#39;est 2 contrats.</li></ul>
+<p>C&#39;est exactement l&#39;exemple que je prends dans la vidéo (vidéo, vers 18:00) : deux micros, un stop de 20 points, soit 80 $ de risque. Avec un RR de 3, la cible est à 60 points, soit 240 $. « Je dis pas que c&#39;est très facile à faire, mais ce n&#39;est pas non plus si difficile que ça. Mais c&#39;est choisir ses trades. » (vidéo, vers 18:00)</p>
+<h3>Stop loss fixe en dollars ou stop technique ?</h3>
+<p>C&#39;est une question qui revient. Ma réponse : le stop est technique (là où ton idée est fausse), et c&#39;est le risque en dollars qui est fixe. Les deux ne s&#39;opposent pas : la distance du stop change d&#39;un trade à l&#39;autre, et c&#39;est le nombre de contrats qui s&#39;adapte pour que la perte maximale reste la même.</p>
+<h3>Et la règle des 1 à 2 % ?</h3>
+<p>Tu la lis partout : ne jamais risquer plus de 1 à 2 % de ton capital par trade. Sur un compte personnel, c&#39;est un point de départ raisonnable. Mais elle ne dit rien de ton stop ni de ta méthode, et sur un compte de prop firm, elle devient trompeuse si tu la calcules sur la taille affichée du compte. On y revient juste après.</p>
+<h3>L&#39;erreur la plus fréquente : faire l&#39;inverse</h3>
+<p>Beaucoup de traders choisissent d&#39;abord leur nombre de contrats, puis placent un stop « qui ne fait pas trop mal ». Résultat : un stop de 5 points sur le Nasdaq, balayé par le premier mouvement normal, puis un second trade dans la foulée, puis un troisième.</p>
+<p>Dans la vidéo, je le dis sans détour (vidéo, vers 36:00) : le stop ne se choisit pas en fonction de ton humeur, il se met en fonction du capital que tu es prêt à perdre sur ce trade. <b>On ne rétrécit jamais un stop pour pouvoir mettre plus de contrats ; on réduit le nombre de contrats pour pouvoir laisser respirer le stop.</b></p>
+<p>Tu veux savoir où placer ce stop de façon objective ? C&#39;est le rôle de la lecture du flux : <a href="https://basstrading.fr/blog/absorption-order-flow/">l&#39;absorption en order flow</a>, les zones du <a href="https://basstrading.fr/blog/market-profile-guide-complet/">Market Profile</a> et celles du <a href="https://basstrading.fr/blog/volume-profile-guide/">Volume Profile</a> donnent des niveaux qui ont un sens, au lieu d&#39;un nombre de points arbitraire.</p>
+<h3>À retenir</h3>
+<ul><li>D&#39;abord le stop (marché), ensuite la taille (calcul).</li><li>MNQ = 2 $ par point, NQ = 20 $ par point.</li><li>Arrondis le nombre de contrats vers le bas.</li></ul>
+<p>Reste la vraie question du titre : quel montant de risque choisir ? Là, tout dépend de ton capital réel, et sur un compte de prop firm, il est beaucoup plus petit que tu ne le crois.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/combien-risquer-par-trade/blog-combien-risquer-par-trade-3.webp" alt="Les 4 étapes du calcul de la taille de position sur le Nasdaq : risque, stop en points, valeur du point MNQ ou NQ, division" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Le stop d&#39;abord, la taille ensuite : taille = risque ÷ (stop en points × valeur du point).</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="combien-risquer-par-trade-sur-un-compte-">Combien risquer par trade sur un compte de prop firm ?</h2>
+    <p>Sur un compte de prop firm, ton vrai capital n&#39;est pas la taille affichée du compte, c&#39;est ton drawdown maximal. <b>Un compte « à 50 000 $ » avec 2 000 $ de drawdown, c&#39;est en réalité un compte de 2 000 $</b> : si tu les perds, le compte est terminé.</p>
+<p>Dans la vidéo, je le formule comme ça : « Les 50 000, c&#39;est du vent, c&#39;est du marketing. La vraie réalité, c&#39;est que les 2 000, si tu les crames, c&#39;est terminé : tu vas devoir racheter un challenge et redémarrer. » (vidéo, vers 21:00) Si tu découvres le fonctionnement de ces comptes, commence par mon guide pour <a href="https://basstrading.fr/blog/prop-firm-funded-trader/">devenir funded trader en prop firm</a>.</p>
+<h3>Un compte maigre et des tailles de position démesurées</h3>
+<p>C&#39;est là que se trouve le piège. Beaucoup de prop firms autorisent à entrer avec plusieurs contrats NQ complets (20 $ le point) sur un compte qui n&#39;a que 2 000 $ de marge d&#39;erreur. Un seul mouvement de 50 points contre toi avec deux NQ, et c&#39;est 2 000 $ : le compte disparaît en un trade.</p>
+<p>Comparaison utile : chez un courtier, garder une position ouverte la nuit exige une marge minimale fixée par la bourse (ton courtier peut demander plus), publiée sur la <a href="https://www.cmegroup.com/markets/equities/nasdaq/micro-e-mini-nasdaq-100.margins.html">page des marges du Micro E-mini Nasdaq-100 du CME</a>. Ce n&#39;est pas pour t&#39;embêter : plus ton compte est épais par rapport à ta position, moins chaque trade te met en danger.</p>
+<h3>Le calcul de survie</h3>
+<p>Pose-toi cette question avant chaque séance : combien de pertes consécutives puis-je encaisser avant de perdre le compte ?</p>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Drawdown disponible</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Risque par trade</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Pertes d&#39;affilée avant la fin</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">2 000 $</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">400 $</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">5</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">2 000 $</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">200 $</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">10</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">2 000 $</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">100 $</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">20</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">2 000 $</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">80 $ (2 MNQ, stop 20 points)</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">25</td></tr></tbody></table></div>
+<p>Avec 100 $ par trade, tu peux perdre 20 fois de suite. Comme je le dis : « Si tu perds 20 fois d&#39;affilée, c&#39;est que tu as un problème qui n&#39;est plus de l&#39;ordre du money management, mais un problème de trading. » (vidéo, vers 37:00) La gestion du risque t&#39;achète du temps ; elle ne remplace pas une méthode.</p>
+<h3>Le piège de la perte journalière trop serrée</h3>
+<p>Certains répondent : « Il suffit de fixer une perte maximale par jour de 300 ou 400 $. » C&#39;est une bonne intention, mais regarde la mécanique : avec 4 ou 5 micros et un stop de 20 points, un seul mauvais trade sur le Nasdaq te coûte déjà 160 à 200 $. Deux trades, et ta journée est finie.</p>
+<p>Une limite journalière n&#39;a de sens que cohérente avec ta taille de position et ton stop. Fixe-la avant d&#39;ouvrir ta plateforme, puis déduis-en combien de trades complets elle te laisse.</p>
+<h3>Le moment où tout bascule</h3>
+<p>Je le raconte dans la vidéo parce que je l&#39;ai vécu (vidéo, vers 28:00). Tu as 2 000 $ de drawdown, tu perds 1 000 $ dans la journée, la moitié de ton capital réel. Et là, quelque chose d&#39;irrationnel se passe : « Foutu pour foutu, on va rentrer un peu plus lourd pour regagner cette perte. » (vidéo, vers 28:00) C&#39;est souvent là que le compte meurt. Pas sur l&#39;analyse, sur la taille.</p>
+<p>Ce que je fais pour éviter ça, c&#39;est le sujet de la partie suivante.</p>
+
+    <hr>
+
+    <h2 id="comment-je-gere-le-risque-sur-un-compte-">Comment je gère le risque sur un compte de prop firm (ma méthode, pas une règle)</h2>
+    <p>Je te partage ma façon de faire, telle que je l&#39;explique dans la vidéo (vidéo, de 26:00 à 36:00). Ce n&#39;est pas la seule, et ce n&#39;est pas un conseil : c&#39;est un exemple de logique cohérente, à tester et à adapter.</p>
+<h3>Deux façons d&#39;utiliser une prop firm</h3>
+<ul><li><b>Le compte jetable.</b> Tu achètes un challenge, tu montes le compte jusqu&#39;au seuil de retrait (le « buffer »), tu retires tout ce qui dépasse, et quand le compte saute, tu en rachètes un. Logique compréhensible (la prop firm peut changer ses règles ou fermer), mais tu marches en permanence sur un fil : ton coussin reste à 2 000 $, et tôt ou tard, il cède. Chaque compte perdu coûte de l&#39;argent, du temps (repasser le challenge), et pèse sur le mental : on a tendance à « charger la mule » pour revalider vite.</li><li><b>Le coussin qui grossit.</b> C&#39;est ce que je fais (vidéo, vers 26:00). Je vois le challenge comme une opportunité : une mise limitée pour accéder à 2 000 $ de marge. Ensuite, je ne retire rien tant que je n&#39;ai pas environ doublé ce coussin (dans la vidéo, je cite un peu plus de 4 000 $ pour un drawdown de 2 000 $ ; vidéo, vers 30:00). Au-delà, je retire, mais proportionnellement, pour que le compte continue de s&#39;épaissir.</li></ul>
+<h3>Pourquoi le coussin change tout</h3>
+<p>Ma limite globale reste 2 000 $. Mais ce que représentent ces 2 000 $ change :</p>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Capital sur le compte</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Poids de la limite de 2 000 $</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">État</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">2 000 $</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">100 %</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Fragile : chaque perte compte</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">~4 000 $</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">moins de 50 %</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Respirable</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">20 000 $</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">10 %</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Confortable</td></tr></tbody></table></div>
+<p>« C&#39;est en te donnant cet oxygène que tu peux travailler sainement », comme je le dis à l&#39;écran (vidéo, vers 31:00). Avec de l&#39;air, une mauvaise journée reste une mauvaise journée, pas une urgence.</p>
+<h3>Entrer petit, ajouter seulement dans le gain</h3>
+<p>Concrètement, j&#39;entre avec un ou deux micros selon la qualité du setup (je travaille trois setups, classés A, B et C ; vidéo, vers 33:00), avec un stop autour de 20 points : ma perte maximale est connue avant de cliquer, environ 80 $. Si le trade part dans mon sens et que tout est aligné, j&#39;ajoute par paquets de deux micros, rapidement, et je remonte mon stop au point d&#39;entrée dès que le marché le permet (vidéo, vers 34:00). Au début, avec un coussin de 2 000 $, je me limite à 6 ou 8 micros au total, jamais d&#39;un coup (vidéo, vers 35:00).</p>
+<p>C&#39;est ainsi que j&#39;améliore mon RR sans augmenter mon risque initial : <b>le risque est pris sur 2 micros, la taille vient seulement quand le marché m&#39;a donné raison.</b></p>
+<h3>Les trois interdits</h3>
+<ul><li><b>Ne jamais ajouter à une position perdante.</b> « Tu es en train de perdre, mais tu sais que tu as raison, donc tu t&#39;entêtes ? Non, on ne s&#39;entête pas. » (vidéo, vers 36:00)</li><li><b>Ne jamais grossir la taille pour te refaire.</b> Doubler après une perte, c&#39;est doubler ton risque ; si le deuxième trade perd aussi, tu entres dans la spirale.</li><li><b>Ne jamais toucher au coussin de survie.</b> Il sert à augmenter ta marge, pas à financer un trade de vengeance.</li></ul>
+<p>Pour exécuter ces ajouts proprement (ordres préparés, stop qui suit), la configuration de la plateforme compte : voici <a href="https://basstrading.fr/blog/sierra-chart-configuration/">ma configuration complète de Sierra Chart</a>.</p>
+<h3>À retenir</h3>
+<ul><li>Ton capital réel en prop firm = ton drawdown.</li><li>Fais grossir le coussin avant de retirer, puis retire en proportion.</li><li>Risque pris sur une petite taille ; on ajoute uniquement dans le gain.</li></ul>
+<p>Toutes ces règles ont des limites. Les voici, honnêtement.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/combien-risquer-par-trade/blog-combien-risquer-par-trade-4.webp" alt="Mes trois interdits en prop firm : ne pas ajouter à une perte, ne pas surtailler pour se refaire, ne pas toucher au coussin" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Ces trois erreurs ont un point commun : elles augmentent ton risque juste au moment où tu es le plus fragile.</figcaption>
+    </figure>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/combien-risquer-par-trade/blog-combien-risquer-par-trade-5.webp" alt="Coussin de survie en prop firm : une limite de perte de 2 000 dollars pèse 100 %, 50 % puis 10 % du compte selon qu&#39;il vaut 2 000, 4 000 ou 20 000 dollars" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Même limite de 2 000 $, poids très différent : c&#39;est pour ça que je laisse grossir le coussin avant de retirer.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="quelles-sont-les-limites-et-les-erreurs-">Quelles sont les limites et les erreurs fréquentes ?</h2>
+    <p>Une gestion du risque, même parfaite, ne transforme pas une méthode perdante en méthode gagnante. Elle t&#39;empêche de mourir pendant que tu vérifies si ta méthode tient. Voici où ça coince le plus souvent.</p>
+<h3>Les erreurs fréquentes</h3>
+<ul><li><b>Penser aux gains avant les pertes.</b> « Je rentre avec 5 ou 10 micros parce que sur ce trade, je peux gagner tant. » (vidéo, vers 41:00) Pire : entrer lourd pour aller chercher quelques points seulement. C&#39;est intenable sur la durée.</li><li><b>Ne pas savoir quel trader tu es.</b> Si tu changes de style d&#39;une séance à l&#39;autre, tes statistiques mélangent des trades qui n&#39;ont rien à voir. Tu ne peux rien corriger.</li><li><b>Juger sur trop peu de trades.</b> 20 trades ne disent rien. Il en faut au moins une centaine du même type.</li><li><b>Oublier les frais.</b> Commissions et glissement mangent surtout les petits objectifs : un scalper qui vise 10 points paie proportionnellement beaucoup plus qu&#39;un day trader qui en vise 80.</li><li><b>Confondre taille du compte et capital.</b> Voir partie précédente : en prop firm, c&#39;est le drawdown qui compte.</li></ul>
+<h3>Ce que les régulateurs constatent</h3>
+<p>Les autorités européennes ont mesuré ce qui arrive quand le levier n&#39;est pas maîtrisé. En mars 2018, l&#39;<a href="https://www.esma.europa.eu/node/84933">ESMA a restreint la vente de CFD aux particuliers</a> en s&#39;appuyant sur les analyses des régulateurs nationaux : 74 à 89 % des comptes de particuliers perdaient de l&#39;argent, avec des pertes moyennes de 1 600 € à 29 000 € par client. Les futures ne sont pas des CFD, mais le mécanisme est le même : un effet de levier sans règle de taille finit par coûter cher.</p>
+<h3>Quand la règle ne suffit pas</h3>
+<p>Si tu respectes ton risque par trade et que ton compte baisse quand même, régulièrement, sur plus de 100 trades, le problème est en amont : tes entrées. C&#39;est le moment de revenir à la lecture du marché, par exemple avec mon <a href="https://basstrading.fr/blog/order-flow-trading-france/">guide complet de l&#39;order flow</a>, plutôt que de chercher un nouveau réglage de risque.</p>
+<p>Et si tu débutes complètement, commence par mon guide pour <a href="https://basstrading.fr/blog/debuter-trading-zero-guide/">débuter le trading en partant de zéro</a> : la gestion du risque est la première brique, pas la dernière. Tu te demandes combien de mois il faut pour atteindre ces 100 trades et en tirer quelque chose ? J&#39;y réponds dans <a href="https://basstrading.fr/blog/combien-temps-apprendre-trading/">combien de temps faut-il pour apprendre le trading</a>.</p>
+<h3>À retenir</h3>
+<ul><li>La gestion du risque t&#39;achète du temps, elle ne crée pas d&#39;avantage.</li><li>Juge ta méthode sur 100 trades au moins, frais compris.</li><li>Si le compte baisse malgré un risque maîtrisé, travaille tes entrées.</li></ul>
+
+    <hr>
+
+    <h2 id="que-faire-ce-soir-pour-fixer-ton-risque-">Que faire ce soir pour fixer ton risque par trade ?</h2>
+    <h3>Récapitulons</h3>
+<ul><li>Le win rate seul ne prouve rien : point mort = 1 ÷ (1 + RR).</li><li>Win rate et RR se compensent : choisis le couple qui correspond à ta façon de trader, pas à celle d&#39;un autre.</li><li>Taille = risque ÷ (stop en points × valeur du point) : 2 $ le point sur MNQ, 20 $ sur NQ. Le stop d&#39;abord, la taille ensuite.</li><li>En prop firm, ton capital réel est ton drawdown : calcule combien de pertes d&#39;affilée tu peux encaisser.</li><li>Jamais d&#39;ajout dans la perte, jamais de surtaille pour te refaire.</li></ul>
+<h3>Ta prochaine action</h3>
+<p>Ce soir, ouvre ton journal (ou ton historique de plateforme) et sors tes 50 à 100 derniers trades. Calcule deux chiffres : ton win rate et ton RR moyen réel (gain moyen ÷ perte moyenne). Compare-les au tableau du point mort. Puis écris, avant ta prochaine séance, le montant que tu risques par trade et le nombre de pertes d&#39;affilée qu&#39;il te laisse.</p>
+<p>Pour suivre ma lecture du Nasdaq, rejoins mon <a href="https://t.me/bassofficiel">canal Telegram gratuit</a>.</p>
+<p>La suite logique, c&#39;est le choix de ton style : relis mon article sur <a href="https://basstrading.fr/blog/types-trading-differences/">les types de trading et leurs différences</a> avec tes deux chiffres sous les yeux.</p>
+<h3>Comment cet article est fait</h3>
+<p>Je l&#39;ai écrit à partir de ma vidéo « Combien risquer par trade : la règle que 90 % des traders ignorent » (juin 2026). Il a été mis en forme avec l&#39;aide d&#39;une IA, les calculs ont été vérifiés un par un, et les sources externes ont été consultées le 19/10/2026.</p>
+<p>Le trading de contrats à terme comporte un risque élevé de perte, pouvant dépasser la mise initiale. Contenu éducatif, pas un conseil en investissement. Les tableaux sont des simulations arithmétiques, pas des résultats passés ou futurs.</p>
+
+    <p><a href="https://www.youtube.com/watch?v=3YvoeD-_BEc" target="_blank" rel="noopener">▶ Voir la vidéo de Sébastien sur ce sujet</a></p>
+
+    <div class="cta-card">
+      <div class="cta-card-label">Mentorat</div>
+      <h3>Apprenez à lire le volume comme un pro.</h3>
+      <p>70 heures de formation, Footprint + Market Profile + Order Flow. Sierra Chart configuré. 10 places max.</p>
+      <a href="https://basstrading.fr#candidater" class="btn-p">Vérifier mon éligibilité <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+    </div>
+  
+  </article>
+</div>
+
+<!-- FAQ -->
+<section class="faq-sec">
+  <div class="sec-center"><div class="sec-label">FAQ</div><h2 class="sec-title">Questions fréquentes</h2></div>
+  <div class="faq-list">
+    <div class="fi"><button class="fq" onclick="tf(this)">Quel pourcentage de son capital risquer par trade ? <span class="fq-icon">+</span></button><div class="fa"><p>Il n&#39;existe pas de pourcentage officiel. Le bon montant est celui qui te permet d&#39;encaisser une longue série de pertes (20 d&#39;affilée, par exemple) sans perdre ton compte. Sur un compte de prop firm, calcule-le sur ton drawdown, pas sur la taille affichée : 100 $ par trade sur 2 000 $ de drawdown, c&#39;est déjà 5 % de ton capital réel.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Quel win rate faut-il pour être rentable ? <span class="fq-icon">+</span></button><div class="fa"><p>Ça dépend de ton risk-reward. Le win rate minimum pour être au point mort vaut 1 ÷ (1 + RR) : 50 % avec un RR de 1, 33 % avec un RR de 2, 25 % avec un RR de 3, mais 67 % avec un RR de 0,5. Ajoute les frais, qui remontent ce seuil, et mesure sur au moins 100 trades.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Combien vaut un point sur le MNQ et le NQ ? <span class="fq-icon">+</span></button><div class="fa"><p>Un point vaut 2 $ sur le Micro E-mini Nasdaq-100 (MNQ) et 20 $ sur l&#39;E-mini Nasdaq-100 (NQ). Le plus petit mouvement est de 0,25 point, soit 0,50 $ sur le MNQ et 5 $ sur le NQ. Un stop de 20 points coûte donc 40 $ par micro et 400 $ par contrat complet.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Faut-il mettre une perte maximale par jour ? <span class="fq-icon">+</span></button><div class="fa"><p>Oui, fixe-la avant d&#39;ouvrir ta plateforme, mais rends-la cohérente avec ta taille de position. Une limite de 300 $ avec 5 micros et un stop de 20 points, c&#39;est moins de deux trades complets : tu passeras tes journées à la toucher. Calcule combien de trades entiers elle te laisse.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Peut-on ajouter des contrats pendant un trade ? <span class="fq-icon">+</span></button><div class="fa"><p>Dans ma façon de faire (vidéo, vers 35:00), uniquement dans un trade gagnant, par petits paquets, avec un stop remonté au point d&#39;entrée dès que possible. Ajouter à une position perdante ou doubler la taille pour se refaire, c&#39;est augmenter son risque au pire moment : c&#39;est le chemin le plus court vers un compte perdu.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Vaut-il mieux un stop loss fixe en dollars ou un stop technique ? <span class="fq-icon">+</span></button><div class="fa"><p>Les deux se combinent. Le stop se place là où ton idée est fausse, sur la structure du marché (absorption, zone de valeur, niveau clé) : c&#39;est le stop technique. Ce qui reste fixe, c&#39;est le montant en dollars que tu acceptes de perdre. Le nombre de contrats s&#39;ajuste à la distance du stop pour que la perte maximale reste la même d&#39;un trade à l&#39;autre.</p></div></div>
+  </div>
+</section>
+
+<!-- Related -->
+<section class="related-sec">
+  <div class="sec-center"><div class="sec-label">Continuer la lecture</div><h2 class="sec-title">Articles connexes</h2></div>
+  <div class="related-grid">
+    <a href="/blog/market-profile-guide-complet/" class="related-card"><div class="related-cat">Guide</div><h3>Market Profile : le guide complet pour débutants</h3><p>Value Area, POC, types de journées — tout pour commencer.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/order-flow-trading-france/" class="related-card"><div class="related-cat">Méthode</div><h3>Order Flow Trading : pourquoi personne ne l'enseigne en France</h3><p>Le carnet d'ordres et le flux institutionnel décryptés.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/sierra-chart-configuration/" class="related-card"><div class="related-cat">Tutoriel</div><h3>Sierra Chart : configuration complète</h3><p>Le setup pas à pas pour le Market Profile et le Footprint.</p><span class="related-link">Lire &rarr;</span></a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="ft-top"><div class="ft-logo">BASS</div><div class="ft-cols">
+    <div class="ft-col"><div class="ft-col-title">Programme</div><a href="https://basstrading.fr/#methodes">Méthode</a><a href="https://basstrading.fr/#les-quatre">Programme</a><a href="https://basstrading.fr#candidater">Candidater</a></div>
+    <div class="ft-col"><div class="ft-col-title">Ressources</div><a href="/blog/market-profile-guide-complet/">Market Profile</a><a href="/blog/footprint-chart-trading/">Footprint Chart</a><a href="/blog/order-flow-trading-france/">Order Flow</a></div>
+    <div class="ft-col"><div class="ft-col-title">Écosystème</div><a href="https://hubtrading.fr" target="_blank" rel="noopener">HubTrading.fr</a><a href="mailto:contact@basstrading.fr">Contact</a></div>
+  </div></div>
+  <div class="ft-bottom"><span>&copy; 2026 BASS — Sébastien Constant</span><div><a href="/mentions-legales/">Mentions légales</a><a href="/confidentialite/">Confidentialité</a><a href="/cgv/">CGV</a></div></div>
+</footer>
+<div class="disclaimer">Le trading comporte des risques de perte en capital. Les performances passées ne préjugent pas des performances futures. Ce site ne constitue pas un conseil en investissement.</div>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+const lenis=new Lenis({duration:1.2,easing:t=>Math.min(1,1.001-Math.pow(2,-10*t))});
+function raf(t){lenis.raf(t);requestAnimationFrame(raf)}requestAnimationFrame(raf);
+lenis.on('scroll',ScrollTrigger.update);gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0);
+const tl=gsap.timeline();
+tl.to('.pre-word span',{y:0,opacity:1,duration:.5,stagger:.1,ease:'power3.out',delay:.3}).to('#preLine',{width:'80px',duration:.7,ease:'power2.inOut'},'<+.2').to('.preloader',{yPercent:-100,duration:.8,ease:'power3.inOut',delay:.4}).set('.preloader',{display:'none'}).to('#nav',{opacity:1,y:0,duration:.5},'<+.1');
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);const h=document.documentElement.scrollHeight-window.innerHeight;document.getElementById('readingProgress').style.width=(window.scrollY/h*100)+'%'});
+const tocLinks=document.querySelectorAll('.toc a');const sections=Array.from(tocLinks).map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+window.addEventListener('scroll',()=>{let c='';sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)c=s.id});tocLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+c)})});
+function tf(b){const i=b.closest('.fi'),a=b.nextElementSibling,o=i.classList.contains('active');document.querySelectorAll('.fi').forEach(x=>{x.classList.remove('active');x.querySelector('.fa').classList.remove('open')});if(!o){i.classList.add('active');a.classList.add('open')}}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();lenis.scrollTo(t,{offset:-60})}})});
+</script>
+</body>
+</html>
