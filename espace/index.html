@@ -180,6 +180,7 @@ mark{background:rgba(201,168,76,.35);color:inherit;border-radius:3px;padding:0 2
 .aide-fo .msg:empty{margin:0}.aide-panneau .msg.err{color:#ff7a7d}
 .aide-autres{margin-top:18px;border-top:1px solid var(--line);padding-top:6px}
 .aide-autres summary{cursor:pointer;padding:10px 0;font:600 16px 'Outfit';color:var(--txt)}
+.aide-incluses{margin:18px 0 0;padding-top:12px;border-top:1px solid var(--line);font-size:14px;line-height:1.5;color:var(--mute)}.aide-incluses b{color:var(--txt);font-weight:600}
 .aide-bulle:focus-visible,.aide-panneau :focus-visible{outline:2px solid var(--gold2);outline-offset:2px}
 body.aide-ouverte{overflow:hidden}
 @media (min-width:601px){
@@ -677,7 +678,7 @@ const aide = (() => {
     if (r.status !== 404) { let d = ""; try { d = (await r.json()).detail } catch {} throw {msg: d || "Erreur " + r.status}; }
     // Route pas encore en ligne : le catalogue « cadenas » et les formations de l'élève, comme la bibliothèque.
     const [c, moi] = await Promise.all([api("/espace/catalogue"), api("/moi").catch(() => null)]);
-    return {possedees: ((moi && moi.formations) || []).map(f => f.titre), formations: c.formations.map(f => ({slug: f.slug, titre: f.titre,
+    return {possedees: ((moi && moi.formations) || []).map(f => f.titre), incluses: c.incluses || [], formations: c.formations.map(f => ({slug: f.slug, titre: f.titre,
       contenu: `${f.lecons} leçon${f.lecons > 1 ? "s" : ""}`, offre: f.offre || null, sur_demande: !f.offre}))};
   }
   async function charger() {
@@ -712,7 +713,15 @@ const aide = (() => {
     corps.innerHTML = `<p class="aide-deja">${deja.length ? `<b>Tu as déjà :</b> ${deja.map(esc).join(", ")}.` : "Tu n'as pas encore de formation."}</p>
       ${F.length ? "" : `<p class="small">Tu as déjà toutes les formations proposées. Une question : <a href="mailto:contact@basstrading.fr">contact@basstrading.fr</a>.</p>`}
       ${F.filter(f => !f.sur_demande).map(carte).join("")}
-      ${surDemande.length ? `<details class="aide-autres"><summary>Autres formations, sur demande (${surDemande.length})</summary>${surDemande.map(carte).join("")}</details>` : ""}`;
+      ${surDemande.length ? `<details class="aide-autres"><summary>Autres formations, sur demande (${surDemande.length})</summary>${surDemande.map(carte).join("")}</details>` : ""}
+      ${incluses().map(([dans, titres]) => `<p class="aide-incluses">${dans ? `Déjà dans ta formation <b>${esc(dans)}</b>` : "Déjà dans tes formations"} : ${titres.map(esc).join(", ")}.</p>`).join("")}`;
+  }
+  // Ce que l'élève a déjà dans une formation qui les englobe (Bass 20/10 : ne jamais lui proposer ce qu'il a déjà) : une ligne
+  // par formation qui les contient, sans bouton. Le champ peut manquer (ancienne API) ou être vide.
+  function incluses() {
+    const groupes = new Map();
+    for (const i of donnees.incluses || []) if (i && i.titre) groupes.set(i.dans || "", [...(groupes.get(i.dans || "") || []), i.titre]);
+    return [...groupes];
   }
   // Envoi d'une demande : le bouton garde le focus (pas de disabled), le résultat s'annonce dans la zone « status » de la carte.
   async function envoyer(fo, bouton, demande) {
