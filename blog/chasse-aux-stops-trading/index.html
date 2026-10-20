@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chasse aux stops : pourquoi ton stop saute (et comment la lire) — BASS Trading</title>
+  <meta name="description" content="Chasse aux stops : pourquoi ton stop saute juste avant le bon mouvement, et comment lire la mèche sur le Footprint (delta, CVD, réintégration).">
+  <meta property="og:title" content="Chasse aux stops : pourquoi ton stop saute (et comment la lire) — BASS Trading">
+  <meta property="og:description" content="Chasse aux stops : pourquoi ton stop saute juste avant le bon mouvement, et comment lire la mèche sur le Footprint (delta, CVD, réintégration).">
+  <meta property="og:image" content="https://basstrading.fr/blog/chasse-aux-stops-trading/blog-chasse-aux-stops-trading-1.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://basstrading.fr/blog/chasse-aux-stops-trading/blog-chasse-aux-stops-trading-1.webp">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://basstrading.fr/blog/chasse-aux-stops-trading/">
+  <meta property="og:site_name" content="BASS Trading">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://basstrading.fr/blog/chasse-aux-stops-trading/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","headline":"Chasse aux stops : pourquoi ton stop saute (et comment la lire)","description":"Chasse aux stops : pourquoi ton stop saute juste avant le bon mouvement, et comment lire la mèche sur le Footprint (delta, CVD, réintégration).","datePublished":"2026-10-20","dateModified":"2026-10-20","image":"https://basstrading.fr/blog/chasse-aux-stops-trading/blog-chasse-aux-stops-trading-1.webp","author":{"@type":"Person","@id":"https://basstrading.fr/#person","name":"Sébastien Constant","url":"https://basstrading.fr/auteur/sebastien-constant/"},"publisher":{"@type":"Organization","name":"BASS Trading","url":"https://basstrading.fr","logo":{"@type":"ImageObject","url":"https://basstrading.fr/images/logo-basstrading.png","width":512,"height":512}},"mainEntityOfPage":"https://basstrading.fr/blog/chasse-aux-stops-trading/"}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://basstrading.fr"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://basstrading.fr/blog/"},{"@type":"ListItem","position":3,"name":"Chasse aux stops","item":"https://basstrading.fr/blog/chasse-aux-stops-trading/"}]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"La chasse aux stops est-elle illégale ?","acceptedAnswer":{"@type":"Answer","text":"Cela dépend de la méthode. Profiter d'une liquidité prévisible, par exemple attendre le déclenchement des stops au-dessus d'un plus haut pour exécuter un ordre, est légal. Provoquer volontairement leur déclenchement avec des ordres trompeurs (spoofing) ou des transactions destinées à déplacer le prix est une manipulation de marché, définie à l'article 12 et interdite à l'article 15 du règlement européen MAR n° 596/2014. Ceci est une information générale, pas un avis juridique."}},{"@type":"Question","name":"Peut-on voir les stops des autres traders dans le carnet d'ordres ?","acceptedAnswer":{"@type":"Answer","text":"Non. Sur CME Globex, un ordre stop n'est pas posé dans le carnet quand il est accepté : il attend qu'une transaction ait lieu à son prix de déclenchement, puis il entre dans le carnet comme ordre au marché protégé ou comme ordre limite. Le DOM montre donc les ordres limites en attente, jamais les stops. On peut seulement deviner où ils se trouvent, derrière les niveaux évidents, et voir leur exécution après coup sur le Footprint."}},{"@type":"Question","name":"Faut-il élargir son stop pour éviter une chasse aux stops ?","acceptedAnswer":{"@type":"Answer","text":"Pas automatiquement. Un stop plus large augmente la perte potentielle de chaque trade et impose de réduire la taille de position. Il vaut mieux repenser son emplacement : là où ton idée est invalidée, par rapport à la structure du Footprint (zone absorbée, POC, imbalances), plutôt qu'au tick derrière le niveau que tout le monde voit. Et dans tous les cas, fixe-toi une perte maximale avant d'ouvrir ta plateforme."}},{"@type":"Question","name":"Le Footprint est-il obligatoire pour repérer une chasse aux stops ?","acceptedAnswer":{"@type":"Answer","text":"Non : la réintégration du niveau se voit sur un graphique classique. Mais le Footprint ajoute ce que la bougie cache : le volume exécuté à chaque prix et le delta, c'est-à-dire qui a été agressif. Il permet de voir le gros volume à l'extrême de la mèche, de le rapporter au volume de la bougie, et de vérifier si les acheteurs ou les vendeurs ont continué après la cassure."}},{"@type":"Question","name":"Combien de bougies attendre avant de parler de faux breakout ?","acceptedAnswer":{"@type":"Answer","text":"Il n'y a pas de nombre magique. Dans ma formation Footprint gratuite, j'observe que le retour est rarement immédiat : souvent deux, trois ou quatre bougies avant que le prix reparte dans l'autre sens. Une seule bougie de réintégration ne suffit donc pas. Attends que le prix revienne nettement dans la zone et qu'un deuxième élément confirme, comme un CVD qui ne suit plus ou des acheteurs piégés au sommet."}},{"@type":"Question","name":"Peut-on éviter totalement les chasses aux stops ?","acceptedAnswer":{"@type":"Answer","text":"Non. Tant que tu utilises un stop, il peut être touché par une mèche, et c'est normal : c'est le prix de ta protection. Tu peux en revanche cesser d'être dans la foule : placer ton stop là où ton idée est invalidée plutôt qu'au tick derrière le niveau évident, attendre la réintégration avant d'entrer, et adapter ta taille de position à la distance du stop."}},{"@type":"Question","name":"La chasse aux stops existe-t-elle aussi sur le forex ?","acceptedAnswer":{"@type":"Answer","text":"Oui, la logique de foule est la même : des stops sous les supports et au-dessus des résistances, qui partent ensemble. Mais le forex au comptant n'a pas de carnet central : chaque courtier affiche ses propres prix et volumes, ce qui rend la lecture du Footprint peu fiable. Sur les futures du CME, tous les échanges passent par une seule bourse, et le volume lu est le volume réel du contrat."}}]}
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{--bk:#1D1D1F;--bk2:#111;--bk3:#0A0A0A;--g1:#6E6E73;--g2:#86868B;--g3:#D2D2D7;--g4:#F5F5F7;--wh:#FBFBFD;--pure:#FFF;--green:#00B67A;--blue:#0066FF}
+    html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}
+    body{font-family:'DM Sans',sans-serif;color:var(--bk);background:var(--pure);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+    .preloader{position:fixed;inset:0;background:var(--bk3);z-index:10001;display:flex;align-items:center;justify-content:center}
+    .pre-word{font-family:'Outfit',sans-serif;font-size:clamp(3rem,8vw,5rem);font-weight:900;letter-spacing:16px;text-transform:uppercase;color:var(--pure);overflow:hidden}
+    .pre-word span{display:inline-block;transform:translateY(110%);opacity:0}
+    .pre-line{width:0;height:1px;background:rgba(255,255,255,.3);margin-top:20px}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 48px;display:flex;align-items:center;justify-content:space-between;background:rgba(245,245,247,.85);backdrop-filter:blur(20px) saturate(1.8);border-bottom:1px solid rgba(0,0,0,.04);transition:background .4s}
+    .nav-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase;color:var(--bk)}
+    .nav-links{display:flex;gap:28px;list-style:none}.nav-links a{font-size:.74rem;font-weight:500;letter-spacing:.3px;color:var(--g1);transition:color .3s}.nav-links a:hover{color:var(--bk)}
+    .nav-cta{padding:8px 20px;background:var(--bk);color:var(--pure);border:none;border-radius:980px;font-size:.72rem;font-weight:600;transition:all .3s;cursor:pointer;text-decoration:none;display:inline-block}.nav-cta:hover{background:var(--bk2)}
+    .blog-hero{padding:160px 48px 80px;background:var(--g4);position:relative;overflow:hidden}
+    .blog-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,transparent,var(--g4));pointer-events:none}
+    .blog-hero-inner{max-width:720px;margin:0 auto}
+    .breadcrumb{display:flex;gap:8px;align-items:center;margin-bottom:28px;flex-wrap:wrap}
+    .breadcrumb a,.breadcrumb span{font-size:.68rem;font-weight:500;letter-spacing:.3px;color:var(--g2);transition:color .3s}.breadcrumb a:hover{color:var(--bk)}.breadcrumb .sep{color:var(--g3)}
+    .blog-hero-cat{display:inline-block;padding:5px 14px;border:1px solid rgba(0,102,255,.15);border-radius:980px;font-size:.6rem;font-weight:700;color:var(--blue);letter-spacing:2px;text-transform:uppercase;margin-bottom:20px}
+    .blog-hero-title{font-family:'Outfit',sans-serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:900;line-height:1.05;letter-spacing:-2px;color:var(--bk);margin-bottom:20px}
+    .blog-hero-desc{font-size:.95rem;color:var(--g1);line-height:1.8;max-width:560px;margin-bottom:28px}
+    .blog-meta{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+    .blog-meta-author{display:flex;align-items:center;gap:10px}
+    .blog-meta-avatar{width:36px;height:36px;border-radius:50%;background:var(--bk3);overflow:hidden;flex-shrink:0}.blog-meta-avatar img{width:100%;height:100%;object-fit:cover}
+    .blog-meta-name{font-size:.78rem;font-weight:600;color:var(--bk)}.blog-meta-role{font-size:.65rem;color:var(--g2)}
+    .blog-meta-sep{width:1px;height:24px;background:var(--g3)}
+    .blog-meta-info{font-size:.7rem;color:var(--g2)}.blog-meta-info span{margin-right:16px}
+    .toc{position:sticky;top:90px;background:var(--pure);border:1px solid rgba(0,0,0,.04);border-radius:14px;padding:24px;margin-bottom:32px}
+    .toc-title{font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.5px;color:var(--bk);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+    .toc ol{list-style:none;counter-reset:toc}.toc li{counter-increment:toc}
+    .toc li a{display:flex;align-items:baseline;gap:8px;padding:6px 0;font-size:.76rem;color:var(--g1);transition:color .3s;border-bottom:1px solid rgba(0,0,0,.03)}.toc li a:hover{color:var(--blue)}
+    .toc li a::before{content:counter(toc,decimal-leading-zero);font-family:'Outfit',sans-serif;font-size:.65rem;font-weight:700;color:var(--g3);min-width:18px}
+    .toc li:last-child a{border-bottom:none}.toc li a.active{color:var(--blue);font-weight:600}.toc li a.active::before{color:var(--blue)}
+    .article-wrap{display:grid;grid-template-columns:220px 1fr;gap:40px;max-width:1020px;margin:0 auto;padding:60px 48px 120px}
+    .article-sidebar{position:relative}.article-body{max-width:700px}
+    .article-body h2{font-family:'Outfit',sans-serif;font-size:clamp(1.4rem,2.5vw,1.8rem);font-weight:800;line-height:1.1;letter-spacing:-1px;color:var(--bk);margin:56px 0 16px;padding-top:20px}.article-body h2:first-of-type{margin-top:0}
+    .article-body h3{font-family:'Outfit',sans-serif;font-size:1.05rem;font-weight:700;line-height:1.25;letter-spacing:-.3px;color:var(--bk);margin:36px 0 10px}
+    .article-body p{font-size:.9rem;color:var(--g1);line-height:1.85;margin-bottom:18px}
+    .article-body strong{color:var(--bk);font-weight:600}
+    .article-body ul,.article-body ol{margin:0 0 20px 0;padding-left:20px}
+    .article-body li{font-size:.88rem;color:var(--g1);line-height:1.8;margin-bottom:6px}.article-body li strong{color:var(--bk)}
+    .article-body blockquote{margin:28px 0;padding:20px 24px;background:var(--g4);border-left:3px solid var(--bk);border-radius:0 12px 12px 0;font-size:.88rem;color:var(--g1);line-height:1.8;font-style:italic}
+    .article-body blockquote strong{color:var(--bk);font-style:normal}
+    .article-body hr{border:none;border-top:1px solid var(--g4);margin:48px 0}
+    .info-box{margin:28px 0;padding:24px;background:rgba(0,102,255,.03);border:1px solid rgba(0,102,255,.08);border-radius:14px}
+    .info-box-title{font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:700;color:var(--blue);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+    .info-box p{font-size:.82rem;color:var(--g1);line-height:1.7;margin-bottom:0}
+    .key-concept{margin:32px 0;padding:28px;background:var(--bk3);border-radius:16px;color:var(--pure)}
+    .key-concept-label{font-size:.55rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:10px}
+    .key-concept h4{font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:800;letter-spacing:-.3px;margin-bottom:8px}
+    .key-concept p{font-size:.85rem;color:rgba(255,255,255,.5);line-height:1.8;margin-bottom:0}
+    .compare-table{width:100%;margin:24px 0 28px;border-collapse:collapse;border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,.06)}
+    .compare-table th{background:var(--bk3);color:var(--pure);font-family:'Outfit',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:14px 16px;text-align:left}
+    .compare-table td{padding:12px 16px;font-size:.82rem;color:var(--g1);line-height:1.6;border-bottom:1px solid rgba(0,0,0,.04);background:var(--pure)}
+    .compare-table tr:last-child td{border-bottom:none}.compare-table td:first-child{font-weight:600;color:var(--bk)}
+    .cta-card{margin:48px 0;padding:40px;background:var(--bk3);border-radius:20px;text-align:center;position:relative;overflow:hidden}
+    .cta-card::before{content:'';position:absolute;top:-50%;right:-30%;width:400px;height:400px;background:radial-gradient(circle,rgba(0,102,255,.08) 0%,transparent 70%);pointer-events:none}
+    .cta-card-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:12px}
+    .cta-card h3{font-family:'Outfit',sans-serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:800;color:var(--pure);letter-spacing:-.5px;margin-bottom:8px}
+    .cta-card p{font-size:.85rem;color:rgba(255,255,255,.4);line-height:1.7;max-width:380px;margin:0 auto 24px}
+    .cta-card .btn-p{background:var(--pure);color:var(--bk)}.cta-card .btn-p:hover{box-shadow:0 8px 30px rgba(255,255,255,.15)}
+    .faq-sec{padding:80px 48px 100px;background:var(--g4)}
+    .faq-list{max-width:680px;margin:40px auto 0}.fi{border-bottom:1px solid rgba(0,0,0,.06)}
+    .fq{width:100%;text-align:left;padding:18px 0;background:none;border:none;font-size:.85rem;font-weight:600;font-family:'DM Sans',sans-serif;color:var(--bk);display:flex;justify-content:space-between;align-items:center;cursor:pointer;gap:16px;transition:color .3s}.fq:hover{color:var(--g1)}
+    .fq-icon{width:22px;height:22px;border-radius:50%;background:rgba(0,0,0,.04);display:flex;align-items:center;justify-content:center;font-size:.75rem;transition:all .4s;flex-shrink:0;color:var(--g2)}
+    .fa{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1)}.fa.open{max-height:280px;padding-bottom:14px}
+    .fa p{font-size:.8rem;color:var(--g1);line-height:1.7;margin-bottom:0}.fi.active .fq-icon{background:var(--bk);color:var(--pure);transform:rotate(45deg)}
+    .related-sec{padding:80px 48px;background:var(--pure);border-top:1px solid var(--g4)}
+    .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1060px;margin:40px auto 0}
+    .related-card{display:block;padding:28px;background:var(--g4);border-radius:16px;transition:all .4s;text-decoration:none;color:var(--bk)}
+    .related-card:hover{background:var(--pure);box-shadow:0 8px 30px rgba(0,0,0,.06);transform:translateY(-2px)}
+    .related-cat{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+    .related-card h3{font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:700;line-height:1.3;letter-spacing:-.3px;margin-bottom:8px}
+    .related-card p{font-size:.78rem;color:var(--g1);line-height:1.6;margin-bottom:14px}
+    .related-link{font-size:.72rem;font-weight:600;color:var(--blue);letter-spacing:.3px}
+    .footer{background:var(--bk3);color:var(--pure);padding:56px 48px 28px}
+    .ft-top{display:flex;justify-content:space-between;align-items:start;margin-bottom:48px;flex-wrap:wrap;gap:32px}
+    .ft-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase}
+    .ft-cols{display:flex;gap:80px}
+    .ft-col-title{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:12px}
+    .ft-col a{display:block;font-size:.78rem;color:rgba(255,255,255,.5);margin-bottom:8px;transition:color .3s}.ft-col a:hover{color:var(--pure)}
+    .ft-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:20px;display:flex;justify-content:space-between;align-items:center;font-size:.6rem;color:rgba(255,255,255,.2)}
+    .ft-bottom a{color:rgba(255,255,255,.2);transition:color .3s;margin-left:20px}.ft-bottom a:hover{color:rgba(255,255,255,.5)}
+    .disclaimer{padding:12px 48px;background:var(--bk3);font-size:.58rem;color:rgba(255,255,255,.12);text-align:center;line-height:1.6;border-top:1px solid rgba(255,255,255,.03)}
+    .sec-center{text-align:center;max-width:680px;margin:0 auto}
+    .sec-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--g2);margin-bottom:10px}
+    .sec-title{font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;line-height:1.05;letter-spacing:-1.5px;color:var(--bk);margin-bottom:16px}
+    .btn-p{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--bk);color:var(--pure);border-radius:980px;font-size:.85rem;font-weight:600;transition:all .3s;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;text-decoration:none}
+    .btn-p:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(0,0,0,.1)}
+    .btn-p svg{width:13px;height:13px;transition:transform .3s}.btn-p:hover svg{transform:translateX(3px)}
+    .reading-progress{position:fixed;top:0;left:0;height:2px;background:var(--blue);z-index:9999;width:0;transition:width .1s linear}
+    @media(max-width:900px){.nav{padding:14px 20px}.nav-links{display:none}.blog-hero{padding:120px 20px 60px}.article-wrap{grid-template-columns:1fr;padding:40px 20px 80px}.article-sidebar{display:none}.related-grid{grid-template-columns:1fr}.related-sec,.faq-sec{padding:60px 20px}.ft-cols{flex-direction:column;gap:28px}.footer{padding:40px 20px 20px}.disclaimer{padding:10px 16px}.cta-card{padding:28px 20px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  .article-body a{color:var(--blue);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;font-weight:500}.article-body a:hover{text-decoration-thickness:2px}
+</style>
+</head>
+<body>
+
+<div class="preloader" id="preloader"><div style="text-align:center"><div class="pre-word"><span>B</span><span>A</span><span>S</span><span>S</span></div><div class="pre-line" id="preLine"></div></div></div>
+<div class="reading-progress" id="readingProgress"></div>
+
+<nav class="nav" id="nav">
+  <a href="https://basstrading.fr" class="nav-logo">BASS</a>
+  <ul class="nav-links">
+    <li><a href="https://basstrading.fr/#methodes">Méthode</a></li>
+    <li><a href="https://basstrading.fr#resultats">Résultats</a></li>
+    <li><a href="https://basstrading.fr#avis">Avis</a></li>
+    <li><a href="https://basstrading.fr#faq">FAQ</a></li>
+    <li><a href="https://basstrading.fr/blog/">Blog</a></li>
+  </ul>
+  <a href="https://basstrading.fr#candidater" class="nav-cta">Candidater</a>
+</nav>
+
+<section class="blog-hero">
+  <div class="blog-hero-inner">
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <a href="https://basstrading.fr">Accueil</a><span class="sep">/</span>
+      <a href="https://basstrading.fr/blog/">Blog</a><span class="sep">/</span>
+      <span>Chasse aux stops</span>
+    </nav>
+    <div class="blog-hero-cat">Order Flow</div>
+    <h1 class="blog-hero-title">Chasse aux stops : pourquoi ton stop saute (et comment la lire)</h1>
+    <p class="blog-hero-desc">Ton stop est touché au tick près, puis le prix repart dans ton sens. Souvent, ce n&#39;est pas de la malchance : c&#39;est l&#39;endroit où tout le monde a mis son stop. Ces stops sont invisibles dans le carnet, mais leur déclenchement laisse une trace lisible sur le Footprint : un excès, un gros volume à l&#39;extrême, puis une réintégration du niveau. Je te montre comment la lire.</p>
+    <div class="blog-meta">
+      <div class="blog-meta-author">
+        <div class="blog-meta-avatar"><img src="../../images/bass-presenting.jpg" alt="Sébastien Constant" loading="lazy"></div>
+        <div><div class="blog-meta-name"><a href="/auteur/sebastien-constant/" rel="author" style="color:inherit;text-decoration:none">Sébastien Constant</a></div><div class="blog-meta-role">Trader & Formateur Order Flow</div></div>
+      </div>
+      <div class="blog-meta-sep"></div>
+      <div class="blog-meta-info"><span>Octobre 2026</span><span>19 min de lecture</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="article-wrap">
+  <aside class="article-sidebar">
+    <div class="toc">
+      <div class="toc-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/></svg> Sommaire</div>
+      <ol>
+        <li><a href="#c-est-quoi-une-chasse-aux-stops-concrete">C&#39;est quoi une chasse aux stops, concrètement ?</a></li>
+        <li><a href="#pourquoi-tous-les-stops-finissent-ils-au">Pourquoi tous les stops finissent-ils au même endroit ?</a></li>
+        <li><a href="#qui-va-chercher-ces-stops-et-pourquoi">Qui va chercher ces stops, et pourquoi ?</a></li>
+        <li><a href="#comment-distinguer-un-vrai-breakout-d-un">Comment distinguer un vrai breakout d&#39;une chasse aux stops sur le Footprint ?</a></li>
+        <li><a href="#le-delta-de-la-bougie-est-il-assez-fort-">Le delta de la bougie est-il assez fort pour compter ?</a></li>
+        <li><a href="#la-divergence-du-cvd-confirme-t-elle-un-">La divergence du CVD confirme-t-elle un faux breakout ?</a></li>
+        <li><a href="#quand-cette-lecture-echoue-t-elle">Quand cette lecture échoue-t-elle ?</a></li>
+        <li><a href="#ou-placer-ton-stop-loss-pour-ne-plus-etr">Où placer ton stop loss pour ne plus être dans la foule ?</a></li>
+        <li><a href="#et-sur-le-forex-la-chasse-aux-stops-est-">Et sur le forex, la chasse aux stops est-elle la même ?</a></li>
+        <li><a href="#la-chasse-aux-stops-est-elle-legale">La chasse aux stops est-elle légale ?</a></li>
+        <li><a href="#ce-qu-il-faut-retenir-et-ce-que-tu-fais-">Ce qu&#39;il faut retenir, et ce que tu fais ce soir</a></li>
+      </ol>
+    </div>
+  </aside>
+
+  <article class="article-body">
+    <h2 id="c-est-quoi-une-chasse-aux-stops-concrete">C&#39;est quoi une chasse aux stops, concrètement ?</h2>
+    <p><em>Par l&#39;auteur, trader de futures et formateur en trading depuis une dizaine d&#39;années · mis à jour le 20/10/2026</em></p>
+<p><b>Une chasse aux stops (stop hunt) est un passage rapide du prix au-delà d&#39;un niveau évident, plus haut ou plus bas récent, qui déclenche les ordres stop placés juste derrière, avant que le prix ne réintègre la zone.</b></p>
+<p>Tu connais la scène. Tu vends sous une résistance, tu mets ton stop loss deux ticks au-dessus du plus haut de la veille. Le prix monte, touche ton stop, te sort… et redescend de 40 points sans toi. Tu avais raison sur la direction, et tu as quand même perdu.</p>
+<h3>Ce que je veux que tu comprennes d&#39;emblée</h3>
+<p>Ce n&#39;est pas forcément quelqu&#39;un qui « t&#39;en veut ». Très souvent, c&#39;est une mécanique : beaucoup de traders particuliers placent leur stop au même endroit, et quand le prix y arrive, tous ces ordres partent en même temps. Le mouvement s&#39;emballe, puis s&#39;essouffle dès qu&#39;il n&#39;y a plus de stops à déclencher.</p>
+<h3>Tu vas apprendre à :</h3>
+<ul><li>comprendre pourquoi les stops sont prévisibles mais invisibles dans le carnet d&#39;ordres ;</li><li>distinguer un vrai breakout d&#39;un excès qui va être réintégré ;</li><li>placer ton stop hors de la foule, sans l&#39;élargir au hasard.</li></ul>
+<p>Ma vidéo source est intégrée sur cette page ; le passage sur la chasse aux stops commence à <a href="https://www.youtube.com/watch?v=FLBONXJWCoM&amp;t=4440s">la 74e minute de ma Formation Footprint gratuite</a>. Si tu débutes complètement, commence plutôt par mon guide pour <a href="https://basstrading.fr/blog/debuter-trading-zero-guide/">débuter le trading en partant de zéro</a>, puis reviens ici.</p>
+<p><b>Avertissement :</b> le trading de contrats à terme comporte un risque élevé de perte, pouvant dépasser la mise initiale. Ce contenu est éducatif et ne constitue pas un conseil en investissement.</p>
+<p>Avant de lire une mèche, il faut comprendre une chose que beaucoup de vidéos présentent à l&#39;envers : où sont ces stops, et pourquoi personne ne peut les voir.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/chasse-aux-stops-trading/blog-chasse-aux-stops-trading-1.webp" alt="Trader seul devant ses écrans la nuit, un graphique du Nasdaq marqué par une longue mèche au-dessus d&#39;un plus haut" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Une mèche qui dépasse un plus haut évident puis revient : c&#39;est souvent la trace des stops déclenchés en cascade, pas d&#39;une attaque personnelle.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="pourquoi-tous-les-stops-finissent-ils-au">Pourquoi tous les stops finissent-ils au même endroit ?</h2>
+    <p>Parce que tout le monde regarde le même graphique. Un plus bas de la veille, un plus haut de la semaine, un chiffre rond comme 20 000 sur le Nasdaq : ces niveaux sautent aux yeux, et beaucoup de méthodes enseignent de placer le stop « juste derrière ».</p>
+<h3>Les zones où les stops s&#39;empilent</h3>
+<ul><li>Juste sous un plus bas évident ou un support : les stops des acheteurs (ce sont des ordres de vente).</li><li>Juste au-dessus d&#39;un plus haut évident : les stops des vendeurs (ce sont des ordres d&#39;achat).</li><li>Derrière un chiffre rond ou un niveau tracé par tout le monde (plus haut de la veille, ouverture, VWAP).</li><li>À distance fixe de l&#39;entrée (10 points, 1 %) : quand beaucoup de traders entrent au même endroit, leurs stops « à distance fixe » tombent eux aussi au même endroit.</li></ul>
+<h3>Prévisibles, mais invisibles dans le carnet</h3>
+<p>C&#39;est le point que beaucoup de contenus en ligne présentent mal. On lit souvent que ces stops forment des « poches de liquidité visibles dans le carnet d&#39;ordres ». <b>C&#39;est faux sur les marchés de la CME : un ordre stop n&#39;est pas posé dans le carnet tant qu&#39;il n&#39;est pas déclenché.</b></p>
+<p>La documentation de CME Globex est explicite : l&#39;ordre stop, une fois accepté, « does not immediately go on the book » ; il attend qu&#39;une transaction ait lieu à son prix de déclenchement, puis entre dans le carnet comme ordre au marché protégé (stop with protection) ou comme ordre limite (stop-limit) (<a href="https://cmegroupclientsite.atlassian.net/wiki/spaces/EPICSANDBOX/pages/457087412/Order+Types+for+Futures+and+Options">CME Group, Order Types for Futures and Options, mis à jour le 20/06/2025</a>).</p>
+<p>Conséquence très concrète : dans le DOM, tu vois les ordres limites en attente. Dans ma vidéo, je les compare à une réservation au restaurant, qu&#39;on peut annuler jusqu&#39;au dernier moment (<a href="https://www.youtube.com/watch?v=FLBONXJWCoM&amp;t=120s">Formation Footprint gratuite, 2e minute</a>). Les stops, eux, n&#39;apparaissent nulle part avant d&#39;être touchés. On devine où ils sont ; on ne les voit pas. Je détaille la lecture des ordres passifs et agressifs dans mon article sur <a href="https://basstrading.fr/blog/carnet-ordres-dom-futures/">le carnet d&#39;ordres et le DOM des futures</a>.</p>
+<h3>Ce qu&#39;on voit, en revanche : l&#39;exécution</h3>
+<p>Quand le prix touche la zone, les stops se déclenchent et deviennent des ordres agressifs. Ils frappent le carnet d&#39;un coup. Et ça, le Footprint l&#39;enregistre : un volume anormal à l&#39;extrême de la bougie, du côté de ceux qui viennent d&#39;être sortis. Tu peux aussi le voir défiler en direct dans le time and sales, c&#39;est tout le travail du <a href="https://basstrading.fr/blog/tape-reading-flux-ordres/">tape reading</a>. Tu ne vois pas les stops avant ; tu vois leur exécution après. Toute la lecture qui suit repose sur cette nuance.</p>
+<h3>À retenir</h3>
+<ul><li>Les stops se concentrent derrière les niveaux que tout le monde voit.</li><li>Sur CME Globex, un stop n&#39;entre dans le carnet qu&#39;une fois déclenché.</li><li>Le Footprint montre la trace de l&#39;exécution, pas l&#39;ordre en attente.</li></ul>
+<p>Reste une question : si personne ne voit ces stops, pourquoi le prix va-t-il si souvent les chercher ?</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/chasse-aux-stops-trading/blog-chasse-aux-stops-trading-2.webp" alt="Schéma des zones où les traders placent leurs stops : sous un plus bas, au-dessus d&#39;un plus haut, derrière un chiffre rond" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Les stops ne sont pas visibles dans le carnet : on devine leur emplacement parce que tout le monde les pose derrière les mêmes niveaux.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="qui-va-chercher-ces-stops-et-pourquoi">Qui va chercher ces stops, et pourquoi ?</h2>
+    <p>La version qu&#39;on entend partout, c&#39;est celle des « gros », des institutions, qui viendraient volontairement voler les stops des petits. Je la rejette clairement dans ma vidéo :</p>
+<aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p>« C&#39;est pas la chasse au stop comme on vous apprend sur YouTube, les vilains professionnels qui viennent voler les stops des petits retails, mais c&#39;est simplement des fois pour mener à bien leur exécution ils vont devoir chercher de la contrepartie, et la contrepartie elle est souvent tout simplement dessous les supports ou au-dessus des résistances. »</p>
+<p>Ma <a href="https://www.youtube.com/watch?v=FLBONXJWCoM&amp;t=4440s">Formation Footprint gratuite, 74e minute</a></p></aside>
+<h3>La logique de la contrepartie</h3>
+<p>Un grand acteur qui veut vendre une grosse quantité a besoin d&#39;acheteurs en face. S&#39;il vend d&#39;un coup au marché dans un carnet mince, il fait baisser le prix contre lui-même. Au-dessus d&#39;un plus haut évident, il y a justement une réserve d&#39;acheteurs : les stops des vendeurs (qui rachètent pour sortir) et les ordres d&#39;entrée de ceux qui achètent la cassure. Quand le prix atteint cette zone, la contrepartie apparaît d&#39;un coup.</p>
+<p>C&#39;est la <a href="https://basstrading.fr/blog/auction-market-theory/">théorie des enchères</a> appliquée à un seul niveau : le marché va là où il trouve des échanges.</p>
+<h3>Souvent, une cascade mécanique plutôt qu&#39;une intention</h3>
+<p>Il n&#39;est même pas nécessaire qu&#39;un acteur « pousse » le prix. Une étude du régulateur américain des futures, la CFTC (Nicholas Fett et Lihong McPhail, Stop Orders in Select Futures Markets), portant sur l&#39;E-mini S&amp;P 500, le Treasury 10 ans et le pétrole WTI, conclut que les ordres stop sont exécutés plus souvent les jours volatils et apportent de la liquidité dans le sens du mouvement ; elle note aussi que le glissement entre le prix de déclenchement et le prix d&#39;exécution peut être important, même si les protections de la bourse le limitent (<a href="https://www.cftc.gov/node/248396">CFTC, Stop Orders in Select Futures Markets</a>).</p>
+<p>Traduction : <b>un stop déclenché vend dans une baisse ou achète dans une hausse.</b> Il accélère le mouvement au moment où il se produit. Plusieurs stops les uns derrière les autres, et tu obtiens une mèche rapide qui dépasse le niveau. Quand le dernier stop est parti, plus rien ne pousse : le prix peut revenir.</p>
+<h3>Pourquoi ça compte pour toi</h3>
+<p>Si tu crois à la version « on me vise », tu cherches un coupable et tu déplaces ton stop au hasard. Si tu comprends la mécanique, tu te poses la bonne question : mon stop est-il au même endroit que celui de tout le monde ? C&#39;est beaucoup plus utile.</p>
+<h3>À retenir</h3>
+<ul><li>La chasse aux stops est d&#39;abord une histoire de contrepartie.</li><li>La CFTC montre que les stops nourrissent le mouvement dans son sens, surtout les jours volatils.</li><li>Ce n&#39;est pas une attaque personnelle : c&#39;est une foule placée au même endroit.</li></ul>
+<p>Mais alors, quand le prix casse un niveau, comment savoir s&#39;il s&#39;agit d&#39;un vrai départ ou d&#39;un excès qui va revenir ? C&#39;est là que le Footprint devient utile.</p>
+
+    <hr>
+
+    <h2 id="comment-distinguer-un-vrai-breakout-d-un">Comment distinguer un vrai breakout d&#39;une chasse aux stops sur le Footprint ?</h2>
+    <p>Sur un graphique en chandeliers, les deux se ressemblent : une bougie qui dépasse le niveau. La différence se lit dans les bougies suivantes, et à l&#39;intérieur des bougies sur un <a href="https://basstrading.fr/blog/footprint-chart-trading/">Footprint chart</a>, qui affiche à chaque prix les volumes exécutés côté acheteurs et côté vendeurs.</p>
+<h3>Le scénario que je montre dans ma vidéo</h3>
+<p>Je prends l&#39;exemple d&#39;un plus haut de la veille. Le marché y arrive, fait un excès au-dessus, et on voit de gros acheteurs en haut de la bougie : 540 contrats sur mon schéma, « mais on imaginerait que sur le Nasdaq ce serait plutôt 50 ou 60 ». Puis rien ne suit :</p>
+<aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p>« Si on a des acheteurs comme ça et que c&#39;est pas un fake breakout, on devrait avoir les bougies suivantes qui continuent de pousser à la hausse, alors que là si on se retrouve avec les bougies d&#39;après sur une réintégration de la zone, on se dit alerte, attention, potentiellement c&#39;est un fake breakout. »</p>
+<p><a href="https://www.youtube.com/watch?v=FLBONXJWCoM&amp;t=4470s">Formation Footprint gratuite, 74e-75e minute</a></p></aside>
+<p>Ces gros acheteurs du sommet sont des positions piégées : ils ont acheté au plus haut, le prix ne continue pas, et ils devront revendre pour sortir. Comme je le dis un peu plus tôt dans la vidéo (62e minute), ils vont alors « rajouter du carburant » au mouvement inverse.</p>
+<h3>Ce que je regarde, dans l&#39;ordre</h3>
+<ul><li><b>Le niveau :</b> suis-je sur un niveau préparé à l&#39;avance (plus haut ou plus bas de la veille, de la semaine, VWAP, POC) ? Sinon, je ne lis rien.</li><li><b>L&#39;excès :</b> la bougie dépasse-t-elle le niveau avec un gros volume à l&#39;extrême, du côté de ceux qui viennent d&#39;entrer ou d&#39;être sortis ?</li><li><b>La continuité :</b> les bougies suivantes poussent-elles dans le sens de la cassure ? Si oui, c&#39;est peut-être un vrai départ.</li><li><b>La réintégration :</b> le prix revient-il sous le plus haut (ou au-dessus du plus bas) cassé ? C&#39;est l&#39;alerte.</li><li><b>Une confirmation de plus :</b> retour sous le POC de la bougie d&#39;excès, imbalance dans l&#39;autre sens, épuisement des acheteurs.</li></ul>
+<h3>Le tableau de comparaison</h3>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Ce que tu observes</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Vrai breakout</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Chasse aux stops probable</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Bougies après la cassure</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Elles continuent de pousser</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Le prix réintègre la zone</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Delta pendant l&#39;excès</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Dans le sens de la cassure, et il se maintient</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Fort à l&#39;extrême, puis plus rien ne suit</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Volume à l&#39;extrême</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Il se prolonge sur les bougies suivantes</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Concentré sur la mèche, puis il chute</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">POC de la bougie d&#39;excès</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Le prix reste du bon côté</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Le prix repasse de l&#39;autre côté</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">CVD</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Il accompagne le prix</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Il ne confirme pas le nouvel extrême</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Ce que tu fais</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Rien contre la tendance</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Tu attends une 2e confirmation</td></tr></tbody></table></div>
+<h3>Chasse aux stops ou vrai retournement de tendance ?</h3>
+<p>Une chasse aux stops n&#39;est pas forcément un retournement. Souvent, le prix réintègre la zone, revient dans le range de la veille, et c&#39;est tout. Un retournement de tendance demande davantage : une structure qui change sur plusieurs heures, des plus hauts de plus en plus bas. Je traite la réintégration comme un retour au range, pas comme la promesse d&#39;une grande tendance inverse.</p>
+<h3>Patience : rarement un retour instantané</h3>
+<p>Je précise dans la vidéo un détail que les vidéos « signal » oublient : « c&#39;est rarement une descente rapide, bien souvent ça va faire deux, trois, quatre bougies et ensuite ça va repartir » (75e minute). Autrement dit, la réintégration se construit. Entrer dès la mèche, c&#39;est parier avant d&#39;avoir la preuve.</p>
+<h3>À retenir</h3>
+<ul><li>Le Footprint ne voit pas les stops ; il voit l&#39;excès et ce qui suit.</li><li>Vrai breakout = continuité. Chasse aux stops probable = réintégration.</li><li>Compte deux à quatre bougies avant de conclure.</li></ul>
+<p>Un gros chiffre à l&#39;extrême impressionne. Encore faut-il savoir s&#39;il est vraiment gros : c&#39;est le rôle du rapport entre le delta et le volume.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/chasse-aux-stops-trading/blog-chasse-aux-stops-trading-3.webp" alt="Tableau comparant un vrai breakout et une chasse aux stops sur le Footprint : continuité, delta, volume, POC" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">La différence ne se voit pas sur la bougie qui casse, mais sur les deux à quatre bougies qui suivent.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="le-delta-de-la-bougie-est-il-assez-fort-">Le delta de la bougie est-il assez fort pour compter ?</h2>
+    <p>Un delta seul ne dit pas grand-chose. Il faut toujours le rapporter au volume de la bougie et au mouvement du prix. Le <a href="https://basstrading.fr/blog/delta-footprint-trading/">delta sur le Footprint</a> est la différence entre les volumes exécutés par les acheteurs agressifs et par les vendeurs agressifs : +30 sur une bougie de 60 contrats n&#39;a pas le même sens que +30 sur une bougie de 600.</p>
+<h3>Mon repère d&#39;environ 20 %</h3>
+<p>Dans la check-list finale de ma vidéo, je donne un ordre de grandeur, pas un seuil au contrat près :</p>
+<aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p>« Ce qui est important c&#39;est d&#39;avoir une règle, je sais pas, je dirais d&#39;à peu près 20 %. »</p>
+<p><a href="https://www.youtube.com/watch?v=FLBONXJWCoM&amp;t=4620s">Formation Footprint gratuite, 77e minute</a></p></aside>
+<p>Sur ma bougie d&#39;exemple (volume 39, delta 7), je fais le calcul « à la louche » : 20 % de 39 font environ 8, le delta est de 7, et je juge que ça reste cohérent. En toute rigueur, 7 / 39 = 17,9 %, juste sous le repère. <b>C&#39;est bien la preuve qu&#39;il s&#39;agit d&#39;un ordre de grandeur indicatif, pas d&#39;une règle qui tranche à la décimale.</b></p>
+<h3>Un exemple chiffré (fictif) pour fixer les idées</h3>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Volume de la bougie</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Delta</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Rapport</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Lecture</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">40</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">+10</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">25 %</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Les acheteurs ont nettement dominé</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">39</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">+8</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">20,5 %</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Domination lisible, au niveau du repère</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">39</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">+2</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">5 %</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Bruit : personne ne domine vraiment</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">300</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">+12</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">4 %</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Gros volume, mais équilibre : méfiance</td></tr></tbody></table></div>
+<p>La dernière ligne est celle qui piège le plus. Un volume énorme impressionne, mais si le delta est faible, c&#39;est un combat équilibré, pas une domination.</p>
+<h3>Appliqué à la mèche d&#39;une chasse aux stops</h3>
+<p>Sur la bougie d&#39;excès, les stops déclenchés produisent souvent un delta marqué dans le sens de la mèche (des achats au-dessus d&#39;un plus haut, des ventes sous un plus bas). Si ce delta est fort et que le prix ne progresse plus, c&#39;est la signature de l&#39;<a href="https://basstrading.fr/blog/absorption-order-flow/">absorption</a> : des ordres limites passifs encaissent toute l&#39;agressivité. Si le delta est faible par rapport au volume, la mèche ne dit rien de net : tu attends.</p>
+<h3>Proportionnel au marché</h3>
+<p>J&#39;insiste aussi dans la vidéo (48e minute) : les chiffres doivent rester « proportionnels » au marché tradé et au volume de la bougie. Ce qui est gros sur le Nasdaq (un carnet léger) est petit sur le S&amp;P 500. Garde le rapport en pourcentage, pas le chiffre brut.</p>
+<h3>À retenir</h3>
+<ul><li>Delta et volume se lisent ensemble.</li><li>Environ 20 % est un repère indicatif, pas une limite stricte.</li><li>Delta fort + prix bloqué = absorption possible ; delta faible = pas de conclusion.</li></ul>
+<p>Le delta d&#39;une bougie raconte une minute. Pour voir si toute la séance confirme ou non le nouvel extrême, il faut regarder le cumul.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/chasse-aux-stops-trading/blog-chasse-aux-stops-trading-4.webp" alt="Repère du rapport entre delta et volume d&#39;une bougie Footprint : 25 %, 20 %, 5 %, exemple fictif" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Un delta se juge par rapport au volume de sa bougie : environ 20 % est un ordre de grandeur, pas un seuil au contrat près.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="la-divergence-du-cvd-confirme-t-elle-un-">La divergence du CVD confirme-t-elle un faux breakout ?</h2>
+    <p>Elle peut l&#39;appuyer, jamais le décider. Le <a href="https://basstrading.fr/blog/cvd-cumulative-volume-delta/">CVD (Cumulative Volume Delta)</a> additionne les deltas de toutes les bougies de la séance. Quand le prix fait un nouveau plus haut et que le CVD n&#39;en fait pas, les achats agressifs ne suivent plus le prix : c&#39;est une divergence.</p>
+<h3>Comment je la lis</h3>
+<p>Dans ma vidéo, j&#39;affiche le CVD sous forme de bougies, sous le graphique des prix, pour le comparer d&#39;un coup d&#39;œil. Et je fixe tout de suite la limite :</p>
+<aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p>« Le CVD c&#39;est une alerte […] ça veut pas dire je vends, ça veut dire que je suis en alerte et j&#39;essaie de voir maintenant si je trouve pas de l&#39;absorption ou quelque chose qui pourrait me faire comprendre que ça y est. »</p>
+<p><a href="https://www.youtube.com/watch?v=FLBONXJWCoM&amp;t=4320s">Formation Footprint gratuite, 72e minute</a></p></aside>
+<h3>Sur une chasse aux stops, à quoi ça ressemble ?</h3>
+<p>Le prix dépasse le plus haut de la veille. Les stops acheteurs se déclenchent : le delta de la bougie grimpe, le CVD aussi, brièvement. Puis le prix tente un deuxième sommet un peu plus haut, mais le CVD reste sous son pic précédent. Le prix monte encore, les acheteurs agressifs ne suivent plus. <b>Si, en plus, le prix réintègre la zone sous le niveau, tu as deux éléments qui convergent.</b></p>
+<h3>Les volumes qui s&#39;effacent</h3>
+<p>Je montre une autre alerte, voisine : le volume des bougies qui chute pendant que le prix continue. Sur mon exemple, le volume passe d&#39;environ 300 contrats à 56, puis 39 (73e minute). Un mouvement qui avance « sans carburant » est fragile. Après une chasse aux stops, c&#39;est logique : une fois les stops consommés, il ne reste plus grand monde pour pousser.</p>
+<h3>Quelle unité de temps pour repérer tout ça ?</h3>
+<p>Le niveau se prépare sur une vue large (journalier, plus haut et plus bas de la veille). La réaction se lit sur une unité courte, parce qu&#39;une chasse aux stops se joue en quelques bougies. Sur une unité trop longue, la mèche et sa réintégration se fondent dans une seule bougie, et tu ne vois plus le déroulé.</p>
+<h3>À retenir</h3>
+<ul><li>CVD qui ne confirme pas le nouvel extrême = alerte, pas signal.</li><li>Volume en chute pendant que le prix avance = mouvement sans carburant.</li><li>Il faut une deuxième confirmation (réintégration, absorption, positions piégées).</li></ul>
+<p>Tout cela fonctionne… souvent. Pas toujours. Et c&#39;est précisément quand ça échoue que les comptes se vident.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/chasse-aux-stops-trading/blog-chasse-aux-stops-trading-5.webp" alt="Schéma de la divergence CVD après une chasse aux stops : nouveau plus haut du prix, CVD sous son pic, réintégration" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Un nouveau sommet sans nouveau sommet du CVD signifie que les acheteurs agressifs ne suivent plus : c&#39;est une alerte, qui demande une 2e confirmation.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="quand-cette-lecture-echoue-t-elle">Quand cette lecture échoue-t-elle ?</h2>
+    <p>Plus souvent qu&#39;on ne le croit, et c&#39;est normal : le Footprint mesure ce qui a été exécuté, il ne prédit pas ce qui va l&#39;être. Je le dis sans détour dans ma vidéo : « le Footprint c&#39;est pas un outil magique » (37e minute). Voici des échecs fréquents.</p>
+<h3>Échec n° 1 : lire une mèche au milieu de rien</h3>
+<p>Une mèche avec un gros volume, tu en verras toute la journée. Sans niveau préparé, elle ne veut rien dire. Je le dis à propos de l&#39;absorption, et c&#39;est valable ici :</p>
+<aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p>« Des absorptions vous pouvez en avoir toute la journée au milieu de rien, mais si c&#39;est pour aller trader vous avez plus à perdre qu&#39;à y gagner, parce que ça va peut-être absorber et dix secondes après le marché continue de monter ou de descendre. »</p>
+<p><a href="https://www.youtube.com/watch?v=FLBONXJWCoM&amp;t=3420s">Formation Footprint gratuite, 57e minute</a></p></aside>
+<h3>Échec n° 2 : prendre un vrai breakout pour une chasse aux stops</h3>
+<p>Scénario fictif, mais typique. Le Nasdaq casse le plus haut de la veille à l&#39;ouverture américaine. Grosse mèche, gros volume à l&#39;extrême, petite réintégration d&#39;une bougie. Tu vends en pensant à une chasse aux stops. La bougie suivante repart au-dessus, puis la suivante encore : les acheteurs étaient bien là, ils ont juste respiré. Ton erreur : une seule bougie de réintégration et aucune deuxième confirmation.</p>
+<p>C&#39;est exactement ce que j&#39;appelle l&#39;enchère inachevée (65e-66e minute) : en haut des bougies, il reste des volumes des deux côtés, pas de « zéro ». Le marché « n&#39;a pas fini de traiter », et ce n&#39;est « pas l&#39;endroit qui va me donner envie de faire une vente ».</p>
+<h3>Échec n° 3 : un seul signal</h3>
+<p>Ma check-list est stricte : « au minimum deux signaux qui convergent ; si vous n&#39;avez pas deux signaux, ça ne sert à rien de prendre le trade parce que c&#39;est trop dangereux » (76e minute). Une mèche seule n&#39;est pas un trade.</p>
+<h3>Échec n° 4 : le contexte horaire</h3>
+<p>Un même volume n&#39;a pas le même poids le matin, quand il y a peu de participants, et à l&#39;ouverture américaine. Je le rappelle à la 68e minute : la quantité « logique » sur une ligne de prix dépend de l&#39;heure. La nuit, avec un carnet mince, une mèche peut dépasser un niveau sans qu&#39;il y ait grand-chose derrière.</p>
+<h3>Le tableau des erreurs</h3>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Erreur</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Ce qui se passe</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Ce qu&#39;il faut faire</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Mèche hors niveau</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Aucun sens, bruit</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Ne lire que sur un niveau préparé</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Une seule bougie de réintégration</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Le breakout reprend</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Attendre 2 à 4 bougies</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Un seul signal</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Probabilité trop faible</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Exiger 2 éléments qui convergent</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Ignorer l&#39;heure</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Volumes mal jugés</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Comparer aux bougies récentes</td></tr></tbody></table></div>
+<h3>À retenir</h3>
+<ul><li>Le Footprint confirme, il ne prédit pas.</li><li>Beaucoup d&#39;échecs viennent d&#39;une lecture hors niveau ou trop pressée.</li><li>Accepter la perte prévue fait partie de la méthode : aucune lecture ne gagne à chaque fois.</li></ul>
+<p>Si la lecture peut échouer, la vraie protection se trouve ailleurs : dans l&#39;endroit où tu poses ton propre stop.</p>
+
+    <hr>
+
+    <h2 id="ou-placer-ton-stop-loss-pour-ne-plus-etr">Où placer ton stop loss pour ne plus être dans la foule ?</h2>
+    <p>Il n&#39;y a pas d&#39;endroit parfait. Il y a des endroits plus fréquentés que d&#39;autres. <b>Le but n&#39;est pas d&#39;éviter toute sortie, c&#39;est d&#39;éviter de sortir pour la même raison que tout le monde.</b> Et non, on ne peut pas éviter totalement les chasses aux stops : on peut seulement cesser d&#39;en être la cible facile.</p>
+<h3>Mes principes</h3>
+<ul><li>Ne pas coller ton stop au tick derrière le niveau évident. C&#39;est là que la foule se trouve, et c&#39;est là que la cascade se produit.</li><li>Placer le stop là où ton idée est fausse, pas là où il est confortable. Si tu achètes sur une absorption au plus bas de la veille, ton idée est fausse si le prix s&#39;installe nettement sous la zone absorbée, pas s&#39;il fait une mèche d&#39;un tick.</li><li>Attendre la réintégration plutôt qu&#39;anticiper. Entrer après le retour dans la zone permet souvent un stop au-delà de l&#39;extrême de la mèche, à un endroit que la foule vient justement de quitter.</li><li>Utiliser la structure du Footprint (POC de la bougie d&#39;excès, zone d&#39;empilement d&#39;<a href="https://basstrading.fr/blog/imbalance-footprint/">imbalances</a>) plutôt qu&#39;une distance fixe identique à chaque trade.</li></ul>
+<h3>Mon exemple : un stop court, mais justifié</h3>
+<p>Sur une zone de stacked imbalance acheteuse, j&#39;explique dans la vidéo que le stop peut être court parce que la logique est binaire : « l&#39;acheteur il est là ou il est plus là » (55e minute). J&#39;évoque quelques ticks à deux points sur le Nasdaq, parce que si la zone est traversée nettement sans réaction, l&#39;idée est fausse. Un stop court n&#39;est pas un stop serré au hasard : il est court parce que l&#39;invalidation est nette.</p>
+<h3>Élargir son stop : une fausse bonne idée</h3>
+<p>Éloigner ton stop pour « survivre » aux mèches augmente ta perte potentielle par trade. Si tu l&#39;élargis, la taille de position doit baisser d&#39;autant : le risque en dollars reste le même, c&#39;est le nombre de contrats qui s&#39;adapte à la distance du stop. Et dans tous les cas : fixe-toi une perte maximale avant d&#39;ouvrir ta plateforme, et ne la modifie pas pendant la séance.</p>
+<h3>À retenir</h3>
+<ul><li>Le meilleur stop est là où ton idée est invalidée, pas derrière le niveau que tout le monde voit.</li><li>Attendre la réintégration permet souvent un stop mieux placé.</li><li>Un stop plus large impose une position plus petite.</li></ul>
+<p>Pour suivre ma lecture du Nasdaq, rejoins mon <a href="https://t.me/bassofficiel">canal Telegram gratuit</a>.</p>
+<p>Tout ce qui précède vaut pour les futures du CME. Mais beaucoup de débutants tradent le forex : est-ce la même chose là-bas ?</p>
+
+    <hr>
+
+    <h2 id="et-sur-le-forex-la-chasse-aux-stops-est-">Et sur le forex, la chasse aux stops est-elle la même ?</h2>
+    <p>Le mécanisme de foule est le même : des stops sous les supports, au-dessus des résistances, qui partent ensemble. <b>Ce qui change, c&#39;est ce que tu peux en voir.</b> Le forex au comptant n&#39;a pas de bourse centrale ni de carnet unique : chaque courtier affiche ses propres prix et ses propres volumes.</p>
+<h3>Ce que ça change pour la lecture</h3>
+<ul><li>Sur le Nasdaq futures, tous les échanges passent par CME Globex : le volume que tu lis sur le Footprint est le volume réel du contrat.</li><li>Sur le forex au comptant, le « volume » affiché par ta plateforme est souvent celui de ton courtier, ou un nombre de variations de prix. Un Footprint y est beaucoup moins fiable.</li><li>Chez un courtier teneur de marché, c&#39;est lui qui prend l&#39;autre côté de ton ordre. D&#39;où l&#39;importance de choisir un intermédiaire autorisé : l&#39;AMF publie une liste noire des sites non autorisés à proposer du forex et des CFD.</li></ul>
+<h3>Le contexte réglementaire</h3>
+<p>Les produits à effet de levier proposés aux particuliers sur le forex sont des CFD. L&#39;ESMA a constaté qu&#39;entre 74 % et 89 % des comptes de particuliers perdaient généralement de l&#39;argent sur ces produits, ce qui a justifié ses mesures de restriction (<a href="https://www.esma.europa.eu/node/84933">ESMA, communiqué du 27/03/2018</a>). C&#39;est une des raisons pour lesquelles je travaille sur des contrats à terme, où le carnet est centralisé et le volume lisible.</p>
+<h3>À retenir</h3>
+<ul><li>La foule de stops existe sur tous les marchés.</li><li>Sur le forex au comptant, il n&#39;y a pas de carnet central : la lecture du volume est fragile.</li><li>Sur les futures, le Footprint lit le volume réel de la bourse.</li></ul>
+<p>Reste une question que beaucoup se posent après une sortie frustrante : est-ce seulement légal ?</p>
+
+    <hr>
+
+    <h2 id="la-chasse-aux-stops-est-elle-legale">La chasse aux stops est-elle légale ?</h2>
+    <p>Il faut distinguer deux choses très différentes.</p>
+<h3>Profiter d&#39;une liquidité prévisible : légal</h3>
+<p>Savoir que des stops se trouvent probablement au-dessus d&#39;un plus haut et y placer ses propres ordres, ou attendre leur déclenchement pour exécuter une grosse position, c&#39;est de la lecture de marché. Tout le monde peut le faire, y compris toi, avec ce que tu viens de lire.</p>
+<h3>Provoquer volontairement les stops avec des ordres trompeurs : interdit</h3>
+<p>Passer des ordres qu&#39;on n&#39;a pas l&#39;intention d&#39;exécuter pour faire croire à une pression (le spoofing), ou enchaîner des transactions destinées à pousser artificiellement le prix jusqu&#39;aux stops, relève de la manipulation de marché. En Europe, le règlement européen sur les abus de marché (MAR, n° 596/2014) la définit à son article 12, notamment comme le fait de passer un ordre qui donne des indications fausses ou trompeuses sur l&#39;offre, la demande ou le prix, et l&#39;interdit à son article 15 (<a href="https://eur-lex.europa.eu/eli/reg/2014/596/oj">règlement (UE) n° 596/2014, EUR-Lex</a>).</p>
+<p>Ce n&#39;est pas théorique. <b>Le 3 février 2025, la Commission des sanctions de l&#39;AMF a sanctionné trois particuliers pour un total de 590 000 € pour manipulation de cours</b> : des ordres passés sur des actions pour faire bouger leur prix, et profiter de l&#39;effet sur des warrants (<a href="https://www.amf-france.org/fr/actualites-publications/communiques/communiques-de-la-commission-des-sanctions/la-commission-des-sanctions-de-lamf-sanctionne-trois-personnes-physiques-pour-un-montant-total-de">AMF, communiqué de la Commission des sanctions</a>). Le mécanisme visé n&#39;est pas une chasse aux stops, mais le principe est le même : déplacer un prix artificiellement est sanctionné.</p>
+<h3>Ce que ça change pour toi</h3>
+<p>Pour les mèches que tu vois sur le Nasdaq, rien ne permet en général de parler de manipulation : la cascade mécanique décrite par la CFTC suffit le plus souvent à les expliquer. Ta meilleure défense n&#39;est pas juridique, elle est pratique : ne pas mettre ton stop là où tout le monde le met. Ce passage est une information générale, pas un avis juridique.</p>
+<p>Il ne reste qu&#39;à rassembler tout ça en une méthode que tu peux appliquer dès ce soir.</p>
+
+    <hr>
+
+    <h2 id="ce-qu-il-faut-retenir-et-ce-que-tu-fais-">Ce qu&#39;il faut retenir, et ce que tu fais ce soir</h2>
+    <h3>Le récapitulatif</h3>
+<ul><li>Les stops sont prévisibles, pas visibles : sur CME Globex, ils n&#39;entrent dans le carnet qu&#39;une fois déclenchés.</li><li>La chasse aux stops est surtout une mécanique de contrepartie et de cascade, que la CFTC décrit : les stops alimentent le mouvement dans son sens.</li><li>Le Footprint lit l&#39;après : excès, gros volume à l&#39;extrême, puis continuité (vrai breakout) ou réintégration (chasse aux stops probable).</li><li>Deux signaux minimum : réintégration plus delta, CVD, POC ou positions piégées. Jamais une mèche seule, jamais hors niveau.</li><li>Ton stop se place là où ton idée est fausse, pas au tick derrière le niveau évident ; et ta perte maximale se fixe avant d&#39;ouvrir la plateforme.</li></ul>
+<h3>Ce soir, sur ton graphique</h3>
+<p>Ouvre le Nasdaq en une minute. Trace le plus haut et le plus bas de la veille. Cherche, sur les cinq dernières séances, chaque fois que le prix les a dépassés. Pour chacune, note seulement : les bougies suivantes ont-elles continué, ou le prix a-t-il réintégré la zone en deux à quatre bougies ? Note aussi où tu aurais mis ton stop. Tu verras vite combien de fois il se trouvait au même endroit que celui de la foule.</p>
+<p>Pour la logique d&#39;ensemble, mon guide <a href="https://basstrading.fr/blog/order-flow-trading-france/">order flow : lire le marché depuis la France</a> relie Footprint, carnet et delta. Et si tu veux voir comment les volumes s&#39;organisent autour de ces niveaux sur plusieurs séances, la suite logique est mon <a href="https://basstrading.fr/blog/volume-profile-guide/">guide du Volume Profile</a>.</p>
+<h3>Comment cet article est fait</h3>
+<p>Je l&#39;ai écrit à partir de ma vidéo « Formation Footprint gratuite » (79 minutes, citations horodatées), de la documentation de CME Group, de l&#39;étude de la CFTC, du règlement MAR, d&#39;un communiqué de l&#39;AMF et d&#39;une décision de l&#39;ESMA. Il a été mis en forme avec l&#39;aide d&#39;une IA, puis vérifié point par point ; les exemples chiffrés marqués « fictif » servent seulement à illustrer le calcul.</p>
+
+    <p><a href="https://www.youtube.com/watch?v=FLBONXJWCoM" target="_blank" rel="noopener">▶ Voir la vidéo de Sébastien sur ce sujet</a></p>
+
+    <div class="cta-card">
+      <div class="cta-card-label">Mentorat</div>
+      <h3>Apprenez à lire le volume comme un pro.</h3>
+      <p>70 heures de formation, Footprint + Market Profile + Order Flow. Sierra Chart configuré. 10 places max.</p>
+      <a href="https://basstrading.fr#candidater" class="btn-p">Vérifier mon éligibilité <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+    </div>
+  
+  </article>
+</div>
+
+<!-- FAQ -->
+<section class="faq-sec">
+  <div class="sec-center"><div class="sec-label">FAQ</div><h2 class="sec-title">Questions fréquentes</h2></div>
+  <div class="faq-list">
+    <div class="fi"><button class="fq" onclick="tf(this)">La chasse aux stops est-elle illégale ? <span class="fq-icon">+</span></button><div class="fa"><p>Cela dépend de la méthode. Profiter d&#39;une liquidité prévisible, par exemple attendre le déclenchement des stops au-dessus d&#39;un plus haut pour exécuter un ordre, est légal. Provoquer volontairement leur déclenchement avec des ordres trompeurs (spoofing) ou des transactions destinées à déplacer le prix est une manipulation de marché, définie à l&#39;article 12 et interdite à l&#39;article 15 du règlement européen MAR n° 596/2014. Ceci est une information générale, pas un avis juridique.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Peut-on voir les stops des autres traders dans le carnet d&#39;ordres ? <span class="fq-icon">+</span></button><div class="fa"><p>Non. Sur CME Globex, un ordre stop n&#39;est pas posé dans le carnet quand il est accepté : il attend qu&#39;une transaction ait lieu à son prix de déclenchement, puis il entre dans le carnet comme ordre au marché protégé ou comme ordre limite. Le DOM montre donc les ordres limites en attente, jamais les stops. On peut seulement deviner où ils se trouvent, derrière les niveaux évidents, et voir leur exécution après coup sur le Footprint.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Faut-il élargir son stop pour éviter une chasse aux stops ? <span class="fq-icon">+</span></button><div class="fa"><p>Pas automatiquement. Un stop plus large augmente la perte potentielle de chaque trade et impose de réduire la taille de position. Il vaut mieux repenser son emplacement : là où ton idée est invalidée, par rapport à la structure du Footprint (zone absorbée, POC, imbalances), plutôt qu&#39;au tick derrière le niveau que tout le monde voit. Et dans tous les cas, fixe-toi une perte maximale avant d&#39;ouvrir ta plateforme.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Le Footprint est-il obligatoire pour repérer une chasse aux stops ? <span class="fq-icon">+</span></button><div class="fa"><p>Non : la réintégration du niveau se voit sur un graphique classique. Mais le Footprint ajoute ce que la bougie cache : le volume exécuté à chaque prix et le delta, c&#39;est-à-dire qui a été agressif. Il permet de voir le gros volume à l&#39;extrême de la mèche, de le rapporter au volume de la bougie, et de vérifier si les acheteurs ou les vendeurs ont continué après la cassure.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Combien de bougies attendre avant de parler de faux breakout ? <span class="fq-icon">+</span></button><div class="fa"><p>Il n&#39;y a pas de nombre magique. Dans ma formation Footprint gratuite, j&#39;observe que le retour est rarement immédiat : souvent deux, trois ou quatre bougies avant que le prix reparte dans l&#39;autre sens. Une seule bougie de réintégration ne suffit donc pas. Attends que le prix revienne nettement dans la zone et qu&#39;un deuxième élément confirme, comme un CVD qui ne suit plus ou des acheteurs piégés au sommet.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Peut-on éviter totalement les chasses aux stops ? <span class="fq-icon">+</span></button><div class="fa"><p>Non. Tant que tu utilises un stop, il peut être touché par une mèche, et c&#39;est normal : c&#39;est le prix de ta protection. Tu peux en revanche cesser d&#39;être dans la foule : placer ton stop là où ton idée est invalidée plutôt qu&#39;au tick derrière le niveau évident, attendre la réintégration avant d&#39;entrer, et adapter ta taille de position à la distance du stop.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">La chasse aux stops existe-t-elle aussi sur le forex ? <span class="fq-icon">+</span></button><div class="fa"><p>Oui, la logique de foule est la même : des stops sous les supports et au-dessus des résistances, qui partent ensemble. Mais le forex au comptant n&#39;a pas de carnet central : chaque courtier affiche ses propres prix et volumes, ce qui rend la lecture du Footprint peu fiable. Sur les futures du CME, tous les échanges passent par une seule bourse, et le volume lu est le volume réel du contrat.</p></div></div>
+  </div>
+</section>
+
+<!-- Related -->
+<section class="related-sec">
+  <div class="sec-center"><div class="sec-label">Continuer la lecture</div><h2 class="sec-title">Articles connexes</h2></div>
+  <div class="related-grid">
+    <a href="/blog/market-profile-guide-complet/" class="related-card"><div class="related-cat">Guide</div><h3>Market Profile : le guide complet pour débutants</h3><p>Value Area, POC, types de journées — tout pour commencer.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/order-flow-trading-france/" class="related-card"><div class="related-cat">Méthode</div><h3>Order Flow Trading : pourquoi personne ne l'enseigne en France</h3><p>Le carnet d'ordres et le flux institutionnel décryptés.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/sierra-chart-configuration/" class="related-card"><div class="related-cat">Tutoriel</div><h3>Sierra Chart : configuration complète</h3><p>Le setup pas à pas pour le Market Profile et le Footprint.</p><span class="related-link">Lire &rarr;</span></a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="ft-top"><div class="ft-logo">BASS</div><div class="ft-cols">
+    <div class="ft-col"><div class="ft-col-title">Programme</div><a href="https://basstrading.fr/#methodes">Méthode</a><a href="https://basstrading.fr/#les-quatre">Programme</a><a href="https://basstrading.fr#candidater">Candidater</a></div>
+    <div class="ft-col"><div class="ft-col-title">Ressources</div><a href="/blog/market-profile-guide-complet/">Market Profile</a><a href="/blog/footprint-chart-trading/">Footprint Chart</a><a href="/blog/order-flow-trading-france/">Order Flow</a></div>
+    <div class="ft-col"><div class="ft-col-title">Écosystème</div><a href="https://hubtrading.fr" target="_blank" rel="noopener">HubTrading.fr</a><a href="mailto:contact@basstrading.fr">Contact</a></div>
+  </div></div>
+  <div class="ft-bottom"><span>&copy; 2026 BASS — Sébastien Constant</span><div><a href="/mentions-legales/">Mentions légales</a><a href="/confidentialite/">Confidentialité</a><a href="/cgv/">CGV</a></div></div>
+</footer>
+<div class="disclaimer">Le trading comporte des risques de perte en capital. Les performances passées ne préjugent pas des performances futures. Ce site ne constitue pas un conseil en investissement.</div>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+const lenis=new Lenis({duration:1.2,easing:t=>Math.min(1,1.001-Math.pow(2,-10*t))});
+function raf(t){lenis.raf(t);requestAnimationFrame(raf)}requestAnimationFrame(raf);
+lenis.on('scroll',ScrollTrigger.update);gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0);
+const tl=gsap.timeline();
+tl.to('.pre-word span',{y:0,opacity:1,duration:.5,stagger:.1,ease:'power3.out',delay:.3}).to('#preLine',{width:'80px',duration:.7,ease:'power2.inOut'},'<+.2').to('.preloader',{yPercent:-100,duration:.8,ease:'power3.inOut',delay:.4}).set('.preloader',{display:'none'}).to('#nav',{opacity:1,y:0,duration:.5},'<+.1');
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);const h=document.documentElement.scrollHeight-window.innerHeight;document.getElementById('readingProgress').style.width=(window.scrollY/h*100)+'%'});
+const tocLinks=document.querySelectorAll('.toc a');const sections=Array.from(tocLinks).map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+window.addEventListener('scroll',()=>{let c='';sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)c=s.id});tocLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+c)})});
+function tf(b){const i=b.closest('.fi'),a=b.nextElementSibling,o=i.classList.contains('active');document.querySelectorAll('.fi').forEach(x=>{x.classList.remove('active');x.querySelector('.fa').classList.remove('open')});if(!o){i.classList.add('active');a.classList.add('open')}}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();lenis.scrollTo(t,{offset:-60})}})});
+</script>
+</body>
+</html>
