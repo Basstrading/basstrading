@@ -87,6 +87,14 @@
     {
       "source": "/l/:code",
       "destination": "https://studio.hubtrading.fr/l/:code"
+    },
+    {
+      "source": "/v/",
+      "destination": "https://studio.hubtrading.fr/v"
+    },
+    {
+      "source": "/v",
+      "destination": "https://studio.hubtrading.fr/v"
     }
   ]
 }
