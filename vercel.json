@@ -27,6 +27,16 @@
       "source": "/candidater",
       "destination": "/candidater/",
       "permanent": true
+    },
+    {
+      "source": "/formation-offerte",
+      "destination": "/p/formation-offerte/",
+      "permanent": true
+    },
+    {
+      "source": "/formation-offerte/",
+      "destination": "/p/formation-offerte/",
+      "permanent": true
     }
   ],
   "headers": [
