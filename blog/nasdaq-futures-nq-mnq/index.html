@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nasdaq futures : c&#39;est quoi le NQ et le MNQ ? Le guide clair — BASS Trading</title>
+  <meta name="description" content="Nasdaq futures expliqué : ce que sont le NQ et le MNQ, valeur du point, échéances, rollover, horaires et différence avec un CFD. Le guide d&#39;un trader futures.">
+  <meta property="og:title" content="Nasdaq futures : c&#39;est quoi le NQ et le MNQ ? Le guide clair — BASS Trading">
+  <meta property="og:description" content="Nasdaq futures expliqué : ce que sont le NQ et le MNQ, valeur du point, échéances, rollover, horaires et différence avec un CFD. Le guide d&#39;un trader futures.">
+  <meta property="og:image" content="https://basstrading.fr/blog/nasdaq-futures-nq-mnq/blog-nasdaq-futures-nq-mnq-1.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://basstrading.fr/blog/nasdaq-futures-nq-mnq/blog-nasdaq-futures-nq-mnq-1.webp">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://basstrading.fr/blog/nasdaq-futures-nq-mnq/">
+  <meta property="og:site_name" content="BASS Trading">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://basstrading.fr/blog/nasdaq-futures-nq-mnq/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","@id":"https://basstrading.fr/blog/nasdaq-futures-nq-mnq/#article","headline":"Nasdaq futures : c'est quoi le NQ et le MNQ ? Le guide clair","description":"Nasdaq futures expliqué : ce que sont le NQ et le MNQ, valeur du point, échéances, rollover, horaires et différence avec un CFD. Le guide d'un trader futures.","datePublished":"2026-10-24","dateModified":"2026-10-24","inLanguage":"fr-FR","image":"https://basstrading.fr/blog/nasdaq-futures-nq-mnq/blog-nasdaq-futures-nq-mnq-1.webp","mainEntityOfPage":"https://basstrading.fr/blog/nasdaq-futures-nq-mnq/","isPartOf":{"@type":"WebSite","@id":"https://basstrading.fr/#website","name":"BASS Trading","url":"https://basstrading.fr/"},"author":{"@type":"Person","@id":"https://basstrading.fr/#sebastien-constant","name":"Sébastien Constant","url":"https://basstrading.fr/auteur/sebastien-constant/"},"publisher":{"@type":"Organization","@id":"https://basstrading.fr/#organisation","name":"BASS Trading","url":"https://basstrading.fr/","logo":{"@type":"ImageObject","url":"https://basstrading.fr/images/logo-basstrading.png","width":512,"height":512}}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://basstrading.fr"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://basstrading.fr/blog/"},{"@type":"ListItem","position":3,"name":"Nasdaq futures : NQ et MNQ","item":"https://basstrading.fr/blog/nasdaq-futures-nq-mnq/"}]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"C'est quoi le Nasdaq futures ?","acceptedAnswer":{"@type":"Answer","text":"C'est un contrat à terme coté au CME de Chicago dont le prix suit l'indice Nasdaq-100, en deux tailles : le NQ (20 $ par point) et le MNQ (2 $ par point). Il se règle en argent et se traite presque 23 heures sur 24."}},{"@type":"Question","name":"Quelle est la différence entre le NQ et le MNQ ?","acceptedAnswer":{"@type":"Answer","text":"Uniquement la taille : le NQ vaut 20 $ par point, le MNQ 2 $ par point, pour le même indice, aux mêmes horaires et aux mêmes échéances. Le MNQ permet de débuter avec un risque dix fois plus petit."}},{"@type":"Question","name":"Que veut dire NQZ6 ?","acceptedAnswer":{"@type":"Answer","text":"NQ est le produit, Z le mois d'échéance (décembre) et 6 l'année (2026). Les lettres trimestrielles sont H (mars), M (juin), U (septembre) et Z (décembre)."}},{"@type":"Question","name":"Quand faut-il changer de contrat (rollover) ?","acceptedAnswer":{"@type":"Answer","text":"Selon le CME, la date de roll des indices actions est le lundi qui précède le 3e vendredi du mois d'échéance. Pour décembre 2026, c'est le lundi 14 décembre, avec une expiration le vendredi 18. En pratique, je passe sur l'échéance suivante dès qu'elle a plus de volume que l'ancienne."}},{"@type":"Question","name":"Le Nasdaq futures est-il plus volatil que le S&P 500 ?","acceptedAnswer":{"@type":"Answer","text":"En général oui : le Nasdaq-100 est plus concentré sur la technologie, donc le NQ bouge plus vite et plus loin que l'ES. Cela demande des stops plus larges en points et une taille plus prudente, surtout à l'ouverture de 15 h 30 (14 h 30 pendant le décalage)."}}]}
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{--bk:#1D1D1F;--bk2:#111;--bk3:#0A0A0A;--g1:#6E6E73;--g2:#86868B;--g3:#D2D2D7;--g4:#F5F5F7;--wh:#FBFBFD;--pure:#FFF;--green:#00B67A;--blue:#0066FF}
+    html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}
+    body{font-family:'DM Sans',sans-serif;color:var(--bk);background:var(--pure);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+    .preloader{position:fixed;inset:0;background:var(--bk3);z-index:10001;display:flex;align-items:center;justify-content:center}
+    .pre-word{font-family:'Outfit',sans-serif;font-size:clamp(3rem,8vw,5rem);font-weight:900;letter-spacing:16px;text-transform:uppercase;color:var(--pure);overflow:hidden}
+    .pre-word span{display:inline-block;transform:translateY(110%);opacity:0}
+    .pre-line{width:0;height:1px;background:rgba(255,255,255,.3);margin-top:20px}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 48px;display:flex;align-items:center;justify-content:space-between;background:rgba(245,245,247,.85);backdrop-filter:blur(20px) saturate(1.8);border-bottom:1px solid rgba(0,0,0,.04);transition:background .4s}
+    .nav-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase;color:var(--bk)}
+    .nav-links{display:flex;gap:28px;list-style:none}.nav-links a{font-size:.74rem;font-weight:500;letter-spacing:.3px;color:var(--g1);transition:color .3s}.nav-links a:hover{color:var(--bk)}
+    .nav-cta{padding:8px 20px;background:var(--bk);color:var(--pure);border:none;border-radius:980px;font-size:.72rem;font-weight:600;transition:all .3s;cursor:pointer;text-decoration:none;display:inline-block}.nav-cta:hover{background:var(--bk2)}
+    .blog-hero{padding:160px 48px 80px;background:var(--g4);position:relative;overflow:hidden}
+    .blog-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,transparent,var(--g4));pointer-events:none}
+    .blog-hero-inner{max-width:720px;margin:0 auto}
+    .breadcrumb{display:flex;gap:8px;align-items:center;margin-bottom:28px;flex-wrap:wrap}
+    .breadcrumb a,.breadcrumb span{font-size:.68rem;font-weight:500;letter-spacing:.3px;color:var(--g2);transition:color .3s}.breadcrumb a:hover{color:var(--bk)}.breadcrumb .sep{color:var(--g3)}
+    .blog-hero-cat{display:inline-block;padding:5px 14px;border:1px solid rgba(0,102,255,.15);border-radius:980px;font-size:.6rem;font-weight:700;color:var(--blue);letter-spacing:2px;text-transform:uppercase;margin-bottom:20px}
+    .blog-hero-title{font-family:'Outfit',sans-serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:900;line-height:1.05;letter-spacing:-2px;color:var(--bk);margin-bottom:20px}
+    .blog-hero-desc{font-size:.95rem;color:var(--g1);line-height:1.8;max-width:560px;margin-bottom:28px}
+    .blog-meta{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+    .blog-meta-author{display:flex;align-items:center;gap:10px}
+    .blog-meta-avatar{width:36px;height:36px;border-radius:50%;background:var(--bk3);overflow:hidden;flex-shrink:0}.blog-meta-avatar img{width:100%;height:100%;object-fit:cover}
+    .blog-meta-name{font-size:.78rem;font-weight:600;color:var(--bk)}.blog-meta-role{font-size:.65rem;color:var(--g2)}
+    .blog-meta-sep{width:1px;height:24px;background:var(--g3)}
+    .blog-meta-info{font-size:.7rem;color:var(--g2)}.blog-meta-info span{margin-right:16px}
+    .toc{position:sticky;top:90px;background:var(--pure);border:1px solid rgba(0,0,0,.04);border-radius:14px;padding:24px;margin-bottom:32px}
+    .toc-title{font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.5px;color:var(--bk);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+    .toc ol{list-style:none;counter-reset:toc}.toc li{counter-increment:toc}
+    .toc li a{display:flex;align-items:baseline;gap:8px;padding:6px 0;font-size:.76rem;color:var(--g1);transition:color .3s;border-bottom:1px solid rgba(0,0,0,.03)}.toc li a:hover{color:var(--blue)}
+    .toc li a::before{content:counter(toc,decimal-leading-zero);font-family:'Outfit',sans-serif;font-size:.65rem;font-weight:700;color:var(--g3);min-width:18px}
+    .toc li:last-child a{border-bottom:none}.toc li a.active{color:var(--blue);font-weight:600}.toc li a.active::before{color:var(--blue)}
+    .article-wrap{display:grid;grid-template-columns:220px 1fr;gap:40px;max-width:1020px;margin:0 auto;padding:60px 48px 120px}
+    .article-sidebar{position:relative}.article-body{max-width:700px}
+    .article-body h2{font-family:'Outfit',sans-serif;font-size:clamp(1.4rem,2.5vw,1.8rem);font-weight:800;line-height:1.1;letter-spacing:-1px;color:var(--bk);margin:56px 0 16px;padding-top:20px}.article-body h2:first-of-type{margin-top:0}
+    .article-body h3{font-family:'Outfit',sans-serif;font-size:1.05rem;font-weight:700;line-height:1.25;letter-spacing:-.3px;color:var(--bk);margin:36px 0 10px}
+    .article-body p{font-size:.9rem;color:var(--g1);line-height:1.85;margin-bottom:18px}
+    .article-body strong{color:var(--bk);font-weight:600}
+    .article-body ul,.article-body ol{margin:0 0 20px 0;padding-left:20px}
+    .article-body li{font-size:.88rem;color:var(--g1);line-height:1.8;margin-bottom:6px}.article-body li strong{color:var(--bk)}
+    .article-body blockquote{margin:28px 0;padding:20px 24px;background:var(--g4);border-left:3px solid var(--bk);border-radius:0 12px 12px 0;font-size:.88rem;color:var(--g1);line-height:1.8;font-style:italic}
+    .article-body blockquote strong{color:var(--bk);font-style:normal}
+    .article-body hr{border:none;border-top:1px solid var(--g4);margin:48px 0}
+    .info-box{margin:28px 0;padding:24px;background:rgba(0,102,255,.03);border:1px solid rgba(0,102,255,.08);border-radius:14px}
+    .info-box-title{font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:700;color:var(--blue);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+    .info-box p{font-size:.82rem;color:var(--g1);line-height:1.7;margin-bottom:0}
+    .key-concept{margin:32px 0;padding:28px;background:var(--bk3);border-radius:16px;color:var(--pure)}
+    .key-concept-label{font-size:.55rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:10px}
+    .key-concept h4{font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:800;letter-spacing:-.3px;margin-bottom:8px}
+    .key-concept p{font-size:.85rem;color:rgba(255,255,255,.5);line-height:1.8;margin-bottom:0}
+    .compare-table{width:100%;margin:24px 0 28px;border-collapse:collapse;border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,.06)}
+    .compare-table th{background:var(--bk3);color:var(--pure);font-family:'Outfit',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:14px 16px;text-align:left}
+    .compare-table td{padding:12px 16px;font-size:.82rem;color:var(--g1);line-height:1.6;border-bottom:1px solid rgba(0,0,0,.04);background:var(--pure)}
+    .compare-table tr:last-child td{border-bottom:none}.compare-table td:first-child{font-weight:600;color:var(--bk)}
+    .cta-card{margin:48px 0;padding:40px;background:var(--bk3);border-radius:20px;text-align:center;position:relative;overflow:hidden}
+    .cta-card::before{content:'';position:absolute;top:-50%;right:-30%;width:400px;height:400px;background:radial-gradient(circle,rgba(0,102,255,.08) 0%,transparent 70%);pointer-events:none}
+    .cta-card-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:12px}
+    .cta-card h3{font-family:'Outfit',sans-serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:800;color:var(--pure);letter-spacing:-.5px;margin-bottom:8px}
+    .cta-card p{font-size:.85rem;color:rgba(255,255,255,.4);line-height:1.7;max-width:380px;margin:0 auto 24px}
+    .cta-card .btn-p{background:var(--pure);color:var(--bk)}.cta-card .btn-p:hover{box-shadow:0 8px 30px rgba(255,255,255,.15)}
+    .faq-sec{padding:80px 48px 100px;background:var(--g4)}
+    .faq-list{max-width:680px;margin:40px auto 0}.fi{border-bottom:1px solid rgba(0,0,0,.06)}
+    .fq{width:100%;text-align:left;padding:18px 0;background:none;border:none;font-size:.85rem;font-weight:600;font-family:'DM Sans',sans-serif;color:var(--bk);display:flex;justify-content:space-between;align-items:center;cursor:pointer;gap:16px;transition:color .3s}.fq:hover{color:var(--g1)}
+    .fq-icon{width:22px;height:22px;border-radius:50%;background:rgba(0,0,0,.04);display:flex;align-items:center;justify-content:center;font-size:.75rem;transition:all .4s;flex-shrink:0;color:var(--g2)}
+    .fa{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1)}.fa.open{max-height:280px;padding-bottom:14px}
+    .fa p{font-size:.8rem;color:var(--g1);line-height:1.7;margin-bottom:0}.fi.active .fq-icon{background:var(--bk);color:var(--pure);transform:rotate(45deg)}
+    .related-sec{padding:80px 48px;background:var(--pure);border-top:1px solid var(--g4)}
+    .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1060px;margin:40px auto 0}
+    .related-card{display:block;padding:28px;background:var(--g4);border-radius:16px;transition:all .4s;text-decoration:none;color:var(--bk)}
+    .related-card:hover{background:var(--pure);box-shadow:0 8px 30px rgba(0,0,0,.06);transform:translateY(-2px)}
+    .related-cat{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+    .related-card h3{font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:700;line-height:1.3;letter-spacing:-.3px;margin-bottom:8px}
+    .related-card p{font-size:.78rem;color:var(--g1);line-height:1.6;margin-bottom:14px}
+    .related-link{font-size:.72rem;font-weight:600;color:var(--blue);letter-spacing:.3px}
+    .footer{background:var(--bk3);color:var(--pure);padding:56px 48px 28px}
+    .ft-top{display:flex;justify-content:space-between;align-items:start;margin-bottom:48px;flex-wrap:wrap;gap:32px}
+    .ft-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase}
+    .ft-cols{display:flex;gap:80px}
+    .ft-col-title{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:12px}
+    .ft-col a{display:block;font-size:.78rem;color:rgba(255,255,255,.5);margin-bottom:8px;transition:color .3s}.ft-col a:hover{color:var(--pure)}
+    .ft-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:20px;display:flex;justify-content:space-between;align-items:center;font-size:.6rem;color:rgba(255,255,255,.2)}
+    .ft-bottom a{color:rgba(255,255,255,.2);transition:color .3s;margin-left:20px}.ft-bottom a:hover{color:rgba(255,255,255,.5)}
+    .disclaimer{padding:12px 48px;background:var(--bk3);font-size:.58rem;color:rgba(255,255,255,.12);text-align:center;line-height:1.6;border-top:1px solid rgba(255,255,255,.03)}
+    .sec-center{text-align:center;max-width:680px;margin:0 auto}
+    .sec-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--g2);margin-bottom:10px}
+    .sec-title{font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;line-height:1.05;letter-spacing:-1.5px;color:var(--bk);margin-bottom:16px}
+    .btn-p{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--bk);color:var(--pure);border-radius:980px;font-size:.85rem;font-weight:600;transition:all .3s;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;text-decoration:none}
+    .btn-p:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(0,0,0,.1)}
+    .btn-p svg{width:13px;height:13px;transition:transform .3s}.btn-p:hover svg{transform:translateX(3px)}
+    .reading-progress{position:fixed;top:0;left:0;height:2px;background:var(--blue);z-index:9999;width:0;transition:width .1s linear}
+    @media(max-width:900px){.nav{padding:14px 20px}.nav-links{display:none}.blog-hero{padding:120px 20px 60px}.article-wrap{grid-template-columns:1fr;padding:40px 20px 80px}.article-sidebar{display:none}.related-grid{grid-template-columns:1fr}.related-sec,.faq-sec{padding:60px 20px}.ft-cols{flex-direction:column;gap:28px}.footer{padding:40px 20px 20px}.disclaimer{padding:10px 16px}.cta-card{padding:28px 20px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  .article-body a{color:var(--blue);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;font-weight:500}.article-body a:hover{text-decoration-thickness:2px}
+</style>
+</head>
+<body>
+
+<div class="preloader" id="preloader"><div style="text-align:center"><div class="pre-word"><span>B</span><span>A</span><span>S</span><span>S</span></div><div class="pre-line" id="preLine"></div></div></div>
+<div class="reading-progress" id="readingProgress"></div>
+
+<nav class="nav" id="nav">
+  <a href="https://basstrading.fr" class="nav-logo">BASS</a>
+  <ul class="nav-links">
+    <li><a href="https://basstrading.fr/#methode">Méthode</a></li>
+    <li><a href="https://basstrading.fr#resultats">Résultats</a></li>
+    <li><a href="https://basstrading.fr#avis">Avis</a></li>
+    <li><a href="https://basstrading.fr#faq">FAQ</a></li>
+    <li><a href="https://basstrading.fr/blog/">Blog</a></li>
+  </ul>
+  <a href="https://basstrading.fr/p/formation-offerte/?src=blog-nasdaq-futures-nq-mnq-menu" class="nav-cta">Formation offerte</a>
+</nav>
+
+<section class="blog-hero">
+  <div class="blog-hero-inner">
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <a href="https://basstrading.fr">Accueil</a><span class="sep">/</span>
+      <a href="https://basstrading.fr/blog/">Blog</a><span class="sep">/</span>
+      <span>Nasdaq futures : NQ et MNQ</span>
+    </nav>
+    <div class="blog-hero-cat">Futures</div>
+    <h1 class="blog-hero-title">Nasdaq futures : c&#39;est quoi le NQ et le MNQ ? Le guide clair</h1>
+    <p class="blog-hero-desc">Le Nasdaq futures, c&#39;est un contrat à terme coté au CME qui suit l&#39;indice Nasdaq-100 : le NQ (20 $ par point) et sa version dix fois plus petite, le MNQ (2 $ par point). Je t&#39;explique comment il fonctionne, comment lire son symbole, quand changer d&#39;échéance, ce qui le fait bouger et pourquoi je le préfère à un CFD.</p>
+    <div class="blog-meta">
+      <div class="blog-meta-author">
+        <div class="blog-meta-avatar"><img src="../../images/bass-presenting.jpg" alt="Sébastien Constant" loading="lazy"></div>
+        <div><div class="blog-meta-name"><a href="/auteur/sebastien-constant/" rel="author" style="color:inherit;text-decoration:none">Sébastien Constant</a></div><div class="blog-meta-role">Trader & Formateur Order Flow</div></div>
+      </div>
+      <div class="blog-meta-sep"></div>
+      <div class="blog-meta-info"><span>Octobre 2026</span><span>13 min de lecture</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="article-wrap">
+  <aside class="article-sidebar">
+    <div class="toc">
+      <div class="toc-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/></svg> Sommaire</div>
+      <ol>
+        <li><a href="#c-est-quoi-le-nasdaq-futures-en-une-phra">C&#39;est quoi le Nasdaq futures, en une phrase ?</a></li>
+        <li><a href="#nasdaq-nasdaq-composite-nasdaq-100-quel-">Nasdaq, Nasdaq Composite, Nasdaq-100 : quel indice suit le NQ ?</a></li>
+        <li><a href="#quelles-sont-les-caracteristiques-du-nq-">Quelles sont les caractéristiques du NQ et du MNQ ?</a></li>
+        <li><a href="#comment-fonctionne-un-contrat-future-nas">Comment fonctionne un contrat future Nasdaq, avec un exemple chiffré ?</a></li>
+        <li><a href="#echeances-symboles-et-rollover-comment-n">Échéances, symboles et rollover : comment ne pas se tromper de contrat ?</a></li>
+        <li><a href="#qu-est-ce-qui-fait-bouger-le-nasdaq-futu">Qu&#39;est-ce qui fait bouger le Nasdaq futures ?</a></li>
+        <li><a href="#nq-ou-es-pourquoi-le-nasdaq-est-il-plus-">NQ ou ES : pourquoi le Nasdaq est-il plus nerveux que le S&amp;P 500 ?</a></li>
+        <li><a href="#future-nasdaq-cfd-us100-ou-etf-quelle-di">Future Nasdaq, CFD US100 ou ETF : quelle différence ?</a></li>
+        <li><a href="#comment-suivre-le-nasdaq-futures-en-dire">Comment suivre le Nasdaq futures en direct ?</a></li>
+        <li><a href="#comment-debuter-sur-le-nasdaq-futures-sa">Comment débuter sur le Nasdaq futures sans se brûler ?</a></li>
+        <li><a href="#quelles-erreurs-coutent-le-plus-cher-sur">Quelles erreurs coûtent le plus cher sur le Nasdaq futures ?</a></li>
+        <li><a href="#ce-qu-il-faut-retenir-sur-le-nasdaq-futu">Ce qu&#39;il faut retenir sur le Nasdaq futures</a></li>
+      </ol>
+    </div>
+  </aside>
+
+  <article class="article-body">
+    <h2 id="c-est-quoi-le-nasdaq-futures-en-une-phra">C&#39;est quoi le Nasdaq futures, en une phrase ?</h2>
+    <p><em>Les contrats à terme sont des produits à effet de levier : le trading comporte un risque élevé de perte, pouvant dépasser la mise initiale. Contenu éducatif, pas un conseil en investissement.</em></p>
+<p>Tu vois « NQ » ou « MNQ » sur un graphique, dans un live ou dans un groupe de traders, et tu ne sais pas exactement ce qu&#39;il y a derrière. Ici, tu vas savoir ce que tu trades, combien vaut un point, quel contrat ouvrir et quand changer d&#39;échéance.</p>
+<p><b>Le Nasdaq futures est un contrat à terme coté au CME de Chicago dont le prix suit l&#39;indice Nasdaq-100 ; il en existe deux tailles, le NQ (E-mini, 20 $ par point) et le MNQ (Micro, 2 $ par point).</b></p>
+<p>Quand je l&#39;explique aux débutants, je reprends la définition que je donne dans ma <a href="https://www.youtube.com/watch?v=aZF8dXoMEKE&amp;t=627s">vidéo sur les bases du trading</a> : « Les contrats à terme sont des accords pour acheter ou vendre un actif sous-jacent, à un prix convenu à l&#39;avance, à une date future spécifiée. »</p>
+<h3>Ce que ça change pour toi</h3>
+<p>Sur le Nasdaq futures, personne ne te livre d&#39;actions à l&#39;échéance. Le contrat se règle en argent : tu gagnes ou tu perds la différence entre ton prix d&#39;entrée et ton prix de sortie, multipliée par la valeur du point.</p>
+<p>NQ (E-mini) et MNQ (Micro E-mini, lancé par le CME en mai 2019) suivent le même indice, au même prix, aux mêmes heures : seule la taille change. Je détaille le choix entre les deux dans mon comparatif <a href="https://basstrading.fr/blog/nq-ou-mnq/">NQ ou MNQ : quel contrat choisir</a>.</p>
+<p>Mais c&#39;est quoi exactement ce Nasdaq-100 ? C&#39;est là que beaucoup de débutants se mélangent.</p>
+
+    <hr>
+
+    <h2 id="nasdaq-nasdaq-composite-nasdaq-100-quel-">Nasdaq, Nasdaq Composite, Nasdaq-100 : quel indice suit le NQ ?</h2>
+    <p>Le NQ suit le Nasdaq-100, et seulement lui. Le mot « Nasdaq » tout court désigne d&#39;abord une Bourse américaine, puis deux indices différents qu&#39;on confond tout le temps.</p>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Nom</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Ce que c&#39;est</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Taille</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Nasdaq</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">La Bourse</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">—</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Composite</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Toutes les cotées</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">+3 000</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Nasdaq-100</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">100 géants non financiers</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">100</td></tr></tbody></table></div>
+<p>D&#39;après la <a href="https://www.nasdaq.com/newsroom/what-is-the-nasdaq-100-guide-to-one-of-worlds-most-watched-indexes">présentation officielle du Nasdaq-100 par Nasdaq</a>, l&#39;indice regroupe 100 des plus grandes sociétés non financières cotées au Nasdaq, classées par capitalisation, alors que le Composite comprend plus de 3 000 titres.</p>
+<h3>Pourquoi « non financières » compte</h3>
+<p>Banques et assurances sont exclues. Le Nasdaq-100 est donc très concentré sur la technologie et les grandes plateformes (Apple, Microsoft, Nvidia, Amazon, Meta, Alphabet…).</p>
+<p><b>Quand une de ces méga-capitalisations publie ses résultats, c&#39;est tout le NQ qui peut bouger.</b> Quant au « US100 » de ton courtier, c&#39;est un CFD sur le même indice : un tout autre produit, on y revient plus bas.</p>
+<p>Maintenant que tu sais ce que tu suis, regardons la fiche d&#39;identité du contrat.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/nasdaq-futures-nq-mnq/blog-nasdaq-futures-nq-mnq-1.webp" alt="Comparaison Nasdaq Composite et Nasdaq-100 : nombre de titres, sociétés financières, futures NQ et MNQ" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Le NQ et le MNQ suivent le Nasdaq-100, pas le Composite : 100 sociétés non financières contre plus de 3 000 titres.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="quelles-sont-les-caracteristiques-du-nq-">Quelles sont les caractéristiques du NQ et du MNQ ?</h2>
+    <p>Les deux contrats sont identiques sauf sur un point : le multiplicateur. Le NQ vaut 20 dollars fois l&#39;indice, le MNQ 2 dollars fois l&#39;indice. Voici la fiche, tirée des pages officielles du CME : <a href="https://www.cmegroup.com/markets/equities/nasdaq/e-mini-nasdaq-100.contractSpecs.html">spécifications du NQ</a> et <a href="https://www.cmegroup.com/markets/equities/nasdaq/micro-e-mini-nasdaq-100.contractSpecs.html">spécifications du MNQ</a>.</p>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Élément</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">NQ</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">MNQ</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Valeur du point</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">20 $</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">2 $</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Tick</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">0,25 point</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">0,25 point</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Valeur du tick</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">5 $</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">0,50 $</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Échéances</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Trimestrielles</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Trimestrielles</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Règlement</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">En argent</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">En argent</td></tr></tbody></table></div>
+<h3>Les horaires en trois lignes</h3>
+<p>Le NQ se traite presque 23 heures sur 24 sur CME Globex. Dans mon <a href="https://www.youtube.com/watch?v=UxzH8zdDYNY&amp;t=1439s">live sur le Nasdaq futures</a>, je le résume ainsi : « c&#39;est la cotation en continu qu&#39;on a quasiment de minuit à 23h ». Depuis la France :</p>
+<ul><li>ouverture de la semaine le dimanche à minuit (23 h pendant le décalage) ;</li><li>pause chaque soir de 23 h à minuit (22 h à 23 h pendant le décalage) ;</li><li>ouverture de Wall Street à 15 h 30 heure de Paris (14 h 30 pendant les quelques semaines de décalage des changements d&#39;heure), le moment où le volume explose.</li></ul>
+<p>Tout est détaillé dans mon guide des <a href="https://basstrading.fr/blog/horaires-futures-nasdaq-heure-paris/">horaires des futures Nasdaq en heure de Paris</a>.</p>
+<h3>L&#39;exposition : le chiffre que les débutants oublient</h3>
+<p>Par exemple, avec un NQ à 21 000 points, un contrat représente 21 000 × 20 $ = 420 000 $ d&#39;exposition ; un MNQ, 42 000 $. Tu ne poses pas cette somme : tu poses une marge bien plus petite, fixée par le CME et ton courtier. <b>C&#39;est ça, l&#39;effet de levier. Dans les deux sens.</b></p>
+<p>Tout ça reste abstrait tant qu&#39;on ne pose pas un trade sur la table.</p>
+
+    <hr>
+
+    <h2 id="comment-fonctionne-un-contrat-future-nas">Comment fonctionne un contrat future Nasdaq, avec un exemple chiffré ?</h2>
+    <p>Tu achètes si tu penses que le prix va monter, tu vends si tu penses qu&#39;il va baisser. <b>Résultat = points × valeur du point × nombre de contrats, moins les frais.</b> Les chiffres ci-dessous sont pédagogiques : ils montrent le mécanisme, pas un résultat.</p>
+<h3>Exemple 1 : un achat sur le MNQ</h3>
+<p>Le MNQ cote 21 000,00. Tu achètes 1 contrat, stop à 20 990,00 (10 points sous l&#39;entrée).</p>
+<ul><li>Sortie à 21 020,00 : +20 points × 2 $ = +40 $ avant frais.</li><li>Stop touché : −10 points × 2 $ = −20 $ avant frais, sans compter un éventuel glissement.</li></ul>
+<h3>Exemple 2 : le même trade sur le NQ</h3>
+<p>Même entrée, même stop, même sortie, avec 1 NQ : +400 $ si tu sors à 21 020,00, −200 $ si le stop est touché.</p>
+<p>Le mouvement du marché est identique. Seule la taille du contrat a multiplié la perte possible par dix. C&#39;est pour ça que je fais démarrer sur le MNQ. Et sur un future, vendre en premier est aussi simple qu&#39;acheter, sans emprunt de titres.</p>
+<h3>La question à te poser avant chaque trade</h3>
+<p>Pas « combien je peux gagner ? », mais « combien je perds si mon stop est touché ? ». Je l&#39;explique pas à pas dans mon article sur <a href="https://basstrading.fr/blog/combien-risquer-par-trade/">combien risquer par trade</a>. Ton risque se calcule depuis ton stop, jamais depuis l&#39;objectif.</p>
+<p>Reste un détail qui piège presque tout le monde la première fois : le contrat a une date de fin.</p>
+
+    <hr>
+
+    <h2 id="echeances-symboles-et-rollover-comment-n">Échéances, symboles et rollover : comment ne pas se tromper de contrat ?</h2>
+    <p>Un contrat Nasdaq futures expire quatre fois par an, le 3e vendredi de mars, juin, septembre et décembre. Avant l&#39;expiration, le volume passe sur l&#39;échéance suivante : c&#39;est le rollover.</p>
+<h3>Lire un symbole comme NQZ6</h3>
+<p>Un symbole se lit en trois morceaux : NQ (ou MNQ) pour le produit, Z pour le mois, 6 pour l&#39;année (2026).</p>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Lettre</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Mois</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">H</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Mars</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">M</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Juin</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">U</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Septembre</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Z</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Décembre</td></tr></tbody></table></div>
+<p>Donc NQZ6 = NQ décembre 2026, MNQH7 = MNQ mars 2027. Certaines plateformes écrivent NQZ26 ou NQ 12-26 : c&#39;est la même chose.</p>
+<h3>Quand passer au contrat suivant ?</h3>
+<p>La règle officielle du CME, sur sa <a href="https://www.cmegroup.com/trading/equity-index/rolldates.html">page des dates de roll des indices</a> : la date de roll des indices actions est le lundi qui précède le 3e vendredi du mois d&#39;échéance.</p>
+<p><b>Pour la fin 2026 : roll le lundi 14 décembre, expiration du contrat de décembre le vendredi 18 décembre.</b> Tu passes alors de NQZ6 à NQH7.</p>
+<p>Dans la pratique, le volume glisse vers le contrat suivant quelques jours avant. Je regarde où se trouve le volume : le jour où l&#39;échéance suivante en a davantage, je change.</p>
+<h3>Le graphique continu : pratique, mais attention</h3>
+<p>Sur TradingView, le symbole continu NQ1! recolle les échéances bout à bout. Parfait pour l&#39;historique, mais tu passes toujours ton ordre sur l&#39;échéance précise.</p>
+<p>Au moment du roll, les deux échéances n&#39;ont pas le même prix (l&#39;écart reflète les taux et les dividendes). Tes niveaux tracés sur l&#39;ancien contrat peuvent être décalés sur le nouveau : retrace-les.</p>
+<p>Tu sais lire le contrat. Qu&#39;est-ce qui le fait bouger autant ?</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/nasdaq-futures-nq-mnq/blog-nasdaq-futures-nq-mnq-2.webp" alt="Étapes du rollover des futures Nasdaq : lettres d&#39;échéance, lundi de roll et 3e vendredi d&#39;expiration" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Le roll officiel du CME tombe le lundi qui précède le 3e vendredi du mois d&#39;échéance.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="qu-est-ce-qui-fait-bouger-le-nasdaq-futu">Qu&#39;est-ce qui fait bouger le Nasdaq futures ?</h2>
+    <p>Le NQ bouge quand une information change l&#39;idée que les acheteurs et les vendeurs se font de la valeur des grandes sociétés technologiques. Les déclencheurs reviennent par familles.</p>
+<h3>1. Les résultats des géants</h3>
+<p>Quand une grosse société du Nasdaq-100 publie ses résultats, en général après la clôture de Wall Street, soit 22 h heure de Paris (21 h pendant le décalage), le NQ peut faire un écart important pendant la session du soir.</p>
+<h3>2. La Fed et les taux</h3>
+<p>Une partie de la valeur des sociétés technologiques repose sur des bénéfices attendus loin dans le futur, qui valent moins quand les taux montent. Les décisions de la Réserve fédérale sont des moments où je ne veux pas être pris par surprise.</p>
+<h3>3. Les statistiques américaines</h3>
+<p>Inflation, emploi, activité : ces chiffres tombent souvent à 14 h 30 heure de Paris (13 h 30 pendant le décalage). Le NQ peut parcourir en quelques secondes ce qu&#39;il fait d&#39;habitude en une heure. Je ne prends pas de trade juste avant une statistique majeure.</p>
+<h3>4. L&#39;ouverture de Wall Street</h3>
+<p>À 15 h 30 (14 h 30 pendant le décalage), le volume du NQ change d&#39;échelle. Dans mon <a href="https://www.youtube.com/watch?v=UxzH8zdDYNY&amp;t=141s">live d&#39;une heure sur le Nasdaq futures</a>, « il est 15h24 sur le Nasdaq » quand je démarre : je prépare mes niveaux avant l&#39;ouverture, pas pendant.</p>
+<h3>Ce que je regarde, moi</h3>
+<p>Je ne cherche pas à deviner la nouvelle. Je regarde comment acheteurs et vendeurs réagissent, à des niveaux précis. Ce que je cherche, je le dis dans le même live : <a href="https://www.youtube.com/watch?v=UxzH8zdDYNY&amp;t=858s">« un marché qui fait du volume »</a>.</p>
+<p>C&#39;est la logique de l&#39;<a href="https://basstrading.fr/blog/order-flow-trading-france/">order flow appliqué aux futures depuis la France</a>, et le <a href="https://basstrading.fr/blog/delta-footprint-trading/">delta du footprint</a> en est le premier outil : lire qui pousse, et à quel prix.</p>
+<p>Ces déclencheurs touchent aussi le S&amp;P 500. Pourquoi le NQ a-t-il cette réputation de contrat nerveux ?</p>
+
+    <hr>
+
+    <h2 id="nq-ou-es-pourquoi-le-nasdaq-est-il-plus-">NQ ou ES : pourquoi le Nasdaq est-il plus nerveux que le S&amp;P 500 ?</h2>
+    <p>Le NQ bouge en général plus vite et plus loin que l&#39;ES (le future du S&amp;P 500), parce que son indice est plus concentré sur des valeurs technologiques. Plus de mouvement, c&#39;est plus d&#39;opportunités, mais aussi des stops qui doivent être plus larges en points.</p>
+<h3>La volatilité, amie et ennemie</h3>
+<p>Dans mon <a href="https://www.youtube.com/watch?v=UxzH8zdDYNY&amp;t=4101s">live sur le Nasdaq futures</a>, je le dis avec ces mots : « la volatilité, c&#39;est notre ami mais en même temps, c&#39;est notre ennemi ». Elle crée le mouvement dont on a besoin, et elle peut coûter cher en quelques secondes.</p>
+<p>Juste avant, j&#39;explique comment je règle ma taille : <a href="https://www.youtube.com/watch?v=UxzH8zdDYNY&amp;t=4075s">« en fonction de la confiance, de la volatilité, je vais plus m&#39;exposer »</a>, et avec moins de confiance ou plus de volatilité, je réduis.</p>
+<p>Et sur le lien entre taille et stop, dans le même live (<a href="https://www.youtube.com/watch?v=UxzH8zdDYNY&amp;t=2057s">34e minute</a>) : « Si vous avez une très faible exposition, vous rentrez avec un micro ou deux micros et que vous acceptez le drawdown, il n&#39;y a pas de problème. Si vous rentrez de manière un peu plus exposée, il va falloir avoir des stops courts. »</p>
+<p><b>Petit et patient, ou gros et très précis : jamais gros et approximatif.</b></p>
+<h3>Les deux en un coup d&#39;œil</h3>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Critère</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">NQ</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">ES</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Indice</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Nasdaq-100</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">S&amp;P 500</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Composition</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">100, très techno</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">500, diversifié</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Rythme</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Rapide</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Plus lent</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Micro</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">MNQ, 2 $/pt</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">MES, 5 $/pt</td></tr></tbody></table></div>
+<h3>Alors, lequel choisir ?</h3>
+<p>Si tu choisis le Nasdaq, fais-le en micro, avec une taille qui tient compte de sa nervosité. Le <a href="https://basstrading.fr/blog/types-trading-differences/">guide des différents types de trading</a> t&#39;aide à savoir quel rythme te correspond.</p>
+<p>Reste la grande confusion du débutant français : trader le Nasdaq, oui, mais avec quel produit ?</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/nasdaq-futures-nq-mnq/blog-nasdaq-futures-nq-mnq-3.webp" alt="Règle de taille de position sur le Nasdaq futures : petite exposition et patience, ou grosse exposition et stops courts" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Avec un ou deux micros, on peut laisser respirer le trade ; plus exposé, il faut des stops courts.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="future-nasdaq-cfd-us100-ou-etf-quelle-di">Future Nasdaq, CFD US100 ou ETF : quelle différence ?</h2>
+    <p>Les trois te font gagner ou perdre quand le Nasdaq-100 bouge, mais ce sont trois produits très différents. Le future est un contrat standard coté sur un marché réglementé, le CFD est un contrat passé avec ton courtier, l&#39;ETF est un fonds coté qui suit l&#39;indice, plutôt pensé pour l&#39;investissement.</p>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Critère</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Future</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">CFD US100</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Marché</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">CME, réglementé</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Chez le courtier</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Contrepartie</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Chambre de compensation</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Souvent le courtier</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Carnet et volume</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Réels, visibles</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Non visibles</td></tr></tbody></table></div>
+<h3>Pourquoi je trade le future et pas le CFD</h3>
+<p>Sur un future, je vois le vrai volume et le vrai carnet d&#39;ordres. C&#39;est la matière première de mon travail. Sur un CFD, le prix est fourni par ton courtier : tu ne vois pas qui achète et qui vend sur le marché central.</p>
+<p>Les chiffres officiels invitent aussi à la prudence. L&#39;AMF a mesuré que 89 % des clients particuliers étaient perdants sur le forex et les CFD entre 2009 et 2012, sur près de 15 000 clients actifs (étude publiée en octobre 2014, <a href="https://www.amf-france.org/sites/institutionnel/files/contenu_simple/lettre_ou_cahier/lettre_observatoire/La%20lettre%20de%20l%27Observatoire%20de%20l%27epargne%20de%20l%27AMF%20-%20ndeg%2010%20-%20Octobre%202014.pdf">Lettre de l&#39;Observatoire de l&#39;épargne de l&#39;AMF n° 10</a>). Le future n&#39;est pas sans risque : le levier est le même danger. Mais le terrain de jeu est transparent.</p>
+<h3>Et l&#39;ETF ?</h3>
+<p>Un ETF Nasdaq-100 s&#39;achète en Bourse, sans effet de levier dans sa version classique et sans échéance ni rollover. C&#39;est un outil d&#39;investisseur, un autre métier que le day trading sur futures.</p>
+<h3>Ce que ça veut dire depuis la France</h3>
+<p>Trader les futures depuis la France est possible avec un courtier qui donne accès au CME. Avant d&#39;ouvrir un compte, vérifie que le courtier est autorisé à exercer en France, sur les listes officielles de l&#39;AMF.</p>
+<p>Tu as choisi le future. Comment le suivre sans te noyer dans les indicateurs ?</p>
+
+    <hr>
+
+    <h2 id="comment-suivre-le-nasdaq-futures-en-dire">Comment suivre le Nasdaq futures en direct ?</h2>
+    <p>Il te faut une plateforme avec les données du CME, un graphique propre et, idéalement, les outils qui montrent le volume. Le cours seul ne raconte qu&#39;une partie de l&#39;histoire.</p>
+<h3>Le graphique de base</h3>
+<p>Sur TradingView, cherche NQ1! ou MNQ1! pour le graphique continu, ou l&#39;échéance précise. Les données en temps réel du CME demandent en général un abonnement. Mon guide du <a href="https://basstrading.fr/blog/footprint-tradingview/">footprint sur TradingView</a> montre ce que la plateforme sait faire.</p>
+<h3>Le Market Profile : voir où le marché passe du temps</h3>
+<p>Dans mon live, je présente le Market Profile comme une représentation <a href="https://www.youtube.com/watch?v=UxzH8zdDYNY&amp;t=159s">« un petit peu plus évoluée que les bougies »</a>, et j&#39;insiste : <a href="https://www.youtube.com/watch?v=UxzH8zdDYNY&amp;t=284s">« ce n&#39;est pas du tout une stratégie, c&#39;est un outil comme les bougies japonaises »</a>.</p>
+<p>Une bougie donne l&#39;ouverture, la clôture, le plus haut et le plus bas ; le profil montre le temps passé à chaque prix, donc les zones acceptées et rejetées. Avant l&#39;ouverture, je repère la zone de valeur de la veille et j&#39;attends que le prix vienne sur un niveau logique. Tout est dans mon <a href="https://basstrading.fr/blog/market-profile-guide-complet/">guide complet du Market Profile</a>.</p>
+<h3>Le carnet d&#39;ordres et l&#39;order flow</h3>
+<p>Pour l&#39;entrée précise, je descends au carnet : c&#39;est là que je vois si les acheteurs absorbent les ventes sur mon niveau. Le carnet du NQ est rapide : commence par l&#39;observer sans trader. Mon article sur le <a href="https://basstrading.fr/blog/carnet-ordres-dom-futures/">carnet d&#39;ordres (DOM) des futures</a> te montre quoi regarder en premier.</p>
+<h3>Le volume par prix et le VWAP</h3>
+<p>Le Volume Profile montre où se sont échangés le plus de contrats (je l&#39;explique dans mon <a href="https://basstrading.fr/blog/volume-profile-guide/">guide du Volume Profile</a>), et le VWAP donne le prix moyen pondéré par le volume de la séance (mon article sur le <a href="https://basstrading.fr/blog/vwap-trading/">VWAP en trading</a>).</p>
+<p>Tu as les outils. Reste à les utiliser sans te faire mal les premières semaines.</p>
+
+    <hr>
+
+    <h2 id="comment-debuter-sur-le-nasdaq-futures-sa">Comment débuter sur le Nasdaq futures sans se brûler ?</h2>
+    <p>Commence en simulation, puis en MNQ avec un seul contrat, un stop défini avant chaque entrée et un risque par trade limité à une petite fraction de ton capital.</p>
+<h3>Les étapes que je conseille</h3>
+<ul><li>La simulation d&#39;abord, sur données réelles du CME, aux horaires où tu traderas en vrai.</li><li>Un seul marché, un seul horaire : le NQ à l&#39;ouverture de 15 h 30 (14 h 30 pendant le décalage), par exemple.</li><li>Le MNQ en réel, un contrat : chaque point vaut 2 $, tes erreurs restent petites.</li><li>Le stop avant l&#39;entrée : tu sais où tu sors si tu as tort avant de cliquer.</li><li>Un journal : heure, niveau, raison, résultat, émotion.</li></ul>
+<p>Si tu pars de zéro, lis mon guide pour <a href="https://basstrading.fr/blog/debuter-trading-zero-guide/">débuter le trading en partant de zéro</a>, garde des attentes réalistes sur <a href="https://basstrading.fr/blog/combien-temps-apprendre-trading/">le temps qu&#39;il faut pour apprendre le trading</a>, sache qu&#39;on peut <a href="https://basstrading.fr/blog/devenir-trader-sans-diplome/">devenir trader sans diplôme</a>, et compare les programmes avec <a href="https://basstrading.fr/blog/quelle-formation-trading-choisir/">mes critères pour choisir une formation trading</a>.</p>
+<h3>Le stop court, ma préférence</h3>
+<p>Dans mon live, je le dis franchement : <a href="https://www.youtube.com/watch?v=UxzH8zdDYNY&amp;t=1723s">« je préfère avoir des stops courts et ne pas perdre que je me méfie du marché »</a>. Un stop court ne veut pas dire un stop au hasard : il se place derrière le niveau qui invalide l&#39;idée.</p>
+<h3>Le capital : la bonne question</h3>
+<p>On me demande « combien faut-il pour trader le Nasdaq ? ». La bonne question : combien je perds si mon stop est touché, et est-ce supportable sur une série de pertes ? Avec un MNQ et un stop de 20 points, une perte vaut 40 $ avant frais ; avec un NQ, 400 $. <b>Vérifie qu&#39;une série de dix pertes d&#39;affilée ne met pas ton compte en danger.</b></p>
+<h3>Le bon moment pour trader</h3>
+<p>La séance américaine, de 15 h 30 (14 h 30 pendant le décalage) à 22 h (21 h pendant le décalage), concentre le volume. Les premières minutes sont les plus violentes.</p>
+<h3>Pour aller plus loin, gratuitement</h3>
+<p>Si tu veux apprendre à lire le marché comme je le fais, j&#39;ai préparé une formation offerte de 7 leçons pour comprendre qui fait bouger le prix : <a href="https://basstrading.fr/l/bp4ERA">accéder à la formation gratuite</a>.</p>
+<h3>À retenir</h3>
+<ul><li>Simulation, puis MNQ, un seul contrat.</li><li>Petit et patient, ou gros et très précis.</li><li>Le capital se calcule depuis le stop et une série de pertes.</li></ul>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/nasdaq-futures-nq-mnq/blog-nasdaq-futures-nq-mnq-4.webp" alt="Les étapes pour débuter sur le Nasdaq futures : simulation, MNQ, stop avant l&#39;entrée, journal de trading" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Petit et patient d&#39;abord : la taille vient après la méthode.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="quelles-erreurs-coutent-le-plus-cher-sur">Quelles erreurs coûtent le plus cher sur le Nasdaq futures ?</h2>
+    <p>Les erreurs coûteuses sur le NQ sont rarement techniques : ce sont des erreurs de taille, de timing et de produit.</p>
+<h3>1. Commencer directement en NQ</h3>
+<p>Un NQ, c&#39;est 20 $ le point sur un marché qui peut faire 50 points en quelques minutes, soit 1 000 $. Démarre en MNQ, même si tu as le capital pour le NQ. Mon comparatif <a href="https://basstrading.fr/blog/nq-ou-mnq/">NQ ou MNQ</a> détaille quand passer au contrat plein.</p>
+<h3>2. Oublier le rollover</h3>
+<p>Tu ouvres ta plateforme mi-décembre, ton graphique est vide ou le spread est large : tu es sur l&#39;échéance qui expire. Note les dates de roll du CME dans ton agenda.</p>
+<h3>3. Trader pendant une statistique majeure</h3>
+<p>À 14 h 30 heure de Paris (13 h 30 pendant le décalage), un jour de chiffres d&#39;inflation ou d&#39;emploi, le NQ peut sauter ton stop avec du glissement. Si tu débutes, sois à plat avant l&#39;annonce.</p>
+<h3>4. Courir après le prix</h3>
+<p>Le NQ accélère, tu as peur de rater le mouvement, tu achètes au plus haut. Dans mon live, avant l&#39;ouverture, je préviens : <a href="https://www.youtube.com/watch?v=UxzH8zdDYNY&amp;t=517s">« on va être patient »</a>. Si le marché part sans toi, attends un retour sur une zone logique, et méfie-toi des fausses cassures que j&#39;explique dans mon article sur la <a href="https://basstrading.fr/blog/chasse-aux-stops-trading/">chasse aux stops</a>. Ce jour-là, le bilan tient en quatre mots : <a href="https://www.youtube.com/watch?v=UxzH8zdDYNY&amp;t=1928s">« trois trades, zéro perdant »</a>. Peu de trades, choisis.</p>
+
+    <hr>
+
+    <h2 id="ce-qu-il-faut-retenir-sur-le-nasdaq-futu">Ce qu&#39;il faut retenir sur le Nasdaq futures</h2>
+    <p>Si tu ne gardes que cinq idées :</p>
+<ul><li>Le Nasdaq futures suit le Nasdaq-100, pas le Composite : 100 grandes sociétés non financières, très technologiques.</li><li>NQ = 20 $ le point, MNQ = 2 $ le point ; le tick fait 0,25 point dans les deux cas.</li><li>Échéances en mars, juin, septembre et décembre ; roll officiel le lundi avant le 3e vendredi (14 décembre 2026 pour le prochain).</li><li>Le NQ est plus nerveux que l&#39;ES : stops plus larges en points, taille plus petite.</li><li>Le future montre le vrai volume et le vrai carnet, contrairement au CFD.</li></ul>
+<h3>Ta prochaine action, ce soir</h3>
+<p>Ouvre ton graphique sur l&#39;échéance active du MNQ (MNQZ6 jusqu&#39;au 14 décembre), repère la zone où le marché a passé le plus de temps hier, et regarde comment le prix réagit en arrivant dessus après 15 h 30 (14 h 30 pendant le décalage). Sans trader : observer et noter.</p>
+<p>Ensuite, la suite logique est de choisir ta taille de contrat : lis mon comparatif <a href="https://basstrading.fr/blog/nq-ou-mnq/">NQ ou MNQ</a>.</p>
+<p><em>Les contrats à terme sont des produits à effet de levier : le trading comporte un risque élevé de perte, pouvant dépasser la mise initiale. Contenu éducatif, pas un conseil en investissement.</em></p>
+<h3>Comment cette page est faite</h3>
+<p>Je l&#39;ai écrite à partir de mes vidéos et de mon live sur le Nasdaq futures, avec l&#39;aide d&#39;une IA pour la mise en forme, puis relue. Les caractéristiques des contrats et les dates d&#39;échéance viennent des pages officielles du CME, la définition du Nasdaq-100 vient de Nasdaq. Les exemples chiffrés sont pédagogiques, pas des résultats.</p>
+
+    <p><a href="https://www.youtube.com/watch?v=UxzH8zdDYNY" target="_blank" rel="noopener">▶ Voir la vidéo de Sébastien sur ce sujet</a></p>
+
+    <div class="cta-card cta-aimant">
+      <div class="cta-card-label">Gratuit</div>
+      <h3>La formation offerte : 7 leçons pour lire le marché comme un pro</h3>
+      <p>Accès immédiat et gratuit, en vidéo, à ton rythme. Sans carte bancaire.</p>
+      <a href="https://basstrading.fr/p/formation-offerte/?src=blog-nasdaq-futures-nq-mnq" class="btn-p">Je la veux →</a>
+    </div>
+    
+  </article>
+</div>
+
+<!-- FAQ -->
+<section class="faq-sec">
+  <div class="sec-center"><div class="sec-label">FAQ</div><h2 class="sec-title">Questions fréquentes</h2></div>
+  <div class="faq-list">
+    <div class="fi"><button class="fq" onclick="tf(this)">C&#39;est quoi le Nasdaq futures ? <span class="fq-icon">+</span></button><div class="fa"><p>C&#39;est un contrat à terme coté au CME de Chicago dont le prix suit l&#39;indice Nasdaq-100, en deux tailles : le NQ (20 $ par point) et le MNQ (2 $ par point). Il se règle en argent et se traite presque 23 heures sur 24.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Quelle est la différence entre le NQ et le MNQ ? <span class="fq-icon">+</span></button><div class="fa"><p>Uniquement la taille : le NQ vaut 20 $ par point, le MNQ 2 $ par point, pour le même indice, aux mêmes horaires et aux mêmes échéances. Le MNQ permet de débuter avec un risque dix fois plus petit.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Que veut dire NQZ6 ? <span class="fq-icon">+</span></button><div class="fa"><p>NQ est le produit, Z le mois d&#39;échéance (décembre) et 6 l&#39;année (2026). Les lettres trimestrielles sont H (mars), M (juin), U (septembre) et Z (décembre).</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Quand faut-il changer de contrat (rollover) ? <span class="fq-icon">+</span></button><div class="fa"><p>Selon le CME, la date de roll des indices actions est le lundi qui précède le 3e vendredi du mois d&#39;échéance. Pour décembre 2026, c&#39;est le lundi 14 décembre, avec une expiration le vendredi 18. En pratique, je passe sur l&#39;échéance suivante dès qu&#39;elle a plus de volume que l&#39;ancienne.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Le Nasdaq futures est-il plus volatil que le S&amp;P 500 ? <span class="fq-icon">+</span></button><div class="fa"><p>En général oui : le Nasdaq-100 est plus concentré sur la technologie, donc le NQ bouge plus vite et plus loin que l&#39;ES. Cela demande des stops plus larges en points et une taille plus prudente, surtout à l&#39;ouverture de 15 h 30 (14 h 30 pendant le décalage).</p></div></div>
+  </div>
+</section>
+
+<!-- Related -->
+<section class="related-sec">
+  <div class="sec-center"><div class="sec-label">Continuer la lecture</div><h2 class="sec-title">Articles connexes</h2></div>
+  <div class="related-grid">
+    <a href="/blog/market-profile-guide-complet/" class="related-card"><div class="related-cat">Guide</div><h3>Market Profile : le guide complet pour débutants</h3><p>Value Area, POC, types de journées — tout pour commencer.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/order-flow-trading-france/" class="related-card"><div class="related-cat">Méthode</div><h3>Order Flow Trading : pourquoi personne ne l'enseigne en France</h3><p>Le carnet d'ordres et le flux institutionnel décryptés.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/sierra-chart-configuration/" class="related-card"><div class="related-cat">Tutoriel</div><h3>Sierra Chart : configuration complète</h3><p>Le setup pas à pas pour le Market Profile et le Footprint.</p><span class="related-link">Lire &rarr;</span></a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="ft-top"><div class="ft-logo">BASS</div><div class="ft-cols">
+    <div class="ft-col"><div class="ft-col-title">Programme</div><a href="https://basstrading.fr/#methode">Méthode</a><a href="https://basstrading.fr/#programme">Programme</a><a href="https://basstrading.fr/p/formation-offerte/?src=blog-nasdaq-futures-nq-mnq-pied">Formation offerte</a></div>
+    <div class="ft-col"><div class="ft-col-title">Ressources</div><a href="/blog/market-profile-guide-complet/">Market Profile</a><a href="/blog/footprint-chart-trading/">Footprint Chart</a><a href="/blog/order-flow-trading-france/">Order Flow</a></div>
+  </div></div>
+  <div class="ft-bottom"><span>&copy; 2026 BASS — Sébastien Constant</span><div><a href="/mentions-legales/">Mentions légales</a><a href="/confidentialite/">Confidentialité</a><a href="/cgv/">CGV</a><a href="mailto:contact@basstrading.fr">Contact</a></div></div>
+</footer>
+<div class="disclaimer">Le trading comporte des risques de perte en capital. Les performances passées ne préjugent pas des performances futures. Ce site ne constitue pas un conseil en investissement.</div>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+const lenis=new Lenis({duration:1.2,easing:t=>Math.min(1,1.001-Math.pow(2,-10*t))});
+function raf(t){lenis.raf(t);requestAnimationFrame(raf)}requestAnimationFrame(raf);
+lenis.on('scroll',ScrollTrigger.update);gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0);
+const tl=gsap.timeline();
+tl.to('.pre-word span',{y:0,opacity:1,duration:.5,stagger:.1,ease:'power3.out',delay:.3}).to('#preLine',{width:'80px',duration:.7,ease:'power2.inOut'},'<+.2').to('.preloader',{yPercent:-100,duration:.8,ease:'power3.inOut',delay:.4}).set('.preloader',{display:'none'}).to('#nav',{opacity:1,y:0,duration:.5},'<+.1');
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);const h=document.documentElement.scrollHeight-window.innerHeight;document.getElementById('readingProgress').style.width=(window.scrollY/h*100)+'%'});
+const tocLinks=document.querySelectorAll('.toc a');const sections=Array.from(tocLinks).map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+window.addEventListener('scroll',()=>{let c='';sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)c=s.id});tocLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+c)})});
+function tf(b){const i=b.closest('.fi'),a=b.nextElementSibling,o=i.classList.contains('active');document.querySelectorAll('.fi').forEach(x=>{x.classList.remove('active');x.querySelector('.fa').classList.remove('open')});if(!o){i.classList.add('active');a.classList.add('open')}}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();lenis.scrollTo(t,{offset:-60})}})});
+</script>
+<script src="/v.js" defer></script>
+</body>
+</html>
