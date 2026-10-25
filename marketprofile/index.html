@@ -1,923 +1,301 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Market Profile — Apprends à lire le marché | BASS Trading</title>
-<meta name="description" content="La formation Market Profile qui t'apprend à lire le marché comme un professionnel. 4 modules, accès illimité, 57€ au lieu de 579€.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Market Profile : apprends à lire le marché | BASS Trading</title>
+<meta name="description" content="La formation Market Profile de Bass : voir où le marché accepte d'échanger, au lieu de deviner sur des bougies. Plus de 1 300 traders l'ont suivie.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<!-- Page de vente v2 (Bass 25/10/2026 : « on part là-dessus »). Plus de faux prix barré ; vidéo faite en code sur données réelles NQ. -->
+<link rel="canonical" href="https://basstrading.fr/marketprofile/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://basstrading.fr/marketprofile/">
+<meta property="og:title" content="Market Profile : apprends à lire le marché">
+<meta property="og:description" content="Tu regardes les bougies. Le marché, lui, te montre autre chose. La formation Market Profile de Bass.">
+<meta property="og:image" content="https://basstrading.fr/marketprofile/og-market-profile.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <style>
-/* ===== RESET & BASE ===== */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  color: #e0e0e0;
-  background: #0a0e17;
-  line-height: 1.7;
-  -webkit-font-smoothing: antialiased;
-}
-img { max-width: 100%; height: auto; display: block; }
-a { color: inherit; text-decoration: none; }
-
-/* ===== LAYOUT ===== */
-.container { max-width: 800px; margin: 0 auto; padding: 0 24px; }
-.section { padding: 80px 0; }
-.section--alt { background: #0f1422; }
-.section--dark { background: #060a12; }
-
-/* ===== TYPOGRAPHY ===== */
-h1, h2, h3 { font-family: 'Inter', sans-serif; color: #ffffff; }
-h1 { font-size: clamp(28px, 5vw, 44px); font-weight: 800; line-height: 1.15; letter-spacing: -0.02em; }
-h2 { font-size: clamp(22px, 3.5vw, 32px); font-weight: 700; line-height: 1.25; margin-bottom: 24px; }
-h3 { font-size: 20px; font-weight: 600; margin-bottom: 12px; }
-p { margin-bottom: 18px; font-size: 17px; color: #b8bcc8; }
-strong { color: #ffffff; font-weight: 600; }
-em { font-style: italic; color: #c8ccd8; }
-.text-accent { color: #f59e0b; }
-.text-muted { color: #6b7280; font-size: 14px; }
-.text-center { text-align: center; }
-
-/* ===== HERO ===== */
-.hero {
-  position: relative;
-  padding: 100px 0 80px;
-  overflow: hidden;
-}
-.hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: url('images/hero-trading.jpg') center/cover no-repeat;
-  opacity: 0.2;
-  filter: blur(2px);
-}
-.hero::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(10,14,23,0.4) 0%, rgba(10,14,23,0.95) 80%, #0a0e17 100%);
-}
-.hero .container { position: relative; z-index: 2; }
-.hero__badge {
-  display: inline-block;
-  background: rgba(245,158,11,0.15);
-  border: 1px solid rgba(245,158,11,0.3);
-  color: #f59e0b;
-  font-size: 13px;
-  font-weight: 600;
-  padding: 6px 16px;
-  border-radius: 100px;
-  margin-bottom: 24px;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-}
-.hero h1 { margin-bottom: 20px; }
-.hero h1 em {
-  font-family: 'Playfair Display', serif;
-  font-style: italic;
-  color: #f59e0b;
-}
-.hero__sub {
-  font-size: 18px;
-  color: #9ca3af;
-  max-width: 620px;
-  margin-bottom: 36px;
-  line-height: 1.6;
-}
-
-/* ===== CTA BUTTON ===== */
-.cta-wrap { text-align: center; margin: 32px 0; }
-.cta-btn {
-  display: inline-block;
-  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-  color: #000 !important;
-  font-size: 18px;
-  font-weight: 700;
-  padding: 18px 48px;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
-  box-shadow: 0 4px 24px rgba(245,158,11,0.3);
-  letter-spacing: 0.3px;
-}
-.cta-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(245,158,11,0.45);
-}
-.cta-sub {
-  margin-top: 12px;
-  font-size: 13px;
-  color: #6b7280;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-}
-.cta-sub span { display: flex; align-items: center; gap: 4px; }
-.cta-sub svg { width: 14px; height: 14px; fill: #4ade80; }
-
-/* ===== SOCIAL PROOF BAR ===== */
-.proof-bar {
-  background: rgba(255,255,255,0.03);
-  border-top: 1px solid rgba(255,255,255,0.06);
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-  padding: 20px 0;
-  text-align: center;
-}
-.proof-bar p {
-  font-size: 14px;
-  color: #6b7280;
-  margin: 0;
-}
-.proof-bar strong { color: #9ca3af; }
-
-/* ===== PROBLEM SECTION ===== */
-.problem__cycle {
-  background: rgba(239,68,68,0.05);
-  border: 1px solid rgba(239,68,68,0.15);
-  border-radius: 12px;
-  padding: 32px;
-  margin: 32px 0;
-}
-.problem__cycle p { color: #d1d5db; }
-.problem__punchline {
-  font-size: 20px;
-  font-weight: 700;
-  color: #ffffff !important;
-  text-align: center;
-  padding: 24px 0;
-  border-top: 1px solid rgba(255,255,255,0.08);
-  margin-top: 32px;
-}
-
-/* ===== COMPARISON VISUAL ===== */
-.comparison-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0;
-  margin: 40px 0;
-  border-radius: 12px;
-  overflow: hidden;
-  border: 1px solid rgba(255,255,255,0.08);
-}
-.comparison-panel {
-  padding: 32px 28px 28px;
-  position: relative;
-}
-.comparison-panel--bad {
-  background: linear-gradient(180deg, #1a0a0a 0%, #120808 100%);
-  border-right: 1px solid rgba(255,255,255,0.06);
-}
-.comparison-panel--good {
-  background: linear-gradient(180deg, #0a1208 0%, #08120a 100%);
-}
-.comparison-panel__tag {
-  display: inline-block;
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  padding: 5px 12px;
-  border-radius: 4px;
-  margin-bottom: 20px;
-}
-.comparison-panel--bad .comparison-panel__tag {
-  background: rgba(239,68,68,0.2);
-  color: #ef4444;
-}
-.comparison-panel--good .comparison-panel__tag {
-  background: rgba(245,158,11,0.2);
-  color: #f59e0b;
-}
-.comparison-panel h4 {
-  color: #fff;
-  font-size: 16px;
-  margin-bottom: 16px;
-}
-.comparison-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  padding: 8px 0;
-  font-size: 14px;
-  line-height: 1.5;
-}
-.comparison-panel--bad .comparison-item { color: #9ca3af; }
-.comparison-panel--good .comparison-item { color: #d1d5db; }
-.comparison-icon {
-  flex-shrink: 0;
-  width: 18px;
-  height: 18px;
-  margin-top: 2px;
-}
-.comparison-panel--bad .comparison-icon { fill: #ef4444; }
-.comparison-panel--good .comparison-icon { fill: #4ade80; }
-.comparison-panel__bottom {
-  margin-top: 20px;
-  padding-top: 16px;
-  border-top: 1px solid rgba(255,255,255,0.06);
-  font-size: 13px;
-  font-style: italic;
-}
-.comparison-panel--bad .comparison-panel__bottom { color: #ef4444; }
-.comparison-panel--good .comparison-panel__bottom { color: #4ade80; }
-@media (max-width: 640px) {
-  .comparison-grid { grid-template-columns: 1fr; }
-  .comparison-panel--bad { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
-}
-
-/* ===== MECHANISM / 3 PILLARS ===== */
-.pillars { display: grid; gap: 24px; margin: 40px 0; }
-.pillar {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 12px;
-  padding: 28px 32px;
-  transition: border-color 0.3s;
-}
-.pillar:hover { border-color: rgba(245,158,11,0.3); }
-.pillar__number {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  background: rgba(245,158,11,0.15);
-  color: #f59e0b;
-  font-weight: 800;
-  font-size: 16px;
-  border-radius: 8px;
-  margin-bottom: 16px;
-}
-.pillar h3 { color: #f59e0b; }
-.pillar p:last-child { margin-bottom: 0; }
-
-/* ===== TESTIMONIALS ===== */
-.testimonials { display: grid; gap: 24px; margin: 40px 0; }
-.testimonial {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 12px;
-  padding: 32px;
-  position: relative;
-}
-.testimonial::before {
-  content: '\201C';
-  font-family: 'Playfair Display', serif;
-  font-size: 64px;
-  color: rgba(245,158,11,0.2);
-  position: absolute;
-  top: 12px;
-  left: 24px;
-  line-height: 1;
-}
-.testimonial__text {
-  font-size: 18px;
-  font-style: italic;
-  color: #d1d5db;
-  margin-bottom: 16px;
-  padding-left: 8px;
-}
-.testimonial__author {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.testimonial__avatar {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #f59e0b, #d97706);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #000;
-  font-weight: 700;
-  font-size: 18px;
-}
-.testimonial__name { font-weight: 600; color: #fff; font-size: 15px; }
-.testimonial__role { font-size: 13px; color: #6b7280; }
-
-/* ===== MODULES / CURRICULUM ===== */
-.module {
-  border-left: 3px solid rgba(245,158,11,0.3);
-  padding: 24px 0 24px 28px;
-  margin: 0 0 8px;
-  position: relative;
-}
-.module::before {
-  content: '';
-  position: absolute;
-  left: -7px;
-  top: 28px;
-  width: 11px;
-  height: 11px;
-  background: #f59e0b;
-  border-radius: 50%;
-  border: 2px solid #0a0e17;
-}
-.module__tag {
-  display: inline-block;
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  color: #f59e0b;
-  margin-bottom: 8px;
-}
-.module__outcome {
-  background: rgba(245,158,11,0.08);
-  border-radius: 8px;
-  padding: 12px 16px;
-  font-size: 15px;
-  color: #f59e0b;
-  margin-top: 12px;
-  margin-bottom: 0;
-}
-
-/* ===== PRICE BOX ===== */
-.price-card {
-  background: linear-gradient(135deg, rgba(245,158,11,0.08) 0%, rgba(245,158,11,0.02) 100%);
-  border: 2px solid rgba(245,158,11,0.25);
-  border-radius: 16px;
-  padding: 48px 40px;
-  text-align: center;
-  margin: 40px 0;
-  position: relative;
-  overflow: hidden;
-}
-.price-card::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle at center, rgba(245,158,11,0.04) 0%, transparent 60%);
-}
-.price-card > * { position: relative; }
-.price__old {
-  font-size: 24px;
-  color: #6b7280;
-  text-decoration: line-through;
-  margin-bottom: 4px;
-}
-.price__new {
-  font-size: 64px;
-  font-weight: 800;
-  color: #f59e0b;
-  line-height: 1;
-  margin-bottom: 8px;
-}
-.price__note {
-  font-size: 15px;
-  color: #9ca3af;
-  margin-bottom: 0;
-}
-
-/* ===== GUARANTEE ===== */
-.guarantee {
-  display: flex;
-  gap: 28px;
-  align-items: flex-start;
-  background: rgba(74,222,128,0.04);
-  border: 1px solid rgba(74,222,128,0.15);
-  border-radius: 12px;
-  padding: 32px;
-  margin: 40px 0;
-}
-.guarantee__icon {
-  flex-shrink: 0;
-  width: 80px;
-  height: 80px;
-  border-radius: 12px;
-  overflow: hidden;
-}
-.guarantee__icon img { width: 100%; height: 100%; object-fit: cover; }
-.guarantee h3 { color: #4ade80; margin-bottom: 8px; }
-.guarantee p { font-size: 15px; color: #9ca3af; }
-.guarantee p:last-child { margin-bottom: 0; }
-
-/* ===== FAQ ===== */
-.faq-item {
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-  padding: 24px 0;
-}
-.faq-item:last-child { border-bottom: none; }
-.faq-q {
-  font-size: 17px;
-  font-weight: 600;
-  color: #ffffff;
-  margin-bottom: 8px;
-  cursor: default;
-}
-.faq-a { font-size: 15px; color: #9ca3af; margin-bottom: 0; }
-
-/* ===== ABOUT ===== */
-.about {
-  display: flex;
-  gap: 32px;
-  align-items: flex-start;
-}
-.about__photo {
-  flex-shrink: 0;
-  width: 120px;
-  height: 120px;
-  border-radius: 16px;
-  background: linear-gradient(135deg, #1e293b, #0f172a);
-  border: 2px solid rgba(245,158,11,0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 48px;
-  color: #f59e0b;
-  font-weight: 800;
-  font-family: 'Playfair Display', serif;
-  /* REMPLACER par : <img src="ta-photo.jpg"> */
-}
-.about p { font-size: 16px; }
-
-/* ===== FINAL CTA ===== */
-.final-cta {
-  background: linear-gradient(180deg, #0f1422 0%, #0a0e17 100%);
-  padding: 80px 0;
-  text-align: center;
-}
-.final-cta .checklist {
-  text-align: left;
-  max-width: 500px;
-  margin: 32px auto;
-}
-.checklist__item {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  padding: 8px 0;
-  font-size: 16px;
-  color: #d1d5db;
-}
-.checklist__item svg { flex-shrink: 0; width: 20px; height: 20px; fill: #4ade80; margin-top: 2px; }
-
-/* ===== DIVIDER ===== */
-.divider {
-  width: 60px;
-  height: 3px;
-  background: linear-gradient(90deg, #f59e0b, transparent);
-  margin: 40px 0;
-}
-.divider--center { margin: 40px auto; }
-
-/* ===== FOOTER ===== */
-.footer {
-  padding: 40px 0;
-  border-top: 1px solid rgba(255,255,255,0.06);
-  text-align: center;
-}
-.footer p { font-size: 13px; color: #4b5563; margin-bottom: 8px; }
-.footer a { color: #6b7280; text-decoration: underline; }
-
-/* ===== RESPONSIVE ===== */
-@media (max-width: 640px) {
-  .section { padding: 56px 0; }
-  .hero { padding: 72px 0 56px; }
-  .guarantee { flex-direction: column; gap: 16px; }
-  .about { flex-direction: column; align-items: center; text-align: center; }
-  .price__new { font-size: 48px; }
-  .cta-btn { padding: 16px 32px; font-size: 16px; width: 100%; }
-  .comparison__labels { position: relative; }
-  .pillar { padding: 24px 20px; }
-}
+:root{--bk:#1D1D1F;--bk3:#0A0A0A;--g1:#6E6E73;--g2:#86868B;--g3:#D2D2D7;--g4:#F5F5F7;--wh:#FBFBFD;--green:#00B67A;--blue:#0066FF}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--wh);color:var(--bk);font:18px/1.65 'DM Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.btn,.prix,.chiffre{font-family:'Outfit',system-ui,sans-serif}
+.w{max-width:720px;margin:0 auto;padding:0 20px}
+section{padding:64px 0}
+h2{font-size:clamp(28px,5vw,40px);line-height:1.15;margin:0 0 20px;letter-spacing:-.02em}
+h3{font-size:22px;margin:0 0 8px}
+p{margin:0 0 18px}
+b,strong{font-weight:700}
+.noir{background:var(--bk3);color:var(--wh)}
+.noir .doux{color:var(--g2)}
+.gris{background:var(--g4)}
+.doux{color:var(--g1)}
+.sur{display:inline-block;font:600 14px 'Outfit',sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--green);margin-bottom:14px}
+.grand{font-size:clamp(34px,7vw,58px);line-height:1.05;letter-spacing:-.03em;margin:0 0 22px}
+.grand em{font-style:normal;color:var(--green)}
+.chapo{font-size:21px;color:var(--g3)}
+.video{position:relative;border-radius:18px;overflow:hidden;background:#000;aspect-ratio:16/9;margin:30px 0 14px;box-shadow:0 30px 80px rgba(0,0,0,.45)}
+.video video{width:100%;height:100%;display:block}
+.legende{font-size:14px;color:var(--g2);text-align:center}
+.btn{display:block;width:100%;text-align:center;background:var(--green);color:#fff;text-decoration:none;font-weight:700;font-size:20px;padding:20px 24px;border-radius:14px;box-shadow:0 10px 30px rgba(0,182,122,.35);transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn small{display:block;font:500 14px 'DM Sans',sans-serif;opacity:.9;margin-top:2px}
+.rassure{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;font-size:14px;color:var(--g2);margin-top:12px}
+.preuves{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:34px 0 0}
+.preuves div{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:16px 10px;text-align:center}
+.chiffre{display:block;font-size:30px;font-weight:800;color:var(--wh)}
+.preuves span:last-child{font-size:13px;color:var(--g2);line-height:1.3;display:block}
+.cote{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:28px 0}
+.cote>div{border-radius:16px;padding:20px}
+.cote .avant{background:#fff;border:1px solid var(--g3)}
+.cote .apres{background:var(--bk3);color:var(--wh)}
+.cote h3{font-size:18px}
+.cote ul{margin:0;padding-left:18px;font-size:16px}
+.cote li{margin:6px 0}
+.cite{border-left:4px solid var(--green);padding:6px 0 6px 18px;margin:26px 0;font-size:21px;font-family:'Outfit',sans-serif;font-weight:600;line-height:1.35}
+.cite span{display:block;font:500 15px 'DM Sans',sans-serif;color:var(--g1);margin-top:8px}
+.temos{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:26px 0}
+.temo{background:#fff;border:1px solid var(--g3);border-radius:16px;overflow:hidden}
+.yt{position:relative;aspect-ratio:16/9;background:#000 center/cover no-repeat;cursor:pointer}
+.yt::after{content:"";position:absolute;inset:0;margin:auto;width:64px;height:64px;border-radius:50%;background:rgba(0,0,0,.6) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M8 5v14l11-7z'/%3E%3C/svg%3E") center/30px no-repeat}
+.yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.temo p{font-size:16px;padding:14px 16px 2px;margin:0}
+.temo .qui{font-size:14px;color:var(--g1);padding:4px 16px 16px}
+.modules{counter-reset:m;margin:26px 0;padding:0;list-style:none}
+.modules li{background:#fff;border:1px solid var(--g3);border-radius:16px;padding:20px 20px 14px;margin:0 0 12px}
+.modules .tag{font:700 13px 'Outfit',sans-serif;color:var(--blue);text-transform:uppercase;letter-spacing:.06em}
+.modules p{font-size:16px;margin:6px 0}
+.modules .tu{color:var(--green);font-weight:700}
+.boite{background:#fff;border:2px solid var(--bk);border-radius:22px;padding:30px 24px;margin:20px 0}
+.boite ul{list-style:none;padding:0;margin:0 0 22px}
+.boite li{padding:10px 0 10px 34px;border-bottom:1px solid var(--g4);position:relative;font-size:17px}
+.boite li::before{content:"✓";position:absolute;left:4px;color:var(--green);font-weight:800}
+.prix{text-align:center;font-size:64px;font-weight:800;letter-spacing:-.03em;margin:4px 0 0;line-height:1}
+.prix small{display:block;font:500 16px 'DM Sans',sans-serif;color:var(--g1);letter-spacing:0;margin-top:8px}
+.garantie{display:flex;gap:18px;align-items:flex-start;background:var(--g4);border-radius:18px;padding:24px;margin:26px 0}
+.sceau{flex:none;width:84px;height:84px;border-radius:50%;background:var(--bk3);color:var(--wh);display:flex;flex-direction:column;align-items:center;justify-content:center;font:800 26px/1 'Outfit',sans-serif}
+.sceau span{font-size:11px;font-weight:600;letter-spacing:.08em;margin-top:4px}
+details{border-bottom:1px solid var(--g3);padding:16px 0}
+summary{cursor:pointer;font:600 18px 'Outfit',sans-serif;list-style:none}
+summary::after{content:"+";float:right;color:var(--g1)}
+details[open] summary::after{content:"–"}
+details p{margin:12px 0 0;font-size:17px}
+.bass{display:flex;gap:18px;align-items:center;margin:0 0 20px}
+.bass .rond{flex:none;width:76px;height:76px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font:800 32px 'Outfit',sans-serif}
+.ps{font-size:17px}
+.pied{font-size:13px;color:var(--g2);text-align:center;padding:30px 20px 60px}
+.pied a{color:inherit}
+.flottant{position:fixed;left:0;right:0;bottom:0;background:rgba(10,10,10,.92);backdrop-filter:blur(10px);padding:10px 16px calc(10px + env(safe-area-inset-bottom));display:none;z-index:9}
+.flottant a{display:block;max-width:520px;margin:0 auto;text-align:center;background:var(--green);color:#fff;text-decoration:none;font:700 17px 'Outfit',sans-serif;padding:14px;border-radius:12px}
+.flottant.on{display:block}
+@media (max-width:600px){body{font-size:17px}section{padding:48px 0}.cote,.temos{grid-template-columns:1fr}.preuves .chiffre{font-size:24px}.garantie{flex-direction:column}}
 </style>
-  <meta property="og:image" content="https://basstrading.fr/images/og-basstrading.jpg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://basstrading.fr/images/og-basstrading.jpg">
 </head>
 <body>
 
-<!-- ============================================================ -->
-<!-- HERO -->
-<!-- ============================================================ -->
-<section class="hero">
-  <div class="container">
-    <span class="hero__badge">Formation en ligne — Accès immédiat</span>
-    <h1>Arrête de deviner où le prix va aller.<br>Apprends à <em>lire</em> ce que le marché te dit.</h1>
-    <p class="hero__sub">Les order blocks et les FVG te racontent une histoire. Le Market Profile te montre <strong>les données</strong>. C'est l'outil que les vrais institutionnels utilisent depuis 40 ans pour voir <strong>qui</strong> est en face d'eux, <strong>où</strong> le volume s'accumule, et <strong>quand</strong> entrer avec un vrai avantage.</p>
-    <div class="cta-wrap" style="text-align:left;">
-      <a href="/paiement/?offre=market-profile" class="cta-btn">Accéder à la formation — 57€ au lieu de 579€</a>
-      <div class="cta-sub" style="justify-content:flex-start;">
-        <span><svg viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> Garantie 30 jours</span>
-        <span><svg viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> Accès illimité</span>
-        <span><svg viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> 4 modules + bonus</span>
-      </div>
+<!-- 1. ACCROCHE + VIDÉO : la démonstration avant tout argument -->
+<section class="noir" style="padding-top:48px">
+  <div class="w">
+    <span class="sur">Formation Market Profile · Bass Trading</span>
+    <h1 class="grand">Tu regardes les bougies.<br>Le marché, lui, te montre <em>autre chose</em>.</h1>
+    <p class="chapo">Regarde cette minute et demie. Une vraie séance du Nasdaq, d'abord comme tu la vois aujourd'hui, puis comme je la lis chaque matin.</p>
+    <div class="video">
+      <video src="/marketprofile/demo-market-profile.mp4" controls playsinline preload="metadata" poster="/marketprofile/poster-demo.jpg"></video>
+    </div>
+    <p class="legende">Données réelles du Nasdaq 100 (NQ), 2 et 3 septembre 2026. Un exemple choisi pour expliquer : ça ne se passe pas comme ça à chaque fois.</p>
+    <div class="preuves">
+      <div><span class="chiffre">1 300+</span><span>traders ont suivi cette formation</span></div>
+      <div><span class="chiffre">4,8/5</span><span>sur Trustpilot, plus de 130 avis</span></div>
+      <div><span class="chiffre">~10 ans</span><span>que je forme des traders</span></div>
     </div>
   </div>
 </section>
 
-<!-- ============================================================ -->
-<!-- SOCIAL PROOF BAR -->
-<!-- ============================================================ -->
-<div class="proof-bar">
-  <div class="container">
-    <p><strong>"En un mois avec Bass, j'ai plus appris que seul pendant les cinq dernières années."</strong> — Mickaël</p>
-  </div>
-</div>
-
-<!-- ============================================================ -->
-<!-- LE PROBLÈME -->
-<!-- ============================================================ -->
-<section class="section">
-  <div class="container">
-    <h2>Tu connais ce scénario ?</h2>
-
-    <div class="problem__cycle">
-      <p>Tu traces tes order blocks. Tu repères un FVG. Tu identifies la liquidité au-dessus d'un high. Tu te dis : <strong>"Ils vont chasser les stops, puis le prix va se retourner."</strong></p>
-      <p>Parfois ça marche. Et tu te sens comme un génie.</p>
-      <p>Puis la fois d'après, le prix sweep la liquidité... et continue. Il ne se retourne pas. Ton order block ne tient pas. Ton FVG se fait traverser comme s'il n'existait pas. Et tu te retrouves avec un stop touché et une théorie qui t'explique très bien pourquoi ça <em>aurait dû</em> marcher.</p>
-      <p>Alors tu retournes sur YouTube. Tu regardes une nouvelle vidéo ICT. Tu apprends un nouveau concept — "breaker block", "CISD", "optimal trade entry". Tu ajoutes une couche de plus à ton système. Et la semaine suivante, ça marche un peu, puis ça recasse.</p>
-      <p style="margin-bottom:0;">Et six mois plus tard, tu as un vocabulaire de trader institutionnel — mais un compte de trader retail.</p>
-    </div>
-
-    <div class="divider"></div>
-
-    <p><strong>Le problème n'est pas que tu es nul. Le problème, c'est que tu trades avec une histoire au lieu de trader avec des données.</strong></p>
-
-    <p>Le problème, c'est que <strong class="text-accent">tu interprètes le marché au lieu de le lire</strong>.</p>
-
-    <p>Les concepts ICT et Smart Money te donnent un <strong>narratif</strong>. Une histoire élégante : "les market makers chassent la liquidité, puis le prix se retourne." C'est séduisant. Ça donne l'impression de comprendre. Ça fait de belles analyses en replay.</p>
-
-    <p>Mais voilà le problème : <strong>en temps réel, tu ne sais pas quand le sweep est terminé.</strong> Tu ne sais pas si le prix va se retourner après avoir pris la liquidité, ou s'il va simplement continuer. Tu ne sais pas si ton order block est un vrai niveau ou un rectangle que tu as dessiné parce que ça t'arrangeait.</p>
-
-    <p>Tu as un <em>scénario</em>. Mais tu n'as aucune donnée pour le confirmer ou l'invalider <strong>avant</strong> d'entrer en position.</p>
-
-    <p class="problem__punchline">Le narratif YouTube t'explique le marché d'hier.<br>Il ne te dit pas quoi faire aujourd'hui.</p>
-
-    <!-- COMPARISON VISUAL -->
-    <div class="comparison-grid">
-      <div class="comparison-panel comparison-panel--bad">
-        <div class="comparison-panel__tag">Narratif ICT / SMC</div>
-        <h4>Ce que tu fais aujourd'hui</h4>
-        <div class="comparison-item">
-          <svg class="comparison-icon" viewBox="0 0 20 20"><path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z"/></svg>
-          <span>Order block tracé à l'oeil — aucun moyen de savoir s'il va tenir</span>
-        </div>
-        <div class="comparison-item">
-          <svg class="comparison-icon" viewBox="0 0 20 20"><path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z"/></svg>
-          <span>Liquidité "sweepée" — mais le prix continue au lieu de se retourner</span>
-        </div>
-        <div class="comparison-item">
-          <svg class="comparison-icon" viewBox="0 0 20 20"><path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z"/></svg>
-          <span>FVG comblé... ou traversé ? Tu ne sais pas avant d'être en position</span>
-        </div>
-        <div class="comparison-item">
-          <svg class="comparison-icon" viewBox="0 0 20 20"><path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z"/></svg>
-          <span>Belles analyses en replay, résultats médiocres en live</span>
-        </div>
-        <div class="comparison-item">
-          <svg class="comparison-icon" viewBox="0 0 20 20"><path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z"/></svg>
-          <span>Un scénario. Aucune donnée pour le confirmer en temps réel</span>
-        </div>
-        <div class="comparison-panel__bottom">Tu interprètes. Tu espères.</div>
-      </div>
-
-      <div class="comparison-panel comparison-panel--good">
-        <div class="comparison-panel__tag">Market Profile</div>
-        <h4>Ce que tu vas voir demain</h4>
-        <div class="comparison-item">
-          <svg class="comparison-icon" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
-          <span>Zone de valeur visible — tu sais si le prix est cher ou pas, en temps réel</span>
-        </div>
-        <div class="comparison-item">
-          <svg class="comparison-icon" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
-          <span>POC, VAH, VAL — des niveaux basés sur le volume réel, pas sur un dessin</span>
-        </div>
-        <div class="comparison-item">
-          <svg class="comparison-icon" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
-          <span>Type de journée identifié dès l'ouverture — tu adaptes avant de trader</span>
-        </div>
-        <div class="comparison-item">
-          <svg class="comparison-icon" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
-          <span>Empreintes des gros opérateurs : tu vois ce qu'ils font, pas ce qu'ils "devraient" faire</span>
-        </div>
-        <div class="comparison-item">
-          <svg class="comparison-icon" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
-          <span>Tu confirmes ou invalides ton scénario AVANT d'entrer</span>
-        </div>
-        <div class="comparison-panel__bottom">Tu lis. Tu décides.</div>
-      </div>
-    </div>
+<!-- 2. LE PROBLÈME : ce n'est pas toi, c'est ce que tu regardes -->
+<section>
+  <div class="w">
+    <h2>Tu connais ce moment.</h2>
+    <p>Tu as tout bien fait. Ta zone était tracée. Ton entrée était propre.</p>
+    <p>Et le prix est parti dans l'autre sens. Pas un peu. Franchement.</p>
+    <p>Alors tu cherches ce qui a cloché. Une nouvelle vidéo. Un nouvel indicateur. Une nouvelle règle. Ça marche trois jours, puis ça recasse.</p>
+    <p>Et tu finis par te dire que le problème, c'est toi. Ta discipline. Ta psychologie.</p>
+    <p><b>Je vais te dire ce que je dis à tous mes élèves le premier jour : ce n'est pas toi.</b></p>
+    <p>C'est ce que tu regardes.</p>
+    <p>Une bougie te dit d'où le prix est parti, et où il est arrivé. C'est tout. Elle ne te dit pas <b>si le marché a accepté ce prix</b>, ou s'il était juste de passage.</p>
+    <p>Et c'est exactement ça qui décide de la suite.</p>
+    <div class="cite">« Je sentais qu'il y avait quelque chose de caché derrière les bougies. »<span>Frédérique, élève de Bass</span></div>
+    <p>Elle avait raison. Et ce qui est caché derrière les bougies a un nom.</p>
   </div>
 </section>
 
-<!-- ============================================================ -->
-<!-- LE MÉCANISME -->
-<!-- ============================================================ -->
-<section class="section section--alt">
-  <div class="container">
-    <h2>Le chaînon manquant entre ta théorie<br>et des résultats réels.</h2>
-
-    <p>Le narratif ICT a compris quelque chose de vrai : le marché n'est pas aléatoire, il est piloté par des gros acteurs. Jusque-là, pas de problème.</p>
-
-    <p>Le problème, c'est que <strong>savoir que les institutionnels existent ne te dit pas ce qu'ils font en ce moment</strong>. C'est comme savoir qu'il y a des courants sous-marins sans avoir de sonar.</p>
-
-    <p style="font-size:20px;color:#f59e0b;font-weight:600;margin:24px 0;">Le Market Profile, c'est le sonar.</p>
-
-    <p>Créé dans les années 80 au Chicago Board of Trade, c'est l'outil que les vrais traders institutionnels utilisent depuis 40 ans. Pas pour raconter une histoire sur le marché — pour <strong>lire les données</strong> en temps réel.</p>
-
-    <p>La raison pour laquelle tu n'en as probablement jamais entendu parler ? C'est beaucoup moins sexy qu'un concept YouTube avec un nom mystérieux. Mais c'est ce qui marche quand il faut prendre des décisions avec de l'argent réel.</p>
-
-    <div class="divider"></div>
-
-    <h3 style="margin-bottom:24px;font-size:22px;">Ce que le Market Profile te montre :</h3>
-
-    <div class="pillars">
-      <div class="pillar">
-        <div class="pillar__number">1</div>
-        <h3>Où est la valeur — en ce moment</h3>
-        <p>À chaque instant, il existe une zone où la majorité des échanges se concentrent : la zone de valeur. Savoir où elle est, c'est savoir si le prix actuel est "cher", "pas cher" ou "en transition". Plus besoin de deviner.</p>
+<!-- 3. LA GRANDE IDÉE : le prix vs la valeur -->
+<section class="gris">
+  <div class="w">
+    <span class="sur">La pièce qui manque</span>
+    <h2>Le prix bouge tout le temps.<br>La valeur, beaucoup moins.</h2>
+    <p>Chaque jour, le marché cherche un endroit où acheteurs et vendeurs sont d'accord pour échanger. Il y passe du temps. Beaucoup de temps.</p>
+    <p>Cet endroit, c'est la <b>valeur</b>. Et le Market Profile est l'outil qui la dessine, période après période, sous tes yeux.</p>
+    <p>Quand tu la vois, tu ne te demandes plus « ça monte ou ça descend ? ». Tu te demandes « le prix est-il accepté ici, ou rejeté ? ». Et ça, ça se lit.</p>
+    <div class="cote">
+      <div class="avant">
+        <h3>Avec des bougies seules</h3>
+        <ul>
+          <li>Des zones tracées à l'œil</li>
+          <li>Tu découvres le type de journée à 16 h</li>
+          <li>Tu entres sur une impression</li>
+          <li>Tu ne sais pas qui est en face</li>
+        </ul>
       </div>
-      <div class="pillar">
-        <div class="pillar__number">2</div>
-        <h3>Qui est présent — et qui ne l'est pas</h3>
-        <p>Un marché piloté par des institutionnels ne se comporte pas comme un marché dominé par du retail. La forme du profil te le dit. Un jour de trend ne se trade pas comme un jour de range. Si tu ne fais pas la différence, tu appliques la mauvaise stratégie au mauvais moment.</p>
-      </div>
-      <div class="pillar">
-        <div class="pillar__number">3</div>
-        <h3>Où sont les pièges — avant d'y tomber</h3>
-        <p>Les single prints, les POC vierges, les initial balance cassées : ce sont les empreintes des gros opérateurs. Des niveaux qui signifient quelque chose. Pas des lignes tracées au hasard sur ton graphique.</p>
+      <div class="apres">
+        <h3>Avec le Market Profile</h3>
+        <ul>
+          <li>Des zones issues des échanges réels</li>
+          <li>Tu reconnais la journée dès la première heure</li>
+          <li>Tu sais si le prix est accepté ou rejeté</li>
+          <li>Tu reconnais les gros opérateurs</li>
+        </ul>
       </div>
     </div>
-
-    <p style="text-align:center;font-size:19px;color:#fff;font-weight:600;margin-top:32px;">Quand tu comprends ces trois choses, tu ne "devines" plus. Tu <span class="text-accent">lis</span>.</p>
+    <p>Le Market Profile est né au Chicago Board of Trade, dans les années 80. Les professionnels s'en servent depuis. Il n'a rien de magique : <b>il te montre ce qui s'est vraiment passé</b>, pas ce qui aurait dû se passer.</p>
+    <p class="doux" style="font-size:16px">Ce n'est pas un signal d'achat. Ce n'est pas une promesse de gain. C'est une façon de lire. Et une lecture, ça s'apprend.</p>
   </div>
 </section>
 
-<!-- ============================================================ -->
-<!-- TÉMOIGNAGES -->
-<!-- ============================================================ -->
-<section class="section">
-  <div class="container">
-    <h2 class="text-center">Ils tradaient comme toi.<br>Puis ils ont appris à lire le marché.</h2>
-
-    <div class="testimonials">
-      <div class="testimonial">
-        <p class="testimonial__text">"En un mois avec Bass, j'ai plus appris que seul pendant les cinq dernières années."</p>
-        <div class="testimonial__author">
-          <div class="testimonial__avatar">M</div>
-          <div>
-            <div class="testimonial__name">Mickaël</div>
-            <div class="testimonial__role">Trader retail depuis 5 ans</div>
-          </div>
-        </div>
-      </div>
-      <div class="testimonial">
-        <p class="testimonial__text">"En quelques semaines, j'ai déjà accompli plus que ce que j'avais eu à chercher au cours des trois dernières années."</p>
-        <div class="testimonial__author">
-          <div class="testimonial__avatar">L</div>
-          <div>
-            <div class="testimonial__name">Lionel</div>
-            <div class="testimonial__role">Trader retail depuis 3 ans</div>
-          </div>
-        </div>
-      </div>
-      <div class="testimonial">
-        <p class="testimonial__text">"J'ai appris à lire le Market Profile, ce qui permet de rentrer dans les marchés sans stress."</p>
-        <div class="testimonial__author">
-          <div class="testimonial__avatar">Z</div>
-          <div>
-            <div class="testimonial__name">Zine-Eddine</div>
-            <div class="testimonial__role">Élève BASS Trading</div>
-          </div>
-        </div>
-      </div>
+<!-- 4. AUTORITÉ + PREUVE -->
+<section>
+  <div class="w">
+    <div class="bass"><div class="rond">B</div><div><h2 style="margin:0">Je suis Bass.</h2><span class="doux">Formateur en trading, sur le Nasdaq.</span></div></div>
+    <p>Le Market Profile, c'est la première chose que j'ouvre le matin. Avant les news. Avant le moindre ordre.</p>
+    <p>Ça fait une dizaine d'années que j'apprends à des traders à s'en servir. En ligne, et en salle, à Malaga, où ils viennent cinq jours pour trader à côté de moi.</p>
+    <p>Cette formation, c'est la première marche de tout ce que j'enseigne. <b>1 473 personnes l'ont achetée.</b></p>
+    <p>Ne me crois pas sur parole. Écoute-les.</p>
+    <div class="temos">
+      <div class="temo"><div class="yt" data-id="xGhvjg1om4g" style="background-image:url(https://i.ytimg.com/vi/xGhvjg1om4g/hqdefault.jpg)"></div><p>« Je sentais qu'il y avait quelque chose de caché derrière les bougies. Je repars avec quelque chose de très simple. »</p><div class="qui">Frédérique, élève à Malaga</div></div>
+      <div class="temo"><div class="yt" data-id="H9BpIZ5s0u0" style="background-image:url(https://i.ytimg.com/vi/H9BpIZ5s0u0/hqdefault.jpg)"></div><p>« Pas de Lamborghini au bout de six mois. Une méthode plus simple, plus facile à tenir. »</p><div class="qui">Morgan, élève à Malaga</div></div>
+      <div class="temo"><div class="yt" data-id="3soiDXyu0Kk" style="background-image:url(https://i.ytimg.com/vi/3soiDXyu0Kk/hqdefault.jpg)"></div><p>« Je rentre dans les marchés serein. Avant, j'étais stressé à fond. »</p><div class="qui">Evrard, élève à Malaga</div></div>
+      <div class="temo"><div class="yt" data-id="yRUOM6Awdtw" style="background-image:url(https://i.ytimg.com/vi/yRUOM6Awdtw/hqdefault.jpg)"></div><p>« Le plus important, ça a été d'être sincère avec soi-même. »</p><div class="qui">Christian, élève à Malaga</div></div>
     </div>
+    <div class="cite">« En un mois avec Bass, j'ai plus appris que seul pendant les cinq dernières années. »<span>Mickaël, trader depuis 5 ans</span></div>
+    <p class="doux" style="font-size:15px">Tous les avis : <a href="https://fr.trustpilot.com/review/iftrading.fr" target="_blank" rel="noopener">Trustpilot</a> (mon ancienne marque, IF Trading).</p>
   </div>
 </section>
 
-<!-- ============================================================ -->
-<!-- CONTENU DE LA FORMATION -->
-<!-- ============================================================ -->
-<section class="section section--alt">
-  <div class="container">
-    <h2>La formation complète<br><span class="text-accent">Du zéro au Market Profile opérationnel</span></h2>
-
-    <div class="module">
-      <div class="module__tag">Module 1</div>
-      <h3>Les fondations</h3>
-      <p>Le fonctionnement réel de la bourse. Ce qu'est le Market Profile. La notion de valeur et pourquoi elle est plus importante que le prix. Les horizons de temps. L'acceptation et le rejet. L'initial balance : le premier truc que les pros regardent chaque matin.</p>
-      <p class="module__outcome">→ Tu comprends ce que le marché te dit vraiment — et pourquoi tu ne l'entendais pas avant.</p>
-    </div>
-
-    <div class="module">
-      <div class="module__tag">Module 2</div>
-      <h3>Lire le marché en temps réel</h3>
-      <p>Les types de journée et comment les identifier dès les premières minutes. Les profils B-Shape et P-Shape. L'importance des opens. Comment reconnaître les gros opérateurs. Les POC vierges et single prints : les empreintes invisibles du marché.</p>
-      <p class="module__outcome">→ Tu sais quel "type de journée" tu as devant toi avant même de passer un trade.</p>
-    </div>
-
-    <div class="module">
-      <div class="module__tag">Module 3</div>
-      <h3>Le Volume Profile</h3>
-      <p>Comment exploiter la distribution du volume pour trouver des niveaux de support et résistance que 95% des traders ne voient pas. Des niveaux qui viennent de l'activité réelle des participants.</p>
-      <p class="module__outcome">→ Tes niveaux ont une raison d'exister. Tu sais pourquoi ils tiennent — et quand ils vont casser.</p>
-    </div>
-
-    <div class="module">
-      <div class="module__tag">Module 4</div>
-      <h3>L'indicateur que j'utilise au quotidien</h3>
-      <p>Un outil que je ne partage nulle part ailleurs. Pas un indicateur "magique" — un outil de confirmation qui s'intègre au Market Profile et qui me fait gagner du temps chaque matin.</p>
-      <p class="module__outcome">→ Tu repars avec le même setup que celui que j'utilise tous les jours.</p>
-    </div>
-
-    <div class="module" style="border-left-color: rgba(74,222,128,0.4);">
-      <div class="module__tag" style="color:#4ade80;">Bonus</div>
-      <h3>3 bonus exclusifs inclus</h3>
-      <p style="margin-bottom:0;">Contenu complémentaire réservé aux élèves de la formation.</p>
-    </div>
+<!-- 5. CE QU'IL Y A DEDANS -->
+<section class="gris" id="contenu">
+  <div class="w">
+    <span class="sur">La formation</span>
+    <h2>Du premier profil à la lecture de ta séance.</h2>
+    <p>Quatre modules en vidéo, dans l'ordre où je l'enseigne en salle. Tu avances à ton rythme, et tu les revois autant que tu veux.</p>
+    <ul class="modules">
+      <li><span class="tag">Module 1 · Les fondations</span>
+        <p>Comment fonctionne vraiment la bourse. Ce qu'est un profil. La valeur. Les horizons de temps. L'acceptation et le rejet. L'Initial Balance, la première heure que je regarde chaque matin.</p>
+        <p class="tu">→ Tu sais lire un profil et dire où était la valeur.</p></li>
+      <li><span class="tag">Module 2 · Lire la séance</span>
+        <p>Les types de journée. Les profils en B et en P. Pourquoi l'ouverture dit beaucoup. Initiateurs ou réactifs : reconnaître les gros opérateurs. Les POC vierges et les single prints.</p>
+        <p class="tu">→ Tu reconnais la journée que tu as devant toi, avant d'agir.</p></li>
+      <li><span class="tag">Module 3 · Le Volume Profile</span>
+        <p>Le profil construit sur les volumes échangés, et ce qu'il ajoute au Market Profile.</p>
+        <p class="tu">→ Tes niveaux viennent des échanges, pas d'un trait à l'œil.</p></li>
+      <li><span class="tag">Module 4 · Un outil de confirmation</span>
+        <p>Un indicateur que j'aime bien utiliser à côté du profil. À tester en démo.</p></li>
+      <li><span class="tag">Bonus · 3 séances commentées</span>
+        <p>Trois de mes lives, avec le trade expliqué de bout en bout : un trade sur le micro Nasdaq un matin de journée équilibrée (22 min), une position expliquée avec le type de journée, et un trade pris tôt avant l'ouverture, avec sa gestion.</p>
+        <p class="tu">→ Tu me vois appliquer le cours, en vrai, sur le marché.</p></li>
+    </ul>
   </div>
 </section>
 
-<!-- ============================================================ -->
-<!-- L'OFFRE / PRIX -->
-<!-- ============================================================ -->
-<section class="section section--dark">
-  <div class="container">
-    <h2 class="text-center">Pourquoi 57€ et pas 579€ ?</h2>
-
-    <p>Le prix normal de cette formation, c'est <strong>579€</strong>. C'est le prix auquel elle reviendra, et c'est le prix qu'elle vaut quand on regarde ce qu'il y a dedans.</p>
-
-    <p>Je la propose à 57€ en ce moment pour une raison simple : <strong class="text-accent">je veux que le maximum de traders puissent découvrir le Market Profile</strong> sans que le prix soit un frein.</p>
-
-    <p>Pas parce que la formation vaut moins. Mais parce que je sais que la plupart d'entre vous avez déjà dépensé des centaines d'euros dans des formations qui n'ont rien changé. Et je comprends que la confiance, à ce stade, elle se mérite.</p>
-
-    <p>57€, c'est un risque quasi nul pour toi. Et c'est la meilleure façon pour moi de te prouver que ce que j'enseigne est différent.</p>
-
-    <p>Mais ce prix ne durera pas. Quand il remontera, il remontera sans prévenir.</p>
-
-    <div class="price-card">
-      <p class="price__old">579€</p>
-      <p class="price__new">57€</p>
-      <p class="price__note">Accès immédiat et illimité · Formation complète + 3 bonus</p>
-      <div class="cta-wrap">
-        <a href="/paiement/?offre=market-profile" class="cta-btn">J'apprends le Market Profile — 57€</a>
-        <div class="cta-sub">
-          <span><svg viewBox="0 0 20 20"><path d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"/></svg> Paiement sécurisé</span>
-          <span><svg viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> Accès instantané</span>
-          <span><svg viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> Garantie 30 jours</span>
-        </div>
-      </div>
+<!-- 6. L'OFFRE -->
+<section id="offre">
+  <div class="w">
+    <h2>Combien ça coûte de continuer sans ?</h2>
+    <p>Pense à ton dernier trade perdant. Celui où tu étais sûr de toi.</p>
+    <p>Il t'a coûté combien ?</p>
+    <p>Cette formation coûte moins que ça. Et elle sert à chaque séance, pendant des années.</p>
+    <p>Pour situer : mon programme complet sur le Market Profile, celui de mes élèves les plus avancés, c'est 2 990 €. Cette formation en est la première marche. Elle est à 57 €, et elle l'est depuis 2025.</p>
+    <p>Pourquoi si peu ? Parce que je préfère que tu me juges sur pièces. Tu vois comment j'enseigne, tu vois si ça change ta lecture. Et si un jour tu veux aller plus loin avec moi, tu le sauras.</p>
+    <div class="boite">
+      <ul>
+        <li>4 modules en vidéo : du premier profil à la lecture de ta séance</li>
+        <li>3 séances de trading commentées en bonus</li>
+        <li>Accès illimité, à ton rythme, dans ton espace élève</li>
+        <li>Garantie 30 jours : remboursé sur un simple mail</li>
+      </ul>
+      <div class="prix">57 €<small>En une fois. Pas d'abonnement. Accès immédiat.</small></div>
+      <div style="margin-top:22px"><a class="btn" href="/paiement/?offre=market-profile">J'apprends à lire le marché<small>57 €, accès immédiat</small></a></div>
+      <div class="rassure"><span>🔒 Paiement sécurisé</span><span>⚡ Accès immédiat</span><span>↩️ Garantie 30 jours</span></div>
     </div>
-  </div>
-</section>
 
-<!-- ============================================================ -->
-<!-- GARANTIE -->
-<!-- ============================================================ -->
-<section class="section">
-  <div class="container">
-    <div class="guarantee">
-      <div class="guarantee__icon">
-        <img src="images/guarantee-badge.jpg" alt="Garantie 30 jours">
-      </div>
+    <div class="garantie">
+      <div class="sceau">30<span>JOURS</span></div>
       <div>
-        <h3>Garantie 30 jours — zéro risque pour toi</h3>
-        <p>Regarde les modules. Teste le Market Profile sur tes graphiques. Applique ce que tu apprends pendant tes sessions.</p>
-        <p>Si au bout de 30 jours tu trouves que ça ne vaut pas 57€ — un simple mail à support@iftrading.fr et tu es remboursé intégralement. Pas de questions. Pas de formulaire.</p>
-        <p>Je peux me permettre cette garantie parce que je sais ce qu'il y a dans cette formation. Ceux qui l'appliquent ne demandent pas de remboursement — ils demandent ce qu'ils peuvent apprendre d'autre.</p>
+        <h3>Le risque, c'est moi qui le prends.</h3>
+        <p style="margin:0">Suis les modules. Ouvre ton graphique demain matin avec ce que tu as appris. Si tu trouves que ça ne vaut pas 57 €, écris-moi dans les 30 jours : je te rembourse. Sans question, sans formulaire.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============================================================ -->
-<!-- FAQ -->
-<!-- ============================================================ -->
-<section class="section section--alt">
-  <div class="container">
-    <h2 class="text-center">Questions fréquentes</h2>
-
-    <div style="max-width:680px;margin:0 auto;">
-      <div class="faq-item">
-        <p class="faq-q">J'utilise déjà ICT / Smart Money Concepts. Ça sert à quoi en plus ?</p>
-        <p class="faq-a">ICT te donne un narratif — "ils chassent la liquidité, puis retournement". C'est parfois vrai, mais en temps réel tu n'as aucune donnée pour confirmer si le sweep est terminé ou si le prix va continuer. Le Market Profile te donne cette donnée : tu vois le volume, la zone de valeur, le type de journée. Tu passes de "je pense qu'ils ont fini de chasser" à "le volume me confirme un rejet au VAH". Ce n'est pas un remplacement — c'est ce qui manque à ta méthode actuelle.</p>
-      </div>
-      <div class="faq-item">
-        <p class="faq-q">Je suis débutant, est-ce que c'est pour moi ?</p>
-        <p class="faq-a">Oui. La formation part de zéro. Le Module 1 reprend les fondations du fonctionnement des marchés. Tu n'as pas besoin de connaître le Market Profile — c'est précisément ce que tu vas apprendre.</p>
-      </div>
-      <div class="faq-item">
-        <p class="faq-q">J'ai déjà acheté des formations qui n'ont rien changé. Pourquoi celle-ci serait différente ?</p>
-        <p class="faq-a">La plupart des formations te donnent un scénario à appliquer. Celle-ci t'apprend à lire le marché — à voir les données brutes avant de raconter une histoire. Et si tu trouves que ça ne change rien, tu as 30 jours pour te faire rembourser.</p>
-      </div>
-      <div class="faq-item">
-        <p class="faq-q">Le Market Profile, ça marche sur quoi ? Forex ? Indices ? Crypto ?</p>
-        <p class="faq-a">Le Market Profile fonctionne sur tout marché où il y a du volume. Indices, futures, forex, crypto — les principes de lecture sont universels parce qu'ils reposent sur la structure du volume, pas sur l'actif.</p>
-      </div>
-      <div class="faq-item">
-        <p class="faq-q">57€, c'est le vrai prix ou c'est un faux prix barré ?</p>
-        <p class="faq-a">Le prix normal est 579€. L'offre actuelle est une décision que je maintiens tant que je le décide — et quand je la retire, elle ne revient pas. Pas de faux compte à rebours. Quand ça remontera, ça remontera.</p>
-      </div>
-      <div class="faq-item">
-        <p class="faq-q">Combien de temps j'ai accès à la formation ?</p>
-        <p class="faq-a">Accès illimité. Tu avances à ton rythme. Tu peux revoir les modules autant de fois que tu veux.</p>
-      </div>
-      <div class="faq-item">
-        <p class="faq-q">Est-ce que je dois utiliser un logiciel spécifique ?</p>
-        <p class="faq-a">Les concepts s'appliquent quel que soit ton logiciel de trading — TradingView, Sierra Chart, ou autre.</p>
-      </div>
-    </div>
+<!-- 7. CE QUE CE N'EST PAS (désamorcer la méfiance) -->
+<section class="noir">
+  <div class="w">
+    <h2>Ce que tu n'auras pas.</h2>
+    <p>Pas de promesse de gain. Personne d'honnête ne peut t'en faire.</p>
+    <p>Pas de « stratégie secrète à 90 % de réussite ». Pas de Lamborghini. Pas de compte à rebours qui se remet à zéro quand tu recharges la page.</p>
+    <p>Tu auras une façon de lire le marché. Celle que j'utilise chaque matin, et que j'enseigne depuis des années. Ce que tu en fais ensuite, c'est ton travail. Et c'est pour ça que ça marche.</p>
+    <p class="doux">Le trading comporte un risque réel de perte en capital. Entraîne-toi d'abord sans argent réel.</p>
   </div>
 </section>
 
-<!-- ============================================================ -->
-<!-- QUI EST BASS -->
-<!-- ============================================================ -->
-<section class="section">
-  <div class="container">
-    <div class="about">
-      <div class="about__photo">
-        <!-- REMPLACER par : <img src="ta-photo.jpg" alt="Bass"> -->
-        B
-      </div>
-      <div>
-        <h2 style="margin-bottom:16px;">Je suis Bass. Je trade en live, tous les jours.</h2>
-        <p>Pas "j'ai tradé il y a 5 ans et maintenant je vends des formations". Je trade. Aujourd'hui. Demain. La semaine prochaine.</p>
-        <p>Le Market Profile, c'est l'outil que j'utilise chaque matin pour préparer mes sessions. C'est ce qui me permet de savoir, avant même de passer un ordre, si le marché est "mon marché" aujourd'hui — ou si je dois rester en dehors.</p>
-        <p>J'ai créé BASS Trading pour enseigner ce que j'aurais aimé qu'on m'enseigne quand j'ai commencé : pas des recettes, mais une <strong class="text-accent">façon de comprendre les marchés</strong>.</p>
-      </div>
-    </div>
+<!-- 8. OBJECTIONS -->
+<section>
+  <div class="w">
+    <h2>Tes questions.</h2>
+    <details><summary>Je suis débutant. C'est pour moi ?</summary><p>Oui. Le module 1 repart de zéro : comment fonctionne la bourse, puis ce qu'est un profil. Tu n'as besoin d'aucune connaissance du Market Profile, c'est justement ce que tu viens apprendre.</p></details>
+    <details><summary>J'utilise déjà ICT, les order blocks, la liquidité. Ça sert à quoi ?</summary><p>Ces approches te donnent un scénario. Le profil te dit si le marché le valide : s'il accepte le prix ou s'il le rejette. Ce n'est pas un remplacement. C'est ce qui permet de trier tes scénarios avant d'entrer.</p></details>
+    <details><summary>J'ai déjà acheté des formations qui n'ont rien changé.</summary><p>Je sais. Beaucoup de mes élèves sont arrivés comme ça. C'est pour ça qu'il y a la garantie : tu as 30 jours pour juger. Si ça ne change pas ta lecture, tu es remboursé.</p></details>
+    <details><summary>Ça marche sur quel marché ?</summary><p>Partout où il y a des échanges et des volumes : indices, futures, matières premières, crypto. Je l'enseigne sur le Nasdaq parce que c'est là que je trade.</p></details>
+    <details><summary>Il me faut un logiciel spécial ?</summary><p>Il te faut une plateforme qui affiche le Market Profile ou le Volume Profile. Beaucoup de plateformes en ont un.</p></details>
+    <details><summary>Combien de temps j'y ai accès ?</summary><p>Sans limite. Tu reviens sur un module quand tu en as besoin.</p></details>
+    <details><summary>57 €, c'est un prix « barré » ?</summary><p>Non. C'est le prix, depuis 2025. Pas de faux prix d'origine, pas de faux compte à rebours.</p></details>
   </div>
 </section>
 
-<!-- ============================================================ -->
-<!-- FINAL CTA -->
-<!-- ============================================================ -->
-<section class="final-cta">
-  <div class="container">
-    <h2>Récapitulons.</h2>
-    <p style="font-size:18px;color:#9ca3af;">Pour 57€, tu accèdes à :</p>
-
-    <div class="checklist">
-      <div class="checklist__item">
-        <svg viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
-        <span>4 modules complets pour maîtriser le Market Profile — de zéro à opérationnel</span>
-      </div>
-      <div class="checklist__item">
-        <svg viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
-        <span>L'outil de lecture que les traders professionnels utilisent depuis 40 ans</span>
-      </div>
-      <div class="checklist__item">
-        <svg viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
-        <span>Mon indicateur personnel que je ne partage nulle part ailleurs</span>
-      </div>
-      <div class="checklist__item">
-        <svg viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
-        <span>3 bonus exclusifs inclus</span>
-      </div>
-      <div class="checklist__item">
-        <svg viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
-        <span>Accès illimité, à vie</span>
-      </div>
-      <div class="checklist__item">
-        <svg viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
-        <span>Garantie 30 jours satisfait ou remboursé</span>
-      </div>
-    </div>
-
-    <div class="divider divider--center"></div>
-
-    <p style="font-size:19px;color:#fff;font-weight:600;">57€.</p>
-    <p style="max-width:520px;margin:0 auto 12px;">C'est moins que ce que tu perds sur un trade mal placé un mardi après-midi. Sauf que le trade, tu l'oublies en 10 minutes. Cette formation change ta façon de lire le marché pour toujours.</p>
-
-    <div class="cta-wrap">
-      <a href="/paiement/?offre=market-profile" class="cta-btn">J'apprends le Market Profile — 57€</a>
-      <div class="cta-sub">
-        <span><svg viewBox="0 0 20 20"><path d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"/></svg> Paiement sécurisé</span>
-        <span><svg viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> Accès instantané</span>
-        <span><svg viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> Garantie 30 jours</span>
-      </div>
-    </div>
-
-    <p style="color:#4b5563;font-size:14px;margin-top:24px;">Des questions ? Écris-nous à <a href="mailto:support@iftrading.fr" style="color:#f59e0b;">support@iftrading.fr</a></p>
+<!-- 9. DERNIER APPEL + P.S. -->
+<section class="gris">
+  <div class="w">
+    <h2>Demain matin, tu ouvriras ton graphique.</h2>
+    <p>Tu peux y voir les mêmes bougies qu'hier.</p>
+    <p>Ou tu peux y voir où le marché a accepté d'échanger, et ce qu'il fait quand le prix s'en éloigne.</p>
+    <p>C'est la même séance. Ce n'est pas la même lecture.</p>
+    <a class="btn" href="/paiement/?offre=market-profile">Je commence la formation<small>57 € · garantie 30 jours</small></a>
+    <p class="ps" style="margin-top:34px"><b>P.S.</b> Si tu ne lis qu'une ligne : 1 473 traders ont pris cette formation, elle coûte 57 €, et tu as 30 jours pour te faire rembourser si elle ne change pas ta lecture du marché.</p>
+    <p class="ps doux"><b>P.P.S.</b> Pas encore prêt ? Commence par mes 7 leçons gratuites. Elles t'attendent dans ton espace, et le Market Profile y est montré en action pendant 35 minutes.</p>
   </div>
 </section>
 
-<!-- ============================================================ -->
-<!-- FOOTER -->
-<!-- ============================================================ -->
-<footer class="footer">
-  <div class="container">
-    <p>BASS Trading — Formation Market Profile</p>
-    <p>Le trading comporte des risques de perte en capital. Les performances passées ne préjugent pas des performances futures.</p>
-    <p><a href="mailto:support@iftrading.fr">support@iftrading.fr</a> · <a href="/mentions-legales/">Mentions légales</a> · <a href="/cgv/">CGV</a></p>
-  </div>
-</footer>
+<div class="pied">BASS Trading · Formation Market Profile · <a href="mailto:contact@basstrading.fr">contact@basstrading.fr</a> · <a href="/mentions-legales/">Mentions légales</a> · <a href="/cgv/">CGV</a><br>Le trading comporte des risques de perte en capital. Les performances passées ne préjugent pas des performances futures.</div>
 
+<div class="flottant" id="flottant"><a href="/paiement/?offre=market-profile">J'apprends à lire le marché · 57 €</a></div>
+
+<script>
+// Vidéos YouTube : chargées au clic seulement (page légère sur mobile).
+document.querySelectorAll('.yt').forEach((el) => el.addEventListener('click', () => {
+  el.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${el.dataset.id}?autoplay=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
+}, { once: true }));
+// Bouton fixe en bas : il apparaît après la vidéo, et se cache quand l'offre est à l'écran.
+const flottant = document.getElementById('flottant');
+const offre = document.getElementById('offre');
+let offreVisible = false;
+new IntersectionObserver(([e]) => { offreVisible = e.isIntersecting; maj(); }).observe(offre);
+const maj = () => flottant.classList.toggle('on', scrollY > innerHeight * 1.2 && !offreVisible);
+addEventListener('scroll', maj, { passive: true });
+</script>
 <script src="/v.js" defer></script>
 </body>
 </html>
