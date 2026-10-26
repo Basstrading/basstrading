@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drawdown prop firm : statique, trailing ou fin de journée ? — BASS Trading</title>
+  <meta name="description" content="Drawdown prop firm : statique, trailing intraday, fin de journée ou verrouillé ? La mécanique chiffrée de chaque type et comment adapter ton trading.">
+  <meta property="og:title" content="Drawdown prop firm : statique, trailing ou fin de journée ? — BASS Trading">
+  <meta property="og:description" content="Drawdown prop firm : statique, trailing intraday, fin de journée ou verrouillé ? La mécanique chiffrée de chaque type et comment adapter ton trading.">
+  <meta property="og:image" content="https://basstrading.fr/blog/drawdown-prop-firm-futures/blog-drawdown-prop-firm-futures-1.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://basstrading.fr/blog/drawdown-prop-firm-futures/blog-drawdown-prop-firm-futures-1.webp">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://basstrading.fr/blog/drawdown-prop-firm-futures/">
+  <meta property="og:site_name" content="BASS Trading">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://basstrading.fr/blog/drawdown-prop-firm-futures/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","@id":"https://basstrading.fr/blog/drawdown-prop-firm-futures/#article","headline":"Drawdown prop firm : statique, trailing ou fin de journée ?","description":"Drawdown prop firm : statique, trailing intraday, fin de journée ou verrouillé ? La mécanique chiffrée de chaque type et comment adapter ton trading.","datePublished":"2026-10-26","dateModified":"2026-10-26","inLanguage":"fr-FR","image":"https://basstrading.fr/blog/drawdown-prop-firm-futures/blog-drawdown-prop-firm-futures-1.webp","mainEntityOfPage":"https://basstrading.fr/blog/drawdown-prop-firm-futures/","isPartOf":{"@type":"WebSite","@id":"https://basstrading.fr/#website","name":"BASS Trading","url":"https://basstrading.fr/"},"author":{"@type":"Person","@id":"https://basstrading.fr/#sebastien-constant","name":"Sébastien Constant","url":"https://basstrading.fr/auteur/sebastien-constant/"},"publisher":{"@type":"Organization","@id":"https://basstrading.fr/#organisation","name":"BASS Trading","url":"https://basstrading.fr/","logo":{"@type":"ImageObject","url":"https://basstrading.fr/images/logo-basstrading.png","width":512,"height":512}}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://basstrading.fr"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://basstrading.fr/blog/"},{"@type":"ListItem","position":3,"name":"Drawdown prop firm","item":"https://basstrading.fr/blog/drawdown-prop-firm-futures/"}]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Qu'est-ce que le trailing drawdown en prop firm ?","acceptedAnswer":{"@type":"Answer","text":"C'est une limite de perte dont le plancher suit ton plus haut, toujours à la même distance (par exemple 2 000 $), et ne redescend jamais. En version intraday, le plus haut inclut tes gains latents : un gain que tu rends au marché réduit ta marge même si tu sors à zéro. En version fin de journée, seul le solde de clôture compte."}},{"@type":"Question","name":"Le trailing drawdown peut-il redescendre ?","acceptedAnswer":{"@type":"Answer","text":"Non. Le plancher ne fait que monter ou rester en place. Si ton compte recule après un plus haut, la distance entre ton solde et le plancher diminue : c'est ta marge qui baisse, pas le plancher. C'est pour ça qu'il faut recalculer ta marge après chaque nouveau plus haut."}},{"@type":"Question","name":"Vaut-il mieux un drawdown intraday ou de fin de journée ?","acceptedAnswer":{"@type":"Answer","text":"Pour la plupart des traders, le drawdown de fin de journée est plus vivable : les allers-retours de la séance ne font pas monter le plancher. Attention quand même : le plancher de la veille s'applique en temps réel pendant la journée, et une grosse journée verte le fait monter d'autant le soir."}},{"@type":"Question","name":"Que se passe-t-il quand on touche la perte journalière ?","acceptedAnswer":{"@type":"Answer","text":"Selon la prop firm, ta journée de trading s'arrête ou ton compte est perdu : lis bien cette règle. Dans les deux cas, je conseille d'arrêter ce compte pour la journée. Une grosse perte en une séance a déjà entamé une large part de ta marge, et c'est le moment où l'on est tenté de se refaire."}},{"@type":"Question","name":"Comment calculer la règle de consistance ?","acceptedAnswer":{"@type":"Answer","text":"Divise ta meilleure journée par le seuil de consistance de ta prop firm. Avec un seuil de 40 % et une meilleure journée à 1 500 $, il te faut au moins 3 750 $ de gain total. Le plus simple pour la respecter est de garder une taille de position similaire d'un jour à l'autre."}},{"@type":"Question","name":"Qu'est-ce qu'un drawdown verrouillé ?","acceptedAnswer":{"@type":"Answer","text":"C'est un trailing drawdown qui cesse de suivre ton plus haut une fois un seuil atteint, souvent le solde de départ. Sur un compte de 50 000 $ avec 2 000 $ de drawdown, le plancher se fige à 50 000 $ quand ton compte touche 52 000 $. Ensuite, chaque gain agrandit ta marge, comme sur un compte statique."}}]}
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{--bk:#1D1D1F;--bk2:#111;--bk3:#0A0A0A;--g1:#6E6E73;--g2:#86868B;--g3:#D2D2D7;--g4:#F5F5F7;--wh:#FBFBFD;--pure:#FFF;--green:#00B67A;--blue:#0066FF}
+    html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}
+    body{font-family:'DM Sans',sans-serif;color:var(--bk);background:var(--pure);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+    .preloader{position:fixed;inset:0;background:var(--bk3);z-index:10001;display:flex;align-items:center;justify-content:center}
+    .pre-word{font-family:'Outfit',sans-serif;font-size:clamp(3rem,8vw,5rem);font-weight:900;letter-spacing:16px;text-transform:uppercase;color:var(--pure);overflow:hidden}
+    .pre-word span{display:inline-block;transform:translateY(110%);opacity:0}
+    .pre-line{width:0;height:1px;background:rgba(255,255,255,.3);margin-top:20px}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 48px;display:flex;align-items:center;justify-content:space-between;background:rgba(245,245,247,.85);backdrop-filter:blur(20px) saturate(1.8);border-bottom:1px solid rgba(0,0,0,.04);transition:background .4s}
+    .nav-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase;color:var(--bk)}
+    .nav-links{display:flex;gap:28px;list-style:none}.nav-links a{font-size:.74rem;font-weight:500;letter-spacing:.3px;color:var(--g1);transition:color .3s}.nav-links a:hover{color:var(--bk)}
+    .nav-cta{padding:8px 20px;background:var(--bk);color:var(--pure);border:none;border-radius:980px;font-size:.72rem;font-weight:600;transition:all .3s;cursor:pointer;text-decoration:none;display:inline-block}.nav-cta:hover{background:var(--bk2)}
+    .blog-hero{padding:160px 48px 80px;background:var(--g4);position:relative;overflow:hidden}
+    .blog-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,transparent,var(--g4));pointer-events:none}
+    .blog-hero-inner{max-width:720px;margin:0 auto}
+    .breadcrumb{display:flex;gap:8px;align-items:center;margin-bottom:28px;flex-wrap:wrap}
+    .breadcrumb a,.breadcrumb span{font-size:.68rem;font-weight:500;letter-spacing:.3px;color:var(--g2);transition:color .3s}.breadcrumb a:hover{color:var(--bk)}.breadcrumb .sep{color:var(--g3)}
+    .blog-hero-cat{display:inline-block;padding:5px 14px;border:1px solid rgba(0,102,255,.15);border-radius:980px;font-size:.6rem;font-weight:700;color:var(--blue);letter-spacing:2px;text-transform:uppercase;margin-bottom:20px}
+    .blog-hero-title{font-family:'Outfit',sans-serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:900;line-height:1.05;letter-spacing:-2px;color:var(--bk);margin-bottom:20px}
+    .blog-hero-desc{font-size:.95rem;color:var(--g1);line-height:1.8;max-width:560px;margin-bottom:28px}
+    .blog-meta{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+    .blog-meta-author{display:flex;align-items:center;gap:10px}
+    .blog-meta-avatar{width:36px;height:36px;border-radius:50%;background:var(--bk3);overflow:hidden;flex-shrink:0}.blog-meta-avatar img{width:100%;height:100%;object-fit:cover}
+    .blog-meta-name{font-size:.78rem;font-weight:600;color:var(--bk)}.blog-meta-role{font-size:.65rem;color:var(--g2)}
+    .blog-meta-sep{width:1px;height:24px;background:var(--g3)}
+    .blog-meta-info{font-size:.7rem;color:var(--g2)}.blog-meta-info span{margin-right:16px}
+    .toc{position:sticky;top:90px;background:var(--pure);border:1px solid rgba(0,0,0,.04);border-radius:14px;padding:24px;margin-bottom:32px}
+    .toc-title{font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.5px;color:var(--bk);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+    .toc ol{list-style:none;counter-reset:toc}.toc li{counter-increment:toc}
+    .toc li a{display:flex;align-items:baseline;gap:8px;padding:6px 0;font-size:.76rem;color:var(--g1);transition:color .3s;border-bottom:1px solid rgba(0,0,0,.03)}.toc li a:hover{color:var(--blue)}
+    .toc li a::before{content:counter(toc,decimal-leading-zero);font-family:'Outfit',sans-serif;font-size:.65rem;font-weight:700;color:var(--g3);min-width:18px}
+    .toc li:last-child a{border-bottom:none}.toc li a.active{color:var(--blue);font-weight:600}.toc li a.active::before{color:var(--blue)}
+    .article-wrap{display:grid;grid-template-columns:220px 1fr;gap:40px;max-width:1020px;margin:0 auto;padding:60px 48px 120px}
+    .article-sidebar{position:relative}.article-body{max-width:700px}
+    .article-body h2{font-family:'Outfit',sans-serif;font-size:clamp(1.4rem,2.5vw,1.8rem);font-weight:800;line-height:1.1;letter-spacing:-1px;color:var(--bk);margin:56px 0 16px;padding-top:20px}.article-body h2:first-of-type{margin-top:0}
+    .article-body h3{font-family:'Outfit',sans-serif;font-size:1.05rem;font-weight:700;line-height:1.25;letter-spacing:-.3px;color:var(--bk);margin:36px 0 10px}
+    .article-body p{font-size:.9rem;color:var(--g1);line-height:1.85;margin-bottom:18px}
+    .article-body strong{color:var(--bk);font-weight:600}
+    .article-body ul,.article-body ol{margin:0 0 20px 0;padding-left:20px}
+    .article-body li{font-size:.88rem;color:var(--g1);line-height:1.8;margin-bottom:6px}.article-body li strong{color:var(--bk)}
+    .article-body blockquote{margin:28px 0;padding:20px 24px;background:var(--g4);border-left:3px solid var(--bk);border-radius:0 12px 12px 0;font-size:.88rem;color:var(--g1);line-height:1.8;font-style:italic}
+    .article-body blockquote strong{color:var(--bk);font-style:normal}
+    .article-body hr{border:none;border-top:1px solid var(--g4);margin:48px 0}
+    .info-box{margin:28px 0;padding:24px;background:rgba(0,102,255,.03);border:1px solid rgba(0,102,255,.08);border-radius:14px}
+    .info-box-title{font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:700;color:var(--blue);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+    .info-box p{font-size:.82rem;color:var(--g1);line-height:1.7;margin-bottom:0}
+    .key-concept{margin:32px 0;padding:28px;background:var(--bk3);border-radius:16px;color:var(--pure)}
+    .key-concept-label{font-size:.55rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:10px}
+    .key-concept h4{font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:800;letter-spacing:-.3px;margin-bottom:8px}
+    .key-concept p{font-size:.85rem;color:rgba(255,255,255,.5);line-height:1.8;margin-bottom:0}
+    .compare-table{width:100%;margin:24px 0 28px;border-collapse:collapse;border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,.06)}
+    .compare-table th{background:var(--bk3);color:var(--pure);font-family:'Outfit',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:14px 16px;text-align:left}
+    .compare-table td{padding:12px 16px;font-size:.82rem;color:var(--g1);line-height:1.6;border-bottom:1px solid rgba(0,0,0,.04);background:var(--pure)}
+    .compare-table tr:last-child td{border-bottom:none}.compare-table td:first-child{font-weight:600;color:var(--bk)}
+    .cta-card{margin:48px 0;padding:40px;background:var(--bk3);border-radius:20px;text-align:center;position:relative;overflow:hidden}
+    .cta-card::before{content:'';position:absolute;top:-50%;right:-30%;width:400px;height:400px;background:radial-gradient(circle,rgba(0,102,255,.08) 0%,transparent 70%);pointer-events:none}
+    .cta-card-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:12px}
+    .cta-card h3{font-family:'Outfit',sans-serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:800;color:var(--pure);letter-spacing:-.5px;margin-bottom:8px}
+    .cta-card p{font-size:.85rem;color:rgba(255,255,255,.4);line-height:1.7;max-width:380px;margin:0 auto 24px}
+    .cta-card .btn-p{background:var(--pure);color:var(--bk)}.cta-card .btn-p:hover{box-shadow:0 8px 30px rgba(255,255,255,.15)}
+    .faq-sec{padding:80px 48px 100px;background:var(--g4)}
+    .faq-list{max-width:680px;margin:40px auto 0}.fi{border-bottom:1px solid rgba(0,0,0,.06)}
+    .fq{width:100%;text-align:left;padding:18px 0;background:none;border:none;font-size:.85rem;font-weight:600;font-family:'DM Sans',sans-serif;color:var(--bk);display:flex;justify-content:space-between;align-items:center;cursor:pointer;gap:16px;transition:color .3s}.fq:hover{color:var(--g1)}
+    .fq-icon{width:22px;height:22px;border-radius:50%;background:rgba(0,0,0,.04);display:flex;align-items:center;justify-content:center;font-size:.75rem;transition:all .4s;flex-shrink:0;color:var(--g2)}
+    .fa{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1)}.fa.open{max-height:280px;padding-bottom:14px}
+    .fa p{font-size:.8rem;color:var(--g1);line-height:1.7;margin-bottom:0}.fi.active .fq-icon{background:var(--bk);color:var(--pure);transform:rotate(45deg)}
+    .related-sec{padding:80px 48px;background:var(--pure);border-top:1px solid var(--g4)}
+    .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1060px;margin:40px auto 0}
+    .related-card{display:block;padding:28px;background:var(--g4);border-radius:16px;transition:all .4s;text-decoration:none;color:var(--bk)}
+    .related-card:hover{background:var(--pure);box-shadow:0 8px 30px rgba(0,0,0,.06);transform:translateY(-2px)}
+    .related-cat{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+    .related-card h3{font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:700;line-height:1.3;letter-spacing:-.3px;margin-bottom:8px}
+    .related-card p{font-size:.78rem;color:var(--g1);line-height:1.6;margin-bottom:14px}
+    .related-link{font-size:.72rem;font-weight:600;color:var(--blue);letter-spacing:.3px}
+    .footer{background:var(--bk3);color:var(--pure);padding:56px 48px 28px}
+    .ft-top{display:flex;justify-content:space-between;align-items:start;margin-bottom:48px;flex-wrap:wrap;gap:32px}
+    .ft-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase}
+    .ft-cols{display:flex;gap:80px}
+    .ft-col-title{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:12px}
+    .ft-col a{display:block;font-size:.78rem;color:rgba(255,255,255,.5);margin-bottom:8px;transition:color .3s}.ft-col a:hover{color:var(--pure)}
+    .ft-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:20px;display:flex;justify-content:space-between;align-items:center;font-size:.6rem;color:rgba(255,255,255,.2)}
+    .ft-bottom a{color:rgba(255,255,255,.2);transition:color .3s;margin-left:20px}.ft-bottom a:hover{color:rgba(255,255,255,.5)}
+    .disclaimer{padding:12px 48px;background:var(--bk3);font-size:.58rem;color:rgba(255,255,255,.12);text-align:center;line-height:1.6;border-top:1px solid rgba(255,255,255,.03)}
+    .sec-center{text-align:center;max-width:680px;margin:0 auto}
+    .sec-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--g2);margin-bottom:10px}
+    .sec-title{font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;line-height:1.05;letter-spacing:-1.5px;color:var(--bk);margin-bottom:16px}
+    .btn-p{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--bk);color:var(--pure);border-radius:980px;font-size:.85rem;font-weight:600;transition:all .3s;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;text-decoration:none}
+    .btn-p:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(0,0,0,.1)}
+    .btn-p svg{width:13px;height:13px;transition:transform .3s}.btn-p:hover svg{transform:translateX(3px)}
+    .reading-progress{position:fixed;top:0;left:0;height:2px;background:var(--blue);z-index:9999;width:0;transition:width .1s linear}
+    @media(max-width:900px){.nav{padding:14px 20px}.nav-links{display:none}.blog-hero{padding:120px 20px 60px}.article-wrap{grid-template-columns:1fr;padding:40px 20px 80px}.article-sidebar{display:none}.related-grid{grid-template-columns:1fr}.related-sec,.faq-sec{padding:60px 20px}.ft-cols{flex-direction:column;gap:28px}.footer{padding:40px 20px 20px}.disclaimer{padding:10px 16px}.cta-card{padding:28px 20px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  .article-body a{color:var(--blue);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;font-weight:500}.article-body a:hover{text-decoration-thickness:2px}
+</style>
+</head>
+<body>
+
+<div class="preloader" id="preloader"><div style="text-align:center"><div class="pre-word"><span>B</span><span>A</span><span>S</span><span>S</span></div><div class="pre-line" id="preLine"></div></div></div>
+<div class="reading-progress" id="readingProgress"></div>
+
+<nav class="nav" id="nav">
+  <a href="https://basstrading.fr" class="nav-logo">BASS</a>
+  <ul class="nav-links">
+    <li><a href="https://basstrading.fr/#methode">Méthode</a></li>
+    <li><a href="https://basstrading.fr#resultats">Résultats</a></li>
+    <li><a href="https://basstrading.fr#avis">Avis</a></li>
+    <li><a href="https://basstrading.fr#faq">FAQ</a></li>
+    <li><a href="https://basstrading.fr/blog/">Blog</a></li>
+  </ul>
+  <a href="https://basstrading.fr/p/formation-offerte/?src=blog-drawdown-prop-firm-futures-menu" class="nav-cta">Formation offerte</a>
+</nav>
+
+<section class="blog-hero">
+  <div class="blog-hero-inner">
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <a href="https://basstrading.fr">Accueil</a><span class="sep">/</span>
+      <a href="https://basstrading.fr/blog/">Blog</a><span class="sep">/</span>
+      <span>Drawdown prop firm</span>
+    </nav>
+    <div class="blog-hero-cat">Gestion du risque</div>
+    <h1 class="blog-hero-title">Drawdown prop firm : statique, trailing ou fin de journée ?</h1>
+    <p class="blog-hero-desc">Le drawdown d&#39;une prop firm, c&#39;est la perte maximale autorisée avant la clôture de ton compte. Mais il n&#39;en existe pas qu&#39;un : statique, suiveur intraday, suiveur de fin de journée, suiveur qui se verrouille. Chacun déplace ton plancher autrement et impose une autre façon de trader. Je te montre la mécanique, chiffres à l&#39;appui, et comment j&#39;adapte mes trades à chacun.</p>
+    <div class="blog-meta">
+      <div class="blog-meta-author">
+        <div class="blog-meta-avatar"><img src="../../images/bass-presenting.jpg" alt="Sébastien Constant" loading="lazy"></div>
+        <div><div class="blog-meta-name"><a href="/auteur/sebastien-constant/" rel="author" style="color:inherit;text-decoration:none">Sébastien Constant</a></div><div class="blog-meta-role">Trader & Formateur Order Flow</div></div>
+      </div>
+      <div class="blog-meta-sep"></div>
+      <div class="blog-meta-info"><span>Octobre 2026</span><span>20 min de lecture</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="article-wrap">
+  <aside class="article-sidebar">
+    <div class="toc">
+      <div class="toc-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/></svg> Sommaire</div>
+      <ol>
+        <li><a href="#qu-est-ce-que-le-drawdown-d-une-prop-fir">Qu&#39;est-ce que le drawdown d&#39;une prop firm ?</a></li>
+        <li><a href="#comment-fonctionne-le-drawdown-statique">Comment fonctionne le drawdown statique ?</a></li>
+        <li><a href="#comment-fonctionne-le-trailing-drawdown-">Comment fonctionne le trailing drawdown intraday ?</a></li>
+        <li><a href="#quelle-difference-avec-le-trailing-de-fi">Quelle différence avec le trailing de fin de journée et le trailing verrouillé ?</a></li>
+        <li><a href="#quel-lien-entre-drawdown-maximal-perte-j">Quel lien entre drawdown maximal, perte journalière et règle de consistance ?</a></li>
+        <li><a href="#quel-drawdown-est-le-plus-dur-et-comment">Quel drawdown est le plus dur, et comment adapter ton trading à chacun ?</a></li>
+        <li><a href="#pourquoi-2-000-de-drawdown-font-un-compt">Pourquoi 2 000 $ de drawdown font un compte fragile ?</a></li>
+        <li><a href="#quelles-erreurs-font-sauter-un-compte-de">Quelles erreurs font sauter un compte de prop firm ?</a></li>
+        <li><a href="#comment-suivre-ta-marge-restante-chaque-">Comment suivre ta marge restante chaque jour ?</a></li>
+        <li><a href="#que-retenir-et-que-faire-ce-soir">Que retenir, et que faire ce soir ?</a></li>
+      </ol>
+    </div>
+  </aside>
+
+  <article class="article-body">
+    <h2 id="qu-est-ce-que-le-drawdown-d-une-prop-fir">Qu&#39;est-ce que le drawdown d&#39;une prop firm ?</h2>
+    <p>Tu viens de valider ton challenge, ton compte affiche 50 000 $, et un matin il est clôturé alors que tu n&#39;as jamais perdu 2 000 $ « pour de vrai ». Tu relis les règles et tu découvres le mot : trailing. Ici, tu vas apprendre à lire n&#39;importe quelle règle de drawdown, calculer ta vraie marge chaque matin et adapter ta façon de trader au type de compte que tu as.</p>
+<p><b>Le drawdown d&#39;une prop firm est la perte maximale autorisée sur ton compte, mesurée depuis un niveau de référence (le solde de départ ou ton plus haut), au-delà de laquelle la société clôture ton compte, même financé.</b></p>
+<p>Ce niveau sous lequel ton compte ne doit jamais descendre, on l&#39;appelle le plancher (floor en anglais). Toute la question est de savoir s&#39;il reste fixe ou s&#39;il te suit quand tu gagnes. C&#39;est ce qui sépare les quatre grandes familles de drawdown.</p>
+<p>J&#39;en parle dans ma vidéo <a href="https://www.youtube.com/watch?v=JdMuB0ay37Y">« La vérité que personne ne te dit sur les propfirms »</a> :</p>
+<aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p>« Certaines ont des drawdown suiveurs, d&#39;autres ont des drawdown fixes. Si vous avez un drawdown fixe, vous allez travailler d&#39;une manière différente que le trailing drawdown. »</p></aside>
+<p><em>Ma vidéo « La vérité que personne ne te dit sur les propfirms » (vers 18:30)</em></p>
+<h3>Ton vrai capital, c&#39;est le drawdown</h3>
+<p>Avant les mécaniques, une idée simple qui change tout. Sur un compte « à 50 000 $ » avec 2 000 $ de drawdown, tu ne trades pas 50 000 $. <b>Tu trades 2 000 $.</b> Si tu les perds, le compte est terminé et il faut repasser un challenge. Je le répète dans une autre vidéo : « Les 50 000, c&#39;est du vent, c&#39;est du marketing » (vers 21:00 de <a href="https://www.youtube.com/watch?v=3YvoeD-_BEc">ma vidéo sur le risque par trade</a>). J&#39;ai détaillé ce calcul dans mon article <a href="https://basstrading.fr/blog/combien-risquer-par-trade/">combien risquer par trade sur le Nasdaq</a> ; ici, on se concentre sur la façon dont ce plancher bouge.</p>
+<p>Si tu découvres les prop firms, commence par mon guide pour <a href="https://basstrading.fr/blog/prop-firm-funded-trader/">devenir funded trader en prop firm</a> : il explique le challenge, les frais et le passage en compte financé.</p>
+<p><em>Avertissement : le trading de contrats à terme comporte un risque élevé de perte, pouvant dépasser la mise initiale. Contenu éducatif, pas un conseil en investissement. Les règles citées sont des exemples types : chaque prop firm a les siennes, lis toujours ses conditions.</em></p>
+<h3>À retenir</h3>
+<ul><li>Le drawdown est la perte maximale avant la clôture du compte.</li><li>Le plancher est le niveau à ne jamais franchir.</li><li>Ton capital réel est le montant du drawdown, pas la taille affichée.</li></ul>
+<p>Commençons par le cas le plus simple, celui où le plancher ne bouge jamais.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/drawdown-prop-firm-futures/blog-drawdown-prop-firm-futures-1.webp" alt="Les chiffres clés du drawdown en prop firm : marge de 2 000 $ sur un compte de 50 000 $, quatre types de drawdown, un plancher à ne pas franchir" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Sur un compte financé, tout se joue sur la distance entre ton solde et ton plancher.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="comment-fonctionne-le-drawdown-statique">Comment fonctionne le drawdown statique ?</h2>
+    <p>Avec un drawdown statique (ou fixe), le plancher est calculé une fois pour toutes à partir du solde de départ et ne bouge plus, quoi que tu gagnes. Sur un compte de 50 000 $ avec 2 000 $ de drawdown, le plancher est à 48 000 $, que ton compte monte à 51 000 $ ou à 60 000 $.</p>
+<h3>L&#39;exemple chiffré</h3>
+<ul><li>Jour 1 : solde 50 000 $, plancher 48 000 $, marge 2 000 $.</li><li>Jour 5 : tu as gagné 1 500 $. Solde 51 500 $, plancher toujours 48 000 $, marge 3 500 $.</li><li>Jour 12 : solde 54 000 $, marge 6 000 $.</li></ul>
+<p><b>Chaque dollar gagné agrandit ta marge.</b> C&#39;est le type le plus confortable : plus tu avances, plus tu as d&#39;air.</p>
+<h3>Le revers</h3>
+<p>Au début, tu es exactement aussi fragile qu&#39;avec n&#39;importe quel autre type : 2 000 $ et pas un de plus. Les premiers jours décident de tout. Un compte statique ne pardonne pas plus qu&#39;un autre une première semaine mal gérée ; il récompense seulement davantage la régularité ensuite.</p>
+<p>C&#39;est aussi pour ça que les comptes à drawdown statique sont souvent plus chers, ou assortis d&#39;un drawdown plus petit pour la même taille de compte. Compare toujours le montant du drawdown, pas la taille affichée.</p>
+<h3>Comment je trade un compte statique</h3>
+<p>Dans ma vidéo, je dis qu&#39;un drawdown fixe donne « un peu plus de liberté pour laisser respirer vos trades », et que l&#39;on peut aller chercher « 50 points, 100 points » (vers 19:00). Concrètement :</p>
+<ul><li>je garde mon stop là où mon idée est fausse, pas plus serré pour « protéger le compte » ;</li><li>je laisse courir une partie de la position vers un objectif large ;</li><li>mais je ne grossis ma taille qu&#39;une fois que la marge a vraiment augmenté, jamais pendant les premiers jours.</li></ul>
+<p>Sur le Nasdaq, 100 points représentent 200 $ par micro (MNQ, 2 $ le point) et 2 000 $ par contrat standard (NQ, 20 $ le point), selon les <a href="https://www.cmegroup.com/markets/equities/nasdaq/micro-e-mini-nasdaq-100.contractSpecs.html">spécifications officielles du Micro E-mini Nasdaq-100 publiées par le CME</a> et celles de l&#39;<a href="https://www.cmegroup.com/markets/equities/nasdaq/e-mini-nasdaq-100.contractSpecs.html">E-mini Nasdaq-100</a>. <b>Un seul NQ qui part de 100 points contre toi consomme la totalité d&#39;un drawdown de 2 000 $.</b> Garde ces deux chiffres en tête pour toute la suite.</p>
+<h3>À retenir</h3>
+<ul><li>Statique : le plancher ne bouge jamais.</li><li>Chaque gain agrandit ta marge.</li><li>Les premiers jours restent aussi fragiles qu&#39;avec un trailing.</li></ul>
+<p>Le drawdown statique est moins courant en futures, et souvent plus cher ou assorti d&#39;un drawdown plus petit. Beaucoup de comptes futures utilisent un plancher qui te suit, et c&#39;est là que les mauvaises surprises commencent.</p>
+
+    <hr>
+
+    <h2 id="comment-fonctionne-le-trailing-drawdown-">Comment fonctionne le trailing drawdown intraday ?</h2>
+    <p>Avec un trailing drawdown intraday, le plancher suit en temps réel le plus haut atteint par ton compte, gains latents compris, toujours à la même distance (par exemple 2 000 $), et ne redescend jamais. Un gain que tu n&#39;as pas encaissé peut donc faire monter ton plancher.</p>
+<h3>L&#39;exemple qui surprend tout le monde</h3>
+<p>Compte de 50 000 $, trailing intraday de 2 000 $ :</p>
+<ul><li>Départ : solde 50 000 $, plancher 48 000 $, marge 2 000 $.</li><li>Tu prends un NQ. Le marché part dans ton sens de 50 points : 50 × 20 $ = 1 000 $ de gain latent. Ton compte touche 51 000 $ pendant quelques secondes. Le plancher monte à 49 000 $.</li><li>Le marché revient. Tu sors à ton prix d&#39;entrée, à zéro. Ton solde est de 50 000 $, comme au départ.</li><li>Résultat : tu n&#39;as rien perdu, et pourtant ta marge est passée de 2 000 $ à 1 000 $. Le plancher, lui, reste à 49 000 $ pour toujours.</li></ul>
+<p>C&#39;est le scénario du compte clôturé « sans avoir perdu 2 000 $ ». <b>Chaque gain latent que tu rends au marché est retiré de ta marge, même si tu n&#39;as jamais été en perte.</b></p>
+<h3>La conséquence que personne n&#39;explique</h3>
+<p>Tant que le plancher te suit, ta marge ne peut jamais dépasser le montant du drawdown. Tu peux gagner 5 000 $ sur un compte trailing de 2 000 $ : si le plancher a suivi, ta marge reste au mieux à 2 000 $. Le coussin ne grossit pas avec tes gains, contrairement au compte statique.</p>
+<p>C&#39;est pour cette raison que beaucoup de prop firms prévoient un verrou (on y vient juste après) : sans lui, un trader financé resterait toute sa vie à 2 000 $ de la clôture.</p>
+<h3>Pourquoi le trailing intraday punit ceux qui « laissent respirer »</h3>
+<p>Sur un compte statique, laisser un trade revenir de 40 points avant de repartir ne coûte rien à ta marge. Sur un trailing intraday, si ce trade avait d&#39;abord monté de 40 points, ces 40 points rendus sont perdus définitivement pour ta marge, même si le trade finit gagnant.</p>
+<p>Le Nasdaq bouge vite : un aller-retour de 30 à 50 points en quelques minutes est banal autour de l&#39;ouverture américaine, à 15 h 30 heure de Paris en temps normal mais 14 h 30 du 26 au 30/10 avec le décalage des changements d&#39;heure (détails dans mon article sur <a href="https://basstrading.fr/blog/horaires-futures-nasdaq-heure-paris/">les horaires des futures Nasdaq à l&#39;heure de Paris</a>). Avec un contrat standard, c&#39;est 600 à 1 000 $ de plancher qui peuvent monter sans que tu n&#39;encaisses un centime.</p>
+<h3>À retenir</h3>
+<ul><li>Trailing intraday : le plancher suit ton plus haut en temps réel, latents compris.</li><li>Un gain latent rendu coûte de la marge, même si tu sors à zéro.</li><li>Tant qu&#39;il suit, ta marge ne dépasse jamais le montant du drawdown.</li></ul>
+<p>Heureusement, toutes les prop firms ne calculent pas le plus haut en temps réel. Deux variantes changent beaucoup la donne.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/drawdown-prop-firm-futures/blog-drawdown-prop-firm-futures-2.webp" alt="Exemple de trailing drawdown intraday sur un compte de 50 000 dollars : le plancher monte de 48 000 à 49 000 dollars après un gain latent rendu" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Tu sors à zéro, et pourtant ta marge a fondu de moitié : c&#39;est le piège du trailing intraday.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="quelle-difference-avec-le-trailing-de-fi">Quelle différence avec le trailing de fin de journée et le trailing verrouillé ?</h2>
+    <p>Le trailing de fin de journée (end of day, EOD) ne remonte le plancher qu&#39;une fois par jour, sur ton solde à la clôture de la session ; les pics latents de la journée ne comptent pas. Le trailing verrouillé suit ton plus haut jusqu&#39;à un seuil, puis se fige et devient statique.</p>
+<h3>Le trailing de fin de journée (EOD)</h3>
+<p>Reprends l&#39;exemple précédent : le NQ monte de 50 points, puis tu sors à zéro. En fin de journée, ton solde est de 50 000 $. Le plancher ne bouge pas : 48 000 $, marge 2 000 $. Le pic de 51 000 $ n&#39;a pas compté.</p>
+<p>En revanche, si tu finis la journée à 51 000 $, le plancher monte à 49 000 $ le soir même. Deux pièges :</p>
+<ul><li>pendant la journée, le plancher de la veille s&#39;applique en temps réel. Si tu passes en dessous à 15 h 47, le compte est perdu, même si tu remontes à 16 h ;</li><li>une grosse journée verte fait monter le plancher d&#39;autant. Si tu finis à +1 800 $, ta marge du lendemain reste à 2 000 $, pas à 3 800 $.</li></ul>
+<p>C&#39;est pour ça que les traders qui font de petits gains réguliers sont plus à l&#39;aise en EOD que ceux qui font une grosse journée de temps en temps.</p>
+<h3>Le trailing qui se verrouille</h3>
+<p>Le plancher suit ton plus haut (en intraday ou en fin de journée, selon la société), jusqu&#39;à atteindre un seuil, souvent le solde de départ. Ensuite, il ne bouge plus.</p>
+<p>Exemple type : compte de 50 000 $, drawdown de 2 000 $, verrou au solde de départ. Le plancher part de 48 000 $ et monte avec tes plus hauts. Le jour où ton compte atteint 52 000 $, le plancher atteint 50 000 $ et se fige. À partir de là, ton compte se comporte comme un compte statique : chaque gain agrandit ta marge.</p>
+<p><b>Tout l&#39;enjeu d&#39;un compte verrouillable, c&#39;est donc de franchir le verrou sans se faire sortir avant.</b> Les 2 000 premiers dollars de gain sont les plus dangereux du compte.</p>
+<h3>Le tableau des quatre types</h3>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Type</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Le plancher monte…</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Point de vigilance</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Statique</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Jamais</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Premiers jours fragiles</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Trailing intraday</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Sur le pic, latents compris</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Rendre un gain coûte</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Fin de journée</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Sur le solde de clôture</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Grosse journée = plancher haut</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Verrouillé</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Jusqu&#39;au seuil, puis fixe</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Fragile avant le verrou</td></tr></tbody></table></div>
+<p>Pour savoir lequel tu as, cherche dans les règles de ta prop firm trois mots : intraday, end of day (ou EOD) et lock (ou « verrouillage »). Leur présence ou leur absence te dit presque tout.</p>
+<h3>À retenir</h3>
+<ul><li>EOD : seul le solde de clôture fait monter le plancher.</li><li>Verrouillé : le plancher se fige à un seuil, souvent le solde de départ.</li><li>Les 2 000 premiers dollars de gain sont la zone la plus dangereuse.</li></ul>
+<p>Le drawdown maximal n&#39;est pas la seule limite. Deux autres règles font sauter des comptes chaque jour.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/drawdown-prop-firm-futures/blog-drawdown-prop-firm-futures-3.webp" alt="Tableau comparatif des quatre types de drawdown en prop firm : statique, trailing intraday, fin de journée et verrouillé" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Avant ton premier trade, cherche dans les règles les mots intraday, end of day et lock : ils te disent quel plancher tu as.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="quel-lien-entre-drawdown-maximal-perte-j">Quel lien entre drawdown maximal, perte journalière et règle de consistance ?</h2>
+    <p>Le drawdown maximal protège le compte sur toute sa durée ; la perte journalière (daily loss limit) plafonne ce que tu peux perdre en une seule séance ; la règle de consistance limite la part de tes gains qui vient d&#39;une seule journée. Ce sont trois règles distinctes, et tu peux enfreindre l&#39;une sans toucher les autres.</p>
+<h3>La perte journalière</h3>
+<p>Exemple type : 1 000 $ de perte journalière sur un compte de 2 000 $ de drawdown. Selon la société, la toucher met fin à ta journée ou fait perdre le compte. Lis cette ligne des règles deux fois.</p>
+<p>Ma position est claire, je la donne dans la vidéo :</p>
+<aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p>« Si vous êtes arrivé sur votre daily loss, je vous encourage à arrêter ce compte-là. »</p></aside>
+<p><em>Ma vidéo « La vérité que personne ne te dit sur les propfirms » (vers 17:00)</em></p>
+<p>Autrement dit : la journée est finie sur ce compte, même si la règle te permettait de continuer. Une journée à −1 000 $ a déjà consommé la moitié de ta marge ; c&#39;est exactement le moment où l&#39;on veut se refaire, et où l&#39;on perd le reste.</p>
+<h3>La règle de consistance</h3>
+<p>Beaucoup de prop firms exigent qu&#39;aucune journée ne représente plus d&#39;un certain pourcentage de ton gain total : je cite dans la vidéo des seuils de « 30 %, 40 %, 50 % » selon les sociétés (vers 18:30). Le calcul est simple :</p>
+<p><b>Gain total minimum = meilleure journée ÷ seuil.</b></p>
+<p>Avec un seuil de 40 % et une meilleure journée à 1 500 $, il te faut au moins 1 500 ÷ 0,40 = 3 750 $ de gain total pour être en règle. Si tu es à 3 000 $, ta grosse journée pèse 50 % : il faut continuer à trader pour diluer, sans faire de nouvelle grosse journée.</p>
+<p>Mon conseil dans la vidéo : garder « une taille de position qui soit relativement similaire chaque jour de trading » (vers 19:45). La consistance se respecte d&#39;abord par la taille de position, pas par le calcul après coup.</p>
+<h3>Les annonces économiques</h3>
+<p>Certaines sociétés interdisent d&#39;avoir une position ouverte dans les minutes qui entourent les grandes annonces. Dans la vidéo, je parle de cinq minutes avant et après, et je compare ces règles à « une épée de Damoclès : votre compte peut sauter à n&#39;importe quel moment » (vers 11:30). Note les heures des annonces avant ta séance, en heure de Paris.</p>
+<h3>À retenir</h3>
+<ul><li>Trois règles distinctes : drawdown maximal, perte journalière, consistance.</li><li>Perte journalière touchée : j&#39;arrête ce compte pour la journée.</li><li>Consistance : gain total minimum = meilleure journée ÷ seuil.</li></ul>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/drawdown-prop-firm-futures/blog-drawdown-prop-firm-futures-4.webp" alt="Règle de consistance en prop firm : gain total minimum égal à la meilleure journée divisée par le seuil, exemple à 40 %" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Avec un seuil de 40 % et une meilleure journée à 1 500 $, il faut 3 750 $ de gain total pour être en règle.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="quel-drawdown-est-le-plus-dur-et-comment">Quel drawdown est le plus dur, et comment adapter ton trading à chacun ?</h2>
+    <p>Le plus dur est le trailing intraday non verrouillé : il compte tes gains latents, ne redescend jamais et empêche ta marge de grossir. Le plus confortable est le statique. Entre les deux, le trailing de fin de journée et le trailing verrouillé deviennent vivables dès que tu sais comment ils bougent. Chacun appelle une gestion de trade différente.</p>
+<h3>Sous un trailing intraday : couper vite, suivre le prix</h3>
+<p>Ma consigne dans la vidéo : « empiéter le moins souvent possible sur votre drawdown », couper vite et utiliser des stops suiveurs (vers 19:00). En pratique :</p>
+<ul><li>je sécurise vite : dès que le trade avance, je remonte le stop au prix d&#39;entrée, car tout gain latent rendu fait monter le plancher pour rien ;</li><li>je sors en plusieurs morceaux : une partie sur un premier objectif proche, le reste avec un stop qui suit ;</li><li>je vise des mouvements plus courts et je réduis la taille plutôt que d&#39;élargir le stop ;</li><li>j&#39;évite les entrées juste avant l&#39;ouverture américaine (15 h 30 heure de Paris, 14 h 30 du 26 au 30/10) et les annonces, où le prix fait souvent un aller-retour violent.</li></ul>
+<p>C&#39;est le mode de gestion des scalpers et des day traders rapides. Si tu ne sais pas encore dans quelle famille tu te situes, lis mon article sur <a href="https://basstrading.fr/blog/types-trading-differences/">les types de trading et leurs différences</a>.</p>
+<h3>Sous un statique ou après le verrou : laisser respirer</h3>
+<p>Ici, rendre une partie d&#39;un gain latent ne coûte rien à la marge. Je peux :</p>
+<ul><li>placer mon stop sur la structure du marché, même s&#39;il est à 25 ou 30 points ;</li><li>garder une partie de la position pour un objectif de 50 à 100 points ;</li><li>accepter qu&#39;un trade gagnant revienne un peu avant de repartir.</li></ul>
+<h3>Sous un trailing de fin de journée : gérer la clôture</h3>
+<p>Le pic intraday ne compte pas, mais le solde du soir, si. Deux habitudes :</p>
+<ul><li>ne pas finir la journée sur un pic exceptionnel si ça doit faire bondir ton plancher et te laisser sans marge le lendemain (relis l&#39;exemple des 1 800 $) ;</li><li>surveiller le plancher de la veille en temps réel : c&#39;est lui qui s&#39;applique pendant la séance.</li></ul>
+<h3>Le lièvre et la tortue</h3>
+<p>Je prends cette fable dans la vidéo (vers 20:00) : sur un compte de prop firm, c&#39;est la tortue qui gagne. « Au plus vous allez charger en taille de position, au moins vous gagnerez d&#39;argent, et au plus vous perdrez de temps. » (vers 20:15) Et j&#39;ajoute : « Quand vous voyez un mec qui vous montre des gros gains, il fait également des grosses pertes. » (vers 21:00)</p>
+<p><b>Une taille modeste ne te rendra pas riche en une semaine.</b> Elle te garde dans la partie assez longtemps pour que ta méthode s&#39;exprime, quel que soit ton type de drawdown.</p>
+<h3>À retenir</h3>
+<ul><li>Trailing intraday : sécurise vite, sors en plusieurs morceaux, stop suiveur.</li><li>Statique ou verrouillé : stop sur la structure, objectifs plus larges.</li><li>EOD : surveille ton solde de clôture et le plancher de la veille.</li></ul>
+<p>Reste une question que beaucoup se posent trop tard : pourquoi 2 000 $ de marge, c&#39;est si peu ?</p>
+
+    <hr>
+
+    <h2 id="pourquoi-2-000-de-drawdown-font-un-compt">Pourquoi 2 000 $ de drawdown font un compte fragile ?</h2>
+    <p>Parce que 2 000 $, c&#39;est la totalité de ton capital réel, et qu&#39;un seul mouvement normal du Nasdaq peut les emporter. Un NQ qui recule de 100 points, soit 2 000 $, suffit. À 2 000 $ de marge, chaque trade pèse sur la survie du compte.</p>
+<h3>Ce que représente la même limite selon ton coussin</h3>
+<p>La limite de 2 000 $ ne change pas, mais son poids change selon ce qu&#39;il y a au-dessus du plancher. Sur un compte qui n&#39;a que 2 000 $ de marge, elle vaut 100 % du capital utilisable. Sur un compte statique ou verrouillé où la marge a grimpé à 20 000 $, elle n&#39;en vaut plus que 10 %.</p>
+<p>Comme je le dis dans <a href="https://www.youtube.com/watch?v=3YvoeD-_BEc">ma vidéo sur le risque par trade</a> : « À 2K, tu es 100 % fragile ; à 5K, un peu moins ; à 20K, c&#39;est très confortable. » (vers 38:00)</p>
+<h3>Le lien avec le type de drawdown</h3>
+<p>C&#39;est ici que tout ce qu&#39;on a vu se rejoint. Seul un compte statique, ou un compte trailing qui a passé son verrou, permet au coussin de grossir. Sur un trailing intraday non verrouillé, ton coussin reste bloqué à 2 000 $ au mieux, quels que soient tes gains.</p>
+<p><b>Donc, sur un compte trailing, l&#39;objectif numéro un n&#39;est pas de gagner vite : c&#39;est d&#39;atteindre le verrou proprement.</b></p>
+<h3>Ma façon de faire</h3>
+<p>Personnellement, je ne retire rien tant que le coussin n&#39;a pas environ doublé. Comme je le dis dans <a href="https://www.youtube.com/watch?v=3YvoeD-_BEc">ma vidéo sur le risque par trade</a> : « je monte mon coussin à 4 000, tant que j&#39;ai pas 4 000 sur le compte je ne retire rien » (vers 30:00). Ensuite, je retire en proportion, pour que le compte continue de s&#39;épaissir. J&#39;ai détaillé cette méthode, avec le calcul du nombre de pertes d&#39;affilée que tu peux encaisser selon ton risque par trade, dans mon article <a href="https://basstrading.fr/blog/combien-risquer-par-trade/">combien risquer par trade</a>. Je ne la répète pas ici : retiens seulement que le coussin est un outil de survie, pas une réserve pour trader plus gros.</p>
+<h3>À retenir</h3>
+<ul><li>2 000 $ de marge = 100 % de ton capital réel.</li><li>Seuls le statique et le trailing verrouillé laissent grossir le coussin.</li><li>Sur un trailing, le premier objectif est le verrou, pas le gain.</li></ul>
+
+    <hr>
+
+    <h2 id="quelles-erreurs-font-sauter-un-compte-de">Quelles erreurs font sauter un compte de prop firm ?</h2>
+    <p>Beaucoup de comptes ne sautent pas sur une analyse fausse, mais sur une règle mal comprise ou une taille de position décidée sous le coup de l&#39;émotion. Voici un scénario type, puis les erreurs que j&#39;observe régulièrement.</p>
+<h3>Le scénario de Karim (prénom fictif)</h3>
+<p>Karim vient de passer en compte financé : 50 000 $, trailing intraday de 2 000 $. Il ne l&#39;a pas remarqué : il croit avoir un plancher fixe à 48 000 $.</p>
+<ul><li>10 h 20 : il prend deux NQ. Le trade monte de 25 points, soit 1 000 $ latents. Plancher à 49 000 $.</li><li>10 h 35 : le prix revient. Karim attend « que ça reparte ». Il sort à −10 points, −400 $. Solde 49 600 $. Marge : 600 $.</li><li>15 h 28 : persuadé d&#39;avoir encore 1 600 $ de marge, il entre avec deux NQ juste avant l&#39;ouverture américaine, stop à 20 points.</li><li>15 h 31 : la bougie d&#39;ouverture traverse son stop avec du glissement. Le compte passe sous 49 000 $. Clôturé.</li></ul>
+<p><b>Karim n&#39;a perdu « que » 1 000 $ de solde dans sa journée. Il a perdu son compte parce qu&#39;il ne savait pas que son plancher avait bougé.</b></p>
+<h3>Les erreurs fréquentes</h3>
+<ul><li><b>Ne pas savoir quel type de drawdown on a.</b> C&#39;est l&#39;erreur de Karim, et la plus évitable : cinq minutes de lecture des règles.</li><li><b>Confondre solde et marge.</b> Le solde dit combien tu as ; la marge dit combien tu peux perdre. Seule la seconde compte.</li><li><b>Placer son stop pile sur le plancher.</b> Un ordre stop n&#39;est pas exécuté à un prix garanti. Une <a href="https://www.cftc.gov/node/248396">étude de la CFTC sur les ordres stop dans plusieurs marchés futures</a> montre que ces ordres se déclenchent davantage les jours volatils et que l&#39;écart entre le prix de déclenchement et le prix d&#39;exécution peut être significatif. Garde toujours quelques dizaines de dollars de marge sous ton stop.</li><li><b>Se refaire.</b> Dans <a href="https://www.youtube.com/watch?v=3YvoeD-_BEc">ma vidéo sur le risque par trade</a>, je raconte ce moment : « Foutu pour foutu, on va essayer de rentrer un peu plus lourd. C&#39;est souvent là qu&#39;on meurt. » (vers 28:00)</li><li><b>Trader les annonces</b> sur un compte qui les interdit, ou ignorer qu&#39;une annonce tombe dans ta fenêtre de trading.</li><li><b>Charger après un rachat de challenge.</b> Recommencer un compte pousse à vouloir « aller vite ». C&#39;est le meilleur moyen de le racheter une troisième fois. Mieux vaut accepter <a href="https://basstrading.fr/blog/combien-temps-apprendre-trading/">le temps qu&#39;il faut vraiment pour devenir régulier</a>.</li></ul>
+<p>Une partie de ces sorties se joue aussi sur les niveaux où les stops s&#39;accumulent : je l&#39;explique dans mon article sur <a href="https://basstrading.fr/blog/chasse-aux-stops-trading/">la chasse aux stops en trading</a>.</p>
+<h3>Ce que disent les chiffres des régulateurs</h3>
+<p>Le levier mal maîtrisé coûte cher aux particuliers. En 2018, l&#39;<a href="https://www.esma.europa.eu/node/84933">ESMA a restreint la vente de CFD aux particuliers</a> après avoir constaté que 74 à 89 % de leurs comptes perdaient de l&#39;argent. En France, une étude de l&#39;AMF sur près de 15 000 particuliers a trouvé 89 % de clients actifs perdants sur le Forex et les CFD entre 2009 et 2012 (<a href="https://www.lafinancepourtous.com/2014/10/13/forex-attention-danger/">résumé de l&#39;Institut pour l&#39;éducation financière du public</a>). Les futures ne sont pas des CFD, mais le mécanisme est le même : un compte mince et une taille trop lourde ne laissent aucune place à l&#39;erreur.</p>
+<h3>À retenir</h3>
+<ul><li>Lis ton type de drawdown avant ton premier trade.</li><li>Raisonne en marge, jamais en solde.</li><li>Garde de la marge sous ton stop : le glissement existe.</li></ul>
+<p>Tout ça se prévient avec une routine de cinq minutes. La voici.</p>
+
+    <hr>
+
+    <h2 id="comment-suivre-ta-marge-restante-chaque-">Comment suivre ta marge restante chaque jour ?</h2>
+    <p>En notant chaque matin, avant d&#39;ouvrir ta plateforme, ton plancher du jour, ta marge restante et le nombre de trades complets qu&#39;elle te laisse, puis en mettant ces chiffres à jour après chaque trade. Cinq minutes suffisent, et c&#39;est ce qui sépare les comptes qui durent de ceux qui sautent.</p>
+<h3>Avant la séance</h3>
+<ul><li>Note ton plancher actuel. La plupart des tableaux de bord de prop firm l&#39;affichent ; sinon, recalcule-le à partir de ton plus haut (intraday ou de clôture, selon ton type).</li><li>Calcule ta marge : solde actuel − plancher.</li><li>Divise ta marge par ton risque par trade. Avec 1 200 $ de marge et 100 $ de risque, tu as 12 trades perdants d&#39;affilée devant toi. Avec 400 $ de risque, tu n&#39;en as que 3.</li><li>Fixe ta propre limite du jour, plus basse que la perte journalière de la prop firm.</li><li>Repère les annonces du jour et les heures interdites.</li></ul>
+<h3>Pendant la séance</h3>
+<ul><li>Après chaque trade, mets à jour le plancher si ton plus haut a bougé (trailing intraday).</li><li>Si ta marge passe sous trois fois ton risque par trade, réduis ta taille de moitié ou arrête.</li><li>Si tu touches ta limite du jour, ferme la plateforme.</li></ul>
+<h3>Après la séance</h3>
+<ul><li>Note ton solde de clôture, ton nouveau plancher (EOD) et ta marge pour demain.</li><li>Note la distance qui te sépare du verrou si ton compte en a un.</li></ul>
+<h3>Pourquoi l&#39;écrire à la main</h3>
+<p>Le tableau de bord de la prop firm te donne les chiffres, mais il ne te fait pas réfléchir. <b>Écrire « marge : 600 $, soit 6 trades à 100 $ » change ta façon d&#39;entrer en position.</b> Karim aurait vu son problème à 10 h 36.</p>
+<p>Pour que ces chiffres veuillent dire quelque chose, il faut aussi des entrées qui ont un sens. C&#39;est le rôle de la lecture du flux : je l&#39;explique dans mon <a href="https://basstrading.fr/blog/order-flow-trading-france/">guide de l&#39;order flow</a>.</p>
+<h3>À retenir</h3>
+<ul><li>Chaque matin : plancher, marge, nombre de trades possibles.</li><li>Marge sous trois fois ton risque : taille réduite ou arrêt.</li><li>Écris-le : ça change ta façon d&#39;entrer en position.</li></ul>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/drawdown-prop-firm-futures/blog-drawdown-prop-firm-futures-5.webp" alt="Routine de suivi du drawdown avant chaque séance : plancher du jour, marge restante, nombre de trades possibles, limite et annonces" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Cinq minutes avant d&#39;ouvrir la plateforme : c&#39;est ce qui sépare les comptes qui durent de ceux qui sautent.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="que-retenir-et-que-faire-ce-soir">Que retenir, et que faire ce soir ?</h2>
+    <h3>Récapitulons</h3>
+<ul><li><b>Le drawdown est ton vrai capital.</b> Sur un compte « 50 000 $ » avec 2 000 $ de drawdown, tu trades 2 000 $.</li><li><b>Statique</b> : le plancher ne bouge jamais, chaque gain agrandit ta marge.</li><li><b>Trailing intraday</b> : le plancher suit ton plus haut, latents compris ; un gain rendu coûte de la marge, et la marge ne dépasse jamais le drawdown.</li><li><b>Fin de journée et verrouillé</b> : seul le solde de clôture compte, ou le plancher se fige à un seuil ; le premier objectif est de franchir le verrou.</li><li><b>Perte journalière et consistance</b> sont des règles à part : arrête ce compte pour la journée quand tu touches ta limite, et garde une taille similaire.</li></ul>
+<h3>Ta prochaine action</h3>
+<p>Ce soir, ouvre les règles de ta prop firm (ou de celle qui t&#39;intéresse) et trouve trois informations : le type de drawdown (statique, intraday, fin de journée), l&#39;existence d&#39;un verrou et son seuil, et le montant de la perte journalière. Puis calcule ta marge actuelle et divise-la par ton risque par trade. Ce nombre, écris-le en haut de ton journal avant chaque séance.</p>
+<p>Pour suivre ma lecture du Nasdaq, rejoins mon <a href="https://t.me/bassofficiel">canal Telegram gratuit</a>.</p>
+<p>Si tu débutes complètement, la suite logique est mon guide pour <a href="https://basstrading.fr/blog/debuter-trading-zero-guide/">débuter le trading en partant de zéro</a> : on ne passe pas un challenge avant d&#39;avoir une méthode.</p>
+<h3>Comment cet article est fait</h3>
+<p>Je l&#39;ai écrit à partir de deux de mes vidéos : « La vérité que personne ne te dit sur les propfirms » et « Combien risquer par trade : la règle que 90 % des traders ignorent ». Il a été mis en forme avec l&#39;aide d&#39;une IA, les calculs ont été vérifiés un par un, et les sources externes ont été consultées le 21/10/2026. Les montants (50 000 $, 2 000 $, 1 000 $) sont des exemples types : chaque prop firm fixe ses propres règles.</p>
+<p><em>Le trading de contrats à terme comporte un risque élevé de perte, pouvant dépasser la mise initiale. Contenu éducatif, pas un conseil en investissement.</em></p>
+
+    <p><a href="https://www.youtube.com/watch?v=JdMuB0ay37Y" target="_blank" rel="noopener">▶ Voir la vidéo de Sébastien sur ce sujet</a></p>
+
+    <div class="cta-card cta-aimant">
+      <div class="cta-card-label">Gratuit</div>
+      <h3>La formation offerte : 7 leçons pour lire le marché comme un pro</h3>
+      <p>Accès immédiat et gratuit, en vidéo, à ton rythme. Sans carte bancaire.</p>
+      <a href="https://basstrading.fr/p/formation-offerte/?src=blog-drawdown-prop-firm-futures" class="btn-p">Je la veux →</a>
+    </div>
+    
+  </article>
+</div>
+
+<!-- FAQ -->
+<section class="faq-sec">
+  <div class="sec-center"><div class="sec-label">FAQ</div><h2 class="sec-title">Questions fréquentes</h2></div>
+  <div class="faq-list">
+    <div class="fi"><button class="fq" onclick="tf(this)">Qu&#39;est-ce que le trailing drawdown en prop firm ? <span class="fq-icon">+</span></button><div class="fa"><p>C&#39;est une limite de perte dont le plancher suit ton plus haut, toujours à la même distance (par exemple 2 000 $), et ne redescend jamais. En version intraday, le plus haut inclut tes gains latents : un gain que tu rends au marché réduit ta marge même si tu sors à zéro. En version fin de journée, seul le solde de clôture compte.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Le trailing drawdown peut-il redescendre ? <span class="fq-icon">+</span></button><div class="fa"><p>Non. Le plancher ne fait que monter ou rester en place. Si ton compte recule après un plus haut, la distance entre ton solde et le plancher diminue : c&#39;est ta marge qui baisse, pas le plancher. C&#39;est pour ça qu&#39;il faut recalculer ta marge après chaque nouveau plus haut.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Vaut-il mieux un drawdown intraday ou de fin de journée ? <span class="fq-icon">+</span></button><div class="fa"><p>Pour la plupart des traders, le drawdown de fin de journée est plus vivable : les allers-retours de la séance ne font pas monter le plancher. Attention quand même : le plancher de la veille s&#39;applique en temps réel pendant la journée, et une grosse journée verte le fait monter d&#39;autant le soir.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Que se passe-t-il quand on touche la perte journalière ? <span class="fq-icon">+</span></button><div class="fa"><p>Selon la prop firm, ta journée de trading s&#39;arrête ou ton compte est perdu : lis bien cette règle. Dans les deux cas, je conseille d&#39;arrêter ce compte pour la journée. Une grosse perte en une séance a déjà entamé une large part de ta marge, et c&#39;est le moment où l&#39;on est tenté de se refaire.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Comment calculer la règle de consistance ? <span class="fq-icon">+</span></button><div class="fa"><p>Divise ta meilleure journée par le seuil de consistance de ta prop firm. Avec un seuil de 40 % et une meilleure journée à 1 500 $, il te faut au moins 3 750 $ de gain total. Le plus simple pour la respecter est de garder une taille de position similaire d&#39;un jour à l&#39;autre.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Qu&#39;est-ce qu&#39;un drawdown verrouillé ? <span class="fq-icon">+</span></button><div class="fa"><p>C&#39;est un trailing drawdown qui cesse de suivre ton plus haut une fois un seuil atteint, souvent le solde de départ. Sur un compte de 50 000 $ avec 2 000 $ de drawdown, le plancher se fige à 50 000 $ quand ton compte touche 52 000 $. Ensuite, chaque gain agrandit ta marge, comme sur un compte statique.</p></div></div>
+  </div>
+</section>
+
+<!-- Related -->
+<section class="related-sec">
+  <div class="sec-center"><div class="sec-label">Continuer la lecture</div><h2 class="sec-title">Articles connexes</h2></div>
+  <div class="related-grid">
+    <a href="/blog/market-profile-guide-complet/" class="related-card"><div class="related-cat">Guide</div><h3>Market Profile : le guide complet pour débutants</h3><p>Value Area, POC, types de journées — tout pour commencer.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/order-flow-trading-france/" class="related-card"><div class="related-cat">Méthode</div><h3>Order Flow Trading : pourquoi personne ne l'enseigne en France</h3><p>Le carnet d'ordres et le flux institutionnel décryptés.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/sierra-chart-configuration/" class="related-card"><div class="related-cat">Tutoriel</div><h3>Sierra Chart : configuration complète</h3><p>Le setup pas à pas pour le Market Profile et le Footprint.</p><span class="related-link">Lire &rarr;</span></a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="ft-top"><div class="ft-logo">BASS</div><div class="ft-cols">
+    <div class="ft-col"><div class="ft-col-title">Programme</div><a href="https://basstrading.fr/#methode">Méthode</a><a href="https://basstrading.fr/#programme">Programme</a><a href="https://basstrading.fr/p/formation-offerte/?src=blog-drawdown-prop-firm-futures-pied">Formation offerte</a></div>
+    <div class="ft-col"><div class="ft-col-title">Ressources</div><a href="/blog/market-profile-guide-complet/">Market Profile</a><a href="/blog/footprint-chart-trading/">Footprint Chart</a><a href="/blog/order-flow-trading-france/">Order Flow</a></div>
+  </div></div>
+  <div class="ft-bottom"><span>&copy; 2026 BASS — Sébastien Constant</span><div><a href="/mentions-legales/">Mentions légales</a><a href="/confidentialite/">Confidentialité</a><a href="/cgv/">CGV</a><a href="mailto:contact@basstrading.fr">Contact</a></div></div>
+</footer>
+<div class="disclaimer">Le trading comporte des risques de perte en capital. Les performances passées ne préjugent pas des performances futures. Ce site ne constitue pas un conseil en investissement.</div>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+const lenis=new Lenis({duration:1.2,easing:t=>Math.min(1,1.001-Math.pow(2,-10*t))});
+function raf(t){lenis.raf(t);requestAnimationFrame(raf)}requestAnimationFrame(raf);
+lenis.on('scroll',ScrollTrigger.update);gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0);
+const tl=gsap.timeline();
+tl.to('.pre-word span',{y:0,opacity:1,duration:.5,stagger:.1,ease:'power3.out',delay:.3}).to('#preLine',{width:'80px',duration:.7,ease:'power2.inOut'},'<+.2').to('.preloader',{yPercent:-100,duration:.8,ease:'power3.inOut',delay:.4}).set('.preloader',{display:'none'}).to('#nav',{opacity:1,y:0,duration:.5},'<+.1');
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);const h=document.documentElement.scrollHeight-window.innerHeight;document.getElementById('readingProgress').style.width=(window.scrollY/h*100)+'%'});
+const tocLinks=document.querySelectorAll('.toc a');const sections=Array.from(tocLinks).map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+window.addEventListener('scroll',()=>{let c='';sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)c=s.id});tocLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+c)})});
+function tf(b){const i=b.closest('.fi'),a=b.nextElementSibling,o=i.classList.contains('active');document.querySelectorAll('.fi').forEach(x=>{x.classList.remove('active');x.querySelector('.fa').classList.remove('open')});if(!o){i.classList.add('active');a.classList.add('open')}}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();lenis.scrollTo(t,{offset:-60})}})});
+</script>
+<script src="/v.js" defer></script>
+</body>
+</html>
