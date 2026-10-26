@@ -37,6 +37,231 @@
       "source": "/formation-offerte/",
       "destination": "/p/formation-offerte/",
       "permanent": true
+    },
+    {
+      "source": "/blog/vwap-trading-guide/",
+      "destination": "/blog/vwap-trading/",
+      "statusCode": 301
+    },
+    {
+      "source": "/cours/risk-management-pro/",
+      "destination": "/blog/combien-risquer-par-trade/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/risk-management-trading/",
+      "destination": "/blog/combien-risquer-par-trade/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tutoriels/configurer-sierra-chart-market-profile/",
+      "destination": "/blog/sierra-chart-configuration/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tutoriels/trader-es-mini-sp500-debutant/",
+      "destination": "/blog/nq-ou-mnq/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/trader-es-nq-futures/",
+      "destination": "/blog/nasdaq-futures-nq-mnq/",
+      "statusCode": 301
+    },
+    {
+      "source": "/comparatif/apex-vs-bulenox/",
+      "destination": "/blog/prop-firm-funded-trader/",
+      "statusCode": 301
+    },
+    {
+      "source": "/comparatif/ftmo-vs-bulenox/",
+      "destination": "/blog/prop-firm-funded-trader/",
+      "statusCode": 301
+    },
+    {
+      "source": "/comparatif/topstep-vs-fast-track-trading/",
+      "destination": "/blog/prop-firm-funded-trader/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/comparatif-prop-firms/",
+      "destination": "/blog/prop-firm-funded-trader/",
+      "statusCode": 301
+    },
+    {
+      "source": "/formation-trading/",
+      "destination": "/blog/quelle-formation-trading-choisir/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/formation-trading-avis/",
+      "destination": "/blog/quelle-formation-trading-choisir/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/arnaque-trading/",
+      "destination": "/blog/quelle-formation-trading-choisir/",
+      "statusCode": 301
+    },
+    {
+      "source": "/cours/psychologie-trading-pro/",
+      "destination": "/blog/perte-maximale-journaliere-trading/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/psychologie-trading/",
+      "destination": "/blog/perte-maximale-journaliere-trading/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/poor-high-low-market-profile/",
+      "destination": "/blog/market-profile-guide-complet/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/single-prints-market-profile/",
+      "destination": "/blog/market-profile-guide-complet/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/types-journees-market-profile/",
+      "destination": "/blog/market-profile-guide-complet/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/initial-balance-trading/",
+      "destination": "/blog/market-profile-guide-complet/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/value-area-trading/",
+      "destination": "/blog/market-profile-guide-complet/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/composite-profile-market-profile/",
+      "destination": "/blog/volume-profile-guide/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/poc-point-of-control/",
+      "destination": "/blog/volume-profile-guide/",
+      "statusCode": 301
+    },
+    {
+      "source": "/volume-profile/",
+      "destination": "/blog/volume-profile-guide/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/support-resistance-trading/",
+      "destination": "/blog/volume-profile-guide/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/volume-spread-analysis/",
+      "destination": "/blog/volume-profile-guide/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/scalping-futures/",
+      "destination": "/blog/types-trading-differences/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/trader-independant/",
+      "destination": "/blog/devenir-trader-sans-diplome/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/reconversion-trader/",
+      "destination": "/blog/devenir-trader-sans-diplome/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/vivre-du-trading/",
+      "destination": "/blog/devenir-trader-sans-diplome/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/spoofing-iceberg-orders/",
+      "destination": "/blog/carnet-ordres-dom-futures/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/compte-demo-trading/",
+      "destination": "/blog/debuter-trading-zero-guide/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/meilleur-broker-futures/",
+      "destination": "/blog/tradovate-avis/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/analyse-technique-trading/",
+      "destination": "/blog/order-flow-trading-france/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/chandeliers-japonais/",
+      "destination": "/blog/footprint-chart-trading/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/effet-levier-trading/",
+      "destination": "/blog/nasdaq-futures-nq-mnq/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/journal-trading/",
+      "destination": "/blog/combien-temps-apprendre-trading/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/plan-de-trading/",
+      "destination": "/blog/combien-temps-apprendre-trading/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/backtester-strategie-trading/",
+      "destination": "/blog/combien-temps-apprendre-trading/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/trader-crypto-futures/",
+      "destination": "/blog/day-trading-futures/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/gamma-exposure-options/",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/fiscalite-trading-france/",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/market-internals-trading/",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/correlation-intermarche-trading/",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/trading-automatique/",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/formation-trading/:ville/",
+      "destination": "/blog/quelle-formation-trading-choisir/",
+      "statusCode": 301
     }
   ],
   "headers": [
