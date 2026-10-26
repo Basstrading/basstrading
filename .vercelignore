@@ -7,3 +7,7 @@ next-env.d.ts
 gen_images.py
 cloudflare-worker
 emails
+# Photos privées de Bass pour les miniatures (26/10/2026) : jamais en ligne
+images/banque-visage
+# Bannières et photo des profils réseaux (26/10/2026) : servent aux réseaux, pas au site
+images/profils-reseaux
