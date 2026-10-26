@@ -14,7 +14,7 @@ SITE = "https://basstrading.fr"
 # /formation-offerte/ redirige vers /p/formation-offerte/ (vercel.json, 21/10/2026 : seule adresse qui note l'origine de
 # chaque inscrit) : on annonce la page servie par le Studio ; l'ancien fichier ne sert plus qu'à dater l'entrée.
 PAGES = [("index.html", "/", "1.0"), ("blog/index.html", "/blog/", "0.9"), ("formation-offerte/index.html", "/p/formation-offerte/", "0.9"),
-         ("malaga/index.html", "/malaga/", "0.8"), ("marketprofile/index.html", "/marketprofile/", "0.8"),
+         ("malaga/index.html", "/malaga/", "0.8"), ("marketprofile/index.html", "/marketprofile/", "0.8"), ("formation-footprint/index.html", "/formation-footprint/", "0.8"),
          ("cgv.html", "/cgv/", "0.2"), ("confidentialite.html", "/confidentialite/", "0.2"),
          ("mentions-legales.html", "/mentions-legales/", "0.2"), ("auteur/sebastien-constant/index.html", "/auteur/sebastien-constant/", "0.6")]
 
