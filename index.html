@@ -1226,7 +1226,7 @@ document.getElementById('applyForm').addEventListener('submit',async function(e)
   const phone=phoneRaw;
   // Envoi email + Telegram en parallele
   const tgText='Nouvelle candidature BASS Trading\n\nNom: '+name+'\nEmail: '+email+'\nTelephone: '+phone+'\nSession: '+sess+'\nExperience: '+exp+'\nMotivation: '+motiv;
-  const emailReq=fetch('https://formsubmit.co/ajax/support@iftrading.fr',{method:'POST',body:data,headers:{'Accept':'application/json'}});
+  const emailReq=fetch('https://formsubmit.co/ajax/contact@basstrading.fr',{method:'POST',body:data,headers:{'Accept':'application/json'}});
   const tgReq=fetch('https://api.basstrading.fr/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({type:'candidature',nom:name,email:email,telephone:phone,message:motiv,details:{Session:String(sess||''),'Expérience':String(exp||'')}})}).catch(()=>null);
   try{
     const [emailRes]=await Promise.all([emailReq,tgReq]);

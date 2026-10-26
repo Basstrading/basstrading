@@ -160,7 +160,7 @@ document.getElementById('applyForm').addEventListener('submit',async function(e)
   phoneErr.style.display='none';phoneInput.style.borderColor='';
   btn.disabled=true;btn.textContent='Envoi en cours...';
   const tgText='Nouvelle candidature BASS Trading (page /candidater)\n\nNom: '+name+'\nEmail: '+email+'\nTelephone: '+phoneRaw+'\nSession: '+sess+'\nExperience: '+exp+'\nMotivation: '+motiv;
-  const emailReq=fetch('https://formsubmit.co/ajax/support@iftrading.fr',{method:'POST',body:data,headers:{'Accept':'application/json'}});
+  const emailReq=fetch('https://formsubmit.co/ajax/contact@basstrading.fr',{method:'POST',body:data,headers:{'Accept':'application/json'}});
   const tgReq=fetch('https://api.basstrading.fr/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({type:'candidature',nom:name,email:email,telephone:phoneRaw,message:motiv,details:{Session:String(sess||''),'Expérience':String(exp||'')}})}).catch(()=>null);
   try{
     const [emailRes]=await Promise.all([emailReq,tgReq]);
