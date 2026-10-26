@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perte maximale journalière : la règle des salles de marché — BASS Trading</title>
+  <meta name="description" content="Perte maximale journalière en trading : comment les salles de marché la fixent, ce qui se passe quand elle est touchée, et comment t&#39;en inspirer seul.">
+  <meta property="og:title" content="Perte maximale journalière : la règle des salles de marché — BASS Trading">
+  <meta property="og:description" content="Perte maximale journalière en trading : comment les salles de marché la fixent, ce qui se passe quand elle est touchée, et comment t&#39;en inspirer seul.">
+  <meta property="og:image" content="https://basstrading.fr/blog/perte-maximale-journaliere-trading/blog-perte-maximale-journaliere-trading-1.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://basstrading.fr/blog/perte-maximale-journaliere-trading/blog-perte-maximale-journaliere-trading-1.webp">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://basstrading.fr/blog/perte-maximale-journaliere-trading/">
+  <meta property="og:site_name" content="BASS Trading">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://basstrading.fr/blog/perte-maximale-journaliere-trading/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","@id":"https://basstrading.fr/blog/perte-maximale-journaliere-trading/#article","headline":"Perte maximale journalière : la règle des salles de marché","description":"Perte maximale journalière en trading : comment les salles de marché la fixent, ce qui se passe quand elle est touchée, et comment t'en inspirer seul.","datePublished":"2026-10-26","dateModified":"2026-10-26","inLanguage":"fr-FR","image":"https://basstrading.fr/blog/perte-maximale-journaliere-trading/blog-perte-maximale-journaliere-trading-1.webp","mainEntityOfPage":"https://basstrading.fr/blog/perte-maximale-journaliere-trading/","isPartOf":{"@type":"WebSite","@id":"https://basstrading.fr/#website","name":"BASS Trading","url":"https://basstrading.fr/"},"author":{"@type":"Person","@id":"https://basstrading.fr/#sebastien-constant","name":"Sébastien Constant","url":"https://basstrading.fr/auteur/sebastien-constant/"},"publisher":{"@type":"Organization","@id":"https://basstrading.fr/#organisation","name":"BASS Trading","url":"https://basstrading.fr/","logo":{"@type":"ImageObject","url":"https://basstrading.fr/images/logo-basstrading.png","width":512,"height":512}}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://basstrading.fr"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://basstrading.fr/blog/"},{"@type":"ListItem","position":3,"name":"Perte maximale journalière","item":"https://basstrading.fr/blog/perte-maximale-journaliere-trading/"}]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Quelle perte maximale journalière choisir en trading ?","acceptedAnswer":{"@type":"Answer","text":"Il n'y a pas de chiffre universel : elle dépend de ton capital et de ce que tu peux perdre sans conséquence sur ta vie. Je te conseille surtout de vérifier qu'elle laisse plusieurs trades complets : divise-la par ton risque par trade. Avec 100 € par jour et 25 € par trade, tu as 4 pertes avant l'arrêt. Contenu éducatif, pas un conseil personnalisé."}},{"@type":"Question","name":"Que faire quand j'ai touché ma perte maximale du jour ?","acceptedAnswer":{"@type":"Answer","text":"Tu arrêtes de trader pour la journée. En salle de marché, le contrôle des risques retire la main au trader, qui explique ensuite ce qui s'est passé à son responsable. Seul, reproduis cela : ferme ta plateforme, fais ton débrief de séance par écrit et reviens le lendemain avec la tête froide, sans changer de compte pour te refaire."}},{"@type":"Question","name":"La perte maximale journalière protège-t-elle de tout ?","acceptedAnswer":{"@type":"Answer","text":"Non. Elle limite l'ampleur d'une mauvaise journée, mais pas une position gardée des semaines contre toi, comme l'action que mon invité a gardée six mois. Il faut aussi une perte maximale par trade, une limite sur la semaine ou le mois, et une règle écrite sur ce que chaque idée a le droit de te coûter avant d'y entrer."}},{"@type":"Question","name":"Quelle différence entre perte maximale journalière et drawdown ?","acceptedAnswer":{"@type":"Answer","text":"La perte maximale journalière plafonne ce que tu perds sur une seule journée. Le drawdown mesure la baisse du compte depuis un sommet, sur une période plus longue, et peut avoir sa propre limite, notamment en prop firm. Les deux se complètent : l'une protège la séance, l'autre la trajectoire de ton compte."}},{"@type":"Question","name":"Faut-il aussi une règle pour protéger ses gains ?","acceptedAnswer":{"@type":"Answer","text":"Oui. Pour l'ancien trader de banque que j'ai reçu, la gestion du risque est aussi la gestion des gains : quand tu as un gain, il ne faut pas le perdre. On remonte le stop, on allège la position, on encaisse. Une journée gagnante qui finit dans le rouge est une erreur évitable."}}]}
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{--bk:#1D1D1F;--bk2:#111;--bk3:#0A0A0A;--g1:#6E6E73;--g2:#86868B;--g3:#D2D2D7;--g4:#F5F5F7;--wh:#FBFBFD;--pure:#FFF;--green:#00B67A;--blue:#0066FF}
+    html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}
+    body{font-family:'DM Sans',sans-serif;color:var(--bk);background:var(--pure);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+    .preloader{position:fixed;inset:0;background:var(--bk3);z-index:10001;display:flex;align-items:center;justify-content:center}
+    .pre-word{font-family:'Outfit',sans-serif;font-size:clamp(3rem,8vw,5rem);font-weight:900;letter-spacing:16px;text-transform:uppercase;color:var(--pure);overflow:hidden}
+    .pre-word span{display:inline-block;transform:translateY(110%);opacity:0}
+    .pre-line{width:0;height:1px;background:rgba(255,255,255,.3);margin-top:20px}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 48px;display:flex;align-items:center;justify-content:space-between;background:rgba(245,245,247,.85);backdrop-filter:blur(20px) saturate(1.8);border-bottom:1px solid rgba(0,0,0,.04);transition:background .4s}
+    .nav-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase;color:var(--bk)}
+    .nav-links{display:flex;gap:28px;list-style:none}.nav-links a{font-size:.74rem;font-weight:500;letter-spacing:.3px;color:var(--g1);transition:color .3s}.nav-links a:hover{color:var(--bk)}
+    .nav-cta{padding:8px 20px;background:var(--bk);color:var(--pure);border:none;border-radius:980px;font-size:.72rem;font-weight:600;transition:all .3s;cursor:pointer;text-decoration:none;display:inline-block}.nav-cta:hover{background:var(--bk2)}
+    .blog-hero{padding:160px 48px 80px;background:var(--g4);position:relative;overflow:hidden}
+    .blog-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,transparent,var(--g4));pointer-events:none}
+    .blog-hero-inner{max-width:720px;margin:0 auto}
+    .breadcrumb{display:flex;gap:8px;align-items:center;margin-bottom:28px;flex-wrap:wrap}
+    .breadcrumb a,.breadcrumb span{font-size:.68rem;font-weight:500;letter-spacing:.3px;color:var(--g2);transition:color .3s}.breadcrumb a:hover{color:var(--bk)}.breadcrumb .sep{color:var(--g3)}
+    .blog-hero-cat{display:inline-block;padding:5px 14px;border:1px solid rgba(0,102,255,.15);border-radius:980px;font-size:.6rem;font-weight:700;color:var(--blue);letter-spacing:2px;text-transform:uppercase;margin-bottom:20px}
+    .blog-hero-title{font-family:'Outfit',sans-serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:900;line-height:1.05;letter-spacing:-2px;color:var(--bk);margin-bottom:20px}
+    .blog-hero-desc{font-size:.95rem;color:var(--g1);line-height:1.8;max-width:560px;margin-bottom:28px}
+    .blog-meta{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+    .blog-meta-author{display:flex;align-items:center;gap:10px}
+    .blog-meta-avatar{width:36px;height:36px;border-radius:50%;background:var(--bk3);overflow:hidden;flex-shrink:0}.blog-meta-avatar img{width:100%;height:100%;object-fit:cover}
+    .blog-meta-name{font-size:.78rem;font-weight:600;color:var(--bk)}.blog-meta-role{font-size:.65rem;color:var(--g2)}
+    .blog-meta-sep{width:1px;height:24px;background:var(--g3)}
+    .blog-meta-info{font-size:.7rem;color:var(--g2)}.blog-meta-info span{margin-right:16px}
+    .toc{position:sticky;top:90px;background:var(--pure);border:1px solid rgba(0,0,0,.04);border-radius:14px;padding:24px;margin-bottom:32px}
+    .toc-title{font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.5px;color:var(--bk);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+    .toc ol{list-style:none;counter-reset:toc}.toc li{counter-increment:toc}
+    .toc li a{display:flex;align-items:baseline;gap:8px;padding:6px 0;font-size:.76rem;color:var(--g1);transition:color .3s;border-bottom:1px solid rgba(0,0,0,.03)}.toc li a:hover{color:var(--blue)}
+    .toc li a::before{content:counter(toc,decimal-leading-zero);font-family:'Outfit',sans-serif;font-size:.65rem;font-weight:700;color:var(--g3);min-width:18px}
+    .toc li:last-child a{border-bottom:none}.toc li a.active{color:var(--blue);font-weight:600}.toc li a.active::before{color:var(--blue)}
+    .article-wrap{display:grid;grid-template-columns:220px 1fr;gap:40px;max-width:1020px;margin:0 auto;padding:60px 48px 120px}
+    .article-sidebar{position:relative}.article-body{max-width:700px}
+    .article-body h2{font-family:'Outfit',sans-serif;font-size:clamp(1.4rem,2.5vw,1.8rem);font-weight:800;line-height:1.1;letter-spacing:-1px;color:var(--bk);margin:56px 0 16px;padding-top:20px}.article-body h2:first-of-type{margin-top:0}
+    .article-body h3{font-family:'Outfit',sans-serif;font-size:1.05rem;font-weight:700;line-height:1.25;letter-spacing:-.3px;color:var(--bk);margin:36px 0 10px}
+    .article-body p{font-size:.9rem;color:var(--g1);line-height:1.85;margin-bottom:18px}
+    .article-body strong{color:var(--bk);font-weight:600}
+    .article-body ul,.article-body ol{margin:0 0 20px 0;padding-left:20px}
+    .article-body li{font-size:.88rem;color:var(--g1);line-height:1.8;margin-bottom:6px}.article-body li strong{color:var(--bk)}
+    .article-body blockquote{margin:28px 0;padding:20px 24px;background:var(--g4);border-left:3px solid var(--bk);border-radius:0 12px 12px 0;font-size:.88rem;color:var(--g1);line-height:1.8;font-style:italic}
+    .article-body blockquote strong{color:var(--bk);font-style:normal}
+    .article-body hr{border:none;border-top:1px solid var(--g4);margin:48px 0}
+    .info-box{margin:28px 0;padding:24px;background:rgba(0,102,255,.03);border:1px solid rgba(0,102,255,.08);border-radius:14px}
+    .info-box-title{font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:700;color:var(--blue);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+    .info-box p{font-size:.82rem;color:var(--g1);line-height:1.7;margin-bottom:0}
+    .key-concept{margin:32px 0;padding:28px;background:var(--bk3);border-radius:16px;color:var(--pure)}
+    .key-concept-label{font-size:.55rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:10px}
+    .key-concept h4{font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:800;letter-spacing:-.3px;margin-bottom:8px}
+    .key-concept p{font-size:.85rem;color:rgba(255,255,255,.5);line-height:1.8;margin-bottom:0}
+    .compare-table{width:100%;margin:24px 0 28px;border-collapse:collapse;border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,.06)}
+    .compare-table th{background:var(--bk3);color:var(--pure);font-family:'Outfit',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:14px 16px;text-align:left}
+    .compare-table td{padding:12px 16px;font-size:.82rem;color:var(--g1);line-height:1.6;border-bottom:1px solid rgba(0,0,0,.04);background:var(--pure)}
+    .compare-table tr:last-child td{border-bottom:none}.compare-table td:first-child{font-weight:600;color:var(--bk)}
+    .cta-card{margin:48px 0;padding:40px;background:var(--bk3);border-radius:20px;text-align:center;position:relative;overflow:hidden}
+    .cta-card::before{content:'';position:absolute;top:-50%;right:-30%;width:400px;height:400px;background:radial-gradient(circle,rgba(0,102,255,.08) 0%,transparent 70%);pointer-events:none}
+    .cta-card-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:12px}
+    .cta-card h3{font-family:'Outfit',sans-serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:800;color:var(--pure);letter-spacing:-.5px;margin-bottom:8px}
+    .cta-card p{font-size:.85rem;color:rgba(255,255,255,.4);line-height:1.7;max-width:380px;margin:0 auto 24px}
+    .cta-card .btn-p{background:var(--pure);color:var(--bk)}.cta-card .btn-p:hover{box-shadow:0 8px 30px rgba(255,255,255,.15)}
+    .faq-sec{padding:80px 48px 100px;background:var(--g4)}
+    .faq-list{max-width:680px;margin:40px auto 0}.fi{border-bottom:1px solid rgba(0,0,0,.06)}
+    .fq{width:100%;text-align:left;padding:18px 0;background:none;border:none;font-size:.85rem;font-weight:600;font-family:'DM Sans',sans-serif;color:var(--bk);display:flex;justify-content:space-between;align-items:center;cursor:pointer;gap:16px;transition:color .3s}.fq:hover{color:var(--g1)}
+    .fq-icon{width:22px;height:22px;border-radius:50%;background:rgba(0,0,0,.04);display:flex;align-items:center;justify-content:center;font-size:.75rem;transition:all .4s;flex-shrink:0;color:var(--g2)}
+    .fa{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1)}.fa.open{max-height:280px;padding-bottom:14px}
+    .fa p{font-size:.8rem;color:var(--g1);line-height:1.7;margin-bottom:0}.fi.active .fq-icon{background:var(--bk);color:var(--pure);transform:rotate(45deg)}
+    .related-sec{padding:80px 48px;background:var(--pure);border-top:1px solid var(--g4)}
+    .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1060px;margin:40px auto 0}
+    .related-card{display:block;padding:28px;background:var(--g4);border-radius:16px;transition:all .4s;text-decoration:none;color:var(--bk)}
+    .related-card:hover{background:var(--pure);box-shadow:0 8px 30px rgba(0,0,0,.06);transform:translateY(-2px)}
+    .related-cat{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+    .related-card h3{font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:700;line-height:1.3;letter-spacing:-.3px;margin-bottom:8px}
+    .related-card p{font-size:.78rem;color:var(--g1);line-height:1.6;margin-bottom:14px}
+    .related-link{font-size:.72rem;font-weight:600;color:var(--blue);letter-spacing:.3px}
+    .footer{background:var(--bk3);color:var(--pure);padding:56px 48px 28px}
+    .ft-top{display:flex;justify-content:space-between;align-items:start;margin-bottom:48px;flex-wrap:wrap;gap:32px}
+    .ft-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase}
+    .ft-cols{display:flex;gap:80px}
+    .ft-col-title{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:12px}
+    .ft-col a{display:block;font-size:.78rem;color:rgba(255,255,255,.5);margin-bottom:8px;transition:color .3s}.ft-col a:hover{color:var(--pure)}
+    .ft-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:20px;display:flex;justify-content:space-between;align-items:center;font-size:.6rem;color:rgba(255,255,255,.2)}
+    .ft-bottom a{color:rgba(255,255,255,.2);transition:color .3s;margin-left:20px}.ft-bottom a:hover{color:rgba(255,255,255,.5)}
+    .disclaimer{padding:12px 48px;background:var(--bk3);font-size:.58rem;color:rgba(255,255,255,.12);text-align:center;line-height:1.6;border-top:1px solid rgba(255,255,255,.03)}
+    .sec-center{text-align:center;max-width:680px;margin:0 auto}
+    .sec-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--g2);margin-bottom:10px}
+    .sec-title{font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;line-height:1.05;letter-spacing:-1.5px;color:var(--bk);margin-bottom:16px}
+    .btn-p{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--bk);color:var(--pure);border-radius:980px;font-size:.85rem;font-weight:600;transition:all .3s;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;text-decoration:none}
+    .btn-p:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(0,0,0,.1)}
+    .btn-p svg{width:13px;height:13px;transition:transform .3s}.btn-p:hover svg{transform:translateX(3px)}
+    .reading-progress{position:fixed;top:0;left:0;height:2px;background:var(--blue);z-index:9999;width:0;transition:width .1s linear}
+    @media(max-width:900px){.nav{padding:14px 20px}.nav-links{display:none}.blog-hero{padding:120px 20px 60px}.article-wrap{grid-template-columns:1fr;padding:40px 20px 80px}.article-sidebar{display:none}.related-grid{grid-template-columns:1fr}.related-sec,.faq-sec{padding:60px 20px}.ft-cols{flex-direction:column;gap:28px}.footer{padding:40px 20px 20px}.disclaimer{padding:10px 16px}.cta-card{padding:28px 20px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  .article-body a{color:var(--blue);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;font-weight:500}.article-body a:hover{text-decoration-thickness:2px}
+</style>
+</head>
+<body>
+
+<div class="preloader" id="preloader"><div style="text-align:center"><div class="pre-word"><span>B</span><span>A</span><span>S</span><span>S</span></div><div class="pre-line" id="preLine"></div></div></div>
+<div class="reading-progress" id="readingProgress"></div>
+
+<nav class="nav" id="nav">
+  <a href="https://basstrading.fr" class="nav-logo">BASS</a>
+  <ul class="nav-links">
+    <li><a href="https://basstrading.fr/#methode">Méthode</a></li>
+    <li><a href="https://basstrading.fr#resultats">Résultats</a></li>
+    <li><a href="https://basstrading.fr#avis">Avis</a></li>
+    <li><a href="https://basstrading.fr#faq">FAQ</a></li>
+    <li><a href="https://basstrading.fr/blog/">Blog</a></li>
+  </ul>
+  <a href="https://basstrading.fr/p/formation-offerte/?src=blog-perte-maximale-journaliere-trading-menu" class="nav-cta">Formation offerte</a>
+</nav>
+
+<section class="blog-hero">
+  <div class="blog-hero-inner">
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <a href="https://basstrading.fr">Accueil</a><span class="sep">/</span>
+      <a href="https://basstrading.fr/blog/">Blog</a><span class="sep">/</span>
+      <span>Perte maximale journalière</span>
+    </nav>
+    <div class="blog-hero-cat">Gestion du risque</div>
+    <h1 class="blog-hero-title">Perte maximale journalière : la règle des salles de marché</h1>
+    <p class="blog-hero-desc">En banque, personne ne te laisse perdre sans limite : une perte maximale par jour est fixée, et quand tu la touches, tu ne trades plus. Un ancien trader de banque raconte comment ça se passe. Je te montre ce que tu peux en garder quand tu trades seul, avec un calcul simple : ta limite doit te laisser plusieurs trades complets.</p>
+    <div class="blog-meta">
+      <div class="blog-meta-author">
+        <div class="blog-meta-avatar"><img src="../../images/bass-presenting.jpg" alt="Sébastien Constant" loading="lazy"></div>
+        <div><div class="blog-meta-name"><a href="/auteur/sebastien-constant/" rel="author" style="color:inherit;text-decoration:none">Sébastien Constant</a></div><div class="blog-meta-role">Trader & Formateur Order Flow</div></div>
+      </div>
+      <div class="blog-meta-sep"></div>
+      <div class="blog-meta-info"><span>Octobre 2026</span><span>20 min de lecture</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="article-wrap">
+  <aside class="article-sidebar">
+    <div class="toc">
+      <div class="toc-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/></svg> Sommaire</div>
+      <ol>
+        <li><a href="#perte-maximale-journaliere-c-est-quoi-en">Perte maximale journalière : c&#39;est quoi, en une phrase ?</a></li>
+        <li><a href="#comment-la-perte-maximale-journaliere-fo">Comment la perte maximale journalière fonctionne en salle de marché ?</a></li>
+        <li><a href="#pourquoi-c-est-plus-dur-quand-tu-trades-">Pourquoi c&#39;est plus dur quand tu trades seul ?</a></li>
+        <li><a href="#pourquoi-la-gestion-du-risque-c-est-auss">Pourquoi la gestion du risque, c&#39;est aussi la gestion des gains ?</a></li>
+        <li><a href="#comment-fixer-ta-perte-maximale-journali">Comment fixer ta perte maximale journalière ?</a></li>
+        <li><a href="#perte-par-trade-par-jour-par-semaine-com">Perte par trade, par jour, par semaine : comment les trois étages s&#39;emboîtent ?</a></li>
+        <li><a href="#quelles-erreurs-font-sauter-la-limite-jo">Quelles erreurs font sauter la limite journalière ?</a></li>
+        <li><a href="#quelle-perte-une-limite-journaliere-n-ar">Quelle perte une limite journalière n&#39;arrête pas ? L&#39;histoire des 200 000</a></li>
+        <li><a href="#que-copier-de-la-banque-et-que-laisser-d">Que copier de la banque, et que laisser de côté ?</a></li>
+        <li><a href="#prop-firm-la-limite-imposee-suffit-elle">Prop firm : la limite imposée suffit-elle ?</a></li>
+        <li><a href="#que-faire-ce-soir-pour-fixer-ta-limite">Que faire ce soir pour fixer ta limite ?</a></li>
+      </ol>
+    </div>
+  </aside>
+
+  <article class="article-body">
+    <h2 id="perte-maximale-journaliere-c-est-quoi-en">Perte maximale journalière : c&#39;est quoi, en une phrase ?</h2>
+    <p><em>Par l&#39;auteur, formateur en trading depuis une dizaine d&#39;années · mis à jour le 20/10/2026</em></p>
+<p>Tu as fini une séance en te disant « je n&#39;aurais jamais dû prendre les trois derniers trades » ? Tu n&#39;as pas un problème d&#39;analyse. Tu as un problème de limite : rien ne t&#39;a arrêté au bon moment.</p>
+<p><b>La perte maximale journalière est le montant que tu t&#39;interdis de dépasser sur une journée de trading : une fois touchée, tu arrêtes, sans dernier trade ni tentative de te refaire, jusqu&#39;au lendemain.</b></p>
+<p>C&#39;est la règle de base des salles de marché. Dans mon podcast, j&#39;ai reçu Nicolas Schneller, ancien trader dans une filiale d&#39;une grande banque française (vidéo, vers 6:00), entré en salle « il y a 25 ans », en juillet 2000 (vidéo, vers 2:00 et 9:00). Quand je lui ai demandé comment fonctionne le money management en institution, il a répondu : « C&#39;est simple, tu as une perte journalière maximale autorisée. » (vidéo, vers 20:00)</p>
+<p>Le principe vaut pour tout le monde, du desk de banque au particulier qui trade depuis son salon. Ce qui change, c&#39;est qui applique la règle. En banque, c&#39;est le système. Chez toi, c&#39;est toi.</p>
+<p>Je reprends ici ce que Nicolas a raconté sur les coulisses, puis je te donne une méthode chiffrée pour construire ta propre limite. Si tu débutes et que tu veux d&#39;abord le cadre général, commence par mon <a href="https://basstrading.fr/blog/debuter-trading-zero-guide/">guide pour débuter en trading depuis zéro</a>, puis reviens ici.</p>
+<aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p><b>Avertissement.</b> Le trading de contrats à terme comporte un risque élevé de perte, pouvant dépasser la mise initiale. Cet article est éducatif : ce n&#39;est pas un conseil en investissement, et les exemples chiffrés sont des illustrations, pas des résultats.</p></aside>
+<p>Alors, concrètement, que se passe-t-il dans une salle de marché quand un trader perd trop ?</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/perte-maximale-journaliere-trading/blog-perte-maximale-journaliere-trading-1.webp" alt="Règle de la perte maximale journalière : fixée avant la séance, jamais déplacée, arrêt dès qu&#39;elle est touchée" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">La règle de base des salles de marché, valable aussi chez toi.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="comment-la-perte-maximale-journaliere-fo">Comment la perte maximale journalière fonctionne en salle de marché ?</h2>
+    <p>En banque, la limite est fixée par jour, calée sur le capital confié, et elle est appliquée par le contrôle des risques, pas par la volonté du trader. Voici ce que Nicolas décrit. Ce sont ses souvenirs de banque, pas des règles universelles, mais ils donnent l&#39;esprit.</p>
+<h3>Un plafond fixé par jour</h3>
+<p>Chaque trader a une perte maximale autorisée, qui dépend du capital qu&#39;on lui confie. Quand je lui ai demandé son chiffre « pour l&#39;anecdote », il a répondu : on peut monter à 50 000 à 100 000 par jour (sans devise précisée), selon les tailles gérées (vidéo, vers 25:00). Ce sont les chiffres d&#39;un desk de banque : ils n&#39;ont aucun sens pour un particulier, et personne ne doit les copier.</p>
+<p>Précision utile : chez lui, c&#39;était « au jour le jour » (vidéo, vers 25:00). Il fait la différence avec un autre fonctionnement, évoqué dans l&#39;échange, où une banque suisse des années 80-90 fixait un drawdown maximal jusqu&#39;à la fin du mois (vidéo, vers 23:00).</p>
+<h3>Impossible de dépasser</h3>
+<p>« Si tu as 50 000 de max, tu perds 50 000. Tu ne peux pas aller au-delà. » (vidéo, vers 28:00) Ce n&#39;est pas une recommandation, c&#39;est une barrière technique. Chez les pros, explique-t-il, tu ne peux pas dépasser le nombre de lots, et tu n&#39;as plus la main sur ton ordinateur, parce que « c&#39;est le contrôle des risques qui prend la main » (vidéo, vers 16:00).</p>
+<h3>Ensuite, tu rends des comptes</h3>
+<p>Tu vas voir le patron et tu lui expliques ce qui s&#39;est passé. Nicolas le raconte : tu prends « ta petite claque », ça gueule un peu fort, puis tu retournes à ton administratif, mais tu n&#39;as plus le droit de trader ce jour-là (vidéo, vers 25:00).</p>
+<h3>Un rapport chaque jour</h3>
+<p>Tous les jours, il y a un rapport à soumettre à la hiérarchie sur les positions (vidéo, vers 17:00). Pourquoi cette position ? Est-ce logique et cohérent, mais arrivé trop tôt, ou est-ce « un peu olé olé » ? Sa formule : « On ne fait pas des trades au hasard, on ne fait pas des pertes pour rien et on ne prend pas des risques pour rien. » (vidéo, vers 19:00) <b>On ne te demande pas d&#39;avoir toujours raison. On te demande d&#39;être capable d&#39;expliquer.</b></p>
+<h3>Une liberté, tant que le risque est géré</h3>
+<p>En institution, tu n&#39;appliques pas forcément une stratégie imposée. Tu reçois des formations au début, puis ton point d&#39;entrée peut venir du carnet d&#39;ordres, de la théorie des enchères ou du Market Profile (vidéo, vers 24:00). Quand je lui ai résumé « vous êtes libres tant que vous gérez le risque correctement », il a confirmé : « Exactement, c&#39;est que de la gestion du risque. » (vidéo, vers 24:00)</p>
+<p>Si tu veux comprendre ces familles de méthodes, mon article sur les <a href="https://basstrading.fr/blog/types-trading-differences/">différents types de trading</a> pose les bases.</p>
+<h3>La taille maximale, on ne la touche presque jamais</h3>
+<p>La taille maximale autorisée existe comme barrière, pas comme objectif. Nicolas la cite : sur le DAX, jusqu&#39;à 500 lots, mais « taille max, tu ne touches quasiment jamais » (vidéo, vers 26:00). Et surtout, on monte une position parce qu&#39;on a déjà des gains : « Tu ne les montes pas parce que tu as des pertes et que tu fais grossir ta perte. Tu vas dans l&#39;autre sens. » (vidéo, vers 27:00) C&#39;est l&#39;inverse exact du débutant qui double sa mise pour se refaire.</p>
+<h3>À retenir</h3>
+<ul><li>En banque, la limite est fixée par jour et appliquée par un système, pas par le trader.</li><li>Touchée, elle coupe la journée : plus d&#39;ordre, puis une explication au responsable.</li><li>La taille maximale est une barrière ; on ajoute seulement quand on gagne.</li></ul>
+<p>Reste la question qui te concerne : que se passe-t-il quand ce système n&#39;existe plus ?</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/perte-maximale-journaliere-trading/blog-perte-maximale-journaliere-trading-2.webp" alt="Étapes de ce qui se passe en banque quand un trader touche sa perte maximale journalière" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Le déroulé décrit par Nicolas Schneller dans mon podcast.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="pourquoi-c-est-plus-dur-quand-tu-trades-">Pourquoi c&#39;est plus dur quand tu trades seul ?</h2>
+    <p>Parce que seul, aucun système ne te coupe : la limite n&#39;existe que si tu la fixes et que tu la fais respecter toi-même. Nicolas a connu les deux mondes, la salle de marché puis le trading à son compte. Son constat sur le particulier : « Personne ne va te faire un contrôle des risques. » (vidéo, vers 15:00)</p>
+<p>En institution, explique-t-il, tu ne peux pas trop « tilter » parce que tu es surveillé de partout (vidéo, vers 15:00). Seul, tu fais ce que tu veux : une opportunité sur un autre actif, une envie de grossir, personne ne t&#39;arrête. Et il ajoute qu&#39;il est assez rare de trouver des gens vraiment rigoureux, qui ne vont pas tilter (vidéo, vers 15:00).</p>
+<h3>Pourquoi le métier a l&#39;air plus facile qu&#39;il ne l&#39;est</h3>
+<p>Selon Nicolas, le métier paraît très facile : un clic suffit pour envoyer un lot sur le marché, et on ne se rend pas compte de l&#39;engagement qu&#39;un lot sur le Nasdaq représente (vidéo, vers 16:00). Quand cliquer est facile, on finit par croire qu&#39;à chaque clic on va gagner. C&#39;est la porte de l&#39;overtrading : trop de trades pour trop peu de raisons.</p>
+<p>Ses mots : « Les gens ont besoin, quand ils ont l&#39;écran sous les yeux, de passer un ordre. On n&#39;est pas obligé de passer des ordres. » (vidéo, vers 14:00) Il vaut mieux, dit-il, trois trades bien attendus, avec de vrais points d&#39;entrée et de sortie, que cinquante trades pour le même résultat, voire moins bon, en payant surtout des commissions au courtier (vidéo, vers 14:00).</p>
+<h3>Ce que la limite remplace</h3>
+<p><b>La perte maximale journalière remplace le contrôle des risques de la banque.</b> C&#39;est toi qui te coupes, avant que l&#39;émotion ne le fasse à ta place.</p>
+<p>Sur les comptes de prop firm, cette limite est souvent imposée par la plateforme : les détails sont dans mon <a href="https://basstrading.fr/blog/prop-firm-funded-trader/">guide pour devenir funded trader en prop firm</a>. Sur ton propre compte, aucune plateforme ne te la rappellera, sauf si tu l&#39;as réglée toi-même.</p>
+<h3>Ce que coûte l&#39;absence de cadre</h3>
+<p>Les chiffres des régulateurs vont dans le même sens. Selon l&#39;<a href="https://www.amf-france.org/sites/institutionnel/files/contenu_simple/lettre_ou_cahier/lettre_observatoire/La%20lettre%20de%20l%27Observatoire%20de%20l%27epargne%20de%20l%27AMF%20-%20ndeg%2010%20-%20Octobre%202014.pdf">étude de l&#39;AMF publiée en octobre 2014</a>, menée sur près de 15 000 particuliers, 89 % des clients actifs sur le Forex et les CFD ont perdu de l&#39;argent entre 2009 et 2012 (<a href="https://www.lafinancepourtous.com/2014/10/13/forex-attention-danger/">résumé de l&#39;Institut pour l&#39;éducation financière du public</a>). Cette étude ne porte pas sur les futures, mais elle rappelle que l&#39;effet de levier sans règle se paie.</p>
+<p>Une limite de perte ne règle pourtant que la moitié du problème. L&#39;autre moitié, Nicolas l&#39;a formulée d&#39;une phrase.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/perte-maximale-journaliere-trading/blog-perte-maximale-journaliere-trading-3.webp" alt="Comparaison de la perte maximale journalière en banque et seul chez soi : qui fixe la limite, qui coupe, à qui rendre des comptes" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">En banque, la limite est tenue par d&#39;autres. Seul, chaque case revient à toi : c&#39;est pour ça qu&#39;elle doit être écrite avant la séance.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="pourquoi-la-gestion-du-risque-c-est-auss">Pourquoi la gestion du risque, c&#39;est aussi la gestion des gains ?</h2>
+    <p>Parce qu&#39;une journée gagnante qui se retourne en journée perdante est une perte comme une autre : protéger un gain fait partie du risque. Nicolas le dit ainsi : « Pour moi, la gestion des risques, c&#39;est aussi la gestion des gains. Les gens, ils oublient un peu ça. Quand tu as un certain gain, il ne faut pas le perdre. » (vidéo, vers 21:00)</p>
+<p>Une limite de perte du jour, sans règle sur les gains, laisse un trou : tu peux finir dans le rouge une séance où tu étais nettement gagnant à midi.</p>
+<h3>Ce qu&#39;on fait en institution quand on est en gain</h3>
+<p>Nicolas cite trois gestes (vidéo, vers 21:00) :</p>
+<ul><li><b>On remonte les stops.</b> Un stop est un ordre qui te sort automatiquement si le prix revient contre toi. Quand le trade avance, on le rapproche pour verrouiller une partie du gain. Pour voir comment un ordre stop fonctionne techniquement sur un marché à terme (déclenchement, stop-limite, stop avec protection), la page du CME Group sur les <a href="https://cmegroupclientsite.atlassian.net/wiki/spaces/EPICSANDBOX/pages/457087412/Order+Types+for+Futures+and+Options">types d&#39;ordres sur futures et options</a> décrit leur fonctionnement sur la plateforme Globex.</li><li><b>On allège.</b> Si l&#39;on veut rester dans la position, on en réduit la taille.</li><li><b>On « banque ».</b> C&#39;est son mot : encaisser ce que le marché a donné, avant qu&#39;il ne le reprenne.</li></ul>
+<h3>Et si le trade ressort à zéro ?</h3>
+<p>Je lui ai posé la question : tu as 100 points latents sur un trade, tu ne les prends pas, le prix revient et tu te fais sortir à l&#39;équilibre. Que te dit ton patron ? (vidéo, vers 21:00) Sa réponse est nuancée : ça dépend de ta stratégie et de ton historique. Si ta façon de travailler consiste à viser 300, 400 ou 500 points et que tu l&#39;as déjà prouvé, tu peux expliquer que tu as laissé de l&#39;espace au marché. « C&#39;est cohérent et c&#39;est du bon sens. » (vidéo, vers 22:00) Ce qui ne passe pas, c&#39;est de ne pas savoir pourquoi.</p>
+<p>Il ajoute que la question se pose à tout le monde en gain : sortir maintenant ou pas ? Faire 100 points en cinq fois 20, ou en une fois 100 ? Ça dépend du marché et de ta façon de travailler (vidéo, vers 22:00).</p>
+<h3>Quand le marché ne tend plus</h3>
+<p>Nicolas décrit le moment du tournage : un marché qui latéralise. Ceux qui faisaient 100 points sur le Nasdaq trois semaines plus tôt se font reprendre sur leur prix d&#39;entrée et se disent « je fais que des stops, je n&#39;y arrive pas ». Son diagnostic : « Ce n&#39;est pas qu&#39;ils n&#39;y arrivent pas, c&#39;est que le marché est différent, il faut s&#39;adapter. » (vidéo, vers 21:00) Dans ces phases, il faut encaisser plusieurs petits montants, même si cela nourrit davantage le courtier (vidéo, vers 22:00).</p>
+<p>C&#39;est là que ta limite journalière travaille pour toi : elle t&#39;empêche d&#39;insister quand le marché ne te donne rien.</p>
+<h3>À retenir</h3>
+<ul><li>Protéger un gain fait partie de la gestion du risque.</li><li>Stop remonté, position allégée, gain encaissé : trois gestes simples.</li><li>Dans un marché sans tendance, la limite t&#39;empêche d&#39;insister.</li></ul>
+<p>Tu as maintenant l&#39;esprit de la règle. Passons au chiffre : comment fixer le tien ?</p>
+
+    <hr>
+
+    <h2 id="comment-fixer-ta-perte-maximale-journali">Comment fixer ta perte maximale journalière ?</h2>
+    <p>Fixe-la avant la séance, à partir de ce que tu peux perdre sans conséquence sur ta vie, puis vérifie qu&#39;elle te laisse plusieurs trades complets. Je ne peux pas te donner ton chiffre : il dépend de ton capital et de ta situation. Voici la méthode.</p>
+<h3>Les quatre étapes</h3>
+<ul><li><b>Pars de ce que tu peux perdre sans que ça change ta vie.</b> C&#39;est le seul point de départ honnête. Si une journée rouge t&#39;empêche de payer ton loyer, ta limite est déjà trop haute.</li><li><b>Écris le montant avant d&#39;ouvrir ta plateforme.</b> Pas pendant la séance : à ce moment-là, ton jugement est déjà abîmé par la perte en cours.</li><li><b>Décide à l&#39;avance de ce que tu fais quand elle est touchée.</b> Tu fermes la plateforme, tu te lèves, tu fais ton débrief. Prépare-le quand tu es calme.</li><li><b>Ne la déplace jamais en cours de journée.</b> Une limite qu&#39;on repousse n&#39;est plus une limite.</li></ul>
+<h3>La règle de cohérence : combien de trades complets ?</h3>
+<p>Une limite journalière n&#39;a de sens que si elle laisse plusieurs trades complets. Si un seul trade perdant peut en consommer la moitié, tu passeras tes journées à la toucher, et tu seras tenté de la déplacer.</p>
+<p>Le calcul est simple :</p>
+<p><b>Nombre de pertes complètes avant l&#39;arrêt = limite du jour ÷ risque par trade</b></p>
+<p>Le risque par trade, lui, vient de ta taille de position et de la distance de ton stop : c&#39;est d&#39;abord le stop, ensuite le nombre de contrats.</p>
+<h3>Un exemple pédagogique (chiffres fictifs)</h3>
+<p>Prenons un compte fictif de 10 000 €. Tu décides qu&#39;une mauvaise journée ne doit pas dépasser 1 % du compte, soit 100 €. Tu calibres chaque trade pour risquer 25 € au stop. Ces chiffres ne sont ni une recommandation ni un standard : ils servent à montrer le raisonnement.</p>
+<p>100 € ÷ 25 € = 4 pertes complètes avant l&#39;arrêt. Voici la journée si chaque trade perd 25 € :</p>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Trade</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Perte cumulée</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Décision</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">1</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">25 €</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Continue</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">2</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">50 €</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Continue sans grossir</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">3</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">75 €</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Dernier trade complet</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">4</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">100 €</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Stop : plateforme fermée</td></tr></tbody></table></div>
+<p>À la 4e perte, la journée est finie. Même si le setup suivant te paraît parfait. Le moment où tu te sens le plus sûr de toi est aussi celui où il faut fermer.</p>
+<p>Deux règles complètent ce tableau :</p>
+<ul><li><b>Si la marge restante est plus petite qu&#39;un trade complet, tu arrêtes aussi.</b> Tu ne réduis pas ton stop pour « faire rentrer » un dernier trade.</li><li><b>Le glissement existe.</b> Un stop n&#39;est pas toujours exécuté exactement au niveau prévu. Si ta perte réelle dépasse 25 € sur un trade, compte la perte réelle, pas la perte prévue.</li></ul>
+<h3>Rends la règle difficile à contourner</h3>
+<p>Si ta plateforme ou ton compte le permet, règle une limite de perte automatique. Sinon, une alarme et la règle écrite sur un papier collé à l&#39;écran font déjà beaucoup. L&#39;idée est de mettre de la friction entre ton impulsion et ton clic.</p>
+<p>La limite réduit l&#39;ampleur d&#39;un mauvais jour, elle ne garantit rien : le marché peut faire des écarts et des sauts de prix.</p>
+<h3>À retenir</h3>
+<ul><li>Limite du jour ÷ risque par trade = nombre de pertes complètes autorisées.</li><li>Vise une limite qui laisse plusieurs trades complets, pas un ou deux.</li><li>À la dernière perte complète, tu fermes, quoi que tu penses du trade suivant.</li></ul>
+<p>Pour suivre ma lecture du Nasdaq, rejoins mon <a href="https://t.me/bassofficiel">canal Telegram</a>. Il est gratuit. Pas de signaux à copier.</p>
+<p>Cette limite du jour ne vit pas seule. Elle est l&#39;étage du milieu d&#39;une construction à trois niveaux.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/perte-maximale-journaliere-trading/blog-perte-maximale-journaliere-trading-4.webp" alt="Calcul de cohérence de la perte maximale journalière : 100 euros de limite divisés par 25 euros de risque par trade égalent 4 pertes complètes" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Exemple fictif : ta limite doit loger plusieurs trades complets, sinon elle se déclenche dès le deuxième.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="perte-par-trade-par-jour-par-semaine-com">Perte par trade, par jour, par semaine : comment les trois étages s&#39;emboîtent ?</h2>
+    <p>Chaque étage protège une durée différente, et chacun doit être plus petit que celui du dessus : le risque par trade loge plusieurs fois dans la limite du jour, qui loge plusieurs fois dans la limite de la semaine. Si un étage manque, les deux autres se font contourner.</p>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Étage</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Exemple fictif</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Quand il est touché</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Par trade</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">25 € au stop</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Trade fini, pas de revanche</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Par jour</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">100 € (4 pertes)</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Plateforme fermée, débrief</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Par semaine</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">250 €</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Pause, revue de méthode</td></tr></tbody></table></div>
+<p>Le détail, pour un compte fictif de 10 000 € :</p>
+<ul><li><b>Par trade</b>, tu protèges une seule idée. Quand le stop est touché, le trade est fini : pas de nouvelle entrée immédiate pour te refaire.</li><li><b>Par jour</b>, tu protèges la séance. 100 €, c&#39;est 4 pertes complètes de 25 € ; ensuite, plateforme fermée, débrief, retour le lendemain.</li><li><b>Par semaine</b>, tu protèges la période. 250 €, c&#39;est 2,5 journées rouges complètes ; ensuite, pause jusqu&#39;à la semaine suivante et revue de la méthode.</li></ul>
+<h3>Étage 1 : la perte maximale par trade</h3>
+<p>C&#39;est ce que tu acceptes de perdre sur une idée. Elle se règle avec la taille de ta position et la distance de ton stop. Sans elle, un seul trade peut avaler toute la limite du jour en quelques secondes.</p>
+<h3>Étage 2 : la perte maximale journalière</h3>
+<p>Elle empêche qu&#39;une série de trades perdants, ou un enchaînement émotionnel, ne détruise ton compte en une séance. C&#39;est le garde-fou contre la spirale « foutu pour foutu ».</p>
+<h3>Étage 3 : la perte maximale par semaine ou par mois</h3>
+<p>Si tu touches ta limite journalière plusieurs jours de suite, le problème n&#39;est plus la journée, c&#39;est la période. Une limite hebdomadaire ou mensuelle te force à te demander si ta méthode est adaptée au marché du moment. C&#39;est le fonctionnement évoqué dans l&#39;échange pour une banque suisse des années 80-90 : un drawdown maximal jusqu&#39;à la fin du mois (vidéo, vers 23:00).</p>
+<h3>Pourquoi l&#39;ordre des étages compte</h3>
+<p>Avec 25 € par trade et 100 € par jour, tu as de la place pour quatre erreurs. <b>Avec 60 € par trade et la même limite, tu n&#39;as plus qu&#39;une seule perte complète : après elle, il reste 40 €, moins qu&#39;un trade, et ta journée est finie.</b> Le même raisonnement vaut entre la journée et la semaine.</p>
+<p>Ces réflexes ne s&#39;installent pas en une semaine. Si tu te demandes combien de temps il faut, j&#39;en parle dans <a href="https://basstrading.fr/blog/combien-temps-apprendre-trading/">combien de temps il faut pour apprendre le trading</a>.</p>
+<h3>À retenir</h3>
+<ul><li>Trois étages : par trade, par jour, par semaine ou par mois.</li><li>Chaque étage loge plusieurs fois dans celui du dessus.</li><li>Si un étage manque, les autres finissent par sauter.</li></ul>
+<p>Fixer ces trois chiffres est facile. Les respecter l&#39;est beaucoup moins : voici comment ils sautent.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/perte-maximale-journaliere-trading/blog-perte-maximale-journaliere-trading-5.webp" alt="Les trois étages de limites de perte en trading : par trade, par jour et par semaine, avec un exemple fictif chiffré" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Chaque étage loge plusieurs fois dans celui du dessus.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="quelles-erreurs-font-sauter-la-limite-jo">Quelles erreurs font sauter la limite journalière ?</h2>
+    <p>La limite saute de cinq façons : on la déplace, on la remplace par celle de la plateforme, on change de compte, on oublie les pertes latentes, ou on ne débriefe pas.</p>
+<h3>1. La déplacer « juste aujourd&#39;hui »</h3>
+<p>Tu es à 75 € sur 100 €, tu vois un setup magnifique, et tu te dis qu&#39;aujourd&#39;hui, exceptionnellement, tu peux aller un peu plus loin. C&#39;est le début de la fin. <b>Une règle avec des exceptions est une suggestion.</b></p>
+<h3>2. La remplacer par la limite de la plateforme</h3>
+<p>Qu&#39;il s&#39;agisse d&#39;un compte de prop firm ou d&#39;un courtier, la limite technique est souvent beaucoup plus large que celle que tu devrais t&#39;imposer. Nicolas le dit pour la taille : elle existe, mais tu ne la touches quasiment jamais (vidéo, vers 26:00). La limite à respecter est la tienne, pas celle qu&#39;on t&#39;autorise.</p>
+<h3>3. Recommencer sur un autre compte</h3>
+<p>Tu as touché la limite sur un compte, tu en ouvres un autre pour te refaire. Tu as seulement déplacé le problème, et tu dépenses plus. Nicolas fait la même remarque sur les prop firms : il ne faut pas « sortir la carte bleue » dès que le compte est perdu, pour recharger plusieurs fois par jour ou par semaine (vidéo, vers 41:00).</p>
+<h3>4. Ne compter que les pertes réalisées</h3>
+<p>Une position qui saigne mais que tu n&#39;as pas clôturée, c&#39;est déjà de la perte du jour. Compte les pertes latentes dans ta limite, sinon tu te racontes une histoire.</p>
+<h3>5. Oublier de débriefer</h3>
+<p>Nicolas est clair : le débriefing de session, il le fait tout le temps. Quelles erreurs ? Qu&#39;est-ce qui était bien ? Trop de levier, pas assez de taille ? (vidéo, vers 17:00) Il remarque aussi que les gens préparent leur séance avec un petit fichier de 5 à 10 minutes, puis arrêtent au bout d&#39;une ou deux semaines (vidéo, vers 17:00). Un débrief court mais régulier vaut mieux qu&#39;un long débrief jamais fait.</p>
+<p>Ces erreurs ont un point commun : elles arrivent en pleine séance, sous l&#39;émotion. Mais il existe une perte qu&#39;aucune limite journalière n&#39;arrête, et Nicolas l&#39;a vécue.</p>
+
+    <hr>
+
+    <h2 id="quelle-perte-une-limite-journaliere-n-ar">Quelle perte une limite journalière n&#39;arrête pas ? L&#39;histoire des 200 000</h2>
+    <p>Une limite journalière ne protège pas d&#39;une conviction gardée des semaines : elle coupe une mauvaise séance, pas une mauvaise idée qui dure. Quand j&#39;ai demandé à Nicolas sa plus grosse perte, la réponse n&#39;a pas été une journée : « Ma plus grosse perte en perso, c&#39;est 200 000. » (vidéo, vers 28:00) Ce n&#39;était pas un coup de folie sur une séance, mais une action gardée six mois (vidéo, vers 28:00).</p>
+<h3>Ce qui s&#39;est passé</h3>
+<p>Il avait investi 200 000, la position était montée à 500 ou 600 000, et il visait le million (vidéo, vers 28:00). C&#39;était une petite société française qu&#39;il avait dénichée, qui entrait dans un indice, ce qui oblige de nombreux fonds indiciels à l&#39;acheter (vidéo, vers 28:00 et 30:00).</p>
+<p>Il y croyait tellement qu&#39;il ne voyait plus les alarmes : résultats décevants, questions sur la rentabilité, puis une gestion qui s&#39;est révélée très mauvaise (vidéo, vers 29:00). Quand le cours est revenu à son point de départ, il s&#39;est dit : « Ce n&#39;est pas possible, je ne suis pas d&#39;accord. » (vidéo, vers 29:00) Il est resté. La société a fini par fermer (vidéo, vers 30:00).</p>
+<h3>Ce que Nicolas en retire</h3>
+<p>Avec le recul, il parle de jeunesse : aujourd&#39;hui, il ne serait pas arrivé aux 500, il aurait pris ses gains avant. « C&#39;est la maturité aussi, l&#39;expérience. » (vidéo, vers 29:00)</p>
+<h3>La leçon pour ta limite</h3>
+<p>Cette histoire montre le trou de la règle journalière. Personne n&#39;a obligé Nicolas à clôturer, parce qu&#39;aucune règle n&#39;avait fixé ce que cette idée avait le droit de lui coûter.</p>
+<p><b>Avant d&#39;entrer dans une position qui a vocation à durer, écris ce qui prouverait que tu as tort, et le montant à partir duquel tu sors, quoi qu&#39;il arrive.</b></p>
+<p>Ce biais est documenté. Le chercheur Terrance Odean a étudié 10 000 comptes de particuliers chez un courtier américain et montré qu&#39;ils vendent trop vite leurs titres gagnants et gardent trop longtemps leurs perdants : c&#39;est l&#39;effet de disposition (<a href="https://faculty.haas.berkeley.edu/odean/papers/disposition/disposition.html">son étude de 1998, « Are Investors Reluctant to Realize Their Losses? »</a>). Refuser d&#39;acter une perte est humain. C&#39;est pour cela qu&#39;une règle écrite à l&#39;avance vaut mieux qu&#39;un jugement en pleine séance.</p>
+<p>Tout n&#39;est donc pas à prendre tel quel dans le modèle de la banque. Faisons le tri.</p>
+
+    <hr>
+
+    <h2 id="que-copier-de-la-banque-et-que-laisser-d">Que copier de la banque, et que laisser de côté ?</h2>
+    <p>Copie le cadre (plafond écrit, compte rendu quotidien, spécialisation, ajout seulement dans le gain) ; laisse les montants, les horaires et la hiérarchie. Voici le détail.</p>
+<h3>À copier</h3>
+<ul><li><b>Un plafond chiffré, écrit avant la séance.</b> Même sans système qui le contrôle, il change ton comportement.</li><li><b>Un compte rendu quotidien.</b> Cinq lignes : ce qui s&#39;est passé, pourquoi tu as pris tes trades, ce que tu referais ou non.</li><li><b>Une spécialisation.</b> Nicolas raconte que sur le desk Forex d&#39;une grande banque, un trader ne faisait que l&#39;euro-dollar, pas d&#39;autre paire (vidéo, vers 13:00). Plus tu connais ton marché, ses réactions à l&#39;ouverture, à la clôture, ses retracements, mieux tu t&#39;en sors. Son conseil : ne pas s&#39;éparpiller (vidéo, vers 13:00).</li><li><b>La règle « on monte avec les gains, pas avec les pertes »</b> (vidéo, vers 27:00).</li></ul>
+<h3>À laisser</h3>
+<ul><li><b>Les montants.</b> 50 000 à 100 000 par jour n&#39;ont rien à voir avec ton compte.</li><li><b>Les horaires.</b> Nicolas arrivait vers 7 h pour préparer la journée (vidéo, vers 1:00) et pouvait repartir vers 22 h ou 23 h, débrief compris, sans que ce soit « 7 h-23 h tous les jours » (vidéo, vers 3:00). Depuis qu&#39;il est à son compte, il le dit : passer sa journée devant son écran n&#39;est pas utile (vidéo, vers 4:00). Toi, tu peux fermer quand ton plan est terminé.</li><li><b>La hiérarchie.</b> Elle sert à contrôler. Remplace-la par un partenaire de confiance ou un mentor qui relit tes trades.</li></ul>
+<h3>Et les outils ?</h3>
+<p>Nicolas le fait remarquer à la fin : un particulier a aujourd&#39;hui des stations de trading qui ressemblent à celles des salles de marché, les mêmes news, l&#39;accès aux mêmes produits (vidéo, vers 45:00). Il n&#39;a pas la puissance de calcul des algorithmes, « mais on n&#39;en a pas besoin » (vidéo, vers 47:00). Ce que l&#39;outil ne donne pas, c&#39;est la discipline du cadre.</p>
+<p>Si tu t&#39;intéresses à la lecture du flux d&#39;ordres, mon guide de l&#39;<a href="https://basstrading.fr/blog/order-flow-trading-france/">order flow en France</a> est un bon point d&#39;entrée.</p>
+<p>Reste un cas particulier où la limite t&#39;est imposée de l&#39;extérieur : la prop firm.</p>
+
+    <hr>
+
+    <h2 id="prop-firm-la-limite-imposee-suffit-elle">Prop firm : la limite imposée suffit-elle ?</h2>
+    <p>Non : la limite d&#39;une prop firm est un cadre utile, mais elle est souvent plus large que celle qui te protège, et c&#39;est la tienne que tu dois respecter. Nicolas a un avis nuancé sur ces sociétés, qui donnent accès à un compte financé après un test.</p>
+<h3>Ce qu&#39;il y voit de positif</h3>
+<p>Pour lui, c&#39;est « une très bonne révolution » : avant, les gens ouvraient un compte réel et perdaient leur vrai argent (vidéo, vers 41:00). En prop firm, tu as un objectif de gain, un robot qui te suit, une gestion des risques à respecter : « on n&#39;est plus sur du gambling ou de la démo pour apprendre » (vidéo, vers 41:00). Et comme le capital n&#39;est pas le tien, tu peux dupliquer les comptes, ce que ton propre argent ne permettrait pas toujours (vidéo, vers 43:00).</p>
+<h3>Ses réserves</h3>
+<ul><li><b>Diversifier.</b> Ne pas dépendre d&#39;une seule société : certaines ont disparu l&#39;année précédente, d&#39;autres changent de règle au dernier moment, surtout quand tu veux être payé (vidéo, vers 42:00).</li><li><b>Les contrôles.</b> Il cite une très grosse société américaine qui demande parfois de se filmer pour vérifier que c&#39;est bien toi qui trades (vidéo, vers 42:00).</li><li><b>Ne pas recharger sans fin.</b> La carte bleue ne doit pas sortir à chaque compte perdu (vidéo, vers 41:00).</li></ul>
+<h3>Le lien avec ta limite journalière</h3>
+<p>Le cadre d&#39;une prop firm t&#39;oblige à une limite, ce qui est pédagogique. Mais ne confonds pas la limite qu&#39;on t&#39;impose avec celle qui te protège. <b>Fixe-toi une limite plus stricte que celle du compte, calculée comme plus haut en nombre de trades complets, et tiens-la.</b> Ce réflexe te servira aussi le jour où tu trades ton propre argent.</p>
+<p>Il ne reste qu&#39;à tout résumer, et à passer à l&#39;action.</p>
+
+    <hr>
+
+    <h2 id="que-faire-ce-soir-pour-fixer-ta-limite">Que faire ce soir pour fixer ta limite ?</h2>
+    <p>Voici la version courte, à garder.</p>
+<ul><li>La perte maximale journalière est un montant fixé à l&#39;avance, au-delà duquel tu arrêtes de trader pour la journée.</li><li>En salle de marché, un système l&#39;applique. Seul, c&#39;est à toi de la rendre difficile à contourner.</li><li>Elle doit laisser plusieurs trades complets : limite du jour ÷ risque par trade.</li><li>La gestion du risque est aussi une gestion des gains : quand tu es en gain, tu le protèges.</li><li>Elle ne remplace pas une règle sur ce que chaque idée a le droit de te coûter, comme le montre l&#39;histoire des 200 000.</li></ul>
+<h3>Ta prochaine action</h3>
+<p>Ce soir, avant ta prochaine séance, écris trois chiffres sur une feuille : ton risque par trade, ta limite du jour, ta limite de la semaine. Divise la limite du jour par le risque par trade. Si le résultat est inférieur à 3, réduis ta taille de position, pas ton stop. Puis colle la feuille à côté de ton écran.</p>
+<p>Et sois patient avec toi-même. Nicolas cite un trader qu&#39;il suit et qui commence à sortir de beaux chiffres : « Ce n&#39;est pas deux semaines, c&#39;est un an et demi. » (vidéo, vers 49:00) Pour lui, le principal défaut, c&#39;est l&#39;impatience (vidéo, vers 49:00). Si tu pars de zéro, sans parcours en finance, je raconte comment s&#39;y prendre dans <a href="https://basstrading.fr/blog/devenir-trader-sans-diplome/">devenir trader sans diplôme</a>.</p>
+<p>Pour entendre l&#39;échange complet, regarde <a href="https://www.youtube.com/watch?v=i0CR6xpQpWg">la vidéo sur ma chaîne</a>. Et si tu cherches une formation, mon article pour <a href="https://basstrading.fr/blog/quelle-formation-trading-choisir/">choisir une formation de trading</a> t&#39;évitera quelques erreurs.</p>
+<h3>Comment cet article est fait</h3>
+<p>Cet article reprend mon podcast avec Nicolas Schneller, « Ancien trader de banque : révélations et coulisses du trading professionnel ». Les citations viennent de la transcription de la vidéo, avec leur minute approximative. Il a été mis en forme avec l&#39;aide d&#39;une IA, les calculs ont été vérifiés un par un, les sources externes ont été consultées le 20/10/2026, et le texte est relu avant publication. Les montants de banque cités sont ceux de Nicolas, pour son desk et son époque.</p>
+<p><em>Le trading de contrats à terme comporte un risque élevé de perte, pouvant dépasser la mise initiale. Contenu éducatif, pas un conseil en investissement. Les exemples chiffrés sont fictifs.</em></p>
+
+    <p><a href="https://www.youtube.com/watch?v=i0CR6xpQpWg" target="_blank" rel="noopener">▶ Voir la vidéo de Sébastien sur ce sujet</a></p>
+
+    <div class="cta-card cta-aimant">
+      <div class="cta-card-label">Gratuit</div>
+      <h3>La formation offerte : 7 leçons pour lire le marché comme un pro</h3>
+      <p>Accès immédiat et gratuit, en vidéo, à ton rythme. Sans carte bancaire.</p>
+      <a href="https://basstrading.fr/p/formation-offerte/?src=blog-perte-maximale-journaliere-trading" class="btn-p">Je la veux →</a>
+    </div>
+    
+  </article>
+</div>
+
+<!-- FAQ -->
+<section class="faq-sec">
+  <div class="sec-center"><div class="sec-label">FAQ</div><h2 class="sec-title">Questions fréquentes</h2></div>
+  <div class="faq-list">
+    <div class="fi"><button class="fq" onclick="tf(this)">Quelle perte maximale journalière choisir en trading ? <span class="fq-icon">+</span></button><div class="fa"><p>Il n&#39;y a pas de chiffre universel : elle dépend de ton capital et de ce que tu peux perdre sans conséquence sur ta vie. Je te conseille surtout de vérifier qu&#39;elle laisse plusieurs trades complets : divise-la par ton risque par trade. Avec 100 € par jour et 25 € par trade, tu as 4 pertes avant l&#39;arrêt. Contenu éducatif, pas un conseil personnalisé.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Que faire quand j&#39;ai touché ma perte maximale du jour ? <span class="fq-icon">+</span></button><div class="fa"><p>Tu arrêtes de trader pour la journée. En salle de marché, le contrôle des risques retire la main au trader, qui explique ensuite ce qui s&#39;est passé à son responsable. Seul, reproduis cela : ferme ta plateforme, fais ton débrief de séance par écrit et reviens le lendemain avec la tête froide, sans changer de compte pour te refaire.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">La perte maximale journalière protège-t-elle de tout ? <span class="fq-icon">+</span></button><div class="fa"><p>Non. Elle limite l&#39;ampleur d&#39;une mauvaise journée, mais pas une position gardée des semaines contre toi, comme l&#39;action que mon invité a gardée six mois. Il faut aussi une perte maximale par trade, une limite sur la semaine ou le mois, et une règle écrite sur ce que chaque idée a le droit de te coûter avant d&#39;y entrer.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Quelle différence entre perte maximale journalière et drawdown ? <span class="fq-icon">+</span></button><div class="fa"><p>La perte maximale journalière plafonne ce que tu perds sur une seule journée. Le drawdown mesure la baisse du compte depuis un sommet, sur une période plus longue, et peut avoir sa propre limite, notamment en prop firm. Les deux se complètent : l&#39;une protège la séance, l&#39;autre la trajectoire de ton compte.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Faut-il aussi une règle pour protéger ses gains ? <span class="fq-icon">+</span></button><div class="fa"><p>Oui. Pour l&#39;ancien trader de banque que j&#39;ai reçu, la gestion du risque est aussi la gestion des gains : quand tu as un gain, il ne faut pas le perdre. On remonte le stop, on allège la position, on encaisse. Une journée gagnante qui finit dans le rouge est une erreur évitable.</p></div></div>
+  </div>
+</section>
+
+<!-- Related -->
+<section class="related-sec">
+  <div class="sec-center"><div class="sec-label">Continuer la lecture</div><h2 class="sec-title">Articles connexes</h2></div>
+  <div class="related-grid">
+    <a href="/blog/market-profile-guide-complet/" class="related-card"><div class="related-cat">Guide</div><h3>Market Profile : le guide complet pour débutants</h3><p>Value Area, POC, types de journées — tout pour commencer.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/order-flow-trading-france/" class="related-card"><div class="related-cat">Méthode</div><h3>Order Flow Trading : pourquoi personne ne l'enseigne en France</h3><p>Le carnet d'ordres et le flux institutionnel décryptés.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/sierra-chart-configuration/" class="related-card"><div class="related-cat">Tutoriel</div><h3>Sierra Chart : configuration complète</h3><p>Le setup pas à pas pour le Market Profile et le Footprint.</p><span class="related-link">Lire &rarr;</span></a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="ft-top"><div class="ft-logo">BASS</div><div class="ft-cols">
+    <div class="ft-col"><div class="ft-col-title">Programme</div><a href="https://basstrading.fr/#methode">Méthode</a><a href="https://basstrading.fr/#programme">Programme</a><a href="https://basstrading.fr/p/formation-offerte/?src=blog-perte-maximale-journaliere-trading-pied">Formation offerte</a></div>
+    <div class="ft-col"><div class="ft-col-title">Ressources</div><a href="/blog/market-profile-guide-complet/">Market Profile</a><a href="/blog/footprint-chart-trading/">Footprint Chart</a><a href="/blog/order-flow-trading-france/">Order Flow</a></div>
+  </div></div>
+  <div class="ft-bottom"><span>&copy; 2026 BASS — Sébastien Constant</span><div><a href="/mentions-legales/">Mentions légales</a><a href="/confidentialite/">Confidentialité</a><a href="/cgv/">CGV</a><a href="mailto:contact@basstrading.fr">Contact</a></div></div>
+</footer>
+<div class="disclaimer">Le trading comporte des risques de perte en capital. Les performances passées ne préjugent pas des performances futures. Ce site ne constitue pas un conseil en investissement.</div>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+const lenis=new Lenis({duration:1.2,easing:t=>Math.min(1,1.001-Math.pow(2,-10*t))});
+function raf(t){lenis.raf(t);requestAnimationFrame(raf)}requestAnimationFrame(raf);
+lenis.on('scroll',ScrollTrigger.update);gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0);
+const tl=gsap.timeline();
+tl.to('.pre-word span',{y:0,opacity:1,duration:.5,stagger:.1,ease:'power3.out',delay:.3}).to('#preLine',{width:'80px',duration:.7,ease:'power2.inOut'},'<+.2').to('.preloader',{yPercent:-100,duration:.8,ease:'power3.inOut',delay:.4}).set('.preloader',{display:'none'}).to('#nav',{opacity:1,y:0,duration:.5},'<+.1');
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);const h=document.documentElement.scrollHeight-window.innerHeight;document.getElementById('readingProgress').style.width=(window.scrollY/h*100)+'%'});
+const tocLinks=document.querySelectorAll('.toc a');const sections=Array.from(tocLinks).map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+window.addEventListener('scroll',()=>{let c='';sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)c=s.id});tocLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+c)})});
+function tf(b){const i=b.closest('.fi'),a=b.nextElementSibling,o=i.classList.contains('active');document.querySelectorAll('.fi').forEach(x=>{x.classList.remove('active');x.querySelector('.fa').classList.remove('open')});if(!o){i.classList.add('active');a.classList.add('open')}}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();lenis.scrollTo(t,{offset:-60})}})});
+</script>
+<script src="/v.js" defer></script>
+</body>
+</html>
