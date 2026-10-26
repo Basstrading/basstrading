@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pyramider une position en trading : ajouter au gagnant, jamais au perdant — BASS Trading</title>
+  <meta name="description" content="Pyramider une position en trading : ajouter des contrats seulement quand le trade gagne, stop remonté, risque plafonné. Méthode et exemple sur le MNQ.">
+  <meta property="og:title" content="Pyramider une position en trading : ajouter au gagnant, jamais au perdant — BASS Trading">
+  <meta property="og:description" content="Pyramider une position en trading : ajouter des contrats seulement quand le trade gagne, stop remonté, risque plafonné. Méthode et exemple sur le MNQ.">
+  <meta property="og:image" content="https://basstrading.fr/blog/pyramider-position-trading/blog-pyramider-position-trading-1.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://basstrading.fr/blog/pyramider-position-trading/blog-pyramider-position-trading-1.webp">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://basstrading.fr/blog/pyramider-position-trading/">
+  <meta property="og:site_name" content="BASS Trading">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://basstrading.fr/blog/pyramider-position-trading/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","@id":"https://basstrading.fr/blog/pyramider-position-trading/#article","headline":"Pyramider une position en trading : ajouter au gagnant, jamais au perdant","description":"Pyramider une position en trading : ajouter des contrats seulement quand le trade gagne, stop remonté, risque plafonné. Méthode et exemple sur le MNQ.","datePublished":"2026-10-26","dateModified":"2026-10-26","inLanguage":"fr-FR","image":"https://basstrading.fr/blog/pyramider-position-trading/blog-pyramider-position-trading-1.webp","mainEntityOfPage":"https://basstrading.fr/blog/pyramider-position-trading/","isPartOf":{"@type":"WebSite","@id":"https://basstrading.fr/#website","name":"BASS Trading","url":"https://basstrading.fr/"},"author":{"@type":"Person","@id":"https://basstrading.fr/#sebastien-constant","name":"Sébastien Constant","url":"https://basstrading.fr/auteur/sebastien-constant/"},"publisher":{"@type":"Organization","@id":"https://basstrading.fr/#organisation","name":"BASS Trading","url":"https://basstrading.fr/","logo":{"@type":"ImageObject","url":"https://basstrading.fr/images/logo-basstrading.png","width":512,"height":512}}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://basstrading.fr"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://basstrading.fr/blog/"},{"@type":"ListItem","position":3,"name":"Pyramider une position","item":"https://basstrading.fr/blog/pyramider-position-trading/"}]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"C'est quoi pyramider une position en trading ?","acceptedAnswer":{"@type":"Answer","text":"Pyramider, c'est ajouter des contrats à une position déjà gagnante, par petits paquets, en remontant le stop à chaque ajout. Le but est d'augmenter le gain potentiel sans augmenter le risque de départ. On n'ajoute jamais à une position perdante."}},{"@type":"Question","name":"Quelle différence entre pyramider et moyenner à la baisse ?","acceptedAnswer":{"@type":"Answer","text":"Pyramider, c'est ajouter quand le trade gagne, avec un stop qui remonte : le risque reste plafonné. Moyenner à la baisse, c'est ajouter quand le trade perd, pour abaisser son prix moyen : le risque grossit à chaque ajout. Le premier est une technique de gestion du risque, le second est la spirale qui vide les comptes."}},{"@type":"Question","name":"Combien de fois peut-on ajouter à une position ?","acceptedAnswer":{"@type":"Answer","text":"Il n'y a pas de nombre universel : c'est ton coussin et ta perte maximale journalière qui fixent le plafond. Pour ma part, avec un coussin de 2 000 $ sur le Nasdaq micro, j'entre à 1 ou 2 micros et je plafonne à 6 à 8 micros, avec un stop remonté à chaque ajout."}},{"@type":"Question","name":"Le pyramidage marche-t-il en scalping ?","acceptedAnswer":{"@type":"Answer","text":"Rarement. Le scalper vise des mouvements courts, avec un risk reward proche de 0,5 : il n'a pas la place de remonter son stop, et les frais de chaque ajout mangent le gain. Le pyramidage sert surtout au day trader, qui vise des amplitudes plus larges dans un marché qui avance."}},{"@type":"Question","name":"Peut-on pyramider sur un compte de prop firm ?","acceptedAnswer":{"@type":"Answer","text":"Oui, si les règles de la société le permettent, mais en plafonnant la taille selon ton vrai coussin, pas selon la taille affichée du compte. Vérifie aussi la perte maximale journalière : si elle est serrée, ton plafond d'ajouts doit l'être aussi."}},{"@type":"Question","name":"Le pyramidage supprime-t-il le risque de perte ?","acceptedAnswer":{"@type":"Answer","text":"Non. Il plafonne le risque au niveau du départ, mais le premier stop peut toujours être touché, et le glissement ou un écart de prix peut faire perdre plus que prévu. Le trading de futures comporte un risque de perte en capital."}}]}
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{--bk:#1D1D1F;--bk2:#111;--bk3:#0A0A0A;--g1:#6E6E73;--g2:#86868B;--g3:#D2D2D7;--g4:#F5F5F7;--wh:#FBFBFD;--pure:#FFF;--green:#00B67A;--blue:#0066FF}
+    html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}
+    body{font-family:'DM Sans',sans-serif;color:var(--bk);background:var(--pure);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+    .preloader{position:fixed;inset:0;background:var(--bk3);z-index:10001;display:flex;align-items:center;justify-content:center}
+    .pre-word{font-family:'Outfit',sans-serif;font-size:clamp(3rem,8vw,5rem);font-weight:900;letter-spacing:16px;text-transform:uppercase;color:var(--pure);overflow:hidden}
+    .pre-word span{display:inline-block;transform:translateY(110%);opacity:0}
+    .pre-line{width:0;height:1px;background:rgba(255,255,255,.3);margin-top:20px}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 48px;display:flex;align-items:center;justify-content:space-between;background:rgba(245,245,247,.85);backdrop-filter:blur(20px) saturate(1.8);border-bottom:1px solid rgba(0,0,0,.04);transition:background .4s}
+    .nav-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase;color:var(--bk)}
+    .nav-links{display:flex;gap:28px;list-style:none}.nav-links a{font-size:.74rem;font-weight:500;letter-spacing:.3px;color:var(--g1);transition:color .3s}.nav-links a:hover{color:var(--bk)}
+    .nav-cta{padding:8px 20px;background:var(--bk);color:var(--pure);border:none;border-radius:980px;font-size:.72rem;font-weight:600;transition:all .3s;cursor:pointer;text-decoration:none;display:inline-block}.nav-cta:hover{background:var(--bk2)}
+    .blog-hero{padding:160px 48px 80px;background:var(--g4);position:relative;overflow:hidden}
+    .blog-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,transparent,var(--g4));pointer-events:none}
+    .blog-hero-inner{max-width:720px;margin:0 auto}
+    .breadcrumb{display:flex;gap:8px;align-items:center;margin-bottom:28px;flex-wrap:wrap}
+    .breadcrumb a,.breadcrumb span{font-size:.68rem;font-weight:500;letter-spacing:.3px;color:var(--g2);transition:color .3s}.breadcrumb a:hover{color:var(--bk)}.breadcrumb .sep{color:var(--g3)}
+    .blog-hero-cat{display:inline-block;padding:5px 14px;border:1px solid rgba(0,102,255,.15);border-radius:980px;font-size:.6rem;font-weight:700;color:var(--blue);letter-spacing:2px;text-transform:uppercase;margin-bottom:20px}
+    .blog-hero-title{font-family:'Outfit',sans-serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:900;line-height:1.05;letter-spacing:-2px;color:var(--bk);margin-bottom:20px}
+    .blog-hero-desc{font-size:.95rem;color:var(--g1);line-height:1.8;max-width:560px;margin-bottom:28px}
+    .blog-meta{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+    .blog-meta-author{display:flex;align-items:center;gap:10px}
+    .blog-meta-avatar{width:36px;height:36px;border-radius:50%;background:var(--bk3);overflow:hidden;flex-shrink:0}.blog-meta-avatar img{width:100%;height:100%;object-fit:cover}
+    .blog-meta-name{font-size:.78rem;font-weight:600;color:var(--bk)}.blog-meta-role{font-size:.65rem;color:var(--g2)}
+    .blog-meta-sep{width:1px;height:24px;background:var(--g3)}
+    .blog-meta-info{font-size:.7rem;color:var(--g2)}.blog-meta-info span{margin-right:16px}
+    .toc{position:sticky;top:90px;background:var(--pure);border:1px solid rgba(0,0,0,.04);border-radius:14px;padding:24px;margin-bottom:32px}
+    .toc-title{font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.5px;color:var(--bk);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+    .toc ol{list-style:none;counter-reset:toc}.toc li{counter-increment:toc}
+    .toc li a{display:flex;align-items:baseline;gap:8px;padding:6px 0;font-size:.76rem;color:var(--g1);transition:color .3s;border-bottom:1px solid rgba(0,0,0,.03)}.toc li a:hover{color:var(--blue)}
+    .toc li a::before{content:counter(toc,decimal-leading-zero);font-family:'Outfit',sans-serif;font-size:.65rem;font-weight:700;color:var(--g3);min-width:18px}
+    .toc li:last-child a{border-bottom:none}.toc li a.active{color:var(--blue);font-weight:600}.toc li a.active::before{color:var(--blue)}
+    .article-wrap{display:grid;grid-template-columns:220px 1fr;gap:40px;max-width:1020px;margin:0 auto;padding:60px 48px 120px}
+    .article-sidebar{position:relative}.article-body{max-width:700px}
+    .article-body h2{font-family:'Outfit',sans-serif;font-size:clamp(1.4rem,2.5vw,1.8rem);font-weight:800;line-height:1.1;letter-spacing:-1px;color:var(--bk);margin:56px 0 16px;padding-top:20px}.article-body h2:first-of-type{margin-top:0}
+    .article-body h3{font-family:'Outfit',sans-serif;font-size:1.05rem;font-weight:700;line-height:1.25;letter-spacing:-.3px;color:var(--bk);margin:36px 0 10px}
+    .article-body p{font-size:.9rem;color:var(--g1);line-height:1.85;margin-bottom:18px}
+    .article-body strong{color:var(--bk);font-weight:600}
+    .article-body ul,.article-body ol{margin:0 0 20px 0;padding-left:20px}
+    .article-body li{font-size:.88rem;color:var(--g1);line-height:1.8;margin-bottom:6px}.article-body li strong{color:var(--bk)}
+    .article-body blockquote{margin:28px 0;padding:20px 24px;background:var(--g4);border-left:3px solid var(--bk);border-radius:0 12px 12px 0;font-size:.88rem;color:var(--g1);line-height:1.8;font-style:italic}
+    .article-body blockquote strong{color:var(--bk);font-style:normal}
+    .article-body hr{border:none;border-top:1px solid var(--g4);margin:48px 0}
+    .info-box{margin:28px 0;padding:24px;background:rgba(0,102,255,.03);border:1px solid rgba(0,102,255,.08);border-radius:14px}
+    .info-box-title{font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:700;color:var(--blue);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+    .info-box p{font-size:.82rem;color:var(--g1);line-height:1.7;margin-bottom:0}
+    .key-concept{margin:32px 0;padding:28px;background:var(--bk3);border-radius:16px;color:var(--pure)}
+    .key-concept-label{font-size:.55rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:10px}
+    .key-concept h4{font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:800;letter-spacing:-.3px;margin-bottom:8px}
+    .key-concept p{font-size:.85rem;color:rgba(255,255,255,.5);line-height:1.8;margin-bottom:0}
+    .compare-table{width:100%;margin:24px 0 28px;border-collapse:collapse;border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,.06)}
+    .compare-table th{background:var(--bk3);color:var(--pure);font-family:'Outfit',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:14px 16px;text-align:left}
+    .compare-table td{padding:12px 16px;font-size:.82rem;color:var(--g1);line-height:1.6;border-bottom:1px solid rgba(0,0,0,.04);background:var(--pure)}
+    .compare-table tr:last-child td{border-bottom:none}.compare-table td:first-child{font-weight:600;color:var(--bk)}
+    .cta-card{margin:48px 0;padding:40px;background:var(--bk3);border-radius:20px;text-align:center;position:relative;overflow:hidden}
+    .cta-card::before{content:'';position:absolute;top:-50%;right:-30%;width:400px;height:400px;background:radial-gradient(circle,rgba(0,102,255,.08) 0%,transparent 70%);pointer-events:none}
+    .cta-card-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:12px}
+    .cta-card h3{font-family:'Outfit',sans-serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:800;color:var(--pure);letter-spacing:-.5px;margin-bottom:8px}
+    .cta-card p{font-size:.85rem;color:rgba(255,255,255,.4);line-height:1.7;max-width:380px;margin:0 auto 24px}
+    .cta-card .btn-p{background:var(--pure);color:var(--bk)}.cta-card .btn-p:hover{box-shadow:0 8px 30px rgba(255,255,255,.15)}
+    .faq-sec{padding:80px 48px 100px;background:var(--g4)}
+    .faq-list{max-width:680px;margin:40px auto 0}.fi{border-bottom:1px solid rgba(0,0,0,.06)}
+    .fq{width:100%;text-align:left;padding:18px 0;background:none;border:none;font-size:.85rem;font-weight:600;font-family:'DM Sans',sans-serif;color:var(--bk);display:flex;justify-content:space-between;align-items:center;cursor:pointer;gap:16px;transition:color .3s}.fq:hover{color:var(--g1)}
+    .fq-icon{width:22px;height:22px;border-radius:50%;background:rgba(0,0,0,.04);display:flex;align-items:center;justify-content:center;font-size:.75rem;transition:all .4s;flex-shrink:0;color:var(--g2)}
+    .fa{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1)}.fa.open{max-height:280px;padding-bottom:14px}
+    .fa p{font-size:.8rem;color:var(--g1);line-height:1.7;margin-bottom:0}.fi.active .fq-icon{background:var(--bk);color:var(--pure);transform:rotate(45deg)}
+    .related-sec{padding:80px 48px;background:var(--pure);border-top:1px solid var(--g4)}
+    .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1060px;margin:40px auto 0}
+    .related-card{display:block;padding:28px;background:var(--g4);border-radius:16px;transition:all .4s;text-decoration:none;color:var(--bk)}
+    .related-card:hover{background:var(--pure);box-shadow:0 8px 30px rgba(0,0,0,.06);transform:translateY(-2px)}
+    .related-cat{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+    .related-card h3{font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:700;line-height:1.3;letter-spacing:-.3px;margin-bottom:8px}
+    .related-card p{font-size:.78rem;color:var(--g1);line-height:1.6;margin-bottom:14px}
+    .related-link{font-size:.72rem;font-weight:600;color:var(--blue);letter-spacing:.3px}
+    .footer{background:var(--bk3);color:var(--pure);padding:56px 48px 28px}
+    .ft-top{display:flex;justify-content:space-between;align-items:start;margin-bottom:48px;flex-wrap:wrap;gap:32px}
+    .ft-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase}
+    .ft-cols{display:flex;gap:80px}
+    .ft-col-title{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:12px}
+    .ft-col a{display:block;font-size:.78rem;color:rgba(255,255,255,.5);margin-bottom:8px;transition:color .3s}.ft-col a:hover{color:var(--pure)}
+    .ft-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:20px;display:flex;justify-content:space-between;align-items:center;font-size:.6rem;color:rgba(255,255,255,.2)}
+    .ft-bottom a{color:rgba(255,255,255,.2);transition:color .3s;margin-left:20px}.ft-bottom a:hover{color:rgba(255,255,255,.5)}
+    .disclaimer{padding:12px 48px;background:var(--bk3);font-size:.58rem;color:rgba(255,255,255,.12);text-align:center;line-height:1.6;border-top:1px solid rgba(255,255,255,.03)}
+    .sec-center{text-align:center;max-width:680px;margin:0 auto}
+    .sec-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--g2);margin-bottom:10px}
+    .sec-title{font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;line-height:1.05;letter-spacing:-1.5px;color:var(--bk);margin-bottom:16px}
+    .btn-p{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--bk);color:var(--pure);border-radius:980px;font-size:.85rem;font-weight:600;transition:all .3s;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;text-decoration:none}
+    .btn-p:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(0,0,0,.1)}
+    .btn-p svg{width:13px;height:13px;transition:transform .3s}.btn-p:hover svg{transform:translateX(3px)}
+    .reading-progress{position:fixed;top:0;left:0;height:2px;background:var(--blue);z-index:9999;width:0;transition:width .1s linear}
+    @media(max-width:900px){.nav{padding:14px 20px}.nav-links{display:none}.blog-hero{padding:120px 20px 60px}.article-wrap{grid-template-columns:1fr;padding:40px 20px 80px}.article-sidebar{display:none}.related-grid{grid-template-columns:1fr}.related-sec,.faq-sec{padding:60px 20px}.ft-cols{flex-direction:column;gap:28px}.footer{padding:40px 20px 20px}.disclaimer{padding:10px 16px}.cta-card{padding:28px 20px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  .article-body a{color:var(--blue);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;font-weight:500}.article-body a:hover{text-decoration-thickness:2px}
+</style>
+</head>
+<body>
+
+<div class="preloader" id="preloader"><div style="text-align:center"><div class="pre-word"><span>B</span><span>A</span><span>S</span><span>S</span></div><div class="pre-line" id="preLine"></div></div></div>
+<div class="reading-progress" id="readingProgress"></div>
+
+<nav class="nav" id="nav">
+  <a href="https://basstrading.fr" class="nav-logo">BASS</a>
+  <ul class="nav-links">
+    <li><a href="https://basstrading.fr/#methode">Méthode</a></li>
+    <li><a href="https://basstrading.fr#resultats">Résultats</a></li>
+    <li><a href="https://basstrading.fr#avis">Avis</a></li>
+    <li><a href="https://basstrading.fr#faq">FAQ</a></li>
+    <li><a href="https://basstrading.fr/blog/">Blog</a></li>
+  </ul>
+  <a href="https://basstrading.fr/p/formation-offerte/?src=blog-pyramider-position-trading-menu" class="nav-cta">Formation offerte</a>
+</nav>
+
+<section class="blog-hero">
+  <div class="blog-hero-inner">
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <a href="https://basstrading.fr">Accueil</a><span class="sep">/</span>
+      <a href="https://basstrading.fr/blog/">Blog</a><span class="sep">/</span>
+      <span>Pyramider une position</span>
+    </nav>
+    <div class="blog-hero-cat">Gestion du risque</div>
+    <h1 class="blog-hero-title">Pyramider une position en trading : ajouter au gagnant, jamais au perdant</h1>
+    <p class="blog-hero-desc">Pyramider une position, c&#39;est entrer petit puis ajouter des contrats uniquement quand le marché te donne raison, en remontant ton stop à chaque ajout. Bien fait, ça fait grandir le gain sans faire grandir le risque. Mal fait, c&#39;est la ruine en accéléré. Voici comment je le fais sur le Nasdaq micro, avec un exemple chiffré et les interdits.</p>
+    <div class="blog-meta">
+      <div class="blog-meta-author">
+        <div class="blog-meta-avatar"><img src="../../images/bass-presenting.jpg" alt="Sébastien Constant" loading="lazy"></div>
+        <div><div class="blog-meta-name"><a href="/auteur/sebastien-constant/" rel="author" style="color:inherit;text-decoration:none">Sébastien Constant</a></div><div class="blog-meta-role">Trader & Formateur Order Flow</div></div>
+      </div>
+      <div class="blog-meta-sep"></div>
+      <div class="blog-meta-info"><span>Octobre 2026</span><span>18 min de lecture</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="article-wrap">
+  <aside class="article-sidebar">
+    <div class="toc">
+      <div class="toc-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/></svg> Sommaire</div>
+      <ol>
+        <li><a href="#ajouter-au-gagnant-en-30-secondes">Ajouter au gagnant, en 30 secondes</a></li>
+        <li><a href="#pourquoi-pyramider-faire-grandir-le-gain">Pourquoi pyramider : faire grandir le gain sans faire grandir le risque</a></li>
+        <li><a href="#pyramider-n-est-pas-moyenner-a-la-baisse">Pyramider n&#39;est pas moyenner à la baisse</a></li>
+        <li><a href="#ma-facon-de-pyramider-sur-le-nasdaq-micr">Ma façon de pyramider sur le Nasdaq micro (MNQ)</a></li>
+        <li><a href="#exemple-chiffre-de-2-a-6-micros-le-risqu">Exemple chiffré : de 2 à 6 micros, le risque reste à 80 $</a></li>
+        <li><a href="#le-prix-a-payer-des-gagnants-qui-finisse">Le prix à payer : des gagnants qui finissent à zéro</a></li>
+        <li><a href="#quand-ajouter-les-signes-que-le-marche-t">Quand ajouter : les signes que le marché te donne raison</a></li>
+        <li><a href="#pyramider-en-prop-firm-le-coussin-decide">Pyramider en prop firm : le coussin décide du plafond</a></li>
+        <li><a href="#scalper-ou-day-trader-qui-doit-pyramider">Scalper ou day trader : qui doit pyramider ?</a></li>
+        <li><a href="#les-erreurs-qui-transforment-le-pyramida">Les erreurs qui transforment le pyramidage en ruine</a></li>
+        <li><a href="#ma-checklist-avant-chaque-ajout">Ma checklist avant chaque ajout</a></li>
+        <li><a href="#a-retenir">À retenir</a></li>
+      </ol>
+    </div>
+  </aside>
+
+  <article class="article-body">
+    <h2 id="ajouter-au-gagnant-en-30-secondes">Ajouter au gagnant, en 30 secondes</h2>
+    <p>Pyramider une position en trading, c&#39;est ajouter des contrats à un trade déjà gagnant, par petits paquets, en remontant le stop à chaque ajout pour que le risque total ne dépasse jamais le risque de départ. On n&#39;ajoute jamais à un trade perdant : ça, ça s&#39;appelle moyenner à la baisse, et c&#39;est l&#39;inverse.</p>
+<p>C&#39;est ma façon de trader. J&#39;entre à 2 micro-contrats Nasdaq (le MNQ), parfois 1 selon le setup. Mon stop est à 20 points, soit 80 $ de risque. Si le trade passe, j&#39;ajoute 2 par 2, je mets mon stop au point d&#39;entrée dès que possible, et je plafonne à 6 à 8 micros quand le coussin de mon compte est de 2 000 $. Comme je le dis dans la vidéo : « c&#39;est comme ça que je vais pouvoir augmenter mon risque reward sans me mettre trop en danger ».</p>
+<p>Si tu ne sais pas encore combien risquer sur un trade, commence par mon article <a href="https://basstrading.fr/blog/combien-risquer-par-trade/">Combien risquer par trade</a> : le pyramidage vient après. Sans un risque de départ fixé, il n&#39;y a rien à pyramider.</p>
+<p>Le trading de futures comporte un risque de perte en capital, y compris supérieur à la mise sur certains comptes. Les exemples chiffrés de cette page sont des illustrations inventées pour expliquer un calcul, pas des résultats ni des conseils personnalisés.</p>
+
+    <hr>
+
+    <h2 id="pourquoi-pyramider-faire-grandir-le-gain">Pourquoi pyramider : faire grandir le gain sans faire grandir le risque</h2>
+    <p>Je pars d&#39;une idée qui choque : un trader qui gagne neuf fois sur dix peut finir ruiné, et un trader qui perd six fois sur dix peut gagner sa vie. La raison tient en deux mots : risk reward. Le taux de réussite seul ne veut rien dire. Ce qui compte, c&#39;est combien tu gagnes quand tu gagnes, comparé à ce que tu perds quand tu perds.</p>
+<p>Il y a deux façons d&#39;améliorer ce rapport :</p>
+<ul><li>Viser plus loin avec la même taille. Ton objectif passe de 40 à 60 points. Problème : tu seras touché moins souvent.</li><li>Grossir la position pendant que le marché te donne raison, sans augmenter ce que tu risques. C&#39;est le pyramidage.</li></ul>
+<p>La deuxième option a un avantage énorme : tu ne paries pas plus gros au départ. Tu paries petit, et tu grossis seulement quand le marché a déjà validé ton idée. Le premier ajout est financé par le gain latent de la première entrée. Le deuxième par celui des deux premières. Et ainsi de suite.</p>
+<p>C&#39;est pour ça que la forme s&#39;appelle une pyramide : une base au départ, des étages qui s&#39;ajoutent au-dessus. Dans les manuels classiques, les ajouts sont même de plus en plus petits (1 lot, puis un demi, puis un quart), pour que le prix moyen de la position reste proche de la première entrée. Moi, sur le MNQ, j&#39;ajoute des paquets de taille égale, 2 micros à la fois, mais avec un plafond strict. On verra pourquoi.</p>
+<h3>Ce que le pyramidage ne fait pas</h3>
+<p>Il ne transforme pas un mauvais trade en bon trade. Il ne remplace pas une méthode. Il ne sert à rien si ton entrée est faite au hasard. Le pyramidage est un multiplicateur : il multiplie ce que ta lecture du marché vaut. Si ta lecture vaut zéro, il multiplie zéro, plus les commissions.</p>
+<p>C&#39;est aussi pour ça que je dis toujours : pense aux pertes avant de penser aux gains. Le pyramidage est d&#39;abord une technique de gestion du risque, ensuite une technique de gain. Et la première chose à comprendre, c&#39;est ce qu&#39;il n&#39;est surtout pas.</p>
+
+    <hr>
+
+    <h2 id="pyramider-n-est-pas-moyenner-a-la-baisse">Pyramider n&#39;est pas moyenner à la baisse</h2>
+    <p>C&#39;est la confusion la plus dangereuse que je vois chez les débutants. Les deux consistent à « ajouter des contrats ». La ressemblance s&#39;arrête là.</p>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600"></th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Pyramider</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Moyenner à la baisse</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Quand j&#39;ajoute</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Le trade gagne</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Le trade perd</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Le stop</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Remonte</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Recule ou disparaît</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Le risque total</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Plafonné</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Grossit à chaque ajout</td></tr></tbody></table></div>
+<p>Moyenner à la baisse, c&#39;est acheter encore quand le prix va contre toi, pour abaisser ton prix moyen et « sortir plus vite à l&#39;équilibre ». Sur le papier, ça paraît malin. En réalité, tu doubles ta mise sur une idée que le marché est en train de contredire.</p>
+<p>Dans la vidéo, je le dis sans détour : « je sais que j&#39;ai raison donc je m&#39;entête, non, on ne s&#39;entête pas ». C&#39;est le premier de mes interdits. On n&#39;ajoute jamais à une position perdante.</p>
+<p>Pourquoi c&#39;est si tentant ? Parce que personne n&#39;aime rendre une perte réelle. Le chercheur Terrance Odean l&#39;a mesuré en 1998 sur environ 10 000 comptes de particuliers : on a tendance à vendre trop tôt ce qui gagne et à garder trop longtemps ce qui perd (<a href="https://faculty.haas.berkeley.edu/odean/">travaux de Terrance Odean, université de Berkeley</a>). Moyenner à la baisse, c&#39;est ce même réflexe, en pire : on ne se contente pas de garder le perdant, on le nourrit.</p>
+<p>Le pyramidage fait exactement l&#39;inverse de ce réflexe. Il coupe vite ce qui perd (le stop de départ) et laisse grandir ce qui gagne. C&#39;est inconfortable au début, parce que ça va contre ton instinct. C&#39;est justement pour ça que ça marche.</p>
+<h3>Un exemple de spirale (inventé)</h3>
+<p>Tu achètes 2 MNQ. Le prix baisse de 10 points. Tu « moyennes » avec 2 micros de plus. Il baisse encore de 10 points. Tu en remets 4. Tu as maintenant 8 micros, soit 16 $ par point, sur une idée fausse. Si le prix descend encore de 20 points, ta perte dépasse 400 $, cinq fois ce que tu avais prévu de risquer au départ. C&#39;est ce que j&#39;appelle la spirale infernale.</p>
+<p>Alors, à quoi ressemble un ajout propre, concrètement ?</p>
+
+    <hr>
+
+    <h2 id="ma-facon-de-pyramider-sur-le-nasdaq-micr">Ma façon de pyramider sur le Nasdaq micro (MNQ)</h2>
+    <p>Je trade principalement le Nasdaq en micro-contrats. Un MNQ vaut 2 $ par point (<a href="https://www.cmegroup.com/markets/equities/nasdaq/micro-e-mini-nasdaq-100.contractSpecs.html">spécifications officielles du Micro E-mini Nasdaq-100 sur le site du CME</a>). Avec 2 micros, chaque point vaut donc 4 $.</p>
+<p>Voici mon process.</p>
+<h3>1. Un setup avant tout</h3>
+<p>J&#39;ai trois setups, que j&#39;appelle A, B et C. Je lis le contexte avec le Market Profile et les niveaux des options, puis je valide l&#39;entrée avec l&#39;order flow, par exemple une absorption. Sans setup, pas d&#39;entrée. Sans entrée, rien à pyramider.</p>
+<h3>2. Une entrée petite, toujours la même</h3>
+<p>J&#39;entre à 2 micros, ou 1 selon le setup. Et ça, quel que soit le coussin de mon compte. Que j&#39;aie 2 000, 4 000 ou 6 000 $ de coussin, l&#39;entrée ne change pas. C&#39;est la base de la pyramide, elle doit rester stable.</p>
+<h3>3. Un stop fixé par le capital, pas par l&#39;humeur</h3>
+<p>Mon stop est à 20 points : 20 × 4 $ = 80 $ de risque. Le stop se décide selon ce que je suis prêt à perdre, pas selon ce que je ressens au moment de cliquer.</p>
+<h3>4. Le trade passe : j&#39;ajoute vite, 2 par 2</h3>
+<p>Quand le marché me donne raison, je pyramide rapidement, par paquets de 2 micros. Je ne laisse pas filer le mouvement pour ajouter « plus tard, quand je serai sûr ». Le meilleur moment pour ajouter, c&#39;est quand la lecture qui a déclenché l&#39;entrée se confirme.</p>
+<h3>5. Le stop au point d&#39;entrée dès que possible</h3>
+<p>Aussitôt que le prix me le permet, je remonte mon stop au point d&#39;entrée, ce qu&#39;on appelle le break-even. À partir de là, la première entrée ne peut plus me coûter d&#39;argent, hors glissement et commissions.</p>
+<h3>6. Un plafond</h3>
+<p>Avec un coussin de 2 000 $, je plafonne à 6 à 8 micros. Jamais plus. Le plafond n&#39;est pas une question de confiance dans le trade : c&#39;est une question de survie du compte.</p>
+<p>Pas de formule magique. Six étapes, toujours dans le même ordre. Les débutants veulent souvent savoir « où » ajouter. La vraie question est d&#39;abord « combien, au maximum » et « où est mon stop après l&#39;ajout ». Le reste vient avec l&#39;expérience de lecture. Voyons maintenant ce que ça donne en chiffres.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/pyramider-position-trading/blog-pyramider-position-trading-1.webp" alt="Les étapes du pyramidage sur le MNQ : entrée à 2 micros, ajouts 2 par 2, stop remonté, plafond de 6 à 8 micros" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Mon process, toujours dans le même ordre.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="exemple-chiffre-de-2-a-6-micros-le-risqu">Exemple chiffré : de 2 à 6 micros, le risque reste à 80 $</h2>
+    <p>Voici un exemple inventé pour montrer la mécanique. Les niveaux sont des chiffres ronds, pas un trade réel. Achat sur le MNQ, à 2 $ par point et par micro.</p>
+<h3>Étape 1 : l&#39;entrée</h3>
+<ul><li>J&#39;achète 2 micros au prix E.</li><li>Stop à E − 20 points.</li><li>Risque : 2 micros × 20 points × 2 $ = 80 $.</li></ul>
+<h3>Étape 2 : premier ajout à E + 20</h3>
+<p>Le prix monte de 20 points. Je fais deux choses en même temps :</p>
+<ul><li>j&#39;ajoute 2 micros à E + 20 ;</li><li>je remonte le stop de toute la position à E, mon point d&#39;entrée.</li></ul>
+<p>Si le stop est touché maintenant : les 2 premiers micros sortent à zéro, les 2 nouveaux perdent 20 points chacun, soit 2 × 20 × 2 $ = 80 $. Risque total : toujours 80 $. J&#39;ai doublé ma taille sans doubler mon risque.</p>
+<h3>Étape 3 : deuxième ajout à E + 40</h3>
+<p>Le prix monte encore de 20 points.</p>
+<ul><li>J&#39;ajoute 2 micros à E + 40. J&#39;ai 6 micros.</li><li>Je remonte le stop à E + 20.</li></ul>
+<p>Si le stop est touché : les 2 premiers gagnent 20 points (+80 $), les 2 suivants sortent à zéro, les 2 derniers perdent 20 points (−80 $). Résultat : 0 $. Le trade ne peut plus perdre d&#39;argent, hors frais et glissement.</p>
+<h3>Étape 4 : l&#39;objectif à E + 60</h3>
+<p>Mon objectif de départ était à 60 points, soit un risk reward de 3 sur la première entrée.</p>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Paquet</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Points gagnés</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Gain</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">2 micros à E</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">60</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">240 $</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">2 micros à E + 20</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">40</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">160 $</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">2 micros à E + 40</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">20</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">80 $</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Total</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)"></td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">480 $</td></tr></tbody></table></div>
+<p>Sans pyramider, les 2 micros de départ auraient rapporté 240 $ sur cet objectif. Avec la pyramide, 480 $, pour le même risque de départ de 80 $. Le risk reward passe de 3 à 6.</p>
+<p>C&#39;est exactement ce que je veux dire par « augmenter mon risque reward sans me mettre trop en danger ». La taille grossit, mais le stop suit, et le risque ne dépasse jamais celui que j&#39;avais accepté au départ.</p>
+<h3>Le même calcul avec ta propre taille</h3>
+<p>Tu peux refaire ce calcul pour n&#39;importe quel instrument. Il te faut seulement trois chiffres : la valeur du point (sur la fiche du contrat), ton stop en points, et ton risque maximum en dollars. Si ces trois chiffres ne sont pas clairs pour toi, relis la partie sur la valeur du point dans <a href="https://basstrading.fr/blog/combien-risquer-par-trade/">Combien risquer par trade</a> avant d&#39;essayer ta première pyramide.</p>
+<p>Pour suivre ma lecture du Nasdaq, rejoins <a href="https://t.me/bassofficiel">mon canal Telegram gratuit</a>.</p>
+<p>Cet exemple est la version où tout se passe bien. Il faut maintenant parler de l&#39;autre version.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/pyramider-position-trading/blog-pyramider-position-trading-2.webp" alt="Chiffres clés de l&#39;exemple inventé : risque de 80 dollars, 6 micros, 480 dollars à l&#39;objectif contre 240 sans pyramider" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Exemple inventé : la taille triple, le risque de départ ne bouge pas.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="le-prix-a-payer-des-gagnants-qui-finisse">Le prix à payer : des gagnants qui finissent à zéro</h2>
+    <p>On te vend souvent le pyramidage comme une technique sans défaut. Ce n&#39;est pas vrai, et il faut le dire.</p>
+<p>Reprends l&#39;exemple. À l&#39;étape 3, le prix est à E + 40. Si à ce moment-là le marché se retourne et touche mon stop à E + 20, je sors à 0 $. Sans pyramider, avec mes 2 micros de départ et un stop remonté au même endroit, je serais sorti avec un petit gain.</p>
+<p>Autrement dit : le pyramidage transforme une partie de tes petits gagnants en trades blancs. En échange, il rend tes vrais gagnants, ceux qui vont au bout, beaucoup plus gros. C&#39;est un échange. Pas un cadeau.</p>
+<p>Le courtier américain Optimus Futures est même très critique sur le sujet : selon lui, les traders qui pyramident rencontrent vite des problèmes, parce que chaque ajout rapproche le prix moyen du prix actuel et rend la position plus sensible au moindre repli (<a href="https://optimusfutures.com/tradeblog/archives/does-pyramiding-positions-work-you-rarely-hear-this-money-management-perspective">article d&#39;Optimus Futures sur le pyramidage, en anglais</a>). Il a raison sur un point : un ajout mal placé raccourcit ta marge de respiration.</p>
+<p>Trois conséquences pratiques :</p>
+<ul><li>Le pyramidage marche dans les marchés qui avancent. Dans un marché en range, qui fait des allers-retours, tu vas ajouter en haut et te faire sortir au milieu. Encore et encore.</li><li>Un ajout trop proche de l&#39;entrée n&#39;apporte rien. Tu n&#39;as pas encore le gain latent qui finance le nouveau risque.</li><li>Un ajout trop tardif est dangereux. Le mouvement est déjà vieux, le retournement est plus probable.</li></ul>
+<p>C&#39;est pour ça que je pyramide vite, sur la confirmation de ma lecture, et pas en bout de course.</p>
+<h3>Le cas des frais</h3>
+<p>Chaque ajout coûte une commission. Sur des micros, c&#39;est faible par contrat, mais six micros, c&#39;est six allers-retours. Si tu pyramides sur des mouvements de 5 points, les frais mangent tout. Le pyramidage se pense sur des amplitudes de day trading, pas de micro-scalping.</p>
+<p>Reste la question que tout le monde pose : à quel moment ajouter ?</p>
+
+    <hr>
+
+    <h2 id="quand-ajouter-les-signes-que-le-marche-t">Quand ajouter : les signes que le marché te donne raison</h2>
+    <p>Je ne vais pas te donner mes règles d&#39;ajout exactes : elles dépendent de mes setups, et ça ne t&#39;apprendrait rien de les copier sans la lecture qui va avec. En revanche, voici les familles de déclencheurs qu&#39;on retrouve chez tous les traders qui pyramident proprement.</p>
+<h3>1. La cassure qui tient</h3>
+<p>Le prix franchit un niveau important (le haut de la journée précédente, une zone de valeur, un niveau d&#39;options) avec du volume, et ne revient pas dessous. Le niveau cassé devient un support. Le stop des ajouts peut se placer de l&#39;autre côté.</p>
+<h3>2. Le repli qui tient</h3>
+<p>Après un premier mouvement, le prix revient tester un niveau, et les vendeurs n&#39;arrivent pas à le faire passer. C&#39;est souvent là que l&#39;order flow est le plus utile : tu vois si les ventes sont absorbées. Si tu veux comprendre comment les gros acteurs utilisent ces replis, lis mon article sur la <a href="https://basstrading.fr/blog/chasse-aux-stops-trading/">chasse aux stops</a>.</p>
+<h3>3. La séance qui confirme</h3>
+<p>Certains moments de la journée produisent des mouvements plus francs que d&#39;autres. Sur le Nasdaq, l&#39;ouverture de New York, à 15 h 30 heure de Paris (14 h 30 pendant les quelques semaines de décalage des changements d&#39;heure), change souvent la donne. Si tu ne connais pas encore ces horaires, ils sont détaillés dans mon guide des <a href="https://basstrading.fr/blog/horaires-futures-nasdaq-heure-paris/">horaires des futures Nasdaq à l&#39;heure de Paris</a>.</p>
+<h3>Ce qui n&#39;est PAS un signal d&#39;ajout</h3>
+<ul><li>« Je le sens bien. »</li><li>« Je viens de perdre deux trades, il faut que je me refasse. »</li><li>« Le prix est allé contre moi, il va forcément revenir. »</li></ul>
+<p>Les deux dernières phrases mènent droit à la surtaille et au moyennage à la baisse. J&#39;en reparle plus bas. Mais avant, un cas que beaucoup d&#39;entre vous vivent : le pyramidage sur un compte de prop firm.</p>
+
+    <hr>
+
+    <h2 id="pyramider-en-prop-firm-le-coussin-decide">Pyramider en prop firm : le coussin décide du plafond</h2>
+    <p>Beaucoup de traders qui me lisent passent par une prop firm, une société qui te confie un compte après une évaluation. Si tu découvres le principe, mon article <a href="https://basstrading.fr/blog/prop-firm-funded-trader/">Prop firm et funded trader</a> l&#39;explique en détail.</p>
+<p>En prop firm, la vraie taille de ton compte, c&#39;est ton coussin, pas le montant affiché. J&#39;ai détaillé ce calcul dans mon article <a href="https://basstrading.fr/blog/combien-risquer-par-trade/">Combien risquer par trade</a>. Ici, je ne garde que ce que ça change au pyramidage.</p>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Coussin</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Part que représente 2 000 $</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Fragilité</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">2 000 $</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">100 %</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Totale</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">5 000 $</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">40 %</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Encore forte</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">20 000 $</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">10 %</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Confortable</td></tr></tbody></table></div>
+<p>Résumé en une phrase : à 2 000 tu es 100 % fragile, à 5 000 un peu moins, à 20 000 tu es très confortable.</p>
+<p>Et ce coussin bouge. Selon que la règle de perte maximale (le drawdown) est statique, trailing ou calculée en fin de journée, ta limite remonte avec tes gains latents ou non, ce qui change tout pour une pyramide en cours : avec un drawdown trailing, le gain latent de tes ajouts peut faire monter ta limite, puis un simple repli te rapproche d&#39;elle. Lis les règles exactes de ta prop firm avant ta première pyramide.</p>
+<h3>Les lots pleins autorisés ne sont pas un objectif</h3>
+<p>Les prop firms autorisent souvent plusieurs lots pleins. Un lot plein sur le Nasdaq, c&#39;est 20 $ par point. Sur un coussin de 2 000 $, 5 lots pleins et un stop de 20 points, c&#39;est 2 000 $ de risque : tout le compte sur un seul trade. Ce n&#39;est pas parce que c&#39;est autorisé que c&#39;est raisonnable.</p>
+<p>C&#39;est pour ça que, tant que mon coussin est de 2 000 $, je plafonne à 6 à 8 micros, et j&#39;entre toujours à 1 ou 2. Pour comparaison, chez un courtier classique, il faut plusieurs milliers de dollars sur le compte pour un seul micro, et dix fois plus pour un lot plein (les marges changent : vérifie-les chez ton courtier). Un compte épais te sécurise ; un compte maigre ne pardonne rien.</p>
+<h3>La limite journalière plafonne aussi la pyramide</h3>
+<p>Certaines prop firms imposent aussi une perte maximale par jour, parfois de quelques centaines de dollars. Avec une limite serrée, une pyramide de 8 micros devient injouable : un seul retournement brutal et ta journée est terminée. Si ta limite journalière est serrée, ton plafond d&#39;ajouts doit l&#39;être aussi.</p>
+<p>Reste à savoir si le pyramidage convient à ton style de trading.</p>
+
+    <hr>
+
+    <h2 id="scalper-ou-day-trader-qui-doit-pyramider">Scalper ou day trader : qui doit pyramider ?</h2>
+    <p>Dans la vidéo, j&#39;insiste sur un point : il n&#39;y a pas de meilleur style de trading. Il faut se définir avant d&#39;entrer en position : scalper, day trader ou swing trader. Et on ne peut pas être les trois dans la même séance. Si tu hésites encore, mon article sur les <a href="https://basstrading.fr/blog/types-trading-differences/">différents types de trading</a> t&#39;aidera à te situer.</p>
+<p>Le pyramidage n&#39;a pas la même place selon ton style.</p>
+<h3>Le scalper</h3>
+<p>Le scalper a souvent un taux de réussite élevé, entre 70 et 90 %, et un risk reward proche de 0,5 : il gagne souvent, mais peu à chaque fois. Ses mouvements sont courts. Pyramider sur 8 points de mouvement n&#39;a pas de sens : il n&#39;y a pas la place de remonter le stop, et les frais mangent le gain. Pour un scalper, le levier, c&#39;est le taux de réussite. Mon conseil dans la vidéo : augmente ton taux de réussite, et ne descends pas sous un risk reward de 0,5.</p>
+<h3>Le day trader</h3>
+<p>Le day trader a un taux de réussite plus bas, entre 40 et 60 %, et un risk reward de 2 à 3 ou plus. Sur le Nasdaq, il vise des amplitudes de 80 à 300 points dans la journée. Il a moins d&#39;opportunités, il doit choisir ses trades. C&#39;est lui qui a le plus à gagner du pyramidage : ses gagnants sont rares, il faut qu&#39;ils comptent. Quand le pyramidage fait passer certains gagnants d&#39;un risk reward de 3 à 6, le pourcentage de trades gagnants dont il a besoin pour être à l&#39;équilibre baisse encore.</p>
+<p>Mais attention au piège que je décris dans la vidéo : le day trader qui coupe dès qu&#39;il voit un petit gain sur son compte. S&#39;il coupe à +15 points, il n&#39;arrive jamais à l&#39;étage où le pyramidage paie. Il cumule les inconvénients des deux styles.</p>
+<h3>Le swing trader</h3>
+<p>Sur plusieurs jours, la logique est la même, avec des stops plus larges et donc des tailles plus petites au départ. Le pyramidage y est très classique. Ce n&#39;est pas mon style, je n&#39;en dirai pas plus.</p>
+<p>Quel que soit ton style, les erreurs qui tuent un compte sont toujours les mêmes.</p>
+
+    <hr>
+
+    <h2 id="les-erreurs-qui-transforment-le-pyramida">Les erreurs qui transforment le pyramidage en ruine</h2>
+    <p>Voici mes interdits. Je les répète dans la vidéo, et je les répète à mes élèves.</p>
+<h3>1. Ajouter à une position perdante</h3>
+<p>On l&#39;a vu. C&#39;est la spirale. Un ajout se fait uniquement quand le trade gagne et que le stop peut être remonté.</p>
+<h3>2. Ajouter sans remonter le stop</h3>
+<p>Un ajout sans stop remonté, ce n&#39;est pas du pyramidage, c&#39;est de la surtaille. Chaque ajout doit s&#39;accompagner d&#39;un nouveau stop, calculé pour que le risque total reste égal ou inférieur au risque de départ.</p>
+<h3>3. Surtailler pour se refaire</h3>
+<p>« Je viens de perdre, je double. » C&#39;est l&#39;erreur qui tue le plus de comptes. Dans la vidéo, je raconte une mauvaise journée à −1 000 $ sur un coussin de 2 000 : la moitié du compte. Et là vient la pensée : « foutu pour foutu ». Puis : « on va essayer de rentrer un peu plus lourd ». C&#39;est souvent là qu&#39;on meurt. Je le dis parce que je l&#39;ai vécu.</p>
+<p>Le pyramidage est le contraire exact : on grossit quand on gagne, pas quand on a perdu.</p>
+<h3>4. Fixer le stop selon l&#39;humeur</h3>
+<p>Le stop dépend du capital que tu es prêt à perdre. Avec 100 $ de risque par trade sur un coussin de 2 000 $, il faut 20 pertes d&#39;affilée pour vider le compte. Avec 500 $, il en faut 4. Ton stop ne change pas parce que tu « sens » le trade.</p>
+<h3>5. Toucher au coussin de survie</h3>
+<p>Le coussin, c&#39;est ce qui te garde en vie les mauvais mois. Le grignoter pour financer une pyramide plus grosse, c&#39;est scier la branche.</p>
+<h3>6. Entrer lourd pour aller chercher quelques points</h3>
+<p>Certains traders entrent avec une grosse taille pour attraper 5 points. C&#39;est l&#39;inverse de la pyramide : une base énorme, rien au-dessus. Le moindre stop coûte cher, et le gain est minuscule.</p>
+<h3>7. Confondre payouts et rentabilité</h3>
+<p>Avoir touché quelques retraits en prop firm ne prouve pas qu&#39;on est rentable. La rentabilité se juge sur des années, pas sur un bon mois avec une pyramide qui a bien tourné.</p>
+<p>Pour ne jamais tomber dans ces pièges en direct, j&#39;utilise une checklist.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/pyramider-position-trading/blog-pyramider-position-trading-3.webp" alt="Règle de gestion du risque : on n&#39;ajoute jamais à une position perdante" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Le premier de mes interdits.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="ma-checklist-avant-chaque-ajout">Ma checklist avant chaque ajout</h2>
+    <p>Avant de cliquer sur un ajout, je me pose ces questions. Si une seule réponse est non, je n&#39;ajoute pas.</p>
+<ul><li>Le trade est-il gagnant ? Pas « presque », pas « il va repartir ». Gagnant.</li><li>Ma lecture de départ est-elle confirmée ? Le niveau tient, le volume est là, l&#39;order flow va dans mon sens.</li><li>Où sera mon stop après l&#39;ajout ? Je dois le savoir avant de cliquer.</li><li>Mon risque total reste-t-il sous mon risque de départ ? Si l&#39;ajout fait passer mon risque de 80 $ à 160 $, ce n&#39;est pas un ajout, c&#39;est un nouveau trade, plus gros.</li><li>Suis-je sous mon plafond ? Avec un coussin de 2 000 $, 6 à 8 micros au maximum.</li><li>Ma perte maximale journalière le permet-elle ? Si un retournement me fait sortir de la journée, je n&#39;ajoute pas.</li><li>Le mouvement est-il encore jeune ? Si le prix a déjà fait l&#39;essentiel de son amplitude habituelle, j&#39;arrête d&#39;ajouter et je gère la sortie.</li></ul>
+<p>Cette checklist paraît longue écrite comme ça. En séance, elle prend deux secondes, parce que les réponses sont préparées avant l&#39;ouverture : mon risque de départ, mon plafond, ma limite journalière. Le seul vrai jugement en direct, c&#39;est la question 2.</p>
+<p>Si tu débutes, ne pyramide pas tout de suite. Apprends d&#39;abord à prendre des trades simples, à taille fixe, avec un stop respecté. Le pyramidage vient quand tes entrées sont propres. Mon <a href="https://basstrading.fr/blog/debuter-trading-zero-guide/">guide pour débuter le trading de zéro</a> et mon article sur <a href="https://basstrading.fr/blog/combien-temps-apprendre-trading/">le temps qu&#39;il faut pour apprendre le trading</a> te donneront l&#39;ordre des étapes. Et si tu pars sans bagage en finance, j&#39;explique dans <a href="https://basstrading.fr/blog/devenir-trader-sans-diplome/">devenir trader sans diplôme</a> ce qui compte vraiment pour progresser.</p>
+
+    <hr>
+
+    <h2 id="a-retenir">À retenir</h2>
+    <ul><li>Pyramider, c&#39;est ajouter au gagnant, jamais au perdant.</li><li>Chaque ajout s&#39;accompagne d&#39;un stop remonté ; le risque total ne dépasse jamais le risque de départ.</li><li>Ma façon : entrée à 1 ou 2 micros, stop à 20 points (80 $), ajouts 2 par 2, stop au point d&#39;entrée dès que possible, plafond de 6 à 8 micros avec un coussin de 2 000 $.</li><li>Le prix à payer : certains petits gagnants finissent à zéro. En échange, les vrais gagnants deviennent beaucoup plus gros.</li><li>Le pyramidage sert surtout le day trader, dans un marché qui avance. Pas le scalper, pas le range.</li><li>En prop firm, la vraie taille de ton compte, c&#39;est ton coussin. Elle fixe ton plafond.</li></ul>
+<p>Ce soir, sur ton graphique, reprends tes trois derniers trades gagnants et refais le calcul de l&#39;exemple : où aurais-tu pu ajouter, où aurait été ton stop, et quel aurait été ton risque total à chaque étage ?</p>
+<p>Toute la logique du risque par trade est dans ma vidéo « Combien risquer par trade : la règle que 90 % des traders ignorent » : <a href="https://www.youtube.com/watch?v=3YvoeD-_BEc">regarde-la sur YouTube</a>.</p>
+<p>Pour aller plus loin sur les risques des produits dérivés, l&#39;autorité américaine des marchés de futures publie un guide pédagogique (<a href="https://www.cftc.gov/node/248396">CFTC, ressources pour les investisseurs</a>), et le régulateur européen rappelle les risques des produits à effet de levier (<a href="https://www.esma.europa.eu/node/84933">ESMA</a>).</p>
+<p>Rappel : le trading de contrats à terme comporte un risque élevé de perte en capital. Les exemples de cette page sont des illustrations pédagogiques inventées, pas des résultats ni des recommandations personnalisées. Ne trade jamais avec de l&#39;argent dont tu as besoin.</p>
+
+    <p><a href="https://www.youtube.com/watch?v=3YvoeD-_BEc" target="_blank" rel="noopener">▶ Voir la vidéo de Sébastien sur ce sujet</a></p>
+
+    <div class="cta-card cta-aimant">
+      <div class="cta-card-label">Gratuit</div>
+      <h3>La formation offerte : 7 leçons pour lire le marché comme un pro</h3>
+      <p>Accès immédiat et gratuit, en vidéo, à ton rythme. Sans carte bancaire.</p>
+      <a href="https://basstrading.fr/p/formation-offerte/?src=blog-pyramider-position-trading" class="btn-p">Je la veux →</a>
+    </div>
+    
+  </article>
+</div>
+
+<!-- FAQ -->
+<section class="faq-sec">
+  <div class="sec-center"><div class="sec-label">FAQ</div><h2 class="sec-title">Questions fréquentes</h2></div>
+  <div class="faq-list">
+    <div class="fi"><button class="fq" onclick="tf(this)">C&#39;est quoi pyramider une position en trading ? <span class="fq-icon">+</span></button><div class="fa"><p>Pyramider, c&#39;est ajouter des contrats à une position déjà gagnante, par petits paquets, en remontant le stop à chaque ajout. Le but est d&#39;augmenter le gain potentiel sans augmenter le risque de départ. On n&#39;ajoute jamais à une position perdante.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Quelle différence entre pyramider et moyenner à la baisse ? <span class="fq-icon">+</span></button><div class="fa"><p>Pyramider, c&#39;est ajouter quand le trade gagne, avec un stop qui remonte : le risque reste plafonné. Moyenner à la baisse, c&#39;est ajouter quand le trade perd, pour abaisser son prix moyen : le risque grossit à chaque ajout. Le premier est une technique de gestion du risque, le second est la spirale qui vide les comptes.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Combien de fois peut-on ajouter à une position ? <span class="fq-icon">+</span></button><div class="fa"><p>Il n&#39;y a pas de nombre universel : c&#39;est ton coussin et ta perte maximale journalière qui fixent le plafond. Pour ma part, avec un coussin de 2 000 $ sur le Nasdaq micro, j&#39;entre à 1 ou 2 micros et je plafonne à 6 à 8 micros, avec un stop remonté à chaque ajout.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Le pyramidage marche-t-il en scalping ? <span class="fq-icon">+</span></button><div class="fa"><p>Rarement. Le scalper vise des mouvements courts, avec un risk reward proche de 0,5 : il n&#39;a pas la place de remonter son stop, et les frais de chaque ajout mangent le gain. Le pyramidage sert surtout au day trader, qui vise des amplitudes plus larges dans un marché qui avance.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Peut-on pyramider sur un compte de prop firm ? <span class="fq-icon">+</span></button><div class="fa"><p>Oui, si les règles de la société le permettent, mais en plafonnant la taille selon ton vrai coussin, pas selon la taille affichée du compte. Vérifie aussi la perte maximale journalière : si elle est serrée, ton plafond d&#39;ajouts doit l&#39;être aussi.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Le pyramidage supprime-t-il le risque de perte ? <span class="fq-icon">+</span></button><div class="fa"><p>Non. Il plafonne le risque au niveau du départ, mais le premier stop peut toujours être touché, et le glissement ou un écart de prix peut faire perdre plus que prévu. Le trading de futures comporte un risque de perte en capital.</p></div></div>
+  </div>
+</section>
+
+<!-- Related -->
+<section class="related-sec">
+  <div class="sec-center"><div class="sec-label">Continuer la lecture</div><h2 class="sec-title">Articles connexes</h2></div>
+  <div class="related-grid">
+    <a href="/blog/market-profile-guide-complet/" class="related-card"><div class="related-cat">Guide</div><h3>Market Profile : le guide complet pour débutants</h3><p>Value Area, POC, types de journées — tout pour commencer.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/order-flow-trading-france/" class="related-card"><div class="related-cat">Méthode</div><h3>Order Flow Trading : pourquoi personne ne l'enseigne en France</h3><p>Le carnet d'ordres et le flux institutionnel décryptés.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/sierra-chart-configuration/" class="related-card"><div class="related-cat">Tutoriel</div><h3>Sierra Chart : configuration complète</h3><p>Le setup pas à pas pour le Market Profile et le Footprint.</p><span class="related-link">Lire &rarr;</span></a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="ft-top"><div class="ft-logo">BASS</div><div class="ft-cols">
+    <div class="ft-col"><div class="ft-col-title">Programme</div><a href="https://basstrading.fr/#methode">Méthode</a><a href="https://basstrading.fr/#programme">Programme</a><a href="https://basstrading.fr/p/formation-offerte/?src=blog-pyramider-position-trading-pied">Formation offerte</a></div>
+    <div class="ft-col"><div class="ft-col-title">Ressources</div><a href="/blog/market-profile-guide-complet/">Market Profile</a><a href="/blog/footprint-chart-trading/">Footprint Chart</a><a href="/blog/order-flow-trading-france/">Order Flow</a></div>
+  </div></div>
+  <div class="ft-bottom"><span>&copy; 2026 BASS — Sébastien Constant</span><div><a href="/mentions-legales/">Mentions légales</a><a href="/confidentialite/">Confidentialité</a><a href="/cgv/">CGV</a><a href="mailto:contact@basstrading.fr">Contact</a></div></div>
+</footer>
+<div class="disclaimer">Le trading comporte des risques de perte en capital. Les performances passées ne préjugent pas des performances futures. Ce site ne constitue pas un conseil en investissement.</div>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+const lenis=new Lenis({duration:1.2,easing:t=>Math.min(1,1.001-Math.pow(2,-10*t))});
+function raf(t){lenis.raf(t);requestAnimationFrame(raf)}requestAnimationFrame(raf);
+lenis.on('scroll',ScrollTrigger.update);gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0);
+const tl=gsap.timeline();
+tl.to('.pre-word span',{y:0,opacity:1,duration:.5,stagger:.1,ease:'power3.out',delay:.3}).to('#preLine',{width:'80px',duration:.7,ease:'power2.inOut'},'<+.2').to('.preloader',{yPercent:-100,duration:.8,ease:'power3.inOut',delay:.4}).set('.preloader',{display:'none'}).to('#nav',{opacity:1,y:0,duration:.5},'<+.1');
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);const h=document.documentElement.scrollHeight-window.innerHeight;document.getElementById('readingProgress').style.width=(window.scrollY/h*100)+'%'});
+const tocLinks=document.querySelectorAll('.toc a');const sections=Array.from(tocLinks).map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+window.addEventListener('scroll',()=>{let c='';sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)c=s.id});tocLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+c)})});
+function tf(b){const i=b.closest('.fi'),a=b.nextElementSibling,o=i.classList.contains('active');document.querySelectorAll('.fi').forEach(x=>{x.classList.remove('active');x.querySelector('.fa').classList.remove('open')});if(!o){i.classList.add('active');a.classList.add('open')}}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();lenis.scrollTo(t,{offset:-60})}})});
+</script>
+<script src="/v.js" defer></script>
+</body>
+</html>
