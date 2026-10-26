@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Formation carnet d'ordres (DOM) : lire l'order flow en direct | BASS Trading</title>
+<meta name="description" content="Formation carnet d'ordres de Bass : lire le DOM, les ordres limites et au marché, l'Insight Print sur ATAS, placer son stop. 10 leçons vidéo et 4 extraits de séances. Prix sur demande.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<!-- Page « Formation carnet d'ordres » (26/10/2026). Programme réel = formation 10 « Carnet d'ordre Mastery » de la base (14 vidéos actives). Prix : plusieurs offres en base (500 €, 2 × 250 €, 1 190 €) → « sur demande » tant que Bass n'a pas choisi ; pas d'Offer dans le JSON-LD. JSON-LD = page (FAQPage = FAQ visible, fil d'Ariane). -->
+<link rel="canonical" href="https://basstrading.fr/formation-carnet-d-ordres/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://basstrading.fr/formation-carnet-d-ordres/">
+<meta property="og:title" content="Formation carnet d'ordres : lire le DOM et le flux d'ordres">
+<meta property="og:description" content="Formation carnet d'ordres de Bass : lire le DOM, les ordres limites et au marché, l'Insight Print sur ATAS, placer son stop. 10 leçons vidéo et 4 extraits de séances. Prix sur demande.">
+<meta property="og:image" content="https://basstrading.fr/images/og-basstrading.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+:root{--bk:#1D1D1F;--bk3:#0A0A0A;--g1:#6E6E73;--g2:#86868B;--g3:#D2D2D7;--g4:#F5F5F7;--wh:#FBFBFD;--green:#00B67A;--blue:#0066FF}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--wh);color:var(--bk);font:18px/1.65 'DM Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.btn,.prix,.chiffre{font-family:'Outfit',system-ui,sans-serif}
+.w{max-width:720px;margin:0 auto;padding:0 20px}
+section{padding:64px 0}
+h2{font-size:clamp(28px,5vw,40px);line-height:1.15;margin:0 0 20px;letter-spacing:-.02em}
+h3{font-size:22px;margin:0 0 8px}
+p{margin:0 0 18px}
+b,strong{font-weight:700}
+.noir{background:var(--bk3);color:var(--wh)}
+.noir .doux{color:var(--g2)}
+.gris{background:var(--g4)}
+.doux{color:var(--g1)}
+.sur{display:inline-block;font:600 14px 'Outfit',sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--green);margin-bottom:14px}
+.grand{font-size:clamp(34px,7vw,58px);line-height:1.05;letter-spacing:-.03em;margin:0 0 22px}
+.grand em{font-style:normal;color:var(--green)}
+.chapo{font-size:21px;color:var(--g3)}
+.fil{font-size:14px;color:var(--g2);margin:0 0 26px}
+.fil a{color:var(--g2);text-decoration:none}
+.fil a:hover{text-decoration:underline}
+.enbref{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:22px 22px 6px;margin:26px 0;font-size:17px}
+.enbref h2{font-size:15px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--g2);margin:0 0 10px}
+.enbref a,.noir .lien{color:#7cb1ff}
+.btn2{display:block;text-align:center;margin:14px 0 0;font:600 17px 'Outfit',sans-serif;color:var(--wh);text-decoration:underline;text-underline-offset:4px}
+.lecons{font-size:16px;margin:8px 0 8px;padding-left:22px}
+.lecons li{margin:4px 0}
+.lire{list-style:none;padding:0;margin:20px 0}
+.lire li{padding:12px 0;border-bottom:1px solid var(--g3)}
+.lire a{font:600 18px 'Outfit',sans-serif;text-decoration:none;color:var(--blue)}
+.lire span{display:block;font-size:15px;color:var(--g1)}
+.video{position:relative;border-radius:18px;overflow:hidden;background:#000;aspect-ratio:16/9;margin:30px 0 14px;box-shadow:0 30px 80px rgba(0,0,0,.45)}
+.video video{width:100%;height:100%;display:block}
+.legende{font-size:14px;color:var(--g2);text-align:center}
+.btn{display:block;width:100%;text-align:center;background:var(--green);color:#fff;text-decoration:none;font-weight:700;font-size:20px;padding:20px 24px;border-radius:14px;box-shadow:0 10px 30px rgba(0,182,122,.35);transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn small{display:block;font:500 14px 'DM Sans',sans-serif;opacity:.9;margin-top:2px}
+.rassure{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;font-size:14px;color:var(--g2);margin-top:12px}
+.preuves{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:34px 0 0}
+.preuves div{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:16px 10px;text-align:center}
+.chiffre{display:block;font-size:30px;font-weight:800;color:var(--wh)}
+.preuves span:last-child{font-size:13px;color:var(--g2);line-height:1.3;display:block}
+.cote{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:28px 0}
+.cote>div{border-radius:16px;padding:20px}
+.cote .avant{background:#fff;border:1px solid var(--g3)}
+.cote .apres{background:var(--bk3);color:var(--wh)}
+.cote h3{font-size:18px}
+.cote ul{margin:0;padding-left:18px;font-size:16px}
+.cote li{margin:6px 0}
+.cite{border-left:4px solid var(--green);padding:6px 0 6px 18px;margin:26px 0;font-size:21px;font-family:'Outfit',sans-serif;font-weight:600;line-height:1.35}
+.cite span{display:block;font:500 15px 'DM Sans',sans-serif;color:var(--g1);margin-top:8px}
+.temos{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:26px 0}
+.temo{background:#fff;border:1px solid var(--g3);border-radius:16px;overflow:hidden}
+.yt{position:relative;aspect-ratio:16/9;background:#000 center/cover no-repeat;cursor:pointer}
+.yt::after{content:"";position:absolute;inset:0;margin:auto;width:64px;height:64px;border-radius:50%;background:rgba(0,0,0,.6) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M8 5v14l11-7z'/%3E%3C/svg%3E") center/30px no-repeat}
+.yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.temo p{font-size:16px;padding:14px 16px 2px;margin:0}
+.temo .qui{font-size:14px;color:var(--g1);padding:4px 16px 16px}
+.modules{counter-reset:m;margin:26px 0;padding:0;list-style:none}
+.modules>li{background:#fff;border:1px solid var(--g3);border-radius:16px;padding:20px 20px 14px;margin:0 0 12px}
+.modules .tag{font:700 13px 'Outfit',sans-serif;color:var(--blue);text-transform:uppercase;letter-spacing:.06em}
+.modules p{font-size:16px;margin:6px 0}
+.modules .tu{color:var(--green);font-weight:700}
+.boite{background:#fff;border:2px solid var(--bk);border-radius:22px;padding:30px 24px;margin:20px 0}
+.boite ul{list-style:none;padding:0;margin:0 0 22px}
+.boite li{padding:10px 0 10px 34px;border-bottom:1px solid var(--g4);position:relative;font-size:17px}
+.boite li::before{content:"✓";position:absolute;left:4px;color:var(--green);font-weight:800}
+.prix{text-align:center;font-size:64px;font-weight:800;letter-spacing:-.03em;margin:4px 0 0;line-height:1}
+.prix small{display:block;font:500 16px 'DM Sans',sans-serif;color:var(--g1);letter-spacing:0;margin-top:8px}
+.garantie{display:flex;gap:18px;align-items:flex-start;background:var(--g4);border-radius:18px;padding:24px;margin:26px 0}
+.sceau{flex:none;width:84px;height:84px;border-radius:50%;background:var(--bk3);color:var(--wh);display:flex;flex-direction:column;align-items:center;justify-content:center;font:800 26px/1 'Outfit',sans-serif}
+.sceau span{font-size:11px;font-weight:600;letter-spacing:.08em;margin-top:4px}
+details{border-bottom:1px solid var(--g3);padding:16px 0}
+summary{cursor:pointer;font:600 18px 'Outfit',sans-serif;list-style:none}
+summary::after{content:"+";float:right;color:var(--g1)}
+details[open] summary::after{content:"–"}
+details p{margin:12px 0 0;font-size:17px}
+.bass{display:flex;gap:18px;align-items:center;margin:0 0 20px}
+.bass .rond{flex:none;width:76px;height:76px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font:800 32px 'Outfit',sans-serif}
+.ps{font-size:17px}
+.pied{font-size:13px;color:var(--g2);text-align:center;padding:30px 20px 60px}
+.pied a{color:inherit}
+.flottant{position:fixed;left:0;right:0;bottom:0;background:rgba(10,10,10,.92);backdrop-filter:blur(10px);padding:10px 16px calc(10px + env(safe-area-inset-bottom));display:none;z-index:9}
+.flottant a{display:block;max-width:520px;margin:0 auto;text-align:center;background:var(--green);color:#fff;text-decoration:none;font:700 17px 'Outfit',sans-serif;padding:14px;border-radius:12px}
+.flottant.on{display:block}
+@media (max-width:600px){body{font-size:17px}section{padding:48px 0}.cote,.temos{grid-template-columns:1fr}.preuves .chiffre{font-size:24px}.garantie{flex-direction:column}}
+a{color:var(--blue)}
+.noir a{color:#7cb1ff}
+.cartes{display:grid;gap:14px;margin:26px 0}
+.carte{background:#fff;border:1px solid var(--g3);border-radius:18px;padding:22px 22px 16px}
+.carte h3 a{text-decoration:none;color:var(--bk)}
+.carte .meta{font:600 14px 'Outfit',sans-serif;color:var(--g1);text-transform:uppercase;letter-spacing:.06em;margin:0 0 6px}
+.carte .prixc{font:800 22px 'Outfit',sans-serif;margin:6px 0 10px}
+.carte p{font-size:16px;margin:0 0 10px}
+.carte .aller{font:600 16px 'Outfit',sans-serif;text-decoration:none}
+.btn3{display:inline-block;background:var(--bk3);color:var(--wh)!important;text-decoration:none;font:700 17px 'Outfit',sans-serif;padding:14px 22px;border-radius:12px}
+.haut{display:flex;gap:18px;flex-wrap:wrap;align-items:center;max-width:720px;margin:0 auto;padding:16px 20px;font:600 15px 'Outfit',sans-serif}
+.haut a{color:var(--g2);text-decoration:none}.haut a:hover{color:var(--wh)}
+.haut .logo{color:var(--wh);font-weight:900;letter-spacing:4px;margin-right:auto}
+.entete{background:var(--bk3)}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Course", "@id": "https://basstrading.fr/formation-carnet-d-ordres/#formation", "name": "Carnet d'ordre Mastery : la formation carnet d'ordres de Bass", "alternateName": "Formation carnet d'ordres", "description": "Formation vidéo au carnet d'ordres (DOM) : 10 leçons pour comprendre comment les ordres limites et les ordres au marché se rencontrent, les lire en temps réel avec l'Insight Print sur ATAS et placer son stop, puis quatre extraits de séances de trading enregistrées.", "url": "https://basstrading.fr/formation-carnet-d-ordres/", "inLanguage": "fr-FR", "dateModified": "2026-10-26", "isAccessibleForFree": false, "teaches": ["Lire un carnet d'ordres (DOM)", "Ordres limites et ordres au marché", "L'Insight Print sur ATAS", "Placer son stop loss"], "provider": {"@id": "https://basstrading.fr/#organisation", "@type": "Organization", "name": "BASS Trading", "url": "https://basstrading.fr/"}, "creator": {"@id": "https://basstrading.fr/#sebastien-constant", "@type": "Person", "name": "Sébastien Constant", "url": "https://basstrading.fr/auteur/sebastien-constant/"}, "hasCourseInstance": {"@type": "CourseInstance", "courseMode": "Online", "instructor": {"@id": "https://basstrading.fr/#sebastien-constant", "@type": "Person", "name": "Sébastien Constant", "url": "https://basstrading.fr/auteur/sebastien-constant/"}}}, {"@type": "FAQPage", "@id": "https://basstrading.fr/formation-carnet-d-ordres/#faq", "mainEntity": [{"@type": "Question", "name": "Qu'est-ce que le carnet d'ordres (DOM) ?", "acceptedAnswer": {"@type": "Answer", "text": "Le carnet d'ordres, ou DOM (Depth of Market), affiche à chaque prix les ordres limites en attente : les acheteurs d'un côté, les vendeurs de l'autre. Quand un ordre au marché arrive, il consomme ces ordres et la transaction s'imprime. Lire le carnet, c'est regarder cette rencontre en direct."}}, {"@type": "Question", "name": "Combien coûte la formation carnet d'ordres ?", "acceptedAnswer": {"@type": "Answer", "text": "Le prix t'est donné sur demande : écris-moi à contact@basstrading.fr. Je te réponds avec le prix et les façons de payer."}}, {"@type": "Question", "name": "Quel logiciel faut-il ?", "acceptedAnswer": {"@type": "Answer", "text": "La formation est tournée sur ATAS : l'installation et la connexion sont montrées en deux vidéos, et mes templates sont à télécharger dans la formation."}}, {"@type": "Question", "name": "Je débute, c'est pour moi ?", "acceptedAnswer": {"@type": "Answer", "text": "Le carnet d'ordres se lit mieux quand tu sais déjà où se trouve la valeur de la séance. Si tu débutes, commence par la formation offerte, gratuite, ou par la formation Market Profile, à 57 €."}}, {"@type": "Question", "name": "Carnet d'ordres, footprint, order flow : quelle différence ?", "acceptedAnswer": {"@type": "Answer", "text": "L'order flow, c'est le flux des ordres qui s'échangent. Le carnet d'ordres montre les ordres en attente, avant qu'ils soient exécutés. Le footprint montre ce qui a été exécuté, à l'intérieur de chaque bougie. Les deux se complètent."}}, {"@type": "Question", "name": "Comment j'accède aux vidéos ?", "acceptedAnswer": {"@type": "Answer", "text": "Dans ton espace élève sur basstrading.fr : tu reçois un lien de connexion par e-mail. Tu avances à ton rythme, leçon par leçon."}}, {"@type": "Question", "name": "La formation promet-elle des gains ?", "acceptedAnswer": {"@type": "Answer", "text": "Non. Elle t'apprend à lire le carnet d'ordres. Ce n'est pas un signal à copier ni un conseil en investissement. Le trading comporte un risque réel de perte en capital : entraîne-toi d'abord sans argent réel."}}]}, {"@type": "BreadcrumbList", "@id": "https://basstrading.fr/formation-carnet-d-ordres/#fil", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://basstrading.fr/"}, {"@type": "ListItem", "position": 2, "name": "Formations", "item": "https://basstrading.fr/formations/"}, {"@type": "ListItem", "position": 3, "name": "Formation carnet d'ordres", "item": "https://basstrading.fr/formation-carnet-d-ordres/"}]}]}</script>
+</head>
+<body>
+<div class="entete"><nav class="haut" aria-label="Menu"><a href="/" class="logo">BASS</a><a href="/formations/">Formations</a><a href="/blog/">Blog</a><a href="/auteur/sebastien-constant/">Bass</a><a href="/p/formation-offerte/?src=formation-carnet-d-ordres-menu">Formation offerte</a></nav></div>
+
+<!-- 1. RÉPONSE DIRECTE -->
+<section class="noir" style="padding-top:30px">
+  <div class="w">
+    <nav class="fil" aria-label="Fil d'Ariane"><a href="/">Accueil</a> / <a href="/formations/">Formations</a> / <span>Formation carnet d'ordres</span></nav>
+    <span class="sur">Carnet d'ordre Mastery · Bass Trading</span>
+    <h1 class="grand">Formation carnet d'ordres : lire le <em>DOM</em> et le flux d'ordres en direct</h1>
+    <div class="enbref">
+      <h2>En bref</h2>
+      <p><b>Carnet d'ordre Mastery</b> est ma formation au carnet d'ordres (DOM) : 10 leçons vidéo pour comprendre comment les ordres limites et les ordres au marché se rencontrent, les lire en temps réel avec l'Insight Print sur ATAS, et placer ton stop. Puis quatre extraits de séances de trading enregistrées.</p>
+      <p><b>Pour qui :</b> les traders de futures en intraday qui veulent voir, au prix où ils entrent, qui pousse et qui encaisse. Si tu débutes, commence par la <a href="/p/formation-offerte/?src=formation-carnet-d-ordres">formation offerte</a> ou la <a href="/marketprofile/">formation Market Profile</a>.</p>
+      <p><b>Prix :</b> sur demande, par e-mail. <b>Logiciel :</b> ATAS, installation et templates fournis.</p>
+    </div>
+    <a class="btn" href="mailto:contact@basstrading.fr?subject=Formation%20carnet%20d%27ordres">Je demande le prix<small>par e-mail, à contact@basstrading.fr</small></a>
+    <a class="btn2" href="#programme">Voir le programme (14 vidéos)</a>
+    <div class="preuves">
+      <div><span class="chiffre">10</span><span>leçons vidéo</span></div>
+      <div><span class="chiffre">4</span><span>extraits de séances de trading</span></div>
+      <div><span class="chiffre">ATAS</span><span>installation et templates fournis</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. LE CARNET EN DEUX MINUTES -->
+<section>
+  <div class="w">
+    <h2>Une transaction, c'est deux ordres qui se rencontrent.</h2>
+    <p>D'un côté, des ordres limites qui attendent à un prix donné. De l'autre, des ordres au marché qui veulent être exécutés tout de suite. Le prix ne bouge que quand les seconds consomment les premiers.</p>
+    <p>Le carnet d'ordres te montre les ordres en attente, prix par prix. L'Insight Print te montre ce qui vient d'être exécuté. Ensemble, ils te disent qui prend l'initiative, et qui encaisse.</p>
+    <p>Un stop, c'est un ordre comme un autre : quand il se déclenche, il devient un ordre au marché, et il sert de contrepartie à quelqu'un. Comprendre ça change la façon dont tu places le tien.</p>
+    <p class="doux" style="font-size:16px">Ce n'est pas un signal d'achat. Ce n'est pas une promesse de gain. C'est une façon de lire. Et une lecture, ça s'apprend.</p>
+  </div>
+</section>
+
+<!-- 3. PROGRAMME (formation 10 de la base, 14 vidéos actives) -->
+<section class="gris" id="programme">
+  <div class="w">
+    <span class="sur">Le programme</span>
+    <h2>10 leçons, puis le carnet en séance.</h2>
+    <ul class="modules">
+      <li><span class="tag">Étape 1 · Démarrer</span>
+        <ol class="lecons"><li>Le groupe des élèves</li><li>Installer ATAS</li><li>Installer ATAS, partie 2</li><li>Mes templates, à télécharger</li></ol>
+        <p class="tu">→ Ta plateforme est prête, avec mes réglages.</p></li>
+      <li><span class="tag">Étape 2 · Lire le carnet</span>
+        <ol class="lecons" start="5"><li>Les bases du carnet d'ordres</li><li>L'Insight Print, les ordres limites et les ordres market</li><li>Exercice et explication</li><li>Explication</li><li>Le stop loss</li><li>Un conseil important</li></ol>
+        <p class="tu">→ Tu reconnais en temps réel qui agresse et qui attend.</p></li>
+      <li><span class="tag">Étape 3 · En séance</span>
+        <ol class="lecons" start="11"><li>Session de trading</li><li>Session de trading du 21 octobre 2025</li><li>Session du 21 octobre 2025, 2e partie</li><li>Session du 21 octobre 2025, 3e partie</li></ol>
+        <p class="tu">→ Tu me vois lire le carnet sur le marché réel.</p></li>
+    </ul>
+  </div>
+</section>
+
+<!-- 4. PRIX -->
+<section id="offre">
+  <div class="w">
+    <h2>Le prix, sur demande.</h2>
+    <p>Écris-moi à <a href="mailto:contact@basstrading.fr?subject=Formation%20carnet%20d%27ordres">contact@basstrading.fr</a> avec l'objet « Formation carnet d'ordres ». Je te réponds avec le prix et les façons de payer.</p>
+    <p>Tu veux d'abord voir comment j'enseigne ? <a href="/p/formation-offerte/?src=formation-carnet-d-ordres-prix">La formation offerte</a> : 7 leçons gratuites, dans ton espace élève.</p>
+    <a class="btn3" href="mailto:contact@basstrading.fr?subject=Formation%20carnet%20d%27ordres">Je demande le prix</a>
+  </div>
+</section>
+
+<!-- 5. FAQ -->
+<section class="gris">
+  <div class="w">
+    <h2>Tes questions.</h2>
+    <details><summary>Qu'est-ce que le carnet d'ordres (DOM) ?</summary><p>Le carnet d'ordres, ou DOM (Depth of Market), affiche à chaque prix les ordres limites en attente : les acheteurs d'un côté, les vendeurs de l'autre. Quand un ordre au marché arrive, il consomme ces ordres et la transaction s'imprime. Lire le carnet, c'est regarder cette rencontre en direct.</p></details>
+    <details><summary>Combien coûte la formation carnet d'ordres ?</summary><p>Le prix t'est donné sur demande : écris-moi à <a href="mailto:contact@basstrading.fr?subject=Formation%20carnet%20d%27ordres">contact@basstrading.fr</a>. Je te réponds avec le prix et les façons de payer.</p></details>
+    <details><summary>Quel logiciel faut-il ?</summary><p>La formation est tournée sur ATAS : l'installation et la connexion sont montrées en deux vidéos, et mes templates sont à télécharger dans la formation.</p></details>
+    <details><summary>Je débute, c'est pour moi ?</summary><p>Le carnet d'ordres se lit mieux quand tu sais déjà où se trouve la valeur de la séance. Si tu débutes, commence par la formation offerte, gratuite, ou par la formation Market Profile, à 57 €.</p></details>
+    <details><summary>Carnet d'ordres, footprint, order flow : quelle différence ?</summary><p>L'order flow, c'est le flux des ordres qui s'échangent. Le carnet d'ordres montre les ordres en attente, avant qu'ils soient exécutés. Le footprint montre ce qui a été exécuté, à l'intérieur de chaque bougie. Les deux se complètent.</p></details>
+    <details><summary>Comment j'accède aux vidéos ?</summary><p>Dans ton espace élève sur basstrading.fr : tu reçois un lien de connexion par e-mail. Tu avances à ton rythme, leçon par leçon.</p></details>
+    <details><summary>La formation promet-elle des gains ?</summary><p>Non. Elle t'apprend à lire le carnet d'ordres. Ce n'est pas un signal à copier ni un conseil en investissement. Le trading comporte un risque réel de perte en capital : entraîne-toi d'abord sans argent réel.</p></details>
+  </div>
+</section>
+
+<!-- 6. GRATUIT -->
+<section>
+  <div class="w">
+    <h2>Pour aller plus loin, gratuitement.</h2>
+    <ul class="lire">
+      <li><a href="/blog/carnet-ordres-dom-futures/">Le carnet d'ordres (DOM) sur les futures</a><span>Les colonnes, les ordres, ce qu'il faut regarder.</span></li>
+      <li><a href="/blog/order-flow-trading-france/">Order flow : le guide complet</a><span>Le flux d'ordres, de A à Z.</span></li>
+      <li><a href="/blog/tape-reading-flux-ordres/">Tape reading : lire le flux d'ordres</a><span>Les transactions, une par une.</span></li>
+      <li><a href="/blog/absorption-order-flow/">L'absorption en order flow</a><span>Quand des ordres passifs encaissent l'agression.</span></li>
+      <li><a href="/formations/">Toutes mes formations</a><span>Market Profile, footprint, carnet d'ordres, la formation offerte.</span></li>
+    </ul>
+  </div>
+</section>
+
+<div class="pied">BASS Trading · <a href="/formations/">Formations</a> · <a href="/marketprofile/">Formation Market Profile</a> · <a href="/formation-carnet-d-ordres/">Formation carnet d'ordres</a> · <a href="/avis-bass-trading/">Avis</a> · <a href="/auteur/sebastien-constant/">Sébastien Constant</a> · <a href="/blog/">Blog</a> · <a href="mailto:contact@basstrading.fr">contact@basstrading.fr</a> · <a href="/mentions-legales/">Mentions légales</a> · <a href="/cgv/">CGV</a><br>Le trading comporte des risques de perte en capital. Les performances passées ne préjugent pas des performances futures.</div>
+
+<script>
+// Vidéos YouTube : chargées au clic seulement (page légère sur mobile).
+document.querySelectorAll('.yt').forEach((el) => el.addEventListener('click', () => {
+  el.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${el.dataset.id}?autoplay=1" title="${el.dataset.titre || 'Vidéo'}" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
+}, { once: true }));
+</script>
+<script src="/v.js" defer></script>
+</body>
+</html>
