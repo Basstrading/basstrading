@@ -99,11 +99,6 @@
       "statusCode": 301
     },
     {
-      "source": "/blog/arnaque-trading/",
-      "destination": "/blog/quelle-formation-trading-choisir/",
-      "statusCode": 301
-    },
-    {
       "source": "/cours/psychologie-trading-pro/",
       "destination": "/blog/perte-maximale-journaliere-trading/",
       "statusCode": 301

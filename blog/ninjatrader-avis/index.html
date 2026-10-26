@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NinjaTrader avis : prix, France, order flow et limites — BASS Trading</title>
+  <meta name="description" content="NinjaTrader avis : ce que vaut la plateforme pour les futures, son arrivée en Europe, ses prix, son order flow, Mac et débutant, et ses vraies limites.">
+  <meta property="og:title" content="NinjaTrader avis : prix, France, order flow et limites — BASS Trading">
+  <meta property="og:description" content="NinjaTrader avis : ce que vaut la plateforme pour les futures, son arrivée en Europe, ses prix, son order flow, Mac et débutant, et ses vraies limites.">
+  <meta property="og:image" content="https://basstrading.fr/blog/ninjatrader-avis/blog-ninjatrader-avis-1.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://basstrading.fr/blog/ninjatrader-avis/blog-ninjatrader-avis-1.webp">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://basstrading.fr/blog/ninjatrader-avis/">
+  <meta property="og:site_name" content="BASS Trading">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://basstrading.fr/blog/ninjatrader-avis/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","@id":"https://basstrading.fr/blog/ninjatrader-avis/#article","headline":"NinjaTrader avis : prix, France, order flow et limites","description":"NinjaTrader avis : ce que vaut la plateforme pour les futures, son arrivée en Europe, ses prix, son order flow, Mac et débutant, et ses vraies limites.","datePublished":"2026-10-26","dateModified":"2026-10-26","inLanguage":"fr-FR","image":"https://basstrading.fr/blog/ninjatrader-avis/blog-ninjatrader-avis-1.webp","mainEntityOfPage":"https://basstrading.fr/blog/ninjatrader-avis/","isPartOf":{"@type":"WebSite","@id":"https://basstrading.fr/#website","name":"BASS Trading","url":"https://basstrading.fr/"},"author":{"@type":"Person","@id":"https://basstrading.fr/#sebastien-constant","name":"Sébastien Constant","url":"https://basstrading.fr/auteur/sebastien-constant/"},"publisher":{"@type":"Organization","@id":"https://basstrading.fr/#organisation","name":"BASS Trading","url":"https://basstrading.fr/","logo":{"@type":"ImageObject","url":"https://basstrading.fr/images/logo-basstrading.png","width":512,"height":512}}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://basstrading.fr"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://basstrading.fr/blog/"},{"@type":"ListItem","position":3,"name":"NinjaTrader avis","item":"https://basstrading.fr/blog/ninjatrader-avis/"}]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"NinjaTrader est-il gratuit ?","acceptedAnswer":{"@type":"Answer","text":"Oui pour apprendre : les graphiques, le backtesting, la simulation et le rejeu de séances (Market Replay) sont gratuits. En réel, tu paies une commission par contrat et par côté, plus les frais de bourse, de régulation et de compensation, et les données de marché. Les licences mensuelle (99 $ par mois sur la grille américaine relevée le 25/10/2026) et à vie (1 499 $) baissent la commission, mais ne se rentabilisent qu'avec un volume élevé."}},{"@type":"Question","name":"Peut-on utiliser NinjaTrader depuis la France ?","acceptedAnswer":{"@type":"Answer","text":"Le logiciel, oui : tu peux le télécharger et l'utiliser en simulation sans compte réel. Pour le compte de courtage, NinjaTrader a ouvert l'Europe en janvier 2026 via une entité régulée par la CySEC à Chypre, en commençant par les Pays-Bas et l'Allemagne. La France était annoncée pour plus tard, mais au 25/10/2026 elle n'est toujours pas ouverte d'après la page officielle ninjatrader.com/eu. Vérifie le jour où tu veux ouvrir."}},{"@type":"Question","name":"NinjaTrader est-il un bon courtier ?","acceptedAnswer":{"@type":"Answer","text":"Oui, NinjaTrader est un bon courtier pour les futures : régulé (CFTC et NFA aux États-Unis, CySEC en Europe), actif depuis 2003, avec des ordres envoyés sur le carnet central de la bourse et non en CFD. Il a été racheté par Kraken en 2025. La régulation protège ton dépôt d'un courtier défaillant, pas des pertes de marché."}},{"@type":"Question","name":"NinjaTrader fonctionne-t-il sur Mac ?","acceptedAnswer":{"@type":"Answer","text":"Pas en version complète : NinjaTrader 8 demande Windows 11 (ou Windows Server 2016 et plus) en 64 bits et .NET Framework 4.8. Sur Mac, tu peux utiliser la version web dans le navigateur, ou une machine virtuelle Windows (Parallels, VMware) que NinjaTrader ne prend pas en charge officiellement. Les applications iOS et Android servent à surveiller et gérer une position."}},{"@type":"Question","name":"NinjaTrader est-il adapté aux débutants ?","acceptedAnswer":{"@type":"Answer","text":"Oui, pour apprendre l'outil et les ordres sans risquer d'argent, grâce à la simulation et au Market Replay gratuits. Le danger n'est pas le logiciel mais le passage au réel trop tôt. Commence en micro contrats, écris ta perte maximale par trade et par jour avant d'ouvrir un compte réel, et rappelle-toi que les futures à effet de levier peuvent faire perdre plus que le dépôt."}},{"@type":"Question","name":"NinjaTrader ou TradingView, NinjaScript ou Pine Script ?","acceptedAnswer":{"@type":"Answer","text":"TradingView est d'abord un outil de graphiques, accessible dans le navigateur sur toutes les machines, avec le langage Pine Script, simple à apprendre. NinjaTrader est d'abord une plateforme d'exécution de futures sous Windows, avec SuperDOM, Market Replay et le langage NinjaScript en C#, dont l'avantage est la puissance (stratégies automatiques, données tick par tick). Les deux se complètent : NinjaTrader permet de connecter son compte à TradingView."}},{"@type":"Question","name":"Pourquoi mes bougies NinjaTrader sont-elles différentes d'une autre plateforme ?","acceptedAnswer":{"@type":"Answer","text":"Le plus souvent, la session n'est pas la même : dans NinjaTrader, le modèle d'horaires (Trading Hours) ETH prend toute la séance Globex, le modèle RTH seulement la séance de jour américaine. Vérifie aussi l'échéance (contrat précis ou continu) et le type de bougie (temps, ticks, volume). Deux flux de données peuvent enfin découper les ticks différemment."}},{"@type":"Question","name":"NinjaTrader propose-t-il un bonus, une promotion ou un parrainage, et comment contacter le support ?","acceptedAnswer":{"@type":"Answer","text":"Des promotions ou offres de parrainage apparaissent parfois sur le site : je n'en tiens jamais compte, quelques dizaines de dollars ne pèsent rien face à la régulation et à la qualité d'exécution. Pour le service client, passe par la page d'aide du site officiel ; la documentation (le Help Guide) est très complète et le forum d'utilisateurs répond à presque tout, surtout en anglais."}}]}
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{--bk:#1D1D1F;--bk2:#111;--bk3:#0A0A0A;--g1:#6E6E73;--g2:#86868B;--g3:#D2D2D7;--g4:#F5F5F7;--wh:#FBFBFD;--pure:#FFF;--green:#00B67A;--blue:#0066FF}
+    html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}
+    body{font-family:'DM Sans',sans-serif;color:var(--bk);background:var(--pure);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+    .preloader{position:fixed;inset:0;background:var(--bk3);z-index:10001;display:flex;align-items:center;justify-content:center}
+    .pre-word{font-family:'Outfit',sans-serif;font-size:clamp(3rem,8vw,5rem);font-weight:900;letter-spacing:16px;text-transform:uppercase;color:var(--pure);overflow:hidden}
+    .pre-word span{display:inline-block;transform:translateY(110%);opacity:0}
+    .pre-line{width:0;height:1px;background:rgba(255,255,255,.3);margin-top:20px}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 48px;display:flex;align-items:center;justify-content:space-between;background:rgba(245,245,247,.85);backdrop-filter:blur(20px) saturate(1.8);border-bottom:1px solid rgba(0,0,0,.04);transition:background .4s}
+    .nav-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase;color:var(--bk)}
+    .nav-links{display:flex;gap:28px;list-style:none}.nav-links a{font-size:.74rem;font-weight:500;letter-spacing:.3px;color:var(--g1);transition:color .3s}.nav-links a:hover{color:var(--bk)}
+    .nav-cta{padding:8px 20px;background:var(--bk);color:var(--pure);border:none;border-radius:980px;font-size:.72rem;font-weight:600;transition:all .3s;cursor:pointer;text-decoration:none;display:inline-block}.nav-cta:hover{background:var(--bk2)}
+    .blog-hero{padding:160px 48px 80px;background:var(--g4);position:relative;overflow:hidden}
+    .blog-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,transparent,var(--g4));pointer-events:none}
+    .blog-hero-inner{max-width:720px;margin:0 auto}
+    .breadcrumb{display:flex;gap:8px;align-items:center;margin-bottom:28px;flex-wrap:wrap}
+    .breadcrumb a,.breadcrumb span{font-size:.68rem;font-weight:500;letter-spacing:.3px;color:var(--g2);transition:color .3s}.breadcrumb a:hover{color:var(--bk)}.breadcrumb .sep{color:var(--g3)}
+    .blog-hero-cat{display:inline-block;padding:5px 14px;border:1px solid rgba(0,102,255,.15);border-radius:980px;font-size:.6rem;font-weight:700;color:var(--blue);letter-spacing:2px;text-transform:uppercase;margin-bottom:20px}
+    .blog-hero-title{font-family:'Outfit',sans-serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:900;line-height:1.05;letter-spacing:-2px;color:var(--bk);margin-bottom:20px}
+    .blog-hero-desc{font-size:.95rem;color:var(--g1);line-height:1.8;max-width:560px;margin-bottom:28px}
+    .blog-meta{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+    .blog-meta-author{display:flex;align-items:center;gap:10px}
+    .blog-meta-avatar{width:36px;height:36px;border-radius:50%;background:var(--bk3);overflow:hidden;flex-shrink:0}.blog-meta-avatar img{width:100%;height:100%;object-fit:cover}
+    .blog-meta-name{font-size:.78rem;font-weight:600;color:var(--bk)}.blog-meta-role{font-size:.65rem;color:var(--g2)}
+    .blog-meta-sep{width:1px;height:24px;background:var(--g3)}
+    .blog-meta-info{font-size:.7rem;color:var(--g2)}.blog-meta-info span{margin-right:16px}
+    .toc{position:sticky;top:90px;background:var(--pure);border:1px solid rgba(0,0,0,.04);border-radius:14px;padding:24px;margin-bottom:32px}
+    .toc-title{font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.5px;color:var(--bk);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+    .toc ol{list-style:none;counter-reset:toc}.toc li{counter-increment:toc}
+    .toc li a{display:flex;align-items:baseline;gap:8px;padding:6px 0;font-size:.76rem;color:var(--g1);transition:color .3s;border-bottom:1px solid rgba(0,0,0,.03)}.toc li a:hover{color:var(--blue)}
+    .toc li a::before{content:counter(toc,decimal-leading-zero);font-family:'Outfit',sans-serif;font-size:.65rem;font-weight:700;color:var(--g3);min-width:18px}
+    .toc li:last-child a{border-bottom:none}.toc li a.active{color:var(--blue);font-weight:600}.toc li a.active::before{color:var(--blue)}
+    .article-wrap{display:grid;grid-template-columns:220px 1fr;gap:40px;max-width:1020px;margin:0 auto;padding:60px 48px 120px}
+    .article-sidebar{position:relative}.article-body{max-width:700px}
+    .article-body h2{font-family:'Outfit',sans-serif;font-size:clamp(1.4rem,2.5vw,1.8rem);font-weight:800;line-height:1.1;letter-spacing:-1px;color:var(--bk);margin:56px 0 16px;padding-top:20px}.article-body h2:first-of-type{margin-top:0}
+    .article-body h3{font-family:'Outfit',sans-serif;font-size:1.05rem;font-weight:700;line-height:1.25;letter-spacing:-.3px;color:var(--bk);margin:36px 0 10px}
+    .article-body p{font-size:.9rem;color:var(--g1);line-height:1.85;margin-bottom:18px}
+    .article-body strong{color:var(--bk);font-weight:600}
+    .article-body ul,.article-body ol{margin:0 0 20px 0;padding-left:20px}
+    .article-body li{font-size:.88rem;color:var(--g1);line-height:1.8;margin-bottom:6px}.article-body li strong{color:var(--bk)}
+    .article-body blockquote{margin:28px 0;padding:20px 24px;background:var(--g4);border-left:3px solid var(--bk);border-radius:0 12px 12px 0;font-size:.88rem;color:var(--g1);line-height:1.8;font-style:italic}
+    .article-body blockquote strong{color:var(--bk);font-style:normal}
+    .article-body hr{border:none;border-top:1px solid var(--g4);margin:48px 0}
+    .info-box{margin:28px 0;padding:24px;background:rgba(0,102,255,.03);border:1px solid rgba(0,102,255,.08);border-radius:14px}
+    .info-box-title{font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:700;color:var(--blue);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+    .info-box p{font-size:.82rem;color:var(--g1);line-height:1.7;margin-bottom:0}
+    .key-concept{margin:32px 0;padding:28px;background:var(--bk3);border-radius:16px;color:var(--pure)}
+    .key-concept-label{font-size:.55rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:10px}
+    .key-concept h4{font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:800;letter-spacing:-.3px;margin-bottom:8px}
+    .key-concept p{font-size:.85rem;color:rgba(255,255,255,.5);line-height:1.8;margin-bottom:0}
+    .compare-table{width:100%;margin:24px 0 28px;border-collapse:collapse;border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,.06)}
+    .compare-table th{background:var(--bk3);color:var(--pure);font-family:'Outfit',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:14px 16px;text-align:left}
+    .compare-table td{padding:12px 16px;font-size:.82rem;color:var(--g1);line-height:1.6;border-bottom:1px solid rgba(0,0,0,.04);background:var(--pure)}
+    .compare-table tr:last-child td{border-bottom:none}.compare-table td:first-child{font-weight:600;color:var(--bk)}
+    .cta-card{margin:48px 0;padding:40px;background:var(--bk3);border-radius:20px;text-align:center;position:relative;overflow:hidden}
+    .cta-card::before{content:'';position:absolute;top:-50%;right:-30%;width:400px;height:400px;background:radial-gradient(circle,rgba(0,102,255,.08) 0%,transparent 70%);pointer-events:none}
+    .cta-card-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:12px}
+    .cta-card h3{font-family:'Outfit',sans-serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:800;color:var(--pure);letter-spacing:-.5px;margin-bottom:8px}
+    .cta-card p{font-size:.85rem;color:rgba(255,255,255,.4);line-height:1.7;max-width:380px;margin:0 auto 24px}
+    .cta-card .btn-p{background:var(--pure);color:var(--bk)}.cta-card .btn-p:hover{box-shadow:0 8px 30px rgba(255,255,255,.15)}
+    .faq-sec{padding:80px 48px 100px;background:var(--g4)}
+    .faq-list{max-width:680px;margin:40px auto 0}.fi{border-bottom:1px solid rgba(0,0,0,.06)}
+    .fq{width:100%;text-align:left;padding:18px 0;background:none;border:none;font-size:.85rem;font-weight:600;font-family:'DM Sans',sans-serif;color:var(--bk);display:flex;justify-content:space-between;align-items:center;cursor:pointer;gap:16px;transition:color .3s}.fq:hover{color:var(--g1)}
+    .fq-icon{width:22px;height:22px;border-radius:50%;background:rgba(0,0,0,.04);display:flex;align-items:center;justify-content:center;font-size:.75rem;transition:all .4s;flex-shrink:0;color:var(--g2)}
+    .fa{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1)}.fa.open{max-height:280px;padding-bottom:14px}
+    .fa p{font-size:.8rem;color:var(--g1);line-height:1.7;margin-bottom:0}.fi.active .fq-icon{background:var(--bk);color:var(--pure);transform:rotate(45deg)}
+    .related-sec{padding:80px 48px;background:var(--pure);border-top:1px solid var(--g4)}
+    .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1060px;margin:40px auto 0}
+    .related-card{display:block;padding:28px;background:var(--g4);border-radius:16px;transition:all .4s;text-decoration:none;color:var(--bk)}
+    .related-card:hover{background:var(--pure);box-shadow:0 8px 30px rgba(0,0,0,.06);transform:translateY(-2px)}
+    .related-cat{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+    .related-card h3{font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:700;line-height:1.3;letter-spacing:-.3px;margin-bottom:8px}
+    .related-card p{font-size:.78rem;color:var(--g1);line-height:1.6;margin-bottom:14px}
+    .related-link{font-size:.72rem;font-weight:600;color:var(--blue);letter-spacing:.3px}
+    .footer{background:var(--bk3);color:var(--pure);padding:56px 48px 28px}
+    .ft-top{display:flex;justify-content:space-between;align-items:start;margin-bottom:48px;flex-wrap:wrap;gap:32px}
+    .ft-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase}
+    .ft-cols{display:flex;gap:80px}
+    .ft-col-title{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:12px}
+    .ft-col a{display:block;font-size:.78rem;color:rgba(255,255,255,.5);margin-bottom:8px;transition:color .3s}.ft-col a:hover{color:var(--pure)}
+    .ft-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:20px;display:flex;justify-content:space-between;align-items:center;font-size:.6rem;color:rgba(255,255,255,.2)}
+    .ft-bottom a{color:rgba(255,255,255,.2);transition:color .3s;margin-left:20px}.ft-bottom a:hover{color:rgba(255,255,255,.5)}
+    .disclaimer{padding:12px 48px;background:var(--bk3);font-size:.58rem;color:rgba(255,255,255,.12);text-align:center;line-height:1.6;border-top:1px solid rgba(255,255,255,.03)}
+    .sec-center{text-align:center;max-width:680px;margin:0 auto}
+    .sec-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--g2);margin-bottom:10px}
+    .sec-title{font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;line-height:1.05;letter-spacing:-1.5px;color:var(--bk);margin-bottom:16px}
+    .btn-p{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--bk);color:var(--pure);border-radius:980px;font-size:.85rem;font-weight:600;transition:all .3s;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;text-decoration:none}
+    .btn-p:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(0,0,0,.1)}
+    .btn-p svg{width:13px;height:13px;transition:transform .3s}.btn-p:hover svg{transform:translateX(3px)}
+    .reading-progress{position:fixed;top:0;left:0;height:2px;background:var(--blue);z-index:9999;width:0;transition:width .1s linear}
+    @media(max-width:900px){.nav{padding:14px 20px}.nav-links{display:none}.blog-hero{padding:120px 20px 60px}.article-wrap{grid-template-columns:1fr;padding:40px 20px 80px}.article-sidebar{display:none}.related-grid{grid-template-columns:1fr}.related-sec,.faq-sec{padding:60px 20px}.ft-cols{flex-direction:column;gap:28px}.footer{padding:40px 20px 20px}.disclaimer{padding:10px 16px}.cta-card{padding:28px 20px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  .article-body a{color:var(--blue);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;font-weight:500}.article-body a:hover{text-decoration-thickness:2px}
+</style>
+</head>
+<body>
+
+<div class="preloader" id="preloader"><div style="text-align:center"><div class="pre-word"><span>B</span><span>A</span><span>S</span><span>S</span></div><div class="pre-line" id="preLine"></div></div></div>
+<div class="reading-progress" id="readingProgress"></div>
+
+<nav class="nav" id="nav">
+  <a href="https://basstrading.fr" class="nav-logo">BASS</a>
+  <ul class="nav-links">
+    <li><a href="https://basstrading.fr/#methode">Méthode</a></li>
+    <li><a href="https://basstrading.fr#resultats">Résultats</a></li>
+    <li><a href="https://basstrading.fr#avis">Avis</a></li>
+    <li><a href="https://basstrading.fr#faq">FAQ</a></li>
+    <li><a href="https://basstrading.fr/blog/">Blog</a></li>
+  </ul>
+  <a href="https://basstrading.fr/p/formation-offerte/?src=blog-ninjatrader-avis-menu" class="nav-cta">Formation offerte</a>
+</nav>
+
+<section class="blog-hero">
+  <div class="blog-hero-inner">
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <a href="https://basstrading.fr">Accueil</a><span class="sep">/</span>
+      <a href="https://basstrading.fr/blog/">Blog</a><span class="sep">/</span>
+      <span>NinjaTrader avis</span>
+    </nav>
+    <div class="blog-hero-cat">Plateformes</div>
+    <h1 class="blog-hero-title">NinjaTrader avis : prix, France, order flow et limites</h1>
+    <p class="blog-hero-desc">NinjaTrader est une bonne plateforme de futures : graphiques, simulation et rejeu de séances gratuits, un carnet d&#39;ordres pour passer les ordres au clic, et un module d&#39;order flow payant. Ses limites : Windows seulement en version complète, un compte européen pas encore ouvert à la France, et des frais à bien calculer. Voici mon avis de formateur, chiffres à l&#39;appui.</p>
+    <div class="blog-meta">
+      <div class="blog-meta-author">
+        <div class="blog-meta-avatar"><img src="../../images/bass-presenting.jpg" alt="Sébastien Constant" loading="lazy"></div>
+        <div><div class="blog-meta-name"><a href="/auteur/sebastien-constant/" rel="author" style="color:inherit;text-decoration:none">Sébastien Constant</a></div><div class="blog-meta-role">Trader & Formateur Order Flow</div></div>
+      </div>
+      <div class="blog-meta-sep"></div>
+      <div class="blog-meta-info"><span>Octobre 2026</span><span>16 min de lecture</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="article-wrap">
+  <aside class="article-sidebar">
+    <div class="toc">
+      <div class="toc-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/></svg> Sommaire</div>
+      <ol>
+        <li><a href="#ninjatrader-c-est-quoi-exactement">NinjaTrader, c&#39;est quoi exactement ?</a></li>
+        <li><a href="#ninjatrader-est-il-disponible-en-france">NinjaTrader est-il disponible en France ?</a></li>
+        <li><a href="#ninjatrader-est-il-un-bon-courtier-fiabl">NinjaTrader est-il un bon courtier, fiable et régulé ?</a></li>
+        <li><a href="#combien-coute-ninjatrader-licence-et-com">Combien coûte NinjaTrader (licence et commissions) ?</a></li>
+        <li><a href="#ninjatrader-est-il-bon-pour-l-order-flow">NinjaTrader est-il bon pour l&#39;order flow ?</a></li>
+        <li><a href="#ninjatrader-fonctionne-t-il-sur-mac-sur-">NinjaTrader fonctionne-t-il sur Mac, sur le web et sur mobile ?</a></li>
+        <li><a href="#ninjatrader-est-il-adapte-a-un-debutant">NinjaTrader est-il adapté à un débutant ?</a></li>
+        <li><a href="#ninjatrader-sierra-chart-tradingview-ou-">NinjaTrader, Sierra Chart, TradingView ou MetaTrader : lequel choisir ?</a></li>
+        <li><a href="#les-limites-de-ninjatrader-et-les-erreur">Les limites de NinjaTrader et les erreurs à éviter</a></li>
+        <li><a href="#mon-avis-sur-ninjatrader-en-resume">Mon avis sur NinjaTrader en résumé</a></li>
+      </ol>
+    </div>
+  </aside>
+
+  <article class="article-body">
+    <h2 id="ninjatrader-c-est-quoi-exactement">NinjaTrader, c&#39;est quoi exactement ?</h2>
+    <p><em>Avant de lire : les futures se tradent avec effet de levier, et la perte peut dépasser la mise de départ. Cet article est éducatif : rien ici n&#39;est un conseil d&#39;investissement personnalisé.</em></p>
+<p><b>NinjaTrader est une plateforme de trading spécialisée dans les contrats à terme (futures), qui réunit graphiques, carnet d&#39;ordres, simulation, backtesting et un courtier intégré pour exécuter les ordres sur les bourses américaines.</b></p>
+<p>Cette définition cache deux choses différentes, qu&#39;il faut séparer dès le départ :</p>
+<ul><li><b>le logiciel</b> : NinjaTrader 8, l&#39;application de bureau (desktop) pour Windows, avec une version web et des applications mobiles iOS et Android ;</li><li><b>le courtier</b> : la société qui tient ton compte, encaisse ta marge et transmet tes ordres à la bourse (le CME pour le Nasdaq, le S&amp;P 500, l&#39;or ou le pétrole).</li></ul>
+<p>Pendant longtemps, on utilisait le logiciel avec un autre courtier. Aujourd&#39;hui, NinjaTrader pousse son offre tout-en-un : la plateforme et le compte au même endroit.</p>
+<h3>Qui est derrière NinjaTrader ?</h3>
+<p>L&#39;entreprise a été fondée en 2003 aux États-Unis. Elle a racheté le courtier Tradovate (<a href="https://www.crowdfundinsider.com/2022/01/185487-ninjatrader-acquires-tradovate-a-cloud-based-trading-infrastructure-provider/">rachat annoncé le 12 janvier 2022</a>), puis a elle-même été rachetée par Kraken, l&#39;une des grandes plateformes de cryptomonnaies : un <a href="https://www.jonesday.com/en/practices/experience/2025/03/kraken-acquires-ninjatrader">rachat pour 1,5 milliard de dollars, annoncé en mars et finalisé en mai 2025</a>. NinjaTrader reste une marque à part, centrée sur les futures.</p>
+<p>Ce rachat compte pour toi, lecteur français : c&#39;est lui qui a ouvert la porte de l&#39;Europe.</p>
+<h3>Pourquoi j&#39;en parle alors que je trade sur Sierra Chart</h3>
+<p>Mon outil de tous les jours est Sierra Chart. Mais je ne suis pas sectaire : dans ma formation Expert, une leçon entière est consacrée à NinjaTrader, à côté de ProRealTime et de Sierra Chart. Et dans ma vidéo pour débutants, quand je liste ce qu&#39;il faut pour commencer (un ordinateur, un logiciel, un courtier), je le cite parmi les premiers exemples : « Vous avez &quot;ProRealTime&quot;, &quot;NinjaTrader&quot;, &quot;MT4&quot;, etc. » (<a href="https://www.youtube.com/watch?v=aZF8dXoMEKE&amp;t=696">à 11 min 36 s</a>). Dans la même minute, je conseille d&#39;aller voir sur le site de l&#39;AMF la liste des acteurs à éviter : c&#39;est toujours vrai.</p>
+<p><b>Une plateforme n&#39;est pas une méthode.</b> Un bon trader lit le même carnet d&#39;ordres sur n&#39;importe quel logiciel. Le bon choix est celui qui correspond à ton budget, à ton ordinateur et à ta façon de trader, pas celui de ton formateur. C&#39;est d&#39;ailleurs le premier critère que je donne pour <a href="https://basstrading.fr/blog/quelle-formation-trading-choisir/">choisir une formation de trading</a>. Si tu ne sais pas encore quelle façon de trader te ressemble, commence par <a href="https://basstrading.fr/blog/types-trading-differences/">les différents types de trading</a>.</p>
+<p>Je n&#39;ai aucun lien commercial avec NinjaTrader : pas d&#39;affiliation, pas de code promo, pas de parrainage.</p>
+<p>Première question, et la plus importante pour toi : peux-tu seulement l&#39;utiliser depuis la France ?</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/ninjatrader-avis/blog-ninjatrader-avis-1.webp" alt="Bâtiment du Chicago Board of Trade à Chicago, aujourd&#39;hui propriété du CME Group" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Le Chicago Board of Trade, aujourd&#39;hui propriété du CME Group. Les futures du Nasdaq, eux, s&#39;échangent par ordinateur sur la plateforme électronique CME Globex.<br><span style="font-size:.85em">Photo : <a href="https://commons.wikimedia.org/wiki/File:Chicago_Board_of_Trade_Building,_Chicago,_Illinois_(11045690454).jpg" rel="noopener" target="_blank">Ken Lund from Reno, Nevada, USA</a>, <a href="https://creativecommons.org/licenses/by-sa/2.0" rel="noopener license" target="_blank">CC BY-SA 2.0</a></span></figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="ninjatrader-est-il-disponible-en-france">NinjaTrader est-il disponible en France ?</h2>
+    <p><b>Le logiciel, oui. Le compte de courtage européen, pas encore</b> : au 25/10/2026, il n&#39;est toujours pas ouvert aux résidents français d&#39;après la page officielle <a href="https://ninjatrader.com/eu">ninjatrader.com/eu</a>, alors que la France était annoncée pour 2026.</p>
+<h3>Ce qui a changé en 2026</h3>
+<p>Le 30 janvier 2026, NinjaTrader a annoncé son <a href="https://www.prnewswire.com/news-releases/ninjatrader-expands-into-europe-to-support-the-next-generation-of-retail-futures-traders-302674573.html">arrivée en Europe dans un communiqué officiel</a> :</p>
+<ul><li>le compte européen est tenu par une entité de Kraken basée à Chypre, régulée par la CySEC (licence 342/17) sous le régime européen MiFID ;</li><li>le lancement s&#39;est fait aux Pays-Bas et en Allemagne ;</li><li>la France et l&#39;Italie étaient annoncées « plus tard dans l&#39;année » ;</li><li>l&#39;entreprise revendique plus de 2 millions de traders dans le monde.</li></ul>
+<p>Le communiqué cite Arjun Sethi, co-dirigeant de Kraken : « Retail access to futures is becoming a global expectation, not a regional exception ». En clair : l&#39;accès des particuliers aux futures devient une attente partout, pas une exception américaine.</p>
+<h3>Concrètement, au 25 octobre 2026</h3>
+<p>La page européenne affiche la licence CySEC, l&#39;absence de dépôt minimum et le virement SEPA, précise que des restrictions géographiques s&#39;appliquent, et ne mentionne pas la France. <b>Tant que la France n&#39;y figure pas, considère que le compte européen ne t&#39;est pas ouvert.</b> Vérifie le jour où tu veux ouvrir, sur le site officiel, jamais sur la foi d&#39;une vidéo ou d&#39;un forum.</p>
+<h3>Et le logiciel seul ?</h3>
+<p>Tu peux télécharger NinjaTrader 8 depuis la France et l&#39;utiliser en simulation et pour tes graphiques, sans compte réel. C&#39;est ce que je conseille : on apprend l&#39;outil des semaines avant d&#39;y mettre un euro.</p>
+<p>Et si on te dit que les futures sont « interdits en France », c&#39;est faux : ce sont des produits réglementés, cotés sur des bourses officielles. L&#39;AMF les décrit dans sa <a href="https://www.amf-france.org/sites/institutionnel/files/pdf/59285/fr/Les_futures.pdf">fiche pédagogique « Les futures »</a> comme des produits risqués, réservés aux investisseurs avertis, avec un dépôt de garantie de l&#39;ordre de 5 à 10 % de la valeur du contrat et des appels de marge quotidiens.</p>
+<h3>Les horaires vus depuis Paris</h3>
+<p>Les futures américains se tradent à l&#39;heure de Chicago. Avant de choisir ton créneau, regarde mon tableau des <a href="https://basstrading.fr/blog/horaires-futures-nasdaq-heure-paris/">horaires des futures Nasdaq en heure de Paris</a>, changements d&#39;heure compris.</p>
+<h3>À retenir</h3>
+<ul><li>Le logiciel s&#39;utilise depuis la France, en simulation, sans compte réel.</li><li>Le compte européen est régulé à Chypre (CySEC) et arrive pays par pays.</li><li>Au 25/10/2026, la France n&#39;est pas encore ouverte : vérifie le jour où tu ouvres.</li></ul>
+<p>Disponible, d&#39;accord. Mais peut-on lui confier son argent ?</p>
+
+    <hr>
+
+    <h2 id="ninjatrader-est-il-un-bon-courtier-fiabl">NinjaTrader est-il un bon courtier, fiable et régulé ?</h2>
+    <p><b>Oui : aux États-Unis, les services de courtage de NinjaTrader passent par un courtier de futures (FCM) enregistré auprès de la CFTC et membre de la NFA ; en Europe, le compte est tenu par une entreprise d&#39;investissement agréée par la CySEC.</b> C&#39;est un acteur établi, lancé en 2003, donc depuis plus de vingt ans.</p>
+<h3>Ce que la régulation change pour toi</h3>
+<p>Un courtier de futures régulé doit séparer l&#39;argent de ses clients du sien et respecter des règles de capital. Ça ne te protège pas des pertes de marché, mais d&#39;un courtier qui disparaîtrait avec ton dépôt.</p>
+<p>C&#39;est toute la différence avec les plateformes de forex et de CFD : sur un CFD, tu trades un contrat de gré à gré avec ton courtier, souvent ta contrepartie. <b>Sur un future, ton ordre arrive dans le carnet central de la bourse</b>, au milieu de tous les autres, et le prix est le même pour tout le monde. C&#39;est pour ça que je n&#39;enseigne ni le forex ni les CFD.</p>
+<h3>Le courtier NinjaTrader ou un courtier tiers ?</h3>
+<p>NinjaTrader 8 est multi-courtiers : le logiciel peut se connecter à d&#39;autres brokers et fournisseurs de données compatibles (Interactive Brokers, ou des connexions de type Rithmic chez certains courtiers). C&#39;est ce qui permet de l&#39;utiliser sans compte chez NinjaTrader.</p>
+<h3>Et les actions, les ETF, la crypto ?</h3>
+<p>Le courtier NinjaTrader est centré sur les futures et les options sur futures. Pour des actions ou des ETF, il faut un courtier tiers compatible, avec sa propre grille de frais. Côté crypto, tu as déjà accès aux contrats du CME, comme le micro bitcoin.</p>
+<p>Mon conseil : un seul marché liquide, bien compris, vaut mieux que dix instruments survolés.</p>
+<h3>À retenir</h3>
+<ul><li>Régulé : CFTC et NFA aux États-Unis, CySEC en Europe.</li><li>Futures sur carnet central, pas de CFD de gré à gré.</li><li>Actions et ETF : via un courtier tiers connecté au logiciel.</li></ul>
+<p>La confiance, c&#39;est réglé. Reste le portefeuille : combien ça coûte vraiment ?</p>
+
+    <hr>
+
+    <h2 id="combien-coute-ninjatrader-licence-et-com">Combien coûte NinjaTrader (licence et commissions) ?</h2>
+    <p><b>NinjaTrader est gratuit pour les graphiques, le backtesting et la simulation.</b> Tu paies quand tu trades en réel : une commission par contrat, qui baisse si tu prends une licence mensuelle ou à vie.</p>
+<h3>La grille publiée pour les comptes américains</h3>
+<p>Commissions par côté (l&#39;achat, puis la vente) et par contrat, en dollars (USD) :</p>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Formule</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Licence</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Micro (MNQ) / Standard (NQ)</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Gratuite</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">0 $</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">0,39 $ / 1,29 $</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Mensuelle</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">99 $ par mois</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">0,29 $ / 0,99 $</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">À vie</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">1 499 $ une fois</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">0,09 $ / 0,59 $</td></tr></tbody></table></div>
+<p>Grille relevée le 25/10/2026 (site NinjaTrader et comparateurs) : vérifie le tarif à jour sur <a href="https://ninjatrader.com/pricing/">ninjatrader.com/pricing</a> avant d&#39;ouvrir un compte. L&#39;entité européenne peut appliquer une grille différente.</p>
+<p>À ces commissions s&#39;ajoutent les frais de bourse, de régulation (NFA) et de compensation, identiques quelle que soit la formule. Sur un micro contrat, ils pèsent à peu près autant, voire plus, que la commission elle-même.</p>
+<h3>Quelle formule choisir ?</h3>
+<p><b>Fais le calcul avec ton vrai rythme, pas avec celui que tu espères</b> :</p>
+<ul><li>tu débutes ou tu trades quelques contrats par semaine : la formule gratuite suffit, la licence ne se rembourserait jamais ;</li><li>tu trades plusieurs centaines d&#39;allers-retours micro par mois : la mensuelle se discute. L&#39;économie est de 0,20 $ par aller-retour : il en faut environ 495 par mois pour rembourser 99 $. À 1 000 allers-retours, tu économises environ 200 $, soit une centaine de dollars nets ;</li><li>la licence à vie ne se justifie que pour un trader actif, sur plusieurs années, sûr de rester sur NinjaTrader : à 0,60 $ d&#39;économie par aller-retour micro, 1 499 $ représentent environ 2 500 allers-retours.</li></ul>
+<h3>Quel capital pour commencer ?</h3>
+<p>Il n&#39;y a pas de dépôt minimum affiché sur l&#39;offre européenne, et la marge intraday d&#39;un micro contrat est faible. Ce n&#39;est pas une raison pour démarrer avec 100 euros. Le bon capital, c&#39;est celui qui te permet de respecter ta perte maximale par trade, et que tu peux perdre sans que ta vie change.</p>
+<h3>Le vrai coût, ce n&#39;est pas la commission</h3>
+<p>Sur un MNQ, chaque tick de 0,25 point vaut 0,50 $. <b>Un seul tick de glissement à l&#39;entrée coûte plus cher que la différence de commission entre deux formules.</b> Avant d&#39;optimiser 10 centimes, optimise ton exécution et ta taille de position. Pour la taille de contrat, je compare les deux dans <a href="https://basstrading.fr/blog/nq-ou-mnq/">NQ ou MNQ : quel contrat choisir</a>.</p>
+<h3>Les données de marché et les add-ons</h3>
+<p>Pour trader en réel, il te faut les données en direct de la bourse (le CME pour le Nasdaq), facturées chaque mois via le courtier. Fais-toi préciser ce montant à l&#39;ouverture. Quant aux add-ons, ces indicateurs tiers vendus pour NinjaTrader : teste toujours en simulation avant d&#39;acheter.</p>
+<h3>À retenir</h3>
+<ul><li>Graphiques, simulation et backtesting : gratuits.</li><li>Commission par côté et par contrat, plus frais de bourse, de compensation et données.</li><li>Une licence ne se rentabilise qu&#39;avec un volume réel élevé.</li></ul>
+<p>Tu sais ce que ça coûte. Mais la question qui m&#39;intéresse le plus, en tant que trader order flow : que vaut NinjaTrader pour lire le flux ?</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/ninjatrader-avis/blog-ninjatrader-avis-2.webp" alt="Tableau des formules NinjaTrader : gratuite, mensuelle à 99 dollars et à vie à 1499 dollars, avec la commission par côté sur micro et standard" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Par côté, hors frais de bourse. Grille relevée le 25/10/2026 (site NinjaTrader et comparateurs) : vérifie le tarif à jour sur ninjatrader.com/pricing.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="ninjatrader-est-il-bon-pour-l-order-flow">NinjaTrader est-il bon pour l&#39;order flow ?</h2>
+    <p><b>Oui, avec une nuance : l&#39;order flow complet (footprint, delta cumulé, carte du carnet) est dans le module payant Order Flow+, inclus dans la licence à vie.</b> La version gratuite donne le carnet d&#39;ordres pour passer les ordres, pas l&#39;analyse du flux.</p>
+<h3>Le SuperDOM : le carnet d&#39;ordres pour exécuter</h3>
+<p>Le SuperDOM est l&#39;échelle de prix de NinjaTrader : les ordres en attente à l&#39;achat et à la vente, prix par prix, et tes propres ordres, que tu places ou déplaces au clic. C&#39;est un bon outil d&#39;exécution, gratuit, qui séduit souvent les scalpers. Je décris ce type d&#39;échelle dans mon article sur le <a href="https://basstrading.fr/blog/carnet-ordres-dom-futures/">carnet d&#39;ordres (DOM) des futures</a>.</p>
+<p><b>Ne confonds pas exécuter au carnet et lire le carnet.</b> Voir des chiffres défiler ne t&#39;apprend rien si tu ne sais pas repérer une absorption, un ordre qui tient ou un ordre qui disparaît. Ça s&#39;apprend, indépendamment du logiciel : je pars de zéro dans <a href="https://basstrading.fr/blog/order-flow-trading-france/">mon guide de l&#39;order flow</a>.</p>
+<h3>Order Flow+ : le footprint de NinjaTrader</h3>
+<p>Le module Order Flow+ ajoute les outils d&#39;analyse :</p>
+<ul><li>les barres volumétriques, c&#39;est-à-dire le footprint : le volume acheté et vendu à chaque prix de la bougie ;</li><li>le delta cumulé ;</li><li>une carte de profondeur du carnet dans le temps ;</li><li>un profil de volume et une VWAP ;</li><li>un détecteur des gros lots échangés.</li></ul>
+<p>Si le footprint est nouveau pour toi, mon <a href="https://basstrading.fr/blog/footprint-chart-trading/">guide du footprint chart</a> t&#39;apprend à lire une bougie de l&#39;intérieur, avec mes exemples sur le Nasdaq.</p>
+<h3>NinjaTrader face à Sierra Chart</h3>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Critère</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">NinjaTrader</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Sierra Chart</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Footprint</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Module payant</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Inclus selon l&#39;offre</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Carnet pour exécuter</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">SuperDOM</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Oui</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Système</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Windows + web</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Windows</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Prise en main</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Moyenne</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Exigeante</td></tr></tbody></table></div>
+<p>TradingView, lui, tourne dans le navigateur et se prend en main très vite, mais son footprint reste limité et dépend de l&#39;abonnement : je l&#39;ai testé à part dans mon article sur le <a href="https://basstrading.fr/blog/footprint-tradingview/">footprint sur TradingView</a>.</p>
+<h3>Order Flow+ face à Bookmap et ATAS</h3>
+<p>Bookmap est spécialisé dans la carte de chaleur du carnet ; ATAS est pensé d&#39;abord pour l&#39;order flow, avec beaucoup de variantes de footprint et de profils. Ce sont des abonnements séparés. Order Flow+ fait moins de choses, mais tout est dans la même plateforme que ton exécution : pour débuter en order flow, c&#39;est largement suffisant.</p>
+<h3>Pourquoi je reste sur Sierra Chart</h3>
+<p>Pour mon order flow, je préfère Sierra Chart : léger, stable sur de longues séances, et ses études de Market Profile et de Volume Profile sont celles que j&#39;enseigne. C&#39;est un choix de pratique, pas un jugement définitif. Je détaille ma configuration dans <a href="https://basstrading.fr/blog/sierra-chart-configuration/">mon guide de configuration de Sierra Chart</a>.</p>
+<h3>À retenir</h3>
+<ul><li>SuperDOM gratuit : un bon carnet pour exécuter.</li><li>Footprint et delta : dans Order Flow+, payant à part ou inclus dans la licence à vie.</li><li>L&#39;outil ne remplace jamais la lecture : c&#39;est elle qu&#39;il faut apprendre.</li></ul>
+<p>Reste une question pratique qui élimine beaucoup de candidats : ton ordinateur.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/ninjatrader-avis/blog-ninjatrader-avis-3.webp" alt="Comparaison NinjaTrader, Sierra Chart et TradingView pour l&#39;order flow : footprint, carnet d&#39;ordres, système et prise en main" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Aucun logiciel ne lit le flux à ta place : ils montrent tous les mêmes ordres, c&#39;est la lecture qui fait la différence.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="ninjatrader-fonctionne-t-il-sur-mac-sur-">NinjaTrader fonctionne-t-il sur Mac, sur le web et sur mobile ?</h2>
+    <p><b>La version complète de NinjaTrader 8 ne tourne que sous Windows.</b> Sur Mac, tu as la version web, ou une machine virtuelle Windows non prise en charge officiellement. Les applications iOS et Android servent à suivre tes positions.</p>
+<h3>La configuration minimale officielle</h3>
+<p>La <a href="https://static.ninjatrader.com/support/helpGuides/nt8/minimum_system_requirements.htm">documentation officielle de NinjaTrader 8</a> demande au minimum :</p>
+<ul><li>Windows 11, ou Windows Server 2016 et plus récent, en 64 bits ;</li><li>un processeur 64 bits de 1 GHz ;</li><li>2 Go de mémoire vive ;</li><li>Microsoft .NET Framework 4.8.</li></ul>
+<p>La configuration recommandée est plus réaliste : processeur quatre cœurs à 2 GHz, 8 Go de mémoire, carte graphique compatible DirectX 10 et disque SSD.</p>
+<p>Vise au moins 16 Go de mémoire si tu ouvres un footprint et un carnet sur plusieurs marchés. <b>Une plateforme qui rame à l&#39;ouverture du Nasdaq, c&#39;est un ordre mal placé.</b></p>
+<h3>Sur Mac</h3>
+<p>Il n&#39;existe pas de version Mac native de NinjaTrader 8, car le logiciel repose sur une technologie de Microsoft. Deux solutions :</p>
+<ul><li>la version web : graphiques et passage d&#39;ordres dans le navigateur, plus légère mais moins complète ;</li><li>une machine virtuelle Windows (Parallels, VMware) : ça fonctionne souvent, mais sans prise en charge officielle. En cas de souci en séance, tu es seul.</li></ul>
+<h3>Sur mobile</h3>
+<p>Les applications servent à surveiller une position, déplacer un stop ou couper un trade loin de ton bureau. On ne lit pas un footprint sur 6 pouces.</p>
+<h3>NinjaTrader 7 ou NinjaTrader 8 ?</h3>
+<p>NinjaTrader 8 est la version actuelle. Un tutoriel ou un indicateur pour NinjaTrader 7 date, et ses scripts ne sont pas directement compatibles.</p>
+<h3>À retenir</h3>
+<ul><li>Version complète : Windows uniquement.</li><li>Mac : version web, ou virtualisation à tes risques.</li><li>Mobile : pour surveiller, pas pour analyser.</li></ul>
+<p>Ton ordinateur est compatible ? Alors la vraie question devient : NinjaTrader est-il un bon premier logiciel ?</p>
+
+    <hr>
+
+    <h2 id="ninjatrader-est-il-adapte-a-un-debutant">NinjaTrader est-il adapté à un débutant ?</h2>
+    <p><b>Oui, surtout pour apprendre sans risquer d&#39;argent : la simulation et le rejeu de séances (Market Replay) sont gratuits.</b> La difficulté n&#39;est pas le logiciel, c&#39;est d&#39;éviter de passer au réel trop tôt.</p>
+<h3>Ce qui aide vraiment un débutant</h3>
+<ul><li><b>La simulation</b> : des ordres fictifs sur des prix réels, pour apprendre les types d&#39;ordres sans stress.</li><li><b>Le Market Replay</b> : tu rejoues une séance passée tick par tick, à la vitesse que tu veux. Tu peux revoir dix fois la même ouverture du Nasdaq et t&#39;entraîner à décider où placer ton stop et ton objectif.</li><li><b>Le backtesting</b> : tu testes une règle sur l&#39;historique, à condition de ne pas la sur-optimiser jusqu&#39;à ce qu&#39;elle colle au passé et rate l&#39;avenir.</li></ul>
+<p>Si tu pars de zéro, lis d&#39;abord mon guide pour <a href="https://basstrading.fr/blog/debuter-trading-zero-guide/">débuter le trading en partant de zéro</a>, et fais-toi une idée réaliste du temps nécessaire avec <a href="https://basstrading.fr/blog/combien-temps-apprendre-trading/">combien de temps faut-il pour apprendre le trading</a>. Et non, il ne faut aucun bagage particulier : j&#39;explique pourquoi dans <a href="https://basstrading.fr/blog/devenir-trader-sans-diplome/">devenir trader sans diplôme</a>.</p>
+<h3>NinjaScript ou Pine Script : quel avantage ?</h3>
+<p>NinjaScript, le langage de NinjaTrader, est basé sur C# : son avantage sur Pine Script est la puissance, avec des stratégies automatiques et un accès fin aux données tick par tick et au carnet. Pine Script, celui de TradingView, est bien plus simple à apprendre, mais plus limité. Pour débuter, tu n&#39;as besoin ni de l&#39;un ni de l&#39;autre : apprends à lire le marché avant de vouloir l&#39;automatiser.</p>
+<h3>Un cas réel : « je n&#39;ai pas les mêmes bougies que toi »</h3>
+<p>Pendant un de mes <a href="https://www.youtube.com/watch?v=1iuThxfAEJM&amp;t=2036">lives sur le Nasdaq</a>, un participant me dit, à 33 min 56 s : « sur mon graphique ninja, sur MNQ0623, je n&#39;ai pas les mêmes bougies. On dirait que je suis en décalage avec toi. » Je lui réponds « Ah, c&#39;est possible », puis : « Je t&#39;ai mis le Globex sur Discord ». Et la séance continue sur les niveaux de la session Globex.</p>
+<p><b>C&#39;est normal, et c&#39;est la première surprise de beaucoup d&#39;utilisateurs de NinjaTrader.</b> Sur le même contrat (ici le micro Nasdaq d&#39;échéance juin 2023), deux plateformes peuvent dessiner des bougies différentes pour trois raisons :</p>
+<ul><li><b>la session</b> : dans NinjaTrader, le modèle d&#39;horaires (Trading Hours) choisi sur le graphique décide où commence la journée. Le modèle « ETH » prend toute la séance électronique Globex, le modèle « RTH » seulement la séance de jour américaine. Les bougies, le profil et les niveaux de la veille changent ;</li><li><b>le contrat</b> : un graphique sur l&#39;échéance précise et un autre sur un contrat continu n&#39;affichent pas les mêmes prix autour du changement d&#39;échéance ;</li><li><b>le flux de données</b> : deux fournisseurs ne découpent pas toujours les ticks de la même manière, ce qui se voit surtout sur les graphiques en ticks ou en volume.</li></ul>
+<p>Avant de comparer ton graphique à celui de quelqu&#39;un, aligne la session, l&#39;échéance et le type de bougie. Sinon, tu compares deux marchés différents.</p>
+<h3>Le risque, avant tout</h3>
+<p>Les futures se tradent avec effet de levier : tu ne déposes qu&#39;une fraction de la valeur du contrat. L&#39;AMF rappelle que la marge peut être appelée chaque jour et que les pertes peuvent dépasser le dépôt. Sur les produits à effet de levier vendus aux particuliers, selon les données des autorités nationales reprises par l&#39;ESMA (<a href="https://www.esma.europa.eu/sites/default/files/library/esma71-98-128_press_release_product_intervention.pdf">communiqué de mars 2018</a>), <b>74 à 89 % des comptes de particuliers sur CFD perdaient de l&#39;argent</b>. Ce n&#39;est pas le même produit que les futures, mais c&#39;est le même mécanisme : le levier amplifie les erreurs.</p>
+<p>Avant de quitter la simulation, écris ton plan de trading, et d&#39;abord ta perte maximale par trade et par jour ; garde-la au premier euro. C&#39;est le point le plus important de tout cet article. Je t&#39;explique comment la calculer dans <a href="https://basstrading.fr/blog/combien-risquer-par-trade/">combien risquer par trade</a>.</p>
+<h3>Quel marché pour commencer sur NinjaTrader ?</h3>
+<p>Je conseille les micro contrats, en particulier le micro Nasdaq (MNQ) : un dixième du contrat standard, donc dix fois moins de risque par point. Tout est dans mon guide des <a href="https://basstrading.fr/blog/nasdaq-futures-nq-mnq/">futures Nasdaq NQ et MNQ</a>.</p>
+<h3>À retenir</h3>
+<ul><li>Simulation et Market Replay gratuits : la meilleure école sur l&#39;outil.</li><li>Bougies différentes d&#39;un écran à l&#39;autre : vérifie session, échéance et flux.</li><li>Passe au réel avec un plan de trading écrit, en micro contrats.</li></ul>
+<p>Alors, NinjaTrader ou un autre ? Voici comment je trancherais à ta place.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/ninjatrader-avis/blog-ninjatrader-avis-4.webp" alt="Étapes pour débuter sur NinjaTrader : simulation, Market Replay, règle de perte maximale écrite, puis micro contrat en réel" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Le logiciel s&#39;apprend en simulation ; le passage au réel se prépare avec une règle de perte écrite à l&#39;avance.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="ninjatrader-sierra-chart-tradingview-ou-">NinjaTrader, Sierra Chart, TradingView ou MetaTrader : lequel choisir ?</h2>
+    <p><b>Prends NinjaTrader si tu veux une plateforme de futures complète et un courtier au même endroit, sous Windows. Prends Sierra Chart si tu veux l&#39;outil le plus solide pour l&#39;order flow et le Market Profile. Prends TradingView si tu veux surtout des graphiques simples, sur n&#39;importe quelle machine.</b> Face à la concurrence, l&#39;efficacité de NinjaTrader tient surtout à cet ensemble cohérent, pas à un outil qui serait meilleur que tous les autres.</p>
+<h3>À qui s&#39;adresse NinjaTrader ?</h3>
+<ul><li>à celui qui trade les futures américains sous Windows et veut un ensemble cohérent : graphiques, carnet, simulation, compte ;</li><li>à celui qui veut rejouer beaucoup de séances avant le réel ;</li><li>à celui qui aimerait programmer ses indicateurs en C# un jour.</li></ul>
+<h3>Je te conseillerais autre chose si…</h3>
+<ul><li>tu es sur Mac et tu ne veux pas de bricolage : TradingView, ou la version web ;</li><li>ton travail repose sur le Market Profile et la lecture fine du flux sur de longues séances : Sierra Chart ;</li><li>tu veux seulement apprendre à lire un graphique : n&#39;importe quel outil gratuit suffit au début.</li></ul>
+<h3>NinjaTrader ou TradingView ?</h3>
+<p>Ce n&#39;est pas le même métier. TradingView est d&#39;abord un excellent outil de graphiques, avec une immense communauté. NinjaTrader est d&#39;abord une plateforme d&#39;exécution de futures, et sa version gratuite est l&#39;une des plus généreuses du marché. Les deux se complètent : NinjaTrader permet de connecter son compte à TradingView.</p>
+<h3>NinjaTrader ou MetaTrader ?</h3>
+<p>MetaTrader 4 et 5 sont les plateformes des courtiers forex et CFD. NinjaTrader est celle des futures, sur bourse centralisée. <b>Le choix se fait sur le produit, pas sur l&#39;interface</b> : pour trader le vrai carnet d&#39;ordres du Nasdaq, il faut un future, pas un CFD.</p>
+<h3>Et les prop firms ?</h3>
+<p>Beaucoup de sociétés de financement de traders (prop firms) font passer leurs évaluations sur NinjaTrader ou sur Tradovate, qui appartient au même groupe. C&#39;est une voie parmi d&#39;autres, avec ses règles strictes. Ce n&#39;est pas une raison suffisante pour choisir un logiciel : choisis d&#39;abord la façon de trader qui te correspond.</p>
+<h3>Le bon ordre</h3>
+<p>Le logiciel vient en dernier. D&#39;abord tu comprends comment le marché fonctionne, ensuite tu choisis un style qui colle à ton caractère, et seulement après l&#39;outil qui le sert le mieux.</p>
+<p>Pour commencer sans rien payer, j&#39;ai mis en ligne une formation offerte : 7 leçons, de « La bourse n&#39;est pas ce que tu crois » jusqu&#39;au Market Profile, plus une démonstration de 35 minutes du Market Profile en action. L&#39;accès est automatique : tu reçois ton lien de connexion par e-mail, puis tu retrouves tout dans ton espace sur basstrading.fr. Tu y verras ce qu&#39;il faut regarder sur ton écran, quel que soit le logiciel.</p>
+<p><a href="https://basstrading.fr/l/GvO46Q">Accéder à la formation offerte</a></p>
+
+    <hr>
+
+    <h2 id="les-limites-de-ninjatrader-et-les-erreur">Les limites de NinjaTrader et les erreurs à éviter</h2>
+    <p><b>Deux limites restent à connaître en plus de celles vues plus haut : des conditions européennes qui peuvent différer des américaines, et un propriétaire qui a changé.</b> Rien d&#39;éliminatoire, mais il faut le savoir avant.</p>
+<h3>Les limites dont on parle peu</h3>
+<ul><li><b>L&#39;Europe</b> : l&#39;ouverture se fait pays par pays, et la grille, les marchés proposés et les règles du compte européen peuvent différer de l&#39;offre américaine que tu vois dans la plupart des vidéos.</li><li><b>La propriété</b> : NinjaTrader appartient désormais à un groupe de cryptomonnaies. Ça ne change rien à la plateforme aujourd&#39;hui, mais garde un œil sur les conditions.</li></ul>
+<h3>Les erreurs les plus fréquentes</h3>
+<ul><li>Acheter la licence à vie le premier jour, sans savoir si tu resteras sur NinjaTrader ni combien de contrats tu traderas.</li><li>Empiler les indicateurs. Un écran surchargé ne t&#39;apprend rien : quelques outils bien compris valent mieux.</li><li><b>Confondre simulation et réel.</b> En simulation, ton ordre est toujours exécuté et tu n&#39;as pas peur. En réel, ni l&#39;un ni l&#39;autre : un profit en simulation ne prouve rien.</li></ul>
+<h3>Ce que je ferais à ta place</h3>
+<p>Installer la version gratuite, passer un mois en simulation et en Market Replay sur le micro Nasdaq, noter chaque séance, puis seulement décider : rester, changer de formule, ou passer à un autre outil.</p>
+<p>Tu as maintenant tous les éléments. Je te résume mon avis.</p>
+
+    <hr>
+
+    <h2 id="mon-avis-sur-ninjatrader-en-resume">Mon avis sur NinjaTrader en résumé</h2>
+    <p><b>NinjaTrader est une plateforme sérieuse, pensée pour les futures, avec une version gratuite très généreuse pour apprendre.</b> Ce n&#39;est pas la mienne au quotidien, mais je la recommande sans hésiter à un trader sous Windows qui veut un ensemble cohérent et s&#39;entraîner beaucoup avant le réel. Pour un résident français, le seul vrai frein aujourd&#39;hui est le compte européen, pas encore ouvert chez nous au 25/10/2026.</p>
+<p>Les réponses courtes aux questions qu&#39;on me pose le plus (prix, Mac, bonus, support) sont dans la FAQ juste en dessous.</p>
+<h3>Ta prochaine action</h3>
+<p>Ce soir, installe la version gratuite en mode simulation, charge le micro Nasdaq et lance un Market Replay de l&#39;ouverture américaine d&#39;hier. Regarde le SuperDOM pendant dix minutes sans passer d&#39;ordre, juste pour voir comment les ordres apparaissent et disparaissent autour du prix.</p>
+<p>Ensuite, la suite logique est de comprendre ce que tu viens de voir : c&#39;est l&#39;objet de mon <a href="https://basstrading.fr/blog/footprint-chart-trading/">guide du footprint chart</a>, qui t&#39;apprend à lire ce que les acheteurs et les vendeurs ont réellement échangé.</p>
+<p><em>Le trading de contrats à terme comporte un risque élevé de perte, pouvant dépasser la mise initiale. Contenu éducatif, pas un conseil en investissement.</em></p>
+
+    <p><a href="https://www.youtube.com/watch?v=aZF8dXoMEKE" target="_blank" rel="noopener">▶ Voir la vidéo de Sébastien sur ce sujet</a></p>
+
+    <div class="cta-card cta-aimant">
+      <div class="cta-card-label">Gratuit</div>
+      <h3>La formation offerte : 7 leçons pour lire le marché comme un pro</h3>
+      <p>Accès immédiat et gratuit, en vidéo, à ton rythme. Sans carte bancaire.</p>
+      <a href="https://basstrading.fr/p/formation-offerte/?src=blog-ninjatrader-avis" class="btn-p">Je la veux →</a>
+    </div>
+    
+  </article>
+</div>
+
+<!-- FAQ -->
+<section class="faq-sec">
+  <div class="sec-center"><div class="sec-label">FAQ</div><h2 class="sec-title">Questions fréquentes</h2></div>
+  <div class="faq-list">
+    <div class="fi"><button class="fq" onclick="tf(this)">NinjaTrader est-il gratuit ? <span class="fq-icon">+</span></button><div class="fa"><p>Oui pour apprendre : les graphiques, le backtesting, la simulation et le rejeu de séances (Market Replay) sont gratuits. En réel, tu paies une commission par contrat et par côté, plus les frais de bourse, de régulation et de compensation, et les données de marché. Les licences mensuelle (99 $ par mois sur la grille américaine relevée le 25/10/2026) et à vie (1 499 $) baissent la commission, mais ne se rentabilisent qu&#39;avec un volume élevé.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Peut-on utiliser NinjaTrader depuis la France ? <span class="fq-icon">+</span></button><div class="fa"><p>Le logiciel, oui : tu peux le télécharger et l&#39;utiliser en simulation sans compte réel. Pour le compte de courtage, NinjaTrader a ouvert l&#39;Europe en janvier 2026 via une entité régulée par la CySEC à Chypre, en commençant par les Pays-Bas et l&#39;Allemagne. La France était annoncée pour plus tard, mais au 25/10/2026 elle n&#39;est toujours pas ouverte d&#39;après la page officielle ninjatrader.com/eu. Vérifie le jour où tu veux ouvrir.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">NinjaTrader est-il un bon courtier ? <span class="fq-icon">+</span></button><div class="fa"><p>Oui, NinjaTrader est un bon courtier pour les futures : régulé (CFTC et NFA aux États-Unis, CySEC en Europe), actif depuis 2003, avec des ordres envoyés sur le carnet central de la bourse et non en CFD. Il a été racheté par Kraken en 2025. La régulation protège ton dépôt d&#39;un courtier défaillant, pas des pertes de marché.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">NinjaTrader fonctionne-t-il sur Mac ? <span class="fq-icon">+</span></button><div class="fa"><p>Pas en version complète : NinjaTrader 8 demande Windows 11 (ou Windows Server 2016 et plus) en 64 bits et .NET Framework 4.8. Sur Mac, tu peux utiliser la version web dans le navigateur, ou une machine virtuelle Windows (Parallels, VMware) que NinjaTrader ne prend pas en charge officiellement. Les applications iOS et Android servent à surveiller et gérer une position.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">NinjaTrader est-il adapté aux débutants ? <span class="fq-icon">+</span></button><div class="fa"><p>Oui, pour apprendre l&#39;outil et les ordres sans risquer d&#39;argent, grâce à la simulation et au Market Replay gratuits. Le danger n&#39;est pas le logiciel mais le passage au réel trop tôt. Commence en micro contrats, écris ta perte maximale par trade et par jour avant d&#39;ouvrir un compte réel, et rappelle-toi que les futures à effet de levier peuvent faire perdre plus que le dépôt.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">NinjaTrader ou TradingView, NinjaScript ou Pine Script ? <span class="fq-icon">+</span></button><div class="fa"><p>TradingView est d&#39;abord un outil de graphiques, accessible dans le navigateur sur toutes les machines, avec le langage Pine Script, simple à apprendre. NinjaTrader est d&#39;abord une plateforme d&#39;exécution de futures sous Windows, avec SuperDOM, Market Replay et le langage NinjaScript en C#, dont l&#39;avantage est la puissance (stratégies automatiques, données tick par tick). Les deux se complètent : NinjaTrader permet de connecter son compte à TradingView.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Pourquoi mes bougies NinjaTrader sont-elles différentes d&#39;une autre plateforme ? <span class="fq-icon">+</span></button><div class="fa"><p>Le plus souvent, la session n&#39;est pas la même : dans NinjaTrader, le modèle d&#39;horaires (Trading Hours) ETH prend toute la séance Globex, le modèle RTH seulement la séance de jour américaine. Vérifie aussi l&#39;échéance (contrat précis ou continu) et le type de bougie (temps, ticks, volume). Deux flux de données peuvent enfin découper les ticks différemment.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">NinjaTrader propose-t-il un bonus, une promotion ou un parrainage, et comment contacter le support ? <span class="fq-icon">+</span></button><div class="fa"><p>Des promotions ou offres de parrainage apparaissent parfois sur le site : je n&#39;en tiens jamais compte, quelques dizaines de dollars ne pèsent rien face à la régulation et à la qualité d&#39;exécution. Pour le service client, passe par la page d&#39;aide du site officiel ; la documentation (le Help Guide) est très complète et le forum d&#39;utilisateurs répond à presque tout, surtout en anglais.</p></div></div>
+  </div>
+</section>
+
+<!-- Related -->
+<section class="related-sec">
+  <div class="sec-center"><div class="sec-label">Continuer la lecture</div><h2 class="sec-title">Articles connexes</h2></div>
+  <div class="related-grid">
+    <a href="/blog/market-profile-guide-complet/" class="related-card"><div class="related-cat">Guide</div><h3>Market Profile : le guide complet pour débutants</h3><p>Value Area, POC, types de journées — tout pour commencer.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/order-flow-trading-france/" class="related-card"><div class="related-cat">Méthode</div><h3>Order Flow Trading : pourquoi personne ne l'enseigne en France</h3><p>Le carnet d'ordres et le flux institutionnel décryptés.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/sierra-chart-configuration/" class="related-card"><div class="related-cat">Tutoriel</div><h3>Sierra Chart : configuration complète</h3><p>Le setup pas à pas pour le Market Profile et le Footprint.</p><span class="related-link">Lire &rarr;</span></a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="ft-top"><div class="ft-logo">BASS</div><div class="ft-cols">
+    <div class="ft-col"><div class="ft-col-title">Programme</div><a href="https://basstrading.fr/#methode">Méthode</a><a href="https://basstrading.fr/#programme">Programme</a><a href="https://basstrading.fr/p/formation-offerte/?src=blog-ninjatrader-avis-pied">Formation offerte</a></div>
+    <div class="ft-col"><div class="ft-col-title">Ressources</div><a href="/blog/market-profile-guide-complet/">Market Profile</a><a href="/blog/footprint-chart-trading/">Footprint Chart</a><a href="/blog/order-flow-trading-france/">Order Flow</a></div>
+  </div></div>
+  <div class="ft-bottom"><span>&copy; 2026 BASS — Sébastien Constant</span><div><a href="/mentions-legales/">Mentions légales</a><a href="/confidentialite/">Confidentialité</a><a href="/cgv/">CGV</a><a href="mailto:contact@basstrading.fr">Contact</a></div></div>
+</footer>
+<div class="disclaimer">Le trading comporte des risques de perte en capital. Les performances passées ne préjugent pas des performances futures. Ce site ne constitue pas un conseil en investissement.</div>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+const lenis=new Lenis({duration:1.2,easing:t=>Math.min(1,1.001-Math.pow(2,-10*t))});
+function raf(t){lenis.raf(t);requestAnimationFrame(raf)}requestAnimationFrame(raf);
+lenis.on('scroll',ScrollTrigger.update);gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0);
+const tl=gsap.timeline();
+tl.to('.pre-word span',{y:0,opacity:1,duration:.5,stagger:.1,ease:'power3.out',delay:.3}).to('#preLine',{width:'80px',duration:.7,ease:'power2.inOut'},'<+.2').to('.preloader',{yPercent:-100,duration:.8,ease:'power3.inOut',delay:.4}).set('.preloader',{display:'none'}).to('#nav',{opacity:1,y:0,duration:.5},'<+.1');
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);const h=document.documentElement.scrollHeight-window.innerHeight;document.getElementById('readingProgress').style.width=(window.scrollY/h*100)+'%'});
+const tocLinks=document.querySelectorAll('.toc a');const sections=Array.from(tocLinks).map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+window.addEventListener('scroll',()=>{let c='';sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)c=s.id});tocLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+c)})});
+function tf(b){const i=b.closest('.fi'),a=b.nextElementSibling,o=i.classList.contains('active');document.querySelectorAll('.fi').forEach(x=>{x.classList.remove('active');x.querySelector('.fa').classList.remove('open')});if(!o){i.classList.add('active');a.classList.add('open')}}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();lenis.scrollTo(t,{offset:-60})}})});
+</script>
+<script src="/v.js" defer></script>
+</body>
+</html>

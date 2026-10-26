@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Premier payout en prop firm : coussin, cohérence et retrait — BASS Trading</title>
+  <meta name="description" content="Premier payout prop firm : monter le coussin avant de retirer, calculer la règle de cohérence, savoir combien de temps valider. Vu en live.">
+  <meta property="og:title" content="Premier payout en prop firm : coussin, cohérence et retrait — BASS Trading">
+  <meta property="og:description" content="Premier payout prop firm : monter le coussin avant de retirer, calculer la règle de cohérence, savoir combien de temps valider. Vu en live.">
+  <meta property="og:image" content="https://basstrading.fr/blog/premier-payout-prop-firm/blog-premier-payout-prop-firm-1.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://basstrading.fr/blog/premier-payout-prop-firm/blog-premier-payout-prop-firm-1.webp">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://basstrading.fr/blog/premier-payout-prop-firm/">
+  <meta property="og:site_name" content="BASS Trading">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://basstrading.fr/blog/premier-payout-prop-firm/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","@id":"https://basstrading.fr/blog/premier-payout-prop-firm/#article","headline":"Premier payout en prop firm : coussin, cohérence et retrait","description":"Premier payout prop firm : monter le coussin avant de retirer, calculer la règle de cohérence, savoir combien de temps valider. Vu en live.","datePublished":"2026-10-26","dateModified":"2026-10-26","inLanguage":"fr-FR","image":"https://basstrading.fr/blog/premier-payout-prop-firm/blog-premier-payout-prop-firm-1.webp","mainEntityOfPage":"https://basstrading.fr/blog/premier-payout-prop-firm/","isPartOf":{"@type":"WebSite","@id":"https://basstrading.fr/#website","name":"BASS Trading","url":"https://basstrading.fr/"},"author":{"@type":"Person","@id":"https://basstrading.fr/#sebastien-constant","name":"Sébastien Constant","url":"https://basstrading.fr/auteur/sebastien-constant/"},"publisher":{"@type":"Organization","@id":"https://basstrading.fr/#organisation","name":"BASS Trading","url":"https://basstrading.fr/","logo":{"@type":"ImageObject","url":"https://basstrading.fr/images/logo-basstrading.png","width":512,"height":512}}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://basstrading.fr"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://basstrading.fr/blog/"},{"@type":"ListItem","position":3,"name":"Premier payout prop firm","item":"https://basstrading.fr/blog/premier-payout-prop-firm/"}]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Quand demander son premier payout en prop firm ?","acceptedAnswer":{"@type":"Answer","text":"Quand trois conditions sont réunies : ton règlement l'autorise (jours minimum, règle de cohérence respectée), ton coussin reste confortable même après le retrait, et tu demandes le plafond autorisé, pas plus. Je laisse d'abord grossir le coussin avant de retirer, puis je retire petit à petit."}},{"@type":"Question","name":"C'est quoi la règle de cohérence (ou de consistance) en prop firm ?","acceptedAnswer":{"@type":"Answer","text":"C'est une règle qui limite le poids de ton meilleur jour dans ton profit. Sur un compte financé, le calcul est en général meilleur jour ÷ profit total, sous le seuil de la firme : avec un seuil de 40 %, un meilleur jour de 1 000 $ exige au moins 2 500 $ de profit total (exemple inventé). Exemple lu le 24/10/2026 : 55 % en évaluation, calculés sur l'objectif de profit et non sur le profit total, et 40 % sur un type de compte financé."}},{"@type":"Question","name":"Combien de temps faut-il pour valider un challenge de prop firm ?","acceptedAnswer":{"@type":"Answer","text":"Ça dépend du marché et de ta méthode, pas d'un calendrier. En live, j'ai répondu « en moyenne peut-être une semaine », mais surtout « je ne me donne pas de délai » : les jours de tendance, ça peut aller super vite ; les jours mous, je trade peu. Vérifie aussi ton règlement : certaines firmes imposent un minimum de jours, d'autres une durée maximale, d'autres rien."}},{"@type":"Question","name":"Pourquoi les prop firms plafonnent-elles le premier retrait ?","acceptedAnswer":{"@type":"Answer","text":"Pour limiter leur risque sur un trader qu'elles connaissent encore peu, et pour vérifier que le profit est régulier avant de payer davantage. Conséquence pratique : viser beaucoup plus que le plafond ne te paie pas plus tôt et te pousse à prendre plus de risque."}},{"@type":"Question","name":"Faut-il retirer tout son profit au premier payout ?","acceptedAnswer":{"@type":"Answer","text":"Souvent, tu ne peux pas : le plafond l'en empêche. Et même quand c'est possible, retirer tout réduit ton coussin et rapproche ton compte de son seuil de perte. Je préfère retirer le plafond et garder de l'air pour la suite."}}]}
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{--bk:#1D1D1F;--bk2:#111;--bk3:#0A0A0A;--g1:#6E6E73;--g2:#86868B;--g3:#D2D2D7;--g4:#F5F5F7;--wh:#FBFBFD;--pure:#FFF;--green:#00B67A;--blue:#0066FF}
+    html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}
+    body{font-family:'DM Sans',sans-serif;color:var(--bk);background:var(--pure);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+    .preloader{position:fixed;inset:0;background:var(--bk3);z-index:10001;display:flex;align-items:center;justify-content:center}
+    .pre-word{font-family:'Outfit',sans-serif;font-size:clamp(3rem,8vw,5rem);font-weight:900;letter-spacing:16px;text-transform:uppercase;color:var(--pure);overflow:hidden}
+    .pre-word span{display:inline-block;transform:translateY(110%);opacity:0}
+    .pre-line{width:0;height:1px;background:rgba(255,255,255,.3);margin-top:20px}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 48px;display:flex;align-items:center;justify-content:space-between;background:rgba(245,245,247,.85);backdrop-filter:blur(20px) saturate(1.8);border-bottom:1px solid rgba(0,0,0,.04);transition:background .4s}
+    .nav-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase;color:var(--bk)}
+    .nav-links{display:flex;gap:28px;list-style:none}.nav-links a{font-size:.74rem;font-weight:500;letter-spacing:.3px;color:var(--g1);transition:color .3s}.nav-links a:hover{color:var(--bk)}
+    .nav-cta{padding:8px 20px;background:var(--bk);color:var(--pure);border:none;border-radius:980px;font-size:.72rem;font-weight:600;transition:all .3s;cursor:pointer;text-decoration:none;display:inline-block}.nav-cta:hover{background:var(--bk2)}
+    .blog-hero{padding:160px 48px 80px;background:var(--g4);position:relative;overflow:hidden}
+    .blog-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,transparent,var(--g4));pointer-events:none}
+    .blog-hero-inner{max-width:720px;margin:0 auto}
+    .breadcrumb{display:flex;gap:8px;align-items:center;margin-bottom:28px;flex-wrap:wrap}
+    .breadcrumb a,.breadcrumb span{font-size:.68rem;font-weight:500;letter-spacing:.3px;color:var(--g2);transition:color .3s}.breadcrumb a:hover{color:var(--bk)}.breadcrumb .sep{color:var(--g3)}
+    .blog-hero-cat{display:inline-block;padding:5px 14px;border:1px solid rgba(0,102,255,.15);border-radius:980px;font-size:.6rem;font-weight:700;color:var(--blue);letter-spacing:2px;text-transform:uppercase;margin-bottom:20px}
+    .blog-hero-title{font-family:'Outfit',sans-serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:900;line-height:1.05;letter-spacing:-2px;color:var(--bk);margin-bottom:20px}
+    .blog-hero-desc{font-size:.95rem;color:var(--g1);line-height:1.8;max-width:560px;margin-bottom:28px}
+    .blog-meta{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+    .blog-meta-author{display:flex;align-items:center;gap:10px}
+    .blog-meta-avatar{width:36px;height:36px;border-radius:50%;background:var(--bk3);overflow:hidden;flex-shrink:0}.blog-meta-avatar img{width:100%;height:100%;object-fit:cover}
+    .blog-meta-name{font-size:.78rem;font-weight:600;color:var(--bk)}.blog-meta-role{font-size:.65rem;color:var(--g2)}
+    .blog-meta-sep{width:1px;height:24px;background:var(--g3)}
+    .blog-meta-info{font-size:.7rem;color:var(--g2)}.blog-meta-info span{margin-right:16px}
+    .toc{position:sticky;top:90px;background:var(--pure);border:1px solid rgba(0,0,0,.04);border-radius:14px;padding:24px;margin-bottom:32px}
+    .toc-title{font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.5px;color:var(--bk);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+    .toc ol{list-style:none;counter-reset:toc}.toc li{counter-increment:toc}
+    .toc li a{display:flex;align-items:baseline;gap:8px;padding:6px 0;font-size:.76rem;color:var(--g1);transition:color .3s;border-bottom:1px solid rgba(0,0,0,.03)}.toc li a:hover{color:var(--blue)}
+    .toc li a::before{content:counter(toc,decimal-leading-zero);font-family:'Outfit',sans-serif;font-size:.65rem;font-weight:700;color:var(--g3);min-width:18px}
+    .toc li:last-child a{border-bottom:none}.toc li a.active{color:var(--blue);font-weight:600}.toc li a.active::before{color:var(--blue)}
+    .article-wrap{display:grid;grid-template-columns:220px 1fr;gap:40px;max-width:1020px;margin:0 auto;padding:60px 48px 120px}
+    .article-sidebar{position:relative}.article-body{max-width:700px}
+    .article-body h2{font-family:'Outfit',sans-serif;font-size:clamp(1.4rem,2.5vw,1.8rem);font-weight:800;line-height:1.1;letter-spacing:-1px;color:var(--bk);margin:56px 0 16px;padding-top:20px}.article-body h2:first-of-type{margin-top:0}
+    .article-body h3{font-family:'Outfit',sans-serif;font-size:1.05rem;font-weight:700;line-height:1.25;letter-spacing:-.3px;color:var(--bk);margin:36px 0 10px}
+    .article-body p{font-size:.9rem;color:var(--g1);line-height:1.85;margin-bottom:18px}
+    .article-body strong{color:var(--bk);font-weight:600}
+    .article-body ul,.article-body ol{margin:0 0 20px 0;padding-left:20px}
+    .article-body li{font-size:.88rem;color:var(--g1);line-height:1.8;margin-bottom:6px}.article-body li strong{color:var(--bk)}
+    .article-body blockquote{margin:28px 0;padding:20px 24px;background:var(--g4);border-left:3px solid var(--bk);border-radius:0 12px 12px 0;font-size:.88rem;color:var(--g1);line-height:1.8;font-style:italic}
+    .article-body blockquote strong{color:var(--bk);font-style:normal}
+    .article-body hr{border:none;border-top:1px solid var(--g4);margin:48px 0}
+    .info-box{margin:28px 0;padding:24px;background:rgba(0,102,255,.03);border:1px solid rgba(0,102,255,.08);border-radius:14px}
+    .info-box-title{font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:700;color:var(--blue);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+    .info-box p{font-size:.82rem;color:var(--g1);line-height:1.7;margin-bottom:0}
+    .key-concept{margin:32px 0;padding:28px;background:var(--bk3);border-radius:16px;color:var(--pure)}
+    .key-concept-label{font-size:.55rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:10px}
+    .key-concept h4{font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:800;letter-spacing:-.3px;margin-bottom:8px}
+    .key-concept p{font-size:.85rem;color:rgba(255,255,255,.5);line-height:1.8;margin-bottom:0}
+    .compare-table{width:100%;margin:24px 0 28px;border-collapse:collapse;border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,.06)}
+    .compare-table th{background:var(--bk3);color:var(--pure);font-family:'Outfit',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:14px 16px;text-align:left}
+    .compare-table td{padding:12px 16px;font-size:.82rem;color:var(--g1);line-height:1.6;border-bottom:1px solid rgba(0,0,0,.04);background:var(--pure)}
+    .compare-table tr:last-child td{border-bottom:none}.compare-table td:first-child{font-weight:600;color:var(--bk)}
+    .cta-card{margin:48px 0;padding:40px;background:var(--bk3);border-radius:20px;text-align:center;position:relative;overflow:hidden}
+    .cta-card::before{content:'';position:absolute;top:-50%;right:-30%;width:400px;height:400px;background:radial-gradient(circle,rgba(0,102,255,.08) 0%,transparent 70%);pointer-events:none}
+    .cta-card-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:12px}
+    .cta-card h3{font-family:'Outfit',sans-serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:800;color:var(--pure);letter-spacing:-.5px;margin-bottom:8px}
+    .cta-card p{font-size:.85rem;color:rgba(255,255,255,.4);line-height:1.7;max-width:380px;margin:0 auto 24px}
+    .cta-card .btn-p{background:var(--pure);color:var(--bk)}.cta-card .btn-p:hover{box-shadow:0 8px 30px rgba(255,255,255,.15)}
+    .faq-sec{padding:80px 48px 100px;background:var(--g4)}
+    .faq-list{max-width:680px;margin:40px auto 0}.fi{border-bottom:1px solid rgba(0,0,0,.06)}
+    .fq{width:100%;text-align:left;padding:18px 0;background:none;border:none;font-size:.85rem;font-weight:600;font-family:'DM Sans',sans-serif;color:var(--bk);display:flex;justify-content:space-between;align-items:center;cursor:pointer;gap:16px;transition:color .3s}.fq:hover{color:var(--g1)}
+    .fq-icon{width:22px;height:22px;border-radius:50%;background:rgba(0,0,0,.04);display:flex;align-items:center;justify-content:center;font-size:.75rem;transition:all .4s;flex-shrink:0;color:var(--g2)}
+    .fa{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1)}.fa.open{max-height:280px;padding-bottom:14px}
+    .fa p{font-size:.8rem;color:var(--g1);line-height:1.7;margin-bottom:0}.fi.active .fq-icon{background:var(--bk);color:var(--pure);transform:rotate(45deg)}
+    .related-sec{padding:80px 48px;background:var(--pure);border-top:1px solid var(--g4)}
+    .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1060px;margin:40px auto 0}
+    .related-card{display:block;padding:28px;background:var(--g4);border-radius:16px;transition:all .4s;text-decoration:none;color:var(--bk)}
+    .related-card:hover{background:var(--pure);box-shadow:0 8px 30px rgba(0,0,0,.06);transform:translateY(-2px)}
+    .related-cat{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+    .related-card h3{font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:700;line-height:1.3;letter-spacing:-.3px;margin-bottom:8px}
+    .related-card p{font-size:.78rem;color:var(--g1);line-height:1.6;margin-bottom:14px}
+    .related-link{font-size:.72rem;font-weight:600;color:var(--blue);letter-spacing:.3px}
+    .footer{background:var(--bk3);color:var(--pure);padding:56px 48px 28px}
+    .ft-top{display:flex;justify-content:space-between;align-items:start;margin-bottom:48px;flex-wrap:wrap;gap:32px}
+    .ft-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase}
+    .ft-cols{display:flex;gap:80px}
+    .ft-col-title{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:12px}
+    .ft-col a{display:block;font-size:.78rem;color:rgba(255,255,255,.5);margin-bottom:8px;transition:color .3s}.ft-col a:hover{color:var(--pure)}
+    .ft-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:20px;display:flex;justify-content:space-between;align-items:center;font-size:.6rem;color:rgba(255,255,255,.2)}
+    .ft-bottom a{color:rgba(255,255,255,.2);transition:color .3s;margin-left:20px}.ft-bottom a:hover{color:rgba(255,255,255,.5)}
+    .disclaimer{padding:12px 48px;background:var(--bk3);font-size:.58rem;color:rgba(255,255,255,.12);text-align:center;line-height:1.6;border-top:1px solid rgba(255,255,255,.03)}
+    .sec-center{text-align:center;max-width:680px;margin:0 auto}
+    .sec-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--g2);margin-bottom:10px}
+    .sec-title{font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;line-height:1.05;letter-spacing:-1.5px;color:var(--bk);margin-bottom:16px}
+    .btn-p{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--bk);color:var(--pure);border-radius:980px;font-size:.85rem;font-weight:600;transition:all .3s;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;text-decoration:none}
+    .btn-p:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(0,0,0,.1)}
+    .btn-p svg{width:13px;height:13px;transition:transform .3s}.btn-p:hover svg{transform:translateX(3px)}
+    .reading-progress{position:fixed;top:0;left:0;height:2px;background:var(--blue);z-index:9999;width:0;transition:width .1s linear}
+    @media(max-width:900px){.nav{padding:14px 20px}.nav-links{display:none}.blog-hero{padding:120px 20px 60px}.article-wrap{grid-template-columns:1fr;padding:40px 20px 80px}.article-sidebar{display:none}.related-grid{grid-template-columns:1fr}.related-sec,.faq-sec{padding:60px 20px}.ft-cols{flex-direction:column;gap:28px}.footer{padding:40px 20px 20px}.disclaimer{padding:10px 16px}.cta-card{padding:28px 20px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  .article-body a{color:var(--blue);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;font-weight:500}.article-body a:hover{text-decoration-thickness:2px}
+</style>
+</head>
+<body>
+
+<div class="preloader" id="preloader"><div style="text-align:center"><div class="pre-word"><span>B</span><span>A</span><span>S</span><span>S</span></div><div class="pre-line" id="preLine"></div></div></div>
+<div class="reading-progress" id="readingProgress"></div>
+
+<nav class="nav" id="nav">
+  <a href="https://basstrading.fr" class="nav-logo">BASS</a>
+  <ul class="nav-links">
+    <li><a href="https://basstrading.fr/#methode">Méthode</a></li>
+    <li><a href="https://basstrading.fr#resultats">Résultats</a></li>
+    <li><a href="https://basstrading.fr#avis">Avis</a></li>
+    <li><a href="https://basstrading.fr#faq">FAQ</a></li>
+    <li><a href="https://basstrading.fr/blog/">Blog</a></li>
+  </ul>
+  <a href="https://basstrading.fr/p/formation-offerte/?src=blog-premier-payout-prop-firm-menu" class="nav-cta">Formation offerte</a>
+</nav>
+
+<section class="blog-hero">
+  <div class="blog-hero-inner">
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <a href="https://basstrading.fr">Accueil</a><span class="sep">/</span>
+      <a href="https://basstrading.fr/blog/">Blog</a><span class="sep">/</span>
+      <span>Premier payout prop firm</span>
+    </nav>
+    <div class="blog-hero-cat">Prop firm</div>
+    <h1 class="blog-hero-title">Premier payout en prop firm : coussin, cohérence et retrait</h1>
+    <p class="blog-hero-desc">Ton premier payout en prop firm ne se joue pas le jour où tu cliques sur « retrait ». Il se prépare dès le challenge : un coussin qu&#39;on laisse grossir, une règle de cohérence qu&#39;on respecte même quand ça coûte un beau trade, et un retrait plafonné qu&#39;il ne sert à rien de dépasser. Voici comment je fais, tel que je l&#39;ai montré en live.</p>
+    <div class="blog-meta">
+      <div class="blog-meta-author">
+        <div class="blog-meta-avatar"><img src="../../images/bass-presenting.jpg" alt="Sébastien Constant" loading="lazy"></div>
+        <div><div class="blog-meta-name"><a href="/auteur/sebastien-constant/" rel="author" style="color:inherit;text-decoration:none">Sébastien Constant</a></div><div class="blog-meta-role">Trader & Formateur Order Flow</div></div>
+      </div>
+      <div class="blog-meta-sep"></div>
+      <div class="blog-meta-info"><span>Octobre 2026</span><span>15 min de lecture</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="article-wrap">
+  <aside class="article-sidebar">
+    <div class="toc">
+      <div class="toc-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/></svg> Sommaire</div>
+      <ol>
+        <li><a href="#l-essentiel-un-premier-payout-se-prepare">L&#39;essentiel : un premier payout se prépare dès le challenge</a></li>
+        <li><a href="#payout-en-prop-firm-de-quoi-on-parle-vra">Payout en prop firm : de quoi on parle vraiment</a></li>
+        <li><a href="#coussin-d-abord-pourquoi-je-ne-retire-pa">Coussin d&#39;abord : pourquoi je ne retire pas tout de suite</a></li>
+        <li><a href="#le-retrait-plafonne-coussin-plus-le-plaf">Le retrait plafonné : coussin plus le plafond, pas plus</a></li>
+        <li><a href="#la-regle-de-coherence-pourquoi-j-ai-coup">La règle de cohérence : pourquoi j&#39;ai coupé un trade gagnant</a></li>
+        <li><a href="#calculer-sa-regle-de-coherence-sur-un-ex">Calculer sa règle de cohérence sur un exemple</a></li>
+        <li><a href="#combien-de-temps-pour-valider-un-challen">Combien de temps pour valider un challenge ?</a></li>
+        <li><a href="#mes-regles-sur-le-compte-finance-jusqu-a">Mes règles sur le compte financé jusqu&#39;au premier retrait</a></li>
+        <li><a href="#quand-ca-echoue-quatre-facons-de-rater-s">Quand ça échoue : quatre façons de rater son premier payout</a></li>
+        <li><a href="#avant-de-cliquer-sur-retrait-la-check-li">Avant de cliquer sur « retrait » : la check-list</a></li>
+        <li><a href="#comment-cette-page-est-faite">Comment cette page est faite</a></li>
+      </ol>
+    </div>
+  </aside>
+
+  <article class="article-body">
+    <h2 id="l-essentiel-un-premier-payout-se-prepare">L&#39;essentiel : un premier payout se prépare dès le challenge</h2>
+    <p><em>Le trading de futures, même via une prop firm, comporte un risque réel de perte : les frais de challenge sont perdus si tu échoues, et un compte financé peut être fermé en une séance. Rien sur cette page n&#39;est un conseil personnalisé ni une promesse de gain.</em></p>
+<p><b>Pour toucher ton premier payout en prop firm, retire tard, retire peu et retire selon les règles</b> : laisse d&#39;abord grossir ton coussin (l&#39;écart entre ton solde et ton seuil de perte), respecte la règle de cohérence jour après jour, puis demande le plafond de retrait autorisé, pas plus.</p>
+<p>C&#39;est exactement ce que j&#39;ai expliqué pendant l&#39;épisode 14 de ma série « De 0 au Payout », en direct, à un spectateur qui me demandait combien de temps je mets pour valider un compte et me faire payer :</p>
+<aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p>« J&#39;essaye d&#39;y aller tranquillement. Tu vois, je ne fais pas le ouf au niveau du challenge. Je suis sur des micros. » (<a href="https://www.youtube.com/watch?v=PjrSce8-VgQ&amp;t=1860">voir le passage, min 31</a>)</p></aside>
+<p>Dans ce même live, j&#39;ai coupé un trade gagnant sur le DAX alors qu&#39;il pouvait encore monter. Pas par peur. À cause d&#39;une règle qu&#39;il vaut mieux connaître avant de commencer : la règle de cohérence. On va la décortiquer, calcul à l&#39;appui.</p>
+<p>Si tu ne sais pas encore ce qu&#39;est une prop firm ni comment marche un challenge, commence par <a href="https://basstrading.fr/blog/prop-firm-funded-trader/">mon guide sur les prop firms et le funded trader</a>. Ici, je pars du principe que tu as un challenge en cours ou un compte financé, et que la question est : comment arriver au premier retrait sans tout casser en route ?</p>
+<h3>À retenir</h3>
+<ul><li>Le payout n&#39;est pas une récompense qu&#39;on va chercher.</li><li>C&#39;est la conséquence d&#39;un compte qu&#39;on a protégé.</li></ul>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/premier-payout-prop-firm/blog-premier-payout-prop-firm-1.webp" alt="Les quatre étapes du challenge au premier payout en prop firm : valider sans délai, monter le coussin, respecter la cohérence, retirer le plafond" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">L&#39;ordre compte : le coussin passe avant le retrait, et le retrait se limite au plafond autorisé.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="payout-en-prop-firm-de-quoi-on-parle-vra">Payout en prop firm : de quoi on parle vraiment</h2>
+    <p><b>Un payout, c&#39;est le retrait d&#39;une partie du profit réalisé sur un compte financé.</b> Tu ne retires jamais le capital affiché : tu retires ta part des gains, selon un partage fixé par la firme (90 % pour le trader chez la firme dont j&#39;ai lu le règlement le 24/10/2026 ; vérifie chez la tienne) et selon des conditions écrites dans son règlement.</p>
+<p>Ces conditions varient d&#39;une firme à l&#39;autre, et même d&#39;un type de compte à l&#39;autre chez une même firme. Dans les règlements, on retrouve ces familles de règles :</p>
+<ul><li>un nombre minimum de jours de trading, ou de jours gagnants au-dessus d&#39;un certain montant, avant le premier retrait ;</li><li>un plafond sur le montant du premier retrait (parfois aussi des suivants) ;</li><li>une règle de cohérence : aucun jour ne doit peser trop lourd dans ton profit total ;</li><li>un seuil de perte (le drawdown) qui ne doit jamais être touché, sinon le compte est fermé et le payout disparaît avec.</li></ul>
+<p>Je le dis dans ma vidéo sur la taille de position : sur un compte à 50 000, les 50 000 c&#39;est du vent, c&#39;est du marketing. <b>La vraie taille de ton compte, c&#39;est ton drawdown.</b> Un compte « 50K » avec quelques milliers de dollars de perte maximale autorisée, c&#39;est un compte de quelques milliers de dollars, pas de cinquante mille. Tout ce qui suit découle de cette idée.</p>
+<h3>Le coussin, expliqué simplement</h3>
+<p>Le coussin, c&#39;est la distance entre ton solde actuel et le niveau où le compte est fermé. Au départ, il est égal à ton drawdown autorisé.</p>
+<p>À chaque gain, il grossit (sauf si ton drawdown suit tes plus hauts, ce qu&#39;on appelle un drawdown suiveur, dit « trailing », qui ronge une partie de cette avance). À chaque perte, il fond.</p>
+<p><b>Retirer de l&#39;argent, c&#39;est retirer du coussin.</b> C&#39;est pour ça que l&#39;ordre des étapes compte autant.</p>
+<h3>À retenir</h3>
+<ul><li>Un payout se lit dans le règlement de ta firme, pas sur sa page d&#39;accueil.</li><li>Lis les conditions de retrait avant d&#39;acheter le challenge, pas après l&#39;avoir validé.</li></ul>
+
+    <hr>
+
+    <h2 id="coussin-d-abord-pourquoi-je-ne-retire-pa">Coussin d&#39;abord : pourquoi je ne retire pas tout de suite</h2>
+    <p>Une fois le challenge validé, la tentation est énorme : prendre son argent le plus vite possible, pour « prouver » que ça marche. Je fais l&#39;inverse. Voici ce que j&#39;ai dit en live, mot pour mot :</p>
+<aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p>« Une fois que c&#39;est validé, je vais trader, pareil, de la même manière que sur mon challenge. Je vais y aller tranquille. L&#39;idée, c&#39;est de monter directement, en fait, mon coussin. D&#39;avoir de la latitude, de ne pas me retrouver serré. » (<a href="https://www.youtube.com/watch?v=PjrSce8-VgQ&amp;t=1920">min 32</a>)</p></aside>
+<p><b>« De la même manière »</b> : je ne change rien entre le challenge et le compte financé. Même taille, mêmes setups, même lecture du flux d&#39;ordres. Le compte financé n&#39;est pas une promotion qui autorise à trader plus gros.</p>
+<p><b>« Latitude »</b> : avec un coussin épais, une journée perdante est une journée perdante. Avec un coussin fin, une journée perdante peut être la dernière.</p>
+<p><b>« Pas serré »</b> : un trader serré coupe ses gagnants trop tôt, garde ses perdants trop longtemps, et finit par surtailler pour se refaire. Je l&#39;ai vécu moi-même.</p>
+<h3>Ce que ça change concrètement</h3>
+<p>Prenons un exemple inventé, juste pour visualiser. Un compte avec 2 000 $ de drawdown autorisé : au départ, ton coussin vaut 2 000 $.</p>
+<p>Tu gagnes 600 $. Avec un drawdown fixe, ton coussin passe à 2 600 $.</p>
+<p>Si tu retires ces 600 $ tout de suite (en supposant que la firme l&#39;autorise), ton coussin redescend à 2 000 $, voire moins si ton drawdown est suiveur et a monté avec tes gains. Tu repars au bord du précipice. <b>Si tu laisses ces 600 $ dans le compte, tu gardes 2 600 $ d&#39;air.</b></p>
+<p>C&#39;est le même principe que la taille de position : on <a href="https://basstrading.fr/blog/combien-risquer-par-trade/">pense aux pertes avant de penser aux gains</a>. Le coussin, c&#39;est la version « compte » de cette règle.</p>
+<h3>À retenir</h3>
+<ul><li>Le premier argent gagné sur un compte financé sert à acheter de l&#39;air.</li><li>Le retrait vient après.</li></ul>
+
+    <hr>
+
+    <h2 id="le-retrait-plafonne-coussin-plus-le-plaf">Le retrait plafonné : coussin plus le plafond, pas plus</h2>
+    <p>Deuxième chose à connaître : chez certaines firmes, le premier retrait est plafonné. Peu importe le profit accumulé, tu ne peux demander qu&#39;un montant maximum, après un nombre minimum de jours.</p>
+<p>En live, je l&#39;ai résumé ainsi à propos de mon propre compte :</p>
+<aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p>« Pendant 10 jours, tu dois trader 10 jours. Et ensuite, tu peux demander que [le plafond]. Donc, même si tu as fait [beaucoup plus], tu es bloqué. » (<a href="https://www.youtube.com/watch?v=PjrSce8-VgQ&amp;t=1980">min 33</a>)</p></aside>
+<p><b>Ma conclusion tenait en une formule : coussin plus le plafond de retrait.</b> Mon objectif sur le compte n&#39;est pas « le plus possible ». C&#39;est : un coussin confortable, plus exactement le montant que la firme me laissera retirer.</p>
+<p>Tout ce qui dépasse ne sert à rien pour ce premier retrait, et peut même me nuire.</p>
+<h3>Un exemple de règlement vérifié</h3>
+<p>Pour te montrer à quoi ressemblent ces règles, j&#39;ai lu le 24 octobre 2026 le centre d&#39;aide d&#39;une grande firme de futures américaine (ce n&#39;est pas une recommandation, et ces règles peuvent changer).</p>
+<p>Sur un type de compte financé, le premier retrait demandait 5 jours gagnants au-dessus d&#39;un montant minimum, avec un plafond par retrait, et un partage de 90 % pour le trader.</p>
+<p>Le plafond dépend de la taille du compte et du type de compte financé, et il est détaillé sur une page à part du règlement. <b>Moralité : lis le règlement en entier, et pose tes questions au support par écrit.</b></p>
+<h3>À retenir</h3>
+<ul><li>Ton objectif avant le premier payout : coussin plus plafond.</li><li>Pas « le maximum ».</li></ul>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/premier-payout-prop-firm/blog-premier-payout-prop-firm-2.webp" alt="Comparaison entre pousser le compte au maximum et monter le coussin avant le premier retrait en prop firm" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Viser plus que le plafond ne paie pas plus tôt : ça ajoute du risque et peut bloquer le retrait.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="la-regle-de-coherence-pourquoi-j-ai-coup">La règle de cohérence : pourquoi j&#39;ai coupé un trade gagnant</h2>
+    <p>Pendant le live, je suis dans un achat sur le DAX qui marche. Le prix monte. Et je dis ceci :</p>
+<aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p>« Je vais pas tarder à le couper parce qu&#39;on peut pas... On peut pas faire trop d&#39;argent après ça. Il faut un minimum... Enfin, comment dire ? Il y a une... Il y a une règle de consistance. Donc, je crois même que je vais le couper, là. » (<a href="https://www.youtube.com/watch?v=PjrSce8-VgQ&amp;t=2580">min 43</a>)</p></aside>
+<p>Quelques minutes plus tard :</p>
+<aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p>« Bon, allez, moi, je sors du trade. Allez, hop, j&#39;ai coupé. Ok, donc pourquoi j&#39;ai coupé ? Il peut monter plus haut, mais il y a une règle de consistance. » (<a href="https://www.youtube.com/watch?v=PjrSce8-VgQ&amp;t=2760">min 46</a>)</p></aside>
+<p>Et plus tard encore, en revenant sur la séance :</p>
+<aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p>« Mais franchement, il y avait un bel achat. Moi, je n&#39;ai pas pu le garder à cause de la consistance. Parce que sinon, ça ne marche pas. » (<a href="https://www.youtube.com/watch?v=PjrSce8-VgQ&amp;t=3660">min 61</a>)</p></aside>
+<h3>Ce que dit cette règle</h3>
+<p><b>La règle de cohérence (on dit aussi règle de consistance, de l&#39;anglais consistency rule) limite le poids de ton meilleur jour dans ton profit.</b> Si ce jour pèse plus qu&#39;un certain pourcentage, ton profit n&#39;est pas jugé régulier : selon la firme, tu ne peux pas valider le challenge, ou tu ne peux pas demander le retrait, tant que tu n&#39;as pas « dilué » ce gros jour par d&#39;autres journées positives.</p>
+<p>L&#39;idée de la firme est simple : elle veut financer des traders réguliers, pas des coups de poker. Un trader qui fait tout son profit en une séance ressemble plus à quelqu&#39;un qui a eu de la chance qu&#39;à quelqu&#39;un qui a une méthode.</p>
+<h3>Le seuil change selon la firme et le compte</h3>
+<p>Sur le centre d&#39;aide que j&#39;ai lu le 24 octobre 2026, la même firme appliquait 55 % pendant l&#39;évaluation et 40 % sur un de ses types de compte financé (pendant l&#39;évaluation, le calcul se fait sur l&#39;objectif de profit, pas sur le profit total). Son autre type de compte financé n&#39;a pas de seuil, mais demande 5 jours gagnants de 150 $ ou plus avant un retrait.</p>
+<p>D&#39;autres firmes ont leurs propres seuils. <b>Le seul chiffre qui compte, c&#39;est celui de ton règlement.</b></p>
+<p>Ce qui est frustrant, et je ne vais pas te mentir : couper un bon trade parce qu&#39;un règlement l&#39;impose, ça pique. Mais c&#39;est le jeu que tu as accepté en prenant le capital de quelqu&#39;un d&#39;autre.</p>
+<h3>À retenir</h3>
+<ul><li>Sur un compte de prop firm, un trade peut être bon pour le marché et mauvais pour le compte.</li><li>C&#39;est le règlement qui tranche.</li></ul>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/premier-payout-prop-firm/blog-premier-payout-prop-firm-3.webp" alt="Exemple de seuils de règle de cohérence lus sur le centre d&#39;aide d&#39;une firme de futures le 24 octobre 2026" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Exemple d&#39;une seule firme, lu le 24/10/2026 : le seuil et sa base de calcul changent selon le compte. Seul ton règlement fait foi.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="calculer-sa-regle-de-coherence-sur-un-ex">Calculer sa règle de cohérence sur un exemple</h2>
+    <p>Le calcul tient en une ligne. Tous les montants ci-dessous sont inventés pour l&#39;exemple : ce ne sont pas mes résultats.</p>
+<p><b>Cohérence = meilleur jour ÷ profit total</b> (sur un compte financé ; en évaluation, certaines firmes divisent par l&#39;objectif de profit).</p>
+<p>Ton compte est conforme si ce ratio reste sous le seuil de ta firme.</p>
+<h3>Exemple inventé avec un seuil de 40 %</h3>
+<p>Tu as fait quatre journées positives : 300 $, 200 $, 500 $ et 1 000 $. Profit total : 2 000 $. Meilleur jour : 1 000 $.</p>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Étape</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Calcul</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Verdict</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Ratio actuel</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">1 000 ÷ 2 000 = 50 %</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">au-dessus de 40 %</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Profit total requis</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">1 000 ÷ 0,40 = 2 500 $</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">il manque 500 $</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Après +500 $ en deux jours</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">1 000 ÷ 2 500 = 40 %</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">conforme</td></tr></tbody></table></div>
+<p><b>La formule à garder : profit total minimum = meilleur jour ÷ seuil.</b></p>
+<p>Il te manque donc 500 $, à faire sur d&#39;autres journées, sans en créer une nouvelle encore plus grosse (sinon le meilleur jour change et le calcul recommence).</p>
+<h3>Le piège : le gros jour qui t&#39;oblige à forcer</h3>
+<p>C&#39;est là que la règle devient dangereuse. Après un très gros jour, il te « manque » du profit. Tu te mets à forcer des trades pour combler l&#39;écart. Tu en perds deux. Le profit total baisse, le ratio s&#39;aggrave, et ton coussin aussi.</p>
+<p>C&#39;est exactement pour ça que je coupe avant. <b>Mieux vaut quatre journées moyennes et régulières qu&#39;une journée exceptionnelle qui t&#39;enferme.</b></p>
+<h3>Deux réflexes pratiques</h3>
+<ul><li><b>Connais ton plafond du jour.</b> Avant la séance, calcule le gain au-delà duquel ta journée deviendrait trop lourde. Quand tu t&#39;en approches, allège ou coupe.</li><li><b>Vérifie la règle de calcul exacte.</b> Certaines firmes comptent le profit net, d&#39;autres le brut, certaines remettent le compteur à zéro après un retrait, d&#39;autres non. Le règlement fait foi.</li></ul>
+<h3>À retenir</h3>
+<ul><li>La règle de cohérence se gère avant le gros jour, pas après.</li></ul>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/premier-payout-prop-firm/blog-premier-payout-prop-firm-4.webp" alt="Formule de la règle de cohérence en prop firm : profit total minimum égal au meilleur jour divisé par le seuil" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Avec un meilleur jour à 1 000 $ et un seuil de 40 %, il faut 2 500 $ de profit total (montants inventés).</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="combien-de-temps-pour-valider-un-challen">Combien de temps pour valider un challenge ?</h2>
+    <p>C&#39;était la question de départ du spectateur. Ma réponse honnête :</p>
+<aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p>« Ça va me prendre, je ne sais pas, en moyenne peut-être une semaine. Tu vois, mais je ne me donne pas de délai. Tu vois, je ne me mets pas de pression. Donc, en fait, je trade ce qu&#39;il y a à trader. Des fois, ça peut aller plus vite. Tu vois, si tu es dans une journée en tendance, tu peux aller super vite. Des fois, ça peut être plus mou. » (<a href="https://www.youtube.com/watch?v=PjrSce8-VgQ&amp;t=1920">min 32</a>)</p></aside>
+<p>La phrase importante n&#39;est pas « en moyenne peut-être une semaine ». <b>C&#39;est « je ne me donne pas de délai ».</b> Ma moyenne n&#39;est pas la tienne, et c&#39;est normal.</p>
+<h3>Ce que fixent les firmes</h3>
+<p>Les règlements fixent parfois un nombre minimum de jours de trading, parfois une durée maximale, parfois ni l&#39;un ni l&#39;autre. La firme que j&#39;ai lue le 24 octobre 2026 ne fixait pas de durée limite sur son évaluation. Ailleurs, c&#39;est différent : vérifie toujours.</p>
+<h3>Trader ce que le marché donne</h3>
+<p>Un délai transforme chaque journée calme en journée « perdue » qu&#39;on veut rattraper, avec des setups moyens et une taille trop grosse. Le marché n&#39;a aucune obligation de te donner une tendance cette semaine.</p>
+<p>Les jours de tendance, la validation avance vite. Les jours mous, je trade peu, ou pas du tout. Pour juger si la journée est directionnelle ou en range, <a href="https://basstrading.fr/blog/vwap-trading/">la VWAP</a> est un bon repère. Et si tu trades le Nasdaq, <a href="https://basstrading.fr/blog/horaires-futures-nasdaq-heure-paris/">les horaires du Nasdaq à l&#39;heure de Paris</a> t&#39;aident à te concentrer sur les heures où il se passe vraiment quelque chose.</p>
+<p>Si tu débutes complètement, la vraie question n&#39;est pas la durée du challenge mais celle de l&#39;apprentissage : j&#39;en parle dans <a href="https://basstrading.fr/blog/combien-temps-apprendre-trading/">combien de temps pour apprendre le trading</a>.</p>
+<h3>À retenir</h3>
+<ul><li>La vitesse de validation, c&#39;est le marché qui la décide.</li><li>Toi, tu décides seulement de ne pas forcer.</li></ul>
+
+    <hr>
+
+    <h2 id="mes-regles-sur-le-compte-finance-jusqu-a">Mes règles sur le compte financé jusqu&#39;au premier retrait</h2>
+    <p>Voici les règles que je m&#39;applique, entre la validation et le premier payout. Ce sont mes pratiques, pas des conseils personnalisés : adapte-les à ton règlement et à ton capital.</p>
+<h3>1. Entrer petit</h3>
+<p>Je suis sur des micros. En live, je le disais au spectateur : je ne « fais pas le ouf ». J&#39;entre avec une petite taille, typiquement 2 micros, et j&#39;ajoute seulement quand la position va dans mon sens. Si tu hésites entre contrat standard et micro, j&#39;ai détaillé <a href="https://basstrading.fr/blog/nq-ou-mnq/">la différence entre NQ et MNQ</a>.</p>
+<h3>2. Risquer peu par trade</h3>
+<aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p>« Il ne faut pas risquer plus de 0,5, voire 1 % sur un trade. » (<a href="https://www.youtube.com/watch?v=PjrSce8-VgQ&amp;t=4740">min 79</a>)</p></aside>
+<p>Sur une prop firm, <b>ce pourcentage se calcule sur le drawdown, pas sur le capital affiché.</b> Plus il y a de volatilité, plus je réduis. Et comme je l&#39;ai dit dans le même live, si tu te dis « c&#39;est risqué, j&#39;ai une chance sur deux que ça passe », réduis ton risque (<a href="https://www.youtube.com/watch?v=PjrSce8-VgQ&amp;t=4800">min 80</a>). Tout le calcul est dans <a href="https://basstrading.fr/blog/combien-risquer-par-trade/">combien risquer par trade</a>.</p>
+<h3>3. Ne jamais ajouter à une position perdante</h3>
+<p>Ajouter quand c&#39;est gagnant, oui. Ajouter quand c&#39;est perdant pour « améliorer son prix », jamais. C&#39;est la façon la plus rapide de transformer une petite perte en compte fermé.</p>
+<h3>4. Ne jamais surtailler pour se refaire</h3>
+<p>Après une perte, la taille ne bouge pas.</p>
+<h3>5. Ne jamais toucher au coussin pour « tenter un coup »</h3>
+<p>Le coussin n&#39;est pas une réserve de munitions. C&#39;est ta marge de survie.</p>
+<aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p>« Tout est dans la gestion du risque. » (<a href="https://www.youtube.com/watch?v=PjrSce8-VgQ&amp;t=4860">min 81</a>)</p></aside>
+<p>Ces règles ne te donnent aucun avantage sur le marché. <b>Elles t&#39;évitent seulement de mourir avant que ta méthode ait eu le temps de jouer.</b></p>
+<p>L&#39;avantage, il vient de ta lecture : comprendre qui achète, qui vend, et qui est piégé. Un exemple typique : <a href="https://basstrading.fr/blog/chasse-aux-stops-trading/">la chasse aux stops</a>, où le prix va chercher les ordres des autres avant de repartir. Pour voir ces échanges niveau par niveau, il faut un vrai outil : je compare les options dans <a href="https://basstrading.fr/blog/footprint-tradingview/">mon article sur le footprint TradingView</a>.</p>
+<h3>À retenir</h3>
+<ul><li>Jusqu&#39;au premier payout, ton travail n&#39;est pas de gagner beaucoup.</li><li>C&#39;est de ne rien casser.</li></ul>
+
+    <hr>
+
+    <h2 id="quand-ca-echoue-quatre-facons-de-rater-s">Quand ça échoue : quatre façons de rater son premier payout</h2>
+    <p>Je préfère te montrer comment ça rate. C&#39;est là qu&#39;on apprend le plus.</p>
+<h3>1. Le « foutu pour foutu »</h3>
+<p>Tu as perdu une bonne partie du coussin. Tu te dis : foutu pour foutu, je tente un gros trade pour me refaire. Comme je le dis dans ma vidéo sur la taille de position, c&#39;est souvent là qu&#39;on meurt. Je l&#39;ai vécu. <b>Le danger n&#39;est pas le trade normal : c&#39;est le trade de vengeance qui suit.</b></p>
+<h3>2. Le gros jour qui bloque tout</h3>
+<p>Tu fais une journée énorme, la règle de cohérence bloque ton retrait, tu forces pour diluer et ton coussin fond : c&#39;est le piège décrit plus haut, et la raison pour laquelle j&#39;ai coupé mon trade sur le DAX.</p>
+<h3>3. Le retrait trop tôt, sur un coussin trop fin</h3>
+<p>Tu retires dès que c&#39;est permis. Ton coussin redevient mince. Deux journées perdantes normales et le compte est fermé. <b>Tu as touché un payout, mais tu as perdu le compte qui devait t&#39;en verser d&#39;autres.</b></p>
+<h3>4. La règle oubliée</h3>
+<p>Un jour minimum mal compté, une position gardée au-delà de l&#39;horaire autorisé, une taille maximale dépassée. Le règlement ne pardonne pas l&#39;oubli.</p>
+<h3>Et la mauvaise nouvelle honnête</h3>
+<p>Même en faisant tout bien, tu peux échouer. Tu peux enchaîner des journées perdantes normales et toucher ton seuil. C&#39;est le métier : on ne maîtrise pas le résultat. Comme je l&#39;ai dit au tout début du live :</p>
+<aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p>« Le seul facteur que vous maîtrisez, c&#39;est la perte. » (<a href="https://www.youtube.com/watch?v=PjrSce8-VgQ&amp;t=0">min 0</a>)</p></aside>
+<p>En fin de live, j&#39;ai dit qu&#39;il faut accepter d&#39;avoir tort. Julien a complété dans le chat : savoir prendre sa perte. Je lui ai répondu : « 100 % d&#39;accord avec toi, Julien. » (<a href="https://www.youtube.com/watch?v=PjrSce8-VgQ&amp;t=6360">min 106</a>)</p>
+<h3>À retenir</h3>
+<ul><li>Dans ces quatre scénarios, ce n&#39;est pas le marché qui fait rater le payout.</li><li>C&#39;est ce qu&#39;on fait après une perte, ou après un gain.</li></ul>
+
+    <hr>
+
+    <h2 id="avant-de-cliquer-sur-retrait-la-check-li">Avant de cliquer sur « retrait » : la check-list</h2>
+    <p>Avant de demander ton premier payout, passe ces six points :</p>
+<ul><li><b>Ton coussin est-il confortable ?</b> Tu peux encaisser plusieurs journées perdantes normales sans toucher ton seuil, même après le retrait.</li><li><b>As-tu le nombre de jours requis ?</b> Jours de trading ou jours gagnants au-dessus du minimum, selon ton règlement.</li><li><b>Ta règle de cohérence est-elle respectée ?</b> Calculée exactement comme ta firme la calcule.</li><li><b>Demandes-tu le plafond, pas plus ?</b> Le surplus attend le retrait suivant.</li><li><b>Ton identité est-elle vérifiée ?</b> Certaines firmes demandent une vérification avant le premier paiement : fais-la en avance.</li><li><b>Que fais-tu demain ?</b> Même taille, même méthode, même prudence. Le compte ne sait pas que tu viens d&#39;être payé.</li></ul>
+<p>Puis retire, et recommence à monter le coussin.</p>
+<p>Comme je le disais en fin de live, le but n&#39;est pas d&#39;avoir raison sur le marché, ça flatte l&#39;ego. Le but, c&#39;est de comprendre, à l&#39;instant présent, qui fait quoi, et de prendre les meilleures décisions (<a href="https://www.youtube.com/watch?v=PjrSce8-VgQ&amp;t=5760">min 96</a>). Pour comprendre qui fait vraiment bouger le prix, j&#39;ai réuni 7 leçons gratuites dans <a href="https://basstrading.fr/l/nEx2Cw">ma formation offerte</a>.</p>
+<h3>À retenir</h3>
+<ul><li>Le premier payout, c&#39;est une étape.</li><li>Le vrai objectif, c&#39;est le deuxième, le troisième, et un compte toujours ouvert.</li></ul>
+<p>Ce soir, ouvre le règlement de ta firme et note trois chiffres : ton plafond de retrait, ton seuil de cohérence et ta manière de calculer le drawdown. Ensuite, si ton seuil de perte bouge avec tes gains, lis la suite logique : <a href="https://basstrading.fr/blog/prop-firm-funded-trader/">le guide des prop firms</a>.</p>
+
+    <hr>
+
+    <h2 id="comment-cette-page-est-faite">Comment cette page est faite</h2>
+    <ul><li>Source principale : mon live « De 0 au Payout », épisode 14, où je trade en direct un challenge de prop firm. Chaque citation est tirée de sa transcription, avec le lien vers la minute exacte. J&#39;ai retiré des citations les montants et le nom de la firme : cette page ne parle pas de gains et ne recommande aucune firme.</li><li>Pratiques complémentaires : celles que j&#39;explique dans ma vidéo sur la taille de position, reprises dans <a href="https://basstrading.fr/blog/combien-risquer-par-trade/">combien risquer par trade</a>.</li><li>Règles de firmes : lues le 24 octobre 2026 sur le centre d&#39;aide officiel d&#39;une grande firme de futures américaine, pages <a href="https://help.topstep.com/en/articles/8284208-consistency-at-topstep">sur la règle de cohérence</a> et <a href="https://help.topstep.com/en/articles/8284233-topstep-payout-policy">sur les retraits</a>. Elles servent d&#39;exemple de règlement, pas de recommandation, et peuvent changer à tout moment.</li><li>Exemples chiffrés : tous les montants des calculs sont inventés pour illustrer.</li><li>Pour aller plus loin : <a href="https://basstrading.fr/blog/debuter-trading-zero-guide/">débuter le trading de zéro</a> et <a href="https://basstrading.fr/blog/order-flow-trading-france/">l&#39;order flow en France</a>.</li></ul>
+<p><em>Rappel : le trading de futures comporte un risque de perte en capital, y compris via une prop firm (frais de challenge, compte fermé). Ce contenu est éducatif et ne constitue pas un conseil en investissement personnalisé.</em></p>
+
+    <p><a href="https://www.youtube.com/watch?v=PjrSce8-VgQ" target="_blank" rel="noopener">▶ Voir la vidéo de Sébastien sur ce sujet</a></p>
+
+    <div class="cta-card cta-aimant">
+      <div class="cta-card-label">Gratuit</div>
+      <h3>La formation offerte : 7 leçons pour lire le marché comme un pro</h3>
+      <p>Accès immédiat et gratuit, en vidéo, à ton rythme. Sans carte bancaire.</p>
+      <a href="https://basstrading.fr/p/formation-offerte/?src=blog-premier-payout-prop-firm" class="btn-p">Je la veux →</a>
+    </div>
+    
+  </article>
+</div>
+
+<!-- FAQ -->
+<section class="faq-sec">
+  <div class="sec-center"><div class="sec-label">FAQ</div><h2 class="sec-title">Questions fréquentes</h2></div>
+  <div class="faq-list">
+    <div class="fi"><button class="fq" onclick="tf(this)">Quand demander son premier payout en prop firm ? <span class="fq-icon">+</span></button><div class="fa"><p>Quand trois conditions sont réunies : ton règlement l&#39;autorise (jours minimum, règle de cohérence respectée), ton coussin reste confortable même après le retrait, et tu demandes le plafond autorisé, pas plus. Je laisse d&#39;abord grossir le coussin avant de retirer, puis je retire petit à petit.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">C&#39;est quoi la règle de cohérence (ou de consistance) en prop firm ? <span class="fq-icon">+</span></button><div class="fa"><p>C&#39;est une règle qui limite le poids de ton meilleur jour dans ton profit. Sur un compte financé, le calcul est en général meilleur jour ÷ profit total, sous le seuil de la firme : avec un seuil de 40 %, un meilleur jour de 1 000 $ exige au moins 2 500 $ de profit total (exemple inventé). Exemple lu le 24/10/2026 : 55 % en évaluation, calculés sur l&#39;objectif de profit et non sur le profit total, et 40 % sur un type de compte financé.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Combien de temps faut-il pour valider un challenge de prop firm ? <span class="fq-icon">+</span></button><div class="fa"><p>Ça dépend du marché et de ta méthode, pas d&#39;un calendrier. En live, j&#39;ai répondu « en moyenne peut-être une semaine », mais surtout « je ne me donne pas de délai » : les jours de tendance, ça peut aller super vite ; les jours mous, je trade peu. Vérifie aussi ton règlement : certaines firmes imposent un minimum de jours, d&#39;autres une durée maximale, d&#39;autres rien.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Pourquoi les prop firms plafonnent-elles le premier retrait ? <span class="fq-icon">+</span></button><div class="fa"><p>Pour limiter leur risque sur un trader qu&#39;elles connaissent encore peu, et pour vérifier que le profit est régulier avant de payer davantage. Conséquence pratique : viser beaucoup plus que le plafond ne te paie pas plus tôt et te pousse à prendre plus de risque.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Faut-il retirer tout son profit au premier payout ? <span class="fq-icon">+</span></button><div class="fa"><p>Souvent, tu ne peux pas : le plafond l&#39;en empêche. Et même quand c&#39;est possible, retirer tout réduit ton coussin et rapproche ton compte de son seuil de perte. Je préfère retirer le plafond et garder de l&#39;air pour la suite.</p></div></div>
+  </div>
+</section>
+
+<!-- Related -->
+<section class="related-sec">
+  <div class="sec-center"><div class="sec-label">Continuer la lecture</div><h2 class="sec-title">Articles connexes</h2></div>
+  <div class="related-grid">
+    <a href="/blog/market-profile-guide-complet/" class="related-card"><div class="related-cat">Guide</div><h3>Market Profile : le guide complet pour débutants</h3><p>Value Area, POC, types de journées — tout pour commencer.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/order-flow-trading-france/" class="related-card"><div class="related-cat">Méthode</div><h3>Order Flow Trading : pourquoi personne ne l'enseigne en France</h3><p>Le carnet d'ordres et le flux institutionnel décryptés.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/sierra-chart-configuration/" class="related-card"><div class="related-cat">Tutoriel</div><h3>Sierra Chart : configuration complète</h3><p>Le setup pas à pas pour le Market Profile et le Footprint.</p><span class="related-link">Lire &rarr;</span></a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="ft-top"><div class="ft-logo">BASS</div><div class="ft-cols">
+    <div class="ft-col"><div class="ft-col-title">Programme</div><a href="https://basstrading.fr/#methode">Méthode</a><a href="https://basstrading.fr/#programme">Programme</a><a href="https://basstrading.fr/p/formation-offerte/?src=blog-premier-payout-prop-firm-pied">Formation offerte</a></div>
+    <div class="ft-col"><div class="ft-col-title">Ressources</div><a href="/blog/market-profile-guide-complet/">Market Profile</a><a href="/blog/footprint-chart-trading/">Footprint Chart</a><a href="/blog/order-flow-trading-france/">Order Flow</a></div>
+  </div></div>
+  <div class="ft-bottom"><span>&copy; 2026 BASS — Sébastien Constant</span><div><a href="/mentions-legales/">Mentions légales</a><a href="/confidentialite/">Confidentialité</a><a href="/cgv/">CGV</a><a href="mailto:contact@basstrading.fr">Contact</a></div></div>
+</footer>
+<div class="disclaimer">Le trading comporte des risques de perte en capital. Les performances passées ne préjugent pas des performances futures. Ce site ne constitue pas un conseil en investissement.</div>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+const lenis=new Lenis({duration:1.2,easing:t=>Math.min(1,1.001-Math.pow(2,-10*t))});
+function raf(t){lenis.raf(t);requestAnimationFrame(raf)}requestAnimationFrame(raf);
+lenis.on('scroll',ScrollTrigger.update);gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0);
+const tl=gsap.timeline();
+tl.to('.pre-word span',{y:0,opacity:1,duration:.5,stagger:.1,ease:'power3.out',delay:.3}).to('#preLine',{width:'80px',duration:.7,ease:'power2.inOut'},'<+.2').to('.preloader',{yPercent:-100,duration:.8,ease:'power3.inOut',delay:.4}).set('.preloader',{display:'none'}).to('#nav',{opacity:1,y:0,duration:.5},'<+.1');
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);const h=document.documentElement.scrollHeight-window.innerHeight;document.getElementById('readingProgress').style.width=(window.scrollY/h*100)+'%'});
+const tocLinks=document.querySelectorAll('.toc a');const sections=Array.from(tocLinks).map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+window.addEventListener('scroll',()=>{let c='';sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)c=s.id});tocLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+c)})});
+function tf(b){const i=b.closest('.fi'),a=b.nextElementSibling,o=i.classList.contains('active');document.querySelectorAll('.fi').forEach(x=>{x.classList.remove('active');x.querySelector('.fa').classList.remove('open')});if(!o){i.classList.add('active');a.classList.add('open')}}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();lenis.scrollTo(t,{offset:-60})}})});
+</script>
+<script src="/v.js" defer></script>
+</body>
+</html>
