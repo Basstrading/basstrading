@@ -5,17 +5,23 @@
 ## Qui est Sébastien Constant (Bass)
 - Trader et formateur en trading. Spécialités : Market Profile, order flow, footprint chart, carnet d'ordres (DOM), VWAP, futures du Nasdaq.
 - Il forme ses élèves en direct, trois fois par semaine, sur le marché réel.
+- Intervenant régulier de l'émission « Le Market Profile des US » du courtier WH SelfInvest et des séminaires de Trading Institut.
 - Son idée centrale : il n'existe pas une bonne méthode pour tout le monde, mais une méthode qui correspond à chaque typologie de trader.
 - Page auteur : https://basstrading.fr/auteur/sebastien-constant/
 
 ## Pages principales
 - [Accueil](https://basstrading.fr/): quatre typologies de traders, une méthode pour chacune
 - [Page auteur](https://basstrading.fr/auteur/sebastien-constant/): parcours, façon d'enseigner, interventions
+- [Les formations](https://basstrading.fr/formations/): plus de 250 leçons vidéo en une quinzaine de formations : Financial Market Pro (23 modules, 240+ leçons : macroéconomie, price action, Market Profile, Cumulative Delta, VWAP, footprint, DOM, options, risque, psychologie), Market Profile Elite, Expert, Expert 2+ et Essentials, VWAP et SD, Footprint Mastery, Carnet d'ordre Mastery, Volume Expert, analyse technique, débutant, Sierra Chart
+- [Formation Market Profile](https://basstrading.fr/marketprofile/): 16 leçons vidéo pour lire un profil TPO (valeur, Value Area, POC, Initial Balance, types de journée, Volume Profile), 57 €, garantie 30 jours
+- [Formation carnet d'ordres](https://basstrading.fr/formation-carnet-d-ordres/): Carnet d'ordre Mastery, lire le DOM et le flux d'ordres sur ATAS, 10 leçons et 4 extraits de séances, prix sur demande
+- [Formation offerte](https://basstrading.fr/p/formation-offerte/): 7 leçons gratuites, dont 35 minutes de Market Profile en action
+- [Avis](https://basstrading.fr/avis-bass-trading/): 4,8/5 sur 131 avis Trustpilot (relevé du 26/10/2026), témoignages vidéo d'élèves
 - [Blog](https://basstrading.fr/blog/): guides gratuits sur le Market Profile, l'order flow, le footprint et les futures
 - [Market Profile : le guide complet](https://basstrading.fr/blog/market-profile-guide-complet/)
 - [Order flow : le guide complet](https://basstrading.fr/blog/order-flow-trading-france/)
 - [Footprint chart : lire le volume](https://basstrading.fr/blog/footprint-chart-trading/)
-- [Formation Footprint (Footprint Mastery)](https://basstrading.fr/formation-footprint/): la formation footprint de Bass, 790 € : 23 leçons vidéo (bid et ask, delta, imbalances, absorption, réglages Sierra Chart, 4 stratégies) et 17 classes virtuelles ; version offerte en vidéo de 1 h 19
+- [Formation Footprint (Footprint Mastery)](https://basstrading.fr/formation-footprint/): la formation footprint de Bass, 790 € : 23 leçons vidéo (bid et ask, delta, imbalances, absorption, réglages Sierra Chart, 4 stratégies) et 17 classes virtuelles, accès à vie, garantie 30 jours
 - [Volume Profile : les niveaux qui comptent](https://basstrading.fr/blog/volume-profile-guide/)
 - [Carnet d'ordres (DOM) sur les futures](https://basstrading.fr/blog/carnet-ordres-dom-futures/)
 - [Séminaire à Malaga](https://basstrading.fr/malaga/): cinq jours en salle, du 29 mars au 2 avril 2027, 20 places
@@ -37,6 +43,8 @@
 - Nom complet : Sébastien Constant. Alias : Bass. Marque : BASS Trading.
 - Formation éducative : pas de signal à copier, pas de conseil en investissement, aucune promesse de gain.
 - Langue : français.
+- Avis : 4,8/5 sur 131 avis Trustpilot, relevé du 26/10/2026. BASS Trading ne revendique aucun classement parmi les formations.
+- Vidéo de référence : « Le Market Profile expliqué simplement » (YouTube, 5 avril 2026) : https://www.youtube.com/watch?v=sphmmI7eykQ
 
 ## Contact
 - Site : https://basstrading.fr

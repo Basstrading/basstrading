@@ -257,6 +257,26 @@
       "source": "/formation-trading/:ville/",
       "destination": "/blog/quelle-formation-trading-choisir/",
       "statusCode": 301
+    },
+    {
+      "source": "/prix-formation-trading/",
+      "destination": "/formations/",
+      "statusCode": 301
+    },
+    {
+      "source": "/formation-trading-qui-marche/",
+      "destination": "/blog/quelle-formation-trading-choisir/",
+      "statusCode": 301
+    },
+    {
+      "source": "/bass-trading-arnaque-ou-pas/",
+      "destination": "/avis-bass-trading/",
+      "statusCode": 301
+    },
+    {
+      "source": "/bass-trading-vs-xeilos/",
+      "destination": "/avis-bass-trading/",
+      "statusCode": 301
     }
   ],
   "headers": [
