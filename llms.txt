@@ -12,7 +12,7 @@
 ## Pages principales
 - [Accueil](https://basstrading.fr/): quatre typologies de traders, une méthode pour chacune
 - [Page auteur](https://basstrading.fr/auteur/sebastien-constant/): parcours, façon d'enseigner, interventions
-- [Les formations](https://basstrading.fr/formations/): toutes les formations, et par où commencer
+- [Les formations](https://basstrading.fr/formations/): plus de 250 leçons vidéo en une quinzaine de formations : Financial Market Pro (23 modules, 240+ leçons : macroéconomie, price action, Market Profile, Cumulative Delta, VWAP, footprint, DOM, options, risque, psychologie), Market Profile Elite, Expert, Expert 2+ et Essentials, VWAP et SD, Footprint Mastery, Carnet d'ordre Mastery, Volume Expert, analyse technique, débutant, Sierra Chart
 - [Formation Market Profile](https://basstrading.fr/marketprofile/): 16 leçons vidéo pour lire un profil TPO (valeur, Value Area, POC, Initial Balance, types de journée, Volume Profile), 57 €, garantie 30 jours
 - [Formation carnet d'ordres](https://basstrading.fr/formation-carnet-d-ordres/): Carnet d'ordre Mastery, lire le DOM et le flux d'ordres sur ATAS, 10 leçons et 4 extraits de séances, prix sur demande
 - [Formation offerte](https://basstrading.fr/p/formation-offerte/): 7 leçons gratuites, dont 35 minutes de Market Profile en action
