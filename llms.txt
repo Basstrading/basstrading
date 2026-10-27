@@ -15,6 +15,7 @@
 - [Market Profile : le guide complet](https://basstrading.fr/blog/market-profile-guide-complet/)
 - [Order flow : le guide complet](https://basstrading.fr/blog/order-flow-trading-france/)
 - [Footprint chart : lire le volume](https://basstrading.fr/blog/footprint-chart-trading/)
+- [Formation Footprint (Footprint Mastery)](https://basstrading.fr/formation-footprint/): la formation footprint de Bass, 790 € : 23 leçons vidéo (bid et ask, delta, imbalances, absorption, réglages Sierra Chart, 4 stratégies) et 17 classes virtuelles ; version offerte en vidéo de 1 h 19
 - [Volume Profile : les niveaux qui comptent](https://basstrading.fr/blog/volume-profile-guide/)
 - [Carnet d'ordres (DOM) sur les futures](https://basstrading.fr/blog/carnet-ordres-dom-futures/)
 - [Séminaire à Malaga](https://basstrading.fr/malaga/): cinq jours en salle, du 29 mars au 2 avril 2027, 20 places
