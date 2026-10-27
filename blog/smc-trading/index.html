@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SMC trading : ce qui tient vraiment, vu du carnet d&#39;ordres — BASS Trading</title>
+  <meta name="description" content="SMC trading expliqué : order block, liquidité, FVG, BOS, CHoCH. Ce qui tient, ce qui ne se vérifie pas, et comment le contrôler au carnet d&#39;ordres.">
+  <meta property="og:title" content="SMC trading : ce qui tient vraiment, vu du carnet d&#39;ordres — BASS Trading">
+  <meta property="og:description" content="SMC trading expliqué : order block, liquidité, FVG, BOS, CHoCH. Ce qui tient, ce qui ne se vérifie pas, et comment le contrôler au carnet d&#39;ordres.">
+  <meta property="og:image" content="https://basstrading.fr/blog/smc-trading/blog-smc-trading-1.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://basstrading.fr/blog/smc-trading/blog-smc-trading-1.webp">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://basstrading.fr/blog/smc-trading/">
+  <meta property="og:site_name" content="BASS Trading">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://basstrading.fr/blog/smc-trading/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","@id":"https://basstrading.fr/blog/smc-trading/#article","headline":"SMC trading : ce qui tient vraiment, vu du carnet d'ordres","description":"SMC trading expliqué : order block, liquidité, FVG, BOS, CHoCH. Ce qui tient, ce qui ne se vérifie pas, et comment le contrôler au carnet d'ordres.","datePublished":"2026-10-27","dateModified":"2026-10-27","inLanguage":"fr-FR","image":"https://basstrading.fr/blog/smc-trading/blog-smc-trading-1.webp","mainEntityOfPage":"https://basstrading.fr/blog/smc-trading/","isPartOf":{"@type":"WebSite","@id":"https://basstrading.fr/#website","name":"BASS Trading","url":"https://basstrading.fr/"},"author":{"@type":"Person","@id":"https://basstrading.fr/#sebastien-constant","name":"Sébastien Constant","url":"https://basstrading.fr/auteur/sebastien-constant/"},"publisher":{"@type":"Organization","@id":"https://basstrading.fr/#organisation","name":"BASS Trading","url":"https://basstrading.fr/","logo":{"@type":"ImageObject","url":"https://basstrading.fr/images/logo-basstrading.png","width":512,"height":512}}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://basstrading.fr"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://basstrading.fr/blog/"},{"@type":"ListItem","position":3,"name":"SMC trading","item":"https://basstrading.fr/blog/smc-trading/"}]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"C'est quoi le SMC en trading ?","acceptedAnswer":{"@type":"Answer","text":"Le SMC (Smart Money Concepts) est une méthode de lecture du graphique en bougies qui cherche les traces supposées des grands acteurs : zones de liquidité derrière les plus hauts et les plus bas, order blocks, fair value gaps et cassures de structure (BOS, CHoCH). Elle reprend des idées anciennes de Dow et de Wyckoff, avec un vocabulaire nouveau popularisé sur YouTube et les réseaux."}},{"@type":"Question","name":"Qui a inventé le SMC ?","acceptedAnswer":{"@type":"Answer","text":"Personne en particulier. Liquidité, déséquilibre, zone d'ordres : ce sont des notions de marché que les traders décrivent depuis plus d'un siècle, de Charles Dow à Richard Wyckoff. Le SMC les a regroupées et renommées. Conséquence : chaque vidéaste a ses propres définitions, ce qui rend la méthode difficile à tester sans écrire la sienne."}},{"@type":"Question","name":"Le SMC fonctionne-t-il vraiment ?","acceptedAnswer":{"@type":"Answer","text":"Certaines idées tiennent : les stops s'empilent derrière les niveaux évidents, la structure décrit bien une tendance, les faux mouvements existent. Mais je n'ai trouvé aucune étude indépendante publiée qui chiffre son taux de réussite, et une bougie ne montre ni qui a acheté ni si cet acheteur est encore là. Une zone SMC est une hypothèse à confirmer, par exemple avec le carnet d'ordres."}},{"@type":"Question","name":"Qu'est-ce qu'un order block en trading ?","acceptedAnswer":{"@type":"Answer","text":"Un order block est, dans le SMC, la dernière bougie de couleur opposée avant un mouvement fort qui casse la structure. L'idée est que de gros acteurs y auraient placé des ordres et que le prix y reviendrait. Sur un marché centralisé, le carnet d'ordres et le footprint permettent de vérifier si quelqu'un défend vraiment la zone au moment où le prix y revient."}},{"@type":"Question","name":"C'est quoi un fair value gap (FVG) ?","acceptedAnswer":{"@type":"Answer","text":"Un fair value gap est un vide entre trois bougies : la mèche haute de la première et la mèche basse de la troisième ne se touchent pas, parce que la bougie centrale a bougé très vite. Le SMC considère que le prix revient souvent combler ce vide. Le retour n'est pas garanti : il faut une confirmation, pas seulement le dessin."}},{"@type":"Question","name":"Quelle est la différence entre BOS et CHoCH ?","acceptedAnswer":{"@type":"Answer","text":"Le BOS (break of structure) est la cassure du dernier plus haut dans une tendance haussière, ou du dernier plus bas dans une baisse : la tendance continue. Le CHoCH (change of character) est la première cassure dans le sens opposé : c'est le premier signe d'un retournement possible. Ce sont des noms nouveaux pour la théorie de Dow."}},{"@type":"Question","name":"Peut-on voir la liquidité SMC dans le carnet d'ordres ?","acceptedAnswer":{"@type":"Answer","text":"En partie seulement. Le carnet montre les ordres limites qui attendent, à l'instant T. Les stops, eux, restent invisibles : sur CME Globex, un ordre stop n'entre dans le carnet qu'une fois déclenché. On devine donc où se trouve la liquidité derrière les plus hauts et les plus bas, mais on ne voit son exécution qu'après coup, sur le footprint."}},{"@type":"Question","name":"Les gros acteurs viennent-ils chercher les stops des traders particuliers ?","acceptedAnswer":{"@type":"Answer","text":"Je ne le lis pas comme ça. Un gros acheteur a besoin de vendeurs en face pour remplir sa position. Sous un plus bas évident, les stops déclenchés deviennent des ventes au marché : c'est de la contrepartie disponible, rien de plus. Le mouvement va là où l'échange est possible. D'où l'intérêt de ne pas placer ton stop exactement où tout le monde le place."}}]}
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{--bk:#1D1D1F;--bk2:#111;--bk3:#0A0A0A;--g1:#6E6E73;--g2:#86868B;--g3:#D2D2D7;--g4:#F5F5F7;--wh:#FBFBFD;--pure:#FFF;--green:#00B67A;--blue:#0066FF}
+    html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}
+    body{font-family:'DM Sans',sans-serif;color:var(--bk);background:var(--pure);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+    .preloader{position:fixed;inset:0;background:var(--bk3);z-index:10001;display:flex;align-items:center;justify-content:center}
+    .pre-word{font-family:'Outfit',sans-serif;font-size:clamp(3rem,8vw,5rem);font-weight:900;letter-spacing:16px;text-transform:uppercase;color:var(--pure);overflow:hidden}
+    .pre-word span{display:inline-block;transform:translateY(110%);opacity:0}
+    .pre-line{width:0;height:1px;background:rgba(255,255,255,.3);margin-top:20px}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 48px;display:flex;align-items:center;justify-content:space-between;background:rgba(245,245,247,.85);backdrop-filter:blur(20px) saturate(1.8);border-bottom:1px solid rgba(0,0,0,.04);transition:background .4s}
+    .nav-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase;color:var(--bk)}
+    .nav-links{display:flex;gap:28px;list-style:none}.nav-links a{font-size:.74rem;font-weight:500;letter-spacing:.3px;color:var(--g1);transition:color .3s}.nav-links a:hover{color:var(--bk)}
+    .nav-cta{padding:8px 20px;background:var(--bk);color:var(--pure);border:none;border-radius:980px;font-size:.72rem;font-weight:600;transition:all .3s;cursor:pointer;text-decoration:none;display:inline-block}.nav-cta:hover{background:var(--bk2)}
+    .blog-hero{padding:160px 48px 80px;background:var(--g4);position:relative;overflow:hidden}
+    .blog-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,transparent,var(--g4));pointer-events:none}
+    .blog-hero-inner{max-width:720px;margin:0 auto}
+    .breadcrumb{display:flex;gap:8px;align-items:center;margin-bottom:28px;flex-wrap:wrap}
+    .breadcrumb a,.breadcrumb span{font-size:.68rem;font-weight:500;letter-spacing:.3px;color:var(--g2);transition:color .3s}.breadcrumb a:hover{color:var(--bk)}.breadcrumb .sep{color:var(--g3)}
+    .blog-hero-cat{display:inline-block;padding:5px 14px;border:1px solid rgba(0,102,255,.15);border-radius:980px;font-size:.6rem;font-weight:700;color:var(--blue);letter-spacing:2px;text-transform:uppercase;margin-bottom:20px}
+    .blog-hero-title{font-family:'Outfit',sans-serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:900;line-height:1.05;letter-spacing:-2px;color:var(--bk);margin-bottom:20px}
+    .blog-hero-desc{font-size:.95rem;color:var(--g1);line-height:1.8;max-width:560px;margin-bottom:28px}
+    .blog-meta{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+    .blog-meta-author{display:flex;align-items:center;gap:10px}
+    .blog-meta-avatar{width:36px;height:36px;border-radius:50%;background:var(--bk3);overflow:hidden;flex-shrink:0}.blog-meta-avatar img{width:100%;height:100%;object-fit:cover}
+    .blog-meta-name{font-size:.78rem;font-weight:600;color:var(--bk)}.blog-meta-role{font-size:.65rem;color:var(--g2)}
+    .blog-meta-sep{width:1px;height:24px;background:var(--g3)}
+    .blog-meta-info{font-size:.7rem;color:var(--g2)}.blog-meta-info span{margin-right:16px}
+    .toc{position:sticky;top:90px;background:var(--pure);border:1px solid rgba(0,0,0,.04);border-radius:14px;padding:24px;margin-bottom:32px}
+    .toc-title{font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.5px;color:var(--bk);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+    .toc ol{list-style:none;counter-reset:toc}.toc li{counter-increment:toc}
+    .toc li a{display:flex;align-items:baseline;gap:8px;padding:6px 0;font-size:.76rem;color:var(--g1);transition:color .3s;border-bottom:1px solid rgba(0,0,0,.03)}.toc li a:hover{color:var(--blue)}
+    .toc li a::before{content:counter(toc,decimal-leading-zero);font-family:'Outfit',sans-serif;font-size:.65rem;font-weight:700;color:var(--g3);min-width:18px}
+    .toc li:last-child a{border-bottom:none}.toc li a.active{color:var(--blue);font-weight:600}.toc li a.active::before{color:var(--blue)}
+    .article-wrap{display:grid;grid-template-columns:220px 1fr;gap:40px;max-width:1020px;margin:0 auto;padding:60px 48px 120px}
+    .article-sidebar{position:relative}.article-body{max-width:700px}
+    .article-body h2{font-family:'Outfit',sans-serif;font-size:clamp(1.4rem,2.5vw,1.8rem);font-weight:800;line-height:1.1;letter-spacing:-1px;color:var(--bk);margin:56px 0 16px;padding-top:20px}.article-body h2:first-of-type{margin-top:0}
+    .article-body h3{font-family:'Outfit',sans-serif;font-size:1.05rem;font-weight:700;line-height:1.25;letter-spacing:-.3px;color:var(--bk);margin:36px 0 10px}
+    .article-body p{font-size:.9rem;color:var(--g1);line-height:1.85;margin-bottom:18px}
+    .article-body strong{color:var(--bk);font-weight:600}
+    .article-body ul,.article-body ol{margin:0 0 20px 0;padding-left:20px}
+    .article-body li{font-size:.88rem;color:var(--g1);line-height:1.8;margin-bottom:6px}.article-body li strong{color:var(--bk)}
+    .article-body blockquote{margin:28px 0;padding:20px 24px;background:var(--g4);border-left:3px solid var(--bk);border-radius:0 12px 12px 0;font-size:.88rem;color:var(--g1);line-height:1.8;font-style:italic}
+    .article-body blockquote strong{color:var(--bk);font-style:normal}
+    .article-body hr{border:none;border-top:1px solid var(--g4);margin:48px 0}
+    .info-box{margin:28px 0;padding:24px;background:rgba(0,102,255,.03);border:1px solid rgba(0,102,255,.08);border-radius:14px}
+    .info-box-title{font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:700;color:var(--blue);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+    .info-box p{font-size:.82rem;color:var(--g1);line-height:1.7;margin-bottom:0}
+    .key-concept{margin:32px 0;padding:28px;background:var(--bk3);border-radius:16px;color:var(--pure)}
+    .key-concept-label{font-size:.55rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:10px}
+    .key-concept h4{font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:800;letter-spacing:-.3px;margin-bottom:8px}
+    .key-concept p{font-size:.85rem;color:rgba(255,255,255,.5);line-height:1.8;margin-bottom:0}
+    .compare-table{width:100%;margin:24px 0 28px;border-collapse:collapse;border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,.06)}
+    .compare-table th{background:var(--bk3);color:var(--pure);font-family:'Outfit',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:14px 16px;text-align:left}
+    .compare-table td{padding:12px 16px;font-size:.82rem;color:var(--g1);line-height:1.6;border-bottom:1px solid rgba(0,0,0,.04);background:var(--pure)}
+    .compare-table tr:last-child td{border-bottom:none}.compare-table td:first-child{font-weight:600;color:var(--bk)}
+    .cta-card{margin:48px 0;padding:40px;background:var(--bk3);border-radius:20px;text-align:center;position:relative;overflow:hidden}
+    .cta-card::before{content:'';position:absolute;top:-50%;right:-30%;width:400px;height:400px;background:radial-gradient(circle,rgba(0,102,255,.08) 0%,transparent 70%);pointer-events:none}
+    .cta-card-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:12px}
+    .cta-card h3{font-family:'Outfit',sans-serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:800;color:var(--pure);letter-spacing:-.5px;margin-bottom:8px}
+    .cta-card p{font-size:.85rem;color:rgba(255,255,255,.4);line-height:1.7;max-width:380px;margin:0 auto 24px}
+    .cta-card .btn-p{background:var(--pure);color:var(--bk)}.cta-card .btn-p:hover{box-shadow:0 8px 30px rgba(255,255,255,.15)}
+    .faq-sec{padding:80px 48px 100px;background:var(--g4)}
+    .faq-list{max-width:680px;margin:40px auto 0}.fi{border-bottom:1px solid rgba(0,0,0,.06)}
+    .fq{width:100%;text-align:left;padding:18px 0;background:none;border:none;font-size:.85rem;font-weight:600;font-family:'DM Sans',sans-serif;color:var(--bk);display:flex;justify-content:space-between;align-items:center;cursor:pointer;gap:16px;transition:color .3s}.fq:hover{color:var(--g1)}
+    .fq-icon{width:22px;height:22px;border-radius:50%;background:rgba(0,0,0,.04);display:flex;align-items:center;justify-content:center;font-size:.75rem;transition:all .4s;flex-shrink:0;color:var(--g2)}
+    .fa{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1)}.fa.open{max-height:280px;padding-bottom:14px}
+    .fa p{font-size:.8rem;color:var(--g1);line-height:1.7;margin-bottom:0}.fi.active .fq-icon{background:var(--bk);color:var(--pure);transform:rotate(45deg)}
+    .related-sec{padding:80px 48px;background:var(--pure);border-top:1px solid var(--g4)}
+    .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1060px;margin:40px auto 0}
+    .related-card{display:block;padding:28px;background:var(--g4);border-radius:16px;transition:all .4s;text-decoration:none;color:var(--bk)}
+    .related-card:hover{background:var(--pure);box-shadow:0 8px 30px rgba(0,0,0,.06);transform:translateY(-2px)}
+    .related-cat{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+    .related-card h3{font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:700;line-height:1.3;letter-spacing:-.3px;margin-bottom:8px}
+    .related-card p{font-size:.78rem;color:var(--g1);line-height:1.6;margin-bottom:14px}
+    .related-link{font-size:.72rem;font-weight:600;color:var(--blue);letter-spacing:.3px}
+    .footer{background:var(--bk3);color:var(--pure);padding:56px 48px 28px}
+    .ft-top{display:flex;justify-content:space-between;align-items:start;margin-bottom:48px;flex-wrap:wrap;gap:32px}
+    .ft-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase}
+    .ft-cols{display:flex;gap:80px}
+    .ft-col-title{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:12px}
+    .ft-col a{display:block;font-size:.78rem;color:rgba(255,255,255,.5);margin-bottom:8px;transition:color .3s}.ft-col a:hover{color:var(--pure)}
+    .ft-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:20px;display:flex;justify-content:space-between;align-items:center;font-size:.6rem;color:rgba(255,255,255,.2)}
+    .ft-bottom a{color:rgba(255,255,255,.2);transition:color .3s;margin-left:20px}.ft-bottom a:hover{color:rgba(255,255,255,.5)}
+    .disclaimer{padding:12px 48px;background:var(--bk3);font-size:.58rem;color:rgba(255,255,255,.12);text-align:center;line-height:1.6;border-top:1px solid rgba(255,255,255,.03)}
+    .sec-center{text-align:center;max-width:680px;margin:0 auto}
+    .sec-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--g2);margin-bottom:10px}
+    .sec-title{font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;line-height:1.05;letter-spacing:-1.5px;color:var(--bk);margin-bottom:16px}
+    .btn-p{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--bk);color:var(--pure);border-radius:980px;font-size:.85rem;font-weight:600;transition:all .3s;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;text-decoration:none}
+    .btn-p:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(0,0,0,.1)}
+    .btn-p svg{width:13px;height:13px;transition:transform .3s}.btn-p:hover svg{transform:translateX(3px)}
+    .reading-progress{position:fixed;top:0;left:0;height:2px;background:var(--blue);z-index:9999;width:0;transition:width .1s linear}
+    @media(max-width:900px){.nav{padding:14px 20px}.nav-links{display:none}.blog-hero{padding:120px 20px 60px}.article-wrap{grid-template-columns:1fr;padding:40px 20px 80px}.article-sidebar{display:none}.related-grid{grid-template-columns:1fr}.related-sec,.faq-sec{padding:60px 20px}.ft-cols{flex-direction:column;gap:28px}.footer{padding:40px 20px 20px}.disclaimer{padding:10px 16px}.cta-card{padding:28px 20px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  .article-body a{color:var(--blue);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;font-weight:500}.article-body a:hover{text-decoration-thickness:2px}
+</style>
+</head>
+<body>
+
+<div class="preloader" id="preloader"><div style="text-align:center"><div class="pre-word"><span>B</span><span>A</span><span>S</span><span>S</span></div><div class="pre-line" id="preLine"></div></div></div>
+<div class="reading-progress" id="readingProgress"></div>
+
+<nav class="nav" id="nav">
+  <a href="https://basstrading.fr" class="nav-logo">BASS</a>
+  <ul class="nav-links">
+    <li><a href="https://basstrading.fr/#methode">Méthode</a></li>
+    <li><a href="https://basstrading.fr#resultats">Résultats</a></li>
+    <li><a href="https://basstrading.fr#avis">Avis</a></li>
+    <li><a href="https://basstrading.fr#faq">FAQ</a></li>
+    <li><a href="/formations/">Formations</a></li>
+    <li><a href="https://basstrading.fr/blog/">Blog</a></li>
+  </ul>
+  <a href="https://basstrading.fr/p/formation-offerte/?src=blog-smc-trading-menu" class="nav-cta">Formation offerte</a>
+</nav>
+
+<section class="blog-hero">
+  <div class="blog-hero-inner">
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <a href="https://basstrading.fr">Accueil</a><span class="sep">/</span>
+      <a href="https://basstrading.fr/blog/">Blog</a><span class="sep">/</span>
+      <span>SMC trading</span>
+    </nav>
+    <div class="blog-hero-cat">Order Flow</div>
+    <h1 class="blog-hero-title">SMC trading : ce qui tient vraiment, vu du carnet d&#39;ordres</h1>
+    <p class="blog-hero-desc">Le SMC promet de lire les traces des « institutionnels » sur un simple graphique en bougies. Une partie tient : la liquidité derrière les plus hauts, les déséquilibres, la structure. Une autre ne se vérifie pas sur une bougie. Je te montre ce que valent ces concepts et comment les contrôler avec le carnet d&#39;ordres et le footprint d&#39;un marché centralisé.</p>
+    <div class="blog-meta">
+      <div class="blog-meta-author">
+        <div class="blog-meta-avatar"><img src="../../images/bass-presenting.jpg" alt="Sébastien Constant" loading="lazy"></div>
+        <div><div class="blog-meta-name"><a href="/auteur/sebastien-constant/" rel="author" style="color:inherit;text-decoration:none">Sébastien Constant</a></div><div class="blog-meta-role">Trader & Formateur Order Flow</div></div>
+      </div>
+      <div class="blog-meta-sep"></div>
+      <div class="blog-meta-info"><span>Octobre 2026</span><span>15 min de lecture</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="article-wrap">
+  <aside class="article-sidebar">
+    <div class="toc">
+      <div class="toc-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/></svg> Sommaire</div>
+      <ol>
+        <li><a href="#c-est-quoi-le-smc-smart-money-concepts-e">C&#39;est quoi le SMC (Smart Money Concepts) en trading ?</a></li>
+        <li><a href="#d-ou-vient-le-smc-et-pourquoi-un-tel-suc">D&#39;où vient le SMC, et pourquoi un tel succès ?</a></li>
+        <li><a href="#order-block-liquidite-bos-choch-fvg-que-">Order block, liquidité, BOS, CHoCH, FVG : que veulent dire ces mots ?</a></li>
+        <li><a href="#smc-price-action-wyckoff-order-flow-quel">SMC, price action, Wyckoff, order flow : quelle différence ?</a></li>
+        <li><a href="#comment-les-institutions-passent-elles-v">Comment les institutions passent-elles vraiment leurs ordres ?</a></li>
+        <li><a href="#que-montre-le-carnet-d-ordres-qu-un-orde">Que montre le carnet d&#39;ordres qu&#39;un order block ne montre pas ?</a></li>
+        <li><a href="#qu-est-ce-qui-tient-dans-le-smc-et-qu-es">Qu&#39;est-ce qui tient dans le SMC, et qu&#39;est-ce qui ne se vérifie pas ?</a></li>
+        <li><a href="#le-smc-fonctionne-t-il-vraiment-quel-tau">Le SMC fonctionne-t-il vraiment ? Quel taux de réussite ?</a></li>
+        <li><a href="#comment-verifier-une-zone-smc-avec-l-ord">Comment vérifier une zone SMC avec l&#39;order flow, étape par étape ?</a></li>
+        <li><a href="#quelles-erreurs-font-les-traders-smc">Quelles erreurs font les traders SMC ?</a></li>
+        <li><a href="#debutant-ou-confirme-qui-peut-utiliser-l">Débutant ou confirmé : qui peut utiliser le SMC ?</a></li>
+        <li><a href="#ce-qu-il-faut-retenir-et-ce-que-tu-fais-">Ce qu&#39;il faut retenir, et ce que tu fais ce soir</a></li>
+      </ol>
+    </div>
+  </aside>
+
+  <article class="article-body">
+    <h2 id="c-est-quoi-le-smc-smart-money-concepts-e">C&#39;est quoi le SMC (Smart Money Concepts) en trading ?</h2>
+    <p><b>Le SMC (Smart Money Concepts) est une façon de lire un graphique en bougies qui cherche les traces supposées des grands acteurs : zones de liquidité, order blocks, déséquilibres de prix (FVG) et cassures de structure (BOS, CHoCH).</b></p>
+<p>Tu as vu passer ces mots partout : order block, FVG, liquidity grab, CHoCH. On dit aussi « Smart Money Concept » au singulier, c&#39;est la même chose. Le SMC permet, en théorie, de comprendre le comportement des gros investisseurs (banques, fonds et autres acteurs financiers) à partir du seul prix. Et tu te demandes si c&#39;est une vraie stratégie ou un habillage de l&#39;analyse technique classique.</p>
+<p>La réponse courte : <b>le SMC a raison sur le constat de départ, mais il le lit avec le mauvais instrument.</b> Oui, les grands acteurs ont besoin de liquidité et la cherchent là où sont les ordres. Non, une bougie ne te dit pas qui a acheté, ni si cette personne est encore là.</p>
+<h3>Ce que tu sauras faire à la fin</h3>
+<ul><li>parler le vocabulaire SMC sans te perdre ;</li><li>séparer ce qui tient de ce qui reste une hypothèse ;</li><li>contrôler une zone SMC avec le carnet d&#39;ordres et le footprint, sur un marché où tout le volume passe par une seule bourse.</li></ul>
+<p>Cet article s&#39;appuie sur deux de mes vidéos qui répondent au fond du sujet : <a href="https://www.youtube.com/watch?v=R4Mu52hCJTg">le carnet d&#39;ordres expliqué comme personne ne te l&#39;a jamais montré</a> (intégrée sur cette page) et <a href="https://www.youtube.com/watch?v=jzriJvMtGcA&amp;t=218s">ma vidéo sur la VWAP et la façon dont travaillent les institutionnels</a>.</p>
+<aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p><b>Avertissement</b> : le trading de contrats à terme comporte un risque élevé de perte, pouvant dépasser la mise initiale. Ce contenu est éducatif et ne constitue pas un conseil en investissement.</p></aside>
+<p>Avant de juger la méthode, il faut savoir d&#39;où viennent ses idées : elles ont plus de cent ans.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/smc-trading/blog-smc-trading-1.webp" alt="Schéma de l&#39;exécution institutionnelle : un gros ordre découpé en petits ordres et étalé sur la journée selon la VWAP" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Les grands acteurs découpent et étalent leurs ordres : une seule bougie ne peut donc pas montrer leur position.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="d-ou-vient-le-smc-et-pourquoi-un-tel-suc">D&#39;où vient le SMC, et pourquoi un tel succès ?</h2>
+    <p>Le SMC n&#39;a pas d&#39;inventeur. Liquidité, déséquilibre, zone où de gros ordres ont été exécutés : ce sont des notions de marché que les traders décrivent depuis plus d&#39;un siècle avec d&#39;autres mots. Le SMC les a regroupées, renommées et popularisées sur YouTube, Instagram et TikTok.</p>
+<h3>La structure, déjà chez Charles Dow</h3>
+<p>À la fin du XIXe siècle, Charles Dow décrit une tendance haussière comme une suite de plus hauts et de plus bas de plus en plus hauts. C&#39;est exactement ce que le SMC appelle la « structure ». <b>Sur le fond, le BOS, c&#39;est la théorie de Dow avec un sigle.</b></p>
+<h3>Les faux mouvements, déjà chez Richard Wyckoff</h3>
+<p>Au début du XXe siècle, Richard Wyckoff décrit des phases d&#39;accumulation et de distribution, et des mouvements trompeurs au bord d&#39;un range : le « spring » sous un support, l&#39;« upthrust » au-dessus d&#39;une résistance. Le « liquidity grab » du SMC reprend cette observation : le prix passe sous un plus bas évident, les ordres qui attendaient là sont exécutés, puis il repart.</p>
+<h3>Un vocabulaire qui change d&#39;une chaîne à l&#39;autre</h3>
+<p>Comme personne ne possède ces notions, chaque vidéaste les redéfinit : un order block au corps de bougie chez l&#39;un, à la mèche chez l&#39;autre, avec un FVG obligatoire chez un troisième. <b>Une règle qui change selon la personne qui l&#39;explique ne se teste pas proprement.</b> Avant de juger si « ça marche », écris ta propre définition.</p>
+<h3>Pourquoi il est devenu si populaire</h3>
+<ul><li>Le récit est séduisant : il y aurait des traces cachées des « gros » à décoder.</li><li>Il met un nom sur un vécu commun : le stop touché juste avant que le prix reparte dans ton sens.</li><li>Il suffit d&#39;un graphique gratuit, sans abonnement de données.</li><li>Les rectangles se dessinent après coup sur n&#39;importe quel historique, et ils ont l&#39;air de marcher.</li></ul>
+<p>Ce dernier point est le plus important, j&#39;y reviens plus bas. D&#39;abord, les mots que tu croises dans chaque vidéo.</p>
+
+    <hr>
+
+    <h2 id="order-block-liquidite-bos-choch-fvg-que-">Order block, liquidité, BOS, CHoCH, FVG : que veulent dire ces mots ?</h2>
+    <p>Voici les définitions les plus courantes. Les formateurs ne sont pas tous d&#39;accord entre eux, ce qui est déjà une information.</p>
+<h3>La liquidité (buy-side et sell-side)</h3>
+<p>Dans le SMC, la « liquidité » désigne les ordres qui attendent au-dessus des plus hauts évidents (buy-side liquidity : stops des vendeurs, achats sur cassure) et sous les plus bas évidents (sell-side liquidity : stops des acheteurs). Les « equal highs », deux sommets au même prix, sont vus comme une zone où beaucoup d&#39;ordres s&#39;accumulent.</p>
+<p><b>C&#39;est juste, à condition de le lire comme de la contrepartie, pas comme une chasse.</b> Un stop déclenché devient un ordre au marché. Un gros acheteur a besoin de vendeurs en face : les ventes déclenchées sous un plus bas sont précisément cette contrepartie. Là où les ordres s&#39;empilent, il y a de quoi échanger, c&#39;est tout.</p>
+<h3>L&#39;order block</h3>
+<p>C&#39;est la dernière bougie de couleur opposée avant un mouvement fort qui casse la structure, par exemple la dernière bougie rouge avant une grosse poussée haussière. L&#39;idée : de gros acteurs y auraient placé leurs ordres et le prix y reviendrait. En pratique, c&#39;est une zone d&#39;offre ou de demande avec une règle de tracé plus stricte.</p>
+<h3>Le FVG (fair value gap) ou imbalance</h3>
+<p>Un vide entre trois bougies : la mèche haute de la première et la mèche basse de la troisième ne se touchent pas, parce que la bougie du milieu est montée trop vite. Le SMC considère que le prix revient souvent « combler » ce vide.</p>
+<p>Attention : en order flow, un <a href="https://basstrading.fr/blog/imbalance-footprint/">imbalance sur le footprint</a> est autre chose, un déséquilibre mesuré entre volumes acheteurs et vendeurs à des prix voisins. Même mot, deux réalités.</p>
+<h3>BOS et CHoCH</h3>
+<ul><li><b>BOS (break of structure)</b> : le prix casse le dernier plus haut d&#39;une hausse (ou le dernier plus bas d&#39;une baisse). La tendance continue.</li><li><b>CHoCH (change of character)</b> : la première cassure dans le sens opposé. C&#39;est le premier signe d&#39;un possible retournement.</li></ul>
+<h3>Les autres mots que tu croiseras</h3>
+<ul><li><b>Premium et discount</b> : au-dessus du milieu d&#39;un mouvement c&#39;est « cher », en dessous c&#39;est « bon marché ».</li><li><b>Zone de retracement</b> : souvent les niveaux de Fibonacci, autour de 62 à 79 %.</li><li><b>Fenêtres horaires</b> : l&#39;ouverture de Londres ou de New York, là où le volume arrive.</li></ul>
+<h3>Comment identifier les zones clés en SMC</h3>
+<p>Les stratégies SMC suivent presque toutes le même ordre : tendance sur une vue large, liquidité évidente marquée, attente de sa prise, CHoCH, puis repérage des order blocks zones par zones et des FVG qui ont lancé ce CHoCH. Cette chaîne permet de retenir peu de zones, et c&#39;est sa qualité. <b>Son maillon faible : aucune de ces décisions ne s&#39;appuie sur le volume réellement échangé.</b></p>
+<aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p><b>À retenir</b></p>
+<ul><li>Liquidité SMC = les ordres derrière les extrêmes évidents, donc de la contrepartie disponible.</li><li>Order block et FVG sont des zones dessinées à partir des bougies.</li><li>BOS = continuation, CHoCH = premier signe de retournement.</li></ul></aside>
+<p>En quoi tout cela diffère-t-il des autres façons de lire le marché ?</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/smc-trading/blog-smc-trading-2.webp" alt="Schéma des concepts SMC : liquidité, order block, FVG, BOS et CHoCH avec leur définition courte" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Cinq mots à connaître avant de juger le SMC : tous se dessinent à partir des bougies, aucun ne mesure le volume échangé.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="smc-price-action-wyckoff-order-flow-quel">SMC, price action, Wyckoff, order flow : quelle différence ?</h2>
+    <p>Les quatre regardent le même marché, mais pas avec le même instrument. <b>Le SMC raconte une intention à partir des bougies ; l&#39;order flow mesure ce qui s&#39;échange réellement à chaque prix.</b></p>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Méthode</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Ce qu&#39;elle lit</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Ce qu&#39;elle ne voit pas</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Price action</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Bougies, niveaux</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Qui achète, qui vend</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">SMC</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Bougies, structure, zones</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Le volume réel par prix</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Wyckoff</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Phases, volume total</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Le détail à chaque prix</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Order flow</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Carnet, footprint, delta</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Les stops avant déclenchement</td></tr></tbody></table></div>
+<h3>Face au price action</h3>
+<p>Le price action dit « le prix a rejeté ce niveau ». Le SMC ajoute un récit : « de gros acteurs ont acheté ici et reviendront ». Le graphique est le même, seule l&#39;histoire change. Et une histoire ne se vérifie pas avec le graphique qui l&#39;a inspirée.</p>
+<h3>Face à Wyckoff</h3>
+<p>Wyckoff travaillait déjà avec le volume, mais le volume total de la barre : il voyait qu&#39;une barre avait beaucoup échangé, pas à quel prix ni de quel côté. L&#39;order flow ouvre cette barre.</p>
+<p>Si tu hésites encore entre les grandes familles de méthodes, je les compare dans mon article sur <a href="https://basstrading.fr/blog/types-trading-differences/">les types de trading et leurs différences</a>.</p>
+<p>Alors, comment une banque ou un fonds achète-t-il vraiment une grosse quantité ?</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/smc-trading/blog-smc-trading-3.webp" alt="Comparatif SMC, price action, Wyckoff et order flow : ce que chaque méthode lit et ce qu&#39;elle ne voit pas" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Même marché, quatre instruments : seul l&#39;order flow mesure ce qui s&#39;échange réellement à chaque prix.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="comment-les-institutions-passent-elles-v">Comment les institutions passent-elles vraiment leurs ordres ?</h2>
+    <p>Pas comme un trader particulier qui clique sur un niveau. <b>Une institution financière découpe son ordre en milliers de petits morceaux et l&#39;étale dans le temps, pour ne pas faire bouger le prix contre elle.</b></p>
+<h3>Le découpage et la VWAP</h3>
+<p>Je l&#39;explique dans ma vidéo sur les institutionnels :</p>
+<p>« Imagine que tu dois acheter 100 millions d&#39;actions. Si tu balances ça d&#39;un coup, tu fais exploser le prix. Du coup, les banques, elles découpent ton ordre et l&#39;étalent en suivant le volume du marché. » (<a href="https://www.youtube.com/watch?v=jzriJvMtGcA&amp;t=218s">ma vidéo sur la VWAP, à 3 min 41</a>)</p>
+<p>Et l&#39;opérateur qui exécute cet ordre est jugé sur un chiffre : « Quand ton boss check le rapport, il ne regarde pas si tu as fait un beau dessin sur ton chart. Il regarde ton écart à la VWAP. » (<a href="https://www.youtube.com/watch?v=jzriJvMtGcA&amp;t=229s">à 3 min 52</a>). C&#39;est pour ça que la <a href="https://basstrading.fr/blog/vwap-trading/">VWAP en trading</a> compte autant pour moi : c&#39;est la référence de ceux qui exécutent les gros volumes.</p>
+<h3>Pas un prix, une zone et une durée</h3>
+<p>Dans ma vidéo sur le carnet, je le dis autrement : « Un professionnel, lui, peut avoir des centaines, voire des milliers de lots à passer. Et donc, il ne va pas forcément les exécuter sur un seul prix. » (<a href="https://www.youtube.com/watch?v=R4Mu52hCJTg&amp;t=515s">le carnet d&#39;ordres expliqué, à 8 min 38</a>)</p>
+<h3>La contrepartie, pas la chasse</h3>
+<p>Pour acheter des milliers de lots, il faut des milliers de lots vendus en face. Ce gros acheteur travaille donc là où il y a des vendeurs : sous un plus bas évident, où les stops des acheteurs deviennent des ventes au marché. <b>Le mouvement sous le plus bas n&#39;est pas un piège tendu contre toi, c&#39;est l&#39;endroit où l&#39;échange est possible.</b> Et comme les traders particuliers placent leurs stops aux mêmes endroits, cette contrepartie est facile à trouver.</p>
+<h3>Ce que ça implique pour l&#39;order block</h3>
+<p>Un gros acteur qui n&#39;a pas fini d&#39;acheter peut défendre une zone : l&#39;idée n&#39;est pas absurde. Mais deux choses ne collent pas.</p>
+<ul><li><b>Une bougie ne dit pas qui a acheté.</b> Elle donne quatre prix : ouverture, plus haut, plus bas, clôture. Ni le volume à chaque prix, ni qui était agressif.</li><li><b>Une bougie ne dit pas si l&#39;acheteur est encore là.</b> Il a pu finir son ordre dans la bougie elle-même et être parti depuis longtemps.</li></ul>
+<p>Si la bougie ne le montre pas, qu&#39;est-ce qui le montre ?</p>
+
+    <hr>
+
+    <h2 id="que-montre-le-carnet-d-ordres-qu-un-orde">Que montre le carnet d&#39;ordres qu&#39;un order block ne montre pas ?</h2>
+    <p>Le carnet montre l&#39;instant T : qui attend à quel prix, maintenant. Un order block montre le passé, tracé à la main. <b>C&#39;est la différence centrale de cet article.</b></p>
+<h3>Il faut un marché centralisé</h3>
+<p>Sur les futures du CME, comme le Nasdaq, tous les ordres passent par une seule bourse. Comme je le dis dans ma vidéo, « à partir du moment où c&#39;est centralisé, on va avoir accès à tout ce qui se passe en réalité » (<a href="https://www.youtube.com/watch?v=R4Mu52hCJTg&amp;t=130s">à 2 min 13</a>). Sur le forex au comptant, il n&#39;y a pas de carnet central : chaque courtier montre le sien. C&#39;est une des raisons pour lesquelles je travaille les <a href="https://basstrading.fr/blog/nasdaq-futures-nq-mnq/">futures du Nasdaq, NQ et MNQ</a>.</p>
+<h3>Un support existe parce que quelqu&#39;un bloque le prix</h3>
+<p>C&#39;est le passage de ma vidéo que je ferais lire à tout trader SMC :</p>
+<p>« Les supports ils ne sont pas créés par hasard ils sont créés parce que vous avez sur une ligne de prix un ou des acheteurs qui bloquent tout simplement le prix. » (<a href="https://www.youtube.com/watch?v=R4Mu52hCJTg&amp;t=355s">le carnet d&#39;ordres expliqué, à 6 min 02</a>)</p>
+<p>Et juste après, la question que l&#39;order block ne peut pas trancher :</p>
+<p>« Ils étaient là dans le passé mais est-ce que là à l&#39;instant T ils sont encore là vous n&#39;en savez rien avec un carnet vous le voyez. » (<a href="https://www.youtube.com/watch?v=R4Mu52hCJTg&amp;t=398s">à 6 min 44</a>)</p>
+<h3>Ce que le carnet et le footprint permettent de voir</h3>
+<ul><li><b>L&#39;absorption</b> : dans la vidéo, je la décris comme « des vendeurs plus gros que les acheteurs et on voit des acheteurs agressifs qui agressent les vendeurs avec un prix qui ne monte pas » (<a href="https://www.youtube.com/watch?v=R4Mu52hCJTg&amp;t=2135s">à 35 min 39</a>). C&#39;est la défense réelle d&#39;une zone, mesurée et non supposée. Je la détaille dans mon article sur <a href="https://basstrading.fr/blog/absorption-order-flow/">l&#39;absorption en order flow</a>.</li><li><b>L&#39;iceberg</b> : un ordre affiché petit qui se recharge chaque fois qu&#39;on le consomme (« on appelle ça reloader », dit la vidéo).</li><li><b>Le volume réel à chaque prix</b> : le <a href="https://basstrading.fr/blog/footprint-chart-trading/">footprint chart</a> ouvre la bougie, côté acheteurs et côté vendeurs.</li></ul>
+<h3>Ce que même le carnet ne montre pas</h3>
+<p>Les stops. Sur CME Globex, un ordre stop accepté « does not immediately go on the book » : il n&#39;entre dans le carnet qu&#39;une fois déclenché (<a href="https://cmegroupclientsite.atlassian.net/wiki/spaces/EPICSANDBOX/pages/457087412/Order+Types+for+Futures+and+Options">CME Group, Order Types for Futures and Options</a>). <b>La « liquidité » SMC derrière les plus hauts est donc une déduction juste, mais invisible à l&#39;avance, même pour un professionnel équipé.</b> Tu vois son exécution, après.</p>
+<h3>Le carnet peut aussi tromper</h3>
+<p>Je le dis clairement dans la vidéo : « les gros opérateurs peuvent mettre un ordre pour attirer les gens » (<a href="https://www.youtube.com/watch?v=R4Mu52hCJTg&amp;t=2672s">à 44 min 36</a>). C&#39;est le spoofing, et il est interdit. La CFTC le définit comme le fait de placer un ordre avec l&#39;intention de l&#39;annuler avant son exécution, et cite parmi ses formes la création d&#39;une « fausse profondeur de marché » (<a href="https://www.cftc.gov/LawRegulation/FederalRegister/FinalRules/2013-12365.html">CFTC, guidance du 20/05/2013</a>). En Europe, le règlement MAR l&#39;interdit aussi (<a href="https://eur-lex.europa.eu/eli/reg/2014/596/oj">règlement (UE) n° 596/2014, articles 12 et 15</a>).</p>
+<p>J&#39;ajoute dans la vidéo qu&#39;il est « beaucoup plus difficile d&#39;avoir du fake sur le ZN parce qu&#39;il est lourd que sur le NQ » : le carnet du Nasdaq est léger, il se lit avec prudence.</p>
+<p>Pour la lecture elle-même, mon guide du <a href="https://basstrading.fr/blog/carnet-ordres-dom-futures/">carnet d&#39;ordres et du DOM des futures</a> reprend tout depuis le début, et la lecture du flux des transactions en direct est dans mon article sur le <a href="https://basstrading.fr/blog/tape-reading-flux-ordres/">tape reading</a>.</p>
+<aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p><b>À retenir</b></p>
+<ul><li>Un order block montre le passé ; le carnet montre l&#39;instant T.</li><li>Absorption et iceberg montrent une vraie défense de zone.</li><li>Les stops restent invisibles, et le carnet peut être trompé : il se lit, il ne se croit pas sur parole.</li></ul></aside>
+<p>Avec ces outils en tête, on peut faire le tri dans le SMC.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/smc-trading/blog-smc-trading-4.webp" alt="Règle de lecture : une zone tracée montre le passé, le carnet d&#39;ordres montre l&#39;instant T" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Un acheteur présent hier n&#39;est peut-être plus là aujourd&#39;hui : seul le carnet d&#39;un marché centralisé le montre au retour du prix.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="qu-est-ce-qui-tient-dans-le-smc-et-qu-es">Qu&#39;est-ce qui tient dans le SMC, et qu&#39;est-ce qui ne se vérifie pas ?</h2>
+    <p>Je ne jette pas le SMC : <b>la liquidité, la structure et les faux mouvements sont des idées justes. Ce qui ne se vérifie pas sur une bougie, c&#39;est l&#39;auteur de l&#39;ordre, son intention et sa présence actuelle.</b></p>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Concept SMC</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Ce qui tient</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Ce qui manque</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Liquidité</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Ordres derrière les extrêmes</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Invisible à l&#39;avance</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Order block</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Zone parfois défendue</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Défense non prouvée</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">FVG</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Mouvement rapide réel</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Retour non garanti</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">BOS / CHoCH</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Structure de Dow</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Seuil subjectif</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Faux mouvement</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Sortie puis réintégration</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Intention supposée</td></tr></tbody></table></div>
+<h3>Ce qui tient, preuve à l&#39;appui</h3>
+<p>Une étude de la CFTC sur les ordres stop dans plusieurs futures du CME (Fett et McPhail, 2017) observe qu&#39;ils sont exécutés plus souvent les jours volatils et qu&#39;ils alimentent le mouvement dans son sens (<a href="https://www.cftc.gov/node/248396">CFTC, Stop Orders in Select Futures Markets</a>). La liquidité derrière les niveaux évidents est donc une mécanique réelle. Les faux mouvements, un passage au-delà d&#39;un plus haut suivi d&#39;une réintégration, je les lis tous les jours sur le footprint.</p>
+<h3>Ce qui ne se lit pas sur une bougie</h3>
+<ul><li><b>L&#39;auteur</b> : « les institutions » ne signent pas leurs ordres. Une grosse bougie peut venir d&#39;une cascade de stops de particuliers.</li><li><b>L&#39;intention</b> : voir un plan derrière chaque mèche, c&#39;est prêter une volonté à un mouvement que la contrepartie explique seule.</li><li><b>La présence actuelle</b> : l&#39;acheteur de l&#39;order block est peut-être parti depuis des heures.</li></ul>
+<h3>Le piège du dessin après coup</h3>
+<p>Sur un historique, il est très facile de trouver l&#39;order block qui a tenu. On oublie ceux qui ont été traversés sans réaction.</p>
+<p>Comme je le dis dans ma vidéo sur le carnet, un niveau important, « c&#39;est pas un support ou une résistance que vous avez tracé à la main mais plutôt quelque chose de concret », comme un strike d&#39;options ou une VAH (<a href="https://www.youtube.com/watch?v=R4Mu52hCJTg&amp;t=2565s">à 42 min 48</a>). <b>Concret veut dire : le même pour tout le monde, mesurable, pas redessiné.</b></p>
+<p>Reste la question que tout le monde pose : est-ce que ça marche, chiffres à l&#39;appui ?</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/smc-trading/blog-smc-trading-5.webp" alt="Tableau du tri SMC : ce qui ne se vérifie pas sur un graphique pour la liquidité, l&#39;order block, le FVG et la structure" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Le SMC a raison sur la liquidité et la structure ; l&#39;auteur, l&#39;intention et la présence actuelle ne se lisent pas sur une bougie.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="le-smc-fonctionne-t-il-vraiment-quel-tau">Le SMC fonctionne-t-il vraiment ? Quel taux de réussite ?</h2>
+    <p><b>Je n&#39;ai trouvé aucune étude indépendante et publiée qui mesure le taux de réussite du SMC.</b> Les chiffres qui circulent (« 70 % de réussite », « 80 % de win rate ») viennent de vidéos, de captures ou de backtests faits par ceux qui vendent ces stratégies, sans protocole public.</p>
+<h3>Pourquoi c&#39;est si dur à mesurer</h3>
+<ul><li>Les définitions changent d&#39;un formateur à l&#39;autre : on ne teste pas la même chose.</li><li>La plupart des règles laissent une part de jugement (« un order block valide », « un vrai CHoCH »).</li><li>Le dessin après coup gonfle les résultats.</li></ul>
+<h3>Le taux de réussite ne suffit pas</h3>
+<p>Même un taux élevé ne dit rien si les pertes sont grandes et les gains petits. Ce qui compte, c&#39;est le rapport entre ce que tu risques et ce que tu vises, et la taille de ta position. Je l&#39;explique dans mon article sur <a href="https://basstrading.fr/blog/combien-risquer-par-trade/">combien risquer par trade</a>.</p>
+<h3>Le chiffre officiel qui devrait te calmer</h3>
+<p>Beaucoup de traders SMC débutent sur le forex et l&#39;or en CFD. L&#39;ESMA, le régulateur européen, a constaté qu&#39;entre 74 % et 89 % des comptes de particuliers perdent de l&#39;argent sur les CFD (<a href="https://www.esma.europa.eu/node/84933">ESMA, communiqué du 27/03/2018</a>). Ce chiffre ne juge pas le SMC en particulier ; il rappelle que la stratégie compte moins que le produit, le levier et la gestion du risque.</p>
+<h3>Alors, ça marche ou pas ?</h3>
+<p>La question est mal posée. Comme je le dis dans ma vidéo, « il n&#39;y a jamais de certitude dans les marchés » (<a href="https://www.youtube.com/watch?v=R4Mu52hCJTg&amp;t=205s">à 3 min 28</a>). <b>Une zone SMC est une hypothèse. Elle devient intéressante quand quelque chose de mesurable la confirme.</b></p>
+<p>Méfie-toi de toute offre qui affiche un taux de réussite sans protocole : je liste les signaux d&#39;alerte dans mon article sur les <a href="https://basstrading.fr/blog/arnaque-trading/">arnaques au trading</a>.</p>
+<p>Concrètement, comment confirmer ou infirmer cette hypothèse ?</p>
+
+    <hr>
+
+    <h2 id="comment-verifier-une-zone-smc-avec-l-ord">Comment vérifier une zone SMC avec l&#39;order flow, étape par étape ?</h2>
+    <p>Si tu utilises déjà le SMC, tu n&#39;as pas besoin de tout jeter. Garde ta carte et ajoute une vérification. Voici comment je ferais, sur un future du CME.</p>
+<h3>Étape 1 : préparer la zone avant la séance</h3>
+<p>Trace ta zone SMC (order block, FVG, equal highs) avant l&#39;ouverture, pas pendant. Ajoute les niveaux concrets du jour : plus haut et plus bas de la veille, VWAP, zone de valeur. <b>Une zone SMC qui tombe sur un niveau concret mérite plus d&#39;attention qu&#39;une zone isolée.</b></p>
+<h3>Étape 2 : regarder qui arrive au contact</h3>
+<p>Quand le prix touche la zone, ouvre le carnet et le footprint. La question n&#39;est plus « est-ce un order block ? », mais « quelqu&#39;un bloque-t-il le prix, maintenant ? ».</p>
+<h3>Étape 3 : chercher une preuve de défense</h3>
+<ul><li>de l&#39;absorption : des vendeurs agressifs frappent et le prix ne descend plus ;</li><li>un ordre qui se recharge au même prix ;</li><li>un <a href="https://basstrading.fr/blog/delta-footprint-trading/">delta</a> qui s&#39;inverse, ou un <a href="https://basstrading.fr/blog/cvd-cumulative-volume-delta/">CVD (cumulative volume delta)</a> qui ne confirme plus le nouvel extrême.</li></ul>
+<p>J&#39;exige au moins deux signaux qui convergent avant de prendre une décision. Un seul, c&#39;est trop fragile.</p>
+<h3>Étape 4 : accepter que la zone ne tienne pas</h3>
+<p>Si le prix traverse la zone sans aucune réaction dans le carnet, l&#39;hypothèse est fausse. Tu ne cherches pas « un order block plus bas ». Tu passes.</p>
+<h3>Un scénario (fictif) pour fixer les idées</h3>
+<p>Le Nasdaq baisse vers un order block haussier tracé la veille, qui tombe aussi sur le plus bas de la veille. Premier contact : de grosses ventes agressives sur le footprint, et pourtant le prix ne fait plus de nouveau plus bas sur trois bougies. Dans le carnet, un acheteur se recharge au même prix. Deux signaux convergent : la zone est défendue maintenant, pas seulement sur le dessin.</p>
+<p>Variante : même zone, mais le carnet est vide en dessous, aucune absorption, et le prix traverse en une bougie. <b>Sur le graphique SMC, c&#39;était le même rectangle. Dans le carnet, c&#39;étaient deux situations opposées.</b></p>
+<h3>Les limites de l&#39;order flow aussi</h3>
+<p>Le carnet peut être trompé, le Nasdaq va vite, et une absorption peut céder dix secondes plus tard. L&#39;order flow réduit l&#39;incertitude, il ne la supprime pas. Mon guide <a href="https://basstrading.fr/blog/order-flow-trading-france/">order flow : lire le marché depuis la France</a> relie toutes ces pièces.</p>
+<p>Si tu veux apprendre cette lecture dans l&#39;ordre, avec des exemples commentés, c&#39;est tout l&#39;objet de <a href="https://basstrading.fr/l/LUyz2A">ma formation offerte</a>.</p>
+<aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p><b>À retenir</b></p>
+<ul><li>Prépare ta zone SMC avant la séance, sur un niveau concret si possible.</li><li>Au contact, cherche une défense mesurable : absorption, recharge, delta.</li><li>Deux signaux minimum, et tu passes si la zone ne réagit pas.</li></ul></aside>
+<p>Même avec cette méthode, certaines erreurs reviennent chez presque tous les traders SMC.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/smc-trading/blog-smc-trading-6.webp" alt="Étapes pour vérifier une zone SMC avec l&#39;order flow : préparer, observer, chercher deux preuves, renoncer" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Garde ta zone SMC comme carte, mais n&#39;agis que si le carnet et le footprint montrent une défense réelle au contact.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="quelles-erreurs-font-les-traders-smc">Quelles erreurs font les traders SMC ?</h2>
+    <p>Voici celles qui reviennent le plus dans les questions qu&#39;on me pose, et comment les éviter.</p>
+<h3>Erreur n° 1 : un rectangle partout</h3>
+<p>À force de chercher des order blocks et des FVG, on en trouve sur chaque mouvement. <b>Garde deux ou trois zones par séance, celles qui tombent sur un niveau concret.</b></p>
+<h3>Erreur n° 2 : changer d&#39;unité de temps jusqu&#39;à trouver le signal</h3>
+<p>Le CHoCH n&#39;apparaît pas en 15 minutes ? On descend en 5, puis en 1, jusqu&#39;à en voir un. C&#39;est se donner raison à tout prix. Fixe ton unité de lecture avant la séance.</p>
+<h3>Erreur n° 3 : voir un complot dans chaque mèche</h3>
+<p>Une mèche s&#39;explique très bien par des stops déclenchés qui ont trouvé leur contrepartie, sans aucun plan derrière. Le récit ne t&#39;aide pas à placer ton ordre.</p>
+<h3>Erreur n° 4 : coller son stop sous l&#39;order block</h3>
+<p>C&#39;est là que tout le monde le met. Ton stop rejoint la pile d&#39;ordres qui servira de contrepartie au premier gros acteur qui veut acheter. Place-le là où ton idée est invalidée, et adapte ta taille de position à cette distance.</p>
+<h3>Erreur n° 5 : appliquer le SMC du forex tel quel sur les futures</h3>
+<p>Les heures, la liquidité et le volume ne sont pas les mêmes. Sur le Nasdaq, l&#39;ouverture américaine pèse lourd ; je donne les horaires précis dans mon article sur les <a href="https://basstrading.fr/blog/horaires-futures-nasdaq-heure-paris/">horaires des futures Nasdaq à l&#39;heure de Paris</a>.</p>
+<h3>Erreur n° 6 : payer une formation qui promet un win rate</h3>
+<p>Aucune méthode n&#39;a de taux de réussite garanti. Une offre qui en affiche un sans protocole public te vend une promesse.</p>
+<p>Reste la vraie question : le SMC est-il fait pour toi ?</p>
+
+    <hr>
+
+    <h2 id="debutant-ou-confirme-qui-peut-utiliser-l">Débutant ou confirmé : qui peut utiliser le SMC ?</h2>
+    <p>Ça dépend de ce que tu cherches. Mon approche, c&#39;est que chacun trouve le trading qui lui correspond, pas qu&#39;il copie celui d&#39;un autre.</p>
+<h3>Pour un débutant</h3>
+<p>Le SMC force à regarder la structure et les niveaux, au lieu de dix indicateurs. Mais il apprend un récit avant d&#39;apprendre comment un ordre s&#39;exécute : <b>un débutant qui ne sait pas ce qu&#39;est un ordre limite, un ordre au marché et un stop va prendre les rectangles pour la réalité.</b></p>
+<p>Je commencerais par la mécanique du carnet, puis j&#39;ajouterais la structure. Si tu pars de rien, mon guide pour <a href="https://basstrading.fr/blog/debuter-trading-zero-guide/">débuter le trading en partant de zéro</a> pose les bases dans le bon ordre, et je donne des repères honnêtes sur <a href="https://basstrading.fr/blog/combien-temps-apprendre-trading/">le temps qu&#39;il faut pour apprendre le trading</a>.</p>
+<h3>Pour un trader confirmé</h3>
+<p>Si tu trades déjà le SMC avec une définition écrite et un journal, tu as une base. Le gain se fait en ajoutant la lecture du volume réel aux zones que tu traces déjà : moins de zones, mieux choisies, et des entrées refusées quand le carnet ne confirme pas.</p>
+<h3>Quelles unités de temps ?</h3>
+<p>La plupart des traders SMC repèrent leurs zones sur une vue large (4 heures, journalier) et entrent sur une vue courte (5 minutes, 1 minute). La zone se prépare large, la réaction se lit court ; la lecture du carnet suit la même logique.</p>
+<h3>Faut-il combiner avec autre chose ?</h3>
+<p>Oui. Le SMC répond à « où regarder ». L&#39;order flow répond à « que se passe-t-il, maintenant, à ce prix ». La gestion du risque répond à « combien je peux perdre ». Aucune des trois ne remplace les autres.</p>
+<h3>Et en crypto ?</h3>
+<p>Le SMC est très utilisé sur le Bitcoin. Mais une crypto s&#39;échange sur des dizaines de plateformes à la fois : il n&#39;existe pas de carnet unique qui montre tout le volume. La vérification par le carnet y est beaucoup moins fiable que sur un future du CME.</p>
+<h3>Peut-on automatiser le SMC ?</h3>
+<p>Des indicateurs dessinent les order blocks et les FVG tout seuls, sur TradingView par exemple. Ils ont le mérite de fixer une définition. Mais ils dessinent ce qui s&#39;est passé ; ils ne disent pas si la zone est défendue aujourd&#39;hui.</p>
+<p>Rassemblons tout en quelques points.</p>
+
+    <hr>
+
+    <h2 id="ce-qu-il-faut-retenir-et-ce-que-tu-fais-">Ce qu&#39;il faut retenir, et ce que tu fais ce soir</h2>
+    <aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p><b>À retenir</b></p>
+<ul><li>Le SMC renomme des notions anciennes (Dow, Wyckoff) ; lues comme de la contrepartie, elles tiennent.</li><li>Une bougie ne montre ni l&#39;auteur d&#39;un ordre ni sa présence ; le carnet d&#39;un marché centralisé, si.</li><li>Une zone est une hypothèse : deux signaux mesurables avant d&#39;agir, et ton stop ailleurs que celui de la foule.</li></ul></aside>
+<h3>Ce soir, sur ton graphique</h3>
+<p>Prends les cinq dernières séances du Nasdaq. Trace, sans regarder la suite, les order blocks que tu aurais tracés à l&#39;ouverture. Puis regarde ce qui s&#39;est passé : combien ont tenu, combien ont été traversés sans réaction ? Note le résultat honnêtement. Tu sauras ce que vaut ta définition, et tu verras pourquoi je veux une preuve dans le carnet avant d&#39;agir.</p>
+<p>Pour la suite logique, lis mon article sur <a href="https://basstrading.fr/blog/absorption-order-flow/">l&#39;absorption en order flow</a> : c&#39;est la version mesurable de « la zone est défendue ».</p>
+<h3>Comment cet article est fait</h3>
+<p>Je l&#39;ai écrit à partir de deux de mes vidéos (le carnet d&#39;ordres expliqué, et la VWAP vue par les institutionnels), avec citations horodatées, de la documentation de CME Group, de la guidance de la CFTC sur le spoofing, d&#39;une étude de la CFTC sur les ordres stop, du règlement européen MAR et d&#39;un communiqué de l&#39;ESMA. Il a été mis en forme avec l&#39;aide d&#39;une IA, puis vérifié point par point ; le scénario marqué « fictif » sert seulement à illustrer la méthode.</p>
+
+    <p><a href="https://www.youtube.com/watch?v=R4Mu52hCJTg" target="_blank" rel="noopener">▶ Voir la vidéo de Sébastien sur ce sujet</a></p>
+
+    <div class="cta-card cta-aimant">
+      <div class="cta-card-label">Gratuit</div>
+      <h3>La formation offerte : 7 leçons pour lire le marché comme un pro</h3>
+      <p>Accès immédiat et gratuit, en vidéo, à ton rythme. Sans carte bancaire.</p>
+      <a href="https://basstrading.fr/p/formation-offerte/?src=blog-smc-trading" class="btn-p">Je la veux →</a>
+    </div>
+    
+  </article>
+</div>
+
+<!-- FAQ -->
+<section class="faq-sec">
+  <div class="sec-center"><div class="sec-label">FAQ</div><h2 class="sec-title">Questions fréquentes</h2></div>
+  <div class="faq-list">
+    <div class="fi"><button class="fq" onclick="tf(this)">C&#39;est quoi le SMC en trading ? <span class="fq-icon">+</span></button><div class="fa"><p>Le SMC (Smart Money Concepts) est une méthode de lecture du graphique en bougies qui cherche les traces supposées des grands acteurs : zones de liquidité derrière les plus hauts et les plus bas, order blocks, fair value gaps et cassures de structure (BOS, CHoCH). Elle reprend des idées anciennes de Dow et de Wyckoff, avec un vocabulaire nouveau popularisé sur YouTube et les réseaux.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Qui a inventé le SMC ? <span class="fq-icon">+</span></button><div class="fa"><p>Personne en particulier. Liquidité, déséquilibre, zone d&#39;ordres : ce sont des notions de marché que les traders décrivent depuis plus d&#39;un siècle, de Charles Dow à Richard Wyckoff. Le SMC les a regroupées et renommées. Conséquence : chaque vidéaste a ses propres définitions, ce qui rend la méthode difficile à tester sans écrire la sienne.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Le SMC fonctionne-t-il vraiment ? <span class="fq-icon">+</span></button><div class="fa"><p>Certaines idées tiennent : les stops s&#39;empilent derrière les niveaux évidents, la structure décrit bien une tendance, les faux mouvements existent. Mais je n&#39;ai trouvé aucune étude indépendante publiée qui chiffre son taux de réussite, et une bougie ne montre ni qui a acheté ni si cet acheteur est encore là. Une zone SMC est une hypothèse à confirmer, par exemple avec le carnet d&#39;ordres.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Qu&#39;est-ce qu&#39;un order block en trading ? <span class="fq-icon">+</span></button><div class="fa"><p>Un order block est, dans le SMC, la dernière bougie de couleur opposée avant un mouvement fort qui casse la structure. L&#39;idée est que de gros acteurs y auraient placé des ordres et que le prix y reviendrait. Sur un marché centralisé, le carnet d&#39;ordres et le footprint permettent de vérifier si quelqu&#39;un défend vraiment la zone au moment où le prix y revient.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">C&#39;est quoi un fair value gap (FVG) ? <span class="fq-icon">+</span></button><div class="fa"><p>Un fair value gap est un vide entre trois bougies : la mèche haute de la première et la mèche basse de la troisième ne se touchent pas, parce que la bougie centrale a bougé très vite. Le SMC considère que le prix revient souvent combler ce vide. Le retour n&#39;est pas garanti : il faut une confirmation, pas seulement le dessin.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Quelle est la différence entre BOS et CHoCH ? <span class="fq-icon">+</span></button><div class="fa"><p>Le BOS (break of structure) est la cassure du dernier plus haut dans une tendance haussière, ou du dernier plus bas dans une baisse : la tendance continue. Le CHoCH (change of character) est la première cassure dans le sens opposé : c&#39;est le premier signe d&#39;un retournement possible. Ce sont des noms nouveaux pour la théorie de Dow.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Peut-on voir la liquidité SMC dans le carnet d&#39;ordres ? <span class="fq-icon">+</span></button><div class="fa"><p>En partie seulement. Le carnet montre les ordres limites qui attendent, à l&#39;instant T. Les stops, eux, restent invisibles : sur CME Globex, un ordre stop n&#39;entre dans le carnet qu&#39;une fois déclenché. On devine donc où se trouve la liquidité derrière les plus hauts et les plus bas, mais on ne voit son exécution qu&#39;après coup, sur le footprint.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Les gros acteurs viennent-ils chercher les stops des traders particuliers ? <span class="fq-icon">+</span></button><div class="fa"><p>Je ne le lis pas comme ça. Un gros acheteur a besoin de vendeurs en face pour remplir sa position. Sous un plus bas évident, les stops déclenchés deviennent des ventes au marché : c&#39;est de la contrepartie disponible, rien de plus. Le mouvement va là où l&#39;échange est possible. D&#39;où l&#39;intérêt de ne pas placer ton stop exactement où tout le monde le place.</p></div></div>
+  </div>
+</section>
+
+<!-- Related -->
+<section class="related-sec">
+  <div class="sec-center"><div class="sec-label">Continuer la lecture</div><h2 class="sec-title">Articles connexes</h2></div>
+  <div class="related-grid">
+    <a href="/blog/market-profile-guide-complet/" class="related-card"><div class="related-cat">Guide</div><h3>Market Profile : le guide complet pour débutants</h3><p>Value Area, POC, types de journées — tout pour commencer.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/order-flow-trading-france/" class="related-card"><div class="related-cat">Méthode</div><h3>Order Flow Trading : pourquoi personne ne l'enseigne en France</h3><p>Le carnet d'ordres et le flux institutionnel décryptés.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/sierra-chart-configuration/" class="related-card"><div class="related-cat">Tutoriel</div><h3>Sierra Chart : configuration complète</h3><p>Le setup pas à pas pour le Market Profile et le Footprint.</p><span class="related-link">Lire &rarr;</span></a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="ft-top"><div class="ft-logo">BASS</div><div class="ft-cols">
+    <div class="ft-col"><div class="ft-col-title">Programme</div><a href="/formations/">Toutes les formations</a><a href="https://basstrading.fr/#methode">Méthode</a><a href="https://basstrading.fr/#programme">Programme</a><a href="https://basstrading.fr/p/formation-offerte/?src=blog-smc-trading-pied">Formation offerte</a></div>
+    <div class="ft-col"><div class="ft-col-title">Ressources</div><a href="/blog/market-profile-guide-complet/">Market Profile</a><a href="/blog/footprint-chart-trading/">Footprint Chart</a><a href="/blog/order-flow-trading-france/">Order Flow</a></div>
+  </div></div>
+  <div class="ft-bottom"><span>&copy; 2026 BASS — Sébastien Constant</span><div><a href="/mentions-legales/">Mentions légales</a><a href="/confidentialite/">Confidentialité</a><a href="/cgv/">CGV</a><a href="mailto:contact@basstrading.fr">Contact</a></div></div>
+</footer>
+<div class="disclaimer">Le trading comporte des risques de perte en capital. Les performances passées ne préjugent pas des performances futures. Ce site ne constitue pas un conseil en investissement.</div>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+const lenis=new Lenis({duration:1.2,easing:t=>Math.min(1,1.001-Math.pow(2,-10*t))});
+function raf(t){lenis.raf(t);requestAnimationFrame(raf)}requestAnimationFrame(raf);
+lenis.on('scroll',ScrollTrigger.update);gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0);
+const tl=gsap.timeline();
+tl.to('.pre-word span',{y:0,opacity:1,duration:.5,stagger:.1,ease:'power3.out',delay:.3}).to('#preLine',{width:'80px',duration:.7,ease:'power2.inOut'},'<+.2').to('.preloader',{yPercent:-100,duration:.8,ease:'power3.inOut',delay:.4}).set('.preloader',{display:'none'}).to('#nav',{opacity:1,y:0,duration:.5},'<+.1');
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);const h=document.documentElement.scrollHeight-window.innerHeight;document.getElementById('readingProgress').style.width=(window.scrollY/h*100)+'%'});
+const tocLinks=document.querySelectorAll('.toc a');const sections=Array.from(tocLinks).map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+window.addEventListener('scroll',()=>{let c='';sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)c=s.id});tocLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+c)})});
+function tf(b){const i=b.closest('.fi'),a=b.nextElementSibling,o=i.classList.contains('active');document.querySelectorAll('.fi').forEach(x=>{x.classList.remove('active');x.querySelector('.fa').classList.remove('open')});if(!o){i.classList.add('active');a.classList.add('open')}}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();lenis.scrollTo(t,{offset:-60})}})});
+</script>
+<script src="/v.js" defer></script>
+</body>
+</html>
