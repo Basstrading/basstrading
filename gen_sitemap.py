@@ -46,3 +46,39 @@ for chemin, modif, prio in entrees:
 xml.append("</urlset>")
 (RACINE / "sitemap.xml").write_text("\n".join(xml) + "\n", encoding="utf-8")
 print(f"sitemap.xml : {len(entrees)} pages")
+
+
+# ---- Après chaque publication (offensive SEO du 28/10/2026) ----
+# blogsite.js du Studio lance ce script juste après avoir écrit l'article, puis n'ajoute au commit que l'article, le blog et
+# ce plan du site. Ici : maillage par grappes (gen_grappes.py : bloc « série » de tous les articles, accueil, llms.txt) et
+# flux Atom (gen_feed.py), committés à part pour laisser le dépôt propre (sinon la publication suivante serait refusée).
+# Le flux est annoncé au hub WebSub 4 minutes plus tard, en tâche détachée (le temps que Vercel déploie).
+# Désactiver le commit (lancement à la main) : variable d'environnement BASS_SANS_COMMIT=1.
+def apres_publication():
+    import os
+    import sys
+    sys.path.insert(0, str(RACINE))
+    sys.dont_write_bytecode = True  # pas de __pycache__ dans le dépôt
+    try:
+        import gen_grappes
+        gen_grappes.main()
+        subprocess.run([sys.executable, "gen_feed.py"], cwd=RACINE, check=True, capture_output=True, text=True)
+    except Exception as e:  # le plan du site doit sortir même si le maillage échoue
+        print(f"grappes/flux non mis à jour : {e}")
+        return
+    if os.environ.get("BASS_SANS_COMMIT") or not (RACINE / ".git").exists():
+        return
+    git = lambda *a: subprocess.run(["git", *a], cwd=RACINE, capture_output=True, text=True)
+    git("add", "-u", "--", ".", ":(exclude)blog/index.html", ":(exclude)sitemap.xml")
+    if git("diff", "--cached", "--quiet").returncode:
+        r = git("commit", "-m", "seo(auto): grappes, accueil, llms.txt et flux mis à jour après publication")
+        print("commit maillage :", "ok" if r.returncode == 0 else r.stderr.strip()[:200])
+    try:
+        options = {"creationflags": 0x00000008 | 0x00000200} if os.name == "nt" else {"start_new_session": True}
+        subprocess.Popen([sys.executable, "gen_feed.py", "--ping", "--attendre", "240"], cwd=RACINE, stdin=subprocess.DEVNULL,
+                         stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, close_fds=True, **options)
+    except Exception as e:
+        print(f"WebSub non programmé : {e}")
+
+
+apres_publication()

@@ -49,10 +49,14 @@ for modifie, publie, url, titre, resume in entrees:
     xml += ["  <entry>", f"    <title>{x(titre)}</title>", f'    <link rel="alternate" type="text/html" href="{url}"/>', f"    <id>{url}</id>",
             f"    <published>{publie}T00:00:00Z</published>", f"    <updated>{modifie}T00:00:00Z</updated>", f"    <summary>{x(resume)}</summary>", "  </entry>"]
 xml.append("</feed>")
-(RACINE / "blog" / "feed.xml").write_text("\n".join(xml) + "\n", encoding="utf-8")
-print(f"blog/feed.xml : {len(entrees)} articles")
+if "--attendre" not in sys.argv:  # le ping différé ne réécrit pas le flux
+    (RACINE / "blog" / "feed.xml").write_text("\n".join(xml) + "\n", encoding="utf-8", newline="\n")
+    print(f"blog/feed.xml : {len(entrees)} articles")
 
 if "--ping" in sys.argv:
+    if "--attendre" in sys.argv:
+        import time
+        time.sleep(int(sys.argv[sys.argv.index("--attendre") + 1]))
     donnees = urllib.parse.urlencode({"hub.mode": "publish", "hub.url": FLUX}).encode()
     r = urllib.request.urlopen(urllib.request.Request(HUB, data=donnees, method="POST"), timeout=20)
     print("WebSub :", r.status)
