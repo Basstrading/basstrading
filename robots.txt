@@ -13,3 +13,4 @@ Disallow: /malaga/paypal/
 Disallow: /malaga/paypal-special/
 
 Sitemap: https://basstrading.fr/sitemap.xml
+Sitemap: https://basstrading.fr/blog/feed.xml

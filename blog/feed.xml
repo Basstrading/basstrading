@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="fr">
+  <title>BASS Trading : le blog</title>
+  <subtitle>Market Profile, order flow, footprint, carnet d'ordres et futures du Nasdaq, par Sébastien Constant (Bass).</subtitle>
+  <link rel="self" type="application/atom+xml" href="https://basstrading.fr/blog/feed.xml"/>
+  <link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
+  <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/"/>
+  <id>https://basstrading.fr/blog/</id>
+  <updated>2026-10-28T00:00:00Z</updated>
+  <author><name>Sébastien Constant (Bass)</name><uri>https://basstrading.fr/auteur/sebastien-constant/</uri></author>
+  <entry>
+    <title>Formation trading : contenu, prix, CPF et pièges à éviter</title>
+    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/formation-trading/"/>
+    <id>https://basstrading.fr/blog/formation-trading/</id>
+    <published>2026-10-26T00:00:00Z</published>
+    <updated>2026-10-28T00:00:00Z</updated>
+    <summary>Formation trading : contenu, prix, CPF, en ligne ou en salle, arnaques à éviter. Le guide honnête d&#x27;un trader avec plus de dix ans d&#x27;expérience des marchés.</summary>
+  </entry>
+  <entry>
+    <title>Formation trading gratuite : ce qu&#x27;on apprend sans payer</title>
+    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/formation-trading-gratuite/"/>
+    <id>https://basstrading.fr/blog/formation-trading-gratuite/</id>
+    <published>2026-10-26T00:00:00Z</published>
+    <updated>2026-10-28T00:00:00Z</updated>
+    <summary>Formation trading gratuite : où apprendre sans payer (AMF, CME, démo, YouTube), comment trier le gratuit et où il s&#x27;arrête. Mon parcours en 8 semaines.</summary>
+  </entry>
+  <entry>
+    <title>Quelle formation trading choisir en 2026 ? 7 critères pour comparer</title>
+    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/quelle-formation-trading-choisir/"/>
+    <id>https://basstrading.fr/blog/quelle-formation-trading-choisir/</id>
+    <published>2026-03-28T00:00:00Z</published>
+    <updated>2026-10-28T00:00:00Z</updated>
+    <summary>Comment comparer les formations trading : les 7 critères (organisme, formateur, méthode, groupe, format, résultats, suivi), généraliste ou mentorat, et les signaux d&#x27;alarme.</summary>
+  </entry>
+  <entry>
+    <title>Footprint chart : comment le lire (delta, imbalance, outils)</title>
+    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/footprint-chart-trading/"/>
+    <id>https://basstrading.fr/blog/footprint-chart-trading/</id>
+    <published>2026-03-27T00:00:00Z</published>
+    <updated>2026-10-28T00:00:00Z</updated>
+    <summary>Le footprint affiche les achats et les ventes à chaque prix de la bougie. Lire le bid × ask, le delta, les imbalances, l&#x27;absorption, et quels outils utiliser.</summary>
+  </entry>
+  <entry>
+    <title>SMC trading : ce qui tient vraiment, vu du carnet d&#x27;ordres</title>
+    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/smc-trading/"/>
+    <id>https://basstrading.fr/blog/smc-trading/</id>
+    <published>2026-10-27T00:00:00Z</published>
+    <updated>2026-10-27T00:00:00Z</updated>
+    <summary>SMC trading expliqué : order block, liquidité, FVG, BOS, CHoCH. Ce qui tient, ce qui ne se vérifie pas, et comment le contrôler au carnet d&#x27;ordres.</summary>
+  </entry>
+  <entry>
+    <title>Tradovate avis : prix, démo, France et limites (2026)</title>
+    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/tradovate-avis/"/>
+    <id>https://basstrading.fr/blog/tradovate-avis/</id>
+    <published>2026-10-26T00:00:00Z</published>
+    <updated>2026-10-26T00:00:00Z</updated>
+    <summary>Tradovate avis : prix des formules, frais cachés, démo de 14 jours, accès depuis la France, lien avec NinjaTrader et TradingView, et vraies limites.</summary>
+  </entry>
+  <entry>
+    <title>Pyramider une position en trading : ajouter au gagnant, jamais au perdant</title>
+    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/pyramider-position-trading/"/>
+    <id>https://basstrading.fr/blog/pyramider-position-trading/</id>
+    <published>2026-10-26T00:00:00Z</published>
+    <updated>2026-10-26T00:00:00Z</updated>
+    <summary>Pyramider une position en trading : ajouter des contrats seulement quand le trade gagne, stop remonté, risque plafonné. Méthode et exemple sur le MNQ.</summary>
+  </entry>
+  <entry>
+    <title>Premier payout en prop firm : coussin, cohérence et retrait</title>
+    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/premier-payout-prop-firm/"/>
+    <id>https://basstrading.fr/blog/premier-payout-prop-firm/</id>
+    <published>2026-10-26T00:00:00Z</published>
+    <updated>2026-10-26T00:00:00Z</updated>
+    <summary>Premier payout prop firm : monter le coussin avant de retirer, calculer la règle de cohérence, savoir combien de temps valider. Vu en live.</summary>
+  </entry>
+  <entry>
+    <title>Perte maximale journalière : la règle des salles de marché</title>
+    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/perte-maximale-journaliere-trading/"/>
+    <id>https://basstrading.fr/blog/perte-maximale-journaliere-trading/</id>
+    <published>2026-10-26T00:00:00Z</published>
+    <updated>2026-10-26T00:00:00Z</updated>
+    <summary>Perte maximale journalière en trading : comment les salles de marché la fixent, ce qui se passe quand elle est touchée, et comment t&#x27;en inspirer seul.</summary>
+  </entry>
+  <entry>
+    <title>NinjaTrader avis : prix, France, order flow et limites</title>
+    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/ninjatrader-avis/"/>
+    <id>https://basstrading.fr/blog/ninjatrader-avis/</id>
+    <published>2026-10-26T00:00:00Z</published>
+    <updated>2026-10-26T00:00:00Z</updated>
+    <summary>NinjaTrader avis : ce que vaut la plateforme pour les futures, son arrivée en Europe, ses prix, son order flow, Mac et débutant, et ses vraies limites.</summary>
+  </entry>
+  <entry>
+    <title>Livre trading : les meilleurs pour apprendre (et l&#x27;ordre)</title>
+    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/livre-trading/"/>
+    <id>https://basstrading.fr/blog/livre-trading/</id>
+    <published>2026-10-26T00:00:00Z</published>
+    <updated>2026-10-26T00:00:00Z</updated>
+    <summary>Livre trading : les classiques pour apprendre (psychologie, Market Profile, analyse technique), l&#x27;ordre de lecture et comment les tester vraiment.</summary>
+  </entry>
+  <entry>
+    <title>Drawdown prop firm : statique, trailing ou fin de journée ?</title>
+    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/drawdown-prop-firm-futures/"/>
+    <id>https://basstrading.fr/blog/drawdown-prop-firm-futures/</id>
+    <published>2026-10-26T00:00:00Z</published>
+    <updated>2026-10-26T00:00:00Z</updated>
+    <summary>Drawdown prop firm : statique, trailing intraday, fin de journée ou verrouillé ? La mécanique chiffrée de chaque type et comment adapter ton trading.</summary>
+  </entry>
+  <entry>
+    <title>Arnaque au trading : les 7 pièges et que faire si tu es victime</title>
+    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/arnaque-trading/"/>
+    <id>https://basstrading.fr/blog/arnaque-trading/</id>
+    <published>2026-10-26T00:00:00Z</published>
+    <updated>2026-10-26T00:00:00Z</updated>
+    <summary>Arnaque trading : les 7 pièges que je vois le plus (signaux Telegram, faux courtiers, robots, faux conseillers) et que faire si tu es victime.</summary>
+  </entry>
+  <entry>
+    <title>Market Profile : le guide complet (TPO, Value Area, POC)</title>
+    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/market-profile-guide-complet/"/>
+    <id>https://basstrading.fr/blog/market-profile-guide-complet/</id>
+    <published>2026-03-27T00:00:00Z</published>
+    <updated>2026-10-26T00:00:00Z</updated>
+    <summary>Le Market Profile en clair : profil TPO, Value Area, POC, Initial Balance et types de journée. Le guide pour lire la structure du marché, avec exemples.</summary>
+  </entry>
+  <entry>
+    <title>Day trading : à quoi ressemble une journée sur les futures</title>
+    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/day-trading-futures/"/>
+    <id>https://basstrading.fr/blog/day-trading-futures/</id>
+    <published>2026-10-25T00:00:00Z</published>
+    <updated>2026-10-25T00:00:00Z</updated>
+    <summary>Day trading : ma journée type sur les futures du Nasdaq heure par heure, les vrais coûts, les chiffres officiels des pertes et les règles pour durer.</summary>
+  </entry>
+  <entry>
+    <title>Nasdaq futures : c&#x27;est quoi le NQ et le MNQ ? Le guide clair</title>
+    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/nasdaq-futures-nq-mnq/"/>
+    <id>https://basstrading.fr/blog/nasdaq-futures-nq-mnq/</id>
+    <published>2026-10-24T00:00:00Z</published>
+    <updated>2026-10-24T00:00:00Z</updated>
+    <summary>Nasdaq futures expliqué : ce que sont le NQ et le MNQ, valeur du point, échéances, rollover, horaires et différence avec un CFD. Le guide d&#x27;un trader futures.</summary>
+  </entry>
+  <entry>
+    <title>VWAP trading : définition, calcul et lecture sur le Nasdaq</title>
+    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/vwap-trading/"/>
+    <id>https://basstrading.fr/blog/vwap-trading/</id>
+    <published>2026-10-22T00:00:00Z</published>
+    <updated>2026-10-22T00:00:00Z</updated>
+    <summary>La VWAP expliquée par un trader futures : formule avec exemple chiffré, bandes d&#x27;écart-type, VWAP ancrée et lecture sur le Nasdaq, pas à pas.</summary>
+  </entry>
+  <entry>
+    <title>NQ ou MNQ : quel contrat Nasdaq choisir pour débuter ?</title>
+    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/nq-ou-mnq/"/>
+    <id>https://basstrading.fr/blog/nq-ou-mnq/</id>
+    <published>2026-10-22T00:00:00Z</published>
+    <updated>2026-10-22T00:00:00Z</updated>
+    <summary>NQ ou MNQ pour débuter sur le Nasdaq : capital par contrat, exposition, marges, liquidité, order flow et le bon moment pour passer au NQ.</summary>
+  </entry>
+  <entry>
+    <title>Footprint TradingView : est-ce un vrai footprint bid × ask ?</title>
+    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/footprint-tradingview/"/>
+    <id>https://basstrading.fr/blog/footprint-tradingview/</id>
+    <published>2026-10-21T00:00:00Z</published>
+    <updated>2026-10-21T00:00:00Z</updated>
+    <summary>Le footprint de TradingView estime le côté acheteur ou vendeur selon la direction du prix. Ce que ça change face à un vrai bid × ask, et comment tester.</summary>
+  </entry>
+  <entry>
+    <title>Horaires des futures Nasdaq (NQ, MNQ) en heure de Paris</title>
+    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/horaires-futures-nasdaq-heure-paris/"/>
+    <id>https://basstrading.fr/blog/horaires-futures-nasdaq-heure-paris/</id>
+    <published>2026-10-20T00:00:00Z</published>
+    <updated>2026-10-20T00:00:00Z</updated>
+    <summary>Horaires du Nasdaq futures (NQ, MNQ) en heure de Paris : ouverture, pause, annonces, jours fériés et semaine décalée du 26 au 30 octobre 2026.</summary>
+  </entry>
+  <entry>
+    <title>Combien risquer par trade : le calcul sur Nasdaq (NQ, MNQ)</title>
+    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/combien-risquer-par-trade/"/>
+    <id>https://basstrading.fr/blog/combien-risquer-par-trade/</id>
+    <published>2026-10-20T00:00:00Z</published>
+    <updated>2026-10-20T00:00:00Z</updated>
+    <summary>Combien risquer par trade ? Point mort win rate/RR, taille de position sur NQ et MNQ, cas des prop firms : ma méthode, chiffrée pas à pas.</summary>
+  </entry>
+  <entry>
+    <title>Chasse aux stops : pourquoi ton stop saute (et comment la lire)</title>
+    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/chasse-aux-stops-trading/"/>
+    <id>https://basstrading.fr/blog/chasse-aux-stops-trading/</id>
+    <published>2026-10-20T00:00:00Z</published>
+    <updated>2026-10-20T00:00:00Z</updated>
+    <summary>Chasse aux stops : pourquoi ton stop saute juste avant le bon mouvement, et comment lire la mèche sur le Footprint (delta, CVD, réintégration).</summary>
+  </entry>
+  <entry>
+    <title>Volume Profile : POC, VAH, VAL et niveaux clés (guide 2026)</title>
+    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/volume-profile-guide/"/>
+    <id>https://basstrading.fr/blog/volume-profile-guide/</id>
+    <published>2026-03-28T00:00:00Z</published>
+    <updated>2026-03-28T00:00:00Z</updated>
+    <summary>Le Volume Profile montre le volume échangé à chaque prix. Lire le POC, la Value Area (VAH, VAL), les HVN et LVN, et s&#x27;en servir pour trader.</summary>
+  </entry>
+  <entry>
+    <title>Les Types de Trading : Lequel Choisir Selon Votre Profil ? (2026)</title>
+    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/types-trading-differences/"/>
+    <id>https://basstrading.fr/blog/types-trading-differences/</id>
+    <published>2026-03-28T00:00:00Z</published>
+    <updated>2026-03-28T00:00:00Z</updated>
+    <summary>Scalping, day trading, swing trading, position trading et Order Flow : comparatif complet des 5 styles de trading. Quel type correspond à votre profil, capital et disponibilité ?</summary>
+  </entry>
+  <entry>
+    <title>Tape reading : lire le Time &amp; Sales en temps réel</title>
+    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/tape-reading-flux-ordres/"/>
+    <id>https://basstrading.fr/blog/tape-reading-flux-ordres/</id>
+    <published>2026-03-28T00:00:00Z</published>
+    <updated>2026-03-28T00:00:00Z</updated>
+    <summary>Le tape reading, c&#x27;est lire le Time &amp; Sales : chaque transaction, sa taille, son côté. Repérer les gros ordres, l&#x27;accélération du flux et les pièges.</summary>
+  </entry>
+  <entry>
+    <title>Imbalance footprint et stacked imbalance : le guide de lecture</title>
+    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/imbalance-footprint/"/>
+    <id>https://basstrading.fr/blog/imbalance-footprint/</id>
+    <published>2026-03-28T00:00:00Z</published>
+    <updated>2026-03-28T00:00:00Z</updated>
+    <summary>Imbalance et stacked imbalance sur le footprint : comment se calcule le déséquilibre en diagonale bid × ask, comment le lire sur les futures, les pièges.</summary>
+  </entry>
+  <entry>
+    <title>Devenir trader sans diplôme : le parcours réaliste (2026)</title>
+    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/devenir-trader-sans-diplome/"/>
+    <id>https://basstrading.fr/blog/devenir-trader-sans-diplome/</id>
+    <published>2026-03-28T00:00:00Z</published>
+    <updated>2026-03-28T00:00:00Z</updated>
+    <summary>Aucun diplôme n&#x27;est exigé pour trader son propre argent. Ce qui compte : une méthode, du temps d&#x27;écran et un risque maîtrisé. Le parcours, étape par étape.</summary>
+  </entry>
+  <entry>
+    <title>Delta en Trading : Mesurer la Pression Directionnelle sur les Marchés</title>
+    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/delta-footprint-trading/"/>
+    <id>https://basstrading.fr/blog/delta-footprint-trading/</id>
+    <published>2026-03-28T00:00:00Z</published>
+    <updated>2026-03-28T00:00:00Z</updated>
+    <summary>Guide complet du Delta en trading : delta positif/négatif, divergences, delta absorbé, naked delta. Apprenez à mesurer la pression directionnelle réelle bougie par bougie sur le Footprint Chart. Par Sébastien Constant.</summary>
+  </entry>
+  <entry>
+    <title>Débuter le Trading en Partant de Zéro : Le Guide Concret (2026)</title>
+    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/debuter-trading-zero-guide/"/>
+    <id>https://basstrading.fr/blog/debuter-trading-zero-guide/</id>
+    <published>2026-03-28T00:00:00Z</published>
+    <updated>2026-03-28T00:00:00Z</updated>
+    <summary>Le guide honnête pour débuter le trading en 2026. Pas de promesses irréalistes — un parcours structuré mois par mois, du compte démo au funded account, par un trader professionnel.</summary>
+  </entry>
+  <entry>
+    <title>CVD (Cumulative Volume Delta) : Détecter la Conviction des Traders</title>
+    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/cvd-cumulative-volume-delta/"/>
+    <id>https://basstrading.fr/blog/cvd-cumulative-volume-delta/</id>
+    <published>2026-03-28T00:00:00Z</published>
+    <updated>2026-03-28T00:00:00Z</updated>
+    <summary>Guide complet du CVD (Cumulative Volume Delta) : calcul, divergences, interprétation. Apprenez à utiliser le delta cumulatif pour mesurer la pression directionnelle réelle du marché. Par Sébastien Constant.</summary>
+  </entry>
+  <entry>
+    <title>Combien de Temps Faut-il pour Apprendre le Trading ? (Réponse Honnête)</title>
+    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/combien-temps-apprendre-trading/"/>
+    <id>https://basstrading.fr/blog/combien-temps-apprendre-trading/</id>
+    <published>2026-03-28T00:00:00Z</published>
+    <updated>2026-03-28T00:00:00Z</updated>
+    <summary>6 à 18 mois selon votre spécialité et votre investissement quotidien. Timelines réalistes par style de trading, étapes clés et erreurs qui rallongent le parcours.</summary>
+  </entry>
+  <entry>
+    <title>Carnet d&#x27;Ordres DOM Futures : Guide Complet du Depth of Market</title>
+    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/carnet-ordres-dom-futures/"/>
+    <id>https://basstrading.fr/blog/carnet-ordres-dom-futures/</id>
+    <published>2026-03-28T00:00:00Z</published>
+    <updated>2026-03-28T00:00:00Z</updated>
+    <summary>Maîtrisez le DOM (Depth of Market) en trading futures : structure du carnet d&#x27;ordres, murs d&#x27;achat/vente, DOM dynamique, spoofing et confluence Footprint. Guide expert complet.</summary>
+  </entry>
+  <entry>
+    <title>Auction Market Theory : Comprendre la Logique du Marché</title>
+    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/auction-market-theory/"/>
+    <id>https://basstrading.fr/blog/auction-market-theory/</id>
+    <published>2026-03-28T00:00:00Z</published>
+    <updated>2026-03-28T00:00:00Z</updated>
+    <summary>L&#x27;Auction Market Theory (AMT) explique pourquoi le marché se comporte comme il le fait. Acceptation, rejet, équilibre, déséquilibre — la logique profonde derrière chaque mouvement de prix. Par Sébastien Constant.</summary>
+  </entry>
+  <entry>
+    <title>Absorption en Order Flow : Quand les Institutionnels Mangent les Ordres</title>
+    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/absorption-order-flow/"/>
+    <id>https://basstrading.fr/blog/absorption-order-flow/</id>
+    <published>2026-03-28T00:00:00Z</published>
+    <updated>2026-03-28T00:00:00Z</updated>
+    <summary>Guide complet de l&#x27;absorption en order flow : mécanismes, identification sur le Footprint, patterns bullish et bearish, exemples sur ES et NQ. Apprenez à détecter quand les gros joueurs absorbent silencieusement. Par Sébastien Constant.</summary>
+  </entry>
+  <entry>
+    <title>Sierra Chart : configurer Market Profile, footprint et CVD</title>
+    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/sierra-chart-configuration/"/>
+    <id>https://basstrading.fr/blog/sierra-chart-configuration/</id>
+    <published>2026-03-27T00:00:00Z</published>
+    <updated>2026-03-27T00:00:00Z</updated>
+    <summary>Configurer Sierra Chart pas à pas : profil TPO, Volume Profile, footprint (Numbers Bars) et CVD, pour lire les futures du Nasdaq.</summary>
+  </entry>
+  <entry>
+    <title>Devenir Funded Trader : La méthode qui fonctionne vraiment</title>
+    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/prop-firm-funded-trader/"/>
+    <id>https://basstrading.fr/blog/prop-firm-funded-trader/</id>
+    <published>2026-03-27T00:00:00Z</published>
+    <updated>2026-03-27T00:00:00Z</updated>
+    <summary>Guide complet pour devenir funded trader en prop firm : FTMO, TopStep, Apex. Méthode, gestion du risque, préparation.</summary>
+  </entry>
+  <entry>
+    <title>Order flow trading : le guide complet en français (2026)</title>
+    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/order-flow-trading-france/"/>
+    <id>https://basstrading.fr/blog/order-flow-trading-france/</id>
+    <published>2026-03-27T00:00:00Z</published>
+    <updated>2026-03-27T00:00:00Z</updated>
+    <summary>Order flow : lire qui achète et qui vend vraiment, avec le carnet d&#x27;ordres, le Time &amp; Sales et le footprint. Définition, outils et exemples sur le Nasdaq.</summary>
+  </entry>
+</feed>

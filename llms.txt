@@ -32,6 +32,69 @@
 - [Quelle formation trading choisir ?](https://basstrading.fr/blog/quelle-formation-trading-choisir/): les 7 critères pour comparer (organisme, formateur, méthode, groupe, format, résultats, suivi)
 - [Débuter le trading en partant de zéro](https://basstrading.fr/blog/debuter-trading-zero-guide/)
 
+<!-- grappes:debut -->
+## Tous les guides, par thème
+
+### Market Profile
+- [Market Profile : le guide complet (TPO, Value Area, POC)](https://basstrading.fr/blog/market-profile-guide-complet/) (guide pilier): Le Market Profile en clair : profil TPO, Value Area, POC, Initial Balance et types de journée. Le guide pour lire la structure du marché, avec exemples.
+- [Volume Profile : POC, VAH, VAL et niveaux clés (guide 2026)](https://basstrading.fr/blog/volume-profile-guide/): Le Volume Profile montre le volume échangé à chaque prix. Lire le POC, la Value Area (VAH, VAL), les HVN et LVN, et s'en servir pour trader.
+- [Auction Market Theory : Comprendre la Logique du Marché](https://basstrading.fr/blog/auction-market-theory/): L'Auction Market Theory (AMT) explique pourquoi le marché se comporte comme il le fait. Acceptation, rejet, équilibre, déséquilibre — la logique profonde derrière chaque mouvement de prix. Par Sébastien Constant.
+- [Sierra Chart : configurer Market Profile, footprint et CVD](https://basstrading.fr/blog/sierra-chart-configuration/): Configurer Sierra Chart pas à pas : profil TPO, Volume Profile, footprint (Numbers Bars) et CVD, pour lire les futures du Nasdaq.
+- Formation liée : [La formation Market Profile](https://basstrading.fr/marketprofile/), 16 leçons vidéo pour lire un profil TPO, 57 €.
+
+### Order flow et carnet d'ordres
+- [Order flow trading : le guide complet en français (2026)](https://basstrading.fr/blog/order-flow-trading-france/) (guide pilier): Order flow : lire qui achète et qui vend vraiment, avec le carnet d'ordres, le Time & Sales et le footprint. Définition, outils et exemples sur le Nasdaq.
+- [Carnet d'Ordres DOM Futures : Guide Complet du Depth of Market](https://basstrading.fr/blog/carnet-ordres-dom-futures/): Maîtrisez le DOM (Depth of Market) en trading futures : structure du carnet d'ordres, murs d'achat/vente, DOM dynamique, spoofing et confluence Footprint. Guide expert complet.
+- [Tape reading : lire le Time & Sales en temps réel](https://basstrading.fr/blog/tape-reading-flux-ordres/): Le tape reading, c'est lire le Time & Sales : chaque transaction, sa taille, son côté. Repérer les gros ordres, l'accélération du flux et les pièges.
+- [Absorption en Order Flow : Quand les Institutionnels Mangent les Ordres](https://basstrading.fr/blog/absorption-order-flow/): Guide complet de l'absorption en order flow : mécanismes, identification sur le Footprint, patterns bullish et bearish, exemples sur ES et NQ. Apprenez à détecter quand les gros joueurs absorbent silencieusement. Par Sébastien Constant.
+- [CVD (Cumulative Volume Delta) : Détecter la Conviction des Traders](https://basstrading.fr/blog/cvd-cumulative-volume-delta/): Guide complet du CVD (Cumulative Volume Delta) : calcul, divergences, interprétation. Apprenez à utiliser le delta cumulatif pour mesurer la pression directionnelle réelle du marché. Par Sébastien Constant.
+- [SMC trading : ce qui tient vraiment, vu du carnet d'ordres](https://basstrading.fr/blog/smc-trading/): SMC trading expliqué : order block, liquidité, FVG, BOS, CHoCH. Ce qui tient, ce qui ne se vérifie pas, et comment le contrôler au carnet d'ordres.
+- Formation liée : [La formation carnet d'ordres](https://basstrading.fr/formation-carnet-d-ordres/), Carnet d'ordre Mastery, pour lire le DOM et le flux d'ordres.
+
+### Footprint
+- [Footprint chart : comment le lire (delta, imbalance, outils)](https://basstrading.fr/blog/footprint-chart-trading/) (guide pilier): Le footprint affiche les achats et les ventes à chaque prix de la bougie. Lire le bid × ask, le delta, les imbalances, l'absorption, et quels outils utiliser.
+- [Imbalance footprint et stacked imbalance : le guide de lecture](https://basstrading.fr/blog/imbalance-footprint/): Imbalance et stacked imbalance sur le footprint : comment se calcule le déséquilibre en diagonale bid × ask, comment le lire sur les futures, les pièges.
+- [Delta en Trading : Mesurer la Pression Directionnelle sur les Marchés](https://basstrading.fr/blog/delta-footprint-trading/): Guide complet du Delta en trading : delta positif/négatif, divergences, delta absorbé, naked delta. Apprenez à mesurer la pression directionnelle réelle bougie par bougie sur le Footprint Chart. Par Sébastien Constant.
+- [Absorption en Order Flow : Quand les Institutionnels Mangent les Ordres](https://basstrading.fr/blog/absorption-order-flow/): Guide complet de l'absorption en order flow : mécanismes, identification sur le Footprint, patterns bullish et bearish, exemples sur ES et NQ. Apprenez à détecter quand les gros joueurs absorbent silencieusement. Par Sébastien Constant.
+- [Footprint TradingView : est-ce un vrai footprint bid × ask ?](https://basstrading.fr/blog/footprint-tradingview/): Le footprint de TradingView estime le côté acheteur ou vendeur selon la direction du prix. Ce que ça change face à un vrai bid × ask, et comment tester.
+- [CVD (Cumulative Volume Delta) : Détecter la Conviction des Traders](https://basstrading.fr/blog/cvd-cumulative-volume-delta/): Guide complet du CVD (Cumulative Volume Delta) : calcul, divergences, interprétation. Apprenez à utiliser le delta cumulatif pour mesurer la pression directionnelle réelle du marché. Par Sébastien Constant.
+- Formation liée : [La formation Footprint](https://basstrading.fr/formation-footprint/), Footprint Mastery, 23 leçons vidéo et 17 classes virtuelles, 790 €.
+
+### Trouver sa méthode de trading
+- [Les Types de Trading : Lequel Choisir Selon Votre Profil ? (2026)](https://basstrading.fr/blog/types-trading-differences/) (guide pilier): Scalping, day trading, swing trading, position trading et Order Flow : comparatif complet des 5 styles de trading. Quel type correspond à votre profil, capital et disponibilité ?
+- [Débuter le Trading en Partant de Zéro : Le Guide Concret (2026)](https://basstrading.fr/blog/debuter-trading-zero-guide/): Le guide honnête pour débuter le trading en 2026. Pas de promesses irréalistes — un parcours structuré mois par mois, du compte démo au funded account, par un trader professionnel.
+- [Combien de Temps Faut-il pour Apprendre le Trading ? (Réponse Honnête)](https://basstrading.fr/blog/combien-temps-apprendre-trading/): 6 à 18 mois selon votre spécialité et votre investissement quotidien. Timelines réalistes par style de trading, étapes clés et erreurs qui rallongent le parcours.
+- [Devenir trader sans diplôme : le parcours réaliste (2026)](https://basstrading.fr/blog/devenir-trader-sans-diplome/): Aucun diplôme n'est exigé pour trader son propre argent. Ce qui compte : une méthode, du temps d'écran et un risque maîtrisé. Le parcours, étape par étape.
+- [Livre trading : les meilleurs pour apprendre (et l'ordre)](https://basstrading.fr/blog/livre-trading/): Livre trading : les classiques pour apprendre (psychologie, Market Profile, analyse technique), l'ordre de lecture et comment les tester vraiment.
+- [Formation trading : contenu, prix, CPF et pièges à éviter](https://basstrading.fr/blog/formation-trading/): Formation trading : contenu, prix, CPF, en ligne ou en salle, arnaques à éviter. Le guide honnête d'un trader avec plus de dix ans d'expérience des marchés.
+- [Formation trading gratuite : ce qu'on apprend sans payer](https://basstrading.fr/blog/formation-trading-gratuite/): Formation trading gratuite : où apprendre sans payer (AMF, CME, démo, YouTube), comment trier le gratuit et où il s'arrête. Mon parcours en 8 semaines.
+- [Quelle formation trading choisir en 2026 ? 7 critères pour comparer](https://basstrading.fr/blog/quelle-formation-trading-choisir/): Comment comparer les formations trading : les 7 critères (organisme, formateur, méthode, groupe, format, résultats, suivi), généraliste ou mentorat, et les signaux d'alarme.
+- [Arnaque au trading : les 7 pièges et que faire si tu es victime](https://basstrading.fr/blog/arnaque-trading/): Arnaque trading : les 7 pièges que je vois le plus (signaux Telegram, faux courtiers, robots, faux conseillers) et que faire si tu es victime.
+- Formation liée : [Toutes les formations de Bass](https://basstrading.fr/formations/), plus de 250 leçons vidéo, du débutant au Market Profile avancé.
+
+### Futures du Nasdaq et plateformes
+- [Nasdaq futures : c'est quoi le NQ et le MNQ ? Le guide clair](https://basstrading.fr/blog/nasdaq-futures-nq-mnq/) (guide pilier): Nasdaq futures expliqué : ce que sont le NQ et le MNQ, valeur du point, échéances, rollover, horaires et différence avec un CFD. Le guide d'un trader futures.
+- [NQ ou MNQ : quel contrat Nasdaq choisir pour débuter ?](https://basstrading.fr/blog/nq-ou-mnq/): NQ ou MNQ pour débuter sur le Nasdaq : capital par contrat, exposition, marges, liquidité, order flow et le bon moment pour passer au NQ.
+- [Horaires des futures Nasdaq (NQ, MNQ) en heure de Paris](https://basstrading.fr/blog/horaires-futures-nasdaq-heure-paris/): Horaires du Nasdaq futures (NQ, MNQ) en heure de Paris : ouverture, pause, annonces, jours fériés et semaine décalée du 26 au 30 octobre 2026.
+- [Day trading : à quoi ressemble une journée sur les futures](https://basstrading.fr/blog/day-trading-futures/): Day trading : ma journée type sur les futures du Nasdaq heure par heure, les vrais coûts, les chiffres officiels des pertes et les règles pour durer.
+- [VWAP trading : définition, calcul et lecture sur le Nasdaq](https://basstrading.fr/blog/vwap-trading/): La VWAP expliquée par un trader futures : formule avec exemple chiffré, bandes d'écart-type, VWAP ancrée et lecture sur le Nasdaq, pas à pas.
+- [NinjaTrader avis : prix, France, order flow et limites](https://basstrading.fr/blog/ninjatrader-avis/): NinjaTrader avis : ce que vaut la plateforme pour les futures, son arrivée en Europe, ses prix, son order flow, Mac et débutant, et ses vraies limites.
+- [Tradovate avis : prix, démo, France et limites (2026)](https://basstrading.fr/blog/tradovate-avis/): Tradovate avis : prix des formules, frais cachés, démo de 14 jours, accès depuis la France, lien avec NinjaTrader et TradingView, et vraies limites.
+- [Sierra Chart : configurer Market Profile, footprint et CVD](https://basstrading.fr/blog/sierra-chart-configuration/): Configurer Sierra Chart pas à pas : profil TPO, Volume Profile, footprint (Numbers Bars) et CVD, pour lire les futures du Nasdaq.
+- Formation liée : [Toutes les formations de Bass](https://basstrading.fr/formations/), plus de 250 leçons vidéo, du débutant au Market Profile avancé.
+
+### Gestion du risque et prop firms
+- [Combien risquer par trade : le calcul sur Nasdaq (NQ, MNQ)](https://basstrading.fr/blog/combien-risquer-par-trade/) (guide pilier): Combien risquer par trade ? Point mort win rate/RR, taille de position sur NQ et MNQ, cas des prop firms : ma méthode, chiffrée pas à pas.
+- [Perte maximale journalière : la règle des salles de marché](https://basstrading.fr/blog/perte-maximale-journaliere-trading/): Perte maximale journalière en trading : comment les salles de marché la fixent, ce qui se passe quand elle est touchée, et comment t'en inspirer seul.
+- [Chasse aux stops : pourquoi ton stop saute (et comment la lire)](https://basstrading.fr/blog/chasse-aux-stops-trading/): Chasse aux stops : pourquoi ton stop saute juste avant le bon mouvement, et comment lire la mèche sur le Footprint (delta, CVD, réintégration).
+- [Pyramider une position en trading : ajouter au gagnant, jamais au perdant](https://basstrading.fr/blog/pyramider-position-trading/): Pyramider une position en trading : ajouter des contrats seulement quand le trade gagne, stop remonté, risque plafonné. Méthode et exemple sur le MNQ.
+- [Drawdown prop firm : statique, trailing ou fin de journée ?](https://basstrading.fr/blog/drawdown-prop-firm-futures/): Drawdown prop firm : statique, trailing intraday, fin de journée ou verrouillé ? La mécanique chiffrée de chaque type et comment adapter ton trading.
+- [Premier payout en prop firm : coussin, cohérence et retrait](https://basstrading.fr/blog/premier-payout-prop-firm/): Premier payout prop firm : monter le coussin avant de retirer, calculer la règle de cohérence, savoir combien de temps valider. Vu en live.
+- [Devenir Funded Trader : La méthode qui fonctionne vraiment](https://basstrading.fr/blog/prop-firm-funded-trader/): Guide complet pour devenir funded trader en prop firm : FTMO, TopStep, Apex. Méthode, gestion du risque, préparation.
+- Formation liée : [Toutes les formations de Bass](https://basstrading.fr/formations/), plus de 250 leçons vidéo, du débutant au Market Profile avancé.
+
+<!-- grappes:fin -->
+
 ## Profils officiels
 - YouTube, chaîne Bass Trading (@basstradingpro) : https://www.youtube.com/channel/UCG08kz8xIa79s52sAg1NOEw
 - X (@bass_gma) : https://x.com/bass_gma
@@ -56,3 +119,4 @@
 - Site : https://basstrading.fr
 - E-mail : contact@basstrading.fr
 - Plan du site : https://basstrading.fr/sitemap.xml
+- Flux des articles : https://basstrading.fr/blog/feed.xml

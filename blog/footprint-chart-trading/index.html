@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Footprint Chart : Lire le volume comme un professionnel — BASS Trading</title>
-  <meta name="description" content="Guide complet du Footprint Chart : delta, déséquilibres (imbalances), absorption, CVD. Apprenez à lire le volume par niveau de prix comme un trader professionnel. Par Sébastien Constant.">
-  <meta property="og:title" content="Footprint Chart : Lire le volume comme un professionnel — BASS Trading">
-  <meta property="og:description" content="Delta, imbalances, absorption, CVD — tout comprendre du Footprint Chart pour trader avec le volume réel.">
+  <title>Footprint chart : comment le lire (delta, imbalance, outils) — BASS Trading</title>
+  <meta name="description" content="Le footprint affiche les achats et les ventes à chaque prix de la bougie. Lire le bid × ask, le delta, les imbalances, l'absorption, et quels outils utiliser.">
+  <meta property="og:title" content="Footprint chart : comment le lire (delta, imbalance, outils)">
+  <meta property="og:description" content="Le footprint affiche les achats et les ventes à chaque prix de la bougie. Lire le bid × ask, le delta, les imbalances, l'absorption, et quels outils utiliser.">
   <meta property="og:image" content="https://basstrading.fr/images/og-basstrading.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -19,7 +19,7 @@
   <link rel="canonical" href="https://basstrading.fr/blog/footprint-chart-trading/">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "@id": "https://basstrading.fr/blog/footprint-chart-trading/#article", "headline": "Footprint Chart : Lire le volume comme un professionnel", "description": "Guide complet du Footprint Chart : delta, déséquilibres, absorption, CVD.", "datePublished": "2026-03-27", "dateModified": "2026-03-27", "inLanguage": "fr-FR", "image": "https://basstrading.fr/images/og-basstrading.jpg", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://basstrading.fr/blog/footprint-chart-trading/"}, "isPartOf": {"@type": "WebSite", "@id": "https://basstrading.fr/#website", "name": "BASS Trading", "url": "https://basstrading.fr/"}, "author": {"@type": "Person", "@id": "https://basstrading.fr/#sebastien-constant", "name": "Sébastien Constant", "url": "https://basstrading.fr/auteur/sebastien-constant/"}, "publisher": {"@type": "Organization", "@id": "https://basstrading.fr/#organisation", "name": "BASS Trading", "url": "https://basstrading.fr/", "logo": {"@type": "ImageObject", "url": "https://basstrading.fr/images/logo-basstrading.png", "width": 512, "height": 512}}, "keywords": ["footprint chart", "delta", "imbalance", "absorption", "CVD", "order flow", "volume", "trading"]}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "@id": "https://basstrading.fr/blog/footprint-chart-trading/#article", "headline": "Footprint chart : comment le lire (delta, imbalance, outils)", "description": "Guide complet du Footprint Chart : delta, déséquilibres, absorption, CVD.", "datePublished": "2026-03-27", "dateModified": "2026-10-28", "inLanguage": "fr-FR", "image": "https://basstrading.fr/images/og-basstrading.jpg", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://basstrading.fr/blog/footprint-chart-trading/"}, "isPartOf": {"@type": "WebSite", "@id": "https://basstrading.fr/#website", "name": "BASS Trading", "url": "https://basstrading.fr/"}, "author": {"@type": "Person", "@id": "https://basstrading.fr/#sebastien-constant", "name": "Sébastien Constant", "url": "https://basstrading.fr/auteur/sebastien-constant/"}, "publisher": {"@type": "Organization", "@id": "https://basstrading.fr/#organisation", "name": "BASS Trading", "url": "https://basstrading.fr/", "logo": {"@type": "ImageObject", "url": "https://basstrading.fr/images/logo-basstrading.png", "width": 512, "height": 512}}, "keywords": ["footprint chart", "delta", "imbalance", "absorption", "CVD", "order flow", "volume", "trading"]}</script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://basstrading.fr"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://basstrading.fr/blog/"}, {"@type": "ListItem", "position": 3, "name": "Footprint Chart"}]}</script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "C'est quoi un Footprint Chart ?", "acceptedAnswer": {"@type": "Answer", "text": "Un graphique avancé qui décompose chaque bougie en montrant le volume Bid et Ask à chaque niveau de prix. Il révèle les déséquilibres de force entre acheteurs et vendeurs — invisible sur un chandelier classique."}}, {"@type": "Question", "name": "Quelle différence avec les chandeliers classiques ?", "acceptedAnswer": {"@type": "Answer", "text": "Les chandeliers montrent uniquement OHLC et le volume total. Le Footprint montre le volume décomposé Bid/Ask à CHAQUE niveau de prix. Vous voyez exactement où les acheteurs et vendeurs ont été agressifs."}}, {"@type": "Question", "name": "C'est quoi un déséquilibre (imbalance) ?", "acceptedAnswer": {"@type": "Answer", "text": "Un déséquilibre se produit quand le volume d'un côté dépasse largement l'autre — typiquement un ratio de 300%+. Les stacked imbalances sur 3+ niveaux consécutifs signalent une forte conviction directionnelle."}}, {"@type": "Question", "name": "Quel logiciel pour le Footprint ?", "acceptedAnswer": {"@type": "Answer", "text": "Sierra Chart est le standard professionnel. Il offre le Numbers Bars natif avec personnalisation complète. Le mentorat BASS fournit les templates pré-configurés."}}, {"@type": "Question", "name": "Le Footprint remplace-t-il le Market Profile ?", "acceptedAnswer": {"@type": "Answer", "text": "Non, ils sont complémentaires. Le Market Profile donne le contexte macro (où trader), le Footprint donne le timing micro (quand entrer). Les professionnels utilisent les deux."}}]}</script>
 
@@ -124,6 +124,7 @@
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
   .article-body a{color:var(--blue);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;font-weight:500}.article-body a:hover{text-decoration-thickness:2px}
 </style>
+<style>/* 28/10/2026 : débordement mobile (colonne de grille sans min-width) */.article-wrap>*,.article-layout>*{min-width:0}.article-body table,.compare-table{display:block;overflow-x:auto;max-width:100%}.article-body pre{overflow-x:auto}.article-body img{max-width:100%;height:auto}</style>
 </head>
 <body>
 
@@ -151,7 +152,7 @@
       <span>Footprint Chart</span>
     </nav>
     <div class="blog-hero-cat">Analyse</div>
-    <h1 class="blog-hero-title">Footprint Chart :<br>Lire le volume comme un professionnel</h1>
+    <h1 class="blog-hero-title">Footprint chart :<br>comment lire le volume dans la bougie</h1>
     <p class="blog-hero-desc">Le Footprint Chart décompose chaque bougie pour révéler ce que les chandeliers classiques cachent : qui achète, qui vend, et où se trouvent les déséquilibres de force. Guide complet.</p>
     <div class="blog-meta">
       <div class="blog-meta-author">
@@ -175,7 +176,7 @@
         <li><a href="#absorption">L'absorption</a></li>
         <li><a href="#cvd">Le Delta cumulatif (CVD)</a></li>
         <li><a href="#patterns">Patterns concrets</a></li>
-        <li><a href="#logiciel">Quel logiciel utiliser</a></li>
+        <li><a href="#logiciel">Quels outils pour le footprint</a></li>
         <li><a href="#vs-mp">Footprint vs Market Profile</a></li>
         <li><a href="#bass">Apprendre avec BASS</a></li>
       </ol>
@@ -184,7 +185,8 @@
 
   <article class="article-body">
     <h2 id="definition">Qu'est-ce qu'un Footprint Chart ?</h2>
-    <p>Un chandelier classique vous montre 4 chiffres : Open, High, Low, Close. Et le volume total de la bougie. C'est comme regarder le score final d'un match de foot sans avoir vu le match. Vous savez qui a gagné, mais pas <strong>comment</strong>.</p>
+    <!-- reponse:debut --><style>.reponse-courte strong,.reponse-courte p{color:#1D1D1F!important}</style><div class="reponse-courte" style="border-left:3px solid #0066FF;background:#F5F5F7;border-radius:0 12px 12px 0;padding:18px 20px;margin:0 0 28px;font-size:.95rem;line-height:1.65;color:#1D1D1F;max-width:100%;box-sizing:border-box"><div style="font-size:.6rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#0066FF;margin-bottom:6px">Réponse courte</div><p style="margin:0;color:#1D1D1F">Un footprint chart découpe chaque bougie en niveaux de prix et affiche, à chaque niveau, le volume exécuté à la vente (bid) et à l'achat (ask). On y lit le <strong>delta</strong> (achats agressifs moins ventes agressives), les <strong>imbalances</strong> (un côté qui écrase l'autre en diagonale) et l'<strong>absorption</strong> (beaucoup de volume sans que le prix avance). Il se lit sur des données tick par tick d'un marché centralisé, comme les futures du Nasdaq.</p></div><!-- reponse:fin -->
+<p>Un chandelier classique vous montre 4 chiffres : Open, High, Low, Close. Et le volume total de la bougie. C'est comme regarder le score final d'un match de foot sans avoir vu le match. Vous savez qui a gagné, mais pas <strong>comment</strong>.</p>
     <p>Le Footprint Chart ouvre la bougie. Il décompose le volume échangé à <strong>chaque niveau de prix</strong>, séparé entre les ordres exécutés côté Bid (vendeurs agressifs) et côté Ask (acheteurs agressifs). Vous voyez la bataille tick par tick — qui pousse, qui absorbe, où la force bascule.</p>
 
     <div class="key-concept">
@@ -269,14 +271,30 @@
 
     <hr>
 
-    <h2 id="logiciel">Quel logiciel utiliser ?</h2>
-    <p><strong>Sierra Chart</strong> est le standard professionnel pour le Footprint Chart. Son "Numbers Bars" offre la visualisation la plus complète et configurable du marché : couleurs par delta, seuils d'imbalance personnalisables, affichage Bid × Ask, delta cumulatif par bougie.</p>
-    <p>Alternatives : ATAS offre une interface plus visuelle mais moins de profondeur. Quantower est un bon compromis. Bookmap excelle en visualisation de la liquidité. Mais pour la fiabilité des données et la personnalisation, Sierra Chart reste imbattable.</p>
+    <h2 id="logiciel">Quels outils pour afficher un footprint ?</h2>
+    <p><strong>Réponse courte :</strong> il te faut deux choses, une plateforme qui dessine le footprint et des données <strong>tick par tick</strong> d'un marché centralisé (les futures du CME, comme le NQ ou le MNQ). Sans la seconde, la plus belle plateforme affiche un footprint approximatif.</p>
+    <p>Sur le forex au comptant ou les CFD, il n'y a pas de carnet central : le volume affiché est celui de ton courtier, pas celui du marché. C'est pour cela que je lis le footprint sur les futures.</p>
 
-    <div class="info-box">
-      <div class="info-box-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg> Inclus dans le mentorat</div>
-      <p>Le mentorat BASS Trading fournit les templates Sierra Chart pré-configurés pour le Footprint, le Market Profile et le CVD. Vous n'avez pas besoin de passer des semaines à configurer — tout est prêt dès le premier jour.</p>
-    </div>
+    <table class="compare-table">
+      <thead><tr><th>Plateforme</th><th>Nom du footprint</th><th>Ce qu'il faut savoir</th></tr></thead>
+      <tbody>
+        <tr><td>Sierra Chart</td><td>Numbers Bars</td><td>Le plus réglable (couleurs par delta, seuils d'imbalance, bid × ask). Interface austère, mais rapide et fiable.</td></tr>
+        <tr><td>ATAS</td><td>Cluster chart</td><td>Très visuel, pensé pour l'order flow. Bon point de départ si Sierra Chart te rebute.</td></tr>
+        <tr><td>NinjaTrader 8</td><td>Volumetric Bars</td><td>Fourni avec le module Order Flow+, selon la licence. <a href="/blog/ninjatrader-avis/">Mon avis complet sur NinjaTrader</a>.</td></tr>
+        <tr><td>Quantower</td><td>Cluster chart</td><td>Un bon compromis multi-courtiers, avec DOM et footprint dans le même logiciel.</td></tr>
+        <tr><td>TradingView</td><td>Volume footprint</td><td>Réservé aux abonnements payants, et différent d'un vrai bid × ask tick par tick. <a href="/blog/footprint-tradingview/">Ce que vaut le footprint de TradingView</a>.</td></tr>
+        <tr><td>Bookmap</td><td>Heatmap de liquidité</td><td>Montre surtout le carnet d'ordres dans le temps, plus qu'un footprint classique. Utile en complément.</td></tr>
+      </tbody>
+    </table>
+
+    <p>Mon choix, en séance, c'est Sierra Chart. Si tu pars de zéro, la configuration pas à pas est ici : <a href="/blog/sierra-chart-configuration/">configurer Sierra Chart (Market Profile, footprint, CVD)</a>. Si tu trades déjà avec Tradovate, lis <a href="/blog/tradovate-avis/">mon avis sur Tradovate</a> avant de choisir ta plateforme de lecture.</p>
+
+    <h3>Comment choisir sans te tromper</h3>
+    <ul>
+      <li><strong>Les données d'abord :</strong> vérifie que ton flux de données est tick par tick et non agrégé. Un footprint construit sur des données échantillonnées ment sur le delta.</li>
+      <li><strong>Le marché ensuite :</strong> un footprint sur le NQ ou le MNQ se lit très différemment d'un footprint sur une action peu échangée. Teste sur le marché que tu vas vraiment trader.</li>
+      <li><strong>Le confort en dernier :</strong> la plateforme la plus belle ne sert à rien si tu ne sais pas quoi y lire. Les imbalances, le delta et l'absorption se lisent pareil partout.</li>
+    </ul>
 
     <hr>
 
@@ -299,7 +317,7 @@
 
     <h2 id="bass">Apprendre le Footprint avec BASS Trading</h2>
     <p>Le Footprint ne s'apprend pas en lisant un article. Il se pratique, se vit en temps réel, et nécessite un feedback constant. C'est un outil qui demande de l'entraînement visuel — comme apprendre à lire une radio médicale.</p>
-    <p>Le mentorat BASS Trading consacre des modules entiers au Footprint Chart, avec des sessions live quotidiennes où Sébastien analyse le flux en temps réel, commente les déséquilibres, et explique ses décisions d'entrée et de sortie.</p>
+    <p>Le mentorat BASS Trading consacre des modules entiers au Footprint Chart, avec des séances en direct où Sébastien lit le flux en temps réel, commente les déséquilibres et explique ses décisions d'entrée et de sortie.</p>
 
     <p><strong>Ce guide fait partie de la série Order Flow.</strong> Pour la vue d'ensemble, commence par <a href="/blog/order-flow-trading-france/">le guide complet de l'order flow</a>.</p>
 
@@ -336,6 +354,7 @@
   </div>
 </section>
 
+<!-- serie:debut --><style>.serie-w{background:#FFF;color:#1D1D1F;border-top:1px solid #F5F5F7}.serie{max-width:1060px;margin:0 auto;padding:56px 24px;font-family:inherit;box-sizing:border-box}.serie-l{font-size:.6rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#0066FF;margin-bottom:8px}.serie-w .serie h2{font-size:1.4rem;font-weight:800;letter-spacing:-.5px;color:#1D1D1F!important;margin:0 0 18px;font-family:inherit}.serie ul{list-style:none;padding:0;margin:0 0 22px;display:grid;grid-template-columns:repeat(2,1fr);gap:8px 24px}.serie-w .serie li a{color:#1D1D1F!important;font-size:.9rem;line-height:1.45;text-decoration:none;border-bottom:1px solid #D2D2D7}.serie li a:hover{color:#0066FF}.serie li.pil a{font-weight:700}.serie-o{background:#F5F5F7;border-radius:14px;padding:18px 20px;font-size:.88rem;line-height:1.55;color:#1D1D1F}.serie-w .serie-o a{color:#0066FF!important;font-weight:700}@media(max-width:700px){.serie ul{grid-template-columns:1fr}}</style><div class="serie-w"><aside class="serie" aria-label="Dans la même série"><div class="serie-l">Dans la même série</div><h2>Footprint</h2><ul><li class=""><a href="/blog/imbalance-footprint/">Imbalance footprint et stacked imbalance : le guide de lecture</a></li><li class=""><a href="/blog/delta-footprint-trading/">Delta en Trading : Mesurer la Pression Directionnelle sur les Marchés</a></li><li class=""><a href="/blog/absorption-order-flow/">Absorption en Order Flow : Quand les Institutionnels Mangent les Ordres</a></li><li class=""><a href="/blog/footprint-tradingview/">Footprint TradingView : est-ce un vrai footprint bid × ask ?</a></li><li class=""><a href="/blog/cvd-cumulative-volume-delta/">CVD (Cumulative Volume Delta) : Détecter la Conviction des Traders</a></li></ul><div class="serie-o"><a href="/formation-footprint/">La formation Footprint</a> : Footprint Mastery, 23 leçons vidéo et 17 classes virtuelles, 790 €. Pour commencer sans payer : <a href="/p/formation-offerte/?src=serie-footprint-chart-trading">la formation offerte</a> (7 leçons vidéo).</div></aside></div><!-- serie:fin -->
 <footer class="footer">
   <div class="ft-top"><div class="ft-logo">BASS</div><div class="ft-cols">
     <div class="ft-col"><div class="ft-col-title">Programme</div><a href="/formations/">Toutes les formations</a><a href="https://basstrading.fr/#methode">Méthode</a><a href="https://basstrading.fr/#programme">Programme</a><a href="https://basstrading.fr/p/formation-offerte/?src=blog-footprint-chart-trading-pied">Formation offerte</a></div>
