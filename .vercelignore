@@ -11,3 +11,7 @@ emails
 images/banque-visage
 # Bannières et photo des profils réseaux (26/10/2026) : servent aux réseaux, pas au site
 images/profils-reseaux
+# Scripts du site (28/10/2026) : outils de génération, pas des pages
+gen_sitemap.py
+gen_feed.py
+gen_grappes.py
