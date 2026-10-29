@@ -6,8 +6,16 @@
   <link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
   <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/"/>
   <id>https://basstrading.fr/blog/</id>
-  <updated>2026-10-28T00:00:00Z</updated>
+  <updated>2026-10-29T00:00:00Z</updated>
   <author><name>Sébastien Constant (Bass)</name><uri>https://basstrading.fr/auteur/sebastien-constant/</uri></author>
+  <entry>
+    <title>Méthode de trading : comment trouver celle qui te correspond</title>
+    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/methode-de-trading/"/>
+    <id>https://basstrading.fr/blog/methode-de-trading/</id>
+    <published>2026-10-29T00:00:00Z</published>
+    <updated>2026-10-29T00:00:00Z</updated>
+    <summary>Méthode de trading : pourquoi celle d&#x27;un autre échoue sur toi, les deux traits qui décident de la tienne et comment la tester sans te mentir.</summary>
+  </entry>
   <entry>
     <title>Formation trading : contenu, prix, CPF et pièges à éviter</title>
     <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/formation-trading/"/>
