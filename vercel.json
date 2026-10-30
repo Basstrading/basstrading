@@ -305,6 +305,22 @@
   ],
   "rewrites": [
     {
+      "source": "/m/s.js",
+      "destination": "https://api.basstrading.fr/m/s.js"
+    },
+    {
+      "source": "/m/a.js",
+      "destination": "https://api.basstrading.fr/m/a.js"
+    },
+    {
+      "source": "/m/e/",
+      "destination": "https://api.basstrading.fr/m/e"
+    },
+    {
+      "source": "/m/e",
+      "destination": "https://api.basstrading.fr/m/e"
+    },
+    {
       "source": "/t/:chemin/",
       "destination": "https://api.basstrading.fr/t/:chemin"
     },
