@@ -169,7 +169,7 @@ details p{margin:12px 0 0;font-size:17px}
     <span class="sur">Carnet d'ordre Mastery · Bass Trading</span>
     <h1 class="grand">Formation carnet d'ordres : lire le <em>DOM</em> et le flux d'ordres en direct</h1>
     <p class="chapo">Ton graphique te montre où le prix est allé. Le carnet d'ordres te montre qui l'y pousse, qui l'arrête, et à quel prix. Pendant que ça se passe.</p>
-    <a class="btn" href="mailto:contact@basstrading.fr?subject=Formation%20carnet%20d%27ordres">Je demande le prix<small>Réponse par e-mail, avec le prix et les façons de payer</small></a>
+    <a class="btn" href="#demande">Je demande le prix<small>Réponse par e-mail, avec le prix et les façons de payer</small></a>
     <a class="btn2" href="#programme">Voir le programme détaillé</a>
     <div class="enbref">
       <h2>En bref</h2>
@@ -378,7 +378,7 @@ details p{margin:12px 0 0;font-size:17px}
       <img src="/formation-carnet-d-ordres/carnet-seance-graphique.webp" width="1088" height="864" alt="Une séance de la formation : le carnet d'ordres ATAS à gauche, et à droite le graphique du Nasdaq avec le profil de volume (vPOC, VAL) et un ordre d'achat limite posé à l'avance" loading="lazy" decoding="async">
       <figcaption>En séance : le carnet à gauche, le graphique et le profil de volume à droite (vPOC, VAL), un ordre d'achat limite posé à l'avance.</figcaption>
     </figure>
-    <a class="btn" href="mailto:contact@basstrading.fr?subject=Formation%20carnet%20d%27ordres">Je demande le prix<small>Réponse par e-mail, avec le prix et les façons de payer</small></a>
+    <a class="btn" href="#demande">Je demande le prix<small>Réponse par e-mail, avec le prix et les façons de payer</small></a>
   </div>
 </section>
 
@@ -427,7 +427,14 @@ details p{margin:12px 0 0;font-size:17px}
         <li>Tout dans ton espace élève sur basstrading.fr, à ton rythme</li>
       </ul>
       <div class="prix">Sur demande<small>Écris-moi : je te réponds avec le prix et les façons de payer.</small></div>
-      <div style="margin-top:22px"><a class="btn" href="mailto:contact@basstrading.fr?subject=Formation%20carnet%20d%27ordres">Je demande le prix<small>par e-mail, à contact@basstrading.fr</small></a></div>
+      <div style="margin-top:22px"><form id="demande" class="demande" novalidate>
+        <label>Ton prénom<input name="prenom" required autocomplete="given-name"></label>
+        <label>Ton e-mail<input name="email" type="email" required autocomplete="email"></label>
+        <label>Ta question (facultatif)<textarea name="message" rows="3" placeholder="Ton niveau, ton logiciel, ce que tu veux savoir…"></textarea></label>
+        <button class="btn" type="submit">Je demande le prix<small>Réponse par e-mail, avec le prix et les façons de payer</small></button>
+        <p class="demande-ok" hidden>✅ C'est envoyé. Je te réponds par e-mail avec le prix et les façons de payer.</p>
+        <p class="demande-err" hidden>L'envoi n'est pas passé. Écris-moi directement à <a href="mailto:contact@basstrading.fr?subject=Formation%20carnet%20d%27ordres">contact@basstrading.fr</a>.</p>
+      </form></div>
       <div class="rassure"><span>📩 Réponse par e-mail</span><span>🔑 Accès dans ton espace élève</span></div>
     </div>
     <p class="doux" style="font-size:15px">Une question avant de te lancer ? Écris à <a href="mailto:contact@basstrading.fr?subject=Formation%20carnet%20d%27ordres">contact@basstrading.fr</a>. Conditions : <a href="/cgv/">CGV</a>.</p>
@@ -496,7 +503,7 @@ details p{margin:12px 0 0;font-size:17px}
   <div class="w" style="text-align:center">
     <h2>Le prix bouge pour une raison. Apprends à la voir.</h2>
     <p class="chapo" style="margin-left:auto;margin-right:auto;max-width:600px">Écris-moi, je te réponds avec le prix, les façons de payer, et tes questions sur le programme.</p>
-    <a class="btn" href="mailto:contact@basstrading.fr?subject=Formation%20carnet%20d%27ordres" style="max-width:520px;margin:0 auto">Je demande le prix<small>Formation carnet d'ordres · réponse par e-mail</small></a>
+    <a class="btn" href="#demande" style="max-width:520px;margin:0 auto">Je demande le prix<small>Formation carnet d'ordres · réponse par e-mail</small></a>
   </div>
 </section>
 
@@ -514,5 +521,28 @@ new IntersectionObserver(([e]) => { offreVisible = e.isIntersecting; maj(); }).o
 addEventListener('scroll', maj, { passive: true });
 </script>
 <script src="/v.js" defer></script>
+<style>
+.demande{display:grid;gap:12px;text-align:left;max-width:520px;margin:0 auto}
+.demande label{display:grid;gap:6px;font-weight:600;font-size:15px}
+.demande input,.demande textarea{font:inherit;font-size:16px;padding:12px 14px;border-radius:10px;border:1px solid #3a3f4b;background:#fff;color:#111}
+.demande button.btn{width:100%;border:0;cursor:pointer}
+.demande-ok,.demande-err{margin:4px 0 0;font-weight:600}
+</style>
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  const f=document.getElementById('demande'); if(!f) return;
+  f.addEventListener('submit',async(e)=>{
+    e.preventDefault();
+    const d=new FormData(f), prenom=(d.get('prenom')||'').trim(), email=(d.get('email')||'').trim(), message=(d.get('message')||'').trim();
+    if(!prenom||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ f.reportValidity(); return; }
+    const b=f.querySelector('button'); b.disabled=true;
+    const data=new FormData(); data.append('_subject',"Demande de prix : formation carnet d'ordres"); data.append('Prénom',prenom); data.append('E-mail',email); data.append('Question',message||'(aucune)'); data.append('_template','table'); data.append('_captcha','false');
+    const mailReq=fetch('https://formsubmit.co/ajax/contact@basstrading.fr',{method:'POST',body:data,headers:{'Accept':'application/json'}});
+    fetch('https://api.basstrading.fr/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({type:'demande-prix-carnet',nom:prenom,email:email,message:message})}).catch(()=>{});
+    try{ const r=await mailReq; if(!r.ok) throw 0; f.querySelectorAll('label,button').forEach(x=>x.hidden=true); f.querySelector('.demande-ok').hidden=false; window.suivi?.('demande-prix',{formation:'carnet'}); }
+    catch{ b.disabled=false; f.querySelector('.demande-err').hidden=false; }
+  });
+});
+</script>
 </body>
 </html>
