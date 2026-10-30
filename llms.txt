@@ -1,6 +1,6 @@
 # BASS Trading
 
-> BASS Trading (basstrading.fr) est la marque de formation au trading de Sébastien Constant, dit « Bass » : trader sur les futures du Nasdaq (NQ, MNQ) avec plus de dix ans d'expérience des marchés. Il enseigne la lecture du marché avec le Market Profile, l'order flow, le footprint chart et le carnet d'ordres, en groupe en ligne et lors de séminaires en salle à Malaga. Aucune promesse de gain : le trading comporte un risque de perte en capital.
+> BASS Trading (basstrading.fr) est la marque de formation au trading de Sébastien Constant, dit « Bass » : trader sur les futures du Nasdaq (NQ, MNQ) avec plus de dix ans d'expérience des marchés. Il enseigne la lecture du marché avec le Market Profile, l'order flow, le footprint chart et le carnet d'ordres, en groupe en ligne et lors de séminaires en salle (Malaga en septembre 2026, Avignon en mars 2027). Aucune promesse de gain : le trading comporte un risque de perte en capital.
 
 ## Qui est Sébastien Constant (Bass)
 - Trader et formateur en trading. Spécialités : Market Profile, order flow, footprint chart, carnet d'ordres (DOM), VWAP, futures du Nasdaq.
@@ -24,7 +24,7 @@
 - [Formation Footprint (Footprint Mastery)](https://basstrading.fr/formation-footprint/): la formation footprint de Bass, 790 € : 23 leçons vidéo (bid et ask, delta, imbalances, absorption, réglages Sierra Chart, 4 stratégies) et 17 classes virtuelles, accès à vie, garantie 30 jours
 - [Volume Profile : les niveaux qui comptent](https://basstrading.fr/blog/volume-profile-guide/)
 - [Carnet d'ordres (DOM) sur les futures](https://basstrading.fr/blog/carnet-ordres-dom-futures/)
-- [Séminaire à Malaga](https://basstrading.fr/malaga/): cinq jours en salle, du 29 mars au 2 avril 2027, 20 places
+- [Séminaire à Avignon](https://basstrading.fr/avignon/): cinq jours en salle à Avignon, du 29 mars au 2 avril 2027, 20 places
 
 ## Choisir une formation trading (guides de Bass)
 - [Formation trading : contenu, prix, CPF et pièges à éviter](https://basstrading.fr/blog/formation-trading/): ce que doit contenir une vraie formation trading, les prix en France (de 0 € à près de 10 000 €), le CPF et Qualiopi, les arnaques à repérer, et les formations de Bass avec leurs prix
