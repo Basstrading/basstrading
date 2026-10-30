@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bookmap : lire la heatmap, prix réels et avis de trader — BASS Trading</title>
+  <meta name="description" content="Bookmap expliqué par un trader futures : lire la heatmap, vrai prix avec les données CME, version gratuite, Mac et limites sur le Nasdaq.">
+  <meta property="og:title" content="Bookmap : lire la heatmap, prix réels et avis de trader — BASS Trading">
+  <meta property="og:description" content="Bookmap expliqué par un trader futures : lire la heatmap, vrai prix avec les données CME, version gratuite, Mac et limites sur le Nasdaq.">
+  <meta property="og:image" content="https://basstrading.fr/blog/bookmap-heatmap/blog-bookmap-heatmap-1.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://basstrading.fr/blog/bookmap-heatmap/blog-bookmap-heatmap-1.webp">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://basstrading.fr/blog/bookmap-heatmap/">
+  <meta property="og:site_name" content="BASS Trading">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://basstrading.fr/blog/bookmap-heatmap/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","@id":"https://basstrading.fr/blog/bookmap-heatmap/#article","headline":"Bookmap : lire la heatmap, prix réels et avis de trader","description":"Bookmap expliqué par un trader futures : lire la heatmap, vrai prix avec les données CME, version gratuite, Mac et limites sur le Nasdaq.","datePublished":"2026-10-30","dateModified":"2026-10-30","inLanguage":"fr-FR","image":"https://basstrading.fr/blog/bookmap-heatmap/blog-bookmap-heatmap-1.webp","mainEntityOfPage":"https://basstrading.fr/blog/bookmap-heatmap/","isPartOf":{"@type":"WebSite","@id":"https://basstrading.fr/#website","name":"BASS Trading","url":"https://basstrading.fr/"},"author":{"@type":"Person","@id":"https://basstrading.fr/#sebastien-constant","name":"Sébastien Constant","url":"https://basstrading.fr/auteur/sebastien-constant/"},"publisher":{"@type":"Organization","@id":"https://basstrading.fr/#organisation","name":"BASS Trading","url":"https://basstrading.fr/","logo":{"@type":"ImageObject","url":"https://basstrading.fr/images/logo-basstrading.png","width":512,"height":512}}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://basstrading.fr"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://basstrading.fr/blog/"},{"@type":"ListItem","position":3,"name":"Bookmap : heatmap et prix","item":"https://basstrading.fr/blog/bookmap-heatmap/"}]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Bookmap est-il gratuit ?","acceptedAnswer":{"@type":"Answer","text":"Il existe une formule gratuite, Digital, mais elle ne couvre que les cryptomonnaies, avec un seul instrument et une heure d'historique. Pour les futures comme le NQ ou l'ES, il faut une formule payante (à partir de 49 dollars par mois au 30/10/2026) et acheter les données du CME en plus. Il n'existe pas de version gratuite officielle pour les futures."}},{"@type":"Question","name":"Qu'est-ce que la heatmap de Bookmap ?","acceptedAnswer":{"@type":"Answer","text":"C'est une carte de chaleur de la liquidité : chaque niveau de prix est coloré selon la quantité d'ordres limites qui y attendait, à chaque instant. Les zones claires sont les gros paquets d'ordres, les sombres sont presque vides. Elle permet de voir l'historique du carnet d'ordres, ce que le DOM classique ne montre pas, puisqu'il n'affiche que l'instant présent."}},{"@type":"Question","name":"Bookmap fonctionne-t-il sur Mac ?","acceptedAnswer":{"@type":"Answer","text":"Oui, Bookmap propose une version macOS pour processeurs Intel et Apple Silicon, et une version web. En revanche, les passerelles Stage5, Gain, Ninja et XTrader ne sont pas prises en charge sur macOS. Prévois 16 Go au moins, 24 Go conseillés par Bookmap sur Mac, et vérifie ta connexion précise avant de t'abonner."}},{"@type":"Question","name":"La heatmap de Bookmap peut-elle être trompeuse ?","acceptedAnswer":{"@type":"Answer","text":"Oui. Elle montre les ordres affichés, pas les intentions réelles. Un gros ordre peut être retiré juste avant le contact (c'est le spoofing, sanctionné par la CFTC), et un ordre iceberg peut cacher une quantité bien plus grande que ce qui s'affiche. C'est pour ça que je juge un niveau au comportement du prix au contact, pas à la couleur de la ligne."}},{"@type":"Question","name":"Bookmap ou ATAS : lequel choisir ?","acceptedAnswer":{"@type":"Answer","text":"Ils ne répondent pas à la même question. Bookmap est centré sur la liquidité en attente (la heatmap), ATAS sur le volume exécuté par prix (footprint et clusters). Pour lire l'agressivité et l'absorption, surtout sur le Nasdaq, le footprint est souvent plus lisible. Si ta plateforme a déjà une vue de la profondeur du carnet, commence par elle avant de payer un abonnement de plus."}},{"@type":"Question","name":"Bookmap est-il adapté au Nasdaq futures ?","acceptedAnswer":{"@type":"Answer","text":"Oui pour le contexte, non comme outil de décision seul. Le carnet du NQ est léger (souvent 1 à 15 contrats par ligne) et très rapide, donc facile à colorer artificiellement. Je l'utilise uniquement sur des niveaux préparés à l'avance, pour confirmer qu'une zone tient ou cède. Sur l'ES ou les taux, la heatmap est plus fiable car le carnet est bien plus profond."}},{"@type":"Question","name":"Faut-il un abonnement aux données pour Bookmap ?","acceptedAnswer":{"@type":"Answer","text":"Oui pour les futures et les actions : Bookmap précise que les données en direct de ces marchés ne sont pas incluses. Tu peux les acheter chez Bookmap (environ 34 dollars par mois par bourse, ou 79 dollars pour l'ensemble du CME, au 30/10/2026) ou passer par un fournisseur comme Rithmic ou dxFeed. Ces tarifs valent pour un particulier non professionnel."}},{"@type":"Question","name":"Peut-on revoir ses séances et tester une stratégie sur Bookmap ?","acceptedAnswer":{"@type":"Answer","text":"Oui, avec une formule payante : Bookmap enregistre le carnet et permet de rejouer une séance entière, au ralenti ou en accéléré. C'est la fonction que je trouve la plus utile pour apprendre : tu fais ta revue de séance au calme, sans risque. La version gratuite ne propose ni l'enregistrement ni le replay."}}]}
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{--bk:#1D1D1F;--bk2:#111;--bk3:#0A0A0A;--g1:#6E6E73;--g2:#86868B;--g3:#D2D2D7;--g4:#F5F5F7;--wh:#FBFBFD;--pure:#FFF;--green:#00B67A;--blue:#0066FF}
+    html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}
+    body{font-family:'DM Sans',sans-serif;color:var(--bk);background:var(--pure);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+    .preloader{position:fixed;inset:0;background:var(--bk3);z-index:10001;display:flex;align-items:center;justify-content:center}
+    .pre-word{font-family:'Outfit',sans-serif;font-size:clamp(3rem,8vw,5rem);font-weight:900;letter-spacing:16px;text-transform:uppercase;color:var(--pure);overflow:hidden}
+    .pre-word span{display:inline-block;transform:translateY(110%);opacity:0}
+    .pre-line{width:0;height:1px;background:rgba(255,255,255,.3);margin-top:20px}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 48px;display:flex;align-items:center;justify-content:space-between;background:rgba(245,245,247,.85);backdrop-filter:blur(20px) saturate(1.8);border-bottom:1px solid rgba(0,0,0,.04);transition:background .4s}
+    .nav-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase;color:var(--bk)}
+    .nav-links{display:flex;gap:28px;list-style:none}.nav-links a{font-size:.74rem;font-weight:500;letter-spacing:.3px;color:var(--g1);transition:color .3s}.nav-links a:hover{color:var(--bk)}
+    .nav-cta{padding:8px 20px;background:var(--bk);color:var(--pure);border:none;border-radius:980px;font-size:.72rem;font-weight:600;transition:all .3s;cursor:pointer;text-decoration:none;display:inline-block}.nav-cta:hover{background:var(--bk2)}
+    .blog-hero{padding:160px 48px 80px;background:var(--g4);position:relative;overflow:hidden}
+    .blog-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,transparent,var(--g4));pointer-events:none}
+    .blog-hero-inner{max-width:720px;margin:0 auto}
+    .breadcrumb{display:flex;gap:8px;align-items:center;margin-bottom:28px;flex-wrap:wrap}
+    .breadcrumb a,.breadcrumb span{font-size:.68rem;font-weight:500;letter-spacing:.3px;color:var(--g2);transition:color .3s}.breadcrumb a:hover{color:var(--bk)}.breadcrumb .sep{color:var(--g3)}
+    .blog-hero-cat{display:inline-block;padding:5px 14px;border:1px solid rgba(0,102,255,.15);border-radius:980px;font-size:.6rem;font-weight:700;color:var(--blue);letter-spacing:2px;text-transform:uppercase;margin-bottom:20px}
+    .blog-hero-title{font-family:'Outfit',sans-serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:900;line-height:1.05;letter-spacing:-2px;color:var(--bk);margin-bottom:20px}
+    .blog-hero-desc{font-size:.95rem;color:var(--g1);line-height:1.8;max-width:560px;margin-bottom:28px}
+    .blog-meta{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+    .blog-meta-author{display:flex;align-items:center;gap:10px}
+    .blog-meta-avatar{width:36px;height:36px;border-radius:50%;background:var(--bk3);overflow:hidden;flex-shrink:0}.blog-meta-avatar img{width:100%;height:100%;object-fit:cover}
+    .blog-meta-name{font-size:.78rem;font-weight:600;color:var(--bk)}.blog-meta-role{font-size:.65rem;color:var(--g2)}
+    .blog-meta-sep{width:1px;height:24px;background:var(--g3)}
+    .blog-meta-info{font-size:.7rem;color:var(--g2)}.blog-meta-info span{margin-right:16px}
+    .toc{position:sticky;top:90px;background:var(--pure);border:1px solid rgba(0,0,0,.04);border-radius:14px;padding:24px;margin-bottom:32px}
+    .toc-title{font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.5px;color:var(--bk);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+    .toc ol{list-style:none;counter-reset:toc}.toc li{counter-increment:toc}
+    .toc li a{display:flex;align-items:baseline;gap:8px;padding:6px 0;font-size:.76rem;color:var(--g1);transition:color .3s;border-bottom:1px solid rgba(0,0,0,.03)}.toc li a:hover{color:var(--blue)}
+    .toc li a::before{content:counter(toc,decimal-leading-zero);font-family:'Outfit',sans-serif;font-size:.65rem;font-weight:700;color:var(--g3);min-width:18px}
+    .toc li:last-child a{border-bottom:none}.toc li a.active{color:var(--blue);font-weight:600}.toc li a.active::before{color:var(--blue)}
+    .article-wrap{display:grid;grid-template-columns:220px 1fr;gap:40px;max-width:1020px;margin:0 auto;padding:60px 48px 120px}
+    .article-sidebar{position:relative}.article-body{max-width:700px}
+    .article-body h2{font-family:'Outfit',sans-serif;font-size:clamp(1.4rem,2.5vw,1.8rem);font-weight:800;line-height:1.1;letter-spacing:-1px;color:var(--bk);margin:56px 0 16px;padding-top:20px}.article-body h2:first-of-type{margin-top:0}
+    .article-body h3{font-family:'Outfit',sans-serif;font-size:1.05rem;font-weight:700;line-height:1.25;letter-spacing:-.3px;color:var(--bk);margin:36px 0 10px}
+    .article-body p{font-size:.9rem;color:var(--g1);line-height:1.85;margin-bottom:18px}
+    .article-body strong{color:var(--bk);font-weight:600}
+    .article-body ul,.article-body ol{margin:0 0 20px 0;padding-left:20px}
+    .article-body li{font-size:.88rem;color:var(--g1);line-height:1.8;margin-bottom:6px}.article-body li strong{color:var(--bk)}
+    .article-body blockquote{margin:28px 0;padding:20px 24px;background:var(--g4);border-left:3px solid var(--bk);border-radius:0 12px 12px 0;font-size:.88rem;color:var(--g1);line-height:1.8;font-style:italic}
+    .article-body blockquote strong{color:var(--bk);font-style:normal}
+    .article-body hr{border:none;border-top:1px solid var(--g4);margin:48px 0}
+    .info-box{margin:28px 0;padding:24px;background:rgba(0,102,255,.03);border:1px solid rgba(0,102,255,.08);border-radius:14px}
+    .info-box-title{font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:700;color:var(--blue);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+    .info-box p{font-size:.82rem;color:var(--g1);line-height:1.7;margin-bottom:0}
+    .key-concept{margin:32px 0;padding:28px;background:var(--bk3);border-radius:16px;color:var(--pure)}
+    .key-concept-label{font-size:.55rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:10px}
+    .key-concept h4{font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:800;letter-spacing:-.3px;margin-bottom:8px}
+    .key-concept p{font-size:.85rem;color:rgba(255,255,255,.5);line-height:1.8;margin-bottom:0}
+    .compare-table{width:100%;margin:24px 0 28px;border-collapse:collapse;border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,.06)}
+    .compare-table th{background:var(--bk3);color:var(--pure);font-family:'Outfit',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:14px 16px;text-align:left}
+    .compare-table td{padding:12px 16px;font-size:.82rem;color:var(--g1);line-height:1.6;border-bottom:1px solid rgba(0,0,0,.04);background:var(--pure)}
+    .compare-table tr:last-child td{border-bottom:none}.compare-table td:first-child{font-weight:600;color:var(--bk)}
+    .cta-card{margin:48px 0;padding:40px;background:var(--bk3);border-radius:20px;text-align:center;position:relative;overflow:hidden}
+    .cta-card::before{content:'';position:absolute;top:-50%;right:-30%;width:400px;height:400px;background:radial-gradient(circle,rgba(0,102,255,.08) 0%,transparent 70%);pointer-events:none}
+    .cta-card-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:12px}
+    .cta-card h3{font-family:'Outfit',sans-serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:800;color:var(--pure);letter-spacing:-.5px;margin-bottom:8px}
+    .cta-card p{font-size:.85rem;color:rgba(255,255,255,.4);line-height:1.7;max-width:380px;margin:0 auto 24px}
+    .cta-card .btn-p{background:var(--pure);color:var(--bk)}.cta-card .btn-p:hover{box-shadow:0 8px 30px rgba(255,255,255,.15)}
+    .faq-sec{padding:80px 48px 100px;background:var(--g4)}
+    .faq-list{max-width:680px;margin:40px auto 0}.fi{border-bottom:1px solid rgba(0,0,0,.06)}
+    .fq{width:100%;text-align:left;padding:18px 0;background:none;border:none;font-size:.85rem;font-weight:600;font-family:'DM Sans',sans-serif;color:var(--bk);display:flex;justify-content:space-between;align-items:center;cursor:pointer;gap:16px;transition:color .3s}.fq:hover{color:var(--g1)}
+    .fq-icon{width:22px;height:22px;border-radius:50%;background:rgba(0,0,0,.04);display:flex;align-items:center;justify-content:center;font-size:.75rem;transition:all .4s;flex-shrink:0;color:var(--g2)}
+    .fa{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1)}.fa.open{max-height:280px;padding-bottom:14px}
+    .fa p{font-size:.8rem;color:var(--g1);line-height:1.7;margin-bottom:0}.fi.active .fq-icon{background:var(--bk);color:var(--pure);transform:rotate(45deg)}
+    .related-sec{padding:80px 48px;background:var(--pure);border-top:1px solid var(--g4)}
+    .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1060px;margin:40px auto 0}
+    .related-card{display:block;padding:28px;background:var(--g4);border-radius:16px;transition:all .4s;text-decoration:none;color:var(--bk)}
+    .related-card:hover{background:var(--pure);box-shadow:0 8px 30px rgba(0,0,0,.06);transform:translateY(-2px)}
+    .related-cat{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+    .related-card h3{font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:700;line-height:1.3;letter-spacing:-.3px;margin-bottom:8px}
+    .related-card p{font-size:.78rem;color:var(--g1);line-height:1.6;margin-bottom:14px}
+    .related-link{font-size:.72rem;font-weight:600;color:var(--blue);letter-spacing:.3px}
+    .footer{background:var(--bk3);color:var(--pure);padding:56px 48px 28px}
+    .ft-top{display:flex;justify-content:space-between;align-items:start;margin-bottom:48px;flex-wrap:wrap;gap:32px}
+    .ft-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase}
+    .ft-cols{display:flex;gap:80px}
+    .ft-col-title{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:12px}
+    .ft-col a{display:block;font-size:.78rem;color:rgba(255,255,255,.5);margin-bottom:8px;transition:color .3s}.ft-col a:hover{color:var(--pure)}
+    .ft-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:20px;display:flex;justify-content:space-between;align-items:center;font-size:.6rem;color:rgba(255,255,255,.2)}
+    .ft-bottom a{color:rgba(255,255,255,.2);transition:color .3s;margin-left:20px}.ft-bottom a:hover{color:rgba(255,255,255,.5)}
+    .disclaimer{padding:12px 48px;background:var(--bk3);font-size:.58rem;color:rgba(255,255,255,.12);text-align:center;line-height:1.6;border-top:1px solid rgba(255,255,255,.03)}
+    .sec-center{text-align:center;max-width:680px;margin:0 auto}
+    .sec-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--g2);margin-bottom:10px}
+    .sec-title{font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;line-height:1.05;letter-spacing:-1.5px;color:var(--bk);margin-bottom:16px}
+    .btn-p{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--bk);color:var(--pure);border-radius:980px;font-size:.85rem;font-weight:600;transition:all .3s;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;text-decoration:none}
+    .btn-p:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(0,0,0,.1)}
+    .btn-p svg{width:13px;height:13px;transition:transform .3s}.btn-p:hover svg{transform:translateX(3px)}
+    .reading-progress{position:fixed;top:0;left:0;height:2px;background:var(--blue);z-index:9999;width:0;transition:width .1s linear}
+    @media(max-width:900px){.nav{padding:14px 20px}.nav-links{display:none}.blog-hero{padding:120px 20px 60px}.article-wrap{grid-template-columns:1fr;padding:40px 20px 80px}.article-sidebar{display:none}.related-grid{grid-template-columns:1fr}.related-sec,.faq-sec{padding:60px 20px}.ft-cols{flex-direction:column;gap:28px}.footer{padding:40px 20px 20px}.disclaimer{padding:10px 16px}.cta-card{padding:28px 20px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  .article-body a{color:var(--blue);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;font-weight:500}.article-body a:hover{text-decoration-thickness:2px}
+</style>
+<style>/* 28/10/2026 : débordement mobile (colonne de grille sans min-width) */.article-wrap>*,.article-layout>*{min-width:0}.article-body table,.compare-table{display:block;overflow-x:auto;max-width:100%}.article-body pre{overflow-x:auto}.article-body img{max-width:100%;height:auto}</style>
+</head>
+<body>
+
+<div class="preloader" id="preloader"><div style="text-align:center"><div class="pre-word"><span>B</span><span>A</span><span>S</span><span>S</span></div><div class="pre-line" id="preLine"></div></div></div>
+<div class="reading-progress" id="readingProgress"></div>
+
+<nav class="nav" id="nav">
+  <a href="https://basstrading.fr" class="nav-logo">BASS</a>
+  <ul class="nav-links">
+    <li><a href="https://basstrading.fr/#methode">Méthode</a></li>
+    <li><a href="https://basstrading.fr#resultats">Résultats</a></li>
+    <li><a href="https://basstrading.fr#avis">Avis</a></li>
+    <li><a href="https://basstrading.fr#faq">FAQ</a></li>
+    <li><a href="/formations/">Formations</a></li>
+    <li><a href="https://basstrading.fr/blog/">Blog</a></li>
+  </ul>
+  <a href="https://basstrading.fr/p/formation-offerte/?src=blog-bookmap-heatmap-menu" class="nav-cta">Formation offerte</a>
+</nav>
+
+<section class="blog-hero">
+  <div class="blog-hero-inner">
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <a href="https://basstrading.fr">Accueil</a><span class="sep">/</span>
+      <a href="https://basstrading.fr/blog/">Blog</a><span class="sep">/</span>
+      <span>Bookmap : heatmap et prix</span>
+    </nav>
+    <div class="blog-hero-cat">Order flow</div>
+    <h1 class="blog-hero-title">Bookmap : lire la heatmap, prix réels et avis de trader</h1>
+    <p class="blog-hero-desc">Bookmap affiche l&#39;historique du carnet d&#39;ordres sous forme de carte de chaleur : tu vois où la liquidité attendait, où elle a disparu et où le marché a vraiment traité. C&#39;est un excellent outil pour comprendre le carnet, pas une boule de cristal. Je t&#39;explique comment la lire, ce qu&#39;elle coûte vraiment avec les données futures, et quand je m&#39;en passe.</p>
+    <div class="blog-meta">
+      <div class="blog-meta-author">
+        <div class="blog-meta-avatar"><img src="../../images/bass-presenting.jpg" alt="Sébastien Constant" loading="lazy"></div>
+        <div><div class="blog-meta-name"><a href="/auteur/sebastien-constant/" rel="author" style="color:inherit;text-decoration:none">Sébastien Constant</a></div><div class="blog-meta-role">Trader & Formateur Order Flow</div></div>
+      </div>
+      <div class="blog-meta-sep"></div>
+      <div class="blog-meta-info"><span>Octobre 2026</span><span>24 min de lecture</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="article-wrap">
+  <aside class="article-sidebar">
+    <div class="toc">
+      <div class="toc-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/></svg> Sommaire</div>
+      <ol>
+        <li><a href="#c-est-quoi-bookmap-et-que-montre-sa-heat">C&#39;est quoi Bookmap et que montre sa heatmap ?</a></li>
+        <li><a href="#comment-lire-la-heatmap-de-bookmap-pas-a">Comment lire la heatmap de Bookmap, pas à pas ?</a></li>
+        <li><a href="#murs-icebergs-spoofing-que-montre-vraime">Murs, icebergs, spoofing : que montre vraiment la heatmap ?</a></li>
+        <li><a href="#pourquoi-la-heatmap-ne-se-lit-pas-pareil">Pourquoi la heatmap ne se lit pas pareil sur le NQ, l&#39;ES et le ZN ?</a></li>
+        <li><a href="#combien-coute-bookmap-en-vrai-donnees-co">Combien coûte Bookmap en vrai, données comprises ?</a></li>
+        <li><a href="#que-vaut-la-version-gratuite-de-bookmap">Que vaut la version gratuite de Bookmap ?</a></li>
+        <li><a href="#replay-delta-indicateurs-quelles-fonctio">Replay, delta, indicateurs : quelles fonctions de Bookmap servent vraiment ?</a></li>
+        <li><a href="#bookmap-fonctionne-t-il-sur-mac-et-dans-">Bookmap fonctionne-t-il sur Mac et dans un navigateur ?</a></li>
+        <li><a href="#bookmap-pour-trader-le-nasdaq-utile-ou-t">Bookmap pour trader le Nasdaq : utile ou trop rapide ?</a></li>
+        <li><a href="#bookmap-atas-dom-ou-footprint-lequel-cho">Bookmap, ATAS, DOM ou footprint : lequel choisir ?</a></li>
+        <li><a href="#quelles-erreurs-font-les-debutants-avec-">Quelles erreurs font les débutants avec Bookmap ?</a></li>
+        <li><a href="#mon-avis-bookmap-vaut-il-le-coup-et-pour">Mon avis : Bookmap vaut-il le coup, et pour qui ?</a></li>
+        <li><a href="#ce-qu-il-faut-retenir-sur-bookmap">Ce qu&#39;il faut retenir sur Bookmap</a></li>
+      </ol>
+    </div>
+  </aside>
+
+  <article class="article-body">
+    <h2 id="c-est-quoi-bookmap-et-que-montre-sa-heat">C&#39;est quoi Bookmap et que montre sa heatmap ?</h2>
+    <p>Bookmap est un logiciel de trading qui dessine l&#39;historique du carnet d&#39;ordres sous forme de carte de chaleur : chaque niveau de prix prend une couleur selon la quantité d&#39;ordres limites qui y attendait, seconde après seconde.</p>
+<p>Tu regardes un graphique classique et tu vois seulement où le prix est passé. Tu regardes un carnet d&#39;ordres (le DOM) et tu vois les ordres en attente, mais seulement à l&#39;instant présent : dès que la ligne change, l&#39;information précédente disparaît.</p>
+<p>Bookmap colle les deux. C&#39;est avant tout une plateforme de visualisation : elle garde en mémoire tout ce que le carnet a affiché et le peint derrière la courbe du prix.</p>
+<h3>Les trois choses que tu vois à l&#39;écran</h3>
+<ul><li><b>La heatmap (le fond coloré)</b> : les zones claires ou chaudes sont les niveaux où beaucoup de contrats attendaient ; les zones sombres sont presque vides.</li><li><b>La ligne de prix</b> : le meilleur acheteur et le meilleur vendeur, qui avancent dans le temps de gauche à droite.</li><li><b>Les bulles de volume (les « Volume Dots »)</b> : des cercles dont la taille dépend du volume réellement échangé, colorés selon que ce sont les acheteurs ou les vendeurs qui ont frappé le marché.</li></ul>
+<p>D&#39;après la <a href="https://bookmap.com/faq/">FAQ de Bookmap</a>, l&#39;affichage se met à jour toutes les 30 millisecondes, soit une trentaine de fois par seconde. C&#39;est ce qui donne cet effet de film : tu ne regardes plus une photo du carnet, tu regardes le film entier, en temps réel.</p>
+<h3>Sur quels marchés fonctionne Bookmap ?</h3>
+<p>Bookmap se branche sur trois grandes familles de marchés : les futures (CME, Eurex et d&#39;autres bourses), les actions américaines et les cryptomonnaies. Moi, je ne m&#39;en sers que sur les contrats à terme du CME, qui cotent sur la plateforme électronique Globex presque 23 heures sur 24, du dimanche soir au vendredi soir.</p>
+<h3>Pourquoi ça intéresse un trader de futures</h3>
+<p>Je le répète dans toutes mes vidéos sur le sujet : le carnet d&#39;ordres n&#39;a de sens que sur un marché centralisé. Sur les futures du CME, tout le monde passe par la même bourse, donc le carnet que tu vois est le vrai carnet.</p>
+<p>Sur un CFD, il n&#39;y a pas de carnet centralisé à lire : ce que tu vois est le prix de ton courtier. C&#39;est pour ça que Bookmap, comme le reste de l&#39;<a href="https://basstrading.fr/blog/order-flow-trading-france/">order flow</a>, prend tout son sens sur les contrats à terme.</p>
+<p>Si tu n&#39;as jamais ouvert un carnet d&#39;ordres, commence par mon guide pour <a href="https://basstrading.fr/blog/carnet-ordres-dom-futures/">lire le carnet d&#39;ordres et le DOM sur les futures</a> : Bookmap n&#39;est qu&#39;une autre façon de le regarder.</p>
+<p>Reste une question : comment on lit vraiment ces couleurs sans se raconter d&#39;histoire ?</p>
+
+    <hr>
+
+    <h2 id="comment-lire-la-heatmap-de-bookmap-pas-a">Comment lire la heatmap de Bookmap, pas à pas ?</h2>
+    <p>On lit une heatmap en quatre temps : repérer les gros paquets d&#39;ordres, regarder comment le prix arrive dessus, vérifier si le paquet reste ou disparaît, puis juger ce qui se passe au contact. Le reste est du décor. Voici mon petit tutoriel, celui que je donne à mes élèves.</p>
+<h3>Étape 1 : repérer les murs</h3>
+<p>Une bande horizontale claire qui dure dans le temps, c&#39;est un niveau où quelqu&#39;un laisse une grosse quantité d&#39;ordres limites. Au-dessus du prix, ce sont des vendeurs passifs. En dessous, des acheteurs passifs.</p>
+<p>Dans mes vidéos, je les montre en bleu pour les acheteurs et en rouge pour les vendeurs sur le carnet classique. Sur Bookmap, la couleur dit seulement la quantité, pas le camp. C&#39;est la position par rapport au prix qui te dit qui attend.</p>
+<h3>Étape 2 : regarder l&#39;approche</h3>
+<p>Un mur loin du prix ne te sert à rien. Ce qui compte, c&#39;est le moment où le prix s&#39;en approche. Est-ce qu&#39;il ralentit ? Est-ce que les bulles de volume grossissent ? Est-ce que les ordres en face se renforcent ou s&#39;allègent ?</p>
+<h3>Étape 3 : vérifier que le mur est toujours là</h3>
+<p>C&#39;est l&#39;étape que les débutants sautent. Sur une heatmap, tu vois très bien une bande qui s&#39;arrête net, juste avant que le prix la touche. Le mur s&#39;est retiré.</p>
+<p>Ce n&#39;était peut-être pas un vrai ordre, ou son propriétaire a changé d&#39;avis. Un mur qui disparaît à deux ticks du prix ne t&#39;a rien appris sur le support, il t&#39;a appris que quelqu&#39;un ne voulait pas être exécuté.</p>
+<h3>Étape 4 : juger le contact</h3>
+<p>Quand le prix touche le niveau, trois scénarios :</p>
+<ul><li><b>Le mur tient et le prix repart</b> : les ordres passifs ont encaissé l&#39;agressivité d&#39;en face. C&#39;est de l&#39;<a href="https://basstrading.fr/blog/absorption-order-flow/">absorption</a>, le scénario que je cherche.</li><li><b>Le mur est mangé</b> : la bande s&#39;efface parce qu&#39;elle a été exécutée (tu le vois aux grosses bulles de volume) et le prix traverse. Le niveau a cédé.</li><li><b>Le mur recule</b> : il se décale d&#39;un ou deux ticks à chaque approche. Quelqu&#39;un accompagne le prix sans vouloir être servi.</li></ul>
+<h3>Les réglages qui changent tout</h3>
+<p>La heatmap a un contraste réglable. Trop sensible, tout est éclairé et tu ne vois plus rien. Pas assez, seuls les énormes paquets apparaissent.</p>
+<p>Je te conseille de régler le contraste pour que seuls deux ou trois niveaux ressortent vraiment sur ton écran : ceux-là méritent ton attention, les autres sont du bruit.</p>
+<p>Pense aussi au zoom dans le temps. Sur quelques minutes, tu vois le jeu des ordres. Sur plusieurs heures, tu vois les zones où la liquidité revient séance après séance. Ce sont deux lectures différentes ; ne les mélange pas.</p>
+<h3>À retenir</h3>
+<ul><li>La couleur indique la quantité, la position par rapport au prix indique le camp.</li><li>Un mur ne compte qu&#39;au moment où le prix s&#39;en approche.</li><li>Un mur qui disparaît avant le contact ne prouve rien sur le niveau.</li><li>Réglage : deux ou trois niveaux qui ressortent, pas une guirlande.</li></ul>
+<p>Tout ça suppose que les ordres affichés sont honnêtes. Or ce n&#39;est pas toujours le cas.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/bookmap-heatmap/blog-bookmap-heatmap-1.webp" alt="Ce que montrent les couleurs de la heatmap Bookmap : bandes claires pour la liquidité, bulles pour les ordres exécutés" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">La heatmap mélange deux informations : ce qui attendait dans le carnet (les bandes) et ce qui a vraiment été traité (les bulles).</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="murs-icebergs-spoofing-que-montre-vraime">Murs, icebergs, spoofing : que montre vraiment la heatmap ?</h2>
+    <p>La heatmap montre la liquidité affichée, pas les intentions. Un ordre peut être visible et faux (spoofing), invisible et énorme (iceberg), ou réel puis retiré. C&#39;est la limite principale de l&#39;outil, et c&#39;est aussi ce qui le rend formateur.</p>
+<h3>L&#39;ordre iceberg : ce que tu ne vois pas</h3>
+<p>Un iceberg est un gros ordre découpé : seule une petite partie s&#39;affiche dans le carnet, et elle se recharge à chaque fois qu&#39;elle est exécutée. Comme je le dis <a href="https://www.youtube.com/watch?v=R4Mu52hCJTg&amp;t=2262">dans ma vidéo sur le carnet d&#39;ordres</a> : « on voit l&#39;iceberg mais on ne voit pas ce qui se cache dessous ».</p>
+<p>Sur la heatmap, l&#39;iceberg ne ressemble pas à un mur. Il ressemble à un niveau modeste… sur lequel le volume échangé ne s&#39;arrête pas. Les bulles grossissent, le prix ne passe pas, et la quantité affichée revient sans cesse.</p>
+<p>Dans cette vidéo, je <a href="https://www.youtube.com/watch?v=R4Mu52hCJTg&amp;t=2326">montre une recharge</a> : une quantité affichée qui passe d&#39;environ 1 200 à 1 800 contrats alors que le marché tape dessus. C&#39;est ce genre de détail qui te dit qu&#39;un gros opérateur défend le niveau.</p>
+<p>Bookmap vend un module dédié, le traqueur de stops et d&#39;icebergs (« Stops &amp; Icebergs Tracker »), inclus dans sa formule la plus chère, et il faut en plus un flux de données ordre par ordre. Ces données s&#39;appellent MBO (« market by order ») : la bourse y publie chaque ordre individuellement avec un identifiant anonyme, au lieu de la simple somme par niveau de prix. Ce traqueur ne fonctionne pas sur les actions du Nasdaq (« not supported on Nasdaq stocks data », précise Bookmap) : c&#39;est un outil pour les futures.</p>
+<h3>Le spoofing : ce que tu vois et qui n&#39;existe pas</h3>
+<p>Le spoofing, c&#39;est placer un gros ordre qu&#39;on n&#39;a pas l&#39;intention de laisser exécuter, pour influencer les autres. Le régulateur américain des futures, la CFTC, le définit dans sa <a href="https://www.cftc.gov/LawRegulation/FederalRegister/FinalRules/2013-12365.html">note d&#39;interprétation de mai 2013</a> comme le fait de placer une offre « avec l&#39;intention de l&#39;annuler avant exécution ».</p>
+<p>Parmi les exemples cités : créer une « fausse apparence de profondeur de marché ». C&#39;est exactement ce que la heatmap affiche.</p>
+<p>Ce n&#39;est pas théorique. Le 9 septembre 2025, la CFTC a <a href="https://www.cftc.gov/PressRoom/PressReleases/9118-25">sanctionné un trader et sa société</a> pour avoir spoofé les futures E-mini S&amp;P 500 et E-mini Nasdaq 100 entre mai et décembre 2022 : de vrais ordres d&#39;un côté, de faux de l&#39;autre, au total cinq fois plus de contrats que ses vrais ordres, annulés une fois le vrai ordre exécuté. Amende de 200 000 dollars et douze mois d&#39;interdiction de trading.</p>
+<p>Sur une heatmap, ce faux côté aurait ressemblé à un beau mur.</p>
+<p>Dans ma vidéo, je le dis simplement : « <a href="https://www.youtube.com/watch?v=R4Mu52hCJTg&amp;t=2677">les gros opérateurs peuvent mettre un ordre pour attirer les gens</a>… retirer ses ordres et laisser passer le marché ». Je montre <a href="https://www.youtube.com/watch?v=R4Mu52hCJTg&amp;t=2655">un paquet de 445 contrats sur le S&amp;P 500 (ES)</a> qui joue ce rôle d&#39;aimant avant de s&#39;évaporer.</p>
+<h3>Le front running : se placer devant</h3>
+<p>Dernier comportement que tu verras souvent : quand un gros ordre est posé à un niveau, d&#39;autres traders se placent un ou deux ticks devant pour être servis en premier.</p>
+<p>Je l&#39;utilise moi-même, mais seulement quand le niveau est confirmé par autre chose : une zone du <a href="https://basstrading.fr/blog/market-profile-guide-complet/">Market Profile</a>, un niveau d&#39;options. Seul, un mur sur une heatmap ne justifie pas de se placer devant.</p>
+<h3>Une heatmap prédit-elle les mouvements ?</h3>
+<p>Non. Une heatmap de liquidité te montre où le marché risque de ralentir ou d&#39;accélérer, pas où il va. Les retournements naissent de la rencontre entre un niveau et un comportement (absorption, retrait de liquidité, acheteurs piégés), pas d&#39;une couleur. Aucun indicateur, sur Bookmap ou ailleurs, ne prédit un retournement à coup sûr.</p>
+<h3>À retenir</h3>
+<ul><li>Visible ne veut pas dire réel : le spoofing existe et il est sanctionné.</li><li>L&#39;iceberg se lit au volume qui ne s&#39;arrête pas, pas à la taille du mur.</li><li>Le front running ne vaut que sur un niveau confirmé ailleurs.</li></ul>
+<p>Ces pièges ne pèsent pas de la même façon selon le contrat que tu trades. C&#39;est le point que la plupart des avis sur Bookmap oublient.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/bookmap-heatmap/blog-bookmap-heatmap-2.webp" alt="Les quatre étapes pour lire une heatmap Bookmap : repérer le mur, regarder l&#39;approche du prix, vérifier le retrait, juger le contact" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Un mur ne compte qu&#39;au contact du prix : s&#39;il disparaît avant, il ne t&#39;a rien appris sur le niveau.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="pourquoi-la-heatmap-ne-se-lit-pas-pareil">Pourquoi la heatmap ne se lit pas pareil sur le NQ, l&#39;ES et le ZN ?</h2>
+    <p>Parce que la profondeur du carnet change tout : plus un carnet est lourd, plus un mur est difficile à simuler et plus la heatmap est fiable. Sur un carnet léger, quelques contrats suffisent à dessiner un niveau.</p>
+<p>Dans ma vidéo sur le carnet d&#39;ordres, <a href="https://www.youtube.com/watch?v=R4Mu52hCJTg&amp;t=384">je mets trois marchés côte à côte</a>, et les chiffres parlent d&#39;eux-mêmes :</p>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Contrat</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Ordres par ligne de prix (ordre de grandeur)</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Lecture du carnet</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">NQ (Nasdaq 100)</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">de 1 à 15 contrats</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">carnet léger, très rapide</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">ES (S&amp;P 500)</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">de 50 à 150 contrats</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">carnet moyen</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">ZN (taux à 10 ans US)</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">plus de 11 000 contrats</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">carnet très lourd</td></tr></tbody></table></div>
+<p>Ces quantités sont celles que j&#39;observe sur mes écrans, elles varient selon l&#39;heure et la séance. Mais l&#39;écart est énorme et il ne change pas.</p>
+<h3>Sur le ZN, le carnet parle</h3>
+<p>Quand tu as des milliers de contrats par ligne, retirer ou poser un faux mur coûte cher et se voit. Comme je le dis dans la vidéo : « <a href="https://www.youtube.com/watch?v=R4Mu52hCJTg&amp;t=2930">c&#39;est beaucoup plus difficile d&#39;avoir du fake sur le ZN parce qu&#39;il est lourd</a> que sur le NQ ». La heatmap y est lisible et stable.</p>
+<h3>Sur l&#39;ES, c&#39;est le bon compromis</h3>
+<p>Le carnet est assez rempli pour qu&#39;un paquet de plusieurs centaines de contrats se remarque, et assez lent pour qu&#39;on ait le temps de le voir. C&#39;est souvent sur l&#39;ES que je conseille de faire ses premières heures de lecture.</p>
+<h3>Sur le NQ, l&#39;œil ne suit plus</h3>
+<p>Le Nasdaq est mon marché, mais je suis honnête : à l&#39;œil nu, son carnet va trop vite. Dans la vidéo, je dis que sur chaque ligne de prix « <a href="https://www.youtube.com/watch?v=R4Mu52hCJTg&amp;t=2495">on va y passer quelques secondes, parfois quelques microsecondes</a> ». Avec un à quinze contrats par niveau, un seul trader peut colorer la heatmap.</p>
+<p>Si tu veux comprendre la différence entre le contrat standard et le micro, j&#39;ai détaillé <a href="https://basstrading.fr/blog/nq-ou-mnq/">le choix entre NQ et MNQ</a> dans un article à part.</p>
+<p>Alors, sur le Nasdaq, Bookmap ne sert à rien ? Non. Mais il ne sert pas à ce que la plupart des gens croient. J&#39;y reviens plus bas. D&#39;abord, parlons argent, parce que c&#39;est là que beaucoup tombent de haut.</p>
+
+    <hr>
+
+    <h2 id="combien-coute-bookmap-en-vrai-donnees-co">Combien coûte Bookmap en vrai, données comprises ?</h2>
+    <p>Bookmap coûte de 0 à 199 dollars par mois selon la formule, mais pour trader des futures il faut ajouter les données du CME, facturées à part : compte en pratique au moins 80 à 130 dollars par mois pour un usage sérieux. Le prix affiché n&#39;est jamais le prix final.</p>
+<p>Voici les tarifs que j&#39;ai relevés le 30/10/2026 sur la <a href="https://bookmap.com/pricing">page des prix de Bookmap</a> (en dollars, hors taxes) :</p>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Formule</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Prix mensuel</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Ce qu&#39;elle apporte</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Digital</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">gratuit</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">crypto seulement, 1 instrument</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Global</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">49 $ (39 $ en annuel)</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">futures et actions, 10 symboles</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Global Plus</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">99 $ (79 $ en annuel)</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">20 symboles, plus d&#39;outils</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Global Premium</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">199 $ (158 $ en annuel)</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">pack d&#39;outils MBO (dont le traqueur d&#39;icebergs), flux MBO en plus</td></tr></tbody></table></div>
+<p>Il existe aussi des licences à vie (990, 1 990 et 3 990 dollars). Je ne les recommande à personne qui débute : tu ne sais pas encore si l&#39;outil te convient.</p>
+<h3>Le piège : les données de marché</h3>
+<p>La page de Bookmap l&#39;écrit noir sur blanc : les données en direct pour les actions et les futures ne sont pas incluses. Il faut les acheter :</p>
+<ul><li>auprès de Bookmap (son offre de données CME, autour de 34 dollars par mois et par bourse, ou 79 dollars pour l&#39;ensemble des bourses du CME) ;</li><li>ou via un fournisseur que tu connectes (Rithmic, dxFeed, ton courtier), avec des tarifs du même ordre selon le forfait.</li></ul>
+<p>Ces prix sont ceux d&#39;un particulier « non professionnel ». Si tu es enregistré comme professionnel auprès de la bourse, la facture explose.</p>
+<h3>Exemple de budget réaliste</h3>
+<p>Tu trades le NQ et l&#39;ES, tous deux au CME. Formule Global en mensuel (49 $) + données CME (34 $) = environ 83 dollars par mois, avant ton courtier et ta plateforme d&#39;exécution si tu passes les ordres ailleurs. Avec la formule Global Plus et le paquet de données complet, tu dépasses 170 dollars.</p>
+<p>Je ne dis pas que c&#39;est cher ou pas cher. Je dis que ce budget doit se comparer à la taille de ton compte et au risque que tu prends par trade : sur un petit compte, 100 dollars par mois d&#39;outils pèsent lourd.</p>
+<p>J&#39;ai expliqué comment raisonner en pourcentage dans <a href="https://basstrading.fr/blog/combien-risquer-par-trade/">combien risquer par trade</a> ; applique la même logique à tes frais fixes.</p>
+<p>Avant de payer, tout le monde essaie la version gratuite. Que permet-elle vraiment ?</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/bookmap-heatmap/blog-bookmap-heatmap-3.webp" alt="Prix de Bookmap au 30/10/2026 : version gratuite crypto, formule Global à 49 dollars par mois, données CME à 79 dollars, heatmap mise à jour toutes les 30 ms" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Le prix affiché n&#39;est pas le prix final : pour les futures, les données du CME s&#39;ajoutent à l&#39;abonnement (tarifs relevés le 30/10/2026).</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="que-vaut-la-version-gratuite-de-bookmap">Que vaut la version gratuite de Bookmap ?</h2>
+    <p>La version gratuite de Bookmap, appelée Digital, ne fonctionne que sur les cryptomonnaies, avec un seul instrument et une heure d&#39;historique : elle sert à apprendre l&#39;interface, pas à trader les futures.</p>
+<p>C&#39;est écrit dans la <a href="https://bookmap.com/faq/">foire aux questions de Bookmap</a> : la formule gratuite donne accès aux devises numériques, un instrument à la fois, avec une heure de données passées au chargement. L&#39;enregistrement des séances, le rejeu (replay), les modules complémentaires et le passage d&#39;ordres en direct sont réservés aux formules payantes.</p>
+<h3>Ce que tu peux faire gratuitement</h3>
+<ul><li>Apprendre à régler le contraste de la heatmap.</li><li>T&#39;habituer aux bulles de volume et à la lecture des retraits de liquidité.</li><li>Observer le comportement d&#39;un carnet en continu, puisque la crypto ne ferme jamais.</li></ul>
+<h3>Ce que tu ne peux pas faire</h3>
+<ul><li>Voir le carnet du NQ, de l&#39;ES ou du ZN.</li><li>Revoir une séance pour l&#39;étudier à froid.</li><li>Mesurer ce que tu observes sur ton propre marché.</li></ul>
+<h3>Crypto et futures, deux carnets différents</h3>
+<p>Attention à une chose : un carnet crypto n&#39;est pas un carnet de futures. Les plateformes sont multiples, la liquidité est éclatée, les comportements diffèrent.</p>
+<p>Ce que tu apprends sur la crypto, c&#39;est la mécanique de l&#39;outil, pas la lecture de ton marché. Je ne parle pas ici de trader la crypto : je parle d&#39;utiliser un terrain gratuit pour apprendre à manipuler le logiciel.</p>
+<h3>Et un Bookmap gratuit pour les futures ?</h3>
+<p>Il n&#39;y en a pas d&#39;officiel. Méfie-toi des versions craquées qui circulent : en plus d&#39;être illégales, elles sont un excellent moyen de laisser un logiciel inconnu accéder à ton compte de courtage.</p>
+<p>Si la gratuité est ton critère, une autre voie existe : le carnet d&#39;ordres et les graphiques de flux de certaines plateformes que tu utilises déjà. J&#39;en parle plus bas. Mais avant, regardons ce que les formules payantes ajoutent vraiment.</p>
+
+    <hr>
+
+    <h2 id="replay-delta-indicateurs-quelles-fonctio">Replay, delta, indicateurs : quelles fonctions de Bookmap servent vraiment ?</h2>
+    <p>Au-delà de la heatmap, trois fonctions comptent vraiment pour apprendre : le replay des séances enregistrées, les indicateurs de delta et de volume, et les modules qui repèrent les gros ordres. Le reste relève du confort.</p>
+<h3>Le replay : ta revue de séance au calme</h3>
+<p>C&#39;est pour moi la fonction la plus utile pour progresser. Bookmap enregistre le carnet en continu et te permet de rejouer une séance entière, en accéléré ou au ralenti.</p>
+<p>Tu peux revoir un trade passé, comprendre pourquoi un niveau a tenu, ou t&#39;entraîner sur une ouverture du Nasdaq sans risquer un centime. Une ouverture revue cinq fois au ralenti t&#39;en apprend plus qu&#39;une ouverture subie en direct. C&#39;est aussi le seul moyen honnête de tester une idée de lecture avant de la trader, et c&#39;est la base de la revue de séance que je fais faire à mes élèves.</p>
+<h3>Le delta et le volume</h3>
+<p>La heatmap montre les ordres passifs. Pour savoir qui frappe le marché, il te faut le delta : la différence entre le volume exécuté à l&#39;achat et à la vente. Bookmap propose un indicateur de delta cumulé (CVD) sous le graphique et les bulles de volume sur le prix.</p>
+<p>C&#39;est la même logique que dans mon guide de l&#39;<a href="https://basstrading.fr/blog/order-flow-trading-france/">order flow</a> : un prix qui monte avec un delta qui faiblit, c&#39;est un mouvement qui s&#39;essouffle. Et si tu travailles en intraday, combine-le avec un repère de prix moyen comme le <a href="https://basstrading.fr/blog/vwap-trading/">VWAP en trading</a> : un mur posé pile sur le VWAP m&#39;intéresse bien plus qu&#39;un mur au milieu de nulle part.</p>
+<h3>Les modules qui repèrent les gros ordres</h3>
+<p>Le traqueur de gros lots (« Large Lot Tracker ») signale les exécutions de grande taille ; le traqueur de stops et d&#39;icebergs détecte les ordres cachés et les déclenchements de stops grâce aux données ordre par ordre.</p>
+<p>Utiles, mais ils ne remplacent pas ta lecture : ils te disent qu&#39;un gros ordre est passé, pas s&#39;il faut le suivre.</p>
+<h3>Indicateurs gratuits ou payants ?</h3>
+<p>Bookmap a une boutique de modules complémentaires : certains sont fournis avec les formules, d&#39;autres sont vendus à part par l&#39;éditeur ou des développeurs tiers. Tu peux aussi personnaliser l&#39;affichage (couleurs, taille des bulles, échelle de prix, colonnes du carnet) pour l&#39;adapter à ta façon de travailler.</p>
+<p>Mon conseil : n&#39;achète aucun module tant que tu ne sais pas lire la heatmap nue.</p>
+<h3>Les connexions aux courtiers</h3>
+<p>Bookmap ne passe pas tes ordres seul : il se branche sur tes courtiers ou ton fournisseur de données (Rithmic, CQG, dxFeed, et différentes plateformes). Avant de t&#39;abonner, vérifie que ta connexion exacte est prise en charge, sur ton système d&#39;exploitation.</p>
+<h3>Scalping ou swing : à qui sert Bookmap ?</h3>
+<p>Bookmap est pensé pour le court terme : scalping et day trading, où la liquidité des prochaines minutes compte. En swing trading, sur plusieurs jours et plusieurs sessions, la heatmap d&#39;une séance n&#39;a presque plus de valeur ; un <a href="https://basstrading.fr/blog/volume-profile-guide/">Volume Profile</a> sur plusieurs séances te dira bien plus sur les zones importantes.</p>
+<h3>Heatmap ou graphique en chandeliers ?</h3>
+<p>Ce n&#39;est pas l&#39;un ou l&#39;autre. Le chandelier résume ce qui s&#39;est traité ; la heatmap montre ce qui attendait autour. Sur Bookmap, tu peux d&#39;ailleurs afficher des bougies par-dessus la carte de chaleur. Le chandelier te donne la structure, la heatmap le détail.</p>
+<p>Toutes ces fonctions demandent une machine solide. Et c&#39;est là que se pose la question du Mac.</p>
+
+    <hr>
+
+    <h2 id="bookmap-fonctionne-t-il-sur-mac-et-dans-">Bookmap fonctionne-t-il sur Mac et dans un navigateur ?</h2>
+    <p>Oui : Bookmap a une version macOS, pour processeurs Intel et Apple Silicon, ainsi qu&#39;une version web. Mais les passerelles Stage5, Gain, Ninja et XTrader ne sont pas prises en charge sur macOS, et l&#39;outil est gourmand en mémoire.</p>
+<p>D&#39;après la <a href="https://bookmap.com/knowledgebase/docs/KB-IntroductionToBookmap-SystemRequirements">configuration requise publiée par Bookmap</a>, que j&#39;ai vérifiée le 30/10/2026 :</p>
+<ul><li><b>Windows</b> : Windows 8 64 bits au minimum, Windows 10 recommandé ; mémoire de 8 Go au minimum, 16 ou 32 Go selon l&#39;usage (plusieurs marchés, données ordre par ordre).</li><li><b>Mac</b> : macOS 10.12 ou plus récent, avec une version pour Intel et une pour Apple Silicon ; mémoire de 8 Go au minimum, 24 Go conseillés ; macOS 13 ou plus pour l&#39;accélération graphique sur Apple Silicon.</li><li><b>Carte graphique</b> : compatible OpenGL 3.3 avec au moins 1 Go de mémoire.</li></ul>
+<h3>Le point qui bloque sur Mac</h3>
+<p>Bookmap l&#39;écrit sur sa page : les passerelles Stage5, Gain, Ninja et XTrader ne sont pas prises en charge sur macOS. Si ton courtier passe par l&#39;une d&#39;elles, ton Mac ne suffira pas.</p>
+<p>Les connexions directes à des fournisseurs de données comme Rithmic ou dxFeed sont, elles, généralement disponibles. Vérifie ta connexion précise avant de payer, pas après.</p>
+<p>Si tu hésites encore sur ta plateforme d&#39;exécution, mes avis sur <a href="https://basstrading.fr/blog/ninjatrader-avis/">NinjaTrader</a> et sur <a href="https://basstrading.fr/blog/tradovate-avis/">Tradovate</a> t&#39;aideront : Tradovate tourne dans un navigateur, ce qui règle une partie du problème Mac.</p>
+<h3>Et la version web ?</h3>
+<p>Bookmap propose aussi une version web (Bookmap Web). Pratique pour regarder, plus limitée pour travailler sérieusement plusieurs heures. Et honnêtement, lire une heatmap sur un téléphone n&#39;a pas de sens.</p>
+<h3>Mon conseil matériel</h3>
+<p>Un écran large, une machine avec 16 Go de mémoire au moins, et un seul marché affiché au début. Bookmap sur trois marchés avec un ordinateur portable fatigué, c&#39;est la garantie d&#39;un affichage qui saccade au pire moment : à l&#39;ouverture.</p>
+<p>Technique réglée. Revenons à la vraie question : sur le Nasdaq, à quoi ça sert ?</p>
+
+    <hr>
+
+    <h2 id="bookmap-pour-trader-le-nasdaq-utile-ou-t">Bookmap pour trader le Nasdaq : utile ou trop rapide ?</h2>
+    <p>Sur le Nasdaq futures, Bookmap est utile pour voir le contexte (où la liquidité se concentre, qui est piégé) mais il ne remplace jamais un niveau préparé à l&#39;avance. Prendre une décision sur la seule couleur d&#39;une ligne de NQ, c&#39;est jouer à pile ou face avec des frais.</p>
+<h3>Ce que je regarde vraiment</h3>
+<p>Dans ma vidéo, je dis qu&#39;avec un carnet « <a href="https://www.youtube.com/watch?v=R4Mu52hCJTg&amp;t=2413">vous voyez clairement à l&#39;instant T si vos acheteurs ou vos vendeurs sont là</a> ». C&#39;est vrai. Mais je précise juste après que sur le Nasdaq ça va trop vite pour lire chaque ligne.</p>
+<p>Alors je change de question. Je ne me demande pas « où est le mur ? ». Je me demande :</p>
+<ul><li><b>Est-ce que le prix est sur un de mes niveaux factuels ?</b> Un haut ou un bas de zone de valeur du Market Profile, un gros niveau d&#39;options, le plus haut de la veille.</li><li><b>Qui vient de se faire piéger ?</b> Des acheteurs qui ont poussé au plus haut et que le marché laisse en plan, des vendeurs qui ont vendu un bas qui tient. C&#39;est le genre de situation que décrit mon article sur la <a href="https://basstrading.fr/blog/chasse-aux-stops-trading/">chasse aux stops</a>, et c&#39;est la même idée de liquidité que les adeptes du <a href="https://basstrading.fr/blog/smc-trading/">SMC en trading</a> appellent « prise de liquidité ».</li><li><b>La liquidité confirme-t-elle ?</b> Là seulement, la heatmap entre en jeu : un niveau qui tient avec de l&#39;agressivité absorbée, ou une liquidité qui se retire et laisse filer.</li></ul>
+<p>Le niveau d&#39;abord, la heatmap ensuite. Dans cet ordre, Bookmap devient un outil de confirmation. Dans l&#39;ordre inverse, il devient une machine à surtrader.</p>
+<h3>Une scène que je vois chaque semaine</h3>
+<p>Ouverture de la séance américaine, 15 h 30 heure de Paris (14 h 30 pendant les quelques semaines de décalage entre les changements d&#39;heure européen et américain). Le NQ descend vers le bas de la zone de valeur de la veille. Sur la heatmap, une bande claire apparaît deux ou trois points sous le prix.</p>
+<p>Le débutant achète dessus, parce qu&#39;« il y a un gros acheteur ». La bande s&#39;efface au moment où le prix arrive, le marché traverse, le stop saute.</p>
+<p>Ce que j&#39;aurais regardé : le niveau était bon, donc je m&#39;intéresse. Mais je ne m&#39;engage qu&#39;une fois que le prix a touché, que les ventes agressives n&#39;avancent plus (bulles de vente qui s&#39;empilent sans que le prix descende) et que le prix repasse au-dessus. La bande colorée ne m&#39;a rien dit ; le comportement du prix au contact m&#39;a tout dit.</p>
+<p>Si tu veux caler tes horaires, j&#39;ai fait la liste des <a href="https://basstrading.fr/blog/horaires-futures-nasdaq-heure-paris/">horaires des futures Nasdaq à l&#39;heure de Paris</a> : le carnet ne se comporte pas pareil à 9 h, à 15 h 30 et à 22 h.</p>
+<h3>Le spread, ton thermomètre</h3>
+<p>Un dernier indicateur simple que la heatmap rend visible : l&#39;écart entre le meilleur acheteur et le meilleur vendeur. <a href="https://www.youtube.com/watch?v=R4Mu52hCJTg&amp;t=901">Je l&#39;explique dans la vidéo</a> : plus le marché est liquide, plus le spread est serré ; dans les heures creuses, il s&#39;élargit et le carnet devient plus facile à manipuler.</p>
+<p>Une heatmap clairsemée la nuit, pendant la session asiatique de Globex, n&#39;a pas la même valeur qu&#39;à l&#39;ouverture américaine.</p>
+<p>Le trading de contrats à terme comporte un risque élevé de perte, pouvant dépasser la mise initiale. Contenu éducatif, pas un conseil en investissement.</p>
+<p>Cette façon de lire le marché (préparer ses niveaux, puis regarder le flux d&#39;ordres seulement là où ça compte) est le cœur de ce que j&#39;enseigne. Je la montre en entier, avec mes séances commentées, dans <a href="https://basstrading.fr/l/RfjNxw">ma formation gratuite</a>.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/bookmap-heatmap/blog-bookmap-heatmap-4.webp" alt="Règle de lecture de Bookmap sur le Nasdaq : le niveau préparé d&#39;abord, la heatmap seulement pour confirmer" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Sur le NQ, la heatmap confirme une zone préparée avant la séance ; elle ne la remplace jamais.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="bookmap-atas-dom-ou-footprint-lequel-cho">Bookmap, ATAS, DOM ou footprint : lequel choisir ?</h2>
+    <p>Bookmap répond à la question « où attendent les ordres ? », le footprint répond à « qui a frappé le marché, et à quel prix ? », le DOM répond à « que se passe-t-il à l&#39;instant ? ». Ce ne sont pas des concurrents, ce sont trois angles sur le même carnet.</p>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Outil</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Ce qu&#39;il montre</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Point fort</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Heatmap (Bookmap)</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">ordres limites en attente, dans le temps</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">retraits et murs visibles</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Footprint</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">volume exécuté par prix et par bougie</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">agressivité, déséquilibres</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">DOM classique</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">carnet à l&#39;instant présent</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">exécution rapide</td></tr></tbody></table></div>
+<h3>Le footprint</h3>
+<p>Le <a href="https://basstrading.fr/blog/footprint-chart-trading/">graphique footprint</a> découpe chaque bougie par niveau de prix et affiche ce qui a été acheté et vendu à chaque niveau. Il ne voit pas les ordres en attente ; il voit les ordres exécutés.</p>
+<p>Pour repérer une absorption ou un déséquilibre, je le trouve plus lisible que la heatmap, surtout sur le NQ. Si ta plateforme est TradingView, regarde ce que vaut le <a href="https://basstrading.fr/blog/footprint-tradingview/">footprint sur TradingView</a>.</p>
+<h3>ATAS et les plateformes « tout-en-un »</h3>
+<p>ATAS est construit autour des clusters et du footprint, avec ses propres affichages de la profondeur du carnet. D&#39;autres plateformes, comme Sierra Chart, proposent un graphique de l&#39;historique de la profondeur proche de la heatmap.</p>
+<p>Si tu as déjà une plateforme d&#39;order flow, regarde d&#39;abord si elle n&#39;a pas déjà une vue de la liquidité avant de payer un abonnement de plus.</p>
+<h3>Le DOM</h3>
+<p>Le carnet classique reste l&#39;outil d&#39;exécution. Beaucoup de traders affichent le DOM pour passer leurs ordres et Bookmap à côté pour le contexte. Le DOM seul suffit pour un <a href="https://basstrading.fr/blog/day-trading-futures/">day trading des futures</a> simple ; la heatmap ajoute la mémoire.</p>
+<h3>Mon ordre d&#39;apprentissage</h3>
+<ul><li>Le graphique et les niveaux (Market Profile, plus haut et plus bas de la veille).</li><li>Le footprint, pour lire l&#39;agressivité.</li><li>Le carnet et la heatmap, pour lire la liquidité passive.</li></ul>
+<p>Commencer par la heatmap, c&#39;est commencer par l&#39;outil le plus spectaculaire et le plus trompeur. Ce n&#39;est pas un hasard si ce sont aussi les erreurs que je vois le plus souvent chez ceux qui débutent avec Bookmap.</p>
+
+    <hr>
+
+    <h2 id="quelles-erreurs-font-les-debutants-avec-">Quelles erreurs font les débutants avec Bookmap ?</h2>
+    <p>L&#39;erreur numéro un est de prendre chaque mur pour un support : un mur n&#39;est qu&#39;une intention affichée, qui peut disparaître en une fraction de seconde. Voici les autres, avec ce que je fais à la place.</p>
+<h3>1. Trader la couleur au lieu du niveau</h3>
+<p>Une bande claire attire l&#39;œil, et l&#39;œil veut agir. Résultat : des entrées au milieu de nulle part. Correction : n&#39;ouvre Bookmap qu&#39;aux abords de niveaux préparés avant la séance.</p>
+<h3>2. Oublier le spoofing</h3>
+<p>On l&#39;a vu avec la sanction de la CFTC : au total, cinq fois plus de contrats que ses vrais ordres ont été posés puis annulés sur les E-mini. Correction : un mur ne compte pour moi que s&#39;il reste en place au contact du prix et qu&#39;il encaisse du volume.</p>
+<h3>3. Régler la heatmap trop sensible</h3>
+<p>Tout s&#39;allume, tout semble important. Correction : baisse le contraste jusqu&#39;à n&#39;avoir que deux ou trois niveaux qui ressortent.</p>
+<h3>4. Comparer des marchés qui n&#39;ont rien à voir</h3>
+<p>Un paquet de 100 contrats est énorme sur le NQ, banal sur l&#39;ES, ridicule sur le ZN. Correction : juge chaque quantité par rapport à la profondeur habituelle de ton contrat, à ton heure de séance.</p>
+<h3>5. Croire que l&#39;outil remplace l&#39;entraînement</h3>
+<p>Bookmap ne lit rien à ta place. La lecture du carnet s&#39;apprend comme la <a href="https://basstrading.fr/blog/tape-reading-flux-ordres/">lecture du ruban</a> : des heures d&#39;observation, sans pression, avant de risquer de l&#39;argent. Correction : enregistre tes séances (formule payante) et fais ta revue des moments clés au calme.</p>
+<h3>6. Ignorer le coût total</h3>
+<p>Abonnement, données, parfois une deuxième plateforme : l&#39;addition grimpe vite. Correction : fais ton budget mensuel complet avant de t&#39;abonner, et teste un mois avant toute licence annuelle ou à vie.</p>
+<h3>À retenir</h3>
+<ul><li>Un mur est une intention, pas une promesse.</li><li>La quantité se juge par rapport au contrat et à l&#39;heure.</li><li>L&#39;outil confirme un niveau, il ne le crée pas.</li><li>Le coût réel inclut toujours les données.</li></ul>
+<p>Alors, au bout du compte, est-ce que je conseille Bookmap ?</p>
+
+    <hr>
+
+    <h2 id="mon-avis-bookmap-vaut-il-le-coup-et-pour">Mon avis : Bookmap vaut-il le coup, et pour qui ?</h2>
+    <p>Mon avis : Bookmap est le meilleur outil que je connaisse pour comprendre visuellement un carnet d&#39;ordres, mais ce n&#39;est pas l&#39;outil par lequel commencer, et ce n&#39;est pas indispensable pour trader le Nasdaq.</p>
+<h3>Je le conseille si…</h3>
+<ul><li>tu connais déjà tes niveaux et tu veux voir comment la liquidité s&#39;y comporte ;</li><li>tu trades l&#39;ES, les taux ou un marché où le carnet est profond ;</li><li>tu veux revoir tes séances en replay pour apprendre à lire le carnet à froid ;</li><li>ton budget d&#39;outils reste petit par rapport à ton compte.</li></ul>
+<h3>Je ne le conseille pas si…</h3>
+<ul><li>tu débutes et tu n&#39;as pas encore de méthode : tu vas trader les couleurs ;</li><li>tu trades uniquement le NQ à l&#39;œil : un footprint et des niveaux solides t&#39;apporteront plus ;</li><li>ton budget est serré : l&#39;argent est mieux placé dans ta formation et dans un compte qui supporte tes pertes normales.</li></ul>
+<h3>Ce qui me plaît</h3>
+<p>La mémoire du carnet. Voir qu&#39;un niveau a été défendu trois fois dans la matinée, ou qu&#39;une liquidité s&#39;est retirée juste avant une cassure, aucun DOM classique ne le montre.</p>
+<p>Pour un élève, c&#39;est souvent le déclic qui fait comprendre que le marché est fait d&#39;ordres réels, posés et retirés par des gens.</p>
+<h3>Ce qui me plaît moins</h3>
+<p>L&#39;outil est spectaculaire, et le spectacle pousse à agir. Les données coûtent en plus. Sur le Nasdaq, la vitesse et la faible profondeur limitent ce qu&#39;on peut lire. Et rien, dans la heatmap, ne dit si un ordre sera vraiment exécuté.</p>
+<p>En un mot : Bookmap est une loupe, pas une méthode. La méthode, c&#39;est savoir où regarder et pourquoi. C&#39;est ça que je montre dans ma vidéo sur le carnet d&#39;ordres, et dans mes séances commentées.</p>
+<p>Le trading de contrats à terme comporte un risque élevé de perte, pouvant dépasser la mise initiale. Contenu éducatif, pas un conseil en investissement.</p>
+
+    <hr>
+
+    <h2 id="ce-qu-il-faut-retenir-sur-bookmap">Ce qu&#39;il faut retenir sur Bookmap</h2>
+    <p>Voici le résumé en cinq points :</p>
+<ul><li>Bookmap peint l&#39;historique du carnet d&#39;ordres : tu vois où la liquidité attendait, où elle a été exécutée et où elle s&#39;est retirée.</li><li>La heatmap montre des intentions, pas des certitudes : spoofing et icebergs existent, et le régulateur américain sanctionne le premier.</li><li>Le carnet ne se lit pas pareil selon le contrat : lourd et fiable sur le ZN, équilibré sur l&#39;ES, léger et très rapide sur le NQ.</li><li>Le vrai prix inclut les données : compte au moins 80 dollars par mois pour les futures du CME, et la version gratuite ne couvre que la crypto.</li><li>Le niveau d&#39;abord, la heatmap ensuite : l&#39;outil confirme une zone préparée, il ne la remplace pas.</li></ul>
+<h3>Ta prochaine action</h3>
+<p>Ce soir, ouvre ton graphique et note trois niveaux pour demain : le plus haut et le plus bas de la veille, et un bord de la zone de valeur. Demain, regarde uniquement ce que fait le carnet quand le prix les touche, sans prendre de position.</p>
+<p>Une semaine de cet exercice t&#39;en apprendra plus qu&#39;un mois d&#39;abonnement regardé au hasard.</p>
+<p>Si tu veux aller plus loin sur la lecture du carnet lui-même, continue avec mon guide pour <a href="https://basstrading.fr/blog/carnet-ordres-dom-futures/">lire le carnet d&#39;ordres et le DOM</a> : c&#39;est la suite logique de cet article.</p>
+
+    <p><a href="https://www.youtube.com/watch?v=R4Mu52hCJTg" target="_blank" rel="noopener">▶ Voir la vidéo de Sébastien sur ce sujet</a></p>
+
+    <div class="cta-card cta-aimant">
+      <div class="cta-card-label">Gratuit</div>
+      <h3>La formation offerte : 7 leçons pour lire le marché comme un pro</h3>
+      <p>Accès immédiat et gratuit, en vidéo, à ton rythme. Sans carte bancaire.</p>
+      <a href="https://basstrading.fr/p/formation-offerte/?src=blog-bookmap-heatmap" class="btn-p">Je la veux →</a>
+    </div>
+    
+  </article>
+</div>
+
+<!-- FAQ -->
+<section class="faq-sec">
+  <div class="sec-center"><div class="sec-label">FAQ</div><h2 class="sec-title">Questions fréquentes</h2></div>
+  <div class="faq-list">
+    <div class="fi"><button class="fq" onclick="tf(this)">Bookmap est-il gratuit ? <span class="fq-icon">+</span></button><div class="fa"><p>Il existe une formule gratuite, Digital, mais elle ne couvre que les cryptomonnaies, avec un seul instrument et une heure d&#39;historique. Pour les futures comme le NQ ou l&#39;ES, il faut une formule payante (à partir de 49 dollars par mois au 30/10/2026) et acheter les données du CME en plus. Il n&#39;existe pas de version gratuite officielle pour les futures.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Qu&#39;est-ce que la heatmap de Bookmap ? <span class="fq-icon">+</span></button><div class="fa"><p>C&#39;est une carte de chaleur de la liquidité : chaque niveau de prix est coloré selon la quantité d&#39;ordres limites qui y attendait, à chaque instant. Les zones claires sont les gros paquets d&#39;ordres, les sombres sont presque vides. Elle permet de voir l&#39;historique du carnet d&#39;ordres, ce que le DOM classique ne montre pas, puisqu&#39;il n&#39;affiche que l&#39;instant présent.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Bookmap fonctionne-t-il sur Mac ? <span class="fq-icon">+</span></button><div class="fa"><p>Oui, Bookmap propose une version macOS pour processeurs Intel et Apple Silicon, et une version web. En revanche, les passerelles Stage5, Gain, Ninja et XTrader ne sont pas prises en charge sur macOS. Prévois 16 Go au moins, 24 Go conseillés par Bookmap sur Mac, et vérifie ta connexion précise avant de t&#39;abonner.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">La heatmap de Bookmap peut-elle être trompeuse ? <span class="fq-icon">+</span></button><div class="fa"><p>Oui. Elle montre les ordres affichés, pas les intentions réelles. Un gros ordre peut être retiré juste avant le contact (c&#39;est le spoofing, sanctionné par la CFTC), et un ordre iceberg peut cacher une quantité bien plus grande que ce qui s&#39;affiche. C&#39;est pour ça que je juge un niveau au comportement du prix au contact, pas à la couleur de la ligne.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Bookmap ou ATAS : lequel choisir ? <span class="fq-icon">+</span></button><div class="fa"><p>Ils ne répondent pas à la même question. Bookmap est centré sur la liquidité en attente (la heatmap), ATAS sur le volume exécuté par prix (footprint et clusters). Pour lire l&#39;agressivité et l&#39;absorption, surtout sur le Nasdaq, le footprint est souvent plus lisible. Si ta plateforme a déjà une vue de la profondeur du carnet, commence par elle avant de payer un abonnement de plus.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Bookmap est-il adapté au Nasdaq futures ? <span class="fq-icon">+</span></button><div class="fa"><p>Oui pour le contexte, non comme outil de décision seul. Le carnet du NQ est léger (souvent 1 à 15 contrats par ligne) et très rapide, donc facile à colorer artificiellement. Je l&#39;utilise uniquement sur des niveaux préparés à l&#39;avance, pour confirmer qu&#39;une zone tient ou cède. Sur l&#39;ES ou les taux, la heatmap est plus fiable car le carnet est bien plus profond.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Faut-il un abonnement aux données pour Bookmap ? <span class="fq-icon">+</span></button><div class="fa"><p>Oui pour les futures et les actions : Bookmap précise que les données en direct de ces marchés ne sont pas incluses. Tu peux les acheter chez Bookmap (environ 34 dollars par mois par bourse, ou 79 dollars pour l&#39;ensemble du CME, au 30/10/2026) ou passer par un fournisseur comme Rithmic ou dxFeed. Ces tarifs valent pour un particulier non professionnel.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Peut-on revoir ses séances et tester une stratégie sur Bookmap ? <span class="fq-icon">+</span></button><div class="fa"><p>Oui, avec une formule payante : Bookmap enregistre le carnet et permet de rejouer une séance entière, au ralenti ou en accéléré. C&#39;est la fonction que je trouve la plus utile pour apprendre : tu fais ta revue de séance au calme, sans risque. La version gratuite ne propose ni l&#39;enregistrement ni le replay.</p></div></div>
+  </div>
+</section>
+
+<!-- Related -->
+<section class="related-sec">
+  <div class="sec-center"><div class="sec-label">Continuer la lecture</div><h2 class="sec-title">Articles connexes</h2></div>
+  <div class="related-grid">
+    <a href="/blog/market-profile-guide-complet/" class="related-card"><div class="related-cat">Guide</div><h3>Market Profile : le guide complet pour débutants</h3><p>Value Area, POC, types de journées — tout pour commencer.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/order-flow-trading-france/" class="related-card"><div class="related-cat">Méthode</div><h3>Order Flow Trading : pourquoi personne ne l'enseigne en France</h3><p>Le carnet d'ordres et le flux institutionnel décryptés.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/sierra-chart-configuration/" class="related-card"><div class="related-cat">Tutoriel</div><h3>Sierra Chart : configuration complète</h3><p>Le setup pas à pas pour le Market Profile et le Footprint.</p><span class="related-link">Lire &rarr;</span></a>
+  </div>
+</section>
+
+<!-- serie:debut --><style>.serie-w{background:#FFF;color:#1D1D1F;border-top:1px solid #F5F5F7}.serie{max-width:1060px;margin:0 auto;padding:56px 24px;font-family:inherit;box-sizing:border-box}.serie-l{font-size:.6rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#0066FF;margin-bottom:8px}.serie-w .serie h2{font-size:1.4rem;font-weight:800;letter-spacing:-.5px;color:#1D1D1F!important;margin:0 0 18px;font-family:inherit}.serie ul{list-style:none;padding:0;margin:0 0 22px;display:grid;grid-template-columns:repeat(2,1fr);gap:8px 24px}.serie-w .serie li a{color:#1D1D1F!important;font-size:.9rem;line-height:1.45;text-decoration:none;border-bottom:1px solid #D2D2D7}.serie li a:hover{color:#0066FF}.serie li.pil a{font-weight:700}.serie-o{background:#F5F5F7;border-radius:14px;padding:18px 20px;font-size:.88rem;line-height:1.55;color:#1D1D1F}.serie-w .serie-o a{color:#0066FF!important;font-weight:700}@media(max-width:700px){.serie ul{grid-template-columns:1fr}}</style><div class="serie-w"><aside class="serie" aria-label="Dans la même série"><div class="serie-l">Dans la même série</div><h2>Trouver sa méthode de trading</h2><ul><li class="pil"><a href="/blog/methode-de-trading/">Méthode de trading : comment trouver celle qui te correspond</a></li><li class=""><a href="/blog/types-trading-differences/">Les Types de Trading : Lequel Choisir Selon Votre Profil ? (2026)</a></li><li class=""><a href="/blog/debuter-trading-zero-guide/">Débuter le Trading en Partant de Zéro : Le Guide Concret (2026)</a></li><li class=""><a href="/blog/combien-temps-apprendre-trading/">Combien de Temps Faut-il pour Apprendre le Trading ? (Réponse Honnête)</a></li><li class=""><a href="/blog/devenir-trader-sans-diplome/">Devenir trader sans diplôme : le parcours réaliste (2026)</a></li><li class=""><a href="/blog/livre-trading/">Livre trading : les meilleurs pour apprendre (et l'ordre)</a></li><li class=""><a href="/blog/formation-trading/">Formation trading : contenu, prix, CPF et pièges à éviter</a></li><li class=""><a href="/blog/formation-trading-gratuite/">Formation trading gratuite : ce qu'on apprend sans payer</a></li><li class=""><a href="/blog/quelle-formation-trading-choisir/">Quelle formation trading choisir en 2026 ? 7 critères pour comparer</a></li><li class=""><a href="/blog/arnaque-trading/">Arnaque au trading : les 7 pièges et que faire si tu es victime</a></li></ul><div class="serie-o"><a href="/formations/">Toutes les formations de Bass</a> : plus de 250 leçons vidéo, du débutant au Market Profile avancé. Pour commencer sans payer : <a href="/p/formation-offerte/?src=serie-bookmap-heatmap">la formation offerte</a> (7 leçons vidéo).</div></aside></div><!-- serie:fin -->
+<footer class="footer">
+  <div class="ft-top"><div class="ft-logo">BASS</div><div class="ft-cols">
+    <div class="ft-col"><div class="ft-col-title">Programme</div><a href="/formations/">Toutes les formations</a><a href="https://basstrading.fr/#methode">Méthode</a><a href="https://basstrading.fr/#programme">Programme</a><a href="https://basstrading.fr/p/formation-offerte/?src=blog-bookmap-heatmap-pied">Formation offerte</a></div>
+    <div class="ft-col"><div class="ft-col-title">Ressources</div><a href="/blog/market-profile-guide-complet/">Market Profile</a><a href="/blog/footprint-chart-trading/">Footprint Chart</a><a href="/blog/order-flow-trading-france/">Order Flow</a></div>
+  </div></div>
+  <div class="ft-bottom"><span>&copy; 2026 BASS — Sébastien Constant</span><div><a href="/mentions-legales/">Mentions légales</a><a href="/confidentialite/">Confidentialité</a><a href="/cgv/">CGV</a><a href="mailto:contact@basstrading.fr">Contact</a></div></div>
+</footer>
+<div class="disclaimer">Le trading comporte des risques de perte en capital. Les performances passées ne préjugent pas des performances futures. Ce site ne constitue pas un conseil en investissement.</div>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+const lenis=new Lenis({duration:1.2,easing:t=>Math.min(1,1.001-Math.pow(2,-10*t))});
+function raf(t){lenis.raf(t);requestAnimationFrame(raf)}requestAnimationFrame(raf);
+lenis.on('scroll',ScrollTrigger.update);gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0);
+const tl=gsap.timeline();
+tl.to('.pre-word span',{y:0,opacity:1,duration:.5,stagger:.1,ease:'power3.out',delay:.3}).to('#preLine',{width:'80px',duration:.7,ease:'power2.inOut'},'<+.2').to('.preloader',{yPercent:-100,duration:.8,ease:'power3.inOut',delay:.4}).set('.preloader',{display:'none'}).to('#nav',{opacity:1,y:0,duration:.5},'<+.1');
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);const h=document.documentElement.scrollHeight-window.innerHeight;document.getElementById('readingProgress').style.width=(window.scrollY/h*100)+'%'});
+const tocLinks=document.querySelectorAll('.toc a');const sections=Array.from(tocLinks).map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+window.addEventListener('scroll',()=>{let c='';sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)c=s.id});tocLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+c)})});
+function tf(b){const i=b.closest('.fi'),a=b.nextElementSibling,o=i.classList.contains('active');document.querySelectorAll('.fi').forEach(x=>{x.classList.remove('active');x.querySelector('.fa').classList.remove('open')});if(!o){i.classList.add('active');a.classList.add('open')}}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();lenis.scrollTo(t,{offset:-60})}})});
+</script>
+<script src="/v.js" defer></script>
+</body>
+</html>
