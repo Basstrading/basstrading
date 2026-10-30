@@ -6,8 +6,16 @@
   <link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
   <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/"/>
   <id>https://basstrading.fr/blog/</id>
-  <updated>2026-10-29T00:00:00Z</updated>
+  <updated>2026-10-30T00:00:00Z</updated>
   <author><name>Sébastien Constant (Bass)</name><uri>https://basstrading.fr/auteur/sebastien-constant/</uri></author>
+  <entry>
+    <title>Bookmap : lire la heatmap, prix réels et avis de trader</title>
+    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/bookmap-heatmap/"/>
+    <id>https://basstrading.fr/blog/bookmap-heatmap/</id>
+    <published>2026-10-30T00:00:00Z</published>
+    <updated>2026-10-30T00:00:00Z</updated>
+    <summary>Bookmap expliqué par un trader futures : lire la heatmap, vrai prix avec les données CME, version gratuite, Mac et limites sur le Nasdaq.</summary>
+  </entry>
   <entry>
     <title>Méthode de trading : comment trouver celle qui te correspond</title>
     <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/methode-de-trading/"/>

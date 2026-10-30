@@ -71,6 +71,7 @@
 - [Formation trading gratuite : ce qu'on apprend sans payer](https://basstrading.fr/blog/formation-trading-gratuite/): Formation trading gratuite : où apprendre sans payer (AMF, CME, démo, YouTube), comment trier le gratuit et où il s'arrête. Mon parcours en 8 semaines.
 - [Quelle formation trading choisir en 2026 ? 7 critères pour comparer](https://basstrading.fr/blog/quelle-formation-trading-choisir/): Comment comparer les formations trading : les 7 critères (organisme, formateur, méthode, groupe, format, résultats, suivi), généraliste ou mentorat, et les signaux d'alarme.
 - [Arnaque au trading : les 7 pièges et que faire si tu es victime](https://basstrading.fr/blog/arnaque-trading/): Arnaque trading : les 7 pièges que je vois le plus (signaux Telegram, faux courtiers, robots, faux conseillers) et que faire si tu es victime.
+- [Bookmap : lire la heatmap, prix réels et avis de trader](https://basstrading.fr/blog/bookmap-heatmap/): Bookmap expliqué par un trader futures : lire la heatmap, vrai prix avec les données CME, version gratuite, Mac et limites sur le Nasdaq.
 - Formation liée : [Toutes les formations de Bass](https://basstrading.fr/formations/), plus de 250 leçons vidéo, du débutant au Market Profile avancé.
 
 ### Futures du Nasdaq et plateformes
