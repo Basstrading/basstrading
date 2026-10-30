@@ -400,17 +400,17 @@ async function decouvrir(slug) {
   };
 }
 
-/* « Trouve ton trading » et « Présentiel à Malaga » (Bass, 21-22/10/2026) : deux formations à débloquer, chacune sa
+/* « Trouve ton trading » et « Présentiel à Avignon » (ex-« Présentiel à Malaga », Bass, 21-22/10/2026 ; lieu changé le 31/10/2026) : deux formations à débloquer, chacune sa
    carte 🔒, sans prix affiché ; la carte mène à une demande d'appel de 20 min. L'API ne les propose pas aux anciens de
    Malaga ni à ceux qui les ont déjà (drapeau trouve_ton_trading). */
 const OFFRES_APPEL = {
   ttt: {titre: "Trouve ton trading", image: "bass-teaching.jpg", ligne: "Formation · à distance, chaque mois", choix: "À distance, chaque mois",
     sub: "La formation où l'on trouve ensemble le trading qui te ressemble : quatre typologies de traders, une méthode à ta taille. Une session en ligne chaque mois, en direct, depuis chez toi.",
     detail: `<b>💻 À distance, chaque mois</b><p class="small">La méthode, en direct avec moi, depuis chez toi.</p>`},
-  malaga: {titre: "Présentiel à Malaga", image: "bass-malaga-group.jpg", ligne: "Séminaire · 5 jours à Malaga · mars 2027", choix: "À Malaga, en mars 2027",
-    sub: "Cinq jours avec moi à Malaga, en petit groupe, pour trouver le trading qui te ressemble et le pratiquer en direct.",
-    detail: `<b>📍 À Malaga, avec moi</b><div class="small" style="margin-top:8px">Du 29 mars au 2 avril 2027 · 20 places</div>
-      <p class="small">Cinq jours en présentiel, en petit groupe.</p><a class="small" href="/malaga/" target="_blank" rel="noopener">Voir le programme du séminaire →</a>`},
+  avignon: {titre: "Présentiel à Avignon", image: "bass-malaga-group.jpg", ligne: "Séminaire · 5 jours à Avignon · mars 2027", choix: "À Avignon, en mars 2027",
+    sub: "Cinq jours avec moi à Avignon, en petit groupe, pour trouver le trading qui te ressemble et le pratiquer en direct.",
+    detail: `<b>📍 À Avignon, avec moi</b><div class="small" style="margin-top:8px">Du 29 mars au 2 avril 2027 · 20 places</div>
+      <p class="small">Cinq jours en présentiel, en petit groupe.</p><a class="small" href="/avignon/" target="_blank" rel="noopener">Voir le programme du séminaire →</a>`},
 };
 const COUV_APPEL = (o, cls) => `<div class="couv ${cls}" style="background:url(/images/${o.image}) center/cover"><span>${o.titre}</span></div>`;
 const carteAppel = cle => { const o = OFFRES_APPEL[cle]; return `<a class="fo verrou" href="#/${cle}">${COUV_APPEL(o, "")}<span class="cadenas">🔒</span><div class="corps"><div class="small">${o.ligne}</div>
@@ -462,7 +462,7 @@ async function bibliotheque() {
     <h2>Mes formations</h2>
     ${F.length ? `<div class="grille">${F.map(carte).join("")}</div>` : `<div class="card">Aucune formation n'est encore liée à ${esc(d.eleve.email)}. Écris-moi à <a href="mailto:contact@basstrading.fr">contact@basstrading.fr</a> si c'est une erreur.</div>`}
     ${C_.formations.length || C_.trouve_ton_trading ? `<h2 style="margin-top:38px">🔒 Formations à débloquer</h2><p class="sub">Découvre le programme et débloque la formation pour y accéder tout de suite.</p>
-      <div class="grille">${C_.trouve_ton_trading ? carteAppel("ttt") + carteAppel("malaga") : ""}${C_.formations.map(carteVerrou).join("")}</div>` : ""}`);
+      <div class="grille">${C_.trouve_ton_trading ? carteAppel("ttt") + carteAppel("avignon") : ""}${C_.formations.map(carteVerrou).join("")}</div>` : ""}`);
 }
 
 /* ── Page d'une formation ─────────────────────────────── */
@@ -822,7 +822,8 @@ async function route() {
     if (h !== "") stopTg();
     if (h === "notes") await mesNotes();
     else if (h === "compte") await monCompte();
-    else if (h === "ttt" || h === "malaga") await trouveTonTrading(h);
+    else if (h === "ttt" || h === "avignon") await trouveTonTrading(h);
+    else if (h === "malaga") location.replace("#/avignon");
     else if (h.startsWith("d/")) await decouvrir(decodeURIComponent(h.slice(2)));
     else if (h.startsWith("f/")) await formation(decodeURIComponent(h.slice(2)), param === "reprendre");
     else if (h.startsWith("l/")) await lecon(+h.slice(2), param);

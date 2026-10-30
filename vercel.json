@@ -14,6 +14,26 @@
       "permanent": true
     },
     {
+      "source": "/malaga",
+      "destination": "/avignon/",
+      "statusCode": 301
+    },
+    {
+      "source": "/malaga/",
+      "destination": "/avignon/",
+      "statusCode": 301
+    },
+    {
+      "source": "/malaga/paypal",
+      "destination": "/avignon/paypal/",
+      "statusCode": 301
+    },
+    {
+      "source": "/malaga/paypal/",
+      "destination": "/avignon/paypal/",
+      "statusCode": 301
+    },
+    {
       "source": "/blog/formation-trading-cpf-qualiopi",
       "destination": "/blog/",
       "permanent": true
