@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://basstrading.fr/</loc><lastmod>2026-10-31</lastmod><priority>1.0</priority></url>
-  <url><loc>https://basstrading.fr/blog/</loc><lastmod>2026-10-30</lastmod><priority>0.9</priority></url>
+  <url><loc>https://basstrading.fr/blog/</loc><lastmod>2026-10-31</lastmod><priority>0.9</priority></url>
   <url><loc>https://basstrading.fr/p/formation-offerte/</loc><lastmod>2026-10-21</lastmod><priority>0.9</priority></url>
   <url><loc>https://basstrading.fr/avignon/</loc><lastmod>2026-10-31</lastmod><priority>0.8</priority></url>
   <url><loc>https://basstrading.fr/marketprofile/</loc><lastmod>2026-10-26</lastmod><priority>0.8</priority></url>
@@ -51,6 +51,7 @@
   <url><loc>https://basstrading.fr/blog/tape-reading-flux-ordres/</loc><lastmod>2026-03-28</lastmod><priority>0.8</priority></url>
   <url><loc>https://basstrading.fr/blog/tradovate-avis/</loc><lastmod>2026-10-26</lastmod><priority>0.8</priority></url>
   <url><loc>https://basstrading.fr/blog/types-trading-differences/</loc><lastmod>2026-10-28</lastmod><priority>0.8</priority></url>
+  <url><loc>https://basstrading.fr/blog/value-area-trading/</loc><lastmod>2026-10-31</lastmod><priority>0.8</priority></url>
   <url><loc>https://basstrading.fr/blog/volume-profile-guide/</loc><lastmod>2026-03-28</lastmod><priority>0.8</priority></url>
   <url><loc>https://basstrading.fr/blog/vwap-trading/</loc><lastmod>2026-10-22</lastmod><priority>0.8</priority></url>
 </urlset>

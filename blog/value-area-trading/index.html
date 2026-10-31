@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Value Area : définition, calcul à 70 % et règle des 80 % — BASS Trading</title>
+  <meta name="description" content="Value Area en trading : VAH, VAL et POC, calcul à 70 % pas à pas, ouverture dans ou hors de la valeur et règle des 80 % expliquée sur le Nasdaq.">
+  <meta property="og:title" content="Value Area : définition, calcul à 70 % et règle des 80 % — BASS Trading">
+  <meta property="og:description" content="Value Area en trading : VAH, VAL et POC, calcul à 70 % pas à pas, ouverture dans ou hors de la valeur et règle des 80 % expliquée sur le Nasdaq.">
+  <meta property="og:image" content="https://basstrading.fr/blog/value-area-trading/blog-value-area-trading-1.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://basstrading.fr/blog/value-area-trading/blog-value-area-trading-1.webp">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://basstrading.fr/blog/value-area-trading/">
+  <meta property="og:site_name" content="BASS Trading">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://basstrading.fr/blog/value-area-trading/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","@id":"https://basstrading.fr/blog/value-area-trading/#article","headline":"Value Area : définition, calcul à 70 % et règle des 80 %","description":"Value Area en trading : VAH, VAL et POC, calcul à 70 % pas à pas, ouverture dans ou hors de la valeur et règle des 80 % expliquée sur le Nasdaq.","datePublished":"2026-10-31","dateModified":"2026-10-31","inLanguage":"fr-FR","image":"https://basstrading.fr/blog/value-area-trading/blog-value-area-trading-1.webp","mainEntityOfPage":"https://basstrading.fr/blog/value-area-trading/","isPartOf":{"@type":"WebSite","@id":"https://basstrading.fr/#website","name":"BASS Trading","url":"https://basstrading.fr/"},"author":{"@type":"Person","@id":"https://basstrading.fr/#sebastien-constant","name":"Sébastien Constant","url":"https://basstrading.fr/auteur/sebastien-constant/"},"publisher":{"@type":"Organization","@id":"https://basstrading.fr/#organisation","name":"BASS Trading","url":"https://basstrading.fr/","logo":{"@type":"ImageObject","url":"https://basstrading.fr/images/logo-basstrading.png","width":512,"height":512}}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://basstrading.fr"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://basstrading.fr/blog/"},{"@type":"ListItem","position":3,"name":"Value Area en trading","item":"https://basstrading.fr/blog/value-area-trading/"}]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Quelle est la différence entre la Value Area et le POC ?","acceptedAnswer":{"@type":"Answer","text":"Le POC est un seul prix : celui où le marché a passé le plus de temps (ou échangé le plus de contrats) pendant la séance. La Value Area est une zone autour de ce POC, qui regroupe environ 70 % de l'activité. Je me sers du POC comme d'un aimant et des bornes de la Value Area comme de zones de décision."}},{"@type":"Question","name":"Pourquoi ma plateforme n'affiche pas la même VAH qu'un autre trader ?","acceptedAnswer":{"@type":"Answer","text":"Parce que les méthodes de calcul diffèrent : deux niveaux ajoutés à la fois ou un seul, temps (TPO) ou volume, regroupement des niveaux, horaires de la séance. Sur un même profil, l'écart peut atteindre plusieurs points. C'est pour ça que je trace une zone autour de chaque borne, jamais une ligne au tick près."}},{"@type":"Question","name":"La règle des 80 % marche-t-elle 80 % du temps ?","acceptedAnswer":{"@type":"Answer","text":"Non. Le « 80 % » est le nom de la règle, pas un taux de réussite vérifié sur ton marché. Les tests publiés donnent des résultats très variables selon le contrat, la période et la façon de définir l'entrée et la cible. Je l'utilise comme un scénario, confirmé au footprint, toujours avec un stop."}},{"@type":"Question","name":"Quelle Value Area utiliser : celle de la veille ou celle qui se construit ?","acceptedAnswer":{"@type":"Answer","text":"Pour décider pendant la séance, j'utilise la Value Area de la veille : elle est fixe et tout le monde la voit. Celle du jour bouge beaucoup au début ; je la regarde surtout en fin de séance, pour préparer le lendemain et lire la migration de la valeur."}},{"@type":"Question","name":"Peut-on afficher la Value Area sur TradingView ?","acceptedAnswer":{"@type":"Answer","text":"Oui. Les outils de profil de volume de TradingView affichent le POC, la VAH et la VAL, avec 70 % par défaut, modifiable. C'est une Value Area calculée sur le volume, pas sur le temps comme le Market Profile d'origine. Pour débuter, c'est suffisant : l'important est de garder le même réglage."}},{"@type":"Question","name":"Quelle est la différence entre la Value Area et la VWAP ?","acceptedAnswer":{"@type":"Answer","text":"La VWAP est un prix moyen pondéré par les volumes, qui évolue en continu pendant la séance. La Value Area de la veille est une zone fixe qui décrit où le marché a passé 70 % de son temps. Quand le POC de la veille et la VWAP du jour se retrouvent dans la même zone, je donne plus de poids à ce niveau."}}]}
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{--bk:#1D1D1F;--bk2:#111;--bk3:#0A0A0A;--g1:#6E6E73;--g2:#86868B;--g3:#D2D2D7;--g4:#F5F5F7;--wh:#FBFBFD;--pure:#FFF;--green:#00B67A;--blue:#0066FF}
+    html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}
+    body{font-family:'DM Sans',sans-serif;color:var(--bk);background:var(--pure);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+    .preloader{position:fixed;inset:0;background:var(--bk3);z-index:10001;display:flex;align-items:center;justify-content:center}
+    .pre-word{font-family:'Outfit',sans-serif;font-size:clamp(3rem,8vw,5rem);font-weight:900;letter-spacing:16px;text-transform:uppercase;color:var(--pure);overflow:hidden}
+    .pre-word span{display:inline-block;transform:translateY(110%);opacity:0}
+    .pre-line{width:0;height:1px;background:rgba(255,255,255,.3);margin-top:20px}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 48px;display:flex;align-items:center;justify-content:space-between;background:rgba(245,245,247,.85);backdrop-filter:blur(20px) saturate(1.8);border-bottom:1px solid rgba(0,0,0,.04);transition:background .4s}
+    .nav-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase;color:var(--bk)}
+    .nav-links{display:flex;gap:28px;list-style:none}.nav-links a{font-size:.74rem;font-weight:500;letter-spacing:.3px;color:var(--g1);transition:color .3s}.nav-links a:hover{color:var(--bk)}
+    .nav-cta{padding:8px 20px;background:var(--bk);color:var(--pure);border:none;border-radius:980px;font-size:.72rem;font-weight:600;transition:all .3s;cursor:pointer;text-decoration:none;display:inline-block}.nav-cta:hover{background:var(--bk2)}
+    .blog-hero{padding:160px 48px 80px;background:var(--g4);position:relative;overflow:hidden}
+    .blog-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,transparent,var(--g4));pointer-events:none}
+    .blog-hero-inner{max-width:720px;margin:0 auto}
+    .breadcrumb{display:flex;gap:8px;align-items:center;margin-bottom:28px;flex-wrap:wrap}
+    .breadcrumb a,.breadcrumb span{font-size:.68rem;font-weight:500;letter-spacing:.3px;color:var(--g2);transition:color .3s}.breadcrumb a:hover{color:var(--bk)}.breadcrumb .sep{color:var(--g3)}
+    .blog-hero-cat{display:inline-block;padding:5px 14px;border:1px solid rgba(0,102,255,.15);border-radius:980px;font-size:.6rem;font-weight:700;color:var(--blue);letter-spacing:2px;text-transform:uppercase;margin-bottom:20px}
+    .blog-hero-title{font-family:'Outfit',sans-serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:900;line-height:1.05;letter-spacing:-2px;color:var(--bk);margin-bottom:20px}
+    .blog-hero-desc{font-size:.95rem;color:var(--g1);line-height:1.8;max-width:560px;margin-bottom:28px}
+    .blog-meta{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+    .blog-meta-author{display:flex;align-items:center;gap:10px}
+    .blog-meta-avatar{width:36px;height:36px;border-radius:50%;background:var(--bk3);overflow:hidden;flex-shrink:0}.blog-meta-avatar img{width:100%;height:100%;object-fit:cover}
+    .blog-meta-name{font-size:.78rem;font-weight:600;color:var(--bk)}.blog-meta-role{font-size:.65rem;color:var(--g2)}
+    .blog-meta-sep{width:1px;height:24px;background:var(--g3)}
+    .blog-meta-info{font-size:.7rem;color:var(--g2)}.blog-meta-info span{margin-right:16px}
+    .toc{position:sticky;top:90px;background:var(--pure);border:1px solid rgba(0,0,0,.04);border-radius:14px;padding:24px;margin-bottom:32px}
+    .toc-title{font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.5px;color:var(--bk);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+    .toc ol{list-style:none;counter-reset:toc}.toc li{counter-increment:toc}
+    .toc li a{display:flex;align-items:baseline;gap:8px;padding:6px 0;font-size:.76rem;color:var(--g1);transition:color .3s;border-bottom:1px solid rgba(0,0,0,.03)}.toc li a:hover{color:var(--blue)}
+    .toc li a::before{content:counter(toc,decimal-leading-zero);font-family:'Outfit',sans-serif;font-size:.65rem;font-weight:700;color:var(--g3);min-width:18px}
+    .toc li:last-child a{border-bottom:none}.toc li a.active{color:var(--blue);font-weight:600}.toc li a.active::before{color:var(--blue)}
+    .article-wrap{display:grid;grid-template-columns:220px 1fr;gap:40px;max-width:1020px;margin:0 auto;padding:60px 48px 120px}
+    .article-sidebar{position:relative}.article-body{max-width:700px}
+    .article-body h2{font-family:'Outfit',sans-serif;font-size:clamp(1.4rem,2.5vw,1.8rem);font-weight:800;line-height:1.1;letter-spacing:-1px;color:var(--bk);margin:56px 0 16px;padding-top:20px}.article-body h2:first-of-type{margin-top:0}
+    .article-body h3{font-family:'Outfit',sans-serif;font-size:1.05rem;font-weight:700;line-height:1.25;letter-spacing:-.3px;color:var(--bk);margin:36px 0 10px}
+    .article-body p{font-size:.9rem;color:var(--g1);line-height:1.85;margin-bottom:18px}
+    .article-body strong{color:var(--bk);font-weight:600}
+    .article-body ul,.article-body ol{margin:0 0 20px 0;padding-left:20px}
+    .article-body li{font-size:.88rem;color:var(--g1);line-height:1.8;margin-bottom:6px}.article-body li strong{color:var(--bk)}
+    .article-body blockquote{margin:28px 0;padding:20px 24px;background:var(--g4);border-left:3px solid var(--bk);border-radius:0 12px 12px 0;font-size:.88rem;color:var(--g1);line-height:1.8;font-style:italic}
+    .article-body blockquote strong{color:var(--bk);font-style:normal}
+    .article-body hr{border:none;border-top:1px solid var(--g4);margin:48px 0}
+    .info-box{margin:28px 0;padding:24px;background:rgba(0,102,255,.03);border:1px solid rgba(0,102,255,.08);border-radius:14px}
+    .info-box-title{font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:700;color:var(--blue);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+    .info-box p{font-size:.82rem;color:var(--g1);line-height:1.7;margin-bottom:0}
+    .key-concept{margin:32px 0;padding:28px;background:var(--bk3);border-radius:16px;color:var(--pure)}
+    .key-concept-label{font-size:.55rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:10px}
+    .key-concept h4{font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:800;letter-spacing:-.3px;margin-bottom:8px}
+    .key-concept p{font-size:.85rem;color:rgba(255,255,255,.5);line-height:1.8;margin-bottom:0}
+    .compare-table{width:100%;margin:24px 0 28px;border-collapse:collapse;border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,.06)}
+    .compare-table th{background:var(--bk3);color:var(--pure);font-family:'Outfit',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:14px 16px;text-align:left}
+    .compare-table td{padding:12px 16px;font-size:.82rem;color:var(--g1);line-height:1.6;border-bottom:1px solid rgba(0,0,0,.04);background:var(--pure)}
+    .compare-table tr:last-child td{border-bottom:none}.compare-table td:first-child{font-weight:600;color:var(--bk)}
+    .cta-card{margin:48px 0;padding:40px;background:var(--bk3);border-radius:20px;text-align:center;position:relative;overflow:hidden}
+    .cta-card::before{content:'';position:absolute;top:-50%;right:-30%;width:400px;height:400px;background:radial-gradient(circle,rgba(0,102,255,.08) 0%,transparent 70%);pointer-events:none}
+    .cta-card-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:12px}
+    .cta-card h3{font-family:'Outfit',sans-serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:800;color:var(--pure);letter-spacing:-.5px;margin-bottom:8px}
+    .cta-card p{font-size:.85rem;color:rgba(255,255,255,.4);line-height:1.7;max-width:380px;margin:0 auto 24px}
+    .cta-card .btn-p{background:var(--pure);color:var(--bk)}.cta-card .btn-p:hover{box-shadow:0 8px 30px rgba(255,255,255,.15)}
+    .faq-sec{padding:80px 48px 100px;background:var(--g4)}
+    .faq-list{max-width:680px;margin:40px auto 0}.fi{border-bottom:1px solid rgba(0,0,0,.06)}
+    .fq{width:100%;text-align:left;padding:18px 0;background:none;border:none;font-size:.85rem;font-weight:600;font-family:'DM Sans',sans-serif;color:var(--bk);display:flex;justify-content:space-between;align-items:center;cursor:pointer;gap:16px;transition:color .3s}.fq:hover{color:var(--g1)}
+    .fq-icon{width:22px;height:22px;border-radius:50%;background:rgba(0,0,0,.04);display:flex;align-items:center;justify-content:center;font-size:.75rem;transition:all .4s;flex-shrink:0;color:var(--g2)}
+    .fa{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1)}.fa.open{max-height:280px;padding-bottom:14px}
+    .fa p{font-size:.8rem;color:var(--g1);line-height:1.7;margin-bottom:0}.fi.active .fq-icon{background:var(--bk);color:var(--pure);transform:rotate(45deg)}
+    .related-sec{padding:80px 48px;background:var(--pure);border-top:1px solid var(--g4)}
+    .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1060px;margin:40px auto 0}
+    .related-card{display:block;padding:28px;background:var(--g4);border-radius:16px;transition:all .4s;text-decoration:none;color:var(--bk)}
+    .related-card:hover{background:var(--pure);box-shadow:0 8px 30px rgba(0,0,0,.06);transform:translateY(-2px)}
+    .related-cat{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+    .related-card h3{font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:700;line-height:1.3;letter-spacing:-.3px;margin-bottom:8px}
+    .related-card p{font-size:.78rem;color:var(--g1);line-height:1.6;margin-bottom:14px}
+    .related-link{font-size:.72rem;font-weight:600;color:var(--blue);letter-spacing:.3px}
+    .footer{background:var(--bk3);color:var(--pure);padding:56px 48px 28px}
+    .ft-top{display:flex;justify-content:space-between;align-items:start;margin-bottom:48px;flex-wrap:wrap;gap:32px}
+    .ft-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase}
+    .ft-cols{display:flex;gap:80px}
+    .ft-col-title{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:12px}
+    .ft-col a{display:block;font-size:.78rem;color:rgba(255,255,255,.5);margin-bottom:8px;transition:color .3s}.ft-col a:hover{color:var(--pure)}
+    .ft-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:20px;display:flex;justify-content:space-between;align-items:center;font-size:.6rem;color:rgba(255,255,255,.2)}
+    .ft-bottom a{color:rgba(255,255,255,.2);transition:color .3s;margin-left:20px}.ft-bottom a:hover{color:rgba(255,255,255,.5)}
+    .disclaimer{padding:12px 48px;background:var(--bk3);font-size:.58rem;color:rgba(255,255,255,.12);text-align:center;line-height:1.6;border-top:1px solid rgba(255,255,255,.03)}
+    .sec-center{text-align:center;max-width:680px;margin:0 auto}
+    .sec-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--g2);margin-bottom:10px}
+    .sec-title{font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;line-height:1.05;letter-spacing:-1.5px;color:var(--bk);margin-bottom:16px}
+    .btn-p{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--bk);color:var(--pure);border-radius:980px;font-size:.85rem;font-weight:600;transition:all .3s;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;text-decoration:none}
+    .btn-p:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(0,0,0,.1)}
+    .btn-p svg{width:13px;height:13px;transition:transform .3s}.btn-p:hover svg{transform:translateX(3px)}
+    .reading-progress{position:fixed;top:0;left:0;height:2px;background:var(--blue);z-index:9999;width:0;transition:width .1s linear}
+    @media(max-width:900px){.nav{padding:14px 20px}.nav-links{display:none}.blog-hero{padding:120px 20px 60px}.article-wrap{grid-template-columns:1fr;padding:40px 20px 80px}.article-sidebar{display:none}.related-grid{grid-template-columns:1fr}.related-sec,.faq-sec{padding:60px 20px}.ft-cols{flex-direction:column;gap:28px}.footer{padding:40px 20px 20px}.disclaimer{padding:10px 16px}.cta-card{padding:28px 20px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  .article-body a{color:var(--blue);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;font-weight:500}.article-body a:hover{text-decoration-thickness:2px}
+</style>
+<style>/* 28/10/2026 : débordement mobile (colonne de grille sans min-width) */.article-wrap>*,.article-layout>*{min-width:0}.article-body table,.compare-table{display:block;overflow-x:auto;max-width:100%}.article-body pre{overflow-x:auto}.article-body img{max-width:100%;height:auto}</style>
+</head>
+<body>
+
+<div class="preloader" id="preloader"><div style="text-align:center"><div class="pre-word"><span>B</span><span>A</span><span>S</span><span>S</span></div><div class="pre-line" id="preLine"></div></div></div>
+<div class="reading-progress" id="readingProgress"></div>
+
+<nav class="nav" id="nav">
+  <a href="https://basstrading.fr" class="nav-logo">BASS</a>
+  <ul class="nav-links">
+    <li><a href="https://basstrading.fr/#methode">Méthode</a></li>
+    <li><a href="https://basstrading.fr#resultats">Résultats</a></li>
+    <li><a href="https://basstrading.fr#avis">Avis</a></li>
+    <li><a href="https://basstrading.fr#faq">FAQ</a></li>
+    <li><a href="/formations/">Formations</a></li>
+    <li><a href="https://basstrading.fr/blog/">Blog</a></li>
+  </ul>
+  <a href="https://basstrading.fr/p/formation-offerte/?src=blog-value-area-trading-menu" class="nav-cta">Formation offerte</a>
+</nav>
+
+<section class="blog-hero">
+  <div class="blog-hero-inner">
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <a href="https://basstrading.fr">Accueil</a><span class="sep">/</span>
+      <a href="https://basstrading.fr/blog/">Blog</a><span class="sep">/</span>
+      <span>Value Area en trading</span>
+    </nav>
+    <div class="blog-hero-cat">Market Profile</div>
+    <h1 class="blog-hero-title">Value Area : définition, calcul à 70 % et règle des 80 %</h1>
+    <p class="blog-hero-desc">La Value Area, c&#39;est la zone de prix où le marché a passé 70 % de sa séance : entre ses deux bornes, la VAH et la VAL, acheteurs et vendeurs étaient d&#39;accord sur le prix. Je te montre comment la calculer à la main, comment lire l&#39;ouverture du lendemain par rapport à elle, et ce que vaut vraiment la fameuse règle des 80 %.</p>
+    <div class="blog-meta">
+      <div class="blog-meta-author">
+        <div class="blog-meta-avatar"><img src="../../images/bass-presenting.jpg" alt="Sébastien Constant" loading="lazy"></div>
+        <div><div class="blog-meta-name"><a href="/auteur/sebastien-constant/" rel="author" style="color:inherit;text-decoration:none">Sébastien Constant</a></div><div class="blog-meta-role">Trader & Formateur Order Flow</div></div>
+      </div>
+      <div class="blog-meta-sep"></div>
+      <div class="blog-meta-info"><span>Octobre 2026</span><span>20 min de lecture</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="article-wrap">
+  <aside class="article-sidebar">
+    <div class="toc">
+      <div class="toc-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/></svg> Sommaire</div>
+      <ol>
+        <li><a href="#qu-est-ce-que-la-value-area-en-trading">Qu&#39;est-ce que la Value Area en trading ?</a></li>
+        <li><a href="#pourquoi-la-value-area-fait-elle-70">Pourquoi la Value Area fait-elle 70 % ?</a></li>
+        <li><a href="#comment-calculer-la-value-area-a-la-main">Comment calculer la Value Area à la main ?</a></li>
+        <li><a href="#value-area-en-temps-tpo-ou-en-volume-laq">Value Area en temps (TPO) ou en volume : laquelle regarder ?</a></li>
+        <li><a href="#ouverture-dans-ou-hors-de-la-valeur-que-">Ouverture dans ou hors de la valeur : que t&#39;apprend l&#39;ouverture ?</a></li>
+        <li><a href="#comment-lire-la-migration-de-la-valeur-d">Comment lire la migration de la valeur d&#39;un jour à l&#39;autre ?</a></li>
+        <li><a href="#la-regle-des-80-comment-fonctionne-t-ell">La règle des 80 % : comment fonctionne-t-elle vraiment ?</a></li>
+        <li><a href="#mon-exemple-du-19-septembre-2025-sur-le-">Mon exemple du 19 septembre 2025 sur le Nasdaq</a></li>
+        <li><a href="#comment-placer-entree-stop-et-objectif-a">Comment placer entrée, stop et objectif autour de la Value Area ?</a></li>
+        <li><a href="#quand-la-value-area-ne-fonctionne-t-elle">Quand la Value Area ne fonctionne-t-elle pas ?</a></li>
+        <li><a href="#quelles-erreurs-eviter-avec-la-value-are">Quelles erreurs éviter avec la Value Area ?</a></li>
+        <li><a href="#comment-aller-plus-loin-avec-la-value-ar">Comment aller plus loin avec la Value Area ?</a></li>
+      </ol>
+    </div>
+  </aside>
+
+  <article class="article-body">
+    <h2 id="qu-est-ce-que-la-value-area-en-trading">Qu&#39;est-ce que la Value Area en trading ?</h2>
+    <p>Avertissement : le trading de contrats à terme comporte un risque élevé de perte, pouvant dépasser la mise initiale. Cet article est éducatif, ce n&#39;est pas un conseil en investissement.</p>
+<p>La Value Area (zone de valeur) est la plage de prix où s&#39;est déroulée environ 70 % de l&#39;activité d&#39;une séance, mesurée en temps (TPO) ou en volume ; elle est bornée en haut par la VAH et en bas par la VAL, autour du POC.</p>
+<p>Autrement dit : c&#39;est l&#39;endroit où le marché a été d&#39;accord avec lui-même. Ni trop cher, ni trop bon marché. Le prix que tout le monde a fini par accepter.</p>
+<p>Tu as sûrement déjà vu ces trois lignes sur un graphique sans savoir quoi en faire. Voici ce qu&#39;elles veulent dire, et ce que j&#39;en fais au quotidien sur le Nasdaq :</p>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Niveau</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Ce que c&#39;est</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Ce que j&#39;en fais</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">POC</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Le prix le plus traité de la séance</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Un aimant, une cible de retour</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">VAH</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">La borne haute de la valeur</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Je teste : accepté ou rejeté ?</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">VAL</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">La borne basse de la valeur</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Je teste : accepté ou rejeté ?</td></tr></tbody></table></div>
+<p>POC veut dire Point of Control : le prix où le marché a passé le plus de temps (ou échangé le plus de contrats). VAH veut dire Value Area High, VAL Value Area Low.</p>
+<p>Pourquoi c&#39;est la base de ma lecture du marché</p>
+<p>Dans ma vidéo sur le Market Profile, je pose la question devant le profil d&#39;un vendredi : <a href="https://www.youtube.com/watch?v=sphmmI7eykQ&amp;t=1290">« Et 70%, c&#39;est quoi ? Eh bien, c&#39;est la valeur. »</a> Tout part de là.</p>
+<p>Quand le prix est dans la valeur, le marché est en équilibre. Quand il en sort, il est en déséquilibre et il cherche un nouveau prix juste. C&#39;est l&#39;idée centrale de l&#39;<a href="https://basstrading.fr/blog/auction-market-theory/">Auction Market Theory</a>, la théorie des enchères sur laquelle repose tout le Market Profile.</p>
+<p>Si tu découvres le sujet, commence par mon <a href="https://basstrading.fr/blog/market-profile-guide-complet/">guide complet du Market Profile</a> : les lettres, les TPO et la forme des profils y sont expliqués depuis zéro. Ici, je reste concentré sur la Value Area.</p>
+<p>Mais d&#39;où sort ce chiffre de 70 %, et pourquoi pas 50 ou 90 ?</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/value-area-trading/blog-value-area-trading-1.webp" alt="Répartition de l&#39;activité d&#39;une séance : 15 % au-dessus de la VAH, 70 % dans la Value Area autour du POC, 15 % sous la VAL" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Un profil de séance se lit comme une cloche couchée : 70 % de l&#39;activité entre la VAH et la VAL autour du POC, environ 15 % à chaque extrémité.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="pourquoi-la-value-area-fait-elle-70">Pourquoi la Value Area fait-elle 70 % ?</h2>
+    <p>Les 70 % viennent de la courbe de Gauss : dans une distribution normale, environ 68 % des valeurs se trouvent à un écart-type de la moyenne, et le Market Profile arrondit à 70 %. C&#39;est une convention, pas une loi du marché.</p>
+<p>Un profil de séance, c&#39;est une courbe en cloche posée à la verticale : beaucoup d&#39;activité au milieu, peu aux extrémités.</p>
+<p>L&#39;exemple que je donne à mes débutants</p>
+<p>Prends la taille des hommes dans un pays. Dans ma vidéo, je découpe ça simplement : environ 70 % autour de la moyenne, 15 % à chaque extrémité. Le marché, c&#39;est pareil : le centre, c&#39;est la valeur ; les extrémités, ce sont les prix testés puis refusés.</p>
+<p>J&#39;aime aussi l&#39;image de la bouteille d&#39;eau. Au supermarché, une Vittel a un prix que tout le monde accepte : c&#39;est l&#39;équilibre. Dans le désert, sous le soleil, la même bouteille vaut beaucoup plus : c&#39;est le déséquilibre. <a href="https://www.youtube.com/watch?v=sphmmI7eykQ&amp;t=1370">Je raconte cette scène ici</a>. Quand le Nasdaq sort de sa Value Area, c&#39;est souvent qu&#39;une information nouvelle a changé le contexte.</p>
+<p>Ce que les 70 % ne sont pas</p>
+<p>Ce chiffre n&#39;est pas une probabilité de rebond. Il ne dit pas que le prix « a 70 % de chances » de rester dans la zone. Il décrit seulement où le marché a passé son temps hier.</p>
+<p>Les plateformes que j&#39;utilise prennent 70 % par défaut, sans l&#39;imposer. La <a href="https://www.sierrachart.com/index.php?page=doc%2FStudiesReference%2FTimePriceOpportunityCharts.html">documentation de Sierra Chart</a> l&#39;écrit noir sur blanc : la Value Area englobe les TPO situés à un pourcentage donné autour du POC, 70 % par défaut. Côté volume, l&#39;<a href="https://www.tradingview.com/support/solutions/43000502040-volume-profile-indicators-basic-concepts/">aide de TradingView</a> précise que ce pourcentage est en général fixé à 70 %, mais laissé au choix du trader.</p>
+<p>Je garde 70 % : tout le monde regarde les mêmes bornes, et c&#39;est ce qui leur donne du poids. Comme je le dis souvent : <a href="https://www.youtube.com/watch?v=sphmmI7eykQ&amp;t=993">« dans les marchés, on n&#39;est que dans des probabilités »</a>.</p>
+<p>À retenir</p>
+<ul><li>70 % ≈ un écart-type d&#39;une courbe en cloche, arrondi.</li><li>C&#39;est une convention partagée, pas une statistique de réussite.</li><li>Dans la valeur = équilibre ; hors de la valeur = déséquilibre.</li><li>Garde le réglage par défaut : c&#39;est celui que regardent les autres.</li></ul>
+<p>Reste à savoir comment ta plateforme trouve ces deux bornes. Et là, surprise : pas toutes de la même façon.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/value-area-trading/blog-value-area-trading-2.webp" alt="Les trois repères d&#39;un profil : VAH, POC et VAL, qui délimitent la Value Area à 70 %" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Trois niveaux suffisent pour lire la valeur d&#39;une séance : le POC au centre, la VAH en haut, la VAL en bas.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="comment-calculer-la-value-area-a-la-main">Comment calculer la Value Area à la main ?</h2>
+    <p>Pour calculer la Value Area, tu comptes tous les TPO du profil, tu en prends 70 %, puis tu pars du POC et tu ajoutes à chaque étape le côté le plus chargé, jusqu&#39;à atteindre ce total. Le dernier niveau ajouté en haut devient la VAH, en bas la VAL.</p>
+<p>Tu ne le feras jamais à la main en séance. Mais le faire une fois change tout : tu comprends pourquoi ta VAL n&#39;est pas toujours celle d&#39;un autre trader.</p>
+<p>Le profil de l&#39;exemple</p>
+<p>Voici un profil simplifié du Nasdaq, regroupé par 5 points pour rester lisible. Chaque TPO correspond à une lettre, donc à 30 minutes passées à ce prix.</p>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Prix (NQ)</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">TPO</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Remarque</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">24 110</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">2</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Haut</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">24 105</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">1</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">-</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">24 100</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">3</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">-</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">24 095</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">5</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">-</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">24 090</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">7</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">POC</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">24 085</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">4</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">-</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">24 080</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">2</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">-</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">24 075</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">4</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">-</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">24 070</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">3</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">-</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">24 065</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">1</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Bas</td></tr></tbody></table></div>
+<p>Total : 32 TPO. Objectif : 32 × 0,70 = 22,4 TPO.</p>
+<p>Méthode classique : deux niveaux à la fois</p>
+<p>C&#39;est la méthode historique du Market Profile. À chaque étape, tu compares la somme des deux niveaux au-dessus avec celle des deux niveaux en dessous.</p>
+<ul><li>Départ au POC : 7 TPO.</li><li>Au-dessus, 24 095 + 24 100 = 8. En dessous, 24 085 + 24 080 = 6. J&#39;ajoute le haut : 15 TPO.</li><li>Au-dessus, 24 105 + 24 110 = 3. En dessous, toujours 6. J&#39;ajoute le bas : 21 TPO.</li><li>On n&#39;a pas 22,4. Au-dessus, 3. En dessous, 24 075 + 24 070 = 7. J&#39;ajoute le bas : 28 TPO, on dépasse l&#39;objectif.</li></ul>
+<p>Résultat : VAH à 24 100, VAL à 24 070.</p>
+<p>Méthode niveau par niveau</p>
+<p>Sierra Chart compare par défaut un seul niveau au-dessus et un seul en dessous. Le même profil donne alors :</p>
+<ul><li>24 095 (5) contre 24 085 (4) : j&#39;ajoute 5, total 12.</li><li>24 100 (3) contre 24 085 (4) : j&#39;ajoute 4, total 16.</li><li>24 100 (3) contre 24 080 (2) : j&#39;ajoute 3, total 19.</li><li>24 105 (1) contre 24 080 (2) : j&#39;ajoute 2, total 21.</li><li>24 105 (1) contre 24 075 (4) : j&#39;ajoute 4, total 25. Objectif atteint.</li></ul>
+<p>Résultat : VAH à 24 100, VAL à 24 075.</p>
+<p>Ce que ça change en séance</p>
+<p>Même profil, deux VAL différentes, à 5 points d&#39;écart. Sur le NQ, 5 points, c&#39;est 20 ticks. Assez pour qu&#39;un ordre posé « sur la VAL » ne soit jamais touché.</p>
+<p>Sierra Chart propose d&#39;ailleurs une option « Count Two Levels at a Time » pour revenir à la méthode classique. Et en volume, TradingView part du POC, compare la ligne juste au-dessus et la ligne juste en dessous, garde la plus grosse, et s&#39;arrête avant de dépasser l&#39;objectif.</p>
+<p>Conclusion pratique : une borne de Value Area est une zone, pas un prix au tick près. Je trace une bande de quelques ticks autour, jamais une ligne fine sur laquelle je parie tout.</p>
+<p>Tu as peut-être remarqué que j&#39;ai compté en temps. On peut aussi compter en volume. Lequel choisir ?</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/value-area-trading/blog-value-area-trading-3.webp" alt="Les cinq étapes du calcul de la Value Area à 70 % à partir du POC sur un profil TPO" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Sur le profil de l&#39;exemple : 32 TPO, objectif 22,4. On part du POC et on ajoute toujours le côté le plus chargé.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="value-area-en-temps-tpo-ou-en-volume-laq">Value Area en temps (TPO) ou en volume : laquelle regarder ?</h2>
+    <p>La Value Area en TPO mesure où le marché a passé son temps, celle en volume mesure où il a échangé le plus de contrats ; les deux sont souvent proches, et l&#39;écart entre elles est lui-même une information.</p>
+<p>Sur une séance calme, les deux zones se superposent presque. Sur une séance agitée, une grosse bougie de news peut gonfler le volume sur un niveau où le prix n&#39;est resté que quelques minutes. J&#39;explique le réglage et la lecture du profil de volume dans mon <a href="https://basstrading.fr/blog/volume-profile-guide/">guide du Volume Profile</a>.</p>
+<p>Mon usage, concrètement</p>
+<ul><li>Pour la valeur de la veille, je regarde le profil TPO de la séance.</li><li>Pour savoir où se sont vraiment échangés les contrats sur un niveau précis, je descends au footprint.</li><li>Quand la VAH en temps et la VAH en volume sont éloignées, toute la bande entre les deux devient ma zone de décision.</li></ul>
+<p>Sur TradingView, les outils de profil natifs sont en volume ; si tu veux un footprint sur la même plateforme, j&#39;ai détaillé les options dans mon article sur le <a href="https://basstrading.fr/blog/footprint-tradingview/">footprint TradingView</a>.</p>
+<p>Le plus important n&#39;est pas la méthode : c&#39;est d&#39;utiliser toujours la même.</p>
+<p>Une fois la valeur de la veille tracée, la première vraie question arrive le matin : où le marché ouvre-t-il par rapport à elle ?</p>
+
+    <hr>
+
+    <h2 id="ouverture-dans-ou-hors-de-la-valeur-que-">Ouverture dans ou hors de la valeur : que t&#39;apprend l&#39;ouverture ?</h2>
+    <p>Une ouverture à l&#39;intérieur de la Value Area de la veille annonce plutôt une séance d&#39;équilibre, avec des rotations entre VAH et VAL ; une ouverture à l&#39;extérieur signale un déséquilibre, et tout dépend alors de l&#39;acceptation ou du rejet de ces nouveaux prix.</p>
+<p>Sur le Nasdaq, l&#39;ouverture qui compte pour moi est celle du marché au comptant américain, à 15 h 30 heure de Paris (14 h 30 pendant les quelques semaines de décalage des changements d&#39;heure ; détails dans l&#39;article sur les horaires). Le contrat futures, lui, tourne presque 23 heures sur 24 ; je détaille ces horaires dans mon article sur les <a href="https://basstrading.fr/blog/horaires-futures-nasdaq-heure-paris/">horaires des futures Nasdaq à l&#39;heure de Paris</a>. Et si tu débutes en intraday, mon guide du <a href="https://basstrading.fr/blog/day-trading-futures/">day trading sur les futures</a> pose le cadre d&#39;une séance avant d&#39;y ajouter la Value Area.</p>
+<p>Cas n° 1 : ouverture dans la valeur</p>
+<p>Le marché ouvre entre la VAH et la VAL de la veille. Rien n&#39;a changé l&#39;avis des participants. Je m&#39;attends à un marché qui tourne : il monte vers la VAH, redescend vers le POC ou la VAL.</p>
+<p>Dans ce contexte, je joue les faux breakouts : une sortie de la valeur qui ne trouve pas de suite et revient dedans. Je l&#39;explique dans ma vidéo sur <a href="https://www.youtube.com/watch?v=sphmmI7eykQ&amp;t=1860">la journée équilibrée</a>.</p>
+<p>Cas n° 2 : ouverture hors de la valeur, puis acceptation</p>
+<p>Le marché ouvre au-dessus de la VAH (ou sous la VAL) et y reste. Il construit des lettres, du volume, un nouveau petit profil : il cherche une nouvelle valeur.</p>
+<p>C&#39;est le piège classique : vendre « parce que c&#39;est trop haut ». Si le prix est accepté dehors, je ne vais pas contre lui.</p>
+<p>Cas n° 3 : ouverture hors de la valeur, puis rejet</p>
+<p>Le marché ouvre dehors, mais n&#39;y trouve personne. Il revient dans la valeur de la veille et s&#39;y installe. C&#39;est exactement le contexte de la règle des 80 %, que je détaille plus bas.</p>
+<p>Cas n° 4 : ouverture hors du range de la veille</p>
+<p>Le marché ouvre au-delà du plus haut ou du plus bas de la veille. Le déséquilibre est plus fort, les retours dans la valeur plus rares, et je suis encore plus prudent avant de parier sur un retour au POC.</p>
+<p>À retenir</p>
+<ul><li>Repère la VAH, la VAL et le POC de la veille avant 15 h 30.</li><li>Dans la valeur : rotations, faux breakouts, retour au POC.</li><li>Dehors et accepté : ne pas lutter contre le marché.</li><li>Dehors et rejeté : préparer le scénario de retour.</li></ul>
+<p>Mais la valeur de la veille n&#39;est qu&#39;une photo. D&#39;un jour à l&#39;autre, elle se déplace, et ce déplacement raconte une histoire.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/value-area-trading/blog-value-area-trading-4.webp" alt="Tableau des quatre types d&#39;ouverture par rapport à la Value Area de la veille et leur lecture" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">L&#39;ouverture de 15 h 30 par rapport à la valeur de la veille donne le contexte de la journée, avant tout signal.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="comment-lire-la-migration-de-la-valeur-d">Comment lire la migration de la valeur d&#39;un jour à l&#39;autre ?</h2>
+    <p>La migration de la valeur, c&#39;est la position de la Value Area du jour par rapport à celle de la veille : plus haute, plus basse ou superposée ; elle montre si les acheteurs ou les vendeurs ont réussi à déplacer le prix accepté.</p>
+<ul><li>Valeur plus haute : les acheteurs font accepter des prix plus chers.</li><li>Valeur plus basse : les vendeurs déplacent la valeur vers le bas.</li><li>Valeur superposée : le marché hésite, il est en équilibre sur plusieurs jours. C&#39;est le terrain idéal des rotations.</li></ul>
+<p>La valeur qui se construit en direct</p>
+<p>Pendant la séance, la Value Area du jour se dessine en temps réel : on parle de Value Area « en développement ». Au début de la séance, la valeur du jour bouge beaucoup, faute de données. C&#39;est pour ça que je ne lui accorde de poids qu&#39;une fois que le profil a accumulé assez de lettres.</p>
+<p>Trois valeurs de plus en plus hautes d&#39;affilée : je cherche surtout des achats sur les retours vers la VAH de la veille. Trois valeurs superposées : je m&#39;attends à une sortie de la zone. Ce n&#39;est pas un signal mécanique, c&#39;est un contexte.</p>
+<p>Venons-en à la règle dont tout le monde parle dès qu&#39;on évoque la Value Area.</p>
+
+    <hr>
+
+    <h2 id="la-regle-des-80-comment-fonctionne-t-ell">La règle des 80 % : comment fonctionne-t-elle vraiment ?</h2>
+    <p>La règle des 80 % dit que si le marché ouvre hors de la Value Area de la veille, puis revient à l&#39;intérieur et y reste deux périodes consécutives de 30 minutes, il a de bonnes chances de traverser toute la zone jusqu&#39;à la borne opposée.</p>
+<p>Elle est attribuée à James Dalton, dans son livre Mind Over Markets, écrit avec Eric Jones et Robert Dalton. C&#39;est l&#39;une des règles les plus citées du Market Profile.</p>
+<p>Les conditions, une par une</p>
+<ul><li>Ouverture hors de la valeur de la veille : au-dessus de la VAH ou sous la VAL.</li><li>Retour dans la valeur : le prix repasse la borne et rentre dans la zone.</li><li>Acceptation : deux lettres de 30 minutes consécutives se construisent à l&#39;intérieur. Certains se contentent d&#39;une seule ; plus tu es exigeant, moins tu as de signaux, mais plus le retour est confirmé.</li><li>Cible : la borne opposée. Ouverture au-dessus, retour dedans, cible la VAL. Ouverture en dessous, cible la VAH.</li></ul>
+<p>Le « 80 % » n&#39;est pas un taux de réussite</p>
+<p>C&#39;est le point le plus mal compris. Le nom de la règle n&#39;est pas une statistique que tu vas retrouver sur ton graphique. Personne ne peut te garantir que 8 trades sur 10 iront jusqu&#39;à la borne opposée.</p>
+<p>Les tests que l&#39;on trouve en ligne donnent des résultats très différents selon le marché, la période, la définition de l&#39;entrée et celle de la cible. Je ne te donnerai donc aucun pourcentage. Ce que je retiens, c&#39;est la logique : le marché a tenté des prix nouveaux, il les a refusés, il revient vers ce qu&#39;il connaît.</p>
+<p>Comment je l&#39;utilise</p>
+<p>Je ne la trade pas comme une règle automatique, mais comme un scénario prioritaire :</p>
+<ul><li>l&#39;ouverture est dehors, le marché revient dedans : j&#39;ai un plan ;</li><li>j&#39;attends l&#39;acceptation, et je regarde au footprint si les acheteurs (ou les vendeurs) qui avaient poussé l&#39;ouverture se font absorber ;</li><li>je vise le POC en premier, la borne opposée seulement si le marché continue proprement.</li></ul>
+<p>Pourquoi le POC d&#39;abord ? Parce que c&#39;est l&#39;aimant de la zone. Beaucoup de traders visent la borne opposée et voient le prix faire demi-tour juste au milieu.</p>
+<p>À retenir</p>
+<ul><li>Conditions : ouverture dehors, retour dedans, deux périodes acceptées.</li><li>Cible logique : POC d&#39;abord, borne opposée ensuite.</li><li>Le « 80 % » est un nom, pas une probabilité.</li><li>Sans confirmation au footprint, je ne prends pas le trade.</li></ul>
+<p>Une règle sur le papier, c&#39;est bien. Voici maintenant à quoi ça ressemble un vrai jour de marché, sur une séance où le marché avait ouvert dans la valeur.</p>
+
+    <hr>
+
+    <h2 id="mon-exemple-du-19-septembre-2025-sur-le-">Mon exemple du 19 septembre 2025 sur le Nasdaq</h2>
+    <p>Le vendredi 19 septembre 2025, le Nasdaq a ouvert dans la Value Area de la veille, est sorti au-dessus de la VAH, n&#39;a pas trouvé de suite, puis est revenu vers le POC : un retour à l&#39;équilibre typique. Je l&#39;ai décortiqué dans <a href="https://www.youtube.com/watch?v=knsM_AIb-eQ">cette vidéo</a>.</p>
+<p>15 h 30 : l&#39;ouverture</p>
+<p>Le NQ ouvre à 24 768. C&#39;est à l&#39;intérieur du profil du jeudi 18. Je le dis à ce moment-là : <a href="https://www.youtube.com/watch?v=knsM_AIb-eQ&amp;t=148">« on ouvre dans la même valeur que la veille »</a>. Pas de facteur extérieur fort, donc je m&#39;attends à une journée d&#39;équilibre.</p>
+<p>Je note la VAH de la veille, à 24 805,50. C&#39;est le premier gros obstacle au-dessus.</p>
+<p>15 h 52 : la sortie au-dessus de la VAH</p>
+<p>Le prix passe la VAH et cote 24 817,50. C&#39;est un petit excès de 12 points au-dessus de la valeur. Au footprint, je vois <a href="https://www.youtube.com/watch?v=knsM_AIb-eQ&amp;t=360">une barre à fort volume avec des déséquilibres acheteurs</a> : les acheteurs ont mis le paquet.</p>
+<p>Sauf que le prix n&#39;avance plus. Les acheteurs frappent, mais en face, quelqu&#39;un absorbe tout. C&#39;est ce que j&#39;appelle l&#39;<a href="https://basstrading.fr/blog/absorption-order-flow/">absorption dans l&#39;order flow</a> : beaucoup d&#39;agressivité, pas de déplacement.</p>
+<p>Le retour vers l&#39;équilibre</p>
+<p>Pas de continuité haussière, donc le scénario d&#39;équilibre reprend la main. Je l&#39;explique comme ça : <a href="https://www.youtube.com/watch?v=knsM_AIb-eQ&amp;t=533">« un marché, il est tout le temps équilibré. Et quand il ne l&#39;est pas, il est à la recherche d&#39;un équilibre »</a>. On appelle ça le mean reversion, le retour à la moyenne.</p>
+<p>La cible, c&#39;est le POC de la veille à 24 714,75. Et je précise que ce n&#39;est <a href="https://www.youtube.com/watch?v=knsM_AIb-eQ&amp;t=587">« pas forcément au tic près »</a> : c&#39;est une zone.</p>
+<p>Le retour au POC</p>
+<p>Le prix redescend jusqu&#39;à la zone du POC de la veille.</p>
+<p>Ce que cet exemple montre</p>
+<ul><li>Ce n&#39;est pas la règle des 80 % : le marché avait ouvert dans la valeur, pas dehors.</li><li>La VAH n&#39;a pas « tenu » au tick près : il y a eu 12 points d&#39;excès. C&#39;est normal, et c&#39;est pour ça qu&#39;on ne place jamais son stop pile sur la borne.</li><li>Le Market Profile m&#39;a donné le contexte et les zones. Le footprint m&#39;a donné le moment. Je résume ça dans la vidéo : le profil, c&#39;est la vue d&#39;ensemble ; le <a href="https://www.youtube.com/watch?v=knsM_AIb-eQ&amp;t=638">footprint et le carnet d&#39;ordres</a>, c&#39;est la précision.</li></ul>
+<p>Si tu veux comprendre ce que je lis dans ces barres, mon guide du <a href="https://basstrading.fr/blog/footprint-chart-trading/">footprint chart</a> part de zéro.</p>
+<p>Tout ça est joli en vidéo. Mais en séance, où est-ce que je mets concrètement mon entrée, mon stop et mon objectif ?</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/value-area-trading/blog-value-area-trading-5.webp" alt="Chiffres clés de la séance du 19 septembre 2025 sur le Nasdaq : ouverture, excès au-dessus de la VAH et retour au POC" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">19/09/2025 sur le NQ : ouverture dans la valeur, excès de 12 points au-dessus de la VAH (24 805,50), absorption puis retour vers le POC.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="comment-placer-entree-stop-et-objectif-a">Comment placer entrée, stop et objectif autour de la Value Area ?</h2>
+    <p>J&#39;entre sur une borne de la Value Area seulement après une confirmation au footprint, je place le stop au-delà de l&#39;excès et non sur la borne, et je vise d&#39;abord le POC ; la taille de position vient du risque, jamais de l&#39;envie.</p>
+<p>L&#39;entrée : la borne ne suffit pas</p>
+<p>Toucher la VAH n&#39;est pas un signal. C&#39;est une zone où je me mets à regarder. Ce qui me fait entrer, c&#39;est ce que je vois au footprint : absorption, perte de vitesse, déséquilibres qui ne produisent plus de mouvement. Sans ça, je laisse passer.</p>
+<p>Le stop : au-delà de l&#39;excès</p>
+<p>Dans l&#39;exemple du 19 septembre, l&#39;excès a fait 12 points au-dessus de la VAH. Un stop posé « juste au-dessus de la VAH » aurait sauté avant le retour. Les stops posés pile sur les niveaux évidents sont une cible ; je l&#39;explique dans mon article sur la <a href="https://basstrading.fr/blog/chasse-aux-stops-trading/">chasse aux stops</a>.</p>
+<p>Je place donc mon stop au-delà du point extrême de l&#39;excès, là où mon scénario est clairement faux.</p>
+<p>Le calcul du risque</p>
+<p>Sur le contrat E-mini Nasdaq-100, le tick vaut 0,25 point, soit 5 dollars par contrat, selon les <a href="https://www.cmegroup.com/markets/equities/nasdaq/e-mini-nasdaq-100.contractSpecs.html">spécifications du contrat chez CME Group</a>. Un point vaut donc 20 dollars. Si tu veux savoir comment fonctionnent ce contrat et sa version micro, je les présente dans mon guide des <a href="https://basstrading.fr/blog/nasdaq-futures-nq-mnq/">futures Nasdaq NQ et MNQ</a>.</p>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Contrat</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Valeur d&#39;un point</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Risque pour 12 points</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">NQ</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">20 $</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">240 $</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">MNQ</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">2 $</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">24 $</td></tr></tbody></table></div>
+<p>Ce tableau ne montre que ce que tu risques, pas ce que tu gagnes. Si 240 dollars dépassent ce que tu acceptes de perdre sur un trade, tu passes au micro. J&#39;ai écrit un article entier sur le choix entre <a href="https://basstrading.fr/blog/nq-ou-mnq/">NQ et MNQ</a> et un autre sur <a href="https://basstrading.fr/blog/combien-risquer-par-trade/">combien risquer par trade</a>.</p>
+<p>L&#39;objectif : le POC d&#39;abord</p>
+<p>Je prends une partie au POC, je protège le reste, et je ne vise la borne opposée que si le marché traverse le POC sans hésiter.</p>
+<p>À retenir</p>
+<ul><li>Borne touchée = zone d&#39;attention, pas signal.</li><li>Entrée sur confirmation au footprint.</li><li>Stop au-delà de l&#39;excès, jamais pile sur la borne.</li><li>Objectif : POC d&#39;abord. Taille : selon ton risque.</li></ul>
+<p>Cette mécanique marche bien les jours d&#39;équilibre. Le problème, c&#39;est qu&#39;il y a aussi les autres jours.</p>
+
+    <hr>
+
+    <h2 id="quand-la-value-area-ne-fonctionne-t-elle">Quand la Value Area ne fonctionne-t-elle pas ?</h2>
+    <p>La Value Area perd beaucoup de son intérêt les jours de tendance franche, les jours d&#39;annonces économiques majeures et les séances très creuses ; dans ces cas, le marché ne cherche pas l&#39;équilibre, il en construit un nouveau ailleurs.</p>
+<ul><li>Journées de tendance : le marché ouvre, part dans une direction et ne revient jamais. Le profil est long et fin. Vendre la VAH ces jours-là, c&#39;est se mettre devant un train. Le signal d&#39;alerte : le prix construit dehors, lettre après lettre.</li><li>Annonces économiques : inflation, emploi américain, Fed. L&#39;information change, donc la valeur de la veille compte moins. Je ne trade pas les bornes dans les minutes qui entourent une annonce majeure.</li><li>Séances creuses : veilles de fériés, fins d&#39;année. Une Value Area construite avec peu d&#39;échanges a moins de poids.</li><li>Profil à deux bosses : le calcul à 70 % englobe les deux zones et le creux entre elles. Je lis alors chaque bosse comme une petite valeur à part.</li></ul>
+<p>Et la VWAP dans tout ça ?</p>
+<p>Je la regarde souvent en même temps. Elle donne un prix moyen pondéré par les volumes, qui bouge avec la séance, alors que la Value Area de la veille est fixe. Quand la VWAP et le POC tombent dans la même zone, ce niveau prend plus de poids. J&#39;ai tout expliqué dans mon guide de la <a href="https://basstrading.fr/blog/vwap-trading/">VWAP en trading</a>.</p>
+<p>Restent les erreurs, celles que je vois revenir chez presque tous les débutants.</p>
+
+    <hr>
+
+    <h2 id="quelles-erreurs-eviter-avec-la-value-are">Quelles erreurs éviter avec la Value Area ?</h2>
+    <p>L&#39;erreur la plus fréquente est de traiter la VAH et la VAL comme des supports et résistances au tick près ; les autres viennent presque toutes de l&#39;oubli du contexte.</p>
+<ul><li>Mettre une ligne au lieu d&#39;une zone : deux calculs peuvent donner 5 points d&#39;écart, et le marché fait souvent un excès au-delà de la borne.</li><li>Trader la borne sans regarder l&#39;ouverture : une VAH qui tient un jour d&#39;ouverture dans la valeur peut être pulvérisée un jour d&#39;ouverture au-dessus.</li><li>Croire que « 80 % » est une garantie : si tu dimensionnes ta position sur cette idée, tu prends trop de risque.</li><li>Changer de réglage tous les jours : 70 % aujourd&#39;hui, profil en volume demain, tu ne peux plus rien comparer.</li><li>Lire la valeur du jour trop tôt : à 16 h, ce n&#39;est qu&#39;une ébauche ; en séance, c&#39;est la valeur de la veille qui compte.</li><li>Oublier le stop parce que « ça va revenir au POC » : le jour où le marché trouve une nouvelle valeur, il ne revient pas.</li></ul>
+<p>Si tu débutes vraiment, ces erreurs se corrigent beaucoup plus vite quand quelqu&#39;un te montre les profils en direct. C&#39;est l&#39;objet de la suite.</p>
+
+    <hr>
+
+    <h2 id="comment-aller-plus-loin-avec-la-value-ar">Comment aller plus loin avec la Value Area ?</h2>
+    <p>Le plus efficace est de tracer la Value Area de la veille chaque soir, d&#39;écrire ton scénario d&#39;ouverture, puis de comparer avec ce qui s&#39;est réellement passé. Au bout de quelques semaines, tu reconnais les journées d&#39;équilibre avant 16 h.</p>
+<p>Récapitulatif</p>
+<ul><li>La Value Area, c&#39;est 70 % de l&#39;activité de la séance, entre VAH et VAL, autour du POC.</li><li>Le 70 % est une convention issue de la courbe en cloche, pas une probabilité.</li><li>Le calcul varie selon la plateforme : une borne est une zone, pas un prix exact.</li><li>L&#39;ouverture par rapport à la valeur de la veille donne le contexte de la journée.</li><li>La règle des 80 % est un scénario de retour, à confirmer au footprint, jamais une garantie.</li></ul>
+<p>La formation offerte</p>
+<p>J&#39;ai réuni les bases dans une formation offerte : 7 leçons et une démonstration Market Profile de 35 minutes, où je lis un profil en direct, VAH, VAL et POC compris. Elle est gratuite, et c&#39;est la suite logique de cet article : <a href="https://basstrading.fr/l/RfjNxw">accéder à la formation offerte</a>.</p>
+<p>Mes élèves me notent 4,8 sur 5 sur Trustpilot (131 avis au 25 octobre 2026).</p>
+<p>Ce soir, sur ton graphique</p>
+<p>Ouvre le Nasdaq, affiche le profil de la séance d&#39;aujourd&#39;hui, et note trois prix : la VAH, la VAL et le POC. Demain à 15 h 30, regarde simplement où le marché ouvre par rapport à eux. Sans trader. Juste observer.</p>
+<p>Ensuite, la lecture la plus utile est mon <a href="https://basstrading.fr/blog/market-profile-guide-complet/">guide complet du Market Profile</a>, pour mettre la Value Area dans le cadre des différents types de journées.</p>
+<p>Rappel : le trading de contrats à terme comporte un risque élevé de perte, pouvant dépasser la mise initiale. Les exemples de cet article sont pédagogiques ; ils ne constituent ni une recommandation ni une promesse de résultat. L&#39;ESMA rappelle <a href="https://www.esma.europa.eu/node/84933">les risques des produits spéculatifs pour les particuliers</a>.</p>
+
+    <p><a href="https://www.youtube.com/watch?v=knsM_AIb-eQ" target="_blank" rel="noopener">▶ Voir la vidéo de Sébastien sur ce sujet</a></p>
+
+    <div class="cta-card cta-aimant">
+      <div class="cta-card-label">Gratuit</div>
+      <h3>La formation offerte : 7 leçons pour lire le marché comme un pro</h3>
+      <p>Accès immédiat et gratuit, en vidéo, à ton rythme. Sans carte bancaire.</p>
+      <a href="https://basstrading.fr/p/formation-offerte/?src=blog-value-area-trading" class="btn-p">Je la veux →</a>
+    </div>
+    
+  </article>
+</div>
+
+<!-- FAQ -->
+<section class="faq-sec">
+  <div class="sec-center"><div class="sec-label">FAQ</div><h2 class="sec-title">Questions fréquentes</h2></div>
+  <div class="faq-list">
+    <div class="fi"><button class="fq" onclick="tf(this)">Quelle est la différence entre la Value Area et le POC ? <span class="fq-icon">+</span></button><div class="fa"><p>Le POC est un seul prix : celui où le marché a passé le plus de temps (ou échangé le plus de contrats) pendant la séance. La Value Area est une zone autour de ce POC, qui regroupe environ 70 % de l&#39;activité. Je me sers du POC comme d&#39;un aimant et des bornes de la Value Area comme de zones de décision.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Pourquoi ma plateforme n&#39;affiche pas la même VAH qu&#39;un autre trader ? <span class="fq-icon">+</span></button><div class="fa"><p>Parce que les méthodes de calcul diffèrent : deux niveaux ajoutés à la fois ou un seul, temps (TPO) ou volume, regroupement des niveaux, horaires de la séance. Sur un même profil, l&#39;écart peut atteindre plusieurs points. C&#39;est pour ça que je trace une zone autour de chaque borne, jamais une ligne au tick près.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">La règle des 80 % marche-t-elle 80 % du temps ? <span class="fq-icon">+</span></button><div class="fa"><p>Non. Le « 80 % » est le nom de la règle, pas un taux de réussite vérifié sur ton marché. Les tests publiés donnent des résultats très variables selon le contrat, la période et la façon de définir l&#39;entrée et la cible. Je l&#39;utilise comme un scénario, confirmé au footprint, toujours avec un stop.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Quelle Value Area utiliser : celle de la veille ou celle qui se construit ? <span class="fq-icon">+</span></button><div class="fa"><p>Pour décider pendant la séance, j&#39;utilise la Value Area de la veille : elle est fixe et tout le monde la voit. Celle du jour bouge beaucoup au début ; je la regarde surtout en fin de séance, pour préparer le lendemain et lire la migration de la valeur.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Peut-on afficher la Value Area sur TradingView ? <span class="fq-icon">+</span></button><div class="fa"><p>Oui. Les outils de profil de volume de TradingView affichent le POC, la VAH et la VAL, avec 70 % par défaut, modifiable. C&#39;est une Value Area calculée sur le volume, pas sur le temps comme le Market Profile d&#39;origine. Pour débuter, c&#39;est suffisant : l&#39;important est de garder le même réglage.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Quelle est la différence entre la Value Area et la VWAP ? <span class="fq-icon">+</span></button><div class="fa"><p>La VWAP est un prix moyen pondéré par les volumes, qui évolue en continu pendant la séance. La Value Area de la veille est une zone fixe qui décrit où le marché a passé 70 % de son temps. Quand le POC de la veille et la VWAP du jour se retrouvent dans la même zone, je donne plus de poids à ce niveau.</p></div></div>
+  </div>
+</section>
+
+<!-- Related -->
+<section class="related-sec">
+  <div class="sec-center"><div class="sec-label">Continuer la lecture</div><h2 class="sec-title">Articles connexes</h2></div>
+  <div class="related-grid">
+    <a href="/blog/market-profile-guide-complet/" class="related-card"><div class="related-cat">Guide</div><h3>Market Profile : le guide complet pour débutants</h3><p>Value Area, POC, types de journées — tout pour commencer.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/order-flow-trading-france/" class="related-card"><div class="related-cat">Méthode</div><h3>Order Flow Trading : pourquoi personne ne l'enseigne en France</h3><p>Le carnet d'ordres et le flux institutionnel décryptés.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/sierra-chart-configuration/" class="related-card"><div class="related-cat">Tutoriel</div><h3>Sierra Chart : configuration complète</h3><p>Le setup pas à pas pour le Market Profile et le Footprint.</p><span class="related-link">Lire &rarr;</span></a>
+  </div>
+</section>
+
+<!-- serie:debut --><style>.serie-w{background:#FFF;color:#1D1D1F;border-top:1px solid #F5F5F7}.serie{max-width:1060px;margin:0 auto;padding:56px 24px;font-family:inherit;box-sizing:border-box}.serie-l{font-size:.6rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#0066FF;margin-bottom:8px}.serie-w .serie h2{font-size:1.4rem;font-weight:800;letter-spacing:-.5px;color:#1D1D1F!important;margin:0 0 18px;font-family:inherit}.serie ul{list-style:none;padding:0;margin:0 0 22px;display:grid;grid-template-columns:repeat(2,1fr);gap:8px 24px}.serie-w .serie li a{color:#1D1D1F!important;font-size:.9rem;line-height:1.45;text-decoration:none;border-bottom:1px solid #D2D2D7}.serie li a:hover{color:#0066FF}.serie li.pil a{font-weight:700}.serie-o{background:#F5F5F7;border-radius:14px;padding:18px 20px;font-size:.88rem;line-height:1.55;color:#1D1D1F}.serie-w .serie-o a{color:#0066FF!important;font-weight:700}@media(max-width:700px){.serie ul{grid-template-columns:1fr}}</style><div class="serie-w"><aside class="serie" aria-label="Dans la même série"><div class="serie-l">Dans la même série</div><h2>Market Profile</h2><ul><li class="pil"><a href="/blog/market-profile-guide-complet/">Market Profile : le guide complet (TPO, Value Area, POC)</a></li><li class=""><a href="/blog/volume-profile-guide/">Volume Profile : POC, VAH, VAL et niveaux clés (guide 2026)</a></li><li class=""><a href="/blog/market-profile-vs-volume-profile/">Market Profile vs Volume Profile : les vraies différences</a></li><li class=""><a href="/blog/auction-market-theory/">Auction Market Theory : Comprendre la Logique du Marché</a></li><li class=""><a href="/blog/sierra-chart-configuration/">Sierra Chart : configurer Market Profile, footprint et CVD</a></li></ul><div class="serie-o"><a href="/marketprofile/">La formation Market Profile</a> : 16 leçons vidéo pour lire un profil TPO, 57 €. Pour commencer sans payer : <a href="/p/formation-offerte/?src=serie-value-area-trading">la formation offerte</a> (7 leçons vidéo).</div></aside></div><!-- serie:fin -->
+<footer class="footer">
+  <div class="ft-top"><div class="ft-logo">BASS</div><div class="ft-cols">
+    <div class="ft-col"><div class="ft-col-title">Programme</div><a href="/formations/">Toutes les formations</a><a href="https://basstrading.fr/#methode">Méthode</a><a href="https://basstrading.fr/#programme">Programme</a><a href="https://basstrading.fr/p/formation-offerte/?src=blog-value-area-trading-pied">Formation offerte</a></div>
+    <div class="ft-col"><div class="ft-col-title">Ressources</div><a href="/blog/market-profile-guide-complet/">Market Profile</a><a href="/blog/footprint-chart-trading/">Footprint Chart</a><a href="/blog/order-flow-trading-france/">Order Flow</a></div>
+  </div></div>
+  <div class="ft-bottom"><span>&copy; 2026 BASS — Sébastien Constant</span><div><a href="/mentions-legales/">Mentions légales</a><a href="/confidentialite/">Confidentialité</a><a href="/cgv/">CGV</a><a href="mailto:contact@basstrading.fr">Contact</a></div></div>
+</footer>
+<div class="disclaimer">Le trading comporte des risques de perte en capital. Les performances passées ne préjugent pas des performances futures. Ce site ne constitue pas un conseil en investissement.</div>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+const lenis=new Lenis({duration:1.2,easing:t=>Math.min(1,1.001-Math.pow(2,-10*t))});
+function raf(t){lenis.raf(t);requestAnimationFrame(raf)}requestAnimationFrame(raf);
+lenis.on('scroll',ScrollTrigger.update);gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0);
+const tl=gsap.timeline();
+tl.to('.pre-word span',{y:0,opacity:1,duration:.5,stagger:.1,ease:'power3.out',delay:.3}).to('#preLine',{width:'80px',duration:.7,ease:'power2.inOut'},'<+.2').to('.preloader',{yPercent:-100,duration:.8,ease:'power3.inOut',delay:.4}).set('.preloader',{display:'none'}).to('#nav',{opacity:1,y:0,duration:.5},'<+.1');
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);const h=document.documentElement.scrollHeight-window.innerHeight;document.getElementById('readingProgress').style.width=(window.scrollY/h*100)+'%'});
+const tocLinks=document.querySelectorAll('.toc a');const sections=Array.from(tocLinks).map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+window.addEventListener('scroll',()=>{let c='';sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)c=s.id});tocLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+c)})});
+function tf(b){const i=b.closest('.fi'),a=b.nextElementSibling,o=i.classList.contains('active');document.querySelectorAll('.fi').forEach(x=>{x.classList.remove('active');x.querySelector('.fa').classList.remove('open')});if(!o){i.classList.add('active');a.classList.add('open')}}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();lenis.scrollTo(t,{offset:-60})}})});
+</script>
+<script src="/v.js" defer></script>
+</body>
+</html>
