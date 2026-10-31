@@ -149,11 +149,6 @@
       "statusCode": 301
     },
     {
-      "source": "/blog/value-area-trading/",
-      "destination": "/blog/market-profile-guide-complet/",
-      "statusCode": 301
-    },
-    {
       "source": "/blog/composite-profile-market-profile/",
       "destination": "/blog/volume-profile-guide/",
       "statusCode": 301
