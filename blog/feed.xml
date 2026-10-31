@@ -6,8 +6,16 @@
   <link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
   <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/"/>
   <id>https://basstrading.fr/blog/</id>
-  <updated>2026-10-30T00:00:00Z</updated>
+  <updated>2026-10-31T00:00:00Z</updated>
   <author><name>Sébastien Constant (Bass)</name><uri>https://basstrading.fr/auteur/sebastien-constant/</uri></author>
+  <entry>
+    <title>Market Profile vs Volume Profile : les vraies différences</title>
+    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/market-profile-vs-volume-profile/"/>
+    <id>https://basstrading.fr/blog/market-profile-vs-volume-profile/</id>
+    <published>2026-10-31T00:00:00Z</published>
+    <updated>2026-10-31T00:00:00Z</updated>
+    <summary>Market Profile ou Volume Profile ? Temps contre volume, deux POC, les divergences et quand utiliser lequel, avec un exemple réel sur le Nasdaq futures.</summary>
+  </entry>
   <entry>
     <title>Bookmap : lire la heatmap, prix réels et avis de trader</title>
     <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/bookmap-heatmap/"/>
