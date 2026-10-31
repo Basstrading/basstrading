@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Market Profile vs Volume Profile : les vraies différences — BASS Trading</title>
+  <meta name="description" content="Market Profile ou Volume Profile ? Temps contre volume, deux POC, les divergences et quand utiliser lequel, avec un exemple réel sur le Nasdaq futures.">
+  <meta property="og:title" content="Market Profile vs Volume Profile : les vraies différences — BASS Trading">
+  <meta property="og:description" content="Market Profile ou Volume Profile ? Temps contre volume, deux POC, les divergences et quand utiliser lequel, avec un exemple réel sur le Nasdaq futures.">
+  <meta property="og:image" content="https://basstrading.fr/blog/market-profile-vs-volume-profile/blog-market-profile-vs-volume-profile-1.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://basstrading.fr/blog/market-profile-vs-volume-profile/blog-market-profile-vs-volume-profile-1.webp">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://basstrading.fr/blog/market-profile-vs-volume-profile/">
+  <meta property="og:site_name" content="BASS Trading">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://basstrading.fr/blog/market-profile-vs-volume-profile/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","@id":"https://basstrading.fr/blog/market-profile-vs-volume-profile/#article","headline":"Market Profile vs Volume Profile : les vraies différences","description":"Market Profile ou Volume Profile ? Temps contre volume, deux POC, les divergences et quand utiliser lequel, avec un exemple réel sur le Nasdaq futures.","datePublished":"2026-10-31","dateModified":"2026-10-31","inLanguage":"fr-FR","image":"https://basstrading.fr/blog/market-profile-vs-volume-profile/blog-market-profile-vs-volume-profile-1.webp","mainEntityOfPage":"https://basstrading.fr/blog/market-profile-vs-volume-profile/","isPartOf":{"@type":"WebSite","@id":"https://basstrading.fr/#website","name":"BASS Trading","url":"https://basstrading.fr/"},"author":{"@type":"Person","@id":"https://basstrading.fr/#sebastien-constant","name":"Sébastien Constant","url":"https://basstrading.fr/auteur/sebastien-constant/"},"publisher":{"@type":"Organization","@id":"https://basstrading.fr/#organisation","name":"BASS Trading","url":"https://basstrading.fr/","logo":{"@type":"ImageObject","url":"https://basstrading.fr/images/logo-basstrading.png","width":512,"height":512}}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://basstrading.fr"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://basstrading.fr/blog/"},{"@type":"ListItem","position":3,"name":"Market Profile vs Volume Profile","item":"https://basstrading.fr/blog/market-profile-vs-volume-profile/"}]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Le Market Profile et le Volume Profile, c'est la même chose ?","acceptedAnswer":{"@type":"Answer","text":"Non. Les deux tracent une courbe couchée sur l'axe des prix, avec un POC et une zone de valeur, mais le Market Profile compte le temps passé à chaque prix (lettres TPO de 30 minutes) alors que le Volume Profile compte les contrats échangés à chaque prix. Un TPO ne tient aucun compte du nombre de contrats. Ils peuvent donc donner des POC et des zones de valeur différents sur la même séance."}},{"@type":"Question","name":"Market Profile ou Volume Profile : lequel choisir pour débuter ?","acceptedAnswer":{"@type":"Answer","text":"Je conseille de commencer par le Market Profile, parce qu'il apprend à raisonner en valeur, en équilibre et en types de journées. Une fois que tu sais dire si la séance est équilibrée ou non, ajoute le Volume Profile pour placer tes niveaux plus précisément. Les deux ensemble, sur la même séance, donnent la lecture la plus complète."}},{"@type":"Question","name":"Pourquoi le POC TPO et le POC volume sont-ils à des prix différents ?","acceptedAnswer":{"@type":"Answer","text":"Parce qu'un prix peut recevoir beaucoup de temps avec peu de contrats (la nuit, dans un petit range), ou beaucoup de contrats en peu de temps (une annonce économique, l'ouverture américaine). Le premier cas tire le POC TPO, le second tire le POC volume. Quand les deux tombent au même prix, le niveau est en général plus solide."}},{"@type":"Question","name":"Ces profils prédisent-ils les supports et les résistances ?","acceptedAnswer":{"@type":"Answer","text":"Non, ils sont descriptifs : ils montrent où le marché a passé du temps et où les contrats se sont échangés. Un POC, une VAH ou une VAL sont des zones où une réaction est plus probable, pas des murs. Je les utilise pour savoir où regarder, puis je confirme avec le flux d'ordres au moment où le prix arrive au niveau."}},{"@type":"Question","name":"La zone de valeur peut-elle beaucoup bouger pendant la séance ?","acceptedAnswer":{"@type":"Answer","text":"Oui. Tant que la séance n'est pas finie, le POC et la zone de valeur se recalculent à chaque lettre et à chaque contrat. Un jour de tendance, la valeur peut migrer de plusieurs dizaines de points. C'est pour ça que je prépare mes niveaux sur les profils terminés (la veille, la semaine) et que j'utilise le profil en cours pour voir où les prix sont acceptés."}},{"@type":"Question","name":"Peut-on utiliser le Volume Profile sur le forex ou les CFD ?","acceptedAnswer":{"@type":"Answer","text":"On peut l'afficher, mais il perd beaucoup de sa valeur. Sur le forex au comptant et les CFD, il n'y a pas de bourse centralisée : chaque courtier n'a que son flux, et beaucoup de plateformes affichent un volume tick (des changements de prix), pas des contrats. Sur les futures du CME, le volume est celui de toute la bourse."}},{"@type":"Question","name":"Faut-il inclure la séance de nuit dans le profil du Nasdaq ?","acceptedAnswer":{"@type":"Answer","text":"Les deux réglages existent : la séance Globex complète (minuit à 23 h, heure de Paris) ou la seule séance américaine. La nuit pèse beaucoup sur le Market Profile, peu sur le Volume Profile. L'important est de savoir lequel tu affiches et de garder le même réglage chaque jour pour pouvoir comparer les profils entre eux."}},{"@type":"Question","name":"Lequel des deux profils montre le mieux un essoufflement du marché ?","acceptedAnswer":{"@type":"Answer","text":"Les deux, de façon différente. Sur le Market Profile, l'essoufflement se voit à une queue fine de lettres isolées en haut ou en bas du profil : le marché a testé ces prix puis les a rejetés vite. Sur le Volume Profile, il se voit à un volume qui s'amenuise sur les nouveaux plus hauts ou plus bas : le prix avance, mais de moins en moins de contrats le suivent. Je confirme ensuite au footprint, au moment où le prix touche le niveau."}}]}
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{--bk:#1D1D1F;--bk2:#111;--bk3:#0A0A0A;--g1:#6E6E73;--g2:#86868B;--g3:#D2D2D7;--g4:#F5F5F7;--wh:#FBFBFD;--pure:#FFF;--green:#00B67A;--blue:#0066FF}
+    html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}
+    body{font-family:'DM Sans',sans-serif;color:var(--bk);background:var(--pure);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+    .preloader{position:fixed;inset:0;background:var(--bk3);z-index:10001;display:flex;align-items:center;justify-content:center}
+    .pre-word{font-family:'Outfit',sans-serif;font-size:clamp(3rem,8vw,5rem);font-weight:900;letter-spacing:16px;text-transform:uppercase;color:var(--pure);overflow:hidden}
+    .pre-word span{display:inline-block;transform:translateY(110%);opacity:0}
+    .pre-line{width:0;height:1px;background:rgba(255,255,255,.3);margin-top:20px}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 48px;display:flex;align-items:center;justify-content:space-between;background:rgba(245,245,247,.85);backdrop-filter:blur(20px) saturate(1.8);border-bottom:1px solid rgba(0,0,0,.04);transition:background .4s}
+    .nav-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase;color:var(--bk)}
+    .nav-links{display:flex;gap:28px;list-style:none}.nav-links a{font-size:.74rem;font-weight:500;letter-spacing:.3px;color:var(--g1);transition:color .3s}.nav-links a:hover{color:var(--bk)}
+    .nav-cta{padding:8px 20px;background:var(--bk);color:var(--pure);border:none;border-radius:980px;font-size:.72rem;font-weight:600;transition:all .3s;cursor:pointer;text-decoration:none;display:inline-block}.nav-cta:hover{background:var(--bk2)}
+    .blog-hero{padding:160px 48px 80px;background:var(--g4);position:relative;overflow:hidden}
+    .blog-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,transparent,var(--g4));pointer-events:none}
+    .blog-hero-inner{max-width:720px;margin:0 auto}
+    .breadcrumb{display:flex;gap:8px;align-items:center;margin-bottom:28px;flex-wrap:wrap}
+    .breadcrumb a,.breadcrumb span{font-size:.68rem;font-weight:500;letter-spacing:.3px;color:var(--g2);transition:color .3s}.breadcrumb a:hover{color:var(--bk)}.breadcrumb .sep{color:var(--g3)}
+    .blog-hero-cat{display:inline-block;padding:5px 14px;border:1px solid rgba(0,102,255,.15);border-radius:980px;font-size:.6rem;font-weight:700;color:var(--blue);letter-spacing:2px;text-transform:uppercase;margin-bottom:20px}
+    .blog-hero-title{font-family:'Outfit',sans-serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:900;line-height:1.05;letter-spacing:-2px;color:var(--bk);margin-bottom:20px}
+    .blog-hero-desc{font-size:.95rem;color:var(--g1);line-height:1.8;max-width:560px;margin-bottom:28px}
+    .blog-meta{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+    .blog-meta-author{display:flex;align-items:center;gap:10px}
+    .blog-meta-avatar{width:36px;height:36px;border-radius:50%;background:var(--bk3);overflow:hidden;flex-shrink:0}.blog-meta-avatar img{width:100%;height:100%;object-fit:cover}
+    .blog-meta-name{font-size:.78rem;font-weight:600;color:var(--bk)}.blog-meta-role{font-size:.65rem;color:var(--g2)}
+    .blog-meta-sep{width:1px;height:24px;background:var(--g3)}
+    .blog-meta-info{font-size:.7rem;color:var(--g2)}.blog-meta-info span{margin-right:16px}
+    .toc{position:sticky;top:90px;background:var(--pure);border:1px solid rgba(0,0,0,.04);border-radius:14px;padding:24px;margin-bottom:32px}
+    .toc-title{font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.5px;color:var(--bk);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+    .toc ol{list-style:none;counter-reset:toc}.toc li{counter-increment:toc}
+    .toc li a{display:flex;align-items:baseline;gap:8px;padding:6px 0;font-size:.76rem;color:var(--g1);transition:color .3s;border-bottom:1px solid rgba(0,0,0,.03)}.toc li a:hover{color:var(--blue)}
+    .toc li a::before{content:counter(toc,decimal-leading-zero);font-family:'Outfit',sans-serif;font-size:.65rem;font-weight:700;color:var(--g3);min-width:18px}
+    .toc li:last-child a{border-bottom:none}.toc li a.active{color:var(--blue);font-weight:600}.toc li a.active::before{color:var(--blue)}
+    .article-wrap{display:grid;grid-template-columns:220px 1fr;gap:40px;max-width:1020px;margin:0 auto;padding:60px 48px 120px}
+    .article-sidebar{position:relative}.article-body{max-width:700px}
+    .article-body h2{font-family:'Outfit',sans-serif;font-size:clamp(1.4rem,2.5vw,1.8rem);font-weight:800;line-height:1.1;letter-spacing:-1px;color:var(--bk);margin:56px 0 16px;padding-top:20px}.article-body h2:first-of-type{margin-top:0}
+    .article-body h3{font-family:'Outfit',sans-serif;font-size:1.05rem;font-weight:700;line-height:1.25;letter-spacing:-.3px;color:var(--bk);margin:36px 0 10px}
+    .article-body p{font-size:.9rem;color:var(--g1);line-height:1.85;margin-bottom:18px}
+    .article-body strong{color:var(--bk);font-weight:600}
+    .article-body ul,.article-body ol{margin:0 0 20px 0;padding-left:20px}
+    .article-body li{font-size:.88rem;color:var(--g1);line-height:1.8;margin-bottom:6px}.article-body li strong{color:var(--bk)}
+    .article-body blockquote{margin:28px 0;padding:20px 24px;background:var(--g4);border-left:3px solid var(--bk);border-radius:0 12px 12px 0;font-size:.88rem;color:var(--g1);line-height:1.8;font-style:italic}
+    .article-body blockquote strong{color:var(--bk);font-style:normal}
+    .article-body hr{border:none;border-top:1px solid var(--g4);margin:48px 0}
+    .info-box{margin:28px 0;padding:24px;background:rgba(0,102,255,.03);border:1px solid rgba(0,102,255,.08);border-radius:14px}
+    .info-box-title{font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:700;color:var(--blue);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+    .info-box p{font-size:.82rem;color:var(--g1);line-height:1.7;margin-bottom:0}
+    .key-concept{margin:32px 0;padding:28px;background:var(--bk3);border-radius:16px;color:var(--pure)}
+    .key-concept-label{font-size:.55rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:10px}
+    .key-concept h4{font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:800;letter-spacing:-.3px;margin-bottom:8px}
+    .key-concept p{font-size:.85rem;color:rgba(255,255,255,.5);line-height:1.8;margin-bottom:0}
+    .compare-table{width:100%;margin:24px 0 28px;border-collapse:collapse;border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,.06)}
+    .compare-table th{background:var(--bk3);color:var(--pure);font-family:'Outfit',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:14px 16px;text-align:left}
+    .compare-table td{padding:12px 16px;font-size:.82rem;color:var(--g1);line-height:1.6;border-bottom:1px solid rgba(0,0,0,.04);background:var(--pure)}
+    .compare-table tr:last-child td{border-bottom:none}.compare-table td:first-child{font-weight:600;color:var(--bk)}
+    .cta-card{margin:48px 0;padding:40px;background:var(--bk3);border-radius:20px;text-align:center;position:relative;overflow:hidden}
+    .cta-card::before{content:'';position:absolute;top:-50%;right:-30%;width:400px;height:400px;background:radial-gradient(circle,rgba(0,102,255,.08) 0%,transparent 70%);pointer-events:none}
+    .cta-card-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:12px}
+    .cta-card h3{font-family:'Outfit',sans-serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:800;color:var(--pure);letter-spacing:-.5px;margin-bottom:8px}
+    .cta-card p{font-size:.85rem;color:rgba(255,255,255,.4);line-height:1.7;max-width:380px;margin:0 auto 24px}
+    .cta-card .btn-p{background:var(--pure);color:var(--bk)}.cta-card .btn-p:hover{box-shadow:0 8px 30px rgba(255,255,255,.15)}
+    .faq-sec{padding:80px 48px 100px;background:var(--g4)}
+    .faq-list{max-width:680px;margin:40px auto 0}.fi{border-bottom:1px solid rgba(0,0,0,.06)}
+    .fq{width:100%;text-align:left;padding:18px 0;background:none;border:none;font-size:.85rem;font-weight:600;font-family:'DM Sans',sans-serif;color:var(--bk);display:flex;justify-content:space-between;align-items:center;cursor:pointer;gap:16px;transition:color .3s}.fq:hover{color:var(--g1)}
+    .fq-icon{width:22px;height:22px;border-radius:50%;background:rgba(0,0,0,.04);display:flex;align-items:center;justify-content:center;font-size:.75rem;transition:all .4s;flex-shrink:0;color:var(--g2)}
+    .fa{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1)}.fa.open{max-height:280px;padding-bottom:14px}
+    .fa p{font-size:.8rem;color:var(--g1);line-height:1.7;margin-bottom:0}.fi.active .fq-icon{background:var(--bk);color:var(--pure);transform:rotate(45deg)}
+    .related-sec{padding:80px 48px;background:var(--pure);border-top:1px solid var(--g4)}
+    .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1060px;margin:40px auto 0}
+    .related-card{display:block;padding:28px;background:var(--g4);border-radius:16px;transition:all .4s;text-decoration:none;color:var(--bk)}
+    .related-card:hover{background:var(--pure);box-shadow:0 8px 30px rgba(0,0,0,.06);transform:translateY(-2px)}
+    .related-cat{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+    .related-card h3{font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:700;line-height:1.3;letter-spacing:-.3px;margin-bottom:8px}
+    .related-card p{font-size:.78rem;color:var(--g1);line-height:1.6;margin-bottom:14px}
+    .related-link{font-size:.72rem;font-weight:600;color:var(--blue);letter-spacing:.3px}
+    .footer{background:var(--bk3);color:var(--pure);padding:56px 48px 28px}
+    .ft-top{display:flex;justify-content:space-between;align-items:start;margin-bottom:48px;flex-wrap:wrap;gap:32px}
+    .ft-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase}
+    .ft-cols{display:flex;gap:80px}
+    .ft-col-title{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:12px}
+    .ft-col a{display:block;font-size:.78rem;color:rgba(255,255,255,.5);margin-bottom:8px;transition:color .3s}.ft-col a:hover{color:var(--pure)}
+    .ft-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:20px;display:flex;justify-content:space-between;align-items:center;font-size:.6rem;color:rgba(255,255,255,.2)}
+    .ft-bottom a{color:rgba(255,255,255,.2);transition:color .3s;margin-left:20px}.ft-bottom a:hover{color:rgba(255,255,255,.5)}
+    .disclaimer{padding:12px 48px;background:var(--bk3);font-size:.58rem;color:rgba(255,255,255,.12);text-align:center;line-height:1.6;border-top:1px solid rgba(255,255,255,.03)}
+    .sec-center{text-align:center;max-width:680px;margin:0 auto}
+    .sec-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--g2);margin-bottom:10px}
+    .sec-title{font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;line-height:1.05;letter-spacing:-1.5px;color:var(--bk);margin-bottom:16px}
+    .btn-p{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--bk);color:var(--pure);border-radius:980px;font-size:.85rem;font-weight:600;transition:all .3s;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;text-decoration:none}
+    .btn-p:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(0,0,0,.1)}
+    .btn-p svg{width:13px;height:13px;transition:transform .3s}.btn-p:hover svg{transform:translateX(3px)}
+    .reading-progress{position:fixed;top:0;left:0;height:2px;background:var(--blue);z-index:9999;width:0;transition:width .1s linear}
+    @media(max-width:900px){.nav{padding:14px 20px}.nav-links{display:none}.blog-hero{padding:120px 20px 60px}.article-wrap{grid-template-columns:1fr;padding:40px 20px 80px}.article-sidebar{display:none}.related-grid{grid-template-columns:1fr}.related-sec,.faq-sec{padding:60px 20px}.ft-cols{flex-direction:column;gap:28px}.footer{padding:40px 20px 20px}.disclaimer{padding:10px 16px}.cta-card{padding:28px 20px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  .article-body a{color:var(--blue);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;font-weight:500}.article-body a:hover{text-decoration-thickness:2px}
+</style>
+<style>/* 28/10/2026 : débordement mobile (colonne de grille sans min-width) */.article-wrap>*,.article-layout>*{min-width:0}.article-body table,.compare-table{display:block;overflow-x:auto;max-width:100%}.article-body pre{overflow-x:auto}.article-body img{max-width:100%;height:auto}</style>
+</head>
+<body>
+
+<div class="preloader" id="preloader"><div style="text-align:center"><div class="pre-word"><span>B</span><span>A</span><span>S</span><span>S</span></div><div class="pre-line" id="preLine"></div></div></div>
+<div class="reading-progress" id="readingProgress"></div>
+
+<nav class="nav" id="nav">
+  <a href="https://basstrading.fr" class="nav-logo">BASS</a>
+  <ul class="nav-links">
+    <li><a href="https://basstrading.fr/#methode">Méthode</a></li>
+    <li><a href="https://basstrading.fr#resultats">Résultats</a></li>
+    <li><a href="https://basstrading.fr#avis">Avis</a></li>
+    <li><a href="https://basstrading.fr#faq">FAQ</a></li>
+    <li><a href="/formations/">Formations</a></li>
+    <li><a href="https://basstrading.fr/blog/">Blog</a></li>
+  </ul>
+  <a href="https://basstrading.fr/p/formation-offerte/?src=blog-market-profile-vs-volume-profile-menu" class="nav-cta">Formation offerte</a>
+</nav>
+
+<section class="blog-hero">
+  <div class="blog-hero-inner">
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <a href="https://basstrading.fr">Accueil</a><span class="sep">/</span>
+      <a href="https://basstrading.fr/blog/">Blog</a><span class="sep">/</span>
+      <span>Market Profile vs Volume Profile</span>
+    </nav>
+    <div class="blog-hero-cat">Market Profile</div>
+    <h1 class="blog-hero-title">Market Profile vs Volume Profile : les vraies différences</h1>
+    <p class="blog-hero-desc">Le Market Profile mesure le temps passé à chaque prix, le Volume Profile mesure les contrats échangés à chaque prix. Les deux dessinent une cloche, un POC et une zone de valeur, mais ils ne répondent pas à la même question. Je te montre quand ils se contredisent, lequel lire en premier et comment je les combine sur le Nasdaq futures.</p>
+    <div class="blog-meta">
+      <div class="blog-meta-author">
+        <div class="blog-meta-avatar"><img src="../../images/bass-presenting.jpg" alt="Sébastien Constant" loading="lazy"></div>
+        <div><div class="blog-meta-name"><a href="/auteur/sebastien-constant/" rel="author" style="color:inherit;text-decoration:none">Sébastien Constant</a></div><div class="blog-meta-role">Trader & Formateur Order Flow</div></div>
+      </div>
+      <div class="blog-meta-sep"></div>
+      <div class="blog-meta-info"><span>Octobre 2026</span><span>20 min de lecture</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="article-wrap">
+  <aside class="article-sidebar">
+    <div class="toc">
+      <div class="toc-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/></svg> Sommaire</div>
+      <ol>
+        <li><a href="#market-profile-ou-volume-profile-quelle-">Market Profile ou Volume Profile : quelle est la différence ?</a></li>
+        <li><a href="#d-ou-vient-le-market-profile-et-que-veut">D&#39;où vient le Market Profile et que veut dire TPO ?</a></li>
+        <li><a href="#comment-se-construit-un-volume-profile">Comment se construit un Volume Profile ?</a></li>
+        <li><a href="#poc-du-temps-ou-poc-du-volume-lequel-est">POC du temps ou POC du volume : lequel est le vrai juste prix ?</a></li>
+        <li><a href="#pourquoi-le-market-profile-et-le-volume-">Pourquoi le Market Profile et le Volume Profile divergent-ils ?</a></li>
+        <li><a href="#quand-utiliser-le-market-profile-quand-u">Quand utiliser le Market Profile, quand utiliser le Volume Profile ?</a></li>
+        <li><a href="#comment-je-combine-les-deux-un-exemple-r">Comment je combine les deux : un exemple réel sur le Nasdaq</a></li>
+        <li><a href="#quelles-erreurs-eviter-quand-on-compare-">Quelles erreurs éviter quand on compare les deux profils ?</a></li>
+        <li><a href="#quelles-sont-les-limites-du-market-profi">Quelles sont les limites du Market Profile et du Volume Profile ?</a></li>
+        <li><a href="#sur-quelle-plateforme-afficher-tpo-et-vo">Sur quelle plateforme afficher TPO et Volume Profile ?</a></li>
+        <li><a href="#ce-qu-il-faut-retenir-sur-market-profile">Ce qu&#39;il faut retenir sur Market Profile et Volume Profile</a></li>
+      </ol>
+    </div>
+  </aside>
+
+  <article class="article-body">
+    <h2 id="market-profile-ou-volume-profile-quelle-">Market Profile ou Volume Profile : quelle est la différence ?</h2>
+    <p>Le Market Profile mesure le temps que le marché passe à chaque prix, par tranches de 30 minutes notées en lettres (les TPO), alors que le Volume Profile mesure le nombre de contrats réellement échangés à chaque prix.</p>
+<p>Voilà la réponse courte. Le premier te dit où le marché a accepté de rester. Le second te dit où l&#39;argent a vraiment changé de mains. Les deux tracent une courbe en cloche couchée sur l&#39;axe des prix, les deux ont un POC et une zone de valeur, et c&#39;est pour ça qu&#39;on les confond.</p>
+<p>Ta plateforme propose les deux, et les niveaux ne tombent pas toujours au même endroit : c&#39;est normal. À la fin de cet article, tu sauras pourquoi leurs POC divergent et lequel regarder selon ta question.</p>
+<p>Le trading de contrats à terme comporte un risque élevé de perte, pouvant dépasser la mise initiale. Contenu éducatif, pas un conseil en investissement.</p>
+<p>Pourquoi le temps et le volume ne racontent pas la même histoire</p>
+<p>Imagine une journée sur le Nasdaq. Pendant trois heures de nuit, le prix tourne en rond sur 20 points avec très peu de contrats. Puis, à 15 h 30, l&#39;ouverture américaine envoie des milliers de contrats en dix minutes sur un niveau précis.</p>
+<p>Le Market Profile va gonfler la zone de nuit : le marché y a passé du temps. Le Volume Profile va gonfler le niveau de 15 h 30 : c&#39;est là que les gros volumes sont passés. Même séance, deux photos différentes. Aucune n&#39;est fausse : elles ne mesurent pas la même chose.</p>
+<p>Si tu débutes avec ces outils, commence par mon <a href="https://basstrading.fr/blog/market-profile-guide-complet/">guide complet du Market Profile</a> : il pose toutes les bases (lettres, valeur, types de journées). Ici, on se concentre sur la comparaison.</p>
+<p>Mais d&#39;où vient cette idée de mesurer le temps plutôt que le volume ? Il faut remonter au Chicago des années 1980.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/market-profile-vs-volume-profile/blog-market-profile-vs-volume-profile-1.webp" alt="Comparaison Market Profile et Volume Profile : temps contre contrats, POC et question posée" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Même séance, deux mesures : le Market Profile compte le temps passé à chaque prix, le Volume Profile compte les contrats.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="d-ou-vient-le-market-profile-et-que-veut">D&#39;où vient le Market Profile et que veut dire TPO ?</h2>
+    <p>Le Market Profile est né au Chicago Board of Trade (CBOT). Son inventeur, J. Peter Steidlmayer, est entré au CBOT en 1963 et siégeait à son conseil d&#39;administration de 1981 à 1983, période où il a lancé le Market Profile et la Liquidity Data Bank, d&#39;après <a href="https://www.profiletrading.com/about/">sa biographie officielle</a>. Il a ensuite détaillé la méthode dans son livre <a href="https://books.google.com/books/about/Steidlmayer_on_Markets.html?id=9IPNbbKN-yMC">Steidlmayer on Markets</a>.</p>
+<p>L&#39;idée de départ est statistique. Quand tu notes chaque prix touché au fil de la journée, tu obtiens presque toujours une courbe de Gauss : beaucoup de passages au milieu, peu aux extrêmes. Comme le prix est sur l&#39;axe vertical, la cloche est simplement couchée.</p>
+<p>Les lettres TPO : une lettre toutes les 30 minutes</p>
+<p>TPO veut dire Time Price Opportunity. Chaque tranche de 30 minutes reçoit une lettre (A, B, C…). À chaque prix touché pendant cette tranche, on imprime la lettre. Quand je l&#39;explique dans ma <a href="https://www.youtube.com/watch?v=sphmmI7eykQ&amp;t=1080">vidéo sur le Market Profile, vers 18 min 10</a>, je montre que chaque lettre correspond exactement à une demi-heure.</p>
+<p>Sur le Nasdaq futures, la séance électronique Globex ouvre à minuit et ferme à 23 h, heure de Paris : tu as donc une longue série de lettres, dont beaucoup tombent la nuit. Les horaires précis sont dans mon article sur les <a href="https://basstrading.fr/blog/horaires-futures-nasdaq-heure-paris/">horaires des futures Nasdaq à l&#39;heure de Paris</a>.</p>
+<p>Comme je le dis dans la vidéo, à la 4e minute : « c&#39;est un outil qui va permettre de voir réellement où est-ce que les opérateurs passent du temps. D&#39;accord ? On parle de temps, c&#39;est très important » (<a href="https://www.youtube.com/watch?v=sphmmI7eykQ&amp;t=230">voir le passage</a>).</p>
+<p>Dalton et la diffusion du Market Profile</p>
+<p>James Dalton a rendu la méthode lisible pour le grand public avec <a href="https://openlibrary.org/books/OL1856494M">Mind Over Markets</a>, publié pour la première fois en 1990 (Probus, Chicago). Il y décrit les zones de valeur, les rejets de prix et les types de journées.</p>
+<p>Derrière le Market Profile, il y a une théorie plus large : l&#39;<a href="https://basstrading.fr/blog/auction-market-theory/">Auction Market Theory</a>, qui voit le marché comme une enchère permanente à la recherche d&#39;un prix juste.</p>
+<p>Le Volume Profile, lui, est arrivé plus tard, avec les données électroniques. Voyons comment il se construit.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/market-profile-vs-volume-profile/blog-market-profile-vs-volume-profile-2.webp" alt="Origine du Market Profile : conçu par Peter Steidlmayer au Chicago Board of Trade, lecture du prix et du temps" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Le Market Profile vient du parquet de Chicago : il lit où le marché passe du temps, pas seulement où il passe.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="comment-se-construit-un-volume-profile">Comment se construit un Volume Profile ?</h2>
+    <p>Le Volume Profile additionne, pour chaque prix, le nombre de contrats exécutés sur la période choisie. Il dessine un histogramme horizontal : plus la barre est longue, plus il s&#39;est échangé de contrats à ce prix.</p>
+<p>Il n&#39;y a pas de lettres, pas de tranches de 30 minutes. Un contrat échangé à 9 h compte autant qu&#39;un contrat échangé à 16 h. Ce qui compte, c&#39;est la quantité, pas la durée.</p>
+<p>Pourquoi le volume est fiable sur les futures</p>
+<p>Sur un future comme le Nasdaq E-mini (NQ), toutes les transactions passent par une seule bourse, le CME. Le volume que tu vois est donc le vrai volume du marché. Les <a href="https://www.cmegroup.com/markets/equities/nasdaq/e-mini-nasdaq-100.contractSpecs.html">spécifications du CME</a> fixent l&#39;échelon de prix minimum à 0,25 point d&#39;indice, soit 5 dollars par contrat NQ : chaque barre de ton profil correspond à un de ces échelons, ou à un regroupement que tu choisis. Le micro (MNQ) a le même échelon pour un dixième de la valeur : je t&#39;explique comment <a href="https://basstrading.fr/blog/nq-ou-mnq/">choisir entre NQ et MNQ</a> selon ton capital.</p>
+<p>Comme je le dis vers 17 min 20 de <a href="https://www.youtube.com/watch?v=sphmmI7eykQ&amp;t=1030">ma vidéo</a> : « les volumes, il y a une transparence totale ». Sur un CFD ou sur le forex au comptant, ce n&#39;est pas le cas : chaque courtier n&#39;a que son propre flux, et beaucoup de plateformes affichent un « volume tick » (un nombre de changements de prix), pas des contrats. Le Volume Profile y devient une approximation.</p>
+<p>Les périodes du Volume Profile</p>
+<p>C&#39;est sa grande souplesse : tu peux le tracer sur n&#39;importe quelle période.</p>
+<ul><li>Profil de séance : un profil par journée, comme le Market Profile.</li><li>Profil à gamme fixe : tu choisis toi-même le début et la fin (une tendance, un range de trois jours).</li><li>Profil composite : plusieurs semaines empilées pour voir les grandes zones de volume.</li></ul>
+<p>Je détaille ces réglages, les nœuds de volume (HVN et LVN) et leur lecture dans mon <a href="https://basstrading.fr/blog/volume-profile-guide/">guide du Volume Profile</a>.</p>
+<p>Temps d&#39;un côté, volume de l&#39;autre : les deux outils ont pourtant chacun un POC. Et c&#39;est là que commencent les vraies questions.</p>
+
+    <hr>
+
+    <h2 id="poc-du-temps-ou-poc-du-volume-lequel-est">POC du temps ou POC du volume : lequel est le vrai juste prix ?</h2>
+    <p>Les deux POC sont justes, mais ils ne répondent pas à la même question. Le POC du Market Profile est le prix où le marché a passé le plus de temps ; le POC du Volume Profile (souvent appelé VPOC) est le prix où il s&#39;est échangé le plus de contrats.</p>
+<p>POC veut dire Point of Control. Dans les deux cas, c&#39;est la ligne la plus longue du profil, celle autour de laquelle la journée s&#39;est équilibrée.</p>
+<p>Le POC du temps : le prix accepté</p>
+<p>Sur le Market Profile, le POC est le prix qui a reçu le plus de lettres. C&#39;est le prix que le marché a accepté le plus longtemps. Dans <a href="https://www.youtube.com/watch?v=sphmmI7eykQ&amp;t=1590">ma vidéo, vers la 26e minute</a>, je prends l&#39;exemple d&#39;un vendredi où le POC était à 24 179,50 sur le Nasdaq, et je précise : « si tu utilises des bougies, tu ne peux pas le voir ».</p>
+<p>C&#39;est ce que j&#39;appelle le juste prix de la séance. Si le marché y revient en descendant, l&#39;idée est de chercher un achat. S&#39;il y revient en montant, l&#39;idée est de chercher une vente. La seule chose que je ne sais pas, c&#39;est l&#39;heure à laquelle il y reviendra.</p>
+<p>Le POC du volume : le prix défendu</p>
+<p>Sur le Volume Profile, le POC est le prix où les plus gros intervenants ont le plus travaillé. Il marque souvent une zone où quelqu&#39;un a construit ou défendu une position. C&#39;est pour ça que beaucoup de traders s&#39;en servent comme niveau précis de support ou de résistance. Attention : un POC ne garantit pas un rebond, il signale seulement une zone où une réaction est plus probable.</p>
+<p>Et la zone de valeur ?</p>
+<p>Les deux outils calculent aussi une zone de valeur (Value Area) : l&#39;intervalle autour du POC qui contient environ 70 % de l&#39;activité. Sur le Market Profile, ce sont 70 % des lettres ; sur le Volume Profile, 70 % des contrats. Dans ma vidéo, les lignes violettes marquent la valeur du vendredi : 70 % du temps passé dedans. Le haut s&#39;appelle la VAH, le bas la VAL.</p>
+<p>Quand les deux POC tombent au même prix, la lecture est simple. Mais que faire quand ils se séparent ?</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/market-profile-vs-volume-profile/blog-market-profile-vs-volume-profile-3.webp" alt="Chiffres clés des profils sur le Nasdaq : lettre de 30 minutes, valeur à 70 %, tick NQ de 0,25 point à 5 dollars" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Les réglages de base : une lettre toutes les 30 minutes, une valeur à 70 %, et un échelon NQ de 0,25 point (source CME).</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="pourquoi-le-market-profile-et-le-volume-">Pourquoi le Market Profile et le Volume Profile divergent-ils ?</h2>
+    <p>Ils divergent parce qu&#39;un prix peut recevoir beaucoup de temps avec peu de contrats, ou beaucoup de contrats en très peu de temps. Une divergence n&#39;est pas une erreur de ta plateforme : c&#39;est une information.</p>
+<p>Sur le Nasdaq, je vois surtout trois situations.</p>
+<p>Cas 1 : du temps sans taille (la nuit)</p>
+<p>Pendant la nuit européenne, le NQ tourne souvent dans un petit range avec peu de contrats. Chaque demi-heure imprime ses lettres sur les mêmes prix : le POC du Market Profile se forme là. Mais en volume, cette zone pèse peu. Si tu traces ton profil sur toute la séance Globex, ton POC TPO peut donc être tiré vers une zone que les gros intervenants n&#39;ont presque pas touchée.</p>
+<p>Lecture : ce prix est connu, mais il n&#39;a pas été défendu. Je le respecte moins qu&#39;un POC où temps et volume sont d&#39;accord.</p>
+<p>Cas 2 : de la taille sans temps (une annonce, l&#39;ouverture)</p>
+<p>À 14 h 30 (chiffres américains) ou à 15 h 30 (ouverture de Wall Street), des milliers de contrats passent en quelques minutes sur quelques prix. Le Volume Profile affiche une énorme barre ; le Market Profile, lui, n&#39;imprime qu&#39;une ou deux lettres à ces prix.</p>
+<p>Lecture : quelqu&#39;un a mis beaucoup d&#39;argent là, mais le marché n&#39;y est pas resté. Soit c&#39;est un rejet net (le prix repart vite), soit c&#39;est une position qu&#39;il faudra retester. Je surveille ce niveau, mais je ne le traite pas comme la valeur de la journée. C&#39;est aussi dans ces moments que l&#39;on voit des balayages de stops, que je décris dans mon article sur la <a href="https://basstrading.fr/blog/chasse-aux-stops-trading/">chasse aux stops</a>.</p>
+<p>Cas 3 : les deux POC d&#39;accord</p>
+<p>Quand le prix le plus visité et le prix le plus traité tombent au même endroit, à un ou deux ticks près, c&#39;est le cas le plus solide : le marché y a passé du temps ET de l&#39;argent. C&#39;est le genre de niveau que je note pour les séances suivantes.</p>
+<p>Comment trancher en cas de désaccord</p>
+<p>Je ne choisis pas un gagnant. Je garde les deux lignes et je me pose une question simple : est-ce que la zone entre les deux POC est une zone d&#39;équilibre ou un couloir que le prix a traversé vite ? Si le marché revient entre les deux, je considère toute la zone comme la valeur. S&#39;il la traverse sans s&#39;arrêter, c&#39;est le signe qu&#39;aucun des deux niveaux n&#39;est encore défendu.</p>
+<p>À retenir</p>
+<ul><li>Temps sans taille = prix connu mais peu défendu (souvent la nuit).</li><li>Taille sans temps = gros intérêt ponctuel, souvent un rejet ou un niveau à retester.</li><li>Les deux POC d&#39;accord = le niveau le plus solide.</li></ul>
+<p>Tout ça te dit comment lire les deux profils. Reste la vraie question pratique : lequel ouvrir, et quand ?</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/market-profile-vs-volume-profile/blog-market-profile-vs-volume-profile-4.webp" alt="Règle de lecture quand le POC du Market Profile et le POC du Volume Profile divergent : trois cas" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Temps sans taille : prix connu mais peu défendu. Taille sans temps : gros intérêt ponctuel. Les deux d&#39;accord : le niveau le plus solide.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="quand-utiliser-le-market-profile-quand-u">Quand utiliser le Market Profile, quand utiliser le Volume Profile ?</h2>
+    <p>Utilise le Market Profile pour comprendre la structure de la journée (équilibre ou déséquilibre, acceptation, type de séance) et le Volume Profile pour localiser les niveaux précis où les contrats se sont concentrés. Le premier répond à « où en est l&#39;enchère ? », le second à « où est l&#39;argent ? ».</p>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Question</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Market Profile</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Volume Profile</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Donnée mesurée</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Temps (TPO)</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Contrats</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">POC</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Prix le plus visité</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Prix le plus traité</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Période</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Séance, en 30 min</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Libre</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Type de journée</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Oui</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Non</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Initial Balance</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Oui</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Non</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Niveau précis</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Moyen</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Fort</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Forex, CFD</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Possible</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Approché</td></tr></tbody></table></div>
+<p>Ce que seul le Market Profile te montre</p>
+<p>Les lettres gardent l&#39;ordre chronologique de la séance. C&#39;est ce qui permet de lire :</p>
+<ul><li>l&#39;Initial Balance, le range des deux premières lettres de la séance américaine ;</li><li>les single prints, ces prix où une seule lettre est passée, signe d&#39;un mouvement rapide et d&#39;un déséquilibre ;</li><li>les hauts et bas « pauvres » (poor highs, poor lows), qui finissent sur plusieurs lettres au même prix et laissent souvent une affaire non terminée ;</li><li>la forme du profil : un D bien rond pour une journée équilibrée, un P ou un b quand un camp a pris la main.</li></ul>
+<p>Ce que seul le Volume Profile te montre</p>
+<p>Il te montre les nœuds de volume : les HVN (gros volumes, zones d&#39;équilibre où le prix ralentit) et les LVN (creux de volume, zones que le prix traverse vite). Il se trace sur une tendance, sur une semaine ou sur un mois, ce que le Market Profile fait moins naturellement. Et il s&#39;accorde bien avec la <a href="https://basstrading.fr/blog/vwap-trading/">VWAP</a>, qui est aussi un calcul pondéré par le volume.</p>
+<p>Day trading ou swing ?</p>
+<p>En <a href="https://basstrading.fr/blog/day-trading-futures/">day trading sur les futures</a>, je lis le Market Profile de la veille et du jour, et le Volume Profile de la séance. En swing, sur plusieurs jours, le Volume Profile composite prend plus de place, parce qu&#39;il résume des semaines de contrats en quelques zones. Pour débuter, je conseille la structure d&#39;abord (Market Profile), la précision ensuite (Volume Profile).</p>
+<p>À retenir</p>
+<ul><li>Market Profile : structure, acceptation, type de journée, Initial Balance.</li><li>Volume Profile : niveaux précis, nœuds de volume, n&#39;importe quelle période.</li><li>Pour débuter : la structure d&#39;abord, la précision ensuite.</li></ul>
+<p>Un tableau, c&#39;est bien. Un cas réel, c&#39;est mieux. Voici comment je les ai combinés un vendredi de septembre.</p>
+
+    <hr>
+
+    <h2 id="comment-je-combine-les-deux-un-exemple-r">Comment je combine les deux : un exemple réel sur le Nasdaq</h2>
+    <p>Un vendredi 19 septembre, j&#39;ai utilisé le Market Profile pour le contexte et le volume (au footprint) pour le déclenchement. C&#39;est l&#39;exemple que je détaille dans <a href="https://www.youtube.com/watch?v=knsM_AIb-eQ&amp;t=148">ma vidéo sur le Market Profile</a>. Je te le raconte dans l&#39;ordre, sans résultat chiffré : ce qui compte, c&#39;est la lecture.</p>
+<p>15 h 30 : ouverture dans la valeur de la veille</p>
+<p>À 15 h 30, le NQ ouvre à 24 768. Ce prix se trouve à l&#39;intérieur du profil de la veille, le jeudi. Pour moi, une ouverture dans la valeur de la veille, c&#39;est un marché en équilibre : je ne cherche pas à suivre une cassure, je cherche à jouer les bords de la valeur.</p>
+<p>Le bord qui m&#39;intéresse est le haut de la zone de valeur de la veille, la VAH, à 24 805,50 (<a href="https://www.youtube.com/watch?v=knsM_AIb-eQ&amp;t=235">à la 4e minute</a>). Mon idée est simple : si le prix vient chercher ce niveau, je regarde une vente.</p>
+<p>15 h 52 : le volume explose au-dessus de la VAH</p>
+<p>À 15 h 52, le prix dépasse la VAH et monte jusqu&#39;à 24 817,50, soit environ 12 points au-dessus. C&#39;est là que je passe au footprint, la lecture du volume bougie par bougie : gros volume, des déséquilibres acheteurs, 218 contrats à l&#39;achat sur un même niveau (<a href="https://www.youtube.com/watch?v=knsM_AIb-eQ&amp;t=360">6e minute</a>).</p>
+<p>Malgré cette agressivité, le prix ne continue pas. C&#39;est de l&#39;absorption : des vendeurs passifs encaissent tous les achats sans reculer. Le Market Profile me disait « on est au bord de la valeur » ; le volume me dit « les acheteurs n&#39;arrivent pas à sortir ».</p>
+<p>La suite : retour vers l&#39;équilibre</p>
+<p>Dans un marché équilibré, la cible logique est le centre de la valeur. Comme je le dis vers la 9e minute : « un marché, il est tout le temps équilibré. Et quand il ne l&#39;est pas, il est à la recherche d&#39;un équilibre » (<a href="https://www.youtube.com/watch?v=knsM_AIb-eQ&amp;t=533">voir le passage</a>). Le point d&#39;équilibre visé se situait vers 24 714,75. Je précise dans la vidéo que c&#39;est une zone, pas un tick exact (<a href="https://www.youtube.com/watch?v=knsM_AIb-eQ&amp;t=587">voir le passage</a>).</p>
+<p>Le mouvement s&#39;est déroulé entre 15 h 30 et 20 h. Plus tard dans la séance, le prix a aussi rejeté le POC, avec des lettres H et I imprimées au-dessus (<a href="https://www.youtube.com/watch?v=knsM_AIb-eQ&amp;t=750">vers la 12e minute</a>).</p>
+<p>Pourquoi les deux outils étaient nécessaires</p>
+<p>Sans le Market Profile, je n&#39;aurais pas su que 24 805,50 était le bord de la valeur de la veille. Sans le volume, je n&#39;aurais pas vu l&#39;absorption qui confirmait que ce bord tenait. Vers la 11e minute, je résume : « le market profile, lui, va être beaucoup plus méta » (<a href="https://www.youtube.com/watch?v=knsM_AIb-eQ&amp;t=638">voir le passage</a>). Le footprint, le delta cumulé et le carnet d&#39;ordres servent ensuite à la lecture fine, que j&#39;explique dans mon guide du <a href="https://basstrading.fr/blog/footprint-chart-trading/">footprint chart</a>. Si tu travailles sur TradingView, j&#39;ai aussi écrit un article sur le <a href="https://basstrading.fr/blog/footprint-tradingview/">footprint dans TradingView</a>.</p>
+<p>Cet exemple est pédagogique : il montre une lecture, pas un signal à reproduire. Le trading de futures comporte un risque élevé de perte.</p>
+<p>Les bases de cette lecture, avec la démonstration du Market Profile, sont dans ma <a href="https://basstrading.fr/l/RfjNxw">formation offerte</a> : c&#39;est la suite logique de cet article.</p>
+<p>À retenir</p>
+<ul><li>Market Profile : où est la valeur, où sont ses bords (VAH, VAL, POC).</li><li>Volume (footprint) : est-ce que le bord tient ou cède, au moment où le prix le touche.</li><li>La cible d&#39;un retour vers l&#39;équilibre est une zone, pas un prix exact.</li></ul>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/market-profile-vs-volume-profile/blog-market-profile-vs-volume-profile-5.webp" alt="Étapes d&#39;un exemple réel sur le Nasdaq futures : contexte Market Profile, niveau VAH, absorption au footprint, cible" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Ouverture dans la valeur de la veille, test de la VAH à 24 805,50, absorption au footprint à 15 h 52, retour vers l&#39;équilibre.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="quelles-erreurs-eviter-quand-on-compare-">Quelles erreurs éviter quand on compare les deux profils ?</h2>
+    <p>La plupart des erreurs que je vois viennent d&#39;un réglage mal compris ou d&#39;une attente trop forte envers l&#39;outil. En voici cinq.</p>
+<ol><li>Vouloir que les deux POC tombent au même prix</li></ol>
+<p>Ils ne mesurent pas la même chose, donc ils n&#39;ont aucune raison d&#39;être identiques. Chercher « le bon » POC entre les deux, c&#39;est passer à côté de l&#39;information que donne leur écart.</p>
+<ol><li>Ne pas savoir quelle séance tu affiches</li></ol>
+<p>Sur le Nasdaq, un profil calculé sur toute la séance Globex (minuit à 23 h, heure de Paris) et un profil calculé sur la seule séance américaine n&#39;ont pas le même POC. Les lettres de la nuit déplacent le Market Profile beaucoup plus que le Volume Profile. Vérifie toujours dans tes réglages quelle séance est prise en compte, et garde le même réglage d&#39;un jour à l&#39;autre.</p>
+<ol><li>Traiter un niveau comme un mur</li></ol>
+<p>Un POC ou une VAH n&#39;est pas un prix magique au tick près. Dans mon exemple de septembre, le prix a dépassé la VAH de 12 points avant de repartir. Si tu places ton stop un tick derrière le niveau, tu te fais sortir avant même que la lecture se confirme. Pense en zones, et dimensionne ta position en conséquence : je l&#39;explique dans mon article sur <a href="https://basstrading.fr/blog/combien-risquer-par-trade/">combien risquer par trade</a>.</p>
+<ol><li>Empiler les profils sans plan</li></ol>
+<p>Market Profile, Volume Profile de séance, composite hebdomadaire, profil à gamme fixe : en dix minutes, ton graphique devient illisible. Choisis un outil de contexte et un outil de précision, et tiens-t&#39;en à eux pendant plusieurs semaines.</p>
+<ol><li>Croire que le profil prédit</li></ol>
+<p>Comme je le dis à la 15e minute de ma vidéo : « il ne va pas te permettre de lire l&#39;avenir, mais il va te donner des informations qui sont factuelles » (<a href="https://www.youtube.com/watch?v=sphmmI7eykQ&amp;t=930">voir le passage</a>). Un profil te donne des probabilités et des zones de décision. Jamais une certitude.</p>
+<p>Ces erreurs se corrigent. Les limites des outils, elles, sont structurelles : mieux vaut les connaître.</p>
+
+    <hr>
+
+    <h2 id="quelles-sont-les-limites-du-market-profi">Quelles sont les limites du Market Profile et du Volume Profile ?</h2>
+    <p>Les deux outils décrivent ce qui s&#39;est passé : ils sont descriptifs, pas prédictifs. Leur force est de transformer des milliers de transactions en une image lisible ; leur limite est de rester une photo du passé.</p>
+<p>Le profil du jour bouge pendant la séance</p>
+<p>Pendant la journée, le POC et la zone de valeur se déplacent à mesure que les lettres et les contrats s&#39;ajoutent. Un jour de tendance, la valeur peut migrer de plusieurs dizaines de points entre le matin et le soir. C&#39;est pour ça que je m&#39;appuie surtout sur les profils terminés (la veille, la semaine) pour préparer mes niveaux, et sur le profil en cours pour voir où la séance est en train d&#39;accepter les prix.</p>
+<p>La zone de valeur à 70 % est une convention</p>
+<p>Les 70 % viennent de la statistique (environ un écart-type d&#39;une courbe de Gauss), pas d&#39;une loi du marché. Selon que ta plateforme calcule la valeur en TPO ou en volume, et selon la taille des échelons de prix, la VAH et la VAL changent de quelques points. Garde un calcul constant pour pouvoir comparer d&#39;un jour à l&#39;autre.</p>
+<p>Le volume n&#39;est réel que sur un marché centralisé</p>
+<p>Sur les futures du CME, le volume est le volume de toute la bourse. Sur un CFD ou sur le forex au comptant, il ne l&#39;est pas. Le Market Profile, qui n&#39;utilise que le prix et le temps, fonctionne partout. Le Volume Profile, lui, perd beaucoup de sa valeur hors des marchés centralisés. C&#39;est une des raisons pour lesquelles je travaille sur les futures, ce que je raconte dans mon article sur l&#39;<a href="https://basstrading.fr/blog/order-flow-trading-france/">order flow en France</a>.</p>
+<p>Aucun des deux ne remplace le contexte</p>
+<p>Un profil ne connaît ni les annonces économiques, ni la tendance de fond, ni ton plan de risque. Comme je le dis vers la 30e minute de <a href="https://www.youtube.com/watch?v=sphmmI7eykQ&amp;t=1795">ma vidéo</a> : « ça ne remplace pas les bougies ». Il s&#39;ajoute à ta lecture, il ne la remplace pas.</p>
+
+    <hr>
+
+    <h2 id="sur-quelle-plateforme-afficher-tpo-et-vo">Sur quelle plateforme afficher TPO et Volume Profile ?</h2>
+    <p>La plupart des plateformes d&#39;analyse des futures affichent le Volume Profile ; le Market Profile en lettres est plus rare et souvent réservé aux logiciels spécialisés. Choisis une plateforme qui affiche les deux sur la même séance, avec le même réglage d&#39;horaires.</p>
+<p>Ce que je vérifie avant de comparer</p>
+<ul><li>Les données : un flux futures du CME, pas un flux CFD, sinon le Volume Profile n&#39;a pas de sens.</li><li>La séance : Globex complète ou séance américaine seule, et la même pour les deux profils.</li><li>La taille des lettres : 30 minutes, le réglage d&#39;origine du Market Profile.</li><li>Le calcul de la valeur : 70 %, sur TPO pour le Market Profile, sur volume pour le Volume Profile.</li></ul>
+<p>Sierra Chart fait partie des plateformes qui affichent les deux profils sur la même séance ; j&#39;explique les réglages pas à pas dans mon guide de <a href="https://basstrading.fr/blog/sierra-chart-configuration/">configuration de Sierra Chart</a>. Si tu trades le Nasdaq, le choix entre le contrat standard et le micro change le risque, pas la lecture du profil : tout est dans mon article sur le <a href="https://basstrading.fr/blog/nasdaq-futures-nq-mnq/">NQ et le MNQ</a>.</p>
+<p>Pour aller plus loin sur les lettres, l&#39;Initial Balance et les types de journées, j&#39;ai construit une <a href="https://basstrading.fr/marketprofile/">formation Market Profile en 16 leçons</a>, pas à pas.</p>
+
+    <hr>
+
+    <h2 id="ce-qu-il-faut-retenir-sur-market-profile">Ce qu&#39;il faut retenir sur Market Profile et Volume Profile</h2>
+    <p>Les deux profils ne sont pas concurrents : ils posent deux questions différentes au même marché.</p>
+<ul><li>Le Market Profile mesure le temps (lettres TPO de 30 minutes) ; le Volume Profile mesure les contrats.</li><li>Deux POC : le prix le plus visité (acceptation) et le prix le plus traité (participation).</li><li>Leurs divergences sont des informations : temps sans taille la nuit, taille sans temps sur une annonce ou à l&#39;ouverture.</li><li>Market Profile pour la structure (équilibre, type de journée, Initial Balance), Volume Profile pour la précision (niveaux, nœuds).</li><li>Sur les futures, le volume est réel ; sur CFD et forex, il est approché.</li></ul>
+<p>Ton action pour ce soir</p>
+<p>Ouvre le graphique du Nasdaq de la séance d&#39;aujourd&#39;hui. Affiche le Market Profile et le Volume Profile sur la même séance. Note les deux POC et l&#39;écart entre eux en points. Puis remonte dans la journée : à quelle heure le prix a-t-il passé du temps au POC des lettres ? À quelle heure le volume s&#39;est-il concentré au POC des contrats ? Fais-le cinq jours de suite : tu commenceras à reconnaître tout seul les journées où les deux outils sont d&#39;accord, et celles où ils se contredisent.</p>
+<p>La suite logique, c&#39;est de comprendre la zone de valeur en détail et l&#39;enchère qui la construit : mon article sur l&#39;<a href="https://basstrading.fr/blog/auction-market-theory/">Auction Market Theory</a> est le prochain pas.</p>
+
+    <p><a href="https://www.youtube.com/watch?v=sphmmI7eykQ" target="_blank" rel="noopener">▶ Voir la vidéo de Sébastien sur ce sujet</a></p>
+
+    <div class="cta-card cta-aimant">
+      <div class="cta-card-label">Gratuit</div>
+      <h3>La formation offerte : 7 leçons pour lire le marché comme un pro</h3>
+      <p>Accès immédiat et gratuit, en vidéo, à ton rythme. Sans carte bancaire.</p>
+      <a href="https://basstrading.fr/p/formation-offerte/?src=blog-market-profile-vs-volume-profile" class="btn-p">Je la veux →</a>
+    </div>
+    
+  </article>
+</div>
+
+<!-- FAQ -->
+<section class="faq-sec">
+  <div class="sec-center"><div class="sec-label">FAQ</div><h2 class="sec-title">Questions fréquentes</h2></div>
+  <div class="faq-list">
+    <div class="fi"><button class="fq" onclick="tf(this)">Le Market Profile et le Volume Profile, c&#39;est la même chose ? <span class="fq-icon">+</span></button><div class="fa"><p>Non. Les deux tracent une courbe couchée sur l&#39;axe des prix, avec un POC et une zone de valeur, mais le Market Profile compte le temps passé à chaque prix (lettres TPO de 30 minutes) alors que le Volume Profile compte les contrats échangés à chaque prix. Un TPO ne tient aucun compte du nombre de contrats. Ils peuvent donc donner des POC et des zones de valeur différents sur la même séance.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Market Profile ou Volume Profile : lequel choisir pour débuter ? <span class="fq-icon">+</span></button><div class="fa"><p>Je conseille de commencer par le Market Profile, parce qu&#39;il apprend à raisonner en valeur, en équilibre et en types de journées. Une fois que tu sais dire si la séance est équilibrée ou non, ajoute le Volume Profile pour placer tes niveaux plus précisément. Les deux ensemble, sur la même séance, donnent la lecture la plus complète.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Pourquoi le POC TPO et le POC volume sont-ils à des prix différents ? <span class="fq-icon">+</span></button><div class="fa"><p>Parce qu&#39;un prix peut recevoir beaucoup de temps avec peu de contrats (la nuit, dans un petit range), ou beaucoup de contrats en peu de temps (une annonce économique, l&#39;ouverture américaine). Le premier cas tire le POC TPO, le second tire le POC volume. Quand les deux tombent au même prix, le niveau est en général plus solide.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Ces profils prédisent-ils les supports et les résistances ? <span class="fq-icon">+</span></button><div class="fa"><p>Non, ils sont descriptifs : ils montrent où le marché a passé du temps et où les contrats se sont échangés. Un POC, une VAH ou une VAL sont des zones où une réaction est plus probable, pas des murs. Je les utilise pour savoir où regarder, puis je confirme avec le flux d&#39;ordres au moment où le prix arrive au niveau.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">La zone de valeur peut-elle beaucoup bouger pendant la séance ? <span class="fq-icon">+</span></button><div class="fa"><p>Oui. Tant que la séance n&#39;est pas finie, le POC et la zone de valeur se recalculent à chaque lettre et à chaque contrat. Un jour de tendance, la valeur peut migrer de plusieurs dizaines de points. C&#39;est pour ça que je prépare mes niveaux sur les profils terminés (la veille, la semaine) et que j&#39;utilise le profil en cours pour voir où les prix sont acceptés.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Peut-on utiliser le Volume Profile sur le forex ou les CFD ? <span class="fq-icon">+</span></button><div class="fa"><p>On peut l&#39;afficher, mais il perd beaucoup de sa valeur. Sur le forex au comptant et les CFD, il n&#39;y a pas de bourse centralisée : chaque courtier n&#39;a que son flux, et beaucoup de plateformes affichent un volume tick (des changements de prix), pas des contrats. Sur les futures du CME, le volume est celui de toute la bourse.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Faut-il inclure la séance de nuit dans le profil du Nasdaq ? <span class="fq-icon">+</span></button><div class="fa"><p>Les deux réglages existent : la séance Globex complète (minuit à 23 h, heure de Paris) ou la seule séance américaine. La nuit pèse beaucoup sur le Market Profile, peu sur le Volume Profile. L&#39;important est de savoir lequel tu affiches et de garder le même réglage chaque jour pour pouvoir comparer les profils entre eux.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Lequel des deux profils montre le mieux un essoufflement du marché ? <span class="fq-icon">+</span></button><div class="fa"><p>Les deux, de façon différente. Sur le Market Profile, l&#39;essoufflement se voit à une queue fine de lettres isolées en haut ou en bas du profil : le marché a testé ces prix puis les a rejetés vite. Sur le Volume Profile, il se voit à un volume qui s&#39;amenuise sur les nouveaux plus hauts ou plus bas : le prix avance, mais de moins en moins de contrats le suivent. Je confirme ensuite au footprint, au moment où le prix touche le niveau.</p></div></div>
+  </div>
+</section>
+
+<!-- Related -->
+<section class="related-sec">
+  <div class="sec-center"><div class="sec-label">Continuer la lecture</div><h2 class="sec-title">Articles connexes</h2></div>
+  <div class="related-grid">
+    <a href="/blog/market-profile-guide-complet/" class="related-card"><div class="related-cat">Guide</div><h3>Market Profile : le guide complet pour débutants</h3><p>Value Area, POC, types de journées — tout pour commencer.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/order-flow-trading-france/" class="related-card"><div class="related-cat">Méthode</div><h3>Order Flow Trading : pourquoi personne ne l'enseigne en France</h3><p>Le carnet d'ordres et le flux institutionnel décryptés.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/sierra-chart-configuration/" class="related-card"><div class="related-cat">Tutoriel</div><h3>Sierra Chart : configuration complète</h3><p>Le setup pas à pas pour le Market Profile et le Footprint.</p><span class="related-link">Lire &rarr;</span></a>
+  </div>
+</section>
+
+<!-- serie:debut --><style>.serie-w{background:#FFF;color:#1D1D1F;border-top:1px solid #F5F5F7}.serie{max-width:1060px;margin:0 auto;padding:56px 24px;font-family:inherit;box-sizing:border-box}.serie-l{font-size:.6rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#0066FF;margin-bottom:8px}.serie-w .serie h2{font-size:1.4rem;font-weight:800;letter-spacing:-.5px;color:#1D1D1F!important;margin:0 0 18px;font-family:inherit}.serie ul{list-style:none;padding:0;margin:0 0 22px;display:grid;grid-template-columns:repeat(2,1fr);gap:8px 24px}.serie-w .serie li a{color:#1D1D1F!important;font-size:.9rem;line-height:1.45;text-decoration:none;border-bottom:1px solid #D2D2D7}.serie li a:hover{color:#0066FF}.serie li.pil a{font-weight:700}.serie-o{background:#F5F5F7;border-radius:14px;padding:18px 20px;font-size:.88rem;line-height:1.55;color:#1D1D1F}.serie-w .serie-o a{color:#0066FF!important;font-weight:700}@media(max-width:700px){.serie ul{grid-template-columns:1fr}}</style><div class="serie-w"><aside class="serie" aria-label="Dans la même série"><div class="serie-l">Dans la même série</div><h2>Market Profile</h2><ul><li class="pil"><a href="/blog/market-profile-guide-complet/">Market Profile : le guide complet (TPO, Value Area, POC)</a></li><li class=""><a href="/blog/volume-profile-guide/">Volume Profile : POC, VAH, VAL et niveaux clés (guide 2026)</a></li><li class=""><a href="/blog/auction-market-theory/">Auction Market Theory : Comprendre la Logique du Marché</a></li><li class=""><a href="/blog/sierra-chart-configuration/">Sierra Chart : configurer Market Profile, footprint et CVD</a></li></ul><div class="serie-o"><a href="/marketprofile/">La formation Market Profile</a> : 16 leçons vidéo pour lire un profil TPO, 57 €. Pour commencer sans payer : <a href="/p/formation-offerte/?src=serie-market-profile-vs-volume-profile">la formation offerte</a> (7 leçons vidéo).</div></aside></div><!-- serie:fin -->
+<footer class="footer">
+  <div class="ft-top"><div class="ft-logo">BASS</div><div class="ft-cols">
+    <div class="ft-col"><div class="ft-col-title">Programme</div><a href="/formations/">Toutes les formations</a><a href="https://basstrading.fr/#methode">Méthode</a><a href="https://basstrading.fr/#programme">Programme</a><a href="https://basstrading.fr/p/formation-offerte/?src=blog-market-profile-vs-volume-profile-pied">Formation offerte</a></div>
+    <div class="ft-col"><div class="ft-col-title">Ressources</div><a href="/blog/market-profile-guide-complet/">Market Profile</a><a href="/blog/footprint-chart-trading/">Footprint Chart</a><a href="/blog/order-flow-trading-france/">Order Flow</a></div>
+  </div></div>
+  <div class="ft-bottom"><span>&copy; 2026 BASS — Sébastien Constant</span><div><a href="/mentions-legales/">Mentions légales</a><a href="/confidentialite/">Confidentialité</a><a href="/cgv/">CGV</a><a href="mailto:contact@basstrading.fr">Contact</a></div></div>
+</footer>
+<div class="disclaimer">Le trading comporte des risques de perte en capital. Les performances passées ne préjugent pas des performances futures. Ce site ne constitue pas un conseil en investissement.</div>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+const lenis=new Lenis({duration:1.2,easing:t=>Math.min(1,1.001-Math.pow(2,-10*t))});
+function raf(t){lenis.raf(t);requestAnimationFrame(raf)}requestAnimationFrame(raf);
+lenis.on('scroll',ScrollTrigger.update);gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0);
+const tl=gsap.timeline();
+tl.to('.pre-word span',{y:0,opacity:1,duration:.5,stagger:.1,ease:'power3.out',delay:.3}).to('#preLine',{width:'80px',duration:.7,ease:'power2.inOut'},'<+.2').to('.preloader',{yPercent:-100,duration:.8,ease:'power3.inOut',delay:.4}).set('.preloader',{display:'none'}).to('#nav',{opacity:1,y:0,duration:.5},'<+.1');
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);const h=document.documentElement.scrollHeight-window.innerHeight;document.getElementById('readingProgress').style.width=(window.scrollY/h*100)+'%'});
+const tocLinks=document.querySelectorAll('.toc a');const sections=Array.from(tocLinks).map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+window.addEventListener('scroll',()=>{let c='';sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)c=s.id});tocLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+c)})});
+function tf(b){const i=b.closest('.fi'),a=b.nextElementSibling,o=i.classList.contains('active');document.querySelectorAll('.fi').forEach(x=>{x.classList.remove('active');x.querySelector('.fa').classList.remove('open')});if(!o){i.classList.add('active');a.classList.add('open')}}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();lenis.scrollTo(t,{offset:-60})}})});
+</script>
+<script src="/v.js" defer></script>
+</body>
+</html>
