@@ -6,8 +6,16 @@
   <link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
   <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/"/>
   <id>https://basstrading.fr/blog/</id>
-  <updated>2026-10-31T00:00:00Z</updated>
+  <updated>2026-11-01T00:00:00Z</updated>
   <author><name>Sébastien Constant (Bass)</name><uri>https://basstrading.fr/auteur/sebastien-constant/</uri></author>
+  <entry>
+    <title>GoCharting : mon avis sur l&#x27;order flow dans le navigateur</title>
+    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/gocharting-avis/"/>
+    <id>https://basstrading.fr/blog/gocharting-avis/</id>
+    <published>2026-11-01T00:00:00Z</published>
+    <updated>2026-11-01T00:00:00Z</updated>
+    <summary>GoCharting en 2026 : gratuit ou Premium, données CME, footprint et DOM sur le Nasdaq. Mon avis honnête et la comparaison avec TradingView.</summary>
+  </entry>
   <entry>
     <title>Value Area : définition, calcul à 70 % et règle des 80 %</title>
     <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/value-area-trading/"/>
