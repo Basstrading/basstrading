@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GoCharting : mon avis sur l&#39;order flow dans le navigateur — BASS Trading</title>
+  <meta name="description" content="GoCharting en 2026 : gratuit ou Premium, données CME, footprint et DOM sur le Nasdaq. Mon avis honnête et la comparaison avec TradingView.">
+  <meta property="og:title" content="GoCharting : mon avis sur l&#39;order flow dans le navigateur — BASS Trading">
+  <meta property="og:description" content="GoCharting en 2026 : gratuit ou Premium, données CME, footprint et DOM sur le Nasdaq. Mon avis honnête et la comparaison avec TradingView.">
+  <meta property="og:image" content="https://basstrading.fr/blog/gocharting-avis/blog-gocharting-avis-1.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://basstrading.fr/blog/gocharting-avis/blog-gocharting-avis-1.webp">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://basstrading.fr/blog/gocharting-avis/">
+  <meta property="og:site_name" content="BASS Trading">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://basstrading.fr/blog/gocharting-avis/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","@id":"https://basstrading.fr/blog/gocharting-avis/#article","headline":"GoCharting : mon avis sur l'order flow dans le navigateur","description":"GoCharting en 2026 : gratuit ou Premium, données CME, footprint et DOM sur le Nasdaq. Mon avis honnête et la comparaison avec TradingView.","datePublished":"2026-11-01","dateModified":"2026-11-01","inLanguage":"fr-FR","image":"https://basstrading.fr/blog/gocharting-avis/blog-gocharting-avis-1.webp","mainEntityOfPage":"https://basstrading.fr/blog/gocharting-avis/","isPartOf":{"@type":"WebSite","@id":"https://basstrading.fr/#website","name":"BASS Trading","url":"https://basstrading.fr/"},"author":{"@type":"Person","@id":"https://basstrading.fr/#sebastien-constant","name":"Sébastien Constant","url":"https://basstrading.fr/auteur/sebastien-constant/"},"publisher":{"@type":"Organization","@id":"https://basstrading.fr/#organisation","name":"BASS Trading","url":"https://basstrading.fr/","logo":{"@type":"ImageObject","url":"https://basstrading.fr/images/logo-basstrading.png","width":512,"height":512}}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://basstrading.fr"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://basstrading.fr/blog/"},{"@type":"ListItem","position":3,"name":"GoCharting avis","item":"https://basstrading.fr/blog/gocharting-avis/"}]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"GoCharting est-il vraiment gratuit ?","acceptedAnswer":{"@type":"Answer","text":"Oui, une formule gratuite existe, sans carte bancaire. Elle donne l'interface, un Market Profile et un Volume Profile de base, et des données en fin de journée sur les marchés américains. Le footprint en temps réel, le Time & Sales, les alertes et le trading depuis le graphique demandent le Premium (page de prix officielle consultée le 01/11/2026)."}},{"@type":"Question","name":"Combien coûtent les données CME sur GoCharting ?","acceptedAnswer":{"@type":"Answer","text":"Dans son annonce officielle du 26/02/2024, GoCharting affichait 35 $ par mois pour la formule CME Premium (indices et devises, dont le Nasdaq) et 40 $ par mois pour le bundle qui ajoute NYMEX, COMEX et CBOT. La page de prix actuelle parle de tarifs indicatifs : vérifie le montant au moment de payer."}},{"@type":"Question","name":"GoCharting fonctionne-t-il sur Mac ?","acceptedAnswer":{"@type":"Answer","text":"Oui. GoCharting tourne dans le navigateur, donc sur Mac sans émulation ni installation, et propose aussi des applications iOS et Android. C'est l'argument le plus cité par les utilisateurs dans les avis publics, et la principale raison de le préférer à une plateforme Windows comme Sierra Chart quand on débute sur Mac."}},{"@type":"Question","name":"GoCharting est-il sûr pour un débutant ?","acceptedAnswer":{"@type":"Answer","text":"GoCharting ne garde pas ton argent : tes fonds restent chez ton courtier, la plateforme sert d'écran et envoie tes ordres. Pour débuter, commence sur la formule gratuite puis sur un compte de démonstration, utilise des ordres bracket (stop et objectif attachés) et surveille les prélèvements après l'essai payant."}},{"@type":"Question","name":"GoCharting est-il compatible avec les prop firms ?","acceptedAnswer":{"@type":"Answer","text":"GoCharting se connecte à Rithmic et Tradovate, deux connexions très utilisées par les prop firms futures. Mais chaque prop firm choisit les plateformes qu'elle autorise : lis ses conditions ou demande à son support avant de brancher GoCharting sur un compte d'évaluation, sinon tu risques de perdre le compte pour une raison technique."}},{"@type":"Question","name":"GoCharting ou TradingView pour le footprint ?","acceptedAnswer":{"@type":"Answer","text":"Pour l'analyse technique classique, les alertes et la communauté, TradingView reste la référence. Pour lire un footprint des futures avec la décomposition bid/ask de chaque tick, GoCharting Premium avec les données CME va plus loin, car l'order flow est au cœur du produit. Teste les deux sur la même bougie du NQ avant de choisir."}},{"@type":"Question","name":"Que valent les avis sur GoCharting ?","acceptedAnswer":{"@type":"Answer","text":"Au 01/11/2026, GoCharting obtient 3,3/5 sur 27 avis sur fr.trustpilot.com. Les points positifs : graphiques, vitesse, Mac, prix. Les points négatifs : facturation après l'essai, lenteurs de données en séance active, bugs d'affichage et support inégal. Peu d'avis au total : teste toi-même à l'ouverture américaine."}}]}
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{--bk:#1D1D1F;--bk2:#111;--bk3:#0A0A0A;--g1:#6E6E73;--g2:#86868B;--g3:#D2D2D7;--g4:#F5F5F7;--wh:#FBFBFD;--pure:#FFF;--green:#00B67A;--blue:#0066FF}
+    html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}
+    body{font-family:'DM Sans',sans-serif;color:var(--bk);background:var(--pure);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+    .preloader{position:fixed;inset:0;background:var(--bk3);z-index:10001;display:flex;align-items:center;justify-content:center}
+    .pre-word{font-family:'Outfit',sans-serif;font-size:clamp(3rem,8vw,5rem);font-weight:900;letter-spacing:16px;text-transform:uppercase;color:var(--pure);overflow:hidden}
+    .pre-word span{display:inline-block;transform:translateY(110%);opacity:0}
+    .pre-line{width:0;height:1px;background:rgba(255,255,255,.3);margin-top:20px}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 48px;display:flex;align-items:center;justify-content:space-between;background:rgba(245,245,247,.85);backdrop-filter:blur(20px) saturate(1.8);border-bottom:1px solid rgba(0,0,0,.04);transition:background .4s}
+    .nav-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase;color:var(--bk)}
+    .nav-links{display:flex;gap:28px;list-style:none}.nav-links a{font-size:.74rem;font-weight:500;letter-spacing:.3px;color:var(--g1);transition:color .3s}.nav-links a:hover{color:var(--bk)}
+    .nav-cta{padding:8px 20px;background:var(--bk);color:var(--pure);border:none;border-radius:980px;font-size:.72rem;font-weight:600;transition:all .3s;cursor:pointer;text-decoration:none;display:inline-block}.nav-cta:hover{background:var(--bk2)}
+    .blog-hero{padding:160px 48px 80px;background:var(--g4);position:relative;overflow:hidden}
+    .blog-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,transparent,var(--g4));pointer-events:none}
+    .blog-hero-inner{max-width:720px;margin:0 auto}
+    .breadcrumb{display:flex;gap:8px;align-items:center;margin-bottom:28px;flex-wrap:wrap}
+    .breadcrumb a,.breadcrumb span{font-size:.68rem;font-weight:500;letter-spacing:.3px;color:var(--g2);transition:color .3s}.breadcrumb a:hover{color:var(--bk)}.breadcrumb .sep{color:var(--g3)}
+    .blog-hero-cat{display:inline-block;padding:5px 14px;border:1px solid rgba(0,102,255,.15);border-radius:980px;font-size:.6rem;font-weight:700;color:var(--blue);letter-spacing:2px;text-transform:uppercase;margin-bottom:20px}
+    .blog-hero-title{font-family:'Outfit',sans-serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:900;line-height:1.05;letter-spacing:-2px;color:var(--bk);margin-bottom:20px}
+    .blog-hero-desc{font-size:.95rem;color:var(--g1);line-height:1.8;max-width:560px;margin-bottom:28px}
+    .blog-meta{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+    .blog-meta-author{display:flex;align-items:center;gap:10px}
+    .blog-meta-avatar{width:36px;height:36px;border-radius:50%;background:var(--bk3);overflow:hidden;flex-shrink:0}.blog-meta-avatar img{width:100%;height:100%;object-fit:cover}
+    .blog-meta-name{font-size:.78rem;font-weight:600;color:var(--bk)}.blog-meta-role{font-size:.65rem;color:var(--g2)}
+    .blog-meta-sep{width:1px;height:24px;background:var(--g3)}
+    .blog-meta-info{font-size:.7rem;color:var(--g2)}.blog-meta-info span{margin-right:16px}
+    .toc{position:sticky;top:90px;background:var(--pure);border:1px solid rgba(0,0,0,.04);border-radius:14px;padding:24px;margin-bottom:32px}
+    .toc-title{font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.5px;color:var(--bk);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+    .toc ol{list-style:none;counter-reset:toc}.toc li{counter-increment:toc}
+    .toc li a{display:flex;align-items:baseline;gap:8px;padding:6px 0;font-size:.76rem;color:var(--g1);transition:color .3s;border-bottom:1px solid rgba(0,0,0,.03)}.toc li a:hover{color:var(--blue)}
+    .toc li a::before{content:counter(toc,decimal-leading-zero);font-family:'Outfit',sans-serif;font-size:.65rem;font-weight:700;color:var(--g3);min-width:18px}
+    .toc li:last-child a{border-bottom:none}.toc li a.active{color:var(--blue);font-weight:600}.toc li a.active::before{color:var(--blue)}
+    .article-wrap{display:grid;grid-template-columns:220px 1fr;gap:40px;max-width:1020px;margin:0 auto;padding:60px 48px 120px}
+    .article-sidebar{position:relative}.article-body{max-width:700px}
+    .article-body h2{font-family:'Outfit',sans-serif;font-size:clamp(1.4rem,2.5vw,1.8rem);font-weight:800;line-height:1.1;letter-spacing:-1px;color:var(--bk);margin:56px 0 16px;padding-top:20px}.article-body h2:first-of-type{margin-top:0}
+    .article-body h3{font-family:'Outfit',sans-serif;font-size:1.05rem;font-weight:700;line-height:1.25;letter-spacing:-.3px;color:var(--bk);margin:36px 0 10px}
+    .article-body p{font-size:.9rem;color:var(--g1);line-height:1.85;margin-bottom:18px}
+    .article-body strong{color:var(--bk);font-weight:600}
+    .article-body ul,.article-body ol{margin:0 0 20px 0;padding-left:20px}
+    .article-body li{font-size:.88rem;color:var(--g1);line-height:1.8;margin-bottom:6px}.article-body li strong{color:var(--bk)}
+    .article-body blockquote{margin:28px 0;padding:20px 24px;background:var(--g4);border-left:3px solid var(--bk);border-radius:0 12px 12px 0;font-size:.88rem;color:var(--g1);line-height:1.8;font-style:italic}
+    .article-body blockquote strong{color:var(--bk);font-style:normal}
+    .article-body hr{border:none;border-top:1px solid var(--g4);margin:48px 0}
+    .info-box{margin:28px 0;padding:24px;background:rgba(0,102,255,.03);border:1px solid rgba(0,102,255,.08);border-radius:14px}
+    .info-box-title{font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:700;color:var(--blue);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+    .info-box p{font-size:.82rem;color:var(--g1);line-height:1.7;margin-bottom:0}
+    .key-concept{margin:32px 0;padding:28px;background:var(--bk3);border-radius:16px;color:var(--pure)}
+    .key-concept-label{font-size:.55rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:10px}
+    .key-concept h4{font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:800;letter-spacing:-.3px;margin-bottom:8px}
+    .key-concept p{font-size:.85rem;color:rgba(255,255,255,.5);line-height:1.8;margin-bottom:0}
+    .compare-table{width:100%;margin:24px 0 28px;border-collapse:collapse;border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,.06)}
+    .compare-table th{background:var(--bk3);color:var(--pure);font-family:'Outfit',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:14px 16px;text-align:left}
+    .compare-table td{padding:12px 16px;font-size:.82rem;color:var(--g1);line-height:1.6;border-bottom:1px solid rgba(0,0,0,.04);background:var(--pure)}
+    .compare-table tr:last-child td{border-bottom:none}.compare-table td:first-child{font-weight:600;color:var(--bk)}
+    .cta-card{margin:48px 0;padding:40px;background:var(--bk3);border-radius:20px;text-align:center;position:relative;overflow:hidden}
+    .cta-card::before{content:'';position:absolute;top:-50%;right:-30%;width:400px;height:400px;background:radial-gradient(circle,rgba(0,102,255,.08) 0%,transparent 70%);pointer-events:none}
+    .cta-card-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:12px}
+    .cta-card h3{font-family:'Outfit',sans-serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:800;color:var(--pure);letter-spacing:-.5px;margin-bottom:8px}
+    .cta-card p{font-size:.85rem;color:rgba(255,255,255,.4);line-height:1.7;max-width:380px;margin:0 auto 24px}
+    .cta-card .btn-p{background:var(--pure);color:var(--bk)}.cta-card .btn-p:hover{box-shadow:0 8px 30px rgba(255,255,255,.15)}
+    .faq-sec{padding:80px 48px 100px;background:var(--g4)}
+    .faq-list{max-width:680px;margin:40px auto 0}.fi{border-bottom:1px solid rgba(0,0,0,.06)}
+    .fq{width:100%;text-align:left;padding:18px 0;background:none;border:none;font-size:.85rem;font-weight:600;font-family:'DM Sans',sans-serif;color:var(--bk);display:flex;justify-content:space-between;align-items:center;cursor:pointer;gap:16px;transition:color .3s}.fq:hover{color:var(--g1)}
+    .fq-icon{width:22px;height:22px;border-radius:50%;background:rgba(0,0,0,.04);display:flex;align-items:center;justify-content:center;font-size:.75rem;transition:all .4s;flex-shrink:0;color:var(--g2)}
+    .fa{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1)}.fa.open{max-height:280px;padding-bottom:14px}
+    .fa p{font-size:.8rem;color:var(--g1);line-height:1.7;margin-bottom:0}.fi.active .fq-icon{background:var(--bk);color:var(--pure);transform:rotate(45deg)}
+    .related-sec{padding:80px 48px;background:var(--pure);border-top:1px solid var(--g4)}
+    .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1060px;margin:40px auto 0}
+    .related-card{display:block;padding:28px;background:var(--g4);border-radius:16px;transition:all .4s;text-decoration:none;color:var(--bk)}
+    .related-card:hover{background:var(--pure);box-shadow:0 8px 30px rgba(0,0,0,.06);transform:translateY(-2px)}
+    .related-cat{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+    .related-card h3{font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:700;line-height:1.3;letter-spacing:-.3px;margin-bottom:8px}
+    .related-card p{font-size:.78rem;color:var(--g1);line-height:1.6;margin-bottom:14px}
+    .related-link{font-size:.72rem;font-weight:600;color:var(--blue);letter-spacing:.3px}
+    .footer{background:var(--bk3);color:var(--pure);padding:56px 48px 28px}
+    .ft-top{display:flex;justify-content:space-between;align-items:start;margin-bottom:48px;flex-wrap:wrap;gap:32px}
+    .ft-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase}
+    .ft-cols{display:flex;gap:80px}
+    .ft-col-title{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:12px}
+    .ft-col a{display:block;font-size:.78rem;color:rgba(255,255,255,.5);margin-bottom:8px;transition:color .3s}.ft-col a:hover{color:var(--pure)}
+    .ft-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:20px;display:flex;justify-content:space-between;align-items:center;font-size:.6rem;color:rgba(255,255,255,.2)}
+    .ft-bottom a{color:rgba(255,255,255,.2);transition:color .3s;margin-left:20px}.ft-bottom a:hover{color:rgba(255,255,255,.5)}
+    .disclaimer{padding:12px 48px;background:var(--bk3);font-size:.58rem;color:rgba(255,255,255,.12);text-align:center;line-height:1.6;border-top:1px solid rgba(255,255,255,.03)}
+    .sec-center{text-align:center;max-width:680px;margin:0 auto}
+    .sec-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--g2);margin-bottom:10px}
+    .sec-title{font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;line-height:1.05;letter-spacing:-1.5px;color:var(--bk);margin-bottom:16px}
+    .btn-p{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--bk);color:var(--pure);border-radius:980px;font-size:.85rem;font-weight:600;transition:all .3s;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;text-decoration:none}
+    .btn-p:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(0,0,0,.1)}
+    .btn-p svg{width:13px;height:13px;transition:transform .3s}.btn-p:hover svg{transform:translateX(3px)}
+    .reading-progress{position:fixed;top:0;left:0;height:2px;background:var(--blue);z-index:9999;width:0;transition:width .1s linear}
+    @media(max-width:900px){.nav{padding:14px 20px}.nav-links{display:none}.blog-hero{padding:120px 20px 60px}.article-wrap{grid-template-columns:1fr;padding:40px 20px 80px}.article-sidebar{display:none}.related-grid{grid-template-columns:1fr}.related-sec,.faq-sec{padding:60px 20px}.ft-cols{flex-direction:column;gap:28px}.footer{padding:40px 20px 20px}.disclaimer{padding:10px 16px}.cta-card{padding:28px 20px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  .article-body a{color:var(--blue);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;font-weight:500}.article-body a:hover{text-decoration-thickness:2px}
+</style>
+<style>/* 28/10/2026 : débordement mobile (colonne de grille sans min-width) */.article-wrap>*,.article-layout>*{min-width:0}.article-body table,.compare-table{display:block;overflow-x:auto;max-width:100%}.article-body pre{overflow-x:auto}.article-body img{max-width:100%;height:auto}</style>
+</head>
+<body>
+
+<div class="preloader" id="preloader"><div style="text-align:center"><div class="pre-word"><span>B</span><span>A</span><span>S</span><span>S</span></div><div class="pre-line" id="preLine"></div></div></div>
+<div class="reading-progress" id="readingProgress"></div>
+
+<nav class="nav" id="nav">
+  <a href="https://basstrading.fr" class="nav-logo">BASS</a>
+  <ul class="nav-links">
+    <li><a href="https://basstrading.fr/#methode">Méthode</a></li>
+    <li><a href="https://basstrading.fr#resultats">Résultats</a></li>
+    <li><a href="https://basstrading.fr#avis">Avis</a></li>
+    <li><a href="https://basstrading.fr#faq">FAQ</a></li>
+    <li><a href="/formations/">Formations</a></li>
+    <li><a href="https://basstrading.fr/blog/">Blog</a></li>
+  </ul>
+  <a href="https://basstrading.fr/p/formation-offerte/?src=blog-gocharting-avis-menu" class="nav-cta">Formation offerte</a>
+</nav>
+
+<section class="blog-hero">
+  <div class="blog-hero-inner">
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <a href="https://basstrading.fr">Accueil</a><span class="sep">/</span>
+      <a href="https://basstrading.fr/blog/">Blog</a><span class="sep">/</span>
+      <span>GoCharting avis</span>
+    </nav>
+    <div class="blog-hero-cat">Plateformes</div>
+    <h1 class="blog-hero-title">GoCharting : mon avis sur l&#39;order flow dans le navigateur</h1>
+    <p class="blog-hero-desc">GoCharting est une plateforme de graphiques qui affiche l&#39;order flow (footprint, profils, delta) directement dans le navigateur, Mac compris. La version gratuite sert à découvrir. Pour lire le footprint du Nasdaq futures en temps réel, il faut le Premium avec les données CME. Je te montre ce que l&#39;outil fait vraiment, ce qu&#39;il coûte et pour qui il est fait.</p>
+    <div class="blog-meta">
+      <div class="blog-meta-author">
+        <div class="blog-meta-avatar"><img src="../../images/bass-presenting.jpg" alt="Sébastien Constant" loading="lazy"></div>
+        <div><div class="blog-meta-name"><a href="/auteur/sebastien-constant/" rel="author" style="color:inherit;text-decoration:none">Sébastien Constant</a></div><div class="blog-meta-role">Trader & Formateur Order Flow</div></div>
+      </div>
+      <div class="blog-meta-sep"></div>
+      <div class="blog-meta-info"><span>Novembre 2026</span><span>22 min de lecture</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="article-wrap">
+  <aside class="article-sidebar">
+    <div class="toc">
+      <div class="toc-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/></svg> Sommaire</div>
+      <ol>
+        <li><a href="#gocharting-c-est-quoi-exactement">GoCharting, c&#39;est quoi exactement ?</a></li>
+        <li><a href="#gocharting-est-il-gratuit-ce-que-contien">GoCharting est-il gratuit ? Ce que contient chaque formule</a></li>
+        <li><a href="#d-ou-viennent-les-donnees-du-nasdaq-futu">D&#39;où viennent les données du Nasdaq futures sur GoCharting ?</a></li>
+        <li><a href="#le-footprint-de-gocharting-est-il-un-vra">Le footprint de GoCharting est-il un vrai footprint ?</a></li>
+        <li><a href="#peut-on-trader-les-futures-depuis-gochar">Peut-on trader les futures depuis GoCharting ?</a></li>
+        <li><a href="#gocharting-ou-tradingview-lequel-choisir">GoCharting ou TradingView : lequel choisir pour l&#39;order flow ?</a></li>
+        <li><a href="#gocharting-face-aux-plateformes-futures-">GoCharting face aux plateformes futures dédiées</a></li>
+        <li><a href="#gocharting-convient-il-a-un-debutant-et-">GoCharting convient-il à un débutant, et est-il sûr ?</a></li>
+        <li><a href="#que-disent-les-avis-des-utilisateurs-de-">Que disent les avis des utilisateurs de GoCharting ?</a></li>
+        <li><a href="#comment-tester-gocharting-en-7-jours-san">Comment tester GoCharting en 7 jours sans te faire piéger</a></li>
+        <li><a href="#mon-avis-final-pour-qui-gocharting-est-f">Mon avis final : pour qui GoCharting est fait (et pour qui il ne l&#39;est pas)</a></li>
+      </ol>
+    </div>
+  </aside>
+
+  <article class="article-body">
+    <h2 id="gocharting-c-est-quoi-exactement">GoCharting, c&#39;est quoi exactement ?</h2>
+    <p>Tu as vu passer un footprint dans une vidéo, tu travailles sur Mac, et tu ne veux pas installer un logiciel Windows ni payer 100 € par mois avant même de savoir si l&#39;order flow te parle. GoCharting coche ces trois cases sur le papier. Alors la vraie question est simple : <b>est-ce que ça suffit pour lire le Nasdaq futures sérieusement ?</b> À la fin de cet article, tu sauras ce que l&#39;outil fait, ce qu&#39;il ne fait pas, ce qu&#39;il coûte et comment le tester sans te faire piéger.</p>
+<p><b>GoCharting est une plateforme de graphiques en ligne qui affiche l&#39;order flow (footprint, Market Profile, Volume Profile, delta) dans un simple navigateur, sur ordinateur, iOS et Android, avec une version gratuite et des abonnements payants par marché.</b></p>
+<p>L&#39;éditeur annonce sur <a href="https://gocharting.com/">sa page d&#39;accueil</a> plus de 3 millions de traders dans le monde et se présente comme distributeur de données licencié par le CME. La société est très implantée en Inde : on y trouve les données NSE et MCX et des courtiers indiens comme Zerodha ou Dhan. C&#39;est pour ça qu&#39;une bonne partie des tutos et des avis que tu trouveras en ligne parlent d&#39;actions indiennes, pas du Nasdaq.</p>
+<h3>Pourquoi je te parle de GoCharting</h3>
+<p>Je vais être honnête dès le départ : <b>je ne trade pas avec GoCharting.</b> Mon installation de travail, celle que je montre dans ma formation Market Profile, tourne sur Sierra Chart. Cet avis repose donc sur les pages officielles de l&#39;éditeur relevées le 01/11/2026, sur les avis publics des utilisateurs, et sur ce que j&#39;exige d&#39;un outil order flow après plus de dix ans à lire le carnet du Nasdaq.</p>
+<p>Pourquoi en parler alors ? Parce que mes élèves me posent la question. Beaucoup débutent sur Mac, beaucoup viennent de TradingView, et GoCharting est l&#39;une des rares portes d&#39;entrée vers le footprint qui ne demande ni installation ni PC Windows.</p>
+<p>Commençons par le nerf de la guerre : qu&#39;est-ce qui est vraiment gratuit ?</p>
+
+    <hr>
+
+    <h2 id="gocharting-est-il-gratuit-ce-que-contien">GoCharting est-il gratuit ? Ce que contient chaque formule</h2>
+    <p><b>La version gratuite existe et ne demande pas de carte bancaire, mais elle ne donne pas le footprint en temps réel sur les futures américains.</b> Pour l&#39;order flow du Nasdaq, il faut un abonnement Premium avec les données CME.</p>
+<h3>Ce que dit la page de prix officielle (relevé du 01/11/2026)</h3>
+<p>Sur <a href="https://gocharting.com/us/pricing">la page de prix américaine de GoCharting</a>, consultée le 01/11/2026, on trouve deux formules : Free et Premium. Voici ce que le tableau de comparaison indique :</p>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Fonction</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Free</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Premium</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Données US (Nasdaq, NYSE, CME)</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">fin de journée</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">temps réel</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Footprint et imbalance</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">non (tableau)</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">oui</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">CVD, indicateurs order flow</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">non</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">oui</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Market Profile</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">de base</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">avancé</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Time &amp; Sales</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">non</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">oui</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Trading depuis le graphique</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">non</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">oui</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Graphiques simultanés</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">4</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">25</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Alertes de prix ou de delta</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">aucune</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">100</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Appareils</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">1</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">3</td></tr></tbody></table></div>
+<p>Deux détails m&#39;ont gêné. Le texte d&#39;introduction de la formule gratuite cite les « Footprint Charts », alors que la ligne footprint du tableau est vide pour le gratuit. <b>Dans le doute, considère que le footprint utile, celui en temps réel sur le NQ, est payant.</b></p>
+<p>Et la même page annonce à la fois « jusqu&#39;à 17 % » et « jusqu&#39;à 20 % » d&#39;économie sur l&#39;abonnement annuel : deux chiffres différents sur la même page. Ce n&#39;est pas grave en soi, mais ça confirme qu&#39;il vaut mieux lire le montant exact au moment de payer.</p>
+<h3>Combien coûtent les données CME ?</h3>
+<p>La page de prix affiche des tarifs « indicatifs ». Le jour de mon relevé, une promotion de 50 % sur l&#39;annuel était affichée, sans montant visible sans connexion.</p>
+<p>Le seul tarif CME publié noir sur blanc par l&#39;éditeur se trouve dans <a href="https://gocharting.com/blog/gocharting-news/us-futures-charting-training">son annonce officielle du partenariat avec le CME</a>, datée du 26/02/2024 :</p>
+<ul><li><b>CME Premium : 35 $ par mois</b>, pour les futures du CME (indices et devises : E-mini S&amp;P, Nasdaq, EUR/USD) ;</li><li><b>CME Premium Bundle : 40 $ par mois</b>, qui ajoute NYMEX (énergie), COMEX (métaux) et CBOT (Dow Jones, taux, matières agricoles).</li></ul>
+<p>Ces prix datent de 2024. Vérifie le montant affiché au moment de payer, et regarde si des frais de données de bourse s&#39;ajoutent : c&#39;est fréquent sur les futures, quelle que soit la plateforme.</p>
+<h3>Et l&#39;essai gratuit ?</h3>
+<p>La FAQ de la page de prix pose la question « Is there a free trial? » sans afficher de réponse visible sans connexion. Le texte officiel de l&#39;essai, repris en octobre 2026 par le site tradersdna.com, est : « Explore GoCharting Premium free for 7 days, with no payment required » : sept jours de Premium, sans paiement demandé. Vérifie-le à l&#39;écran le jour où tu t&#39;inscris.</p>
+<p>Plusieurs utilisateurs se plaignent pourtant d&#39;avoir été prélevés sans remboursement possible. <b>Mon conseil d&#39;agenda reste donc le même : note la date de fin d&#39;essai le jour où tu l&#39;actives.</b> Je reviens sur ce point dans la partie consacrée aux avis.</p>
+<aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p><b>À retenir</b></p>
+<ul><li>Gratuit : idéal pour découvrir l&#39;interface et le Market Profile de base, pas pour lire le flux du Nasdaq en direct.</li><li>Premium + données CME : le minimum pour un footprint NQ en temps réel.</li><li>35 $ et 40 $ par mois sont les prix officiels de 2024 : à revérifier le jour de l&#39;achat.</li></ul></aside>
+<p>Reste la question qui fait toute la différence entre un footprint utile et un footprint décoratif : d&#39;où viennent les chiffres ?</p>
+
+    <hr>
+
+    <h2 id="d-ou-viennent-les-donnees-du-nasdaq-futu">D&#39;où viennent les données du Nasdaq futures sur GoCharting ?</h2>
+    <p><b>GoCharting se présente comme distributeur de données licencié par le CME Group : les cours des futures NQ et MNQ viennent donc de la bourse elle-même</b>, en temps réel avec un abonnement Premium, en fin de journée avec la version gratuite.</p>
+<p>C&#39;est le point que je regarde en premier sur n&#39;importe quel outil order flow. Un footprint n&#39;est rien d&#39;autre que le décompte des transactions exécutées, ligne de prix par ligne de prix. Si la donnée est agrégée, retardée ou incomplète, les chiffres sont faux, et ta lecture aussi.</p>
+<h3>Pourquoi la source compte plus que le design</h3>
+<p>Sur les futures, toutes les transactions passent par une seule bourse : le CME pour le Nasdaq. C&#39;est un avantage énorme par rapport au Forex ou aux CFD, où chaque courtier a son propre flux. Sur le NQ, un distributeur licencié reçoit le même flux que les professionnels. <b>C&#39;est pour ça que je répète à mes élèves que l&#39;order flow a du sens sur les futures, et beaucoup moins sur un CFD « Nasdaq 100 » proposé par un courtier.</b></p>
+<p>Si tu veux comprendre comment ce flux arrive jusqu&#39;à ta plateforme, et pourquoi un contrat MNQ affiche les mêmes prix que le NQ, je l&#39;explique dans mon guide sur les <a href="https://basstrading.fr/blog/nasdaq-futures-nq-mnq/">futures Nasdaq NQ et MNQ</a>.</p>
+<h3>Temps réel, fin de journée, profondeur : trois choses différentes</h3>
+<p>Quand tu lis « données CME » sur une page de prix, pose-toi trois questions :</p>
+<ul><li><b>Temps réel ou fin de journée ?</b> Le gratuit est en fin de journée sur les marchés US : impossible de trader l&#39;ouverture avec.</li><li><b>Transactions seules (niveau 1) ou profondeur du carnet (niveau 2) ?</b> Le footprint se construit avec les transactions. Le DOM, lui, a besoin de la profondeur : les ordres en attente sur chaque prix.</li><li><b>Quels marchés ?</b> La formule CME de base couvre les indices et les devises. L&#39;or, le pétrole ou les taux demandent le bundle.</li></ul>
+<p>La page d&#39;accueil cite le DOM parmi les outils order flow, mais le tableau de prix ne dit pas dans quelle formule il est inclus, ni avec quelle profondeur. Pendant ton essai, ouvre le DOM du NQ à 15 h 30 et regarde si tu vois plusieurs niveaux de prix de chaque côté qui bougent en continu. <b>Si tu ne vois que le meilleur acheteur et le meilleur vendeur, ce n&#39;est pas un vrai carnet.</b></p>
+<h3>Statut professionnel ou non professionnel</h3>
+<p>Comme sur toutes les plateformes, l&#39;accès aux données du CME demande de déclarer ton statut. Un particulier qui trade pour son compte est en général « non professionnel », ce qui coûte beaucoup moins cher. Réponds honnêtement au questionnaire : une erreur de statut peut faire grimper la facture.</p>
+<p>Une fois la donnée réglée, place à ce qui t&#39;intéresse vraiment : le footprint lui-même. Est-ce qu&#39;il se lit comme un vrai ?</p>
+
+    <hr>
+
+    <h2 id="le-footprint-de-gocharting-est-il-un-vra">Le footprint de GoCharting est-il un vrai footprint ?</h2>
+    <p><b>Oui, sur le papier : le Premium affiche un footprint qui montre, ligne de prix par ligne de prix, le volume exécuté à l&#39;achat et à la vente, avec l&#39;imbalance, le delta et le CVD.</b> C&#39;est très différent du « footprint » de TradingView, qui reconstitue ce découpage à partir de données moins fines.</p>
+<h3>Ce qu&#39;un footprint doit te montrer</h3>
+<p>Dans <a href="https://www.youtube.com/watch?v=FLBONXJWCoM&amp;t=20s">ma formation footprint offerte sur YouTube</a>, je le résume ainsi : « le footprint c&#39;est vraiment une radiographie de ce que l&#39;on va retrouver à l&#39;intérieur d&#39;une bougie ». Une bougie te dit où le prix a ouvert et fermé. Le footprint te dit qui a poussé le prix : les acheteurs agressifs ou les vendeurs agressifs.</p>
+<p>Pour qu&#39;un footprint soit exploitable, il doit afficher au minimum :</p>
+<ul><li>le volume vendu au bid et acheté à l&#39;ask sur chaque tick de 0,25 point du NQ ;</li><li>le delta de la bougie (différence entre les deux) ;</li><li>un repérage des déséquilibres (imbalances) ;</li><li>le POC de la bougie, le prix où il s&#39;est échangé le plus de contrats.</li></ul>
+<p>GoCharting liste le footprint, l&#39;imbalance, le CVD et les indicateurs order flow dans sa formule Premium. Tout y est. Si tu découvres ces notions, commence par mon <a href="https://basstrading.fr/blog/footprint-chart-trading/">guide complet du footprint</a> avant de payer quoi que ce soit.</p>
+<h3>Un exemple réel : la lecture en diagonale</h3>
+<p>Dans cette même vidéo, <a href="https://www.youtube.com/watch?v=FLBONXJWCoM&amp;t=973s">à la 16e minute</a>, je montre une bougie du NQ : 112 acheteurs agressifs sur une ligne de prix, et 68 vendeurs agressifs sur la ligne située un tick plus bas. La mauvaise lecture compare les deux chiffres d&#39;une même ligne. Je rappelle que <a href="https://www.youtube.com/watch?v=FLBONXJWCoM&amp;t=956s">le footprint se lit en diagonale</a>, comme le carnet d&#39;ordres : l&#39;acheteur qui frappe l&#39;ask se compare au vendeur qui frappe le bid un tick plus bas. <b>Ici, 112 contre 68 : la pression est acheteuse.</b></p>
+<p>C&#39;est un test parfait pour n&#39;importe quelle plateforme. Pendant ton essai, vérifie que GoCharting calcule les imbalances en diagonale, et pas ligne contre ligne. Les bonnes plateformes te laissent choisir. Si ce n&#39;est pas clair dans les réglages, pose la question au support avant la fin de l&#39;essai.</p>
+<h3>Ne regarde pas tout</h3>
+<p>Le piège de toute plateforme order flow, gratuite ou à 200 $, c&#39;est de vouloir tout lire. Comme je le dis dans la vidéo : « vous n&#39;allez pas lire chiffre par chiffre dans chaque bougie d&#39;accord ça n&#39;a aucun intérêt » (<a href="https://www.youtube.com/watch?v=FLBONXJWCoM&amp;t=995s">à 16 min 35 s</a>). Il y a des milliers de bougies par séance. <b>Tu regardes le flux à tes niveaux, pas partout.</b></p>
+<p>Je préfère aussi te prévenir, et je le dis dans la même vidéo (<a href="https://www.youtube.com/watch?v=FLBONXJWCoM&amp;t=1089s">à 18 min 9 s</a>) : ce n&#39;est pas le footprint seul qui te rendra rentable. L&#39;outil t&#39;aide à comprendre la mécanique, à condition d&#39;avoir une méthode autour : des niveaux (le profil de la veille, le <a href="https://basstrading.fr/blog/vwap-trading/">VWAP de la séance</a>), un plan, une gestion du risque.</p>
+<aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p><b>À retenir</b></p>
+<ul><li>Le footprint Premium de GoCharting affiche les vrais éléments d&#39;un footprint.</li><li>Teste la lecture en diagonale des imbalances avant de payer l&#39;année.</li><li>Un footprint ne remplace pas une méthode : il confirme ce que tu attends à un niveau.</li></ul></aside>
+<p>Tu sais lire le footprint. Mais peux-tu passer tes ordres depuis GoCharting, ou faut-il une deuxième plateforme ?</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/gocharting-avis/blog-gocharting-avis-1.webp" alt="Trois étapes pour lire un footprint en diagonale sur le Nasdaq futures, valables sur toute plateforme" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Le même test s&#39;applique à GoCharting ou à n&#39;importe quelle autre plateforme.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="peut-on-trader-les-futures-depuis-gochar">Peut-on trader les futures depuis GoCharting ?</h2>
+    <p><b>Oui : avec le Premium, GoCharting permet de passer des ordres depuis le graphique en le connectant à un courtier futures compatible</b>, dont Rithmic, CQG, Tradovate, AMP Futures, TradeStation et Ironbeam. La version gratuite, elle, ne permet pas le trading depuis le graphique.</p>
+<h3>Les courtiers futures compatibles</h3>
+<p>Selon la page d&#39;accueil de l&#39;éditeur, consultée le 01/11/2026, GoCharting se connecte à ces intermédiaires pour les futures :</p>
+<ul><li>Rithmic et CQG, deux fournisseurs de connexion utilisés par de nombreux courtiers et prop firms ;</li><li>Tradovate, que je détaille dans mon <a href="https://basstrading.fr/blog/tradovate-avis/">avis sur Tradovate</a> ;</li><li>AMP Futures, TradeStation, Ironbeam, Optimus et Phillip Capital.</li></ul>
+<p>NinjaTrader n&#39;apparaît pas dans la liste. Si ton compte est chez NinjaTrader, tu garderas sa plateforme pour exécuter : je compare ses forces dans mon <a href="https://basstrading.fr/blog/ninjatrader-avis/">avis sur NinjaTrader</a>.</p>
+<h3>Et avec une prop firm ?</h3>
+<p>Beaucoup de prop firms futures fournissent une connexion Rithmic ou Tradovate. Techniquement, GoCharting sait se brancher sur ces deux connexions. Mais chaque prop firm décide quelles plateformes elle autorise. <b>Avant de brancher GoCharting sur un compte d&#39;évaluation, vérifie dans les conditions de ta prop firm que la plateforme est acceptée.</b> Sinon, tu risques de perdre ton compte pour une question technique, pas pour ton trading.</p>
+<h3>Exécuter dans un navigateur : ce que j&#39;en pense</h3>
+<p>Un navigateur, c&#39;est pratique : rien à installer, accès depuis n&#39;importe quel ordinateur. Mais un onglet peut se figer, une mise à jour du navigateur peut tout recharger, une connexion Wi-Fi peut lâcher. Sur le NQ, où un tick vaut 5 $ et où le marché parcourt parfois 30 points en une minute à l&#39;ouverture, <b>tu dois toujours avoir un stop déjà posé chez le courtier</b>, jamais seulement « dans ta tête » ou dans l&#39;onglet.</p>
+<p>Si tu débutes, je te conseille de commencer sur le micro : sur le MNQ, un point vaut 2 $ au lieu de 20 $. Je compare les deux contrats dans <a href="https://basstrading.fr/blog/nq-ou-mnq/">NQ ou MNQ : lequel choisir</a>. Et pour décider combien tu peux perdre sur un trade, lis d&#39;abord <a href="https://basstrading.fr/blog/combien-risquer-par-trade/">combien risquer par trade</a>.</p>
+<p><em>Le trading de contrats à terme comporte un risque élevé de perte, pouvant dépasser la mise initiale. Contenu éducatif, pas un conseil en investissement.</em></p>
+<p>GoCharting se compare surtout à l&#39;outil que tout le monde a déjà ouvert : TradingView. Lequel prendre ?</p>
+
+    <hr>
+
+    <h2 id="gocharting-ou-tradingview-lequel-choisir">GoCharting ou TradingView : lequel choisir pour l&#39;order flow ?</h2>
+    <p><b>Pour l&#39;analyse classique (bougies, indicateurs, alertes, communauté), TradingView reste la référence. Pour lire le footprint des futures avec une vraie décomposition bid/ask, GoCharting va plus loin</b>, à condition de prendre le Premium avec les données CME.</p>
+<h3>La différence de fond : la donnée et le calcul</h3>
+<p>TradingView propose depuis quelques années un graphique « footprint » sur ses formules payantes. Je l&#39;ai décortiqué dans mon article <a href="https://basstrading.fr/blog/footprint-tradingview/">le footprint de TradingView est-il un vrai footprint</a> : c&#39;est une bonne introduction, mais ce n&#39;est pas l&#39;outil que j&#39;utiliserais pour trader le flux à l&#39;ouverture du Nasdaq.</p>
+<p>GoCharting est né autour de l&#39;order flow. Le footprint, les profils et le delta sont au cœur du produit, pas une option ajoutée. Pour quelqu&#39;un qui veut apprendre le footprint sur Mac sans installer de logiciel, c&#39;est un vrai plus.</p>
+<h3>Le comparatif en un coup d&#39;œil</h3>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Critère</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">GoCharting</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">TradingView</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Point fort</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">order flow dans le navigateur</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">analyse technique, communauté</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Footprint</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Premium, données CME</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">formules payantes</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Market Profile</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">de base gratuit, avancé payant</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">indicateurs, scripts</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Langage de script</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Lipi</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Pine Script</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Mac</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">oui (navigateur)</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">oui (navigateur et appli)</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Courtiers futures</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Rithmic, CQG, Tradovate…</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">liste propre à TradingView</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Avis Trustpilot (01/11/2026)</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">3,3/5 sur 27 avis</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">beaucoup plus d&#39;avis</td></tr></tbody></table></div>
+<h3>Ce que disent les utilisateurs qui ont essayé les deux</h3>
+<p>Sur Trustpilot, un utilisateur de GoCharting écrit que « Charting is at least as good as TV » (les graphiques sont au moins aussi bons que ceux de TradingView). D&#39;autres apprécient que la version gratuite autorise plus d&#39;indicateurs et de fenêtres que celle de TradingView. En face, TradingView garde une communauté immense, des milliers de scripts et une stabilité éprouvée.</p>
+<h3>Mon conseil</h3>
+<ul><li><b>Tu fais de l&#39;analyse technique classique et des alertes</b> : reste sur TradingView.</li><li><b>Tu veux découvrir le footprint sur Mac, sans installer de logiciel</b> : GoCharting Premium avec les données CME est une option sérieuse à tester.</li><li><b>Tu veux trader le flux tous les jours</b> : regarde les plateformes dédiées, que je compare juste après.</li></ul>
+<p>Justement, que vaut GoCharting face aux outils que les traders order flow utilisent au quotidien ?</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/gocharting-avis/blog-gocharting-avis-2.webp" alt="Tableau comparatif GoCharting et TradingView pour l&#39;order flow, le Market Profile et le Mac" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">TradingView pour l&#39;analyse classique, GoCharting pour apprendre le footprint dans le navigateur.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="gocharting-face-aux-plateformes-futures-">GoCharting face aux plateformes futures dédiées</h2>
+    <p><b>Face à Sierra Chart, ATAS, NinjaTrader ou Bookmap, GoCharting gagne sur la simplicité (navigateur, Mac, mobile) et perd sur la profondeur des réglages et la robustesse d&#39;un logiciel installé.</b></p>
+<h3>Ce qu&#39;une plateforme installée apporte en plus</h3>
+<p>Une plateforme futures installée sur ton ordinateur garde l&#39;historique tick par tick sur ton disque, se règle dans les moindres détails et ne dépend pas d&#39;un onglet de navigateur. C&#39;est pour ça que je travaille sur Sierra Chart : je peux régler mon Market Profile et mon Volume Profile exactement comme je les lis. Je montre ces réglages dans mon guide de <a href="https://basstrading.fr/blog/sierra-chart-configuration/">configuration de Sierra Chart</a>.</p>
+<p>En contrepartie, Sierra Chart est austère et tourne sous Windows. Sur Mac, il faut passer par une solution d&#39;émulation ou un PC à distance. <b>C&#39;est précisément là que GoCharting a une carte à jouer.</b></p>
+<h3>Tableau comparatif</h3>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Outil</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Atout principal</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Limite principale</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">GoCharting</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">navigateur, Mac, mobile</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">réglages moins poussés, dépend du réseau</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Sierra Chart</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">précision, stabilité, prix</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">austère, Windows</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">NinjaTrader</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">écosystème, courtage intégré</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Windows, modules payants</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Bookmap</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">carte de liquidité (heatmap)</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">spécialisé, abonnement</td></tr></tbody></table></div>
+<p>Si la liquidité qui apparaît et disparaît dans le carnet t&#39;intéresse, c&#39;est un autre outil : je l&#39;explique dans mon article sur <a href="https://basstrading.fr/blog/bookmap-heatmap/">la heatmap de Bookmap</a>. Et pour comprendre ce que le carnet montre vraiment, lis mon guide du <a href="https://basstrading.fr/blog/carnet-ordres-dom-futures/">carnet d&#39;ordres et du DOM</a>.</p>
+<h3>Le Market Profile sur GoCharting</h3>
+<p>GoCharting propose le Market Profile et le Volume Profile dès la version gratuite (formule de base), avec une version avancée en Premium. Pour un débutant, c&#39;est une très bonne façon de voir une distribution TPO sans rien installer. Si tu hésites entre les deux types de profils, mon comparatif <a href="https://basstrading.fr/blog/market-profile-vs-volume-profile/">Market Profile ou Volume Profile</a> t&#39;aidera à choisir lequel regarder en premier.</p>
+<h3>Une plateforme qui se diversifie</h3>
+<p>En juillet 2026, GoCharting a annoncé dans <a href="https://www.globenewswire.com/news-release/2026/07/10/3325368/0/en/gocharting-launches-the-world-s-first-order-flow-charting-and-technical-analysis-platform-for-prediction-markets.html">un communiqué publié sur GlobeNewswire</a> le lancement de graphiques order flow pour les marchés de prédiction. C&#39;est le signe d&#39;un éditeur actif, qui ajoute des marchés. Pour un trader du Nasdaq, ça ne change rien au quotidien, mais ça montre où vont ses priorités : le multi-actifs, pas la spécialisation futures.</p>
+<aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p><b>À retenir</b></p>
+<ul><li>GoCharting : la porte d&#39;entrée la plus simple vers le footprint sur Mac.</li><li>Une plateforme installée reste plus robuste pour trader le flux tous les jours.</li><li>Le bon outil dépend de ta méthode, pas de la liste des fonctions.</li></ul></aside>
+<p>Une question revient souvent chez ceux qui débutent : est-ce un bon outil pour commencer, et peut-on lui faire confiance ?</p>
+
+    <hr>
+
+    <h2 id="gocharting-convient-il-a-un-debutant-et-">GoCharting convient-il à un débutant, et est-il sûr ?</h2>
+    <p><b>Oui pour découvrir : l&#39;inscription prend quelques clics, la formule gratuite n&#39;expire pas et tout tourne dans le navigateur.</b> Pour la sécurité, retiens surtout que GoCharting ne garde pas ton argent : tes fonds restent chez ton courtier, GoCharting n&#39;est que l&#39;écran qui envoie tes ordres.</p>
+<h3>Ce que tu trouves en ouvrant la plateforme</h3>
+<p>Sur sa page d&#39;accueil, consultée le 01/11/2026, l&#39;éditeur annonce un démarrage « en 3 clics » et une formule gratuite « pour toujours ». Au-delà des futures, il couvre les actions et ETF, la crypto, le Forex et les CFD, les marchés de prédiction, et un espace dédié aux options (chaîne d&#39;options, constructeur de stratégies, grecques, volatilité implicite).</p>
+<p>C&#39;est une force pour un curieux, et un piège pour un débutant. Plus tu as de marchés sous les yeux, plus tu es tenté de sauter de l&#39;un à l&#39;autre. <b>Je conseille à mes élèves l&#39;inverse : un seul marché, le Nasdaq futures, une seule séance, et les mêmes niveaux tous les jours.</b> Si tu veux savoir à quoi ressemble une journée de travail sur ce marché, je la décris dans mon article sur le <a href="https://basstrading.fr/blog/day-trading-futures/">day trading des futures</a>.</p>
+<h3>Personnaliser ses graphiques</h3>
+<p>GoCharting propose les types de graphiques classiques, une longue liste d&#39;indicateurs, des listes de surveillance et des espaces de travail que tu peux enregistrer. Il a aussi son propre langage de script, Lipi, pour créer tes indicateurs. Un débutant n&#39;en a pas besoin : un graphique propre avec le profil de la veille et le footprint suffit largement.</p>
+<h3>Quels ordres peut-on passer ?</h3>
+<p>Une fois connecté à ton courtier, l&#39;éditeur annonce l&#39;exécution en un clic depuis le graphique et les ordres bracket : un ordre d&#39;entrée envoyé avec son stop et son objectif déjà attachés. <b>C&#39;est exactement le type d&#39;ordre que je recommande à un débutant, parce qu&#39;il t&#39;oblige à décider ton risque avant d&#39;entrer.</b> Teste-le d&#39;abord sur un compte de démonstration.</p>
+<h3>La sécurité : ce qui compte vraiment</h3>
+<p>La page d&#39;accueil ne publie pas d&#39;engagement détaillé sur la sécurité. Voici donc ce que je regarde, sur GoCharting comme ailleurs :</p>
+<ul><li><b>où est l&#39;argent</b> : chez ton courtier régulé, pas chez l&#39;éditeur de graphiques ;</li><li><b>les accès</b> : un mot de passe unique, et la double authentification si elle est proposée ;</li><li><b>la connexion au courtier</b> : tu peux la couper à tout moment depuis ton espace courtier ;</li><li><b>l&#39;abonnement</b> : paie avec un moyen qui te permet de suivre et de bloquer les prélèvements, vu les plaintes sur la facturation après l&#39;essai.</li></ul>
+<aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p><b>À retenir</b></p>
+<ul><li>Facile à ouvrir, gratuit pour découvrir, mais très large : concentre-toi sur un seul marché.</li><li>Les ordres bracket sont tes meilleurs alliés pour poser ton stop dès l&#39;entrée.</li><li>Ton argent reste chez ton courtier : c&#39;est lui qu&#39;il faut choisir avec soin.</li></ul></aside>
+<p>Restent les retours de ceux qui l&#39;utilisent tous les jours. Que disent-ils ?</p>
+
+    <hr>
+
+    <h2 id="que-disent-les-avis-des-utilisateurs-de-">Que disent les avis des utilisateurs de GoCharting ?</h2>
+    <p><b>Les avis sont partagés : sur la version française de Trustpilot (fr.trustpilot.com), GoCharting obtient 3,3/5 sur 27 avis au 01/11/2026.</b> Les autres versions du site affichent d&#39;autres chiffres. Les utilisateurs saluent les graphiques, la vitesse et la compatibilité Mac ; ils reprochent surtout la facturation de l&#39;essai, des lenteurs de données en séance active et un support parfois lent.</p>
+<p>27 avis, c&#39;est peu pour une plateforme qui revendique 3 millions d&#39;utilisateurs. Je les prends donc comme des signaux, pas comme une vérité statistique.</p>
+<h3>Ce qui revient en positif</h3>
+<ul><li><b>Le Mac et le navigateur</b> : c&#39;est l&#39;argument le plus cité. Pas d&#39;émulation, pas d&#39;installation.</li><li><b>La qualité des graphiques</b> : plusieurs utilisateurs les jugent au niveau de TradingView.</li><li><b>Le prix</b> : moins cher que la plupart des plateformes order flow installées.</li><li><b>La version gratuite généreuse</b> : plus d&#39;indicateurs et de fenêtres que chez beaucoup de concurrents.</li></ul>
+<h3>Ce qui revient en négatif</h3>
+<ul><li><b>La facturation après l&#39;essai</b> : des utilisateurs racontent avoir été prélevés et s&#39;être vu refuser un remboursement. Un utilisateur rapporte que le support lui a répondu, par e-mail, en substance « vous n&#39;avez pas payé l&#39;essai, que devrions-nous rembourser » (« you have not paid for trial what should we refund »). C&#39;est un témoignage d&#39;utilisateur, pas une position publique de l&#39;éditeur.</li><li><b>Des lenteurs de données</b> pendant les séances les plus actives.</li><li><b>Des bugs d&#39;affichage</b> : un utilisateur explique que le graphique « se bloque parfois » et que les couleurs du footprint ne se mettent pas à jour correctement.</li><li><b>Le support</b> : réponses lentes selon certains, réactives selon d&#39;autres, et des réponses de l&#39;éditeur aux avis négatifs qui arrivent souvent plus d&#39;un mois après.</li></ul>
+<h3>La réponse publique de l&#39;éditeur</h3>
+<p>Pour être juste, voici ce que GoCharting répond publiquement sur sa page Trustpilot (trustpilot.com, fiche de www.gocharting.com) : l&#39;essai de 7 jours est une activation séparée, et non un délai de remboursement après un achat. La société reconnaît aussi que sa page de prix aurait dû être plus claire sur ce point. <b>Autrement dit, le malentendu est réel des deux côtés : lis bien ce que tu actives, et à quelle date.</b></p>
+<h3>Comment je lis ces avis</h3>
+<p>Les lenteurs de données, sur le Nasdaq, ce n&#39;est pas un détail. À 15 h 30, heure de Paris, le NQ peut parcourir des dizaines de points en quelques minutes : <b>un footprint qui se fige 3 secondes, c&#39;est un footprint qui te ment au pire moment.</b> Si tu ne connais pas encore les heures d&#39;ouverture et les moments de forte activité, je les détaille dans mon article sur les <a href="https://basstrading.fr/blog/horaires-futures-nasdaq-heure-paris/">horaires des futures Nasdaq à l&#39;heure de Paris</a>.</p>
+<p>C&#39;est pour ça que je ne te dirai jamais « prends GoCharting » ou « fuis GoCharting ». Je te dirai : teste-le à l&#39;ouverture américaine, pas un dimanche soir. Voici comment.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/gocharting-avis/blog-gocharting-avis-3.webp" alt="Chiffres clés des avis GoCharting : note Trustpilot, nombre d&#39;avis, essai et utilisateurs annoncés" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Chiffres relevés le 01/11/2026 sur Trustpilot (version française) et sur le site de l&#39;éditeur (3 millions : chiffre annoncé, non vérifié).</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="comment-tester-gocharting-en-7-jours-san">Comment tester GoCharting en 7 jours sans te faire piéger</h2>
+    <p><b>Pour savoir si GoCharting te convient, teste-le pendant l&#39;essai sur les vraies conditions du Nasdaq : l&#39;ouverture de 15 h 30, avec les données CME en temps réel, et compare-le à ta plateforme actuelle.</b> Voici le protocole que je donnerais à un élève.</p>
+<h3>Le protocole en 5 étapes</h3>
+<ol><li><b>Jour 1 : crée ton compte gratuit.</b> Prends en main l&#39;interface, le Market Profile de base, la navigation. Rien ne presse.</li><li><b>Jour 2 : active l&#39;essai Premium avec les données CME.</b> Note immédiatement la date de fin dans ton agenda, avec un rappel la veille.</li><li><b>Jours 2 à 5 : ouvre le footprint du NQ à l&#39;ouverture.</b> Règle la taille du tick à 0,25, choisis une unité de temps courte, vérifie la lecture des imbalances en diagonale.</li><li><b>Jours 3 à 6 : compare avec une autre source.</b> Si tu as accès à une autre plateforme (même en démo), mets les deux côte à côte sur la même bougie : les volumes doivent être cohérents.</li><li><b>Jour 6 : décide.</b> Si tu gardes, choisis l&#39;abonnement mensuel d&#39;abord. Si tu ne gardes pas, résilie avant la fin et garde une capture d&#39;écran de la confirmation.</li></ol>
+<h3>La checklist pendant l&#39;essai</h3>
+<ul><li>[ ] Le footprint du NQ se met à jour sans à-coups pendant la première demi-heure.</li><li>[ ] Le DOM affiche plusieurs niveaux de chaque côté.</li><li>[ ] Les imbalances sont calculées en diagonale (ou réglables).</li><li>[ ] Le changement de contrat trimestriel (par exemple de décembre à mars) se fait proprement.</li><li>[ ] La connexion à ton courtier fonctionne en démo avant tout ordre réel.</li><li>[ ] Le support répond à une question technique en moins de 48 heures.</li></ul>
+<h3>Les erreurs que je vois souvent</h3>
+<p><b>Erreur n° 1 : tester un week-end.</b> Le marché est fermé ou très calme : tu ne verras jamais si la plateforme tient la charge. Teste en semaine, à 15 h 30.</p>
+<p><b>Erreur n° 2 : payer l&#39;année tout de suite pour la promo.</b> Une remise de 50 % ne vaut rien si tu changes d&#39;outil dans deux mois. Le mensuel coûte plus cher au total, mais il te laisse partir.</p>
+<p><b>Erreur n° 3 : confondre l&#39;outil et la méthode.</b> Je vois des traders changer de plateforme tous les mois en espérant trouver « le » footprint qui rend tout clair. Il n&#39;existe pas. Ce qui rend un footprint clair, c&#39;est de savoir à quel niveau tu l&#39;attends et ce que tu cherches à y voir. Pour poser cette base, mon guide de l&#39;<a href="https://basstrading.fr/blog/order-flow-trading-france/">order flow en France</a> est le meilleur point de départ.</p>
+<h3>Et si tu veux aller plus loin</h3>
+<p>C&#39;est exactement ce que je travaille dans ma formation gratuite : où regarder, quoi attendre à un niveau, et comment le flux confirme ou annule une idée, avec des séances réelles commentées. Tu peux la suivre quelle que soit ta plateforme, GoCharting compris : <a href="https://basstrading.fr/formation-offerte?src=blog&amp;a=gocharting-avis">accéder à la formation gratuite</a>.</p>
+<p>Il reste à répondre à la question de départ : pour qui GoCharting est-il fait ?</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/gocharting-avis/blog-gocharting-avis-4.webp" alt="Les cinq étapes pour tester GoCharting pendant l&#39;essai sur le Nasdaq futures" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Teste en semaine à 15 h 30, heure de Paris, jamais un week-end.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="mon-avis-final-pour-qui-gocharting-est-f">Mon avis final : pour qui GoCharting est fait (et pour qui il ne l&#39;est pas)</h2>
+    <p><b>GoCharting est une bonne porte d&#39;entrée vers l&#39;order flow pour un trader sur Mac ou en déplacement qui veut apprendre le footprint du Nasdaq sans installer de logiciel.</b> Ce n&#39;est pas l&#39;outil que je choisirais pour trader le flux tous les jours à l&#39;ouverture.</p>
+<h3>GoCharting est fait pour toi si…</h3>
+<ul><li>tu travailles sur Mac et tu ne veux pas d&#39;émulation Windows ;</li><li>tu découvres le footprint et le Market Profile, et tu veux voir à quoi ça ressemble avant d&#39;investir dans une grosse plateforme ;</li><li>tu as besoin de consulter tes graphiques sur plusieurs appareils, dont ton téléphone ;</li><li>ton budget est serré et tu veux le temps réel CME pour un prix d&#39;abonnement modéré.</li></ul>
+<h3>GoCharting n&#39;est pas fait pour toi si…</h3>
+<ul><li>tu trades l&#39;ouverture du Nasdaq tous les jours et chaque seconde de décalage compte ;</li><li>tu as besoin de réglages très fins (profils composites, études personnalisées poussées) ;</li><li>ta prop firm n&#39;autorise pas la plateforme ;</li><li>tu cherches surtout une communauté et des milliers de scripts : TradingView fait mieux.</li></ul>
+<h3>Ma note d&#39;ensemble</h3>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Critère</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Mon appréciation</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Accès (Mac, navigateur, mobile)</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">excellent</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Footprint et profils</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">complet en Premium</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Source des données</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">CME licencié, rassurant</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Robustesse en séance active</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">à vérifier pendant l&#39;essai</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Transparence des prix</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">moyenne (prix indicatifs)</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Service client</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">inégal selon les avis</td></tr></tbody></table></div>
+<aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p><b>En résumé</b></p>
+<ul><li>Le gratuit sert à découvrir, le Premium avec les données CME sert à lire le NQ en temps réel.</li><li>La source CME licenciée est le vrai point fort : les chiffres du footprint viennent de la bourse.</li><li>Teste à 15 h 30, en semaine, et compare avec une autre source avant de payer l&#39;année.</li><li>Vérifie ta prop firm avant de connecter un compte d&#39;évaluation.</li><li>L&#39;outil ne fait pas la méthode : il montre le flux, c&#39;est à toi de savoir où le regarder.</li></ul></aside>
+<h3>Ta prochaine action</h3>
+<p>Ce soir, ouvre un compte gratuit, mets un graphique du NQ et repère le POC de la veille sur le Market Profile. Demain à 15 h 30, si tu actives l&#39;essai, regarde comment le footprint réagit quand le prix revient sur ce niveau. <b>Tu apprendras plus en une ouverture qu&#39;en dix tutos.</b></p>
+<p>Et si tu veux comprendre ce que tu regardes vraiment dans chaque case, la suite logique est mon <a href="https://basstrading.fr/blog/footprint-chart-trading/">guide complet du footprint</a>.</p>
+<p><em>Le trading de contrats à terme comporte un risque élevé de perte, pouvant dépasser la mise initiale. Selon <a href="https://www.amf-france.org/sites/institutionnel/files/contenu_simple/rapport_etude_analyse/epargne_prestataire/Etude%20des%20resultats%20des%20investisseurs%20particuliers%20sur%20le%20trading%20de%20CFD%20et%20de%20Forex%20en%20France.pdf">l&#39;étude de l&#39;AMF sur les résultats des particuliers en CFD et Forex</a> (2014), 89 % des clients particuliers ont perdu de l&#39;argent sur quatre ans : les produits à effet de levier ne pardonnent pas l&#39;improvisation. Contenu éducatif, pas un conseil en investissement. Aucun lien de cet article n&#39;est affilié.</em></p>
+
+    <p><a href="https://www.youtube.com/watch?v=FLBONXJWCoM" target="_blank" rel="noopener">▶ Voir la vidéo de Sébastien sur ce sujet</a></p>
+
+    <div class="cta-card cta-aimant">
+      <div class="cta-card-label">Gratuit</div>
+      <h3>La formation offerte : 7 leçons pour lire le marché comme un pro</h3>
+      <p>Accès immédiat et gratuit, en vidéo, à ton rythme. Sans carte bancaire.</p>
+      <a href="https://basstrading.fr/p/formation-offerte/?src=blog-gocharting-avis" class="btn-p">Je la veux →</a>
+    </div>
+    
+  </article>
+</div>
+
+<!-- FAQ -->
+<section class="faq-sec">
+  <div class="sec-center"><div class="sec-label">FAQ</div><h2 class="sec-title">Questions fréquentes</h2></div>
+  <div class="faq-list">
+    <div class="fi"><button class="fq" onclick="tf(this)">GoCharting est-il vraiment gratuit ? <span class="fq-icon">+</span></button><div class="fa"><p>Oui, une formule gratuite existe, sans carte bancaire. Elle donne l&#39;interface, un Market Profile et un Volume Profile de base, et des données en fin de journée sur les marchés américains. Le footprint en temps réel, le Time &amp; Sales, les alertes et le trading depuis le graphique demandent le Premium (page de prix officielle consultée le 01/11/2026).</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Combien coûtent les données CME sur GoCharting ? <span class="fq-icon">+</span></button><div class="fa"><p>Dans son annonce officielle du 26/02/2024, GoCharting affichait 35 $ par mois pour la formule CME Premium (indices et devises, dont le Nasdaq) et 40 $ par mois pour le bundle qui ajoute NYMEX, COMEX et CBOT. La page de prix actuelle parle de tarifs indicatifs : vérifie le montant au moment de payer.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">GoCharting fonctionne-t-il sur Mac ? <span class="fq-icon">+</span></button><div class="fa"><p>Oui. GoCharting tourne dans le navigateur, donc sur Mac sans émulation ni installation, et propose aussi des applications iOS et Android. C&#39;est l&#39;argument le plus cité par les utilisateurs dans les avis publics, et la principale raison de le préférer à une plateforme Windows comme Sierra Chart quand on débute sur Mac.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">GoCharting est-il sûr pour un débutant ? <span class="fq-icon">+</span></button><div class="fa"><p>GoCharting ne garde pas ton argent : tes fonds restent chez ton courtier, la plateforme sert d&#39;écran et envoie tes ordres. Pour débuter, commence sur la formule gratuite puis sur un compte de démonstration, utilise des ordres bracket (stop et objectif attachés) et surveille les prélèvements après l&#39;essai payant.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">GoCharting est-il compatible avec les prop firms ? <span class="fq-icon">+</span></button><div class="fa"><p>GoCharting se connecte à Rithmic et Tradovate, deux connexions très utilisées par les prop firms futures. Mais chaque prop firm choisit les plateformes qu&#39;elle autorise : lis ses conditions ou demande à son support avant de brancher GoCharting sur un compte d&#39;évaluation, sinon tu risques de perdre le compte pour une raison technique.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">GoCharting ou TradingView pour le footprint ? <span class="fq-icon">+</span></button><div class="fa"><p>Pour l&#39;analyse technique classique, les alertes et la communauté, TradingView reste la référence. Pour lire un footprint des futures avec la décomposition bid/ask de chaque tick, GoCharting Premium avec les données CME va plus loin, car l&#39;order flow est au cœur du produit. Teste les deux sur la même bougie du NQ avant de choisir.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Que valent les avis sur GoCharting ? <span class="fq-icon">+</span></button><div class="fa"><p>Au 01/11/2026, GoCharting obtient 3,3/5 sur 27 avis sur fr.trustpilot.com. Les points positifs : graphiques, vitesse, Mac, prix. Les points négatifs : facturation après l&#39;essai, lenteurs de données en séance active, bugs d&#39;affichage et support inégal. Peu d&#39;avis au total : teste toi-même à l&#39;ouverture américaine.</p></div></div>
+  </div>
+</section>
+
+<!-- Related -->
+<section class="related-sec">
+  <div class="sec-center"><div class="sec-label">Continuer la lecture</div><h2 class="sec-title">Articles connexes</h2></div>
+  <div class="related-grid">
+    <a href="/blog/market-profile-guide-complet/" class="related-card"><div class="related-cat">Guide</div><h3>Market Profile : le guide complet pour débutants</h3><p>Value Area, POC, types de journées — tout pour commencer.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/order-flow-trading-france/" class="related-card"><div class="related-cat">Méthode</div><h3>Order Flow Trading : pourquoi personne ne l'enseigne en France</h3><p>Le carnet d'ordres et le flux institutionnel décryptés.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/sierra-chart-configuration/" class="related-card"><div class="related-cat">Tutoriel</div><h3>Sierra Chart : configuration complète</h3><p>Le setup pas à pas pour le Market Profile et le Footprint.</p><span class="related-link">Lire &rarr;</span></a>
+  </div>
+</section>
+
+<!-- serie:debut --><style>.serie-w{background:#FFF;color:#1D1D1F;border-top:1px solid #F5F5F7}.serie{max-width:1060px;margin:0 auto;padding:56px 24px;font-family:inherit;box-sizing:border-box}.serie-l{font-size:.6rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#0066FF;margin-bottom:8px}.serie-w .serie h2{font-size:1.4rem;font-weight:800;letter-spacing:-.5px;color:#1D1D1F!important;margin:0 0 18px;font-family:inherit}.serie ul{list-style:none;padding:0;margin:0 0 22px;display:grid;grid-template-columns:repeat(2,1fr);gap:8px 24px}.serie-w .serie li a{color:#1D1D1F!important;font-size:.9rem;line-height:1.45;text-decoration:none;border-bottom:1px solid #D2D2D7}.serie li a:hover{color:#0066FF}.serie li.pil a{font-weight:700}.serie-o{background:#F5F5F7;border-radius:14px;padding:18px 20px;font-size:.88rem;line-height:1.55;color:#1D1D1F}.serie-w .serie-o a{color:#0066FF!important;font-weight:700}@media(max-width:700px){.serie ul{grid-template-columns:1fr}}</style><div class="serie-w"><aside class="serie" aria-label="Dans la même série"><div class="serie-l">Dans la même série</div><h2>Trouver sa méthode de trading</h2><ul><li class="pil"><a href="/blog/methode-de-trading/">Méthode de trading : comment trouver celle qui te correspond</a></li><li class=""><a href="/blog/types-trading-differences/">Les Types de Trading : Lequel Choisir Selon Votre Profil ? (2026)</a></li><li class=""><a href="/blog/debuter-trading-zero-guide/">Débuter le Trading en Partant de Zéro : Le Guide Concret (2026)</a></li><li class=""><a href="/blog/combien-temps-apprendre-trading/">Combien de Temps Faut-il pour Apprendre le Trading ? (Réponse Honnête)</a></li><li class=""><a href="/blog/devenir-trader-sans-diplome/">Devenir trader sans diplôme : le parcours réaliste (2026)</a></li><li class=""><a href="/blog/livre-trading/">Livre trading : les meilleurs pour apprendre (et l'ordre)</a></li><li class=""><a href="/blog/formation-trading/">Formation trading : contenu, prix, CPF et pièges à éviter</a></li><li class=""><a href="/blog/formation-trading-gratuite/">Formation trading gratuite : ce qu'on apprend sans payer</a></li><li class=""><a href="/blog/quelle-formation-trading-choisir/">Quelle formation trading choisir en 2026 ? 7 critères pour comparer</a></li><li class=""><a href="/blog/arnaque-trading/">Arnaque au trading : les 7 pièges et que faire si tu es victime</a></li><li class=""><a href="/blog/bookmap-heatmap/">Bookmap : lire la heatmap, prix réels et avis de trader</a></li></ul><div class="serie-o"><a href="/formations/">Toutes les formations de Bass</a> : plus de 250 leçons vidéo, du débutant au Market Profile avancé. Pour commencer sans payer : <a href="/p/formation-offerte/?src=serie-gocharting-avis">la formation offerte</a> (7 leçons vidéo).</div></aside></div><!-- serie:fin -->
+<footer class="footer">
+  <div class="ft-top"><div class="ft-logo">BASS</div><div class="ft-cols">
+    <div class="ft-col"><div class="ft-col-title">Programme</div><a href="/formations/">Toutes les formations</a><a href="https://basstrading.fr/#methode">Méthode</a><a href="https://basstrading.fr/#programme">Programme</a><a href="https://basstrading.fr/p/formation-offerte/?src=blog-gocharting-avis-pied">Formation offerte</a></div>
+    <div class="ft-col"><div class="ft-col-title">Ressources</div><a href="/blog/market-profile-guide-complet/">Market Profile</a><a href="/blog/footprint-chart-trading/">Footprint Chart</a><a href="/blog/order-flow-trading-france/">Order Flow</a></div>
+  </div></div>
+  <div class="ft-bottom"><span>&copy; 2026 BASS — Sébastien Constant</span><div><a href="/mentions-legales/">Mentions légales</a><a href="/confidentialite/">Confidentialité</a><a href="/cgv/">CGV</a><a href="mailto:contact@basstrading.fr">Contact</a></div></div>
+</footer>
+<div class="disclaimer">Le trading comporte des risques de perte en capital. Les performances passées ne préjugent pas des performances futures. Ce site ne constitue pas un conseil en investissement.</div>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+const lenis=new Lenis({duration:1.2,easing:t=>Math.min(1,1.001-Math.pow(2,-10*t))});
+function raf(t){lenis.raf(t);requestAnimationFrame(raf)}requestAnimationFrame(raf);
+lenis.on('scroll',ScrollTrigger.update);gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0);
+const tl=gsap.timeline();
+tl.to('.pre-word span',{y:0,opacity:1,duration:.5,stagger:.1,ease:'power3.out',delay:.3}).to('#preLine',{width:'80px',duration:.7,ease:'power2.inOut'},'<+.2').to('.preloader',{yPercent:-100,duration:.8,ease:'power3.inOut',delay:.4}).set('.preloader',{display:'none'}).to('#nav',{opacity:1,y:0,duration:.5},'<+.1');
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);const h=document.documentElement.scrollHeight-window.innerHeight;document.getElementById('readingProgress').style.width=(window.scrollY/h*100)+'%'});
+const tocLinks=document.querySelectorAll('.toc a');const sections=Array.from(tocLinks).map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+window.addEventListener('scroll',()=>{let c='';sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)c=s.id});tocLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+c)})});
+function tf(b){const i=b.closest('.fi'),a=b.nextElementSibling,o=i.classList.contains('active');document.querySelectorAll('.fi').forEach(x=>{x.classList.remove('active');x.querySelector('.fa').classList.remove('open')});if(!o){i.classList.add('active');a.classList.add('open')}}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();lenis.scrollTo(t,{offset:-60})}})});
+</script>
+<script src="/v.js" defer></script>
+</body>
+</html>
