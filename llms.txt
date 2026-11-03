@@ -75,10 +75,11 @@
 - [Arnaque au trading : les 7 pièges et que faire si tu es victime](https://basstrading.fr/blog/arnaque-trading/): Arnaque trading : les 7 pièges que je vois le plus (signaux Telegram, faux courtiers, robots, faux conseillers) et que faire si tu es victime.
 - [Bookmap : lire la heatmap, prix réels et avis de trader](https://basstrading.fr/blog/bookmap-heatmap/): Bookmap expliqué par un trader futures : lire la heatmap, vrai prix avec les données CME, version gratuite, Mac et limites sur le Nasdaq.
 - [GoCharting : mon avis sur l'order flow dans le navigateur](https://basstrading.fr/blog/gocharting-avis/): GoCharting en 2026 : gratuit ou Premium, données CME, footprint et DOM sur le Nasdaq. Mon avis honnête et la comparaison avec TradingView.
+- [MotiveWave avis : prix, version gratuite, Mac et order flow](https://basstrading.fr/blog/motivewave-avis/): MotiveWave avis 2026 : prix réels, version gratuite Community, footprint, Mac et Linux, comparatif avec Quantower et protocole de test en 14 jours.
 - Formation liée : [Toutes les formations de Bass](https://basstrading.fr/formations/), plus de 250 leçons vidéo, du débutant au Market Profile avancé.
 
 ### Futures du Nasdaq et plateformes
-- [Nasdaq futures : c'est quoi le NQ et le MNQ ? Le guide clair](https://basstrading.fr/blog/nasdaq-futures-nq-mnq/) (guide pilier): Nasdaq futures expliqué : ce que sont le NQ et le MNQ, valeur du point, échéances, rollover, horaires et différence avec un CFD. Le guide d'un trader futures.
+- [NQ et MNQ : les futures Nasdaq expliqués simplement](https://basstrading.fr/blog/nasdaq-futures-nq-mnq/) (guide pilier): NQ à 20 $ le point, MNQ à 2 $ : les futures Nasdaq-100 du CME expliqués simplement, ce qucontent=
 - [NQ ou MNQ : quel contrat Nasdaq choisir pour débuter ?](https://basstrading.fr/blog/nq-ou-mnq/): NQ ou MNQ pour débuter sur le Nasdaq : capital par contrat, exposition, marges, liquidité, order flow et le bon moment pour passer au NQ.
 - [Horaires des futures Nasdaq (NQ, MNQ) en heure de Paris](https://basstrading.fr/blog/horaires-futures-nasdaq-heure-paris/): Horaires du Nasdaq futures (NQ, MNQ) en heure de Paris : ouverture, pause, annonces, jours fériés et semaine décalée du 26 au 30 octobre 2026.
 - [Day trading : à quoi ressemble une journée sur les futures](https://basstrading.fr/blog/day-trading-futures/): Day trading : ma journée type sur les futures du Nasdaq heure par heure, les vrais coûts, les chiffres officiels des pertes et les règles pour durer.

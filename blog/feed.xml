@@ -6,8 +6,16 @@
   <link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
   <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/"/>
   <id>https://basstrading.fr/blog/</id>
-  <updated>2026-11-01T00:00:00Z</updated>
+  <updated>2026-11-03T00:00:00Z</updated>
   <author><name>Sébastien Constant (Bass)</name><uri>https://basstrading.fr/auteur/sebastien-constant/</uri></author>
+  <entry>
+    <title>MotiveWave avis : prix, version gratuite, Mac et order flow</title>
+    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/motivewave-avis/"/>
+    <id>https://basstrading.fr/blog/motivewave-avis/</id>
+    <published>2026-11-03T00:00:00Z</published>
+    <updated>2026-11-03T00:00:00Z</updated>
+    <summary>MotiveWave avis 2026 : prix réels, version gratuite Community, footprint, Mac et Linux, comparatif avec Quantower et protocole de test en 14 jours.</summary>
+  </entry>
   <entry>
     <title>GoCharting : mon avis sur l&#x27;order flow dans le navigateur</title>
     <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/gocharting-avis/"/>
@@ -233,12 +241,12 @@
     <summary>Day trading : ma journée type sur les futures du Nasdaq heure par heure, les vrais coûts, les chiffres officiels des pertes et les règles pour durer.</summary>
   </entry>
   <entry>
-    <title>Nasdaq futures : c&#x27;est quoi le NQ et le MNQ ? Le guide clair</title>
+    <title>NQ et MNQ : les futures Nasdaq expliqués simplement</title>
     <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/nasdaq-futures-nq-mnq/"/>
     <id>https://basstrading.fr/blog/nasdaq-futures-nq-mnq/</id>
     <published>2026-10-24T00:00:00Z</published>
     <updated>2026-10-24T00:00:00Z</updated>
-    <summary>Nasdaq futures expliqué : ce que sont le NQ et le MNQ, valeur du point, échéances, rollover, horaires et différence avec un CFD. Le guide d&#x27;un trader futures.</summary>
+    <summary>NQ à 20 $ le point, MNQ à 2 $ : les futures Nasdaq-100 du CME expliqués simplement, ce qucontent=</summary>
   </entry>
   <entry>
     <title>VWAP trading : définition, calcul et lecture sur le Nasdaq</title>
