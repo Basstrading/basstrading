@@ -6,8 +6,16 @@
   <link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
   <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/"/>
   <id>https://basstrading.fr/blog/</id>
-  <updated>2026-11-03T00:00:00Z</updated>
+  <updated>2026-11-04T00:00:00Z</updated>
   <author><name>Sébastien Constant (Bass)</name><uri>https://basstrading.fr/auteur/sebastien-constant/</uri></author>
+  <entry>
+    <title>Take profit : où placer ton objectif sur les futures (exemples MNQ)</title>
+    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/take-profit-trading/"/>
+    <id>https://basstrading.fr/blog/take-profit-trading/</id>
+    <published>2026-11-04T00:00:00Z</published>
+    <updated>2026-11-04T00:00:00Z</updated>
+    <summary>Take profit en trading : définition, différence avec le stop loss, où placer ton objectif sur la structure et comment sortir par paliers sur le MNQ.</summary>
+  </entry>
   <entry>
     <title>MotiveWave avis : prix, version gratuite, Mac et order flow</title>
     <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/motivewave-avis/"/>
