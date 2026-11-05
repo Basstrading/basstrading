@@ -146,6 +146,15 @@ mark{background:rgba(201,168,76,.35);color:inherit;border-radius:3px;padding:0 2
 @media (max-width:600px){h1{font-size:26px}}
 /* téléphone : la barre du haut dépassait de 5 px à 390 px et Chrome dézoomait toute la page (marges latérales seulement : le lecteur compte sur 62 px de haut) */
 @media (max-width:600px){header .in{gap:12px;padding-left:14px;padding-right:14px}header nav{gap:12px}}
+/* téléphone : le menu ne tient pas sur une ligne (logo + 4 entrées = plus de 390 px) et le lecteur compte sur 62 px de haut : il se replie derrière un bouton */
+#menu{display:none;margin-left:auto;width:44px;height:44px;background:none;border:0;color:var(--txt);font-size:24px;cursor:pointer}
+@media (max-width:600px){
+  header .in{padding-top:8px;padding-bottom:8px}
+  #menu{display:block}
+  header nav{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;margin:0;padding:6px 14px;background:var(--panel);border-bottom:1px solid var(--line)}
+  header.ouvert nav{display:flex}
+  header nav a:not([hidden]),header nav button:not([hidden]){display:flex;align-items:center;min-height:44px;padding:0;border:0;font-size:16px;text-align:left}
+}
 /* assistant « Besoin d'aide pour choisir ? » (20/10/2026) : bulle en bas à droite, panneau guidé sans IA ; téléphone d'abord */
 .aide-bulle{position:fixed;right:12px;bottom:12px;z-index:40;display:inline-flex;align-items:center;gap:8px;max-width:calc(100vw - 24px);background:var(--gold);color:#111;border:0;border-radius:999px;padding:12px 18px;font:600 15px 'Outfit';cursor:pointer;box-shadow:0 10px 30px rgba(0,0,0,.55)}
 .aide-bulle:hover{background:var(--gold2)}
@@ -191,6 +200,7 @@ body.aide-ouverte{overflow:hidden}
 </head>
 <body>
 <header><div class="in"><a class="logo" href="#/">BASS <b>TRADING</b></a>
+  <button id="menu" type="button" aria-label="Menu" aria-expanded="false">☰</button>
   <nav><a href="#/" id="nl">Mes formations</a><a href="#/compte" id="nc" hidden>Mon compte</a><a href="/studio/" id="ns" hidden>Studio</a><button id="out" hidden>Se déconnecter</button></nav></div></header>
 <div id="app"><main><p class="sub">Chargement…</p></main></div>
 <script>
@@ -847,6 +857,7 @@ function signalerPresence() {
 setInterval(signalerPresence, 30000);
 document.addEventListener("visibilitychange", signalerPresence);
 document.getElementById("out").onclick = async () => { await post("/auth/deconnexion").catch(() => {}); aide.cacher(); location.hash = ""; login("Tu es déconnecté."); };
+document.querySelector("header").addEventListener("click", e => { const h = e.currentTarget, ouvert = e.target.id === "menu" && !h.classList.contains("ouvert"); h.classList.toggle("ouvert", ouvert); document.getElementById("menu").setAttribute("aria-expanded", ouvert); });
 addEventListener("hashchange", route);
 route();
 </script>

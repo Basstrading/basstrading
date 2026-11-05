@@ -26,7 +26,10 @@ a{color:var(--gold)}
     if (!r.ok) throw await r.json();
     let retour = "/espace/";
     const dest = new URLSearchParams(location.search).get("r");
-    if (dest && /^\/[a-z0-9\/_-]*$/.test(dest)) retour = dest;
+    // ?suite= : page de l'espace à ouvrir après connexion (dans la requête, car la réécriture des liens du mail peut perdre le #)
+    const suite = new URLSearchParams(location.search).get("suite");
+    if (suite && /^\/espace\/#\/[a-z0-9_-]+(\/[a-z0-9_-]+)*(\?reprendre)?$/.test(suite)) retour = suite;
+    else if (dest && /^\/[a-z0-9\/_-]*$/.test(dest)) retour = dest;
     else try { const x = localStorage.getItem("bt_retour"); if (x && x.startsWith("/")) { retour = x; localStorage.removeItem("bt_retour"); } } catch {}
     location.replace(retour);
   } catch (e) {
