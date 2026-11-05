@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DeepCharts avis : prix, Mac, MBO et limites (2026) — BASS Trading</title>
+  <meta name="description" content="DeepCharts avis 2026 : prix réels (licence, DeepDom, flux), Mac ou Windows, MBO vs MBP, prop firms et limites, par un trader order flow futures.">
+  <meta property="og:title" content="DeepCharts avis : prix, Mac, MBO et limites (2026) — BASS Trading">
+  <meta property="og:description" content="DeepCharts avis 2026 : prix réels (licence, DeepDom, flux), Mac ou Windows, MBO vs MBP, prop firms et limites, par un trader order flow futures.">
+  <meta property="og:image" content="https://basstrading.fr/blog/deepcharts-avis/blog-deepcharts-avis-1.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://basstrading.fr/blog/deepcharts-avis/blog-deepcharts-avis-1.webp">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://basstrading.fr/blog/deepcharts-avis/">
+  <meta property="og:site_name" content="BASS Trading">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://basstrading.fr/blog/deepcharts-avis/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","@id":"https://basstrading.fr/blog/deepcharts-avis/#article","headline":"DeepCharts avis : prix, Mac, MBO et limites (2026)","description":"DeepCharts avis 2026 : prix réels (licence, DeepDom, flux), Mac ou Windows, MBO vs MBP, prop firms et limites, par un trader order flow futures.","datePublished":"2026-11-05","dateModified":"2026-11-05","inLanguage":"fr-FR","image":"https://basstrading.fr/blog/deepcharts-avis/blog-deepcharts-avis-1.webp","mainEntityOfPage":"https://basstrading.fr/blog/deepcharts-avis/","isPartOf":{"@type":"WebSite","@id":"https://basstrading.fr/#website","name":"BASS Trading","url":"https://basstrading.fr/"},"author":{"@type":"Person","@id":"https://basstrading.fr/#sebastien-constant","name":"Sébastien Constant","url":"https://basstrading.fr/auteur/sebastien-constant/"},"publisher":{"@type":"Organization","@id":"https://basstrading.fr/#organisation","name":"BASS Trading","url":"https://basstrading.fr/","logo":{"@type":"ImageObject","url":"https://basstrading.fr/images/logo-basstrading.png","width":512,"height":512}}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://basstrading.fr"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://basstrading.fr/blog/"},{"@type":"ListItem","position":3,"name":"DeepCharts avis","item":"https://basstrading.fr/blog/deepcharts-avis/"}]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"DeepCharts est-il gratuit ?","acceptedAnswer":{"@type":"Answer","text":"Non. Il n'existe pas de formule gratuite pour trader : la licence DeepChart coûte de 45 à 125 $ par mois selon la page officielle relevée le 03/11/2026, et DeepDom (la heatmap) 39 $ de plus. Les formules Advanced et Pro offrent 3 mois d'essai de DeepDom aux nouveaux clients, ensuite il faut le payer. L'éditeur fournit un flux différé de 15 minutes pour découvrir l'interface, mais le temps réel demande un flux payant chez dxFeed, Rithmic ou CQG."}},{"@type":"Question","name":"DeepCharts fonctionne-t-il sur Mac ?","acceptedAnswer":{"@type":"Answer","text":"Pas en natif. DeepChart et DeepDom sont des applications Windows ; sur Mac, il faut passer par une machine virtuelle comme Parallels, avec une licence Windows. Avec un flux MBO sur le Nasdaq, prévois une machine puissante, car la virtualisation partage le processeur et la mémoire avec macOS."}},{"@type":"Question","name":"Quel flux de données faut-il pour DeepCharts ?","acceptedAnswer":{"@type":"Answer","text":"DeepCharts se branche sur dxFeed, Rithmic ou CQG. Pour les fonctions MBO (ordres individuels, icebergs, Deep Trades), l'éditeur indique que seuls dxFeed Market Depth et Rithmic Market Depth conviennent. Le mode MBP de la heatmap fonctionne avec tous les flux et suffit pour commencer."}},{"@type":"Question","name":"DeepCharts est-il meilleur que NinjaTrader ?","acceptedAnswer":{"@type":"Answer","text":"Ce ne sont pas les mêmes outils. DeepCharts est spécialisé dans l'order flow (footprint, heatmap, MBO) et se prend en main vite. NinjaTrader est d'abord une plateforme d'exécution, programmable, avec un order flow avancé souvent en option. Si tu veux coder tes indicateurs, NinjaTrader ou Sierra Chart vont plus loin."}},{"@type":"Question","name":"Quelle formule DeepCharts choisir ?","acceptedAnswer":{"@type":"Answer","text":"Pour lire le footprint, la formule Orderflow (45 $ par mois) couvre l'essentiel. Advanced (69 $) ajoute Deep Trades, Deep Replay, le Pattern Builder et l'Advanced DOM ; Pro (125 $) sert surtout à ceux qui travaillent le gamma et les flux d'options. La heatmap demande DeepDom en plus. Les formules Advanced et Pro offrent 3 mois d'essai de DeepDom aux nouveaux clients, ensuite il faut le payer."}},{"@type":"Question","name":"Peut-on utiliser DeepCharts sur un compte de prop firm ?","acceptedAnswer":{"@type":"Answer","text":"Oui, via Rithmic, le fournisseur de la plupart des prop firms de futures. Il faut signer les accords électroniques chez Rithmic avant la connexion. Il est rare qu'une prop firm inclue l'accès au logiciel : vérifie-le dans ses conditions avant de prendre une licence, et lis les règles de drawdown de ton évaluation."}},{"@type":"Question","name":"Quelles prop firms sont compatibles avec DeepCharts ?","acceptedAnswer":{"@type":"Answer","text":"Celles qui te fournissent un compte Rithmic : l'aide officielle de DeepCharts décrit la connexion d'un compte Rithmic de prop firm, avec la signature des accords électroniques avant la première connexion, puis la saisie des identifiants. Avant de t'inscrire, vérifie dans les conditions quel fournisseur de données la prop firm utilise et si ton flux est MBO : sans MBO, tu n'auras ni Deep Trades ni la heatmap en mode MBO."}}]}
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{--bk:#1D1D1F;--bk2:#111;--bk3:#0A0A0A;--g1:#6E6E73;--g2:#86868B;--g3:#D2D2D7;--g4:#F5F5F7;--wh:#FBFBFD;--pure:#FFF;--green:#00B67A;--blue:#0066FF}
+    html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}
+    body{font-family:'DM Sans',sans-serif;color:var(--bk);background:var(--pure);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+    .preloader{position:fixed;inset:0;background:var(--bk3);z-index:10001;display:flex;align-items:center;justify-content:center}
+    .pre-word{font-family:'Outfit',sans-serif;font-size:clamp(3rem,8vw,5rem);font-weight:900;letter-spacing:16px;text-transform:uppercase;color:var(--pure);overflow:hidden}
+    .pre-word span{display:inline-block;transform:translateY(110%);opacity:0}
+    .pre-line{width:0;height:1px;background:rgba(255,255,255,.3);margin-top:20px}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 48px;display:flex;align-items:center;justify-content:space-between;background:rgba(245,245,247,.85);backdrop-filter:blur(20px) saturate(1.8);border-bottom:1px solid rgba(0,0,0,.04);transition:background .4s}
+    .nav-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase;color:var(--bk)}
+    .nav-links{display:flex;gap:28px;list-style:none}.nav-links a{font-size:.74rem;font-weight:500;letter-spacing:.3px;color:var(--g1);transition:color .3s}.nav-links a:hover{color:var(--bk)}
+    .nav-cta{padding:8px 20px;background:var(--bk);color:var(--pure);border:none;border-radius:980px;font-size:.72rem;font-weight:600;transition:all .3s;cursor:pointer;text-decoration:none;display:inline-block}.nav-cta:hover{background:var(--bk2)}
+    .blog-hero{padding:160px 48px 80px;background:var(--g4);position:relative;overflow:hidden}
+    .blog-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,transparent,var(--g4));pointer-events:none}
+    .blog-hero-inner{max-width:720px;margin:0 auto}
+    .breadcrumb{display:flex;gap:8px;align-items:center;margin-bottom:28px;flex-wrap:wrap}
+    .breadcrumb a,.breadcrumb span{font-size:.68rem;font-weight:500;letter-spacing:.3px;color:var(--g2);transition:color .3s}.breadcrumb a:hover{color:var(--bk)}.breadcrumb .sep{color:var(--g3)}
+    .blog-hero-cat{display:inline-block;padding:5px 14px;border:1px solid rgba(0,102,255,.15);border-radius:980px;font-size:.6rem;font-weight:700;color:var(--blue);letter-spacing:2px;text-transform:uppercase;margin-bottom:20px}
+    .blog-hero-title{font-family:'Outfit',sans-serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:900;line-height:1.05;letter-spacing:-2px;color:var(--bk);margin-bottom:20px}
+    .blog-hero-desc{font-size:.95rem;color:var(--g1);line-height:1.8;max-width:560px;margin-bottom:28px}
+    .blog-meta{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+    .blog-meta-author{display:flex;align-items:center;gap:10px}
+    .blog-meta-avatar{width:36px;height:36px;border-radius:50%;background:var(--bk3);overflow:hidden;flex-shrink:0}.blog-meta-avatar img{width:100%;height:100%;object-fit:cover}
+    .blog-meta-name{font-size:.78rem;font-weight:600;color:var(--bk)}.blog-meta-role{font-size:.65rem;color:var(--g2)}
+    .blog-meta-sep{width:1px;height:24px;background:var(--g3)}
+    .blog-meta-info{font-size:.7rem;color:var(--g2)}.blog-meta-info span{margin-right:16px}
+    .toc{position:sticky;top:90px;background:var(--pure);border:1px solid rgba(0,0,0,.04);border-radius:14px;padding:24px;margin-bottom:32px}
+    .toc-title{font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.5px;color:var(--bk);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+    .toc ol{list-style:none;counter-reset:toc}.toc li{counter-increment:toc}
+    .toc li a{display:flex;align-items:baseline;gap:8px;padding:6px 0;font-size:.76rem;color:var(--g1);transition:color .3s;border-bottom:1px solid rgba(0,0,0,.03)}.toc li a:hover{color:var(--blue)}
+    .toc li a::before{content:counter(toc,decimal-leading-zero);font-family:'Outfit',sans-serif;font-size:.65rem;font-weight:700;color:var(--g3);min-width:18px}
+    .toc li:last-child a{border-bottom:none}.toc li a.active{color:var(--blue);font-weight:600}.toc li a.active::before{color:var(--blue)}
+    .article-wrap{display:grid;grid-template-columns:220px 1fr;gap:40px;max-width:1020px;margin:0 auto;padding:60px 48px 120px}
+    .article-sidebar{position:relative}.article-body{max-width:700px}
+    .article-body h2{font-family:'Outfit',sans-serif;font-size:clamp(1.4rem,2.5vw,1.8rem);font-weight:800;line-height:1.1;letter-spacing:-1px;color:var(--bk);margin:56px 0 16px;padding-top:20px}.article-body h2:first-of-type{margin-top:0}
+    .article-body h3{font-family:'Outfit',sans-serif;font-size:1.05rem;font-weight:700;line-height:1.25;letter-spacing:-.3px;color:var(--bk);margin:36px 0 10px}
+    .article-body p{font-size:.9rem;color:var(--g1);line-height:1.85;margin-bottom:18px}
+    .article-body strong{color:var(--bk);font-weight:600}
+    .article-body ul,.article-body ol{margin:0 0 20px 0;padding-left:20px}
+    .article-body li{font-size:.88rem;color:var(--g1);line-height:1.8;margin-bottom:6px}.article-body li strong{color:var(--bk)}
+    .article-body blockquote{margin:28px 0;padding:20px 24px;background:var(--g4);border-left:3px solid var(--bk);border-radius:0 12px 12px 0;font-size:.88rem;color:var(--g1);line-height:1.8;font-style:italic}
+    .article-body blockquote strong{color:var(--bk);font-style:normal}
+    .article-body hr{border:none;border-top:1px solid var(--g4);margin:48px 0}
+    .info-box{margin:28px 0;padding:24px;background:rgba(0,102,255,.03);border:1px solid rgba(0,102,255,.08);border-radius:14px}
+    .info-box-title{font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:700;color:var(--blue);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+    .info-box p{font-size:.82rem;color:var(--g1);line-height:1.7;margin-bottom:0}
+    .key-concept{margin:32px 0;padding:28px;background:var(--bk3);border-radius:16px;color:var(--pure)}
+    .key-concept-label{font-size:.55rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:10px}
+    .key-concept h4{font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:800;letter-spacing:-.3px;margin-bottom:8px}
+    .key-concept p{font-size:.85rem;color:rgba(255,255,255,.5);line-height:1.8;margin-bottom:0}
+    .compare-table{width:100%;margin:24px 0 28px;border-collapse:collapse;border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,.06)}
+    .compare-table th{background:var(--bk3);color:var(--pure);font-family:'Outfit',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:14px 16px;text-align:left}
+    .compare-table td{padding:12px 16px;font-size:.82rem;color:var(--g1);line-height:1.6;border-bottom:1px solid rgba(0,0,0,.04);background:var(--pure)}
+    .compare-table tr:last-child td{border-bottom:none}.compare-table td:first-child{font-weight:600;color:var(--bk)}
+    .cta-card{margin:48px 0;padding:40px;background:var(--bk3);border-radius:20px;text-align:center;position:relative;overflow:hidden}
+    .cta-card::before{content:'';position:absolute;top:-50%;right:-30%;width:400px;height:400px;background:radial-gradient(circle,rgba(0,102,255,.08) 0%,transparent 70%);pointer-events:none}
+    .cta-card-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:12px}
+    .cta-card h3{font-family:'Outfit',sans-serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:800;color:var(--pure);letter-spacing:-.5px;margin-bottom:8px}
+    .cta-card p{font-size:.85rem;color:rgba(255,255,255,.4);line-height:1.7;max-width:380px;margin:0 auto 24px}
+    .cta-card .btn-p{background:var(--pure);color:var(--bk)}.cta-card .btn-p:hover{box-shadow:0 8px 30px rgba(255,255,255,.15)}
+    .faq-sec{padding:80px 48px 100px;background:var(--g4)}
+    .faq-list{max-width:680px;margin:40px auto 0}.fi{border-bottom:1px solid rgba(0,0,0,.06)}
+    .fq{width:100%;text-align:left;padding:18px 0;background:none;border:none;font-size:.85rem;font-weight:600;font-family:'DM Sans',sans-serif;color:var(--bk);display:flex;justify-content:space-between;align-items:center;cursor:pointer;gap:16px;transition:color .3s}.fq:hover{color:var(--g1)}
+    .fq-icon{width:22px;height:22px;border-radius:50%;background:rgba(0,0,0,.04);display:flex;align-items:center;justify-content:center;font-size:.75rem;transition:all .4s;flex-shrink:0;color:var(--g2)}
+    .fa{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1)}.fa.open{max-height:280px;padding-bottom:14px}
+    .fa p{font-size:.8rem;color:var(--g1);line-height:1.7;margin-bottom:0}.fi.active .fq-icon{background:var(--bk);color:var(--pure);transform:rotate(45deg)}
+    .related-sec{padding:80px 48px;background:var(--pure);border-top:1px solid var(--g4)}
+    .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1060px;margin:40px auto 0}
+    .related-card{display:block;padding:28px;background:var(--g4);border-radius:16px;transition:all .4s;text-decoration:none;color:var(--bk)}
+    .related-card:hover{background:var(--pure);box-shadow:0 8px 30px rgba(0,0,0,.06);transform:translateY(-2px)}
+    .related-cat{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+    .related-card h3{font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:700;line-height:1.3;letter-spacing:-.3px;margin-bottom:8px}
+    .related-card p{font-size:.78rem;color:var(--g1);line-height:1.6;margin-bottom:14px}
+    .related-link{font-size:.72rem;font-weight:600;color:var(--blue);letter-spacing:.3px}
+    .footer{background:var(--bk3);color:var(--pure);padding:56px 48px 28px}
+    .ft-top{display:flex;justify-content:space-between;align-items:start;margin-bottom:48px;flex-wrap:wrap;gap:32px}
+    .ft-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase}
+    .ft-cols{display:flex;gap:80px}
+    .ft-col-title{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:12px}
+    .ft-col a{display:block;font-size:.78rem;color:rgba(255,255,255,.5);margin-bottom:8px;transition:color .3s}.ft-col a:hover{color:var(--pure)}
+    .ft-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:20px;display:flex;justify-content:space-between;align-items:center;font-size:.6rem;color:rgba(255,255,255,.2)}
+    .ft-bottom a{color:rgba(255,255,255,.2);transition:color .3s;margin-left:20px}.ft-bottom a:hover{color:rgba(255,255,255,.5)}
+    .disclaimer{padding:12px 48px;background:var(--bk3);font-size:.58rem;color:rgba(255,255,255,.12);text-align:center;line-height:1.6;border-top:1px solid rgba(255,255,255,.03)}
+    .sec-center{text-align:center;max-width:680px;margin:0 auto}
+    .sec-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--g2);margin-bottom:10px}
+    .sec-title{font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;line-height:1.05;letter-spacing:-1.5px;color:var(--bk);margin-bottom:16px}
+    .btn-p{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--bk);color:var(--pure);border-radius:980px;font-size:.85rem;font-weight:600;transition:all .3s;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;text-decoration:none}
+    .btn-p:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(0,0,0,.1)}
+    .btn-p svg{width:13px;height:13px;transition:transform .3s}.btn-p:hover svg{transform:translateX(3px)}
+    .reading-progress{position:fixed;top:0;left:0;height:2px;background:var(--blue);z-index:9999;width:0;transition:width .1s linear}
+    @media(max-width:900px){.nav{padding:14px 20px}.nav-links{display:none}.blog-hero{padding:120px 20px 60px}.article-wrap{grid-template-columns:1fr;padding:40px 20px 80px}.article-sidebar{display:none}.related-grid{grid-template-columns:1fr}.related-sec,.faq-sec{padding:60px 20px}.ft-cols{flex-direction:column;gap:28px}.footer{padding:40px 20px 20px}.disclaimer{padding:10px 16px}.cta-card{padding:28px 20px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  .article-body a{color:var(--blue);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;font-weight:500}.article-body a:hover{text-decoration-thickness:2px}
+</style>
+<style>/* 28/10/2026 : débordement mobile (colonne de grille sans min-width) */.article-wrap>*,.article-layout>*{min-width:0}.article-body table,.compare-table{display:block;overflow-x:auto;max-width:100%}.article-body pre{overflow-x:auto}.article-body img{max-width:100%;height:auto}</style>
+</head>
+<body>
+
+<div class="preloader" id="preloader"><div style="text-align:center"><div class="pre-word"><span>B</span><span>A</span><span>S</span><span>S</span></div><div class="pre-line" id="preLine"></div></div></div>
+<div class="reading-progress" id="readingProgress"></div>
+
+<nav class="nav" id="nav">
+  <a href="https://basstrading.fr" class="nav-logo">BASS</a>
+  <ul class="nav-links">
+    <li><a href="https://basstrading.fr/#methode">Méthode</a></li>
+    <li><a href="https://basstrading.fr#resultats">Résultats</a></li>
+    <li><a href="https://basstrading.fr#avis">Avis</a></li>
+    <li><a href="https://basstrading.fr#faq">FAQ</a></li>
+    <li><a href="/formations/">Formations</a></li>
+    <li><a href="https://basstrading.fr/blog/">Blog</a></li>
+  </ul>
+  <a href="https://basstrading.fr/p/formation-offerte/?src=blog-deepcharts-avis-menu" class="nav-cta">Formation offerte</a>
+</nav>
+
+<section class="blog-hero">
+  <div class="blog-hero-inner">
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <a href="https://basstrading.fr">Accueil</a><span class="sep">/</span>
+      <a href="https://basstrading.fr/blog/">Blog</a><span class="sep">/</span>
+      <span>DeepCharts avis</span>
+    </nav>
+    <div class="blog-hero-cat">Plateformes</div>
+    <h1 class="blog-hero-title">DeepCharts avis : prix, Mac, MBO et limites (2026)</h1>
+    <p class="blog-hero-desc">DeepCharts est une plateforme order flow pour les futures, née chez les prop traders : footprint, heatmap, données MBO. En 2026, la licence coûte de 45 à 125 $ par mois, plus DeepDom (39 $) pour la heatmap et le flux de données. Elle tourne sous Windows seulement. Je te dis pour qui elle vaut le coup, et pour qui c&#39;est de l&#39;argent jeté.</p>
+    <div class="blog-meta">
+      <div class="blog-meta-author">
+        <div class="blog-meta-avatar"><img src="../../images/bass-presenting.jpg" alt="Sébastien Constant" loading="lazy"></div>
+        <div><div class="blog-meta-name"><a href="/auteur/sebastien-constant/" rel="author" style="color:inherit;text-decoration:none">Sébastien Constant</a></div><div class="blog-meta-role">Trader & Formateur Order Flow</div></div>
+      </div>
+      <div class="blog-meta-sep"></div>
+      <div class="blog-meta-info"><span>Novembre 2026</span><span>16 min de lecture</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="article-wrap">
+  <aside class="article-sidebar">
+    <div class="toc">
+      <div class="toc-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/></svg> Sommaire</div>
+      <ol>
+        <li><a href="#pourquoi-je-te-donne-un-avis-sur-deepcha">Pourquoi je te donne un avis sur DeepCharts sans l&#39;utiliser au quotidien</a></li>
+        <li><a href="#deepcharts-c-est-quoi-exactement">DeepCharts, c&#39;est quoi exactement ?</a></li>
+        <li><a href="#combien-coute-vraiment-deepcharts-en-202">Combien coûte vraiment DeepCharts en 2026 ?</a></li>
+        <li><a href="#deepcharts-fonctionne-t-il-sur-mac-ou-da">DeepCharts fonctionne-t-il sur Mac ou dans un navigateur ?</a></li>
+        <li><a href="#mbp-ou-mbo-quelles-donnees-faut-il-a-dee">MBP ou MBO : quelles données faut-il à DeepCharts ?</a></li>
+        <li><a href="#la-heatmap-lit-elle-le-carnet-d-ordres-a">La heatmap lit-elle le carnet d&#39;ordres à ta place ?</a></li>
+        <li><a href="#rappel-sur-le-risque-avant-d-aller-plus-">Rappel sur le risque avant d&#39;aller plus loin</a></li>
+        <li><a href="#peut-on-utiliser-deepcharts-avec-une-pro">Peut-on utiliser DeepCharts avec une prop firm ?</a></li>
+        <li><a href="#deepcharts-face-a-bookmap-ninjatrader-et">DeepCharts face à Bookmap, NinjaTrader et Sierra Chart</a></li>
+        <li><a href="#quelles-sont-les-limites-de-deepcharts">Quelles sont les limites de DeepCharts ?</a></li>
+        <li><a href="#deepcharts-vaut-il-le-coup-mon-verdict-s">DeepCharts vaut-il le coup ? Mon verdict selon ton profil</a></li>
+        <li><a href="#en-resume-ce-qu-il-faut-retenir-de-deepc">En résumé : ce qu&#39;il faut retenir de DeepCharts</a></li>
+      </ol>
+    </div>
+  </aside>
+
+  <article class="article-body">
+    <h2 id="pourquoi-je-te-donne-un-avis-sur-deepcha">Pourquoi je te donne un avis sur DeepCharts sans l&#39;utiliser au quotidien</h2>
+    <p>Tu as vu passer DeepCharts dans une vidéo d&#39;un prop trader, avec ses heatmaps rouges et ses gros trades qui clignotent, et tu te demandes si c&#39;est l&#39;outil qui te manque pour enfin lire le carnet d&#39;ordres. À la fin de cet article, tu sauras combien il coûte vraiment, sur quel ordinateur il tourne, quelles données il lui faut et surtout si ton niveau actuel justifie la dépense.</p>
+<p>Je préfère être clair tout de suite : mon installation est Sierra Chart, et je ne trade pas avec DeepCharts. Je ne suis ni affilié ni payé par l&#39;éditeur, il n&#39;y a aucun code promo dans cette page. Ce que je t&#39;apporte, c&#39;est le regard d&#39;un trader de futures qui lit le carnet d&#39;ordres et le footprint tous les jours, et qui sait ce qu&#39;un logiciel doit faire (et ne fera jamais) à ta place.</p>
+<p>Pour cet avis, j&#39;ai lu les pages officielles de l&#39;éditeur (prix, aide en ligne, notes de version), relevées le 03/11/2026, et les retours publics d&#39;utilisateurs. Chaque prix et chaque fonction cités ici renvoient à leur source.</p>
+<p>Commençons par le plus simple : qu&#39;est-ce que c&#39;est, exactement ?</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/deepcharts-avis/blog-deepcharts-avis-1.webp" alt="Repères clés de DeepCharts en 2026 : PC Windows seulement, futures CME et Eurex, données MBO requises, footprint et DeepDom vendus séparément" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Quatre repères à connaître avant d&#39;installer DeepCharts : le système, les marchés, le flux de données et le double achat.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="deepcharts-c-est-quoi-exactement">DeepCharts, c&#39;est quoi exactement ?</h2>
+    <p>DeepCharts est une suite de logiciels d&#39;analyse order flow pour les contrats à terme, qui affiche footprint, profils de volume et de delta, gros trades et carnet d&#39;ordres en heatmap, à partir de données de marché détaillées comme le MBO.</p>
+<p>Le nom désigne en fait une famille de produits, et c&#39;est la première source de confusion. Le cœur s&#39;appelle DeepChart : c&#39;est la plateforme graphique, avec le footprint, le Volume Profile, le Delta Profile, les « Big Trades » et des indicateurs liés aux options (gamma). À côté, DeepDom est un logiciel séparé dédié au carnet d&#39;ordres : heatmap, suivi de la liquidité, détection d&#39;icebergs. Il existe aussi DeepGamma, orienté options.</p>
+<p>La marque s&#39;est fait connaître chez les traders de prop firms, notamment par la communauté animée autour du trader Fabio Valentini, souvent cité dans les avis. C&#39;est un point important : le logiciel est pensé pour le scalping et le day trading de futures, sur les marchés du CME et d&#39;Eurex, pas pour l&#39;investissement ou les actions au comptant.</p>
+<h3>Ce que DeepCharts n&#39;est pas</h3>
+<p>Ce n&#39;est pas un courtier. Tu ne passes pas d&#39;ordres « chez DeepCharts » : tu y branches ton compte (chez un courtier ou une prop firm) via un fournisseur de données comme Rithmic, CQG ou dxFeed. Si tu hésites encore sur le courtier, je donne mon <a href="https://basstrading.fr/blog/tradovate-avis/">avis sur Tradovate</a>. Ce n&#39;est pas non plus une méthode. Le logiciel affiche le flux ; la décision reste à toi.</p>
+<p>Si le footprint ou le carnet d&#39;ordres sont encore flous pour toi, lis d&#39;abord mon <a href="https://basstrading.fr/blog/footprint-chart-trading/">guide du footprint chart</a> : tu comprendras ce que DeepCharts dessine avant de payer pour le voir.</p>
+<p>Maintenant, le sujet qui fâche : le prix.</p>
+
+    <hr>
+
+    <h2 id="combien-coute-vraiment-deepcharts-en-202">Combien coûte vraiment DeepCharts en 2026 ?</h2>
+    <p>La licence DeepChart coûte de 45 à 125 $ par mois selon la formule, d&#39;après la <a href="https://www.deepcharts.com/pricing/deepchart">page de prix officielle de DeepChart</a> relevée le 03/11/2026. Mais ce chiffre ne dit pas tout : pour la heatmap, il faut ajouter DeepDom, et pour voir le marché en temps réel, il faut payer un flux de données.</p>
+<h3>Les trois formules de DeepChart</h3>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Formule</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Prix</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Ce qu&#39;elle ajoute</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Orderflow</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">45 $/mois (540 $/an)</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Footprint, Volume et Delta Profile, Big Trades, Gamma</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Advanced</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">69 $/mois (828 $/an)</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Deep Trades, Pattern Builder &amp; Auto-Backtester, Deep Replay, Advanced DOM, Trade Copier (bêta), essai DeepDom de 3 mois pour les nouveaux utilisateurs</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Pro</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">125 $/mois (1 500 $/an)</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Tout Advanced, plus Real Gamma, GEX, flux d&#39;options</td></tr></tbody></table></div>
+<p>L&#39;éditeur propose des engagements de 1, 3 ou 6 mois, ou d&#39;un an. Il n&#39;y a pas de formule gratuite au sens strict : un flux différé de 15 minutes est fourni, utile pour découvrir l&#39;interface, inutile pour trader.</p>
+<h3>Le module carnet : DeepDom</h3>
+<p>La heatmap qui fait la réputation de la marque n&#39;est pas dans DeepChart : elle est dans DeepDom, vendu à part 39 $ par mois (468 $ facturés à l&#39;année), avec une option de licence à vie, selon la <a href="https://www.deepcharts.com/pricing/deepdom">page de prix de DeepDom</a>. On y trouve la heatmap, le Liquidity Tracker, les Stopruns, l&#39;Iceberg Detector, un indicateur de régime de marché, des indicateurs MBO et un journal avec backtest.</p>
+<p>Attention aux sources : certains sites affichent encore d&#39;anciens tarifs (59, 79 ou 125 $). Je m&#39;en tiens à la page officielle du jour. Vérifie toujours le prix chez l&#39;éditeur avant de t&#39;abonner, il a déjà changé en 2026.</p>
+<h3>Le troisième morceau : le flux de données</h3>
+<p>C&#39;est le coût que personne ne met en avant. Pour le temps réel, DeepCharts se branche sur dxFeed, Rithmic ou CQG. Le prix de ce flux et de l&#39;abonnement aux données du CME n&#39;est pas affiché par DeepCharts : il dépend de ton fournisseur et de ton statut (particulier ou professionnel). Si tu trades en prop firm, le flux est parfois inclus dans ton évaluation ; sinon, compte un abonnement mensuel en plus.</p>
+<h3>Le calcul honnête</h3>
+<p>Pour avoir le footprint ET la heatmap, tu paies au minimum 45 $ + 39 $, soit 84 $ par mois avant le flux. En Advanced, les 3 premiers mois de DeepDom sont offerts aux nouveaux clients : tu paies 69 $ pendant ces 3 mois, ensuite 108 $ par mois. Sur un an, c&#39;est un budget qui se compare à une bonne partie de ton capital de départ si tu commences.</p>
+<p>C&#39;est là que je te pose la seule question qui compte : est-ce que ce budget te rapportera une meilleure lecture, ou juste un écran plus coloré ? Pour y répondre, il faut savoir d&#39;abord sur quoi tourne le logiciel.</p>
+<aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p><b>À retenir</b></p>
+<ul><li>Licence DeepChart : 45, 69 ou 125 $ par mois (page officielle, 03/11/2026).</li><li>Heatmap = DeepDom, produit séparé à 39 $ par mois ; 3 mois d&#39;essai offerts aux nouveaux clients en Advanced et Pro.</li><li>Le flux de données temps réel se paie en plus, chez le fournisseur.</li><li>Footprint + heatmap : 84 $ par mois minimum, hors flux.</li></ul></aside>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/deepcharts-avis/blog-deepcharts-avis-2.webp" alt="Prix de DeepCharts en 2026 : DeepChart 45, 69 ou 125 dollars par mois et DeepDom 39 dollars par mois" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Prix officiels relevés le 03/11/2026, hors flux de données temps réel.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="deepcharts-fonctionne-t-il-sur-mac-ou-da">DeepCharts fonctionne-t-il sur Mac ou dans un navigateur ?</h2>
+    <p>Non : DeepChart et DeepDom sont des applications Windows. L&#39;éditeur l&#39;écrit noir sur blanc pour DeepDom (« Available for Windows only »). Sur Mac, la seule voie proposée est de faire tourner Windows dans une machine virtuelle, avec Parallels.</p>
+<p>La confusion vient de deux choses. D&#39;abord, la suggestion Google « deepcharts web » : il existe bien un produit consultable dans le navigateur, DeepGamma Web, mais il est orienté options et ne remplace pas la plateforme order flow. Ensuite, beaucoup de vidéos montrent DeepCharts sur des écrans de MacBook, ce qui laisse croire à une version native.</p>
+<h3>Ce que ça change pour toi</h3>
+<p>Sur Mac avec Parallels, ça fonctionne, mais pense à trois choses :</p>
+<ul><li>la puissance : un flux MBO sur le Nasdaq envoie énormément de messages, et la machine virtuelle partage le processeur et la mémoire avec macOS ;</li><li>la licence Windows et Parallels : deux coûts de plus à ajouter au calcul précédent ;</li><li>la stabilité : en scalping, un gel d&#39;écran de deux secondes au mauvais moment coûte plus cher qu&#39;un abonnement.</li></ul>
+<p>Le CME l&#39;avait annoncé dès son <a href="https://www.cmegroup.com/notices/electronic-trading/2017/01/20170116.html">avis du 16/01/2017 sur le lancement du Market By Order</a> : avec le MBO, la bande passante du flux allait augmenter de 30 à 40 %, et le nombre de paquets par milliseconde aux heures de pointe de 40 à 50 %. Ce n&#39;est pas un détail : ce sont exactement les données que DeepCharts met en avant.</p>
+<h3>Mon conseil matériel</h3>
+<p>Si tu es sur Mac et que tu débutes, ne bâtis pas toute ton installation autour d&#39;un logiciel qui n&#39;est pas fait pour ta machine. Apprends d&#39;abord à lire le flux sur un outil léger ; je t&#39;explique comment voir un <a href="https://basstrading.fr/blog/footprint-tradingview/">footprint sur TradingView</a>, avec ses limites. Tu passeras à une plateforme Windows dédiée le jour où ta lecture le justifiera.</p>
+<p>Et ce jour-là, la vraie question sera celle des données. C&#39;est là que DeepCharts se distingue vraiment.</p>
+
+    <hr>
+
+    <h2 id="mbp-ou-mbo-quelles-donnees-faut-il-a-dee">MBP ou MBO : quelles données faut-il à DeepCharts ?</h2>
+    <p>La force de DeepCharts, c&#39;est le MBO (Market By Order). Le MBP (Market By Price) te dit combien de contrats attendent à chaque prix ; le MBO te montre chaque ordre individuellement, sa taille et sa place dans la file. L&#39;aide officielle de DeepDom le résume en une phrase que je trouve juste : « MBP tells you how much is at a price level. MBO tells you who is at that price level and how they are behaving. »</p>
+<h3>Les deux modes de la heatmap</h3>
+<p>Selon la <a href="https://www.deepcharts.com/helpcenter/deepdom/article/heatmap">page d&#39;aide sur la heatmap de DeepDom</a>, le logiciel propose deux modes :</p>
+<ul><li>MBP : le volume par niveau de prix. Il marche avec tous les flux de données, et l&#39;éditeur le conseille pour commencer ;</li><li>MBO : les ordres un par un, avec des filtres de taille et la détection des icebergs. L&#39;éditeur précise que les données MBO ne sont disponibles que sur certains flux : dxFeed Market Depth et Rithmic Market Depth.</li></ul>
+<p>Dans la heatmap, la couleur code la liquidité posée : le rouge pour les zones les plus chargées, puis l&#39;orange, puis les couleurs froides.</p>
+<h3>Le piège des réglages</h3>
+<p>Les <a href="https://www.deepcharts.com/changelog/v15.6">notes de version 15.6 de DeepChart</a>, datées du 24/06/2026, montrent bien la subtilité. Le nouvel indicateur Deep Trades, inclus seulement dans les formules Advanced et Pro, exige le MBO. Avec Rithmic, le niveau 1 suffit ; avec dxFeed, il faut le niveau 2 et régler le type de DOM sur MBO. Et surtout : pour Deep Trades, l&#39;historique MBO ne se télécharge pas chez le fournisseur ; DeepChart l&#39;enregistre sur ton ordinateur pendant que la plateforme tourne. Si tu ouvres le logiciel à 15 h 25, Deep Trades n&#39;aura rien de ta matinée.</p>
+<p>C&#39;est typiquement le genre de détail qu&#39;un débutant découvre après avoir payé. Note-le avant.</p>
+<h3>Pourquoi le MBO compte vraiment</h3>
+<p>Le CME décrit dans sa <a href="https://www.cmegroup.com/articles/faqs/market-by-order-mbo.html">foire aux questions sur le Market By Order</a> la possibilité de voir la position individuelle dans la file, toute la profondeur du carnet et la taille de chaque ordre à chaque prix, alors que le flux classique s&#39;arrêtait à 10 niveaux de prix agrégés. Concrètement, tu peux distinguer un seul ordre de 200 contrats de 200 ordres d&#39;un contrat. Ce n&#39;est pas le même acteur, ni la même intention.</p>
+<p>Mais voir l&#39;ordre ne veut pas dire le comprendre. Et c&#39;est précisément sur ce point que mon expérience du carnet compte plus que le logiciel.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/deepcharts-avis/blog-deepcharts-avis-3.webp" alt="Comparaison des données MBP et MBO dans DeepCharts : volume par prix contre ordres individuels" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Le MBP dit combien de contrats attendent ; le MBO dit qui attend et comment il se comporte.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="la-heatmap-lit-elle-le-carnet-d-ordres-a">La heatmap lit-elle le carnet d&#39;ordres à ta place ?</h2>
+    <p>Non. La heatmap montre où la liquidité est posée ; elle ne te dit pas si elle va tenir, si elle sera absorbée ou si elle va disparaître. Cette lecture-là, c&#39;est toi qui la fais, et c&#39;est elle qui se travaille.</p>
+<h3>Le Nasdaq a un carnet léger et rapide</h3>
+<p>Dans ma <a href="https://www.youtube.com/watch?v=R4Mu52hCJTg&amp;t=384s">formation sur le carnet d&#39;ordres en vidéo</a>, à la 6e minute, je compare trois marchés. Sur le NQ, le carnet est léger : de l&#39;ordre de 1 à 15 contrats par ligne. Sur le ES, il est moyen : 50 à 150. Sur le ZN, le taux américain à 10 ans, il dépasse souvent 11 000 contrats par ligne. Ce n&#39;est pas le même jeu.</p>
+<p>Et je préviens mes élèves : sur le Nasdaq, il va se passer exactement la même chose qu&#39;ailleurs, mais beaucoup plus vite, au point que tu n&#39;auras pas le temps de le voir à l&#39;œil nu. C&#39;est exactement là qu&#39;une heatmap rend service : elle garde la trace visuelle de ce que tes yeux ratent dans le DOM qui défile. Je te montre ce passage <a href="https://www.youtube.com/watch?v=R4Mu52hCJTg&amp;t=2485s">à la 41e minute de la vidéo</a>.</p>
+<h3>Icebergs, reloads et spoofing : ce que l&#39;outil détecte, ce qu&#39;il ne juge pas</h3>
+<p>Un iceberg, c&#39;est un gros acteur qui n&#39;affiche qu&#39;une petite partie de son ordre. Dans la vidéo, j&#39;explique qu&#39;ils rajoutent des contrats au même prix à mesure qu&#39;ils se font toucher : on appelle ça reloader. Le détecteur d&#39;icebergs de DeepDom te signale ce comportement, et c&#39;est utile.</p>
+<p>Le spoofing, à l&#39;inverse, c&#39;est un ordre énorme affiché pour impressionner, puis retiré avant d&#39;être touché. Dans mon exemple, <a href="https://www.youtube.com/watch?v=R4Mu52hCJTg&amp;t=2655s">vers la 44e minute</a>, 445 contrats attendent sur un même prix du S&amp;P ; rien n&#39;oblige ceux qui les ont posés à les laisser. Une heatmap le dessine en rouge vif, exactement comme un vrai mur. La couleur ne fait pas la différence entre un vrai acheteur et un bluff. Seule la réaction du prix et du volume au contact te le dit.</p>
+<p>J&#39;en parle aussi dans mon article sur la <a href="https://basstrading.fr/blog/chasse-aux-stops-trading/">chasse aux stops en trading</a> : les zones de liquidité visibles attirent le prix, mais pas toujours pour la raison que tu crois.</p>
+<h3>Ma façon de m&#39;en servir, quel que soit le logiciel</h3>
+<p>Je ne regarde jamais le carnet au hasard. Je l&#39;utilise sur un niveau factuel préparé avant la séance : un strike d&#39;options important, le HVL, le haut de la zone de valeur du Market Profile. Là, et seulement là, je regarde comment le carnet réagit : absorption, reload, retrait. Si ça confirme, le stop peut rester de quelques ticks, parce que le niveau est clair.</p>
+<p>Comme je le dis <a href="https://www.youtube.com/watch?v=R4Mu52hCJTg&amp;t=1958s">à la 32e minute de cette vidéo</a> : « vous faites ce que vous voyez et non pas ce que vous croyez ». Une heatmap, aussi belle soit-elle, ne t&#39;empêchera pas de croire. Elle t&#39;aidera seulement à voir, si tu sais quoi regarder.</p>
+<p>Pour aller plus loin sur cette lecture, mon guide du <a href="https://basstrading.fr/blog/carnet-ordres-dom-futures/">carnet d&#39;ordres et du DOM sur les futures</a> et mon article sur l&#39;<a href="https://basstrading.fr/blog/absorption-order-flow/">absorption en order flow</a> sont la suite logique.</p>
+<aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p><b>À retenir</b></p>
+<ul><li>La heatmap montre la liquidité, elle ne prédit pas son comportement.</li><li>Sur le NQ, le carnet est léger et rapide : l&#39;outil visuel aide vraiment.</li><li>Un mur rouge peut être du spoofing : seule la réaction du prix tranche.</li><li>Le carnet se lit sur un niveau préparé, jamais au milieu de nulle part.</li></ul></aside>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/deepcharts-avis/blog-deepcharts-avis-4.webp" alt="Méthode en quatre étapes pour lire le carnet d&#39;ordres sur un niveau factuel, avec ou sans heatmap" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Le logiciel change ; la méthode de lecture du carnet reste la même.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="rappel-sur-le-risque-avant-d-aller-plus-">Rappel sur le risque avant d&#39;aller plus loin</h2>
+    <p>Je parle ici de scalping et de day trading de contrats à terme, souvent avec des stops de quelques ticks. Le trading de contrats à terme comporte un risque élevé de perte, pouvant dépasser la mise initiale. Cet article est un contenu éducatif sur un logiciel, pas un conseil en investissement ni une recommandation d&#39;achat ou de vente.</p>
+<p>Un logiciel plus cher ne réduit pas ce risque. Ce qui le réduit, c&#39;est la taille de position et le stop que tu décides avant d&#39;entrer. Si tu n&#39;as pas encore de règle claire, commence par mon article sur <a href="https://basstrading.fr/blog/combien-risquer-par-trade/">combien risquer par trade</a>, et regarde si le <a href="https://basstrading.fr/blog/nq-ou-mnq/">micro Nasdaq (MNQ) plutôt que le NQ</a> convient mieux à ton capital : c&#39;est une décision qui pèse bien plus lourd que le choix entre deux plateformes.</p>
+
+    <hr>
+
+    <h2 id="peut-on-utiliser-deepcharts-avec-une-pro">Peut-on utiliser DeepCharts avec une prop firm ?</h2>
+    <p>Oui, c&#39;est même son terrain naturel. DeepCharts se branche sur un compte Rithmic, et la plupart des prop firms de futures fournissent leurs comptes d&#39;évaluation via Rithmic. Vérifie si ta prop firm inclut un accès au logiciel : c&#39;est rare, et ça se lit dans ses conditions.</p>
+<h3>Ce qu&#39;il faut faire concrètement</h3>
+<p>L&#39;aide de l&#39;éditeur détaille <a href="https://www.deepcharts.com/helpcenter/article/how-to-connect-your-prop-firm-rithmic-account-to-deepchart">la connexion d&#39;un compte Rithmic de prop firm à DeepChart</a> : tu dois signer les accords électroniques chez Rithmic avant la première connexion, puis saisir tes identifiants. DeepChart et DeepDom partagent le même pont de connexion, ce qui évite de doubler les sessions.</p>
+<h3>Les trois vérifications avant de payer</h3>
+<ul><li>Ton flux est-il MBO ? Si ton compte de prop firm passe par un flux sans profondeur MBO, tu paies pour des fonctions que tu ne verras pas.</li><li>Le logiciel est-il déjà inclus ? C&#39;est rare, mais lis les conditions de ta prop firm : inutile de prendre une licence en double.</li><li>Ta règle de drawdown supporte-t-elle ton scalping ? Un outil qui t&#39;incite à multiplier les entrées rapides peut accélérer la sortie d&#39;une évaluation. Je l&#39;explique dans mon article sur le <a href="https://basstrading.fr/blog/drawdown-prop-firm-futures/">drawdown en prop firm futures</a>.</li></ul>
+<p>Je ne recommande aucune prop firm en particulier ici, et je te conseille de lire les règles complètes avant toute évaluation. Si le principe des comptes financés est nouveau pour toi, mon guide sur les <a href="https://basstrading.fr/blog/prop-firm-funded-trader/">prop firms et le funded trader</a> pose les bases.</p>
+<p>Une prop firm, c&#39;est une voie parmi d&#39;autres. Le plus important reste de trouver ton trading : ta méthode, ton marché, ton rythme. Le logiciel vient après.</p>
+
+    <hr>
+
+    <h2 id="deepcharts-face-a-bookmap-ninjatrader-et">DeepCharts face à Bookmap, NinjaTrader et Sierra Chart</h2>
+    <p>DeepCharts se place entre la heatmap pure de Bookmap et les plateformes complètes comme NinjaTrader ou Sierra Chart. Il réunit footprint et heatmap MBO dans une même famille, avec une prise en main plus rapide, mais moins de personnalisation.</p>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Plateforme</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Point fort</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Point faible</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">DeepCharts</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Footprint + heatmap MBO, prise en main rapide</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Windows seul, pas d&#39;API, heatmap payée à part</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Bookmap</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Référence de la heatmap, historique très fin</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Footprint moins central, coût élevé avec les modules</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">NinjaTrader</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Exécution, écosystème, programmation</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Order flow avancé souvent en option</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Sierra Chart</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Puissance, stabilité, tout se règle</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Interface austère, apprentissage long</td></tr></tbody></table></div>
+<h3>Face à Bookmap</h3>
+<p>Bookmap reste la référence de la heatmap. Si ton travail est presque entièrement la lecture de la liquidité, regarde mon article sur <a href="https://basstrading.fr/blog/bookmap-heatmap/">la heatmap Bookmap</a> avant de choisir. DeepCharts est plus intéressant si tu veux footprint et heatmap dans le même univers.</p>
+<h3>Face à NinjaTrader</h3>
+<p>NinjaTrader est d&#39;abord une plateforme d&#39;exécution, très répandue en prop firm. Son order flow avancé passe par des options payantes ou des modules tiers. J&#39;en fais le tour dans mon <a href="https://basstrading.fr/blog/ninjatrader-avis/">avis sur NinjaTrader</a>.</p>
+<h3>Face à Sierra Chart, mon choix</h3>
+<p>J&#39;ai choisi Sierra Chart pour sa stabilité et parce que je peux tout régler : footprint, Market Profile, profils, carnet. Le prix de cette liberté, c&#39;est une interface austère et quelques semaines d&#39;apprentissage. Je partage ma <a href="https://basstrading.fr/blog/sierra-chart-configuration/">configuration Sierra Chart</a> pour te les faire gagner. DeepCharts va plus vite à prendre en main ; Sierra Chart va plus loin une fois maîtrisé. Ce n&#39;est pas une question de « meilleur » : c&#39;est une question de profil.</p>
+<p>Je n&#39;ai pas mis ATAS ou MotiveWave dans le tableau : ce sont aussi des options sérieuses, que je traite à part.</p>
+
+    <hr>
+
+    <h2 id="quelles-sont-les-limites-de-deepcharts">Quelles sont les limites de DeepCharts ?</h2>
+    <p>Les retours publics sont globalement bons, mais ils pointent des limites réelles qu&#39;il vaut mieux connaître avant de payer.</p>
+<h3>Ce que disent les utilisateurs</h3>
+<p>Sur Trustpilot, DeepCharts affiche 401 avis et une note de 4,5 sur 5 (relevé du 03/11/2026), dont 88 % de 5 étoiles. Les avis saluent la qualité des graphiques et la réactivité du support. Les reproches reviennent pourtant d&#39;un site à l&#39;autre : des bugs mineurs liés au rythme rapide des mises à jour, un outil excellent pour apprendre le footprint mais limité dès qu&#39;on veut tout personnaliser. Un comparateur, <a href="https://platformscore.co/reviews/deepcharts/">PlatformScore lui donne 61 sur 100</a>, une note sur grille, sans test réel.</p>
+<h3>Les limites techniques</h3>
+<ul><li>Pas d&#39;indicateurs personnalisés ni d&#39;API : tu ne peux pas coder ta propre logique comme sur NinjaTrader ou Sierra Chart. C&#39;est ce que relève un utilisateur dans un <a href="https://www.tickiwi.com/en/company/deepcharts.com">avis publié sur Tickiwi</a> (« pas d&#39;indicateurs personnalisés, Pattern Builder très basique, pas d&#39;API ») : c&#39;est un avis d&#39;utilisateur, pas un test.</li><li>Windows seulement, on l&#39;a vu.</li><li>Marchés limités : futures du CME et d&#39;Eurex seulement, selon <a href="https://platformscore.co/reviews/deepcharts/">la fiche PlatformScore</a>. Si tu veux trader autre chose que des futures américains ou européens, ce n&#39;est pas l&#39;outil.</li><li>Historique Deep Trades local : l&#39;historique MBO de Deep Trades n&#39;est enregistré que pendant que DeepChart tourne (inclus seulement en Advanced et Pro).</li><li>Coût cumulé : la heatmap n&#39;est pas dans la licence de base.</li></ul>
+<h3>La limite que personne n&#39;écrit</h3>
+<p>La vraie limite n&#39;est pas dans le logiciel. Elle est dans l&#39;usage. Beaucoup de traders achètent une plateforme avancée en pensant qu&#39;elle va combler un manque de méthode. Un écran plein de bulles et de heatmaps donne l&#39;impression de voir le marché ; sans niveau préparé et sans plan, il donne surtout plus de raisons d&#39;entrer. Plus d&#39;informations, ce n&#39;est pas plus de clarté.</p>
+<p>Alors, concrètement, pour qui ça vaut le coup ?</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/deepcharts-avis/blog-deepcharts-avis-5.webp" alt="Règle de lecture du carnet d&#39;ordres : fais ce que tu vois, pas ce que tu crois" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">La règle qui vaut pour tous les logiciels de carnet : un niveau préparé, un carnet qui confirme, aucun trade sans réaction.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="deepcharts-vaut-il-le-coup-mon-verdict-s">DeepCharts vaut-il le coup ? Mon verdict selon ton profil</h2>
+    <p>DeepCharts vaut le coup si tu lis déjà le footprint et le carnet, que tu scalpes des futures du CME depuis un PC Windows, avec un flux MBO, et que tu veux footprint et heatmap prêts à l&#39;emploi sans passer des semaines en réglages. Pour un débutant, c&#39;est trop tôt.</p>
+<h3>Oui, si…</h3>
+<ul><li>tu sais déjà ce qu&#39;est une absorption, un delta, une zone de valeur ;</li><li>tu trades le NQ, le ES ou des futures Eurex en intraday ;</li><li>ton flux Rithmic ou dxFeed est déjà MBO ;</li><li>tu préfères un outil prêt à l&#39;emploi à un outil qu&#39;on programme.</li></ul>
+<h3>Non, ou pas encore, si…</h3>
+<ul><li>tu débutes et tu ne sais pas encore quoi regarder sur un footprint ;</li><li>tu es sur Mac et tu ne veux pas de machine virtuelle ;</li><li>tu as besoin de coder tes indicateurs ou d&#39;automatiser ;</li><li>ton budget mensuel en logiciels pèse lourd face à ton capital.</li></ul>
+<h3>Ce que je ferais à ta place</h3>
+<p>Avant d&#39;acheter n&#39;importe quelle plateforme order flow, j&#39;apprendrais à lire le carnet et le footprint sur des niveaux préparés, soit avec un outil inclus par ta prop firm (c&#39;est rare, vérifie ses conditions), soit avec ton outil actuel. Le flux différé gratuit de DeepCharts peut servir à découvrir l&#39;interface ; il ne sert pas à apprendre à trader.</p>
+<p>Le trading de contrats à terme comporte un risque élevé de perte, pouvant dépasser la mise initiale. Contenu éducatif, pas un conseil en investissement.</p>
+<p>C&#39;est exactement ce que j&#39;enseigne : où regarder, quand regarder, et quoi faire de ce qu&#39;on voit. La méthode complète, avec mes explications sur le carnet d&#39;ordres, le footprint et le Market Profile, est dans <a href="https://basstrading.fr/l/XDw8zA">ma formation trading offerte</a>. Tu sauras ensuite si une plateforme comme DeepCharts t&#39;apportera quelque chose, ou si ton outil actuel suffit.</p>
+<p>Si tu veux d&#39;abord voir l&#39;ensemble de l&#39;approche, mon guide de l&#39;<a href="https://basstrading.fr/blog/order-flow-trading-france/">order flow pour un trader en France</a> est le meilleur point de départ.</p>
+
+    <hr>
+
+    <h2 id="en-resume-ce-qu-il-faut-retenir-de-deepc">En résumé : ce qu&#39;il faut retenir de DeepCharts</h2>
+    <ul><li>Prix : 45, 69 ou 125 $ par mois pour DeepChart, plus 39 $ pour DeepDom (heatmap, 3 mois d&#39;essai pour les nouveaux clients en Advanced et Pro), plus le flux de données (page officielle, 03/11/2026).</li><li>Système : Windows seulement ; sur Mac, Parallels.</li><li>Données : le MBO (dxFeed ou Rithmic Market Depth) fait la différence ; l&#39;historique MBO de Deep Trades n&#39;est enregistré que pendant que le logiciel tourne.</li><li>Prop firm : compatible Rithmic ; l&#39;inclusion du logiciel est rare, vérifie avant de payer en double.</li><li>Limites : pas d&#39;API, personnalisation réduite, CME et Eurex seulement.</li></ul>
+<p>Ta prochaine action, ce soir : ouvre ton graphique, place les deux ou trois niveaux factuels de demain (haut et bas de la zone de valeur, plus haut et plus bas de la veille), et note ce que fait le prix quand il les touche. Si tu n&#39;arrives pas encore à l&#39;expliquer avec ton outil actuel, aucun logiciel à 100 $ ne le fera pour toi. Si tu y arrives et que le flux te paraît trop rapide sur le Nasdaq, alors DeepCharts mérite un essai.</p>
+<p>Pour comparer avec la référence de la heatmap avant de choisir, lis mon article sur <a href="https://basstrading.fr/blog/bookmap-heatmap/">la heatmap Bookmap</a>.</p>
+
+    <p><a href="https://www.youtube.com/watch?v=R4Mu52hCJTg" target="_blank" rel="noopener">▶ Voir la vidéo de Sébastien sur ce sujet</a></p>
+
+    <div class="cta-card cta-aimant">
+      <div class="cta-card-label">Gratuit</div>
+      <h3>La formation offerte : 7 leçons pour lire le marché comme un pro</h3>
+      <p>Accès immédiat et gratuit, en vidéo, à ton rythme. Sans carte bancaire.</p>
+      <a href="https://basstrading.fr/p/formation-offerte/?src=blog-deepcharts-avis" class="btn-p">Je la veux →</a>
+    </div>
+    
+  </article>
+</div>
+
+<!-- FAQ -->
+<section class="faq-sec">
+  <div class="sec-center"><div class="sec-label">FAQ</div><h2 class="sec-title">Questions fréquentes</h2></div>
+  <div class="faq-list">
+    <div class="fi"><button class="fq" onclick="tf(this)">DeepCharts est-il gratuit ? <span class="fq-icon">+</span></button><div class="fa"><p>Non. Il n&#39;existe pas de formule gratuite pour trader : la licence DeepChart coûte de 45 à 125 $ par mois selon la page officielle relevée le 03/11/2026, et DeepDom (la heatmap) 39 $ de plus. Les formules Advanced et Pro offrent 3 mois d&#39;essai de DeepDom aux nouveaux clients, ensuite il faut le payer. L&#39;éditeur fournit un flux différé de 15 minutes pour découvrir l&#39;interface, mais le temps réel demande un flux payant chez dxFeed, Rithmic ou CQG.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">DeepCharts fonctionne-t-il sur Mac ? <span class="fq-icon">+</span></button><div class="fa"><p>Pas en natif. DeepChart et DeepDom sont des applications Windows ; sur Mac, il faut passer par une machine virtuelle comme Parallels, avec une licence Windows. Avec un flux MBO sur le Nasdaq, prévois une machine puissante, car la virtualisation partage le processeur et la mémoire avec macOS.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Quel flux de données faut-il pour DeepCharts ? <span class="fq-icon">+</span></button><div class="fa"><p>DeepCharts se branche sur dxFeed, Rithmic ou CQG. Pour les fonctions MBO (ordres individuels, icebergs, Deep Trades), l&#39;éditeur indique que seuls dxFeed Market Depth et Rithmic Market Depth conviennent. Le mode MBP de la heatmap fonctionne avec tous les flux et suffit pour commencer.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">DeepCharts est-il meilleur que NinjaTrader ? <span class="fq-icon">+</span></button><div class="fa"><p>Ce ne sont pas les mêmes outils. DeepCharts est spécialisé dans l&#39;order flow (footprint, heatmap, MBO) et se prend en main vite. NinjaTrader est d&#39;abord une plateforme d&#39;exécution, programmable, avec un order flow avancé souvent en option. Si tu veux coder tes indicateurs, NinjaTrader ou Sierra Chart vont plus loin.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Quelle formule DeepCharts choisir ? <span class="fq-icon">+</span></button><div class="fa"><p>Pour lire le footprint, la formule Orderflow (45 $ par mois) couvre l&#39;essentiel. Advanced (69 $) ajoute Deep Trades, Deep Replay, le Pattern Builder et l&#39;Advanced DOM ; Pro (125 $) sert surtout à ceux qui travaillent le gamma et les flux d&#39;options. La heatmap demande DeepDom en plus. Les formules Advanced et Pro offrent 3 mois d&#39;essai de DeepDom aux nouveaux clients, ensuite il faut le payer.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Peut-on utiliser DeepCharts sur un compte de prop firm ? <span class="fq-icon">+</span></button><div class="fa"><p>Oui, via Rithmic, le fournisseur de la plupart des prop firms de futures. Il faut signer les accords électroniques chez Rithmic avant la connexion. Il est rare qu&#39;une prop firm inclue l&#39;accès au logiciel : vérifie-le dans ses conditions avant de prendre une licence, et lis les règles de drawdown de ton évaluation.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Quelles prop firms sont compatibles avec DeepCharts ? <span class="fq-icon">+</span></button><div class="fa"><p>Celles qui te fournissent un compte Rithmic : l&#39;aide officielle de DeepCharts décrit la connexion d&#39;un compte Rithmic de prop firm, avec la signature des accords électroniques avant la première connexion, puis la saisie des identifiants. Avant de t&#39;inscrire, vérifie dans les conditions quel fournisseur de données la prop firm utilise et si ton flux est MBO : sans MBO, tu n&#39;auras ni Deep Trades ni la heatmap en mode MBO.</p></div></div>
+  </div>
+</section>
+
+<!-- Related -->
+<section class="related-sec">
+  <div class="sec-center"><div class="sec-label">Continuer la lecture</div><h2 class="sec-title">Articles connexes</h2></div>
+  <div class="related-grid">
+    <a href="/blog/market-profile-guide-complet/" class="related-card"><div class="related-cat">Guide</div><h3>Market Profile : le guide complet pour débutants</h3><p>Value Area, POC, types de journées — tout pour commencer.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/order-flow-trading-france/" class="related-card"><div class="related-cat">Méthode</div><h3>Order Flow Trading : pourquoi personne ne l'enseigne en France</h3><p>Le carnet d'ordres et le flux institutionnel décryptés.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/sierra-chart-configuration/" class="related-card"><div class="related-cat">Tutoriel</div><h3>Sierra Chart : configuration complète</h3><p>Le setup pas à pas pour le Market Profile et le Footprint.</p><span class="related-link">Lire &rarr;</span></a>
+  </div>
+</section>
+
+<!-- serie:debut --><style>.serie-w{background:#FFF;color:#1D1D1F;border-top:1px solid #F5F5F7}.serie{max-width:1060px;margin:0 auto;padding:56px 24px;font-family:inherit;box-sizing:border-box}.serie-l{font-size:.6rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#0066FF;margin-bottom:8px}.serie-w .serie h2{font-size:1.4rem;font-weight:800;letter-spacing:-.5px;color:#1D1D1F!important;margin:0 0 18px;font-family:inherit}.serie ul{list-style:none;padding:0;margin:0 0 22px;display:grid;grid-template-columns:repeat(2,1fr);gap:8px 24px}.serie-w .serie li a{color:#1D1D1F!important;font-size:.9rem;line-height:1.45;text-decoration:none;border-bottom:1px solid #D2D2D7}.serie li a:hover{color:#0066FF}.serie li.pil a{font-weight:700}.serie-o{background:#F5F5F7;border-radius:14px;padding:18px 20px;font-size:.88rem;line-height:1.55;color:#1D1D1F}.serie-w .serie-o a{color:#0066FF!important;font-weight:700}@media(max-width:700px){.serie ul{grid-template-columns:1fr}}</style><div class="serie-w"><aside class="serie" aria-label="Dans la même série"><div class="serie-l">Dans la même série</div><h2>Trouver sa méthode de trading</h2><ul><li class="pil"><a href="/blog/methode-de-trading/">Méthode de trading : comment trouver celle qui te correspond</a></li><li class=""><a href="/blog/types-trading-differences/">Les Types de Trading : Lequel Choisir Selon Votre Profil ? (2026)</a></li><li class=""><a href="/blog/debuter-trading-zero-guide/">Débuter le Trading en Partant de Zéro : Le Guide Concret (2026)</a></li><li class=""><a href="/blog/combien-temps-apprendre-trading/">Combien de Temps Faut-il pour Apprendre le Trading ? (Réponse Honnête)</a></li><li class=""><a href="/blog/devenir-trader-sans-diplome/">Devenir trader sans diplôme : le parcours réaliste (2026)</a></li><li class=""><a href="/blog/livre-trading/">Livre trading : les meilleurs pour apprendre (et l'ordre)</a></li><li class=""><a href="/blog/formation-trading/">Formation trading : contenu, prix, CPF et pièges à éviter</a></li><li class=""><a href="/blog/formation-trading-gratuite/">Formation trading gratuite : ce qu'on apprend sans payer</a></li><li class=""><a href="/blog/quelle-formation-trading-choisir/">Quelle formation trading choisir en 2026 ? 7 critères pour comparer</a></li><li class=""><a href="/blog/arnaque-trading/">Arnaque au trading : les 7 pièges et que faire si tu es victime</a></li><li class=""><a href="/blog/bookmap-heatmap/">Bookmap : lire la heatmap, prix réels et avis de trader</a></li><li class=""><a href="/blog/gocharting-avis/">GoCharting : mon avis sur l'order flow dans le navigateur</a></li><li class=""><a href="/blog/motivewave-avis/">MotiveWave avis : prix, version gratuite, Mac et order flow</a></li><li class=""><a href="/blog/take-profit-trading/">Take profit : où placer ton objectif sur les futures (exemples MNQ)</a></li></ul><div class="serie-o"><a href="/formations/">Toutes les formations de Bass</a> : plus de 250 leçons vidéo, du débutant au Market Profile avancé. Pour commencer sans payer : <a href="/p/formation-offerte/?src=serie-deepcharts-avis">la formation offerte</a> (7 leçons vidéo).</div></aside></div><!-- serie:fin -->
+<footer class="footer">
+  <div class="ft-top"><div class="ft-logo">BASS</div><div class="ft-cols">
+    <div class="ft-col"><div class="ft-col-title">Programme</div><a href="/formations/">Toutes les formations</a><a href="https://basstrading.fr/#methode">Méthode</a><a href="https://basstrading.fr/#programme">Programme</a><a href="https://basstrading.fr/p/formation-offerte/?src=blog-deepcharts-avis-pied">Formation offerte</a></div>
+    <div class="ft-col"><div class="ft-col-title">Ressources</div><a href="/blog/market-profile-guide-complet/">Market Profile</a><a href="/blog/footprint-chart-trading/">Footprint Chart</a><a href="/blog/order-flow-trading-france/">Order Flow</a></div>
+  </div></div>
+  <div class="ft-bottom"><span>&copy; 2026 BASS — Sébastien Constant</span><div><a href="/mentions-legales/">Mentions légales</a><a href="/confidentialite/">Confidentialité</a><a href="/cgv/">CGV</a><a href="mailto:contact@basstrading.fr">Contact</a></div></div>
+</footer>
+<div class="disclaimer">Le trading comporte des risques de perte en capital. Les performances passées ne préjugent pas des performances futures. Ce site ne constitue pas un conseil en investissement.</div>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+const lenis=new Lenis({duration:1.2,easing:t=>Math.min(1,1.001-Math.pow(2,-10*t))});
+function raf(t){lenis.raf(t);requestAnimationFrame(raf)}requestAnimationFrame(raf);
+lenis.on('scroll',ScrollTrigger.update);gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0);
+const tl=gsap.timeline();
+tl.to('.pre-word span',{y:0,opacity:1,duration:.5,stagger:.1,ease:'power3.out',delay:.3}).to('#preLine',{width:'80px',duration:.7,ease:'power2.inOut'},'<+.2').to('.preloader',{yPercent:-100,duration:.8,ease:'power3.inOut',delay:.4}).set('.preloader',{display:'none'}).to('#nav',{opacity:1,y:0,duration:.5},'<+.1');
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);const h=document.documentElement.scrollHeight-window.innerHeight;document.getElementById('readingProgress').style.width=(window.scrollY/h*100)+'%'});
+const tocLinks=document.querySelectorAll('.toc a');const sections=Array.from(tocLinks).map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+window.addEventListener('scroll',()=>{let c='';sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)c=s.id});tocLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+c)})});
+function tf(b){const i=b.closest('.fi'),a=b.nextElementSibling,o=i.classList.contains('active');document.querySelectorAll('.fi').forEach(x=>{x.classList.remove('active');x.querySelector('.fa').classList.remove('open')});if(!o){i.classList.add('active');a.classList.add('open')}}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();lenis.scrollTo(t,{offset:-60})}})});
+</script>
+<script src="/v.js" defer></script>
+</body>
+</html>
