@@ -6,8 +6,16 @@
   <link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
   <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/"/>
   <id>https://basstrading.fr/blog/</id>
-  <updated>2026-11-04T00:00:00Z</updated>
+  <updated>2026-11-05T00:00:00Z</updated>
   <author><name>Sébastien Constant (Bass)</name><uri>https://basstrading.fr/auteur/sebastien-constant/</uri></author>
+  <entry>
+    <title>DeepCharts avis : prix, Mac, MBO et limites (2026)</title>
+    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/deepcharts-avis/"/>
+    <id>https://basstrading.fr/blog/deepcharts-avis/</id>
+    <published>2026-11-05T00:00:00Z</published>
+    <updated>2026-11-05T00:00:00Z</updated>
+    <summary>DeepCharts avis 2026 : prix réels (licence, DeepDom, flux), Mac ou Windows, MBO vs MBP, prop firms et limites, par un trader order flow futures.</summary>
+  </entry>
   <entry>
     <title>Take profit : où placer ton objectif sur les futures (exemples MNQ)</title>
     <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/take-profit-trading/"/>
