@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stop loss : où le placer en trading (exemples sur futures) — BASS Trading</title>
+  <meta name="description" content="Stop loss : définition, où le placer sur les futures, calcul en ticks sur MNQ et NQ, types d&#39;ordres et erreurs à éviter. Ma méthode avec exemples.">
+  <meta property="og:title" content="Stop loss : où le placer en trading (exemples sur futures) — BASS Trading">
+  <meta property="og:description" content="Stop loss : définition, où le placer sur les futures, calcul en ticks sur MNQ et NQ, types d&#39;ordres et erreurs à éviter. Ma méthode avec exemples.">
+  <meta property="og:image" content="https://basstrading.fr/blog/stop-loss-trading/blog-stop-loss-trading-1.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://basstrading.fr/blog/stop-loss-trading/blog-stop-loss-trading-1.jpg">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://basstrading.fr/blog/stop-loss-trading/">
+  <meta property="og:site_name" content="BASS Trading">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://basstrading.fr/blog/stop-loss-trading/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","@id":"https://basstrading.fr/blog/stop-loss-trading/#article","headline":"Stop loss : où le placer en trading (exemples sur futures)","description":"Stop loss : définition, où le placer sur les futures, calcul en ticks sur MNQ et NQ, types d'ordres et erreurs à éviter. Ma méthode avec exemples.","datePublished":"2026-11-06","dateModified":"2026-11-06","inLanguage":"fr-FR","image":"https://basstrading.fr/blog/stop-loss-trading/blog-stop-loss-trading-1.jpg","mainEntityOfPage":"https://basstrading.fr/blog/stop-loss-trading/","isPartOf":{"@type":"WebSite","@id":"https://basstrading.fr/#website","name":"BASS Trading","url":"https://basstrading.fr/"},"author":{"@type":"Person","@id":"https://basstrading.fr/#sebastien-constant","name":"Sébastien Constant","url":"https://basstrading.fr/auteur/sebastien-constant/"},"publisher":{"@type":"Organization","@id":"https://basstrading.fr/#organisation","name":"BASS Trading","url":"https://basstrading.fr/","logo":{"@type":"ImageObject","url":"https://basstrading.fr/images/logo-basstrading.png","width":512,"height":512}}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://basstrading.fr"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://basstrading.fr/blog/"},{"@type":"ListItem","position":3,"name":"Stop loss en trading","item":"https://basstrading.fr/blog/stop-loss-trading/"}]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"C'est quoi un stop loss en trading ?","acceptedAnswer":{"@type":"Answer","text":"Un stop loss est un ordre de sortie placé à l'avance chez ton courtier. Il ferme automatiquement ta position si le prix atteint un niveau défini, pour que la perte d'un trade reste connue et limitée avant même d'entrer. Sur un achat, il se place sous le prix ; sur une vente, au-dessus."}},{"@type":"Question","name":"Quelle différence entre un stop loss et un stop limite ?","acceptedAnswer":{"@type":"Answer","text":"Au déclenchement, un stop loss classique devient un ordre au marché : tu sors à coup sûr, avec parfois quelques ticks de glissement. Un stop limite devient un ordre limite : il ne s'exécute qu'à ton prix ou mieux, donc il peut ne jamais être exécuté si le prix saute. Pour protéger une position, je préfère le stop au marché."}},{"@type":"Question","name":"Comment calculer un stop loss en ticks sur le MNQ ?","acceptedAnswer":{"@type":"Answer","text":"Sur le MNQ, un tick vaut 0,25 point, soit 0,50 $, et un point vaut 2 $. Un stop de 20 points représente donc 80 ticks, soit 40 $ par contrat. Divise ensuite le risque que tu acceptes par ces 40 $ pour obtenir ton nombre de contrats, arrondi vers le bas. Sur le NQ, tout est dix fois plus gros."}},{"@type":"Question","name":"Pourquoi mon stop loss est-il toujours touché juste avant que le prix reparte ?","acceptedAnswer":{"@type":"Answer","text":"Souvent parce qu'il est placé là où tout le monde le met : pile sous un plus bas évident ou sur un chiffre rond. Le prix vient chercher cette liquidité avant de repartir. Éloigne-le de quelques ticks au-delà du niveau, et réduis ta taille de position pour que cette distance reste dans ton risque."}},{"@type":"Question","name":"Le stop loss est-il garanti sur les futures ?","acceptedAnswer":{"@type":"Answer","text":"Non. Sur les futures cotés, ton stop est un ordre comme un autre dans le carnet, exécuté au meilleur prix disponible au moment du déclenchement. Sur une annonce économique ou à la réouverture après une coupure, l'exécution peut se faire plusieurs ticks plus loin. Le stop garanti est un produit de certains courtiers CFD, pas des futures."}}]}
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{--bk:#1D1D1F;--bk2:#111;--bk3:#0A0A0A;--g1:#6E6E73;--g2:#86868B;--g3:#D2D2D7;--g4:#F5F5F7;--wh:#FBFBFD;--pure:#FFF;--green:#00B67A;--blue:#0066FF}
+    html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}
+    body{font-family:'DM Sans',sans-serif;color:var(--bk);background:var(--pure);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+    .preloader{position:fixed;inset:0;background:var(--bk3);z-index:10001;display:flex;align-items:center;justify-content:center}
+    .pre-word{font-family:'Outfit',sans-serif;font-size:clamp(3rem,8vw,5rem);font-weight:900;letter-spacing:16px;text-transform:uppercase;color:var(--pure);overflow:hidden}
+    .pre-word span{display:inline-block;transform:translateY(110%);opacity:0}
+    .pre-line{width:0;height:1px;background:rgba(255,255,255,.3);margin-top:20px}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 48px;display:flex;align-items:center;justify-content:space-between;background:rgba(245,245,247,.85);backdrop-filter:blur(20px) saturate(1.8);border-bottom:1px solid rgba(0,0,0,.04);transition:background .4s}
+    .nav-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase;color:var(--bk)}
+    .nav-links{display:flex;gap:28px;list-style:none}.nav-links a{font-size:.74rem;font-weight:500;letter-spacing:.3px;color:var(--g1);transition:color .3s}.nav-links a:hover{color:var(--bk)}
+    .nav-cta{padding:8px 20px;background:var(--bk);color:var(--pure);border:none;border-radius:980px;font-size:.72rem;font-weight:600;transition:all .3s;cursor:pointer;text-decoration:none;display:inline-block}.nav-cta:hover{background:var(--bk2)}
+    .blog-hero{padding:160px 48px 80px;background:var(--g4);position:relative;overflow:hidden}
+    .blog-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,transparent,var(--g4));pointer-events:none}
+    .blog-hero-inner{max-width:720px;margin:0 auto}
+    .breadcrumb{display:flex;gap:8px;align-items:center;margin-bottom:28px;flex-wrap:wrap}
+    .breadcrumb a,.breadcrumb span{font-size:.68rem;font-weight:500;letter-spacing:.3px;color:var(--g2);transition:color .3s}.breadcrumb a:hover{color:var(--bk)}.breadcrumb .sep{color:var(--g3)}
+    .blog-hero-cat{display:inline-block;padding:5px 14px;border:1px solid rgba(0,102,255,.15);border-radius:980px;font-size:.6rem;font-weight:700;color:var(--blue);letter-spacing:2px;text-transform:uppercase;margin-bottom:20px}
+    .blog-hero-title{font-family:'Outfit',sans-serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:900;line-height:1.05;letter-spacing:-2px;color:var(--bk);margin-bottom:20px}
+    .blog-hero-desc{font-size:.95rem;color:var(--g1);line-height:1.8;max-width:560px;margin-bottom:28px}
+    .blog-meta{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+    .blog-meta-author{display:flex;align-items:center;gap:10px}
+    .blog-meta-avatar{width:36px;height:36px;border-radius:50%;background:var(--bk3);overflow:hidden;flex-shrink:0}.blog-meta-avatar img{width:100%;height:100%;object-fit:cover}
+    .blog-meta-name{font-size:.78rem;font-weight:600;color:var(--bk)}.blog-meta-role{font-size:.65rem;color:var(--g2)}
+    .blog-meta-sep{width:1px;height:24px;background:var(--g3)}
+    .blog-meta-info{font-size:.7rem;color:var(--g2)}.blog-meta-info span{margin-right:16px}
+    .toc{position:sticky;top:90px;background:var(--pure);border:1px solid rgba(0,0,0,.04);border-radius:14px;padding:24px;margin-bottom:32px}
+    .toc-title{font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.5px;color:var(--bk);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+    .toc ol{list-style:none;counter-reset:toc}.toc li{counter-increment:toc}
+    .toc li a{display:flex;align-items:baseline;gap:8px;padding:6px 0;font-size:.76rem;color:var(--g1);transition:color .3s;border-bottom:1px solid rgba(0,0,0,.03)}.toc li a:hover{color:var(--blue)}
+    .toc li a::before{content:counter(toc,decimal-leading-zero);font-family:'Outfit',sans-serif;font-size:.65rem;font-weight:700;color:var(--g3);min-width:18px}
+    .toc li:last-child a{border-bottom:none}.toc li a.active{color:var(--blue);font-weight:600}.toc li a.active::before{color:var(--blue)}
+    .article-wrap{display:grid;grid-template-columns:220px 1fr;gap:40px;max-width:1020px;margin:0 auto;padding:60px 48px 120px}
+    .article-sidebar{position:relative}.article-body{max-width:700px}
+    .article-body h2{font-family:'Outfit',sans-serif;font-size:clamp(1.4rem,2.5vw,1.8rem);font-weight:800;line-height:1.1;letter-spacing:-1px;color:var(--bk);margin:56px 0 16px;padding-top:20px}.article-body h2:first-of-type{margin-top:0}
+    .article-body h3{font-family:'Outfit',sans-serif;font-size:1.05rem;font-weight:700;line-height:1.25;letter-spacing:-.3px;color:var(--bk);margin:36px 0 10px}
+    .article-body p{font-size:.9rem;color:var(--g1);line-height:1.85;margin-bottom:18px}
+    .article-body strong{color:var(--bk);font-weight:600}
+    .article-body ul,.article-body ol{margin:0 0 20px 0;padding-left:20px}
+    .article-body li{font-size:.88rem;color:var(--g1);line-height:1.8;margin-bottom:6px}.article-body li strong{color:var(--bk)}
+    .article-body blockquote{margin:28px 0;padding:20px 24px;background:var(--g4);border-left:3px solid var(--bk);border-radius:0 12px 12px 0;font-size:.88rem;color:var(--g1);line-height:1.8;font-style:italic}
+    .article-body blockquote strong{color:var(--bk);font-style:normal}
+    .article-body hr{border:none;border-top:1px solid var(--g4);margin:48px 0}
+    .info-box{margin:28px 0;padding:24px;background:rgba(0,102,255,.03);border:1px solid rgba(0,102,255,.08);border-radius:14px}
+    .info-box-title{font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:700;color:var(--blue);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+    .info-box p{font-size:.82rem;color:var(--g1);line-height:1.7;margin-bottom:0}
+    .key-concept{margin:32px 0;padding:28px;background:var(--bk3);border-radius:16px;color:var(--pure)}
+    .key-concept-label{font-size:.55rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:10px}
+    .key-concept h4{font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:800;letter-spacing:-.3px;margin-bottom:8px}
+    .key-concept p{font-size:.85rem;color:rgba(255,255,255,.5);line-height:1.8;margin-bottom:0}
+    .compare-table{width:100%;margin:24px 0 28px;border-collapse:collapse;border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,.06)}
+    .compare-table th{background:var(--bk3);color:var(--pure);font-family:'Outfit',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:14px 16px;text-align:left}
+    .compare-table td{padding:12px 16px;font-size:.82rem;color:var(--g1);line-height:1.6;border-bottom:1px solid rgba(0,0,0,.04);background:var(--pure)}
+    .compare-table tr:last-child td{border-bottom:none}.compare-table td:first-child{font-weight:600;color:var(--bk)}
+    .cta-card{margin:48px 0;padding:40px;background:var(--bk3);border-radius:20px;text-align:center;position:relative;overflow:hidden}
+    .cta-card::before{content:'';position:absolute;top:-50%;right:-30%;width:400px;height:400px;background:radial-gradient(circle,rgba(0,102,255,.08) 0%,transparent 70%);pointer-events:none}
+    .cta-card-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:12px}
+    .cta-card h3{font-family:'Outfit',sans-serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:800;color:var(--pure);letter-spacing:-.5px;margin-bottom:8px}
+    .cta-card p{font-size:.85rem;color:rgba(255,255,255,.4);line-height:1.7;max-width:380px;margin:0 auto 24px}
+    .cta-card .btn-p{background:var(--pure);color:var(--bk)}.cta-card .btn-p:hover{box-shadow:0 8px 30px rgba(255,255,255,.15)}
+    .faq-sec{padding:80px 48px 100px;background:var(--g4)}
+    .faq-list{max-width:680px;margin:40px auto 0}.fi{border-bottom:1px solid rgba(0,0,0,.06)}
+    .fq{width:100%;text-align:left;padding:18px 0;background:none;border:none;font-size:.85rem;font-weight:600;font-family:'DM Sans',sans-serif;color:var(--bk);display:flex;justify-content:space-between;align-items:center;cursor:pointer;gap:16px;transition:color .3s}.fq:hover{color:var(--g1)}
+    .fq-icon{width:22px;height:22px;border-radius:50%;background:rgba(0,0,0,.04);display:flex;align-items:center;justify-content:center;font-size:.75rem;transition:all .4s;flex-shrink:0;color:var(--g2)}
+    .fa{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1)}.fa.open{max-height:280px;padding-bottom:14px}
+    .fa p{font-size:.8rem;color:var(--g1);line-height:1.7;margin-bottom:0}.fi.active .fq-icon{background:var(--bk);color:var(--pure);transform:rotate(45deg)}
+    .related-sec{padding:80px 48px;background:var(--pure);border-top:1px solid var(--g4)}
+    .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1060px;margin:40px auto 0}
+    .related-card{display:block;padding:28px;background:var(--g4);border-radius:16px;transition:all .4s;text-decoration:none;color:var(--bk)}
+    .related-card:hover{background:var(--pure);box-shadow:0 8px 30px rgba(0,0,0,.06);transform:translateY(-2px)}
+    .related-cat{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+    .related-card h3{font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:700;line-height:1.3;letter-spacing:-.3px;margin-bottom:8px}
+    .related-card p{font-size:.78rem;color:var(--g1);line-height:1.6;margin-bottom:14px}
+    .related-link{font-size:.72rem;font-weight:600;color:var(--blue);letter-spacing:.3px}
+    .footer{background:var(--bk3);color:var(--pure);padding:56px 48px 28px}
+    .ft-top{display:flex;justify-content:space-between;align-items:start;margin-bottom:48px;flex-wrap:wrap;gap:32px}
+    .ft-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase}
+    .ft-cols{display:flex;gap:80px}
+    .ft-col-title{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:12px}
+    .ft-col a{display:block;font-size:.78rem;color:rgba(255,255,255,.5);margin-bottom:8px;transition:color .3s}.ft-col a:hover{color:var(--pure)}
+    .ft-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:20px;display:flex;justify-content:space-between;align-items:center;font-size:.6rem;color:rgba(255,255,255,.2)}
+    .ft-bottom a{color:rgba(255,255,255,.2);transition:color .3s;margin-left:20px}.ft-bottom a:hover{color:rgba(255,255,255,.5)}
+    .disclaimer{padding:12px 48px;background:var(--bk3);font-size:.58rem;color:rgba(255,255,255,.12);text-align:center;line-height:1.6;border-top:1px solid rgba(255,255,255,.03)}
+    .sec-center{text-align:center;max-width:680px;margin:0 auto}
+    .sec-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--g2);margin-bottom:10px}
+    .sec-title{font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;line-height:1.05;letter-spacing:-1.5px;color:var(--bk);margin-bottom:16px}
+    .btn-p{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--bk);color:var(--pure);border-radius:980px;font-size:.85rem;font-weight:600;transition:all .3s;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;text-decoration:none}
+    .btn-p:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(0,0,0,.1)}
+    .btn-p svg{width:13px;height:13px;transition:transform .3s}.btn-p:hover svg{transform:translateX(3px)}
+    .reading-progress{position:fixed;top:0;left:0;height:2px;background:var(--blue);z-index:9999;width:0;transition:width .1s linear}
+    @media(max-width:900px){.nav{padding:14px 20px}.nav-links{display:none}.blog-hero{padding:120px 20px 60px}.article-wrap{grid-template-columns:1fr;padding:40px 20px 80px}.article-sidebar{display:none}.related-grid{grid-template-columns:1fr}.related-sec,.faq-sec{padding:60px 20px}.ft-cols{flex-direction:column;gap:28px}.footer{padding:40px 20px 20px}.disclaimer{padding:10px 16px}.cta-card{padding:28px 20px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  .article-body a{color:var(--blue);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;font-weight:500}.article-body a:hover{text-decoration-thickness:2px}
+</style>
+<style>/* 28/10/2026 : débordement mobile (colonne de grille sans min-width) */.article-wrap>*,.article-layout>*{min-width:0}.article-body table,.compare-table{display:block;overflow-x:auto;max-width:100%}.article-body pre{overflow-x:auto}.article-body img{max-width:100%;height:auto}</style>
+</head>
+<body>
+
+<div class="preloader" id="preloader"><div style="text-align:center"><div class="pre-word"><span>B</span><span>A</span><span>S</span><span>S</span></div><div class="pre-line" id="preLine"></div></div></div>
+<div class="reading-progress" id="readingProgress"></div>
+
+<nav class="nav" id="nav">
+  <a href="https://basstrading.fr" class="nav-logo">BASS</a>
+  <ul class="nav-links">
+    <li><a href="https://basstrading.fr/#methode">Méthode</a></li>
+    <li><a href="https://basstrading.fr#resultats">Résultats</a></li>
+    <li><a href="https://basstrading.fr#avis">Avis</a></li>
+    <li><a href="https://basstrading.fr#faq">FAQ</a></li>
+    <li><a href="/formations/">Formations</a></li>
+    <li><a href="https://basstrading.fr/blog/">Blog</a></li>
+  </ul>
+  <a href="https://basstrading.fr/p/formation-offerte/?src=blog-stop-loss-trading-menu" class="nav-cta">Formation offerte</a>
+</nav>
+
+<section class="blog-hero">
+  <div class="blog-hero-inner">
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <a href="https://basstrading.fr">Accueil</a><span class="sep">/</span>
+      <a href="https://basstrading.fr/blog/">Blog</a><span class="sep">/</span>
+      <span>Stop loss en trading</span>
+    </nav>
+    <div class="blog-hero-cat">Gestion du risque</div>
+    <h1 class="blog-hero-title">Stop loss : où le placer en trading (exemples sur futures)</h1>
+    <p class="blog-hero-desc">Un stop loss est un ordre posé à l&#39;avance qui coupe ta position si le prix atteint le niveau où ton idée de trade est fausse. Il se place là où le marché te donne tort, pas là où la perte « fait moins mal » : ensuite seulement, tu calcules combien de contrats prendre pour que cette perte reste acceptable.</p>
+    <div class="blog-meta">
+      <div class="blog-meta-author">
+        <div class="blog-meta-avatar"><img src="../../images/bass-presenting.jpg" alt="Sébastien Constant" loading="lazy"></div>
+        <div><div class="blog-meta-name"><a href="/auteur/sebastien-constant/" rel="author" style="color:inherit;text-decoration:none">Sébastien Constant</a></div><div class="blog-meta-role">Trader & Formateur Order Flow</div></div>
+      </div>
+      <div class="blog-meta-sep"></div>
+      <div class="blog-meta-info"><span>Novembre 2026</span><span>14 min de lecture</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="article-wrap">
+  <aside class="article-sidebar">
+    <div class="toc">
+      <div class="toc-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/></svg> Sommaire</div>
+      <ol>
+        <li><a href="#qu-est-ce-qu-un-stop-loss-en-trading">Qu&#39;est-ce qu&#39;un stop loss en trading ?</a></li>
+        <li><a href="#pourquoi-utiliser-un-stop-loss-sur-chaqu">Pourquoi utiliser un stop loss sur chaque trade ?</a></li>
+        <li><a href="#ou-placer-son-stop-loss">Où placer son stop loss ?</a></li>
+        <li><a href="#mon-exemple-un-stop-d-une-vingtaine-de-p">Mon exemple : un stop d&#39;une vingtaine de points sur le Nasdaq</a></li>
+        <li><a href="#comment-calculer-sa-taille-de-position-a">Comment calculer sa taille de position à partir du stop ?</a></li>
+        <li><a href="#stop-loss-ou-stop-limit-stop-limite-quel">Stop loss ou stop limit (stop limite) : quel ordre choisir ?</a></li>
+        <li><a href="#ton-stop-doit-il-etre-plus-large-en-swin">Ton stop doit-il être plus large en swing qu&#39;en scalping ?</a></li>
+        <li><a href="#ton-stop-loss-sera-t-il-execute-a-son-pr">Ton stop loss sera-t-il exécuté à son prix exact ?</a></li>
+        <li><a href="#comment-configurer-un-stop-loss-sur-ta-p">Comment configurer un stop loss sur ta plateforme ?</a></li>
+        <li><a href="#comment-associer-stop-loss-et-take-profi">Comment associer stop loss et take profit ?</a></li>
+        <li><a href="#quelles-erreurs-de-stop-loss-coutent-le-">Quelles erreurs de stop loss coûtent le plus cher ?</a></li>
+        <li><a href="#tu-veux-apprendre-a-placer-tes-stops-sur">Tu veux apprendre à placer tes stops sur de vrais niveaux ?</a></li>
+        <li><a href="#faut-il-toujours-mettre-un-stop-loss-ava">Faut-il toujours mettre un stop loss ? Avantages et défauts</a></li>
+        <li><a href="#stop-loss-ce-qu-il-faut-retenir">Stop loss : ce qu&#39;il faut retenir</a></li>
+      </ol>
+    </div>
+  </aside>
+
+  <article class="article-body">
+    <h2 id="qu-est-ce-qu-un-stop-loss-en-trading">Qu&#39;est-ce qu&#39;un stop loss en trading ?</h2>
+    <p>Un stop loss est un ordre de sortie placé à l&#39;avance chez ton courtier, qui ferme automatiquement ta position quand le prix atteint un niveau défini, pour limiter la perte d&#39;un trade à un montant connu avant d&#39;entrer.</p>
+<p>Tu achètes un contrat, tu poses en même temps un ordre de vente plus bas. Si le marché monte, l&#39;ordre dort. Lorsque le marché descend jusqu&#39;à ton niveau, l&#39;ordre se déclenche et te sort, que tu sois devant ton écran ou pas.</p>
+<p>C&#39;est tout. Le mot fait peur aux débutants parce qu&#39;il est anglais et parce qu&#39;il rime avec « perte ». En réalité, c&#39;est l&#39;outil qui te permet de rester dans le jeu assez longtemps pour apprendre.</p>
+<h3>Stop loss, take profit, stop suiveur : qui fait quoi ?</h3>
+<ul><li>Le stop loss limite la perte : il est placé contre toi.</li><li>Le take profit encaisse le gain : il est placé dans ton sens. Je l&#39;explique en détail dans mon article sur le <a href="https://basstrading.fr/blog/take-profit-trading/">take profit en trading</a>.</li><li>Le stop suiveur est un stop loss qui se déplace automatiquement derrière le prix. Je préfère déplacer mon stop moi-même, sur des niveaux précis.</li></ul>
+<p>Les trois se combinent souvent dans un même ordre groupé : une entrée, un stop, un objectif. Mais le cœur de la gestion du risque, c&#39;est le premier. Alors pourquoi tant de traders refusent-ils encore d&#39;en mettre un ?</p>
+
+    <hr>
+
+    <h2 id="pourquoi-utiliser-un-stop-loss-sur-chaqu">Pourquoi utiliser un stop loss sur chaque trade ?</h2>
+    <p>Parce que sur les marchés, une petite erreur sans stop peut devenir une perte qui efface des semaines de travail. Le stop ne sert pas à gagner : il sert à rendre tes pertes petites, connues et répétables.</p>
+<p>Comme je le dis dans ma vidéo sur la <a href="https://www.youtube.com/watch?v=-jyiE4fAE0I&amp;t=480s">chasse aux stops</a> : « Parce que dans le trading, on t&#39;apprend qu&#39;il vaut mieux mettre des stops et c&#39;est vrai que franchement, il vaut quand même mieux mettre des stops. »</p>
+<h3>L&#39;exemple du café</h3>
+<p>Dans cette même vidéo, je prends une image toute simple. Tu achètes un café 10 euros en pensant le revendre plus cher. Le prix baisse. Tu décides de sortir avant que ça empire : « À 9 euros, tu vends à perte. Tu as perdu 1 euro, mais ce n&#39;est pas grave. Ok ? Tu n&#39;es plus dedans. »</p>
+<p>C&#39;est exactement ça, un stop loss. Tu acceptes de perdre 1 euro pour ne pas risquer d&#39;en perdre 5. Et surtout, tu n&#39;es plus dedans : ton esprit est libre pour le trade suivant.</p>
+<h3>Ce que disent les chiffres sur les traders particuliers</h3>
+<p>Les régulateurs européens ont mesuré à plusieurs reprises les résultats des particuliers sur les produits à effet de levier. En 2018, l&#39;<a href="https://www.esma.europa.eu/press-news/esma-news/esma-agrees-prohibit-binary-options-and-restrict-cfds-protect-retail-investors">ESMA indiquait que 74 à 89 % des comptes de particuliers perdent de l&#39;argent sur les CFD</a> selon les fournisseurs. En France, l&#39;<a href="https://www.amf-france.org/sites/institutionnel/files/contenu_simple/rapport_etude_analyse/epargne_prestataire/Etude%20des%20resultats%20des%20investisseurs%20particuliers%20sur%20le%20trading%20de%20CFD%20et%20de%20Forex%20en%20France.pdf">étude de l&#39;AMF publiée en 2014</a> portait sur 14 799 clients suivis de 2009 à 2012 : 89,4 % d&#39;entre eux avaient perdu de l&#39;argent.</p>
+<p>Ces études portent sur les CFD et le forex, pas sur les futures, et elles n&#39;expliquent pas tout par l&#39;absence de stop. Mais le cas par défaut d&#39;un particulier qui trade avec levier, c&#39;est la perte. Le stop est le premier outil pour ne pas entrer dans cette statistique par accident.</p>
+<h3>À retenir</h3>
+<ul><li>L&#39;essentiel : le stop rend la perte connue avant d&#39;entrer.</li><li>Il te sort du trade même si tu n&#39;es pas devant l&#39;écran.</li><li>Il rend tes résultats mesurables.</li></ul>
+<p>Reste la vraie question, celle qui fait toute la différence : à quel prix le mettre ?</p>
+
+    <hr>
+
+    <h2 id="ou-placer-son-stop-loss">Où placer son stop loss ?</h2>
+    <p>Ton stop se place à un niveau fixé avant d&#39;entrer : le prix où ton idée de trade devient fausse, avec une petite marge de quelques ticks au-delà. Pas à un montant rond, pas à « 10 points parce que c&#39;est ce que je peux perdre ». Le marché ne sait pas combien tu as sur ton compte.</p>
+<p>C&#39;est l&#39;erreur numéro un que je vois chez mes élèves : ils partent de l&#39;argent (« je veux perdre 50 € maximum ») et ils en déduisent un stop qui tombe au milieu du bruit normal du marché.</p>
+<h3>La question à te poser avant chaque entrée</h3>
+<p>Avant de cliquer, demande-toi : « À quel prix je saurai que je me suis trompé ? » Quelle que soit ta technique d&#39;entrée, ce prix existe toujours, sinon tu n&#39;as pas de raison d&#39;entrer. Quelques exemples concrets :</p>
+<ul><li>Tu achètes un rebond sur un support : ton idée est fausse si le prix casse franchement ce support. Le stop va sous le plus bas qui a fait le rebond.</li><li>Tu achètes une cassure de résistance : ton idée est fausse si le prix réintègre la zone sous l&#39;ancienne résistance. Le stop va sous le niveau cassé.</li><li>Tu vends un rejet sur un haut de range : ton idée est fausse si le prix s&#39;installe au-dessus. Le stop va au-dessus du plus haut du rejet.</li><li>Tu trades un retour vers le VWAP : ton idée est fausse si le prix traverse le VWAP et y reste. Mes repères sont dans mon guide du <a href="https://basstrading.fr/blog/vwap-trading/">VWAP en trading</a>.</li></ul>
+<h3>Pourquoi une marge de quelques ticks</h3>
+<p>Si tout le monde voit le même plus bas, beaucoup de stops sont posés pile dessous. Le prix vient souvent chercher cette liquidité avant de repartir. C&#39;est ce qu&#39;on appelle la chasse aux stops, et je démonte les fantasmes qui l&#39;entourent dans mon article sur la <a href="https://basstrading.fr/blog/chasse-aux-stops-trading/">chasse aux stops</a>.</p>
+<p>Ta marge te protège de ce petit débordement. Sur le Nasdaq futures, je pense en ticks et en points : quelques ticks sous le plus bas, ce n&#39;est pas un stop collé sur un chiffre rond que tout le monde regarde.</p>
+<p>Pour trouver où ton idée est fausse, il te faut des niveaux solides : profil de volume, plus hauts et plus bas de la veille, ouverture de New York, VWAP. Les zones de valeur se lisent comme je l&#39;explique dans mon article sur la <a href="https://basstrading.fr/blog/value-area-trading/">value area</a>.</p>
+<h3>À retenir</h3>
+<ul><li>Le stop se place sur une invalidation, pas sur un montant.</li><li>Il va au-delà du niveau, avec une marge de quelques ticks.</li><li>Il doit pouvoir se décrire en une phrase reproductible.</li></ul>
+<p>Une fois ce prix fixé, voyons comment je le fais sur un vrai graphique.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/stop-loss-trading/blog-stop-loss-trading-2.webp" alt="Schéma des étapes pour placer un stop loss : idée, invalidation, marge, distance, taille de position" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">L&#39;ordre compte : le stop vient du graphique, la taille vient du stop.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="mon-exemple-un-stop-d-une-vingtaine-de-p">Mon exemple : un stop d&#39;une vingtaine de points sur le Nasdaq</h2>
+    <p>Dans ma vidéo <a href="https://www.youtube.com/watch?v=-jyiE4fAE0I&amp;t=1280s">« Chasse aux stops : enfin la vérité »</a>, publiée le 22/08/2025, je montre à l&#39;écran un cas concret sur le Nasdaq.</p>
+<h3>La scène</h3>
+<p>Le prix vient de purger un plus bas : il est passé sous le niveau évident, a déclenché les stops posés en dessous, puis il est revenu au-dessus. Pour moi, c&#39;est l&#39;information clé. Ceux qui devaient sortir sont sortis, et le prix réintègre la zone.</p>
+<p>Je décris alors mon plan en direct : « je fais mon stop ici, d&#39;accord ? Je rentre là, tu as un stop d&#39;une vingtaine de points, même pas ».</p>
+<h3>Pourquoi ce stop est logique</h3>
+<ul><li>L&#39;invalidation est claire : si le prix repasse sous le plus bas qui vient d&#39;être purgé, mon idée de réintégration est fausse.</li><li>La distance est connue avant d&#39;entrer : une vingtaine de points de Nasdaq.</li><li>Le stop n&#39;est pas posé là où la foule vient de se faire sortir : j&#39;entre après la purge, avec un stop qui en tient compte.</li></ul>
+<p>Je ne cherche pas le stop le plus petit possible, je cherche le plus logique. Une vingtaine de points sur le Nasdaq, ce n&#39;est pas un petit stop en soi. Ce qui le rend acceptable, c&#39;est la taille de position que je prends derrière.</p>
+<p>Maintenant, combien de contrats prendre avec un stop de 20 points ? C&#39;est là que le MNQ change tout.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/stop-loss-trading/blog-stop-loss-trading-1.jpg" alt="Graphique Nasdaq dans ma vidéo du 22/08/2025 : plus bas purgé puis réintégré, niveau sous lequel je place mon stop" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Le plus bas purgé puis réintégré : c&#39;est sous ce plus bas que je place mon stop, à une vingtaine de points de l&#39;entrée (ma vidéo du 22/08/2025).</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="comment-calculer-sa-taille-de-position-a">Comment calculer sa taille de position à partir du stop ?</h2>
+    <p>La taille de position se calcule à partir de la distance du stop, et jamais l&#39;inverse : nombre de contrats = risque accepté ÷ (distance du stop en points × valeur d&#39;un point).</p>
+<p>Sur les <a href="https://basstrading.fr/blog/nasdaq-futures-nq-mnq/">futures Nasdaq</a>, deux contrats existent pour le même indice :</p>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Contrat</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Valeur d&#39;un point</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Valeur d&#39;un tick (0,25 pt)</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">NQ (E-mini Nasdaq-100)</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">20 $</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">5 $</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">MNQ (Micro E-mini)</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">2 $</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">0,50 $</td></tr></tbody></table></div>
+<p>Le MNQ vaut exactement un dixième du NQ. Si tu hésites entre les deux, je compare tout dans mon article <a href="https://basstrading.fr/blog/nq-ou-mnq/">NQ ou MNQ : quel contrat choisir</a>.</p>
+<h3>Le calcul pas à pas</h3>
+<p>Reprenons mon stop d&#39;une vingtaine de points, et imaginons que tu acceptes de risquer 100 $ sur ce trade.</p>
+<ul><li>Distance du stop : 20 points.</li><li>Perte par contrat MNQ : 20 × 2 $ = 40 $.</li><li>Perte par contrat NQ : 20 × 20 $ = 400 $.</li><li>Nombre de contrats : 100 $ ÷ 40 $ = 2,5, arrondi en dessous, donc 2 MNQ (80 $ de risque).</li><li>Sur NQ : un seul contrat risque déjà 400 $, quatre fois ton budget. Pas de trade sur NQ.</li></ul>
+<p>Ce n&#39;est pas le stop qu&#39;on adapte au compte, c&#39;est la taille de tes positions. Si l&#39;invalidation est trop loin pour ton budget, la bonne décision n&#39;est pas de rapprocher le stop : c&#39;est de ne pas prendre le trade.</p>
+<h3>Quel risque par trade ?</h3>
+<p>Combien accepter de perdre sur un trade dépend de ton capital, de ta méthode et de ta tolérance. J&#39;y ai consacré un article entier : <a href="https://basstrading.fr/blog/combien-risquer-par-trade/">combien risquer par trade</a>. Et pour ne pas enchaîner les petites pertes jusqu&#39;à la grosse journée rouge, fixe aussi une <a href="https://basstrading.fr/blog/perte-maximale-journaliere-trading/">perte maximale journalière</a>.</p>
+<h3>À retenir</h3>
+<ul><li>D&#39;abord le stop logique, ensuite la taille.</li><li>MNQ : 2 $ le point, 0,50 $ le tick. NQ : 20 $ le point, 5 $ le tick.</li><li>Arrondis toujours le nombre de contrats vers le bas.</li></ul>
+<p>Exemple pédagogique : le trading de contrats à terme comporte un risque élevé de perte, pouvant dépasser la mise initiale.</p>
+<p>Ton stop est placé, ta taille est calculée. Mais quel ordre envoyer exactement à ton courtier ?</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/stop-loss-trading/blog-stop-loss-trading-3.webp" alt="Chiffres clés du stop loss sur le Nasdaq futures : valeur du tick et du point sur MNQ et NQ" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Le MNQ vaut un dixième du NQ : c&#39;est lui qui permet de garder un stop logique avec un petit compte.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="stop-loss-ou-stop-limit-stop-limite-quel">Stop loss ou stop limit (stop limite) : quel ordre choisir ?</h2>
+    <p>Pour protéger une position sur les futures, je privilégie un ordre stop qui devient un ordre au marché quand il est déclenché, parce que ma priorité est de sortir, pas d&#39;obtenir un prix précis.</p>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Type d&#39;ordre</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Ce qui se passe au déclenchement</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Le risque principal</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Stop au marché</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Devient un ordre au marché</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Glissement de quelques ticks</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Stop limite</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Devient un ordre limite</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Aucune exécution si le prix saute</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Stop suiveur</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Se déplace derrière le prix</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Sortie sur une simple respiration</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Stop mental</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Rien, tu dois cliquer</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Tu ne cliques pas</td></tr></tbody></table></div>
+<h3>Le stop au marché</h3>
+<p>C&#39;est le stop classique. La <a href="https://static.ninjatrader.com/support/helpGuides/nt8/order_types.htm">documentation de NinjaTrader</a> le décrit ainsi : l&#39;ordre attend que le prix dépasse ton niveau, puis il devient un ordre au marché. Elle précise aussi que ces ordres augmentent tes chances d&#39;être exécuté, mais sans garantie de prix.</p>
+<p>Sur le CME, l&#39;opérateur du marché des futures Nasdaq, selon sa <a href="https://cmegroupclientsite.atlassian.net/wiki/display/EPICSANDBOX/Order+Types+for+Futures+and+Options">documentation sur les types d&#39;ordres</a>, le stop au marché passe sous la forme d&#39;un « stop with protection » : un ordre au marché borné par une limite de protection, pour éviter une exécution à un prix aberrant. Ta plateforme gère cela pour toi.</p>
+<h3>Le stop limite</h3>
+<p>Au déclenchement, il devient un ordre limite, donc il ne s&#39;exécute qu&#39;à ton prix ou mieux. NinjaTrader le dit sans détour : le trader peut ne pas être exécuté si le prix limite n&#39;est jamais atteint.</p>
+<p>C&#39;est séduisant (« je ne veux pas de glissement »), mais pour une sortie de protection, c&#39;est dangereux. Sur une annonce, le prix peut sauter ton stop et ta limite en une fraction de seconde. Ton ordre reste alors en attente pendant que ta perte grossit. Il garde un intérêt pour entrer sur une cassure sans courir après le prix ; pour sortir d&#39;un trade perdant, je ne m&#39;en sers pas.</p>
+<p>Le stop mental (« je sors si ça passe sous tel prix, mais je ne mets pas d&#39;ordre »), je le déconseille à tous les débutants : un stop qui n&#39;est pas dans le carnet n&#39;est pas un stop, c&#39;est une intention.</p>
+<p>Et il n&#39;existe pas de stop garanti sur les futures cotés : c&#39;est un produit de certains courtiers CFD. Avant de voir ce que cela change pour ton exécution, une question que mes élèves me posent souvent : la distance du stop dépend-elle de ton style ?</p>
+
+    <hr>
+
+    <h2 id="ton-stop-doit-il-etre-plus-large-en-swin">Ton stop doit-il être plus large en swing qu&#39;en scalping ?</h2>
+    <p>Oui, presque toujours : plus ton unité de temps est grande, plus les niveaux d&#39;invalidation sont éloignés, donc plus ton stop est large en points, et plus ta taille de position doit être petite.</p>
+<p>Le principe ne change pas d&#39;un style à l&#39;autre : le stop va là où ton idée est fausse. Ce qui change, c&#39;est l&#39;échelle de cette idée.</p>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Style</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Où se trouve l&#39;invalidation</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Conséquence sur la taille</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Scalping</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Le dernier petit plus bas ou plus haut</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Stop court, taille possible plus grande</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Day trading</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Un niveau de la séance (VWAP, plus bas du jour)</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Stop moyen, taille moyenne</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Swing</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Un niveau sur plusieurs jours</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Stop large, taille petite</td></tr></tbody></table></div>
+<p>Même en scalping, ton stop doit rester hors du bruit normal du Nasdaq : court ne veut pas dire collé. Le day trading est mon terrain principal, je le détaille dans mon guide du <a href="https://basstrading.fr/blog/day-trading-futures/">day trading des futures</a>. En swing, le stop peut faire des centaines de points : avec un petit compte, seul le MNQ permet de rester dans un risque raisonnable.</p>
+<p>Quel que soit ton style, une question reste : ton stop sera-t-il exécuté au prix que tu as choisi ?</p>
+
+    <hr>
+
+    <h2 id="ton-stop-loss-sera-t-il-execute-a-son-pr">Ton stop loss sera-t-il exécuté à son prix exact ?</h2>
+    <p>Pas toujours : un stop au marché garantit la sortie, pas le prix. L&#39;écart entre le prix de ton stop et ton prix d&#39;exécution s&#39;appelle le glissement (slippage en anglais).</p>
+<h3>D&#39;où vient le glissement</h3>
+<p>Quand ton stop se déclenche, il devient un ordre au marché. Il prend la liquidité disponible au meilleur prix dans le carnet. Si, à ce moment, il y a peu d&#39;ordres en face ou si le prix bouge très vite, ton ordre est exécuté quelques ticks plus loin.</p>
+<p>Pour comprendre ce qui se passe dans le carnet à ce moment-là, je l&#39;explique dans mon guide du <a href="https://basstrading.fr/blog/carnet-ordres-dom-futures/">carnet d&#39;ordres et du DOM</a>.</p>
+<h3>Les moments où ça glisse le plus</h3>
+<ul><li>Les annonces économiques : chiffres de l&#39;emploi américain, inflation, décisions de la Fed. Le carnet se vide juste avant, puis le prix saute.</li><li>L&#39;ouverture de New York : à 15 h 30 heure de Paris la plupart de l&#39;année, la volatilité explose pendant quelques minutes. Les horaires exacts changent avec les changements d&#39;heure : je les détaille dans mon article sur les <a href="https://basstrading.fr/blog/horaires-futures-nasdaq-heure-paris/">horaires des futures Nasdaq en heure de Paris</a>.</li><li>Les heures creuses : la nuit européenne, moins d&#39;intervenants, donc des carnets plus fins.</li><li>La réouverture après la coupure quotidienne ou le week-end : si tu gardes une position, le prix peut rouvrir loin de ton stop, exécuté alors au premier prix disponible. Une raison de plus pour qu&#39;un débutant reste en intraday.</li></ul>
+<h3>Ce que je fais concrètement</h3>
+<ul><li>Je compte une marge de glissement dans mon calcul : si mon stop est à 20 points, je calcule mon risque comme s&#39;il en faisait un peu plus, et je garde un stop au marché plutôt qu&#39;un stop limite.</li><li>Je ne laisse pas une position ouverte juste avant une annonce majeure si je n&#39;y suis pas préparé : je préfère glisser de deux ticks que ne pas sortir du tout.</li></ul>
+<p>Tout ça, c&#39;est la théorie. Voyons maintenant comment configurer ton stop sur ta plateforme.</p>
+
+    <hr>
+
+    <h2 id="comment-configurer-un-stop-loss-sur-ta-p">Comment configurer un stop loss sur ta plateforme ?</h2>
+    <p>La technique la plus sûre est de poser le stop en même temps que l&#39;entrée, avec un ordre groupé (bracket) qui envoie automatiquement le stop et l&#39;objectif dès que ton entrée est exécutée. Ainsi, tes positions ne restent jamais une seconde sans protection.</p>
+<h3>Sur NinjaTrader : les stratégies ATM</h3>
+<p>NinjaTrader appelle ça une stratégie ATM. Tu définis à l&#39;avance ta distance de stop et d&#39;objectif en ticks, et la plateforme les pose automatiquement à chaque entrée. Les réglages sont décrits dans la <a href="https://static.ninjatrader.com/support/helpGuides/nt8/atm_strategy_parameters.htm">documentation des paramètres ATM</a>.</p>
+<p>Mon conseil : crée un modèle par type de trade, mais ajuste le stop à la main sur le niveau réel si ton invalidation n&#39;est pas à la distance du modèle. Le modèle sert à ne jamais oublier le stop ; c&#39;est le graphique qui décide où il va. J&#39;ai fait un tour complet du logiciel dans mon <a href="https://basstrading.fr/blog/ninjatrader-avis/">avis sur NinjaTrader</a>.</p>
+<p>Tradovate propose aussi des stratégies ATM, décrites dans l&#39;<a href="https://support.ninjatrader.com/s/article/ATM-Strategies-Tradovate?language=en_US">aide officielle</a>, et mon <a href="https://basstrading.fr/blog/tradovate-avis/">avis sur Tradovate</a> détaille la plateforme. Sur TradingView, tu ajoutes stop et objectif dans le ticket d&#39;ordre grâce aux <a href="https://www.tradingview.com/support/solutions/43000754951-order-brackets/">order brackets</a>.</p>
+<h3>La vérification à faire après chaque entrée</h3>
+<p>Quelle que soit la plateforme, regarde deux secondes ta liste d&#39;ordres juste après l&#39;entrée :</p>
+<ul><li>le stop est-il bien présent ?</li><li>est-il du bon côté (sous le prix pour un achat, au-dessus pour une vente) ?</li><li>la quantité est-elle la même que ta position ?</li></ul>
+<p>Ce dernier point piège ceux qui ajoutent des contrats en cours de route : la position grossit, mais le stop reste sur l&#39;ancienne quantité. Si tu renforces, lis d&#39;abord mon article sur l&#39;art de <a href="https://basstrading.fr/blog/pyramider-position-trading/">pyramider une position</a>.</p>
+
+    <hr>
+
+    <h2 id="comment-associer-stop-loss-et-take-profi">Comment associer stop loss et take profit ?</h2>
+    <p>Le stop et l&#39;objectif se décident ensemble, avant d&#39;entrer : le stop sur l&#39;invalidation, l&#39;objectif sur le prochain niveau logique, et tu ne prends le trade que si le rapport entre les deux te convient.</p>
+<p>Sur toutes les plateformes sérieuses, le stop et l&#39;objectif sont liés : quand l&#39;un est exécuté, l&#39;autre est annulé automatiquement. C&#39;est l&#39;ordre « l&#39;un annule l&#39;autre » (OCO). Sans ce lien, tu risques de te retrouver avec un ordre orphelin qui ouvre une nouvelle position à ton insu.</p>
+<p>Le placement de l&#39;objectif, les sorties partielles, le passage du stop au point d&#39;entrée et le calcul du ratio sont détaillés dans mon article sur le <a href="https://basstrading.fr/blog/take-profit-trading/">take profit</a>. Reste à voir ce qui coûte le plus cher quand on gère mal ce couple stop-objectif.</p>
+
+    <hr>
+
+    <h2 id="quelles-erreurs-de-stop-loss-coutent-le-">Quelles erreurs de stop loss coûtent le plus cher ?</h2>
+    <p>Voici les erreurs que je vois le plus souvent chez les débutants, dans l&#39;ordre de ce qu&#39;elles coûtent.</p>
+<h3>Erreur n° 1 : éloigner son stop quand le prix s&#39;en approche</h3>
+<p>Le prix arrive à 3 ticks de ton stop. Tu te dis : « c&#39;est juste une mèche, je le descends un peu ». Puis encore un peu. Tu viens de transformer une petite perte prévue en grosse perte imprévue.</p>
+<p>Le niveau fixé avant d&#39;entrer était juste : le prix te dit que tu as tort. Le seul déplacement acceptable, c&#39;est vers ton point d&#39;entrée. Décide une règle écrite, « je ne déplace jamais mon stop contre moi », et note dans ton journal chaque fois que tu l&#39;enfreins.</p>
+<h3>Erreur n° 2 : trader sans stop « parce que ça revient toujours »</h3>
+<p>Souvent, ça revient. C&#39;est justement ce qui rend cette erreur dangereuse : elle est récompensée dix fois, puis la onzième efface tout. Sur les futures, avec l&#39;effet de levier, une seule journée de fort mouvement sans stop peut te faire perdre plus que ton dépôt.</p>
+<h3>Erreur n° 3 : le stop trop serré</h3>
+<p>C&#39;est l&#39;erreur inverse, celle des traders prudents. Ils mettent leur stop à 2 ou 3 points, dans le bruit normal du marché. Le Nasdaq bouge de plusieurs points en quelques secondes : ils se font sortir sans que leur idée soit jamais testée. La prudence, ce n&#39;est pas un petit stop, c&#39;est une petite taille.</p>
+<h3>Erreur n° 4 : couper avant le stop par peur</h3>
+<p>Tu as un plan, le prix bouge contre toi sans toucher ton stop, et tu sors à la main. Puis le prix repart dans ton sens. Beaucoup y voient un problème de psychologie à travailler. Dans la plupart des cas, le problème n&#39;est ni ta psychologie ni le stop, c&#39;est la taille de tes positions : elle est trop grosse pour que tu supportes la fluctuation normale. Réduis-la, et la peur baisse avec elle.</p>
+<p>Ces erreurs ont toutes la même racine : une méthode qui n&#39;est pas encore claire. C&#39;est exactement ce qu&#39;on travaille dans ma formation.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/stop-loss-trading/blog-stop-loss-trading-4.webp" alt="Règle de gestion du risque : ne jamais éloigner son stop loss quand le prix s&#39;en approche" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Le seul déplacement permis va vers ton point d&#39;entrée, pour réduire le risque.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="tu-veux-apprendre-a-placer-tes-stops-sur">Tu veux apprendre à placer tes stops sur de vrais niveaux ?</h2>
+    <p>Placer un stop logique, c&#39;est savoir lire où le marché te donne tort. Ça s&#39;apprend en regardant des dizaines de situations réelles, pas en lisant une règle une fois.</p>
+<p>Dans ma <a href="https://basstrading.fr/p/formation-offerte/?src=blog&amp;a=stop-loss-trading">formation trading offerte</a>, je te montre comment je repère mes niveaux, comment je décide de mon invalidation et comment je calcule ma taille avant chaque entrée, sur des séances commentées du Nasdaq. Elle est gratuite et elle part de zéro.</p>
+<p>Et si tu veux comprendre d&#39;abord quel style de trading te correspond, commence par mon article sur la <a href="https://basstrading.fr/blog/methode-de-trading/">méthode de trading</a> : un stop n&#39;a de sens que dans une méthode qui te ressemble.</p>
+
+    <hr>
+
+    <h2 id="faut-il-toujours-mettre-un-stop-loss-ava">Faut-il toujours mettre un stop loss ? Avantages et défauts</h2>
+    <p>Pour un débutant qui trade les futures en intraday, ma réponse est oui, toujours, dans le carnet, dès l&#39;entrée. Mais le stop n&#39;est pas une baguette magique, et il faut connaître ses défauts et ses limites.</p>
+<h3>Ce que le stop ne fait pas</h3>
+<ul><li>Il ne rend pas une méthode rentable. Un stop parfaitement placé sur une mauvaise idée reste une perte. Le stop limite les dégâts, il ne crée pas d&#39;avantage.</li><li>Il ne garantit pas le prix : glissement, annonces, coupures.</li><li>Il ne te protège pas d&#39;une taille trop grosse. Un stop de 20 points avec 10 NQ, c&#39;est 4 000 $ de risque.</li></ul>
+<h3>Quand se retirer d&#39;un trade sur les marchés sans attendre le stop ?</h3>
+<p>Le stop est ta sortie de secours, pas la seule sortie possible. Je sors aussi avant lui quand la raison de mon entrée disparaît : le niveau qui devait tenir ne réagit pas, le volume que j&#39;attendais ne vient pas, ou le prix stagne bien plus longtemps que prévu. Ce n&#39;est pas de la peur, c&#39;est une sortie décidée dans le plan.</p>
+<h3>Le cas des prop firms</h3>
+<p>Si tu passes un challenge de prop firm, le stop devient encore plus important : la plupart imposent une perte maximale journalière et un drawdown maximal, et un seul trade sans stop peut te faire perdre le compte. J&#39;explique ces limites dans mon article sur le <a href="https://basstrading.fr/blog/drawdown-prop-firm-futures/">drawdown en prop firm</a>.</p>
+<p>Rappel important : le trading de contrats à terme comporte un risque élevé de perte, pouvant dépasser la mise initiale. Contenu éducatif, pas un conseil en investissement.</p>
+
+    <hr>
+
+    <h2 id="stop-loss-ce-qu-il-faut-retenir">Stop loss : ce qu&#39;il faut retenir</h2>
+    <p>L&#39;essentiel tient en une phrase : <b>le stop se place là où ton idée est fausse, à un niveau fixé avant d&#39;entrer, et c&#39;est lui qui décide de la taille de tes positions, jamais l&#39;inverse.</b> Le type d&#39;ordre, le glissement, le bracket : tout le reste n&#39;est que de l&#39;exécution au service de cette règle.</p>
+<h3>Ta prochaine action</h3>
+<p>Ce soir, ouvre ton graphique du Nasdaq et reprends tes trois derniers trades. Pour chacun, écris en une phrase où était ton invalidation réelle, puis compare avec l&#39;endroit où tu avais mis ton stop. Si les deux ne coïncident pas, tu viens de trouver ta première piste de progrès.</p>
+<p>Ensuite, la suite logique est de choisir où encaisser : lis mon article sur le <a href="https://basstrading.fr/blog/take-profit-trading/">take profit en trading</a>.</p>
+
+    <p><a href="https://www.youtube.com/watch?v=-jyiE4fAE0I" target="_blank" rel="noopener">▶ Voir la vidéo de Sébastien sur ce sujet</a></p>
+
+    <div class="cta-card cta-aimant">
+      <div class="cta-card-label">Gratuit</div>
+      <h3>La formation offerte : 7 leçons pour lire le marché comme un pro</h3>
+      <p>Accès immédiat et gratuit, en vidéo, à ton rythme. Sans carte bancaire.</p>
+      <a href="https://basstrading.fr/p/formation-offerte/?src=blog-stop-loss-trading" class="btn-p">Je la veux →</a>
+    </div>
+    
+  </article>
+</div>
+
+<!-- FAQ -->
+<section class="faq-sec">
+  <div class="sec-center"><div class="sec-label">FAQ</div><h2 class="sec-title">Questions fréquentes</h2></div>
+  <div class="faq-list">
+    <div class="fi"><button class="fq" onclick="tf(this)">C&#39;est quoi un stop loss en trading ? <span class="fq-icon">+</span></button><div class="fa"><p>Un stop loss est un ordre de sortie placé à l&#39;avance chez ton courtier. Il ferme automatiquement ta position si le prix atteint un niveau défini, pour que la perte d&#39;un trade reste connue et limitée avant même d&#39;entrer. Sur un achat, il se place sous le prix ; sur une vente, au-dessus.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Quelle différence entre un stop loss et un stop limite ? <span class="fq-icon">+</span></button><div class="fa"><p>Au déclenchement, un stop loss classique devient un ordre au marché : tu sors à coup sûr, avec parfois quelques ticks de glissement. Un stop limite devient un ordre limite : il ne s&#39;exécute qu&#39;à ton prix ou mieux, donc il peut ne jamais être exécuté si le prix saute. Pour protéger une position, je préfère le stop au marché.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Comment calculer un stop loss en ticks sur le MNQ ? <span class="fq-icon">+</span></button><div class="fa"><p>Sur le MNQ, un tick vaut 0,25 point, soit 0,50 $, et un point vaut 2 $. Un stop de 20 points représente donc 80 ticks, soit 40 $ par contrat. Divise ensuite le risque que tu acceptes par ces 40 $ pour obtenir ton nombre de contrats, arrondi vers le bas. Sur le NQ, tout est dix fois plus gros.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Pourquoi mon stop loss est-il toujours touché juste avant que le prix reparte ? <span class="fq-icon">+</span></button><div class="fa"><p>Souvent parce qu&#39;il est placé là où tout le monde le met : pile sous un plus bas évident ou sur un chiffre rond. Le prix vient chercher cette liquidité avant de repartir. Éloigne-le de quelques ticks au-delà du niveau, et réduis ta taille de position pour que cette distance reste dans ton risque.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Le stop loss est-il garanti sur les futures ? <span class="fq-icon">+</span></button><div class="fa"><p>Non. Sur les futures cotés, ton stop est un ordre comme un autre dans le carnet, exécuté au meilleur prix disponible au moment du déclenchement. Sur une annonce économique ou à la réouverture après une coupure, l&#39;exécution peut se faire plusieurs ticks plus loin. Le stop garanti est un produit de certains courtiers CFD, pas des futures.</p></div></div>
+  </div>
+</section>
+
+<!-- Related -->
+<section class="related-sec">
+  <div class="sec-center"><div class="sec-label">Continuer la lecture</div><h2 class="sec-title">Articles connexes</h2></div>
+  <div class="related-grid">
+    <a href="/blog/market-profile-guide-complet/" class="related-card"><div class="related-cat">Guide</div><h3>Market Profile : le guide complet pour débutants</h3><p>Value Area, POC, types de journées — tout pour commencer.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/order-flow-trading-france/" class="related-card"><div class="related-cat">Méthode</div><h3>Order Flow Trading : pourquoi personne ne l'enseigne en France</h3><p>Le carnet d'ordres et le flux institutionnel décryptés.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/sierra-chart-configuration/" class="related-card"><div class="related-cat">Tutoriel</div><h3>Sierra Chart : configuration complète</h3><p>Le setup pas à pas pour le Market Profile et le Footprint.</p><span class="related-link">Lire &rarr;</span></a>
+  </div>
+</section>
+
+<!-- serie:debut --><style>.serie-w{background:#FFF;color:#1D1D1F;border-top:1px solid #F5F5F7}.serie{max-width:1060px;margin:0 auto;padding:56px 24px;font-family:inherit;box-sizing:border-box}.serie-l{font-size:.6rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#0066FF;margin-bottom:8px}.serie-w .serie h2{font-size:1.4rem;font-weight:800;letter-spacing:-.5px;color:#1D1D1F!important;margin:0 0 18px;font-family:inherit}.serie ul{list-style:none;padding:0;margin:0 0 22px;display:grid;grid-template-columns:repeat(2,1fr);gap:8px 24px}.serie-w .serie li a{color:#1D1D1F!important;font-size:.9rem;line-height:1.45;text-decoration:none;border-bottom:1px solid #D2D2D7}.serie li a:hover{color:#0066FF}.serie li.pil a{font-weight:700}.serie-o{background:#F5F5F7;border-radius:14px;padding:18px 20px;font-size:.88rem;line-height:1.55;color:#1D1D1F}.serie-w .serie-o a{color:#0066FF!important;font-weight:700}@media(max-width:700px){.serie ul{grid-template-columns:1fr}}</style><div class="serie-w"><aside class="serie" aria-label="Dans la même série"><div class="serie-l">Dans la même série</div><h2>Gestion du risque et prop firms</h2><ul><li class="pil"><a href="/blog/combien-risquer-par-trade/">Combien risquer par trade : le calcul sur Nasdaq (NQ, MNQ)</a></li><li class=""><a href="/blog/perte-maximale-journaliere-trading/">Perte maximale journalière : la règle des salles de marché</a></li><li class=""><a href="/blog/chasse-aux-stops-trading/">Chasse aux stops : pourquoi ton stop saute (et comment la lire)</a></li><li class=""><a href="/blog/pyramider-position-trading/">Pyramider une position en trading : ajouter au gagnant, jamais au perdant</a></li><li class=""><a href="/blog/drawdown-prop-firm-futures/">Drawdown prop firm : statique, trailing ou fin de journée ?</a></li><li class=""><a href="/blog/premier-payout-prop-firm/">Premier payout en prop firm : coussin, cohérence et retrait</a></li><li class=""><a href="/blog/prop-firm-funded-trader/">Devenir Funded Trader : La méthode qui fonctionne vraiment</a></li></ul><div class="serie-o"><a href="/formations/">Toutes les formations de Bass</a> : plus de 250 leçons vidéo, du débutant au Market Profile avancé. Pour commencer sans payer : <a href="/p/formation-offerte/?src=serie-stop-loss-trading">la formation offerte</a> (7 leçons vidéo).</div></aside></div><!-- serie:fin -->
+<footer class="footer">
+  <div class="ft-top"><div class="ft-logo">BASS</div><div class="ft-cols">
+    <div class="ft-col"><div class="ft-col-title">Programme</div><a href="/formations/">Toutes les formations</a><a href="https://basstrading.fr/#methode">Méthode</a><a href="https://basstrading.fr/#programme">Programme</a><a href="https://basstrading.fr/p/formation-offerte/?src=blog-stop-loss-trading-pied">Formation offerte</a></div>
+    <div class="ft-col"><div class="ft-col-title">Ressources</div><a href="/blog/market-profile-guide-complet/">Market Profile</a><a href="/blog/footprint-chart-trading/">Footprint Chart</a><a href="/blog/order-flow-trading-france/">Order Flow</a></div>
+  </div></div>
+  <div class="ft-bottom"><span>&copy; 2026 BASS — Sébastien Constant</span><div><a href="/mentions-legales/">Mentions légales</a><a href="/confidentialite/">Confidentialité</a><a href="/cgv/">CGV</a><a href="mailto:contact@basstrading.fr">Contact</a></div></div>
+</footer>
+<div class="disclaimer">Le trading comporte des risques de perte en capital. Les performances passées ne préjugent pas des performances futures. Ce site ne constitue pas un conseil en investissement.</div>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+const lenis=new Lenis({duration:1.2,easing:t=>Math.min(1,1.001-Math.pow(2,-10*t))});
+function raf(t){lenis.raf(t);requestAnimationFrame(raf)}requestAnimationFrame(raf);
+lenis.on('scroll',ScrollTrigger.update);gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0);
+const tl=gsap.timeline();
+tl.to('.pre-word span',{y:0,opacity:1,duration:.5,stagger:.1,ease:'power3.out',delay:.3}).to('#preLine',{width:'80px',duration:.7,ease:'power2.inOut'},'<+.2').to('.preloader',{yPercent:-100,duration:.8,ease:'power3.inOut',delay:.4}).set('.preloader',{display:'none'}).to('#nav',{opacity:1,y:0,duration:.5},'<+.1');
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);const h=document.documentElement.scrollHeight-window.innerHeight;document.getElementById('readingProgress').style.width=(window.scrollY/h*100)+'%'});
+const tocLinks=document.querySelectorAll('.toc a');const sections=Array.from(tocLinks).map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+window.addEventListener('scroll',()=>{let c='';sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)c=s.id});tocLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+c)})});
+function tf(b){const i=b.closest('.fi'),a=b.nextElementSibling,o=i.classList.contains('active');document.querySelectorAll('.fi').forEach(x=>{x.classList.remove('active');x.querySelector('.fa').classList.remove('open')});if(!o){i.classList.add('active');a.classList.add('open')}}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();lenis.scrollTo(t,{offset:-60})}})});
+</script>
+<script src="/v.js" defer></script>
+</body>
+</html>
