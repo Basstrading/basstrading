@@ -99,6 +99,7 @@
 - [Drawdown prop firm : statique, trailing ou fin de journée ?](https://basstrading.fr/blog/drawdown-prop-firm-futures/): Drawdown prop firm : statique, trailing intraday, fin de journée ou verrouillé ? La mécanique chiffrée de chaque type et comment adapter ton trading.
 - [Premier payout en prop firm : coussin, cohérence et retrait](https://basstrading.fr/blog/premier-payout-prop-firm/): Premier payout prop firm : monter le coussin avant de retirer, calculer la règle de cohérence, savoir combien de temps valider. Vu en live.
 - [Devenir Funded Trader : La méthode qui fonctionne vraiment](https://basstrading.fr/blog/prop-firm-funded-trader/): Guide complet pour devenir funded trader en prop firm : FTMO, TopStep, Apex. Méthode, gestion du risque, préparation.
+- [Stop loss : où le placer en trading (exemples sur futures)](https://basstrading.fr/blog/stop-loss-trading/): Stop loss : définition, où le placer sur les futures, calcul en ticks sur MNQ et NQ, types d'ordres et erreurs à éviter. Ma méthode avec exemples.
 - Formation liée : [Toutes les formations de Bass](https://basstrading.fr/formations/), plus de 250 leçons vidéo, du débutant au Market Profile avancé.
 
 <!-- grappes:fin -->

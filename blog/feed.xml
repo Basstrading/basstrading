@@ -6,8 +6,16 @@
   <link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
   <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/"/>
   <id>https://basstrading.fr/blog/</id>
-  <updated>2026-11-05T00:00:00Z</updated>
+  <updated>2026-11-06T00:00:00Z</updated>
   <author><name>Sébastien Constant (Bass)</name><uri>https://basstrading.fr/auteur/sebastien-constant/</uri></author>
+  <entry>
+    <title>Stop loss : où le placer en trading (exemples sur futures)</title>
+    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/stop-loss-trading/"/>
+    <id>https://basstrading.fr/blog/stop-loss-trading/</id>
+    <published>2026-11-06T00:00:00Z</published>
+    <updated>2026-11-06T00:00:00Z</updated>
+    <summary>Stop loss : définition, où le placer sur les futures, calcul en ticks sur MNQ et NQ, types d&#x27;ordres et erreurs à éviter. Ma méthode avec exemples.</summary>
+  </entry>
   <entry>
     <title>DeepCharts avis : prix, Mac, MBO et limites (2026)</title>
     <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/deepcharts-avis/"/>
