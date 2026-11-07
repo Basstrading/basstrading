@@ -6,8 +6,16 @@
   <link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
   <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/"/>
   <id>https://basstrading.fr/blog/</id>
-  <updated>2026-11-06T00:00:00Z</updated>
+  <updated>2026-11-07T00:00:00Z</updated>
   <author><name>Sébastien Constant (Bass)</name><uri>https://basstrading.fr/auteur/sebastien-constant/</uri></author>
+  <entry>
+    <title>Méthode Wyckoff : accumulation, distribution et spring</title>
+    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/methode-wyckoff/"/>
+    <id>https://basstrading.fr/blog/methode-wyckoff/</id>
+    <published>2026-11-07T00:00:00Z</published>
+    <updated>2026-11-07T00:00:00Z</updated>
+    <summary>La méthode Wyckoff expliquée simplement : les 3 lois, les 4 phases, le schéma d&#x27;accumulation, le spring et la façon dont je la lis en intraday.</summary>
+  </entry>
   <entry>
     <title>Stop loss : où le placer en trading (exemples sur futures)</title>
     <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/stop-loss-trading/"/>
