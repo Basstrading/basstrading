@@ -224,18 +224,28 @@
       "statusCode": 301
     },
     {
+      "source": "/blog/combien-temps-apprendre-trading",
+      "destination": "/blog/debuter-trading-zero-guide/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/combien-temps-apprendre-trading/",
+      "destination": "/blog/debuter-trading-zero-guide/",
+      "statusCode": 301
+    },
+    {
       "source": "/blog/journal-trading/",
-      "destination": "/blog/combien-temps-apprendre-trading/",
+      "destination": "/blog/debuter-trading-zero-guide/",
       "statusCode": 301
     },
     {
       "source": "/blog/plan-de-trading/",
-      "destination": "/blog/combien-temps-apprendre-trading/",
+      "destination": "/blog/debuter-trading-zero-guide/",
       "statusCode": 301
     },
     {
       "source": "/blog/backtester-strategie-trading/",
-      "destination": "/blog/combien-temps-apprendre-trading/",
+      "destination": "/blog/debuter-trading-zero-guide/",
       "statusCode": 301
     },
     {
