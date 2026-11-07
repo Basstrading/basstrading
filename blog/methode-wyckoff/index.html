@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Méthode Wyckoff : accumulation, distribution et spring — BASS Trading</title>
+  <meta name="description" content="La méthode Wyckoff expliquée simplement : les 3 lois, les 4 phases, le schéma d&#39;accumulation, le spring et la façon dont je la lis en intraday.">
+  <meta property="og:title" content="Méthode Wyckoff : accumulation, distribution et spring — BASS Trading">
+  <meta property="og:description" content="La méthode Wyckoff expliquée simplement : les 3 lois, les 4 phases, le schéma d&#39;accumulation, le spring et la façon dont je la lis en intraday.">
+  <meta property="og:image" content="https://basstrading.fr/blog/methode-wyckoff/blog-methode-wyckoff-1.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://basstrading.fr/blog/methode-wyckoff/blog-methode-wyckoff-1.webp">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://basstrading.fr/blog/methode-wyckoff/">
+  <meta property="og:site_name" content="BASS Trading">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://basstrading.fr/blog/methode-wyckoff/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","@id":"https://basstrading.fr/blog/methode-wyckoff/#article","headline":"Méthode Wyckoff : accumulation, distribution et spring","description":"La méthode Wyckoff expliquée simplement : les 3 lois, les 4 phases, le schéma d'accumulation, le spring et la façon dont je la lis en intraday.","datePublished":"2026-11-07","dateModified":"2026-11-07","inLanguage":"fr-FR","image":"https://basstrading.fr/blog/methode-wyckoff/blog-methode-wyckoff-1.webp","mainEntityOfPage":"https://basstrading.fr/blog/methode-wyckoff/","isPartOf":{"@type":"WebSite","@id":"https://basstrading.fr/#website","name":"BASS Trading","url":"https://basstrading.fr/"},"author":{"@type":"Person","@id":"https://basstrading.fr/#sebastien-constant","name":"Sébastien Constant","url":"https://basstrading.fr/auteur/sebastien-constant/"},"publisher":{"@type":"Organization","@id":"https://basstrading.fr/#organisation","name":"BASS Trading","url":"https://basstrading.fr/","logo":{"@type":"ImageObject","url":"https://basstrading.fr/images/logo-basstrading.png","width":512,"height":512}}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://basstrading.fr"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://basstrading.fr/blog/"},{"@type":"ListItem","position":3,"name":"Méthode Wyckoff","item":"https://basstrading.fr/blog/methode-wyckoff/"}]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Qu'est-ce que la méthode Wyckoff en trading ?","acceptedAnswer":{"@type":"Answer","text":"C'est une lecture du marché fondée sur le prix et le volume, créée par Richard Wyckoff au début du XXe siècle. Elle découpe le marché en quatre phases (accumulation, hausse, distribution, baisse) et cherche à repérer ce que font les gros opérateurs, pour se placer dans leur sens plutôt que contre eux."}},{"@type":"Question","name":"En quoi consiste la stratégie de Wyckoff ?","acceptedAnswer":{"@type":"Answer","text":"Elle consiste à identifier la phase du marché, à attendre la fin d'un range, puis à entrer après le piège final : le test qui suit un spring (achat) ou un UTAD (vente), ou un repli faible (LPS ou LPSY). Le stop se place au-delà du plus bas ou du plus haut du piège, ce qui garde le risque court."}},{"@type":"Question","name":"Qu'est-ce qui rend Wyckoff différent des autres méthodes ?","acceptedAnswer":{"@type":"Answer","text":"La plupart des méthodes cherchent un signal (croisement, figure, indicateur). Wyckoff cherche un contexte : la phase du marché, le camp qui a la main, et le rapport entre l'effort (le volume) et le résultat (le déplacement du prix). Il ne prédit pas la direction, il montre quand le rapport de force bascule."}},{"@type":"Question","name":"Quel est le degré de précision de la méthode Wyckoff ?","acceptedAnswer":{"@type":"Answer","text":"Aucune étude rigoureuse ne donne de taux de réussite fiable à la méthode Wyckoff. Sa précision dépend de ta lecture, du marché et de tes règles d'entrée et de sortie. Méfie-toi des chiffres promis : teste-la sur des séances passées puis dans ton journal, avec un stop systématique."}},{"@type":"Question","name":"Qu'est-ce qu'un spring Wyckoff ?","acceptedAnswer":{"@type":"Answer","text":"Le spring est une fausse cassure du bas d'un range d'accumulation. Le prix passe sous le support, déclenche les stops et attire les vendeurs, puis revient rapidement dans le range. Il signale souvent qu'il ne reste plus assez de vendeurs. Il n'est pas présent dans toutes les accumulations, et il se confirme par un test sur faible volume."}},{"@type":"Question","name":"La méthode Wyckoff fonctionne-t-elle en intraday ?","acceptedAnswer":{"@type":"Answer","text":"Oui, le cycle se retrouve sur toutes les unités de temps, y compris en 1 minute sur les futures du Nasdaq. En intraday, je l'associe au Market Profile pour les niveaux et au delta et au CVD pour voir l'effort contre le résultat. La lecture reste subjective : elle se teste dans un journal, avec un stop proche."}},{"@type":"Question","name":"Quelle est la différence entre Wyckoff et les SMC ?","acceptedAnswer":{"@type":"Answer","text":"Les SMC reprennent plusieurs idées de Wyckoff sous d'autres noms : le liquidity grab correspond au spring ou à l'upthrust. La différence principale est le volume : Wyckoff s'appuie sur lui pour valider chaque lecture, alors que beaucoup de contenus SMC se contentent du prix."}},{"@type":"Question","name":"Quel livre lire pour apprendre Wyckoff ?","acceptedAnswer":{"@type":"Answer","text":"Le texte d'origine est Studies in Tape Reading, publié en 1910 par Wyckoff sous le pseudonyme de Rollo Tape. Il est dans le domaine public et lisible gratuitement sur l'Internet Archive. Il est en anglais et parle de lecture de la bande : complète-le par l'observation de tes propres séances."}}]}
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{--bk:#1D1D1F;--bk2:#111;--bk3:#0A0A0A;--g1:#6E6E73;--g2:#86868B;--g3:#D2D2D7;--g4:#F5F5F7;--wh:#FBFBFD;--pure:#FFF;--green:#00B67A;--blue:#0066FF}
+    html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}
+    body{font-family:'DM Sans',sans-serif;color:var(--bk);background:var(--pure);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+    .preloader{position:fixed;inset:0;background:var(--bk3);z-index:10001;display:flex;align-items:center;justify-content:center}
+    .pre-word{font-family:'Outfit',sans-serif;font-size:clamp(3rem,8vw,5rem);font-weight:900;letter-spacing:16px;text-transform:uppercase;color:var(--pure);overflow:hidden}
+    .pre-word span{display:inline-block;transform:translateY(110%);opacity:0}
+    .pre-line{width:0;height:1px;background:rgba(255,255,255,.3);margin-top:20px}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 48px;display:flex;align-items:center;justify-content:space-between;background:rgba(245,245,247,.85);backdrop-filter:blur(20px) saturate(1.8);border-bottom:1px solid rgba(0,0,0,.04);transition:background .4s}
+    .nav-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase;color:var(--bk)}
+    .nav-links{display:flex;gap:28px;list-style:none}.nav-links a{font-size:.74rem;font-weight:500;letter-spacing:.3px;color:var(--g1);transition:color .3s}.nav-links a:hover{color:var(--bk)}
+    .nav-cta{padding:8px 20px;background:var(--bk);color:var(--pure);border:none;border-radius:980px;font-size:.72rem;font-weight:600;transition:all .3s;cursor:pointer;text-decoration:none;display:inline-block}.nav-cta:hover{background:var(--bk2)}
+    .blog-hero{padding:160px 48px 80px;background:var(--g4);position:relative;overflow:hidden}
+    .blog-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,transparent,var(--g4));pointer-events:none}
+    .blog-hero-inner{max-width:720px;margin:0 auto}
+    .breadcrumb{display:flex;gap:8px;align-items:center;margin-bottom:28px;flex-wrap:wrap}
+    .breadcrumb a,.breadcrumb span{font-size:.68rem;font-weight:500;letter-spacing:.3px;color:var(--g2);transition:color .3s}.breadcrumb a:hover{color:var(--bk)}.breadcrumb .sep{color:var(--g3)}
+    .blog-hero-cat{display:inline-block;padding:5px 14px;border:1px solid rgba(0,102,255,.15);border-radius:980px;font-size:.6rem;font-weight:700;color:var(--blue);letter-spacing:2px;text-transform:uppercase;margin-bottom:20px}
+    .blog-hero-title{font-family:'Outfit',sans-serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:900;line-height:1.05;letter-spacing:-2px;color:var(--bk);margin-bottom:20px}
+    .blog-hero-desc{font-size:.95rem;color:var(--g1);line-height:1.8;max-width:560px;margin-bottom:28px}
+    .blog-meta{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+    .blog-meta-author{display:flex;align-items:center;gap:10px}
+    .blog-meta-avatar{width:36px;height:36px;border-radius:50%;background:var(--bk3);overflow:hidden;flex-shrink:0}.blog-meta-avatar img{width:100%;height:100%;object-fit:cover}
+    .blog-meta-name{font-size:.78rem;font-weight:600;color:var(--bk)}.blog-meta-role{font-size:.65rem;color:var(--g2)}
+    .blog-meta-sep{width:1px;height:24px;background:var(--g3)}
+    .blog-meta-info{font-size:.7rem;color:var(--g2)}.blog-meta-info span{margin-right:16px}
+    .toc{position:sticky;top:90px;background:var(--pure);border:1px solid rgba(0,0,0,.04);border-radius:14px;padding:24px;margin-bottom:32px}
+    .toc-title{font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.5px;color:var(--bk);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+    .toc ol{list-style:none;counter-reset:toc}.toc li{counter-increment:toc}
+    .toc li a{display:flex;align-items:baseline;gap:8px;padding:6px 0;font-size:.76rem;color:var(--g1);transition:color .3s;border-bottom:1px solid rgba(0,0,0,.03)}.toc li a:hover{color:var(--blue)}
+    .toc li a::before{content:counter(toc,decimal-leading-zero);font-family:'Outfit',sans-serif;font-size:.65rem;font-weight:700;color:var(--g3);min-width:18px}
+    .toc li:last-child a{border-bottom:none}.toc li a.active{color:var(--blue);font-weight:600}.toc li a.active::before{color:var(--blue)}
+    .article-wrap{display:grid;grid-template-columns:220px 1fr;gap:40px;max-width:1020px;margin:0 auto;padding:60px 48px 120px}
+    .article-sidebar{position:relative}.article-body{max-width:700px}
+    .article-body h2{font-family:'Outfit',sans-serif;font-size:clamp(1.4rem,2.5vw,1.8rem);font-weight:800;line-height:1.1;letter-spacing:-1px;color:var(--bk);margin:56px 0 16px;padding-top:20px}.article-body h2:first-of-type{margin-top:0}
+    .article-body h3{font-family:'Outfit',sans-serif;font-size:1.05rem;font-weight:700;line-height:1.25;letter-spacing:-.3px;color:var(--bk);margin:36px 0 10px}
+    .article-body p{font-size:.9rem;color:var(--g1);line-height:1.85;margin-bottom:18px}
+    .article-body strong{color:var(--bk);font-weight:600}
+    .article-body ul,.article-body ol{margin:0 0 20px 0;padding-left:20px}
+    .article-body li{font-size:.88rem;color:var(--g1);line-height:1.8;margin-bottom:6px}.article-body li strong{color:var(--bk)}
+    .article-body blockquote{margin:28px 0;padding:20px 24px;background:var(--g4);border-left:3px solid var(--bk);border-radius:0 12px 12px 0;font-size:.88rem;color:var(--g1);line-height:1.8;font-style:italic}
+    .article-body blockquote strong{color:var(--bk);font-style:normal}
+    .article-body hr{border:none;border-top:1px solid var(--g4);margin:48px 0}
+    .info-box{margin:28px 0;padding:24px;background:rgba(0,102,255,.03);border:1px solid rgba(0,102,255,.08);border-radius:14px}
+    .info-box-title{font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:700;color:var(--blue);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+    .info-box p{font-size:.82rem;color:var(--g1);line-height:1.7;margin-bottom:0}
+    .key-concept{margin:32px 0;padding:28px;background:var(--bk3);border-radius:16px;color:var(--pure)}
+    .key-concept-label{font-size:.55rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:10px}
+    .key-concept h4{font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:800;letter-spacing:-.3px;margin-bottom:8px}
+    .key-concept p{font-size:.85rem;color:rgba(255,255,255,.5);line-height:1.8;margin-bottom:0}
+    .compare-table{width:100%;margin:24px 0 28px;border-collapse:collapse;border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,.06)}
+    .compare-table th{background:var(--bk3);color:var(--pure);font-family:'Outfit',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:14px 16px;text-align:left}
+    .compare-table td{padding:12px 16px;font-size:.82rem;color:var(--g1);line-height:1.6;border-bottom:1px solid rgba(0,0,0,.04);background:var(--pure)}
+    .compare-table tr:last-child td{border-bottom:none}.compare-table td:first-child{font-weight:600;color:var(--bk)}
+    .cta-card{margin:48px 0;padding:40px;background:var(--bk3);border-radius:20px;text-align:center;position:relative;overflow:hidden}
+    .cta-card::before{content:'';position:absolute;top:-50%;right:-30%;width:400px;height:400px;background:radial-gradient(circle,rgba(0,102,255,.08) 0%,transparent 70%);pointer-events:none}
+    .cta-card-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:12px}
+    .cta-card h3{font-family:'Outfit',sans-serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:800;color:var(--pure);letter-spacing:-.5px;margin-bottom:8px}
+    .cta-card p{font-size:.85rem;color:rgba(255,255,255,.4);line-height:1.7;max-width:380px;margin:0 auto 24px}
+    .cta-card .btn-p{background:var(--pure);color:var(--bk)}.cta-card .btn-p:hover{box-shadow:0 8px 30px rgba(255,255,255,.15)}
+    .faq-sec{padding:80px 48px 100px;background:var(--g4)}
+    .faq-list{max-width:680px;margin:40px auto 0}.fi{border-bottom:1px solid rgba(0,0,0,.06)}
+    .fq{width:100%;text-align:left;padding:18px 0;background:none;border:none;font-size:.85rem;font-weight:600;font-family:'DM Sans',sans-serif;color:var(--bk);display:flex;justify-content:space-between;align-items:center;cursor:pointer;gap:16px;transition:color .3s}.fq:hover{color:var(--g1)}
+    .fq-icon{width:22px;height:22px;border-radius:50%;background:rgba(0,0,0,.04);display:flex;align-items:center;justify-content:center;font-size:.75rem;transition:all .4s;flex-shrink:0;color:var(--g2)}
+    .fa{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1)}.fa.open{max-height:280px;padding-bottom:14px}
+    .fa p{font-size:.8rem;color:var(--g1);line-height:1.7;margin-bottom:0}.fi.active .fq-icon{background:var(--bk);color:var(--pure);transform:rotate(45deg)}
+    .related-sec{padding:80px 48px;background:var(--pure);border-top:1px solid var(--g4)}
+    .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1060px;margin:40px auto 0}
+    .related-card{display:block;padding:28px;background:var(--g4);border-radius:16px;transition:all .4s;text-decoration:none;color:var(--bk)}
+    .related-card:hover{background:var(--pure);box-shadow:0 8px 30px rgba(0,0,0,.06);transform:translateY(-2px)}
+    .related-cat{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+    .related-card h3{font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:700;line-height:1.3;letter-spacing:-.3px;margin-bottom:8px}
+    .related-card p{font-size:.78rem;color:var(--g1);line-height:1.6;margin-bottom:14px}
+    .related-link{font-size:.72rem;font-weight:600;color:var(--blue);letter-spacing:.3px}
+    .footer{background:var(--bk3);color:var(--pure);padding:56px 48px 28px}
+    .ft-top{display:flex;justify-content:space-between;align-items:start;margin-bottom:48px;flex-wrap:wrap;gap:32px}
+    .ft-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase}
+    .ft-cols{display:flex;gap:80px}
+    .ft-col-title{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:12px}
+    .ft-col a{display:block;font-size:.78rem;color:rgba(255,255,255,.5);margin-bottom:8px;transition:color .3s}.ft-col a:hover{color:var(--pure)}
+    .ft-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:20px;display:flex;justify-content:space-between;align-items:center;font-size:.6rem;color:rgba(255,255,255,.2)}
+    .ft-bottom a{color:rgba(255,255,255,.2);transition:color .3s;margin-left:20px}.ft-bottom a:hover{color:rgba(255,255,255,.5)}
+    .disclaimer{padding:12px 48px;background:var(--bk3);font-size:.58rem;color:rgba(255,255,255,.12);text-align:center;line-height:1.6;border-top:1px solid rgba(255,255,255,.03)}
+    .sec-center{text-align:center;max-width:680px;margin:0 auto}
+    .sec-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--g2);margin-bottom:10px}
+    .sec-title{font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;line-height:1.05;letter-spacing:-1.5px;color:var(--bk);margin-bottom:16px}
+    .btn-p{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--bk);color:var(--pure);border-radius:980px;font-size:.85rem;font-weight:600;transition:all .3s;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;text-decoration:none}
+    .btn-p:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(0,0,0,.1)}
+    .btn-p svg{width:13px;height:13px;transition:transform .3s}.btn-p:hover svg{transform:translateX(3px)}
+    .reading-progress{position:fixed;top:0;left:0;height:2px;background:var(--blue);z-index:9999;width:0;transition:width .1s linear}
+    @media(max-width:900px){.nav{padding:14px 20px}.nav-links{display:none}.blog-hero{padding:120px 20px 60px}.article-wrap{grid-template-columns:1fr;padding:40px 20px 80px}.article-sidebar{display:none}.related-grid{grid-template-columns:1fr}.related-sec,.faq-sec{padding:60px 20px}.ft-cols{flex-direction:column;gap:28px}.footer{padding:40px 20px 20px}.disclaimer{padding:10px 16px}.cta-card{padding:28px 20px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  .article-body a{color:var(--blue);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;font-weight:500}.article-body a:hover{text-decoration-thickness:2px}
+</style>
+<style>/* 28/10/2026 : débordement mobile (colonne de grille sans min-width) */.article-wrap>*,.article-layout>*{min-width:0}.article-body table,.compare-table{display:block;overflow-x:auto;max-width:100%}.article-body pre{overflow-x:auto}.article-body img{max-width:100%;height:auto}</style>
+</head>
+<body>
+
+<div class="preloader" id="preloader"><div style="text-align:center"><div class="pre-word"><span>B</span><span>A</span><span>S</span><span>S</span></div><div class="pre-line" id="preLine"></div></div></div>
+<div class="reading-progress" id="readingProgress"></div>
+
+<nav class="nav" id="nav">
+  <a href="https://basstrading.fr" class="nav-logo">BASS</a>
+  <ul class="nav-links">
+    <li><a href="https://basstrading.fr/#methode">Méthode</a></li>
+    <li><a href="https://basstrading.fr#resultats">Résultats</a></li>
+    <li><a href="https://basstrading.fr#avis">Avis</a></li>
+    <li><a href="https://basstrading.fr#faq">FAQ</a></li>
+    <li><a href="/formations/">Formations</a></li>
+    <li><a href="https://basstrading.fr/blog/">Blog</a></li>
+  </ul>
+  <a href="https://basstrading.fr/p/formation-offerte/?src=blog-methode-wyckoff-menu" class="nav-cta">Formation offerte</a>
+</nav>
+
+<section class="blog-hero">
+  <div class="blog-hero-inner">
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <a href="https://basstrading.fr">Accueil</a><span class="sep">/</span>
+      <a href="https://basstrading.fr/blog/">Blog</a><span class="sep">/</span>
+      <span>Méthode Wyckoff</span>
+    </nav>
+    <div class="blog-hero-cat">Méthodes</div>
+    <h1 class="blog-hero-title">Méthode Wyckoff : accumulation, distribution et spring</h1>
+    <p class="blog-hero-desc">La méthode Wyckoff lit le marché comme une bataille entre l&#39;offre et la demande. Les gros opérateurs accumulent en silence dans un range, font monter le prix, puis distribuent avant la baisse. Ton travail : repérer dans quelle phase tu es, et surtout le piège de fin de range (le spring). Je te montre le schéma complet, puis comment je le vérifie avec le volume et le delta sur le Nasdaq.</p>
+    <div class="blog-meta">
+      <div class="blog-meta-author">
+        <div class="blog-meta-avatar"><img src="../../images/bass-presenting.jpg" alt="Sébastien Constant" loading="lazy"></div>
+        <div><div class="blog-meta-name"><a href="/auteur/sebastien-constant/" rel="author" style="color:inherit;text-decoration:none">Sébastien Constant</a></div><div class="blog-meta-role">Trader & Formateur Order Flow</div></div>
+      </div>
+      <div class="blog-meta-sep"></div>
+      <div class="blog-meta-info"><span>Novembre 2026</span><span>22 min de lecture</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="article-wrap">
+  <aside class="article-sidebar">
+    <div class="toc">
+      <div class="toc-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/></svg> Sommaire</div>
+      <ol>
+        <li><a href="#qu-est-ce-que-la-methode-wyckoff">Qu&#39;est-ce que la méthode Wyckoff ?</a></li>
+        <li><a href="#qui-etait-richard-wyckoff-et-d-ou-vient-">Qui était Richard Wyckoff et d&#39;où vient sa méthode ?</a></li>
+        <li><a href="#quelles-sont-les-trois-lois-de-wyckoff">Quelles sont les trois lois de Wyckoff ?</a></li>
+        <li><a href="#qui-est-l-operateur-composite-composite-">Qui est l&#39;opérateur composite (Composite Man) ?</a></li>
+        <li><a href="#quelles-sont-les-4-phases-du-cycle-de-ma">Quelles sont les 4 phases du cycle de marché selon Wyckoff ?</a></li>
+        <li><a href="#comment-lire-un-schema-d-accumulation-wy">Comment lire un schéma d&#39;accumulation Wyckoff (phases A à E) ?</a></li>
+        <li><a href="#comment-reconnaitre-une-distribution-wyc">Comment reconnaître une distribution Wyckoff et l&#39;UTAD ?</a></li>
+        <li><a href="#comment-je-lis-un-spring-wyckoff-en-intr">Comment je lis un spring Wyckoff en intraday (delta, CVD, footprint) ?</a></li>
+        <li><a href="#existe-t-il-un-indicateur-wyckoff-sur-tr">Existe-t-il un indicateur Wyckoff sur TradingView ?</a></li>
+        <li><a href="#sur-quels-marches-appliquer-wyckoff-acti">Sur quels marchés appliquer Wyckoff : actions, futures, crypto ?</a></li>
+        <li><a href="#wyckoff-smc-ou-volume-profile-quelle-dif">Wyckoff, SMC ou Volume Profile : quelle différence ?</a></li>
+        <li><a href="#quelles-sont-les-limites-de-la-methode-w">Quelles sont les limites de la méthode Wyckoff et les erreurs à éviter ?</a></li>
+        <li><a href="#en-resume-ce-que-tu-retiens-et-ce-que-tu">En résumé : ce que tu retiens et ce que tu fais ce soir</a></li>
+      </ol>
+    </div>
+  </aside>
+
+  <article class="article-body">
+    <h2 id="qu-est-ce-que-la-methode-wyckoff">Qu&#39;est-ce que la méthode Wyckoff ?</h2>
+    <p><b>La méthode Wyckoff est une façon de lire le marché à partir du prix et du volume : elle cherche à savoir si les gros opérateurs accumulent, poussent, distribuent ou liquident, pour se placer dans leur sens plutôt que contre eux.</b></p>
+<p>Tu as sûrement déjà vécu ça. Le prix tourne en rond pendant des heures, tu vends la cassure du bas du range... et le marché remonte aussitôt sans toi. Ou l&#39;inverse : tu achètes la cassure du haut et tu te fais sortir à la bougie suivante.</p>
+<p>Ce que la méthode Wyckoff t&#39;apprend, c&#39;est que <b>ces ranges ne sont pas du bruit</b>. Ce sont des zones où quelqu&#39;un construit ses positions. Et la fausse cassure qui t&#39;a piégé a souvent un nom : le spring, ou l&#39;upthrust.</p>
+<p>C&#39;est une forme d&#39;analyse technique, mais une analyse technique sans indicateur magique : quelques principes simples sur l&#39;offre, la demande et le volume, appliqués avec patience.</p>
+<h3>Pourquoi j&#39;en parle à mes élèves</h3>
+<p>Je n&#39;ai pas de formation Wyckoff, mais ses idées recoupent ce que j&#39;enseigne avec le <a href="https://basstrading.fr/blog/market-profile-guide-complet/">Market Profile</a>. Les deux racontent la même histoire : un marché passe son temps à chercher un prix où acheteurs et vendeurs sont d&#39;accord, puis à le quitter quand l&#39;un des deux camps prend le dessus.</p>
+<p>Wyckoff donne des noms à chaque étape de cette histoire. C&#39;est ce vocabulaire qui t&#39;évite de prendre un range pour une tendance, ou une fausse cassure pour un vrai départ.</p>
+<p>Mais d&#39;où vient cette méthode, et pourquoi on la lit encore plus d&#39;un siècle après ?</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/methode-wyckoff/blog-methode-wyckoff-1.webp" alt="Écrans de trading affichant plusieurs graphiques de prix en noir et blanc" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Wyckoff lisait le prix et le volume sur la bande du téléscripteur : aujourd&#39;hui, on les lit sur nos graphiques.<br><span style="font-size:.85em">Photo : <a href="https://commons.wikimedia.org/wiki/File:Stock_market_charts_illustration.jpg" rel="noopener" target="_blank">Unknown author</a>, <a href="http://creativecommons.org/publicdomain/zero/1.0/deed.en" rel="noopener license" target="_blank">CC0</a></span></figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="qui-etait-richard-wyckoff-et-d-ou-vient-">Qui était Richard Wyckoff et d&#39;où vient sa méthode ?</h2>
+    <p>Richard Demille Wyckoff, né dans les années 1870, était un opérateur de Wall Street du début du XXe siècle. Il a commencé très jeune comme coursier dans une maison de courtage de New York, puis il a observé pendant des années comment les grands opérateurs de son époque faisaient bouger les cours des actions.</p>
+<p>Sa conviction : <b>le prix et le volume affichés sur la bande du téléscripteur (le ticker tape) suffisent à lire les intentions des gros.</b> Pas besoin de rumeurs ni de conseils : toute l&#39;information utile est dans les transactions.</p>
+<h3>Un livre de 1910 toujours lisible</h3>
+<p>En 1910, il publie <em>Studies in Tape Reading</em> sous le pseudonyme de « Rollo Tape », chez Ticker Publishing à New York (<a href="https://onlinebooks.library.upenn.edu/webbin/book/lookupid?key=olbp91804">fiche de The Online Books Page, université de Pennsylvanie</a>). Le livre est tombé dans le domaine public : tu peux le lire gratuitement dans sa version scannée de 1910 sur <a href="https://archive.org/details/studiesintaperea00wyckrich">l&#39;Internet Archive</a>.</p>
+<p>C&#39;est littéralement un manuel de lecture du flux d&#39;ordres, cent ans avant les footprints. Wyckoff y explique qu&#39;il faut regarder qui fait bouger le prix et avec quelle force, transaction par transaction.</p>
+<h3>Ce qui vient de lui, et ce qui vient de ses successeurs</h3>
+<p>Wyckoff a ensuite enseigné sa méthode par un cours dans les années 1930. Les schémas célèbres avec leurs sigles (PS, SC, AR, ST, spring, SOS, LPS...) et le découpage en phases A à E ont été formalisés et popularisés par les enseignants qui ont repris son travail.</p>
+<p>Ce n&#39;est pas un détail : quand tu lis « Wyckoff a dit », c&#39;est souvent une version moderne de ses idées. Les idées de fond, elles, sont bien les siennes : offre contre demande, accumulation avant la hausse, distribution avant la baisse.</p>
+<aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p><b>À retenir</b></p>
+<ul><li>Wyckoff lisait le prix et le volume, rien d&#39;autre.</li><li>Son livre de 1910 est gratuit et parle déjà de lecture du flux.</li><li>Les schémas en phases A à E sont une mise en forme plus tardive de ses idées.</li></ul></aside>
+<p>Ces idées tiennent en trois lois. Si tu ne retiens qu&#39;une partie de cet article, retiens celle-là.</p>
+
+    <hr>
+
+    <h2 id="quelles-sont-les-trois-lois-de-wyckoff">Quelles sont les trois lois de Wyckoff ?</h2>
+    <p>La méthode repose sur trois lois. Ce ne sont pas des formules mathématiques, ce sont des grilles de lecture.</p>
+<h3>1. La loi de l&#39;offre et de la demande</h3>
+<p>Quand la demande dépasse l&#39;offre, le prix monte. Quand l&#39;offre dépasse la demande, il baisse. Quand les deux s&#39;équilibrent, il range.</p>
+<p>Ça paraît évident. Mais c&#39;est exactement ce que j&#39;apprends à regarder dès le début : <b>le marché n&#39;a que trois directions possibles.</b> Il monte, il baisse ou il range. La loi de l&#39;offre et de la demande te dit simplement qui gagne en ce moment, et donc dans quelle direction le prix a le plus de chances d&#39;aller.</p>
+<h3>2. La loi de cause à effet</h3>
+<p>Un mouvement (l&#39;effet) a besoin d&#39;une préparation (la cause). Chez Wyckoff, la cause, c&#39;est le temps passé dans le range : <b>plus l&#39;accumulation ou la distribution dure, plus le mouvement qui suit peut être ample.</b></p>
+<p>Les praticiens de Wyckoff mesurent même cette cause avec un graphique en points et figures, pour estimer un objectif. Je ne m&#39;en sers pas : sur le Nasdaq en intraday, je préfère mes niveaux de <a href="https://basstrading.fr/blog/market-profile-guide-complet/">Market Profile</a> et ma <a href="https://basstrading.fr/blog/value-area-trading/">value area</a>. Mais l&#39;idée est juste : un range long prépare un départ sérieux.</p>
+<h3>3. La loi de l&#39;effort contre le résultat</h3>
+<p>C&#39;est celle que j&#39;utilise tous les jours. L&#39;effort, c&#39;est le volume. Le résultat, c&#39;est le déplacement du prix.</p>
+<ul><li>Gros volume et gros déplacement : effort et résultat sont alignés, le mouvement est sain.</li><li>Gros volume et prix qui n&#39;avance pas : il y a un problème. <b>Quelqu&#39;un en face encaisse tout.</b></li></ul>
+<p>Ce deuxième cas, c&#39;est ce qu&#39;on appelle aujourd&#39;hui l&#39;<a href="https://basstrading.fr/blog/absorption-order-flow/">absorption</a>. Wyckoff le lisait sur la bande du téléscripteur. Moi, je le lis au delta et au CVD ; le footprint le montre encore plus en détail. On y revient en détail plus bas avec un exemple tiré de ma formation.</p>
+<aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p><b>À retenir</b></p>
+<ul><li>Offre et demande : qui gagne en ce moment.</li><li>Cause et effet : un long range prépare un grand mouvement.</li><li>Effort contre résultat : du volume sans déplacement, c&#39;est un signal.</li></ul></aside>
+<p>Reste une question : qui est ce « quelqu&#39;un » qui accumule ou distribue ? Wyckoff lui a donné un nom.</p>
+
+    <hr>
+
+    <h2 id="qui-est-l-operateur-composite-composite-">Qui est l&#39;opérateur composite (Composite Man) ?</h2>
+    <p>L&#39;opérateur composite (Composite Man) est un personnage imaginaire. Wyckoff conseillait d&#39;étudier le marché comme si un seul gros opérateur préparait, lançait et terminait chaque mouvement.</p>
+<p>Ce n&#39;est pas une théorie du complot. Personne ne dit qu&#39;un homme unique dirige le Nasdaq. <b>C&#39;est un outil de lecture</b> : au lieu de voir des milliers d&#39;ordres sans lien, tu te demandes « si j&#39;étais un très gros acheteur, comment je m&#39;y prendrais ? ».</p>
+<h3>Ce que ferait un gros acheteur</h3>
+<p>Sa réponse est logique :</p>
+<ul><li>il achète sans faire monter le prix, donc lentement, dans un range, quand le public a peur et vend ;</li><li>il teste s&#39;il reste des vendeurs, parfois en laissant le prix casser le bas du range pour déclencher les stops (c&#39;est le spring) ;</li><li>une fois servi, il laisse le prix monter, ou le pousse ;</li><li>il revend ensuite au public, en haut, quand tout le monde est euphorique.</li></ul>
+<p>Quand tu regardes un graphique avec cette question en tête, les fausses cassures cessent d&#39;être des accidents. Je l&#39;explique aussi dans mon article sur la <a href="https://basstrading.fr/blog/chasse-aux-stops-trading/">chasse aux stops</a> : la liquidité se trouve là où sont les stops du public.</p>
+<h3>La limite de l&#39;image</h3>
+<p>L&#39;opérateur composite est une métaphore. Sur un marché aussi liquide que les futures du Nasdaq, les gros intervenants sont nombreux et ne s&#39;entendent pas. <b>Garde l&#39;image pour lire, pas pour croire que le marché « te vise ».</b></p>
+<p>Ce gros opérateur suit un cycle. C&#39;est le cœur de la méthode.</p>
+
+    <hr>
+
+    <h2 id="quelles-sont-les-4-phases-du-cycle-de-ma">Quelles sont les 4 phases du cycle de marché selon Wyckoff ?</h2>
+    <p>Pour Wyckoff, un marché passe par quatre phases qui se répètent :</p>
+<ul><li><b>La phase d&#39;accumulation</b> : un range après une baisse. Les gros achètent pendant que le public vend.</li><li><b>Le markup (hausse)</b> : le prix sort du range par le haut et monte.</li><li><b>La phase de distribution</b> : un range après une hausse. Les gros revendent pendant que le public achète.</li><li><b>Le markdown (baisse)</b> : le prix sort du range par le bas et baisse.</li></ul>
+<p>Puis le cycle recommence.</p>
+<h3>Les deux phases qu&#39;on oublie</h3>
+<p>Entre deux, il existe deux cas intermédiaires très fréquents :</p>
+<ul><li>la ré-accumulation : une pause en range au milieu d&#39;une hausse, avant que la hausse ne reprenne ;</li><li>la redistribution : une pause en range au milieu d&#39;une baisse, avant que la baisse ne reprenne.</li></ul>
+<p>C&#39;est là que la plupart des traders se trompent. Un range après une hausse n&#39;est pas forcément une distribution : ça peut être une ré-accumulation. <b>Tu ne le sais qu&#39;à la sortie du range.</b> C&#39;est pour ça que je ne trade jamais une phase « devinée » : j&#39;attends que le marché me montre de quel côté il sort.</p>
+<h3>Le cycle à toutes les échelles</h3>
+<p>Ce cycle existe sur un graphique hebdomadaire comme sur une séance en 1 minute. En intraday sur le Nasdaq, je le vois souvent en miniature : un range du matin en Europe, une sortie à l&#39;ouverture de Wall Street, une nouvelle zone d&#39;équilibre l&#39;après-midi.</p>
+<p>C&#39;est exactement ce que décrit le Market Profile avec ses phases d&#39;équilibre et de déséquilibre. Si tu veux voir où se forme cet équilibre en volume, mon <a href="https://basstrading.fr/blog/volume-profile-guide/">guide du Volume Profile</a> te montre comment le repérer.</p>
+<aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p><b>À retenir</b></p>
+<ul><li>Accumulation, markup, distribution, markdown.</li><li>Un range peut aussi être une ré-accumulation ou une redistribution.</li><li>On ne connaît la nature d&#39;un range qu&#39;à sa sortie.</li></ul></aside>
+<p>Le range d&#39;accumulation a une structure précise. Voyons-la étape par étape.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/methode-wyckoff/blog-methode-wyckoff-2.webp" alt="Schéma du cycle de marché de Wyckoff en quatre phases : accumulation, markup, distribution, markdown" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Le cycle de Wyckoff : deux ranges (accumulation, distribution) séparés par deux tendances.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="comment-lire-un-schema-d-accumulation-wy">Comment lire un schéma d&#39;accumulation Wyckoff (phases A à E) ?</h2>
+    <p>Le schéma d&#39;accumulation découpe le range en cinq phases. Chaque événement porte un sigle anglais : je te les donne, parce que tu les croiseras partout.</p>
+<h3>Phase A : la baisse s&#39;arrête</h3>
+<ul><li><b>PS (Preliminary Support)</b> : premier support. Des acheteurs apparaissent, la baisse ralentit.</li><li><b>SC (Selling Climax)</b> : la panique. Gros volume, grande bougie de baisse, le public vend tout. Les gros achètent.</li><li><b>AR (Automatic Rally)</b> : rebond automatique, parce que les vendeurs sont épuisés. Son plus haut fixe le haut du range.</li><li><b>ST (Secondary Test)</b> : le prix revient tester la zone du climax, avec moins de volume. Les vendeurs sont moins nombreux.</li></ul>
+<h3>Phase B : la construction de la cause</h3>
+<p>C&#39;est la phase la plus longue. Le prix fait des allers-retours entre le bas et le haut du range, avec plusieurs tests des deux bords. Les gros accumulent en silence. Moi, j&#39;appelle ça le « ping-pong » : <b>le prix rebondit d&#39;un bord à l&#39;autre et la seule chose intelligente, c&#39;est d&#39;attendre.</b></p>
+<h3>Phase C : le spring, le piège final</h3>
+<p>Le spring est une cassure du bas du range qui échoue : le prix passe sous le support, déclenche les stops des acheteurs et les ordres des vendeurs de cassure, puis revient vite dans le range.</p>
+<p>C&#39;est le test ultime : <b>s&#39;il ne reste plus de vendeurs sous le support, le prix ne peut pas y rester.</b> Le spring n&#39;est pas obligatoire. Certaines accumulations n&#39;en ont pas, et se contentent d&#39;un dernier test du bas du range.</p>
+<p>Après le spring vient souvent un test : le prix revient près du bas, sur un volume faible. C&#39;est la confirmation que l&#39;offre est sèche.</p>
+<h3>Phase D : la demande prend le dessus</h3>
+<ul><li><b>SOS (Sign of Strength)</b> : une montée franche, avec du volume, qui va vers le haut du range ou au-dessus.</li><li><b>LPS (Last Point of Support)</b> : un repli peu profond, sur peu de volume. C&#39;est souvent le point d&#39;entrée le plus propre.</li></ul>
+<h3>Phase E : la sortie</h3>
+<p>Le prix sort du range par le haut. Le BU (Back-Up) est le retour éventuel sur l&#39;ancien haut du range, devenu support. Puis le markup commence.</p>
+<h3>L&#39;erreur classique</h3>
+<p>Acheter le premier rebond de la phase A en croyant que c&#39;est le bas. <b>Le selling climax n&#39;est pas un signal d&#39;achat</b> : il dit seulement que la baisse s&#39;essouffle. Il faut souvent des heures (ou des semaines sur un graphique journalier) avant que la phase C n&#39;arrive.</p>
+<p>La distribution, elle, est le même film à l&#39;envers. Avec son propre piège.</p>
+
+    <hr>
+
+    <h2 id="comment-reconnaitre-une-distribution-wyc">Comment reconnaître une distribution Wyckoff et l&#39;UTAD ?</h2>
+    <p>La distribution se forme après une hausse. Les gros revendent au public, qui achète parce que « ça monte depuis des jours ».</p>
+<p>Les étapes sont le miroir de l&#39;accumulation :</p>
+<ul><li><b>PSY (Preliminary Supply)</b> : premiers vendeurs sérieux, la hausse ralentit ;</li><li><b>BC (Buying Climax)</b> : l&#39;euphorie. Gros volume, grande bougie de hausse, le public achète tout ;</li><li><b>AR (Automatic Reaction)</b> : la chute automatique qui suit, et qui fixe le bas du range ;</li><li><b>ST (Secondary Test)</b> : retour vers le haut, avec moins de volume ;</li><li><b>UTAD (Upthrust After Distribution)</b> : la fausse cassure du haut du range ;</li><li><b>SOW (Sign of Weakness)</b> : une baisse franche avec du volume ;</li><li><b>LPSY (Last Point of Supply)</b> : un rebond faible, sur peu de volume, avant la sortie par le bas.</li></ul>
+<h3>L&#39;UTAD, le miroir du spring</h3>
+<p>L&#39;UTAD est une cassure du haut du range qui échoue : le prix passe au-dessus de la résistance, attire les acheteurs de cassure et déclenche les stops des vendeurs, puis retombe dans le range.</p>
+<p>C&#39;est le piège qui coûte le plus cher aux traders de cassure. <b>Ils achètent le nouveau plus haut, le prix retombe, ils vendent à perte... et alimentent la baisse.</b></p>
+<h3>Accumulation ou distribution : le tableau</h3>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Étape</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Accumulation</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Distribution</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Arrêt du mouvement</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Selling climax (SC)</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Buying climax (BC)</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Fausse cassure</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Spring (sous le support)</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">UTAD (au-dessus de la résistance)</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Confirmation</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">SOS (montée avec volume)</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">SOW (baisse avec volume)</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Dernier point d&#39;entrée</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">LPS</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">LPSY</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Sortie</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Markup</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Markdown</td></tr></tbody></table></div>
+<aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p><b>À retenir</b></p>
+<ul><li>La distribution est l&#39;accumulation à l&#39;envers.</li><li>L&#39;UTAD piège les acheteurs de cassure ; le spring piège les vendeurs.</li><li>Le signal fiable n&#39;est pas la fausse cassure seule, c&#39;est ce qui suit : le retour dans le range et le test.</li></ul></aside>
+<p>C&#39;est bien beau sur un schéma. Mais comment savoir, sur le moment, qu&#39;un spring est en train d&#39;échouer ? C&#39;est là que le volume moderne change tout.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/methode-wyckoff/blog-methode-wyckoff-3.webp" alt="Tableau comparatif Wyckoff accumulation et distribution : climax, spring, UTAD, SOS, SOW, LPS, LPSY" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">La distribution est le miroir de l&#39;accumulation : chaque événement a son double.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="comment-je-lis-un-spring-wyckoff-en-intr">Comment je lis un spring Wyckoff en intraday (delta, CVD, footprint) ?</h2>
+    <p>Sur un graphique classique, tu vois le spring après coup. Sur un footprint, tu peux le voir pendant qu&#39;il se forme, parce que tu vois qui agresse et qui encaisse.</p>
+<p>Mon cadre de travail sur les futures du Nasdaq : un Market Profile, le <a href="https://basstrading.fr/blog/vwap-trading/">VWAP</a> et le <a href="https://basstrading.fr/blog/cvd-cumulative-volume-delta/">CVD</a>, en unité de temps 1 minute. J&#39;attends que le prix arrive sur ma zone. Ensuite seulement, je regarde le delta et le CVD pour savoir si le niveau tient. En 1 minute, je n&#39;utilise pas le footprint, c&#39;est trop rapide pour moi. Mais je l&#39;enseigne, parce que c&#39;est l&#39;outil qui montre le plus finement qui agresse et qui encaisse.</p>
+<h3>La scène, telle que je la montre dans ma formation footprint</h3>
+<p>Dans ma <a href="https://www.youtube.com/watch?v=FLBONXJWCoM&amp;t=1780s">formation footprint gratuite, vers la 30e minute</a>, je décris exactement un spring, sans le nommer ainsi.</p>
+<p>Le prix arrive sur un gros niveau : le plus bas de la veille, le plus bas de la semaine ou un niveau important. Il casse le niveau. Les vendeurs de cassure se réveillent. Puis des acheteurs agressifs entrent, et le marché n&#39;arrive plus à faire de plus bas.</p>
+<p>Comme je le dis dans la vidéo : « on voit de l&#39;agressivité on voit que le marché il n&#39;arrive pas à faire de plus bas et bien là ça peut être très intéressant de faire un achat ».</p>
+<p><b>C&#39;est la loi de l&#39;effort contre le résultat, en direct</b> : les vendeurs font un effort sous le niveau, et le résultat est nul. Le prix ne descend plus.</p>
+<h3>Pourquoi ce piège offre un risque court</h3>
+<p>L&#39;intérêt de ce type d&#39;entrée, c&#39;est que ton invalidation est toute proche. Si le prix repasse franchement sous le plus bas du piège, le scénario est faux.</p>
+<p>Dans la même vidéo : « je peux mettre un stop à cinq six points si je perds je perds que cinq six points ». Sur le Nasdaq, un point vaut 20 $ sur le contrat standard (NQ) et 2 $ sur le micro (MNQ) : un stop de 5 points représente donc 100 $ par NQ ou 10 $ par MNQ, hors frais. Dans ma pratique, mes stops vont en général de 5 à 12 points selon le contexte. Pour dimensionner ta position, lis mon article sur <a href="https://basstrading.fr/blog/combien-risquer-par-trade/">combien risquer par trade</a>.</p>
+<h3>Ce que je vérifie avant d&#39;entrer</h3>
+<ul><li><b>Le niveau</b> : un vrai niveau (plus bas de la veille, de la semaine, bord de value area), pas une ligne tracée au hasard.</li><li><b>La cassure</b> : le prix passe dessous, c&#39;est le piège.</li><li><b>L&#39;effort sans résultat</b> : du delta vendeur ou du volume sous le niveau, mais le prix ne progresse plus. Je l&#39;explique dans mon guide du <a href="https://basstrading.fr/blog/delta-footprint-trading/">delta sur le footprint</a>.</li><li><b>Le retour</b> : des acheteurs agressifs repassent au-dessus du niveau.</li><li><b>La patience</b> : je ne décide pas sur une seule bougie.</li></ul>
+<p>Sur ce dernier point, je le répète souvent : « c&#39;est pas sur une seule bougie qu&#39;on se dit à ok c&#39;est la fête je vends j&#39;achète non on va attendre un peu de voir » (<a href="https://www.youtube.com/watch?v=FLBONXJWCoM&amp;t=1895s">même vidéo, 32e minute</a>).</p>
+<h3>Les formes de volume qui annoncent l&#39;épuisement d&#39;un mouvement</h3>
+<p>Vers la <a href="https://www.youtube.com/watch?v=FLBONXJWCoM&amp;t=2640s">44e minute</a>, je montre trois formes de profil de volume dans une bougie :</p>
+<ul><li><b>forme P</b> : le volume est concentré en haut. Les vendeurs se font racheter, la baisse s&#39;épuise. C&#39;est ce qu&#39;on voit souvent au selling climax, au début d&#39;une accumulation ;</li><li><b>forme b</b> : le volume est concentré en bas. Les acheteurs liquident leurs positions, la hausse s&#39;épuise, comme au buying climax, au début d&#39;une distribution ;</li><li><b>forme D</b> : le volume est centré. C&#39;est l&#39;équilibre, le range, la phase B.</li></ul>
+<p>C&#39;est la version microscopique du cycle de Wyckoff.</p>
+<h3>Un rappel honnête</h3>
+<p>Le footprint ne fait pas tout. Comme je le dis : « comprenez bien que le footprint c&#39;est pas un outil magique ça va pas vous permettre de faire des plans mais ça va vous permettre d&#39;être dans l&#39;exécution » (<a href="https://www.youtube.com/watch?v=FLBONXJWCoM&amp;t=2265s">même vidéo, 38e minute</a>). Le plan (où est la zone, dans quel contexte), c&#39;est Wyckoff et le Market Profile. L&#39;exécution (est-ce que ça tient maintenant) se lit dans le flux : delta, CVD ou footprint.</p>
+<p><em>Le trading de contrats à terme comporte un risque élevé de perte, pouvant dépasser la mise initiale. Contenu éducatif, pas un conseil en investissement.</em></p>
+<p>Si tu veux voir cette lecture sur de vraies séances commentées, avec le contexte avant l&#39;exécution, c&#39;est le fil de ma formation offerte : <a href="https://basstrading.fr/l/e-eldA">commencer la formation gratuite</a>.</p>
+<aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p><b>À retenir</b></p>
+<ul><li>Le spring se voit en direct quand l&#39;effort vendeur ne produit plus de baisse.</li><li>L&#39;invalidation est proche : sous le plus bas du piège.</li><li>Formes P et b : l&#39;épuisement d&#39;une baisse ou d&#39;une hausse, comme au début d&#39;une accumulation ou d&#39;une distribution.</li></ul></aside>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/methode-wyckoff/blog-methode-wyckoff-4.webp" alt="Règle Wyckoff effort contre résultat : beaucoup de volume sans déplacement du prix signale une absorption" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Du volume (l&#39;effort) sans déplacement (le résultat) : quelqu&#39;un en face encaisse tout. C&#39;est le cœur du spring.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="existe-t-il-un-indicateur-wyckoff-sur-tr">Existe-t-il un indicateur Wyckoff sur TradingView ?</h2>
+    <p>Non, pas d&#39;indicateur officiel. Wyckoff n&#39;a jamais créé d&#39;indicateur : sa méthode repose sur la lecture du prix et du volume. Ce que tu trouves sur TradingView sous le nom « Wyckoff », ce sont des scripts communautaires qui essaient de dessiner automatiquement des ranges ou de marquer des événements (climax, spring).</p>
+<h3>Ce qu&#39;ils valent</h3>
+<p>Certains sont utiles pour s&#39;entraîner à repérer les ranges. Mais <b>aucun ne peut savoir à ta place si un range est une accumulation ou une ré-accumulation</b> : même un trader expérimenté ne le sait qu&#39;à la sortie.</p>
+<p>Mon conseil : n&#39;achète jamais un indicateur « Wyckoff » payant. Les outils qui t&#39;aident vraiment sont gratuits ou inclus dans ta plateforme :</p>
+<ul><li>le volume par bougie, pour voir l&#39;effort ;</li><li>un profil de volume, pour voir où le marché a construit sa cause. Je détaille son usage dans mon <a href="https://basstrading.fr/blog/volume-profile-guide/">guide du Volume Profile</a> ;</li><li>le delta et le CVD, si ta plateforme affiche les volumes réels des futures, pour voir qui agresse. Si tu travailles sur TradingView, regarde mon article sur le <a href="https://basstrading.fr/blog/footprint-tradingview/">footprint dans TradingView</a> ;</li><li>un crayon : marquer toi-même SC, AR, ST et spring sur des séances passées t&#39;apprend plus qu&#39;un script.</li></ul>
+<h3>Le bon exercice</h3>
+<p>Prends dix ranges sur des séances passées du Nasdaq. Pour chacun, note ce que tu crois (accumulation ou distribution) avant de regarder la sortie. Puis vérifie. Ces tests te montrent vite à quel point la lecture est plus difficile qu&#39;elle n&#39;en a l&#39;air, et c&#39;est une excellente leçon d&#39;humilité.</p>
+<p>Reste une question que beaucoup se posent : est-ce que tout ça marche sur n&#39;importe quel marché ?</p>
+
+    <hr>
+
+    <h2 id="sur-quels-marches-appliquer-wyckoff-acti">Sur quels marchés appliquer Wyckoff : actions, futures, crypto ?</h2>
+    <p>Les principes de Wyckoff s&#39;appliquent à tous les actifs où des acheteurs et des vendeurs se rencontrent. Mais la qualité de ta lecture dépend d&#39;une chose : <b>la fiabilité du volume.</b> Sans volume fiable, la loi de l&#39;effort contre le résultat devient une devinette.</p>
+<h3>Les actions</h3>
+<p>C&#39;est le marché d&#39;origine : Wyckoff a construit sa méthode sur les actions de Wall Street. Le volume d&#39;une action cotée est publié par sa bourse, donc la lecture est solide, surtout sur des graphiques journaliers ou hebdomadaires.</p>
+<h3>Les futures</h3>
+<p>C&#39;est mon terrain. Sur un contrat future comme le Nasdaq, les échanges passent par une bourse centrale (le CME) : le volume que tu vois est le vrai volume du contrat, transaction par transaction. C&#39;est ce qui rend possibles le footprint, le delta et la lecture fine du spring en intraday. Si tu veux comprendre ce marché, lis mon article sur le <a href="https://basstrading.fr/blog/day-trading-futures/">day trading des futures</a>.</p>
+<h3>La crypto et le bitcoin</h3>
+<p>Tu verras des schémas Wyckoff partout sur le bitcoin. Le cycle s&#39;y voit bien, parce que ce marché alterne de longues phases d&#39;euphorie et de panique. Mais le volume y est éclaté entre de nombreuses plateformes, et chacune affiche le sien : l&#39;effort que tu lis n&#39;est qu&#39;une partie du marché. Prudence donc, et je n&#39;en fais pas mon terrain.</p>
+<h3>Le forex</h3>
+<p>Sur le forex au comptant, il n&#39;existe pas de volume centralisé : ton courtier t&#39;affiche en général un volume de ticks (le nombre de variations de prix), pas les vraies quantités échangées. Wyckoff s&#39;y lit sur la structure des ranges, beaucoup moins sur l&#39;effort.</p>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Marché</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Volume affiché</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Lecture Wyckoff</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Actions cotées</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Volume de la bourse</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Bonne, surtout en journalier</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Futures (CME)</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Volume réel centralisé</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">La plus fine, jusqu&#39;au footprint</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Crypto</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Éclaté entre plateformes</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Structure oui, effort partiel</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Forex au comptant</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Volume de ticks</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Structure seulement</td></tr></tbody></table></div>
+<aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p><b>À retenir</b></p>
+<ul><li>Wyckoff marche partout pour la structure (ranges, pièges).</li><li>La loi de l&#39;effort exige un volume fiable : futures et actions d&#39;abord.</li><li>Sur crypto et forex, garde une lecture prudente.</li></ul></aside>
+<p>Tu vas aussi croiser une autre école qui parle de pièges et de liquidité. Elle ressemble beaucoup à Wyckoff.</p>
+
+    <hr>
+
+    <h2 id="wyckoff-smc-ou-volume-profile-quelle-dif">Wyckoff, SMC ou Volume Profile : quelle différence ?</h2>
+    <p>Beaucoup de méthodes modernes reprennent les idées de Wyckoff sous d&#39;autres noms. Savoir ce qui est commun t&#39;évite de collectionner les méthodes.</p>
+<h3>Ce qui rend Wyckoff différent des autres méthodes</h3>
+<p>La plupart des méthodes d&#39;analyse technique cherchent un signal : un croisement de moyennes, une figure, un niveau. <b>Wyckoff cherche un contexte</b> : dans quelle phase est le marché, qui a la main, et est-ce que l&#39;effort produit un résultat. Il ne te donne pas la direction du prochain mouvement par magie ; il te dit quand le rapport de force est en train de basculer.</p>
+<h3>Wyckoff et les SMC</h3>
+<p>Les <a href="https://basstrading.fr/blog/smc-trading/">SMC (Smart Money Concepts)</a> parlent de liquidity grab, de stop hunt et d&#39;*order blocks*. Le liquidity grab sous un plus bas suivi d&#39;un retour, c&#39;est le spring. Celui au-dessus d&#39;un plus haut, c&#39;est l&#39;upthrust.</p>
+<p>La différence : Wyckoff appuie chaque lecture sur le volume. Beaucoup de contenus SMC se contentent du prix, ce qui rend les signaux plus faciles à voir partout, donc plus faciles à mal interpréter.</p>
+<h3>Wyckoff et le Volume Profile / Market Profile</h3>
+<p>Le Volume Profile et le Market Profile montrent où le marché a échangé : la zone de valeur, le POC, les zones creuses. Wyckoff dit dans quelle phase se trouve ce range. Si tu hésites entre les deux profils, je les compare dans <a href="https://basstrading.fr/blog/market-profile-vs-volume-profile/">Market Profile ou Volume Profile</a>.</p>
+<p>Les deux approches se complètent très bien :</p>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Question</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Wyckoff</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Volume / Market Profile</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Dans quelle phase est le marché ?</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Oui (A à E, cycle)</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Indirectement (équilibre ou non)</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Où sont les niveaux clés ?</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Bords du range</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Value area, POC, extrêmes</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Que se passe-t-il au niveau ?</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Effort contre résultat</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">À compléter par le flux d&#39;ordres</td></tr></tbody></table></div>
+<h3>Et l&#39;order flow ?</h3>
+<p>L&#39;<a href="https://basstrading.fr/blog/order-flow-trading-france/">order flow</a> est la lecture moderne de ce que Wyckoff faisait sur la bande du téléscripteur. Wyckoff voyait chaque transaction défiler ; toi, tu les vois regroupées par niveau de prix sur un footprint. Les questions sont les mêmes : qui agresse, qui encaisse, et est-ce que le prix avance ? Pour voir les ordres en attente avant qu&#39;ils soient exécutés, une <a href="https://basstrading.fr/blog/bookmap-heatmap/">heatmap comme Bookmap</a> complète le tableau.</p>
+<p>Ma façon de voir : <b>il n&#39;y a pas de méthode supérieure.</b> Il y a des outils qui répondent à des questions différentes, et une façon de les assembler qui te ressemble. C&#39;est tout le sujet de mon article sur <a href="https://basstrading.fr/blog/methode-de-trading/">comment choisir sa méthode de trading</a>.</p>
+<p>Avant de te lancer, il faut aussi regarder les faiblesses de Wyckoff en face.</p>
+
+    <hr>
+
+    <h2 id="quelles-sont-les-limites-de-la-methode-w">Quelles sont les limites de la méthode Wyckoff et les erreurs à éviter ?</h2>
+    <p>La méthode Wyckoff est une grille de lecture, pas une preuve. Voici ses limites et ses risques, sans détour.</p>
+<h3>Une lecture subjective</h3>
+<p>Deux traders peuvent regarder le même range et y voir deux schémas différents. Le même mouvement peut être un spring pour l&#39;un et le début d&#39;une vraie cassure pour l&#39;autre. À ma connaissance, aucune étude rigoureuse ne démontre qu&#39;appliquer Wyckoff procure, à lui seul, un avantage statistique. <b>Méfie-toi de quiconque t&#39;annonce un « taux de réussite » de la méthode.</b> Il faut la tester sur ton marché, avec tes règles, dans un journal.</p>
+<h3>On voit les schémas après coup</h3>
+<p>Sur un graphique passé, tout est clair : le climax, le spring, le LPS. En direct, tu ne sais pas si le spring est un spring ou le début d&#39;un markdown. C&#39;est pour ça que <b>je ne trade pas le schéma, je trade la réaction au niveau</b>, avec un stop proche.</p>
+<h3>Les erreurs que je vois le plus</h3>
+<ul><li>Acheter le selling climax en croyant que c&#39;est le bas définitif.</li><li>Voir des springs partout : toute mèche sous un plus bas n&#39;est pas un spring. Il faut un range construit avant, et un retour franc dans ce range.</li><li>Oublier le contexte : un spring contre une tendance de fond très forte échoue souvent.</li><li>Ne pas mettre de stop parce qu&#39;on est « sûr » de son schéma. Tu trouveras mes règles dans mon article sur le <a href="https://basstrading.fr/blog/stop-loss-trading/">stop loss</a>.</li><li>Ajouter à une position perdante parce que « c&#39;est encore la phase B ». Je ne le fais jamais : pense aux pertes avant de penser aux gains.</li></ul>
+<h3>Pourquoi la prudence s&#39;impose</h3>
+<p>Les chiffres officiels rappellent à quel point le trading est difficile pour les particuliers. Le régulateur européen a mesuré que 74 à 89 % des comptes de particuliers perdent de l&#39;argent sur les CFD, avec une perte moyenne par client de 1 600 € à 29 000 € selon les pays (<a href="https://www.esma.europa.eu/press-news/esma-news/esma-agrees-prohibit-binary-options-and-restrict-cfds-protect-retail-investors">ESMA, communiqué du 27/03/2018</a>).</p>
+<p>En France, l&#39;AMF avait étudié 14 799 clients particuliers sur le forex et les CFD entre 2009 et 2012 : 89,4 % ont perdu de l&#39;argent (<a href="https://www.amf-france.org/sites/institutionnel/files/contenu_simple/rapport_etude_analyse/epargne_prestataire/Etude%20des%20resultats%20des%20investisseurs%20particuliers%20sur%20le%20trading%20de%20CFD%20et%20de%20Forex%20en%20France.pdf">étude AMF, octobre 2014</a>). Ces études portent sur les CFD et le forex, pas sur les futures, mais le message vaut partout : <b>une méthode sans gestion du risque ne protège de rien.</b></p>
+<aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p><b>À retenir</b></p>
+<ul><li>Wyckoff est une grille de lecture, pas une preuve.</li><li>Trade la réaction au niveau, pas le schéma deviné.</li><li>Un stop proche et une perte maximale par jour, toujours.</li></ul></aside>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/methode-wyckoff/blog-methode-wyckoff-5.webp" alt="Chiffres de l&#39;ESMA et de l&#39;AMF sur la part de particuliers perdants en CFD et forex" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Sources : ESMA, 27/03/2018 (CFD) et AMF, octobre 2014 (forex et CFD, 2009-2012).</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="en-resume-ce-que-tu-retiens-et-ce-que-tu">En résumé : ce que tu retiens et ce que tu fais ce soir</h2>
+    <p>Voici l&#39;essentiel de la méthode Wyckoff en cinq points :</p>
+<ul><li>Le marché alterne accumulation, markup, distribution et markdown, avec des pauses de ré-accumulation et de redistribution.</li><li>Trois lois : offre et demande, cause et effet, effort contre résultat.</li><li>Le spring et l&#39;UTAD sont les pièges de fin de range : une cassure qui échoue et revient dans le range.</li><li>L&#39;effort sans résultat (du volume sans déplacement) se lit en direct sur un footprint.</li><li>La méthode est subjective : on la teste dans un journal, avec un stop et une perte maximale par jour.</li></ul>
+<h3>Ton exercice de ce soir</h3>
+<p>Ouvre un graphique 1 minute du Nasdaq sur la séance du jour. Repère le plus grand range de la journée. Marque son plus bas et son plus haut. Puis pose-toi trois questions :</p>
+<ul><li>le prix est-il sorti de ce range par une fausse cassure avant de partir de l&#39;autre côté ?</li><li>le volume était-il fort pendant la fausse cassure, sans que le prix avance ?</li><li>où aurais-tu placé ton stop si tu avais acheté le retour dans le range ?</li></ul>
+<p>Note tes réponses dans ton journal. Refais l&#39;exercice chaque soir pendant deux semaines : tu verras le cycle de Wyckoff partout, et surtout tu apprendras à distinguer ceux qui ont marché de ceux qui ont échoué.</p>
+<p>Pour la suite logique, lis mon article sur l&#39;<a href="https://basstrading.fr/blog/absorption-order-flow/">absorption en order flow</a> : c&#39;est l&#39;outil qui te dit, au niveau, si l&#39;effort produit un résultat ou non. Et si tu veux un parcours complet pour débuter, regarde aussi ma page sur la <a href="https://basstrading.fr/blog/formation-trading-gratuite/">formation trading gratuite</a>.</p>
+<p><em>Le trading de contrats à terme comporte un risque élevé de perte, pouvant dépasser la mise initiale. Contenu éducatif, pas un conseil en investissement.</em></p>
+<p><em>Comment cet article est fait : écrit à partir de ma formation footprint gratuite et de ma lecture du Market Profile, mis en forme avec l&#39;aide d&#39;une IA, relu par moi. Sources externes : Internet Archive, université de Pennsylvanie, ESMA (2018), AMF (2014).</em></p>
+
+    <p><a href="https://www.youtube.com/watch?v=FLBONXJWCoM" target="_blank" rel="noopener">▶ Voir la vidéo de Sébastien sur ce sujet</a></p>
+
+    <div class="cta-card cta-aimant">
+      <div class="cta-card-label">Gratuit</div>
+      <h3>La formation offerte : 7 leçons pour lire le marché comme un pro</h3>
+      <p>Accès immédiat et gratuit, en vidéo, à ton rythme. Sans carte bancaire.</p>
+      <a href="https://basstrading.fr/p/formation-offerte/?src=blog-methode-wyckoff" class="btn-p">Je la veux →</a>
+    </div>
+    
+  </article>
+</div>
+
+<!-- FAQ -->
+<section class="faq-sec">
+  <div class="sec-center"><div class="sec-label">FAQ</div><h2 class="sec-title">Questions fréquentes</h2></div>
+  <div class="faq-list">
+    <div class="fi"><button class="fq" onclick="tf(this)">Qu&#39;est-ce que la méthode Wyckoff en trading ? <span class="fq-icon">+</span></button><div class="fa"><p>C&#39;est une lecture du marché fondée sur le prix et le volume, créée par Richard Wyckoff au début du XXe siècle. Elle découpe le marché en quatre phases (accumulation, hausse, distribution, baisse) et cherche à repérer ce que font les gros opérateurs, pour se placer dans leur sens plutôt que contre eux.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">En quoi consiste la stratégie de Wyckoff ? <span class="fq-icon">+</span></button><div class="fa"><p>Elle consiste à identifier la phase du marché, à attendre la fin d&#39;un range, puis à entrer après le piège final : le test qui suit un spring (achat) ou un UTAD (vente), ou un repli faible (LPS ou LPSY). Le stop se place au-delà du plus bas ou du plus haut du piège, ce qui garde le risque court.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Qu&#39;est-ce qui rend Wyckoff différent des autres méthodes ? <span class="fq-icon">+</span></button><div class="fa"><p>La plupart des méthodes cherchent un signal (croisement, figure, indicateur). Wyckoff cherche un contexte : la phase du marché, le camp qui a la main, et le rapport entre l&#39;effort (le volume) et le résultat (le déplacement du prix). Il ne prédit pas la direction, il montre quand le rapport de force bascule.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Quel est le degré de précision de la méthode Wyckoff ? <span class="fq-icon">+</span></button><div class="fa"><p>Aucune étude rigoureuse ne donne de taux de réussite fiable à la méthode Wyckoff. Sa précision dépend de ta lecture, du marché et de tes règles d&#39;entrée et de sortie. Méfie-toi des chiffres promis : teste-la sur des séances passées puis dans ton journal, avec un stop systématique.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Qu&#39;est-ce qu&#39;un spring Wyckoff ? <span class="fq-icon">+</span></button><div class="fa"><p>Le spring est une fausse cassure du bas d&#39;un range d&#39;accumulation. Le prix passe sous le support, déclenche les stops et attire les vendeurs, puis revient rapidement dans le range. Il signale souvent qu&#39;il ne reste plus assez de vendeurs. Il n&#39;est pas présent dans toutes les accumulations, et il se confirme par un test sur faible volume.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">La méthode Wyckoff fonctionne-t-elle en intraday ? <span class="fq-icon">+</span></button><div class="fa"><p>Oui, le cycle se retrouve sur toutes les unités de temps, y compris en 1 minute sur les futures du Nasdaq. En intraday, je l&#39;associe au Market Profile pour les niveaux et au delta et au CVD pour voir l&#39;effort contre le résultat. La lecture reste subjective : elle se teste dans un journal, avec un stop proche.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Quelle est la différence entre Wyckoff et les SMC ? <span class="fq-icon">+</span></button><div class="fa"><p>Les SMC reprennent plusieurs idées de Wyckoff sous d&#39;autres noms : le liquidity grab correspond au spring ou à l&#39;upthrust. La différence principale est le volume : Wyckoff s&#39;appuie sur lui pour valider chaque lecture, alors que beaucoup de contenus SMC se contentent du prix.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Quel livre lire pour apprendre Wyckoff ? <span class="fq-icon">+</span></button><div class="fa"><p>Le texte d&#39;origine est Studies in Tape Reading, publié en 1910 par Wyckoff sous le pseudonyme de Rollo Tape. Il est dans le domaine public et lisible gratuitement sur l&#39;Internet Archive. Il est en anglais et parle de lecture de la bande : complète-le par l&#39;observation de tes propres séances.</p></div></div>
+  </div>
+</section>
+
+<!-- Related -->
+<section class="related-sec">
+  <div class="sec-center"><div class="sec-label">Continuer la lecture</div><h2 class="sec-title">Articles connexes</h2></div>
+  <div class="related-grid">
+    <a href="/blog/market-profile-guide-complet/" class="related-card"><div class="related-cat">Guide</div><h3>Market Profile : le guide complet pour débutants</h3><p>Value Area, POC, types de journées — tout pour commencer.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/order-flow-trading-france/" class="related-card"><div class="related-cat">Méthode</div><h3>Order Flow Trading : pourquoi personne ne l'enseigne en France</h3><p>Le carnet d'ordres et le flux institutionnel décryptés.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/sierra-chart-configuration/" class="related-card"><div class="related-cat">Tutoriel</div><h3>Sierra Chart : configuration complète</h3><p>Le setup pas à pas pour le Market Profile et le Footprint.</p><span class="related-link">Lire &rarr;</span></a>
+  </div>
+</section>
+
+<!-- serie:debut --><style>.serie-w{background:#FFF;color:#1D1D1F;border-top:1px solid #F5F5F7}.serie{max-width:1060px;margin:0 auto;padding:56px 24px;font-family:inherit;box-sizing:border-box}.serie-l{font-size:.6rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#0066FF;margin-bottom:8px}.serie-w .serie h2{font-size:1.4rem;font-weight:800;letter-spacing:-.5px;color:#1D1D1F!important;margin:0 0 18px;font-family:inherit}.serie ul{list-style:none;padding:0;margin:0 0 22px;display:grid;grid-template-columns:repeat(2,1fr);gap:8px 24px}.serie-w .serie li a{color:#1D1D1F!important;font-size:.9rem;line-height:1.45;text-decoration:none;border-bottom:1px solid #D2D2D7}.serie li a:hover{color:#0066FF}.serie li.pil a{font-weight:700}.serie-o{background:#F5F5F7;border-radius:14px;padding:18px 20px;font-size:.88rem;line-height:1.55;color:#1D1D1F}.serie-w .serie-o a{color:#0066FF!important;font-weight:700}@media(max-width:700px){.serie ul{grid-template-columns:1fr}}</style><div class="serie-w"><aside class="serie" aria-label="Dans la même série"><div class="serie-l">Dans la même série</div><h2>Trouver sa méthode de trading</h2><ul><li class="pil"><a href="/blog/methode-de-trading/">Méthode de trading : comment trouver celle qui te correspond</a></li><li class=""><a href="/blog/types-trading-differences/">Les Types de Trading : Lequel Choisir Selon Votre Profil ? (2026)</a></li><li class=""><a href="/blog/debuter-trading-zero-guide/">Débuter le Trading en Partant de Zéro : Le Guide Concret (2026)</a></li><li class=""><a href="/blog/combien-temps-apprendre-trading/">Combien de Temps Faut-il pour Apprendre le Trading ? (Réponse Honnête)</a></li><li class=""><a href="/blog/devenir-trader-sans-diplome/">Devenir trader sans diplôme : le parcours réaliste (2026)</a></li><li class=""><a href="/blog/livre-trading/">Livre trading : les meilleurs pour apprendre (et l'ordre)</a></li><li class=""><a href="/blog/formation-trading/">Formation trading : contenu, prix, CPF et pièges à éviter</a></li><li class=""><a href="/blog/formation-trading-gratuite/">Formation trading gratuite : ce qu'on apprend sans payer</a></li><li class=""><a href="/blog/quelle-formation-trading-choisir/">Quelle formation trading choisir en 2026 ? 7 critères pour comparer</a></li><li class=""><a href="/blog/arnaque-trading/">Arnaque au trading : les 7 pièges et que faire si tu es victime</a></li><li class=""><a href="/blog/bookmap-heatmap/">Bookmap : lire la heatmap, prix réels et avis de trader</a></li><li class=""><a href="/blog/deepcharts-avis/">DeepCharts avis : prix, Mac, MBO et limites (2026)</a></li><li class=""><a href="/blog/gocharting-avis/">GoCharting : mon avis sur l'order flow dans le navigateur</a></li><li class=""><a href="/blog/motivewave-avis/">MotiveWave avis : prix, version gratuite, Mac et order flow</a></li><li class=""><a href="/blog/take-profit-trading/">Take profit : où placer ton objectif sur les futures (exemples MNQ)</a></li></ul><div class="serie-o"><a href="/formations/">Toutes les formations de Bass</a> : plus de 250 leçons vidéo, du débutant au Market Profile avancé. Pour commencer sans payer : <a href="/p/formation-offerte/?src=serie-methode-wyckoff">la formation offerte</a> (7 leçons vidéo).</div></aside></div><!-- serie:fin -->
+<footer class="footer">
+  <div class="ft-top"><div class="ft-logo">BASS</div><div class="ft-cols">
+    <div class="ft-col"><div class="ft-col-title">Programme</div><a href="/formations/">Toutes les formations</a><a href="https://basstrading.fr/#methode">Méthode</a><a href="https://basstrading.fr/#programme">Programme</a><a href="https://basstrading.fr/p/formation-offerte/?src=blog-methode-wyckoff-pied">Formation offerte</a></div>
+    <div class="ft-col"><div class="ft-col-title">Ressources</div><a href="/blog/market-profile-guide-complet/">Market Profile</a><a href="/blog/footprint-chart-trading/">Footprint Chart</a><a href="/blog/order-flow-trading-france/">Order Flow</a></div>
+  </div></div>
+  <div class="ft-bottom"><span>&copy; 2026 BASS — Sébastien Constant</span><div><a href="/mentions-legales/">Mentions légales</a><a href="/confidentialite/">Confidentialité</a><a href="/cgv/">CGV</a><a href="mailto:contact@basstrading.fr">Contact</a></div></div>
+</footer>
+<div class="disclaimer">Le trading comporte des risques de perte en capital. Les performances passées ne préjugent pas des performances futures. Ce site ne constitue pas un conseil en investissement.</div>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+const lenis=new Lenis({duration:1.2,easing:t=>Math.min(1,1.001-Math.pow(2,-10*t))});
+function raf(t){lenis.raf(t);requestAnimationFrame(raf)}requestAnimationFrame(raf);
+lenis.on('scroll',ScrollTrigger.update);gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0);
+const tl=gsap.timeline();
+tl.to('.pre-word span',{y:0,opacity:1,duration:.5,stagger:.1,ease:'power3.out',delay:.3}).to('#preLine',{width:'80px',duration:.7,ease:'power2.inOut'},'<+.2').to('.preloader',{yPercent:-100,duration:.8,ease:'power3.inOut',delay:.4}).set('.preloader',{display:'none'}).to('#nav',{opacity:1,y:0,duration:.5},'<+.1');
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);const h=document.documentElement.scrollHeight-window.innerHeight;document.getElementById('readingProgress').style.width=(window.scrollY/h*100)+'%'});
+const tocLinks=document.querySelectorAll('.toc a');const sections=Array.from(tocLinks).map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+window.addEventListener('scroll',()=>{let c='';sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)c=s.id});tocLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+c)})});
+function tf(b){const i=b.closest('.fi'),a=b.nextElementSibling,o=i.classList.contains('active');document.querySelectorAll('.fi').forEach(x=>{x.classList.remove('active');x.querySelector('.fa').classList.remove('open')});if(!o){i.classList.add('active');a.classList.add('open')}}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();lenis.scrollTo(t,{offset:-60})}})});
+</script>
+<script src="/v.js" defer></script>
+</body>
+</html>
