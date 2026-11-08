@@ -6,8 +6,16 @@
   <link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
   <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/"/>
   <id>https://basstrading.fr/blog/</id>
-  <updated>2026-11-07T00:00:00Z</updated>
+  <updated>2026-11-08T00:00:00Z</updated>
   <author><name>Sébastien Constant (Bass)</name><uri>https://basstrading.fr/auteur/sebastien-constant/</uri></author>
+  <entry>
+    <title>Quantower avis : version gratuite, footprint, Mac et prix (2026)</title>
+    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/quantower-avis/"/>
+    <id>https://basstrading.fr/blog/quantower-avis/</id>
+    <published>2026-11-08T00:00:00Z</published>
+    <updated>2026-11-08T00:00:00Z</updated>
+    <summary>Quantower avis 2026 : ce que permet la version gratuite, le prix de l&#x27;All-in-One, le footprint, le Mac et les prop firms. Mon protocole de test en 7 jours.</summary>
+  </entry>
   <entry>
     <title>Méthode Wyckoff : accumulation, distribution et spring</title>
     <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/methode-wyckoff/"/>
@@ -23,6 +31,14 @@
     <published>2026-11-06T00:00:00Z</published>
     <updated>2026-11-06T00:00:00Z</updated>
     <summary>Stop loss : définition, où le placer sur les futures, calcul en ticks sur MNQ et NQ, types d&#x27;ordres et erreurs à éviter. Ma méthode avec exemples.</summary>
+  </entry>
+  <entry>
+    <title>Débuter le trading de zéro : par où commencer (guide 2026)</title>
+    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/debuter-trading-zero-guide/"/>
+    <id>https://basstrading.fr/blog/debuter-trading-zero-guide/</id>
+    <published>2026-03-28T00:00:00Z</published>
+    <updated>2026-11-06T00:00:00Z</updated>
+    <summary>Débuter le trading sans te brûler : quoi apprendre et dans quel ordre, combien de temps compter, la démo, le risque. Mon parcours semaine par semaine.</summary>
   </entry>
   <entry>
     <title>DeepCharts avis : prix, Mac, MBO et limites (2026)</title>
@@ -137,28 +153,12 @@
     <summary>Guide complet du Delta en trading : delta positif/négatif, divergences, delta absorbé, naked delta. Apprenez à mesurer la pression directionnelle réelle bougie par bougie sur le Footprint Chart. Par Sébastien Constant.</summary>
   </entry>
   <entry>
-    <title>Débuter le Trading en Partant de Zéro : Le Guide Concret (2026)</title>
-    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/debuter-trading-zero-guide/"/>
-    <id>https://basstrading.fr/blog/debuter-trading-zero-guide/</id>
-    <published>2026-03-28T00:00:00Z</published>
-    <updated>2026-10-28T00:00:00Z</updated>
-    <summary>Le guide honnête pour débuter le trading en 2026. Pas de promesses irréalistes — un parcours structuré mois par mois, du compte démo au funded account, par un trader professionnel.</summary>
-  </entry>
-  <entry>
     <title>CVD (Cumulative Volume Delta) : Détecter la Conviction des Traders</title>
     <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/cvd-cumulative-volume-delta/"/>
     <id>https://basstrading.fr/blog/cvd-cumulative-volume-delta/</id>
     <published>2026-03-28T00:00:00Z</published>
     <updated>2026-10-28T00:00:00Z</updated>
     <summary>Guide complet du CVD (Cumulative Volume Delta) : calcul, divergences, interprétation. Apprenez à utiliser le delta cumulatif pour mesurer la pression directionnelle réelle du marché. Par Sébastien Constant.</summary>
-  </entry>
-  <entry>
-    <title>Combien de Temps Faut-il pour Apprendre le Trading ? (Réponse Honnête)</title>
-    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/combien-temps-apprendre-trading/"/>
-    <id>https://basstrading.fr/blog/combien-temps-apprendre-trading/</id>
-    <published>2026-03-28T00:00:00Z</published>
-    <updated>2026-10-28T00:00:00Z</updated>
-    <summary>6 à 18 mois selon votre spécialité et votre investissement quotidien. Timelines réalistes par style de trading, étapes clés et erreurs qui rallongent le parcours.</summary>
   </entry>
   <entry>
     <title>Carnet d&#x27;Ordres DOM Futures : Guide Complet du Depth of Market</title>
