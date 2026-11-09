@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Price action : ce que c&#39;est, et ce que la bougie ne montre pas — BASS Trading</title>
+  <meta name="description" content="Price action en trading : définition claire, ma méthode sans indicateur du weekly au 15 minutes, ses vraies limites et ce que le footprint ajoute.">
+  <meta property="og:title" content="Price action : ce que c&#39;est, et ce que la bougie ne montre pas — BASS Trading">
+  <meta property="og:description" content="Price action en trading : définition claire, ma méthode sans indicateur du weekly au 15 minutes, ses vraies limites et ce que le footprint ajoute.">
+  <meta property="og:image" content="https://basstrading.fr/blog/price-action-trading/blog-price-action-trading-1.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://basstrading.fr/blog/price-action-trading/blog-price-action-trading-1.webp">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://basstrading.fr/blog/price-action-trading/">
+  <meta property="og:site_name" content="BASS Trading">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://basstrading.fr/blog/price-action-trading/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","@id":"https://basstrading.fr/blog/price-action-trading/#article","headline":"Price action : ce que c'est, et ce que la bougie ne montre pas","description":"Price action en trading : définition claire, ma méthode sans indicateur du weekly au 15 minutes, ses vraies limites et ce que le footprint ajoute.","datePublished":"2026-11-09","dateModified":"2026-11-09","inLanguage":"fr-FR","image":"https://basstrading.fr/blog/price-action-trading/blog-price-action-trading-1.webp","mainEntityOfPage":"https://basstrading.fr/blog/price-action-trading/","isPartOf":{"@type":"WebSite","@id":"https://basstrading.fr/#website","name":"BASS Trading","url":"https://basstrading.fr/"},"author":{"@type":"Person","@id":"https://basstrading.fr/#sebastien-constant","name":"Sébastien Constant","url":"https://basstrading.fr/auteur/sebastien-constant/"},"publisher":{"@type":"Organization","@id":"https://basstrading.fr/#organisation","name":"BASS Trading","url":"https://basstrading.fr/","logo":{"@type":"ImageObject","url":"https://basstrading.fr/images/logo-basstrading.png","width":512,"height":512}}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://basstrading.fr"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://basstrading.fr/blog/"},{"@type":"ListItem","position":3,"name":"Price action","item":"https://basstrading.fr/blog/price-action-trading/"}]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Le price action fonctionne-t-il vraiment ?","acceptedAnswer":{"@type":"Answer","text":"Le price action est une façon de lire le marché, pas une méthode qui garantit des gains. Une étude publiée par le NBER en 2000 (Lo, Mamaysky, Wang) montre que certaines figures chartistes apportent une information supplémentaire sur 31 ans de données. Mais le résultat dépend surtout de la gestion du risque : taille de position, respect du stop et discipline sur le plan."}},{"@type":"Question","name":"Quelle unité de temps utiliser en price action ?","acceptedAnswer":{"@type":"Answer","text":"Analyse en grande unité de temps et exécute en petite. Je regarde le weekly au moins une fois par semaine, le daily pour la structure récente, le 4 heures pour les réactions sur les zones, puis le 15 minutes ou moins seulement pour choisir le moment d'entrer. Analyser directement en 1 minute fait voir des signaux partout."}},{"@type":"Question","name":"Existe-t-il un bon PDF price action en français ?","acceptedAnswer":{"@type":"Answer","text":"Beaucoup de PDF circulent, mais la plupart sont des catalogues de figures de bougies. Ils aident à reconnaître un marteau ou une englobante, pas à lire un graphique en contexte. L'exercice le plus utile reste le replay : une journée passée, avancée bougie par bougie, en écrivant ce que tu ferais avant de voir la suite."}},{"@type":"Question","name":"Price action ou indicateurs techniques : que choisir ?","acceptedAnswer":{"@type":"Answer","text":"Les indicateurs techniques recalculent le prix avec un retard. Le price action lit le prix directement. Je conseille de partir d'un graphique nu et, si tu veux un repère calculé en intraday, d'en garder un seul qui a du sens, comme le VWAP. Empiler moyenne mobile, RSI et MACD ramène vite à des signaux tardifs et contradictoires."}},{"@type":"Question","name":"Le price action intègre-t-il le volume ?","acceptedAnswer":{"@type":"Answer","text":"Non, le price action pur lit seulement le prix : ouverture, plus haut, plus bas, clôture. Beaucoup de traders ajoutent un histogramme de volume ou un volume profile pour confirmer les zones. Pour voir le volume acheté et vendu à chaque prix d'une bougie, il faut passer à l'order flow avec un footprint."}},{"@type":"Question","name":"Qui est Al Brooks et faut-il le lire ?","acceptedAnswer":{"@type":"Answer","text":"Al Brooks est un trader américain auteur d'une série de livres sur la lecture des graphiques bougie par bougie, souvent citée comme la référence du price action. C'est sérieux mais dense et en anglais. Pour un débutant, je conseille d'abord de maîtriser structure et zones, puis d'y venir pour affiner la lecture des bougies."}},{"@type":"Question","name":"Le price action marche-t-il sur les futures du Nasdaq ?","acceptedAnswer":{"@type":"Answer","text":"Oui pour situer les zones et la structure, sur le NQ comme sur le micro MNQ. En scalping ou en day trading rapide, il devient trop lent : une bougie de 5 minutes ne dit pas ce qui se passe à la seconde. C'est là que le carnet d'ordres et le footprint prennent le relais pour confirmer qu'une zone tient."}},{"@type":"Question","name":"Comment repérer un retournement en price action ?","acceptedAnswer":{"@type":"Answer","text":"Un retournement se lit d'abord dans la structure : dans une tendance haussière, le prix échoue à faire un nouveau sommet, puis casse le dernier creux. Une figure comme une englobante ou une étoile filante sur une zone de résistance renforce la lecture. Sans cassure de structure, je considère que la tendance est toujours en place."}}]}
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{--bk:#1D1D1F;--bk2:#111;--bk3:#0A0A0A;--g1:#6E6E73;--g2:#86868B;--g3:#D2D2D7;--g4:#F5F5F7;--wh:#FBFBFD;--pure:#FFF;--green:#00B67A;--blue:#0066FF}
+    html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}
+    body{font-family:'DM Sans',sans-serif;color:var(--bk);background:var(--pure);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+    .preloader{position:fixed;inset:0;background:var(--bk3);z-index:10001;display:flex;align-items:center;justify-content:center}
+    .pre-word{font-family:'Outfit',sans-serif;font-size:clamp(3rem,8vw,5rem);font-weight:900;letter-spacing:16px;text-transform:uppercase;color:var(--pure);overflow:hidden}
+    .pre-word span{display:inline-block;transform:translateY(110%);opacity:0}
+    .pre-line{width:0;height:1px;background:rgba(255,255,255,.3);margin-top:20px}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 48px;display:flex;align-items:center;justify-content:space-between;background:rgba(245,245,247,.85);backdrop-filter:blur(20px) saturate(1.8);border-bottom:1px solid rgba(0,0,0,.04);transition:background .4s}
+    .nav-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase;color:var(--bk)}
+    .nav-links{display:flex;gap:28px;list-style:none}.nav-links a{font-size:.74rem;font-weight:500;letter-spacing:.3px;color:var(--g1);transition:color .3s}.nav-links a:hover{color:var(--bk)}
+    .nav-cta{padding:8px 20px;background:var(--bk);color:var(--pure);border:none;border-radius:980px;font-size:.72rem;font-weight:600;transition:all .3s;cursor:pointer;text-decoration:none;display:inline-block}.nav-cta:hover{background:var(--bk2)}
+    .blog-hero{padding:160px 48px 80px;background:var(--g4);position:relative;overflow:hidden}
+    .blog-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,transparent,var(--g4));pointer-events:none}
+    .blog-hero-inner{max-width:720px;margin:0 auto}
+    .breadcrumb{display:flex;gap:8px;align-items:center;margin-bottom:28px;flex-wrap:wrap}
+    .breadcrumb a,.breadcrumb span{font-size:.68rem;font-weight:500;letter-spacing:.3px;color:var(--g2);transition:color .3s}.breadcrumb a:hover{color:var(--bk)}.breadcrumb .sep{color:var(--g3)}
+    .blog-hero-cat{display:inline-block;padding:5px 14px;border:1px solid rgba(0,102,255,.15);border-radius:980px;font-size:.6rem;font-weight:700;color:var(--blue);letter-spacing:2px;text-transform:uppercase;margin-bottom:20px}
+    .blog-hero-title{font-family:'Outfit',sans-serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:900;line-height:1.05;letter-spacing:-2px;color:var(--bk);margin-bottom:20px}
+    .blog-hero-desc{font-size:.95rem;color:var(--g1);line-height:1.8;max-width:560px;margin-bottom:28px}
+    .blog-meta{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+    .blog-meta-author{display:flex;align-items:center;gap:10px}
+    .blog-meta-avatar{width:36px;height:36px;border-radius:50%;background:var(--bk3);overflow:hidden;flex-shrink:0}.blog-meta-avatar img{width:100%;height:100%;object-fit:cover}
+    .blog-meta-name{font-size:.78rem;font-weight:600;color:var(--bk)}.blog-meta-role{font-size:.65rem;color:var(--g2)}
+    .blog-meta-sep{width:1px;height:24px;background:var(--g3)}
+    .blog-meta-info{font-size:.7rem;color:var(--g2)}.blog-meta-info span{margin-right:16px}
+    .toc{position:sticky;top:90px;background:var(--pure);border:1px solid rgba(0,0,0,.04);border-radius:14px;padding:24px;margin-bottom:32px}
+    .toc-title{font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.5px;color:var(--bk);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+    .toc ol{list-style:none;counter-reset:toc}.toc li{counter-increment:toc}
+    .toc li a{display:flex;align-items:baseline;gap:8px;padding:6px 0;font-size:.76rem;color:var(--g1);transition:color .3s;border-bottom:1px solid rgba(0,0,0,.03)}.toc li a:hover{color:var(--blue)}
+    .toc li a::before{content:counter(toc,decimal-leading-zero);font-family:'Outfit',sans-serif;font-size:.65rem;font-weight:700;color:var(--g3);min-width:18px}
+    .toc li:last-child a{border-bottom:none}.toc li a.active{color:var(--blue);font-weight:600}.toc li a.active::before{color:var(--blue)}
+    .article-wrap{display:grid;grid-template-columns:220px 1fr;gap:40px;max-width:1020px;margin:0 auto;padding:60px 48px 120px}
+    .article-sidebar{position:relative}.article-body{max-width:700px}
+    .article-body h2{font-family:'Outfit',sans-serif;font-size:clamp(1.4rem,2.5vw,1.8rem);font-weight:800;line-height:1.1;letter-spacing:-1px;color:var(--bk);margin:56px 0 16px;padding-top:20px}.article-body h2:first-of-type{margin-top:0}
+    .article-body h3{font-family:'Outfit',sans-serif;font-size:1.05rem;font-weight:700;line-height:1.25;letter-spacing:-.3px;color:var(--bk);margin:36px 0 10px}
+    .article-body p{font-size:.9rem;color:var(--g1);line-height:1.85;margin-bottom:18px}
+    .article-body strong{color:var(--bk);font-weight:600}
+    .article-body ul,.article-body ol{margin:0 0 20px 0;padding-left:20px}
+    .article-body li{font-size:.88rem;color:var(--g1);line-height:1.8;margin-bottom:6px}.article-body li strong{color:var(--bk)}
+    .article-body blockquote{margin:28px 0;padding:20px 24px;background:var(--g4);border-left:3px solid var(--bk);border-radius:0 12px 12px 0;font-size:.88rem;color:var(--g1);line-height:1.8;font-style:italic}
+    .article-body blockquote strong{color:var(--bk);font-style:normal}
+    .article-body hr{border:none;border-top:1px solid var(--g4);margin:48px 0}
+    .info-box{margin:28px 0;padding:24px;background:rgba(0,102,255,.03);border:1px solid rgba(0,102,255,.08);border-radius:14px}
+    .info-box-title{font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:700;color:var(--blue);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+    .info-box p{font-size:.82rem;color:var(--g1);line-height:1.7;margin-bottom:0}
+    .key-concept{margin:32px 0;padding:28px;background:var(--bk3);border-radius:16px;color:var(--pure)}
+    .key-concept-label{font-size:.55rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:10px}
+    .key-concept h4{font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:800;letter-spacing:-.3px;margin-bottom:8px}
+    .key-concept p{font-size:.85rem;color:rgba(255,255,255,.5);line-height:1.8;margin-bottom:0}
+    .compare-table{width:100%;margin:24px 0 28px;border-collapse:collapse;border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,.06)}
+    .compare-table th{background:var(--bk3);color:var(--pure);font-family:'Outfit',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:14px 16px;text-align:left}
+    .compare-table td{padding:12px 16px;font-size:.82rem;color:var(--g1);line-height:1.6;border-bottom:1px solid rgba(0,0,0,.04);background:var(--pure)}
+    .compare-table tr:last-child td{border-bottom:none}.compare-table td:first-child{font-weight:600;color:var(--bk)}
+    .cta-card{margin:48px 0;padding:40px;background:var(--bk3);border-radius:20px;text-align:center;position:relative;overflow:hidden}
+    .cta-card::before{content:'';position:absolute;top:-50%;right:-30%;width:400px;height:400px;background:radial-gradient(circle,rgba(0,102,255,.08) 0%,transparent 70%);pointer-events:none}
+    .cta-card-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:12px}
+    .cta-card h3{font-family:'Outfit',sans-serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:800;color:var(--pure);letter-spacing:-.5px;margin-bottom:8px}
+    .cta-card p{font-size:.85rem;color:rgba(255,255,255,.4);line-height:1.7;max-width:380px;margin:0 auto 24px}
+    .cta-card .btn-p{background:var(--pure);color:var(--bk)}.cta-card .btn-p:hover{box-shadow:0 8px 30px rgba(255,255,255,.15)}
+    .faq-sec{padding:80px 48px 100px;background:var(--g4)}
+    .faq-list{max-width:680px;margin:40px auto 0}.fi{border-bottom:1px solid rgba(0,0,0,.06)}
+    .fq{width:100%;text-align:left;padding:18px 0;background:none;border:none;font-size:.85rem;font-weight:600;font-family:'DM Sans',sans-serif;color:var(--bk);display:flex;justify-content:space-between;align-items:center;cursor:pointer;gap:16px;transition:color .3s}.fq:hover{color:var(--g1)}
+    .fq-icon{width:22px;height:22px;border-radius:50%;background:rgba(0,0,0,.04);display:flex;align-items:center;justify-content:center;font-size:.75rem;transition:all .4s;flex-shrink:0;color:var(--g2)}
+    .fa{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1)}.fa.open{max-height:280px;padding-bottom:14px}
+    .fa p{font-size:.8rem;color:var(--g1);line-height:1.7;margin-bottom:0}.fi.active .fq-icon{background:var(--bk);color:var(--pure);transform:rotate(45deg)}
+    .related-sec{padding:80px 48px;background:var(--pure);border-top:1px solid var(--g4)}
+    .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1060px;margin:40px auto 0}
+    .related-card{display:block;padding:28px;background:var(--g4);border-radius:16px;transition:all .4s;text-decoration:none;color:var(--bk)}
+    .related-card:hover{background:var(--pure);box-shadow:0 8px 30px rgba(0,0,0,.06);transform:translateY(-2px)}
+    .related-cat{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+    .related-card h3{font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:700;line-height:1.3;letter-spacing:-.3px;margin-bottom:8px}
+    .related-card p{font-size:.78rem;color:var(--g1);line-height:1.6;margin-bottom:14px}
+    .related-link{font-size:.72rem;font-weight:600;color:var(--blue);letter-spacing:.3px}
+    .footer{background:var(--bk3);color:var(--pure);padding:56px 48px 28px}
+    .ft-top{display:flex;justify-content:space-between;align-items:start;margin-bottom:48px;flex-wrap:wrap;gap:32px}
+    .ft-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase}
+    .ft-cols{display:flex;gap:80px}
+    .ft-col-title{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:12px}
+    .ft-col a{display:block;font-size:.78rem;color:rgba(255,255,255,.5);margin-bottom:8px;transition:color .3s}.ft-col a:hover{color:var(--pure)}
+    .ft-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:20px;display:flex;justify-content:space-between;align-items:center;font-size:.6rem;color:rgba(255,255,255,.2)}
+    .ft-bottom a{color:rgba(255,255,255,.2);transition:color .3s;margin-left:20px}.ft-bottom a:hover{color:rgba(255,255,255,.5)}
+    .disclaimer{padding:12px 48px;background:var(--bk3);font-size:.58rem;color:rgba(255,255,255,.12);text-align:center;line-height:1.6;border-top:1px solid rgba(255,255,255,.03)}
+    .sec-center{text-align:center;max-width:680px;margin:0 auto}
+    .sec-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--g2);margin-bottom:10px}
+    .sec-title{font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;line-height:1.05;letter-spacing:-1.5px;color:var(--bk);margin-bottom:16px}
+    .btn-p{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--bk);color:var(--pure);border-radius:980px;font-size:.85rem;font-weight:600;transition:all .3s;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;text-decoration:none}
+    .btn-p:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(0,0,0,.1)}
+    .btn-p svg{width:13px;height:13px;transition:transform .3s}.btn-p:hover svg{transform:translateX(3px)}
+    .reading-progress{position:fixed;top:0;left:0;height:2px;background:var(--blue);z-index:9999;width:0;transition:width .1s linear}
+    @media(max-width:900px){.nav{padding:14px 20px}.nav-links{display:none}.blog-hero{padding:120px 20px 60px}.article-wrap{grid-template-columns:1fr;padding:40px 20px 80px}.article-sidebar{display:none}.related-grid{grid-template-columns:1fr}.related-sec,.faq-sec{padding:60px 20px}.ft-cols{flex-direction:column;gap:28px}.footer{padding:40px 20px 20px}.disclaimer{padding:10px 16px}.cta-card{padding:28px 20px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  .article-body a{color:var(--blue);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;font-weight:500}.article-body a:hover{text-decoration-thickness:2px}
+</style>
+<style>/* 28/10/2026 : débordement mobile (colonne de grille sans min-width) */.article-wrap>*,.article-layout>*{min-width:0}.article-body table,.compare-table{display:block;overflow-x:auto;max-width:100%}.article-body pre{overflow-x:auto}.article-body img{max-width:100%;height:auto}</style>
+</head>
+<body>
+
+<div class="preloader" id="preloader"><div style="text-align:center"><div class="pre-word"><span>B</span><span>A</span><span>S</span><span>S</span></div><div class="pre-line" id="preLine"></div></div></div>
+<div class="reading-progress" id="readingProgress"></div>
+
+<nav class="nav" id="nav">
+  <a href="https://basstrading.fr" class="nav-logo">BASS</a>
+  <ul class="nav-links">
+    <li><a href="https://basstrading.fr/#methode">Méthode</a></li>
+    <li><a href="https://basstrading.fr#resultats">Résultats</a></li>
+    <li><a href="https://basstrading.fr#avis">Avis</a></li>
+    <li><a href="https://basstrading.fr#faq">FAQ</a></li>
+    <li><a href="/formations/">Formations</a></li>
+    <li><a href="https://basstrading.fr/blog/">Blog</a></li>
+  </ul>
+  <a href="https://basstrading.fr/p/formation-offerte/?src=blog-price-action-trading-menu" class="nav-cta">Formation offerte</a>
+</nav>
+
+<section class="blog-hero">
+  <div class="blog-hero-inner">
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <a href="https://basstrading.fr">Accueil</a><span class="sep">/</span>
+      <a href="https://basstrading.fr/blog/">Blog</a><span class="sep">/</span>
+      <span>Price action</span>
+    </nav>
+    <div class="blog-hero-cat">Méthode</div>
+    <h1 class="blog-hero-title">Price action : ce que c&#39;est, et ce que la bougie ne montre pas</h1>
+    <p class="blog-hero-desc">Le price action, c&#39;est trader en lisant le prix seul : bougies, structure, zones. Ça marche pour situer le marché, pas pour savoir qui achète vraiment. Je te montre ma lecture sans indicateur, du weekly au 15 minutes, puis ce qu&#39;une bougie cache et quand il faut regarder dedans.</p>
+    <div class="blog-meta">
+      <div class="blog-meta-author">
+        <div class="blog-meta-avatar"><img src="../../images/bass-presenting.jpg" alt="Sébastien Constant" loading="lazy"></div>
+        <div><div class="blog-meta-name"><a href="/auteur/sebastien-constant/" rel="author" style="color:inherit;text-decoration:none">Sébastien Constant</a></div><div class="blog-meta-role">Trader & Formateur Order Flow</div></div>
+      </div>
+      <div class="blog-meta-sep"></div>
+      <div class="blog-meta-info"><span>Novembre 2026</span><span>21 min de lecture</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="article-wrap">
+  <aside class="article-sidebar">
+    <div class="toc">
+      <div class="toc-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/></svg> Sommaire</div>
+      <ol>
+        <li><a href="#le-price-action-c-est-quoi-exactement">Le price action, c&#39;est quoi exactement ?</a></li>
+        <li><a href="#que-lit-on-sur-un-graphique-en-price-act">Que lit-on sur un graphique en price action ?</a></li>
+        <li><a href="#comment-je-lis-un-graphique-sans-indicat">Comment je lis un graphique sans indicateur, du weekly au 15 minutes ?</a></li>
+        <li><a href="#comment-entrer-en-price-action-sans-se-f">Comment entrer en price action sans se faire piéger ?</a></li>
+        <li><a href="#que-ne-te-montre-pas-une-bougie">Que ne te montre pas une bougie ?</a></li>
+        <li><a href="#que-change-la-meme-bougie-lue-en-footpri">Que change la même bougie lue en footprint ?</a></li>
+        <li><a href="#price-action-ou-smc-quelle-difference">Price action ou SMC : quelle différence ?</a></li>
+        <li><a href="#le-price-action-fonctionne-t-il-vraiment">Le price action fonctionne-t-il vraiment ? Win rate et chiffres honnêtes</a></li>
+        <li><a href="#quels-sont-les-avantages-et-les-defis-du">Quels sont les avantages et les défis du price action ?</a></li>
+        <li><a href="#quelles-erreurs-font-les-debutants-en-pr">Quelles erreurs font les débutants en price action ?</a></li>
+        <li><a href="#quand-le-price-action-suffit-il-et-quand">Quand le price action suffit-il, et quand trompe-t-il ?</a></li>
+        <li><a href="#comment-apprendre-le-price-action-pdf-li">Comment apprendre le price action (PDF, livres, formation) ?</a></li>
+        <li><a href="#en-resume-que-faire-ce-soir-sur-ton-grap">En résumé : que faire ce soir sur ton graphique ?</a></li>
+      </ol>
+    </div>
+  </aside>
+
+  <article class="article-body">
+    <h2 id="le-price-action-c-est-quoi-exactement">Le price action, c&#39;est quoi exactement ?</h2>
+    <p>Tu as un graphique rempli de moyennes mobiles, de RSI et de MACD, et tu as l&#39;impression que chaque signal arrive trop tard. C&#39;est normal. Comme je le dis dans <a href="https://www.youtube.com/watch?v=zUSZ9dfr3x0&amp;t=59s">ma vidéo sur le trading sans indicateur</a> : « la plupart des indicateurs sont juste en retard ». Le price action part de l&#39;autre bout : on enlève tout, et on regarde le prix.</p>
+<p>Le price action (ou « action des prix ») est une façon de trader qui décide uniquement à partir du mouvement du prix lui-même : bougies, structure des sommets et des creux, zones de support et de résistance, sans indicateur calculé.</p>
+<p>C&#39;est la forme la plus ancienne de l&#39;analyse technique. Bien avant les ordinateurs, des traders suivaient le cours à la main et en tiraient leurs décisions. Les indicateurs techniques sont venus après, comme des calculs posés par-dessus ce cours.</p>
+<p>L&#39;idée de départ est simple. Tout ce que les participants savent, craignent ou espèrent finit par se traduire en ordres, et ces ordres font bouger le prix. Un indicateur ne fait que recalculer ce prix avec un temps de retard. Le price action lit la source directement : les mouvements de prix et leur évolution en temps réel.</p>
+<h3>Ce que le price action n&#39;est pas</h3>
+<p>Ce n&#39;est pas une stratégie toute faite. C&#39;est une manière de lire, comme une langue, sur laquelle chacun construit ses propres stratégies. Deux traders en price action peuvent regarder le même graphique et prendre des décisions opposées, parce que l&#39;un cherche des retournements et l&#39;autre suit la tendance.</p>
+<p>Ce n&#39;est pas non plus une collection de figures à apprendre par cœur. Un marteau ou une bougie englobante n&#39;a de sens qu&#39;à un endroit précis du graphique. La même figure au milieu de nulle part ne vaut rien.</p>
+<h3>Pourquoi j&#39;en parle sur un blog consacré à l&#39;order flow</h3>
+<p>Parce que le price action est la base de tout ce que je fais. Avant d&#39;ouvrir un footprint ou un carnet d&#39;ordres, je regarde le prix, la structure, les zones. L&#39;order flow ne remplace pas le price action : il le complète là où la bougie devient muette. Tu vas voir dans cet article exactement où se trouve cette limite.</p>
+<p>À la fin, tu sauras lire un graphique nu du weekly au 15 minutes, entrer sans te jeter sur le premier signal, et reconnaître les situations où la bougie te ment par omission.</p>
+<aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p><b>À retenir</b></p>
+<ul><li>Le price action, c&#39;est décider à partir du prix seul, sans indicateur calculé.</li><li>C&#39;est la forme la plus ancienne de l&#39;analyse technique.</li><li>C&#39;est une manière de lire, pas une stratégie clé en main.</li><li>Une figure de bougie ne vaut que par l&#39;endroit où elle apparaît.</li><li>Le price action est la base ; l&#39;order flow vient le préciser.</li></ul></aside>
+<p>Alors, concrètement, qu&#39;est-ce qu&#39;on regarde sur un graphique nu ?</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/price-action-trading/blog-price-action-trading-1.webp" alt="Règle du price action : lire la zone, la structure et le contexte avant la bougie" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">La bougie déclenche l&#39;entrée ; la zone, la structure et le contexte décident.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="que-lit-on-sur-un-graphique-en-price-act">Que lit-on sur un graphique en price action ?</h2>
+    <p>On lit quatre choses, dans cet ordre : les zones, la structure, le contexte, puis la bougie. La plupart des débutants font l&#39;inverse et commencent par la bougie. C&#39;est la source de la majorité des faux signaux.</p>
+<h3>1. Les zones : là où le marché a passé du temps</h3>
+<p>Quand tu vois beaucoup de bougies serrées sur un même niveau de prix, ça veut dire une chose : beaucoup d&#39;échanges ont eu lieu là. Beaucoup d&#39;échanges, c&#39;est beaucoup de volume, et beaucoup de participants qui ont une position à défendre.</p>
+<p>Ces zones deviennent des niveaux de support ou de résistance, les niveaux clés de ton graphique, pas parce qu&#39;une ligne serait magique, mais parce que des gens y ont des ordres et des intérêts. Dans la vidéo, je le confirme avec un <a href="https://basstrading.fr/blog/volume-profile-guide/">volume profile</a> : la zone où les bougies s&#39;entassent est exactement celle où se trouve le plus de volume, avec la VAH, le POC et la VAL, et environ 70 % du volume dans la zone de valeur.</p>
+<h3>2. La structure : sommets et creux</h3>
+<p>Une tendance haussière fait des sommets de plus en plus hauts et des creux de plus en plus hauts. Une tendance baissière fait l&#39;inverse : des sommets et des creux de plus en plus bas. Un range fait des sommets et des creux à peu près au même niveau.</p>
+<p>Identifier la direction du marché, c&#39;est la lecture la plus utile du price action, et la plus simple. Elle permet de savoir dans quel sens chercher tes trades. Tant que la structure tient, je ne vais pas contre elle. Quand un creux important casse dans une tendance haussière, l&#39;histoire change, et je le note avant de chercher le moindre signal.</p>
+<h3>3. Le contexte : tendance, range, ou transition</h3>
+<p>La même bougie ne dit pas la même chose selon le contexte. Une grande bougie verte qui casse le haut d&#39;un range après trois jours de compression, ce n&#39;est pas la même chose qu&#39;une grande bougie verte au milieu d&#39;un range qui dure depuis des semaines.</p>
+<p>Dans le premier cas, c&#39;est peut-être le début d&#39;un déséquilibre. Dans le second, c&#39;est souvent du bruit qui va revenir au milieu.</p>
+<h3>4. La bougie : le déclencheur, pas l&#39;analyse</h3>
+<p>La bougie arrive en dernier. Elle sert à déclencher, une fois que la zone, la structure et le contexte sont d&#39;accord. Voici les figures que tout le monde cite, et ce qu&#39;elles veulent vraiment dire :</p>
+<ul><li>Le marteau (petite tête, longue mèche basse) : le prix est descendu, puis il a été racheté. Quelqu&#39;un a refusé les prix bas. Sur un support, c&#39;est un signal de retournement possible.</li><li>L&#39;étoile filante (longue mèche haute) : l&#39;inverse, le prix est monté et a été revendu.</li><li>La bougie englobante : une bougie dont le corps avale entièrement celui de la précédente. Sur une zone, en 4 heures, je la lis comme un gros rejet et un point d&#39;inflexion possible.</li><li>Le doji (ouverture et clôture presque identiques) : personne n&#39;a gagné la bataille sur cette période. Une hésitation, pas un signal.</li><li>L&#39;inside bar (une bougie contenue dans la précédente) : une compression, le marché respire avant de choisir.</li></ul>
+<p>Tu remarques que chaque description parle de ce que les acheteurs et les vendeurs ont fait. C&#39;est ça, lire le price action : traduire chaque bougie en comportement.</p>
+<aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p><b>À retenir</b></p>
+<ul><li>L&#39;ordre de lecture : zones, structure, contexte, puis bougie.</li><li>Une zone, c&#39;est là où le marché a passé du temps et échangé du volume.</li><li>La structure des sommets et des creux dit qui contrôle le marché.</li><li>La bougie sert de déclencheur, jamais d&#39;analyse à elle seule.</li></ul></aside>
+<p>Reste la vraie question : sur quelle unité de temps lire tout ça ? C&#39;est là que la plupart se perdent.</p>
+
+    <hr>
+
+    <h2 id="comment-je-lis-un-graphique-sans-indicat">Comment je lis un graphique sans indicateur, du weekly au 15 minutes ?</h2>
+    <p>Je commence toujours par prendre de la hauteur. Au moins une fois par semaine, je regarde le weekly, même si je trade en intraday. C&#39;est le conseil que je donne en premier à mes élèves, et c&#39;est celui qu&#39;ils oublient le plus vite.</p>
+<h3>Pourquoi dézoomer d&#39;abord</h3>
+<p>Sur un graphique en 5 minutes, tout ressemble à un signal. Chaque petit sommet a l&#39;air important, chaque cassure a l&#39;air décisive. En weekly, tu vois les vraies zones, celles qui ont tenu des mois, et tu comprends qu&#39;une bonne partie de ce qui se passe en 5 minutes n&#39;est que du bruit entre deux de ces zones.</p>
+<p>Dans la vidéo, je prends l&#39;exemple du Bitcoin en weekly. Un support majeur a été touché en février-mars 2025, puis de nouveau en novembre 2025. Ensuite, il a cassé. Pas besoin d&#39;indicateur pour comprendre la suite : un support majeur qui casse, c&#39;est un marché qui change de régime. Toute lecture intraday qui ignore ce fait part avec un handicap.</p>
+<h3>Mon ordre de lecture</h3>
+<ul><li>Weekly : les grandes zones, la tendance de fond. Je trace deux ou trois niveaux, pas plus.</li><li>Daily : la structure récente. Où sont les derniers sommets et creux qui comptent ? Le prix est-il dans une zone ou entre deux zones ?</li><li>4 heures : les réactions sur les zones. C&#39;est là que je repère les rejets nets, comme une bougie englobante sur une zone daily.</li><li>15 minutes ou moins : l&#39;exécution. Je ne cherche plus d&#39;analyse ici, je cherche un moment pour cliquer.</li></ul>
+<p>Grandes unités de temps pour analyser, petites unités de temps pour cliquer. Si tu fais l&#39;inverse, tu vas analyser du bruit et cliquer sur des niveaux que personne ne regarde.</p>
+<h3>Le marché va de zone en zone</h3>
+<p>C&#39;est l&#39;idée centrale de ma lecture. Je le dis <a href="https://www.youtube.com/watch?v=zUSZ9dfr3x0&amp;t=485s">dans la vidéo</a> : « le but du marché c&#39;est pas de te piéger… c&#39;est simplement de trouver des zones où il y a de la liquidité ». Le marché cherche des contreparties. Il va là où il peut échanger.</p>
+<p>L&#39;image que j&#39;utilise, c&#39;est celle des <a href="https://www.youtube.com/watch?v=zUSZ9dfr3x0&amp;t=602s">Champs-Élysées le jour de Noël</a>. Tu peux essayer de sprinter, mais avec la foule, tu n&#39;iras pas loin. Une zone chargée de volume, c&#39;est la foule : le prix y avance difficilement, il hésite, il revient. Entre deux zones, la rue est vide : le prix traverse vite.</p>
+<p>Conséquence pratique : je n&#39;entre pas au milieu d&#39;une zone chargée en pariant sur une sortie rapide. J&#39;attends le bord de la zone, ou la sortie franche de la zone.</p>
+<h3>Un exemple en live, sur le Nasdaq</h3>
+<p>Le 20 octobre 2026, en live sur les <a href="https://basstrading.fr/blog/nasdaq-futures-nq-mnq/">futures du Nasdaq</a>, la séance US ouvre à 15 h 30. Le profil de la nuit est en forme de D : marché équilibré, en range. Après l&#39;ouverture, le marché monte fort et les bougies sont toutes vertes.</p>
+<p>Je n&#39;achète pas. Comme je le dis à ce moment-là : « on le voit clairement que les bougies, elles sont haussières, que le marché ne fait qu&#39;accélérer, etc., mais on reste dans un marché dit équilibré ». Acheter en plein milieu d&#39;une zone qui peut rejeter à tout moment, c&#39;est acheter au pire endroit. Quelques minutes plus tard, je précise : « Moi, personnellement, je préfère attendre un retour un petit peu plus bas pour un achat ». Tu peux revoir le passage <a href="https://www.youtube.com/watch?v=UxzH8zdDYNY&amp;t=3359s">dans le replay, à 55 min 59 s</a>.</p>
+<p>Cet exemple résume le price action bien fait : la bougie dit « ça monte », le contexte dit « on est encore dans le range ». C&#39;est le contexte qui gagne.</p>
+<aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p><b>À retenir</b></p>
+<ul><li>Regarde le weekly au moins une fois par semaine, même en intraday.</li><li>Analyse en grande unité de temps, exécute en petite.</li><li>Le marché va de zone en zone, à la recherche de liquidité.</li><li>Une zone chargée ralentit le prix ; le vide entre deux zones l&#39;accélère.</li></ul></aside>
+<p>Tu sais où regarder. Maintenant, comment entrer sans te faire piéger par le premier mouvement ?</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/price-action-trading/blog-price-action-trading-2.webp" alt="Étapes de lecture price action du weekly au 15 minutes sur un graphique sans indicateur" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Grandes unités de temps pour analyser, petites pour cliquer.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="comment-entrer-en-price-action-sans-se-f">Comment entrer en price action sans se faire piéger ?</h2>
+    <p>La réponse courte : tu attends que le marché te montre son intention, puis tu entres à la cassure d&#39;une structure claire, pas avant. Ce qui se passe avant la cassure, c&#39;est du bruit.</p>
+<h3>L&#39;exemple du double top</h3>
+<p>Dans la vidéo, je montre une entrée simple, faisable sans aucun outil. Le prix arrive sur une zone de résistance déjà identifiée en grande unité de temps. Il la touche une première fois, recule, revient, et échoue une deuxième fois : c&#39;est un double top.</p>
+<p>À ce moment-là, beaucoup de traders vendent immédiatement. Moi, j&#39;attends encore. Entre les deux sommets, le prix a formé un petit range. J&#39;entre seulement quand ce petit range casse par le bas. Avant ça, tout peut encore arriver : le prix peut repartir et casser la résistance.</p>
+<h3>Le prix à payer : un stop plus large</h3>
+<p>Cette méthode a un coût que les vidéos de price action oublient souvent de dire. Si j&#39;entre à la cassure du petit range, mon stop doit se placer au-dessus du double top. Le stop est large. Sur un double top en 15 minutes sur le Nasdaq, il peut facilement faire plusieurs dizaines de points.</p>
+<p>La seule réponse honnête, c&#39;est de baisser le levier pour garder un risque cohérent. Concrètement, sur le Nasdaq, le contrat NQ vaut 20 $ par point et le micro MNQ 2 $ par point, d&#39;après <a href="https://www.cmegroup.com/markets/equities/nasdaq/micro-e-mini-nasdaq-100.contractSpecs.html">les spécifications officielles du CME</a>. Avec un stop de 40 points :</p>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Contrat</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Valeur du point</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Risque pour 40 points</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">NQ</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">20 $</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">800 $</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">MNQ</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">2 $</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">80 $</td></tr></tbody></table></div>
+<p>Si ton risque maximum par trade est de 80 $, le price action pur sur ce type de setup t&#39;oblige à trader le micro. Ce n&#39;est pas une option, c&#39;est le calcul. Je détaille cette logique dans mon article sur <a href="https://basstrading.fr/blog/combien-risquer-par-trade/">combien risquer par trade</a>, et le choix du contrat dans <a href="https://basstrading.fr/blog/nq-ou-mnq/">NQ ou MNQ</a>.</p>
+<h3>Pourquoi les entrées « au signal » piègent</h3>
+<p>Les supports et résistances évidents attirent les stops. Tout le monde voit le même double creux, tout le monde place son stop juste en dessous. Le marché vient souvent chercher cette liquidité avant de repartir. Je l&#39;explique en détail dans mon article sur la <a href="https://basstrading.fr/blog/chasse-aux-stops-trading/">chasse aux stops</a>.</p>
+<p>Attendre la cassure du petit range, c&#39;est laisser passer ce premier piège. Tu entres moins bien placé, mais tu entres sur un marché qui a montré son jeu.</p>
+<h3>Un modèle de risque, sinon rien</h3>
+<p>Dernier point, que je répète à la fin de la vidéo : sans indicateur, il faut un modèle de risque. Combien je risque par trade, où je sors si j&#39;ai tort, combien de pertes d&#39;affilée j&#39;accepte avant d&#39;arrêter ma journée. Le price action te dit où entrer. Il ne te dit jamais combien perdre.</p>
+<p>Le trading de contrats à terme comporte un risque élevé de perte, pouvant dépasser la mise initiale. Contenu éducatif, pas un conseil en investissement.</p>
+<aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p><b>À retenir</b></p>
+<ul><li>Entre à la cassure d&#39;une structure claire, pas sur le premier signal.</li><li>Une entrée plus sûre veut souvent dire un stop plus large.</li><li>Stop large = levier plus faible, souvent le micro plutôt que le mini.</li><li>Les niveaux évidents attirent les stops : laisse passer le premier piège.</li></ul></aside>
+<p>Jusqu&#39;ici, tout se lit sur des bougies. Mais il y a des choses qu&#39;une bougie ne pourra jamais te montrer.</p>
+
+    <hr>
+
+    <h2 id="que-ne-te-montre-pas-une-bougie">Que ne te montre pas une bougie ?</h2>
+    <p>Une bougie te donne quatre prix : ouverture, plus haut, plus bas, clôture. Elle ne te dit rien de ce qui s&#39;est échangé entre ces quatre prix, ni à quel niveau, ni par qui, ni avec quelle agressivité.</p>
+<p>C&#39;est sa force et sa faiblesse. Sa force, parce qu&#39;elle résume une période en un coup d&#39;œil. Sa faiblesse, parce que deux bougies identiques peuvent cacher deux histoires opposées.</p>
+<h3>La mèche : de l&#39;absorption que tu vois trop tard</h3>
+<p>Prends une grosse mèche basse sur une zone. En price action, on la lit comme un rejet : le prix est descendu, puis il a été racheté. C&#39;est juste. Mais ce que ça veut dire réellement, c&#39;est qu&#39;il y avait des ordres limites en attente à ces niveaux, assez gros pour absorber les ventes agressives.</p>
+<p>Ces ordres, tu peux les voir avant qu&#39;ils agissent : sur une heatmap comme Bookmap ou dans le <a href="https://basstrading.fr/blog/carnet-ordres-dom-futures/">carnet d&#39;ordres</a>. Et tu peux voir l&#39;absorption pendant qu&#39;elle se produit sur un footprint. La bougie, elle, te la montre une fois la période terminée.</p>
+<p>C&#39;est ce que je dis <a href="https://www.youtube.com/watch?v=zUSZ9dfr3x0&amp;t=1060s">dans la vidéo, à 17 min 40 s</a> : « l&#39;absorption… vous n&#39;allez pas le voir avec des bougies… ce qui m&#39;intéresse c&#39;est pas de le voir après coup, c&#39;est de le voir au moment où ça se produit ». Je développe ce phénomène dans mon article sur l&#39;<a href="https://basstrading.fr/blog/absorption-order-flow/">absorption en order flow</a>.</p>
+<h3>La distribution verticale des prix</h3>
+<p>Une bougie de 30 minutes qui va de 21 000 à 21 060 ne te dit pas si le marché a passé 25 minutes autour de 21 050 et 5 minutes à descendre vite, ou l&#39;inverse. Pourtant, ça change tout : là où le marché passe du temps, il accepte le prix. Là où il passe vite, il le rejette.</p>
+<p>C&#39;est exactement ce que montre le Market Profile. Il intègre le prix et le temps. Et si tu sépares les lettres d&#39;un profil de 30 minutes, tu retrouves exactement des bougies : le profil contient la bougie, la bougie ne contient pas le profil. Je l&#39;explique dans mon <a href="https://basstrading.fr/blog/market-profile-guide-complet/">guide complet du Market Profile</a>.</p>
+<h3>L&#39;émotion de la bougie</h3>
+<p>Une grande bougie rouge fait peur. Une série de bougies vertes donne envie d&#39;acheter. Je l&#39;ai dit dans <a href="https://www.youtube.com/watch?v=UxzH8zdDYNY&amp;t=242s">mon live du 20 octobre</a> : « les bougies elles vont transmettre beaucoup d&#39;émotions alors que le Market Profile c&#39;est beaucoup plus factuel, il y a beaucoup moins d&#39;émotions ». La bougie amplifie le mouvement à l&#39;œil, elle ne te dit pas si ce mouvement a du fond.</p>
+<h3>Le résumé de ce qui manque</h3>
+<ul><li>Le volume à chaque prix : la bougie ne le montre pas, le volume profile si.</li><li>Qui a été agressif (acheteurs ou vendeurs au marché) : la bougie ne le montre pas, le <a href="https://basstrading.fr/blog/delta-footprint-trading/">delta</a> si.</li><li>Les ordres en attente : la bougie ne les montre pas, le carnet et la heatmap si.</li><li>Le temps passé à chaque prix : la bougie ne le montre pas, le Market Profile si.</li></ul>
+<aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p><b>À retenir</b></p>
+<ul><li>Une bougie, c&#39;est quatre prix : tout ce qui s&#39;est passé entre eux est invisible.</li><li>Une mèche est le résultat d&#39;une absorption que tu vois une fois terminée.</li><li>Le temps passé à un prix dit si le marché l&#39;accepte ou le rejette.</li><li>Les bougies amplifient l&#39;émotion ; les outils de volume la neutralisent.</li></ul></aside>
+<p>Le plus simple pour comprendre la différence, c&#39;est d&#39;ouvrir une bougie et de regarder dedans.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/price-action-trading/blog-price-action-trading-3.webp" alt="Comparaison entre ce que montre une bougie et ce que montre un footprint en order flow" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">La bougie résume quatre prix ; le footprint montre ce qui s&#39;échange entre eux.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="que-change-la-meme-bougie-lue-en-footpri">Que change la même bougie lue en footprint ?</h2>
+    <p>Un footprint découpe chaque bougie prix par prix et affiche, à chaque niveau, le volume acheté au marché et le volume vendu au marché. C&#39;est comme passer d&#39;une photo floue à une radiographie. Si tu découvres l&#39;outil, commence par mon <a href="https://basstrading.fr/blog/footprint-chart-trading/">guide du footprint chart</a>.</p>
+<p>Pour te montrer l&#39;écart, voici un cas d&#39;école, construit pour l&#39;explication et non tiré d&#39;un trade précis : deux bougies de 5 minutes sur le Nasdaq, identiques en price action. Même ouverture, même clôture, même longue mèche basse sous un support.</p>
+<h3>Bougie A : le vrai rejet</h3>
+<p>Dans le footprint, on voit dans la mèche basse un gros volume vendu au marché, mais le prix ne descend plus. Les vendeurs frappent, et rien ne bouge : des acheteurs passifs absorbent tout. Ensuite, le delta s&#39;inverse, les acheteurs deviennent agressifs, et le prix remonte. Les vendeurs entrés en bas de mèche sont piégés.</p>
+<p>Là, le marteau du price action dit la vérité. Et le footprint t&#39;aurait permis de le voir avant la clôture de la bougie.</p>
+<h3>Bougie B : le faux rejet</h3>
+<p>Même forme de bougie. Mais dans le footprint, la mèche basse est faite de très peu de volume : quelques contrats sont passés, le prix est remonté par manque de vendeurs, pas par l&#39;arrivée d&#39;acheteurs. Le delta de la bougie reste vendeur.</p>
+<p>C&#39;est un trou d&#39;air, pas un rejet. Le price action te dit « marteau sur support, achète ». Le footprint te dit « personne n&#39;a défendu ce niveau ». Ce type de bougie revient souvent chercher le bas de la mèche.</p>
+<h3>Pourquoi c&#39;est une question de précision</h3>
+<p>Dans <a href="https://www.youtube.com/watch?v=sw35MIjqJYM&amp;t=1121s">ma vidéo sur le Market Profile</a>, je dis : « Le Footprint, c&#39;est un outil de précision. Vous allez voir les déséquilibres à l&#39;intérieur d&#39;une bougie… s&#39;il y a des acheteurs piégés, s&#39;il y a des vendeurs piégés, s&#39;il y a des absorptions ». Le footprint ne remplace pas la lecture des zones. Il départage les bougies qui se ressemblent.</p>
+<p>C&#39;est tout le sens de l&#39;<a href="https://basstrading.fr/blog/order-flow-trading-france/">order flow</a> : le price action te dit où regarder, l&#39;order flow te dit ce qui s&#39;y passe. Si tu veux un footprint sans changer de plateforme, regarde ce que propose le <a href="https://basstrading.fr/blog/footprint-tradingview/">footprint de TradingView</a>.</p>
+<aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p><b>À retenir</b></p>
+<ul><li>Le footprint ouvre la bougie et montre le volume acheté et vendu à chaque prix.</li><li>Deux marteaux identiques peuvent être un vrai rejet ou un trou d&#39;air.</li><li>Un vrai rejet montre de l&#39;absorption puis un delta qui s&#39;inverse.</li><li>Le price action désigne la zone ; le footprint départage les bougies.</li></ul></aside>
+<p>Et le SMC, dans tout ça ? On me pose la question à chaque live.</p>
+
+    <hr>
+
+    <h2 id="price-action-ou-smc-quelle-difference">Price action ou SMC : quelle différence ?</h2>
+    <p>Le SMC (Smart Money Concepts) est une branche du price action avec son propre vocabulaire : order blocks, fair value gaps, cassures de structure, prises de liquidité. Il lit les mêmes bougies, avec une histoire plus précise sur les intentions des « gros ».</p>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Point</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Price action classique</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">SMC</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Matière lue</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Bougies, structure, zones</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Bougies, structure, zones</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Vocabulaire</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Support, résistance, figures</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Order block, FVG, BOS</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Hypothèse</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Le prix intègre l&#39;information</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Les « gros » laissent des traces</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Données de volume</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Aucune</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Aucune</td></tr></tbody></table></div>
+<p>La dernière ligne est la plus importante. Ni l&#39;un ni l&#39;autre ne lit un seul contrat échangé. Le SMC parle d&#39;institutions et de liquidité, mais il le déduit de la forme des bougies, exactement comme le price action classique. Les deux ont donc les mêmes angles morts.</p>
+<p>Ce que le SMC a de bon : il oblige à réfléchir en termes de liquidité et de stops, ce qui est une vraie façon de voir le marché. Ce qu&#39;il a de risqué : un vocabulaire très riche qui donne l&#39;impression de comprendre « ce que font les banques », alors qu&#39;on lit des bougies.</p>
+<p>Je compare les deux en profondeur, avec mes réserves, dans mon article <a href="https://basstrading.fr/blog/smc-trading/">SMC trading : ce que ça vaut vraiment</a>. Mon conseil : choisis une lecture du prix et tiens-la. Ajouter les concepts SMC sur un price action pas encore maîtrisé, c&#39;est ajouter du bruit.</p>
+<aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p><b>À retenir</b></p>
+<ul><li>Le SMC est une branche du price action, avec un vocabulaire à lui.</li><li>Les deux lisent uniquement la forme du prix, sans volume.</li><li>Le SMC a raison de penser en liquidité ; il a tort quand il prétend lire les institutions.</li><li>Choisis une seule lecture et maîtrise-la avant d&#39;en empiler une autre.</li></ul></aside>
+<p>Reste la question qui fâche : est-ce que le price action fonctionne vraiment ?</p>
+
+    <hr>
+
+    <h2 id="le-price-action-fonctionne-t-il-vraiment">Le price action fonctionne-t-il vraiment ? Win rate et chiffres honnêtes</h2>
+    <p>Réponse franche : le price action est une façon de lire le marché, pas une source de gains garantie. Il n&#39;existe aucun win rate « du price action » : il y a le taux de réussite d&#39;un trader précis, sur un setup précis, avec une gestion du risque précise.</p>
+<h3>Ce que dit la recherche</h3>
+<p>La question a été étudiée sérieusement. En 2000, trois chercheurs du MIT, Andrew Lo, Harry Mamaysky et Jiang Wang, ont automatisé la reconnaissance des figures chartistes (tête-épaules, double creux…) et l&#39;ont testée sur des actions américaines de 1962 à 1996. Leur conclusion, publiée par le <a href="https://www.nber.org/papers/w7613">NBER</a> : sur ces 31 ans, plusieurs figures apportent une information supplémentaire et peuvent avoir une valeur pratique.</p>
+<p>C&#39;est important et c&#39;est mesuré : une information supplémentaire, pas une machine à gagner. Une figure déplace un peu les probabilités. Le reste dépend de toi.</p>
+<h3>Ce que disent les régulateurs</h3>
+<p>L&#39;autre chiffre à connaître est moins agréable. En 2014, l&#39;AMF a étudié 14 799 particuliers actifs sur le Forex et les CFD en France pendant quatre ans : 89,4 % ont perdu de l&#39;argent, avec une perte moyenne d&#39;environ 10 900 € par client, selon <a href="https://www.amf-france.org/sites/institutionnel/files/contenu_simple/rapport_etude_analyse/epargne_prestataire/Etude%20des%20resultats%20des%20investisseurs%20particuliers%20sur%20le%20trading%20de%20CFD%20et%20de%20Forex%20en%20France.pdf">l&#39;étude de l&#39;AMF</a>. L&#39;étude ne montrait aucun effet d&#39;apprentissage dans le temps.</p>
+<p>En 2018, l&#39;ESMA a repris les analyses des régulateurs nationaux : entre 74 % et 89 % des comptes de particuliers perdent de l&#39;argent sur les CFD, d&#39;après <a href="https://www.esma.europa.eu/sites/default/files/library/esma35-43-1000_additional_information_on_the_agreed_product_intervention_measures_relating_to_contracts_for_differences_and_binary_options.pdf">son document sur les mesures d&#39;intervention</a>.</p>
+<p>Ces chiffres portent sur des produits à effet de levier, pas sur le price action en particulier. Mais la plupart de ces particuliers tradaient justement avec des bougies, des figures et des supports. Lire des bougies ne protège de rien si la gestion du risque est absente.</p>
+<h3>Ce qui fait vraiment la différence</h3>
+<p>De ce que je vois chez mes élèves, les écarts ne viennent presque jamais de la figure choisie. Ils viennent de trois choses : le respect du stop, la taille de position, et le nombre de trades pris hors plan. Un setup moyen tradé avec discipline vaut mieux qu&#39;un excellent setup tradé n&#39;importe comment.</p>
+<aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p><b>À retenir</b></p>
+<ul><li>Il n&#39;existe pas de « win rate du price action » ; seulement celui d&#39;un trader.</li><li>La recherche montre que certaines figures apportent une information, sans garantie.</li><li>Les régulateurs mesurent 74 à 89 % de comptes perdants sur les CFD.</li><li>La gestion du risque compte plus que la figure.</li></ul></aside>
+<p>Alors, avec ces chiffres en tête, quels sont les vrais avantages de cette approche, et ses vrais défis ?</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/price-action-trading/blog-price-action-trading-4.webp" alt="Chiffres de l&#39;AMF et de l&#39;ESMA sur les particuliers perdants en trading à effet de levier" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Sources : étude AMF 2014 (Forex et CFD) et ESMA 2018 (CFD).</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="quels-sont-les-avantages-et-les-defis-du">Quels sont les avantages et les défis du price action ?</h2>
+    <p>Le price action a trois gros avantages : il est rapide, universel et gratuit. Son grand défi, c&#39;est la subjectivité : deux traders ne tracent jamais tout à fait les mêmes zones.</p>
+<h3>Les avantages</h3>
+<ul><li>Pas de retard : tu lis les mouvements du prix au moment où ils se produisent, sans attendre qu&#39;une moyenne se retourne.</li><li>Un graphique propre : moins d&#39;informations contradictoires, donc moins d&#39;hésitation au moment de décider.</li><li>Universel : la même lecture marche sur les indices, les actions, les matières premières ou les futures, et sur toutes les unités de temps.</li><li>Gratuit : n&#39;importe quelle plateforme affiche le cours en bougies. Tu n&#39;as besoin d&#39;aucun abonnement pour commencer.</li><li>Il force à comprendre : au lieu d&#39;obéir à un croisement, tu te demandes ce que les acheteurs et les vendeurs viennent de faire.</li></ul>
+<h3>Les défis</h3>
+<ul><li>La subjectivité : où commence la zone, où finit-elle ? Il faut des règles écrites, sinon tu ajustes tes niveaux après coup.</li><li>Le biais de confirmation : quand tu veux acheter, tu vois des marteaux partout.</li><li>Un apprentissage long : lire un graphique nu demande des centaines d&#39;heures d&#39;écran ou de replay.</li><li>Des stops souvent larges, comme on l&#39;a vu avec le double top.</li><li>L&#39;absence de volume, qui laisse passer les faux rejets.</li></ul>
+<h3>Comment remplacer les indicateurs techniques ?</h3>
+<p>C&#39;est la question que se posent tous ceux qui veulent passer au graphique nu. La bonne nouvelle : chaque indicateur répond à une question que le prix peut régler seul.</p>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Indicateur technique</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">La question qu&#39;il pose</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">La réponse en price action</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Moyenne mobile</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Quelle est la tendance ?</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">La structure des sommets et creux</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">RSI en surachat</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Le prix est-il trop haut ?</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Une résistance + un rejet net</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">MACD qui croise</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">La tendance change-t-elle ?</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Une cassure de structure</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Bandes de Bollinger</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Le marché est-il compressé ?</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Un range serré, des inside bars</td></tr></tbody></table></div>
+<p>Je te conseille de les retirer un par un, pas tous d&#39;un coup. Retire la moyenne mobile pendant une semaine et note la tendance à la main sur la structure. Quand ta lecture et l&#39;indicateur disent la même chose neuf fois sur dix, tu n&#39;en as plus besoin.</p>
+<h3>Quelle est l&#39;importance des modèles historiques en price action ?</h3>
+<p>Elle est centrale : le price action repose sur une idée simple, les comportements humains se répètent, donc les configurations de prix aussi. La peur de rater un mouvement, la panique sous un support, la prise de bénéfices sous un ancien sommet : ces réactions produisent des formes qu&#39;on retrouve d&#39;un mois à l&#39;autre, et particulièrement autour des niveaux que tout le monde regarde.</p>
+<p>C&#39;est aussi pour ça que les anciens niveaux de support et de résistance comptent. Un support qui a tenu trois fois l&#39;an dernier reste dans la mémoire des participants : beaucoup y ont des ordres, ou s&#39;en souviennent. Étudier l&#39;historique te permet également de mesurer combien de fois une configuration a vraiment fonctionné sur ton marché, au lieu de te fier à ce qu&#39;en dit un manuel. Mais une configuration passée n&#39;est pas une copie conforme de l&#39;avenir. Elle te dit où regarder, jamais ce qui va se passer.</p>
+<aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p><b>À retenir</b></p>
+<ul><li>Avantages : sans retard, graphique propre, universel, gratuit.</li><li>Défis : subjectivité, biais, apprentissage long, stops larges, pas de volume.</li><li>Chaque indicateur a son équivalent en lecture du prix : retire-les un par un.</li><li>Les configurations se répètent parce que les comportements se répètent, sans garantie.</li></ul></aside>
+<p>Les défis, tu les vois. Voici maintenant les erreurs précises qui coûtent le plus cher.</p>
+
+    <hr>
+
+    <h2 id="quelles-erreurs-font-les-debutants-en-pr">Quelles erreurs font les débutants en price action ?</h2>
+    <p>Ce sont presque toujours les mêmes. Je les vois revenir en live, en coaching, dans les questions sous mes vidéos.</p>
+<h3>Erreur 1 : trader la figure sans la zone</h3>
+<p>Un marteau en plein milieu d&#39;un range n&#39;a aucune valeur. La figure doit apparaître sur une zone que tu avais tracée avant. Si tu traces la zone après avoir vu la figure, tu te racontes une histoire.</p>
+<p>Comment l&#39;éviter : trace tes niveaux de support et de résistance le matin, en grande unité de temps, avant l&#39;ouverture. Ne trade que les figures qui apparaissent dessus.</p>
+<h3>Erreur 2 : rester collé au 1 minute</h3>
+<p>En petite unité de temps, chaque bougie a l&#39;air décisive. Tu vois des double tops partout. Tu prends dix trades dans la matinée et tu ne sais plus pourquoi tu as pris le troisième.</p>
+<p>Comment l&#39;éviter : la règle que j&#39;ai donnée plus haut. Analyse en weekly, daily et 4 heures, clique en 15 minutes ou moins.</p>
+<h3>Erreur 3 : entrer avant la cassure</h3>
+<p>Le double top est presque fini, tu « sens » que ça va baisser, tu vends en anticipant. Puis le prix casse la résistance et t&#39;emmène. Avant la cassure, c&#39;est du bruit, même quand ça ressemble à un signal.</p>
+<h3>Erreur 4 : garder le même levier avec un stop plus large</h3>
+<p>C&#39;est l&#39;erreur la plus coûteuse. Le setup demande un stop de 40 points au lieu de 10, et le trader garde sa taille habituelle. Il risque quatre fois plus sans s&#39;en rendre compte. Le jour où trois trades d&#39;affilée perdent, le compte en prend un coup sérieux.</p>
+<p>Comment l&#39;éviter : calcule ta taille à partir du stop, pas l&#39;inverse. Toujours.</p>
+<h3>Erreur 5 : surcharger le graphique « en complément »</h3>
+<p>On part en price action pur, puis on rajoute une moyenne mobile « juste pour la tendance », un RSI « juste pour confirmer », un MACD. Trois semaines plus tard, on est revenu au point de départ. Comme je le dis dans la vidéo, pas besoin d&#39;indicateurs qui pourrissent les graphiques.</p>
+<p>Si tu veux un seul repère calculé, prends-en un qui a du sens en intraday, comme le <a href="https://basstrading.fr/blog/vwap-trading/">VWAP</a>, et garde-le seul.</p>
+<h3>Erreur 6 : croire qu&#39;on lit les intentions</h3>
+<p>Une mèche ne dit pas « les institutions achètent ». Elle dit que le prix est remonté. Tout le reste est une interprétation, à confirmer par le comportement suivant du prix, ou par des outils qui lisent vraiment les volumes.</p>
+<aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p><b>À retenir</b></p>
+<ul><li>Pas de zone tracée avant, pas de trade sur une figure.</li><li>Analyse haut, exécute bas.</li><li>Avant la cassure, c&#39;est du bruit.</li><li>La taille se calcule à partir du stop.</li><li>Un graphique propre ; un seul repère calculé si tu en veux un.</li></ul></aside>
+<p>Ces erreurs sont évitables. D&#39;autres limites, elles, sont dans la méthode elle-même.</p>
+
+    <hr>
+
+    <h2 id="quand-le-price-action-suffit-il-et-quand">Quand le price action suffit-il, et quand trompe-t-il ?</h2>
+    <p>Je l&#39;ai dit franchement dans <a href="https://www.youtube.com/watch?v=UxzH8zdDYNY&amp;t=757s">mon live du 20 octobre</a> : on peut travailler « de manière très professionnelle et très correcte avec des bougies ». Mais pas dans toutes les situations.</p>
+<h3>Quand le price action suffit</h3>
+<ul><li>En swing trading et en position, sur daily et 4 heures : les zones sont larges, les stops aussi, et la précision au tick compte peu. Le price action pur y est particulièrement adapté.</li><li>Pour l&#39;analyse de fond : savoir si le marché est en tendance, en range ou en transition. Aucun outil de volume ne remplace cette lecture.</li><li>Quand tu débutes : apprendre à lire la structure et les zones avant d&#39;ouvrir un footprint évite de te noyer dans les chiffres.</li><li>Sur des marchés où les données de volume sont peu fiables, comme le Forex au comptant, où le volume est éclaté entre les intermédiaires.</li></ul>
+<h3>Quand il trompe</h3>
+<ul><li>En scalping et en <a href="https://basstrading.fr/blog/day-trading-futures/">day trading</a> rapide : dans <a href="https://www.youtube.com/watch?v=UxzH8zdDYNY&amp;t=777s">le même live</a>, je rappelle qu&#39;il est toujours intéressant de travailler avec des outils adaptés, car si tu utilises juste des bougies pour entrer au marché, tes outils sont moins adaptés. Il faut être précis et rapide. Une bougie de 5 minutes, c&#39;est beaucoup trop lent pour savoir ce qui se passe à la seconde.</li><li>Dans un marché équilibré qui accélère : c&#39;est l&#39;exemple du 20/10 plus haut. Les bougies sont vertes, la structure semble haussière, mais le profil reste équilibré. Le price action seul te fait acheter au milieu de la zone.</li><li>Sur les faux rejets : la bougie B du footprint, plus haut. La forme est parfaite, le contenu est vide.</li><li>Autour des annonces économiques : les bougies deviennent immenses, les mèches énormes, et les figures classiques n&#39;ont plus grand sens pendant quelques minutes.</li></ul>
+<h3>Ma position</h3>
+<p>Pour un trader de futures en intraday, le price action est nécessaire mais pas suffisant. Il te donne la carte. Pour savoir si la zone tient au moment où le prix y arrive, il faut regarder le flux. C&#39;est pour ça que mon trading combine les deux : zones et structure en price action, puis confirmation dans le carnet, le footprint ou le <a href="https://basstrading.fr/blog/tape-reading-flux-ordres/">tape reading</a>.</p>
+<p>Si tu ne sais pas encore quel style te correspond, scalping, day trading ou swing, mon article sur <a href="https://basstrading.fr/blog/methode-de-trading/">comment trouver la méthode de trading qui te correspond</a> t&#39;aide à trancher. C&#39;est la question la plus importante : la bonne méthode dépend de ton style, pas l&#39;inverse.</p>
+<aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p><b>À retenir</b></p>
+<ul><li>Le price action suffit en swing, pour l&#39;analyse de fond et pour débuter.</li><li>Il devient trop lent en scalping et en day trading rapide.</li><li>Il trompe dans les marchés équilibrés qui accélèrent et sur les faux rejets.</li><li>En intraday futures : nécessaire, pas suffisant.</li></ul></aside>
+<p>Comment apprendre tout ça sans tourner en rond pendant des années ?</p>
+
+    <hr>
+
+    <h2 id="comment-apprendre-le-price-action-pdf-li">Comment apprendre le price action (PDF, livres, formation) ?</h2>
+    <p>Il y a beaucoup de PDF « price action » qui circulent. La plupart sont des catalogues de figures. Un catalogue de figures ne t&#39;apprend pas à lire un graphique, de la même façon qu&#39;un dictionnaire ne t&#39;apprend pas à parler.</p>
+<h3>Les livres</h3>
+<p>La référence la plus citée est Al Brooks, avec sa série sur la lecture des graphiques bougie par bougie. C&#39;est sérieux et très détaillé, en anglais, et dense pour un débutant. Pour les fondations, la théorie de Dow (sommets et creux, tendances) reste la base de toute lecture de structure.</p>
+<p>J&#39;ai fait le tri dans mon article sur les <a href="https://basstrading.fr/blog/livre-trading/">livres de trading</a>, avec ceux que je conseille selon ton niveau.</p>
+<h3>La pratique : le replay plutôt que les PDF</h3>
+<p>La vraie progression vient du replay de marché. Prends une journée passée, cache la partie droite du graphique, trace tes zones, puis avance bougie par bougie. À chaque bougie, écris ce que tu ferais. Puis regarde la suite.</p>
+<p>Vingt journées comme ça t&#39;apprennent plus que n&#39;importe quel PDF. C&#39;est le seul moyen de voir tes biais : tu verras vite si tu vois des double tops partout.</p>
+<h3>Une progression qui marche</h3>
+<ul><li>Deux semaines sur la structure seule : sommets, creux, tendance ou range.</li><li>Deux semaines sur les zones en grande unité de temps.</li><li>Ensuite, les figures, uniquement sur ces zones.</li><li>Puis le risque : taille de position à partir du stop.</li><li>Enfin, si tu trades en intraday, ouvrir une bougie avec un footprint.</li></ul>
+<p>J&#39;ai réuni ce parcours, avec mes séances commentées sur le Nasdaq, dans <a href="https://basstrading.fr/formation-offerte?src=blog&amp;a=price-action-trading">ma formation gratuite</a>. Tu y vois comment je trace mes zones avant l&#39;ouverture et comment je passe de la bougie au carnet d&#39;ordres au moment d&#39;entrer.</p>
+<p>Le trading de contrats à terme comporte un risque élevé de perte, pouvant dépasser la mise initiale. Contenu éducatif, pas un conseil en investissement.</p>
+<aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p><b>À retenir</b></p>
+<ul><li>Un PDF de figures n&#39;apprend pas à lire un graphique.</li><li>Al Brooks est la référence détaillée ; la théorie de Dow, la base.</li><li>Le replay bougie par bougie est l&#39;exercice qui fait progresser.</li><li>Structure, zones, figures, risque, puis footprint : dans cet ordre.</li></ul></aside>
+
+    <hr>
+
+    <h2 id="en-resume-que-faire-ce-soir-sur-ton-grap">En résumé : que faire ce soir sur ton graphique ?</h2>
+    <p>Le price action est la première compétence d&#39;un trader, et il le reste toute sa carrière. Mais il a une limite nette : il lit la forme du prix, jamais ce qui s&#39;échange à l&#39;intérieur.</p>
+<ul><li>Le price action, c&#39;est lire le prix seul : zones, structure, contexte, puis bougie, dans cet ordre.</li><li>Dézoome : weekly au moins une fois par semaine, analyse en grande unité de temps, exécution en petite.</li><li>Entre à la cassure, pas sur le premier signal, et calcule ta taille à partir du stop.</li><li>Une bougie cache le volume à chaque prix, l&#39;agressivité des acheteurs et vendeurs, les ordres en attente et le temps passé.</li><li>En intraday futures, le price action donne la carte ; le footprint et le carnet disent si la zone tient.</li></ul>
+<p>Ce soir, ouvre le Nasdaq en weekly. Enlève tous tes indicateurs. Trace les deux ou trois zones où le prix a passé le plus de temps cette année. Puis descends en daily et note simplement : sommets et creux montants, descendants, ou plats ? Demain, ne trade que ce qui se passe sur ces zones.</p>
+<p>Quand tu seras à l&#39;aise avec cette lecture, la suite logique est d&#39;ouvrir une bougie : mon <a href="https://basstrading.fr/blog/footprint-chart-trading/">guide du footprint chart</a> te montre comment lire le volume acheté et vendu à chaque prix.</p>
+
+    <p><a href="https://www.youtube.com/watch?v=zUSZ9dfr3x0" target="_blank" rel="noopener">▶ Voir la vidéo de Sébastien sur ce sujet</a></p>
+
+    <div class="cta-card cta-aimant">
+      <div class="cta-card-label">Gratuit</div>
+      <h3>La formation offerte : 7 leçons pour lire le marché comme un pro</h3>
+      <p>Accès immédiat et gratuit, en vidéo, à ton rythme. Sans carte bancaire.</p>
+      <a href="https://basstrading.fr/p/formation-offerte/?src=blog-price-action-trading" class="btn-p">Je la veux →</a>
+    </div>
+    
+  </article>
+</div>
+
+<!-- FAQ -->
+<section class="faq-sec">
+  <div class="sec-center"><div class="sec-label">FAQ</div><h2 class="sec-title">Questions fréquentes</h2></div>
+  <div class="faq-list">
+    <div class="fi"><button class="fq" onclick="tf(this)">Le price action fonctionne-t-il vraiment ? <span class="fq-icon">+</span></button><div class="fa"><p>Le price action est une façon de lire le marché, pas une méthode qui garantit des gains. Une étude publiée par le NBER en 2000 (Lo, Mamaysky, Wang) montre que certaines figures chartistes apportent une information supplémentaire sur 31 ans de données. Mais le résultat dépend surtout de la gestion du risque : taille de position, respect du stop et discipline sur le plan.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Quelle unité de temps utiliser en price action ? <span class="fq-icon">+</span></button><div class="fa"><p>Analyse en grande unité de temps et exécute en petite. Je regarde le weekly au moins une fois par semaine, le daily pour la structure récente, le 4 heures pour les réactions sur les zones, puis le 15 minutes ou moins seulement pour choisir le moment d&#39;entrer. Analyser directement en 1 minute fait voir des signaux partout.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Existe-t-il un bon PDF price action en français ? <span class="fq-icon">+</span></button><div class="fa"><p>Beaucoup de PDF circulent, mais la plupart sont des catalogues de figures de bougies. Ils aident à reconnaître un marteau ou une englobante, pas à lire un graphique en contexte. L&#39;exercice le plus utile reste le replay : une journée passée, avancée bougie par bougie, en écrivant ce que tu ferais avant de voir la suite.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Price action ou indicateurs techniques : que choisir ? <span class="fq-icon">+</span></button><div class="fa"><p>Les indicateurs techniques recalculent le prix avec un retard. Le price action lit le prix directement. Je conseille de partir d&#39;un graphique nu et, si tu veux un repère calculé en intraday, d&#39;en garder un seul qui a du sens, comme le VWAP. Empiler moyenne mobile, RSI et MACD ramène vite à des signaux tardifs et contradictoires.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Le price action intègre-t-il le volume ? <span class="fq-icon">+</span></button><div class="fa"><p>Non, le price action pur lit seulement le prix : ouverture, plus haut, plus bas, clôture. Beaucoup de traders ajoutent un histogramme de volume ou un volume profile pour confirmer les zones. Pour voir le volume acheté et vendu à chaque prix d&#39;une bougie, il faut passer à l&#39;order flow avec un footprint.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Qui est Al Brooks et faut-il le lire ? <span class="fq-icon">+</span></button><div class="fa"><p>Al Brooks est un trader américain auteur d&#39;une série de livres sur la lecture des graphiques bougie par bougie, souvent citée comme la référence du price action. C&#39;est sérieux mais dense et en anglais. Pour un débutant, je conseille d&#39;abord de maîtriser structure et zones, puis d&#39;y venir pour affiner la lecture des bougies.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Le price action marche-t-il sur les futures du Nasdaq ? <span class="fq-icon">+</span></button><div class="fa"><p>Oui pour situer les zones et la structure, sur le NQ comme sur le micro MNQ. En scalping ou en day trading rapide, il devient trop lent : une bougie de 5 minutes ne dit pas ce qui se passe à la seconde. C&#39;est là que le carnet d&#39;ordres et le footprint prennent le relais pour confirmer qu&#39;une zone tient.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Comment repérer un retournement en price action ? <span class="fq-icon">+</span></button><div class="fa"><p>Un retournement se lit d&#39;abord dans la structure : dans une tendance haussière, le prix échoue à faire un nouveau sommet, puis casse le dernier creux. Une figure comme une englobante ou une étoile filante sur une zone de résistance renforce la lecture. Sans cassure de structure, je considère que la tendance est toujours en place.</p></div></div>
+  </div>
+</section>
+
+<!-- Related -->
+<section class="related-sec">
+  <div class="sec-center"><div class="sec-label">Continuer la lecture</div><h2 class="sec-title">Articles connexes</h2></div>
+  <div class="related-grid">
+    <a href="/blog/market-profile-guide-complet/" class="related-card"><div class="related-cat">Guide</div><h3>Market Profile : le guide complet pour débutants</h3><p>Value Area, POC, types de journées — tout pour commencer.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/order-flow-trading-france/" class="related-card"><div class="related-cat">Méthode</div><h3>Order Flow Trading : pourquoi personne ne l'enseigne en France</h3><p>Le carnet d'ordres et le flux institutionnel décryptés.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/sierra-chart-configuration/" class="related-card"><div class="related-cat">Tutoriel</div><h3>Sierra Chart : configuration complète</h3><p>Le setup pas à pas pour le Market Profile et le Footprint.</p><span class="related-link">Lire &rarr;</span></a>
+  </div>
+</section>
+
+<!-- serie:debut --><style>.serie-w{background:#FFF;color:#1D1D1F;border-top:1px solid #F5F5F7}.serie{max-width:1060px;margin:0 auto;padding:56px 24px;font-family:inherit;box-sizing:border-box}.serie-l{font-size:.6rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#0066FF;margin-bottom:8px}.serie-w .serie h2{font-size:1.4rem;font-weight:800;letter-spacing:-.5px;color:#1D1D1F!important;margin:0 0 18px;font-family:inherit}.serie ul{list-style:none;padding:0;margin:0 0 22px;display:grid;grid-template-columns:repeat(2,1fr);gap:8px 24px}.serie-w .serie li a{color:#1D1D1F!important;font-size:.9rem;line-height:1.45;text-decoration:none;border-bottom:1px solid #D2D2D7}.serie li a:hover{color:#0066FF}.serie li.pil a{font-weight:700}.serie-o{background:#F5F5F7;border-radius:14px;padding:18px 20px;font-size:.88rem;line-height:1.55;color:#1D1D1F}.serie-w .serie-o a{color:#0066FF!important;font-weight:700}@media(max-width:700px){.serie ul{grid-template-columns:1fr}}</style><div class="serie-w"><aside class="serie" aria-label="Dans la même série"><div class="serie-l">Dans la même série</div><h2>Trouver sa méthode de trading</h2><ul><li class="pil"><a href="/blog/methode-de-trading/">Méthode de trading : comment trouver celle qui te correspond</a></li><li class=""><a href="/blog/types-trading-differences/">Les Types de Trading : Lequel Choisir Selon Votre Profil ? (2026)</a></li><li class=""><a href="/blog/debuter-trading-zero-guide/">Débuter le trading de zéro : par où commencer (guide 2026)</a></li><li class=""><a href="/blog/devenir-trader-sans-diplome/">Devenir trader sans diplôme : le parcours réaliste (2026)</a></li><li class=""><a href="/blog/livre-trading/">Livre trading : les meilleurs pour apprendre (et l'ordre)</a></li><li class=""><a href="/blog/formation-trading/">Formation trading : contenu, prix, CPF et pièges à éviter</a></li><li class=""><a href="/blog/formation-trading-gratuite/">Formation trading gratuite : ce qu'on apprend sans payer</a></li><li class=""><a href="/blog/quelle-formation-trading-choisir/">Quelle formation trading choisir en 2026 ? 7 critères pour comparer</a></li><li class=""><a href="/blog/arnaque-trading/">Arnaque au trading : les 7 pièges et que faire si tu es victime</a></li><li class=""><a href="/blog/bookmap-heatmap/">Bookmap : lire la heatmap, prix réels et avis de trader</a></li><li class=""><a href="/blog/deepcharts-avis/">DeepCharts avis : prix, Mac, MBO et limites (2026)</a></li><li class=""><a href="/blog/gocharting-avis/">GoCharting : mon avis sur l'order flow dans le navigateur</a></li><li class=""><a href="/blog/methode-wyckoff/">Méthode Wyckoff : accumulation, distribution et spring</a></li><li class=""><a href="/blog/motivewave-avis/">MotiveWave avis : prix, version gratuite, Mac et order flow</a></li><li class=""><a href="/blog/quantower-avis/">Quantower avis : version gratuite, footprint, Mac et prix (2026)</a></li><li class=""><a href="/blog/take-profit-trading/">Take profit : où placer ton objectif sur les futures (exemples MNQ)</a></li></ul><div class="serie-o"><a href="/formations/">Toutes les formations de Bass</a> : plus de 250 leçons vidéo, du débutant au Market Profile avancé. Pour commencer sans payer : <a href="/p/formation-offerte/?src=serie-price-action-trading">la formation offerte</a> (7 leçons vidéo).</div></aside></div><!-- serie:fin -->
+<footer class="footer">
+  <div class="ft-top"><div class="ft-logo">BASS</div><div class="ft-cols">
+    <div class="ft-col"><div class="ft-col-title">Programme</div><a href="/formations/">Toutes les formations</a><a href="https://basstrading.fr/#methode">Méthode</a><a href="https://basstrading.fr/#programme">Programme</a><a href="https://basstrading.fr/p/formation-offerte/?src=blog-price-action-trading-pied">Formation offerte</a></div>
+    <div class="ft-col"><div class="ft-col-title">Ressources</div><a href="/blog/market-profile-guide-complet/">Market Profile</a><a href="/blog/footprint-chart-trading/">Footprint Chart</a><a href="/blog/order-flow-trading-france/">Order Flow</a></div>
+  </div></div>
+  <div class="ft-bottom"><span>&copy; 2026 BASS — Sébastien Constant</span><div><a href="/mentions-legales/">Mentions légales</a><a href="/confidentialite/">Confidentialité</a><a href="/cgv/">CGV</a><a href="mailto:contact@basstrading.fr">Contact</a></div></div>
+</footer>
+<div class="disclaimer">Le trading comporte des risques de perte en capital. Les performances passées ne préjugent pas des performances futures. Ce site ne constitue pas un conseil en investissement.</div>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+const lenis=new Lenis({duration:1.2,easing:t=>Math.min(1,1.001-Math.pow(2,-10*t))});
+function raf(t){lenis.raf(t);requestAnimationFrame(raf)}requestAnimationFrame(raf);
+lenis.on('scroll',ScrollTrigger.update);gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0);
+const tl=gsap.timeline();
+tl.to('.pre-word span',{y:0,opacity:1,duration:.5,stagger:.1,ease:'power3.out',delay:.3}).to('#preLine',{width:'80px',duration:.7,ease:'power2.inOut'},'<+.2').to('.preloader',{yPercent:-100,duration:.8,ease:'power3.inOut',delay:.4}).set('.preloader',{display:'none'}).to('#nav',{opacity:1,y:0,duration:.5},'<+.1');
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);const h=document.documentElement.scrollHeight-window.innerHeight;document.getElementById('readingProgress').style.width=(window.scrollY/h*100)+'%'});
+const tocLinks=document.querySelectorAll('.toc a');const sections=Array.from(tocLinks).map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+window.addEventListener('scroll',()=>{let c='';sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)c=s.id});tocLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+c)})});
+function tf(b){const i=b.closest('.fi'),a=b.nextElementSibling,o=i.classList.contains('active');document.querySelectorAll('.fi').forEach(x=>{x.classList.remove('active');x.querySelector('.fa').classList.remove('open')});if(!o){i.classList.add('active');a.classList.add('open')}}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();lenis.scrollTo(t,{offset:-60})}})});
+</script>
+<script src="/v.js" defer></script>
+</body>
+</html>
