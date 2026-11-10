@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VWAP TradingView : réglages, bandes et VWAP ancrée (guide) — BASS Trading</title>
+  <meta name="description" content="VWAP sur TradingView : l&#39;ajouter, chaque réglage, les bandes d&#39;écart-type, la VWAP ancrée, le bug « no volume data » et mon réglage pour le Nasdaq.">
+  <meta property="og:title" content="VWAP TradingView : réglages, bandes et VWAP ancrée (guide) — BASS Trading">
+  <meta property="og:description" content="VWAP sur TradingView : l&#39;ajouter, chaque réglage, les bandes d&#39;écart-type, la VWAP ancrée, le bug « no volume data » et mon réglage pour le Nasdaq.">
+  <meta property="og:image" content="https://basstrading.fr/blog/vwap-tradingview/blog-vwap-tradingview-1.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://basstrading.fr/blog/vwap-tradingview/blog-vwap-tradingview-1.webp">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://basstrading.fr/blog/vwap-tradingview/">
+  <meta property="og:site_name" content="BASS Trading">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://basstrading.fr/blog/vwap-tradingview/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","@id":"https://basstrading.fr/blog/vwap-tradingview/#article","headline":"VWAP TradingView : réglages, bandes et VWAP ancrée (guide)","description":"VWAP sur TradingView : l'ajouter, chaque réglage, les bandes d'écart-type, la VWAP ancrée, le bug « no volume data » et mon réglage pour le Nasdaq.","datePublished":"2026-11-10","dateModified":"2026-11-10","inLanguage":"fr-FR","image":"https://basstrading.fr/blog/vwap-tradingview/blog-vwap-tradingview-1.webp","mainEntityOfPage":"https://basstrading.fr/blog/vwap-tradingview/","isPartOf":{"@type":"WebSite","@id":"https://basstrading.fr/#website","name":"BASS Trading","url":"https://basstrading.fr/"},"author":{"@type":"Person","@id":"https://basstrading.fr/#sebastien-constant","name":"Sébastien Constant","url":"https://basstrading.fr/auteur/sebastien-constant/"},"publisher":{"@type":"Organization","@id":"https://basstrading.fr/#organisation","name":"BASS Trading","url":"https://basstrading.fr/","logo":{"@type":"ImageObject","url":"https://basstrading.fr/images/logo-basstrading.png","width":512,"height":512}}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://basstrading.fr"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://basstrading.fr/blog/"},{"@type":"ListItem","position":3,"name":"VWAP TradingView","item":"https://basstrading.fr/blog/vwap-tradingview/"}]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"La VWAP est-elle gratuite sur TradingView ?","acceptedAnswer":{"@type":"Answer","text":"Oui. L'indicateur VWAP intégré, la VWAP ancrée (outil de dessin) et le VWAP Auto Ancré sont disponibles sur tous les comptes, y compris le compte gratuit. Ce qui peut être payant, ce sont les données en temps réel de certaines bourses, comme le CME pour les futures Nasdaq : sans cet abonnement, la VWAP est juste mais calculée sur un flux différé."}},{"@type":"Question","name":"Quels sont les meilleurs réglages de la VWAP sur TradingView ?","acceptedAnswer":{"@type":"Answer","text":"Pour du day trading : ancrage Séance, source hlc3, décalage 0, bandes en écart-type avec les multiplicateurs 1, 2 et 3, et l'option « Cacher le VWAP sur 1D ou plus » cochée. J'ajoute une deuxième VWAP ancrée sur la Semaine pour le contexte, et sur les futures Nasdaq une VWAP ancrée sur la bougie de 15 h 30, heure de Paris."}},{"@type":"Question","name":"Pourquoi TradingView affiche « no volume data » sur ma VWAP ?","acceptedAnswer":{"@type":"Answer","text":"Parce que le symbole n'a pas de volume chez TradingView : paires Forex, CFD comme NAS100 ou US100, la plupart des indices au comptant. La VWAP divise par le volume, elle ne peut donc rien calculer. Passe sur le contrat future qui a un vrai volume de bourse, par exemple NQ1! ou MNQ1! pour le Nasdaq."}},{"@type":"Question","name":"Peut-on utiliser la VWAP sur un graphique journalier ?","acceptedAnswer":{"@type":"Answer","text":"Pas la VWAP de séance : en journalier, chaque bougie est une séance, donc la VWAP repart de zéro à chaque bougie et ne montre rien. Sur un graphique journalier, choisis un ancrage plus long (mois, trimestre, année) ou trace une VWAP ancrée sur un plus bas ou un plus haut marquant."}},{"@type":"Question","name":"Où trouver la VWAP ancrée sur TradingView ?","acceptedAnswer":{"@type":"Answer","text":"Elle n'est pas dans le menu Indicateurs : c'est un outil de dessin, dans la barre d'outils à gauche du graphique. Le plus rapide est de taper « Anchored VWAP » dans la recherche d'outils, puis de cliquer sur la bougie de départ. Double-clique ensuite sur la ligne pour régler sa couleur et son épaisseur."}},{"@type":"Question","name":"Quelle unité de temps utiliser avec la VWAP ?","acceptedAnswer":{"@type":"Answer","text":"Avec une VWAP de séance, une unité intraday : 1, 5 ou 15 minutes. Pour la VWAP hebdomadaire, je passe en 30 minutes ; pour la mensuelle, en 30 minutes ou en 4 heures. La règle : chaque période d'ancrage doit contenir au moins une vingtaine de bougies, sinon les bandes n'ont pas de sens."}},{"@type":"Question","name":"La VWAP est-elle meilleure qu'une EMA ?","acceptedAnswer":{"@type":"Answer","text":"Pas meilleure dans l'absolu, différente. La VWAP pondère chaque prix par le volume échangé et part d'un point fixe : c'est la référence de l'intraday sur un marché liquide. L'EMA ignore le volume et glisse sur les N dernières bougies : elle reste utile pour la tendance en swing, et sur les actifs sans volume comme le Forex au comptant."}}]}
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{--bk:#1D1D1F;--bk2:#111;--bk3:#0A0A0A;--g1:#6E6E73;--g2:#86868B;--g3:#D2D2D7;--g4:#F5F5F7;--wh:#FBFBFD;--pure:#FFF;--green:#00B67A;--blue:#0066FF}
+    html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}
+    body{font-family:'DM Sans',sans-serif;color:var(--bk);background:var(--pure);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+    .preloader{position:fixed;inset:0;background:var(--bk3);z-index:10001;display:flex;align-items:center;justify-content:center}
+    .pre-word{font-family:'Outfit',sans-serif;font-size:clamp(3rem,8vw,5rem);font-weight:900;letter-spacing:16px;text-transform:uppercase;color:var(--pure);overflow:hidden}
+    .pre-word span{display:inline-block;transform:translateY(110%);opacity:0}
+    .pre-line{width:0;height:1px;background:rgba(255,255,255,.3);margin-top:20px}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 48px;display:flex;align-items:center;justify-content:space-between;background:rgba(245,245,247,.85);backdrop-filter:blur(20px) saturate(1.8);border-bottom:1px solid rgba(0,0,0,.04);transition:background .4s}
+    .nav-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase;color:var(--bk)}
+    .nav-links{display:flex;gap:28px;list-style:none}.nav-links a{font-size:.74rem;font-weight:500;letter-spacing:.3px;color:var(--g1);transition:color .3s}.nav-links a:hover{color:var(--bk)}
+    .nav-cta{padding:8px 20px;background:var(--bk);color:var(--pure);border:none;border-radius:980px;font-size:.72rem;font-weight:600;transition:all .3s;cursor:pointer;text-decoration:none;display:inline-block}.nav-cta:hover{background:var(--bk2)}
+    .blog-hero{padding:160px 48px 80px;background:var(--g4);position:relative;overflow:hidden}
+    .blog-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,transparent,var(--g4));pointer-events:none}
+    .blog-hero-inner{max-width:720px;margin:0 auto}
+    .breadcrumb{display:flex;gap:8px;align-items:center;margin-bottom:28px;flex-wrap:wrap}
+    .breadcrumb a,.breadcrumb span{font-size:.68rem;font-weight:500;letter-spacing:.3px;color:var(--g2);transition:color .3s}.breadcrumb a:hover{color:var(--bk)}.breadcrumb .sep{color:var(--g3)}
+    .blog-hero-cat{display:inline-block;padding:5px 14px;border:1px solid rgba(0,102,255,.15);border-radius:980px;font-size:.6rem;font-weight:700;color:var(--blue);letter-spacing:2px;text-transform:uppercase;margin-bottom:20px}
+    .blog-hero-title{font-family:'Outfit',sans-serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:900;line-height:1.05;letter-spacing:-2px;color:var(--bk);margin-bottom:20px}
+    .blog-hero-desc{font-size:.95rem;color:var(--g1);line-height:1.8;max-width:560px;margin-bottom:28px}
+    .blog-meta{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+    .blog-meta-author{display:flex;align-items:center;gap:10px}
+    .blog-meta-avatar{width:36px;height:36px;border-radius:50%;background:var(--bk3);overflow:hidden;flex-shrink:0}.blog-meta-avatar img{width:100%;height:100%;object-fit:cover}
+    .blog-meta-name{font-size:.78rem;font-weight:600;color:var(--bk)}.blog-meta-role{font-size:.65rem;color:var(--g2)}
+    .blog-meta-sep{width:1px;height:24px;background:var(--g3)}
+    .blog-meta-info{font-size:.7rem;color:var(--g2)}.blog-meta-info span{margin-right:16px}
+    .toc{position:sticky;top:90px;background:var(--pure);border:1px solid rgba(0,0,0,.04);border-radius:14px;padding:24px;margin-bottom:32px}
+    .toc-title{font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.5px;color:var(--bk);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+    .toc ol{list-style:none;counter-reset:toc}.toc li{counter-increment:toc}
+    .toc li a{display:flex;align-items:baseline;gap:8px;padding:6px 0;font-size:.76rem;color:var(--g1);transition:color .3s;border-bottom:1px solid rgba(0,0,0,.03)}.toc li a:hover{color:var(--blue)}
+    .toc li a::before{content:counter(toc,decimal-leading-zero);font-family:'Outfit',sans-serif;font-size:.65rem;font-weight:700;color:var(--g3);min-width:18px}
+    .toc li:last-child a{border-bottom:none}.toc li a.active{color:var(--blue);font-weight:600}.toc li a.active::before{color:var(--blue)}
+    .article-wrap{display:grid;grid-template-columns:220px 1fr;gap:40px;max-width:1020px;margin:0 auto;padding:60px 48px 120px}
+    .article-sidebar{position:relative}.article-body{max-width:700px}
+    .article-body h2{font-family:'Outfit',sans-serif;font-size:clamp(1.4rem,2.5vw,1.8rem);font-weight:800;line-height:1.1;letter-spacing:-1px;color:var(--bk);margin:56px 0 16px;padding-top:20px}.article-body h2:first-of-type{margin-top:0}
+    .article-body h3{font-family:'Outfit',sans-serif;font-size:1.05rem;font-weight:700;line-height:1.25;letter-spacing:-.3px;color:var(--bk);margin:36px 0 10px}
+    .article-body p{font-size:.9rem;color:var(--g1);line-height:1.85;margin-bottom:18px}
+    .article-body strong{color:var(--bk);font-weight:600}
+    .article-body ul,.article-body ol{margin:0 0 20px 0;padding-left:20px}
+    .article-body li{font-size:.88rem;color:var(--g1);line-height:1.8;margin-bottom:6px}.article-body li strong{color:var(--bk)}
+    .article-body blockquote{margin:28px 0;padding:20px 24px;background:var(--g4);border-left:3px solid var(--bk);border-radius:0 12px 12px 0;font-size:.88rem;color:var(--g1);line-height:1.8;font-style:italic}
+    .article-body blockquote strong{color:var(--bk);font-style:normal}
+    .article-body hr{border:none;border-top:1px solid var(--g4);margin:48px 0}
+    .info-box{margin:28px 0;padding:24px;background:rgba(0,102,255,.03);border:1px solid rgba(0,102,255,.08);border-radius:14px}
+    .info-box-title{font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:700;color:var(--blue);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+    .info-box p{font-size:.82rem;color:var(--g1);line-height:1.7;margin-bottom:0}
+    .key-concept{margin:32px 0;padding:28px;background:var(--bk3);border-radius:16px;color:var(--pure)}
+    .key-concept-label{font-size:.55rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:10px}
+    .key-concept h4{font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:800;letter-spacing:-.3px;margin-bottom:8px}
+    .key-concept p{font-size:.85rem;color:rgba(255,255,255,.5);line-height:1.8;margin-bottom:0}
+    .compare-table{width:100%;margin:24px 0 28px;border-collapse:collapse;border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,.06)}
+    .compare-table th{background:var(--bk3);color:var(--pure);font-family:'Outfit',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:14px 16px;text-align:left}
+    .compare-table td{padding:12px 16px;font-size:.82rem;color:var(--g1);line-height:1.6;border-bottom:1px solid rgba(0,0,0,.04);background:var(--pure)}
+    .compare-table tr:last-child td{border-bottom:none}.compare-table td:first-child{font-weight:600;color:var(--bk)}
+    .cta-card{margin:48px 0;padding:40px;background:var(--bk3);border-radius:20px;text-align:center;position:relative;overflow:hidden}
+    .cta-card::before{content:'';position:absolute;top:-50%;right:-30%;width:400px;height:400px;background:radial-gradient(circle,rgba(0,102,255,.08) 0%,transparent 70%);pointer-events:none}
+    .cta-card-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:12px}
+    .cta-card h3{font-family:'Outfit',sans-serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:800;color:var(--pure);letter-spacing:-.5px;margin-bottom:8px}
+    .cta-card p{font-size:.85rem;color:rgba(255,255,255,.4);line-height:1.7;max-width:380px;margin:0 auto 24px}
+    .cta-card .btn-p{background:var(--pure);color:var(--bk)}.cta-card .btn-p:hover{box-shadow:0 8px 30px rgba(255,255,255,.15)}
+    .faq-sec{padding:80px 48px 100px;background:var(--g4)}
+    .faq-list{max-width:680px;margin:40px auto 0}.fi{border-bottom:1px solid rgba(0,0,0,.06)}
+    .fq{width:100%;text-align:left;padding:18px 0;background:none;border:none;font-size:.85rem;font-weight:600;font-family:'DM Sans',sans-serif;color:var(--bk);display:flex;justify-content:space-between;align-items:center;cursor:pointer;gap:16px;transition:color .3s}.fq:hover{color:var(--g1)}
+    .fq-icon{width:22px;height:22px;border-radius:50%;background:rgba(0,0,0,.04);display:flex;align-items:center;justify-content:center;font-size:.75rem;transition:all .4s;flex-shrink:0;color:var(--g2)}
+    .fa{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1)}.fa.open{max-height:280px;padding-bottom:14px}
+    .fa p{font-size:.8rem;color:var(--g1);line-height:1.7;margin-bottom:0}.fi.active .fq-icon{background:var(--bk);color:var(--pure);transform:rotate(45deg)}
+    .related-sec{padding:80px 48px;background:var(--pure);border-top:1px solid var(--g4)}
+    .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1060px;margin:40px auto 0}
+    .related-card{display:block;padding:28px;background:var(--g4);border-radius:16px;transition:all .4s;text-decoration:none;color:var(--bk)}
+    .related-card:hover{background:var(--pure);box-shadow:0 8px 30px rgba(0,0,0,.06);transform:translateY(-2px)}
+    .related-cat{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+    .related-card h3{font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:700;line-height:1.3;letter-spacing:-.3px;margin-bottom:8px}
+    .related-card p{font-size:.78rem;color:var(--g1);line-height:1.6;margin-bottom:14px}
+    .related-link{font-size:.72rem;font-weight:600;color:var(--blue);letter-spacing:.3px}
+    .footer{background:var(--bk3);color:var(--pure);padding:56px 48px 28px}
+    .ft-top{display:flex;justify-content:space-between;align-items:start;margin-bottom:48px;flex-wrap:wrap;gap:32px}
+    .ft-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase}
+    .ft-cols{display:flex;gap:80px}
+    .ft-col-title{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:12px}
+    .ft-col a{display:block;font-size:.78rem;color:rgba(255,255,255,.5);margin-bottom:8px;transition:color .3s}.ft-col a:hover{color:var(--pure)}
+    .ft-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:20px;display:flex;justify-content:space-between;align-items:center;font-size:.6rem;color:rgba(255,255,255,.2)}
+    .ft-bottom a{color:rgba(255,255,255,.2);transition:color .3s;margin-left:20px}.ft-bottom a:hover{color:rgba(255,255,255,.5)}
+    .disclaimer{padding:12px 48px;background:var(--bk3);font-size:.58rem;color:rgba(255,255,255,.12);text-align:center;line-height:1.6;border-top:1px solid rgba(255,255,255,.03)}
+    .sec-center{text-align:center;max-width:680px;margin:0 auto}
+    .sec-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--g2);margin-bottom:10px}
+    .sec-title{font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;line-height:1.05;letter-spacing:-1.5px;color:var(--bk);margin-bottom:16px}
+    .btn-p{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--bk);color:var(--pure);border-radius:980px;font-size:.85rem;font-weight:600;transition:all .3s;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;text-decoration:none}
+    .btn-p:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(0,0,0,.1)}
+    .btn-p svg{width:13px;height:13px;transition:transform .3s}.btn-p:hover svg{transform:translateX(3px)}
+    .reading-progress{position:fixed;top:0;left:0;height:2px;background:var(--blue);z-index:9999;width:0;transition:width .1s linear}
+    @media(max-width:900px){.nav{padding:14px 20px}.nav-links{display:none}.blog-hero{padding:120px 20px 60px}.article-wrap{grid-template-columns:1fr;padding:40px 20px 80px}.article-sidebar{display:none}.related-grid{grid-template-columns:1fr}.related-sec,.faq-sec{padding:60px 20px}.ft-cols{flex-direction:column;gap:28px}.footer{padding:40px 20px 20px}.disclaimer{padding:10px 16px}.cta-card{padding:28px 20px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  .article-body a{color:var(--blue);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;font-weight:500}.article-body a:hover{text-decoration-thickness:2px}
+</style>
+<style>/* 28/10/2026 : débordement mobile (colonne de grille sans min-width) */.article-wrap>*,.article-layout>*{min-width:0}.article-body table,.compare-table{display:block;overflow-x:auto;max-width:100%}.article-body pre{overflow-x:auto}.article-body img{max-width:100%;height:auto}</style>
+</head>
+<body>
+
+<div class="preloader" id="preloader"><div style="text-align:center"><div class="pre-word"><span>B</span><span>A</span><span>S</span><span>S</span></div><div class="pre-line" id="preLine"></div></div></div>
+<div class="reading-progress" id="readingProgress"></div>
+
+<nav class="nav" id="nav">
+  <a href="https://basstrading.fr" class="nav-logo">BASS</a>
+  <ul class="nav-links">
+    <li><a href="https://basstrading.fr/#methode">Méthode</a></li>
+    <li><a href="https://basstrading.fr#resultats">Résultats</a></li>
+    <li><a href="https://basstrading.fr#avis">Avis</a></li>
+    <li><a href="https://basstrading.fr#faq">FAQ</a></li>
+    <li><a href="/formations/">Formations</a></li>
+    <li><a href="https://basstrading.fr/blog/">Blog</a></li>
+  </ul>
+  <a href="https://basstrading.fr/p/formation-offerte/?src=blog-vwap-tradingview-menu" class="nav-cta">Formation offerte</a>
+</nav>
+
+<section class="blog-hero">
+  <div class="blog-hero-inner">
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <a href="https://basstrading.fr">Accueil</a><span class="sep">/</span>
+      <a href="https://basstrading.fr/blog/">Blog</a><span class="sep">/</span>
+      <span>VWAP TradingView</span>
+    </nav>
+    <div class="blog-hero-cat">Indicateurs</div>
+    <h1 class="blog-hero-title">VWAP TradingView : réglages, bandes et VWAP ancrée (guide)</h1>
+    <p class="blog-hero-desc">Pour une VWAP utile sur TradingView : ancrage Séance, source hlc3, trois bandes à 1, 2 et 3 écarts-types, sur un actif avec un vrai volume (futures NQ ou MNQ, pas un CFD). Voici chaque réglage, et pourquoi. Les futures sont à effet de levier : tu peux perdre plus que prévu. Rien ici n&#39;est un conseil personnalisé.</p>
+    <div class="blog-meta">
+      <div class="blog-meta-author">
+        <div class="blog-meta-avatar"><img src="../../images/bass-presenting.jpg" alt="Sébastien Constant" loading="lazy"></div>
+        <div><div class="blog-meta-name"><a href="/auteur/sebastien-constant/" rel="author" style="color:inherit;text-decoration:none">Sébastien Constant</a></div><div class="blog-meta-role">Trader & Formateur Order Flow</div></div>
+      </div>
+      <div class="blog-meta-sep"></div>
+      <div class="blog-meta-info"><span>Novembre 2026</span><span>24 min de lecture</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="article-wrap">
+  <aside class="article-sidebar">
+    <div class="toc">
+      <div class="toc-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/></svg> Sommaire</div>
+      <ol>
+        <li><a href="#comment-ajouter-la-vwap-sur-tradingview">Comment ajouter la VWAP sur TradingView ?</a></li>
+        <li><a href="#quels-reglages-choisir-dans-la-fenetre-d">Quels réglages choisir dans la fenêtre de la VWAP ?</a></li>
+        <li><a href="#les-bandes-de-la-vwap-ecart-type-ou-pour">Les bandes de la VWAP : écart-type ou pourcentage, et combien ?</a></li>
+        <li><a href="#quelle-periode-d-ancrage-choisir-seance-">Quelle période d&#39;ancrage choisir : séance, semaine ou mois ?</a></li>
+        <li><a href="#comment-tracer-une-vwap-ancree-sur-tradi">Comment tracer une VWAP ancrée sur TradingView ?</a></li>
+        <li><a href="#pourquoi-ma-vwap-ne-s-affiche-pas-ou-aff">Pourquoi ma VWAP ne s&#39;affiche pas ou affiche « no volume data » ?</a></li>
+        <li><a href="#quelle-vwap-utiliser-sur-les-futures-nas">Quelle VWAP utiliser sur les futures Nasdaq (NQ, MNQ) ?</a></li>
+        <li><a href="#vwap-ou-moyenne-mobile-ema-laquelle-mett">VWAP ou moyenne mobile (EMA) : laquelle mettre sur TradingView ?</a></li>
+        <li><a href="#comment-creer-une-alerte-vwap-ou-coder-s">Comment créer une alerte VWAP ou coder sa VWAP en Pine Script ?</a></li>
+        <li><a href="#mon-reglage-vwap-complet-sur-tradingview">Mon réglage VWAP complet sur TradingView, et les erreurs à éviter</a></li>
+        <li><a href="#et-maintenant-passer-du-reglage-a-la-lec">Et maintenant : passer du réglage à la lecture</a></li>
+      </ol>
+    </div>
+  </aside>
+
+  <article class="article-body">
+    <h2 id="comment-ajouter-la-vwap-sur-tradingview">Comment ajouter la VWAP sur TradingView ?</h2>
+    <p>Tu as tapé « VWAP » dans TradingView, une ligne est apparue, et maintenant tu te demandes si elle est bien réglée. Il y a aussi peut-être un message « no volume data » qui s&#39;affiche à sa place. C&#39;est exactement ce que je règle avec toi dans ce guide, réglage par réglage, avec ce que j&#39;utilise moi-même sur le Nasdaq.</p>
+<p>La VWAP (Volume Weighted Average Price) est le prix moyen pondéré par le volume : la somme de chaque prix multiplié par le volume échangé, divisée par le volume total depuis un point de départ, en général l&#39;ouverture de la séance.</p>
+<p>Je ne refais pas toute la théorie ici. Le calcul pas à pas, la différence avec une moyenne mobile et les stratégies sont dans mon <a href="https://basstrading.fr/blog/vwap-trading/">guide complet de la VWAP en trading</a>. Ici, on parle de l&#39;outil : TradingView, ses menus, ses pièges.</p>
+<h3>Les 4 gestes pour l&#39;afficher</h3>
+<ul><li>Ouvre un graphique en unité de temps intraday (1 minute, 5 minutes, 15 minutes).</li><li>Clique sur Indicateurs en haut de l&#39;écran (ou tape la touche « / »).</li><li>Tape VWAP et choisis l&#39;indicateur intégré « Volume Weighted Average Price », celui publié par TradingView, pas un script de la communauté.</li><li>Double-clique sur la ligne pour ouvrir ses Paramètres.</li></ul>
+<p>L&#39;indicateur de base est gratuit : il est disponible sur tous les comptes, y compris le compte sans abonnement. Tu n&#39;as donc besoin d&#39;aucun script payant pour bien travailler la VWAP. Ça marche pour une action ou un future : il suffit que le symbole publie du volume.</p>
+<h3>Pourquoi l&#39;unité de temps intraday compte</h3>
+<p>La VWAP de séance repart de zéro chaque jour. Sur un graphique en 1 jour, chaque bougie EST une séance : la VWAP se recalcule à chaque bougie et ne te montre rien d&#39;utile. TradingView le dit lui-même dans son <a href="https://fr.tradingview.com/support/solutions/43000502018/">aide sur l&#39;indicateur VWAP</a> : chaque période d&#39;ancrage doit contenir plusieurs barres.</p>
+<p>C&#39;est pour ça que l&#39;option « Cacher le VWAP sur 1D ou plus » existe. On va la voir tout de suite, avec les autres réglages de la fenêtre.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/vwap-tradingview/blog-vwap-tradingview-1.webp" alt="Anatomie de la VWAP sur TradingView : ligne centrale, bandes d&#39;écart-type 1, 2 et 3, ancrage par séance" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">La VWAP et ses bandes : une valeur moyenne pondérée par le volume, entourée de zones d&#39;écart.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="quels-reglages-choisir-dans-la-fenetre-d">Quels réglages choisir dans la fenêtre de la VWAP ?</h2>
+    <p>Réponse courte : ancrage Séance, source hlc3, décalage 0, bandes en écart-type à 1, 2 et 3. Le reste se laisse par défaut. Voici chaque ligne de la fenêtre, dans l&#39;ordre où TradingView les affiche, et ce que j&#39;en fais.</p>
+<h3>Cacher le VWAP sur 1D ou plus</h3>
+<p>Coche-la. Quand tu passes en journalier pour regarder le contexte, la VWAP de séance disparaît au lieu de dessiner une ligne qui ne veut rien dire. Tu évites une fausse lecture.</p>
+<h3>Période d&#39;ancrage</h3>
+<p>C&#39;est le réglage le plus important : il dit quand le calcul repart de zéro, c&#39;est-à-dire à partir de quelle barre TradingView additionne les prix et les volumes. TradingView propose Séance, Semaine, Mois, Trimestre, Année, Décennie, Siècle, et pour les actions Bénéfices, Dividendes et Splits.</p>
+<p>Pour du day trading, c&#39;est Séance. Semaine et Mois servent au contexte : je t&#39;explique plus bas comment je les emboîte.</p>
+<h3>Source</h3>
+<p>Par défaut, hlc3 : (plus haut + plus bas + clôture) ÷ 3 de chaque bougie. C&#39;est le « prix typique » du calcul classique. Garde-le.</p>
+<p>Tu peux mettre « close » ou « hl2 » (plus haut + plus bas, divisé par 2), mais tu t&#39;éloignes de la VWAP que regardent les autres traders. Sur une ligne de référence, l&#39;intérêt est justement d&#39;avoir la même que tout le monde.</p>
+<h3>Décalage</h3>
+<p>Laisse 0. Le décalage déplace la ligne vers la droite ou la gauche. Sur la VWAP, ça n&#39;a aucun sens : tu fausserais la seule chose qui compte, le prix moyen de l&#39;instant.</p>
+<h3>Mode de calcul des bandes et multiplicateurs</h3>
+<p>Deux modes : écart-type (standard deviation) ou pourcentage. En pourcentage, un multiplicateur de 1 place la bande à 1 % de la VWAP, quelle que soit la volatilité du jour. En écart-type, les bandes s&#39;écartent quand le marché s&#39;agite et se resserrent quand il est calme.</p>
+<p>Je prends l&#39;écart-type, et j&#39;active les trois bandes avec les multiplicateurs 1, 2 et 3. La section suivante t&#39;explique pourquoi.</p>
+<h3>Période (timeframe)</h3>
+<p>Ce réglage calcule la VWAP sur une autre unité de temps que celle du graphique. Laisse-le vide (« Graphique »). L&#39;option voisine, « Wait for timeframe closes », n&#39;affiche la valeur qu&#39;à la clôture de cette unité supérieure : utile seulement si tu as rempli « Période ».</p>
+<h3>Style et précision</h3>
+<p>Dans l&#39;onglet Style, mets la VWAP d&#39;une couleur qui tranche (je la mets en rouge ou en rose) et un peu plus épaisse que les bandes. Les bandes en fin, pour qu&#39;elles cadrent sans écraser les bougies. La précision, c&#39;est le nombre de décimales de l&#39;étiquette : sur le Nasdaq, deux suffisent.</p>
+<h3>À retenir</h3>
+<ul><li>Ancrage Séance pour l&#39;intraday.</li><li>Source hlc3, décalage 0.</li><li>Bandes en écart-type, multiplicateurs 1, 2, 3.</li><li>« Cacher sur 1D ou plus » coché.</li></ul>
+<p>Reste la question qu&#39;on me pose le plus : pourquoi trois bandes, et pas deux ou quatre ?</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/vwap-tradingview/blog-vwap-tradingview-2.webp" alt="Réglages recommandés de l&#39;indicateur VWAP sur TradingView : ancrage séance, source hlc3, décalage zéro, bandes 1 2 3" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Les quatre réglages qui comptent dans la fenêtre de la VWAP ; le reste se laisse par défaut.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="les-bandes-de-la-vwap-ecart-type-ou-pour">Les bandes de la VWAP : écart-type ou pourcentage, et combien ?</h2>
+    <p>Je mets trois bandes de chaque côté, à 1, 2 et 3 écarts-types. Ce n&#39;est pas un goût personnel : c&#39;est la mesure statistique la plus simple de la dispersion des prix autour de leur moyenne, et elle te dit où le marché passe l&#39;essentiel de son temps.</p>
+<h3>Ce que mesure un écart-type</h3>
+<p>Dans une distribution normale (la courbe en cloche de Gauss), environ 68 % des valeurs sont à moins d&#39;un écart-type de la moyenne, environ 95 % à moins de deux, et environ 99,7 % à moins de trois. Comme je le dis dans ma vidéo sur la VWAP : « 1, 2, 3, on va y passer 99,8 % du temps » (99,7 % exactement, pour une loi normale). Les extrêmes au-delà de la troisième bande sont rares.</p>
+<p>Un marché n&#39;est pas parfaitement « normal » : il fait des queues plus épaisses, des journées de news qui débordent. Mais la carte reste juste dans l&#39;esprit : entre −1 et +1, tu es dans la valeur ; entre 2 et 3, tu es dans l&#39;excès. C&#39;est la même logique que la zone de valeur du profil de volume, que j&#39;explique dans mon article sur la <a href="https://basstrading.fr/blog/value-area-trading/">value area</a> : 70 % du volume, le cœur du marché.</p>
+<h3>Pourquoi pas 0,5 ou quatre bandes ?</h3>
+<p>Dans la fenêtre de TradingView, tu peux mettre n&#39;importe quel multiplicateur. Certains traders mettent 0,5 pour resserrer, ou une quatrième bande. Je le montre en direct dans la <a href="https://www.youtube.com/watch?v=LPS-ybDlLOQ&amp;t=268s">vidéo, à la 4e minute</a> : à 0,5, les bandes collent au prix et tu vois des « signaux » partout.</p>
+<p>Moi, je reste sur un écart-type entier : « je reste sur quelque chose de mathématique assez sain qui est utilisé dans beaucoup de formules ». Trois niveaux entiers, c&#39;est lisible, comparable d&#39;un jour à l&#39;autre et partagé par beaucoup de monde.</p>
+<h3>Ce que les bandes t&#39;apprennent sur TradingView</h3>
+<ul><li>L&#39;écartement des bandes = la volatilité. Le matin européen, elles sont serrées sur le Nasdaq. Après l&#39;ouverture de New York à 15 h 30, elles s&#39;ouvrent. Quand elles s&#39;élargissent d&#39;un coup, la volatilité explose.</li><li>Le prix entre −1 et +1 : marché équilibré. Je joue le retour à la moyenne depuis les bandes 1, avec la VWAP comme objectif, pas comme point d&#39;entrée.</li><li>Le prix tenu entre +1 et +2 (ou −1 et −2) : déséquilibre sain, tendance en escalier. C&#39;est le marché que je préfère.</li><li>Le prix qui « tricote » entre +2 et +3 : euphorie. Si je suis en position, je serre mon stop. Si je n&#39;y suis pas, je n&#39;achète surtout pas : je cherche le retournement.</li></ul>
+<h3>Pourquoi l&#39;écart-type plutôt que le pourcentage</h3>
+<p>Une bande à 1 % ne veut pas dire la même chose un jour calme et un jour de chiffres d&#39;inflation. Sur un jour calme, le prix ne la touche jamais ; sur un jour agité, il la traverse dès l&#39;ouverture. L&#39;écart-type s&#39;adapte au marché du jour : c&#39;est pour ça que je ne passe jamais en mode pourcentage pour du day trading.</p>
+<p>Si tu hésites entre cette lecture par la dispersion et celle par le volume à chaque prix, je compare les deux dans <a href="https://basstrading.fr/blog/market-profile-vs-volume-profile/">Market Profile ou Volume Profile</a>.</p>
+<p>Une fois ces bandes en place, il reste à choisir sur quelle durée tu les calcules. Et c&#39;est là que la plupart des traders ratent l&#39;information la plus puissante.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/vwap-tradingview/blog-vwap-tradingview-3.webp" alt="Part du temps passée par le prix entre les bandes d&#39;écart-type de la VWAP selon la loi normale" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Repères de la loi normale : le marché n&#39;est pas parfaitement normal, mais la carte reste juste dans l&#39;esprit.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="quelle-periode-d-ancrage-choisir-seance-">Quelle période d&#39;ancrage choisir : séance, semaine ou mois ?</h2>
+    <p>Séance pour trader, semaine et mois pour savoir où tu trades. La VWAP de séance te donne le juste prix du jour. La VWAP hebdomadaire et la mensuelle te disent si ce jour se passe dans un marché équilibré ou en plein excès à plus grande échelle.</p>
+<h3>Emboîter les VWAP comme des poupées russes</h3>
+<p>C&#39;est l&#39;image que j&#39;utilise toujours. Dans la <a href="https://www.youtube.com/watch?v=LPS-ybDlLOQ&amp;t=1295s">vidéo, à la 21e minute</a>, je passe en 30 minutes et je change l&#39;ancrage de Séance à Semaine : « à l&#39;échelle de la semaine, on voit qu&#39;on a des VWAP qui sont plates ». Des VWAP plates en hebdomadaire = un marché en équilibre, qui ne fait rien de spécial. Les zones basses de cette semaine deviennent alors des zones intéressantes à l&#39;achat, que je vais préciser en intraday.</p>
+<p>Puis je passe en Mois. Plus l&#39;ancrage est long, moins le niveau est précis, mais plus il pèse : ce sont des supports et des résistances beaucoup plus forts.</p>
+<h3>L&#39;exemple du 6 février sur le Nasdaq</h3>
+<p>Sur la VWAP mensuelle, le Nasdaq vient faire un excès le 6 février, sous la bande −2. Pour les gros opérateurs, la VWAP est un benchmark, un prix de revient : quand le prix s&#39;écarte fortement de leur moyenne du mois, ça devient une opportunité. L&#39;excès est racheté, et le marché revient dans sa zone de valeur, entre −1 et +1, « piné » sur la VWAP.</p>
+<p>Ce jour-là, un trader qui ne regardait que la VWAP de séance voyait une chute. Avec la mensuelle, il voyait un excès sur une échelle bien plus grande, donc une zone où chercher des acheteurs, pas des ventes.</p>
+<h3>Comment l&#39;afficher sur TradingView</h3>
+<p>Tu ajoutes l&#39;indicateur VWAP deux ou trois fois sur le même graphique :</p>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Ancrage</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Rôle</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Bandes</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Séance</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Juste prix du jour, entrées</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">1, 2, 3</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Semaine</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Équilibre ou excès de la semaine</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">1 et 2</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Mois</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Grandes zones, swing</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">1 et 2</td></tr></tbody></table></div>
+<p>Mets-leur des couleurs différentes, sinon tu ne sais plus laquelle tu regardes. Sur la hebdomadaire et la mensuelle, je garde moins de bandes pour ne pas noyer le graphique.</p>
+<p>Attention : le compte gratuit de TradingView limite le nombre d&#39;indicateurs par graphique. Si tu bloques, garde la VWAP de séance et passe la hebdomadaire sur un deuxième onglet en 30 minutes.</p>
+<h3>L&#39;erreur à éviter</h3>
+<p>Ne mets pas l&#39;ancrage Semaine sur un graphique en 1 jour : tu n&#39;aurais que 5 bougies par période, et des bandes sans valeur statistique. Règle simple : au moins une vingtaine de bougies par période d&#39;ancrage.</p>
+<p>Et si ton point de départ idéal n&#39;est ni le début de la séance, ni le lundi, ni le 1er du mois ? C&#39;est le rôle de la VWAP ancrée.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/vwap-tradingview/blog-vwap-tradingview-4.webp" alt="Règle de la VWAP ancrée sur TradingView : au moins vingt bougies par période d&#39;ancrage" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Séance en 1 à 5 minutes, semaine en 30 minutes, mois en 30 minutes ou 4 heures : sous vingt bougies, les bandes n&#39;ont pas de valeur statistique.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="comment-tracer-une-vwap-ancree-sur-tradi">Comment tracer une VWAP ancrée sur TradingView ?</h2>
+    <p>La VWAP ancrée n&#39;est pas dans le menu Indicateurs : c&#39;est un outil de dessin. Tu la trouves dans la barre d&#39;outils à gauche du graphique, tu cliques sur la bougie de départ, et TradingView calcule la VWAP à partir de ce point. L&#39;outil a été ajouté pour tout le monde en mai 2020, comme l&#39;annonce le <a href="https://www.tradingview.com/blog/en/anchored-vwap-is-on-tradingview-18573/">blog de TradingView</a>.</p>
+<h3>Où la trouver</h3>
+<ul><li>Dans la barre de gauche, ouvre le groupe d&#39;outils où se trouvent les retracements et les outils de volume (l&#39;icône change selon l&#39;outil utilisé en dernier).</li><li>Le plus simple : tape « Anchored VWAP » ou « VWAP ancré » dans la recherche d&#39;outils.</li><li>Clique sur la bougie de départ. La ligne apparaît.</li><li>Double-clique dessus pour régler la couleur, l&#39;épaisseur et, selon ta version, les bandes.</li></ul>
+<h3>Sur quelle bougie l&#39;ancrer ?</h3>
+<p>Une VWAP ancrée répond à une question : quel est le prix moyen de tous ceux qui ont échangé depuis cet événement ? Le point d&#39;ancrage doit donc être un vrai événement, pas une bougie au hasard :</p>
+<ul><li>l&#39;ouverture de New York à 15 h 30 (heure de Paris) sur les futures Nasdaq : j&#39;y reviens dans la section suivante, c&#39;est l&#39;usage le plus utile sur TradingView ;</li><li>un plus haut ou un plus bas marquant : tu mesures si les acheteurs du plus bas sont toujours gagnants en moyenne ;</li><li>une annonce : chiffre d&#39;emploi à 14 h 30, décision de la Fed ;</li><li>une cassure de range : tu vois si le prix moyen de la cassure tient.</li></ul>
+<p>L&#39;ancrage sur un extrême est aussi un bon repère de stops : sous un plus bas où les acheteurs sont encore gagnants en moyenne, beaucoup de protections sont posées. C&#39;est le mécanisme que je décris dans mon article sur la <a href="https://basstrading.fr/blog/chasse-aux-stops-trading/">chasse aux stops</a>.</p>
+<h3>Et l&#39;indicateur « VWAP Auto Ancré » ?</h3>
+<p>TradingView propose aussi un indicateur qui place l&#39;ancre tout seul. Selon son <a href="https://fr.tradingview.com/support/solutions/43000652199/">aide sur le VWAP Auto Ancré</a>, il s&#39;ancre sur le plus haut, le plus bas ou la barre au plus gros volume des N dernières barres, ou sur un début de période. En mode Auto, il choisit l&#39;ancrage selon l&#39;unité de temps : séance en intraday, mois en journalier, trimestre de 2 à 10 jours.</p>
+<p>C&#39;est pratique pour aller vite. Mais je préfère poser l&#39;ancre moi-même : c&#39;est en choisissant l&#39;événement que tu réfléchis au marché. Un outil qui ancre à ta place sur « le plus haut des 100 dernières barres » ne sait pas que ce plus haut était une mèche de news sans suite.</p>
+<h3>À retenir</h3>
+<ul><li>VWAP ancrée = outil de dessin, barre de gauche.</li><li>On l&#39;ancre sur un événement : ouverture, extrême, annonce, cassure.</li><li>L&#39;Auto Ancré dépanne, l&#39;ancre manuelle fait réfléchir.</li></ul>
+<p>Tout ça suppose une chose : que TradingView ait du volume à pondérer. Et c&#39;est là que beaucoup de traders bloquent sans comprendre pourquoi.</p>
+
+    <hr>
+
+    <h2 id="pourquoi-ma-vwap-ne-s-affiche-pas-ou-aff">Pourquoi ma VWAP ne s&#39;affiche pas ou affiche « no volume data » ?</h2>
+    <p>Parce que l&#39;actif que tu regardes n&#39;a pas de volume sur TradingView. La VWAP divise par le volume : sans volume, il n&#39;y a rien à calculer. C&#39;est le cas de la plupart des paires Forex, de beaucoup de CFD et de la plupart des indices au comptant.</p>
+<h3>Ce que dit TradingView</h3>
+<p>L&#39;<a href="https://fr.tradingview.com/support/solutions/43000481397/">aide de TradingView sur le volume</a> est claire :</p>
+<ul><li>les paires Forex n&#39;ont pas de volume d&#39;échange ;</li><li>les CFD de FOREX.COM et les CFD maison TVC non plus ;</li><li>les données FX_IDC n&#39;ont pas de volume en journalier ;</li><li>la plupart des indices affichent « n/a ».</li></ul>
+<p>Quand il existe, le « volume de ticks » compte le nombre de mises à jour de prix, pas les contrats échangés. Une VWAP calculée dessus pondère par l&#39;agitation du flux d&#39;un fournisseur, pas par l&#39;argent réellement échangé.</p>
+<h3>Le cas qui piège le plus : NAS100 et US100</h3>
+<p>Beaucoup de débutants tradent le Nasdaq via un symbole « NAS100 », « US100 » ou « NDX ». Ce sont des CFD ou l&#39;indice lui-même : pas de volume réel de marché. Leur VWAP est vide, ou calculée sur un volume qui n&#39;a pas de sens.</p>
+<p>La solution : mets la VWAP sur le future. Sur TradingView, le contrat continu du Nasdaq s&#39;appelle NQ1! (E-mini) et MNQ1! (Micro), sur la place CME. Là, chaque contrat est un vrai échange enregistré par la bourse. Si tu veux comprendre la différence entre les deux contrats, je l&#39;explique dans mon comparatif <a href="https://basstrading.fr/blog/nq-ou-mnq/">NQ ou MNQ</a>, et le fonctionnement complet de ces contrats dans mon guide des <a href="https://basstrading.fr/blog/nasdaq-futures-nq-mnq/">futures Nasdaq NQ et MNQ</a>.</p>
+<h3>Les autres causes, à vérifier dans l&#39;ordre</h3>
+<ul><li>Tu es en unité de temps journalière ou plus avec « Cacher le VWAP sur 1D ou plus » coché : la ligne est cachée, c&#39;est normal. Repasse en intraday.</li><li>Ton ancrage est plus court que tes bougies : ancrage Séance en journalier, Semaine en hebdomadaire. Allonge l&#39;ancrage.</li><li>Le flux est différé : sur les futures du CME, TradingView fait payer les données en temps réel. Sans cet abonnement, ta VWAP est juste, mais en retard sur le marché. Vérifie l&#39;étiquette du symbole.</li><li>La ligne est hors écran : clic droit sur l&#39;échelle de prix, « Ajuster automatiquement ».</li><li>Tu as ajouté un script de la communauté qui a été modifié ou retiré : remplace-le par l&#39;indicateur intégré.</li></ul>
+<h3>Et sur le Forex ?</h3>
+<p>Si tu trades l&#39;euro-dollar, la VWAP la plus honnête se calcule sur le future de change (6E au CME), qui a un vrai volume, puis se reporte sur ton graphique. C&#39;est un détour, mais c&#39;est le seul qui pondère par de vrais échanges.</p>
+<p>Une fois que tu as du vrai volume, une dernière question reste sur les futures : à quelle heure ta « séance » commence vraiment.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/vwap-tradingview/blog-vwap-tradingview-5.webp" alt="Tableau VWAP TradingView : NAS100, US100 et CFD Forex sans volume (n/a), NQ1! et MNQ1! avec volume réel" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">NAS100, US100 et les paires Forex n&#39;ont pas de volume réel sur TradingView : la VWAP se calcule sur le future.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="quelle-vwap-utiliser-sur-les-futures-nas">Quelle VWAP utiliser sur les futures Nasdaq (NQ, MNQ) ?</h2>
+    <p>Sur TradingView, la VWAP « Séance » du NQ repart au début de la séance électronique du CME, pas à l&#39;ouverture de New York. Elle inclut donc toute la nuit et la matinée européenne. Pour avoir la VWAP de la séance américaine, tu traces en plus une VWAP ancrée sur la bougie de 15 h 30.</p>
+<h3>Pourquoi deux VWAP différentes</h3>
+<p>Les futures Nasdaq s&#39;échangent presque 23 heures sur 24. En heure de Paris (heure d&#39;hiver), la séance électronique reprend vers minuit et la séance principale de Wall Street va de 15 h 30 à 22 h. Je détaille tous les horaires, été comme hiver, dans mon guide des <a href="https://basstrading.fr/blog/horaires-futures-nasdaq-heure-paris/">horaires des futures Nasdaq en heure de Paris</a>.</p>
+<p>La nuit, il y a peu de volume. À 15 h 30, le volume explose. Résultat :</p>
+<ul><li>la VWAP de séance (depuis minuit) dit : « voilà le prix moyen de tout ce qui s&#39;est échangé depuis la reprise » ;</li><li>la VWAP ancrée à 15 h 30 dit : « voilà le prix moyen des acteurs de New York ».</li></ul>
+<p>Les deux comptent. Le matin, je regarde la première. À partir de 15 h 30, la seconde devient ma référence principale, parce que c&#39;est là que se trouve l&#39;essentiel du volume.</p>
+<h3>Le réglage sur un graphique NQ1! ou MNQ1!</h3>
+<ul><li>Graphique MNQ1! ou NQ1!, en 1 ou 5 minutes.</li><li>Indicateur VWAP : ancrage Séance, hlc3, bandes 1, 2, 3 en écart-type.</li><li>Outil VWAP ancrée posé sur la bougie de 15 h 30.</li><li>Deuxième indicateur VWAP : ancrage Semaine, bandes 1 et 2, couleur discrète.</li></ul>
+<h3>Le changement de contrat</h3>
+<p>Le NQ1! est un contrat continu : TradingView passe d&#39;une échéance à la suivante (mars, juin, septembre, décembre). Autour de l&#39;échéance, le volume bascule vers le contrat suivant. Si ta VWAP hebdomadaire fait un saut bizarre une semaine de roll, c&#39;est souvent ça. Pour l&#39;analyse fine, regarde aussi l&#39;échéance précise (par exemple NQZ2026).</p>
+<h3>Ce que la VWAP ne te dit pas</h3>
+<p>La VWAP te donne une zone, pas une entrée. Dans une zone d&#39;excès, entre +2 et +3, je regarde qui est encore actif : est-ce que les acheteurs continuent d&#39;éclater les vendeurs, ou est-ce qu&#39;ils se font absorber ? Pour ça, je regarde le CVD (le delta cumulé : qui agresse vraiment, acheteurs ou vendeurs) et le carnet d&#39;ordres. Le carnet se lit très bien avec une heatmap, comme je le montre dans mon guide de <a href="https://basstrading.fr/blog/bookmap-heatmap/">Bookmap</a>. Et si tu veux voir ce que TradingView permet de faire côté footprint, un outil que j&#39;enseigne mais que je n&#39;utilise pas pour exécuter en 1 minute, c&#39;est dans mon article sur le <a href="https://basstrading.fr/blog/footprint-tradingview/">footprint sur TradingView</a>. Pour voir où le volume s&#39;est accumulé par niveau de prix, c&#39;est le <a href="https://basstrading.fr/blog/volume-profile-guide/">volume profile</a>, le complément naturel de la VWAP.</p>
+<p>Si tu cherches une autre plateforme que TradingView pour lire le flux d&#39;ordres dans ton navigateur, j&#39;ai testé <a href="https://basstrading.fr/blog/gocharting-avis/">GoCharting</a>.</p>
+<p>Avant de passer aux alertes, une question revient sans cesse : pourquoi ne pas simplement mettre une moyenne mobile ?</p>
+
+    <hr>
+
+    <h2 id="vwap-ou-moyenne-mobile-ema-laquelle-mett">VWAP ou moyenne mobile (EMA) : laquelle mettre sur TradingView ?</h2>
+    <p>Pour du day trading sur un marché avec du volume, je prends la VWAP. Une moyenne mobile, simple ou exponentielle (EMA), fait la moyenne des dernières clôtures sans tenir compte du volume. La VWAP pondère chaque prix par ce qui s&#39;y est réellement échangé : un prix où 10 000 contrats ont changé de main pèse plus qu&#39;un prix où il en est passé 50.</p>
+<h3>La différence dans le calcul</h3>
+<p>Reprends l&#39;exemple que je donne en début de vidéo : tu achètes 100 kg de tomates à 3 €, puis 50 kg à 2 €. La moyenne simple des deux prix donne 2,50 €. Ton vrai prix de revient, lui, est de (100 × 3 + 50 × 2) ÷ 150 = 2,67 €, parce que tu as acheté plus de tomates au prix le plus haut. La VWAP, c&#39;est ce prix de revient, appliqué à tout le marché.</p>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Critère</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">VWAP</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Moyenne mobile (EMA)</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Tient compte du volume</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Oui</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Non</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Point de départ</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Fixe (séance, ancre)</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Glissant (N dernières bougies)</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Référence des pros</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Oui, benchmark d&#39;exécution</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Rarement</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Marche sans volume</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Non</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Oui (Forex, CFD)</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Usage idéal</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Intraday, zones de valeur</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Tendance, swing</td></tr></tbody></table></div>
+<h3>Pourquoi la VWAP compte plus en intraday</h3>
+<p>Comme je le dis dans la vidéo, la VWAP est le benchmark des desks institutionnels : quand un gros acteur achète pendant la journée, on compare son prix moyen à la VWAP. Elle n&#39;est donc pas qu&#39;un indicateur : c&#39;est une référence que de vrais acteurs regardent pour décider. Une EMA 20, chacun la règle différemment.</p>
+<h3>Quand la VWAP est-elle la plus utile ?</h3>
+<ul><li>pendant la séance principale, quand le volume est fort : sur le Nasdaq, à partir de 15 h 30 ;</li><li>sur un actif très liquide, avec un vrai volume de bourse ;</li><li>en marché équilibré, pour jouer le retour vers la valeur ;</li><li>après un excès, pour savoir où le marché risque de revenir.</li></ul>
+<p>Elle est plus fragile en début de séance (peu de barres, la ligne bouge beaucoup), en fin de journée sur une session très longue (la VWAP devient lente) et sur les actifs sans volume.</p>
+<h3>Et les deux ensemble ?</h3>
+<p>Tu peux, mais ne mets pas trois moyennes mobiles par-dessus tes VWAP. Si tu veux une EMA, garde-la pour le graphique de contexte en 1 heure ou en journalier, là où la VWAP de séance n&#39;a plus de sens. Sur ton graphique d&#39;exécution, les VWAP et leurs bandes suffisent.</p>
+<p>Tu as maintenant tous les outils de lecture. Reste à ne plus coller ton nez à l&#39;écran : c&#39;est le rôle des alertes.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/vwap-tradingview/blog-vwap-tradingview-6.webp" alt="Quand la VWAP est la plus utile sur TradingView : séance de New York, actif liquide, marché équilibré, après un excès" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">La VWAP pèse le plus quand le volume est fort et le marché liquide ; elle est fragile en début de séance.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="comment-creer-une-alerte-vwap-ou-coder-s">Comment créer une alerte VWAP ou coder sa VWAP en Pine Script ?</h2>
+    <p>Une alerte VWAP se crée en deux clics : clic droit sur la ligne, « Ajouter une alerte ». Tu choisis la condition (croisement, au-dessus, en dessous) et la ligne visée (la VWAP ou une bande). Le Pine Script, lui, sert quand tu veux une VWAP que l&#39;indicateur de base ne fait pas.</p>
+<h3>Les alertes que j&#39;utilise</h3>
+<p>Je ne mets pas d&#39;alerte « le prix croise la VWAP » : dans un marché équilibré, ça sonne toutes les dix minutes. Je mets plutôt des alertes sur les bandes extrêmes :</p>
+<ul><li>prix qui touche la bande +2 ou −2 de séance : le marché entre en zone d&#39;alerte. Je regarde, je ne trade pas encore ;</li><li>prix qui touche la bande ±2 hebdomadaire : beaucoup plus rare, et beaucoup plus important ;</li><li>prix qui revient à l&#39;intérieur de ±1 après un excès : le marché réintègre la valeur, l&#39;excès a peut-être échoué.</li></ul>
+<p>Règle-les en « Une fois par barre clôturée » plutôt qu&#39;à chaque tick : tu évites les fausses alertes sur une mèche.</p>
+<p>L&#39;intérêt est simple : tu n&#39;as pas besoin de fixer l&#39;écran six heures. L&#39;alerte te prévient quand le marché arrive dans une zone qui compte. Le reste du temps, tu ne trades pas.</p>
+<h3>Coder une VWAP en Pine Script</h3>
+<p>Le Pine Script est le langage de TradingView. Il fournit une fonction toute faite, `ta.vwap()`, qui prend la source et un signal d&#39;ancrage. Voici un script minimal qui affiche sur le même graphique une VWAP de séance et une VWAP de semaine, sans consommer deux indicateurs :</p>
+<p>```</p>
+<p>//@version=6</p>
+<p>indicator(&quot;VWAP séance + semaine&quot;, overlay = true)</p>
+<p>vwapSeance  = ta.vwap(hlc3, timeframe.change(&quot;D&quot;))</p>
+<p>vwapSemaine = ta.vwap(hlc3, timeframe.change(&quot;W&quot;))</p>
+<p>plot(vwapSeance,  &quot;VWAP séance&quot;,  color = color.red,  linewidth = 2)</p>
+<p>plot(vwapSemaine, &quot;VWAP semaine&quot;, color = color.blue, linewidth = 1)</p>
+<p>```</p>
+<p>Colle-le dans l&#39;éditeur Pine (en bas de l&#39;écran), clique sur « Ajouter au graphique ». Tu peux ensuite ajouter un mois avec `timeframe.change(&quot;M&quot;)`.</p>
+<p>Ce script est volontairement simple : il n&#39;a pas de bandes. Pour les bandes, l&#39;indicateur intégré reste plus propre. Je ne te conseille pas de passer des heures à coder : le but est de lire le marché, pas de fabriquer l&#39;indicateur parfait.</p>
+<h3>Les scripts de la communauté</h3>
+<p>La bibliothèque de TradingView compte des centaines de VWAP « améliorées ». Certaines sont bien faites, beaucoup recalculent la même chose avec plus de couleurs, et certaines sont payantes sur invitation. Avant d&#39;en ajouter une, pose-toi une question : qu&#39;est-ce qu&#39;elle me montre que l&#39;indicateur intégré et la VWAP ancrée ne montrent pas ? Si tu ne sais pas répondre, tu n&#39;en as pas besoin.</p>
+<p>Tu as maintenant tous les outils. Voici comment je les assemble, et les erreurs que je vois le plus chez les traders qui débutent avec la VWAP.</p>
+
+    <hr>
+
+    <h2 id="mon-reglage-vwap-complet-sur-tradingview">Mon réglage VWAP complet sur TradingView, et les erreurs à éviter</h2>
+    <p>Mon graphique de travail tourne sur Sierra Chart, mais ces réglages se reproduisent à l&#39;identique sur TradingView : NQ1! ou MNQ1! en 1 minute, VWAP de séance avec trois bandes, VWAP ancrée à 15 h 30, VWAP hebdomadaire en contexte, et un deuxième onglet en 30 minutes avec la VWAP mensuelle. C&#39;est tout. Pas de moyenne mobile en plus, pas de script magique.</p>
+<h3>Ma routine, dans l&#39;ordre</h3>
+<ul><li>Avant 15 h 30, onglet 30 minutes : VWAP mensuelle, puis hebdomadaire. Sont-elles plates (équilibre) ou en pente (tendance) ? Le prix est-il dans la valeur ou en excès ?</li><li>J&#39;en tire un biais : en équilibre hebdomadaire, je cherche des retours à la moyenne ; en tendance saine, je cherche à suivre.</li><li>À 15 h 30, graphique 1 minute : je pose la VWAP ancrée sur l&#39;ouverture et je laisse passer les premières minutes.</li><li>Je classe la séance : prix entre −1 et +1 (équilibré), tenu entre +1 et +2 (déséquilibre sain), collé à +2 / +3 (excès).</li><li>Je n&#39;entre que dans une zone : bande 1 en équilibre, retour sur la bande 1 en tendance, rejet d&#39;un excès confirmé par le CVD et le carnet.</li></ul>
+<h3>Comment je gère la sortie avec les VWAP</h3>
+<p>En marché équilibré, j&#39;achète la −1 et je coupe à la VWAP ; je vends la +1 et je coupe à la VWAP. Comme je le dis dans la vidéo, au-delà, « c&#39;est du 50-50 » : en équilibre, rien ne dit que le marché passera à l&#39;étage suivant. Après un excès rejeté, je prends des profits en plusieurs fois, sur chaque bande, en visant le retour à la VWAP.</p>
+<p>Le stop, lui, se place là où ton idée est fausse, pas à une distance au hasard. Et la taille de position se calcule à partir de ce stop : c&#39;est le sujet de mon guide pour savoir <a href="https://basstrading.fr/blog/combien-risquer-par-trade/">combien risquer par trade</a>. Une VWAP bien réglée ne protège de rien si tu mets trop de contrats.</p>
+<p>Rappel de risque : le trading de contrats à terme comporte un risque élevé de perte, pouvant dépasser la mise initiale. L&#39;<a href="https://www.amf-france.org/sites/institutionnel/files/pdf/59285/fr/Les_futures.pdf">AMF rappelle dans sa fiche sur les futures</a> que l&#39;effet de levier amplifie les gains comme les pertes. Ce guide est éducatif, ce n&#39;est pas un conseil en investissement.</p>
+<h3>Les 6 erreurs que je vois le plus</h3>
+<ul><li>Mettre la VWAP sur un CFD sans volume. Elle est vide ou fausse. Passe sur NQ1! ou MNQ1!.</li><li>Acheter ou vendre « parce qu&#39;on touche la VWAP ». En équilibre, la VWAP est un objectif de sortie, pas un point d&#39;entrée.</li><li>Vendre la première fois que le prix touche +2. Dans un déséquilibre fort, le marché peut rester entre +2 et +3 toute la journée. Tant que les acheteurs poussent, ce n&#39;est pas toi qui fais le marché.</li><li>Régler les bandes à 0,5 pour avoir plus de signaux. Tu auras plus de signaux, pas plus de bons trades.</li><li>Ne regarder que la VWAP de séance. Sans la hebdomadaire et la mensuelle, tu ne sais pas si l&#39;excès du jour est un vrai excès ou un simple retour dans la valeur.</li><li>Empiler cinq scripts VWAP. Un graphique illisible te fait hésiter au moment où il faut agir.</li></ul>
+<h3>À retenir</h3>
+<ul><li>Une VWAP pour trader (séance), une pour l&#39;ouverture (ancrée 15 h 30), deux pour le contexte (semaine, mois).</li><li>La zone vient de la VWAP, la décision vient du CVD et du carnet.</li><li>La taille vient du stop, jamais de l&#39;envie.</li></ul>
+
+    <hr>
+
+    <h2 id="et-maintenant-passer-du-reglage-a-la-lec">Et maintenant : passer du réglage à la lecture</h2>
+    <p>Régler la VWAP sur TradingView prend dix minutes. La lire en direct, séance après séance, prend des semaines de pratique. Ce qui fait la différence, ce n&#39;est pas le multiplicateur des bandes : c&#39;est de savoir reconnaître, sur ton écran, un marché équilibré, un déséquilibre sain et une euphorie qui va craquer.</p>
+<p>C&#39;est ce que je montre dans ma formation offerte : comment je prépare ma séance, comment je classe le marché avec les VWAP et le volume, et comment je décide d&#39;entrer ou de rester dehors. Elle est gratuite et tu peux la suivre à ton rythme : <a href="https://basstrading.fr/p/formation-offerte/?src=blog&amp;a=vwap-tradingview">accéder à la formation offerte</a>.</p>
+<h3>Le récapitulatif</h3>
+<ul><li>Indicateur VWAP intégré, ancrage Séance, source hlc3, décalage 0, « cacher sur 1D » coché.</li><li>Bandes en écart-type à 1, 2 et 3 : la valeur entre −1 et +1, l&#39;excès entre 2 et 3.</li><li>VWAP emboîtées : semaine et mois pour le contexte, séance pour l&#39;exécution.</li><li>VWAP ancrée (outil de dessin) sur l&#39;ouverture de 15 h 30 pour les futures Nasdaq.</li><li>Un actif avec du vrai volume : NQ1! ou MNQ1!, jamais un CFD sans volume.</li></ul>
+<h3>Ta prochaine action</h3>
+<p>Ce soir, ouvre un graphique MNQ1! en 5 minutes, applique ces réglages et remonte les cinq dernières séances. Pour chacune, note en une ligne : équilibrée, déséquilibre sain ou excès ? Tu verras vite que les bandes racontent la journée mieux que n&#39;importe quel moyenne mobile.</p>
+<p>Ensuite, relis la partie stratégie de mon <a href="https://basstrading.fr/blog/vwap-trading/">guide de la VWAP en trading</a> : tu y trouveras le calcul détaillé et les scénarios de trade complets, qui prennent tout leur sens une fois ton graphique bien réglé.</p>
+
+    <p><a href="https://www.youtube.com/watch?v=LPS-ybDlLOQ" target="_blank" rel="noopener">▶ Voir la vidéo de Sébastien sur ce sujet</a></p>
+
+    <div class="cta-card cta-aimant">
+      <div class="cta-card-label">Gratuit</div>
+      <h3>La formation offerte : 7 leçons pour lire le marché comme un pro</h3>
+      <p>Accès immédiat et gratuit, en vidéo, à ton rythme. Sans carte bancaire.</p>
+      <a href="https://basstrading.fr/p/formation-offerte/?src=blog-vwap-tradingview" class="btn-p">Je la veux →</a>
+    </div>
+    
+  </article>
+</div>
+
+<!-- FAQ -->
+<section class="faq-sec">
+  <div class="sec-center"><div class="sec-label">FAQ</div><h2 class="sec-title">Questions fréquentes</h2></div>
+  <div class="faq-list">
+    <div class="fi"><button class="fq" onclick="tf(this)">La VWAP est-elle gratuite sur TradingView ? <span class="fq-icon">+</span></button><div class="fa"><p>Oui. L&#39;indicateur VWAP intégré, la VWAP ancrée (outil de dessin) et le VWAP Auto Ancré sont disponibles sur tous les comptes, y compris le compte gratuit. Ce qui peut être payant, ce sont les données en temps réel de certaines bourses, comme le CME pour les futures Nasdaq : sans cet abonnement, la VWAP est juste mais calculée sur un flux différé.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Quels sont les meilleurs réglages de la VWAP sur TradingView ? <span class="fq-icon">+</span></button><div class="fa"><p>Pour du day trading : ancrage Séance, source hlc3, décalage 0, bandes en écart-type avec les multiplicateurs 1, 2 et 3, et l&#39;option « Cacher le VWAP sur 1D ou plus » cochée. J&#39;ajoute une deuxième VWAP ancrée sur la Semaine pour le contexte, et sur les futures Nasdaq une VWAP ancrée sur la bougie de 15 h 30, heure de Paris.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Pourquoi TradingView affiche « no volume data » sur ma VWAP ? <span class="fq-icon">+</span></button><div class="fa"><p>Parce que le symbole n&#39;a pas de volume chez TradingView : paires Forex, CFD comme NAS100 ou US100, la plupart des indices au comptant. La VWAP divise par le volume, elle ne peut donc rien calculer. Passe sur le contrat future qui a un vrai volume de bourse, par exemple NQ1! ou MNQ1! pour le Nasdaq.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Peut-on utiliser la VWAP sur un graphique journalier ? <span class="fq-icon">+</span></button><div class="fa"><p>Pas la VWAP de séance : en journalier, chaque bougie est une séance, donc la VWAP repart de zéro à chaque bougie et ne montre rien. Sur un graphique journalier, choisis un ancrage plus long (mois, trimestre, année) ou trace une VWAP ancrée sur un plus bas ou un plus haut marquant.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Où trouver la VWAP ancrée sur TradingView ? <span class="fq-icon">+</span></button><div class="fa"><p>Elle n&#39;est pas dans le menu Indicateurs : c&#39;est un outil de dessin, dans la barre d&#39;outils à gauche du graphique. Le plus rapide est de taper « Anchored VWAP » dans la recherche d&#39;outils, puis de cliquer sur la bougie de départ. Double-clique ensuite sur la ligne pour régler sa couleur et son épaisseur.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Quelle unité de temps utiliser avec la VWAP ? <span class="fq-icon">+</span></button><div class="fa"><p>Avec une VWAP de séance, une unité intraday : 1, 5 ou 15 minutes. Pour la VWAP hebdomadaire, je passe en 30 minutes ; pour la mensuelle, en 30 minutes ou en 4 heures. La règle : chaque période d&#39;ancrage doit contenir au moins une vingtaine de bougies, sinon les bandes n&#39;ont pas de sens.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">La VWAP est-elle meilleure qu&#39;une EMA ? <span class="fq-icon">+</span></button><div class="fa"><p>Pas meilleure dans l&#39;absolu, différente. La VWAP pondère chaque prix par le volume échangé et part d&#39;un point fixe : c&#39;est la référence de l&#39;intraday sur un marché liquide. L&#39;EMA ignore le volume et glisse sur les N dernières bougies : elle reste utile pour la tendance en swing, et sur les actifs sans volume comme le Forex au comptant.</p></div></div>
+  </div>
+</section>
+
+<!-- Related -->
+<section class="related-sec">
+  <div class="sec-center"><div class="sec-label">Continuer la lecture</div><h2 class="sec-title">Articles connexes</h2></div>
+  <div class="related-grid">
+    <a href="/blog/market-profile-guide-complet/" class="related-card"><div class="related-cat">Guide</div><h3>Market Profile : le guide complet pour débutants</h3><p>Value Area, POC, types de journées — tout pour commencer.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/order-flow-trading-france/" class="related-card"><div class="related-cat">Méthode</div><h3>Order Flow Trading : pourquoi personne ne l'enseigne en France</h3><p>Le carnet d'ordres et le flux institutionnel décryptés.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/sierra-chart-configuration/" class="related-card"><div class="related-cat">Tutoriel</div><h3>Sierra Chart : configuration complète</h3><p>Le setup pas à pas pour le Market Profile et le Footprint.</p><span class="related-link">Lire &rarr;</span></a>
+  </div>
+</section>
+
+<!-- serie:debut --><style>.serie-w{background:#FFF;color:#1D1D1F;border-top:1px solid #F5F5F7}.serie{max-width:1060px;margin:0 auto;padding:56px 24px;font-family:inherit;box-sizing:border-box}.serie-l{font-size:.6rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#0066FF;margin-bottom:8px}.serie-w .serie h2{font-size:1.4rem;font-weight:800;letter-spacing:-.5px;color:#1D1D1F!important;margin:0 0 18px;font-family:inherit}.serie ul{list-style:none;padding:0;margin:0 0 22px;display:grid;grid-template-columns:repeat(2,1fr);gap:8px 24px}.serie-w .serie li a{color:#1D1D1F!important;font-size:.9rem;line-height:1.45;text-decoration:none;border-bottom:1px solid #D2D2D7}.serie li a:hover{color:#0066FF}.serie li.pil a{font-weight:700}.serie-o{background:#F5F5F7;border-radius:14px;padding:18px 20px;font-size:.88rem;line-height:1.55;color:#1D1D1F}.serie-w .serie-o a{color:#0066FF!important;font-weight:700}@media(max-width:700px){.serie ul{grid-template-columns:1fr}}</style><div class="serie-w"><aside class="serie" aria-label="Dans la même série"><div class="serie-l">Dans la même série</div><h2>Futures du Nasdaq et plateformes</h2><ul><li class="pil"><a href="/blog/nasdaq-futures-nq-mnq/">NQ et MNQ : les futures Nasdaq expliqués simplement</a></li><li class=""><a href="/blog/nq-ou-mnq/">NQ ou MNQ : quel contrat Nasdaq choisir pour débuter ?</a></li><li class=""><a href="/blog/horaires-futures-nasdaq-heure-paris/">Horaires des futures Nasdaq (NQ, MNQ) en heure de Paris</a></li><li class=""><a href="/blog/day-trading-futures/">Day trading : à quoi ressemble une journée sur les futures</a></li><li class=""><a href="/blog/vwap-trading/">VWAP trading : définition, calcul et lecture sur le Nasdaq</a></li><li class=""><a href="/blog/ninjatrader-avis/">NinjaTrader avis : prix, France, order flow et limites</a></li><li class=""><a href="/blog/tradovate-avis/">Tradovate avis : prix, démo, France et limites (2026)</a></li><li class=""><a href="/blog/sierra-chart-configuration/">Sierra Chart : configurer Market Profile, footprint et CVD</a></li></ul><div class="serie-o"><a href="/formations/">Toutes les formations de Bass</a> : plus de 250 leçons vidéo, du débutant au Market Profile avancé. Pour commencer sans payer : <a href="/p/formation-offerte/?src=serie-vwap-tradingview">la formation offerte</a> (7 leçons vidéo).</div></aside></div><!-- serie:fin -->
+<footer class="footer">
+  <div class="ft-top"><div class="ft-logo">BASS</div><div class="ft-cols">
+    <div class="ft-col"><div class="ft-col-title">Programme</div><a href="/formations/">Toutes les formations</a><a href="https://basstrading.fr/#methode">Méthode</a><a href="https://basstrading.fr/#programme">Programme</a><a href="https://basstrading.fr/p/formation-offerte/?src=blog-vwap-tradingview-pied">Formation offerte</a></div>
+    <div class="ft-col"><div class="ft-col-title">Ressources</div><a href="/blog/market-profile-guide-complet/">Market Profile</a><a href="/blog/footprint-chart-trading/">Footprint Chart</a><a href="/blog/order-flow-trading-france/">Order Flow</a></div>
+  </div></div>
+  <div class="ft-bottom"><span>&copy; 2026 BASS — Sébastien Constant</span><div><a href="/mentions-legales/">Mentions légales</a><a href="/confidentialite/">Confidentialité</a><a href="/cgv/">CGV</a><a href="mailto:contact@basstrading.fr">Contact</a></div></div>
+</footer>
+<div class="disclaimer">Le trading comporte des risques de perte en capital. Les performances passées ne préjugent pas des performances futures. Ce site ne constitue pas un conseil en investissement.</div>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+const lenis=new Lenis({duration:1.2,easing:t=>Math.min(1,1.001-Math.pow(2,-10*t))});
+function raf(t){lenis.raf(t);requestAnimationFrame(raf)}requestAnimationFrame(raf);
+lenis.on('scroll',ScrollTrigger.update);gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0);
+const tl=gsap.timeline();
+tl.to('.pre-word span',{y:0,opacity:1,duration:.5,stagger:.1,ease:'power3.out',delay:.3}).to('#preLine',{width:'80px',duration:.7,ease:'power2.inOut'},'<+.2').to('.preloader',{yPercent:-100,duration:.8,ease:'power3.inOut',delay:.4}).set('.preloader',{display:'none'}).to('#nav',{opacity:1,y:0,duration:.5},'<+.1');
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);const h=document.documentElement.scrollHeight-window.innerHeight;document.getElementById('readingProgress').style.width=(window.scrollY/h*100)+'%'});
+const tocLinks=document.querySelectorAll('.toc a');const sections=Array.from(tocLinks).map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+window.addEventListener('scroll',()=>{let c='';sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)c=s.id});tocLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+c)})});
+function tf(b){const i=b.closest('.fi'),a=b.nextElementSibling,o=i.classList.contains('active');document.querySelectorAll('.fi').forEach(x=>{x.classList.remove('active');x.querySelector('.fa').classList.remove('open')});if(!o){i.classList.add('active');a.classList.add('open')}}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();lenis.scrollTo(t,{offset:-60})}})});
+</script>
+<script src="/v.js" defer></script>
+</body>
+</html>
