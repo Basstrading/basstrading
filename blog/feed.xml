@@ -6,8 +6,16 @@
   <link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
   <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/"/>
   <id>https://basstrading.fr/blog/</id>
-  <updated>2026-11-10T00:00:00Z</updated>
+  <updated>2026-11-11T00:00:00Z</updated>
   <author><name>Sébastien Constant (Bass)</name><uri>https://basstrading.fr/auteur/sebastien-constant/</uri></author>
+  <entry>
+    <title>Rithmic : c&#x27;est quoi, R Trader Pro, prop firms et Mac</title>
+    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/rithmic-futures/"/>
+    <id>https://basstrading.fr/blog/rithmic-futures/</id>
+    <published>2026-11-11T00:00:00Z</published>
+    <updated>2026-11-11T00:00:00Z</updated>
+    <summary>Rithmic expliqué simplement : flux de données et routage d&#x27;ordres des futures, R Trader Pro, prop firms, Mac, démo, erreurs de connexion et réglages.</summary>
+  </entry>
   <entry>
     <title>VWAP TradingView : réglages, bandes et VWAP ancrée (guide)</title>
     <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/vwap-tradingview/"/>

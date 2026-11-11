@@ -91,6 +91,7 @@
 - [NinjaTrader avis : prix, France, order flow et limites](https://basstrading.fr/blog/ninjatrader-avis/): NinjaTrader avis : ce que vaut la plateforme pour les futures, son arrivée en Europe, ses prix, son order flow, Mac et débutant, et ses vraies limites.
 - [Tradovate avis : prix, démo, France et limites (2026)](https://basstrading.fr/blog/tradovate-avis/): Tradovate avis : prix des formules, frais cachés, démo de 14 jours, accès depuis la France, lien avec NinjaTrader et TradingView, et vraies limites.
 - [Sierra Chart : configurer Market Profile, footprint et CVD](https://basstrading.fr/blog/sierra-chart-configuration/): Configurer Sierra Chart pas à pas : profil TPO, Volume Profile, footprint (Numbers Bars) et CVD, pour lire les futures du Nasdaq.
+- [Rithmic : c'est quoi, R Trader Pro, prop firms et Mac](https://basstrading.fr/blog/rithmic-futures/): Rithmic expliqué simplement : flux de données et routage d'ordres des futures, R Trader Pro, prop firms, Mac, démo, erreurs de connexion et réglages.
 - [VWAP TradingView : réglages, bandes et VWAP ancrée (guide)](https://basstrading.fr/blog/vwap-tradingview/): VWAP sur TradingView : l'ajouter, chaque réglage, les bandes d'écart-type, la VWAP ancrée, le bug « no volume data » et mon réglage pour le Nasdaq.
 - Formation liée : [Toutes les formations de Bass](https://basstrading.fr/formations/), plus de 250 leçons vidéo, du débutant au Market Profile avancé.
 
