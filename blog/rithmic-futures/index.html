@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rithmic : c&#39;est quoi, R Trader Pro, prop firms et Mac — BASS Trading</title>
+  <meta name="description" content="Rithmic expliqué simplement : flux de données et routage d&#39;ordres des futures, R Trader Pro, prop firms, Mac, démo, erreurs de connexion et réglages.">
+  <meta property="og:title" content="Rithmic : c&#39;est quoi, R Trader Pro, prop firms et Mac — BASS Trading">
+  <meta property="og:description" content="Rithmic expliqué simplement : flux de données et routage d&#39;ordres des futures, R Trader Pro, prop firms, Mac, démo, erreurs de connexion et réglages.">
+  <meta property="og:image" content="https://basstrading.fr/blog/rithmic-futures/blog-rithmic-futures-1.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://basstrading.fr/blog/rithmic-futures/blog-rithmic-futures-1.webp">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://basstrading.fr/blog/rithmic-futures/">
+  <meta property="og:site_name" content="BASS Trading">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://basstrading.fr/blog/rithmic-futures/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","@id":"https://basstrading.fr/blog/rithmic-futures/#article","headline":"Rithmic : c'est quoi, R Trader Pro, prop firms et Mac","description":"Rithmic expliqué simplement : flux de données et routage d'ordres des futures, R Trader Pro, prop firms, Mac, démo, erreurs de connexion et réglages.","datePublished":"2026-11-11","dateModified":"2026-11-11","inLanguage":"fr-FR","image":"https://basstrading.fr/blog/rithmic-futures/blog-rithmic-futures-1.webp","mainEntityOfPage":"https://basstrading.fr/blog/rithmic-futures/","isPartOf":{"@type":"WebSite","@id":"https://basstrading.fr/#website","name":"BASS Trading","url":"https://basstrading.fr/"},"author":{"@type":"Person","@id":"https://basstrading.fr/#sebastien-constant","name":"Sébastien Constant","url":"https://basstrading.fr/auteur/sebastien-constant/"},"publisher":{"@type":"Organization","@id":"https://basstrading.fr/#organisation","name":"BASS Trading","url":"https://basstrading.fr/","logo":{"@type":"ImageObject","url":"https://basstrading.fr/images/logo-basstrading.png","width":512,"height":512}}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://basstrading.fr"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://basstrading.fr/blog/"},{"@type":"ListItem","position":3,"name":"Rithmic expliqué","item":"https://basstrading.fr/blog/rithmic-futures/"}]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Rithmic est-il un courtier ?","acceptedAnswer":{"@type":"Answer","text":"Non. Rithmic est un éditeur de logiciels indépendant référencé par le CME : il fournit le flux de données et le routage des ordres à des courtiers (FCM) et à des prop firms. Ton argent et ton compte sont chez le courtier ou chez la prop firm, jamais chez Rithmic. C'est pour ça que tu obtiens tes identifiants Rithmic auprès de ton courtier, et pas sur le site de Rithmic."}},{"@type":"Question","name":"Rithmic est-il gratuit ?","acceptedAnswer":{"@type":"Answer","text":"Pas vraiment : l'accès est facturé au courtier ou à la prop firm, qui le répercute en général dans ses frais ou dans l'abonnement de l'évaluation, et les données du CME ont leur propre tarif. En prop firm, les données sont souvent incluses. Vérifie la grille de ton courtier et remplis honnêtement le questionnaire professionnel ou non professionnel à la première connexion."}},{"@type":"Question","name":"Peut-on utiliser Rithmic sur Mac ?","acceptedAnswer":{"@type":"Answer","text":"Oui avec ATAS X, qui se connecte directement à Rithmic sur macOS. En revanche, R Trader Pro, Sierra Chart et la version bureau de NinjaTrader sont des logiciels Windows : sur Mac, il faut alors une machine virtuelle Windows ou un PC distant. Teste toujours à l'ouverture américaine, à 15 h 30 heure de Paris, car Rithmic est sensible à la charge du processeur."}},{"@type":"Question","name":"Quelle différence entre Rithmic et Tradovate ?","acceptedAnswer":{"@type":"Answer","text":"Rithmic est un tuyau de données et d'ordres utilisé par des courtiers ; Tradovate est un courtier (FCM) avec sa propre plateforme web et mobile. Beaucoup de prop firms proposent les deux. Rithmic convient mieux aux plateformes Windows d'order flow comme Sierra Chart ou ATAS ; Tradovate est plus simple si tu trades depuis un navigateur, un Mac ou TradingView."}},{"@type":"Question","name":"Comment obtenir une démo Rithmic ?","acceptedAnswer":{"@type":"Answer","text":"Tu peux demander une démo à Rithmic, à un courtier qui le propose ou à une prop firm. Tu reçois des identifiants pour les serveurs « Rithmic Paper Trading », réservés à la simulation. La durée varie selon le fournisseur : vérifie-la sur la page officielle le jour de ton inscription. Utilise cette période pour tester ta plateforme, ta connexion et ta procédure de fermeture d'urgence."}},{"@type":"Question","name":"Pourquoi R Trader Pro affiche « Login Failed » ?","acceptedAnswer":{"@type":"Answer","text":"Les trois causes les plus courantes : ton identifiant est déjà connecté ailleurs (par exemple dans ta plateforme sans le mode plug-in), tu as choisi le mauvais système dans la liste, ou ton compte n'a pas l'autorisation de connexion par API. Vérifie aussi qu'aucun espace ne s'est glissé au copier-coller. Si rien ne change, seul ton courtier ou ta prop firm peut débloquer l'accès."}},{"@type":"Question","name":"Peut-on connecter deux plateformes au même compte Rithmic ?","acceptedAnswer":{"@type":"Answer","text":"Un identifiant Rithmic correspond en principe à une session : deux connexions directes simultanées s'éjectent l'une l'autre. La solution est le mode plug-in : tu ouvres R Trader Pro avec « Allow Plugins » coché, puis ta plateforme (NinjaTrader, ATAS) passe par lui. Sur NinjaTrader, vérifie auprès de ta prop firm et du support NinjaTrader avant d'ouvrir plusieurs connexions Rithmic."}}]}
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{--bk:#1D1D1F;--bk2:#111;--bk3:#0A0A0A;--g1:#6E6E73;--g2:#86868B;--g3:#D2D2D7;--g4:#F5F5F7;--wh:#FBFBFD;--pure:#FFF;--green:#00B67A;--blue:#0066FF}
+    html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}
+    body{font-family:'DM Sans',sans-serif;color:var(--bk);background:var(--pure);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+    .preloader{position:fixed;inset:0;background:var(--bk3);z-index:10001;display:flex;align-items:center;justify-content:center}
+    .pre-word{font-family:'Outfit',sans-serif;font-size:clamp(3rem,8vw,5rem);font-weight:900;letter-spacing:16px;text-transform:uppercase;color:var(--pure);overflow:hidden}
+    .pre-word span{display:inline-block;transform:translateY(110%);opacity:0}
+    .pre-line{width:0;height:1px;background:rgba(255,255,255,.3);margin-top:20px}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 48px;display:flex;align-items:center;justify-content:space-between;background:rgba(245,245,247,.85);backdrop-filter:blur(20px) saturate(1.8);border-bottom:1px solid rgba(0,0,0,.04);transition:background .4s}
+    .nav-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase;color:var(--bk)}
+    .nav-links{display:flex;gap:28px;list-style:none}.nav-links a{font-size:.74rem;font-weight:500;letter-spacing:.3px;color:var(--g1);transition:color .3s}.nav-links a:hover{color:var(--bk)}
+    .nav-cta{padding:8px 20px;background:var(--bk);color:var(--pure);border:none;border-radius:980px;font-size:.72rem;font-weight:600;transition:all .3s;cursor:pointer;text-decoration:none;display:inline-block}.nav-cta:hover{background:var(--bk2)}
+    .blog-hero{padding:160px 48px 80px;background:var(--g4);position:relative;overflow:hidden}
+    .blog-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,transparent,var(--g4));pointer-events:none}
+    .blog-hero-inner{max-width:720px;margin:0 auto}
+    .breadcrumb{display:flex;gap:8px;align-items:center;margin-bottom:28px;flex-wrap:wrap}
+    .breadcrumb a,.breadcrumb span{font-size:.68rem;font-weight:500;letter-spacing:.3px;color:var(--g2);transition:color .3s}.breadcrumb a:hover{color:var(--bk)}.breadcrumb .sep{color:var(--g3)}
+    .blog-hero-cat{display:inline-block;padding:5px 14px;border:1px solid rgba(0,102,255,.15);border-radius:980px;font-size:.6rem;font-weight:700;color:var(--blue);letter-spacing:2px;text-transform:uppercase;margin-bottom:20px}
+    .blog-hero-title{font-family:'Outfit',sans-serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:900;line-height:1.05;letter-spacing:-2px;color:var(--bk);margin-bottom:20px}
+    .blog-hero-desc{font-size:.95rem;color:var(--g1);line-height:1.8;max-width:560px;margin-bottom:28px}
+    .blog-meta{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+    .blog-meta-author{display:flex;align-items:center;gap:10px}
+    .blog-meta-avatar{width:36px;height:36px;border-radius:50%;background:var(--bk3);overflow:hidden;flex-shrink:0}.blog-meta-avatar img{width:100%;height:100%;object-fit:cover}
+    .blog-meta-name{font-size:.78rem;font-weight:600;color:var(--bk)}.blog-meta-role{font-size:.65rem;color:var(--g2)}
+    .blog-meta-sep{width:1px;height:24px;background:var(--g3)}
+    .blog-meta-info{font-size:.7rem;color:var(--g2)}.blog-meta-info span{margin-right:16px}
+    .toc{position:sticky;top:90px;background:var(--pure);border:1px solid rgba(0,0,0,.04);border-radius:14px;padding:24px;margin-bottom:32px}
+    .toc-title{font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.5px;color:var(--bk);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+    .toc ol{list-style:none;counter-reset:toc}.toc li{counter-increment:toc}
+    .toc li a{display:flex;align-items:baseline;gap:8px;padding:6px 0;font-size:.76rem;color:var(--g1);transition:color .3s;border-bottom:1px solid rgba(0,0,0,.03)}.toc li a:hover{color:var(--blue)}
+    .toc li a::before{content:counter(toc,decimal-leading-zero);font-family:'Outfit',sans-serif;font-size:.65rem;font-weight:700;color:var(--g3);min-width:18px}
+    .toc li:last-child a{border-bottom:none}.toc li a.active{color:var(--blue);font-weight:600}.toc li a.active::before{color:var(--blue)}
+    .article-wrap{display:grid;grid-template-columns:220px 1fr;gap:40px;max-width:1020px;margin:0 auto;padding:60px 48px 120px}
+    .article-sidebar{position:relative}.article-body{max-width:700px}
+    .article-body h2{font-family:'Outfit',sans-serif;font-size:clamp(1.4rem,2.5vw,1.8rem);font-weight:800;line-height:1.1;letter-spacing:-1px;color:var(--bk);margin:56px 0 16px;padding-top:20px}.article-body h2:first-of-type{margin-top:0}
+    .article-body h3{font-family:'Outfit',sans-serif;font-size:1.05rem;font-weight:700;line-height:1.25;letter-spacing:-.3px;color:var(--bk);margin:36px 0 10px}
+    .article-body p{font-size:.9rem;color:var(--g1);line-height:1.85;margin-bottom:18px}
+    .article-body strong{color:var(--bk);font-weight:600}
+    .article-body ul,.article-body ol{margin:0 0 20px 0;padding-left:20px}
+    .article-body li{font-size:.88rem;color:var(--g1);line-height:1.8;margin-bottom:6px}.article-body li strong{color:var(--bk)}
+    .article-body blockquote{margin:28px 0;padding:20px 24px;background:var(--g4);border-left:3px solid var(--bk);border-radius:0 12px 12px 0;font-size:.88rem;color:var(--g1);line-height:1.8;font-style:italic}
+    .article-body blockquote strong{color:var(--bk);font-style:normal}
+    .article-body hr{border:none;border-top:1px solid var(--g4);margin:48px 0}
+    .info-box{margin:28px 0;padding:24px;background:rgba(0,102,255,.03);border:1px solid rgba(0,102,255,.08);border-radius:14px}
+    .info-box-title{font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:700;color:var(--blue);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+    .info-box p{font-size:.82rem;color:var(--g1);line-height:1.7;margin-bottom:0}
+    .key-concept{margin:32px 0;padding:28px;background:var(--bk3);border-radius:16px;color:var(--pure)}
+    .key-concept-label{font-size:.55rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:10px}
+    .key-concept h4{font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:800;letter-spacing:-.3px;margin-bottom:8px}
+    .key-concept p{font-size:.85rem;color:rgba(255,255,255,.5);line-height:1.8;margin-bottom:0}
+    .compare-table{width:100%;margin:24px 0 28px;border-collapse:collapse;border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,.06)}
+    .compare-table th{background:var(--bk3);color:var(--pure);font-family:'Outfit',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:14px 16px;text-align:left}
+    .compare-table td{padding:12px 16px;font-size:.82rem;color:var(--g1);line-height:1.6;border-bottom:1px solid rgba(0,0,0,.04);background:var(--pure)}
+    .compare-table tr:last-child td{border-bottom:none}.compare-table td:first-child{font-weight:600;color:var(--bk)}
+    .cta-card{margin:48px 0;padding:40px;background:var(--bk3);border-radius:20px;text-align:center;position:relative;overflow:hidden}
+    .cta-card::before{content:'';position:absolute;top:-50%;right:-30%;width:400px;height:400px;background:radial-gradient(circle,rgba(0,102,255,.08) 0%,transparent 70%);pointer-events:none}
+    .cta-card-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:12px}
+    .cta-card h3{font-family:'Outfit',sans-serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:800;color:var(--pure);letter-spacing:-.5px;margin-bottom:8px}
+    .cta-card p{font-size:.85rem;color:rgba(255,255,255,.4);line-height:1.7;max-width:380px;margin:0 auto 24px}
+    .cta-card .btn-p{background:var(--pure);color:var(--bk)}.cta-card .btn-p:hover{box-shadow:0 8px 30px rgba(255,255,255,.15)}
+    .faq-sec{padding:80px 48px 100px;background:var(--g4)}
+    .faq-list{max-width:680px;margin:40px auto 0}.fi{border-bottom:1px solid rgba(0,0,0,.06)}
+    .fq{width:100%;text-align:left;padding:18px 0;background:none;border:none;font-size:.85rem;font-weight:600;font-family:'DM Sans',sans-serif;color:var(--bk);display:flex;justify-content:space-between;align-items:center;cursor:pointer;gap:16px;transition:color .3s}.fq:hover{color:var(--g1)}
+    .fq-icon{width:22px;height:22px;border-radius:50%;background:rgba(0,0,0,.04);display:flex;align-items:center;justify-content:center;font-size:.75rem;transition:all .4s;flex-shrink:0;color:var(--g2)}
+    .fa{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1)}.fa.open{max-height:280px;padding-bottom:14px}
+    .fa p{font-size:.8rem;color:var(--g1);line-height:1.7;margin-bottom:0}.fi.active .fq-icon{background:var(--bk);color:var(--pure);transform:rotate(45deg)}
+    .related-sec{padding:80px 48px;background:var(--pure);border-top:1px solid var(--g4)}
+    .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1060px;margin:40px auto 0}
+    .related-card{display:block;padding:28px;background:var(--g4);border-radius:16px;transition:all .4s;text-decoration:none;color:var(--bk)}
+    .related-card:hover{background:var(--pure);box-shadow:0 8px 30px rgba(0,0,0,.06);transform:translateY(-2px)}
+    .related-cat{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+    .related-card h3{font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:700;line-height:1.3;letter-spacing:-.3px;margin-bottom:8px}
+    .related-card p{font-size:.78rem;color:var(--g1);line-height:1.6;margin-bottom:14px}
+    .related-link{font-size:.72rem;font-weight:600;color:var(--blue);letter-spacing:.3px}
+    .footer{background:var(--bk3);color:var(--pure);padding:56px 48px 28px}
+    .ft-top{display:flex;justify-content:space-between;align-items:start;margin-bottom:48px;flex-wrap:wrap;gap:32px}
+    .ft-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase}
+    .ft-cols{display:flex;gap:80px}
+    .ft-col-title{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:12px}
+    .ft-col a{display:block;font-size:.78rem;color:rgba(255,255,255,.5);margin-bottom:8px;transition:color .3s}.ft-col a:hover{color:var(--pure)}
+    .ft-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:20px;display:flex;justify-content:space-between;align-items:center;font-size:.6rem;color:rgba(255,255,255,.2)}
+    .ft-bottom a{color:rgba(255,255,255,.2);transition:color .3s;margin-left:20px}.ft-bottom a:hover{color:rgba(255,255,255,.5)}
+    .disclaimer{padding:12px 48px;background:var(--bk3);font-size:.58rem;color:rgba(255,255,255,.12);text-align:center;line-height:1.6;border-top:1px solid rgba(255,255,255,.03)}
+    .sec-center{text-align:center;max-width:680px;margin:0 auto}
+    .sec-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--g2);margin-bottom:10px}
+    .sec-title{font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;line-height:1.05;letter-spacing:-1.5px;color:var(--bk);margin-bottom:16px}
+    .btn-p{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--bk);color:var(--pure);border-radius:980px;font-size:.85rem;font-weight:600;transition:all .3s;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;text-decoration:none}
+    .btn-p:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(0,0,0,.1)}
+    .btn-p svg{width:13px;height:13px;transition:transform .3s}.btn-p:hover svg{transform:translateX(3px)}
+    .reading-progress{position:fixed;top:0;left:0;height:2px;background:var(--blue);z-index:9999;width:0;transition:width .1s linear}
+    @media(max-width:900px){.nav{padding:14px 20px}.nav-links{display:none}.blog-hero{padding:120px 20px 60px}.article-wrap{grid-template-columns:1fr;padding:40px 20px 80px}.article-sidebar{display:none}.related-grid{grid-template-columns:1fr}.related-sec,.faq-sec{padding:60px 20px}.ft-cols{flex-direction:column;gap:28px}.footer{padding:40px 20px 20px}.disclaimer{padding:10px 16px}.cta-card{padding:28px 20px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  .article-body a{color:var(--blue);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;font-weight:500}.article-body a:hover{text-decoration-thickness:2px}
+</style>
+<style>/* 28/10/2026 : débordement mobile (colonne de grille sans min-width) */.article-wrap>*,.article-layout>*{min-width:0}.article-body table,.compare-table{display:block;overflow-x:auto;max-width:100%}.article-body pre{overflow-x:auto}.article-body img{max-width:100%;height:auto}</style>
+</head>
+<body>
+
+<div class="preloader" id="preloader"><div style="text-align:center"><div class="pre-word"><span>B</span><span>A</span><span>S</span><span>S</span></div><div class="pre-line" id="preLine"></div></div></div>
+<div class="reading-progress" id="readingProgress"></div>
+
+<nav class="nav" id="nav">
+  <a href="https://basstrading.fr" class="nav-logo">BASS</a>
+  <ul class="nav-links">
+    <li><a href="https://basstrading.fr/#methode">Méthode</a></li>
+    <li><a href="https://basstrading.fr#resultats">Résultats</a></li>
+    <li><a href="https://basstrading.fr#avis">Avis</a></li>
+    <li><a href="https://basstrading.fr#faq">FAQ</a></li>
+    <li><a href="/formations/">Formations</a></li>
+    <li><a href="https://basstrading.fr/blog/">Blog</a></li>
+  </ul>
+  <a href="https://basstrading.fr/p/formation-offerte/?src=blog-rithmic-futures-menu" class="nav-cta">Formation offerte</a>
+</nav>
+
+<section class="blog-hero">
+  <div class="blog-hero-inner">
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <a href="https://basstrading.fr">Accueil</a><span class="sep">/</span>
+      <a href="https://basstrading.fr/blog/">Blog</a><span class="sep">/</span>
+      <span>Rithmic expliqué</span>
+    </nav>
+    <div class="blog-hero-cat">Plateformes</div>
+    <h1 class="blog-hero-title">Rithmic : c&#39;est quoi, R Trader Pro, prop firms et Mac</h1>
+    <p class="blog-hero-desc">Rithmic n&#39;est ni un courtier ni une plateforme de graphiques : c&#39;est le tuyau qui transporte tes données et tes ordres entre ta plateforme et le CME. Ton courtier ou ta prop firm te donne les identifiants, tu les branches dans ton logiciel. Voici comment ça marche, comment le configurer et comment régler les erreurs courantes.</p>
+    <div class="blog-meta">
+      <div class="blog-meta-author">
+        <div class="blog-meta-avatar"><img src="../../images/bass-presenting.jpg" alt="Sébastien Constant" loading="lazy"></div>
+        <div><div class="blog-meta-name"><a href="/auteur/sebastien-constant/" rel="author" style="color:inherit;text-decoration:none">Sébastien Constant</a></div><div class="blog-meta-role">Trader & Formateur Order Flow</div></div>
+      </div>
+      <div class="blog-meta-sep"></div>
+      <div class="blog-meta-info"><span>Novembre 2026</span><span>20 min de lecture</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="article-wrap">
+  <aside class="article-sidebar">
+    <div class="toc">
+      <div class="toc-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/></svg> Sommaire</div>
+      <ol>
+        <li><a href="#rithmic-c-est-quoi-exactement">Rithmic, c&#39;est quoi exactement ?</a></li>
+        <li><a href="#ou-se-place-rithmic-entre-toi-ton-courti">Où se place Rithmic entre toi, ton courtier et le CME ?</a></li>
+        <li><a href="#r-trader-pro-a-quoi-sert-ce-logiciel">R Trader Pro : à quoi sert ce logiciel ?</a></li>
+        <li><a href="#pourquoi-les-prop-firms-utilisent-elles-">Pourquoi les prop firms utilisent-elles Rithmic ?</a></li>
+        <li><a href="#rithmic-tradovate-ou-cqg-quelle-differen">Rithmic, Tradovate ou CQG : quelle différence ?</a></li>
+        <li><a href="#comment-connecter-rithmic-a-sierra-chart">Comment connecter Rithmic à Sierra Chart, NinjaTrader, ATAS ou Quantower ?</a></li>
+        <li><a href="#peut-on-utiliser-rithmic-sur-mac">Peut-on utiliser Rithmic sur Mac ?</a></li>
+        <li><a href="#rithmic-demo-et-paper-trading-comment-s-">Rithmic démo et paper trading : comment s&#39;entraîner ?</a></li>
+        <li><a href="#les-erreurs-rithmic-les-plus-frequentes-">Les erreurs Rithmic les plus fréquentes et comment les régler</a></li>
+        <li><a href="#rithmic-et-order-flow-quelles-donnees-re">Rithmic et order flow : quelles données reçois-tu vraiment ?</a></li>
+        <li><a href="#mon-avis-faut-il-choisir-un-compte-via-r">Mon avis : faut-il choisir un compte via Rithmic ?</a></li>
+      </ol>
+    </div>
+  </aside>
+
+  <article class="article-body">
+    <h2 id="rithmic-c-est-quoi-exactement">Rithmic, c&#39;est quoi exactement ?</h2>
+    <p>Le trading de contrats à terme comporte un risque élevé de perte, pouvant dépasser la mise initiale. Contenu éducatif, pas un conseil en investissement.</p>
+<p>Rithmic est une société américaine qui fournit aux courtiers et aux prop firms un flux de données de marché et un routage d&#39;ordres vers les bourses de futures : ce n&#39;est ni un courtier, ni une plateforme de graphiques.</p>
+<p>Si tu lis cet article, c&#39;est sans doute que tu viens d&#39;ouvrir un compte chez un courtier futures ou un compte d&#39;évaluation chez une prop firm, et qu&#39;on t&#39;a envoyé un e-mail avec un « login Rithmic », un mot de passe, un nom de « système » et une « passerelle ». Et tu te demandes ce que tu es censé en faire.</p>
+<p>À la fin de cette page, tu sauras exactement où se place Rithmic, à quoi sert R Trader Pro, comment le brancher dans ta plateforme, ce qui change sur Mac, et comment régler les messages d&#39;erreur qui bloquent tout le monde la première semaine.</p>
+<h3>Ce que dit le CME de Rithmic</h3>
+<p>Le CME Group, la bourse qui cote le Nasdaq futures (NQ et MNQ), référence Rithmic comme éditeur de logiciels indépendant (ISV) sur sa <a href="https://www.cmegroup.com/solutions/market-tech-and-data-services/technology-vendor-services/rithmic-llc.html">page des fournisseurs technologiques</a> : la plateforme d&#39;exécution R|Trade, le logiciel R Trader Pro, et des interfaces de programmation (R|API+, R|Diamond API). La société ne tient pas ton argent et ne passe pas d&#39;ordres pour son compte : elle loue son infrastructure à des courtiers (les FCM, Futures Commission Merchants), à des sociétés de trading et à des prop firms. C&#39;est pour ça qu&#39;on dit qu&#39;elle est neutre vis-à-vis des courtiers : le même tuyau sert à des dizaines d&#39;entre eux.</p>
+<h3>Pourquoi j&#39;écris sur Rithmic</h3>
+<p>Je trade le Nasdaq futures en 1 minute sur Sierra Chart, avec le Market Profile, le VWAP et le CVD. Rithmic est un mot que tout le monde croise dès qu&#39;il ouvre un compte futures ou une évaluation de prop firm, et les explications en français sont rares. Alors je pose ici ce que j&#39;aurais aimé lire au début, en m&#39;appuyant sur la documentation officielle des plateformes.</p>
+<h3>À retenir</h3>
+<ul><li>Rithmic transporte tes données (prix, carnet, transactions) et tes ordres entre ta plateforme et la bourse.</li><li>Ce n&#39;est pas un courtier : ton compte et ton argent sont chez un FCM ou chez la prop firm.</li><li>Tu ne « choisis » pas vraiment Rithmic : tu choisis un courtier ou une prop firm qui le propose.</li></ul>
+<p>Concrètement, par où passe ton ordre quand tu cliques sur « Buy » ? C&#39;est la première chose à visualiser.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/rithmic-futures/blog-rithmic-futures-1.webp" alt="Schéma du trajet d&#39;un ordre futures : plateforme, serveurs Rithmic, contrôle de risque du courtier, puis CME Globex" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Ton ordre passe par Rithmic puis par le contrôle de risque de ton courtier ou de ta prop firm avant d&#39;atteindre le CME ; les données font le chemin inverse.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="ou-se-place-rithmic-entre-toi-ton-courti">Où se place Rithmic entre toi, ton courtier et le CME ?</h2>
+    <p>Rithmic se place au milieu de la chaîne : ta plateforme lui envoie l&#39;ordre, ses serveurs le font passer par le contrôle de risque de ton courtier (ou de ta prop firm), puis il arrive au CME. Les données de marché font le chemin inverse.</p>
+<h3>Le trajet d&#39;un ordre, étape par étape</h3>
+<ul><li><b>Ta plateforme</b> (Sierra Chart, NinjaTrader, ATAS, Quantower ou R Trader Pro) : c&#39;est là que tu vois ton graphique et que tu cliques.</li><li><b>Les serveurs Rithmic</b> : ils reçoivent ton ordre et le mettent au format de la bourse.</li><li><b>Le contrôle de risque du FCM</b> : ton courtier ou ta prop firm vérifie que tu as le droit de passer cet ordre (marge, taille maximale, perte maximale du jour, règles de l&#39;évaluation). Si tu dépasses une limite, l&#39;ordre est refusé ici, avant même d&#39;atteindre le marché.</li><li><b>Le CME Globex</b> : l&#39;ordre entre dans le carnet et attend une contrepartie.</li></ul>
+<p>C&#39;est un point que beaucoup de débutants ignorent : <b>ce n&#39;est pas ta plateforme qui décide si ton ordre passe, c&#39;est le serveur de risque.</b> Quand une prop firm coupe ton compte parce que tu as touché la perte maximale, ce n&#39;est pas un bug de NinjaTrader ou de Sierra : c&#39;est une règle appliquée côté serveur.</p>
+<h3>Pourquoi des serveurs près de Chicago</h3>
+<p>Selon la page du CME, Rithmic héberge ses machines dans plusieurs centres de données : Aurora, dans l&#39;Illinois (là où se trouvent les moteurs du CME, en colocation), 350 Cermak à Chicago, et Secaucus dans le New Jersey (près des bourses new-yorkaises). L&#39;idée est simple : plus le serveur qui route ton ordre est proche du moteur d&#39;appariement, moins il y a de distance à parcourir.</p>
+<p>Pour toi, depuis la France, ça veut dire une chose : <b>le gros du trajet, c&#39;est ta connexion internet jusqu&#39;aux États-Unis.</b> Quelques millisecondes gagnées entre Chicago et Aurora ne changent rien à un day trading sur MNQ si ta box décroche ou si ton ordinateur sature. Je reviens sur ce point dans la partie sur les erreurs.</p>
+<h3>Ton compte n&#39;est pas « chez Rithmic »</h3>
+<p>C&#39;est la confusion la plus fréquente. Rithmic ne détient pas ton argent. Ton compte est ouvert chez un FCM, une société enregistrée auprès des régulateurs américains, ou bien chez la prop firm qui t&#39;a vendu une évaluation. Si Rithmic a un incident, ton compte existe toujours ; ce sont les données et le routage qui sont coupés le temps de la panne.</p>
+<p>Pour comprendre comment fonctionnent les contrats eux-mêmes (échéances, marge, effet de levier), le document pédagogique de l&#39;AMF sur <a href="https://www.amf-france.org/sites/institutionnel/files/pdf/59285/fr/Les_futures.pdf">les contrats à terme</a> est une bonne base, et j&#39;explique le Nasdaq futures en détail dans mon guide <a href="https://basstrading.fr/blog/nasdaq-futures-nq-mnq/">NQ et MNQ : le Nasdaq futures expliqué</a>.</p>
+<h3>À retenir</h3>
+<ul><li>Ordre : plateforme → Rithmic → contrôle de risque du courtier → CME.</li><li>Les refus d&#39;ordre viennent souvent du serveur de risque, pas de ta plateforme.</li><li>Depuis la France, ta connexion pèse bien plus que la latence entre data centers.</li></ul>
+<p>Maintenant, tu as sûrement déjà vu passer un logiciel nommé R Trader Pro. À quoi sert-il si tu as déjà Sierra Chart ou NinjaTrader ?</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/rithmic-futures/blog-rithmic-futures-2.webp" alt="Allées de baies de serveurs dans un centre de données, comme ceux qui hébergent les infrastructures de routage des futures" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Rithmic héberge ses serveurs dans des centres de données à Aurora (colocation du CME), à Chicago et dans le New Jersey.<br><span style="font-size:.85em">Photo : <a href="https://commons.wikimedia.org/wiki/File:Datacenter_Server_Racks_(22370909788).jpg" rel="noopener" target="_blank">Carl Lender from Sunrise, USA</a>, <a href="https://creativecommons.org/licenses/by/2.0" rel="noopener license" target="_blank">CC BY 2.0</a></span></figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="r-trader-pro-a-quoi-sert-ce-logiciel">R Trader Pro : à quoi sert ce logiciel ?</h2>
+    <p>R Trader Pro est le logiciel de trading de Rithmic lui-même : un carnet d&#39;ordres (DOM), une fenêtre de positions, de résultats et de paramètres de risque, et surtout un « pont » qui permet à d&#39;autres plateformes de se connecter en mode plug-in.</p>
+<p>Ce n&#39;est pas un logiciel d&#39;analyse. Tu n&#39;y feras pas de footprint, pas de Market Profile, pas de volume profile digne de ce nom. <b>C&#39;est un cockpit d&#39;exécution.</b></p>
+<h3>Trois usages concrets</h3>
+<ul><li><b>Le mode plug-in.</b> Certaines plateformes peuvent passer par R Trader Pro au lieu de se connecter directement aux serveurs Rithmic. Dans ce cas, R Trader Pro doit rester ouvert, avec l&#39;option « Allow Plugins » cochée au moment de la connexion. C&#39;est par exemple l&#39;option « Connect via RTrader Pro » d&#39;ATAS, ou le mode plug-in de NinjaTrader. L&#39;intérêt : utiliser le même login sur R Trader Pro et sur ta plateforme sans que l&#39;un éjecte l&#39;autre.</li><li><b>Le contrôle de ton compte.</b> R Trader Pro affiche ce que le serveur sait de toi : positions ouvertes, ordres en attente, résultat du jour, limites de risque. Quand ta plateforme affiche une chose et que ton compte en dit une autre, c&#39;est la référence à consulter.</li><li><b>La porte de secours.</b> C&#39;est l&#39;usage que je recommande à tout le monde. Si ta plateforme plante avec une position ouverte, tu dois savoir en moins d&#39;une minute comment ouvrir un deuxième outil et fermer ta position. Ouvre R Trader Pro une fois en démo, repère le bouton pour tout fermer, et entraîne-toi. Le jour où tu en auras besoin, tu n&#39;auras pas le temps de lire un tutoriel.</li></ul>
+<h3>Les limites de R Trader Pro</h3>
+<p>C&#39;est un logiciel Windows, à l&#39;interface austère, pensé pour l&#39;exécution. Pour lire le marché, il te faut une vraie plateforme d&#39;analyse. Et il ne règle pas les problèmes de fond : un mauvais plan de risque reste un mauvais plan de risque, même avec un bouton « Flatten » à portée de clic. Sur ce point, mon article sur <a href="https://basstrading.fr/blog/combien-risquer-par-trade/">combien risquer par trade</a> compte bien plus que le choix du logiciel.</p>
+<h3>À retenir</h3>
+<ul><li>R Trader Pro = exécution et contrôle du compte, pas analyse.</li><li>Le mode plug-in évite les conflits de connexion entre deux logiciels.</li><li>Apprends à fermer une position depuis R Trader Pro avant d&#39;en avoir besoin.</li></ul>
+<p>Reste à comprendre pourquoi ce nom revient dans presque tous les e-mails de bienvenue des prop firms.</p>
+
+    <hr>
+
+    <h2 id="pourquoi-les-prop-firms-utilisent-elles-">Pourquoi les prop firms utilisent-elles Rithmic ?</h2>
+    <p>Les prop firms futures utilisent Rithmic parce qu&#39;il leur permet d&#39;appliquer leurs règles de risque directement sur le serveur, de proposer plusieurs plateformes avec un seul compte, et de fournir des données de marché du CME à des milliers de traders.</p>
+<h3>Le risque appliqué côté serveur</h3>
+<p>Une prop firm vit de ses règles : perte maximale du jour, drawdown suiveur, taille maximale, interdiction de garder une position après une certaine heure. Ces règles doivent s&#39;appliquer même si tu fermes ton ordinateur ou si ta plateforme plante. Rithmic propose des contrôles de risque avant et après la transaction, ce qui permet à la firme de bloquer un ordre ou de liquider une position sans dépendre de ton logiciel.</p>
+<p>Si tu ne sais pas encore comment fonctionne ce fameux drawdown suiveur, lis d&#39;abord <a href="https://basstrading.fr/blog/drawdown-prop-firm-futures/">le drawdown en prop firm futures expliqué</a> : c&#39;est la règle qui fait échouer le plus de comptes, et elle est appliquée par ce serveur.</p>
+<h3>Plusieurs plateformes, un seul compte</h3>
+<p>Avec un compte Rithmic, la firme laisse le trader choisir son outil : Sierra Chart, NinjaTrader, ATAS, Quantower, R Trader Pro, et d&#39;autres. C&#39;est un argument commercial pour elle, et une liberté pour toi. Attention quand même : toutes les plateformes n&#39;acceptent pas forcément toutes les prop firms. Avec NinjaTrader, par exemple, l&#39;accès pourrait dépendre d&#39;un accord entre la firme et l&#39;éditeur : vérifie auprès de ta prop firm et du support NinjaTrader avant de payer.</p>
+<h3>Le cas particulier des données de marché</h3>
+<p>Ici, un détail qui coûte de l&#39;argent à beaucoup de traders. La documentation de Sierra Chart rappelle que, selon le CME, un compte d&#39;évaluation n&#39;est pas un compte réel financé : la question des frais de données « non professionnelles » se pose donc différemment selon ta situation. En pratique, la plupart des firmes incluent les données dans l&#39;abonnement et te demandent de signer des formulaires à la première connexion. <b>Lis-les et réponds honnêtement au questionnaire « professionnel / non professionnel »</b> : une mauvaise réponse peut te facturer le tarif professionnel.</p>
+<h3>Mon angle sur les prop firms</h3>
+<p>La prop firm est une voie parmi d&#39;autres, pas un passage obligé. Certains profils s&#39;y sentent bien (le cadre de règles les discipline), d&#39;autres s&#39;y épuisent (la pression du compte à valider les pousse à surtrader). Avant de te demander quel flux de données prendre, demande-toi quel trading te correspond. J&#39;ai rassemblé tout ce qu&#39;il faut savoir dans mon guide <a href="https://basstrading.fr/blog/prop-firm-funded-trader/">prop firm et funded trader</a>, et la suite logique, le jour où tu réussis, est expliquée dans <a href="https://basstrading.fr/blog/premier-payout-prop-firm/">ton premier payout de prop firm</a>.</p>
+<h3>À retenir</h3>
+<ul><li>Les règles de la prop firm sont appliquées sur le serveur, pas dans ta plateforme.</li><li>Vérifie que ta plateforme accepte ta prop firm avant de payer l&#39;évaluation.</li><li>Remplis avec soin le questionnaire des données à la première connexion.</li></ul>
+<p>Tu as peut-être aussi le choix entre Rithmic et Tradovate, ou entendu parler de CQG. Quelle différence ?</p>
+
+    <hr>
+
+    <h2 id="rithmic-tradovate-ou-cqg-quelle-differen">Rithmic, Tradovate ou CQG : quelle différence ?</h2>
+    <p>Rithmic et CQG sont des fournisseurs de données et de routage d&#39;ordres qu&#39;utilisent les courtiers ; Tradovate est un courtier (FCM) avec sa propre plateforme. On ne compare donc pas exactement la même chose.</p>
+<h3>Tradovate : un courtier avec sa plateforme</h3>
+<p>Tradovate est le nom commercial de NinjaTrader Clearing LLC, un FCM enregistré auprès des régulateurs américains, comme l&#39;indique sa <a href="https://www.tradovate.com/pricing/">page de tarifs</a>. Tu y ouvres un compte, tu trades depuis leur plateforme web ou leur application, et tu peux aussi relier d&#39;autres outils. Beaucoup de prop firms proposent un compte « Tradovate » à côté du compte « Rithmic ». J&#39;ai fait un article complet : <a href="https://basstrading.fr/blog/tradovate-avis/">mon avis sur Tradovate</a>.</p>
+<h3>CQG : l&#39;autre grand tuyau</h3>
+<p>CQG joue un rôle proche de Rithmic : flux de données et routage, proposés par de nombreux courtiers. Le choix entre les deux dépend surtout de ce que propose ton courtier et de ce que supporte ta plateforme. Méfie-toi des comparatifs qui annoncent des écarts de latence précis : ils viennent souvent de sites affiliés, et depuis la France ta connexion internet pèse bien plus que ces écarts.</p>
+<h3>Le tableau pour décider</h3>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Critère</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Rithmic</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Tradovate</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Ce que c&#39;est</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Flux de données et routage</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Courtier (FCM) et plateforme</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Comment l&#39;obtenir</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Via un courtier ou une prop firm</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Compte ouvert en direct</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Logiciel maison</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">R Trader Pro (Windows)</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Plateforme web et application</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Plateformes tierces</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Sierra, NinjaTrader, ATAS, Quantower</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">TradingView, NinjaTrader et outils reliés</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Profil type</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Lecteur de carnet sur PC</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Trader nomade, web ou Mac</td></tr></tbody></table></div>
+<h3>Comment je trancherais</h3>
+<p>Si tu veux lire le carnet d&#39;ordres et le footprint sur une plateforme Windows exigeante (Sierra Chart, ATAS, NinjaTrader), un compte via Rithmic est souvent le chemin le plus naturel. Si tu travailles sur Mac, en déplacement, ou si tu veux trader depuis TradingView, Tradovate est plus simple. Et si tu hésites encore sur la plateforme elle-même, lis <a href="https://basstrading.fr/blog/ninjatrader-avis/">mon avis sur NinjaTrader</a> : <b>le choix de la plateforme vient avant le choix du flux.</b></p>
+<h3>À retenir</h3>
+<ul><li>Rithmic et CQG = tuyaux ; Tradovate = courtier avec sa plateforme.</li><li>Le bon choix dépend de ta plateforme et de ton ordinateur.</li><li>Ignore les chiffres de latence des sites qui touchent une commission.</li></ul>
+<p>Tu as tes identifiants Rithmic. Comment les brancher dans ta plateforme sans y passer la soirée ?</p>
+
+    <hr>
+
+    <h2 id="comment-connecter-rithmic-a-sierra-chart">Comment connecter Rithmic à Sierra Chart, NinjaTrader, ATAS ou Quantower ?</h2>
+    <p>Pour connecter Rithmic, il te faut quatre informations envoyées par ton courtier ou ta prop firm : l&#39;identifiant, le mot de passe, le nom du système (serveur) et la passerelle. Tu les saisis dans la connexion Rithmic de ta plateforme, puis tu testes en démo.</p>
+<p>La logique est la même partout ; ce sont les menus qui changent.</p>
+<h3>Sierra Chart (ma plateforme au quotidien)</h3>
+<p>Dans Sierra Chart, on choisit le service « Rithmic Direct - DTC [Trading] » dans les paramètres de données et de trading, puis on renseigne les identifiants et le serveur.</p>
+<p>Quand j&#39;installe un poste, je suis l&#39;ordre de la documentation officielle : une installation séparée pour le service Rithmic, le serveur indiqué par le courtier ou la prop firm, puis un test en démo avant toute séance réelle.</p>
+<p>La <a href="https://www.sierrachart.com/index.php?page=doc%2FRithmic.php">documentation officielle de Sierra Chart sur Rithmic</a> précise plusieurs points à connaître :</p>
+<ul><li>les serveurs « Paper Trading » de Rithmic sont réservés à la simulation ;</li><li>les ordres OCO sont gérés côté serveur, mais les ordres « bracket » ne le sont pas à la date de rédaction de leur page ;</li><li>Rithmic fournit l&#39;historique intraday et la profondeur de marché, mais pas l&#39;historique des volumes au bid et à l&#39;ask : ton footprint ne pourra pas se remplir sur le passé avec ce seul flux ;</li><li>la documentation demande une installation séparée de Sierra Chart pour le service Rithmic.</li></ul>
+<p>Sierra Chart précise ne fournir aucune assistance technique pour les problèmes de données Rithmic : pour ces questions-là, c&#39;est ton courtier ou ta prop firm qu&#39;il faut contacter.</p>
+<p>Pour l&#39;historique complet, Sierra recommande son propre flux, Denali. C&#39;est un réglage que je détaille avec le reste de mon espace de travail dans mon guide de <a href="https://basstrading.fr/blog/sierra-chart-configuration/">configuration de Sierra Chart</a>. Et si tu veux voir à quoi ressemble ensuite un Market Profile paramétré sur cette plateforme, j&#39;ai une <a href="https://www.youtube.com/watch?v=01c83iSh3OA">vidéo pas à pas sur Sierra Chart</a>.</p>
+<h3>NinjaTrader</h3>
+<p>Dans NinjaTrader, tu ajoutes une connexion Rithmic depuis le menu des connexions. Selon ta version et ton compte, un réglage supplémentaire peut être nécessaire : vérifie auprès de ta prop firm et du support NinjaTrader. Trois pièges reviennent souvent :</p>
+<ul><li>les espaces copiés-collés avec l&#39;identifiant ou le mot de passe, première cause d&#39;échec ;</li><li>plusieurs connexions Rithmic ouvertes en même temps pourraient ne pas fonctionner : vérifie auprès de ta prop firm et du support NinjaTrader avant d&#39;en configurer une deuxième ;</li><li>en mode plug-in, R Trader Pro doit être ouvert et connecté avant NinjaTrader.</li></ul>
+<h3>ATAS</h3>
+<p>L&#39;<a href="https://help.atas.net/en/support/solutions/articles/72000602593-connecting-to-rithmic">aide officielle d&#39;ATAS sur la connexion à Rithmic</a> rappelle qu&#39;ATAS ne vend pas de données Rithmic : les identifiants viennent de ton courtier ou de ta prop firm. Tu as deux façons de te connecter : en direct, ou via R Trader Pro (« Connect via RTrader Pro », avec « Allow Plugins » coché dans R Trader Pro). ATAS précise aussi que ses OCO sont simulés sur ton ordinateur, pas sur le serveur : <b>si ton PC s&#39;éteint, l&#39;ordre lié n&#39;est plus surveillé.</b></p>
+<h3>Quantower et les autres</h3>
+<p>Quantower propose aussi un connecteur Rithmic. La logique ne change pas : identifiant, mot de passe, système, passerelle. Si ta plateforme n&#39;apparaît pas dans la liste de ta prop firm, demande-lui avant de payer.</p>
+<h3>Ma méthode de test en 10 minutes</h3>
+<ul><li>Connecte-toi en dehors des heures chargées, sur le compte démo ou paper trading.</li><li>Ouvre un graphique MNQ du contrat en cours et vérifie que les prix bougent et que le carnet affiche plusieurs niveaux.</li><li>Passe un ordre limite loin du prix, puis annule-le : vérifie qu&#39;il apparaît et disparaît aussi dans R Trader Pro.</li><li>Note où se trouve le bouton qui ferme tout, dans ta plateforme et dans R Trader Pro.</li></ul>
+<h3>À retenir</h3>
+<ul><li>Quatre infos : identifiant, mot de passe, système, passerelle.</li><li>Sur Sierra, pas d&#39;historique bid/ask via Rithmic ; sur ATAS, OCO simulés en local.</li><li>Teste toujours la connexion en démo, ordre limite compris, avant de trader.</li></ul>
+<p>Et si tu es sur Mac ? C&#39;est la question que je vois le plus souvent tapée après « Rithmic ».</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/rithmic-futures/blog-rithmic-futures-3.webp" alt="Les quatre étapes pour connecter Rithmic à une plateforme de trading : identifiants, système, passerelle, test en démo" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Quatre informations venues de ton courtier ou de ta prop firm, puis un test en démo avec un ordre limite annulé avant de trader.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="peut-on-utiliser-rithmic-sur-mac">Peut-on utiliser Rithmic sur Mac ?</h2>
+    <p>Oui, mais pas avec toutes les plateformes : R Trader Pro, Sierra Chart et NinjaTrader (version bureau) sont des logiciels Windows, alors qu&#39;ATAS X fonctionne sur macOS avec une connexion directe à Rithmic.</p>
+<h3>La solution native : ATAS X</h3>
+<p>L&#39;aide d&#39;ATAS l&#39;écrit clairement : « On macOS, use the direct connection ». Autrement dit, sur Mac, tu ne passes pas par R Trader Pro (qui ne tourne pas sur macOS), tu connectes ATAS X directement aux serveurs Rithmic avec tes identifiants. C&#39;est aujourd&#39;hui la voie la plus simple pour lire l&#39;order flow sur un Mac avec un compte Rithmic.</p>
+<h3>La solution de contournement : Windows sur ton Mac</h3>
+<p>Beaucoup de traders sur Mac font tourner Windows dans une machine virtuelle ou utilisent un PC distant. Ça marche, mais deux choses comptent :</p>
+<ul><li><b>la charge processeur</b> : l&#39;aide d&#39;ATAS signale que Rithmic est sensible à la qualité de la connexion et à l&#39;utilisation du processeur. Une machine virtuelle qui sature à l&#39;ouverture américaine provoque des déconnexions ;</li><li><b>le test au pire moment</b> : fais tes essais à 15 h 30, heure de Paris, à l&#39;ouverture du cash américain, pas un dimanche soir. Les horaires exacts, avec les décalages d&#39;heure d&#39;été, sont dans mon article sur les <a href="https://basstrading.fr/blog/horaires-futures-nasdaq-heure-paris/">horaires du Nasdaq futures à l&#39;heure de Paris</a>.</li></ul>
+<h3>Et si tu veux juste trader depuis le Mac sans prise de tête ?</h3>
+<p>Dans ce cas, un compte Tradovate (plateforme web) est souvent plus simple qu&#39;un compte Rithmic. Tu perds la finesse des plateformes Windows d&#39;order flow, mais tu gagnes en tranquillité. Ce n&#39;est pas une mauvaise décision : <b>un outil que tu maîtrises vaut mieux qu&#39;un outil puissant qui se déconnecte.</b></p>
+<h3>À retenir</h3>
+<ul><li>R Trader Pro, Sierra Chart et NinjaTrader bureau : Windows.</li><li>ATAS X : connexion directe à Rithmic sur macOS.</li><li>Machine virtuelle possible, à tester à l&#39;ouverture américaine.</li></ul>
+<p>Avant de mettre un euro en jeu, il reste l&#39;étape que trop de gens sautent : la démo.</p>
+
+    <hr>
+
+    <h2 id="rithmic-demo-et-paper-trading-comment-s-">Rithmic démo et paper trading : comment s&#39;entraîner ?</h2>
+    <p>Rithmic propose des serveurs de simulation (« Rithmic Paper Trading ») accessibles avec un compte démo fourni par Rithmic, par un courtier ou par une prop firm ; ils servent à tester ta connexion, ta plateforme et ta routine sans risquer d&#39;argent.</p>
+<p>La durée de la démo varie selon qui te la fournit et change de temps en temps : vérifie-la sur la page officielle le jour où tu t&#39;inscris, plutôt que de te fier à un chiffre lu sur un forum.</p>
+<h3>Ce que la démo t&#39;apprend vraiment</h3>
+<ul><li><b>La technique</b> : connexion stable, données qui arrivent, ordres qui partent, bouton de fermeture repéré.</li><li><b>Ta routine</b> : à quelle heure tu te connectes, quels niveaux tu prépares, à quel moment tu arrêtes.</li><li><b>La taille</b> : en MNQ, un tick vaut 0,25 point, soit 0,50 dollar par contrat, selon les <a href="https://www.cmegroup.com/markets/equities/nasdaq/micro-e-mini-nasdaq-100.contractSpecs.html">spécifications officielles du Micro E-mini Nasdaq-100</a> du CME. Calcule ce que ton stop représente en dollars avant de cliquer. Si tu hésites entre le gros et le petit contrat, lis <a href="https://basstrading.fr/blog/nq-ou-mnq/">NQ ou MNQ : lequel choisir</a>.</li></ul>
+<h3>Ce que la démo ne t&#39;apprend pas</h3>
+<p>En simulation, tes ordres limites sont souvent exécutés plus facilement qu&#39;en réel, parce que tu ne fais pas vraiment la queue dans le carnet. Et surtout, la peur et l&#39;envie ne sont pas les mêmes. <b>La démo valide ton installation et ta méthode ; elle ne valide pas ta résistance émotionnelle.</b></p>
+<h3>Mon conseil de méthode</h3>
+<p>Utilise la démo comme un banc d&#39;essai technique pendant quelques séances, puis consacre-la à un seul setup, toujours le même, noté dans ton journal. Si ta façon de trader n&#39;est pas encore définie, ce n&#39;est pas un problème de flux de données : c&#39;est le vrai chantier, et c&#39;est ce que je travaille dans la formation offerte dont je te parle plus bas.</p>
+<h3>À retenir</h3>
+<ul><li>Serveurs « Paper Trading » = simulation uniquement.</li><li>Durée de la démo : à vérifier le jour même sur la page officielle.</li><li>La démo valide l&#39;installation et la méthode, pas les émotions.</li></ul>
+<p>Pendant ces premières séances, tu vas presque sûrement croiser un message d&#39;erreur. Voici comment les lire.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/rithmic-futures/blog-rithmic-futures-4.webp" alt="Règle de dépannage Rithmic : un identifiant correspond à une session, trois vérifications avant de contacter le support" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">La majorité des erreurs Rithmic viennent d&#39;une double session, d&#39;une faute de saisie ou d&#39;un mauvais serveur.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="les-erreurs-rithmic-les-plus-frequentes-">Les erreurs Rithmic les plus fréquentes et comment les régler</h2>
+    <p>La plupart des erreurs Rithmic viennent de trois causes : le même identifiant ouvert à deux endroits, une erreur de saisie (espace, mauvais serveur), ou des droits pas encore activés par le courtier. Avant de contacter le support, vérifie ces trois points.</p>
+<h3>Le tableau de dépannage</h3>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Message</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Cause probable</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Que faire</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Login Failed</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Login déjà ouvert ailleurs, mauvais serveur, accès API non autorisé</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Ferme l&#39;autre session, vérifie le système, demande l&#39;accès API</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Permission denied</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Refus renvoyé par Rithmic (droits ou identifiant)</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Vérifie tes droits avec le courtier, raccourcis l&#39;identifiant s&#39;il est très long</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">You have been logged out</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Même login connecté sur un autre logiciel ou un autre PC</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Une seule session, ou mode plug-in via R Trader Pro</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">No market data</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Données non activées, formulaires non signés, mauvais contrat</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Signe les accords de données, vérifie l&#39;échéance du contrat</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Reconnexions en boucle</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Connexion instable, processeur saturé, symboles non standard</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Allège la plateforme, câble ta connexion, nettoie tes symboles</td></tr></tbody></table></div>
+<h3>Login Failed</h3>
+<p>L&#39;aide d&#39;ATAS liste trois causes : le même identifiant déjà connecté dans R Trader Pro (sans le mode plug-in), une connexion API non autorisée sur ton compte, ou un mauvais serveur sélectionné. Le troisième cas est fréquent avec les prop firms, qui ont chacune leur propre nom de système.</p>
+<h3>Permission denied</h3>
+<p>Sierra Chart précise que ce message vient de Rithmic, pas de la plateforme. Ses équipes signalent aussi que les identifiants de 32 caractères ou plus posent problème. Dans ce cas, seul ton courtier ou ta prop firm peut régler l&#39;accès.</p>
+<h3>You have been logged out</h3>
+<p><b>Un identifiant Rithmic, c&#39;est en principe une session.</b> Si tu te connectes sur ton PC fixe pendant que R Trader Pro tourne sur ton portable, l&#39;un éjecte l&#39;autre. Choisis un poste, ou passe par le mode plug-in.</p>
+<h3>No market data, ou des prix figés</h3>
+<p>Vérifie dans l&#39;ordre : que tu as signé les accords de données à la première connexion, que tu regardes le contrat en cours et pas une échéance expirée, et que ton abonnement inclut bien le CME. Un graphique vide un dimanche après-midi n&#39;est pas une panne : le marché est fermé.</p>
+<h3>Les reconnexions en boucle</h3>
+<p>Sierra Chart attribue une partie des reconnexions fréquentes à des symboles non standard dans tes graphiques ou tes listes. ATAS rappelle que Rithmic est sensible à la connexion et au processeur. Ferme les graphiques inutiles, privilégie un câble Ethernet au Wi-Fi, et évite de lancer une mise à jour de Windows à 15 h 25.</p>
+<h3>Et quand « Rithmic is down » ?</h3>
+<p>Ça arrive, rarement, mais ça arrive. Garde le numéro du desk de ton courtier ou le contact de ta prop firm à portée de main : en cas de panne avec une position ouverte, c&#39;est par eux que tu peux la faire fermer. C&#39;est le genre de règle qui a sa place dans ton plan de trading, au même titre que tes niveaux.</p>
+<h3>À retenir</h3>
+<ul><li>Un identifiant = une session : c&#39;est la cause n°1 des déconnexions.</li><li>« Permission denied » se règle chez le courtier, pas dans la plateforme.</li><li>Prévois une procédure de secours écrite en cas de panne.</li></ul>
+<p>Une fois la connexion stable, reste la question qui compte vraiment pour lire le marché : quelles données reçois-tu ?</p>
+
+    <hr>
+
+    <h2 id="rithmic-et-order-flow-quelles-donnees-re">Rithmic et order flow : quelles données reçois-tu vraiment ?</h2>
+    <p>Avec Rithmic, tu reçois les transactions en temps réel et la profondeur du carnet d&#39;ordres du CME, avec selon la plateforme le détail ordre par ordre (MBO) ; en revanche, l&#39;historique des volumes au bid et à l&#39;ask n&#39;est pas toujours fourni.</p>
+<p>C&#39;est là que le choix du flux touche directement ta lecture du marché.</p>
+<h3>Le carnet d&#39;ordres et le détail ordre par ordre</h3>
+<p>Le CME publie le carnet en plusieurs niveaux de détail. Le plus fin, le MBO (market by order), montre chaque ordre individuellement dans la file d&#39;attente, pas seulement le total par prix. ATAS signale que son option « Aggregated quotes » est activée par défaut avec Rithmic : les données sont alors simplifiées. Si tu veux le détail ordre par ordre, il faut la désactiver, au prix d&#39;une charge plus forte pour ton ordinateur.</p>
+<p>Si tu débutes avec le carnet, commence par comprendre ce que tu regardes : mon article sur le <a href="https://basstrading.fr/blog/carnet-ordres-dom-futures/">carnet d&#39;ordres et le DOM en futures</a> te donne les bases avant de te noyer dans le MBO.</p>
+<h3>Le footprint et l&#39;historique</h3>
+<p>Un footprint (le graphique qui montre, à chaque prix, le volume échangé au bid et à l&#39;ask) a besoin de ces volumes pour se dessiner. En direct, Rithmic les fournit. Mais sur Sierra Chart, l&#39;historique bid/ask ne vient pas de Rithmic : à la première ouverture, ton footprint sera vide sur les jours précédents. <b>C&#39;est normal, ce n&#39;est pas une panne.</b> Je montre ce que le footprint apporte vraiment dans mon guide du <a href="https://basstrading.fr/blog/footprint-chart-trading/">footprint chart</a>.</p>
+<h3>Pourquoi deux plateformes n&#39;affichent pas les mêmes bougies</h3>
+<p>Si tu compares ton graphique avec celui d&#39;un autre trader, ou avec TradingView, tu verras parfois des bougies différentes. Les causes sont presque toujours les mêmes : la session choisie (séance électronique complète ou seulement les heures du cash), le contrat (continu ou échéance précise) et le fuseau horaire. Le flux n&#39;est pas « faux » : les réglages ne sont pas les mêmes. Aligne ta session sur celle que tu trades vraiment.</p>
+<h3>Ce qui compte le plus</h3>
+<p>Le meilleur flux du monde ne lit pas le marché à ta place. Les données ne sont qu&#39;une matière première : ce qui fait la différence, c&#39;est la méthode avec laquelle tu les lis. Si tu veux comprendre l&#39;ensemble avant de régler chaque option, commence par mon guide de l&#39;<a href="https://basstrading.fr/blog/order-flow-trading-france/">order flow en trading</a>.</p>
+<p>Pour commencer sans rien payer, j&#39;ai mis en ligne une formation offerte : 7 leçons, de « La bourse n&#39;est pas ce que tu crois » jusqu&#39;au Market Profile, plus une démonstration de 35 minutes du Market Profile en action. C&#39;est la suite logique une fois ta connexion réglée : apprendre à lire ce que le flux t&#39;envoie. <a href="https://basstrading.fr/l/RfjNxw">Accéder à la formation offerte</a></p>
+<h3>À retenir</h3>
+<ul><li>Rithmic fournit transactions et profondeur en direct ; MBO selon la plateforme.</li><li>Sur ATAS, désactive « Aggregated quotes » pour le détail ordre par ordre.</li><li>Footprint vide sur le passé avec Sierra + Rithmic : normal, pas une panne.</li></ul>
+<p>Alors, au final, faut-il chercher un compte Rithmic à tout prix ?</p>
+
+    <hr>
+
+    <h2 id="mon-avis-faut-il-choisir-un-compte-via-r">Mon avis : faut-il choisir un compte via Rithmic ?</h2>
+    <p>Oui si tu trades sur une plateforme Windows d&#39;order flow et que tu veux un flux reconnu, supporté par la plupart des courtiers et des prop firms futures ; non si tu es sur Mac sans ATAS, ou si tu veux simplement trader depuis un navigateur.</p>
+<h3>Ses vrais points forts</h3>
+<ul><li>Une infrastructure installée au plus près du CME, référencée par la bourse elle-même.</li><li>La compatibilité : Sierra Chart, NinjaTrader, ATAS, Quantower et d&#39;autres.</li><li>Le risque côté serveur, qui protège aussi le trader (une limite de perte qui s&#39;applique même si ton PC s&#39;éteint).</li><li>Les ordres OCO gérés côté serveur sur Sierra Chart.</li></ul>
+<h3>Ses limites honnêtes</h3>
+<ul><li>Une configuration pénible la première fois : quatre informations, des formulaires de données, des noms de serveurs qui changent selon la firme.</li><li>Une session par identifiant, source de déconnexions si tu jongles entre plusieurs logiciels.</li><li>R Trader Pro uniquement sous Windows, et une expérience Mac limitée à ATAS X.</li><li>Pas d&#39;historique bid/ask sur Sierra Chart avec ce seul flux.</li></ul>
+<h3>Le choix qui compte vraiment</h3>
+<p>Tu ne choisis pas Rithmic : tu choisis un courtier ou une prop firm, puis une plateforme. Et avant tout ça, tu choisis une façon de trader qui te correspond. Pour le courtier, une règle que je répète dans ma vidéo pour les débutants : « Je vous conseille même d&#39;aller sur le site de l&#39;AMF » (<a href="https://www.youtube.com/watch?v=aZF8dXoMEKE&amp;t=715s">à 11 min 55 s</a>), parce qu&#39;on y trouve tout un tas de sites à éviter. J&#39;ai aussi regroupé les signaux d&#39;alerte dans mon article <a href="https://basstrading.fr/blog/arnaque-trading">pour reconnaître un broker ou une prop firm douteuse</a>. Un nom technique sérieux comme Rithmic dans l&#39;e-mail de bienvenue ne prouve rien sur le sérieux de celui qui te l&#39;envoie.</p>
+<p>Si tu en es encore au tout début, mon <a href="https://basstrading.fr/blog/debuter-trading-zero-guide/">guide pour débuter le trading à partir de zéro</a> te dit dans quel ordre avancer, et la page sur le <a href="https://basstrading.fr/blog/day-trading-futures/">day trading des futures</a> te montre à quoi ressemble une séance réelle. Et si tu te demandes ce qu&#39;on peut vraiment apprendre sans payer, j&#39;ai fait le tri dans mon article sur la <a href="https://basstrading.fr/blog/formation-trading-gratuite">formation trading gratuite</a>.</p>
+<h3>En résumé</h3>
+<ul><li>Rithmic = flux de données et routage d&#39;ordres vers le CME, ni courtier, ni plateforme d&#39;analyse.</li><li>R Trader Pro sert à exécuter, contrôler ton compte et dépanner, pas à analyser.</li><li>Les prop firms l&#39;utilisent pour appliquer leurs règles sur le serveur.</li><li>Sur Mac : ATAS X en direct, sinon Windows virtualisé ou Tradovate.</li><li>La majorité des erreurs viennent d&#39;une double session, d&#39;une faute de saisie ou de droits non activés.</li></ul>
+<h3>Ta prochaine action</h3>
+<p>Ce soir, ouvre ton compte démo, connecte ta plateforme, passe un ordre limite loin du prix puis annule-le, et repère à deux endroits le bouton qui ferme toutes tes positions. Écris cette procédure sur une feuille posée à côté de ton écran. Ensuite seulement, pense au marché.</p>
+<p>Le trading de contrats à terme comporte un risque élevé de perte, pouvant dépasser la mise initiale. Contenu éducatif, pas un conseil en investissement.</p>
+
+    <p><a href="https://www.youtube.com/watch?v=aZF8dXoMEKE" target="_blank" rel="noopener">▶ Voir la vidéo de Sébastien sur ce sujet</a></p>
+
+    <div class="cta-card cta-aimant">
+      <div class="cta-card-label">Gratuit</div>
+      <h3>La formation offerte : 7 leçons pour lire le marché comme un pro</h3>
+      <p>Accès immédiat et gratuit, en vidéo, à ton rythme. Sans carte bancaire.</p>
+      <a href="https://basstrading.fr/p/formation-offerte/?src=blog-rithmic-futures" class="btn-p">Je la veux →</a>
+    </div>
+    
+  </article>
+</div>
+
+<!-- FAQ -->
+<section class="faq-sec">
+  <div class="sec-center"><div class="sec-label">FAQ</div><h2 class="sec-title">Questions fréquentes</h2></div>
+  <div class="faq-list">
+    <div class="fi"><button class="fq" onclick="tf(this)">Rithmic est-il un courtier ? <span class="fq-icon">+</span></button><div class="fa"><p>Non. Rithmic est un éditeur de logiciels indépendant référencé par le CME : il fournit le flux de données et le routage des ordres à des courtiers (FCM) et à des prop firms. Ton argent et ton compte sont chez le courtier ou chez la prop firm, jamais chez Rithmic. C&#39;est pour ça que tu obtiens tes identifiants Rithmic auprès de ton courtier, et pas sur le site de Rithmic.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Rithmic est-il gratuit ? <span class="fq-icon">+</span></button><div class="fa"><p>Pas vraiment : l&#39;accès est facturé au courtier ou à la prop firm, qui le répercute en général dans ses frais ou dans l&#39;abonnement de l&#39;évaluation, et les données du CME ont leur propre tarif. En prop firm, les données sont souvent incluses. Vérifie la grille de ton courtier et remplis honnêtement le questionnaire professionnel ou non professionnel à la première connexion.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Peut-on utiliser Rithmic sur Mac ? <span class="fq-icon">+</span></button><div class="fa"><p>Oui avec ATAS X, qui se connecte directement à Rithmic sur macOS. En revanche, R Trader Pro, Sierra Chart et la version bureau de NinjaTrader sont des logiciels Windows : sur Mac, il faut alors une machine virtuelle Windows ou un PC distant. Teste toujours à l&#39;ouverture américaine, à 15 h 30 heure de Paris, car Rithmic est sensible à la charge du processeur.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Quelle différence entre Rithmic et Tradovate ? <span class="fq-icon">+</span></button><div class="fa"><p>Rithmic est un tuyau de données et d&#39;ordres utilisé par des courtiers ; Tradovate est un courtier (FCM) avec sa propre plateforme web et mobile. Beaucoup de prop firms proposent les deux. Rithmic convient mieux aux plateformes Windows d&#39;order flow comme Sierra Chart ou ATAS ; Tradovate est plus simple si tu trades depuis un navigateur, un Mac ou TradingView.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Comment obtenir une démo Rithmic ? <span class="fq-icon">+</span></button><div class="fa"><p>Tu peux demander une démo à Rithmic, à un courtier qui le propose ou à une prop firm. Tu reçois des identifiants pour les serveurs « Rithmic Paper Trading », réservés à la simulation. La durée varie selon le fournisseur : vérifie-la sur la page officielle le jour de ton inscription. Utilise cette période pour tester ta plateforme, ta connexion et ta procédure de fermeture d&#39;urgence.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Pourquoi R Trader Pro affiche « Login Failed » ? <span class="fq-icon">+</span></button><div class="fa"><p>Les trois causes les plus courantes : ton identifiant est déjà connecté ailleurs (par exemple dans ta plateforme sans le mode plug-in), tu as choisi le mauvais système dans la liste, ou ton compte n&#39;a pas l&#39;autorisation de connexion par API. Vérifie aussi qu&#39;aucun espace ne s&#39;est glissé au copier-coller. Si rien ne change, seul ton courtier ou ta prop firm peut débloquer l&#39;accès.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Peut-on connecter deux plateformes au même compte Rithmic ? <span class="fq-icon">+</span></button><div class="fa"><p>Un identifiant Rithmic correspond en principe à une session : deux connexions directes simultanées s&#39;éjectent l&#39;une l&#39;autre. La solution est le mode plug-in : tu ouvres R Trader Pro avec « Allow Plugins » coché, puis ta plateforme (NinjaTrader, ATAS) passe par lui. Sur NinjaTrader, vérifie auprès de ta prop firm et du support NinjaTrader avant d&#39;ouvrir plusieurs connexions Rithmic.</p></div></div>
+  </div>
+</section>
+
+<!-- Related -->
+<section class="related-sec">
+  <div class="sec-center"><div class="sec-label">Continuer la lecture</div><h2 class="sec-title">Articles connexes</h2></div>
+  <div class="related-grid">
+    <a href="/blog/market-profile-guide-complet/" class="related-card"><div class="related-cat">Guide</div><h3>Market Profile : le guide complet pour débutants</h3><p>Value Area, POC, types de journées — tout pour commencer.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/order-flow-trading-france/" class="related-card"><div class="related-cat">Méthode</div><h3>Order Flow Trading : pourquoi personne ne l'enseigne en France</h3><p>Le carnet d'ordres et le flux institutionnel décryptés.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/sierra-chart-configuration/" class="related-card"><div class="related-cat">Tutoriel</div><h3>Sierra Chart : configuration complète</h3><p>Le setup pas à pas pour le Market Profile et le Footprint.</p><span class="related-link">Lire &rarr;</span></a>
+  </div>
+</section>
+
+<!-- serie:debut --><style>.serie-w{background:#FFF;color:#1D1D1F;border-top:1px solid #F5F5F7}.serie{max-width:1060px;margin:0 auto;padding:56px 24px;font-family:inherit;box-sizing:border-box}.serie-l{font-size:.6rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#0066FF;margin-bottom:8px}.serie-w .serie h2{font-size:1.4rem;font-weight:800;letter-spacing:-.5px;color:#1D1D1F!important;margin:0 0 18px;font-family:inherit}.serie ul{list-style:none;padding:0;margin:0 0 22px;display:grid;grid-template-columns:repeat(2,1fr);gap:8px 24px}.serie-w .serie li a{color:#1D1D1F!important;font-size:.9rem;line-height:1.45;text-decoration:none;border-bottom:1px solid #D2D2D7}.serie li a:hover{color:#0066FF}.serie li.pil a{font-weight:700}.serie-o{background:#F5F5F7;border-radius:14px;padding:18px 20px;font-size:.88rem;line-height:1.55;color:#1D1D1F}.serie-w .serie-o a{color:#0066FF!important;font-weight:700}@media(max-width:700px){.serie ul{grid-template-columns:1fr}}</style><div class="serie-w"><aside class="serie" aria-label="Dans la même série"><div class="serie-l">Dans la même série</div><h2>Futures du Nasdaq et plateformes</h2><ul><li class="pil"><a href="/blog/nasdaq-futures-nq-mnq/">NQ et MNQ : les futures Nasdaq expliqués simplement</a></li><li class=""><a href="/blog/nq-ou-mnq/">NQ ou MNQ : quel contrat Nasdaq choisir pour débuter ?</a></li><li class=""><a href="/blog/horaires-futures-nasdaq-heure-paris/">Horaires des futures Nasdaq (NQ, MNQ) en heure de Paris</a></li><li class=""><a href="/blog/day-trading-futures/">Day trading : à quoi ressemble une journée sur les futures</a></li><li class=""><a href="/blog/vwap-trading/">VWAP trading : définition, calcul et lecture sur le Nasdaq</a></li><li class=""><a href="/blog/ninjatrader-avis/">NinjaTrader avis : prix, France, order flow et limites</a></li><li class=""><a href="/blog/tradovate-avis/">Tradovate avis : prix, démo, France et limites (2026)</a></li><li class=""><a href="/blog/sierra-chart-configuration/">Sierra Chart : configurer Market Profile, footprint et CVD</a></li><li class=""><a href="/blog/vwap-tradingview/">VWAP TradingView : réglages, bandes et VWAP ancrée (guide)</a></li></ul><div class="serie-o"><a href="/formations/">Toutes les formations de Bass</a> : plus de 250 leçons vidéo, du débutant au Market Profile avancé. Pour commencer sans payer : <a href="/p/formation-offerte/?src=serie-rithmic-futures">la formation offerte</a> (7 leçons vidéo).</div></aside></div><!-- serie:fin -->
+<footer class="footer">
+  <div class="ft-top"><div class="ft-logo">BASS</div><div class="ft-cols">
+    <div class="ft-col"><div class="ft-col-title">Programme</div><a href="/formations/">Toutes les formations</a><a href="https://basstrading.fr/#methode">Méthode</a><a href="https://basstrading.fr/#programme">Programme</a><a href="https://basstrading.fr/p/formation-offerte/?src=blog-rithmic-futures-pied">Formation offerte</a></div>
+    <div class="ft-col"><div class="ft-col-title">Ressources</div><a href="/blog/market-profile-guide-complet/">Market Profile</a><a href="/blog/footprint-chart-trading/">Footprint Chart</a><a href="/blog/order-flow-trading-france/">Order Flow</a></div>
+  </div></div>
+  <div class="ft-bottom"><span>&copy; 2026 BASS — Sébastien Constant</span><div><a href="/mentions-legales/">Mentions légales</a><a href="/confidentialite/">Confidentialité</a><a href="/cgv/">CGV</a><a href="mailto:contact@basstrading.fr">Contact</a></div></div>
+</footer>
+<div class="disclaimer">Le trading comporte des risques de perte en capital. Les performances passées ne préjugent pas des performances futures. Ce site ne constitue pas un conseil en investissement.</div>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+const lenis=new Lenis({duration:1.2,easing:t=>Math.min(1,1.001-Math.pow(2,-10*t))});
+function raf(t){lenis.raf(t);requestAnimationFrame(raf)}requestAnimationFrame(raf);
+lenis.on('scroll',ScrollTrigger.update);gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0);
+const tl=gsap.timeline();
+tl.to('.pre-word span',{y:0,opacity:1,duration:.5,stagger:.1,ease:'power3.out',delay:.3}).to('#preLine',{width:'80px',duration:.7,ease:'power2.inOut'},'<+.2').to('.preloader',{yPercent:-100,duration:.8,ease:'power3.inOut',delay:.4}).set('.preloader',{display:'none'}).to('#nav',{opacity:1,y:0,duration:.5},'<+.1');
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);const h=document.documentElement.scrollHeight-window.innerHeight;document.getElementById('readingProgress').style.width=(window.scrollY/h*100)+'%'});
+const tocLinks=document.querySelectorAll('.toc a');const sections=Array.from(tocLinks).map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+window.addEventListener('scroll',()=>{let c='';sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)c=s.id});tocLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+c)})});
+function tf(b){const i=b.closest('.fi'),a=b.nextElementSibling,o=i.classList.contains('active');document.querySelectorAll('.fi').forEach(x=>{x.classList.remove('active');x.querySelector('.fa').classList.remove('open')});if(!o){i.classList.add('active');a.classList.add('open')}}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();lenis.scrollTo(t,{offset:-60})}})});
+</script>
+<script src="/v.js" defer></script>
+</body>
+</html>
