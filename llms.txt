@@ -80,6 +80,7 @@
 - [Price action : ce que c'est, et ce que la bougie ne montre pas](https://basstrading.fr/blog/price-action-trading/): Price action en trading : définition claire, ma méthode sans indicateur du weekly au 15 minutes, ses vraies limites et ce que le footprint ajoute.
 - [Quantower avis : version gratuite, footprint, Mac et prix (2026)](https://basstrading.fr/blog/quantower-avis/): Quantower avis 2026 : ce que permet la version gratuite, le prix de l'All-in-One, le footprint, le Mac et les prop firms. Mon protocole de test en 7 jours.
 - [Take profit : où placer ton objectif sur les futures (exemples MNQ)](https://basstrading.fr/blog/take-profit-trading/): Take profit en trading : définition, différence avec le stop loss, où placer ton objectif sur la structure et comment sortir par paliers sur le MNQ.
+- [Topstep avis : règles, drawdown et payout expliqués (2026)](https://basstrading.fr/blog/topstep/): Topstep expliqué par un trader futures : Combine, perte maximale suiveuse, cohérence 55 %, payouts depuis la France et méthode pour passer l'évaluation.
 - Formation liée : [Toutes les formations de Bass](https://basstrading.fr/formations/), plus de 250 leçons vidéo, du débutant au Market Profile avancé.
 
 ### Futures du Nasdaq et plateformes

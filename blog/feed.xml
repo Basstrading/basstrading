@@ -6,8 +6,16 @@
   <link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
   <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/"/>
   <id>https://basstrading.fr/blog/</id>
-  <updated>2026-11-11T00:00:00Z</updated>
+  <updated>2026-11-12T00:00:00Z</updated>
   <author><name>Sébastien Constant (Bass)</name><uri>https://basstrading.fr/auteur/sebastien-constant/</uri></author>
+  <entry>
+    <title>Topstep avis : règles, drawdown et payout expliqués (2026)</title>
+    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/topstep/"/>
+    <id>https://basstrading.fr/blog/topstep/</id>
+    <published>2026-11-12T00:00:00Z</published>
+    <updated>2026-11-12T00:00:00Z</updated>
+    <summary>Topstep expliqué par un trader futures : Combine, perte maximale suiveuse, cohérence 55 %, payouts depuis la France et méthode pour passer l&#x27;évaluation.</summary>
+  </entry>
   <entry>
     <title>Rithmic : c&#x27;est quoi, R Trader Pro, prop firms et Mac</title>
     <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/rithmic-futures/"/>
