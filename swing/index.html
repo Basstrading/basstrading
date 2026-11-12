@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Swing trading small caps — Accompagnement individuel avec Bass</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<script src="/v.js" defer></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bk:#1D1D1F;--bk3:#0A0A0A;--g1:#6E6E73;--g2:#86868B;--g3:#D2D2D7;--g4:#F5F5F7;--wh:#FBFBFD;--green:#00B67A;--red:#FF453A}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',system-ui,sans-serif;color:var(--bk);background:var(--wh);line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:'Outfit',sans-serif;line-height:1.1;letter-spacing:-.02em}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+.btn{display:inline-block;background:var(--green);color:#fff;font-weight:700;text-decoration:none;padding:17px 30px;border-radius:999px;font-size:17px;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(0,182,122,.35)}
+.kicker{font-family:'Outfit';font-weight:600;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--green)}
+section{padding:96px 0}
+h2{font-size:clamp(30px,4.6vw,48px);margin:14px 0 18px}
+.lead{font-size:19px;color:var(--g1);max-width:680px}
+
+/* HERO */
+.hero{background:radial-gradient(1200px 600px at 80% -10%,rgba(0,182,122,.18),transparent 60%),var(--bk3);color:#fff;padding:70px 0 90px;overflow:hidden}
+.note{display:inline-flex;gap:10px;align-items:center;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:8px 16px;font-size:14px;color:#cfcfd4;margin-bottom:28px}
+.note[hidden]{display:none}
+.note b{color:#fff}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(0,182,122,.25)}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.hero h1{font-size:clamp(38px,5.6vw,64px);font-weight:800}
+.hero h1 em{font-style:normal;color:var(--green)}
+.hero p.sub{font-size:20px;color:#b9b9bf;margin:22px 0 34px;max-width:560px}
+.hero .small{font-size:14px;color:var(--g2);margin-top:14px}
+.chart{background:linear-gradient(180deg,#141416,#0d0d0f);border:1px solid #232327;border-radius:22px;padding:18px;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.chart-top{display:flex;justify-content:space-between;font-size:13px;color:var(--g2);margin-bottom:8px}
+.chart-top b{color:#fff;font-family:'Outfit'}
+.chart svg{width:100%;height:auto;display:block}
+.draw{stroke-dasharray:1400;stroke-dashoffset:1400;animation:draw 3.2s ease-out .3s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.pop{opacity:0;animation:pop .5s ease-out forwards}
+@keyframes pop{to{opacity:1}}
+
+/* AVANT / APRES */
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:44px}
+.card{border-radius:22px;padding:34px}
+.card h3{font-size:22px;margin-bottom:18px}
+.before{background:var(--g4)}
+.after{background:var(--bk);color:#fff}
+.steps{list-style:none;counter-reset:s}
+.steps li{position:relative;padding:12px 0 12px 44px;border-top:1px solid rgba(128,128,128,.18);font-size:16.5px}
+.steps li:first-child{border-top:0}
+.steps li::before{counter-increment:s;content:counter(s);position:absolute;left:0;top:11px;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font:600 13px 'Outfit'}
+.before .steps li::before{background:var(--g3);color:var(--g1)}
+.after .steps li::before{background:var(--green);color:#fff}
+.before .end{color:var(--red);font-weight:700}
+.after .end{color:var(--green);font-weight:700}
+
+/* POURQUOI SMALL CAPS */
+.dark{background:var(--bk3);color:#fff}
+.dark .lead{color:#a8a8ae}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:46px}
+.stat{border:1px solid #26262b;border-radius:20px;padding:28px;background:#111113}
+.stat .n{font:800 34px 'Outfit';color:var(--green)}
+.stat p{color:#b0b0b6;margin-top:8px;font-size:15.5px}
+
+/* PILIERS */
+.pillars{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:46px}
+.pillar{background:#fff;border:1px solid var(--g3);border-radius:22px;padding:32px;transition:border-color .2s,transform .2s}
+.pillar:hover{border-color:var(--green);transform:translateY(-3px)}
+.pillar .ic{font:800 15px 'Outfit';color:var(--green);letter-spacing:.1em}
+.pillar h3{font-size:24px;margin:10px 0 10px}
+.pillar p{color:var(--g1)}
+
+/* PROGRAMME */
+.prog{margin-top:46px;border-left:2px solid var(--g3);padding-left:30px}
+.mod{position:relative;padding:0 0 34px}
+.mod::before{content:"";position:absolute;left:-38px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--wh);border:3px solid var(--green)}
+.mod .w{font:600 13px 'Outfit';color:var(--green);text-transform:uppercase;letter-spacing:.12em}
+.mod h3{font-size:22px;margin:4px 0 6px}
+.mod p{color:var(--g1);max-width:700px}
+.inclus{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:20px}
+.inc{background:var(--g4);border-radius:18px;padding:22px}
+.inc b{display:block;font-family:'Outfit';font-size:18px;margin-bottom:4px}
+.inc span{color:var(--g1);font-size:15px}
+
+/* POUR QUI */
+.who{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:40px}
+.who ul{list-style:none}
+.who li{padding:10px 0 10px 34px;position:relative;font-size:16.5px}
+.yes li::before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:800}
+.no li::before{content:"✕";position:absolute;left:0;color:var(--red);font-weight:800}
+
+/* BASS */
+.bass{display:grid;grid-template-columns:.85fr 1.15fr;gap:52px;align-items:center}
+.bass img{width:100%;border-radius:24px;aspect-ratio:4/5;object-fit:cover}
+.bass blockquote{font:600 22px/1.4 'Outfit';margin:22px 0;padding-left:20px;border-left:3px solid var(--green)}
+.facts{display:flex;gap:30px;flex-wrap:wrap;margin-top:22px}
+.facts div b{display:block;font:800 30px 'Outfit'}
+.facts div span{color:var(--g1);font-size:14px}
+
+/* FAQ */
+details{border-bottom:1px solid var(--g3);padding:22px 0}
+summary{font:600 19px 'Outfit';cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:20px}
+summary::after{content:"+";color:var(--green);font-size:26px;line-height:1}
+details[open] summary::after{content:"–"}
+details p{color:var(--g1);margin-top:12px;max-width:760px}
+
+/* FINAL */
+.final{text-align:center;background:radial-gradient(900px 500px at 50% 120%,rgba(0,182,122,.25),transparent 60%),var(--bk3);color:#fff}
+.final h2{max-width:780px;margin:14px auto 18px}
+.final .lead{margin:0 auto 34px;color:#a8a8ae}
+.legal{font-size:12.5px;color:var(--g2);text-align:center;padding:30px 22px;background:var(--bk3);border-top:1px solid #1d1d20}
+
+@media(max-width:860px){
+ section{padding:70px 0}
+ .hero-grid,.vs,.who,.bass{grid-template-columns:1fr}
+ .stats,.pillars{grid-template-columns:1fr}
+ .inclus{grid-template-columns:1fr 1fr}
+ .bass img{max-width:380px}
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+ <div class="wrap">
+  <div class="note" id="note" hidden><span class="dot"></span><span><b id="pour"></b>, voici ce dont on a parlé au téléphone</span></div>
+  <div class="hero-grid">
+   <div>
+    <div class="kicker">Accompagnement individuel · Swing trading small caps</div>
+    <h1>Tu sais déjà <em>où</em> va l'argent.<br>Je t'apprends <em>quoi</em> acheter, <em>quand</em> entrer et <em>quand</em> sortir.</h1>
+    <p class="sub">Le narratif te montre le bon secteur, que ce soit la biotech ou l'IA. Il ne te dit pas quelle action va partir, à quel prix entrer, ni où couper. Pour ça, il te faut une méthode. On la construit ensemble, en tête-à-tête.</p>
+    <a class="btn" href="/p/appel/?src=swing">Réserver notre appel de lancement →</a>
+    <p class="small">30 minutes au téléphone pour faire le point sur ton trading et voir si on travaille ensemble.</p>
+   </div>
+   <div class="chart" aria-label="Exemple schématique : une base de consolidation puis une cassure avec du volume">
+    <div class="chart-top"><span><b>Schéma</b> · graphique journalier</span><span>Base → pivot → cassure</span></div>
+    <svg viewBox="0 0 520 340" role="img">
+     <defs>
+      <linearGradient id="gf" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#00B67A" stop-opacity=".35"/><stop offset="1" stop-color="#00B67A" stop-opacity="0"/></linearGradient>
+     </defs>
+     <g stroke="#1f1f23"><line x1="0" y1="60" x2="520" y2="60"/><line x1="0" y1="120" x2="520" y2="120"/><line x1="0" y1="180" x2="520" y2="180"/><line x1="0" y1="240" x2="520" y2="240"/></g>
+     <!-- pivot -->
+     <line x1="40" y1="112" x2="420" y2="112" stroke="#86868B" stroke-dasharray="6 6" class="pop" style="animation-delay:1.6s"/>
+     <text x="44" y="104" fill="#86868B" font-size="12" font-family="DM Sans" class="pop" style="animation-delay:1.6s">point pivot</text>
+     <!-- prix -->
+     <path d="M10,150 L40,112 L70,140 L100,170 L130,196 L160,210 L190,200 L220,186 L250,160 L280,132 L310,116 L330,130 L350,140 L370,128 L395,118 L415,110 L440,82 L465,60 L490,42 L512,30 L512,250 L10,250 Z" fill="url(#gf)" class="pop" style="animation-delay:2.4s"/>
+     <path class="draw" d="M10,150 L40,112 L70,140 L100,170 L130,196 L160,210 L190,200 L220,186 L250,160 L280,132 L310,116 L330,130 L350,140 L370,128 L395,118 L415,110 L440,82 L465,60 L490,42 L512,30" fill="none" stroke="#00B67A" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+     <!-- stop -->
+     <line x1="395" y1="146" x2="520" y2="146" stroke="#FF453A" stroke-dasharray="4 5" class="pop" style="animation-delay:2.8s"/>
+     <text x="452" y="162" fill="#FF453A" font-size="12" font-family="DM Sans" class="pop" style="animation-delay:2.8s">stop</text>
+     <circle cx="425" cy="104" r="7" fill="#00B67A" class="pop" style="animation-delay:2.6s"/>
+     <text x="384" y="92" fill="#fff" font-size="12.5" font-weight="700" font-family="DM Sans" class="pop" style="animation-delay:2.6s">entrée</text>
+     <!-- volume -->
+     <g fill="#2c2c31">
+      <rect x="14" y="300" width="14" height="22"/><rect x="44" y="292" width="14" height="30"/><rect x="74" y="302" width="14" height="20"/><rect x="104" y="306" width="14" height="16"/><rect x="134" y="310" width="14" height="12"/><rect x="164" y="312" width="14" height="10"/><rect x="194" y="310" width="14" height="12"/><rect x="224" y="306" width="14" height="16"/><rect x="254" y="302" width="14" height="20"/><rect x="284" y="300" width="14" height="22"/><rect x="314" y="306" width="14" height="16"/><rect x="344" y="310" width="14" height="12"/><rect x="374" y="308" width="14" height="14"/>
+     </g>
+     <g fill="#00B67A" class="pop" style="animation-delay:2.6s"><rect x="404" y="262" width="14" height="60"/><rect x="434" y="270" width="14" height="52"/><rect x="464" y="282" width="14" height="40"/><rect x="494" y="288" width="14" height="34"/></g>
+     <text x="512" y="336" text-anchor="end" fill="#86868B" font-size="11.5" font-family="DM Sans">le volume se tarit, puis explose à la cassure</text>
+    </svg>
+   </div>
+  </div>
+ </div>
+</header>
+
+<!-- AVANT / APRES -->
+<section>
+ <div class="wrap">
+  <div class="kicker">Le vrai problème</div>
+  <h2>Un bon thème ne suffit pas pour faire un trade.</h2>
+  <p class="lead">Tu as déjà ce que la plupart des traders n'ont pas : tu lis le marché et tu sais quels secteurs attirent l'argent. Ce qui te manque, c'est le chemin entre « l'IA chauffe » et « j'achète cette action-là, à ce prix-là, avec ce stop-là ».</p>
+  <div class="vs">
+   <div class="card before">
+    <h3>Aujourd'hui</h3>
+    <ol class="steps">
+     <li>Je repère un thème qui chauffe.</li>
+     <li>Je regarde les actions du secteur.</li>
+     <li>Je trace des supports et des résistances en hebdomadaire.</li>
+     <li>J'entre quand le prix me paraît intéressant.</li>
+     <li class="end">Puis j'attends en espérant que ça parte.</li>
+    </ol>
+   </div>
+   <div class="card after">
+    <h3>Avec la méthode</h3>
+    <ol class="steps">
+     <li>Le thème me dit où chercher. Mes filtres me disent quoi garder.</li>
+     <li>Je ne garde que les leaders : les chiffres accélèrent, l'action est plus forte que son secteur.</li>
+     <li>J'attends qu'elle construise une base propre, sans la poursuivre.</li>
+     <li>J'entre au point pivot quand le volume confirme, avec un stop fixé avant d'acheter.</li>
+     <li class="end">Je sais à l'avance quand couper et quand laisser courir.</li>
+    </ol>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- POURQUOI SMALL CAPS -->
+<section class="dark">
+ <div class="wrap">
+  <div class="kicker">Pourquoi les small caps</div>
+  <h2>C'est là que naissent les plus gros mouvements de la cote.</h2>
+  <p class="lead">Les grandes capitalisations bougent lentement, parce que des milliers de gérants les suivent. Une petite société de croissance qui publie des résultats meilleurs que prévu peut être réévaluée en quelques semaines. Et c'est un terrain où un particulier a un vrai avantage.</p>
+  <div class="stats">
+   <div class="stat"><div class="n">Petit flottant</div><p>Peu d'actions en circulation. Quand les acheteurs arrivent, l'offre manque et le prix réagit vite et fort.</p></div>
+   <div class="stat"><div class="n">Résultats</div><p>Le carburant, ce sont les résultats trimestriels qui accélèrent, pas une simple histoire. Le narratif lance le mouvement, les chiffres le prolongent.</p></div>
+   <div class="stat"><div class="n">Ton avantage</div><p>Les gros fonds ne peuvent pas entrer sur ces titres : ils sont trop petits pour eux. Toi, tu entres et tu sors en un clic.</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- PILIERS -->
+<section>
+ <div class="wrap">
+  <div class="kicker">La méthode</div>
+  <h2>Quatre piliers. Trente minutes par jour.</h2>
+  <p class="lead">C'est du swing trading : on garde une position de quelques jours à plusieurs semaines. Pas besoin d'être devant l'écran toute la journée. Tu prépares le soir et tu places tes ordres. Le marché fait le reste.</p>
+  <div class="pillars">
+   <div class="pillar"><div class="ic">01 · LES CHIFFRES</div><h3>Les chiffres d'abord, l'histoire ensuite</h3><p>Chiffre d'affaires et bénéfices qui accélèrent, surprises sur les résultats. Une bonne histoire sans les chiffres derrière, c'est un piège. Tu apprends à faire le tri en quelques minutes.</p></div>
+   <div class="pillar"><div class="ic">02 · LE LEADER</div><h3>La plus forte du groupe, pas la moins chère</h3><p>Dans chaque thème, une ou deux actions tirent tout le secteur. Tu apprends à les reconnaître grâce à leur force relative, avant que tout le monde en parle.</p></div>
+   <div class="pillar"><div class="ic">03 · LE TIMING</div><h3>Le point pivot</h3><p>Une bonne action achetée au mauvais moment reste un mauvais trade. On lit la base de consolidation, on repère le pivot et on attend que le volume confirme. On ne poursuit jamais un prix.</p></div>
+   <div class="pillar"><div class="ic">04 · LA GESTION</div><h3>Couper vite, laisser courir</h3><p>Le stop est fixé avant l'achat et la taille de la position découle du risque. On coupe tôt les erreurs, on laisse travailler les gagnants. C'est ce pilier qui fait tenir un compte dans la durée.</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- PROGRAMME -->
+<section style="background:var(--g4)">
+ <div class="wrap">
+  <div class="kicker">L'accompagnement</div>
+  <h2>En tête-à-tête, sur tes trades, à ton rythme.</h2>
+  <p class="lead">Pas de cours en groupe où tu restes dans ton coin. On part de ce que tu fais déjà, on garde ce qui marche et on construit ta méthode, étape par étape.</p>
+  <div class="prog">
+   <div class="mod"><div class="w">Étape 1</div><h3>Le diagnostic</h3><p>On passe en revue tes trades récents, ton portefeuille et ta façon de choisir. Tu repars avec ce qui te fait gagner, ce qui te fait perdre et pourquoi.</p></div>
+   <div class="mod"><div class="w">Étape 2</div><h3>Ton filtre de leaders</h3><p>On monte ensemble ton screener et ta liste de surveillance : du thème à la poignée d'actions qui méritent ton argent.</p></div>
+   <div class="mod"><div class="w">Étape 3</div><h3>Lire une base et trouver le pivot</h3><p>Les configurations qui précèdent les grands mouvements, le comportement du volume et l'endroit précis où tu entres.</p></div>
+   <div class="mod"><div class="w">Étape 4</div><h3>Le risque et la sortie</h3><p>Placement du stop, taille de position, prises de profit, conduite pendant les résultats. Tu sais quoi faire avant que ça arrive.</p></div>
+   <div class="mod"><div class="w">Étape 5</div><h3>En réel, ensemble</h3><p>Tu prépares tes trades, je les relis. On débriefe chaque entrée et chaque sortie jusqu'à ce que la méthode devienne un réflexe.</p></div>
+   <div class="mod" style="padding-bottom:0"><div class="w">Étape 6</div><h3>Ton plan de trading écrit</h3><p>À la fin, tu as un document à toi : tes critères, tes règles d'entrée, de sortie et de risque. Tu peux continuer seul.</p></div>
+  </div>
+  <div class="inclus">
+   <div class="inc"><b>Séances en visio</b><span>en individuel, avec partage d'écran</span></div>
+   <div class="inc"><b>Revue de tes trades</b><span>chaque semaine, sur tes vrais trades</span></div>
+   <div class="inc"><b>Accès direct</b><span>tes questions entre les séances</span></div>
+   <div class="inc"><b>Les replays</b><span>de chacune de nos séances</span></div>
+  </div>
+ </div>
+</section>
+
+<!-- POUR QUI -->
+<section>
+ <div class="wrap">
+  <div class="kicker">Pour qui</div>
+  <h2>C'est pour toi si…</h2>
+  <div class="who">
+   <ul class="yes">
+    <li>Tu trades déjà les actions et tu as une bonne lecture des tendances de fond.</li>
+    <li>Tu veux une méthode que tu peux répéter, pas un coup de chance.</li>
+    <li>Tu veux comprendre pourquoi tu entres, pas copier les signaux d'un autre.</li>
+    <li>Tu peux y consacrer une demi-heure par jour.</li>
+   </ul>
+   <ul class="no">
+    <li>Tu cherches des signaux à recopier sans réfléchir.</li>
+    <li>Tu veux faire du day trading toute la journée devant l'écran.</li>
+    <li>Tu refuses de couper une position perdante.</li>
+   </ul>
+  </div>
+ </div>
+</section>
+
+<!-- BASS -->
+<section style="background:var(--g4)">
+ <div class="wrap bass">
+  <img src="/images/bass-portrait.jpg" alt="Bass, trader et formateur, Bass Trading">
+  <div>
+   <div class="kicker">Qui t'accompagne</div>
+   <h2>Bass</h2>
+   <p class="lead">Je trade depuis plus de dix ans. Sur les actions, je fais exactement ce qui est décrit sur cette page : petites capitalisations de croissance, résultats qui accélèrent, entrée au pivot, risque défini avant chaque trade.</p>
+   <blockquote>« Un thème te dit où regarder. Une méthode te dit quoi faire. Mon travail, c'est de te donner la deuxième. »</blockquote>
+   <div class="facts">
+    <div><b>10 ans +</b><span>sur les marchés</span></div>
+    <div><b>250 +</b><span>leçons vidéo créées</span></div>
+    <div><b>1 : 1</b><span>toi et moi, sans intermédiaire</span></div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- FAQ -->
+<section>
+ <div class="wrap">
+  <div class="kicker">Questions</div>
+  <h2>Ce que tu te demandes sûrement</h2>
+  <details><summary>Je trade déjà les actions. Est-ce que je repars de zéro ?</summary><p>Non. Ta lecture des thèmes est un vrai atout et on la garde. On ajoute ce qui manque : le filtre, le timing et la gestion.</p></details>
+  <details><summary>Combien de temps par jour ?</summary><p>Environ trente minutes, le soir ou le matin avant l'ouverture. C'est du swing : on prépare, on place les ordres et on laisse le marché travailler.</p></details>
+  <details><summary>Quels marchés ?</summary><p>Principalement les petites et moyennes capitalisations américaines, parce que c'est là que l'univers est le plus large et que les mouvements sont les plus nets.</p></details>
+  <details><summary>Il faut un gros capital ?</summary><p>Non. On calcule la taille de chaque position à partir du risque que tu acceptes, quel que soit le montant de ton compte. On en parle selon ta situation pendant l'appel.</p></details>
+  <details><summary>Combien ça coûte ?</summary><p>Ça dépend du nombre de séances et de l'intensité du suivi que tu veux. On en parle franchement pendant l'appel, une fois que je connais ton point de départ.</p></details>
+ </div>
+</section>
+
+<!-- FINAL -->
+<section class="final">
+ <div class="wrap">
+  <div class="kicker">On commence quand tu veux</div>
+  <h2>Tu as déjà l'œil. Il te manque la méthode.</h2>
+  <p class="lead">Réserve 30 minutes avec moi. On regarde où tu en es et je te dis concrètement comment on travaillerait ensemble.</p>
+  <a class="btn" href="/p/appel/?src=swing">Réserver notre appel →</a>
+ </div>
+</section>
+<div class="legal">Le trading d'actions comporte un risque de perte en capital. Les performances passées ne préjugent pas des performances futures. Il s'agit d'un accompagnement pédagogique, pas d'un conseil en investissement personnalisé. Le schéma de cette page est une illustration, pas un trade réel.<br>© Bass Trading</div>
+<script>/* ?pour=Prénom affiche la bulle perso, sinon la page reste générale */var p=new URLSearchParams(location.search).get("pour");if(p){document.getElementById("pour").textContent=p.slice(0,30);document.getElementById("note").hidden=false}</script>
+</body>
+</html>
