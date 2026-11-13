@@ -6,8 +6,16 @@
   <link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
   <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/"/>
   <id>https://basstrading.fr/blog/</id>
-  <updated>2026-11-12T00:00:00Z</updated>
+  <updated>2026-11-13T00:00:00Z</updated>
   <author><name>Sébastien Constant (Bass)</name><uri>https://basstrading.fr/auteur/sebastien-constant/</uri></author>
+  <entry>
+    <title>Order flow sur TradingView : ce qu&#x27;on voit vraiment (et ses limites)</title>
+    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/flux-ordres-tradingview/"/>
+    <id>https://basstrading.fr/blog/flux-ordres-tradingview/</id>
+    <published>2026-11-13T00:00:00Z</published>
+    <updated>2026-11-13T00:00:00Z</updated>
+    <summary>Order flow sur TradingView : Volume Profile, CVD, footprint, TPO, DOM et données CME. Ce que chaque outil montre vraiment, mon réglage et ses limites.</summary>
+  </entry>
   <entry>
     <title>Topstep avis : règles, drawdown et payout expliqués (2026)</title>
     <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/topstep/"/>
