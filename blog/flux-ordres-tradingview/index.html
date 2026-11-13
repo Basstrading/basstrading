@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order flow sur TradingView : ce qu&#39;on voit vraiment (et ses limites) — BASS Trading</title>
+  <meta name="description" content="Order flow sur TradingView : Volume Profile, CVD, footprint, TPO, DOM et données CME. Ce que chaque outil montre vraiment, mon réglage et ses limites.">
+  <meta property="og:title" content="Order flow sur TradingView : ce qu&#39;on voit vraiment (et ses limites) — BASS Trading">
+  <meta property="og:description" content="Order flow sur TradingView : Volume Profile, CVD, footprint, TPO, DOM et données CME. Ce que chaque outil montre vraiment, mon réglage et ses limites.">
+  <meta property="og:image" content="https://basstrading.fr/blog/flux-ordres-tradingview/blog-flux-ordres-tradingview-1.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://basstrading.fr/blog/flux-ordres-tradingview/blog-flux-ordres-tradingview-1.webp">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://basstrading.fr/blog/flux-ordres-tradingview/">
+  <meta property="og:site_name" content="BASS Trading">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://basstrading.fr/blog/flux-ordres-tradingview/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","@id":"https://basstrading.fr/blog/flux-ordres-tradingview/#article","headline":"Order flow sur TradingView : ce qu'on voit vraiment (et ses limites)","description":"Order flow sur TradingView : Volume Profile, CVD, footprint, TPO, DOM et données CME. Ce que chaque outil montre vraiment, mon réglage et ses limites.","datePublished":"2026-11-13","dateModified":"2026-11-13","inLanguage":"fr-FR","image":"https://basstrading.fr/blog/flux-ordres-tradingview/blog-flux-ordres-tradingview-1.webp","mainEntityOfPage":"https://basstrading.fr/blog/flux-ordres-tradingview/","isPartOf":{"@type":"WebSite","@id":"https://basstrading.fr/#website","name":"BASS Trading","url":"https://basstrading.fr/"},"author":{"@type":"Person","@id":"https://basstrading.fr/#sebastien-constant","name":"Sébastien Constant","url":"https://basstrading.fr/auteur/sebastien-constant/"},"publisher":{"@type":"Organization","@id":"https://basstrading.fr/#organisation","name":"BASS Trading","url":"https://basstrading.fr/","logo":{"@type":"ImageObject","url":"https://basstrading.fr/images/logo-basstrading.png","width":512,"height":512}}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://basstrading.fr"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://basstrading.fr/blog/"},{"@type":"ListItem","position":3,"name":"Order flow sur TradingView","item":"https://basstrading.fr/blog/flux-ordres-tradingview/"}]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Peut-on faire de l'order flow gratuitement sur TradingView ?","acceptedAnswer":{"@type":"Answer","text":"En partie seulement. La VWAP et de nombreux scripts communautaires sont gratuits, mais le Volume Profile natif et le footprint sont rangés dans les formules payantes (vérifie la page des tarifs), le DOM demande un courtier connecté et les données CME gratuites ont 10 minutes de retard. Pour apprendre en replay, la version gratuite permet déjà de comprendre la logique ; pour exécuter, il faut des données en temps réel."}},{"@type":"Question","name":"Le delta de TradingView est-il fiable ?","acceptedAnswer":{"@type":"Answer","text":"Le CVD intégré est calculé par défaut à partir des bougies d'une unité de temps inférieure : une bougie interne verte compte entièrement comme acheteuse. C'est une estimation, fiable pour lire une tendance ou une divergence, pas pour juger une seule bougie. Le mode tick, disponible selon ta formule, se rapproche du vrai delta par transaction."}},{"@type":"Question","name":"Y a-t-il un carnet d'ordres sur TradingView ?","acceptedAnswer":{"@type":"Answer","text":"Oui, un DOM existe, mais il faut connecter un compte de courtier qui fournit des données de profondeur (niveau 2). Sans courtier, il n'y a pas de vrai carnet. Le DOM de TradingView montre le présent et permet de passer des ordres, mais pas l'historique des ordres retirés, que montre une heatmap."}},{"@type":"Question","name":"Les données des futures Nasdaq sont-elles en temps réel sur TradingView ?","acceptedAnswer":{"@type":"Answer","text":"Pas par défaut. Les données des marchés du CME, dont le NQ et le MNQ, sont gratuites avec 10 minutes de retard. Le temps réel demande un abonnement de données séparé, au tarif non professionnel si tu y as droit, ou un flux fourni par ton courtier connecté."}},{"@type":"Question","name":"Quelle est la différence entre Volume Profile et TPO sur TradingView ?","acceptedAnswer":{"@type":"Answer","text":"Le Volume Profile additionne le volume échangé à chaque prix ; le TPO mesure le temps passé à chaque prix, par périodes souvent de 30 minutes. Les deux donnent une value area et un point de contrôle. Le Volume Profile dit où l'argent a circulé, le TPO où le marché a accepté de rester. Les deux existent sur TradingView."}},{"@type":"Question","name":"Faut-il quitter TradingView pour trader l'order flow ?","acceptedAnswer":{"@type":"Answer","text":"Pas pour apprendre ni pour préparer tes niveaux. Une plateforme dédiée devient utile quand tu exécutes en temps réel sur le flux et que tu veux un delta exact par transaction, l'historique du carnet ou une exécution rapide. Changer d'outil trop tôt ajoute de la complexité sans t'apprendre à lire un niveau."}}]}
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{--bk:#1D1D1F;--bk2:#111;--bk3:#0A0A0A;--g1:#6E6E73;--g2:#86868B;--g3:#D2D2D7;--g4:#F5F5F7;--wh:#FBFBFD;--pure:#FFF;--green:#00B67A;--blue:#0066FF}
+    html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}
+    body{font-family:'DM Sans',sans-serif;color:var(--bk);background:var(--pure);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+    .preloader{position:fixed;inset:0;background:var(--bk3);z-index:10001;display:flex;align-items:center;justify-content:center}
+    .pre-word{font-family:'Outfit',sans-serif;font-size:clamp(3rem,8vw,5rem);font-weight:900;letter-spacing:16px;text-transform:uppercase;color:var(--pure);overflow:hidden}
+    .pre-word span{display:inline-block;transform:translateY(110%);opacity:0}
+    .pre-line{width:0;height:1px;background:rgba(255,255,255,.3);margin-top:20px}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 48px;display:flex;align-items:center;justify-content:space-between;background:rgba(245,245,247,.85);backdrop-filter:blur(20px) saturate(1.8);border-bottom:1px solid rgba(0,0,0,.04);transition:background .4s}
+    .nav-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase;color:var(--bk)}
+    .nav-links{display:flex;gap:28px;list-style:none}.nav-links a{font-size:.74rem;font-weight:500;letter-spacing:.3px;color:var(--g1);transition:color .3s}.nav-links a:hover{color:var(--bk)}
+    .nav-cta{padding:8px 20px;background:var(--bk);color:var(--pure);border:none;border-radius:980px;font-size:.72rem;font-weight:600;transition:all .3s;cursor:pointer;text-decoration:none;display:inline-block}.nav-cta:hover{background:var(--bk2)}
+    .blog-hero{padding:160px 48px 80px;background:var(--g4);position:relative;overflow:hidden}
+    .blog-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,transparent,var(--g4));pointer-events:none}
+    .blog-hero-inner{max-width:720px;margin:0 auto}
+    .breadcrumb{display:flex;gap:8px;align-items:center;margin-bottom:28px;flex-wrap:wrap}
+    .breadcrumb a,.breadcrumb span{font-size:.68rem;font-weight:500;letter-spacing:.3px;color:var(--g2);transition:color .3s}.breadcrumb a:hover{color:var(--bk)}.breadcrumb .sep{color:var(--g3)}
+    .blog-hero-cat{display:inline-block;padding:5px 14px;border:1px solid rgba(0,102,255,.15);border-radius:980px;font-size:.6rem;font-weight:700;color:var(--blue);letter-spacing:2px;text-transform:uppercase;margin-bottom:20px}
+    .blog-hero-title{font-family:'Outfit',sans-serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:900;line-height:1.05;letter-spacing:-2px;color:var(--bk);margin-bottom:20px}
+    .blog-hero-desc{font-size:.95rem;color:var(--g1);line-height:1.8;max-width:560px;margin-bottom:28px}
+    .blog-meta{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+    .blog-meta-author{display:flex;align-items:center;gap:10px}
+    .blog-meta-avatar{width:36px;height:36px;border-radius:50%;background:var(--bk3);overflow:hidden;flex-shrink:0}.blog-meta-avatar img{width:100%;height:100%;object-fit:cover}
+    .blog-meta-name{font-size:.78rem;font-weight:600;color:var(--bk)}.blog-meta-role{font-size:.65rem;color:var(--g2)}
+    .blog-meta-sep{width:1px;height:24px;background:var(--g3)}
+    .blog-meta-info{font-size:.7rem;color:var(--g2)}.blog-meta-info span{margin-right:16px}
+    .toc{position:sticky;top:90px;background:var(--pure);border:1px solid rgba(0,0,0,.04);border-radius:14px;padding:24px;margin-bottom:32px}
+    .toc-title{font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.5px;color:var(--bk);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+    .toc ol{list-style:none;counter-reset:toc}.toc li{counter-increment:toc}
+    .toc li a{display:flex;align-items:baseline;gap:8px;padding:6px 0;font-size:.76rem;color:var(--g1);transition:color .3s;border-bottom:1px solid rgba(0,0,0,.03)}.toc li a:hover{color:var(--blue)}
+    .toc li a::before{content:counter(toc,decimal-leading-zero);font-family:'Outfit',sans-serif;font-size:.65rem;font-weight:700;color:var(--g3);min-width:18px}
+    .toc li:last-child a{border-bottom:none}.toc li a.active{color:var(--blue);font-weight:600}.toc li a.active::before{color:var(--blue)}
+    .article-wrap{display:grid;grid-template-columns:220px 1fr;gap:40px;max-width:1020px;margin:0 auto;padding:60px 48px 120px}
+    .article-sidebar{position:relative}.article-body{max-width:700px}
+    .article-body h2{font-family:'Outfit',sans-serif;font-size:clamp(1.4rem,2.5vw,1.8rem);font-weight:800;line-height:1.1;letter-spacing:-1px;color:var(--bk);margin:56px 0 16px;padding-top:20px}.article-body h2:first-of-type{margin-top:0}
+    .article-body h3{font-family:'Outfit',sans-serif;font-size:1.05rem;font-weight:700;line-height:1.25;letter-spacing:-.3px;color:var(--bk);margin:36px 0 10px}
+    .article-body p{font-size:.9rem;color:var(--g1);line-height:1.85;margin-bottom:18px}
+    .article-body strong{color:var(--bk);font-weight:600}
+    .article-body ul,.article-body ol{margin:0 0 20px 0;padding-left:20px}
+    .article-body li{font-size:.88rem;color:var(--g1);line-height:1.8;margin-bottom:6px}.article-body li strong{color:var(--bk)}
+    .article-body blockquote{margin:28px 0;padding:20px 24px;background:var(--g4);border-left:3px solid var(--bk);border-radius:0 12px 12px 0;font-size:.88rem;color:var(--g1);line-height:1.8;font-style:italic}
+    .article-body blockquote strong{color:var(--bk);font-style:normal}
+    .article-body hr{border:none;border-top:1px solid var(--g4);margin:48px 0}
+    .info-box{margin:28px 0;padding:24px;background:rgba(0,102,255,.03);border:1px solid rgba(0,102,255,.08);border-radius:14px}
+    .info-box-title{font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:700;color:var(--blue);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+    .info-box p{font-size:.82rem;color:var(--g1);line-height:1.7;margin-bottom:0}
+    .key-concept{margin:32px 0;padding:28px;background:var(--bk3);border-radius:16px;color:var(--pure)}
+    .key-concept-label{font-size:.55rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:10px}
+    .key-concept h4{font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:800;letter-spacing:-.3px;margin-bottom:8px}
+    .key-concept p{font-size:.85rem;color:rgba(255,255,255,.5);line-height:1.8;margin-bottom:0}
+    .compare-table{width:100%;margin:24px 0 28px;border-collapse:collapse;border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,.06)}
+    .compare-table th{background:var(--bk3);color:var(--pure);font-family:'Outfit',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:14px 16px;text-align:left}
+    .compare-table td{padding:12px 16px;font-size:.82rem;color:var(--g1);line-height:1.6;border-bottom:1px solid rgba(0,0,0,.04);background:var(--pure)}
+    .compare-table tr:last-child td{border-bottom:none}.compare-table td:first-child{font-weight:600;color:var(--bk)}
+    .cta-card{margin:48px 0;padding:40px;background:var(--bk3);border-radius:20px;text-align:center;position:relative;overflow:hidden}
+    .cta-card::before{content:'';position:absolute;top:-50%;right:-30%;width:400px;height:400px;background:radial-gradient(circle,rgba(0,102,255,.08) 0%,transparent 70%);pointer-events:none}
+    .cta-card-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:12px}
+    .cta-card h3{font-family:'Outfit',sans-serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:800;color:var(--pure);letter-spacing:-.5px;margin-bottom:8px}
+    .cta-card p{font-size:.85rem;color:rgba(255,255,255,.4);line-height:1.7;max-width:380px;margin:0 auto 24px}
+    .cta-card .btn-p{background:var(--pure);color:var(--bk)}.cta-card .btn-p:hover{box-shadow:0 8px 30px rgba(255,255,255,.15)}
+    .faq-sec{padding:80px 48px 100px;background:var(--g4)}
+    .faq-list{max-width:680px;margin:40px auto 0}.fi{border-bottom:1px solid rgba(0,0,0,.06)}
+    .fq{width:100%;text-align:left;padding:18px 0;background:none;border:none;font-size:.85rem;font-weight:600;font-family:'DM Sans',sans-serif;color:var(--bk);display:flex;justify-content:space-between;align-items:center;cursor:pointer;gap:16px;transition:color .3s}.fq:hover{color:var(--g1)}
+    .fq-icon{width:22px;height:22px;border-radius:50%;background:rgba(0,0,0,.04);display:flex;align-items:center;justify-content:center;font-size:.75rem;transition:all .4s;flex-shrink:0;color:var(--g2)}
+    .fa{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1)}.fa.open{max-height:280px;padding-bottom:14px}
+    .fa p{font-size:.8rem;color:var(--g1);line-height:1.7;margin-bottom:0}.fi.active .fq-icon{background:var(--bk);color:var(--pure);transform:rotate(45deg)}
+    .related-sec{padding:80px 48px;background:var(--pure);border-top:1px solid var(--g4)}
+    .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1060px;margin:40px auto 0}
+    .related-card{display:block;padding:28px;background:var(--g4);border-radius:16px;transition:all .4s;text-decoration:none;color:var(--bk)}
+    .related-card:hover{background:var(--pure);box-shadow:0 8px 30px rgba(0,0,0,.06);transform:translateY(-2px)}
+    .related-cat{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+    .related-card h3{font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:700;line-height:1.3;letter-spacing:-.3px;margin-bottom:8px}
+    .related-card p{font-size:.78rem;color:var(--g1);line-height:1.6;margin-bottom:14px}
+    .related-link{font-size:.72rem;font-weight:600;color:var(--blue);letter-spacing:.3px}
+    .footer{background:var(--bk3);color:var(--pure);padding:56px 48px 28px}
+    .ft-top{display:flex;justify-content:space-between;align-items:start;margin-bottom:48px;flex-wrap:wrap;gap:32px}
+    .ft-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase}
+    .ft-cols{display:flex;gap:80px}
+    .ft-col-title{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:12px}
+    .ft-col a{display:block;font-size:.78rem;color:rgba(255,255,255,.5);margin-bottom:8px;transition:color .3s}.ft-col a:hover{color:var(--pure)}
+    .ft-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:20px;display:flex;justify-content:space-between;align-items:center;font-size:.6rem;color:rgba(255,255,255,.2)}
+    .ft-bottom a{color:rgba(255,255,255,.2);transition:color .3s;margin-left:20px}.ft-bottom a:hover{color:rgba(255,255,255,.5)}
+    .disclaimer{padding:12px 48px;background:var(--bk3);font-size:.58rem;color:rgba(255,255,255,.12);text-align:center;line-height:1.6;border-top:1px solid rgba(255,255,255,.03)}
+    .sec-center{text-align:center;max-width:680px;margin:0 auto}
+    .sec-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--g2);margin-bottom:10px}
+    .sec-title{font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;line-height:1.05;letter-spacing:-1.5px;color:var(--bk);margin-bottom:16px}
+    .btn-p{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--bk);color:var(--pure);border-radius:980px;font-size:.85rem;font-weight:600;transition:all .3s;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;text-decoration:none}
+    .btn-p:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(0,0,0,.1)}
+    .btn-p svg{width:13px;height:13px;transition:transform .3s}.btn-p:hover svg{transform:translateX(3px)}
+    .reading-progress{position:fixed;top:0;left:0;height:2px;background:var(--blue);z-index:9999;width:0;transition:width .1s linear}
+    @media(max-width:900px){.nav{padding:14px 20px}.nav-links{display:none}.blog-hero{padding:120px 20px 60px}.article-wrap{grid-template-columns:1fr;padding:40px 20px 80px}.article-sidebar{display:none}.related-grid{grid-template-columns:1fr}.related-sec,.faq-sec{padding:60px 20px}.ft-cols{flex-direction:column;gap:28px}.footer{padding:40px 20px 20px}.disclaimer{padding:10px 16px}.cta-card{padding:28px 20px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  .article-body a{color:var(--blue);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;font-weight:500}.article-body a:hover{text-decoration-thickness:2px}
+</style>
+<style>/* 28/10/2026 : débordement mobile (colonne de grille sans min-width) */.article-wrap>*,.article-layout>*{min-width:0}.article-body table,.compare-table{display:block;overflow-x:auto;max-width:100%}.article-body pre{overflow-x:auto}.article-body img{max-width:100%;height:auto}</style>
+</head>
+<body>
+
+<div class="preloader" id="preloader"><div style="text-align:center"><div class="pre-word"><span>B</span><span>A</span><span>S</span><span>S</span></div><div class="pre-line" id="preLine"></div></div></div>
+<div class="reading-progress" id="readingProgress"></div>
+
+<nav class="nav" id="nav">
+  <a href="https://basstrading.fr" class="nav-logo">BASS</a>
+  <ul class="nav-links">
+    <li><a href="https://basstrading.fr/#methode">Méthode</a></li>
+    <li><a href="https://basstrading.fr#resultats">Résultats</a></li>
+    <li><a href="https://basstrading.fr#avis">Avis</a></li>
+    <li><a href="https://basstrading.fr#faq">FAQ</a></li>
+    <li><a href="/formations/">Formations</a></li>
+    <li><a href="https://basstrading.fr/blog/">Blog</a></li>
+  </ul>
+  <a href="https://basstrading.fr/p/formation-offerte/?src=blog-flux-ordres-tradingview-menu" class="nav-cta">Formation offerte</a>
+</nav>
+
+<section class="blog-hero">
+  <div class="blog-hero-inner">
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <a href="https://basstrading.fr">Accueil</a><span class="sep">/</span>
+      <a href="https://basstrading.fr/blog/">Blog</a><span class="sep">/</span>
+      <span>Order flow sur TradingView</span>
+    </nav>
+    <div class="blog-hero-cat">Order flow</div>
+    <h1 class="blog-hero-title">Order flow sur TradingView : ce qu&#39;on voit vraiment (et ses limites)</h1>
+    <p class="blog-hero-desc">Oui, on peut faire une partie de l&#39;order flow sur TradingView : Volume Profile, CVD, footprint, TPO et VWAP y sont. Mais le delta y est souvent estimé à partir des bougies, les données CME gratuites ont 10 minutes de retard et le carnet passe par un courtier. Voici ce que chaque outil montre vraiment, le réglage que je donne à mes élèves et le moment où il faut passer à une plateforme dédiée.</p>
+    <div class="blog-meta">
+      <div class="blog-meta-author">
+        <div class="blog-meta-avatar"><img src="../../images/bass-presenting.jpg" alt="Sébastien Constant" loading="lazy"></div>
+        <div><div class="blog-meta-name"><a href="/auteur/sebastien-constant/" rel="author" style="color:inherit;text-decoration:none">Sébastien Constant</a></div><div class="blog-meta-role">Trader & Formateur Order Flow</div></div>
+      </div>
+      <div class="blog-meta-sep"></div>
+      <div class="blog-meta-info"><span>Novembre 2026</span><span>20 min de lecture</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="article-wrap">
+  <aside class="article-sidebar">
+    <div class="toc">
+      <div class="toc-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/></svg> Sommaire</div>
+      <ol>
+        <li><a href="#peut-on-vraiment-faire-de-l-order-flow-s">Peut-on vraiment faire de l&#39;order flow sur TradingView ?</a></li>
+        <li><a href="#que-montre-l-order-flow-que-ta-bougie-ne">Que montre l&#39;order flow que ta bougie ne montre pas ?</a></li>
+        <li><a href="#le-volume-profile-sur-tradingview-lequel">Le Volume Profile sur TradingView : lequel choisir ?</a></li>
+        <li><a href="#cvd-et-delta-sur-tradingview-comment-son">CVD et delta sur TradingView : comment sont-ils calculés ?</a></li>
+        <li><a href="#le-footprint-de-tradingview-a-qui-il-ser">Le footprint de TradingView : à qui il sert ?</a></li>
+        <li><a href="#tpo-et-vwap-ou-trouver-le-contexte-avant">TPO et VWAP : où trouver le contexte avant d&#39;exécuter ?</a></li>
+        <li><a href="#le-carnet-d-ordres-dom-sur-tradingview-f">Le carnet d&#39;ordres (DOM) sur TradingView : faut-il un courtier ?</a></li>
+        <li><a href="#donnees-cme-en-differe-ou-en-temps-reel-">Données CME en différé ou en temps réel : qu&#39;est-ce qui change ?</a></li>
+        <li><a href="#mon-reglage-minimal-d-order-flow-sur-tra">Mon réglage minimal d&#39;order flow sur TradingView</a></li>
+        <li><a href="#quelles-erreurs-eviter-avec-l-order-flow">Quelles erreurs éviter avec l&#39;order flow sur TradingView ?</a></li>
+        <li><a href="#quand-passer-a-une-plateforme-d-order-fl">Quand passer à une plateforme d&#39;order flow dédiée ?</a></li>
+        <li><a href="#ce-qu-il-faut-retenir-et-comment-cet-art">Ce qu&#39;il faut retenir, et comment cet article est fait</a></li>
+      </ol>
+    </div>
+  </aside>
+
+  <article class="article-body">
+    <h2 id="peut-on-vraiment-faire-de-l-order-flow-s">Peut-on vraiment faire de l&#39;order flow sur TradingView ?</h2>
+    <p>L&#39;order flow sur TradingView, c&#39;est la lecture des volumes échangés à chaque prix (Volume Profile, footprint) et du rapport de force entre acheteurs et vendeurs agressifs (delta, CVD), avec des données qui sont souvent reconstruites à partir des bougies plutôt que tick par tick.</p>
+<p>Voilà la réponse courte. Tu peux faire une bonne partie du travail de préparation sur TradingView, et même apprendre à lire le flux. Mais tu dois savoir exactement ce que chaque outil calcule, sinon tu vas prendre une estimation pour une vérité.</p>
+<p>Je reçois cette question presque chaque semaine. Un élève a TradingView, il a vu une vidéo sur le footprint ou le delta, et il me demande s&#39;il doit vraiment payer une autre plateforme. Ma réponse dépend de ce qu&#39;il veut faire : préparer ses niveaux, ou exécuter à la seconde près. Ce ne sont pas les mêmes besoins.</p>
+<h3>Pour qui est cet article</h3>
+<p>Tu trades (ou tu veux trader) les futures, en particulier le Nasdaq (NQ ou MNQ), et tu utilises déjà TradingView pour tes graphiques. Tu as entendu parler d&#39;order flow, de carnet d&#39;ordres, de delta, et tu veux savoir ce que ta plateforme sait faire avant d&#39;en acheter une autre.</p>
+<p>À la fin, tu sauras :</p>
+<ul><li>quels outils d&#39;order flow existent sur TradingView et ce qu&#39;ils calculent vraiment ;</li><li>lesquels sont fiables pour préparer ta séance, et lesquels ne le sont pas pour exécuter ;</li><li>le réglage minimal que je conseille, en 5 étapes ;</li><li>à quel moment une plateforme dédiée devient utile.</li></ul>
+<p>Si tu découvres le sujet, commence par mon guide de l&#39;<a href="https://basstrading.fr/blog/order-flow-trading-france/">order flow en trading</a>, puis reviens ici.</p>
+<p>Avant de parler des outils, il faut comprendre ce qu&#39;une simple bougie te cache. C&#39;est la base de tout le reste.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/flux-ordres-tradingview/blog-flux-ordres-tradingview-1.webp" alt="Comparaison entre une bougie, qui donne quatre prix, et l&#39;order flow, qui montre les volumes par prix et par agresseur" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Une bougie résume la séance en quatre prix ; l&#39;order flow ouvre la bougie pour montrer les volumes et qui les a déclenchés.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="que-montre-l-order-flow-que-ta-bougie-ne">Que montre l&#39;order flow que ta bougie ne montre pas ?</h2>
+    <p>Une bougie te donne quatre prix : ouverture, plus haut, plus bas, clôture. Elle ne te dit pas qui a fait bouger le prix, ni à quels prix les échanges se sont concentrés.</p>
+<p>Chaque bougie est le résultat d&#39;ordres qui se sont rencontrés dans le carnet. L&#39;order flow consiste à regarder à l&#39;intérieur.</p>
+<h3>Les ordres en attente et les ordres exécutés</h3>
+<p>Il y a deux mondes, et beaucoup de débutants les mélangent :</p>
+<ul><li>le carnet d&#39;ordres (DOM) : les ordres limites en attente, posés à l&#39;achat et à la vente à chaque prix. Ils peuvent être retirés à tout moment ;</li><li>le footprint, le delta et le Volume Profile : uniquement les transactions effectuées.</li></ul>
+<p>Dans ma <a href="https://www.youtube.com/watch?v=FLBONXJWCoM&amp;t=180s">formation footprint gratuite</a>, je le dis ainsi : « dans le footprint on ne va pas voir les transactions en attente mais on va voir uniquement les transactions effectuées sur chaque ligne de prix ». Et pour le carnet, j&#39;utilise souvent l&#39;image du restaurant : une réservation n&#39;est pas un client assis. Un gros ordre affiché dans le carnet peut disparaître une seconde avant que le prix l&#39;atteigne.</p>
+<h3>L&#39;agresseur : la clé du delta</h3>
+<p>Une transaction a toujours un acheteur et un vendeur. Ce qui compte, c&#39;est qui a pris l&#39;initiative : celui qui a accepté le prix de l&#39;autre avec un ordre au marché. Le CME publie cette information dans ses flux de données sous le nom d&#39;<a href="https://cmegroupclientsite.atlassian.net/wiki/x/1b1AGw">« aggressor side »</a> : chaque transaction est marquée comme initiée par un acheteur ou par un vendeur.</p>
+<p>Le delta, c&#39;est la différence entre le volume des acheteurs agressifs et celui des vendeurs agressifs. Quand une plateforme reçoit chaque transaction avec ce marquage, son delta est exact. Quand elle ne le reçoit pas, elle doit l&#39;estimer. Retiens ce point : c&#39;est tout l&#39;enjeu de TradingView.</p>
+<p>Je détaille la lecture du carnet dans mon article sur le <a href="https://basstrading.fr/blog/carnet-ordres-dom-futures/">carnet d&#39;ordres et le DOM des futures</a>.</p>
+<h3>À retenir</h3>
+<ul><li>Une bougie résume ; l&#39;order flow détaille qui a agi et à quel prix.</li><li>Le carnet montre des intentions, le footprint et le delta montrent des faits.</li><li>Le delta exact suppose de connaître l&#39;agresseur de chaque transaction.</li></ul>
+<p>Voyons maintenant ce que TradingView te donne réellement, outil par outil, en commençant par le plus utile.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/flux-ordres-tradingview/blog-flux-ordres-tradingview-2.webp" alt="Tableau des outils d&#39;order flow sur TradingView et de leur fiabilité pour préparer ou exécuter" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Les outils qui additionnent des volumes sont fiables ; ceux qui devinent l&#39;agresseur sont des estimations.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="le-volume-profile-sur-tradingview-lequel">Le Volume Profile sur TradingView : lequel choisir ?</h2>
+    <p>Le Volume Profile est l&#39;outil d&#39;order flow le plus fiable sur TradingView, parce qu&#39;il additionne simplement le volume échangé à chaque prix. Il n&#39;a pas besoin de savoir qui était l&#39;agresseur. Pour préparer une séance, c&#39;est celui que je regarderais en premier.</p>
+<p>TradingView propose plusieurs variantes, listées dans sa <a href="https://www.tradingview.com/support/solutions/43000502040-volume-profile-indicators-basic-concepts/">page d&#39;aide sur les indicateurs de Volume Profile</a> : Auto anchored, Fixed range, Periodic, Session, Session HD et Visible range.</p>
+<h3>Les trois que j&#39;utiliserais vraiment</h3>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Variante</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Ce qu&#39;elle fait</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Mon usage</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Session</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Un profil par séance</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Le POC et la value area de la veille</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Fixed range</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Un profil sur la zone que tu traces</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Un mouvement précis, une semaine</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Visible range</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Tout ce qui est à l&#39;écran</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Repérer vite les zones fortes</td></tr></tbody></table></div>
+<p>Avec un profil de séance, tu récupères trois niveaux qui comptent : le POC (le prix le plus échangé), et les bornes de la value area (la zone où s&#39;est fait environ 70 % du volume). Je les explique en détail dans mon article sur la <a href="https://basstrading.fr/blog/value-area-trading/">value area en trading</a>.</p>
+<h3>Ce qu&#39;il faut savoir sur l&#39;accès</h3>
+<p>Le Volume Profile natif n&#39;est plus dans le compte gratuit. Aujourd&#39;hui, la <a href="https://www.tradingview.com/pricing/">page des tarifs de TradingView</a> range le Volume Profile dans la rubrique « Orderflow » des formules payantes. Les formules changent souvent : vérifie toujours cette page avant de t&#39;abonner.</p>
+<h3>Le POC, mon premier repère</h3>
+<p>Dans ma formation footprint, je définis le POC comme « l&#39;endroit précis où il y a eu le plus de transactions ». La lecture de base est simple : si le prix tient au-dessus du POC, les acheteurs ont la main ; s&#39;il reste en dessous, ce sont les vendeurs. Ce n&#39;est pas un signal d&#39;entrée, c&#39;est un repère pour savoir de quel côté se placer.</p>
+<p>Si tu veux aller plus loin, mon <a href="https://basstrading.fr/blog/volume-profile-guide/">guide complet du Volume Profile</a> montre les zones à fort et à faible volume, et comment le prix les traverse.</p>
+<h3>À retenir</h3>
+<ul><li>Le Volume Profile est fiable sur TradingView : il additionne des volumes, il n&#39;estime rien.</li><li>Session, Fixed range et Visible range suffisent presque toujours.</li><li>POC et value area de la veille sont tes premiers niveaux.</li></ul>
+<p>Le delta, lui, est une autre histoire. C&#39;est là que TradingView doit faire des choix de calcul.</p>
+
+    <hr>
+
+    <h2 id="cvd-et-delta-sur-tradingview-comment-son">CVD et delta sur TradingView : comment sont-ils calculés ?</h2>
+    <p>Le CVD intégré de TradingView est calculé par défaut à partir des bougies d&#39;une unité de temps inférieure, et non transaction par transaction. C&#39;est écrit noir sur blanc dans sa <a href="https://www.tradingview.com/support/solutions/43000725058-cumulative-volume-delta/">page d&#39;aide sur le Cumulative Volume Delta</a>.</p>
+<h3>La méthode des bougies internes</h3>
+<p>Concrètement, sur un graphique en 5 minutes, l&#39;indicateur regarde les bougies de 1 minute à l&#39;intérieur. Pour chacune :</p>
+<ul><li>si elle clôture au-dessus de son ouverture, tout son volume compte comme acheteur ;</li><li>si elle clôture en dessous, tout son volume compte comme vendeur.</li></ul>
+<p>Puis il additionne, et le cumul repart à zéro à chaque période d&#39;ancrage (la séance, par exemple). L&#39;unité de temps interne est choisie automatiquement selon ton graphique (1 seconde, 1 minute, 5 minutes ou 60 minutes) ou réglée à la main.</p>
+<p>Tu vois le problème ? Une bougie de 1 minute verte peut contenir 55 % de vendeurs agressifs. La méthode la compte 100 % acheteuse. C&#39;est une approximation honnête, mais c&#39;est une approximation.</p>
+<h3>Le mode tick</h3>
+<p>TradingView propose aussi un mode basé sur les ticks, désactivé par défaut. Selon sa documentation, il demande une formule qui donne accès aux données de ticks, et il ne fonctionne en CVD que si la période d&#39;ancrage est d&#39;un jour ou moins. Ce mode se rapproche du vrai delta. Si tu as la formule qui le permet, active-le.</p>
+<h3>Et les scripts de la communauté ?</h3>
+<p>Tu trouveras des dizaines de scripts « order flow », « delta », « CVD » gratuits. La plupart utilisent la même logique de proxy (bougies, mèches, volume réparti selon la position de la clôture), parce que TradingView ne fournit pas les données de l&#39;agresseur à un script Pine pour la plupart des symboles. Lis toujours la description du script : s&#39;il parle de « lower timeframe » ou d&#39;« estimation », tu sais à quoi t&#39;en tenir.</p>
+<h3>Comment je lis le CVD, même estimé</h3>
+<p>Dans ma formation, j&#39;explique que le CVD (ou « session delta ») « nous permet de voir qui dans l&#39;ensemble tient le marché ». Ce qui m&#39;intéresse, ce n&#39;est pas sa valeur exacte, c&#39;est sa direction et ses divergences.</p>
+<p>Quand le prix fait un nouveau plus haut et que le CVD n&#39;en fait pas, je le dis dans la vidéo, <a href="https://www.youtube.com/watch?v=FLBONXJWCoM&amp;t=1620s">vers la 27e minute</a> : « on commence à mettre une petite alerte dans sa tête ». Une alerte, pas un ordre de vente. Pour cette lecture de tendance, une estimation correcte suffit souvent.</p>
+<p>Mon article sur le <a href="https://basstrading.fr/blog/cvd-cumulative-volume-delta/">CVD (Cumulative Volume Delta)</a> détaille les divergences avec des exemples.</p>
+<h3>À retenir</h3>
+<ul><li>Le CVD de TradingView est par défaut une estimation par bougies internes.</li><li>Le mode tick existe mais dépend de ta formule.</li><li>Pour lire une tendance ou une divergence, c&#39;est utilisable ; pour juger une seule bougie, non.</li></ul>
+<p>Et le footprint, qui montre ces volumes prix par prix ? TradingView en a un aussi.</p>
+
+    <hr>
+
+    <h2 id="le-footprint-de-tradingview-a-qui-il-ser">Le footprint de TradingView : à qui il sert ?</h2>
+    <p>TradingView a lancé son type de graphique Volume footprint le 14 mai 2024, annoncé sur son <a href="https://www.tradingview.com/blog/en/new-chart-type-volume-footprint-44399/">blog officiel</a> pour les formules Premium et supérieures lors de son lancement. Il affiche, à chaque prix d&#39;une bougie, le volume acheteur et vendeur, le delta, le POC de la bougie et les déséquilibres.</p>
+<p>Je ne vais pas tout redétailler ici : j&#39;ai écrit un article entier sur le <a href="https://basstrading.fr/blog/footprint-tradingview/">footprint dans TradingView</a>, avec les réglages et les limites. Je te donne seulement ce qui compte pour ta décision.</p>
+<h3>Ce qu&#39;il fait bien</h3>
+<ul><li>Il t&#39;apprend à lire une bougie de l&#39;intérieur : où le volume s&#39;est concentré, où les acheteurs ont poussé.</li><li>Il marche en replay, ce qui est parfait pour t&#39;entraîner le week-end.</li><li>Il est dans la même plateforme que tes graphiques : pas de deuxième logiciel à apprendre.</li></ul>
+<h3>Ce qui me gêne pour l&#39;exécution</h3>
+<p>Sur un futures comme le Nasdaq, l&#39;exécution se joue en secondes. Pour exécuter sur un footprint, il faut un flux en temps réel qui marque chaque transaction, sans retard d&#39;affichage. Si tes données CME sont en différé (on en parle plus bas), ton footprint l&#39;est aussi.</p>
+<p>Et surtout, rappelle-toi ce que je dis dans ma formation <a href="https://www.youtube.com/watch?v=FLBONXJWCoM&amp;t=2220s">vers la 37e minute</a> : « le footprint c&#39;est pas un outil magique ça va pas vous permettre de faire des plans mais ça va vous permettre d&#39;être dans l&#39;exécution ». Il ne remplace pas ta préparation.</p>
+<h3>Un réglage qui compte : le déséquilibre</h3>
+<p>Le footprint signale un déséquilibre (imbalance) quand les acheteurs d&#39;un prix dépassent fortement les vendeurs du prix voisin, en diagonale. Je le rappelle dans la vidéo : « un footprint en fait il se lit en diagonale ». Dans ma formation, je conseille un ratio de 300 % sur le Nasdaq. C&#39;est ce que je dis <a href="https://www.youtube.com/watch?v=FLBONXJWCoM&amp;t=3000s">vers la 50e minute</a> : « 300% c&#39;est ce que je mets sur le nasdaq ». Un ratio trop bas allume des signaux partout.</p>
+<p>Pour comprendre ces déséquilibres, lis mon article sur l&#39;<a href="https://basstrading.fr/blog/imbalance-footprint/">imbalance dans le footprint</a> et celui sur le <a href="https://basstrading.fr/blog/delta-footprint-trading/">delta du footprint</a>.</p>
+<p>Le footprint te montre l&#39;exécution. Mais avant d&#39;exécuter, il faut savoir où. C&#39;est le rôle du TPO et de la VWAP.</p>
+
+    <hr>
+
+    <h2 id="tpo-et-vwap-ou-trouver-le-contexte-avant">TPO et VWAP : où trouver le contexte avant d&#39;exécuter ?</h2>
+    <p>Je ne trade jamais un signal d&#39;order flow « au milieu de rien ». Je le dis dans ma formation <a href="https://www.youtube.com/watch?v=FLBONXJWCoM&amp;t=3360s">vers la 56e minute</a> : « ça ne sert à rien de regarder le footprint et de vouloir trader au milieu de rien en fait c&#39;est toujours en amont vous avez fait un plan ». Mon plan, ce sont des niveaux : plus haut et plus bas de la veille, VWAP, POC, zones de la value area.</p>
+<p>Bonne nouvelle : ces outils de contexte sont parmi les plus solides de TradingView.</p>
+<h3>Le TPO (Market Profile)</h3>
+<p>TradingView propose le TPO à la fois comme indicateur et comme type de graphique, selon sa <a href="https://www.tradingview.com/support/solutions/43000713306-time-price-opportunity-tpo-indicator/">page d&#39;aide sur le TPO</a>. Le TPO ne mesure pas le volume mais le temps passé à chaque prix : chaque lettre représente une période (souvent 30 minutes) où le prix a été visité.</p>
+<p>Il te donne la forme de la séance (équilibre ou tendance), l&#39;Initial Balance (la première heure) et la value area en temps. Je l&#39;utilise pour savoir si le marché accepte ou refuse un prix. Mon <a href="https://basstrading.fr/blog/market-profile-guide-complet/">guide complet du Market Profile</a> explique la lecture pas à pas, et l&#39;article <a href="https://basstrading.fr/blog/market-profile-vs-volume-profile/">Market Profile ou Volume Profile</a> t&#39;aide à choisir entre les deux.</p>
+<h3>La VWAP</h3>
+<p>La VWAP (prix moyen pondéré par les volumes) est un calcul simple et transparent : TradingView l&#39;a en natif, avec ses bandes d&#39;écart-type, et l&#39;ancrage à la séance. C&#39;est l&#39;un des niveaux que je regarde le plus sur le Nasdaq, parce que beaucoup d&#39;acteurs l&#39;utilisent comme référence de prix moyen.</p>
+<p>Un exemple que je montre <a href="https://www.youtube.com/watch?v=FLBONXJWCoM&amp;t=3480s">vers la 58e minute de ma formation</a> : le prix revient sur la VWAP, le footprint montre une absorption (des vendeurs agressifs qui frappent sans faire baisser le prix), et l&#39;entrée se fait avec un stop de 4 à 5 points. Le niveau vient d&#39;abord, le flux confirme ensuite. Sans la VWAP, cette absorption n&#39;aurait été qu&#39;un détail parmi d&#39;autres.</p>
+<p>Tout est dans mon article sur la <a href="https://basstrading.fr/blog/vwap-trading/">VWAP en trading</a>.</p>
+<h3>À retenir</h3>
+<ul><li>TPO et VWAP sont fiables sur TradingView, car ils ne dépendent pas de l&#39;agresseur.</li><li>Ton plan se construit avec eux, avant la séance.</li><li>Un signal d&#39;order flow sans niveau n&#39;a pas de valeur pour moi.</li></ul>
+<p>Reste l&#39;outil que tout le monde associe à l&#39;order flow : le carnet d&#39;ordres. Et là, TradingView a une condition.</p>
+
+    <hr>
+
+    <h2 id="le-carnet-d-ordres-dom-sur-tradingview-f">Le carnet d&#39;ordres (DOM) sur TradingView : faut-il un courtier ?</h2>
+    <p>Oui. Sur TradingView, le DOM n&#39;est accessible qu&#39;avec un compte de courtier connecté qui fournit des données de profondeur. La <a href="https://www.tradingview.com/support/solutions/43000516459-depth-of-market-dom-what-it-is-and-how-traders-can-use-it/">page d&#39;aide de TradingView sur le DOM</a> le dit ainsi : « To start using the DOM, you&#39;ll need to connect your account to a broker that supports Tier 2 data ». Autrement dit, il faut connecter ton compte à un courtier qui fournit des données de niveau 2.</p>
+<p>Il n&#39;y a donc pas de carnet d&#39;ordres « gratuit » dans TradingView pour regarder le Nasdaq sans courtier. Si un script te promet un DOM gratuit, c&#39;est une reconstruction à partir des bougies, pas le vrai carnet.</p>
+<h3>Ce que le DOM de TradingView te donne</h3>
+<p>Une fois connecté, tu as l&#39;échelle de prix avec les quantités en attente à l&#39;achat et à la vente, et tu peux passer tes ordres directement depuis l&#39;échelle. Pour placer un ordre limite proprement ou déplacer ton stop, c&#39;est confortable.</p>
+<h3>Ce qu&#39;il ne te donne pas</h3>
+<ul><li>L&#39;historique du carnet : tu vois le présent, pas ce qui s&#39;est retiré il y a deux minutes. C&#39;est précisément ce que montre une heatmap.</li><li>Une lecture fine des retraits : les gros ordres affichés qui disparaissent à l&#39;approche du prix, ce que les traders appellent le spoofing ou les ordres fantômes.</li></ul>
+<p>Pour ça, il faut un outil spécialisé. Je compare cette approche dans mon article sur la <a href="https://basstrading.fr/blog/bookmap-heatmap/">heatmap Bookmap</a>.</p>
+<h3>Mon avis franc sur le carnet pour un débutant</h3>
+<p>Dans ma formation, je commence toujours par le carnet : « en comprenant la base qui est le carnet ça va te permettre de mieux comprendre ce qu&#39;est le footprint ». Mais je ne conseille pas à un débutant de trader en fixant le DOM. Les ordres en attente changent sans cesse, et tu risques de réagir à chaque mouvement. Apprends à le comprendre, puis sers-t&#39;en pour placer tes ordres.</p>
+<p>Il reste un point que presque personne n&#39;explique, et qui change tout pour un trader de futures : la qualité des données que tu reçois.</p>
+
+    <hr>
+
+    <h2 id="donnees-cme-en-differe-ou-en-temps-reel-">Données CME en différé ou en temps réel : qu&#39;est-ce qui change ?</h2>
+    <p>Sur TradingView, les données des marchés du CME (dont le Nasdaq NQ et MNQ) sont gratuites avec 10 minutes de retard ; le temps réel demande un abonnement de données payant, en plus de ta formule. La <a href="https://www.tradingview.com/cme/">page CME de TradingView</a> l&#39;écrit ainsi : « All CME Group&#39;s data is available for free on TradingView with a 10-minute delay ».</p>
+<h3>Pourquoi c&#39;est décisif pour l&#39;order flow</h3>
+<p>Dix minutes, sur le Nasdaq, c&#39;est une éternité. Le contrat NQ avance par pas de 0,25 point, et chaque pas vaut 5 $ par contrat, selon les <a href="https://www.cmegroup.com/markets/equities/nasdaq/e-mini-nasdaq-100.contractSpecs.html">spécifications officielles du CME</a>. Je le rappelle dans ma formation : « sur le nasdaq un tic c&#39;est 5 balles ». En dix minutes, le prix peut parcourir des dizaines de points.</p>
+<p>Avec des données en différé :</p>
+<ul><li>ton footprint, ton CVD et ton Volume Profile du jour sont en retard sur le marché ;</li><li>tu peux t&#39;entraîner, analyser, préparer ;</li><li>tu ne peux pas exécuter sur ce que tu vois.</li></ul>
+<h3>Le temps réel : deux points à vérifier</h3>
+<p>TradingView vend l&#39;abonnement temps réel CME à part, avec un tarif réservé aux non-professionnels. Sa page d&#39;aide sur <a href="https://www.tradingview.com/support/solutions/43000471705-how-to-purchase-additional-market-data/">l&#39;achat de données de marché supplémentaires</a> précise que les formules payantes ne couvrent pas ces frais de bourse, et que les professionnels doivent acheter des abonnements spécifiques. Vérifie ton statut honnêtement : si tu gères de l&#39;argent pour d&#39;autres, tu n&#39;es pas un non-professionnel.</p>
+<p>Si tu trades via un courtier connecté, ses données peuvent remplacer celles de TradingView. Renseigne-toi auprès de lui avant de payer deux fois le même flux.</p>
+<p>Si tu hésites entre le contrat standard et le micro, mon article <a href="https://basstrading.fr/blog/nq-ou-mnq/">NQ ou MNQ</a> t&#39;aide à choisir, et le guide des <a href="https://basstrading.fr/blog/nasdaq-futures-nq-mnq/">futures Nasdaq NQ et MNQ</a> détaille les contrats.</p>
+<h3>À retenir</h3>
+<ul><li>Données CME gratuites = 10 minutes de retard : bien pour apprendre, inutilisable pour exécuter.</li><li>Le temps réel est un abonnement de données séparé.</li><li>Le statut professionnel change le prix : déclare-le correctement.</li></ul>
+<p>Alors, avec tout ça, comment je règlerais TradingView pour un élève qui débute l&#39;order flow ? Voici mon réglage minimal.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/flux-ordres-tradingview/blog-flux-ordres-tradingview-3.webp" alt="Chiffres clés des données CME sur TradingView et du contrat NQ" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Sources : page CME de TradingView et spécifications du contrat NQ (CME Group).</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="mon-reglage-minimal-d-order-flow-sur-tra">Mon réglage minimal d&#39;order flow sur TradingView</h2>
+    <p>Je le répète souvent en live, et c&#39;est dans ma formation <a href="https://www.youtube.com/watch?v=FLBONXJWCoM&amp;t=1350s">vers la 22e minute</a> : « au plus vous vous dirigez vers des choses simples et au plus c&#39;est facile parce que trop d&#39;informations tuent l&#39;information ». Voici donc un réglage volontairement court.</p>
+<h3>Étape 1 : le graphique de base</h3>
+<p>Un graphique NQ ou MNQ (contrat continu) en 5 minutes pour le contexte, et un deuxième en 1 minute pour l&#39;exécution. Pas plus de deux.</p>
+<h3>Étape 2 : les niveaux de la veille</h3>
+<p>Trace le plus haut et le plus bas de la séance précédente. Ce sont des niveaux que tout le monde regarde. Si tu ne connais pas les heures de séance depuis la France, mon article sur les <a href="https://basstrading.fr/blog/horaires-futures-nasdaq-heure-paris/">horaires des futures Nasdaq à l&#39;heure de Paris</a> les donne.</p>
+<h3>Étape 3 : la VWAP de séance</h3>
+<p>VWAP ancrée à la séance, avec une seule bande d&#39;écart-type au départ. Tu verras vite si le prix est « cher » ou « bon marché » par rapport à la moyenne du jour.</p>
+<h3>Étape 4 : le Volume Profile de session</h3>
+<p>Un profil par séance, pour lire le POC et la value area de la veille. Si ta formule ne l&#39;inclut pas, le TPO en type de graphique te donne une value area en temps, très proche dans l&#39;esprit.</p>
+<h3>Étape 5 : le CVD, en confirmation seulement</h3>
+<p>Le CVD intégré, ancré à la séance, en mode tick si ta formule le permet. Tu le regardes uniquement quand le prix arrive sur un de tes niveaux, pour voir si les acheteurs ou les vendeurs prennent la main. Jamais au milieu de nulle part.</p>
+<h3>Ce que je n&#39;ajoute pas</h3>
+<p>Pas de script « order flow » trouvé au hasard, pas de cinq oscillateurs, pas de footprint tant que tu ne sais pas lire un niveau. Le footprint vient ensuite, quand tu sais déjà où tu veux agir.</p>
+<h3>Un exercice pour la semaine</h3>
+<p>Chaque soir, en replay, prends la séance du jour. Note chaque fois que le prix a touché la VWAP ou le POC de la veille, et regarde ce que faisait le CVD à ce moment. Au bout de cinq séances, tu sauras si cette lecture t&#39;apporte quelque chose, sans avoir risqué un euro.</p>
+<p>La méthode complète, avec mes séances commentées et la construction du plan de trading avant l&#39;ouverture, est dans ma <a href="https://basstrading.fr/l/T7NPqQ">formation gratuite</a>. C&#39;est la suite logique de ce réglage.</p>
+<p>Avant d&#39;aller plus loin, voici les erreurs que je vois le plus chez ceux qui font de l&#39;order flow sur TradingView.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/flux-ordres-tradingview/blog-flux-ordres-tradingview-4.webp" alt="Les cinq étapes du réglage minimal d&#39;order flow sur TradingView pour le Nasdaq" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Cinq éléments suffisent : le reste ajoute du bruit.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="quelles-erreurs-eviter-avec-l-order-flow">Quelles erreurs éviter avec l&#39;order flow sur TradingView ?</h2>
+    <p>Ces erreurs reviennent sans arrêt dans les questions de mes élèves. Aucune n&#39;est grave si tu la connais.</p>
+<h3>Erreur 1 : prendre une estimation pour une donnée</h3>
+<p>Tu vois un delta de +1 200 sur une bougie et tu en conclus que les acheteurs dominent massivement. Si ce delta vient de bougies internes, il peut être très différent du vrai. Lis la source de chaque indicateur : bougies internes, mode tick ou flux courtier.</p>
+<h3>Erreur 2 : trader sur des données en différé</h3>
+<p>C&#39;est l&#39;erreur la plus coûteuse. Tu regardes un footprint « en direct » qui a en réalité dix minutes de retard. Vérifie l&#39;indication de délai à côté du symbole avant toute séance.</p>
+<h3>Erreur 3 : empiler les scripts</h3>
+<p>Trois scripts de delta, deux de « liquidité », un de « smart money »… Ils se contredisent, et tu finis par choisir celui qui confirme ton envie. Un outil par question : le Volume Profile pour où, le CVD pour qui, la VWAP pour le prix moyen.</p>
+<h3>Erreur 4 : lire le flux sans niveau</h3>
+<p>Un déséquilibre acheteur au milieu d&#39;une séance sans repère ne veut presque rien dire. Le même déséquilibre sur le POC de la veille, après un test de la VWAP, raconte une histoire. Le niveau d&#39;abord, le flux ensuite.</p>
+<h3>Erreur 5 : oublier le risque</h3>
+<p>L&#39;order flow aide à placer un stop serré, juste derrière la zone d&#39;absorption. Mais un stop serré mal dimensionné reste une perte. Avant chaque séance, calcule combien tu risques par trade : mon article <a href="https://basstrading.fr/blog/combien-risquer-par-trade/">combien risquer par trade</a> donne la méthode.</p>
+<h3>À retenir</h3>
+<ul><li>Connais la source de chaque chiffre que tu lis.</li><li>Vérifie le délai des données à chaque séance.</li><li>Un outil par question, un niveau avant chaque signal, un risque fixé avant d&#39;entrer.</li></ul>
+<p>Si tu évites ces cinq pièges, TradingView te mènera loin. Mais il arrive un moment où il ne suffit plus.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/flux-ordres-tradingview/blog-flux-ordres-tradingview-5.webp" alt="Règle d&#39;order flow : le niveau d&#39;abord, le flux ensuite" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Un signal de flux n&#39;a de sens que sur un niveau préparé avant la séance.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="quand-passer-a-une-plateforme-d-order-fl">Quand passer à une plateforme d&#39;order flow dédiée ?</h2>
+    <p>Passe à une plateforme dédiée quand tu exécutes en temps réel sur un signal de flux et que tu as besoin d&#39;un delta transaction par transaction, d&#39;un carnet avec son historique ou d&#39;une exécution rapide. Avant ça, TradingView suffit pour apprendre et préparer.</p>
+<h3>Comparatif honnête</h3>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Besoin</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">TradingView</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Plateforme dédiée</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Préparer les niveaux</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Très bien</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Très bien</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Delta exact</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Selon formule</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Oui, par transaction</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Historique du carnet</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Non</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Oui (heatmap)</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Exécution rapide</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Via courtier</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Native</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Prise en main</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Facile</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Plus longue</td></tr></tbody></table></div>
+<h3>Ce que j&#39;utilise moi</h3>
+<p>Je trade le Nasdaq futures en 1 minute sur Sierra Chart, avec le Market Profile, le VWAP et le CVD. J&#39;enseigne le footprint, parce qu&#39;il apprend à lire le marché, mais je ne m&#39;en sers pas pour déclencher mes entrées : en 1 minute, ça va trop vite pour moi. Si tu veux voir comment je l&#39;organise, mon article sur la <a href="https://basstrading.fr/blog/sierra-chart-configuration/">configuration de Sierra Chart</a> détaille l&#39;espace de travail.</p>
+<p>D&#39;autres choix existent selon ton profil. NinjaTrader est plus simple à prendre en main : je le compare dans mon <a href="https://basstrading.fr/blog/ninjatrader-avis/">avis sur NinjaTrader</a>. Si le carnet t&#39;intéresse avant tout, la <a href="https://basstrading.fr/blog/bookmap-heatmap/">heatmap de Bookmap</a> est l&#39;outil le plus visuel.</p>
+<h3>Le bon ordre</h3>
+<ul><li>Apprends la logique du flux sur TradingView, en replay, sans risque.</li><li>Construis ton plan avec la VWAP, le Volume Profile et le TPO.</li><li>Passe à une plateforme dédiée seulement quand tu exécutes réellement et que les limites ci-dessus te gênent.</li></ul>
+<p>Changer d&#39;outil ne rend pas meilleur. Savoir où et pourquoi tu entres, si.</p>
+
+    <hr>
+
+    <h2 id="ce-qu-il-faut-retenir-et-comment-cet-art">Ce qu&#39;il faut retenir, et comment cet article est fait</h2>
+    <h3>Le récapitulatif</h3>
+<ul><li>Volume Profile, TPO et VWAP sont fiables sur TradingView : ils construisent ton plan.</li><li>Le CVD est par défaut estimé à partir de bougies internes : utile pour une tendance ou une divergence, pas pour juger une bougie seule.</li><li>Le footprint existe en natif depuis mai 2024, dans les formules payantes (vérifie la page des tarifs) : excellent pour apprendre en replay.</li><li>Le DOM demande un courtier connecté qui fournit des données de profondeur.</li><li>Les données CME gratuites ont 10 minutes de retard : jamais d&#39;exécution dessus.</li></ul>
+<h3>Ta prochaine action</h3>
+<p>Ce soir, ouvre ton graphique NQ, ajoute la VWAP de séance et un Volume Profile de session (ou le TPO), et note le POC de la veille. Demain, observe seulement ce que fait le prix quand il y revient. C&#39;est le premier pas de l&#39;order flow : regarder où avant de regarder qui.</p>
+<p>Pour la suite, l&#39;article sur le <a href="https://basstrading.fr/blog/day-trading-futures/">day trading des futures</a> montre comment ces outils s&#39;intègrent dans une séance.</p>
+<h3>Avertissement</h3>
+<p>Le trading de contrats à terme comporte un risque élevé de perte, pouvant dépasser la mise initiale. Ce contenu est éducatif : ce n&#39;est pas un conseil en investissement, ni une recommandation d&#39;acheter ou de vendre. Aucun résultat passé ne garantit un résultat futur.</p>
+<h3>Comment cet article est fait</h3>
+<p>Cet article est tiré de ma formation footprint gratuite sur YouTube et de mes séances, complété par la documentation officielle de TradingView et du CME (liens dans le texte, consultés le 09/11/2026). Il a été mis en forme avec l&#39;aide d&#39;une IA, puis relu. Les formules et tarifs de TradingView changent souvent : vérifie toujours leur page officielle avant de t&#39;abonner.</p>
+
+    <p><a href="https://www.youtube.com/watch?v=FLBONXJWCoM" target="_blank" rel="noopener">▶ Voir la vidéo de Sébastien sur ce sujet</a></p>
+
+    <div class="cta-card cta-aimant">
+      <div class="cta-card-label">Gratuit</div>
+      <h3>La formation offerte : 7 leçons pour lire le marché comme un pro</h3>
+      <p>Accès immédiat et gratuit, en vidéo, à ton rythme. Sans carte bancaire.</p>
+      <a href="https://basstrading.fr/p/formation-offerte/?src=blog-flux-ordres-tradingview" class="btn-p">Je la veux →</a>
+    </div>
+    
+  </article>
+</div>
+
+<!-- FAQ -->
+<section class="faq-sec">
+  <div class="sec-center"><div class="sec-label">FAQ</div><h2 class="sec-title">Questions fréquentes</h2></div>
+  <div class="faq-list">
+    <div class="fi"><button class="fq" onclick="tf(this)">Peut-on faire de l&#39;order flow gratuitement sur TradingView ? <span class="fq-icon">+</span></button><div class="fa"><p>En partie seulement. La VWAP et de nombreux scripts communautaires sont gratuits, mais le Volume Profile natif et le footprint sont rangés dans les formules payantes (vérifie la page des tarifs), le DOM demande un courtier connecté et les données CME gratuites ont 10 minutes de retard. Pour apprendre en replay, la version gratuite permet déjà de comprendre la logique ; pour exécuter, il faut des données en temps réel.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Le delta de TradingView est-il fiable ? <span class="fq-icon">+</span></button><div class="fa"><p>Le CVD intégré est calculé par défaut à partir des bougies d&#39;une unité de temps inférieure : une bougie interne verte compte entièrement comme acheteuse. C&#39;est une estimation, fiable pour lire une tendance ou une divergence, pas pour juger une seule bougie. Le mode tick, disponible selon ta formule, se rapproche du vrai delta par transaction.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Y a-t-il un carnet d&#39;ordres sur TradingView ? <span class="fq-icon">+</span></button><div class="fa"><p>Oui, un DOM existe, mais il faut connecter un compte de courtier qui fournit des données de profondeur (niveau 2). Sans courtier, il n&#39;y a pas de vrai carnet. Le DOM de TradingView montre le présent et permet de passer des ordres, mais pas l&#39;historique des ordres retirés, que montre une heatmap.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Les données des futures Nasdaq sont-elles en temps réel sur TradingView ? <span class="fq-icon">+</span></button><div class="fa"><p>Pas par défaut. Les données des marchés du CME, dont le NQ et le MNQ, sont gratuites avec 10 minutes de retard. Le temps réel demande un abonnement de données séparé, au tarif non professionnel si tu y as droit, ou un flux fourni par ton courtier connecté.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Quelle est la différence entre Volume Profile et TPO sur TradingView ? <span class="fq-icon">+</span></button><div class="fa"><p>Le Volume Profile additionne le volume échangé à chaque prix ; le TPO mesure le temps passé à chaque prix, par périodes souvent de 30 minutes. Les deux donnent une value area et un point de contrôle. Le Volume Profile dit où l&#39;argent a circulé, le TPO où le marché a accepté de rester. Les deux existent sur TradingView.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Faut-il quitter TradingView pour trader l&#39;order flow ? <span class="fq-icon">+</span></button><div class="fa"><p>Pas pour apprendre ni pour préparer tes niveaux. Une plateforme dédiée devient utile quand tu exécutes en temps réel sur le flux et que tu veux un delta exact par transaction, l&#39;historique du carnet ou une exécution rapide. Changer d&#39;outil trop tôt ajoute de la complexité sans t&#39;apprendre à lire un niveau.</p></div></div>
+  </div>
+</section>
+
+<!-- Related -->
+<section class="related-sec">
+  <div class="sec-center"><div class="sec-label">Continuer la lecture</div><h2 class="sec-title">Articles connexes</h2></div>
+  <div class="related-grid">
+    <a href="/blog/market-profile-guide-complet/" class="related-card"><div class="related-cat">Guide</div><h3>Market Profile : le guide complet pour débutants</h3><p>Value Area, POC, types de journées — tout pour commencer.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/order-flow-trading-france/" class="related-card"><div class="related-cat">Méthode</div><h3>Order Flow Trading : pourquoi personne ne l'enseigne en France</h3><p>Le carnet d'ordres et le flux institutionnel décryptés.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/sierra-chart-configuration/" class="related-card"><div class="related-cat">Tutoriel</div><h3>Sierra Chart : configuration complète</h3><p>Le setup pas à pas pour le Market Profile et le Footprint.</p><span class="related-link">Lire &rarr;</span></a>
+  </div>
+</section>
+
+<!-- serie:debut --><style>.serie-w{background:#FFF;color:#1D1D1F;border-top:1px solid #F5F5F7}.serie{max-width:1060px;margin:0 auto;padding:56px 24px;font-family:inherit;box-sizing:border-box}.serie-l{font-size:.6rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#0066FF;margin-bottom:8px}.serie-w .serie h2{font-size:1.4rem;font-weight:800;letter-spacing:-.5px;color:#1D1D1F!important;margin:0 0 18px;font-family:inherit}.serie ul{list-style:none;padding:0;margin:0 0 22px;display:grid;grid-template-columns:repeat(2,1fr);gap:8px 24px}.serie-w .serie li a{color:#1D1D1F!important;font-size:.9rem;line-height:1.45;text-decoration:none;border-bottom:1px solid #D2D2D7}.serie li a:hover{color:#0066FF}.serie li.pil a{font-weight:700}.serie-o{background:#F5F5F7;border-radius:14px;padding:18px 20px;font-size:.88rem;line-height:1.55;color:#1D1D1F}.serie-w .serie-o a{color:#0066FF!important;font-weight:700}@media(max-width:700px){.serie ul{grid-template-columns:1fr}}</style><div class="serie-w"><aside class="serie" aria-label="Dans la même série"><div class="serie-l">Dans la même série</div><h2>Trouver sa méthode de trading</h2><ul><li class="pil"><a href="/blog/methode-de-trading/">Méthode de trading : comment trouver celle qui te correspond</a></li><li class=""><a href="/blog/types-trading-differences/">Les Types de Trading : Lequel Choisir Selon Votre Profil ? (2026)</a></li><li class=""><a href="/blog/debuter-trading-zero-guide/">Débuter le trading de zéro : par où commencer (guide 2026)</a></li><li class=""><a href="/blog/devenir-trader-sans-diplome/">Devenir trader sans diplôme ni formation : le vrai parcours</a></li><li class=""><a href="/blog/livre-trading/">Livre trading : les meilleurs pour apprendre (et l'ordre)</a></li><li class=""><a href="/blog/formation-trading/">Formation trading : contenu, prix, CPF et pièges à éviter</a></li><li class=""><a href="/blog/formation-trading-gratuite/">Formation trading gratuite : ce qu'on apprend sans payer</a></li><li class=""><a href="/blog/quelle-formation-trading-choisir/">Quelle formation trading choisir en 2026 ? 7 critères pour comparer</a></li><li class=""><a href="/blog/arnaque-trading/">Arnaque au trading : les 7 pièges et que faire si tu es victime</a></li><li class=""><a href="/blog/bookmap-heatmap/">Bookmap : lire la heatmap, prix réels et avis de trader</a></li><li class=""><a href="/blog/deepcharts-avis/">DeepCharts avis : prix, Mac, MBO et limites (2026)</a></li><li class=""><a href="/blog/gocharting-avis/">GoCharting : mon avis sur l'order flow dans le navigateur</a></li><li class=""><a href="/blog/methode-wyckoff/">Méthode Wyckoff : accumulation, distribution et spring</a></li><li class=""><a href="/blog/motivewave-avis/">MotiveWave avis : prix, version gratuite, Mac et order flow</a></li><li class=""><a href="/blog/price-action-trading/">Price action : ce que c'est, et ce que la bougie ne montre pas</a></li><li class=""><a href="/blog/quantower-avis/">Quantower avis : version gratuite, footprint, Mac et prix (2026)</a></li><li class=""><a href="/blog/take-profit-trading/">Take profit : où placer ton objectif sur les futures (exemples MNQ)</a></li><li class=""><a href="/blog/topstep/">Topstep avis : règles, drawdown et payout expliqués (2026)</a></li></ul><div class="serie-o"><a href="/formations/">Toutes les formations de Bass</a> : plus de 250 leçons vidéo, du débutant au Market Profile avancé. Pour commencer sans payer : <a href="/p/formation-offerte/?src=serie-flux-ordres-tradingview">la formation offerte</a> (7 leçons vidéo).</div></aside></div><!-- serie:fin -->
+<footer class="footer">
+  <div class="ft-top"><div class="ft-logo">BASS</div><div class="ft-cols">
+    <div class="ft-col"><div class="ft-col-title">Programme</div><a href="/formations/">Toutes les formations</a><a href="https://basstrading.fr/#methode">Méthode</a><a href="https://basstrading.fr/#programme">Programme</a><a href="https://basstrading.fr/p/formation-offerte/?src=blog-flux-ordres-tradingview-pied">Formation offerte</a></div>
+    <div class="ft-col"><div class="ft-col-title">Ressources</div><a href="/blog/market-profile-guide-complet/">Market Profile</a><a href="/blog/footprint-chart-trading/">Footprint Chart</a><a href="/blog/order-flow-trading-france/">Order Flow</a></div>
+  </div></div>
+  <div class="ft-bottom"><span>&copy; 2026 BASS — Sébastien Constant</span><div><a href="/mentions-legales/">Mentions légales</a><a href="/confidentialite/">Confidentialité</a><a href="/cgv/">CGV</a><a href="mailto:contact@basstrading.fr">Contact</a></div></div>
+</footer>
+<div class="disclaimer">Le trading comporte des risques de perte en capital. Les performances passées ne préjugent pas des performances futures. Ce site ne constitue pas un conseil en investissement.</div>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+const lenis=new Lenis({duration:1.2,easing:t=>Math.min(1,1.001-Math.pow(2,-10*t))});
+function raf(t){lenis.raf(t);requestAnimationFrame(raf)}requestAnimationFrame(raf);
+lenis.on('scroll',ScrollTrigger.update);gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0);
+const tl=gsap.timeline();
+tl.to('.pre-word span',{y:0,opacity:1,duration:.5,stagger:.1,ease:'power3.out',delay:.3}).to('#preLine',{width:'80px',duration:.7,ease:'power2.inOut'},'<+.2').to('.preloader',{yPercent:-100,duration:.8,ease:'power3.inOut',delay:.4}).set('.preloader',{display:'none'}).to('#nav',{opacity:1,y:0,duration:.5},'<+.1');
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);const h=document.documentElement.scrollHeight-window.innerHeight;document.getElementById('readingProgress').style.width=(window.scrollY/h*100)+'%'});
+const tocLinks=document.querySelectorAll('.toc a');const sections=Array.from(tocLinks).map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+window.addEventListener('scroll',()=>{let c='';sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)c=s.id});tocLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+c)})});
+function tf(b){const i=b.closest('.fi'),a=b.nextElementSibling,o=i.classList.contains('active');document.querySelectorAll('.fi').forEach(x=>{x.classList.remove('active');x.querySelector('.fa').classList.remove('open')});if(!o){i.classList.add('active');a.classList.add('open')}}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();lenis.scrollTo(t,{offset:-60})}})});
+</script>
+<script src="/v.js" defer></script>
+</body>
+</html>
