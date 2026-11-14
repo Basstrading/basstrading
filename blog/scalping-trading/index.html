@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scalping trading : définition, risques et méthode réelle — BASS Trading</title>
+  <meta name="description" content="Scalping trading : ce que c&#39;est, ce que coûtent les frais, ce que disent les études et comment je scalpe le Nasdaq au carnet d&#39;ordres. Est-ce pour toi ?">
+  <meta property="og:title" content="Scalping trading : définition, risques et méthode réelle — BASS Trading">
+  <meta property="og:description" content="Scalping trading : ce que c&#39;est, ce que coûtent les frais, ce que disent les études et comment je scalpe le Nasdaq au carnet d&#39;ordres. Est-ce pour toi ?">
+  <meta property="og:image" content="https://basstrading.fr/blog/scalping-trading/blog-scalping-trading-1.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://basstrading.fr/blog/scalping-trading/blog-scalping-trading-1.webp">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://basstrading.fr/blog/scalping-trading/">
+  <meta property="og:site_name" content="BASS Trading">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://basstrading.fr/blog/scalping-trading/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","@id":"https://basstrading.fr/blog/scalping-trading/#article","headline":"Scalping trading : définition, risques et méthode réelle","description":"Scalping trading : ce que c'est, ce que coûtent les frais, ce que disent les études et comment je scalpe le Nasdaq au carnet d'ordres. Est-ce pour toi ?","datePublished":"2026-11-14","dateModified":"2026-11-14","inLanguage":"fr-FR","image":"https://basstrading.fr/blog/scalping-trading/blog-scalping-trading-1.webp","mainEntityOfPage":"https://basstrading.fr/blog/scalping-trading/","isPartOf":{"@type":"WebSite","@id":"https://basstrading.fr/#website","name":"BASS Trading","url":"https://basstrading.fr/"},"author":{"@type":"Person","@id":"https://basstrading.fr/#sebastien-constant","name":"Sébastien Constant","url":"https://basstrading.fr/auteur/sebastien-constant/"},"publisher":{"@type":"Organization","@id":"https://basstrading.fr/#organisation","name":"BASS Trading","url":"https://basstrading.fr/","logo":{"@type":"ImageObject","url":"https://basstrading.fr/images/logo-basstrading.png","width":512,"height":512}}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://basstrading.fr"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://basstrading.fr/blog/"},{"@type":"ListItem","position":3,"name":"Scalping trading","item":"https://basstrading.fr/blog/scalping-trading/"}]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Le scalping est-il légal en France ?","acceptedAnswer":{"@type":"Answer","text":"Oui. Le scalping est une façon de trader, pas un produit : il est légal sur les marchés réglementés comme les futures du CME. En revanche, certains courtiers et certaines prop firms fixent des règles sur la durée minimale d'une position ou interdisent certaines pratiques à très haute fréquence. Lis leurs conditions avant de scalper chez eux."}},{"@type":"Question","name":"Combien de temps dure un trade en scalping ?","acceptedAnswer":{"@type":"Answer","text":"De quelques secondes à quelques minutes. Au-delà d'une quinzaine de minutes, on parle plutôt de day trading. Ce qui compte n'est pas le chronomètre, mais le fait de sortir dès que la raison d'être en position disparaît : on ne laisse pas traîner un trade de scalping."}},{"@type":"Question","name":"Quelle unité de temps utiliser pour scalper ?","acceptedAnswer":{"@type":"Answer","text":"Le plus souvent, un graphique en 1 minute ou en ticks, avec le carnet d'ordres (DOM) pour l'exécution. Je travaille en 1 minute sur le Nasdaq futures, avec des niveaux tirés du Market Profile et du VWAP. L'unité de temps sert à repérer les niveaux ; le carnet sert à entrer et sortir au bon prix."}},{"@type":"Question","name":"Peut-on scalper avec un petit capital ?","acceptedAnswer":{"@type":"Answer","text":"Oui, grâce aux micro-contrats : sur le micro Nasdaq (MNQ), un tick vaut 0,50 $ selon le CME. Mais un petit capital ne supporte ni le surtrading ni les frais répétés, et l'effet de levier des futures reste réel : fixe un risque par trade très faible et une perte maximale par jour. Commence toujours par le replay et la démo."}},{"@type":"Question","name":"Quel est le meilleur indicateur pour le scalping ?","acceptedAnswer":{"@type":"Answer","text":"Aucun indicateur ne suffit seul. Les moyennes mobiles et le RSI arrivent souvent trop tard pour un objectif de quelques ticks. Je préfère des niveaux clairs (VWAP, zones du Market Profile, plus haut et plus bas du jour) et la lecture du flux : le carnet d'ordres et les volumes réellement échangés."}},{"@type":"Question","name":"Le scalping est-il rentable ?","acceptedAnswer":{"@type":"Answer","text":"Je ne te promets aucun gain. Les études de la section sur les risques montrent que la majorité des particuliers très actifs perdent de l'argent, et les frais pèsent lourd quand l'objectif tient en quelques ticks. Certains y arrivent, mais ça dépend de ta méthode et de ta discipline, pas du style."}}]}
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{--bk:#1D1D1F;--bk2:#111;--bk3:#0A0A0A;--g1:#6E6E73;--g2:#86868B;--g3:#D2D2D7;--g4:#F5F5F7;--wh:#FBFBFD;--pure:#FFF;--green:#00B67A;--blue:#0066FF}
+    html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}
+    body{font-family:'DM Sans',sans-serif;color:var(--bk);background:var(--pure);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+    .preloader{position:fixed;inset:0;background:var(--bk3);z-index:10001;display:flex;align-items:center;justify-content:center}
+    .pre-word{font-family:'Outfit',sans-serif;font-size:clamp(3rem,8vw,5rem);font-weight:900;letter-spacing:16px;text-transform:uppercase;color:var(--pure);overflow:hidden}
+    .pre-word span{display:inline-block;transform:translateY(110%);opacity:0}
+    .pre-line{width:0;height:1px;background:rgba(255,255,255,.3);margin-top:20px}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 48px;display:flex;align-items:center;justify-content:space-between;background:rgba(245,245,247,.85);backdrop-filter:blur(20px) saturate(1.8);border-bottom:1px solid rgba(0,0,0,.04);transition:background .4s}
+    .nav-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase;color:var(--bk)}
+    .nav-links{display:flex;gap:28px;list-style:none}.nav-links a{font-size:.74rem;font-weight:500;letter-spacing:.3px;color:var(--g1);transition:color .3s}.nav-links a:hover{color:var(--bk)}
+    .nav-cta{padding:8px 20px;background:var(--bk);color:var(--pure);border:none;border-radius:980px;font-size:.72rem;font-weight:600;transition:all .3s;cursor:pointer;text-decoration:none;display:inline-block}.nav-cta:hover{background:var(--bk2)}
+    .blog-hero{padding:160px 48px 80px;background:var(--g4);position:relative;overflow:hidden}
+    .blog-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,transparent,var(--g4));pointer-events:none}
+    .blog-hero-inner{max-width:720px;margin:0 auto}
+    .breadcrumb{display:flex;gap:8px;align-items:center;margin-bottom:28px;flex-wrap:wrap}
+    .breadcrumb a,.breadcrumb span{font-size:.68rem;font-weight:500;letter-spacing:.3px;color:var(--g2);transition:color .3s}.breadcrumb a:hover{color:var(--bk)}.breadcrumb .sep{color:var(--g3)}
+    .blog-hero-cat{display:inline-block;padding:5px 14px;border:1px solid rgba(0,102,255,.15);border-radius:980px;font-size:.6rem;font-weight:700;color:var(--blue);letter-spacing:2px;text-transform:uppercase;margin-bottom:20px}
+    .blog-hero-title{font-family:'Outfit',sans-serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:900;line-height:1.05;letter-spacing:-2px;color:var(--bk);margin-bottom:20px}
+    .blog-hero-desc{font-size:.95rem;color:var(--g1);line-height:1.8;max-width:560px;margin-bottom:28px}
+    .blog-meta{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+    .blog-meta-author{display:flex;align-items:center;gap:10px}
+    .blog-meta-avatar{width:36px;height:36px;border-radius:50%;background:var(--bk3);overflow:hidden;flex-shrink:0}.blog-meta-avatar img{width:100%;height:100%;object-fit:cover}
+    .blog-meta-name{font-size:.78rem;font-weight:600;color:var(--bk)}.blog-meta-role{font-size:.65rem;color:var(--g2)}
+    .blog-meta-sep{width:1px;height:24px;background:var(--g3)}
+    .blog-meta-info{font-size:.7rem;color:var(--g2)}.blog-meta-info span{margin-right:16px}
+    .toc{position:sticky;top:90px;background:var(--pure);border:1px solid rgba(0,0,0,.04);border-radius:14px;padding:24px;margin-bottom:32px}
+    .toc-title{font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.5px;color:var(--bk);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+    .toc ol{list-style:none;counter-reset:toc}.toc li{counter-increment:toc}
+    .toc li a{display:flex;align-items:baseline;gap:8px;padding:6px 0;font-size:.76rem;color:var(--g1);transition:color .3s;border-bottom:1px solid rgba(0,0,0,.03)}.toc li a:hover{color:var(--blue)}
+    .toc li a::before{content:counter(toc,decimal-leading-zero);font-family:'Outfit',sans-serif;font-size:.65rem;font-weight:700;color:var(--g3);min-width:18px}
+    .toc li:last-child a{border-bottom:none}.toc li a.active{color:var(--blue);font-weight:600}.toc li a.active::before{color:var(--blue)}
+    .article-wrap{display:grid;grid-template-columns:220px 1fr;gap:40px;max-width:1020px;margin:0 auto;padding:60px 48px 120px}
+    .article-sidebar{position:relative}.article-body{max-width:700px}
+    .article-body h2{font-family:'Outfit',sans-serif;font-size:clamp(1.4rem,2.5vw,1.8rem);font-weight:800;line-height:1.1;letter-spacing:-1px;color:var(--bk);margin:56px 0 16px;padding-top:20px}.article-body h2:first-of-type{margin-top:0}
+    .article-body h3{font-family:'Outfit',sans-serif;font-size:1.05rem;font-weight:700;line-height:1.25;letter-spacing:-.3px;color:var(--bk);margin:36px 0 10px}
+    .article-body p{font-size:.9rem;color:var(--g1);line-height:1.85;margin-bottom:18px}
+    .article-body strong{color:var(--bk);font-weight:600}
+    .article-body ul,.article-body ol{margin:0 0 20px 0;padding-left:20px}
+    .article-body li{font-size:.88rem;color:var(--g1);line-height:1.8;margin-bottom:6px}.article-body li strong{color:var(--bk)}
+    .article-body blockquote{margin:28px 0;padding:20px 24px;background:var(--g4);border-left:3px solid var(--bk);border-radius:0 12px 12px 0;font-size:.88rem;color:var(--g1);line-height:1.8;font-style:italic}
+    .article-body blockquote strong{color:var(--bk);font-style:normal}
+    .article-body hr{border:none;border-top:1px solid var(--g4);margin:48px 0}
+    .info-box{margin:28px 0;padding:24px;background:rgba(0,102,255,.03);border:1px solid rgba(0,102,255,.08);border-radius:14px}
+    .info-box-title{font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:700;color:var(--blue);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+    .info-box p{font-size:.82rem;color:var(--g1);line-height:1.7;margin-bottom:0}
+    .key-concept{margin:32px 0;padding:28px;background:var(--bk3);border-radius:16px;color:var(--pure)}
+    .key-concept-label{font-size:.55rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:10px}
+    .key-concept h4{font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:800;letter-spacing:-.3px;margin-bottom:8px}
+    .key-concept p{font-size:.85rem;color:rgba(255,255,255,.5);line-height:1.8;margin-bottom:0}
+    .compare-table{width:100%;margin:24px 0 28px;border-collapse:collapse;border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,.06)}
+    .compare-table th{background:var(--bk3);color:var(--pure);font-family:'Outfit',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:14px 16px;text-align:left}
+    .compare-table td{padding:12px 16px;font-size:.82rem;color:var(--g1);line-height:1.6;border-bottom:1px solid rgba(0,0,0,.04);background:var(--pure)}
+    .compare-table tr:last-child td{border-bottom:none}.compare-table td:first-child{font-weight:600;color:var(--bk)}
+    .cta-card{margin:48px 0;padding:40px;background:var(--bk3);border-radius:20px;text-align:center;position:relative;overflow:hidden}
+    .cta-card::before{content:'';position:absolute;top:-50%;right:-30%;width:400px;height:400px;background:radial-gradient(circle,rgba(0,102,255,.08) 0%,transparent 70%);pointer-events:none}
+    .cta-card-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:12px}
+    .cta-card h3{font-family:'Outfit',sans-serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:800;color:var(--pure);letter-spacing:-.5px;margin-bottom:8px}
+    .cta-card p{font-size:.85rem;color:rgba(255,255,255,.4);line-height:1.7;max-width:380px;margin:0 auto 24px}
+    .cta-card .btn-p{background:var(--pure);color:var(--bk)}.cta-card .btn-p:hover{box-shadow:0 8px 30px rgba(255,255,255,.15)}
+    .faq-sec{padding:80px 48px 100px;background:var(--g4)}
+    .faq-list{max-width:680px;margin:40px auto 0}.fi{border-bottom:1px solid rgba(0,0,0,.06)}
+    .fq{width:100%;text-align:left;padding:18px 0;background:none;border:none;font-size:.85rem;font-weight:600;font-family:'DM Sans',sans-serif;color:var(--bk);display:flex;justify-content:space-between;align-items:center;cursor:pointer;gap:16px;transition:color .3s}.fq:hover{color:var(--g1)}
+    .fq-icon{width:22px;height:22px;border-radius:50%;background:rgba(0,0,0,.04);display:flex;align-items:center;justify-content:center;font-size:.75rem;transition:all .4s;flex-shrink:0;color:var(--g2)}
+    .fa{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1)}.fa.open{max-height:280px;padding-bottom:14px}
+    .fa p{font-size:.8rem;color:var(--g1);line-height:1.7;margin-bottom:0}.fi.active .fq-icon{background:var(--bk);color:var(--pure);transform:rotate(45deg)}
+    .related-sec{padding:80px 48px;background:var(--pure);border-top:1px solid var(--g4)}
+    .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1060px;margin:40px auto 0}
+    .related-card{display:block;padding:28px;background:var(--g4);border-radius:16px;transition:all .4s;text-decoration:none;color:var(--bk)}
+    .related-card:hover{background:var(--pure);box-shadow:0 8px 30px rgba(0,0,0,.06);transform:translateY(-2px)}
+    .related-cat{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+    .related-card h3{font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:700;line-height:1.3;letter-spacing:-.3px;margin-bottom:8px}
+    .related-card p{font-size:.78rem;color:var(--g1);line-height:1.6;margin-bottom:14px}
+    .related-link{font-size:.72rem;font-weight:600;color:var(--blue);letter-spacing:.3px}
+    .footer{background:var(--bk3);color:var(--pure);padding:56px 48px 28px}
+    .ft-top{display:flex;justify-content:space-between;align-items:start;margin-bottom:48px;flex-wrap:wrap;gap:32px}
+    .ft-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase}
+    .ft-cols{display:flex;gap:80px}
+    .ft-col-title{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:12px}
+    .ft-col a{display:block;font-size:.78rem;color:rgba(255,255,255,.5);margin-bottom:8px;transition:color .3s}.ft-col a:hover{color:var(--pure)}
+    .ft-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:20px;display:flex;justify-content:space-between;align-items:center;font-size:.6rem;color:rgba(255,255,255,.2)}
+    .ft-bottom a{color:rgba(255,255,255,.2);transition:color .3s;margin-left:20px}.ft-bottom a:hover{color:rgba(255,255,255,.5)}
+    .disclaimer{padding:12px 48px;background:var(--bk3);font-size:.58rem;color:rgba(255,255,255,.12);text-align:center;line-height:1.6;border-top:1px solid rgba(255,255,255,.03)}
+    .sec-center{text-align:center;max-width:680px;margin:0 auto}
+    .sec-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--g2);margin-bottom:10px}
+    .sec-title{font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;line-height:1.05;letter-spacing:-1.5px;color:var(--bk);margin-bottom:16px}
+    .btn-p{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--bk);color:var(--pure);border-radius:980px;font-size:.85rem;font-weight:600;transition:all .3s;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;text-decoration:none}
+    .btn-p:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(0,0,0,.1)}
+    .btn-p svg{width:13px;height:13px;transition:transform .3s}.btn-p:hover svg{transform:translateX(3px)}
+    .reading-progress{position:fixed;top:0;left:0;height:2px;background:var(--blue);z-index:9999;width:0;transition:width .1s linear}
+    @media(max-width:900px){.nav{padding:14px 20px}.nav-links{display:none}.blog-hero{padding:120px 20px 60px}.article-wrap{grid-template-columns:1fr;padding:40px 20px 80px}.article-sidebar{display:none}.related-grid{grid-template-columns:1fr}.related-sec,.faq-sec{padding:60px 20px}.ft-cols{flex-direction:column;gap:28px}.footer{padding:40px 20px 20px}.disclaimer{padding:10px 16px}.cta-card{padding:28px 20px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  .article-body a{color:var(--blue);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;font-weight:500}.article-body a:hover{text-decoration-thickness:2px}
+</style>
+<style>/* 28/10/2026 : débordement mobile (colonne de grille sans min-width) */.article-wrap>*,.article-layout>*{min-width:0}.article-body table,.compare-table{display:block;overflow-x:auto;max-width:100%}.article-body pre{overflow-x:auto}.article-body img{max-width:100%;height:auto}</style>
+</head>
+<body>
+
+<div class="preloader" id="preloader"><div style="text-align:center"><div class="pre-word"><span>B</span><span>A</span><span>S</span><span>S</span></div><div class="pre-line" id="preLine"></div></div></div>
+<div class="reading-progress" id="readingProgress"></div>
+
+<nav class="nav" id="nav">
+  <a href="https://basstrading.fr" class="nav-logo">BASS</a>
+  <ul class="nav-links">
+    <li><a href="https://basstrading.fr/#methode">Méthode</a></li>
+    <li><a href="https://basstrading.fr#resultats">Résultats</a></li>
+    <li><a href="https://basstrading.fr#avis">Avis</a></li>
+    <li><a href="https://basstrading.fr#faq">FAQ</a></li>
+    <li><a href="/formations/">Formations</a></li>
+    <li><a href="https://basstrading.fr/blog/">Blog</a></li>
+  </ul>
+  <a href="https://basstrading.fr/p/formation-offerte/?src=blog-scalping-trading-menu" class="nav-cta">Formation offerte</a>
+</nav>
+
+<section class="blog-hero">
+  <div class="blog-hero-inner">
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <a href="https://basstrading.fr">Accueil</a><span class="sep">/</span>
+      <a href="https://basstrading.fr/blog/">Blog</a><span class="sep">/</span>
+      <span>Scalping trading</span>
+    </nav>
+    <div class="blog-hero-cat">Styles de trading</div>
+    <h1 class="blog-hero-title">Scalping trading : définition, risques et méthode réelle</h1>
+    <p class="blog-hero-desc">Le scalping consiste à prendre de petits mouvements de prix en quelques secondes à quelques minutes, plusieurs fois par séance. Ça paraît simple, mais les frais, la vitesse et la fatigue en font le style le plus exigeant. Je te montre comment je le pratique sur le Nasdaq au carnet d&#39;ordres, ce que disent les études, et comment savoir s&#39;il est fait pour toi.</p>
+    <div class="blog-meta">
+      <div class="blog-meta-author">
+        <div class="blog-meta-avatar"><img src="../../images/bass-presenting.jpg" alt="Sébastien Constant" loading="lazy"></div>
+        <div><div class="blog-meta-name"><a href="/auteur/sebastien-constant/" rel="author" style="color:inherit;text-decoration:none">Sébastien Constant</a></div><div class="blog-meta-role">Trader & Formateur Order Flow</div></div>
+      </div>
+      <div class="blog-meta-sep"></div>
+      <div class="blog-meta-info"><span>Novembre 2026</span><span>25 min de lecture</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="article-wrap">
+  <aside class="article-sidebar">
+    <div class="toc">
+      <div class="toc-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/></svg> Sommaire</div>
+      <ol>
+        <li><a href="#qu-est-ce-que-le-scalping-trading">Qu&#39;est-ce que le scalping trading ?</a></li>
+        <li><a href="#scalping-day-trading-swing-quelle-differ">Scalping, day trading, swing : quelle différence ?</a></li>
+        <li><a href="#comment-je-scalpe-le-nasdaq-au-carnet-d-">Comment je scalpe le Nasdaq au carnet d&#39;ordres : une séance réelle</a></li>
+        <li><a href="#quelles-sont-les-meilleures-strategies-d">Quelles sont les meilleures stratégies de scalping trading ?</a></li>
+        <li><a href="#quels-sont-les-marches-les-plus-adaptes-">Quels sont les marchés les plus adaptés au scalping ?</a></li>
+        <li><a href="#les-couts-de-transaction-sont-ils-un-fre">Les coûts de transaction sont-ils un frein en scalping ?</a></li>
+        <li><a href="#quels-sont-les-risques-du-scalping-ce-qu">Quels sont les risques du scalping ? Ce que disent les études</a></li>
+        <li><a href="#a-qui-s-adresse-le-scalping-est-il-fait-">À qui s&#39;adresse le scalping ? Est-il fait pour toi ?</a></li>
+        <li><a href="#les-erreurs-qui-coutent-le-plus-cher-en-">Les erreurs qui coûtent le plus cher en scalping</a></li>
+        <li><a href="#comment-debuter-en-scalping-sans-te-brul">Comment débuter en scalping sans te brûler ?</a></li>
+        <li><a href="#ce-qu-il-faut-retenir-sur-le-scalping-tr">Ce qu&#39;il faut retenir sur le scalping trading</a></li>
+      </ol>
+    </div>
+  </aside>
+
+  <article class="article-body">
+    <h2 id="qu-est-ce-que-le-scalping-trading">Qu&#39;est-ce que le scalping trading ?</h2>
+    <p>Le scalping est un style de trading à très court terme qui consiste à prendre de petits mouvements de prix, de quelques ticks à quelques points, sur des positions tenues de quelques secondes à quelques minutes, plusieurs fois par séance.</p>
+<p>Le mot vient de l&#39;anglais to scalp : tu prélèves une fine tranche du mouvement, pas le mouvement entier. Tu n&#39;attends pas que le marché fasse 100 points. Tu prends les 5 ou 10 points qui se présentent devant toi, tu sors, et tu recommences quand une nouvelle occasion propre apparaît. C&#39;est l&#39;opposé de l&#39;investissement à long terme : le but du scalpeur est d&#39;accumuler de petits profits par des décisions rapides, et de couper tout de suite ce qui ne marche pas.</p>
+<h3>Comment fonctionne le scalping, concrètement ?</h3>
+<p>Un trade de scalping se joue en quatre temps : un niveau où le prix a des raisons de réagir, une entrée au moment où le flux d&#39;ordres te donne raison, une protection placée tout de suite, et une sortie rapide, que le trade soit gagnant ou perdant. Le gain d&#39;un trade est petit. C&#39;est l&#39;accumulation de nombreux petits gains, moins les pertes et les frais de chaque transaction, qui fait le résultat de la journée.</p>
+<p>C&#39;est aussi pour ça que le scalping ne pardonne rien : une seule perte mal coupée peut effacer dix bons trades. Le scalpeur ne se demande pas « est-ce que le Nasdaq va monter cette semaine ? ». Il se demande : « est-ce que les acheteurs tiennent ce niveau, là, maintenant ? »</p>
+<p>Moi, je trade le Nasdaq futures en 1 minute sur Sierra Chart, avec le Market Profile, le VWAP et le CVD. Le scalping, pour moi, c&#39;est la partie exécution de ce travail : le moment où je zoome sur le carnet d&#39;ordres pour entrer et sortir au tick près. Comme je le répète souvent : « Je ne cherche pas où le prix va aller, je cherche où il s&#39;arrête. »</p>
+<h3>Pourquoi le scalping attire autant ?</h3>
+<p>Parce qu&#39;il promet ce que les autres styles ne donnent pas : de l&#39;action, un résultat immédiat, et aucune position gardée la nuit. Tu sais rapidement, souvent en trois minutes, si tu avais raison. Pour quelqu&#39;un que l&#39;attente rend fou, c&#39;est très séduisant.</p>
+<p>Mais ce qui attire est aussi ce qui piège : plus tu prends de trades, plus tu paies de frais, plus tu prends de décisions fatiguées, et plus la tentation de « se refaire » est forte. Le scalping n&#39;est pas le style le plus facile, c&#39;est le plus exigeant. Avant de voir comment je le pratique, il faut le situer par rapport aux autres styles.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/scalping-trading/blog-scalping-trading-1.webp" alt="Écran de trading affichant un graphique de prix en chandeliers, vue rapprochée" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Le scalping se joue sur des mouvements de quelques ticks : tout est dans l&#39;exécution.<br><span style="font-size:.85em">Photo : <a href="https://commons.wikimedia.org/wiki/File:Stock_market_charts_illustration.jpg" rel="noopener" target="_blank">Unknown author</a>, <a href="http://creativecommons.org/publicdomain/zero/1.0/deed.en" rel="noopener license" target="_blank">CC0</a></span></figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="scalping-day-trading-swing-quelle-differ">Scalping, day trading, swing : quelle différence ?</h2>
+    <p>La différence tient d&#39;abord à la durée de la position, puis à ce que cette durée exige de toi. Le scalping est une forme de day trading : tout est fermé avant la fin de la séance. Mais un day trader peut garder une position deux heures, alors qu&#39;un scalpeur compte en secondes et en minutes.</p>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Style</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Durée d&#39;une position</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Ce que ça exige de toi</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Scalping</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Quelques secondes à quelques minutes</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Exécution rapide, frais bas, décision immédiate</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Day trading</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Quelques minutes à quelques heures</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Patience dans la séance, tout fermé le soir</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Swing trading</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Quelques jours à quelques semaines</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Supporter la nuit, les écarts d&#39;ouverture et les nouvelles</td></tr></tbody></table></div>
+<h3>Ce qui change vraiment d&#39;un style à l&#39;autre</h3>
+<p>En scalping, ton unité de temps est très courte : graphiques en 1 minute, en ticks, ou directement le carnet d&#39;ordres (le DOM). En swing, tu regardes des bougies journalières. Ce n&#39;est pas une question de « mieux » ou « moins bien » : c&#39;est une question de rythme.</p>
+<p>Le poids des frais change également. Sur un objectif de 100 points, une commission est une miette. Sur un objectif de 2 points, elle devient une part énorme du gain (je fais le calcul plus bas). Enfin, la charge mentale n&#39;est pas la même : en scalping, tu prends des dizaines de micro-décisions à la suite, sans pause. En swing, tu en prends peu, mais tu vis avec ta position plusieurs jours.</p>
+<h3>Le scalping est-il du day trading ?</h3>
+<p>Oui, c&#39;en est la version la plus rapide. Tout ce qui vaut pour le day trading vaut pour le scalping, en plus serré : horaires de séance, perte maximale du jour, aucune position la nuit. Si tu veux la vue d&#39;ensemble, j&#39;ai comparé les styles dans mon article sur <a href="https://basstrading.fr/blog/types-trading-differences/">les différents types de trading et comment choisir</a>, et j&#39;explique la journée type dans mon guide du <a href="https://basstrading.fr/blog/day-trading-futures/">day trading sur les futures</a>.</p>
+<aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p><b>À retenir</b></p>
+<ul><li>Le scalping est la forme la plus courte du day trading.</li><li>Plus la position est courte, plus les frais pèsent lourd.</li><li>Le bon style dépend de ton rythme, pas d&#39;un classement.</li></ul></aside>
+<p>Assez de théorie : voici à quoi ressemble une vraie séance de scalping sur le Nasdaq.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/scalping-trading/blog-scalping-trading-2.webp" alt="Règle du scalping : plus la position est courte, plus les frais pèsent lourd sur chaque trade" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Sur 4 ticks visés, 1 $ de frais mange la moitié du gain ; sur 40 ticks, seulement 5 %.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="comment-je-scalpe-le-nasdaq-au-carnet-d-">Comment je scalpe le Nasdaq au carnet d&#39;ordres : une séance réelle</h2>
+    <p>Je te raconte une séance que j&#39;ai commentée en vidéo, un 14 mai, sur le micro Nasdaq (MNQ), à partir de l&#39;ouverture américaine de 15 h 30. Tout se joue dans le carnet d&#39;ordres, avec le graphique en arrière-plan. Tu peux la revoir dans <a href="https://www.youtube.com/watch?v=aTtgo12XQC0">ma vidéo de 25 minutes dans le carnet d&#39;ordres</a>.</p>
+<h3>Avant d&#39;entrer : je repère le terrain</h3>
+<p>Premier réflexe : je repère le plus haut et le plus bas du jour. Ce jour-là, le marché avait déjà fait environ 250 points d&#39;amplitude. Ça me dit deux choses : le marché est nerveux, et les zones extrêmes de la journée sont des endroits où le prix a déjà réagi. Je regarde aussi l&#39;histogramme des volumes échangés sur chaque prix : il montre où le marché a travaillé et où il est passé vite. Comme je le dis dans la vidéo, « le marché se déplace de zone en zone ».</p>
+<h3>Le stop : une protection, pas une stratégie</h3>
+<p>Dès que je suis en position, un stop est posé. Mais je le vois autrement que la plupart des débutants : <a href="https://www.youtube.com/watch?v=aTtgo12XQC0&amp;t=52">« ce n&#39;est pas un stop, en fait, c&#39;est vraiment une protection »</a>. Il est là pour le cas où tout part de travers, une coupure de connexion, une nouvelle. Ma vraie sortie, c&#39;est moi qui la décide en lisant le flux.</p>
+<h3>Remonter le stop à la main</h3>
+<p>Quand le trade avance, je ne remonte pas mon stop au premier tick. <a href="https://www.youtube.com/watch?v=aTtgo12XQC0&amp;t=142">« Tant que je vois du vert, je ne remonte pas mon stop »</a> : tant que les acheteurs dominent, je laisse respirer. Et je le remonte à la main, pas avec un stop suiveur automatique : le suiveur colle trop au prix et te sort au moindre aller-retour normal. J&#39;explique le placement en détail dans mon guide du <a href="https://basstrading.fr/blog/stop-loss-trading/">stop loss en trading</a>.</p>
+<h3>Lire l&#39;épaisseur du carnet</h3>
+<p>Le carnet n&#39;est pas toujours aussi garni. Quand il est épais, il y a des ordres en attente sur chaque prix et le marché avance lentement. Quand il est fin, la liquidité se retire. Comme je le dis dans la vidéo : <a href="https://www.youtube.com/watch?v=aTtgo12XQC0&amp;t=294">« quand il est fin c&#39;est que vous avez la liquidité qui se rétracte… c&#39;est pas des moments où on a envie d&#39;entrer dans le marché »</a>. Un carnet fin, c&#39;est un marché qui peut sauter plusieurs ticks d&#39;un coup, et ton ordre sera exécuté plus loin que prévu.</p>
+<h3>La patience sur un gros acheteur</h3>
+<p>Plus tard dans la séance, un gros acheteur se montre sur un prix finissant en 38,25 (sur le DOM, je lis les deux derniers chiffres). Le prix vient le tester plusieurs fois et il tient. Plutôt que de sortir au premier frémissement, j&#39;attends que le prix s&#39;éloigne de ce niveau. <a href="https://www.youtube.com/watch?v=aTtgo12XQC0&amp;t=1199">« On a bien fait d&#39;être patient »</a> : le niveau a tenu, je mets ma protection au prix d&#39;entrée, et le trade ne peut plus me coûter que les frais.</p>
+<h3>Sortir proprement</h3>
+<p>À la sortie, je clique sur exit : la plateforme ferme la position et annule tous les ordres en attente. Comme ça, on est sûr qu&#39;on n&#39;a plus rien dans le marché. C&#39;est un détail qui t&#39;évite l&#39;erreur la plus bête du scalpeur : un vieil ordre oublié qui s&#39;exécute cinq minutes plus tard. Pour la sortie gagnante elle-même, je détaille mes repères dans mon article sur le <a href="https://basstrading.fr/blog/take-profit-trading/">take profit</a>.</p>
+<p>La leçon de cette séance tient en une phrase : <a href="https://www.youtube.com/watch?v=aTtgo12XQC0&amp;t=335">« le but, c&#39;est de ne pas traîner… si à un moment donné on doit perdre, on perd »</a>. Pour aller plus loin sur la lecture elle-même, j&#39;ai écrit un guide complet du <a href="https://basstrading.fr/blog/carnet-ordres-dom-futures/">carnet d&#39;ordres et du DOM sur les futures</a>.</p>
+<p>Le trading de contrats à terme comporte un risque élevé de perte, pouvant dépasser la mise initiale. Contenu éducatif, pas un conseil en investissement.</p>
+<p>Cette séance montre une approche. Mais il en existe d&#39;autres : quelles sont les stratégies de scalping qui tiennent la route ?</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/scalping-trading/blog-scalping-trading-3.webp" alt="Les cinq étapes d&#39;un trade de scalping au carnet d&#39;ordres sur le micro Nasdaq" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">La séance du 14 mai sur le MNQ, résumée en cinq gestes.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="quelles-sont-les-meilleures-strategies-d">Quelles sont les meilleures stratégies de scalping trading ?</h2>
+    <p>Il n&#39;y a pas de « meilleure » stratégie de scalping dans l&#39;absolu : la meilleure est celle qui part d&#39;un niveau clair et qui te donne une raison précise d&#39;entrer et de sortir. Les stratégies de scalping qui tiennent la route ont toutes la même base : un endroit où le marché a des raisons de réagir, puis la confirmation du flux.</p>
+<h3>Le rejet d&#39;un niveau du jour</h3>
+<p>Le prix revient sur un niveau important (plus haut ou plus bas de la veille, bord de la zone de valeur du Market Profile) et les ordres agressifs n&#39;arrivent plus à le traverser. Dans le carnet, tu vois les ordres passés au marché se faire absorber par un gros acheteur ou vendeur, comme dans ma séance du 14 mai. Tu entres dans le sens du rejet, protection juste derrière le niveau.</p>
+<h3>Le retour au VWAP</h3>
+<p>Le VWAP est le prix moyen pondéré par les volumes de la séance. De nombreux intervenants institutionnels l&#39;utilisent comme référence d&#39;exécution, donc le prix y réagit souvent. Le scalpeur attend un retour du prix sur ce niveau, puis regarde si les acheteurs (ou les vendeurs) le défendent. Je l&#39;explique en détail dans mon guide du <a href="https://basstrading.fr/blog/vwap-trading/">VWAP en trading</a>.</p>
+<h3>La cassure accompagnée de flux</h3>
+<p>Un niveau cède, et le delta cumulé (CVD) confirme : les ordres agressifs poussent dans le sens de la cassure, le carnet se vide en face. Tu suis le mouvement sur quelques points, sans rêver d&#39;une tendance de toute la journée. C&#39;est la stratégie la plus rapide, et la plus dangereuse quand le carnet est fin.</p>
+<h3>Et les stratégies à base de moyennes mobiles ?</h3>
+<p>Beaucoup d&#39;articles proposent des croisements de moyennes mobiles, de RSI ou de stochastique sur des graphiques en 1 minute. Je ne m&#39;en sers pas pour scalper : ces indicateurs sont calculés sur les prix passés, ils réagissent après le mouvement, et en scalping ce retard représente souvent toute la taille de ton objectif. Un niveau clair et la lecture du flux valent mieux que cinq indicateurs qui se contredisent.</p>
+<p>Quelle que soit la stratégie, elle n&#39;existe pas sans une méthode écrite autour : quand tu trades, combien tu risques, quand tu t&#39;arrêtes. Je montre comment la construire dans mon article sur <a href="https://basstrading.fr/blog/methode-de-trading/">la méthode de trading</a>.</p>
+<aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p><b>À retenir</b></p>
+<ul><li>Toute stratégie de scalping part d&#39;un niveau, pas d&#39;une intuition.</li><li>Le flux d&#39;ordres confirme ou annule le trade.</li><li>Les indicateurs retardés coûtent souvent l&#39;objectif entier.</li></ul></aside>
+<p>Une stratégie ne vaut rien sur le mauvais marché. Lesquels se prêtent vraiment au scalping ?</p>
+
+    <hr>
+
+    <h2 id="quels-sont-les-marches-les-plus-adaptes-">Quels sont les marchés les plus adaptés au scalping ?</h2>
+    <p>Pour scalper, il te faut un marché très liquide, des frais bas et un carnet d&#39;ordres visible. C&#39;est pour ça que je scalpe des futures : les ordres passent par un carnet central à la bourse, où tout le monde voit les mêmes prix et les mêmes volumes.</p>
+<h3>Tous les carnets ne se ressemblent pas</h3>
+<p>Dans la même vidéo, je compare trois carnets à la suite (vers <a href="https://www.youtube.com/watch?v=aTtgo12XQC0&amp;t=715">la 12e minute</a>) :</p>
+<ul><li>Nasdaq : très volatil, souvent 5, 10 ou 20 contrats en attente par prix. Le prix traverse les niveaux rapidement ;</li><li>S&amp;P 500 : plutôt 40 à 80 contrats par prix, parfois 100 à 200. Le prix avance plus lentement, tick par tick ;</li><li>bons du Trésor américain à 10 ans : des milliers de contrats par prix. Le prix bouge à peine.</li></ul>
+<p>Aucun n&#39;est « meilleur ». Le Nasdaq offre du mouvement mais punit les hésitations ; le S&amp;P est plus calme mais demande plus de patience. Choisis le marché qui va à ton rythme, pas celui dont on parle le plus.</p>
+<h3>NQ ou MNQ pour scalper ?</h3>
+<p>Sur le Nasdaq, deux contrats existent. D&#39;après la <a href="https://www.cmegroup.com/markets/equities/nasdaq/micro-e-mini-nasdaq-100.contractSpecs.html">fiche officielle du CME Group</a>, le micro (MNQ) vaut 2 $ par point de l&#39;indice, soit 0,50 $ par tick de 0,25 point. Le contrat standard (NQ) vaut 20 $ par point, soit 5 $ par tick : dix fois plus. Pour apprendre à scalper, le micro permet de vivre de vraies exécutions avec un risque dix fois plus petit. Je détaille le choix dans <a href="https://basstrading.fr/blog/nq-ou-mnq/">NQ ou MNQ : lequel trader</a>.</p>
+<h3>Actions, forex, CFD, crypto : peut-on tout scalper ?</h3>
+<p>Non. Les grandes actions américaines très échangées se scalpent, mais une petite action peu liquide, une paire de devises exotique ou une crypto confidentielle ont des écarts entre acheteur et vendeur trop larges : tu perds plusieurs ticks dès l&#39;entrée. Sur les CFD, tu traites avec ton courtier, pas dans un carnet central : tu ne vois pas le vrai volume, et l&#39;écart de prix (spread) est payé sur toutes tes transactions.</p>
+<h3>Quels sont les outils utilisés par les scalpeurs ?</h3>
+<p>Pour une utilisation au quotidien, trois outils suffisent : une plateforme avec un DOM (carnet d&#39;ordres cliquable), des graphiques en 1 minute ou en ticks, et une lecture du volume, par exemple un <a href="https://basstrading.fr/blog/footprint-chart-trading/">footprint chart</a>. Pour savoir où sont les niveaux importants du jour, j&#39;ajoute le VWAP et le Market Profile. Ajoute une connexion internet stable et des ordres préparés à l&#39;avance (taille, protection) afin de ne rien taper dans l&#39;urgence. Comme je le dis à la fin de la vidéo : avec ces outils, « vous avez une vue vachement dézoomée… Là, on est vraiment dans l&#39;exécution ».</p>
+<p>Reste la question que presque personne ne calcule avant de commencer : combien te coûte chaque aller-retour ?</p>
+
+    <hr>
+
+    <h2 id="les-couts-de-transaction-sont-ils-un-fre">Les coûts de transaction sont-ils un frein en scalping ?</h2>
+    <p>Oui : les coûts de transaction sont le premier ennemi du scalpeur, parce qu&#39;ils sont fixes alors que ton gain par trade est petit. Fais le calcul une fois, et tu ne verras plus jamais le scalping de la même façon.</p>
+<h3>Un calcul simple sur le micro Nasdaq</h3>
+<p>Prenons un chiffre rond pour l&#39;exemple : 1 $ de frais par aller-retour sur un MNQ (commission du courtier et frais de bourse ; regarde ta propre grille, elle varie d&#39;un courtier à l&#39;autre). Un tick vaut 0,50 $.</p>
+<ul><li>Tu vises 4 ticks (1 point) : 2 $ bruts, soit 1 $ net. Les frais ont mangé la moitié du gain.</li><li>Ton stop est à 8 ticks (2 points) : 4 $ bruts, soit 5 $ de perte nets.</li><li>Pour être à l&#39;équilibre, il te faut gagner 5 fois pour chaque perte : plus de 83 % de trades gagnants, juste pour ne rien perdre.</li></ul>
+<p>Avec un objectif de 40 ticks (10 points, soit 20 $ bruts), le même dollar de frais ne pèse plus que 5 % du gain. Plus ton objectif est petit, plus il te faut un taux de réussite irréaliste.</p>
+<h3>Le glissement : le frais invisible</h3>
+<p>À cela s&#39;ajoute le glissement (slippage) : l&#39;écart entre le prix que tu voulais et celui que tu obtiens. Un ordre au marché dans un carnet fin peut être exécuté 1 ou 2 ticks plus loin. Sur un objectif de 4 ticks, un seul tick de glissement à l&#39;entrée et un à la sortie, c&#39;est la moitié de ton objectif brut qui disparaît.</p>
+<h3>Ce que j&#39;en tire pour mon trading</h3>
+<p>Trois règles. D&#39;abord, je ne vise pas des objectifs ridicules : je prends le mouvement entre deux zones, pas 2 ticks. Ensuite, j&#39;évite les moments où le carnet est fin, là où le glissement coûte le plus. Enfin, je ne multiplie pas les transactions : dix trades bien choisis coûtent dix fois moins de frais que cent trades d&#39;ennui.</p>
+<p>Pour calibrer la taille de ta position avec les frais inclus, sers-toi de ma méthode pour savoir <a href="https://basstrading.fr/blog/combien-risquer-par-trade/">combien risquer par trade</a>.</p>
+<aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p><b>À retenir</b></p>
+<ul><li>Calcule tes frais par aller-retour avant ton premier trade.</li><li>Un objectif trop petit exige un taux de réussite intenable.</li><li>Le glissement est un frais caché, maximal quand le carnet est fin.</li></ul></aside>
+<p>Ces chiffres expliquent déjà une bonne partie de ce que montrent les études sur les traders très actifs.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/scalping-trading/blog-scalping-trading-4.webp" alt="Calcul des frais en scalping sur le micro Nasdaq MNQ avec un objectif de 4 ticks" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Exemple avec 1 $ de frais par aller-retour : remplace par ta propre grille.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="quels-sont-les-risques-du-scalping-ce-qu">Quels sont les risques du scalping ? Ce que disent les études</h2>
+    <p>Le risque principal du scalping n&#39;est pas un krach : c&#39;est l&#39;usure. Des frais répétés, des décisions prises trop vite, l&#39;effet de levier mal compris et des pertes qu&#39;on veut effacer tout de suite. Les études sur les traders particuliers très actifs vont toutes dans le même sens.</p>
+<h3>Trois études à connaître</h3>
+<ul><li>En Europe, sur les CFD. En mars 2018, l&#39;Autorité européenne des marchés financiers (ESMA) écrivait, à partir des analyses des régulateurs nationaux, que 74 à 89 % des comptes de particuliers perdent de l&#39;argent sur ces produits, avec des pertes moyennes de 1 600 à 29 000 € par client (<a href="https://www.esma.europa.eu/press-news/esma-news/esma-agrees-prohibit-binary-options-and-restrict-cfds-protect-retail-investors">communiqué de l&#39;ESMA du 27/03/2018</a>).</li><li>Au Brésil, sur les futures sur indice. Trois chercheurs ont suivi toutes les personnes qui ont commencé le day trading sur le mini-indice entre 2013 et 2015. Résultat : 97 % de ceux qui ont persisté plus de 300 jours ont perdu de l&#39;argent (<a href="https://ebicapital.nl/wp-content/uploads/2022/05/day-trading.pdf">Chague, De-Losso et Giovannetti, « Day trading for a living? », version de juin 2020</a>).</li><li>À Taïwan, sur quinze ans. Une étude de tous les day traders de 1992 à 2006 conclut que moins de 1 % d&#39;entre eux gagnent de façon prévisible et régulière une fois les frais payés (<a href="https://faculty.haas.berkeley.edu/odean/papers/day%20traders/The%20Cross-Section%20of%20Speculator%20Skill.pdf">Barber, Lee, Liu et Odean, Journal of Financial Markets, 2014</a>).</li></ul>
+<h3>Ce que ces chiffres veulent dire, et ce qu&#39;ils ne disent pas</h3>
+<p>Ils ne disent pas que le scalping est impossible. Ils disent que le résultat par défaut d&#39;un trader particulier très actif est la perte. Les causes reviennent toujours : trop de trades, des frais qui s&#39;accumulent, aucune règle d&#39;arrêt, et une méthode qui ne colle pas à la personne.</p>
+<p>C&#39;est aussi pour ça que je ne te montrerai jamais un résultat de séance comme une promesse. Ce qui compte, c&#39;est le processus : le niveau, la lecture, la protection, la sortie.</p>
+<h3>L&#39;effet de levier : le risque qu&#39;on sous-estime</h3>
+<p>Un contrat future se trade avec un dépôt de garantie bien plus petit que sa valeur : c&#39;est un effet de levier intégré. Le MNQ vaut 2 $ fois l&#39;indice : avec un Nasdaq à 20 000 points, par exemple, un seul micro-contrat représente 40 000 $ d&#39;exposition. Un mouvement de 50 points contre toi, ce qui peut arriver en quelques minutes sur le Nasdaq, coûte 100 $ par micro-contrat. Multiplie par dix contrats, ou passe au NQ, et une matinée peut effacer un mois de travail. La gestion de la taille de position passe donc avant tout le reste.</p>
+<h3>Les autres risques propres au scalping</h3>
+<ul><li>Le surtrading : prendre des trades par ennui ou pour se refaire. C&#39;est la première cause de journée détruite.</li><li>La fatigue : après une heure de concentration sur le DOM, la qualité des décisions baisse, sans que tu le sentes.</li><li>Les stops trop serrés : placés exactement là où tout le monde les met, ils se font prendre au moindre aller-retour. J&#39;en parle dans mon article sur <a href="https://basstrading.fr/blog/chasse-aux-stops-trading/">la chasse aux stops</a>.</li><li>Les nouvelles économiques : à l&#39;annonce d&#39;un chiffre important, le carnet se vide et le prix saute. Ton stop peut être exécuté bien plus loin que prévu.</li></ul>
+<p>Le trading de contrats à terme comporte un risque élevé de perte, pouvant dépasser la mise initiale. Contenu éducatif, pas un conseil en investissement.</p>
+<p>Alors, faut-il fuir le scalping ? Pas forcément. Mais il faut savoir s&#39;il correspond à ton caractère.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/scalping-trading/blog-scalping-trading-5.webp" alt="Chiffres des études sur les pertes des traders particuliers : ESMA, Brésil et Taïwan" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Trois études, trois pays, la même conclusion : la perte est le résultat par défaut.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="a-qui-s-adresse-le-scalping-est-il-fait-">À qui s&#39;adresse le scalping ? Est-il fait pour toi ?</h2>
+    <p>Le scalping s&#39;adresse à une minorité de caractères, et ce n&#39;est pas une question de talent. Je classe les traders en quatre cases selon deux traits de caractère. Ta case dit si le scalping va avec ta nature ou contre elle.</p>
+<h3>Les deux questions à te poser</h3>
+<p>Premier trait : le besoin d&#39;action. Est-ce que l&#39;attente te coûte ? Rester une heure devant un écran sans rien faire te rend-il nerveux, au point de prendre un trade « pour faire quelque chose » ? Ou bien l&#39;attente ne te coûte rien ?</p>
+<p>Deuxième trait : la perte qui traîne. Une position perdante qui reste ouverte te ronge-t-elle ? Ou peux-tu avoir tort un moment sans que ça te dérange ?</p>
+<p>Ces deux traits ne sortent pas de mon chapeau. Les recherches en finance comportementale ont montré que le goût des sensations fortes pousse certains investisseurs à trader beaucoup plus (Grinblatt et Keloharju, Journal of Finance, 2009), et que la douleur d&#39;une perte pèse plus lourd que le plaisir d&#39;un gain équivalent (Daniel Kahneman, prix Nobel d&#39;économie 2002 pour ses travaux menés avec Amos Tversky).</p>
+<h3>Les quatre cases</h3>
+<ul><li>Le Sniper : l&#39;attente lui coûte, et la perte qui traîne le ronge. C&#39;est la case la plus proche du scalping : il préfère couper vite et revenir vite plutôt que d&#39;attendre ou de subir.</li><li>Le Marchand : l&#39;attente lui coûte, mais avoir tort un moment ne lui fait pas peur.</li><li>Le Guetteur : l&#39;attente ne lui coûte rien, mais la perte qui traîne le ronge.</li><li>L&#39;Horloger : l&#39;attente ne lui coûte rien, et avoir tort un moment ne le dérange pas.</li></ul>
+<p>Si tu es Sniper, le scalping peut aller avec ta nature, à condition de le cadrer avec des règles strictes. Si l&#39;attente ne te coûte rien (Guetteur, Horloger), enchaîner des dizaines de trades par séance ira contre ta nature. Ce n&#39;est pas ta psycho, c&#39;est ta case. Le problème n&#39;est pas ton mental : c&#39;est la méthode qui ne te va pas.</p>
+<h3>Le scalping est-il adapté aux débutants ?</h3>
+<p>Honnêtement, rarement comme point de départ. Le scalping concentre toutes les difficultés : vitesse, frais, émotions, lecture du flux. Un débutant qui commence par là apprend surtout à cliquer vite. Je préfère qu&#39;on comprenne d&#39;abord où le marché réagit, sur des unités de temps un peu plus lentes, avant de zoomer sur l&#39;exécution. Si tu pars de zéro, commence par mon <a href="https://basstrading.fr/blog/debuter-trading-zero-guide/">guide pour débuter le trading</a>.</p>
+<p>Si après ça le scalping te tente toujours, voici les erreurs que je vois le plus souvent chez ceux qui s&#39;y lancent.</p>
+
+    <hr>
+
+    <h2 id="les-erreurs-qui-coutent-le-plus-cher-en-">Les erreurs qui coûtent le plus cher en scalping</h2>
+    <p>La plupart des pertes en scalping ne viennent pas d&#39;une mauvaise analyse, mais de gestes d&#39;exécution répétés. Les voici, avec la correction que j&#39;applique.</p>
+<h3>Trader la première bougie de l&#39;ouverture</h3>
+<p>À 15 h 30, le Nasdaq ouvre souvent dans la violence : le carnet est fin, les écarts de prix sont larges. Ma règle : « La première bougie d&#39;une minute, je ne la trade jamais. Surtout quand ça pousse fort. » Laisse le marché montrer ses premiers niveaux, puis travaille-les. Les horaires exacts sont dans mon article sur <a href="https://basstrading.fr/blog/horaires-futures-nasdaq-heure-paris/">les horaires des futures Nasdaq à l&#39;heure de Paris</a>.</p>
+<h3>Le stop suiveur automatique trop serré</h3>
+<p>Un stop suiveur collé au prix te sort au premier retour normal du marché, juste avant que le mouvement reparte. Remonte ta protection à la main, derrière un niveau que le marché vient de défendre, pas à un nombre de ticks fixe.</p>
+<h3>Laisser traîner des ordres dans le carnet</h3>
+<p>Un ordre limite oublié, c&#39;est une position que tu n&#39;as pas décidée. Dans la vidéo, je le dis clairement : je ne laisse pas traîner mes ordres dans le marché. Sors toujours avec une fonction qui ferme la position et annule tout.</p>
+<h3>Croire tout ce qu&#39;affiche le carnet</h3>
+<p>Un bloc de 107 contrats en attente sur un prix impressionne. Mais comme je le dis en vidéo, « ce n&#39;est pas forcément la réalité » : un ordre affiché peut être retiré en une fraction de seconde. Ce qui compte, c&#39;est ce qui s&#39;exécute, pas ce qui est affiché. D&#39;où l&#39;intérêt de croiser le carnet avec les volumes réellement échangés.</p>
+<h3>Entrer quand la liquidité se retire</h3>
+<p>Carnet fin, prix qui saute de plusieurs ticks : ce n&#39;est pas le moment d&#39;entrer. Ton ordre au marché sera mal exécuté et ta protection aussi. Attends que le carnet se regarnisse.</p>
+<h3>Doubler la mise après une perte</h3>
+<p>C&#39;est le réflexe le plus coûteux : vouloir se refaire tout de suite, avec plus de contrats. Une perte coupée vite doit rester une petite perte. Fixe à l&#39;avance une perte maximale par jour et arrête-toi quand elle est atteinte. Je montre comment la calculer dans mon article sur <a href="https://basstrading.fr/blog/perte-maximale-journaliere-trading/">la perte maximale journalière</a>.</p>
+<aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p><b>À retenir</b></p>
+<ul><li>Pas de trade sur la première bougie de l&#39;ouverture.</li><li>Une protection remontée à la main, derrière un niveau défendu.</li><li>Une sortie qui ferme la position et annule tous les ordres.</li><li>Une perte maximale du jour, décidée avant la séance.</li></ul></aside>
+<p>Tu connais maintenant les pièges. Voyons comment démarrer sans te brûler.</p>
+
+    <hr>
+
+    <h2 id="comment-debuter-en-scalping-sans-te-brul">Comment débuter en scalping sans te brûler ?</h2>
+    <p>Débuter en scalping, c&#39;est apprendre à exécuter sans pression avant de risquer de l&#39;argent, puis augmenter très progressivement. Voici l&#39;ordre que je recommande.</p>
+<h3>Étape 1 : le replay et le compte de démonstration</h3>
+<p>Le compte de démo est-il indispensable ? Pour le scalping, oui. Tes réflexes de clic doivent devenir automatiques avant d&#39;engager de l&#39;argent. Le mode replay de ta plateforme te permet de rejouer une ouverture du Nasdaq à vitesse réelle, autant de fois que tu veux. Rejoue la même séance trois fois : tu verras ce que tu n&#39;avais pas vu la première.</p>
+<h3>Étape 2 : un seul micro-contrat</h3>
+<p>Quand tu passes en réel, commence avec un seul MNQ. À 0,50 $ le tick, une erreur te coûte quelques dollars, pas ta semaine. Tu passeras à plus de contrats seulement quand tes règles tiendront sur plusieurs semaines.</p>
+<h3>Étape 3 : une fenêtre horaire courte</h3>
+<p>Scalper toute la journée, c&#39;est la meilleure façon de surtrader. Choisis une fenêtre précise, par exemple la première heure après l&#39;ouverture américaine, une fois la première bougie passée. Hors de ta fenêtre, tu ne trades pas.</p>
+<h3>Étape 4 : des règles de gestion écrites avant la séance</h3>
+<p>Sur une feuille, avant d&#39;ouvrir ta plateforme :</p>
+<ul><li>les niveaux du jour (plus haut et plus bas de la veille, zones de la séance précédente) ;</li><li>ton risque par trade et ta perte maximale du jour ;</li><li>le nombre maximum de trades ;</li><li>ce qui te fait entrer, et ce qui t&#39;interdit d&#39;entrer (carnet fin, annonce économique).</li></ul>
+<h3>Étape 5 : le journal de chaque trade</h3>
+<p>Après la séance, note chaque trade : le niveau, la raison d&#39;entrée, la sortie, et ce que tu as ressenti. Le scalping se travaille sur des dizaines de trades, pas sur un seul. C&#39;est le journal qui te dira si tu respectes tes règles ou si tu cliques par réflexe.</p>
+<p>C&#39;est exactement le travail que je fais avec mes élèves : repérer d&#39;abord les niveaux où le marché réagit, puis apprendre à lire le flux pour exécuter. La méthode complète, avec mes séances commentées, est dans ma <a href="https://basstrading.fr/l/jzGR4A">formation gratuite</a>.</p>
+<p>Une fois ces bases posées, il te reste à savoir lire les niveaux eux-mêmes : c&#39;est le rôle du <a href="https://basstrading.fr/blog/market-profile-guide-complet/">Market Profile</a>.</p>
+
+    <hr>
+
+    <h2 id="ce-qu-il-faut-retenir-sur-le-scalping-tr">Ce qu&#39;il faut retenir sur le scalping trading</h2>
+    <p>Le scalping n&#39;est ni une arnaque, ni un raccourci. C&#39;est un style de trading précis, très exigeant, qui convient à certains caractères et pas à d&#39;autres.</p>
+<aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p><b>À retenir</b></p>
+<ul><li>Le scalping prend de petits mouvements, en quelques secondes à quelques minutes, plusieurs fois par séance.</li><li>Il se pratique sur des marchés très liquides, de préférence avec un carnet d&#39;ordres central : les futures sur indices s&#39;y prêtent bien.</li><li>Les frais, le glissement et l&#39;effet de levier sont tes premiers adversaires : un objectif trop petit exige un taux de réussite intenable.</li><li>Les études sont claires : la grande majorité des traders particuliers très actifs perdent de l&#39;argent. La discipline n&#39;est pas une option.</li><li>Le scalping va avec certains caractères (le Sniper), contre d&#39;autres. Ce n&#39;est pas ta psycho, c&#39;est ta case.</li></ul></aside>
+<h3>Ce soir, sur ton graphique</h3>
+<p>Ouvre un replay de l&#39;ouverture du Nasdaq. Repère le plus haut et le plus bas du jour, puis regarde le carnet pendant dix minutes sans prendre un seul trade. Note les moments où il s&#39;épaissit et ceux où il se vide. Tu viens de faire ton premier vrai exercice de scalpeur.</p>
+<p>Ensuite, pour comprendre ce que tu regardes, lis mon guide du <a href="https://basstrading.fr/blog/carnet-ordres-dom-futures/">carnet d&#39;ordres et du DOM</a> : c&#39;est la suite logique de cet article.</p>
+
+    <p><a href="https://www.youtube.com/watch?v=aTtgo12XQC0" target="_blank" rel="noopener">▶ Voir la vidéo de Sébastien sur ce sujet</a></p>
+
+    <div class="cta-card cta-aimant">
+      <div class="cta-card-label">Gratuit</div>
+      <h3>La formation offerte : 7 leçons pour lire le marché comme un pro</h3>
+      <p>Accès immédiat et gratuit, en vidéo, à ton rythme. Sans carte bancaire.</p>
+      <a href="https://basstrading.fr/p/formation-offerte/?src=blog-scalping-trading" class="btn-p">Je la veux →</a>
+    </div>
+    
+  </article>
+</div>
+
+<!-- FAQ -->
+<section class="faq-sec">
+  <div class="sec-center"><div class="sec-label">FAQ</div><h2 class="sec-title">Questions fréquentes</h2></div>
+  <div class="faq-list">
+    <div class="fi"><button class="fq" onclick="tf(this)">Le scalping est-il légal en France ? <span class="fq-icon">+</span></button><div class="fa"><p>Oui. Le scalping est une façon de trader, pas un produit : il est légal sur les marchés réglementés comme les futures du CME. En revanche, certains courtiers et certaines prop firms fixent des règles sur la durée minimale d&#39;une position ou interdisent certaines pratiques à très haute fréquence. Lis leurs conditions avant de scalper chez eux.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Combien de temps dure un trade en scalping ? <span class="fq-icon">+</span></button><div class="fa"><p>De quelques secondes à quelques minutes. Au-delà d&#39;une quinzaine de minutes, on parle plutôt de day trading. Ce qui compte n&#39;est pas le chronomètre, mais le fait de sortir dès que la raison d&#39;être en position disparaît : on ne laisse pas traîner un trade de scalping.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Quelle unité de temps utiliser pour scalper ? <span class="fq-icon">+</span></button><div class="fa"><p>Le plus souvent, un graphique en 1 minute ou en ticks, avec le carnet d&#39;ordres (DOM) pour l&#39;exécution. Je travaille en 1 minute sur le Nasdaq futures, avec des niveaux tirés du Market Profile et du VWAP. L&#39;unité de temps sert à repérer les niveaux ; le carnet sert à entrer et sortir au bon prix.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Peut-on scalper avec un petit capital ? <span class="fq-icon">+</span></button><div class="fa"><p>Oui, grâce aux micro-contrats : sur le micro Nasdaq (MNQ), un tick vaut 0,50 $ selon le CME. Mais un petit capital ne supporte ni le surtrading ni les frais répétés, et l&#39;effet de levier des futures reste réel : fixe un risque par trade très faible et une perte maximale par jour. Commence toujours par le replay et la démo.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Quel est le meilleur indicateur pour le scalping ? <span class="fq-icon">+</span></button><div class="fa"><p>Aucun indicateur ne suffit seul. Les moyennes mobiles et le RSI arrivent souvent trop tard pour un objectif de quelques ticks. Je préfère des niveaux clairs (VWAP, zones du Market Profile, plus haut et plus bas du jour) et la lecture du flux : le carnet d&#39;ordres et les volumes réellement échangés.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Le scalping est-il rentable ? <span class="fq-icon">+</span></button><div class="fa"><p>Je ne te promets aucun gain. Les études de la section sur les risques montrent que la majorité des particuliers très actifs perdent de l&#39;argent, et les frais pèsent lourd quand l&#39;objectif tient en quelques ticks. Certains y arrivent, mais ça dépend de ta méthode et de ta discipline, pas du style.</p></div></div>
+  </div>
+</section>
+
+<!-- Related -->
+<section class="related-sec">
+  <div class="sec-center"><div class="sec-label">Continuer la lecture</div><h2 class="sec-title">Articles connexes</h2></div>
+  <div class="related-grid">
+    <a href="/blog/market-profile-guide-complet/" class="related-card"><div class="related-cat">Guide</div><h3>Market Profile : le guide complet pour débutants</h3><p>Value Area, POC, types de journées — tout pour commencer.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/order-flow-trading-france/" class="related-card"><div class="related-cat">Méthode</div><h3>Order Flow Trading : pourquoi personne ne l'enseigne en France</h3><p>Le carnet d'ordres et le flux institutionnel décryptés.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/sierra-chart-configuration/" class="related-card"><div class="related-cat">Tutoriel</div><h3>Sierra Chart : configuration complète</h3><p>Le setup pas à pas pour le Market Profile et le Footprint.</p><span class="related-link">Lire &rarr;</span></a>
+  </div>
+</section>
+
+<!-- serie:debut --><style>.serie-w{background:#FFF;color:#1D1D1F;border-top:1px solid #F5F5F7}.serie{max-width:1060px;margin:0 auto;padding:56px 24px;font-family:inherit;box-sizing:border-box}.serie-l{font-size:.6rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#0066FF;margin-bottom:8px}.serie-w .serie h2{font-size:1.4rem;font-weight:800;letter-spacing:-.5px;color:#1D1D1F!important;margin:0 0 18px;font-family:inherit}.serie ul{list-style:none;padding:0;margin:0 0 22px;display:grid;grid-template-columns:repeat(2,1fr);gap:8px 24px}.serie-w .serie li a{color:#1D1D1F!important;font-size:.9rem;line-height:1.45;text-decoration:none;border-bottom:1px solid #D2D2D7}.serie li a:hover{color:#0066FF}.serie li.pil a{font-weight:700}.serie-o{background:#F5F5F7;border-radius:14px;padding:18px 20px;font-size:.88rem;line-height:1.55;color:#1D1D1F}.serie-w .serie-o a{color:#0066FF!important;font-weight:700}@media(max-width:700px){.serie ul{grid-template-columns:1fr}}</style><div class="serie-w"><aside class="serie" aria-label="Dans la même série"><div class="serie-l">Dans la même série</div><h2>Order flow et carnet d'ordres</h2><ul><li class="pil"><a href="/blog/order-flow-trading-france/">Order flow trading : le guide complet en français (2026)</a></li><li class=""><a href="/blog/carnet-ordres-dom-futures/">Carnet d'Ordres DOM Futures : Guide Complet du Depth of Market</a></li><li class=""><a href="/blog/tape-reading-flux-ordres/">Tape reading : lire le Time &amp; Sales en temps réel</a></li><li class=""><a href="/blog/absorption-order-flow/">Absorption en Order Flow : Quand les Institutionnels Mangent les Ordres</a></li><li class=""><a href="/blog/cvd-cumulative-volume-delta/">CVD (Cumulative Volume Delta) : Détecter la Conviction des Traders</a></li><li class=""><a href="/blog/smc-trading/">SMC trading : ce qui tient vraiment, vu du carnet d'ordres</a></li></ul><div class="serie-o"><a href="/formation-carnet-d-ordres/">La formation carnet d'ordres</a> : Carnet d'ordre Mastery, pour lire le DOM et le flux d'ordres. Pour commencer sans payer : <a href="/p/formation-offerte/?src=serie-scalping-trading">la formation offerte</a> (7 leçons vidéo).</div></aside></div><!-- serie:fin -->
+<footer class="footer">
+  <div class="ft-top"><div class="ft-logo">BASS</div><div class="ft-cols">
+    <div class="ft-col"><div class="ft-col-title">Programme</div><a href="/formations/">Toutes les formations</a><a href="https://basstrading.fr/#methode">Méthode</a><a href="https://basstrading.fr/#programme">Programme</a><a href="https://basstrading.fr/p/formation-offerte/?src=blog-scalping-trading-pied">Formation offerte</a></div>
+    <div class="ft-col"><div class="ft-col-title">Ressources</div><a href="/blog/market-profile-guide-complet/">Market Profile</a><a href="/blog/footprint-chart-trading/">Footprint Chart</a><a href="/blog/order-flow-trading-france/">Order Flow</a></div>
+  </div></div>
+  <div class="ft-bottom"><span>&copy; 2026 BASS — Sébastien Constant</span><div><a href="/mentions-legales/">Mentions légales</a><a href="/confidentialite/">Confidentialité</a><a href="/cgv/">CGV</a><a href="mailto:contact@basstrading.fr">Contact</a></div></div>
+</footer>
+<div class="disclaimer">Le trading comporte des risques de perte en capital. Les performances passées ne préjugent pas des performances futures. Ce site ne constitue pas un conseil en investissement.</div>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+const lenis=new Lenis({duration:1.2,easing:t=>Math.min(1,1.001-Math.pow(2,-10*t))});
+function raf(t){lenis.raf(t);requestAnimationFrame(raf)}requestAnimationFrame(raf);
+lenis.on('scroll',ScrollTrigger.update);gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0);
+const tl=gsap.timeline();
+tl.to('.pre-word span',{y:0,opacity:1,duration:.5,stagger:.1,ease:'power3.out',delay:.3}).to('#preLine',{width:'80px',duration:.7,ease:'power2.inOut'},'<+.2').to('.preloader',{yPercent:-100,duration:.8,ease:'power3.inOut',delay:.4}).set('.preloader',{display:'none'}).to('#nav',{opacity:1,y:0,duration:.5},'<+.1');
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);const h=document.documentElement.scrollHeight-window.innerHeight;document.getElementById('readingProgress').style.width=(window.scrollY/h*100)+'%'});
+const tocLinks=document.querySelectorAll('.toc a');const sections=Array.from(tocLinks).map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+window.addEventListener('scroll',()=>{let c='';sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)c=s.id});tocLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+c)})});
+function tf(b){const i=b.closest('.fi'),a=b.nextElementSibling,o=i.classList.contains('active');document.querySelectorAll('.fi').forEach(x=>{x.classList.remove('active');x.querySelector('.fa').classList.remove('open')});if(!o){i.classList.add('active');a.classList.add('open')}}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();lenis.scrollTo(t,{offset:-60})}})});
+</script>
+<script src="/v.js" defer></script>
+</body>
+</html>
