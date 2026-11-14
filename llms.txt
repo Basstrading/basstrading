@@ -51,6 +51,7 @@
 - [Absorption en Order Flow : Quand les Institutionnels Mangent les Ordres](https://basstrading.fr/blog/absorption-order-flow/): Guide complet de l'absorption en order flow : mécanismes, identification sur le Footprint, patterns bullish et bearish, exemples sur ES et NQ. Apprenez à détecter quand les gros joueurs absorbent silencieusement. Par Sébastien Constant.
 - [CVD (Cumulative Volume Delta) : Détecter la Conviction des Traders](https://basstrading.fr/blog/cvd-cumulative-volume-delta/): Guide complet du CVD (Cumulative Volume Delta) : calcul, divergences, interprétation. Apprenez à utiliser le delta cumulatif pour mesurer la pression directionnelle réelle du marché. Par Sébastien Constant.
 - [SMC trading : ce qui tient vraiment, vu du carnet d'ordres](https://basstrading.fr/blog/smc-trading/): SMC trading expliqué : order block, liquidité, FVG, BOS, CHoCH. Ce qui tient, ce qui ne se vérifie pas, et comment le contrôler au carnet d'ordres.
+- [Scalping trading : définition, risques et méthode réelle](https://basstrading.fr/blog/scalping-trading/): Scalping trading : ce que c'est, ce que coûtent les frais, ce que disent les études et comment je scalpe le Nasdaq au carnet d'ordres. Est-ce pour toi ?
 - Formation liée : [La formation carnet d'ordres](https://basstrading.fr/formation-carnet-d-ordres/), Carnet d'ordre Mastery, pour lire le DOM et le flux d'ordres.
 
 ### Footprint

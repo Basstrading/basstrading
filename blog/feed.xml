@@ -6,8 +6,16 @@
   <link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
   <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/"/>
   <id>https://basstrading.fr/blog/</id>
-  <updated>2026-11-13T00:00:00Z</updated>
+  <updated>2026-11-14T00:00:00Z</updated>
   <author><name>Sébastien Constant (Bass)</name><uri>https://basstrading.fr/auteur/sebastien-constant/</uri></author>
+  <entry>
+    <title>Scalping trading : définition, risques et méthode réelle</title>
+    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/scalping-trading/"/>
+    <id>https://basstrading.fr/blog/scalping-trading/</id>
+    <published>2026-11-14T00:00:00Z</published>
+    <updated>2026-11-14T00:00:00Z</updated>
+    <summary>Scalping trading : ce que c&#x27;est, ce que coûtent les frais, ce que disent les études et comment je scalpe le Nasdaq au carnet d&#x27;ordres. Est-ce pour toi ?</summary>
+  </entry>
   <entry>
     <title>Order flow sur TradingView : ce qu&#x27;on voit vraiment (et ses limites)</title>
     <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/flux-ordres-tradingview/"/>
