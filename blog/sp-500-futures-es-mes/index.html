@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>S&amp;P 500 futures : ES ou MES, valeur du point et horaires — BASS Trading</title>
+  <meta name="description" content="S&amp;P 500 futures : ES ou MES, valeur du point et du tick, horaires en heure de Paris, marge, échéances et choix face au Nasdaq. Exemples chiffrés.">
+  <meta property="og:title" content="S&amp;P 500 futures : ES ou MES, valeur du point et horaires — BASS Trading">
+  <meta property="og:description" content="S&amp;P 500 futures : ES ou MES, valeur du point et du tick, horaires en heure de Paris, marge, échéances et choix face au Nasdaq. Exemples chiffrés.">
+  <meta property="og:image" content="https://basstrading.fr/blog/sp-500-futures-es-mes/blog-sp-500-futures-es-mes-1.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://basstrading.fr/blog/sp-500-futures-es-mes/blog-sp-500-futures-es-mes-1.webp">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://basstrading.fr/blog/sp-500-futures-es-mes/">
+  <meta property="og:site_name" content="BASS Trading">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://basstrading.fr/blog/sp-500-futures-es-mes/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","@id":"https://basstrading.fr/blog/sp-500-futures-es-mes/#article","headline":"S&P 500 futures : ES ou MES, valeur du point et horaires","description":"S&P 500 futures : ES ou MES, valeur du point et du tick, horaires en heure de Paris, marge, échéances et choix face au Nasdaq. Exemples chiffrés.","datePublished":"2026-11-16","dateModified":"2026-11-16","inLanguage":"fr-FR","image":"https://basstrading.fr/blog/sp-500-futures-es-mes/blog-sp-500-futures-es-mes-1.webp","mainEntityOfPage":"https://basstrading.fr/blog/sp-500-futures-es-mes/","isPartOf":{"@type":"WebSite","@id":"https://basstrading.fr/#website","name":"BASS Trading","url":"https://basstrading.fr/"},"author":{"@type":"Person","@id":"https://basstrading.fr/#sebastien-constant","name":"Sébastien Constant","url":"https://basstrading.fr/auteur/sebastien-constant/"},"publisher":{"@type":"Organization","@id":"https://basstrading.fr/#organisation","name":"BASS Trading","url":"https://basstrading.fr/","logo":{"@type":"ImageObject","url":"https://basstrading.fr/images/logo-basstrading.png","width":512,"height":512}}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://basstrading.fr"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://basstrading.fr/blog/"},{"@type":"ListItem","position":3,"name":"S&P 500 futures : ES ou MES","item":"https://basstrading.fr/blog/sp-500-futures-es-mes/"}]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Combien vaut un point sur le S&P 500 futures ?","acceptedAnswer":{"@type":"Answer","text":"Un point vaut 50 $ sur l'E-mini S&P 500 (ES) et 5 $ sur le Micro E-mini (MES), selon les spécifications du CME. Le plus petit mouvement, le tick, fait 0,25 point : 12,50 $ sur l'ES et 1,25 $ sur le MES. Pour connaître ton risque, multiplie la distance de ton stop en points par la valeur du point et par le nombre de contrats."}},{"@type":"Question","name":"Quelle est la différence entre ES et MES ?","acceptedAnswer":{"@type":"Answer","text":"Les deux contrats suivent le même indice, au même prix et aux mêmes heures. Le MES, lancé par le CME en mai 2019, vaut un dixième de l'ES : 5 $ le point au lieu de 50 $. Dix MES représentent donc la même exposition qu'un ES. Le MES permet d'ajuster finement sa taille de position avec un petit compte."}},{"@type":"Question","name":"À quelle heure ouvre le S&P 500 futures en France ?","acceptedAnswer":{"@type":"Answer","text":"Le contrat cote de la nuit de dimanche à lundi (minuit, heure de Paris) au vendredi 23 h, avec une pause chaque jour de 23 h à minuit. La séance la plus active commence à 15 h 30, à l'ouverture de Wall Street. Pendant les semaines de décalage des changements d'heure (mars, fin octobre), l'ouverture américaine passe à 14 h 30 à Paris."}},{"@type":"Question","name":"Quel capital faut-il pour trader le MES ?","acceptedAnswer":{"@type":"Answer","text":"Il n'y a pas de montant universel : la marge dépend du courtier et change avec la volatilité. Le bon calcul part de ta règle de risque. Avec 1 % de risque par trade et un stop de 8 points (40 $ par MES), il faut au moins 4 000 $ pour un contrat. Si ton compte est plus petit, entraîne-toi d'abord en simulation."}},{"@type":"Question","name":"Qu'est-ce qui fait bouger le prix du S&P 500 futures ?","acceptedAnswer":{"@type":"Answer","text":"Les décisions de la Fed et les anticipations de taux, les statistiques américaines (inflation, emploi), publiées souvent à 14 h 30 heure de Paris, et les résultats des plus grosses entreprises de l'indice. Pendant la séance, le flux d'ordres montre si un mouvement est accepté ou rejeté par le marché."}},{"@type":"Question","name":"Vaut-il mieux trader le S&P 500 ou le Nasdaq futures ?","acceptedAnswer":{"@type":"Answer","text":"Aucun n'est meilleur dans l'absolu. Le S&P 500 a un carnet d'ordres plus épais et des mouvements plus progressifs ; le Nasdaq a un carnet plus léger et bouge plus vite. Si la vitesse du Nasdaq te fait prendre de mauvaises décisions, le S&P peut mieux te convenir. Teste les deux en simulation avant de choisir."}}]}
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{--bk:#1D1D1F;--bk2:#111;--bk3:#0A0A0A;--g1:#6E6E73;--g2:#86868B;--g3:#D2D2D7;--g4:#F5F5F7;--wh:#FBFBFD;--pure:#FFF;--green:#00B67A;--blue:#0066FF}
+    html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}
+    body{font-family:'DM Sans',sans-serif;color:var(--bk);background:var(--pure);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+    .preloader{position:fixed;inset:0;background:var(--bk3);z-index:10001;display:flex;align-items:center;justify-content:center}
+    .pre-word{font-family:'Outfit',sans-serif;font-size:clamp(3rem,8vw,5rem);font-weight:900;letter-spacing:16px;text-transform:uppercase;color:var(--pure);overflow:hidden}
+    .pre-word span{display:inline-block;transform:translateY(110%);opacity:0}
+    .pre-line{width:0;height:1px;background:rgba(255,255,255,.3);margin-top:20px}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 48px;display:flex;align-items:center;justify-content:space-between;background:rgba(245,245,247,.85);backdrop-filter:blur(20px) saturate(1.8);border-bottom:1px solid rgba(0,0,0,.04);transition:background .4s}
+    .nav-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase;color:var(--bk)}
+    .nav-links{display:flex;gap:28px;list-style:none}.nav-links a{font-size:.74rem;font-weight:500;letter-spacing:.3px;color:var(--g1);transition:color .3s}.nav-links a:hover{color:var(--bk)}
+    .nav-cta{padding:8px 20px;background:var(--bk);color:var(--pure);border:none;border-radius:980px;font-size:.72rem;font-weight:600;transition:all .3s;cursor:pointer;text-decoration:none;display:inline-block}.nav-cta:hover{background:var(--bk2)}
+    .blog-hero{padding:160px 48px 80px;background:var(--g4);position:relative;overflow:hidden}
+    .blog-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,transparent,var(--g4));pointer-events:none}
+    .blog-hero-inner{max-width:720px;margin:0 auto}
+    .breadcrumb{display:flex;gap:8px;align-items:center;margin-bottom:28px;flex-wrap:wrap}
+    .breadcrumb a,.breadcrumb span{font-size:.68rem;font-weight:500;letter-spacing:.3px;color:var(--g2);transition:color .3s}.breadcrumb a:hover{color:var(--bk)}.breadcrumb .sep{color:var(--g3)}
+    .blog-hero-cat{display:inline-block;padding:5px 14px;border:1px solid rgba(0,102,255,.15);border-radius:980px;font-size:.6rem;font-weight:700;color:var(--blue);letter-spacing:2px;text-transform:uppercase;margin-bottom:20px}
+    .blog-hero-title{font-family:'Outfit',sans-serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:900;line-height:1.05;letter-spacing:-2px;color:var(--bk);margin-bottom:20px}
+    .blog-hero-desc{font-size:.95rem;color:var(--g1);line-height:1.8;max-width:560px;margin-bottom:28px}
+    .blog-meta{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+    .blog-meta-author{display:flex;align-items:center;gap:10px}
+    .blog-meta-avatar{width:36px;height:36px;border-radius:50%;background:var(--bk3);overflow:hidden;flex-shrink:0}.blog-meta-avatar img{width:100%;height:100%;object-fit:cover}
+    .blog-meta-name{font-size:.78rem;font-weight:600;color:var(--bk)}.blog-meta-role{font-size:.65rem;color:var(--g2)}
+    .blog-meta-sep{width:1px;height:24px;background:var(--g3)}
+    .blog-meta-info{font-size:.7rem;color:var(--g2)}.blog-meta-info span{margin-right:16px}
+    .toc{position:sticky;top:90px;background:var(--pure);border:1px solid rgba(0,0,0,.04);border-radius:14px;padding:24px;margin-bottom:32px}
+    .toc-title{font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.5px;color:var(--bk);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+    .toc ol{list-style:none;counter-reset:toc}.toc li{counter-increment:toc}
+    .toc li a{display:flex;align-items:baseline;gap:8px;padding:6px 0;font-size:.76rem;color:var(--g1);transition:color .3s;border-bottom:1px solid rgba(0,0,0,.03)}.toc li a:hover{color:var(--blue)}
+    .toc li a::before{content:counter(toc,decimal-leading-zero);font-family:'Outfit',sans-serif;font-size:.65rem;font-weight:700;color:var(--g3);min-width:18px}
+    .toc li:last-child a{border-bottom:none}.toc li a.active{color:var(--blue);font-weight:600}.toc li a.active::before{color:var(--blue)}
+    .article-wrap{display:grid;grid-template-columns:220px 1fr;gap:40px;max-width:1020px;margin:0 auto;padding:60px 48px 120px}
+    .article-sidebar{position:relative}.article-body{max-width:700px}
+    .article-body h2{font-family:'Outfit',sans-serif;font-size:clamp(1.4rem,2.5vw,1.8rem);font-weight:800;line-height:1.1;letter-spacing:-1px;color:var(--bk);margin:56px 0 16px;padding-top:20px}.article-body h2:first-of-type{margin-top:0}
+    .article-body h3{font-family:'Outfit',sans-serif;font-size:1.05rem;font-weight:700;line-height:1.25;letter-spacing:-.3px;color:var(--bk);margin:36px 0 10px}
+    .article-body p{font-size:.9rem;color:var(--g1);line-height:1.85;margin-bottom:18px}
+    .article-body strong{color:var(--bk);font-weight:600}
+    .article-body ul,.article-body ol{margin:0 0 20px 0;padding-left:20px}
+    .article-body li{font-size:.88rem;color:var(--g1);line-height:1.8;margin-bottom:6px}.article-body li strong{color:var(--bk)}
+    .article-body blockquote{margin:28px 0;padding:20px 24px;background:var(--g4);border-left:3px solid var(--bk);border-radius:0 12px 12px 0;font-size:.88rem;color:var(--g1);line-height:1.8;font-style:italic}
+    .article-body blockquote strong{color:var(--bk);font-style:normal}
+    .article-body hr{border:none;border-top:1px solid var(--g4);margin:48px 0}
+    .info-box{margin:28px 0;padding:24px;background:rgba(0,102,255,.03);border:1px solid rgba(0,102,255,.08);border-radius:14px}
+    .info-box-title{font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:700;color:var(--blue);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+    .info-box p{font-size:.82rem;color:var(--g1);line-height:1.7;margin-bottom:0}
+    .key-concept{margin:32px 0;padding:28px;background:var(--bk3);border-radius:16px;color:var(--pure)}
+    .key-concept-label{font-size:.55rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:10px}
+    .key-concept h4{font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:800;letter-spacing:-.3px;margin-bottom:8px}
+    .key-concept p{font-size:.85rem;color:rgba(255,255,255,.5);line-height:1.8;margin-bottom:0}
+    .compare-table{width:100%;margin:24px 0 28px;border-collapse:collapse;border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,.06)}
+    .compare-table th{background:var(--bk3);color:var(--pure);font-family:'Outfit',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:14px 16px;text-align:left}
+    .compare-table td{padding:12px 16px;font-size:.82rem;color:var(--g1);line-height:1.6;border-bottom:1px solid rgba(0,0,0,.04);background:var(--pure)}
+    .compare-table tr:last-child td{border-bottom:none}.compare-table td:first-child{font-weight:600;color:var(--bk)}
+    .cta-card{margin:48px 0;padding:40px;background:var(--bk3);border-radius:20px;text-align:center;position:relative;overflow:hidden}
+    .cta-card::before{content:'';position:absolute;top:-50%;right:-30%;width:400px;height:400px;background:radial-gradient(circle,rgba(0,102,255,.08) 0%,transparent 70%);pointer-events:none}
+    .cta-card-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:12px}
+    .cta-card h3{font-family:'Outfit',sans-serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:800;color:var(--pure);letter-spacing:-.5px;margin-bottom:8px}
+    .cta-card p{font-size:.85rem;color:rgba(255,255,255,.4);line-height:1.7;max-width:380px;margin:0 auto 24px}
+    .cta-card .btn-p{background:var(--pure);color:var(--bk)}.cta-card .btn-p:hover{box-shadow:0 8px 30px rgba(255,255,255,.15)}
+    .faq-sec{padding:80px 48px 100px;background:var(--g4)}
+    .faq-list{max-width:680px;margin:40px auto 0}.fi{border-bottom:1px solid rgba(0,0,0,.06)}
+    .fq{width:100%;text-align:left;padding:18px 0;background:none;border:none;font-size:.85rem;font-weight:600;font-family:'DM Sans',sans-serif;color:var(--bk);display:flex;justify-content:space-between;align-items:center;cursor:pointer;gap:16px;transition:color .3s}.fq:hover{color:var(--g1)}
+    .fq-icon{width:22px;height:22px;border-radius:50%;background:rgba(0,0,0,.04);display:flex;align-items:center;justify-content:center;font-size:.75rem;transition:all .4s;flex-shrink:0;color:var(--g2)}
+    .fa{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1)}.fa.open{max-height:280px;padding-bottom:14px}
+    .fa p{font-size:.8rem;color:var(--g1);line-height:1.7;margin-bottom:0}.fi.active .fq-icon{background:var(--bk);color:var(--pure);transform:rotate(45deg)}
+    .related-sec{padding:80px 48px;background:var(--pure);border-top:1px solid var(--g4)}
+    .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1060px;margin:40px auto 0}
+    .related-card{display:block;padding:28px;background:var(--g4);border-radius:16px;transition:all .4s;text-decoration:none;color:var(--bk)}
+    .related-card:hover{background:var(--pure);box-shadow:0 8px 30px rgba(0,0,0,.06);transform:translateY(-2px)}
+    .related-cat{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+    .related-card h3{font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:700;line-height:1.3;letter-spacing:-.3px;margin-bottom:8px}
+    .related-card p{font-size:.78rem;color:var(--g1);line-height:1.6;margin-bottom:14px}
+    .related-link{font-size:.72rem;font-weight:600;color:var(--blue);letter-spacing:.3px}
+    .footer{background:var(--bk3);color:var(--pure);padding:56px 48px 28px}
+    .ft-top{display:flex;justify-content:space-between;align-items:start;margin-bottom:48px;flex-wrap:wrap;gap:32px}
+    .ft-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase}
+    .ft-cols{display:flex;gap:80px}
+    .ft-col-title{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:12px}
+    .ft-col a{display:block;font-size:.78rem;color:rgba(255,255,255,.5);margin-bottom:8px;transition:color .3s}.ft-col a:hover{color:var(--pure)}
+    .ft-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:20px;display:flex;justify-content:space-between;align-items:center;font-size:.6rem;color:rgba(255,255,255,.2)}
+    .ft-bottom a{color:rgba(255,255,255,.2);transition:color .3s;margin-left:20px}.ft-bottom a:hover{color:rgba(255,255,255,.5)}
+    .disclaimer{padding:12px 48px;background:var(--bk3);font-size:.58rem;color:rgba(255,255,255,.12);text-align:center;line-height:1.6;border-top:1px solid rgba(255,255,255,.03)}
+    .sec-center{text-align:center;max-width:680px;margin:0 auto}
+    .sec-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--g2);margin-bottom:10px}
+    .sec-title{font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;line-height:1.05;letter-spacing:-1.5px;color:var(--bk);margin-bottom:16px}
+    .btn-p{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--bk);color:var(--pure);border-radius:980px;font-size:.85rem;font-weight:600;transition:all .3s;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;text-decoration:none}
+    .btn-p:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(0,0,0,.1)}
+    .btn-p svg{width:13px;height:13px;transition:transform .3s}.btn-p:hover svg{transform:translateX(3px)}
+    .reading-progress{position:fixed;top:0;left:0;height:2px;background:var(--blue);z-index:9999;width:0;transition:width .1s linear}
+    @media(max-width:900px){.nav{padding:14px 20px}.nav-links{display:none}.blog-hero{padding:120px 20px 60px}.article-wrap{grid-template-columns:1fr;padding:40px 20px 80px}.article-sidebar{display:none}.related-grid{grid-template-columns:1fr}.related-sec,.faq-sec{padding:60px 20px}.ft-cols{flex-direction:column;gap:28px}.footer{padding:40px 20px 20px}.disclaimer{padding:10px 16px}.cta-card{padding:28px 20px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  .article-body a{color:var(--blue);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;font-weight:500}.article-body a:hover{text-decoration-thickness:2px}
+</style>
+<style>/* 28/10/2026 : débordement mobile (colonne de grille sans min-width) */.article-wrap>*,.article-layout>*{min-width:0}.article-body table,.compare-table{display:block;overflow-x:auto;max-width:100%}.article-body pre{overflow-x:auto}.article-body img{max-width:100%;height:auto}</style>
+</head>
+<body>
+
+<div class="preloader" id="preloader"><div style="text-align:center"><div class="pre-word"><span>B</span><span>A</span><span>S</span><span>S</span></div><div class="pre-line" id="preLine"></div></div></div>
+<div class="reading-progress" id="readingProgress"></div>
+
+<nav class="nav" id="nav">
+  <a href="https://basstrading.fr" class="nav-logo">BASS</a>
+  <ul class="nav-links">
+    <li><a href="https://basstrading.fr/#methode">Méthode</a></li>
+    <li><a href="https://basstrading.fr#resultats">Résultats</a></li>
+    <li><a href="https://basstrading.fr#avis">Avis</a></li>
+    <li><a href="https://basstrading.fr#faq">FAQ</a></li>
+    <li><a href="/formations/">Formations</a></li>
+    <li><a href="https://basstrading.fr/blog/">Blog</a></li>
+  </ul>
+  <a href="https://basstrading.fr/p/formation-offerte/?src=blog-sp-500-futures-es-mes-menu" class="nav-cta">Formation offerte</a>
+</nav>
+
+<section class="blog-hero">
+  <div class="blog-hero-inner">
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <a href="https://basstrading.fr">Accueil</a><span class="sep">/</span>
+      <a href="https://basstrading.fr/blog/">Blog</a><span class="sep">/</span>
+      <span>S&amp;P 500 futures : ES ou MES</span>
+    </nav>
+    <div class="blog-hero-cat">Futures</div>
+    <h1 class="blog-hero-title">S&amp;P 500 futures : ES ou MES, valeur du point et horaires</h1>
+    <p class="blog-hero-desc">Le S&amp;P 500 futures se trade avec deux contrats du CME : l&#39;ES (50 $ le point) et le MES, dix fois plus petit (5 $ le point). Avec un petit compte, seul le MES est raisonnable. Je t&#39;explique la valeur du tick, les horaires depuis la France, les échéances, la marge, et quand le S&amp;P convient mieux que le Nasdaq.</p>
+    <div class="blog-meta">
+      <div class="blog-meta-author">
+        <div class="blog-meta-avatar"><img src="../../images/bass-presenting.jpg" alt="Sébastien Constant" loading="lazy"></div>
+        <div><div class="blog-meta-name"><a href="/auteur/sebastien-constant/" rel="author" style="color:inherit;text-decoration:none">Sébastien Constant</a></div><div class="blog-meta-role">Trader & Formateur Order Flow</div></div>
+      </div>
+      <div class="blog-meta-sep"></div>
+      <div class="blog-meta-info"><span>Novembre 2026</span><span>24 min de lecture</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="article-wrap">
+  <aside class="article-sidebar">
+    <div class="toc">
+      <div class="toc-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/></svg> Sommaire</div>
+      <ol>
+        <li><a href="#qu-est-ce-que-le-s-p-500-futures">Qu&#39;est-ce que le S&amp;P 500 futures ?</a></li>
+        <li><a href="#es-ou-mes-quelle-difference-entre-les-de">ES ou MES : quelle différence entre les deux contrats ?</a></li>
+        <li><a href="#combien-vaut-un-point-et-un-tick-sur-l-e">Combien vaut un point et un tick sur l&#39;ES et le MES ?</a></li>
+        <li><a href="#a-quelle-heure-trader-le-s-p-500-futures">À quelle heure trader le S&amp;P 500 futures depuis la France ?</a></li>
+        <li><a href="#quelle-marge-faut-il-pour-trader-l-es-ou">Quelle marge faut-il pour trader l&#39;ES ou le MES ?</a></li>
+        <li><a href="#comment-fonctionnent-les-echeances-et-le">Comment fonctionnent les échéances et le rollover ?</a></li>
+        <li><a href="#s-p-500-ou-nasdaq-futures-lequel-choisir">S&amp;P 500 ou Nasdaq futures : lequel choisir ?</a></li>
+        <li><a href="#qu-est-ce-qui-fait-bouger-le-s-p-500-fut">Qu&#39;est-ce qui fait bouger le S&amp;P 500 futures ?</a></li>
+        <li><a href="#comment-lire-le-s-p-500-futures-avec-le-">Comment lire le S&amp;P 500 futures avec le Market Profile et le VWAP ?</a></li>
+        <li><a href="#quelle-taille-de-position-avec-un-petit-">Quelle taille de position avec un petit compte ?</a></li>
+        <li><a href="#quelles-erreurs-eviter-sur-l-es-et-le-me">Quelles erreurs éviter sur l&#39;ES et le MES ?</a></li>
+        <li><a href="#quand-le-s-p-500-futures-n-est-il-pas-fa">Quand le S&amp;P 500 futures n&#39;est-il pas fait pour toi ?</a></li>
+        <li><a href="#par-ou-commencer-ce-soir">Par où commencer ce soir ?</a></li>
+      </ol>
+    </div>
+  </aside>
+
+  <article class="article-body">
+    <h2 id="qu-est-ce-que-le-s-p-500-futures">Qu&#39;est-ce que le S&amp;P 500 futures ?</h2>
+    <p>Tu veux trader le S&amp;P 500 sans passer par un CFD, mais tu tombes sur ES, MES, ticks, échéances et marges, le tout en anglais. Résultat : tu ne sais même pas combien te coûte un point. À la fin de cet article, tu sauras lire une fiche de contrat, calculer ton risque en dollars et choisir entre l&#39;ES et le MES.</p>
+<p>Le S&amp;P 500 futures est un contrat à terme coté au CME de Chicago dont le prix suit l&#39;indice S&amp;P 500 ; il existe en taille E-mini (ES, 50 $ par point) et Micro E-mini (MES, 5 $ par point).</p>
+<p>Concrètement, tu n&#39;achètes pas d&#39;actions. Tu prends une position sur la valeur future de l&#39;indice, avec un contrat standardisé, échangé sur la plateforme électronique Globex du CME. Le contrat est réglé en espèces : à l&#39;échéance, personne ne te livre 500 actions, on solde simplement la différence en dollars.</p>
+<h3>Pourquoi les traders particuliers s&#39;y intéressent</h3>
+<p>Le future a trois avantages concrets sur un CFD :</p>
+<ul><li>le prix vient d&#39;un vrai marché central (le carnet d&#39;ordres du CME), pas de ton courtier qui est en face de toi ;</li><li>tu vois le volume réel échangé à chaque prix, ce qui rend possible l&#39;order flow, le footprint et le Market Profile ;</li><li>les frais sont lisibles : une commission par contrat, pas un spread élargi en douce.</li></ul>
+<p>C&#39;est pour ça que je travaille uniquement sur les futures. Je trade le Nasdaq futures en 1 minute sur Sierra Chart, avec le Market Profile, le VWAP et le CVD. Le S&amp;P 500 futures, je le garde à l&#39;œil à côté : c&#39;est l&#39;indice de référence de Wall Street, et quand il ne suit pas le Nasdaq, c&#39;est une information.</p>
+<p>Si le principe même d&#39;un contrat à terme est encore flou pour toi, commence par mon guide du <a href="https://basstrading.fr/blog/day-trading-futures/">day trading sur les futures</a>, puis reviens ici.</p>
+<h3>À retenir</h3>
+<ul><li>Le S&amp;P 500 futures est un contrat du CME qui suit l&#39;indice S&amp;P 500.</li><li>Deux tailles pour un particulier : l&#39;ES (50 $ le point) et le MES (5 $ le point).</li><li>Réglé en espèces, échangé presque 24 h sur 24 sur Globex.</li></ul>
+<p>Reste la question qui compte vraiment au départ : lequel des deux contrats prendre ?</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/sp-500-futures-es-mes/blog-sp-500-futures-es-mes-1.webp" alt="Chiffres clés du S&amp;P 500 futures : 50 $ le point sur l&#39;ES, 5 $ sur le MES, tick de 0,25 point" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Le MES vaut exactement un dixième de l&#39;ES : même indice, même prix, dix fois moins de dollars par point.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="es-ou-mes-quelle-difference-entre-les-de">ES ou MES : quelle différence entre les deux contrats ?</h2>
+    <p>L&#39;ES et le MES suivent exactement le même indice, au même prix, aux mêmes heures. La seule vraie différence est la taille : le MES vaut un dixième de l&#39;ES.</p>
+<p>Le CME a lancé les Micro E-mini en mai 2019 sur le S&amp;P 500, le Nasdaq-100, le Russell 2000 et le Dow Jones, avec une taille d&#39;« un dixième » des E-mini existants (<a href="https://www.prnewswire.com/news-releases/cme-group-makes-global-equity-benchmarks-more-accessible-to-active-traders-with-launch-of-micro-e-mini-futures-300809869.html">communiqué du CME Group, 11/03/2019</a>). L&#39;objectif affiché : permettre à des traders de toutes tailles d&#39;ajuster leur exposition plus finement.</p>
+<h3>La fiche des deux contrats côte à côte</h3>
+<p>Voici ce qu&#39;indiquent les spécifications officielles du CME pour l&#39;<a href="https://www.cmegroup.com/markets/equities/sp/e-mini-sandp500.contractSpecs.html">E-mini S&amp;P 500</a> et le <a href="https://www.cmegroup.com/markets/equities/sp/micro-e-mini-sandp-500.contractSpecs.html">Micro E-mini S&amp;P 500</a> :</p>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Élément</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">ES (E-mini)</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">MES (Micro)</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Valeur d&#39;un point</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">50 $</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">5 $</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Tick minimal</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">0,25 point</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">0,25 point</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Valeur d&#39;un tick</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">12,50 $</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">1,25 $</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Échéances</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Mars, juin, sept., déc.</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Mars, juin, sept., déc.</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Règlement</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">En espèces</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">En espèces</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Équivalence</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">1 ES</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">10 MES</td></tr></tbody></table></div>
+<h3>Ce que ça change pour toi</h3>
+<p>Avec 10 MES, tu as exactement la même exposition qu&#39;avec 1 ES. Mais l&#39;inverse n&#39;est pas vrai : avec un ES, tu ne peux pas « prendre la moitié ». Le MES te donne donc une chose précieuse quand tu débutes : la granularité. Tu peux trader 1, 2 ou 3 MES et ajuster ta taille au millimètre selon ton stop.</p>
+<p>L&#39;ES garde un intérêt pour les comptes plus gros : une seule commission au lieu de dix, et un carnet encore plus profond. Mais tant que ton compte ne permet pas de risquer plusieurs centaines de dollars par trade sans dépasser ta règle de risque, l&#39;ES n&#39;est pas pour toi.</p>
+<p>J&#39;ai fait le même raisonnement pour le Nasdaq dans mon article <a href="https://basstrading.fr/blog/nq-ou-mnq/">NQ ou MNQ : quel contrat choisir pour débuter</a> : la logique est identique, seuls les montants changent.</p>
+<h3>À retenir</h3>
+<ul><li>Même indice, même prix, mêmes horaires : seule la taille change.</li><li>10 MES = 1 ES.</li><li>Le MES permet d&#39;ajuster finement la taille au stop.</li></ul>
+<p>Mais « 5 $ le point », ça représente quoi sur une vraie séance ? Passons aux chiffres.</p>
+
+    <hr>
+
+    <h2 id="combien-vaut-un-point-et-un-tick-sur-l-e">Combien vaut un point et un tick sur l&#39;ES et le MES ?</h2>
+    <p>Un point de S&amp;P 500 vaut 50 $ sur l&#39;ES et 5 $ sur le MES ; le plus petit mouvement possible, le tick, fait 0,25 point, soit 12,50 $ sur l&#39;ES et 1,25 $ sur le MES.</p>
+<p>Comme je le rappelle dans ma vidéo sur la gestion du risque, <a href="https://www.youtube.com/watch?v=3YvoeD-_BEc&amp;t=1316s">« un lot plein, je te rappelle, c&#39;est 20 dollars le point sur le Nasdaq »</a>, et <a href="https://www.youtube.com/watch?v=3YvoeD-_BEc&amp;t=1321s">sur le S&amp;P c&#39;est 50 dollars</a> le point. Beaucoup de débutants pensent que le S&amp;P est « plus calme », donc moins risqué. En dollars par point, c&#39;est l&#39;inverse.</p>
+<h3>La formule à connaître par cœur</h3>
+<p>Ton résultat sur un trade se calcule toujours de la même façon :</p>
+<p><b>résultat = nombre de points × valeur du point × nombre de contrats</b></p>
+<p>Quelques exemples, calculés avec les valeurs officielles du CME :</p>
+<ul><li>le S&amp;P bouge de 4 points contre toi avec 1 MES : 4 × 5 $ = 20 $ ;</li><li>même mouvement avec 1 ES : 4 × 50 $ = 200 $ ;</li><li>un stop de 10 ticks (2,5 points) sur 1 MES : 2,5 × 5 $ = 12,50 $ ;</li><li>le même stop sur 1 ES : 125 $.</li></ul>
+<h3>Ce que représente un contrat en valeur totale</h3>
+<p>La valeur notionnelle d&#39;un contrat, c&#39;est le prix de l&#39;indice multiplié par la valeur du point. Avec un S&amp;P 500 autour de 7 500 points (niveau de novembre 2026) :</p>
+<ul><li>1 ES représente environ 7 500 × 50 $ = 375 000 $ d&#39;exposition ;</li><li>1 MES représente environ 37 500 $.</li></ul>
+<p>Tu ne déposes pas cette somme : tu déposes une marge (on y vient plus bas). C&#39;est précisément l&#39;effet de levier. Et c&#39;est pour ça qu&#39;un mouvement normal de l&#39;indice peut te coûter bien plus que ce que tu imaginais.</p>
+<h3>Une journée ordinaire, traduite en dollars</h3>
+<p>Un mouvement de 1 % du S&amp;P 500, à 7 500 points, c&#39;est 75 points. Sur 1 MES, ça fait 375 $. Sur 1 ES, 3 750 $. Pas besoin d&#39;un krach : une journée de publication d&#39;inflation ou de décision de la Fed suffit pour ce genre d&#39;amplitude.</p>
+<p>Avant de cliquer, tu dois toujours savoir combien tu perds en dollars si ton stop est touché. Si tu ne peux pas répondre en deux secondes, tu n&#39;es pas prêt à prendre le trade.</p>
+<h3>À retenir</h3>
+<ul><li>ES : 50 $ le point, 12,50 $ le tick. MES : 5 $ le point, 1,25 $ le tick.</li><li>Résultat = points × valeur du point × contrats.</li><li>1 ES expose à environ 375 000 $ quand l&#39;indice est vers 7 500.</li></ul>
+<p>Tu connais maintenant le prix d&#39;un point. Encore faut-il savoir à quelle heure ces points bougent.</p>
+
+    <hr>
+
+    <h2 id="a-quelle-heure-trader-le-s-p-500-futures">À quelle heure trader le S&amp;P 500 futures depuis la France ?</h2>
+    <p>Le S&amp;P 500 futures s&#39;échange sur Globex du dimanche soir au vendredi soir, presque sans interruption : de minuit à 23 h, heure de Paris, avec une pause d&#39;une heure chaque soir.</p>
+<p>Le CME publie ses horaires en heure de Chicago (CT) : ouverture le dimanche à 17 h CT, clôture le vendredi à 16 h CT, avec un arrêt quotidien de 16 h à 17 h CT (<a href="https://www.cmegroup.com/markets/equities/sp/e-mini-sandp500.contractSpecs.html">spécifications de l&#39;E-mini S&amp;P 500, CME</a>). Chicago a 7 heures de retard sur Paris la plupart de l&#39;année.</p>
+<h3>Les quatre heures qui comptent vraiment</h3>
+<ul><li>minuit (nuit de dimanche à lundi) : réouverture de Globex après le week-end ;</li><li>15 h 30 : ouverture de la Bourse de New York, le volume explose ;</li><li>22 h : clôture de Wall Street, le marché se calme ;</li><li>23 h à minuit : la pause quotidienne du contrat.</li></ul>
+<p>Entre minuit et 15 h 30, le contrat cote, mais avec beaucoup moins de participants. Les mouvements y sont souvent plus lents, puis brutaux autour des statistiques américaines de 14 h 30.</p>
+<h3>Le piège des changements d&#39;heure</h3>
+<p>Les États-Unis et l&#39;Europe ne changent pas d&#39;heure le même jour. Pendant environ deux semaines en mars, et une semaine entre fin octobre et début novembre, l&#39;écart tombe à 6 heures : l&#39;ouverture de Wall Street passe à 14 h 30 à Paris. Chaque année, des débutants ratent leur séance ou entrent au mauvais moment pour cette seule raison.</p>
+<p>J&#39;ai détaillé tous ces cas, semaine par semaine, dans mon article sur les <a href="https://basstrading.fr/blog/horaires-futures-nasdaq-heure-paris/">horaires des futures Nasdaq en heure de Paris</a> : ils s&#39;appliquent tels quels au S&amp;P 500, puisque les deux contrats partagent le même calendrier sur Globex.</p>
+<h3>Quand regarder le S&amp;P dans ta journée</h3>
+<p>Ma fenêtre de travail, c&#39;est l&#39;ouverture américaine. Avant, je prépare mes niveaux, et j&#39;attends. Comme je l&#39;ai écrit un matin : « Zone de vente devant moi. Je ne clique pas. J&#39;attends l&#39;ouverture. » C&#39;est là que le volume est le plus fort et que le carnet d&#39;ordres raconte quelque chose. Un marché sans participants ne te donne pas d&#39;information fiable.</p>
+<h3>À retenir</h3>
+<ul><li>Globex : de minuit à 23 h, heure de Paris, du dimanche soir au vendredi soir.</li><li>15 h 30 : ouverture de Wall Street, la fenêtre la plus active.</li><li>Attention aux semaines de décalage horaire en mars et fin octobre.</li></ul>
+<p>Tu sais quand trader. Reste à savoir combien ton courtier va bloquer sur ton compte pour te laisser ouvrir une position.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/sp-500-futures-es-mes/blog-sp-500-futures-es-mes-2.webp" alt="Horaires du S&amp;P 500 futures en heure de Paris : ouverture Globex à minuit, Wall Street à 15 h 30, pause à 23 h" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Le contrat cote presque 24 h sur 24, mais l&#39;essentiel du volume arrive à l&#39;ouverture de Wall Street.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="quelle-marge-faut-il-pour-trader-l-es-ou">Quelle marge faut-il pour trader l&#39;ES ou le MES ?</h2>
+    <p>La marge est le dépôt de garantie que ton courtier bloque quand tu ouvres une position ; elle ne correspond ni à ton risque réel ni à la somme que tu peux perdre.</p>
+<p>Il existe deux marges différentes, et la confusion entre les deux est à l&#39;origine de beaucoup de comptes vidés.</p>
+<h3>Marge de la chambre de compensation et marge intraday</h3>
+<ul><li>La marge de maintien est fixée par le CME. Elle s&#39;applique si tu gardes ta position après la clôture. Le CME la modifie quand la volatilité change.</li><li>La marge intraday est fixée par ton courtier (le broker), pour les positions ouvertes et fermées dans la journée. Certains courtiers la mettent très bas pour attirer les traders. C&#39;est un argument commercial, pas un conseil.</li></ul>
+<p>Je ne te donne volontairement aucun montant : il change selon le courtier, selon le moment et selon la volatilité. Vérifie toujours le chiffre du jour chez le tien. Sur les grandes plateformes de futures, la page tarifaire l&#39;indique ; je montre où la trouver dans mon <a href="https://basstrading.fr/blog/tradovate-avis/">avis sur Tradovate</a> et dans mon <a href="https://basstrading.fr/blog/ninjatrader-avis/">avis sur NinjaTrader</a>.</p>
+<h3>Pourquoi une marge faible est un piège</h3>
+<p>Une marge intraday basse te permet d&#39;ouvrir un ES avec quelques centaines de dollars. Ça ne veut pas dire que tu dois le faire. Reprends le calcul : un mouvement ordinaire de 1 % du S&amp;P coûte 3 750 $ sur un ES. Si ton compte en contient 2 000, le problème est évident.</p>
+<p>La marge te dit ce que tu peux ouvrir. Ta règle de risque te dit ce que tu dois ouvrir. Ce n&#39;est pas la même chose, et c&#39;est toujours la seconde qui gagne.</p>
+<h3>Et si la perte dépasse le dépôt ?</h3>
+<p>Sur les futures, la perte peut dépasser ce que tu as déposé. Si un mouvement violent traverse ton stop (un gap à l&#39;ouverture, une annonce imprévue), ton courtier peut te demander de remettre de l&#39;argent. C&#39;est rare en intraday avec un stop placé, mais ça existe. Règle simple : ne mets jamais sur un compte de trading de l&#39;argent dont tu as besoin.</p>
+<h3>À retenir</h3>
+<ul><li>La marge est une garantie, pas une mesure du risque.</li><li>La marge intraday dépend du courtier et peut changer.</li><li>La perte possible peut dépasser la somme déposée.</li></ul>
+<p>Dernier élément technique avant la stratégie : ton contrat a une date de fin.</p>
+
+    <hr>
+
+    <h2 id="comment-fonctionnent-les-echeances-et-le">Comment fonctionnent les échéances et le rollover ?</h2>
+    <p>Le S&amp;P 500 futures expire quatre fois par an, en mars, juin, septembre et décembre ; avant l&#39;échéance, les traders passent au contrat suivant : c&#39;est le rollover.</p>
+<p>Chaque échéance porte une lettre : H pour mars, M pour juin, U pour septembre, Z pour décembre. Ajoute l&#39;année, et tu obtiens le symbole. ESZ26, c&#39;est l&#39;E-mini S&amp;P 500 de décembre 2026 ; MESH27, le Micro de mars 2027.</p>
+<h3>Les dates à connaître</h3>
+<p>Selon les spécifications du CME, la cotation d&#39;un contrat s&#39;arrête le troisième vendredi du mois d&#39;échéance, à l&#39;ouverture de New York. Concrètement :</p>
+<ul><li>le contrat de décembre 2026 expire le vendredi 18 décembre 2026 ;</li><li>celui de mars 2027 expire le vendredi 19 mars 2027.</li></ul>
+<h3>Quand passer au contrat suivant</h3>
+<p>Tu n&#39;attends pas le dernier jour. Environ une semaine avant l&#39;échéance, le volume bascule sur le contrat suivant : les gros participants roulent leurs positions. À partir de là, l&#39;ancien contrat devient moins liquide, et ses mouvements sont moins représentatifs.</p>
+<p><b>Repère pratique :</b> dès que le volume du contrat suivant dépasse celui du contrat en cours, change de symbole sur tous tes graphiques. Un contrat continu peut le faire tout seul sur la plupart des plateformes, mais vérifie à la main la semaine du rollover.</p>
+<h3>Le piège de l&#39;écart entre deux échéances</h3>
+<p>Le contrat de mars ne cote pas au même prix que celui de décembre : l&#39;écart reflète les taux d&#39;intérêt et les dividendes attendus. Si tu as tracé tes niveaux (zone de valeur, VWAP de la veille, plus haut de la semaine) sur l&#39;ancien contrat, ils sont décalés sur le nouveau. Retrace-les. C&#39;est une erreur fréquente chez les débutants : des niveaux justes, mais sur le mauvais contrat.</p>
+<h3>À retenir</h3>
+<ul><li>Quatre échéances par an : H, M, U, Z.</li><li>Fin de cotation le troisième vendredi du mois d&#39;échéance.</li><li>On roule environ une semaine avant, quand le volume bascule.</li></ul>
+<p>Tu as maintenant toute la mécanique. La vraie question arrive : pourquoi choisir le S&amp;P plutôt que le Nasdaq, ou l&#39;inverse ?</p>
+
+    <hr>
+
+    <h2 id="s-p-500-ou-nasdaq-futures-lequel-choisir">S&amp;P 500 ou Nasdaq futures : lequel choisir ?</h2>
+    <p>Le S&amp;P 500 futures a un carnet d&#39;ordres plus épais et des mouvements plus progressifs ; le Nasdaq futures a un carnet plus léger et des mouvements plus nerveux. Le bon choix dépend de ton tempérament, pas d&#39;une supériorité de l&#39;un sur l&#39;autre.</p>
+<p>Je le montre en direct dans un de mes lives, en comparant les deux carnets : <a href="https://www.youtube.com/watch?v=PjrSce8-VgQ&amp;t=2897s">« Vous voyez, les tailles de position sont pas les mêmes, hein, quand vous regardez le Nasdaq ou le S&amp;P. »</a> Et juste après : « C&#39;est un marché qu&#39;on appelle à carnet léger, alors que le S&amp;P, c&#39;est un carnet lourd. »</p>
+<h3>Ce que veut dire « carnet lourd »</h3>
+<p>Sur le S&amp;P, à chaque niveau de prix, il y a beaucoup plus de contrats en attente que sur le Nasdaq. Pour faire bouger le prix d&#39;un tick, il faut donc consommer davantage d&#39;ordres. Conséquences directes :</p>
+<ul><li>le prix avance plus lentement, souvent tick par tick ;</li><li>les gros ordres visibles dans le carnet sont plus fréquents, et pas toujours significatifs ;</li><li>les chiffres du footprint sont beaucoup plus gros.</li></ul>
+<p>Sur ce dernier point, je le dis ainsi dans ma <a href="https://www.youtube.com/watch?v=FLBONXJWCoM&amp;t=2930s">formation footprint</a> : « si vous étiez sur un marché plus lourd comme le S&amp;P, vous allez avoir des chiffres plus gros ; faut toujours que ce soit proportionnel à ce que vous regardez, au marché que vous traitez, et également au volume traité dans la bougie ». Si tu lis le footprint du S&amp;P avec les repères du Nasdaq, tu verras des signaux partout. Mon guide du <a href="https://basstrading.fr/blog/footprint-chart-trading/">footprint chart</a> détaille cette lecture.</p>
+<h3>Pourquoi je trade le Nasdaq et pas le S&amp;P</h3>
+<p>Mon choix est personnel. Le Nasdaq bouge plus vite, et sur un graphique en 1 minute, ce rythme me convient : le carnet léger réagit vite, les absorptions et les accélérations se voient nettement. Le S&amp;P demande plus de patience et une lecture du carnet différente.</p>
+<p>Pour d&#39;autres traders, c&#39;est exactement l&#39;inverse. Celui qui panique quand le prix fait 20 points en 30 secondes se sentira souvent mieux sur le S&amp;P. C&#39;est le principe de base de ma façon d&#39;enseigner : il n&#39;y a pas un bon marché, il y a le marché qui correspond à ta personnalité.</p>
+<h3>Les critères pour décider</h3>
+<ul><li>Ta tolérance à la vitesse : si les accélérations du Nasdaq te font sortir trop tôt ou trop tard, teste le S&amp;P.</li><li>Ton capital : en micro, 1 point vaut 5 $ sur le MES contre 2 $ sur le MNQ. Mais le Nasdaq fait beaucoup plus de points dans une journée, donc le risque en dollars se rapproche.</li><li>Ta méthode : la lecture du carnet est plus exigeante sur le S&amp;P, le Market Profile y fonctionne très bien.</li><li>Ce que tu observes déjà : si tu suis les deux, regarde lequel tu comprends le mieux après un mois de pratique en simulation.</li></ul>
+<p>Pour la fiche complète du Nasdaq, lis mon guide des <a href="https://basstrading.fr/blog/nasdaq-futures-nq-mnq/">futures Nasdaq NQ et MNQ</a>.</p>
+<h3>À retenir</h3>
+<ul><li>S&amp;P : carnet lourd, prix plus progressif. Nasdaq : carnet léger, prix plus nerveux.</li><li>Les chiffres du footprint se lisent en proportion du marché.</li><li>Le bon marché est celui qui va avec ton tempérament.</li></ul>
+<p>Avant de regarder comment je lirais une séance, une question revient tout le temps : qu&#39;est-ce qui fait bouger ce marché ?</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/sp-500-futures-es-mes/blog-sp-500-futures-es-mes-3.webp" alt="Comparaison S&amp;P 500 futures et Nasdaq futures : valeur du point, carnet d&#39;ordres et rythme du prix" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Carnet lourd contre carnet léger : le S&amp;P avance plus progressivement, le Nasdaq plus nerveusement.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="qu-est-ce-qui-fait-bouger-le-s-p-500-fut">Qu&#39;est-ce qui fait bouger le S&amp;P 500 futures ?</h2>
+    <p>Le S&amp;P 500 futures bouge d&#39;abord avec les taux d&#39;intérêt américains, les statistiques économiques et les résultats des plus grosses entreprises de l&#39;indice, puis avec le flux d&#39;ordres du jour, qui décide où le prix s&#39;arrête.</p>
+<p>Tu n&#39;as pas besoin d&#39;être économiste pour trader l&#39;ouverture. Mais tu dois savoir quels jours le marché risque de sauter d&#39;un coup.</p>
+<h3>Les grands moteurs</h3>
+<ul><li>La Fed et les taux : une décision ou un discours qui change les anticipations de taux déplace tout l&#39;indice. Les jours de décision, la réaction arrive le soir, heure de Paris.</li><li>Les statistiques américaines : inflation, emploi, ventes au détail. Elles tombent souvent à 14 h 30, heure de Paris, une heure avant l&#39;ouverture.</li><li>Les résultats des grosses capitalisations : l&#39;indice est pondéré par la taille des entreprises. Quand une géante de la tech publie, le S&amp;P peut bouger presque autant que le Nasdaq.</li><li>Le contexte de la nuit : ce qui s&#39;est passé en Asie et en Europe se voit déjà dans le prix du future avant 15 h 30.</li></ul>
+<h3>Ce que je regarde, moi</h3>
+<p>Je consulte le calendrier économique le matin pour savoir à quelle heure les annonces tombent. Ensuite, je ne cherche pas à deviner la réaction. Comme je le répète : « Je ne cherche pas où le prix va aller, je cherche où il s&#39;arrête. » La nouvelle donne l&#39;élan, mais c&#39;est dans le carnet et le volume que tu vois si le mouvement est accepté ou rejeté.</p>
+<h3>À retenir</h3>
+<ul><li>Taux, statistiques et résultats des géantes font les grands mouvements.</li><li>Les annonces de 14 h 30 peuvent faire sauter le prix avant l&#39;ouverture.</li><li>Le flux d&#39;ordres dit où le mouvement s&#39;arrête.</li></ul>
+<p>Justement, voyons comment je lirais ce flux sur le S&amp;P.</p>
+
+    <hr>
+
+    <h2 id="comment-lire-le-s-p-500-futures-avec-le-">Comment lire le S&amp;P 500 futures avec le Market Profile et le VWAP ?</h2>
+    <p>Sur le S&amp;P 500 futures, j&#39;utiliserais la même grille que sur le Nasdaq : la zone de valeur de la veille, le VWAP de la séance et le delta cumulé, avec des repères adaptés à un carnet plus lourd.</p>
+<p>Voici la routine que je suivrais sur un graphique de MES ou d&#39;ES, avant et pendant l&#39;ouverture américaine. Sierra Chart, NinjaTrader ou TradingView affichent tous le VWAP et un profil de volume ; ce qui compte, c&#39;est la lecture.</p>
+<h3>Avant l&#39;ouverture : les niveaux de la veille</h3>
+<p>Avant 15 h 30, je trace trois choses sur la séance précédente :</p>
+<ul><li>la zone de valeur (là où s&#39;est échangé environ 70 % du volume) et son point de contrôle, le prix le plus échangé ;</li><li>le plus haut et le plus bas de la veille ;</li><li>le VWAP de la veille, là où il a fini.</li></ul>
+<p>Si l&#39;ouverture se fait dans la zone de valeur de la veille, je m&#39;attends plutôt à une séance d&#39;équilibre : le prix a tendance à tourner à l&#39;intérieur. Si elle se fait nettement à l&#39;extérieur, je regarde si le marché accepte ce nouveau niveau ou s&#39;il y revient. J&#39;explique cette logique en détail dans mon article sur la <a href="https://basstrading.fr/blog/value-area-trading/">value area en trading</a>, dans mon <a href="https://basstrading.fr/blog/market-profile-guide-complet/">guide complet du Market Profile</a>, et la différence entre les deux outils dans <a href="https://basstrading.fr/blog/market-profile-vs-volume-profile/">Market Profile vs Volume Profile</a>.</p>
+<h3>La première minute : je ne la trade pas</h3>
+<p>À 15 h 30, le premier mouvement est souvent violent et sans direction fiable. « La première bougie d&#39;une minute, je ne la trade jamais. Surtout quand ça pousse fort. » Je laisse le marché montrer qui prend le contrôle.</p>
+<h3>Pendant la séance : le VWAP comme arbitre</h3>
+<p>Le VWAP, c&#39;est le prix moyen pondéré par le volume depuis l&#39;ouverture. Sur le S&amp;P, les grands intervenants exécutent souvent leurs ordres autour de lui. Je m&#39;en sers comme d&#39;un arbitre :</p>
+<ul><li>prix au-dessus du VWAP et qui y rebondit : les acheteurs contrôlent ;</li><li>prix sous le VWAP et qui y bute : les vendeurs contrôlent ;</li><li>prix qui le traverse dans les deux sens toutes les dix minutes : pas de direction, je ne force rien.</li></ul>
+<p>Tout est détaillé dans mon guide du <a href="https://basstrading.fr/blog/vwap-trading/">VWAP en trading</a>.</p>
+<h3>La confirmation : le carnet et le delta</h3>
+<p>C&#39;est là que le S&amp;P diffère le plus. Comme le carnet est lourd, un gros ordre affiché à un prix rond n&#39;est pas une preuve en soi : il peut disparaître dès que le prix approche. Ce que je regarde, c&#39;est ce qui s&#39;exécute vraiment. Si le prix arrive sur un niveau de la veille, que le delta devient fortement vendeur, mais que le prix ne descend plus, il y a absorption : quelqu&#39;un achète tout ce qui se vend.</p>
+<p>Pour aller plus loin sur ce point, j&#39;ai écrit un guide sur le <a href="https://basstrading.fr/blog/carnet-ordres-dom-futures/">carnet d&#39;ordres et le DOM sur les futures</a>.</p>
+<h3>À retenir</h3>
+<ul><li>Avant 15 h 30 : zone de valeur, extrêmes et VWAP de la veille.</li><li>Pendant la séance : le VWAP comme arbitre de la direction.</li><li>Sur un carnet lourd, on juge ce qui s&#39;exécute, pas ce qui s&#39;affiche.</li></ul>
+<p>Tout ça ne sert à rien si ta taille de position est mauvaise. C&#39;est la partie que la plupart des débutants sautent.</p>
+
+    <hr>
+
+    <h2 id="quelle-taille-de-position-avec-un-petit-">Quelle taille de position avec un petit compte ?</h2>
+    <p>Ta taille de position se calcule à partir de ton stop et de ton risque maximal par trade, jamais à partir de la marge disponible ou de l&#39;envie du moment.</p>
+<p>Voici la méthode, appliquée au MES, avec un exemple chiffré.</p>
+<h3>Étape 1 : fixer le risque en dollars</h3>
+<p>Un repère prudent quand tu débutes : ne pas risquer plus de 1 % du compte sur un trade. Sur un compte de 5 000 $, ça fait 50 $ par trade. Pas plus, même si le trade « a l&#39;air parfait ». J&#39;explique comment choisir et ajuster ce chiffre dans mon article <a href="https://basstrading.fr/blog/combien-risquer-par-trade/">combien risquer par trade</a>.</p>
+<h3>Étape 2 : mesurer la distance du stop</h3>
+<p>Le stop ne se place pas à un nombre de points arbitraire. Il se place là où ton idée de trade est invalidée : sous la zone d&#39;absorption, sous le bas de la veille, de l&#39;autre côté du VWAP. Disons que ton stop logique est à 8 points de ton entrée. La sortie se prépare de la même façon : je détaille la méthode pour <a href="https://basstrading.fr/blog/take-profit-trading/">placer ton take profit</a> dans un article dédié.</p>
+<h3>Étape 3 : en déduire le nombre de contrats</h3>
+<ul><li>8 points × 5 $ = 40 $ par MES ;</li><li>50 $ ÷ 40 $ = 1,25, arrondi à l&#39;inférieur : 1 MES.</li></ul>
+<p>Avec un ES, le même stop coûterait 8 × 50 $ = 400 $, soit 8 % du compte sur un seul trade. C&#39;est huit fois ta règle. Le calcul suffit à répondre à la question « ES ou MES » pour un compte de cette taille.</p>
+<h3>Étape 4 : accepter de ne pas trader</h3>
+<p>Si ton stop logique est à 15 points, 1 MES te coûte 75 $ : c&#39;est au-dessus de ta limite. La bonne réponse n&#39;est pas de rapprocher le stop pour « faire rentrer » le trade. La bonne réponse est de laisser passer le trade. Un stop trop serré, placé là où le marché passe régulièrement, est le meilleur moyen de te faire sortir juste avant que le prix parte dans ton sens. J&#39;en parle dans mon article sur la <a href="https://basstrading.fr/blog/chasse-aux-stops-trading/">chasse aux stops</a>.</p>
+<h3>La limite de la journée</h3>
+<p>Ajoute une deuxième règle : une perte maximale par jour, par exemple trois trades perdants ou 2 % du compte. Une fois atteinte, tu fermes la plateforme. Je détaille cette règle dans mon article sur la <a href="https://basstrading.fr/blog/perte-maximale-journaliere-trading/">perte maximale journalière</a>.</p>
+<h3>Pour aller plus loin</h3>
+<p>La lecture du marché à l&#39;ouverture, la gestion du risque et la construction de ta propre méthode selon ton profil, je les explique pas à pas dans ma formation offerte : <a href="https://basstrading.fr/l/0t8C_A">accéder à la formation gratuite</a>.</p>
+<p>Le trading de contrats à terme comporte un risque élevé de perte, pouvant dépasser la mise initiale. Contenu éducatif, pas un conseil en investissement.</p>
+<h3>À retenir</h3>
+<ul><li>Risque par trade fixé en dollars avant tout.</li><li>Stop placé là où l&#39;idée est invalidée, puis taille calculée.</li><li>Si la taille ne rentre pas, on ne prend pas le trade.</li></ul>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/sp-500-futures-es-mes/blog-sp-500-futures-es-mes-4.webp" alt="Calcul de la taille de position sur le MES : 50 $ de risque, stop de 8 points, un seul contrat" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Exemple de calcul sur un compte de 5 000 $ : le stop fixe la taille, jamais l&#39;inverse.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="quelles-erreurs-eviter-sur-l-es-et-le-me">Quelles erreurs éviter sur l&#39;ES et le MES ?</h2>
+    <p>Les erreurs les plus coûteuses sur le S&amp;P 500 futures ne viennent pas de l&#39;analyse : elles viennent de la taille, du calendrier et de la lecture du carnet.</p>
+<p>Voici celles qui reviennent le plus souvent, et ce qu&#39;il faut faire à la place.</p>
+<h3>Commencer directement sur l&#39;ES</h3>
+<p>C&#39;est l&#39;erreur numéro un. Le débutant voit une marge intraday basse et se dit qu&#39;il peut ouvrir un ES. Trois trades perdants de 8 points, et le compte a perdu 1 200 $. Commence en MES. Passe à l&#39;ES seulement quand ton stop habituel en ES reste sous ta règle de risque.</p>
+<h3>Oublier la valeur du point en changeant de marché</h3>
+<p>Tu viens du Nasdaq et tu as l&#39;habitude de 2 $ le point en MNQ ? Sur le MES, c&#39;est 5 $. Un trader qui garde la même taille en passant d&#39;un micro à l&#39;autre multiplie son risque par point par 2,5 sans s&#39;en rendre compte. Recalcule ta taille à chaque changement de contrat.</p>
+<h3>Lire le carnet du S&amp;P comme celui du Nasdaq</h3>
+<p>Un mur de 800 contrats sur le Nasdaq attire l&#39;œil. Sur le S&amp;P, des quantités de ce genre sont courantes à chaque niveau. Si tu prends chaque gros chiffre pour un signal, tu vas trader en permanence. Adapte tes seuils à la profondeur normale du marché que tu regardes.</p>
+<h3>Trader les statistiques de 14 h 30</h3>
+<p>L&#39;inflation, l&#39;emploi ou les ventes au détail américaines tombent souvent à 14 h 30, heure de Paris. Le carnet se vide quelques secondes avant, puis le prix saute plusieurs points d&#39;un coup. Ton stop peut être exécuté bien plus loin que prévu. Le plus simple : rester à plat pendant ces annonces.</p>
+<h3>Garder ses niveaux après le rollover</h3>
+<p>Tu l&#39;as vu plus haut : le contrat suivant ne cote pas au même prix. Des niveaux tracés sur l&#39;ancien contrat sont faux sur le nouveau. Retrace tout la semaine du rollover.</p>
+<h3>Confondre future et CFD</h3>
+<p>Certaines plateformes proposent un « US500 » ou un « SPX500 ». Ce sont des CFD, pas des futures : le prix vient de ton courtier, sans le volume du marché central. Le régulateur européen a mesuré que 74 à 89 % des comptes de particuliers perdent de l&#39;argent sur les CFD (<a href="https://www.esma.europa.eu/press-news/esma-news/esma-agrees-prohibit-binary-options-and-restrict-cfds-protect-retail-investors">ESMA, 27/03/2018</a>). Le future n&#39;est pas une garantie de réussite, mais au moins tu trades le vrai marché.</p>
+<h3>À retenir</h3>
+<ul><li>MES d&#39;abord, ES seulement quand le risque le permet.</li><li>Recalcule ta taille à chaque changement de contrat.</li><li>Pas de trade sur les statistiques de 14 h 30, niveaux retracés après chaque rollover.</li></ul>
+<p>Et parfois, la meilleure décision est de ne pas trader le S&amp;P du tout.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/sp-500-futures-es-mes/blog-sp-500-futures-es-mes-5.webp" alt="Règle de gestion du risque sur le S&amp;P 500 futures : le stop décide la taille de position" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">La marge te dit ce que tu peux ouvrir ; ton stop et ta règle de risque te disent ce que tu dois ouvrir.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="quand-le-s-p-500-futures-n-est-il-pas-fa">Quand le S&amp;P 500 futures n&#39;est-il pas fait pour toi ?</h2>
+    <p>Le S&amp;P 500 futures n&#39;est pas adapté si ton compte ne permet pas de respecter ta règle de risque même en MES, si tu ne peux pas être devant l&#39;écran à l&#39;ouverture américaine, ou si tu cherches un placement plutôt qu&#39;une activité.</p>
+<p>Je préfère te le dire clairement plutôt que de te laisser essayer pour rien.</p>
+<h3>Si ton compte est trop petit pour ton stop</h3>
+<p>Avec un stop logique de 10 points, 1 MES te coûte 50 $. Si ta règle de 1 % te limite à 20 $, même le plus petit contrat est trop gros. Dans ce cas, la bonne étape est la simulation, pas un compte réel sous-dimensionné. Certains traders passent par une prop firm pour accéder à un capital plus important : c&#39;est une voie possible parmi d&#39;autres, avec ses propres règles. Je t&#39;explique les pièges du <a href="https://basstrading.fr/blog/drawdown-prop-firm-futures/">drawdown en prop firm</a> avant de te lancer.</p>
+<h3>Si tu ne peux pas trader à 15 h 30</h3>
+<p>Le S&amp;P cote presque toute la journée, mais la séance où le volume est le plus fort, c&#39;est l&#39;ouverture américaine. Si ton travail t&#39;empêche d&#39;être disponible à ce moment-là, le day trading de ce contrat sera compliqué. Le swing trading ou une autre méthode peut te convenir mieux : c&#39;est justement ce qu&#39;on cherche à identifier quand on construit une méthode adaptée à son profil.</p>
+<h3>Si tu veux investir sur le long terme</h3>
+<p>Un future se renouvelle quatre fois par an, avec un effet de levier et un risque de perte supérieur au dépôt. Pour placer de l&#39;argent sur le S&amp;P 500 pendant des années, ce n&#39;est pas l&#39;outil le plus simple. Le future est un instrument de trading.</p>
+<h3>La limite de mon exemple</h3>
+<p>Mes chiffres de taille de position sont un exemple de calcul, pas une recommandation pour ton compte. Les marges, les commissions et la volatilité changent. Vérifie toujours les données du jour chez ton courtier et sur les spécifications du CME.</p>
+<h3>À retenir</h3>
+<ul><li>Compte trop petit pour la règle de risque : simulation d&#39;abord.</li><li>Pas disponible à l&#39;ouverture américaine : day trading difficile.</li><li>Le future est un outil de trading, pas un placement long terme.</li></ul>
+
+    <hr>
+
+    <h2 id="par-ou-commencer-ce-soir">Par où commencer ce soir ?</h2>
+    <p>Tu as maintenant tout ce qu&#39;il faut pour regarder le S&amp;P 500 futures sans te perdre dans le jargon. Le récapitulatif :</p>
+<ul><li>Deux contrats : l&#39;ES à 50 $ le point, le MES à 5 $. Dix MES valent un ES.</li><li>Un tick de 0,25 point : 12,50 $ sur l&#39;ES, 1,25 $ sur le MES.</li><li>Les horaires : Globex de minuit à 23 h, heure de Paris ; la séance active démarre à 15 h 30.</li><li>Le calendrier : échéances en mars, juin, septembre et décembre, rollover une semaine avant.</li><li>La taille : le stop d&#39;abord, le risque en dollars ensuite, et le MES tant que ton compte n&#39;autorise pas l&#39;ES.</li></ul>
+<h3>Ton action de ce soir</h3>
+<p>Ouvre un graphique du MES de l&#39;échéance en cours, en simulation. Trace la zone de valeur et le VWAP de la séance d&#39;aujourd&#39;hui. Puis note, pour trois trades fictifs, la distance du stop en points et la perte en dollars. Fais la même chose demain sur le MNQ. En deux soirs, tu sauras lequel des deux marchés tu comprends le mieux.</p>
+<p>Ensuite, la suite logique, c&#39;est de comparer en détail les deux contrats du Nasdaq dans mon article <a href="https://basstrading.fr/blog/nq-ou-mnq/">NQ ou MNQ</a>, puis de fixer ta règle de risque avec <a href="https://basstrading.fr/blog/combien-risquer-par-trade/">combien risquer par trade</a>. Et si tu veux un parcours structuré pour apprendre gratuitement, j&#39;ai rassemblé les meilleures ressources dans mon guide de la <a href="https://basstrading.fr/blog/formation-trading-gratuite/">formation trading gratuite</a>.</p>
+<p>Le trading de contrats à terme comporte un risque élevé de perte, pouvant dépasser la mise initiale. Contenu éducatif, pas un conseil en investissement.</p>
+
+    <p><a href="https://www.youtube.com/watch?v=PjrSce8-VgQ" target="_blank" rel="noopener">▶ Voir la vidéo de Sébastien sur ce sujet</a></p>
+
+    <div class="cta-card cta-aimant">
+      <div class="cta-card-label">Gratuit</div>
+      <h3>La formation offerte : 7 leçons pour lire le marché comme un pro</h3>
+      <p>Accès immédiat et gratuit, en vidéo, à ton rythme. Sans carte bancaire.</p>
+      <a href="https://basstrading.fr/p/formation-offerte/?src=blog-sp-500-futures-es-mes" class="btn-p">Je la veux →</a>
+    </div>
+    
+  </article>
+</div>
+
+<!-- FAQ -->
+<section class="faq-sec">
+  <div class="sec-center"><div class="sec-label">FAQ</div><h2 class="sec-title">Questions fréquentes</h2></div>
+  <div class="faq-list">
+    <div class="fi"><button class="fq" onclick="tf(this)">Combien vaut un point sur le S&amp;P 500 futures ? <span class="fq-icon">+</span></button><div class="fa"><p>Un point vaut 50 $ sur l&#39;E-mini S&amp;P 500 (ES) et 5 $ sur le Micro E-mini (MES), selon les spécifications du CME. Le plus petit mouvement, le tick, fait 0,25 point : 12,50 $ sur l&#39;ES et 1,25 $ sur le MES. Pour connaître ton risque, multiplie la distance de ton stop en points par la valeur du point et par le nombre de contrats.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Quelle est la différence entre ES et MES ? <span class="fq-icon">+</span></button><div class="fa"><p>Les deux contrats suivent le même indice, au même prix et aux mêmes heures. Le MES, lancé par le CME en mai 2019, vaut un dixième de l&#39;ES : 5 $ le point au lieu de 50 $. Dix MES représentent donc la même exposition qu&#39;un ES. Le MES permet d&#39;ajuster finement sa taille de position avec un petit compte.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">À quelle heure ouvre le S&amp;P 500 futures en France ? <span class="fq-icon">+</span></button><div class="fa"><p>Le contrat cote de la nuit de dimanche à lundi (minuit, heure de Paris) au vendredi 23 h, avec une pause chaque jour de 23 h à minuit. La séance la plus active commence à 15 h 30, à l&#39;ouverture de Wall Street. Pendant les semaines de décalage des changements d&#39;heure (mars, fin octobre), l&#39;ouverture américaine passe à 14 h 30 à Paris.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Quel capital faut-il pour trader le MES ? <span class="fq-icon">+</span></button><div class="fa"><p>Il n&#39;y a pas de montant universel : la marge dépend du courtier et change avec la volatilité. Le bon calcul part de ta règle de risque. Avec 1 % de risque par trade et un stop de 8 points (40 $ par MES), il faut au moins 4 000 $ pour un contrat. Si ton compte est plus petit, entraîne-toi d&#39;abord en simulation.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Qu&#39;est-ce qui fait bouger le prix du S&amp;P 500 futures ? <span class="fq-icon">+</span></button><div class="fa"><p>Les décisions de la Fed et les anticipations de taux, les statistiques américaines (inflation, emploi), publiées souvent à 14 h 30 heure de Paris, et les résultats des plus grosses entreprises de l&#39;indice. Pendant la séance, le flux d&#39;ordres montre si un mouvement est accepté ou rejeté par le marché.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Vaut-il mieux trader le S&amp;P 500 ou le Nasdaq futures ? <span class="fq-icon">+</span></button><div class="fa"><p>Aucun n&#39;est meilleur dans l&#39;absolu. Le S&amp;P 500 a un carnet d&#39;ordres plus épais et des mouvements plus progressifs ; le Nasdaq a un carnet plus léger et bouge plus vite. Si la vitesse du Nasdaq te fait prendre de mauvaises décisions, le S&amp;P peut mieux te convenir. Teste les deux en simulation avant de choisir.</p></div></div>
+  </div>
+</section>
+
+<!-- Related -->
+<section class="related-sec">
+  <div class="sec-center"><div class="sec-label">Continuer la lecture</div><h2 class="sec-title">Articles connexes</h2></div>
+  <div class="related-grid">
+    <a href="/blog/market-profile-guide-complet/" class="related-card"><div class="related-cat">Guide</div><h3>Market Profile : le guide complet pour débutants</h3><p>Value Area, POC, types de journées — tout pour commencer.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/order-flow-trading-france/" class="related-card"><div class="related-cat">Méthode</div><h3>Order Flow Trading : pourquoi personne ne l'enseigne en France</h3><p>Le carnet d'ordres et le flux institutionnel décryptés.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/sierra-chart-configuration/" class="related-card"><div class="related-cat">Tutoriel</div><h3>Sierra Chart : configuration complète</h3><p>Le setup pas à pas pour le Market Profile et le Footprint.</p><span class="related-link">Lire &rarr;</span></a>
+  </div>
+</section>
+
+<!-- serie:debut --><style>.serie-w{background:#FFF;color:#1D1D1F;border-top:1px solid #F5F5F7}.serie{max-width:1060px;margin:0 auto;padding:56px 24px;font-family:inherit;box-sizing:border-box}.serie-l{font-size:.6rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#0066FF;margin-bottom:8px}.serie-w .serie h2{font-size:1.4rem;font-weight:800;letter-spacing:-.5px;color:#1D1D1F!important;margin:0 0 18px;font-family:inherit}.serie ul{list-style:none;padding:0;margin:0 0 22px;display:grid;grid-template-columns:repeat(2,1fr);gap:8px 24px}.serie-w .serie li a{color:#1D1D1F!important;font-size:.9rem;line-height:1.45;text-decoration:none;border-bottom:1px solid #D2D2D7}.serie li a:hover{color:#0066FF}.serie li.pil a{font-weight:700}.serie-o{background:#F5F5F7;border-radius:14px;padding:18px 20px;font-size:.88rem;line-height:1.55;color:#1D1D1F}.serie-w .serie-o a{color:#0066FF!important;font-weight:700}@media(max-width:700px){.serie ul{grid-template-columns:1fr}}</style><div class="serie-w"><aside class="serie" aria-label="Dans la même série"><div class="serie-l">Dans la même série</div><h2>Futures du Nasdaq et plateformes</h2><ul><li class="pil"><a href="/blog/nasdaq-futures-nq-mnq/">NQ et MNQ : les futures Nasdaq expliqués simplement</a></li><li class=""><a href="/blog/nq-ou-mnq/">NQ ou MNQ : quel contrat Nasdaq choisir pour débuter ?</a></li><li class=""><a href="/blog/horaires-futures-nasdaq-heure-paris/">Horaires des futures Nasdaq (NQ, MNQ) en heure de Paris</a></li><li class=""><a href="/blog/day-trading-futures/">Day trading : à quoi ressemble une journée sur les futures</a></li><li class=""><a href="/blog/vwap-trading/">VWAP trading : définition, calcul et lecture sur le Nasdaq</a></li><li class=""><a href="/blog/ninjatrader-avis/">NinjaTrader avis : prix, France, order flow et limites</a></li><li class=""><a href="/blog/tradovate-avis/">Tradovate avis : prix, démo, France et limites (2026)</a></li><li class=""><a href="/blog/sierra-chart-configuration/">Sierra Chart : configurer Market Profile, footprint et CVD</a></li><li class=""><a href="/blog/rithmic-futures/">Rithmic : c'est quoi, R Trader Pro, prop firms et Mac</a></li><li class=""><a href="/blog/vwap-tradingview/">VWAP TradingView : réglages, bandes et VWAP ancrée (guide)</a></li></ul><div class="serie-o"><a href="/formations/">Toutes les formations de Bass</a> : plus de 250 leçons vidéo, du débutant au Market Profile avancé. Pour commencer sans payer : <a href="/p/formation-offerte/?src=serie-sp-500-futures-es-mes">la formation offerte</a> (7 leçons vidéo).</div></aside></div><!-- serie:fin -->
+<footer class="footer">
+  <div class="ft-top"><div class="ft-logo">BASS</div><div class="ft-cols">
+    <div class="ft-col"><div class="ft-col-title">Programme</div><a href="/formations/">Toutes les formations</a><a href="https://basstrading.fr/#methode">Méthode</a><a href="https://basstrading.fr/#programme">Programme</a><a href="https://basstrading.fr/p/formation-offerte/?src=blog-sp-500-futures-es-mes-pied">Formation offerte</a></div>
+    <div class="ft-col"><div class="ft-col-title">Ressources</div><a href="/blog/market-profile-guide-complet/">Market Profile</a><a href="/blog/footprint-chart-trading/">Footprint Chart</a><a href="/blog/order-flow-trading-france/">Order Flow</a></div>
+  </div></div>
+  <div class="ft-bottom"><span>&copy; 2026 BASS — Sébastien Constant</span><div><a href="/mentions-legales/">Mentions légales</a><a href="/confidentialite/">Confidentialité</a><a href="/cgv/">CGV</a><a href="mailto:contact@basstrading.fr">Contact</a></div></div>
+</footer>
+<div class="disclaimer">Le trading comporte des risques de perte en capital. Les performances passées ne préjugent pas des performances futures. Ce site ne constitue pas un conseil en investissement.</div>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+const lenis=new Lenis({duration:1.2,easing:t=>Math.min(1,1.001-Math.pow(2,-10*t))});
+function raf(t){lenis.raf(t);requestAnimationFrame(raf)}requestAnimationFrame(raf);
+lenis.on('scroll',ScrollTrigger.update);gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0);
+const tl=gsap.timeline();
+tl.to('.pre-word span',{y:0,opacity:1,duration:.5,stagger:.1,ease:'power3.out',delay:.3}).to('#preLine',{width:'80px',duration:.7,ease:'power2.inOut'},'<+.2').to('.preloader',{yPercent:-100,duration:.8,ease:'power3.inOut',delay:.4}).set('.preloader',{display:'none'}).to('#nav',{opacity:1,y:0,duration:.5},'<+.1');
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);const h=document.documentElement.scrollHeight-window.innerHeight;document.getElementById('readingProgress').style.width=(window.scrollY/h*100)+'%'});
+const tocLinks=document.querySelectorAll('.toc a');const sections=Array.from(tocLinks).map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+window.addEventListener('scroll',()=>{let c='';sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)c=s.id});tocLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+c)})});
+function tf(b){const i=b.closest('.fi'),a=b.nextElementSibling,o=i.classList.contains('active');document.querySelectorAll('.fi').forEach(x=>{x.classList.remove('active');x.querySelector('.fa').classList.remove('open')});if(!o){i.classList.add('active');a.classList.add('open')}}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();lenis.scrollTo(t,{offset:-60})}})});
+</script>
+<script src="/v.js" defer></script>
+</body>
+</html>
