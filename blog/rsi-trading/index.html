@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RSI trading : réglages, divergences et limites (guide) — BASS Trading</title>
+  <meta name="description" content="RSI en trading : calcul, réglage 14, surachat 70/30, divergences, faux signaux et ce que le flux d&#39;ordres montre avant lui. Guide pratique et exemple réel.">
+  <meta property="og:title" content="RSI trading : réglages, divergences et limites (guide) — BASS Trading">
+  <meta property="og:description" content="RSI en trading : calcul, réglage 14, surachat 70/30, divergences, faux signaux et ce que le flux d&#39;ordres montre avant lui. Guide pratique et exemple réel.">
+  <meta property="og:image" content="https://basstrading.fr/blog/rsi-trading/blog-rsi-trading-1.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://basstrading.fr/blog/rsi-trading/blog-rsi-trading-1.webp">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://basstrading.fr/blog/rsi-trading/">
+  <meta property="og:site_name" content="BASS Trading">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://basstrading.fr/blog/rsi-trading/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","@id":"https://basstrading.fr/blog/rsi-trading/#article","headline":"RSI trading : réglages, divergences et limites (guide)","description":"RSI en trading : calcul, réglage 14, surachat 70/30, divergences, faux signaux et ce que le flux d'ordres montre avant lui. Guide pratique et exemple réel.","datePublished":"2026-11-17","dateModified":"2026-11-17","inLanguage":"fr-FR","image":"https://basstrading.fr/blog/rsi-trading/blog-rsi-trading-1.webp","mainEntityOfPage":"https://basstrading.fr/blog/rsi-trading/","isPartOf":{"@type":"WebSite","@id":"https://basstrading.fr/#website","name":"BASS Trading","url":"https://basstrading.fr/"},"author":{"@type":"Person","@id":"https://basstrading.fr/#sebastien-constant","name":"Sébastien Constant","url":"https://basstrading.fr/auteur/sebastien-constant/"},"publisher":{"@type":"Organization","@id":"https://basstrading.fr/#organisation","name":"BASS Trading","url":"https://basstrading.fr/","logo":{"@type":"ImageObject","url":"https://basstrading.fr/images/logo-basstrading.png","width":512,"height":512}}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://basstrading.fr"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://basstrading.fr/blog/"},{"@type":"ListItem","position":3,"name":"RSI trading","item":"https://basstrading.fr/blog/rsi-trading/"}]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Quel est le meilleur réglage du RSI ?","acceptedAnswer":{"@type":"Answer","text":"Le réglage de Wilder, 14 périodes, reste le plus utilisé et le meilleur point de départ. Une période plus courte (7 à 9) donne plus de signaux mais beaucoup plus de faux signaux ; une période plus longue (21 et plus) lisse davantage mais ajoute du retard. L'unité de temps compte plus que la période : un RSI 14 en 1 minute et en daily ne disent pas du tout la même chose."}},{"@type":"Question","name":"Que veut dire un RSI au-dessus de 70 ?","acceptedAnswer":{"@type":"Answer","text":"Un RSI au-dessus de 70 signifie que les hausses récentes ont été nettement plus fortes que les baisses : le marché est en zone de surachat. Ce n'est pas un signal de vente. En tendance forte, le RSI peut rester au-dessus de 70 pendant longtemps. Il faut une structure de prix (double sommet, cassure du dernier creux) pour envisager un retournement."}},{"@type":"Question","name":"Une divergence RSI annonce-t-elle un retournement ?","acceptedAnswer":{"@type":"Answer","text":"Pas forcément. Une divergence montre que le mouvement ralentit. Andrew Cardwell observe qu'elle provoque le plus souvent une brève correction plutôt qu'un vrai retournement de tendance. En tendance forte, plusieurs divergences peuvent s'enchaîner sans effet. Attends une cassure de structure sur un niveau préparé avant d'agir."}},{"@type":"Question","name":"Comment paramétrer le RSI ?","acceptedAnswer":{"@type":"Answer","text":"Garde le réglage d'origine de Wilder (1978) : 14 périodes, calculées sur les clôtures, avec son lissage. Sur TradingView, ajoute « Relative Strength Index », vérifie la longueur 14 et la source « close », garde les bandes 70 et 30. Sur Sierra Chart, ajoute l'étude RSI, mets la longueur à 14 et le type de moyenne sur Wilder. Ensuite, ne touche plus aux réglages : travaille plutôt l'unité de temps et les niveaux de prix."}},{"@type":"Question","name":"Sur quels marchés utiliser le RSI indicateur ?","acceptedAnswer":{"@type":"Answer","text":"Le RSI s'applique à tous les marchés qui ont un prix : actions, indices, futures, matières premières, devises. Sur un marché très volatil comme le Nasdaq futures, il passe son temps aux extrêmes en petite unité de temps et sert surtout de filtre en 15 minutes ou en 1 heure. Sur un marché calme, les seuils 70/30 sont rarement touchés. Observe d'abord son comportement sur ton marché avant de lui faire confiance."}},{"@type":"Question","name":"RSI ou stochastique, lequel est le plus fiable ?","acceptedAnswer":{"@type":"Answer","text":"Aucun des deux n'est plus fiable en soi : ils sont tous deux calculés à partir du prix passé, sur le forex comme sur les futures. Le stochastique, qui situe la clôture dans le range récent, est plus nerveux et donne plus de faux signaux. Le RSI est un peu plus stable. Les combiner n'ajoute pas d'information nouvelle, seulement un deuxième regard sur le même prix."}}]}
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{--bk:#1D1D1F;--bk2:#111;--bk3:#0A0A0A;--g1:#6E6E73;--g2:#86868B;--g3:#D2D2D7;--g4:#F5F5F7;--wh:#FBFBFD;--pure:#FFF;--green:#00B67A;--blue:#0066FF}
+    html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}
+    body{font-family:'DM Sans',sans-serif;color:var(--bk);background:var(--pure);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+    .preloader{position:fixed;inset:0;background:var(--bk3);z-index:10001;display:flex;align-items:center;justify-content:center}
+    .pre-word{font-family:'Outfit',sans-serif;font-size:clamp(3rem,8vw,5rem);font-weight:900;letter-spacing:16px;text-transform:uppercase;color:var(--pure);overflow:hidden}
+    .pre-word span{display:inline-block;transform:translateY(110%);opacity:0}
+    .pre-line{width:0;height:1px;background:rgba(255,255,255,.3);margin-top:20px}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 48px;display:flex;align-items:center;justify-content:space-between;background:rgba(245,245,247,.85);backdrop-filter:blur(20px) saturate(1.8);border-bottom:1px solid rgba(0,0,0,.04);transition:background .4s}
+    .nav-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase;color:var(--bk)}
+    .nav-links{display:flex;gap:28px;list-style:none}.nav-links a{font-size:.74rem;font-weight:500;letter-spacing:.3px;color:var(--g1);transition:color .3s}.nav-links a:hover{color:var(--bk)}
+    .nav-cta{padding:8px 20px;background:var(--bk);color:var(--pure);border:none;border-radius:980px;font-size:.72rem;font-weight:600;transition:all .3s;cursor:pointer;text-decoration:none;display:inline-block}.nav-cta:hover{background:var(--bk2)}
+    .blog-hero{padding:160px 48px 80px;background:var(--g4);position:relative;overflow:hidden}
+    .blog-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,transparent,var(--g4));pointer-events:none}
+    .blog-hero-inner{max-width:720px;margin:0 auto}
+    .breadcrumb{display:flex;gap:8px;align-items:center;margin-bottom:28px;flex-wrap:wrap}
+    .breadcrumb a,.breadcrumb span{font-size:.68rem;font-weight:500;letter-spacing:.3px;color:var(--g2);transition:color .3s}.breadcrumb a:hover{color:var(--bk)}.breadcrumb .sep{color:var(--g3)}
+    .blog-hero-cat{display:inline-block;padding:5px 14px;border:1px solid rgba(0,102,255,.15);border-radius:980px;font-size:.6rem;font-weight:700;color:var(--blue);letter-spacing:2px;text-transform:uppercase;margin-bottom:20px}
+    .blog-hero-title{font-family:'Outfit',sans-serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:900;line-height:1.05;letter-spacing:-2px;color:var(--bk);margin-bottom:20px}
+    .blog-hero-desc{font-size:.95rem;color:var(--g1);line-height:1.8;max-width:560px;margin-bottom:28px}
+    .blog-meta{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+    .blog-meta-author{display:flex;align-items:center;gap:10px}
+    .blog-meta-avatar{width:36px;height:36px;border-radius:50%;background:var(--bk3);overflow:hidden;flex-shrink:0}.blog-meta-avatar img{width:100%;height:100%;object-fit:cover}
+    .blog-meta-name{font-size:.78rem;font-weight:600;color:var(--bk)}.blog-meta-role{font-size:.65rem;color:var(--g2)}
+    .blog-meta-sep{width:1px;height:24px;background:var(--g3)}
+    .blog-meta-info{font-size:.7rem;color:var(--g2)}.blog-meta-info span{margin-right:16px}
+    .toc{position:sticky;top:90px;background:var(--pure);border:1px solid rgba(0,0,0,.04);border-radius:14px;padding:24px;margin-bottom:32px}
+    .toc-title{font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.5px;color:var(--bk);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+    .toc ol{list-style:none;counter-reset:toc}.toc li{counter-increment:toc}
+    .toc li a{display:flex;align-items:baseline;gap:8px;padding:6px 0;font-size:.76rem;color:var(--g1);transition:color .3s;border-bottom:1px solid rgba(0,0,0,.03)}.toc li a:hover{color:var(--blue)}
+    .toc li a::before{content:counter(toc,decimal-leading-zero);font-family:'Outfit',sans-serif;font-size:.65rem;font-weight:700;color:var(--g3);min-width:18px}
+    .toc li:last-child a{border-bottom:none}.toc li a.active{color:var(--blue);font-weight:600}.toc li a.active::before{color:var(--blue)}
+    .article-wrap{display:grid;grid-template-columns:220px 1fr;gap:40px;max-width:1020px;margin:0 auto;padding:60px 48px 120px}
+    .article-sidebar{position:relative}.article-body{max-width:700px}
+    .article-body h2{font-family:'Outfit',sans-serif;font-size:clamp(1.4rem,2.5vw,1.8rem);font-weight:800;line-height:1.1;letter-spacing:-1px;color:var(--bk);margin:56px 0 16px;padding-top:20px}.article-body h2:first-of-type{margin-top:0}
+    .article-body h3{font-family:'Outfit',sans-serif;font-size:1.05rem;font-weight:700;line-height:1.25;letter-spacing:-.3px;color:var(--bk);margin:36px 0 10px}
+    .article-body p{font-size:.9rem;color:var(--g1);line-height:1.85;margin-bottom:18px}
+    .article-body strong{color:var(--bk);font-weight:600}
+    .article-body ul,.article-body ol{margin:0 0 20px 0;padding-left:20px}
+    .article-body li{font-size:.88rem;color:var(--g1);line-height:1.8;margin-bottom:6px}.article-body li strong{color:var(--bk)}
+    .article-body blockquote{margin:28px 0;padding:20px 24px;background:var(--g4);border-left:3px solid var(--bk);border-radius:0 12px 12px 0;font-size:.88rem;color:var(--g1);line-height:1.8;font-style:italic}
+    .article-body blockquote strong{color:var(--bk);font-style:normal}
+    .article-body hr{border:none;border-top:1px solid var(--g4);margin:48px 0}
+    .info-box{margin:28px 0;padding:24px;background:rgba(0,102,255,.03);border:1px solid rgba(0,102,255,.08);border-radius:14px}
+    .info-box-title{font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:700;color:var(--blue);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+    .info-box p{font-size:.82rem;color:var(--g1);line-height:1.7;margin-bottom:0}
+    .key-concept{margin:32px 0;padding:28px;background:var(--bk3);border-radius:16px;color:var(--pure)}
+    .key-concept-label{font-size:.55rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:10px}
+    .key-concept h4{font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:800;letter-spacing:-.3px;margin-bottom:8px}
+    .key-concept p{font-size:.85rem;color:rgba(255,255,255,.5);line-height:1.8;margin-bottom:0}
+    .compare-table{width:100%;margin:24px 0 28px;border-collapse:collapse;border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,.06)}
+    .compare-table th{background:var(--bk3);color:var(--pure);font-family:'Outfit',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:14px 16px;text-align:left}
+    .compare-table td{padding:12px 16px;font-size:.82rem;color:var(--g1);line-height:1.6;border-bottom:1px solid rgba(0,0,0,.04);background:var(--pure)}
+    .compare-table tr:last-child td{border-bottom:none}.compare-table td:first-child{font-weight:600;color:var(--bk)}
+    .cta-card{margin:48px 0;padding:40px;background:var(--bk3);border-radius:20px;text-align:center;position:relative;overflow:hidden}
+    .cta-card::before{content:'';position:absolute;top:-50%;right:-30%;width:400px;height:400px;background:radial-gradient(circle,rgba(0,102,255,.08) 0%,transparent 70%);pointer-events:none}
+    .cta-card-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:12px}
+    .cta-card h3{font-family:'Outfit',sans-serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:800;color:var(--pure);letter-spacing:-.5px;margin-bottom:8px}
+    .cta-card p{font-size:.85rem;color:rgba(255,255,255,.4);line-height:1.7;max-width:380px;margin:0 auto 24px}
+    .cta-card .btn-p{background:var(--pure);color:var(--bk)}.cta-card .btn-p:hover{box-shadow:0 8px 30px rgba(255,255,255,.15)}
+    .faq-sec{padding:80px 48px 100px;background:var(--g4)}
+    .faq-list{max-width:680px;margin:40px auto 0}.fi{border-bottom:1px solid rgba(0,0,0,.06)}
+    .fq{width:100%;text-align:left;padding:18px 0;background:none;border:none;font-size:.85rem;font-weight:600;font-family:'DM Sans',sans-serif;color:var(--bk);display:flex;justify-content:space-between;align-items:center;cursor:pointer;gap:16px;transition:color .3s}.fq:hover{color:var(--g1)}
+    .fq-icon{width:22px;height:22px;border-radius:50%;background:rgba(0,0,0,.04);display:flex;align-items:center;justify-content:center;font-size:.75rem;transition:all .4s;flex-shrink:0;color:var(--g2)}
+    .fa{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1)}.fa.open{max-height:280px;padding-bottom:14px}
+    .fa p{font-size:.8rem;color:var(--g1);line-height:1.7;margin-bottom:0}.fi.active .fq-icon{background:var(--bk);color:var(--pure);transform:rotate(45deg)}
+    .related-sec{padding:80px 48px;background:var(--pure);border-top:1px solid var(--g4)}
+    .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1060px;margin:40px auto 0}
+    .related-card{display:block;padding:28px;background:var(--g4);border-radius:16px;transition:all .4s;text-decoration:none;color:var(--bk)}
+    .related-card:hover{background:var(--pure);box-shadow:0 8px 30px rgba(0,0,0,.06);transform:translateY(-2px)}
+    .related-cat{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+    .related-card h3{font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:700;line-height:1.3;letter-spacing:-.3px;margin-bottom:8px}
+    .related-card p{font-size:.78rem;color:var(--g1);line-height:1.6;margin-bottom:14px}
+    .related-link{font-size:.72rem;font-weight:600;color:var(--blue);letter-spacing:.3px}
+    .footer{background:var(--bk3);color:var(--pure);padding:56px 48px 28px}
+    .ft-top{display:flex;justify-content:space-between;align-items:start;margin-bottom:48px;flex-wrap:wrap;gap:32px}
+    .ft-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase}
+    .ft-cols{display:flex;gap:80px}
+    .ft-col-title{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:12px}
+    .ft-col a{display:block;font-size:.78rem;color:rgba(255,255,255,.5);margin-bottom:8px;transition:color .3s}.ft-col a:hover{color:var(--pure)}
+    .ft-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:20px;display:flex;justify-content:space-between;align-items:center;font-size:.6rem;color:rgba(255,255,255,.2)}
+    .ft-bottom a{color:rgba(255,255,255,.2);transition:color .3s;margin-left:20px}.ft-bottom a:hover{color:rgba(255,255,255,.5)}
+    .disclaimer{padding:12px 48px;background:var(--bk3);font-size:.58rem;color:rgba(255,255,255,.12);text-align:center;line-height:1.6;border-top:1px solid rgba(255,255,255,.03)}
+    .sec-center{text-align:center;max-width:680px;margin:0 auto}
+    .sec-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--g2);margin-bottom:10px}
+    .sec-title{font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;line-height:1.05;letter-spacing:-1.5px;color:var(--bk);margin-bottom:16px}
+    .btn-p{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--bk);color:var(--pure);border-radius:980px;font-size:.85rem;font-weight:600;transition:all .3s;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;text-decoration:none}
+    .btn-p:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(0,0,0,.1)}
+    .btn-p svg{width:13px;height:13px;transition:transform .3s}.btn-p:hover svg{transform:translateX(3px)}
+    .reading-progress{position:fixed;top:0;left:0;height:2px;background:var(--blue);z-index:9999;width:0;transition:width .1s linear}
+    @media(max-width:900px){.nav{padding:14px 20px}.nav-links{display:none}.blog-hero{padding:120px 20px 60px}.article-wrap{grid-template-columns:1fr;padding:40px 20px 80px}.article-sidebar{display:none}.related-grid{grid-template-columns:1fr}.related-sec,.faq-sec{padding:60px 20px}.ft-cols{flex-direction:column;gap:28px}.footer{padding:40px 20px 20px}.disclaimer{padding:10px 16px}.cta-card{padding:28px 20px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  .article-body a{color:var(--blue);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;font-weight:500}.article-body a:hover{text-decoration-thickness:2px}
+</style>
+<style>/* 28/10/2026 : débordement mobile (colonne de grille sans min-width) */.article-wrap>*,.article-layout>*{min-width:0}.article-body table,.compare-table{display:block;overflow-x:auto;max-width:100%}.article-body pre{overflow-x:auto}.article-body img{max-width:100%;height:auto}</style>
+</head>
+<body>
+
+<div class="preloader" id="preloader"><div style="text-align:center"><div class="pre-word"><span>B</span><span>A</span><span>S</span><span>S</span></div><div class="pre-line" id="preLine"></div></div></div>
+<div class="reading-progress" id="readingProgress"></div>
+
+<nav class="nav" id="nav">
+  <a href="https://basstrading.fr" class="nav-logo">BASS</a>
+  <ul class="nav-links">
+    <li><a href="https://basstrading.fr/#methode">Méthode</a></li>
+    <li><a href="https://basstrading.fr#resultats">Résultats</a></li>
+    <li><a href="https://basstrading.fr#avis">Avis</a></li>
+    <li><a href="https://basstrading.fr#faq">FAQ</a></li>
+    <li><a href="/formations/">Formations</a></li>
+    <li><a href="https://basstrading.fr/blog/">Blog</a></li>
+  </ul>
+  <a href="https://basstrading.fr/p/formation-offerte/?src=blog-rsi-trading-menu" class="nav-cta">Formation offerte</a>
+</nav>
+
+<section class="blog-hero">
+  <div class="blog-hero-inner">
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <a href="https://basstrading.fr">Accueil</a><span class="sep">/</span>
+      <a href="https://basstrading.fr/blog/">Blog</a><span class="sep">/</span>
+      <span>RSI trading</span>
+    </nav>
+    <div class="blog-hero-cat">Indicateurs</div>
+    <h1 class="blog-hero-title">RSI trading : réglages, divergences et limites (guide)</h1>
+    <p class="blog-hero-desc">Le RSI mesure la vitesse des hausses et des baisses récentes sur une échelle de 0 à 100. Il aide à repérer un mouvement qui s&#39;essouffle, mais il est calculé sur des bougies déjà fermées : il confirme, il n&#39;anticipe pas. Je te montre comment le régler, le lire sans tomber dans les faux signaux, et ce que je regarde avant lui sur le Nasdaq.</p>
+    <div class="blog-meta">
+      <div class="blog-meta-author">
+        <div class="blog-meta-avatar"><img src="../../images/bass-presenting.jpg" alt="Sébastien Constant" loading="lazy"></div>
+        <div><div class="blog-meta-name"><a href="/auteur/sebastien-constant/" rel="author" style="color:inherit;text-decoration:none">Sébastien Constant</a></div><div class="blog-meta-role">Trader & Formateur Order Flow</div></div>
+      </div>
+      <div class="blog-meta-sep"></div>
+      <div class="blog-meta-info"><span>Novembre 2026</span><span>20 min de lecture</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="article-wrap">
+  <aside class="article-sidebar">
+    <div class="toc">
+      <div class="toc-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/></svg> Sommaire</div>
+      <ol>
+        <li><a href="#qu-est-ce-que-le-rsi-en-trading">Qu&#39;est-ce que le RSI en trading ?</a></li>
+        <li><a href="#comment-se-calcule-le-rsi">Comment se calcule le RSI ?</a></li>
+        <li><a href="#comment-interpreter-le-rsi-zone-de-surac">Comment interpréter le RSI : zone de surachat, zone de survente et zone neutre ?</a></li>
+        <li><a href="#comment-parametrer-le-rsi-quelle-periode">Comment paramétrer le RSI : quelle période choisir ?</a></li>
+        <li><a href="#comment-utiliser-le-rsi-pour-des-points-">Comment utiliser le RSI pour des points d&#39;entrée et de sortie ?</a></li>
+        <li><a href="#qu-est-ce-qu-une-divergence-rsi-et-faut-">Qu&#39;est-ce qu&#39;une divergence RSI et faut-il la trader ?</a></li>
+        <li><a href="#pourquoi-le-rsi-est-il-toujours-en-retar">Pourquoi le RSI est-il toujours en retard ?</a></li>
+        <li><a href="#que-montre-le-flux-d-ordres-avant-le-rsi">Que montre le flux d&#39;ordres avant le RSI ?</a></li>
+        <li><a href="#exemple-quand-le-prix-monte-sans-partici">Exemple : quand le prix monte sans participation</a></li>
+        <li><a href="#rsi-stochastique-ou-macd-lequel-choisir">RSI, stochastique ou MACD : lequel choisir ?</a></li>
+        <li><a href="#quelles-erreurs-font-les-debutants-avec-">Quelles erreurs font les débutants avec le RSI ?</a></li>
+        <li><a href="#quelles-sont-les-limites-du-rsi">Quelles sont les limites du RSI ?</a></li>
+        <li><a href="#le-scalping-avec-le-rsi-est-il-une-bonne">Le scalping avec le RSI est-il une bonne méthode ?</a></li>
+        <li><a href="#ce-qu-il-faut-retenir-sur-le-rsi-et-quoi">Ce qu&#39;il faut retenir sur le RSI, et quoi faire ce soir</a></li>
+      </ol>
+    </div>
+  </aside>
+
+  <article class="article-body">
+    <h2 id="qu-est-ce-que-le-rsi-en-trading">Qu&#39;est-ce que le RSI en trading ?</h2>
+    <p>Tu as mis le RSI sous ton graphique, il touche 70, tu vends… et le prix continue de monter pendant une heure. Si ça t&#39;est arrivé, cet article est pour toi. À la fin, tu sauras régler le RSI, le lire correctement et surtout savoir quand ne pas l&#39;écouter.</p>
+<p><b>Le RSI (Relative Strength Index, ou indice de force relative) est un oscillateur borné entre 0 et 100 qui compare l&#39;ampleur des hausses récentes à celle des baisses récentes, pour mesurer la vitesse et l&#39;essoufflement d&#39;un mouvement de prix.</b></p>
+<p>Il a été créé par J. Welles Wilder et publié en 1978 dans son livre <em>New Concepts in Technical Trading Systems</em>, comme le rappelle la <a href="https://www.tradingview.com/support/solutions/43000502338-relative-strength-index-rsi/">documentation officielle de TradingView sur le RSI</a>. C&#39;est l&#39;un des indicateurs d&#39;analyse technique les plus utilisés au monde, présent sur toutes les plateformes.</p>
+<h3>Ce que l&#39;indicateur RSI mesure vraiment</h3>
+<p>Le RSI ne mesure ni le volume, ni la tendance de fond, ni la « force » d&#39;un actif face à un autre (malgré son nom, ce n&#39;est pas une comparaison entre deux marchés). Il mesure une seule chose : sur les N dernières bougies, est-ce que les bougies haussières ont été plus grandes que les bougies baissières, et de combien ?</p>
+<p>Un RSI à 80 dit : « ces dernières bougies, le cours est surtout monté, et fort ». Un RSI à 20 dit l&#39;inverse. Un RSI à 50 dit : « hausses et baisses s&#39;équilibrent ». <b>L&#39;indicateur met un chiffre sur la vitesse des mouvements récents, rien de plus.</b></p>
+<h3>Pourquoi je t&#39;en parle alors que je ne l&#39;utilise pas pour cliquer</h3>
+<p>Je vais être franc dès le départ : je trade le Nasdaq futures en 1 minute, et le RSI ne fait pas partie des outils sur lesquels je prends mes décisions. Je n&#39;ai pas de vidéo dédiée au RSI ; en revanche, j&#39;explique régulièrement pourquoi la plupart des indicateurs arrivent après le mouvement, et ce que je regarde à la place.</p>
+<p>Mais beaucoup de traders qui débutent l&#39;ont sur leurs graphiques. Plutôt que de dire « enlève-le », je préfère expliquer ce qu&#39;il fait bien, ce qu&#39;il fait mal, et comment le remettre à sa place. C&#39;est ce qu&#39;on va faire ensemble, en commençant par comprendre d&#39;où sort ce chiffre entre 0 et 100.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/rsi-trading/blog-rsi-trading-1.webp" alt="Écran de trading avec plusieurs graphiques de prix en temps réel" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Le RSI se calcule uniquement à partir des clôtures de ces courbes de prix : tout ce qui se passe entre deux clôtures lui échappe.<br><span style="font-size:.85em">Photo : <a href="https://commons.wikimedia.org/wiki/File:Stock_market_charts_illustration.jpg" rel="noopener" target="_blank">Unknown author</a>, <a href="http://creativecommons.org/publicdomain/zero/1.0/deed.en" rel="noopener license" target="_blank">CC0</a></span></figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="comment-se-calcule-le-rsi">Comment se calcule le RSI ?</h2>
+    <p>Le RSI se calcule en deux temps : d&#39;abord le rapport RS entre la moyenne des gains et la moyenne des pertes sur N périodes, puis la transformation de ce rapport en un chiffre entre 0 et 100.</p>
+<h3>La formule</h3>
+<p><b>RSI = 100 − 100 / (1 + RS)</b>, avec RS = moyenne des hausses / moyenne des baisses sur la période choisie (14 par défaut).</p>
+<p>Concrètement, pour chaque bougie :</p>
+<ul><li>lorsque la clôture est plus haute que la précédente, la différence est un gain (et la perte vaut 0) ;</li><li>lorsqu&#39;elle est plus basse, la différence est une perte (et le gain vaut 0).</li></ul>
+<p>On fait ensuite la moyenne des gains et la moyenne des pertes sur 14 bougies.</p>
+<h3>Un exemple chiffré pas à pas</h3>
+<p>Imagine que sur les 14 dernières bougies, la moyenne des gains soit de 1,2 point et la moyenne des pertes de 0,8 point.</p>
+<ul><li>RS = 1,2 / 0,8 = 1,5</li><li>1 + RS = 2,5</li><li>100 / 2,5 = 40</li><li>RSI = 100 − 40 = <b>60</b></li></ul>
+<p>Le RSI est à 60 : les hausses ont été un peu plus fortes que les baisses, sans excès.</p>
+<p>Si la moyenne des pertes tombe à zéro (14 bougies haussières d&#39;affilée), RS devient infini et le RSI touche 100. S&#39;il n&#39;y a que des baisses, il touche 0. C&#39;est pour ça qu&#39;il est borné : il ne peut jamais sortir de cette échelle, contrairement au MACD ou au prix lui-même.</p>
+<h3>Le lissage de Wilder : le détail que personne n&#39;explique</h3>
+<p>Wilder n&#39;utilise pas une moyenne simple. Après la première moyenne, chaque nouvelle valeur est lissée :</p>
+<ul><li>moyenne des gains = (moyenne précédente × 13 + gain actuel) / 14 ;</li><li>même chose pour les pertes.</li></ul>
+<p>Dans sa <a href="https://www.tradingview.com/support/solutions/43000502338-relative-strength-index-rsi/">documentation du RSI</a>, TradingView appelle ce lissage <b>rma</b>. Conséquence pratique : <b>une seule grosse bougie pèse encore sur le RSI longtemps après</b>, parce que l&#39;ancienne moyenne garde un poids de 13/14. C&#39;est l&#39;une des raisons pour lesquelles le RSI réagit avec du retard. Garde ça en tête, on y revient plus bas.</p>
+<aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p><b>À retenir</b></p>
+<ul><li>Le RSI compare la taille des hausses à celle des baisses, rien d&#39;autre.</li><li>14 périodes par défaut, lissage de Wilder.</li><li>Il ne regarde que les clôtures : ce qui se passe à l&#39;intérieur de la bougie lui échappe.</li><li>Il est borné entre 0 et 100, donc il « plafonne » en tendance forte.</li></ul></aside>
+<p>Maintenant que tu sais d&#39;où vient le chiffre, voyons comment l&#39;interpréter sans contresens.</p>
+
+    <hr>
+
+    <h2 id="comment-interpreter-le-rsi-zone-de-surac">Comment interpréter le RSI : zone de surachat, zone de survente et zone neutre ?</h2>
+    <p>La lecture classique de Wilder est simple : au-dessus de 70, le marché est en zone de surachat ; sous 30, en zone de survente ; autour de 50, il n&#39;y a pas de tendance nette. <b>Le problème, c&#39;est que « surachat » ne veut pas dire « va baisser ».</b></p>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Zone du RSI</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Lecture classique</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Ce que ça veut vraiment dire</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Au-dessus de 70</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Surachat</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Les hausses récentes dominent largement</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Entre 50 et 70</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Zone neutre haussière</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Les acheteurs ont un léger avantage</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Autour de 50</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Équilibre</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Pas de direction dominante</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Entre 30 et 50</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Zone neutre baissière</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Les vendeurs ont un léger avantage</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Sous 30</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Survente</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Les baisses récentes dominent largement</td></tr></tbody></table></div>
+<h3>Le contresens numéro un</h3>
+<p>Un RSI à 75 ne te dit pas que le cours est « trop haut ». Il te dit que le prix vient de monter vite. Et un marché qui monte vite peut continuer à monter vite. <b>En tendance forte, le RSI peut rester dans la zone de surachat pendant des dizaines de bougies.</b> Vendre parce qu&#39;il touche 70, c&#39;est vendre contre un train lancé.</p>
+<p>C&#39;est exactement le scénario de l&#39;introduction : RSI à 70, vente, et le prix qui ne se retourne jamais. Pire : les vendeurs qui shortent ce surachat placent tous leurs stops au même endroit, juste au-dessus du dernier sommet. Quand ces stops sautent, ils alimentent la hausse ; c&#39;est le mécanisme que je décris dans mon article sur la <a href="https://basstrading.fr/blog/chasse-aux-stops-trading/">chasse aux stops</a>.</p>
+<h3>Surachat : les signaux à surveiller</h3>
+<p>Quand le RSI est en surachat, je ne regarde pas le chiffre, je regarde ce qui l&#39;accompagne :</p>
+<ul><li><b>le niveau</b> : le prix est-il sur une zone préparée (plus haut de la veille, VWAP, zone de volume) ou au milieu de nulle part ?</li><li><b>la structure</b> : le prix fait-il encore des plus hauts et des plus bas plus hauts, ou vient-il de casser son dernier creux ?</li><li><b>la vitesse</b> : le RSI recule-t-il pendant que le prix stagne (essoufflement), ou reste-t-il collé en haut (force) ?</li><li><b>la participation</b> : sur un outil de flux d&#39;ordres, les acheteurs agressifs sont-ils toujours là ?</li></ul>
+<p>Sans au moins un niveau et une cassure de structure, un surachat n&#39;est qu&#39;une information de contexte.</p>
+<h3>La variante 80/20</h3>
+<p>Certains traders remontent les seuils à 80/20 pour ne garder que les excès les plus nets ; la <a href="https://www.tradingview.com/support/solutions/43000502338-relative-strength-index-rsi/">page d&#39;aide de TradingView sur le RSI</a> mentionne cette variante. Moins de signaux, mais chacun correspond à un mouvement plus étiré. Ça ne change rien au fond : un 80 en tendance reste un signe de force.</p>
+<h3>La ligne des 50, plus utile qu&#39;on ne croit</h3>
+<p>Si tu ne devais garder qu&#39;un niveau, garde le 50. Un RSI qui reste au-dessus de 50 te dit que les hausses dominent la période : chercher des ventes à contre-courant devient risqué. C&#39;est une lecture de contexte, pas un signal d&#39;entrée.</p>
+<aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p><b>À retenir</b></p>
+<ul><li>70/30 délimitent des zones d&#39;excès, pas des signaux de retournement.</li><li>En tendance, le RSI peut rester longtemps en surachat ou en survente.</li><li>Le 50 sert de filtre de contexte, plus que de déclencheur.</li></ul></aside>
+<p>Reste une question pratique : comment paramétrer le RSI sur ta plateforme ?</p>
+
+    <hr>
+
+    <h2 id="comment-parametrer-le-rsi-quelle-periode">Comment paramétrer le RSI : quelle période choisir ?</h2>
+    <p>Le réglage de Wilder, 14 périodes, est aussi celui que TradingView qualifie de période <a href="https://www.tradingview.com/support/solutions/43000502338-relative-strength-index-rsi/">« probablement la plus populaire »</a>. Pour un débutant, c&#39;est le bon point de départ : tout le monde regarde le même chiffre, et tu évites d&#39;optimiser un réglage sur le passé.</p>
+<h3>Période courte ou longue : l&#39;arbitrage</h3>
+<ul><li><b>Période courte (7 à 9)</b> : le RSI bouge beaucoup, touche souvent 70 et 30, donc plus de signaux… et beaucoup plus de faux signaux. C&#39;est le réglage qu&#39;on voit le plus en trading court terme.</li><li><b>Période standard (14)</b> : compromis classique.</li><li><b>Période longue (21 à 25)</b> : le RSI devient lent, touche rarement les extrêmes, et chaque signal arrive encore plus tard.</li></ul>
+<p>Il n&#39;y a pas de réglage magique. <b>Raccourcir la période, c&#39;est acheter de la réactivité avec du bruit ; l&#39;allonger, c&#39;est acheter de la stabilité avec du retard.</b></p>
+<h3>L&#39;unité de temps compte plus que la période</h3>
+<p>Un RSI 14 en 1 minute regarde les 14 dernières minutes. Le même RSI en daily regarde 14 jours de bourse, presque trois semaines. Ce ne sont pas du tout les mêmes informations.</p>
+<p>Ma règle, que j&#39;applique à tous les outils : je dézoome pour lire le contexte, je zoome pour exécuter. Si tu tiens à utiliser le RSI, regarde-le sur une unité de temps supérieure (15 minutes, 1 heure) pour savoir dans quel camp tu es, et ne t&#39;en sers pas comme déclencheur sur la minute.</p>
+<h3>Sur quels marchés utiliser le RSI ?</h3>
+<p>Le RSI s&#39;applique à tout ce qui a un prix : actions, indices, futures, matières premières, devises. Mais il ne se comporte pas pareil partout. Sur un marché très volatil comme le Nasdaq futures (NQ ou MNQ), le RSI en petite unité de temps passe son temps aux extrêmes : les seuils 70/30 y sont touchés en permanence. Sur un marché plus calme, une action de grande capitalisation par exemple, les mêmes seuils sont rarement atteints. Si tu changes de marché, observe d&#39;abord où ton RSI passe la majorité de son temps avant de lui faire confiance.</p>
+<p>Pour rappel, sur le Nasdaq futures, un tick (0,25 point) vaut 5 $ sur le NQ et 0,50 $ sur le micro MNQ, d&#39;après les <a href="https://www.cmegroup.com/markets/equities/nasdaq/e-mini-nasdaq-100.contractSpecs.html">spécifications du contrat E-mini Nasdaq-100 du CME Group</a>. Un faux signal de RSI sur ce marché se paie vite : j&#39;ai détaillé le choix entre les deux contrats dans mon comparatif <a href="https://basstrading.fr/blog/nq-ou-mnq/">NQ ou MNQ</a>.</p>
+<h3>Comment l&#39;ajouter sur TradingView</h3>
+<ol><li>Ouvre ton graphique, clique sur « Indicateurs ».</li><li>Tape « Relative Strength Index », ajoute-le.</li><li>Dans les paramètres, vérifie que la longueur est à 14 et la source sur « close ».</li><li>Garde les bandes à 70 et 30, et ajoute une ligne à 50 si elle n&#39;y est pas.</li></ol>
+<h3>Comment l&#39;ajouter sur Sierra Chart</h3>
+<p>C&#39;est la plateforme sur laquelle je travaille. Ajoute l&#39;étude « RSI » à ton graphique, puis vérifie trois réglages décrits dans la <a href="https://www.sierrachart.com/index.php?page=doc/StudiesReference.php&amp;ID=38">documentation officielle de l&#39;étude RSI de Sierra Chart</a> : la longueur (RSI Length) à 14, la donnée d&#39;entrée sur la clôture, et le type de moyenne (Average Type) sur la moyenne de Wilder, pour retrouver le calcul d&#39;origine. Les lignes 70 et 30 se règlent dans la même fenêtre.</p>
+<p>Si tu travailles sur TradingView, ajoute plutôt un repère de prix utile : j&#39;explique comment configurer le <a href="https://basstrading.fr/blog/vwap-tradingview/">VWAP sur TradingView</a>, un niveau qui te servira bien plus qu&#39;un oscillateur de plus.</p>
+<p>Voilà pour les réglages. Passons maintenant à l&#39;usage qui fait le plus parler : les points d&#39;entrée et de sortie.</p>
+
+    <hr>
+
+    <h2 id="comment-utiliser-le-rsi-pour-des-points-">Comment utiliser le RSI pour des points d&#39;entrée et de sortie ?</h2>
+    <p>Le RSI seul ne donne pas un bon point d&#39;entrée : il peut au mieux te dire si un mouvement est étiré. <b>Utilisé correctement, il sert à filtrer une idée de trade qui vient d&#39;ailleurs (un niveau, une structure de prix), pas à la créer.</b></p>
+<h3>L&#39;usage naïf (à éviter)</h3>
+<p>« J&#39;achète quand le RSI passe sous 30, je vends quand il passe au-dessus de 70. » C&#39;est la stratégie qu&#39;on trouve partout. En range calme, elle peut fonctionner un temps. En tendance, elle te fait vendre chaque nouveau plus haut et acheter chaque nouveau plus bas.</p>
+<h3>L&#39;usage plus solide : le RSI comme filtre</h3>
+<p>Voici comment un trader qui débute peut l&#39;intégrer proprement :</p>
+<ol><li><b>Le niveau d&#39;abord</b> : tu repères une zone où le prix a déjà réagi (un plus haut de la veille, le <a href="https://basstrading.fr/blog/vwap-trading/">VWAP</a>, une zone de volume).</li><li><b>Le RSI ensuite</b> : quand le prix arrive sur ta zone, le RSI est-il étiré dans le sens du mouvement ? Si oui, le mouvement a déjà beaucoup donné.</li><li><b>La confirmation par le prix</b> : tu attends une structure claire (un double sommet, une cassure du dernier creux) avant d&#39;agir.</li><li><b>Le risque</b> : ton stop se place derrière la structure, pas derrière un chiffre de RSI.</li></ol>
+<p>C&#39;est l&#39;ordre qui compte : le RSI vient en dernier, jamais en premier.</p>
+<h3>Et pour sortir ?</h3>
+<p>Pour la sortie, le RSI peut t&#39;aider à ne pas rester trop gourmand : un RSI très étiré pendant que ton trade atteint ton objectif est une raison de prendre une partie. Mais ton objectif, lui, doit venir d&#39;un niveau de prix. J&#39;explique comment placer un objectif et un stop logiques dans mon article sur le <a href="https://basstrading.fr/blog/stop-loss-trading/">stop loss en trading</a>.</p>
+<aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p><b>À retenir</b></p>
+<ul><li>Le RSI ne crée pas un trade, il en filtre un.</li><li>Niveau, puis RSI, puis structure du prix, puis risque.</li><li>Stop et objectif se placent sur des niveaux de prix.</li></ul></aside>
+<p>L&#39;autre grand usage du RSI, ce sont les divergences. C&#39;est là que les débutants se brûlent le plus.</p>
+
+    <hr>
+
+    <h2 id="qu-est-ce-qu-une-divergence-rsi-et-faut-">Qu&#39;est-ce qu&#39;une divergence RSI et faut-il la trader ?</h2>
+    <p>Une divergence RSI apparaît quand le prix et l&#39;indicateur ne racontent plus la même histoire : le prix fait un nouveau sommet, mais le RSI fait un sommet plus bas (divergence baissière), ou l&#39;inverse en bas (divergence haussière).</p>
+<h3>Les deux divergences classiques</h3>
+<ul><li><b>Divergence baissière</b> : le prix fait un plus haut plus haut, le RSI fait un plus haut plus bas. Le mouvement monte, mais chaque nouvelle poussée est moins vive.</li><li><b>Divergence haussière</b> : le prix fait un plus bas plus bas, le RSI fait un plus bas plus haut. La baisse continue, mais elle perd de la vitesse.</li></ul>
+<h3>Pourquoi le RSI diverge</h3>
+<p>Rappelle-toi la formule : le RSI compare la taille des hausses à celle des baisses. Si le prix fait un nouveau sommet avec des bougies plus petites, ou après une correction plus profonde, la moyenne des gains baisse : le RSI monte moins haut. <b>Une divergence, c&#39;est donc un mouvement qui ralentit, pas un mouvement qui s&#39;arrête.</b></p>
+<h3>Le piège : une divergence n&#39;est pas un retournement</h3>
+<p>Andrew Cardwell, qui a beaucoup travaillé sur le RSI, observe que les divergences provoquent généralement une brève correction plutôt qu&#39;un vrai retournement de tendance (<a href="https://www.tradingview.com/support/solutions/43000502338-relative-strength-index-rsi/">cité par TradingView</a>). Le scénario le plus probable après une divergence, c&#39;est donc une pause, pas un renversement. En tendance forte, tu peux voir trois ou quatre divergences baissières d&#39;affilée pendant que le prix continue de monter.</p>
+<p>Wilder lui-même proposait un signal plus strict, le <em>failure swing</em> : le RSI dépasse 70, recule, rebondit sans repasser 70, puis casse son dernier creux. C&#39;est plus exigeant, donc plus rare, et toujours basé sur des clôtures passées.</p>
+<h3>Comment je conseille de l&#39;utiliser</h3>
+<ol><li>Repère la divergence sur une zone de prix qui compte (pas au milieu de nulle part).</li><li>Attends que le prix casse sa structure (le dernier creux pour une vente).</li><li>Place ton stop au-dessus du dernier sommet.</li><li>Réduis la taille si ce stop est large.</li></ol>
+<p>Sur ce dernier point, je suis intransigeant : <b>si la confirmation t&#39;oblige à mettre un stop plus large, tu baisses le levier, tu ne rapproches pas le stop.</b> J&#39;explique comment calculer ta taille de position dans <a href="https://basstrading.fr/blog/combien-risquer-par-trade/">combien risquer par trade</a>.</p>
+<aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p><b>À retenir</b></p>
+<ul><li>Divergence = ralentissement, pas retournement.</li><li>En tendance, les divergences s&#39;enchaînent sans effet.</li><li>Attends la cassure de structure avant d&#39;agir.</li></ul></aside>
+<p>Mais il reste une question de fond : pourquoi le RSI arrive-t-il toujours un peu tard ?</p>
+
+    <hr>
+
+    <h2 id="pourquoi-le-rsi-est-il-toujours-en-retar">Pourquoi le RSI est-il toujours en retard ?</h2>
+    <p>Le RSI est en retard parce qu&#39;il est calculé uniquement à partir de clôtures passées, lissées sur 14 périodes. Il décrit ce que le prix a déjà fait. Il ne peut pas voir ce qui se prépare.</p>
+<p>C&#39;est ce que je dis dans ma vidéo sur le trading sans indicateur : <a href="https://www.youtube.com/watch?v=zUSZ9dfr3x0&amp;t=60s">« la plupart des indicateurs sont juste en retard »</a>. Le RSI n&#39;échappe pas à la règle.</p>
+<h3>Trois sources de retard</h3>
+<ul><li><b>La clôture</b> : le RSI ne se met à jour qu&#39;avec le prix de clôture. Tout ce qui s&#39;est passé à l&#39;intérieur de la bougie (une mèche, une absorption, un rejet) n&#39;existe pas pour lui.</li><li><b>La moyenne</b> : 14 bougies, c&#39;est 14 bougies d&#39;histoire. Il faut plusieurs bougies contraires pour qu&#39;il change vraiment de camp.</li><li><b>Le lissage</b> : avec le poids de 13/14 donné à l&#39;ancienne moyenne, le passé « colle » au présent.</li></ul>
+<h3>Le RSI ne voit pas qui agit</h3>
+<p>C&#39;est le point le plus important. Le RSI te dit que le prix est monté. Il ne te dit pas qui l&#39;a fait monter : des acheteurs agressifs qui consomment le carnet, ou un manque de vendeurs ? Il ne te dit pas non plus si, pendant la hausse, un gros vendeur passif absorbe tout.</p>
+<p>Dans ma vidéo sur le meilleur indicateur de trading, je le résume dès <a href="https://www.youtube.com/watch?v=IGaGUCBAD6g&amp;t=8s">l&#39;ouverture</a> : « Le prix, on peut lui faire dire ce qu&#39;on veut. En revanche, de voir réellement qui est en train d&#39;agresser qui va te donner une information qui est capitale. »</p>
+<p>Le RSI, construit à partir du seul prix, hérite de cette limite. Et c&#39;est là que le flux d&#39;ordres change tout.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/rsi-trading/blog-rsi-trading-2.webp" alt="Graphiques de prix bleus sur écran, indicateurs calculés sur l&#39;historique des cours" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Tout indicateur construit sur le prix passé, comme le RSI, décrit ce qui s&#39;est déjà produit.<br><span style="font-size:.85em">Photo : <a href="https://www.rawpixel.com/image/5927200/photo-image-public-domain-blue-free" rel="noopener" target="_blank">auteur inconnu</a>, <a href="https://creativecommons.org/publicdomain/zero/1.0/" rel="noopener license" target="_blank">CC0</a></span></figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="que-montre-le-flux-d-ordres-avant-le-rsi">Que montre le flux d&#39;ordres avant le RSI ?</h2>
+    <p>Le flux d&#39;ordres (order flow) montre les ordres réellement exécutés, à l&#39;achat et à la vente, au moment où ils passent. <b>Là où le RSI constate qu&#39;un mouvement a ralenti, le flux d&#39;ordres te montre pourquoi il ralentit, souvent avant que le prix ne se retourne.</b></p>
+<p>Je t&#39;ai expliqué les bases dans mon guide de l&#39;<a href="https://basstrading.fr/blog/order-flow-trading-france/">order flow en trading</a>. Ici, je me concentre sur ce qui remplace avantageusement le RSI.</p>
+<h3>Le CVD, l&#39;indicateur que je regarde vraiment</h3>
+<p>Le CVD (Cumulative Volume Delta) additionne, bougie après bougie, la différence entre le volume acheté à l&#39;agression et le volume vendu à l&#39;agression. Il te dit qui pousse.</p>
+<p>La logique est simple, et je la donne dans ma vidéo : <a href="https://www.youtube.com/watch?v=IGaGUCBAD6g&amp;t=182s">« on veut voir un prix qui monte avec des volumes qui montent »</a>. Si le prix monte et que le CVD monte avec lui, les acheteurs sont réellement là. Si le prix monte et que le CVD stagne ou baisse, c&#39;est ce que j&#39;appelle un manque de participation : le mouvement n&#39;est pas soutenu.</p>
+<p>Pourquoi c&#39;est plus fiable que le prix seul ? <a href="https://www.youtube.com/watch?v=IGaGUCBAD6g&amp;t=265s">« On peut manipuler le prix. Mais les volumes, c&#39;est beaucoup plus délicat. »</a> Tout le détail est dans mon guide du <a href="https://basstrading.fr/blog/cvd-cumulative-volume-delta/">CVD, Cumulative Volume Delta</a>.</p>
+<h3>L&#39;absorption, ce que le RSI ne verra jamais</h3>
+<p>Imagine un vendeur passif qui place 2 000 lots sur un niveau de prix. Les acheteurs agressifs arrivent, achètent, achètent encore… et le prix ne passe pas. On ne parle pas de 1 000 personnes contre une : on parle de quantités de contrats. Tant que ce vendeur n&#39;est pas consommé, le prix bute.</p>
+<p>Pendant ce temps, ton RSI monte, puisque les bougies précédentes étaient haussières. Il peut même afficher 75 et te faire croire à une force. Le flux d&#39;ordres, lui (le CVD qui ne suit plus, le carnet où l&#39;offre se recharge), te montre des acheteurs qui frappent sans avancer : c&#39;est l&#39;<a href="https://basstrading.fr/blog/absorption-order-flow/">absorption en order flow</a>.</p>
+<h3>Avant, pas après</h3>
+<p>C&#39;est toute la différence de philosophie. Comme je le dis dans ma vidéo, ce sont <a href="https://www.youtube.com/watch?v=IGaGUCBAD6g&amp;t=398s">« des choses qui sont avant-gardistes puisque le prix ensuite réagira »</a>. Et dans ma vidéo sur le trading sans indicateur : <a href="https://www.youtube.com/watch?v=zUSZ9dfr3x0&amp;t=1081s">« moi ce qui m&#39;intéresse c&#39;est pas de le voir après coup, c&#39;est de le voir au moment où ça se produit »</a>.</p>
+<p><b>Le RSI voit la divergence quand les bougies sont fermées. Le flux d&#39;ordres montre l&#39;absorption pendant qu&#39;elle a lieu.</b> Si tu veux voir ces informations bougie par bougie, lis mon article sur le <a href="https://basstrading.fr/blog/footprint-chart-trading/">footprint chart</a>, puis celui sur le <a href="https://basstrading.fr/blog/delta-footprint-trading/">delta du footprint</a>.</p>
+<aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p><b>À retenir</b></p>
+<ul><li>Le RSI mesure la vitesse du prix ; le CVD mesure qui pousse.</li><li>Prix qui monte + CVD qui baisse = manque de participation.</li><li>L&#39;absorption se voit dans le flux d&#39;ordres, jamais dans le RSI.</li></ul></aside>
+<p>Passons à un cas concret pour voir les deux lectures côte à côte.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/rsi-trading/blog-rsi-trading-3.webp" alt="Graphique en chandeliers de l&#39;action PacWest avec volumes, janvier à mai 2023" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Prix et volume de PacWest en 2023 : les volumes explosent pendant la chute de mars, une information que le RSI, calculé sur le seul prix, ne contient pas.<br><span style="font-size:.85em">Photo : <a href="https://commons.wikimedia.org/wiki/File:PacWest_20230101_20230511.tif" rel="noopener" target="_blank">Dr vulpes</a>, <a href="http://creativecommons.org/publicdomain/zero/1.0/deed.en" rel="noopener license" target="_blank">CC0</a></span></figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="exemple-quand-le-prix-monte-sans-partici">Exemple : quand le prix monte sans participation</h2>
+    <p>Dans ma vidéo du 26/10/2025 sur le meilleur indicateur de trading, je montre <a href="https://www.youtube.com/watch?v=IGaGUCBAD6g&amp;t=760s">vers la 13e minute</a> un exemple où le delta cumulé baisse pendant que le prix monte vers une résistance. Je te le raconte ici, avec la lecture qu&#39;en aurait fait un trader RSI.</p>
+<h3>La scène</h3>
+<p>Le prix monte vers une résistance, un ancien plus haut. Pendant cette poussée, le prix monte. Mais le CVD, lui, baisse. <b>Les acheteurs agressifs ne suivent plus : le prix monte par manque de vendeurs, pas par excès d&#39;acheteurs.</b></p>
+<p>C&#39;est à ce moment-là, <a href="https://www.youtube.com/watch?v=IGaGUCBAD6g&amp;t=800s">vers 800 secondes</a>, que j&#39;explique que si j&#39;étais à l&#39;achat, je couperais. Le double sommet n&#39;arrive qu&#39;ensuite, <a href="https://www.youtube.com/watch?v=IGaGUCBAD6g&amp;t=811s">quelques secondes plus loin dans la vidéo</a> : le flux d&#39;ordres avait prévenu avant que le prix ne dessine la figure.</p>
+<h3>Ce que fait le trader RSI</h3>
+<p>Sur la deuxième poussée, le RSI fait probablement un sommet un peu plus bas que le premier : une divergence baissière apparaît. Mais il ne la voit vraiment qu&#39;une fois les bougies fermées, et il ne sait pas si c&#39;est un simple ralentissement (le cas le plus fréquent selon Cardwell) ou un vrai retournement.</p>
+<h3>Ce que je fais</h3>
+<p>Moi, je vois la divergence entre le prix et le CVD pendant la poussée, sur un niveau préparé. Si je suis à l&#39;achat, je coupe. Je ne cherche pas à deviner un sommet au milieu de nulle part : je cherche où le prix s&#39;arrête, sur une zone, avec des acheteurs qui disparaissent.</p>
+<p>Et si tu n&#39;as pas d&#39;outil de flux d&#39;ordres ? Tu attends le double sommet et la cassure. Le stop est plus large, donc tu baisses le levier. C&#39;est moins précis, mais c&#39;est honnête.</p>
+<aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p><b>À retenir</b></p>
+<ul><li>Le niveau est préparé avant la séance.</li><li>La divergence prix/CVD se voit pendant le mouvement.</li><li>Sans flux d&#39;ordres : double sommet, cassure, stop large, levier réduit.</li></ul></aside>
+<p><em>Le trading de contrats à terme comporte un risque élevé de perte, pouvant dépasser la mise initiale. Contenu éducatif, pas un conseil en investissement.</em></p>
+<p>Si tu veux apprendre à lire ces informations sur de vraies séances commentées, c&#39;est exactement ce que je montre dans ma <a href="https://basstrading.fr/l/OJOnKA">formation gratuite au trading</a> : le contexte, les niveaux, et ce que je regarde avant de cliquer.</p>
+<p>Reste à situer le RSI parmi ses cousins : stochastique et MACD.</p>
+
+    <hr>
+
+    <h2 id="rsi-stochastique-ou-macd-lequel-choisir">RSI, stochastique ou MACD : lequel choisir ?</h2>
+    <p>Le RSI, le stochastique et le MACD sont trois indicateurs calculés à partir du prix seul. Ils ont donc tous le même défaut de fond : ils décrivent le passé. Leur différence tient à ce qu&#39;ils comparent.</p>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Indicateur</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Ce qu&#39;il compare</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Défaut principal</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">RSI</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Taille des hausses et des baisses</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Reste collé aux extrêmes en tendance</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Stochastique</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Clôture face au range récent</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Très nerveux, nombreux faux signaux</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">MACD</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Écart entre deux moyennes mobiles</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Non borné, signaux encore plus tardifs</td></tr></tbody></table></div>
+<h3>RSI ou stochastique</h3>
+<p>Le stochastique situe la clôture dans le range des N dernières bougies (en haut du range = proche de 100). Il est plus nerveux que le RSI. Si tu cherches un indicateur pour un marché en range, les deux se valent ; en tendance, ils se trompent de la même façon.</p>
+<p>La réponse change-t-elle sur le forex ? Non : la différence entre RSI et stochastique tient à leur formule, pas au marché. Une paire de devises en tendance fera mentir les deux indicateurs exactement comme le Nasdaq.</p>
+<h3>RSI ou MACD</h3>
+<p>Le MACD n&#39;est pas borné : il ne parle pas de surachat mais de croisements de moyennes. Il est utile pour suivre une tendance, moins pour repérer un excès. Il est aussi plus lent.</p>
+<h3>Faut-il les combiner ?</h3>
+<p><b>Mettre RSI, stochastique et MACD ensemble, c&#39;est regarder trois fois le même prix passé sous trois angles.</b> Tu n&#39;ajoutes pas d&#39;information, tu ajoutes de la confusion. Comme je le dis dans ma vidéo sur le trading sans indicateur : <a href="https://www.youtube.com/watch?v=zUSZ9dfr3x0&amp;t=1296s">« vous n&#39;avez pas besoin d&#39;indicateurs et de choses qui vous pourrissent les graphiques, vous avez besoin en fait d&#39;être observateur »</a>.</p>
+<p>Si tu veux une information différente du prix, il faut aller la chercher ailleurs : dans le volume, le carnet d&#39;ordres, le <a href="https://basstrading.fr/blog/vwap-trading/">VWAP</a> ou le flux d&#39;ordres. Un indicateur de prix de plus n&#39;y changera rien.</p>
+
+    <hr>
+
+    <h2 id="quelles-erreurs-font-les-debutants-avec-">Quelles erreurs font les débutants avec le RSI ?</h2>
+    <p>Les mêmes erreurs reviennent chez presque tous les traders qui débutent avec le RSI. Les voici, avec ce qu&#39;il faut faire à la place.</p>
+<h3>1. Vendre parce que le RSI touche 70</h3>
+<p>C&#39;est l&#39;erreur la plus coûteuse. Un RSI en surachat dans une tendance forte est un signe de force, pas de faiblesse.</p>
+<p><b>À la place</b> : regarde d&#39;abord la structure. Tant que le prix fait des plus hauts et des plus bas plus hauts, le surachat confirme la tendance.</p>
+<h3>2. Trader chaque divergence</h3>
+<p>En tendance, les divergences s&#39;empilent. Si tu vends chacune, tu vends la tendance en boucle.</p>
+<p><b>À la place</b> : une divergence sur un niveau préparé, plus une cassure de structure, sinon rien.</p>
+<h3>3. Optimiser les réglages sur le passé</h3>
+<p>Passer de 14 à 9, puis à 11, puis à 7 parce que « ça aurait marché la semaine dernière ». Tu ajustes l&#39;outil au bruit passé.</p>
+<p><b>À la place</b> : garde 14, et travaille ta lecture du contexte.</p>
+<h3>4. Empiler les indicateurs</h3>
+<p>RSI + stochastique + MACD + deux moyennes mobiles : ton graphique devient illisible, et tous ces outils disent la même chose avec du retard.</p>
+<p><b>À la place</b> : un graphique propre, des niveaux, le prix. J&#39;explique cette approche dans mon guide du <a href="https://basstrading.fr/blog/price-action-trading/">price action</a>, et si tu t&#39;intéresses aux lectures de structure, j&#39;ai fait le point sur le <a href="https://basstrading.fr/blog/smc-trading/">SMC en trading</a>.</p>
+<h3>5. Placer le stop selon le RSI</h3>
+<p>« Je sors si le RSI repasse sous 50. » Le RSI peut repasser sous 50 alors que ton idée de trade est toujours valide, ou ne jamais y repasser alors que ton niveau est cassé.</p>
+<p><b>À la place</b> : le stop se place derrière un niveau de prix qui invalide ton idée. Voir mon article sur le <a href="https://basstrading.fr/blog/stop-loss-trading/">stop loss</a>.</p>
+<h3>6. Oublier le risque</h3>
+<p>Le RSI ne dit rien de la taille de ta position. Selon l&#39;<a href="https://www.esma.europa.eu/press-news/esma-news/esma-agrees-prohibit-binary-options-and-restrict-cfds-protect-retail-investors">ESMA (27/03/2018)</a>, 74 à 89 % des comptes de particuliers perdent de l&#39;argent sur les CFD. Aucun indicateur ne protège d&#39;un levier excessif.</p>
+<p><b>À la place</b> : un risque fixe et petit par trade, décidé avant d&#39;entrer.</p>
+
+    <hr>
+
+    <h2 id="quelles-sont-les-limites-du-rsi">Quelles sont les limites du RSI ?</h2>
+    <p>Le RSI est un outil de mesure honnête : il fait exactement ce que dit sa formule. Ses limites viennent de ce qu&#39;on lui demande. Voici quand il devient inutile, voire dangereux.</p>
+<h3>Quand le marché est en tendance forte</h3>
+<p>C&#39;est la limite la plus connue. Le RSI plafonne en surachat ou en survente et donne des signaux contraires en permanence. TradingView le dit dans <a href="https://www.tradingview.com/support/solutions/43000502338-relative-strength-index-rsi/">sa documentation</a> : aucun indicateur n&#39;est une solution miracle (« no one indicator is a magic bullet »).</p>
+<h3>Quand une nouvelle tombe</h3>
+<p>Publication d&#39;un chiffre économique, discours d&#39;un banquier central : le prix bondit en une bougie. Le RSI s&#39;envole avec, et reste déformé pendant des bougies à cause du lissage. Ses lectures n&#39;ont alors plus de sens.</p>
+<h3>En très petite unité de temps</h3>
+<p>Sur la minute, le RSI 14 regarde 14 minutes. Il réagit au moindre bruit. Sur le Nasdaq futures, il passe d&#39;un extrême à l&#39;autre en quelques bougies.</p>
+<h3>Quand tu as besoin de savoir qui agit</h3>
+<p>Le RSI ne voit ni le volume, ni les agressions, ni le carnet d&#39;ordres. S&#39;il y a absorption sur ton niveau, il ne le saura jamais. <b>C&#39;est la limite de fond de tout indicateur construit sur le prix.</b> Pour lire où le volume s&#39;est réellement échangé, regarde plutôt la différence entre <a href="https://basstrading.fr/blog/market-profile-vs-volume-profile/">Market Profile et Volume Profile</a>.</p>
+<h3>Ce que le RSI fait bien malgré tout</h3>
+<p>Pour être juste :</p>
+<ul><li>il synthétise la vitesse récente du prix en un chiffre lisible ;</li><li>il aide à éviter d&#39;acheter un mouvement déjà très étiré ;</li><li>il peut servir de filtre de contexte en unité de temps supérieure ;</li><li>il est gratuit et disponible partout.</li></ul>
+<p>C&#39;est un thermomètre. Le problème, c&#39;est quand on l&#39;utilise comme une boussole.</p>
+
+    <hr>
+
+    <h2 id="le-scalping-avec-le-rsi-est-il-une-bonne">Le scalping avec le RSI est-il une bonne méthode ?</h2>
+    <p>Aucun indicateur ne rend une méthode rentable à lui seul, et le RSI encore moins en scalping. En scalping, tu prends des décisions en quelques secondes ou minutes, et le RSI ne se met à jour qu&#39;à la clôture de chaque bougie. <b>Il arrive structurellement trop tard pour ce style.</b></p>
+<h3>Ce qui se passe en pratique</h3>
+<p>Tu scalpes en 1 minute. Le prix pousse fort, le RSI passe à 85. Tu vends. La bougie suivante pousse encore. Le RSI reste à 85. Tu te fais sortir.</p>
+<p>C&#39;est pour ça que j&#39;ai une règle simple à l&#39;ouverture : je ne trade jamais la première bougie d&#39;une minute, surtout quand ça pousse fort. L&#39;excès de vitesse du début de séance, c&#39;est précisément ce que le RSI lit comme un surachat, alors que ce n&#39;est souvent que le début du mouvement.</p>
+<h3>Ce qui marche mieux en petite unité de temps</h3>
+<p>En scalping, ce qui compte, c&#39;est ce qui se passe dans la bougie : qui agresse, qui absorbe, où les ordres s&#39;accumulent. C&#39;est le domaine du flux d&#39;ordres et du carnet d&#39;ordres. Si tu veux voir les volumes à l&#39;intérieur des bougies sans plateforme payante, regarde comment afficher un <a href="https://basstrading.fr/blog/footprint-tradingview/">footprint sur TradingView</a>.</p>
+<h3>Si tu tiens au RSI</h3>
+<p>Utilise-le en unité de temps supérieure (15 minutes ou 1 heure) pour savoir si le marché est étiré, et exécute en petite unité de temps sur des niveaux de prix. Jamais l&#39;inverse.</p>
+
+    <hr>
+
+    <h2 id="ce-qu-il-faut-retenir-sur-le-rsi-et-quoi">Ce qu&#39;il faut retenir sur le RSI, et quoi faire ce soir</h2>
+    <p>Le RSI est un bon thermomètre et un mauvais déclencheur. Bien compris, il t&#39;évite d&#39;acheter un mouvement à bout de souffle. Mal compris, il te fait vendre chaque tendance.</p>
+<h3>Les 5 points à garder</h3>
+<ul><li>Le RSI mesure la vitesse du prix, en comparant la taille des hausses et des baisses sur 14 périodes.</li><li>70/30 ne sont pas des signaux de retournement : en tendance, le RSI reste longtemps aux extrêmes.</li><li>Une divergence est un ralentissement, pas un retournement : attends la cassure de structure.</li><li>Le RSI est en retard par construction : clôtures, moyenne, lissage.</li><li>Pour voir qui agit, il faut le flux d&#39;ordres : CVD, carnet d&#39;ordres, absorption.</li></ul>
+<h3>Ce soir, sur ton graphique</h3>
+<p>Ouvre le Nasdaq (ou ton marché) en 5 minutes avec le RSI 14. Fais défiler la dernière semaine et note chaque fois que le RSI a touché 70 ou 30. Pour chacune, demande-toi : le prix s&#39;est-il vraiment retourné, ou a-t-il continué ? Tu vas voir de tes propres yeux combien de « signaux » n&#39;en étaient pas.</p>
+<p>Puis refais l&#39;exercice en ne regardant que les touches de 70/30 sur un niveau de prix que tu aurais pu préparer (plus haut de la veille, VWAP). <b>La différence te dira tout sur la place qu&#39;il faut donner au RSI.</b></p>
+<p>La suite logique, c&#39;est d&#39;apprendre à lire ce qui se passe avant le RSI : commence par mon guide du <a href="https://basstrading.fr/blog/cvd-cumulative-volume-delta/">CVD</a>, puis par l&#39;<a href="https://basstrading.fr/blog/absorption-order-flow/">absorption</a>.</p>
+
+    <p><a href="https://www.youtube.com/watch?v=IGaGUCBAD6g" target="_blank" rel="noopener">▶ Voir la vidéo de Sébastien sur ce sujet</a></p>
+
+    <div class="cta-card cta-aimant">
+      <div class="cta-card-label">Gratuit</div>
+      <h3>La formation offerte : 7 leçons pour lire le marché comme un pro</h3>
+      <p>Accès immédiat et gratuit, en vidéo, à ton rythme. Sans carte bancaire.</p>
+      <a href="https://basstrading.fr/p/formation-offerte/?src=blog-rsi-trading" class="btn-p">Je la veux →</a>
+    </div>
+    
+  </article>
+</div>
+
+<!-- FAQ -->
+<section class="faq-sec">
+  <div class="sec-center"><div class="sec-label">FAQ</div><h2 class="sec-title">Questions fréquentes</h2></div>
+  <div class="faq-list">
+    <div class="fi"><button class="fq" onclick="tf(this)">Quel est le meilleur réglage du RSI ? <span class="fq-icon">+</span></button><div class="fa"><p>Le réglage de Wilder, 14 périodes, reste le plus utilisé et le meilleur point de départ. Une période plus courte (7 à 9) donne plus de signaux mais beaucoup plus de faux signaux ; une période plus longue (21 et plus) lisse davantage mais ajoute du retard. L&#39;unité de temps compte plus que la période : un RSI 14 en 1 minute et en daily ne disent pas du tout la même chose.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Que veut dire un RSI au-dessus de 70 ? <span class="fq-icon">+</span></button><div class="fa"><p>Un RSI au-dessus de 70 signifie que les hausses récentes ont été nettement plus fortes que les baisses : le marché est en zone de surachat. Ce n&#39;est pas un signal de vente. En tendance forte, le RSI peut rester au-dessus de 70 pendant longtemps. Il faut une structure de prix (double sommet, cassure du dernier creux) pour envisager un retournement.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Une divergence RSI annonce-t-elle un retournement ? <span class="fq-icon">+</span></button><div class="fa"><p>Pas forcément. Une divergence montre que le mouvement ralentit. Andrew Cardwell observe qu&#39;elle provoque le plus souvent une brève correction plutôt qu&#39;un vrai retournement de tendance. En tendance forte, plusieurs divergences peuvent s&#39;enchaîner sans effet. Attends une cassure de structure sur un niveau préparé avant d&#39;agir.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Comment paramétrer le RSI ? <span class="fq-icon">+</span></button><div class="fa"><p>Garde le réglage d&#39;origine de Wilder (1978) : 14 périodes, calculées sur les clôtures, avec son lissage. Sur TradingView, ajoute « Relative Strength Index », vérifie la longueur 14 et la source « close », garde les bandes 70 et 30. Sur Sierra Chart, ajoute l&#39;étude RSI, mets la longueur à 14 et le type de moyenne sur Wilder. Ensuite, ne touche plus aux réglages : travaille plutôt l&#39;unité de temps et les niveaux de prix.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Sur quels marchés utiliser le RSI indicateur ? <span class="fq-icon">+</span></button><div class="fa"><p>Le RSI s&#39;applique à tous les marchés qui ont un prix : actions, indices, futures, matières premières, devises. Sur un marché très volatil comme le Nasdaq futures, il passe son temps aux extrêmes en petite unité de temps et sert surtout de filtre en 15 minutes ou en 1 heure. Sur un marché calme, les seuils 70/30 sont rarement touchés. Observe d&#39;abord son comportement sur ton marché avant de lui faire confiance.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">RSI ou stochastique, lequel est le plus fiable ? <span class="fq-icon">+</span></button><div class="fa"><p>Aucun des deux n&#39;est plus fiable en soi : ils sont tous deux calculés à partir du prix passé, sur le forex comme sur les futures. Le stochastique, qui situe la clôture dans le range récent, est plus nerveux et donne plus de faux signaux. Le RSI est un peu plus stable. Les combiner n&#39;ajoute pas d&#39;information nouvelle, seulement un deuxième regard sur le même prix.</p></div></div>
+  </div>
+</section>
+
+<!-- Related -->
+<section class="related-sec">
+  <div class="sec-center"><div class="sec-label">Continuer la lecture</div><h2 class="sec-title">Articles connexes</h2></div>
+  <div class="related-grid">
+    <a href="/blog/market-profile-guide-complet/" class="related-card"><div class="related-cat">Guide</div><h3>Market Profile : le guide complet pour débutants</h3><p>Value Area, POC, types de journées — tout pour commencer.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/order-flow-trading-france/" class="related-card"><div class="related-cat">Méthode</div><h3>Order Flow Trading : pourquoi personne ne l'enseigne en France</h3><p>Le carnet d'ordres et le flux institutionnel décryptés.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/sierra-chart-configuration/" class="related-card"><div class="related-cat">Tutoriel</div><h3>Sierra Chart : configuration complète</h3><p>Le setup pas à pas pour le Market Profile et le Footprint.</p><span class="related-link">Lire &rarr;</span></a>
+  </div>
+</section>
+
+<!-- serie:debut --><style>.serie-w{background:#FFF;color:#1D1D1F;border-top:1px solid #F5F5F7}.serie{max-width:1060px;margin:0 auto;padding:56px 24px;font-family:inherit;box-sizing:border-box}.serie-l{font-size:.6rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#0066FF;margin-bottom:8px}.serie-w .serie h2{font-size:1.4rem;font-weight:800;letter-spacing:-.5px;color:#1D1D1F!important;margin:0 0 18px;font-family:inherit}.serie ul{list-style:none;padding:0;margin:0 0 22px;display:grid;grid-template-columns:repeat(2,1fr);gap:8px 24px}.serie-w .serie li a{color:#1D1D1F!important;font-size:.9rem;line-height:1.45;text-decoration:none;border-bottom:1px solid #D2D2D7}.serie li a:hover{color:#0066FF}.serie li.pil a{font-weight:700}.serie-o{background:#F5F5F7;border-radius:14px;padding:18px 20px;font-size:.88rem;line-height:1.55;color:#1D1D1F}.serie-w .serie-o a{color:#0066FF!important;font-weight:700}@media(max-width:700px){.serie ul{grid-template-columns:1fr}}</style><div class="serie-w"><aside class="serie" aria-label="Dans la même série"><div class="serie-l">Dans la même série</div><h2>Trouver sa méthode de trading</h2><ul><li class="pil"><a href="/blog/methode-de-trading/">Méthode de trading : comment trouver celle qui te correspond</a></li><li class=""><a href="/blog/types-trading-differences/">Les Types de Trading : Lequel Choisir Selon Votre Profil ? (2026)</a></li><li class=""><a href="/blog/debuter-trading-zero-guide/">Débuter le trading de zéro : par où commencer (guide 2026)</a></li><li class=""><a href="/blog/devenir-trader-sans-diplome/">Devenir trader sans diplôme ni formation : le vrai parcours</a></li><li class=""><a href="/blog/livre-trading/">Livre trading : les meilleurs pour apprendre (et l'ordre)</a></li><li class=""><a href="/blog/formation-trading/">Formation trading : contenu, prix, CPF et pièges à éviter</a></li><li class=""><a href="/blog/formation-trading-gratuite/">Formation trading gratuite : ce qu'on apprend sans payer</a></li><li class=""><a href="/blog/quelle-formation-trading-choisir/">Quelle formation trading choisir en 2026 ? 7 critères pour comparer</a></li><li class=""><a href="/blog/arnaque-trading/">Arnaque au trading : les 7 pièges et que faire si tu es victime</a></li><li class=""><a href="/blog/bookmap-heatmap/">Bookmap : lire la heatmap, prix réels et avis de trader</a></li><li class=""><a href="/blog/deepcharts-avis/">DeepCharts avis : prix, Mac, MBO et limites (2026)</a></li><li class=""><a href="/blog/flux-ordres-tradingview/">Order flow sur TradingView : ce qu'on voit vraiment (et ses limites)</a></li><li class=""><a href="/blog/gocharting-avis/">GoCharting : mon avis sur l'order flow dans le navigateur</a></li><li class=""><a href="/blog/lucid-trading/">Lucid Trading avis : règles, drawdown et payout (2026)</a></li><li class=""><a href="/blog/methode-wyckoff/">Méthode Wyckoff : accumulation, distribution et spring</a></li><li class=""><a href="/blog/motivewave-avis/">MotiveWave avis : prix, version gratuite, Mac et order flow</a></li><li class=""><a href="/blog/price-action-trading/">Price action : ce que c'est, et ce que la bougie ne montre pas</a></li><li class=""><a href="/blog/quantower-avis/">Quantower avis : version gratuite, footprint, Mac et prix (2026)</a></li><li class=""><a href="/blog/take-profit-trading/">Take profit : où placer ton objectif sur les futures (exemples MNQ)</a></li><li class=""><a href="/blog/topstep/">Topstep avis : règles, drawdown et payout expliqués (2026)</a></li></ul><div class="serie-o"><a href="/formations/">Toutes les formations de Bass</a> : plus de 250 leçons vidéo, du débutant au Market Profile avancé. Pour commencer sans payer : <a href="/p/formation-offerte/?src=serie-rsi-trading">la formation offerte</a> (7 leçons vidéo).</div></aside></div><!-- serie:fin -->
+<footer class="footer">
+  <div class="ft-top"><div class="ft-logo">BASS</div><div class="ft-cols">
+    <div class="ft-col"><div class="ft-col-title">Programme</div><a href="/formations/">Toutes les formations</a><a href="https://basstrading.fr/#methode">Méthode</a><a href="https://basstrading.fr/#programme">Programme</a><a href="https://basstrading.fr/p/formation-offerte/?src=blog-rsi-trading-pied">Formation offerte</a></div>
+    <div class="ft-col"><div class="ft-col-title">Ressources</div><a href="/blog/market-profile-guide-complet/">Market Profile</a><a href="/blog/footprint-chart-trading/">Footprint Chart</a><a href="/blog/order-flow-trading-france/">Order Flow</a></div>
+  </div></div>
+  <div class="ft-bottom"><span>&copy; 2026 BASS — Sébastien Constant</span><div><a href="/mentions-legales/">Mentions légales</a><a href="/confidentialite/">Confidentialité</a><a href="/cgv/">CGV</a><a href="mailto:contact@basstrading.fr">Contact</a></div></div>
+</footer>
+<div class="disclaimer">Le trading comporte des risques de perte en capital. Les performances passées ne préjugent pas des performances futures. Ce site ne constitue pas un conseil en investissement.</div>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+const lenis=new Lenis({duration:1.2,easing:t=>Math.min(1,1.001-Math.pow(2,-10*t))});
+function raf(t){lenis.raf(t);requestAnimationFrame(raf)}requestAnimationFrame(raf);
+lenis.on('scroll',ScrollTrigger.update);gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0);
+const tl=gsap.timeline();
+tl.to('.pre-word span',{y:0,opacity:1,duration:.5,stagger:.1,ease:'power3.out',delay:.3}).to('#preLine',{width:'80px',duration:.7,ease:'power2.inOut'},'<+.2').to('.preloader',{yPercent:-100,duration:.8,ease:'power3.inOut',delay:.4}).set('.preloader',{display:'none'}).to('#nav',{opacity:1,y:0,duration:.5},'<+.1');
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);const h=document.documentElement.scrollHeight-window.innerHeight;document.getElementById('readingProgress').style.width=(window.scrollY/h*100)+'%'});
+const tocLinks=document.querySelectorAll('.toc a');const sections=Array.from(tocLinks).map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+window.addEventListener('scroll',()=>{let c='';sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)c=s.id});tocLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+c)})});
+function tf(b){const i=b.closest('.fi'),a=b.nextElementSibling,o=i.classList.contains('active');document.querySelectorAll('.fi').forEach(x=>{x.classList.remove('active');x.querySelector('.fa').classList.remove('open')});if(!o){i.classList.add('active');a.classList.add('open')}}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();lenis.scrollTo(t,{offset:-60})}})});
+</script>
+<script src="/v.js" defer></script>
+</body>
+</html>
