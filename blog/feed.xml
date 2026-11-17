@@ -6,8 +6,16 @@
   <link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
   <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/"/>
   <id>https://basstrading.fr/blog/</id>
-  <updated>2026-11-16T00:00:00Z</updated>
+  <updated>2026-11-17T00:00:00Z</updated>
   <author><name>Sébastien Constant (Bass)</name><uri>https://basstrading.fr/auteur/sebastien-constant/</uri></author>
+  <entry>
+    <title>RSI trading : réglages, divergences et limites (guide)</title>
+    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/rsi-trading/"/>
+    <id>https://basstrading.fr/blog/rsi-trading/</id>
+    <published>2026-11-17T00:00:00Z</published>
+    <updated>2026-11-17T00:00:00Z</updated>
+    <summary>RSI en trading : calcul, réglage 14, surachat 70/30, divergences, faux signaux et ce que le flux d&#x27;ordres montre avant lui. Guide pratique et exemple réel.</summary>
+  </entry>
   <entry>
     <title>S&amp;P 500 futures : ES ou MES, valeur du point et horaires</title>
     <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/sp-500-futures-es-mes/"/>
