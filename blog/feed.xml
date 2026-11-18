@@ -6,8 +6,16 @@
   <link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
   <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/"/>
   <id>https://basstrading.fr/blog/</id>
-  <updated>2026-11-17T00:00:00Z</updated>
+  <updated>2026-11-18T00:00:00Z</updated>
   <author><name>Sébastien Constant (Bass)</name><uri>https://basstrading.fr/auteur/sebastien-constant/</uri></author>
+  <entry>
+    <title>Fibonacci trading : niveaux, tracé et ce qui tient vraiment</title>
+    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/fibonacci-trading/"/>
+    <id>https://basstrading.fr/blog/fibonacci-trading/</id>
+    <published>2026-11-18T00:00:00Z</published>
+    <updated>2026-11-18T00:00:00Z</updated>
+    <summary>Fibonacci trading : comment tracer les retracements (23,6 à 78,6 %), ce que disent les études et pourquoi je préfère les niveaux de volume sur les futures.</summary>
+  </entry>
   <entry>
     <title>RSI trading : réglages, divergences et limites (guide)</title>
     <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/rsi-trading/"/>
