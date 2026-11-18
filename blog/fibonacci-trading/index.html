@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fibonacci trading : niveaux, tracé et ce qui tient vraiment — BASS Trading</title>
+  <meta name="description" content="Fibonacci trading : comment tracer les retracements (23,6 à 78,6 %), ce que disent les études et pourquoi je préfère les niveaux de volume sur les futures.">
+  <meta property="og:title" content="Fibonacci trading : niveaux, tracé et ce qui tient vraiment — BASS Trading">
+  <meta property="og:description" content="Fibonacci trading : comment tracer les retracements (23,6 à 78,6 %), ce que disent les études et pourquoi je préfère les niveaux de volume sur les futures.">
+  <meta property="og:image" content="https://basstrading.fr/blog/fibonacci-trading/blog-fibonacci-trading-1.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://basstrading.fr/blog/fibonacci-trading/blog-fibonacci-trading-1.webp">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://basstrading.fr/blog/fibonacci-trading/">
+  <meta property="og:site_name" content="BASS Trading">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://basstrading.fr/blog/fibonacci-trading/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","@id":"https://basstrading.fr/blog/fibonacci-trading/#article","headline":"Fibonacci trading : niveaux, tracé et ce qui tient vraiment","description":"Fibonacci trading : comment tracer les retracements (23,6 à 78,6 %), ce que disent les études et pourquoi je préfère les niveaux de volume sur les futures.","datePublished":"2026-11-18","dateModified":"2026-11-18","inLanguage":"fr-FR","image":"https://basstrading.fr/blog/fibonacci-trading/blog-fibonacci-trading-1.webp","mainEntityOfPage":"https://basstrading.fr/blog/fibonacci-trading/","isPartOf":{"@type":"WebSite","@id":"https://basstrading.fr/#website","name":"BASS Trading","url":"https://basstrading.fr/"},"author":{"@type":"Person","@id":"https://basstrading.fr/#sebastien-constant","name":"Sébastien Constant","url":"https://basstrading.fr/auteur/sebastien-constant/"},"publisher":{"@type":"Organization","@id":"https://basstrading.fr/#organisation","name":"BASS Trading","url":"https://basstrading.fr/","logo":{"@type":"ImageObject","url":"https://basstrading.fr/images/logo-basstrading.png","width":512,"height":512}}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://basstrading.fr"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://basstrading.fr/blog/"},{"@type":"ListItem","position":3,"name":"Fibonacci trading","item":"https://basstrading.fr/blog/fibonacci-trading/"}]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Le retracement de Fibonacci fonctionne-t-il vraiment en trading ?","acceptedAnswer":{"@type":"Answer","text":"Pas seul. Aucune étude publiée ne montre un avantage rentable des niveaux de Fibonacci utilisés comme règle unique. Une étude de 2022 sur trois marchés actions trouve que plus la zone autour du niveau est large, plus on observe de rebonds, sans que cela fasse une stratégie rentable. Les niveaux fonctionnent surtout quand ils coïncident avec des ordres réels, par exemple un niveau de gros volume."}},{"@type":"Question","name":"Quel est le niveau de Fibonacci le plus important ?","acceptedAnswer":{"@type":"Answer","text":"Le 61,8 % est le plus suivi, car il correspond à l'inverse du nombre d'or et beaucoup de traders le surveillent. Le 50 %, qui n'est pas un vrai ratio de Fibonacci, est presque aussi regardé. Mais aucun niveau n'est important en soi : il le devient s'il tombe sur une zone où le marché a beaucoup échangé, comme un POC ou une borne de Value Area."}},{"@type":"Question","name":"C'est quoi la golden zone en Fibonacci ?","acceptedAnswer":{"@type":"Answer","text":"La golden zone désigne la zone entre 61,8 % et 65 % de retracement, parfois élargie de 50 % à 61,8 %. Elle est présentée comme le repli idéal pour entrer dans le sens de la tendance. Son intérêt réel est géométrique : entrer sur un repli profond rapproche le stop et éloigne l'objectif. Les taux de réussite qui circulent à son sujet ne viennent d'aucune étude publiée."}},{"@type":"Question","name":"Quelle unité de temps utiliser pour tracer un Fibonacci ?","acceptedAnswer":{"@type":"Answer","text":"Les grandes unités de temps (journalier, hebdomadaire) donnent les tracés les plus partagés, donc les plus susceptibles de réagir. En 1 minute ou en tick, il y a trop de mouvements possibles et chacun peut tracer un Fibonacci différent. Si tu fais du day trading, trace sur le mouvement principal de la séance ou de la veille, pas sur chaque micro-impulsion."}},{"@type":"Question","name":"Fibonacci ou Volume Profile : lequel utiliser sur les futures ?","acceptedAnswer":{"@type":"Answer","text":"Sur les futures, je préfère le Volume Profile : il mesure le volume réellement échangé à chaque prix, avec le même calcul pour tout le monde. Fibonacci dépend des deux points que tu choisis. Les deux peuvent se combiner : un niveau de Fibonacci qui tombe sur un POC ou une borne de Value Area a deux raisons d'exister. Sinon, je garde le niveau de volume."}},{"@type":"Question","name":"Faut-il mettre son stop sous le niveau 78,6 % ?","acceptedAnswer":{"@type":"Answer","text":"Pas par principe. Un stop se place sous la structure qui invalide ton idée, en général le creux du mouvement ou une zone de volume, pas sous une ligne de ratio. Ensuite, tu adaptes ta taille de position à cette distance pour que ta perte possible reste dans ton risque maximal par trade."}}]}
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{--bk:#1D1D1F;--bk2:#111;--bk3:#0A0A0A;--g1:#6E6E73;--g2:#86868B;--g3:#D2D2D7;--g4:#F5F5F7;--wh:#FBFBFD;--pure:#FFF;--green:#00B67A;--blue:#0066FF}
+    html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}
+    body{font-family:'DM Sans',sans-serif;color:var(--bk);background:var(--pure);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+    .preloader{position:fixed;inset:0;background:var(--bk3);z-index:10001;display:flex;align-items:center;justify-content:center}
+    .pre-word{font-family:'Outfit',sans-serif;font-size:clamp(3rem,8vw,5rem);font-weight:900;letter-spacing:16px;text-transform:uppercase;color:var(--pure);overflow:hidden}
+    .pre-word span{display:inline-block;transform:translateY(110%);opacity:0}
+    .pre-line{width:0;height:1px;background:rgba(255,255,255,.3);margin-top:20px}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 48px;display:flex;align-items:center;justify-content:space-between;background:rgba(245,245,247,.85);backdrop-filter:blur(20px) saturate(1.8);border-bottom:1px solid rgba(0,0,0,.04);transition:background .4s}
+    .nav-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase;color:var(--bk)}
+    .nav-links{display:flex;gap:28px;list-style:none}.nav-links a{font-size:.74rem;font-weight:500;letter-spacing:.3px;color:var(--g1);transition:color .3s}.nav-links a:hover{color:var(--bk)}
+    .nav-cta{padding:8px 20px;background:var(--bk);color:var(--pure);border:none;border-radius:980px;font-size:.72rem;font-weight:600;transition:all .3s;cursor:pointer;text-decoration:none;display:inline-block}.nav-cta:hover{background:var(--bk2)}
+    .blog-hero{padding:160px 48px 80px;background:var(--g4);position:relative;overflow:hidden}
+    .blog-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,transparent,var(--g4));pointer-events:none}
+    .blog-hero-inner{max-width:720px;margin:0 auto}
+    .breadcrumb{display:flex;gap:8px;align-items:center;margin-bottom:28px;flex-wrap:wrap}
+    .breadcrumb a,.breadcrumb span{font-size:.68rem;font-weight:500;letter-spacing:.3px;color:var(--g2);transition:color .3s}.breadcrumb a:hover{color:var(--bk)}.breadcrumb .sep{color:var(--g3)}
+    .blog-hero-cat{display:inline-block;padding:5px 14px;border:1px solid rgba(0,102,255,.15);border-radius:980px;font-size:.6rem;font-weight:700;color:var(--blue);letter-spacing:2px;text-transform:uppercase;margin-bottom:20px}
+    .blog-hero-title{font-family:'Outfit',sans-serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:900;line-height:1.05;letter-spacing:-2px;color:var(--bk);margin-bottom:20px}
+    .blog-hero-desc{font-size:.95rem;color:var(--g1);line-height:1.8;max-width:560px;margin-bottom:28px}
+    .blog-meta{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+    .blog-meta-author{display:flex;align-items:center;gap:10px}
+    .blog-meta-avatar{width:36px;height:36px;border-radius:50%;background:var(--bk3);overflow:hidden;flex-shrink:0}.blog-meta-avatar img{width:100%;height:100%;object-fit:cover}
+    .blog-meta-name{font-size:.78rem;font-weight:600;color:var(--bk)}.blog-meta-role{font-size:.65rem;color:var(--g2)}
+    .blog-meta-sep{width:1px;height:24px;background:var(--g3)}
+    .blog-meta-info{font-size:.7rem;color:var(--g2)}.blog-meta-info span{margin-right:16px}
+    .toc{position:sticky;top:90px;background:var(--pure);border:1px solid rgba(0,0,0,.04);border-radius:14px;padding:24px;margin-bottom:32px}
+    .toc-title{font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.5px;color:var(--bk);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+    .toc ol{list-style:none;counter-reset:toc}.toc li{counter-increment:toc}
+    .toc li a{display:flex;align-items:baseline;gap:8px;padding:6px 0;font-size:.76rem;color:var(--g1);transition:color .3s;border-bottom:1px solid rgba(0,0,0,.03)}.toc li a:hover{color:var(--blue)}
+    .toc li a::before{content:counter(toc,decimal-leading-zero);font-family:'Outfit',sans-serif;font-size:.65rem;font-weight:700;color:var(--g3);min-width:18px}
+    .toc li:last-child a{border-bottom:none}.toc li a.active{color:var(--blue);font-weight:600}.toc li a.active::before{color:var(--blue)}
+    .article-wrap{display:grid;grid-template-columns:220px 1fr;gap:40px;max-width:1020px;margin:0 auto;padding:60px 48px 120px}
+    .article-sidebar{position:relative}.article-body{max-width:700px}
+    .article-body h2{font-family:'Outfit',sans-serif;font-size:clamp(1.4rem,2.5vw,1.8rem);font-weight:800;line-height:1.1;letter-spacing:-1px;color:var(--bk);margin:56px 0 16px;padding-top:20px}.article-body h2:first-of-type{margin-top:0}
+    .article-body h3{font-family:'Outfit',sans-serif;font-size:1.05rem;font-weight:700;line-height:1.25;letter-spacing:-.3px;color:var(--bk);margin:36px 0 10px}
+    .article-body p{font-size:.9rem;color:var(--g1);line-height:1.85;margin-bottom:18px}
+    .article-body strong{color:var(--bk);font-weight:600}
+    .article-body ul,.article-body ol{margin:0 0 20px 0;padding-left:20px}
+    .article-body li{font-size:.88rem;color:var(--g1);line-height:1.8;margin-bottom:6px}.article-body li strong{color:var(--bk)}
+    .article-body blockquote{margin:28px 0;padding:20px 24px;background:var(--g4);border-left:3px solid var(--bk);border-radius:0 12px 12px 0;font-size:.88rem;color:var(--g1);line-height:1.8;font-style:italic}
+    .article-body blockquote strong{color:var(--bk);font-style:normal}
+    .article-body hr{border:none;border-top:1px solid var(--g4);margin:48px 0}
+    .info-box{margin:28px 0;padding:24px;background:rgba(0,102,255,.03);border:1px solid rgba(0,102,255,.08);border-radius:14px}
+    .info-box-title{font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:700;color:var(--blue);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+    .info-box p{font-size:.82rem;color:var(--g1);line-height:1.7;margin-bottom:0}
+    .key-concept{margin:32px 0;padding:28px;background:var(--bk3);border-radius:16px;color:var(--pure)}
+    .key-concept-label{font-size:.55rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:10px}
+    .key-concept h4{font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:800;letter-spacing:-.3px;margin-bottom:8px}
+    .key-concept p{font-size:.85rem;color:rgba(255,255,255,.5);line-height:1.8;margin-bottom:0}
+    .compare-table{width:100%;margin:24px 0 28px;border-collapse:collapse;border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,.06)}
+    .compare-table th{background:var(--bk3);color:var(--pure);font-family:'Outfit',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:14px 16px;text-align:left}
+    .compare-table td{padding:12px 16px;font-size:.82rem;color:var(--g1);line-height:1.6;border-bottom:1px solid rgba(0,0,0,.04);background:var(--pure)}
+    .compare-table tr:last-child td{border-bottom:none}.compare-table td:first-child{font-weight:600;color:var(--bk)}
+    .cta-card{margin:48px 0;padding:40px;background:var(--bk3);border-radius:20px;text-align:center;position:relative;overflow:hidden}
+    .cta-card::before{content:'';position:absolute;top:-50%;right:-30%;width:400px;height:400px;background:radial-gradient(circle,rgba(0,102,255,.08) 0%,transparent 70%);pointer-events:none}
+    .cta-card-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:12px}
+    .cta-card h3{font-family:'Outfit',sans-serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:800;color:var(--pure);letter-spacing:-.5px;margin-bottom:8px}
+    .cta-card p{font-size:.85rem;color:rgba(255,255,255,.4);line-height:1.7;max-width:380px;margin:0 auto 24px}
+    .cta-card .btn-p{background:var(--pure);color:var(--bk)}.cta-card .btn-p:hover{box-shadow:0 8px 30px rgba(255,255,255,.15)}
+    .faq-sec{padding:80px 48px 100px;background:var(--g4)}
+    .faq-list{max-width:680px;margin:40px auto 0}.fi{border-bottom:1px solid rgba(0,0,0,.06)}
+    .fq{width:100%;text-align:left;padding:18px 0;background:none;border:none;font-size:.85rem;font-weight:600;font-family:'DM Sans',sans-serif;color:var(--bk);display:flex;justify-content:space-between;align-items:center;cursor:pointer;gap:16px;transition:color .3s}.fq:hover{color:var(--g1)}
+    .fq-icon{width:22px;height:22px;border-radius:50%;background:rgba(0,0,0,.04);display:flex;align-items:center;justify-content:center;font-size:.75rem;transition:all .4s;flex-shrink:0;color:var(--g2)}
+    .fa{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1)}.fa.open{max-height:280px;padding-bottom:14px}
+    .fa p{font-size:.8rem;color:var(--g1);line-height:1.7;margin-bottom:0}.fi.active .fq-icon{background:var(--bk);color:var(--pure);transform:rotate(45deg)}
+    .related-sec{padding:80px 48px;background:var(--pure);border-top:1px solid var(--g4)}
+    .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1060px;margin:40px auto 0}
+    .related-card{display:block;padding:28px;background:var(--g4);border-radius:16px;transition:all .4s;text-decoration:none;color:var(--bk)}
+    .related-card:hover{background:var(--pure);box-shadow:0 8px 30px rgba(0,0,0,.06);transform:translateY(-2px)}
+    .related-cat{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+    .related-card h3{font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:700;line-height:1.3;letter-spacing:-.3px;margin-bottom:8px}
+    .related-card p{font-size:.78rem;color:var(--g1);line-height:1.6;margin-bottom:14px}
+    .related-link{font-size:.72rem;font-weight:600;color:var(--blue);letter-spacing:.3px}
+    .footer{background:var(--bk3);color:var(--pure);padding:56px 48px 28px}
+    .ft-top{display:flex;justify-content:space-between;align-items:start;margin-bottom:48px;flex-wrap:wrap;gap:32px}
+    .ft-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase}
+    .ft-cols{display:flex;gap:80px}
+    .ft-col-title{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:12px}
+    .ft-col a{display:block;font-size:.78rem;color:rgba(255,255,255,.5);margin-bottom:8px;transition:color .3s}.ft-col a:hover{color:var(--pure)}
+    .ft-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:20px;display:flex;justify-content:space-between;align-items:center;font-size:.6rem;color:rgba(255,255,255,.2)}
+    .ft-bottom a{color:rgba(255,255,255,.2);transition:color .3s;margin-left:20px}.ft-bottom a:hover{color:rgba(255,255,255,.5)}
+    .disclaimer{padding:12px 48px;background:var(--bk3);font-size:.58rem;color:rgba(255,255,255,.12);text-align:center;line-height:1.6;border-top:1px solid rgba(255,255,255,.03)}
+    .sec-center{text-align:center;max-width:680px;margin:0 auto}
+    .sec-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--g2);margin-bottom:10px}
+    .sec-title{font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;line-height:1.05;letter-spacing:-1.5px;color:var(--bk);margin-bottom:16px}
+    .btn-p{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--bk);color:var(--pure);border-radius:980px;font-size:.85rem;font-weight:600;transition:all .3s;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;text-decoration:none}
+    .btn-p:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(0,0,0,.1)}
+    .btn-p svg{width:13px;height:13px;transition:transform .3s}.btn-p:hover svg{transform:translateX(3px)}
+    .reading-progress{position:fixed;top:0;left:0;height:2px;background:var(--blue);z-index:9999;width:0;transition:width .1s linear}
+    @media(max-width:900px){.nav{padding:14px 20px}.nav-links{display:none}.blog-hero{padding:120px 20px 60px}.article-wrap{grid-template-columns:1fr;padding:40px 20px 80px}.article-sidebar{display:none}.related-grid{grid-template-columns:1fr}.related-sec,.faq-sec{padding:60px 20px}.ft-cols{flex-direction:column;gap:28px}.footer{padding:40px 20px 20px}.disclaimer{padding:10px 16px}.cta-card{padding:28px 20px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  .article-body a{color:var(--blue);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;font-weight:500}.article-body a:hover{text-decoration-thickness:2px}
+</style>
+<style>/* 28/10/2026 : débordement mobile (colonne de grille sans min-width) */.article-wrap>*,.article-layout>*{min-width:0}.article-body table,.compare-table{display:block;overflow-x:auto;max-width:100%}.article-body pre{overflow-x:auto}.article-body img{max-width:100%;height:auto}</style>
+</head>
+<body>
+
+<div class="preloader" id="preloader"><div style="text-align:center"><div class="pre-word"><span>B</span><span>A</span><span>S</span><span>S</span></div><div class="pre-line" id="preLine"></div></div></div>
+<div class="reading-progress" id="readingProgress"></div>
+
+<nav class="nav" id="nav">
+  <a href="https://basstrading.fr" class="nav-logo">BASS</a>
+  <ul class="nav-links">
+    <li><a href="https://basstrading.fr/#methode">Méthode</a></li>
+    <li><a href="https://basstrading.fr#resultats">Résultats</a></li>
+    <li><a href="https://basstrading.fr#avis">Avis</a></li>
+    <li><a href="https://basstrading.fr#faq">FAQ</a></li>
+    <li><a href="/formations/">Formations</a></li>
+    <li><a href="https://basstrading.fr/blog/">Blog</a></li>
+  </ul>
+  <a href="https://basstrading.fr/p/formation-offerte/?src=blog-fibonacci-trading-menu" class="nav-cta">Formation offerte</a>
+</nav>
+
+<section class="blog-hero">
+  <div class="blog-hero-inner">
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <a href="https://basstrading.fr">Accueil</a><span class="sep">/</span>
+      <a href="https://basstrading.fr/blog/">Blog</a><span class="sep">/</span>
+      <span>Fibonacci trading</span>
+    </nav>
+    <div class="blog-hero-cat">Analyse technique</div>
+    <h1 class="blog-hero-title">Fibonacci trading : niveaux, tracé et ce qui tient vraiment</h1>
+    <p class="blog-hero-desc">Le retracement de Fibonacci trace des niveaux (23,6, 38,2, 50, 61,8 et 78,6 %) où un repli pourrait s&#39;arrêter. Je te montre comment le tracer, d&#39;où viennent ces chiffres et ce que disent les études. Je t&#39;explique aussi pourquoi, sur le Nasdaq futures, je lui préfère les zones où le volume s&#39;est vraiment échangé.</p>
+    <div class="blog-meta">
+      <div class="blog-meta-author">
+        <div class="blog-meta-avatar"><img src="../../images/bass-presenting.jpg" alt="Sébastien Constant" loading="lazy"></div>
+        <div><div class="blog-meta-name"><a href="/auteur/sebastien-constant/" rel="author" style="color:inherit;text-decoration:none">Sébastien Constant</a></div><div class="blog-meta-role">Trader & Formateur Order Flow</div></div>
+      </div>
+      <div class="blog-meta-sep"></div>
+      <div class="blog-meta-info"><span>Novembre 2026</span><span>19 min de lecture</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="article-wrap">
+  <aside class="article-sidebar">
+    <div class="toc">
+      <div class="toc-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/></svg> Sommaire</div>
+      <ol>
+        <li><a href="#fibonacci-en-trading-c-est-quoi-exacteme">Fibonacci en trading : c&#39;est quoi exactement ?</a></li>
+        <li><a href="#d-ou-viennent-les-niveaux-23-6-38-2-61-8">D&#39;où viennent les niveaux 23,6 %, 38,2 %, 61,8 % et 78,6 % ?</a></li>
+        <li><a href="#comment-tracer-un-retracement-de-fibonac">Comment tracer un retracement de Fibonacci sur TradingView ?</a></li>
+        <li><a href="#golden-zone-et-extensions-que-valent-ces">Golden zone et extensions : que valent ces niveaux ?</a></li>
+        <li><a href="#fibonacci-fonctionne-t-il-vraiment-ce-qu">Fibonacci fonctionne-t-il vraiment ? Ce que disent les études</a></li>
+        <li><a href="#pourquoi-je-ne-trade-pas-avec-fibonacci">Pourquoi je ne trade pas avec Fibonacci</a></li>
+        <li><a href="#fibonacci-ou-niveaux-de-volume-lequel-ch">Fibonacci ou niveaux de volume : lequel choisir sur les futures ?</a></li>
+        <li><a href="#comment-utiliser-fibonacci-sans-se-faire">Comment utiliser Fibonacci sans se faire piéger ?</a></li>
+        <li><a href="#les-erreurs-les-plus-frequentes-avec-fib">Les erreurs les plus fréquentes avec Fibonacci</a></li>
+        <li><a href="#fibonacci-dans-une-methode-de-trading-co">Fibonacci dans une méthode de trading complète</a></li>
+        <li><a href="#en-resume-ce-qu-il-faut-retenir-sur-fibo">En résumé : ce qu&#39;il faut retenir sur Fibonacci</a></li>
+      </ol>
+    </div>
+  </aside>
+
+  <article class="article-body">
+    <h2 id="fibonacci-en-trading-c-est-quoi-exacteme">Fibonacci en trading : c&#39;est quoi exactement ?</h2>
+    <p>Tu as vu le marché monter fort, puis redescendre. Tu te demandes où acheter le repli sans te faire sortir. Quelqu&#39;un t&#39;a dit : « trace ton Fibonacci, achète sur le 61,8 ». À la fin de cet article, tu sauras le tracer correctement et lire chaque niveau. Tu sauras surtout ce qu&#39;il vaut vraiment, chiffres et études à l&#39;appui, et ce que je regarde à sa place sur les futures.</p>
+<p><b>Le retracement de Fibonacci est un outil de dessin qui découpe un mouvement de prix, entre un plus bas et un plus haut, en niveaux horizontaux (23,6 %, 38,2 %, 50 %, 61,8 %, 78,6 %) où un repli pourrait s&#39;arrêter.</b></p>
+<p>C&#39;est tout. Ce n&#39;est pas un indicateur calculé sur le volume ou sur les transactions : c&#39;est une règle de proportion qui place des niveaux de prix à partir de deux points que tu choisis. Garde cette phrase en tête, elle explique à la fois pourquoi l&#39;outil plaît autant et pourquoi il trompe autant.</p>
+<h3>Pourquoi tout le monde en parle</h3>
+<p>On le trouve sur toutes les plateformes : TradingView, MetaTrader, Sierra Chart, NinjaTrader. Il prend trois secondes à tracer et il donne l&#39;impression d&#39;avoir un plan : des lignes, des chiffres, des pourcentages précis au dixième. Pour un débutant qui a un graphique vide devant lui, c&#39;est rassurant.</p>
+<p>Je vais être franc dès le départ. <b>Je ne trade pas avec Fibonacci</b>, et je n&#39;ai jamais fait de vidéo dédiée à cet outil. Je trade le Nasdaq futures en 1 minute sur Sierra Chart, avec le Market Profile, le VWAP et le CVD. C&#39;est justement pour ça que je te dois une réponse complète et honnête : comment ça marche, d&#39;où ça vient, ce que la recherche en dit, et comment l&#39;utiliser sans te faire piéger si tu y tiens.</p>
+<p>Commençons par le début : d&#39;où sortent ces drôles de pourcentages ?</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/fibonacci-trading/blog-fibonacci-trading-1.webp" alt="Coquille de nautile coupée en deux montrant sa spirale, symbole souvent associé au nombre d&#39;or et à Fibonacci" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">La spirale du nautile, image classique du nombre d&#39;or. En bourse, la question est de savoir si ces proportions ont un effet réel.<br><span style="font-size:.85em">Photo : <a href="https://commons.wikimedia.org/wiki/File:NautilusCutawayLogarithmicSpiral.jpg" rel="noopener" target="_blank">auteur inconnu</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0" rel="noopener license" target="_blank">CC BY-SA 3.0</a></span></figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="d-ou-viennent-les-niveaux-23-6-38-2-61-8">D&#39;où viennent les niveaux 23,6 %, 38,2 %, 61,8 % et 78,6 % ?</h2>
+    <p>Ils viennent d&#39;une suite de nombres publiée en 1202 par Leonardo de Pise, dit Fibonacci, dans son <em>Liber Abaci</em> : 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144… Chaque nombre est la somme des deux précédents. <b>Les ratios du trading se calculent en divisant ces nombres entre eux.</b></p>
+<h3>Le calcul de chaque ratio</h3>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Niveau</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Calcul (vers quoi le ratio tend)</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Exemple</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">61,8 %</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">un nombre ÷ le suivant</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">55 ÷ 89 = 0,618</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">38,2 %</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">un nombre ÷ celui deux rangs plus loin</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">34 ÷ 89 = 0,382</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">23,6 %</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">un nombre ÷ celui trois rangs plus loin</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">21 ÷ 89 = 0,236</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">78,6 %</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">racine carrée de 0,618</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">√0,618 = 0,786</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">50 %</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">aucun : ce n&#39;est pas un ratio de Fibonacci</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">moitié du mouvement</td></tr></tbody></table></div>
+<p>Le 61,8 % est l&#39;inverse du nombre d&#39;or (1,618), ce ratio qu&#39;on retrouve dans l&#39;architecture, la peinture, et qu&#39;on prête volontiers à la nature. C&#39;est de là que vient tout le folklore : si la nature suit le nombre d&#39;or, pourquoi pas la bourse ?</p>
+<h3>Le 50 % : l&#39;intrus que tout le monde garde</h3>
+<p>Le niveau de 50 % n&#39;a rien à voir avec la suite. Il vient de la vieille théorie de Dow, qui disait qu&#39;un marché corrige souvent la moitié de son mouvement. Les plateformes l&#39;ajoutent par défaut parce que les traders le regardent, pas parce qu&#39;il sort des mathématiques de Fibonacci.</p>
+<p>C&#39;est un premier indice utile : <b>les niveaux qu&#39;on affiche sont un choix d&#39;usage, pas une loi de la nature.</b> D&#39;ailleurs, l&#39;outil de TradingView te laisse régler jusqu&#39;à 24 niveaux différents (<a href="https://www.tradingview.com/support/solutions/43000518158-fibonacci-retracement-drawing-tool/">aide officielle TradingView</a>).</p>
+<h3>Retracements et extensions : quelle différence ?</h3>
+<ul><li><b>Retracements</b> (de 0 à 100 %) : où un repli à l&#39;intérieur du mouvement pourrait s&#39;arrêter. Ils servent à chercher une entrée.</li><li><b>Extensions</b> (127,2 %, 161,8 %, 261,8 %) : où le prix pourrait aller au-delà du dernier sommet ou du dernier creux. Elles servent à chercher un objectif de sortie.</li></ul>
+<p>Tu sais maintenant ce que sont ces lignes. Reste à les tracer sans erreur, ce qui est moins évident qu&#39;il n&#39;y paraît.</p>
+<p><b>À retenir</b></p>
+<ul><li>La suite de Fibonacci donne 23,6, 38,2, 61,8 et 78,6 %.</li><li>Le 50 % n&#39;en fait pas partie : c&#39;est un héritage de la théorie de Dow.</li><li>Retracement = zone d&#39;entrée possible ; extension = objectif possible.</li></ul>
+
+    <hr>
+
+    <h2 id="comment-tracer-un-retracement-de-fibonac">Comment tracer un retracement de Fibonacci sur TradingView ?</h2>
+    <p>Tu sélectionnes l&#39;outil « Retracement de Fibonacci », tu cliques sur le point de départ du mouvement, puis sur son point d&#39;arrivée. La plateforme dessine les niveaux de retracement entre les deux, sous forme de lignes horizontales. La documentation de TradingView le résume ainsi : les niveaux sont créés en reliant deux points extrêmes, le bas et le haut de la tendance (<a href="https://www.tradingview.com/support/solutions/43000518158-fibonacci-retracement-drawing-tool/">aide officielle TradingView sur le retracement de Fibonacci</a>).</p>
+<h3>Les étapes, dans l&#39;ordre</h3>
+<ol><li><b>Choisis ton unité de temps avant tout.</b> Un Fibonacci tracé en 1 minute et un autre en journalier ne disent pas la même chose. Je te conseille toujours de dézoomer d&#39;abord pour comprendre le contexte et la direction du marché.</li><li><b>Identifie un mouvement franc</b> : un vrai point bas de swing et un vrai point haut de swing, nets, que n&#39;importe quel trader verrait. Si tu hésites entre trois points de départ, le mouvement n&#39;est pas assez clair.</li><li><b>Tendance haussière</b> : clique sur le plus bas, puis glisse jusqu&#39;au plus haut. Les niveaux se lisent de haut en bas : 23,6 % est le repli le plus faible, 78,6 % le plus profond.</li><li><b>Tendance baissière</b> : clique sur le plus haut, puis glisse jusqu&#39;au plus bas. Les niveaux montent depuis le creux et deviennent des résistances possibles pour un rebond.</li><li><b>Vérifie les réglages</b> : niveaux affichés, prix visibles à côté de chaque ligne, et échelle logarithmique si tu travailles sur des mouvements très larges (TradingView propose un calcul adapté dans ce cas).</li></ol>
+<h3>Mèche ou corps de bougie ?</h3>
+<p>C&#39;est la question que tout le monde se pose. Les deux écoles existent. Ce qui compte, c&#39;est d&#39;être constant : si tu prends les mèches un jour et les corps le lendemain, tu peux faire tomber un niveau à peu près où tu veux. <b>Par défaut, je te conseille les mèches</b> : ce sont les vrais extrêmes où le marché a échangé.</p>
+<h3>L&#39;exemple chiffré sur le Nasdaq futures, en hausse</h3>
+<p>Prenons un exemple d&#39;école (des chiffres choisis pour le calcul, pas un trade réel). Le Nasdaq futures part de 21 000 et monte jusqu&#39;à 21 400 : un mouvement de 400 points. Chaque niveau se calcule depuis le sommet : sommet − (mouvement × ratio).</p>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Niveau</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Calcul</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Prix (arrondi au tick de 0,25)</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">23,6 %</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">21 400 − 94,4</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">21 305,50</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">38,2 %</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">21 400 − 152,8</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">21 247,25</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">50 %</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">21 400 − 200</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">21 200,00</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">61,8 %</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">21 400 − 247,2</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">21 152,75</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">78,6 %</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">21 400 − 314,4</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">21 085,50</td></tr></tbody></table></div>
+<p>Regarde ce tableau une seconde de plus. Sur un mouvement de 400 points, <b>les cinq niveaux de prix sont espacés d&#39;environ 47 à 67 points.</b> Un repli normal finira presque toujours « pas loin » de l&#39;un d&#39;eux. Garde ce détail en tête : il va compter quand on parlera des études.</p>
+<h3>Le même exemple en baisse</h3>
+<p>En baisse, tout s&#39;inverse. Si le marché chute de 21 400 à 21 000, les niveaux se calculent depuis le creux : creux + (mouvement × ratio). Le 38,2 % tombe à 21 152,75 et le 61,8 % à 21 247,25. Ces lignes deviennent des zones où un rebond pourrait buter, comme une résistance classique. En hausse, elles jouent le rôle inverse de support : c&#39;est la même logique de support et résistance, simplement placée par un calcul.</p>
+<p>Si tu débutes sur ce marché, mon comparatif <a href="https://basstrading.fr/blog/nq-ou-mnq/">NQ ou MNQ : quel contrat Nasdaq choisir</a> t&#39;explique la taille du tick et ce que vaut un point sur chaque contrat.</p>
+<p>Une fois les niveaux tracés, il reste à savoir lesquels regarder. C&#39;est là qu&#39;entre la fameuse golden zone.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/fibonacci-trading/blog-fibonacci-trading-2.webp" alt="Écran de plateforme de trading avec plusieurs graphiques de prix en bougies et en courbes, sur lesquels on trace des retracements" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Sur un écran de trading, un Fibonacci se trace en trois secondes. Le plus dur est de choisir les deux bons points.<br><span style="font-size:.85em">Photo : <a href="https://commons.wikimedia.org/wiki/File:Stock_market_charts_illustration.jpg" rel="noopener" target="_blank">Unknown author</a>, <a href="http://creativecommons.org/publicdomain/zero/1.0/deed.en" rel="noopener license" target="_blank">CC0</a></span></figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="golden-zone-et-extensions-que-valent-ces">Golden zone et extensions : que valent ces niveaux ?</h2>
+    <p><b>La golden zone désigne l&#39;espace entre 61,8 % et 65 % (parfois élargi de 50 % à 61,8 %), présenté comme le repli « idéal » pour entrer dans le sens de la tendance.</b></p>
+<h3>Pourquoi cette zone attire autant</h3>
+<p>L&#39;idée est simple. Un repli de 23,6 % est souvent trop faible pour offrir un bon point d&#39;entrée. Un repli au-delà de 78,6 % ressemble déjà à un retournement. Entre les deux, autour de 61,8 %, le prix serait « au rabais » tout en restant dans la tendance.</p>
+<p>Cette logique se tient en partie, mais pas pour une raison mystique : <b>un repli profond dans une tendance saine offre mécaniquement un meilleur rapport entre le stop et l&#39;objectif.</b> Tu achètes plus bas, le sommet précédent est plus loin, ton stop sous le creux est plus proche. Ce n&#39;est pas le nombre d&#39;or qui fait ça, c&#39;est la géométrie du mouvement.</p>
+<h3>Les extensions comme objectifs</h3>
+<p>Les extensions (127,2 % et 161,8 % surtout) servent à fixer un objectif de sortie au-delà du dernier sommet. Dans notre exemple, l&#39;extension à 161,8 % du mouvement de 400 points se situe à 21 000 + 647,2, soit 21 647,25.</p>
+<p>Le problème est le même que pour les retracements : ce chiffre ne dit rien de ce qui se passe réellement à ce prix. Y a-t-il eu de l&#39;échange là-haut par le passé ? Des vendeurs qui attendent ? Le Fibonacci ne le sait pas. J&#39;explique comment je choisis mes objectifs dans mon article sur <a href="https://basstrading.fr/blog/take-profit-trading/">où placer son take profit en trading</a>.</p>
+<h3>Et le « win rate » de la golden zone ?</h3>
+<p>On voit circuler des taux de réussite de 70 ou 80 % pour la golden zone. Je n&#39;ai trouvé aucune étude publiée qui les soutienne. Ce sont des résultats de vidéos ou de forums, sans échantillon ni période. <b>Méfie-toi de tout pourcentage qui ne dit pas d&#39;où il sort.</b></p>
+<p>Alors que dit la recherche, la vraie ? C&#39;est la partie que la plupart des articles sur le sujet oublient.</p>
+
+    <hr>
+
+    <h2 id="fibonacci-fonctionne-t-il-vraiment-ce-qu">Fibonacci fonctionne-t-il vraiment ? Ce que disent les études</h2>
+    <p>Réponse courte : <b>aucune étude sérieuse ne montre que les niveaux de Fibonacci, utilisés seuls, donnent un avantage rentable.</b> Les travaux les plus solides montrent plutôt que les niveaux de support et de résistance « marchent » quand des ordres réels s&#39;y concentrent, quelle que soit leur origine mathématique.</p>
+<h3>Les résultats de l&#39;étude de 2022 sur trois marchés actions</h3>
+<p>En janvier 2022, trois chercheurs (Prodromos Tsinaslanidis, Francisco Guijarro et Nikolaos Voukelatos) ont publié dans la revue <em>Expert Systems with Applications</em> (vol. 187) une évaluation automatique des retracements de Fibonacci sur trois grands marchés actions (<a href="https://doi.org/10.1016/j.eswa.2021.115893">Tsinaslanidis et al., « Automatic identification and evaluation of Fibonacci retracements », 2022</a>).</p>
+<p>Leur méthode est intéressante : un algorithme trace les niveaux à la place de l&#39;humain, pour retirer la subjectivité du choix des points. Leur résultat principal : <b>plus la zone autour d&#39;un niveau de Fibonacci est large, plus la probabilité d&#39;y observer un rebond est élevée.</b> Et les auteurs précisent eux-mêmes que ces résultats n&#39;impliquent pas forcément une stratégie rentable.</p>
+<p>Relis cette phrase avec l&#39;exemple de tout à l&#39;heure. Plus tu élargis la zone, plus tu « attrapes » de rebonds… ce qui serait vrai avec n&#39;importe quelle ligne tracée au hasard. Et après coup, il y a toujours un Fibonacci qui a « marché » quelque part sur le graphique.</p>
+<h3>Ce qui fait vraiment tenir un niveau : les ordres</h3>
+<p>La recherche la plus éclairante ne porte pas sur Fibonacci, mais sur les supports et résistances en général. En juillet 2000, Carol Osler, économiste à la Federal Reserve Bank of New York, a testé les niveaux de support et de résistance que des sociétés de change publiaient pour leurs clients (<a href="https://www.newyorkfed.org/research/epr/00v06n2/0007osle.html">Osler, « Support for Resistance », FRBNY Economic Policy Review, vol. 6 n° 2, 2000</a>). Conclusion : ces niveaux aidaient à prévoir les interruptions de tendance intraday, avec une efficacité variable selon les devises et les sociétés.</p>
+<p>Un an plus tard, elle a cherché pourquoi (<a href="https://www.newyorkfed.org/research/staff_reports/sr125.html">Osler, « Currency Orders and Exchange-Rate Dynamics », Staff Report n° 125, avril 2001</a>). En étudiant les ordres d&#39;une grande banque de change, elle montre que <b>les ordres stop-loss et take-profit des clients sont fortement regroupés sur les chiffres ronds</b>, ces mêmes niveaux souvent utilisés comme supports et résistances. C&#39;est aussi ce qui explique les mèches qui vont chercher un niveau évident avant de repartir : je le détaille dans mon article sur la <a href="https://basstrading.fr/blog/chasse-aux-stops-trading/">chasse aux stops en trading</a>.</p>
+<h3>L&#39;analyse technique tient-elle face aux algorithmes ?</h3>
+<p>C&#39;est une question qui revient souvent, et ma réponse est oui, à condition de regarder la bonne chose. Les algorithmes d&#39;exécution travaillent avec la liquidité : ils cherchent où remplir de gros ordres sans trop déplacer le prix. Ils se moquent du nombre d&#39;or, mais ils regardent le volume, le VWAP et les zones où les ordres s&#39;accumulent. <b>Une analyse technique fondée sur le volume parle le même langage qu&#39;eux</b> ; une analyse fondée sur des ratios, beaucoup moins.</p>
+<h3>Ce que ça change pour toi</h3>
+<p>Un niveau ne tient pas parce qu&#39;il est joli ou parce qu&#39;il sort d&#39;une suite mathématique. Il tient parce que des gens y ont des ordres. Un niveau de Fibonacci peut fonctionner de temps en temps, surtout sur les grandes unités de temps où beaucoup de monde le trace : c&#39;est un effet de prophétie autoréalisatrice. Mais il ne te dit pas, à lui seul, si ces ordres existent.</p>
+<p><b>À retenir</b></p>
+<ul><li>Aucune étude publiée ne montre un avantage rentable du Fibonacci seul.</li><li>Plus la zone est large, plus elle « marche » : c&#39;est un piège statistique, pas une preuve.</li><li>Ce qui fait réagir le prix, ce sont des ordres réels concentrés sur un niveau.</li></ul>
+<p>Et c&#39;est précisément pour ça que je regarde autre chose.</p>
+
+    <hr>
+
+    <h2 id="pourquoi-je-ne-trade-pas-avec-fibonacci">Pourquoi je ne trade pas avec Fibonacci</h2>
+    <p>Je ne trade pas avec Fibonacci parce qu&#39;il me donne un prix sans me dire si quelqu&#39;un l&#39;attend. <b>Ce que je cherche, ce sont les zones où le marché a déjà échangé beaucoup de volume</b> : là, je sais qu&#39;il y a eu du monde, et qu&#39;il y en aura probablement encore.</p>
+<h3>Ce que je dis dans ma vidéo sur le trading sans indicateur</h3>
+<p>Dans ma vidéo <a href="https://www.youtube.com/watch?v=zUSZ9dfr3x0">Trader sans indicateur : la méthode que personne ne vous montre</a>, je fais l&#39;analyse du Bitcoin en hebdomadaire, sans rien d&#39;autre que les bougies, puis avec un Volume Profile. Je commence par une phrase qui résume ma position : « la plupart des indicateurs sont juste en retard ».</p>
+<p>Puis, vers la 8e minute (<a href="https://www.youtube.com/watch?v=zUSZ9dfr3x0&amp;t=485s">passage à 8 min</a>), je dis ceci, et c&#39;est le cœur de ma méthode :</p>
+<aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p>« Le but du marché, c&#39;est pas de te piéger. Le but du marché, c&#39;est simplement de trouver des zones où il y a de la liquidité. […] Les zones où il y a de la liquidité, c&#39;est pas compliqué à voir : c&#39;est les zones où il y a le plus de volume. »</p></aside>
+<p>Un Fibonacci tracé sur ce graphique m&#39;aurait donné cinq lignes. Le Volume Profile, lui, m&#39;a montré une zone, celle où le marché avait passé du temps et échangé le plus. Le prix y est revenu, comme je l&#39;explique dans la vidéo.</p>
+<h3>Une zone de volume, c&#39;est une foule</h3>
+<p>Un peu plus loin, vers la 10e minute (<a href="https://www.youtube.com/watch?v=zUSZ9dfr3x0&amp;t=602s">passage à 10 min</a>), j&#39;utilise cette image :</p>
+<aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p>« Imagine-toi un samedi après-midi, jour de Noël, tu vas aux Champs : c&#39;est noir de monde, ça va être très difficile pour toi de taper un sprint. »</p></aside>
+<p>Une zone de gros volume, c&#39;est les Champs-Élysées un samedi de décembre : le prix a du mal à la traverser. Une zone sans volume, c&#39;est un dimanche matin : il la traverse en courant. <b>Fibonacci ne sait pas si ta ligne tombe dans la foule ou dans le vide. Le volume, si.</b> Et comme je le précise juste après dans la même vidéo (<a href="https://www.youtube.com/watch?v=zUSZ9dfr3x0&amp;t=624s">passage à 10 min 24</a>) : « difficile ne veut pas dire impossible ». Aucun niveau n&#39;arrête le prix à coup sûr.</p>
+<h3>Ce que j&#39;utilise à la place</h3>
+<p>Sur le Nasdaq futures, mes niveaux viennent de trois sources :</p>
+<ul><li><b>le Market Profile et le Volume Profile</b> : le POC (prix le plus échangé), la Value Area (la zone où s&#39;est échangé environ 70 % du volume) et les zones de faible volume ;</li><li><b>le VWAP</b> : le prix moyen pondéré par le volume de la séance, la référence des gros intervenants ;</li><li><b>le CVD</b> : pour voir, au moment où le prix touche un niveau, si les acheteurs ou les vendeurs agressifs prennent vraiment la main.</li></ul>
+<p>Si tu veux comprendre la différence entre les deux profils, je l&#39;explique dans <a href="https://basstrading.fr/blog/market-profile-vs-volume-profile/">Market Profile ou Volume Profile : lequel choisir</a>.</p>
+<p>Mettons maintenant les deux approches côte à côte.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/fibonacci-trading/blog-fibonacci-trading-3.webp" alt="Affichage lumineux du marché Nasdaq avec les cotations en direct, là où se concentrent les ordres réels" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Ce qui fait réagir un prix, ce sont les ordres réellement passés, pas les proportions d&#39;un tracé.<br><span style="font-size:.85em">Photo : <a href="https://commons.wikimedia.org/wiki/File:NASDAQ_stock_market_display.jpg" rel="noopener" target="_blank">bfishadow on Flickr</a>, <a href="https://creativecommons.org/licenses/by/2.0" rel="noopener license" target="_blank">CC BY 2.0</a></span></figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="fibonacci-ou-niveaux-de-volume-lequel-ch">Fibonacci ou niveaux de volume : lequel choisir sur les futures ?</h2>
+    <p>Sur les futures, je choisis les niveaux de volume, parce qu&#39;ils sont calculés sur ce qui s&#39;est réellement échangé et qu&#39;ils sont les mêmes pour tout le monde. <b>Le Fibonacci reste un outil de proportion, qui dépend des deux points que tu choisis.</b></p>
+<h3>Le comparatif</h3>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Critère</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Fibonacci</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Niveaux de volume</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Ce qui est mesuré</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Une proportion du mouvement</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Le volume réellement échangé</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Objectivité</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Dépend de tes 2 points</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Même calcul pour tous</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Nombre de niveaux</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">5 à 7 par tracé</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">1 POC, 2 bornes, quelques zones</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Lien avec les ordres</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Indirect (si assez de monde le trace)</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Direct (là où l&#39;échange a eu lieu)</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Confirmation en direct</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Aucune</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">CVD, VWAP, carnet d&#39;ordres</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Preuve publiée</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Aucun avantage rentable démontré</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Les ordres font réagir le prix (Osler 2000-2001)</td></tr></tbody></table></div>
+<h3>Là où les deux se rejoignent</h3>
+<p>Je ne vais pas te dire que Fibonacci ne sert à rien. Il arrive qu&#39;un 61,8 % tombe pile sur un POC de la veille ou sur une borne de Value Area. Dans ce cas, le niveau a deux raisons d&#39;exister au lieu d&#39;une. <b>Mais c&#39;est le volume qui me fait agir, pas le ratio.</b> Si le Fibonacci tombe dans un trou de volume, je l&#39;ignore.</p>
+<p>Le <a href="https://basstrading.fr/blog/vwap-trading/">VWAP</a> mérite une mention à part. C&#39;est un niveau dynamique, recalculé à chaque transaction, que les institutions utilisent pour juger leurs exécutions. Sur une séance du Nasdaq, il me sert bien plus souvent de point d&#39;appui qu&#39;un retracement.</p>
+<h3>Le cas du trader sans outil de volume</h3>
+<p>Tu n&#39;as pas de Volume Profile ? Pas de problème. Dans la vidéo (<a href="https://www.youtube.com/watch?v=zUSZ9dfr3x0&amp;t=279s">passage à 4 min 39</a>), je montre qu&#39;on peut déjà repérer les zones de volume à l&#39;œil : là où il y a beaucoup de bougies serrées les unes contre les autres, il y a eu beaucoup d&#39;échanges. C&#39;est une lecture de <a href="https://basstrading.fr/blog/price-action-trading/">price action</a> pure, et elle est plus fiable qu&#39;un ratio, parce qu&#39;elle part de ce que le marché a fait.</p>
+<p>La méthode complète, avec la lecture du Market Profile, du VWAP et du carnet d&#39;ordres sur des séances réelles du Nasdaq, je l&#39;enseigne pas à pas dans <a href="https://basstrading.fr/l/Oe9wZA">ma formation offerte</a>. C&#39;est la suite logique de cet article si tu veux remplacer les lignes « magiques » par des niveaux qui ont une raison d&#39;exister.</p>
+<p>Mais si tu tiens au Fibonacci, voici comment l&#39;utiliser sans te faire piéger.</p>
+
+    <hr>
+
+    <h2 id="comment-utiliser-fibonacci-sans-se-faire">Comment utiliser Fibonacci sans se faire piéger ?</h2>
+    <p>Si tu veux garder Fibonacci, utilise-le comme une carte des zones possibles, jamais comme un signal d&#39;entrée. <b>La décision vient d&#39;une confluence avec un niveau de volume et d&#39;une réaction visible au moment où le prix arrive.</b></p>
+<aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p>Le trading de contrats à terme comporte un risque élevé de perte, pouvant dépasser la mise initiale. Contenu éducatif, pas un conseil en investissement.</p></aside>
+<h3>La méthode en 5 étapes</h3>
+<ol><li><b>Contexte d&#39;abord.</b> Dézoome. Le marché est-il en tendance claire, ou en range ? Fibonacci n&#39;a de sens que dans un mouvement franc. En range, oublie-le.</li><li><b>Trace sur un mouvement évident.</b> Les mêmes deux points que verrait n&#39;importe quel trader sur la même unité de temps. Plus le tracé est évident, plus il a de chances d&#39;être partagé.</li><li><b>Cherche la confluence.</b> Ajoute ton Volume Profile, ton VWAP, les plus hauts et plus bas de la veille. Garde seulement les niveaux de Fibonacci qui tombent sur l&#39;un d&#39;eux. Les autres, efface-les.</li><li><b>Attends la réaction.</b> Quand le prix arrive sur la zone, je ne clique pas. J&#39;attends de voir si quelqu&#39;un défend le niveau : réaction du CVD ou du prix sur la zone de volume, bougie de rejet. Pas de réaction, pas de trade.</li><li><b>Place ton stop sur la structure, pas sur le ratio.</b> Un stop « sous le 78,6 % » ne veut rien dire en soi. Ton stop va sous le creux qui invalide ton idée, et ta taille de position s&#39;adapte à cette distance.</li></ol>
+<p>Pour le placement du stop, tout est dans mon guide <a href="https://basstrading.fr/blog/stop-loss-trading/">où placer son stop loss en trading</a>.</p>
+<h3>Dans quelles conditions ça a le plus de chances de marcher</h3>
+<ul><li><b>Grandes unités de temps</b> (journalier, hebdomadaire) : plus de monde trace les mêmes niveaux, l&#39;effet autoréalisateur est plus fort.</li><li><b>Mouvements très lisibles</b> : une impulsion nette après une annonce, un vrai plus haut de séance.</li><li><b>En confluence avec un niveau de volume</b>, comme on vient de le voir.</li></ul>
+<h3>Dans quelles conditions ça ne marche pas</h3>
+<ul><li><b>En 1 minute ou en tick</b> : il y a des dizaines de mouvements possibles à tracer, donc des dizaines de « Fibonacci » contradictoires.</li><li><b>En range</b> : il n&#39;y a pas de mouvement à corriger.</li><li><b>Pendant une annonce</b> (statistiques d&#39;emploi américaines, inflation, Fed) : le prix traverse tout, quel que soit le ratio.</li></ul>
+<p>Voilà pour la méthode. Reste à voir les erreurs les plus fréquentes.</p>
+
+    <hr>
+
+    <h2 id="les-erreurs-les-plus-frequentes-avec-fib">Les erreurs les plus fréquentes avec Fibonacci</h2>
+    <p>L&#39;erreur numéro un, c&#39;est de tracer le Fibonacci après coup pour qu&#39;il colle au graphique. Les autres en découlent : trop de niveaux, pas de confirmation, un stop posé sur une ligne au lieu d&#39;une structure.</p>
+<h3>1. Ajuster les points jusqu&#39;à ce que ça « marche »</h3>
+<p>Tu traces, le prix ne réagit pas au 61,8 %, alors tu déplaces ton point de départ d&#39;une bougie… et miracle, ça colle. C&#39;est le biais de confirmation à l&#39;état pur. Un niveau tracé après la réaction du prix n&#39;a aucune valeur pour le trade suivant. <b>La règle : tu traces une fois, avant, et tu n&#39;y touches plus.</b></p>
+<h3>2. Empiler les niveaux</h3>
+<p>23,6, 38,2, 50, 61,8, 78,6, 88,6, plus les extensions, plus un deuxième Fibonacci sur une autre unité de temps… Avec quinze lignes à l&#39;écran, le prix touche forcément quelque chose. Tu as l&#39;impression d&#39;avoir raison tout le temps, et tu n&#39;as en réalité aucune information.</p>
+<h3>3. Entrer au contact de la ligne</h3>
+<p>Le prix touche le 61,8 %, tu achètes. Sans aucune preuve qu&#39;un acheteur est là. C&#39;est comme ça qu&#39;on se fait traverser par un mouvement qui va chercher le 78,6 %, puis le 100 %. <b>Une ligne ne te dit pas où le prix s&#39;arrête</b> : tu ne le sais qu&#39;en voyant quelqu&#39;un défendre le niveau.</p>
+<h3>4. Ignorer le contexte de la séance</h3>
+<p>Un retracement sur le Nasdaq à 15 h 30, à l&#39;ouverture de New York, n&#39;a rien à voir avec le même retracement à 3 h du matin. Le volume, la volatilité, les participants changent. J&#39;en parle en détail dans mon article sur le <a href="https://basstrading.fr/blog/day-trading-futures/">day trading des futures</a>.</p>
+<h3>5. Oublier le risque</h3>
+<p>Plus le retracement est profond, plus ton stop sous le creux est loin. Si tu gardes la même taille de position, tu risques beaucoup plus sur ce trade que sur les autres. <b>Ta taille de position se calcule à partir de ta distance de stop, toujours.</b> Dans ma vidéo (<a href="https://www.youtube.com/watch?v=zUSZ9dfr3x0&amp;t=1259s">passage à 20 min 59</a>), je le dis à propos d&#39;un stop large : il faut tout simplement baisser son levier.</p>
+<p><b>À retenir</b></p>
+<ul><li>Trace avant, jamais après, et ne déplace plus tes points.</li><li>Moins de niveaux = plus d&#39;information.</li><li>Pas de réaction visible, pas de trade.</li><li>La taille de position suit la distance du stop.</li></ul>
+<p>Remettons tout ça dans une méthode complète.</p>
+
+    <hr>
+
+    <h2 id="fibonacci-dans-une-methode-de-trading-co">Fibonacci dans une méthode de trading complète</h2>
+    <p>Fibonacci n&#39;est pas une méthode. <b>C&#39;est, au mieux, un outil de repérage</b> qui doit s&#39;intégrer dans un plan où le contexte, les niveaux, la confirmation et le risque sont définis à l&#39;avance.</p>
+<h3>Les quatre questions que je me pose avant chaque trade</h3>
+<ol><li><b>Où est-on ?</b> Tendance, range, au-dessus ou en dessous de la Value Area de la veille, au-dessus ou en dessous du VWAP.</li><li><b>Où le marché pourrait-il s&#39;arrêter ?</b> Les niveaux de volume : POC, bornes de la Value Area, zones de faible volume, plus hauts et plus bas importants.</li><li><b>Qu&#39;est-ce que je vois quand il y arrive ?</b> Rejet, accélération, CVD qui suit ou qui décroche : la lecture du flux d&#39;ordres.</li><li><b>Combien je risque si je me trompe ?</b> Stop sur la structure, taille de position calculée, perte maximale du jour définie.</li></ol>
+<p>Tu remarques que Fibonacci n&#39;apparaît nulle part comme condition. S&#39;il tombe en confluence à l&#39;étape 2, c&#39;est un bonus ; il ne remplace jamais rien.</p>
+<h3>Une méthode adaptée à toi</h3>
+<p>La bonne méthode n&#39;est pas la même pour tout le monde. Ton emploi du temps, ton caractère, ta tolérance au stress comptent autant que les outils. Si tu cherches encore la tienne, commence par <a href="https://basstrading.fr/blog/methode-de-trading/">construire ta méthode de trading</a> avant d&#39;empiler des indicateurs.</p>
+<h3>Les approches proches, pour comparer</h3>
+<p>Certaines écoles reprennent les ratios de Fibonacci sous un autre nom. La « zone de discount » des concepts de type Smart Money en est un exemple : je l&#39;analyse dans mon article sur le <a href="https://basstrading.fr/blog/smc-trading/">SMC en trading</a>. La méthode Wyckoff, elle, part du volume et du comportement des gros intervenants, ce qui la rapproche bien plus de ma façon de lire le marché : je la détaille dans mon guide de la <a href="https://basstrading.fr/blog/methode-wyckoff/">méthode Wyckoff</a>.</p>
+<p>Si tu veux aller plus loin sur les niveaux de volume, mon <a href="https://basstrading.fr/blog/volume-profile-guide/">guide complet du Volume Profile</a> est l&#39;étape logique après cet article.</p>
+
+    <hr>
+
+    <h2 id="en-resume-ce-qu-il-faut-retenir-sur-fibo">En résumé : ce qu&#39;il faut retenir sur Fibonacci</h2>
+    <p>Le retracement de Fibonacci est un outil de proportion, populaire, facile à tracer, mais sans avantage démontré quand on l&#39;utilise seul. <b>Ce qui fait réagir un prix, ce sont des ordres réels concentrés sur un niveau</b> : c&#39;est ce que montrent les travaux de la Federal Reserve Bank of New York, et c&#39;est ce que je vois sur le Nasdaq, en 2026 comme avant.</p>
+<h3>Les 5 points à garder</h3>
+<ul><li>Les niveaux viennent de la suite de Fibonacci (23,6, 38,2, 61,8, 78,6 %), sauf le 50 %, hérité de la théorie de Dow.</li><li>Tu traces sur un mouvement évident, avant la réaction du prix, et tu ne touches plus à tes points.</li><li>La recherche publiée ne montre pas d&#39;avantage rentable du Fibonacci seul ; plus la zone est large, plus elle « marche », ce qui n&#39;est pas une preuve.</li><li>Un niveau de Fibonacci ne vaut quelque chose que s&#39;il tombe sur un niveau de volume (POC, Value Area, VWAP, plus haut ou plus bas important).</li><li>Tu n&#39;entres qu&#39;après une réaction visible, avec un stop sur la structure et une taille de position calculée.</li></ul>
+<h3>Ta prochaine action</h3>
+<p>Ce soir, ouvre ton graphique du Nasdaq (ou de ton marché) en 30 minutes. Trace un Fibonacci sur le dernier mouvement franc. Puis ajoute un Volume Profile sur la même période. Regarde combien de tes cinq lignes tombent vraiment sur une zone de volume. Tu vas probablement en effacer trois ou quatre. <b>Celles qui restent sont les seules qui méritent ton attention demain.</b></p>
+<p>Pour comprendre où se fabrique ce volume dans la journée, lis ensuite mon guide du <a href="https://basstrading.fr/blog/market-profile-guide-complet/">Market Profile</a>.</p>
+
+    <p><a href="https://www.youtube.com/watch?v=zUSZ9dfr3x0" target="_blank" rel="noopener">▶ Voir la vidéo de Sébastien sur ce sujet</a></p>
+
+    <div class="cta-card cta-aimant">
+      <div class="cta-card-label">Gratuit</div>
+      <h3>La formation offerte : 7 leçons pour lire le marché comme un pro</h3>
+      <p>Accès immédiat et gratuit, en vidéo, à ton rythme. Sans carte bancaire.</p>
+      <a href="https://basstrading.fr/p/formation-offerte/?src=blog-fibonacci-trading" class="btn-p">Je la veux →</a>
+    </div>
+    
+  </article>
+</div>
+
+<!-- FAQ -->
+<section class="faq-sec">
+  <div class="sec-center"><div class="sec-label">FAQ</div><h2 class="sec-title">Questions fréquentes</h2></div>
+  <div class="faq-list">
+    <div class="fi"><button class="fq" onclick="tf(this)">Le retracement de Fibonacci fonctionne-t-il vraiment en trading ? <span class="fq-icon">+</span></button><div class="fa"><p>Pas seul. Aucune étude publiée ne montre un avantage rentable des niveaux de Fibonacci utilisés comme règle unique. Une étude de 2022 sur trois marchés actions trouve que plus la zone autour du niveau est large, plus on observe de rebonds, sans que cela fasse une stratégie rentable. Les niveaux fonctionnent surtout quand ils coïncident avec des ordres réels, par exemple un niveau de gros volume.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Quel est le niveau de Fibonacci le plus important ? <span class="fq-icon">+</span></button><div class="fa"><p>Le 61,8 % est le plus suivi, car il correspond à l&#39;inverse du nombre d&#39;or et beaucoup de traders le surveillent. Le 50 %, qui n&#39;est pas un vrai ratio de Fibonacci, est presque aussi regardé. Mais aucun niveau n&#39;est important en soi : il le devient s&#39;il tombe sur une zone où le marché a beaucoup échangé, comme un POC ou une borne de Value Area.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">C&#39;est quoi la golden zone en Fibonacci ? <span class="fq-icon">+</span></button><div class="fa"><p>La golden zone désigne la zone entre 61,8 % et 65 % de retracement, parfois élargie de 50 % à 61,8 %. Elle est présentée comme le repli idéal pour entrer dans le sens de la tendance. Son intérêt réel est géométrique : entrer sur un repli profond rapproche le stop et éloigne l&#39;objectif. Les taux de réussite qui circulent à son sujet ne viennent d&#39;aucune étude publiée.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Quelle unité de temps utiliser pour tracer un Fibonacci ? <span class="fq-icon">+</span></button><div class="fa"><p>Les grandes unités de temps (journalier, hebdomadaire) donnent les tracés les plus partagés, donc les plus susceptibles de réagir. En 1 minute ou en tick, il y a trop de mouvements possibles et chacun peut tracer un Fibonacci différent. Si tu fais du day trading, trace sur le mouvement principal de la séance ou de la veille, pas sur chaque micro-impulsion.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Fibonacci ou Volume Profile : lequel utiliser sur les futures ? <span class="fq-icon">+</span></button><div class="fa"><p>Sur les futures, je préfère le Volume Profile : il mesure le volume réellement échangé à chaque prix, avec le même calcul pour tout le monde. Fibonacci dépend des deux points que tu choisis. Les deux peuvent se combiner : un niveau de Fibonacci qui tombe sur un POC ou une borne de Value Area a deux raisons d&#39;exister. Sinon, je garde le niveau de volume.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Faut-il mettre son stop sous le niveau 78,6 % ? <span class="fq-icon">+</span></button><div class="fa"><p>Pas par principe. Un stop se place sous la structure qui invalide ton idée, en général le creux du mouvement ou une zone de volume, pas sous une ligne de ratio. Ensuite, tu adaptes ta taille de position à cette distance pour que ta perte possible reste dans ton risque maximal par trade.</p></div></div>
+  </div>
+</section>
+
+<!-- Related -->
+<section class="related-sec">
+  <div class="sec-center"><div class="sec-label">Continuer la lecture</div><h2 class="sec-title">Articles connexes</h2></div>
+  <div class="related-grid">
+    <a href="/blog/market-profile-guide-complet/" class="related-card"><div class="related-cat">Guide</div><h3>Market Profile : le guide complet pour débutants</h3><p>Value Area, POC, types de journées — tout pour commencer.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/order-flow-trading-france/" class="related-card"><div class="related-cat">Méthode</div><h3>Order Flow Trading : pourquoi personne ne l'enseigne en France</h3><p>Le carnet d'ordres et le flux institutionnel décryptés.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/sierra-chart-configuration/" class="related-card"><div class="related-cat">Tutoriel</div><h3>Sierra Chart : configuration complète</h3><p>Le setup pas à pas pour le Market Profile et le Footprint.</p><span class="related-link">Lire &rarr;</span></a>
+  </div>
+</section>
+
+<!-- serie:debut --><style>.serie-w{background:#FFF;color:#1D1D1F;border-top:1px solid #F5F5F7}.serie{max-width:1060px;margin:0 auto;padding:56px 24px;font-family:inherit;box-sizing:border-box}.serie-l{font-size:.6rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#0066FF;margin-bottom:8px}.serie-w .serie h2{font-size:1.4rem;font-weight:800;letter-spacing:-.5px;color:#1D1D1F!important;margin:0 0 18px;font-family:inherit}.serie ul{list-style:none;padding:0;margin:0 0 22px;display:grid;grid-template-columns:repeat(2,1fr);gap:8px 24px}.serie-w .serie li a{color:#1D1D1F!important;font-size:.9rem;line-height:1.45;text-decoration:none;border-bottom:1px solid #D2D2D7}.serie li a:hover{color:#0066FF}.serie li.pil a{font-weight:700}.serie-o{background:#F5F5F7;border-radius:14px;padding:18px 20px;font-size:.88rem;line-height:1.55;color:#1D1D1F}.serie-w .serie-o a{color:#0066FF!important;font-weight:700}@media(max-width:700px){.serie ul{grid-template-columns:1fr}}</style><div class="serie-w"><aside class="serie" aria-label="Dans la même série"><div class="serie-l">Dans la même série</div><h2>Trouver sa méthode de trading</h2><ul><li class="pil"><a href="/blog/methode-de-trading/">Méthode de trading : comment trouver celle qui te correspond</a></li><li class=""><a href="/blog/types-trading-differences/">Les Types de Trading : Lequel Choisir Selon Votre Profil ? (2026)</a></li><li class=""><a href="/blog/debuter-trading-zero-guide/">Débuter le trading de zéro : par où commencer (guide 2026)</a></li><li class=""><a href="/blog/devenir-trader-sans-diplome/">Devenir trader sans diplôme ni formation : le vrai parcours</a></li><li class=""><a href="/blog/livre-trading/">Livre trading : les meilleurs pour apprendre (et l'ordre)</a></li><li class=""><a href="/blog/formation-trading/">Formation trading : contenu, prix, CPF et pièges à éviter</a></li><li class=""><a href="/blog/formation-trading-gratuite/">Formation trading gratuite : ce qu'on apprend sans payer</a></li><li class=""><a href="/blog/quelle-formation-trading-choisir/">Quelle formation trading choisir en 2026 ? 7 critères pour comparer</a></li><li class=""><a href="/blog/arnaque-trading/">Arnaque au trading : les 7 pièges et que faire si tu es victime</a></li><li class=""><a href="/blog/bookmap-heatmap/">Bookmap : lire la heatmap, prix réels et avis de trader</a></li><li class=""><a href="/blog/deepcharts-avis/">DeepCharts avis : prix, Mac, MBO et limites (2026)</a></li><li class=""><a href="/blog/flux-ordres-tradingview/">Order flow sur TradingView : ce qu'on voit vraiment (et ses limites)</a></li><li class=""><a href="/blog/gocharting-avis/">GoCharting : mon avis sur l'order flow dans le navigateur</a></li><li class=""><a href="/blog/lucid-trading/">Lucid Trading avis : règles, drawdown et payout (2026)</a></li><li class=""><a href="/blog/methode-wyckoff/">Méthode Wyckoff : accumulation, distribution et spring</a></li><li class=""><a href="/blog/motivewave-avis/">MotiveWave avis : prix, version gratuite, Mac et order flow</a></li><li class=""><a href="/blog/price-action-trading/">Price action : ce que c'est, et ce que la bougie ne montre pas</a></li><li class=""><a href="/blog/quantower-avis/">Quantower avis : version gratuite, footprint, Mac et prix (2026)</a></li><li class=""><a href="/blog/rsi-trading/">RSI trading : réglages, divergences et limites (guide)</a></li><li class=""><a href="/blog/take-profit-trading/">Take profit : où placer ton objectif sur les futures (exemples MNQ)</a></li><li class=""><a href="/blog/topstep/">Topstep avis : règles, drawdown et payout expliqués (2026)</a></li></ul><div class="serie-o"><a href="/formations/">Toutes les formations de Bass</a> : plus de 250 leçons vidéo, du débutant au Market Profile avancé. Pour commencer sans payer : <a href="/p/formation-offerte/?src=serie-fibonacci-trading">la formation offerte</a> (7 leçons vidéo).</div></aside></div><!-- serie:fin -->
+<footer class="footer">
+  <div class="ft-top"><div class="ft-logo">BASS</div><div class="ft-cols">
+    <div class="ft-col"><div class="ft-col-title">Programme</div><a href="/formations/">Toutes les formations</a><a href="https://basstrading.fr/#methode">Méthode</a><a href="https://basstrading.fr/#programme">Programme</a><a href="https://basstrading.fr/p/formation-offerte/?src=blog-fibonacci-trading-pied">Formation offerte</a></div>
+    <div class="ft-col"><div class="ft-col-title">Ressources</div><a href="/blog/market-profile-guide-complet/">Market Profile</a><a href="/blog/footprint-chart-trading/">Footprint Chart</a><a href="/blog/order-flow-trading-france/">Order Flow</a></div>
+  </div></div>
+  <div class="ft-bottom"><span>&copy; 2026 BASS — Sébastien Constant</span><div><a href="/mentions-legales/">Mentions légales</a><a href="/confidentialite/">Confidentialité</a><a href="/cgv/">CGV</a><a href="mailto:contact@basstrading.fr">Contact</a></div></div>
+</footer>
+<div class="disclaimer">Le trading comporte des risques de perte en capital. Les performances passées ne préjugent pas des performances futures. Ce site ne constitue pas un conseil en investissement.</div>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+const lenis=new Lenis({duration:1.2,easing:t=>Math.min(1,1.001-Math.pow(2,-10*t))});
+function raf(t){lenis.raf(t);requestAnimationFrame(raf)}requestAnimationFrame(raf);
+lenis.on('scroll',ScrollTrigger.update);gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0);
+const tl=gsap.timeline();
+tl.to('.pre-word span',{y:0,opacity:1,duration:.5,stagger:.1,ease:'power3.out',delay:.3}).to('#preLine',{width:'80px',duration:.7,ease:'power2.inOut'},'<+.2').to('.preloader',{yPercent:-100,duration:.8,ease:'power3.inOut',delay:.4}).set('.preloader',{display:'none'}).to('#nav',{opacity:1,y:0,duration:.5},'<+.1');
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);const h=document.documentElement.scrollHeight-window.innerHeight;document.getElementById('readingProgress').style.width=(window.scrollY/h*100)+'%'});
+const tocLinks=document.querySelectorAll('.toc a');const sections=Array.from(tocLinks).map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+window.addEventListener('scroll',()=>{let c='';sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)c=s.id});tocLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+c)})});
+function tf(b){const i=b.closest('.fi'),a=b.nextElementSibling,o=i.classList.contains('active');document.querySelectorAll('.fi').forEach(x=>{x.classList.remove('active');x.querySelector('.fa').classList.remove('open')});if(!o){i.classList.add('active');a.classList.add('open')}}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();lenis.scrollTo(t,{offset:-60})}})});
+</script>
+<script src="/v.js" defer></script>
+</body>
+</html>
