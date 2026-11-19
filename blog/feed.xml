@@ -6,8 +6,16 @@
   <link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
   <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/"/>
   <id>https://basstrading.fr/blog/</id>
-  <updated>2026-11-18T00:00:00Z</updated>
+  <updated>2026-11-19T00:00:00Z</updated>
   <author><name>Sébastien Constant (Bass)</name><uri>https://basstrading.fr/auteur/sebastien-constant/</uri></author>
+  <entry>
+    <title>Gold futures : GC ou MGC, valeur du point et risque</title>
+    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/gold-futures-gc-mgc/"/>
+    <id>https://basstrading.fr/blog/gold-futures-gc-mgc/</id>
+    <published>2026-11-19T00:00:00Z</published>
+    <updated>2026-11-19T00:00:00Z</updated>
+    <summary>Gold futures : GC ou MGC, valeur du tick et du point, marge, horaires à Paris et taille de position pour trader l&#x27;or sans te brûler les ailes.</summary>
+  </entry>
   <entry>
     <title>Fibonacci trading : niveaux, tracé et ce qui tient vraiment</title>
     <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/fibonacci-trading/"/>
@@ -337,12 +345,12 @@
     <summary>Arnaque trading : les 7 pièges que je vois le plus (signaux Telegram, faux courtiers, robots, faux conseillers) et que faire si tu es victime.</summary>
   </entry>
   <entry>
-    <title>Market Profile : le guide complet (TPO, Value Area, POC)</title>
+    <title>Market Profile trading : guide complet en français (TPO, POC, VA)</title>
     <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/market-profile-guide-complet/"/>
     <id>https://basstrading.fr/blog/market-profile-guide-complet/</id>
     <published>2026-03-27T00:00:00Z</published>
     <updated>2026-10-26T00:00:00Z</updated>
-    <summary>Le Market Profile en clair : profil TPO, Value Area, POC, Initial Balance et types de journée. Le guide pour lire la structure du marché, avec exemples.</summary>
+    <summary>Market Profile expliqué par un trader de futures : TPO, POC, Value Area, Initial Balance, types de journée. Lire le marché et trader avec, exemples à l&#x27;appui.</summary>
   </entry>
   <entry>
     <title>Day trading : à quoi ressemble une journée sur les futures</title>

@@ -36,7 +36,7 @@
 ## Tous les guides, par thème
 
 ### Market Profile
-- [Market Profile : le guide complet (TPO, Value Area, POC)](https://basstrading.fr/blog/market-profile-guide-complet/) (guide pilier): Le Market Profile en clair : profil TPO, Value Area, POC, Initial Balance et types de journée. Le guide pour lire la structure du marché, avec exemples.
+- [Market Profile trading : guide complet en français (TPO, POC, VA)](https://basstrading.fr/blog/market-profile-guide-complet/) (guide pilier): Market Profile expliqué par un trader de futures : TPO, POC, Value Area, Initial Balance, types de journée. Lire le marché et trader avec, exemples à l'appui.
 - [Volume Profile : POC, VAH, VAL et niveaux clés (guide 2026)](https://basstrading.fr/blog/volume-profile-guide/): Le Volume Profile montre le volume échangé à chaque prix. Lire le POC, la Value Area (VAH, VAL), les HVN et LVN, et s'en servir pour trader.
 - [Value Area : définition, calcul à 70 % et règle des 80 %](https://basstrading.fr/blog/value-area-trading/): Value Area en trading : VAH, VAL et POC, calcul à 70 % pas à pas, ouverture dans ou hors de la valeur et règle des 80 % expliquée sur le Nasdaq.
 - [Market Profile vs Volume Profile : les vraies différences](https://basstrading.fr/blog/market-profile-vs-volume-profile/): Market Profile ou Volume Profile ? Temps contre volume, deux POC, les divergences et quand utiliser lequel, avec un exemple réel sur le Nasdaq futures.
@@ -97,6 +97,7 @@
 - [NinjaTrader avis : prix, France, order flow et limites](https://basstrading.fr/blog/ninjatrader-avis/): NinjaTrader avis : ce que vaut la plateforme pour les futures, son arrivée en Europe, ses prix, son order flow, Mac et débutant, et ses vraies limites.
 - [Tradovate avis : prix, démo, France et limites (2026)](https://basstrading.fr/blog/tradovate-avis/): Tradovate avis : prix des formules, frais cachés, démo de 14 jours, accès depuis la France, lien avec NinjaTrader et TradingView, et vraies limites.
 - [Sierra Chart : configurer Market Profile, footprint et CVD](https://basstrading.fr/blog/sierra-chart-configuration/): Configurer Sierra Chart pas à pas : profil TPO, Volume Profile, footprint (Numbers Bars) et CVD, pour lire les futures du Nasdaq.
+- [Gold futures : GC ou MGC, valeur du point et risque](https://basstrading.fr/blog/gold-futures-gc-mgc/): Gold futures : GC ou MGC, valeur du tick et du point, marge, horaires à Paris et taille de position pour trader l'or sans te brûler les ailes.
 - [Rithmic : c'est quoi, R Trader Pro, prop firms et Mac](https://basstrading.fr/blog/rithmic-futures/): Rithmic expliqué simplement : flux de données et routage d'ordres des futures, R Trader Pro, prop firms, Mac, démo, erreurs de connexion et réglages.
 - [S&P 500 futures : ES ou MES, valeur du point et horaires](https://basstrading.fr/blog/sp-500-futures-es-mes/): S&P 500 futures : ES ou MES, valeur du point et du tick, horaires en heure de Paris, marge, échéances et choix face au Nasdaq. Exemples chiffrés.
 - [VWAP TradingView : réglages, bandes et VWAP ancrée (guide)](https://basstrading.fr/blog/vwap-tradingview/): VWAP sur TradingView : l'ajouter, chaque réglage, les bandes d'écart-type, la VWAP ancrée, le bug « no volume data » et mon réglage pour le Nasdaq.
