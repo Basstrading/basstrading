@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gold futures : GC ou MGC, valeur du point et risque — BASS Trading</title>
+  <meta name="description" content="Gold futures : GC ou MGC, valeur du tick et du point, marge, horaires à Paris et taille de position pour trader l&#39;or sans te brûler les ailes.">
+  <meta property="og:title" content="Gold futures : GC ou MGC, valeur du point et risque — BASS Trading">
+  <meta property="og:description" content="Gold futures : GC ou MGC, valeur du tick et du point, marge, horaires à Paris et taille de position pour trader l&#39;or sans te brûler les ailes.">
+  <meta property="og:image" content="https://basstrading.fr/blog/gold-futures-gc-mgc/blog-gold-futures-gc-mgc-1.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://basstrading.fr/blog/gold-futures-gc-mgc/blog-gold-futures-gc-mgc-1.webp">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://basstrading.fr/blog/gold-futures-gc-mgc/">
+  <meta property="og:site_name" content="BASS Trading">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://basstrading.fr/blog/gold-futures-gc-mgc/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","@id":"https://basstrading.fr/blog/gold-futures-gc-mgc/#article","headline":"Gold futures : GC ou MGC, valeur du point et risque","description":"Gold futures : GC ou MGC, valeur du tick et du point, marge, horaires à Paris et taille de position pour trader l'or sans te brûler les ailes.","datePublished":"2026-11-19","dateModified":"2026-11-19","inLanguage":"fr-FR","image":"https://basstrading.fr/blog/gold-futures-gc-mgc/blog-gold-futures-gc-mgc-1.webp","mainEntityOfPage":"https://basstrading.fr/blog/gold-futures-gc-mgc/","isPartOf":{"@type":"WebSite","@id":"https://basstrading.fr/#website","name":"BASS Trading","url":"https://basstrading.fr/"},"author":{"@type":"Person","@id":"https://basstrading.fr/#sebastien-constant","name":"Sébastien Constant","url":"https://basstrading.fr/auteur/sebastien-constant/"},"publisher":{"@type":"Organization","@id":"https://basstrading.fr/#organisation","name":"BASS Trading","url":"https://basstrading.fr/","logo":{"@type":"ImageObject","url":"https://basstrading.fr/images/logo-basstrading.png","width":512,"height":512}}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://basstrading.fr"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://basstrading.fr/blog/"},{"@type":"ListItem","position":3,"name":"Gold futures GC et MGC","item":"https://basstrading.fr/blog/gold-futures-gc-mgc/"}]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Quelle est la différence entre GC et MGC ?","acceptedAnswer":{"@type":"Answer","text":"Le GC est le contrat standard sur l'or au COMEX : 100 onces troy, un tick de 0,10 $ vaut 10 $, un mouvement de 1 $ vaut 100 $. Le MGC (Micro Gold) porte sur 10 onces : le tick vaut 1 $ et 1 $ de mouvement vaut 10 $. Les deux suivent exactement le même prix, sur la même bourse et aux mêmes horaires. Seule la taille change, et donc la marge et le risque par contrat."}},{"@type":"Question","name":"Combien faut-il pour trader l'or en futures ?","acceptedAnswer":{"@type":"Answer","text":"Il n'y a pas de montant magique. La bonne question est : combien acceptes-tu de perdre par trade ? Si tu risques 1 % de ton compte et que ton stop logique est à 5 $ de ton entrée, un MGC te coûte 50 $ au stop, il te faut donc environ 5 000 $ pour un contrat. La marge exigée par le courtier n'est qu'une vérification finale, jamais la base du calcul."}},{"@type":"Question","name":"À quelle heure les gold futures sont-ils ouverts en France ?","acceptedAnswer":{"@type":"Answer","text":"Les gold futures cotent sur Globex du dimanche soir au vendredi soir, presque 23 heures sur 24. En heure d'hiver des deux côtés de l'Atlantique, la cotation va de minuit à 23 h à Paris, avec une pause d'une heure entre 23 h et minuit. Les moments les plus actifs sont 14 h 30 (statistiques américaines) et 15 h 30 (ouverture de Wall Street)."}},{"@type":"Question","name":"Vaut-il mieux trader l'or en futures ou en CFD XAUUSD ?","acceptedAnswer":{"@type":"Answer","text":"Pour du trading à court terme, je préfère le futures : il passe par une bourse centrale (le COMEX), affiche le vrai volume, et ses coûts sont clairs. Le CFD est un contrat de gré à gré chez ton courtier, souvent ta contrepartie, avec un levier plafonné à 20 pour 1 par l'ESMA pour les particuliers et des frais de nuit. Le futures permet aussi de lire l'order flow, impossible en CFD."}},{"@type":"Question","name":"Que se passe-t-il si je garde un gold futures jusqu'à l'échéance ?","acceptedAnswer":{"@type":"Answer","text":"Le GC et le MGC sont à livraison physique. La plupart des courtiers grand public ferment d'office ta position avant le premier jour d'avis, à la fin du mois qui précède l'échéance. Pour éviter toute surprise, passe à l'échéance suivante (le roll) quelques jours avant, et vérifie les règles exactes de ton courtier dans ta plateforme."}},{"@type":"Question","name":"Peut-on trader les gold futures en prop firm ?","acceptedAnswer":{"@type":"Answer","text":"Oui, beaucoup de prop firms futures donnent accès au GC et au MGC. La contrainte principale devient le drawdown maximal du compte : l'or peut bouger de plus de 100 $ l'once en une séance, ce qui consomme vite un drawdown sur un GC. Commence en MGC, avec une taille calculée à partir de ton stop et du drawdown restant, pas à partir du nombre de contrats autorisé."}}]}
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{--bk:#1D1D1F;--bk2:#111;--bk3:#0A0A0A;--g1:#6E6E73;--g2:#86868B;--g3:#D2D2D7;--g4:#F5F5F7;--wh:#FBFBFD;--pure:#FFF;--green:#00B67A;--blue:#0066FF}
+    html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}
+    body{font-family:'DM Sans',sans-serif;color:var(--bk);background:var(--pure);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+    .preloader{position:fixed;inset:0;background:var(--bk3);z-index:10001;display:flex;align-items:center;justify-content:center}
+    .pre-word{font-family:'Outfit',sans-serif;font-size:clamp(3rem,8vw,5rem);font-weight:900;letter-spacing:16px;text-transform:uppercase;color:var(--pure);overflow:hidden}
+    .pre-word span{display:inline-block;transform:translateY(110%);opacity:0}
+    .pre-line{width:0;height:1px;background:rgba(255,255,255,.3);margin-top:20px}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 48px;display:flex;align-items:center;justify-content:space-between;background:rgba(245,245,247,.85);backdrop-filter:blur(20px) saturate(1.8);border-bottom:1px solid rgba(0,0,0,.04);transition:background .4s}
+    .nav-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase;color:var(--bk)}
+    .nav-links{display:flex;gap:28px;list-style:none}.nav-links a{font-size:.74rem;font-weight:500;letter-spacing:.3px;color:var(--g1);transition:color .3s}.nav-links a:hover{color:var(--bk)}
+    .nav-cta{padding:8px 20px;background:var(--bk);color:var(--pure);border:none;border-radius:980px;font-size:.72rem;font-weight:600;transition:all .3s;cursor:pointer;text-decoration:none;display:inline-block}.nav-cta:hover{background:var(--bk2)}
+    .blog-hero{padding:160px 48px 80px;background:var(--g4);position:relative;overflow:hidden}
+    .blog-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,transparent,var(--g4));pointer-events:none}
+    .blog-hero-inner{max-width:720px;margin:0 auto}
+    .breadcrumb{display:flex;gap:8px;align-items:center;margin-bottom:28px;flex-wrap:wrap}
+    .breadcrumb a,.breadcrumb span{font-size:.68rem;font-weight:500;letter-spacing:.3px;color:var(--g2);transition:color .3s}.breadcrumb a:hover{color:var(--bk)}.breadcrumb .sep{color:var(--g3)}
+    .blog-hero-cat{display:inline-block;padding:5px 14px;border:1px solid rgba(0,102,255,.15);border-radius:980px;font-size:.6rem;font-weight:700;color:var(--blue);letter-spacing:2px;text-transform:uppercase;margin-bottom:20px}
+    .blog-hero-title{font-family:'Outfit',sans-serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:900;line-height:1.05;letter-spacing:-2px;color:var(--bk);margin-bottom:20px}
+    .blog-hero-desc{font-size:.95rem;color:var(--g1);line-height:1.8;max-width:560px;margin-bottom:28px}
+    .blog-meta{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+    .blog-meta-author{display:flex;align-items:center;gap:10px}
+    .blog-meta-avatar{width:36px;height:36px;border-radius:50%;background:var(--bk3);overflow:hidden;flex-shrink:0}.blog-meta-avatar img{width:100%;height:100%;object-fit:cover}
+    .blog-meta-name{font-size:.78rem;font-weight:600;color:var(--bk)}.blog-meta-role{font-size:.65rem;color:var(--g2)}
+    .blog-meta-sep{width:1px;height:24px;background:var(--g3)}
+    .blog-meta-info{font-size:.7rem;color:var(--g2)}.blog-meta-info span{margin-right:16px}
+    .toc{position:sticky;top:90px;background:var(--pure);border:1px solid rgba(0,0,0,.04);border-radius:14px;padding:24px;margin-bottom:32px}
+    .toc-title{font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.5px;color:var(--bk);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+    .toc ol{list-style:none;counter-reset:toc}.toc li{counter-increment:toc}
+    .toc li a{display:flex;align-items:baseline;gap:8px;padding:6px 0;font-size:.76rem;color:var(--g1);transition:color .3s;border-bottom:1px solid rgba(0,0,0,.03)}.toc li a:hover{color:var(--blue)}
+    .toc li a::before{content:counter(toc,decimal-leading-zero);font-family:'Outfit',sans-serif;font-size:.65rem;font-weight:700;color:var(--g3);min-width:18px}
+    .toc li:last-child a{border-bottom:none}.toc li a.active{color:var(--blue);font-weight:600}.toc li a.active::before{color:var(--blue)}
+    .article-wrap{display:grid;grid-template-columns:220px 1fr;gap:40px;max-width:1020px;margin:0 auto;padding:60px 48px 120px}
+    .article-sidebar{position:relative}.article-body{max-width:700px}
+    .article-body h2{font-family:'Outfit',sans-serif;font-size:clamp(1.4rem,2.5vw,1.8rem);font-weight:800;line-height:1.1;letter-spacing:-1px;color:var(--bk);margin:56px 0 16px;padding-top:20px}.article-body h2:first-of-type{margin-top:0}
+    .article-body h3{font-family:'Outfit',sans-serif;font-size:1.05rem;font-weight:700;line-height:1.25;letter-spacing:-.3px;color:var(--bk);margin:36px 0 10px}
+    .article-body p{font-size:.9rem;color:var(--g1);line-height:1.85;margin-bottom:18px}
+    .article-body strong{color:var(--bk);font-weight:600}
+    .article-body ul,.article-body ol{margin:0 0 20px 0;padding-left:20px}
+    .article-body li{font-size:.88rem;color:var(--g1);line-height:1.8;margin-bottom:6px}.article-body li strong{color:var(--bk)}
+    .article-body blockquote{margin:28px 0;padding:20px 24px;background:var(--g4);border-left:3px solid var(--bk);border-radius:0 12px 12px 0;font-size:.88rem;color:var(--g1);line-height:1.8;font-style:italic}
+    .article-body blockquote strong{color:var(--bk);font-style:normal}
+    .article-body hr{border:none;border-top:1px solid var(--g4);margin:48px 0}
+    .info-box{margin:28px 0;padding:24px;background:rgba(0,102,255,.03);border:1px solid rgba(0,102,255,.08);border-radius:14px}
+    .info-box-title{font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:700;color:var(--blue);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+    .info-box p{font-size:.82rem;color:var(--g1);line-height:1.7;margin-bottom:0}
+    .key-concept{margin:32px 0;padding:28px;background:var(--bk3);border-radius:16px;color:var(--pure)}
+    .key-concept-label{font-size:.55rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:10px}
+    .key-concept h4{font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:800;letter-spacing:-.3px;margin-bottom:8px}
+    .key-concept p{font-size:.85rem;color:rgba(255,255,255,.5);line-height:1.8;margin-bottom:0}
+    .compare-table{width:100%;margin:24px 0 28px;border-collapse:collapse;border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,.06)}
+    .compare-table th{background:var(--bk3);color:var(--pure);font-family:'Outfit',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:14px 16px;text-align:left}
+    .compare-table td{padding:12px 16px;font-size:.82rem;color:var(--g1);line-height:1.6;border-bottom:1px solid rgba(0,0,0,.04);background:var(--pure)}
+    .compare-table tr:last-child td{border-bottom:none}.compare-table td:first-child{font-weight:600;color:var(--bk)}
+    .cta-card{margin:48px 0;padding:40px;background:var(--bk3);border-radius:20px;text-align:center;position:relative;overflow:hidden}
+    .cta-card::before{content:'';position:absolute;top:-50%;right:-30%;width:400px;height:400px;background:radial-gradient(circle,rgba(0,102,255,.08) 0%,transparent 70%);pointer-events:none}
+    .cta-card-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:12px}
+    .cta-card h3{font-family:'Outfit',sans-serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:800;color:var(--pure);letter-spacing:-.5px;margin-bottom:8px}
+    .cta-card p{font-size:.85rem;color:rgba(255,255,255,.4);line-height:1.7;max-width:380px;margin:0 auto 24px}
+    .cta-card .btn-p{background:var(--pure);color:var(--bk)}.cta-card .btn-p:hover{box-shadow:0 8px 30px rgba(255,255,255,.15)}
+    .faq-sec{padding:80px 48px 100px;background:var(--g4)}
+    .faq-list{max-width:680px;margin:40px auto 0}.fi{border-bottom:1px solid rgba(0,0,0,.06)}
+    .fq{width:100%;text-align:left;padding:18px 0;background:none;border:none;font-size:.85rem;font-weight:600;font-family:'DM Sans',sans-serif;color:var(--bk);display:flex;justify-content:space-between;align-items:center;cursor:pointer;gap:16px;transition:color .3s}.fq:hover{color:var(--g1)}
+    .fq-icon{width:22px;height:22px;border-radius:50%;background:rgba(0,0,0,.04);display:flex;align-items:center;justify-content:center;font-size:.75rem;transition:all .4s;flex-shrink:0;color:var(--g2)}
+    .fa{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1)}.fa.open{max-height:280px;padding-bottom:14px}
+    .fa p{font-size:.8rem;color:var(--g1);line-height:1.7;margin-bottom:0}.fi.active .fq-icon{background:var(--bk);color:var(--pure);transform:rotate(45deg)}
+    .related-sec{padding:80px 48px;background:var(--pure);border-top:1px solid var(--g4)}
+    .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1060px;margin:40px auto 0}
+    .related-card{display:block;padding:28px;background:var(--g4);border-radius:16px;transition:all .4s;text-decoration:none;color:var(--bk)}
+    .related-card:hover{background:var(--pure);box-shadow:0 8px 30px rgba(0,0,0,.06);transform:translateY(-2px)}
+    .related-cat{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+    .related-card h3{font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:700;line-height:1.3;letter-spacing:-.3px;margin-bottom:8px}
+    .related-card p{font-size:.78rem;color:var(--g1);line-height:1.6;margin-bottom:14px}
+    .related-link{font-size:.72rem;font-weight:600;color:var(--blue);letter-spacing:.3px}
+    .footer{background:var(--bk3);color:var(--pure);padding:56px 48px 28px}
+    .ft-top{display:flex;justify-content:space-between;align-items:start;margin-bottom:48px;flex-wrap:wrap;gap:32px}
+    .ft-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase}
+    .ft-cols{display:flex;gap:80px}
+    .ft-col-title{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:12px}
+    .ft-col a{display:block;font-size:.78rem;color:rgba(255,255,255,.5);margin-bottom:8px;transition:color .3s}.ft-col a:hover{color:var(--pure)}
+    .ft-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:20px;display:flex;justify-content:space-between;align-items:center;font-size:.6rem;color:rgba(255,255,255,.2)}
+    .ft-bottom a{color:rgba(255,255,255,.2);transition:color .3s;margin-left:20px}.ft-bottom a:hover{color:rgba(255,255,255,.5)}
+    .disclaimer{padding:12px 48px;background:var(--bk3);font-size:.58rem;color:rgba(255,255,255,.12);text-align:center;line-height:1.6;border-top:1px solid rgba(255,255,255,.03)}
+    .sec-center{text-align:center;max-width:680px;margin:0 auto}
+    .sec-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--g2);margin-bottom:10px}
+    .sec-title{font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;line-height:1.05;letter-spacing:-1.5px;color:var(--bk);margin-bottom:16px}
+    .btn-p{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--bk);color:var(--pure);border-radius:980px;font-size:.85rem;font-weight:600;transition:all .3s;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;text-decoration:none}
+    .btn-p:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(0,0,0,.1)}
+    .btn-p svg{width:13px;height:13px;transition:transform .3s}.btn-p:hover svg{transform:translateX(3px)}
+    .reading-progress{position:fixed;top:0;left:0;height:2px;background:var(--blue);z-index:9999;width:0;transition:width .1s linear}
+    @media(max-width:900px){.nav{padding:14px 20px}.nav-links{display:none}.blog-hero{padding:120px 20px 60px}.article-wrap{grid-template-columns:1fr;padding:40px 20px 80px}.article-sidebar{display:none}.related-grid{grid-template-columns:1fr}.related-sec,.faq-sec{padding:60px 20px}.ft-cols{flex-direction:column;gap:28px}.footer{padding:40px 20px 20px}.disclaimer{padding:10px 16px}.cta-card{padding:28px 20px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  .article-body a{color:var(--blue);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;font-weight:500}.article-body a:hover{text-decoration-thickness:2px}
+</style>
+<style>/* 28/10/2026 : débordement mobile (colonne de grille sans min-width) */.article-wrap>*,.article-layout>*{min-width:0}.article-body table,.compare-table{display:block;overflow-x:auto;max-width:100%}.article-body pre{overflow-x:auto}.article-body img{max-width:100%;height:auto}</style>
+</head>
+<body>
+
+<div class="preloader" id="preloader"><div style="text-align:center"><div class="pre-word"><span>B</span><span>A</span><span>S</span><span>S</span></div><div class="pre-line" id="preLine"></div></div></div>
+<div class="reading-progress" id="readingProgress"></div>
+
+<nav class="nav" id="nav">
+  <a href="https://basstrading.fr" class="nav-logo">BASS</a>
+  <ul class="nav-links">
+    <li><a href="https://basstrading.fr/#methode">Méthode</a></li>
+    <li><a href="https://basstrading.fr#resultats">Résultats</a></li>
+    <li><a href="https://basstrading.fr#avis">Avis</a></li>
+    <li><a href="https://basstrading.fr#faq">FAQ</a></li>
+    <li><a href="/formations/">Formations</a></li>
+    <li><a href="https://basstrading.fr/blog/">Blog</a></li>
+  </ul>
+  <a href="https://basstrading.fr/p/formation-offerte/?src=blog-gold-futures-gc-mgc-menu" class="nav-cta">Formation offerte</a>
+</nav>
+
+<section class="blog-hero">
+  <div class="blog-hero-inner">
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <a href="https://basstrading.fr">Accueil</a><span class="sep">/</span>
+      <a href="https://basstrading.fr/blog/">Blog</a><span class="sep">/</span>
+      <span>Gold futures GC et MGC</span>
+    </nav>
+    <div class="blog-hero-cat">Futures</div>
+    <h1 class="blog-hero-title">Gold futures : GC ou MGC, valeur du point et risque</h1>
+    <p class="blog-hero-desc">Un gold futures est un contrat à terme sur l&#39;or coté au COMEX. Le GC porte sur 100 onces : 1 $ de mouvement vaut 100 $. Le micro MGC porte sur 10 onces : 1 $ vaut 10 $. Pour un particulier qui débute avec un petit compte, c&#39;est presque toujours le MGC, avec un stop calculé avant d&#39;entrer.</p>
+    <div class="blog-meta">
+      <div class="blog-meta-author">
+        <div class="blog-meta-avatar"><img src="../../images/bass-presenting.jpg" alt="Sébastien Constant" loading="lazy"></div>
+        <div><div class="blog-meta-name"><a href="/auteur/sebastien-constant/" rel="author" style="color:inherit;text-decoration:none">Sébastien Constant</a></div><div class="blog-meta-role">Trader & Formateur Order Flow</div></div>
+      </div>
+      <div class="blog-meta-sep"></div>
+      <div class="blog-meta-info"><span>Novembre 2026</span><span>24 min de lecture</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="article-wrap">
+  <aside class="article-sidebar">
+    <div class="toc">
+      <div class="toc-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/></svg> Sommaire</div>
+      <ol>
+        <li><a href="#qu-est-ce-qu-un-gold-futures-exactement">Qu&#39;est-ce qu&#39;un gold futures, exactement ?</a></li>
+        <li><a href="#gc-ou-mgc-quelle-difference-concrete-ent">GC ou MGC : quelle différence concrète entre les deux contrats ?</a></li>
+        <li><a href="#combien-vaut-un-tick-et-un-point-sur-l-o">Combien vaut un tick et un point sur l&#39;or ?</a></li>
+        <li><a href="#quelle-marge-faut-il-pour-trader-l-or-en">Quelle marge faut-il pour trader l&#39;or en futures ?</a></li>
+        <li><a href="#a-quelle-heure-trader-l-or-depuis-la-fra">À quelle heure trader l&#39;or depuis la France ?</a></li>
+        <li><a href="#qu-est-ce-qui-fait-bouger-le-prix-de-l-o">Qu&#39;est-ce qui fait bouger le prix de l&#39;or ?</a></li>
+        <li><a href="#gold-futures-xauusd-ou-or-physique-que-c">Gold futures, XAUUSD ou or physique : que choisir ?</a></li>
+        <li><a href="#comment-calculer-ta-taille-de-position-s">Comment calculer ta taille de position sur l&#39;or ?</a></li>
+        <li><a href="#echeances-symboles-et-roll-comment-ne-pa">Échéances, symboles et roll : comment ne pas se faire piéger ?</a></li>
+        <li><a href="#quelle-plateforme-et-quel-courtier-pour-">Quelle plateforme et quel courtier pour trader les gold futures ?</a></li>
+        <li><a href="#peut-on-lire-l-order-flow-sur-les-gold-f">Peut-on lire l&#39;order flow sur les gold futures ?</a></li>
+        <li><a href="#quelles-erreurs-coutent-le-plus-cher-sur">Quelles erreurs coûtent le plus cher sur l&#39;or ?</a></li>
+        <li><a href="#quand-vaut-il-mieux-ne-pas-trader-l-or">Quand vaut-il mieux ne pas trader l&#39;or ?</a></li>
+        <li><a href="#ce-qu-il-faut-retenir-sur-les-gold-futur">Ce qu&#39;il faut retenir sur les gold futures</a></li>
+      </ol>
+    </div>
+  </aside>
+
+  <article class="article-body">
+    <h2 id="qu-est-ce-qu-un-gold-futures-exactement">Qu&#39;est-ce qu&#39;un gold futures, exactement ?</h2>
+    <p>Tu as vu l&#39;or franchir les 3 000 $ l&#39;once le 14 mars 2025 (<a href="https://www.business-standard.com/amp/markets/commodities/gold-pops-above-3-000-per-oz-for-first-time-in-historic-safe-haven-rally-125031400569_1.html">Business Standard, dépêche Reuters</a>), dépasser les 5 000 $ en janvier 2026 avec un record à 5 589,38 $ le 28 janvier (<a href="https://www.cbsnews.com/news/highest-gold-price-in-history-how-its-changed-from-2025-to-2026">CBS News</a>), puis retomber sous les 3 900 $ fin octobre 2026 (<a href="https://www.kitco.com/news/article/2026-10-30/gold-prices-plunge-one-year-low-below-3900-higher-oil-prices-fuel-fears">Kitco</a>). Tu te demandes comment le trader proprement, sans passer par un CFD opaque, et surtout combien tu risques vraiment sur un seul contrat.</p>
+<p>C&#39;est exactement ce que je vais te montrer ici : les deux contrats, ce que vaut chaque mouvement, les horaires depuis la France, et la façon dont je calcule une taille de position.</p>
+<p>Un gold futures est un contrat à terme standardisé, coté au COMEX (groupe CME), qui engage à acheter ou vendre une quantité fixe d&#39;or à une échéance donnée ; le trader intraday ne garde jamais le contrat jusqu&#39;à la livraison.</p>
+<p>Concrètement, tu ne possèdes pas de lingot. Tu prends une position sur le prix de l&#39;or, avec un effet de levier : le courtier te demande une marge (un dépôt de garantie) bien inférieure à la valeur totale du contrat. Tes gains et tes pertes sont calculés chaque jour sur la base du prix de règlement.</p>
+<h3>Pourquoi un contrat « standardisé » change tout</h3>
+<p>Tous les acheteurs et tous les vendeurs du monde passent par le même carnet d&#39;ordres central, celui du CME. La taille du contrat, le pas de cotation et les échéances sont fixés par la bourse, pas par ton courtier. Le prix que tu vois est le même pour tout le monde, et le volume affiché est le vrai volume échangé.</p>
+<p>C&#39;est pour ça que je préfère les futures aux CFD sur n&#39;importe quel marché : je peux lire ce qui se passe réellement dans le carnet, comme je le fais tous les jours sur le Nasdaq.</p>
+<h3>Pour qui est cet article</h3>
+<p>Je l&#39;ai écrit pour le trader qui connaît déjà les bases (ce qu&#39;est un stop, une bougie, un ordre limite) et qui veut ajouter l&#39;or à son terrain de jeu, ou qui hésite entre le futures et le XAUUSD de son courtier. Si tu pars de zéro, commence par mon <a href="https://basstrading.fr/blog/nasdaq-futures-nq-mnq/">guide du Nasdaq futures NQ et MNQ</a> : la logique des contrats est la même, et je l&#39;y explique pas à pas.</p>
+<p>Avant de parler stratégie, il faut savoir ce que tu achètes. Et la première question, c&#39;est : gros contrat ou micro ?</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/gold-futures-gc-mgc/blog-gold-futures-gc-mgc-1.webp" alt="Lingots d&#39;or empilés, sous-jacent des contrats gold futures GC et MGC cotés au COMEX" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Un GC représente 100 onces d&#39;or, un MGC 10 onces : même prix, taille différente.<br><span style="font-size:.85em">Photo : <a href="https://commons.wikimedia.org/wiki/File:Gold_bullion_bars.jpg" rel="noopener" target="_blank">Stevebidmead</a>, <a href="http://creativecommons.org/publicdomain/zero/1.0/deed.en" rel="noopener license" target="_blank">CC0</a></span></figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="gc-ou-mgc-quelle-difference-concrete-ent">GC ou MGC : quelle différence concrète entre les deux contrats ?</h2>
+    <p>La différence tient en un chiffre : le GC porte sur 100 onces troy d&#39;or, le MGC (Micro Gold) sur 10 onces. Tout le reste en découle : la valeur du tick, la marge, et ce que tu perds quand le marché va contre toi.</p>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Caractéristique</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">GC (Gold)</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">MGC (Micro Gold)</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Taille du contrat</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">100 onces troy</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">10 onces troy</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Pas de cotation (tick)</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">0,10 $ l&#39;once</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">0,10 $ l&#39;once</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Valeur d&#39;un tick</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">10 $</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">1 $</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Valeur de 1 $ de mouvement</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">100 $</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">10 $</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Bourse</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">COMEX (CME Group)</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">COMEX (CME Group)</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Livraison</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">physique</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">physique</td></tr></tbody></table></div>
+<p>Ces caractéristiques viennent des <a href="https://www.cmegroup.com/markets/metals/precious/gold-futures.contractSpecs.html">spécifications officielles du contrat Gold sur le site du CME</a> et de la <a href="https://www.cmegroup.com/education/courses/understanding-micro-futures-contracts-at-cme-group/micro-gold-and-silver-futures/micro-gold-and-micro-silver-futures-product-overview">présentation des Micro Gold par le CME</a>. Le CME y précise que le Micro Gold représente un dixième du contrat standard.</p>
+<p>Côté argent bloqué, le CME fixe deux niveaux pour chaque contrat : la marge initiale, nécessaire pour ouvrir la position, et la marge de maintenance, le seuil sous lequel ton courtier te demande de réapprovisionner le compte. Les montants changent avec la volatilité : consulte-les le jour même dans l&#39;onglet « Margins » de la page du contrat au CME, ou directement dans ta plateforme.</p>
+<h3>Ce que ça représente en argent</h3>
+<p>Avec une once autour de 3 950 $ début novembre 2026 (3 960,45 $ à 9 h à New York le 3 novembre selon CNBC, clôture à 3 930,33 $ selon goldprice.com, après 3 880 $ le 30 octobre selon <a href="https://www.kitco.com/news/article/2026-10-30/gold-prices-plunge-one-year-low-below-3900-higher-oil-prices-fuel-fears">Kitco</a>), un GC représente environ 395 000 $ d&#39;or, et un MGC environ 39 500 $. C&#39;est un ordre de grandeur, pas un chiffre fixe : il bouge avec le cours.</p>
+<p>Regarde ce que ça donne sur une vraie séance. Le 30 octobre 2026, l&#39;or a perdu environ 3,5 % en une journée pour tomber à 3 880 $, son plus bas depuis un an, d&#39;après Kitco. Une baisse de 3,5 % depuis environ 4 020 $, c&#39;est près de 140 $ l&#39;once (mon calcul). Sur un GC, ça fait environ 14 000 $ de variation pour un seul contrat. Sur un MGC, environ 1 400 $.</p>
+<h3>Le micro, c&#39;est le même marché</h3>
+<p>Le MGC n&#39;est pas un « faux » or ou un produit au rabais. Il suit le même prix, à la même seconde, sur la même bourse. La seule chose qui change, c&#39;est la taille. C&#39;est exactement le même rapport qu&#39;entre le NQ et le MNQ sur le Nasdaq, que je détaille dans <a href="https://basstrading.fr/blog/nq-ou-mnq/">NQ ou MNQ : lequel choisir</a>.</p>
+<p>La liquidité est plus forte sur le GC : le carnet est plus épais, les gros intervenants y sont. Mais pour la taille d&#39;un particulier, le MGC est largement assez liquide pour entrer et sortir sans glissement notable aux heures actives.</p>
+<p><b>À retenir</b></p>
+<ul><li>GC = 100 onces, tick de 10 $, 1 $ de mouvement = 100 $.</li><li>MGC = 10 onces, tick de 1 $, 1 $ de mouvement = 10 $.</li><li>Même prix, même bourse, mêmes horaires : seule la taille change.</li><li>Une journée à −3,5 % sur l&#39;or, c&#39;est environ 14 000 $ par GC.</li></ul>
+<p>Maintenant que tu as les tailles, voyons comment compter un mouvement en ticks et en points, parce que c&#39;est là que les débutants se trompent.</p>
+
+    <hr>
+
+    <h2 id="combien-vaut-un-tick-et-un-point-sur-l-o">Combien vaut un tick et un point sur l&#39;or ?</h2>
+    <p>Sur le GC, un tick (0,10 $) vaut 10 $ et un point (1 $) vaut 100 $. Sur le MGC, un tick vaut 1 $ et un point vaut 10 $. Un point contient donc 10 ticks sur les deux contrats.</p>
+<p>La formule est toujours la même : valeur d&#39;un tick = taille du contrat × pas de cotation. Pour le GC : 100 onces × 0,10 $ = 10 $. Pour le MGC : 10 onces × 0,10 $ = 1 $.</p>
+<h3>Trois calculs à savoir faire de tête</h3>
+<ul><li>Un stop de 5 $ sous ton entrée (50 ticks) : 500 $ sur un GC, 50 $ sur un MGC.</li><li>Un objectif de 15 $ (150 ticks) : 1 500 $ sur un GC, 150 $ sur un MGC.</li><li>Un glissement de 3 ticks à l&#39;exécution du stop : 30 $ sur un GC, 3 $ sur un MGC.</li></ul>
+<p>Ce dernier point compte plus qu&#39;on ne le croit. Sur une annonce comme l&#39;inflation américaine, le prix de l&#39;or peut sauter plusieurs ticks d&#39;un coup. Ton stop est un ordre au marché une fois déclenché : il sera exécuté au prochain prix disponible, pas forcément au tien.</p>
+<h3>Point, tick, « pip » : ne mélange pas</h3>
+<p>Sur les plateformes CFD, tu verras souvent le mot « pip » pour le XAUUSD, avec des définitions qui changent d&#39;un courtier à l&#39;autre. Sur les futures, il n&#39;y a pas d&#39;ambiguïté : le tick est fixé par le CME, et sa valeur en dollars aussi. C&#39;est une des raisons pour lesquelles je trouve les futures plus honnêtes pour apprendre : ce que tu risques est écrit noir sur blanc.</p>
+<h3>Pourquoi l&#39;or surprend les traders du Nasdaq</h3>
+<p>Sur le MNQ, que je trade tous les jours, un point vaut 2 $. Sur le MGC, un point vaut 10 $. Un trader qui passe du Nasdaq à l&#39;or en gardant ses réflexes de « 20 points de stop » se retrouve avec un risque cinq fois plus gros par point. Ce n&#39;est pas le même marché, ce n&#39;est pas la même échelle.</p>
+<p>C&#39;est là que ma règle sur les stops prend tout son sens : je la détaille plus bas, dans la partie sur la taille de position. Avant ça, parlons de l&#39;argent qu&#39;on te bloque pour ouvrir une position.</p>
+
+    <hr>
+
+    <h2 id="quelle-marge-faut-il-pour-trader-l-or-en">Quelle marge faut-il pour trader l&#39;or en futures ?</h2>
+    <p>La marge est le dépôt de garantie que ton courtier bloque pour chaque contrat ouvert ; sur le MGC, elle représente environ un dixième de celle du GC. Elle est fixée par le CME (marge initiale et marge de maintenance), puis chaque courtier peut demander plus, ou proposer une marge réduite en intraday.</p>
+<p>Je ne te donne pas de montant précis ici, volontairement : le CME modifie ses marges quand la volatilité change, et l&#39;or a été très volatil en 2025 et 2026. Le chiffre du jour se trouve sur la page du contrat au CME (onglet « Margins ») et dans ta plateforme, au moment où tu passes l&#39;ordre.</p>
+<h3>Marge initiale, marge de maintenance, marge intraday</h3>
+<ul><li>Marge initiale : ce qu&#39;il faut sur ton compte pour ouvrir une position et la garder le soir.</li><li>Marge de maintenance : le seuil en dessous duquel ton courtier te demande de remettre de l&#39;argent, ou coupe ta position.</li><li>Marge intraday : beaucoup de courtiers en futures proposent une marge réduite si tu fermes avant la fin de séance. C&#39;est pratique, mais c&#39;est aussi ce qui permet de prendre beaucoup trop gros.</li></ul>
+<h3>Le piège de la marge réduite</h3>
+<p>Une marge basse ne veut pas dire un risque bas. Elle veut juste dire que le courtier te laisse ouvrir plus de contrats. Si tu as 3 000 $ sur ton compte et que la marge intraday te permet d&#39;ouvrir un GC, une séance comme celle du 30 octobre 2026 suffit à effacer ton compte et à le rendre négatif.</p>
+<p>C&#39;est pour ça que je ne calcule jamais ma taille avec la marge. Je calcule ma taille avec mon stop et ce que je suis prêt à perdre, et la marge n&#39;est qu&#39;une vérification à la fin : est-ce que j&#39;ai assez sur le compte ? Ce raisonnement, je le développe dans <a href="https://basstrading.fr/blog/combien-risquer-par-trade/">combien risquer par trade</a>.</p>
+<h3>Et en prop firm ?</h3>
+<p>Beaucoup de prop firms futures donnent accès au GC et au MGC. Là, la question de la marge disparaît, mais elle est remplacée par une autre contrainte : le drawdown maximal du compte. Une seule séance agitée sur l&#39;or peut consommer tout ton drawdown. Je t&#39;explique comment il se calcule dans mon article sur le <a href="https://basstrading.fr/blog/drawdown-prop-firm-futures/">drawdown en prop firm futures</a>.</p>
+<p>Tu sais ce que tu trades et ce que ça coûte. Reste à savoir quand le faire depuis la France.</p>
+
+    <hr>
+
+    <h2 id="a-quelle-heure-trader-l-or-depuis-la-fra">À quelle heure trader l&#39;or depuis la France ?</h2>
+    <p>Les gold futures cotent presque 23 heures sur 24, du dimanche soir au vendredi soir. Sur Globex, la séance va de 18 h à 17 h heure de New York, avec une pause d&#39;une heure chaque jour, comme l&#39;indiquent les <a href="https://www.cmegroup.com/markets/metals/precious/gold-futures.contractSpecs.html">spécifications du contrat sur le site du CME</a>. En heure de Paris, en période d&#39;heure d&#39;hiver des deux côtés, ça donne une cotation de minuit à 23 h, pause entre 23 h et minuit.</p>
+<p>Attention aux deux ou trois semaines par an où la France et les États-Unis ne changent pas d&#39;heure le même week-end (fin mars et fin octobre/début novembre) : le décalage passe de 6 à 5 heures, et la pause tombe alors entre 22 h et 23 h à Paris.</p>
+<h3>Les heures qui comptent vraiment</h3>
+<p>Coter 23 heures par jour ne veut pas dire que le marché est intéressant 23 heures par jour. Voici les repères que je regarde, en heure de Paris :</p>
+<ul><li>11 h 30 et 16 h : les deux fixings LBMA de Londres, où se fixe le prix de référence de l&#39;or physique. Ils peuvent créer de l&#39;activité.</li><li>14 h 30 : la plupart des statistiques américaines (inflation, emploi, ventes au détail). C&#39;est souvent là que l&#39;or fait ses plus gros mouvements de la journée.</li><li>15 h 30 : ouverture de Wall Street. Le volume monte sur tous les marchés américains.</li><li>19 h 30 : le règlement du COMEX (settlement, 13 h 30 heure de New York, voir la page du CME citée plus haut). Après, l&#39;activité baisse nettement.</li><li>20 h les jours de Fed : la décision de taux, puis la conférence de presse à 20 h 30.</li></ul>
+<h3>Ma recommandation pour un trader qui travaille</h3>
+<p>Si tu as un emploi, la fenêtre de 14 h 30 à 17 h 30 concentre l&#39;essentiel de ce qui m&#39;intéresse : les chiffres, l&#39;ouverture américaine, le chevauchement avec la fin de séance européenne. C&#39;est la même fenêtre que pour le Nasdaq, que je décris dans <a href="https://basstrading.fr/blog/horaires-futures-nasdaq-heure-paris/">mes horaires des futures Nasdaq à l&#39;heure de Paris</a>.</p>
+<p>La nuit asiatique, en revanche, je la déconseille aux débutants : le volume est plus faible, les mouvements plus erratiques, et tu trades fatigué.</p>
+<p><b>À retenir</b></p>
+<ul><li>Cotation de minuit à 23 h (heure de Paris) en hiver, pause d&#39;une heure.</li><li>14 h 30 : les chiffres américains, les plus gros mouvements.</li><li>15 h 30 : ouverture de Wall Street.</li><li>Vérifie le décalage horaire en mars et en octobre/novembre.</li></ul>
+<p>Mais pourquoi l&#39;or bouge-t-il si fort à 14 h 30 ? Pour le comprendre, il faut savoir ce qui fait bouger son prix.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/gold-futures-gc-mgc/blog-gold-futures-gc-mgc-2.webp" alt="Lingots d&#39;or sur fond blanc, métal dont le prix est dicté par les taux réels, le dollar, les banques centrales et la peur" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Taux réels, dollar, banques centrales et peur : les quatre moteurs du prix de l&#39;or.<br><span style="font-size:.85em">Photo : <a href="https://commons.wikimedia.org/wiki/File:Gold_Ingots_on_white_background.jpg" rel="noopener" target="_blank">Szaaman</a>, <a href="https://commons.wikimedia.org/wiki/File:Gold_Ingots_on_white_background.jpg" rel="noopener license" target="_blank">Public domain</a></span></figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="qu-est-ce-qui-fait-bouger-le-prix-de-l-o">Qu&#39;est-ce qui fait bouger le prix de l&#39;or ?</h2>
+    <p>L&#39;or réagit surtout à quatre choses : les taux d&#39;intérêt réels américains, le dollar, les achats des banques centrales et la peur sur les marchés. Il ne verse aucun intérêt ni dividende : quand les taux réels montent, le garder « coûte » plus cher en manque à gagner, et il a tendance à baisser.</p>
+<h3>Les taux et la Fed</h3>
+<p>C&#39;est le moteur le plus suivi. Chaque fois qu&#39;un chiffre d&#39;inflation ou d&#39;emploi fait changer les anticipations sur les taux de la Fed, l&#39;or réagit dans la seconde. Un chiffre d&#39;inflation plus fort que prévu pousse les taux attendus vers le haut, ce qui pèse en général sur l&#39;or. L&#39;inverse le soutient.</p>
+<p>La chute du 30 octobre 2026 en est un bon exemple. D&#39;après <a href="https://www.kitco.com/news/article/2026-10-30/gold-prices-plunge-one-year-low-below-3900-higher-oil-prices-fuel-fears">Kitco</a>, le pétrole tiré par la guerre avec l&#39;Iran a ravivé les craintes d&#39;inflation, donc de hausses de taux de la Fed ; un PIB américain du 3e trimestre à +3,4 % allait dans le même sens ; et des ventes forcées pour couvrir des appels de marge, après une chute des valeurs technologiques, ont accéléré la baisse.</p>
+<h3>Le dollar</h3>
+<p>L&#39;or est coté en dollars. Quand le dollar se renforce, il faut moins de dollars pour acheter une once : à demande égale, le prix baisse. Ce lien n&#39;est pas mécanique au jour le jour, mais il est présent sur la durée.</p>
+<h3>Les banques centrales</h3>
+<p>Depuis plusieurs années, les banques centrales achètent beaucoup d&#39;or pour diversifier leurs réserves. Ce mouvement de fond explique en partie la hausse historique, avec un record à 5 589,38 $ l&#39;once le 28 janvier 2026 selon <a href="https://www.cbsnews.com/news/highest-gold-price-in-history-how-its-changed-from-2025-to-2026">CBS News</a>. Pour toi, trader intraday, c&#39;est surtout un contexte : il ne te dit rien sur la prochaine heure. Et la rechute sous 3 900 $ neuf mois plus tard rappelle qu&#39;une tendance de fond ne protège personne d&#39;une baisse de 30 %.</p>
+<h3>La peur</h3>
+<p>Tensions géopolitiques, crise bancaire, chute des actions : l&#39;or sert de refuge. Ces mouvements sont violents et imprévisibles. Je ne les anticipe pas, je les subis comme tout le monde, et c&#39;est pour ça que mon stop est posé avant d&#39;entrer. Fin octobre 2026, la peur n&#39;a même pas joué dans le sens attendu : certains investisseurs ont vendu leur or pour couvrir leurs pertes ailleurs.</p>
+<h3>Ce que j&#39;en fais en pratique</h3>
+<p>Je ne trade pas l&#39;actualité. Je regarde le calendrier économique le matin pour savoir à quelle heure le marché risque de devenir violent, et je décide si je suis en position ou à plat à ce moment-là. Le reste, c&#39;est le graphique et le flux d&#39;ordres qui me le disent.</p>
+<p>En mars 2025, quand l&#39;or a franchi les 3 000 $, j&#39;en ai parlé dans une vidéo, <a href="https://www.youtube.com/watch?v=w5Wc_S3UKI8">Gold Rush à 3000 $</a>. Ce que je voulais montrer : un marché en tendance forte peut faire des allers-retours énormes à l&#39;intérieur de la journée, même quand la direction de fond ne change pas.</p>
+<p>Tout ça explique pourquoi beaucoup de Français tradent l&#39;or via un CFD. Est-ce une bonne idée ?</p>
+
+    <hr>
+
+    <h2 id="gold-futures-xauusd-ou-or-physique-que-c">Gold futures, XAUUSD ou or physique : que choisir ?</h2>
+    <p>Pour trader l&#39;or à court terme, je choisis le futures plutôt que le CFD XAUUSD, parce qu&#39;il passe par une bourse centrale, avec un vrai volume et des coûts transparents. Pour épargner sur le long terme, ni l&#39;un ni l&#39;autre : c&#39;est le terrain de l&#39;or physique ou des fonds cotés.</p>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Critère</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Futures (GC, MGC)</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">CFD XAUUSD</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Lieu d&#39;échange</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Bourse (COMEX, CME)</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Gré à gré, chez le courtier</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Contrepartie</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Chambre de compensation</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Souvent le courtier lui-même</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Volume affiché</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Volume réel du marché</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Volume propre au courtier</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Effet de levier</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Fixé par la marge</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">20:1 au maximum pour un particulier</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Coûts</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Commission + écart de prix</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Écart de prix + frais de nuit</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Lecture de l&#39;order flow</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Possible</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Impossible</td></tr></tbody></table></div>
+<h3>Le levier des CFD est plafonné</h3>
+<p>Le 27 mars 2018, l&#39;ESMA a annoncé ses mesures sur les CFD en rappelant que <a href="https://www.esma.europa.eu/node/84933">74 à 89 % des comptes de particuliers perdaient de l&#39;argent</a> sur ces produits. Le 1er juin 2018, elle a <a href="https://www.esma.europa.eu/press-news/esma-news/esma-adopts-final-product-intervention-measures-cfds-and-binary-options">adopté les mesures définitives</a>, appliquées à partir du 1er août 2018 : 20 pour 1 au maximum sur l&#39;or pour un particulier.</p>
+<p>En France, l&#39;AMF avait déjà mesuré, dans sa <a href="https://www.amf-france.org/sites/institutionnel/files/contenu_simple/lettre_ou_cahier/lettre_observatoire/La%20lettre%20de%20l%27Observatoire%20de%20l%27epargne%20de%20l%27AMF%20-%20ndeg%2010%20-%20Octobre%202014.pdf">lettre de l&#39;Observatoire de l&#39;épargne d&#39;octobre 2014</a>, un taux de 89 % de clients perdants sur 14 799 comptes (étude AMF publiée en 2014) parmi les particuliers actifs sur le forex.</p>
+<p>Ce chiffre porte sur le forex, pas spécifiquement sur l&#39;or. Mais il dit une chose simple : un produit à levier, chez un courtier qui est souvent ta contrepartie, avec des frais qui s&#39;accumulent chaque nuit, joue contre toi sur la durée.</p>
+<h3>Pourquoi le futures me convient mieux</h3>
+<p>Sur un futures, je vois le vrai volume, je peux lire le carnet d&#39;ordres, le volume et le CVD, je sais exactement ce que vaut un tick. Le CFD ne me donne rien de tout ça. Et je n&#39;ai aucun intérêt à ce que le courtier gagne quand je perds.</p>
+<p>Le futures a un inconvénient : la taille minimale. Avant le micro, il fallait un gros compte pour trader l&#39;or proprement. Le MGC a réglé ce problème.</p>
+<h3>Et l&#39;or physique, les ETF ?</h3>
+<p>Si ton but est de détenir de l&#39;or pour protéger une épargne, le trading n&#39;est pas le bon outil. Un lingot, des pièces ou un fonds coté adossé à l&#39;or physique répondent à ce besoin sans levier ni stop. C&#39;est une autre démarche, que je ne traite pas ici. Cet article parle de trading, c&#39;est-à-dire de positions de quelques minutes à quelques jours.</p>
+<p>Tu as choisi le futures. Vient maintenant la question qui décide si tu tiens dans la durée : combien de contrats ?</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/gold-futures-gc-mgc/blog-gold-futures-gc-mgc-3.webp" alt="Pièces et lingots d&#39;or physique, à distinguer du trading de l&#39;or en futures ou en CFD XAUUSD" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Détenir de l&#39;or physique et trader l&#39;or en futures sont deux démarches différentes.<br><span style="font-size:.85em">Photo : <a href="https://commons.wikimedia.org/wiki/File:China_-_5732266939_Gold_-_M%C3%BCnzen_-_Barren.jpg" rel="noopener" target="_blank">Bill Holler</a>, <a href="https://creativecommons.org/licenses/by-sa/2.0" rel="noopener license" target="_blank">CC BY-SA 2.0</a></span></figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="comment-calculer-ta-taille-de-position-s">Comment calculer ta taille de position sur l&#39;or ?</h2>
+    <p>On calcule la taille de position en divisant le montant qu&#39;on accepte de perdre par la perte d&#39;un contrat au stop. Jamais l&#39;inverse. Comme je le dis souvent : « pense aux pertes avant de penser aux gains » (<a href="https://www.youtube.com/watch?v=3YvoeD-_BEc&amp;t=2457s">voir à la 41e minute</a>).</p>
+<p>L&#39;or n&#39;est pas mon marché principal : je trade le Nasdaq futures. Mais la méthode de gestion du risque que j&#39;applique est exactement la même sur n&#39;importe quel contrat, et c&#39;est elle qui compte.</p>
+<h3>La méthode en quatre étapes</h3>
+<ul><li>Fixe ton risque par trade en dollars. Par exemple 1 % d&#39;un compte de 8 000 $, soit 80 $.</li><li>Place ton stop là où ton idée est fausse, sur le graphique : sous un plus bas, derrière un niveau de volume. Pas à une distance arbitraire.</li><li>Mesure la distance en dollars par once. Disons 4 $ entre ton entrée et ton stop.</li><li>Divise. Sur un MGC, 4 $ × 10 = 40 $ de perte par contrat. 80 $ ÷ 40 $ = 2 contrats MGC. Sur un GC, 4 $ × 100 = 400 $ : impossible avec 80 $ de risque.</li></ul>
+<h3>Ce que je fais sur le Nasdaq, transposé sur l&#39;or</h3>
+<p>Dans ma vidéo sur le risque par trade, je montre une entrée avec 2 micros sur le Nasdaq et un stop de 20 points, soit 80 $ de risque (<a href="https://www.youtube.com/watch?v=3YvoeD-_BEc&amp;t=2078s">à la 34e minute</a>). Le stop, « on le met en fonction du capital qu&#39;on est prêt à perdre sur ce trade » (<a href="https://www.youtube.com/watch?v=3YvoeD-_BEc&amp;t=2212s">36e minute</a>).</p>
+<p>Transposé sur l&#39;or avec le même budget de 80 $ : 2 MGC avec un stop de 4 $, ou 1 MGC avec un stop de 8 $. Le budget reste fixe, c&#39;est le nombre de contrats qui s&#39;adapte à la distance du stop. Je l&#39;explique aussi dans la vidéo : « si on change de marché qu&#39;on va sur quelque chose d&#39;un peu moins volatile on va resserrer notre stop » (<a href="https://www.youtube.com/watch?v=3YvoeD-_BEc&amp;t=497s">8e minute</a>). L&#39;inverse vaut pour l&#39;or quand il s&#39;agite : stop plus large, donc moins de contrats.</p>
+<h3>Le taux de réussite minimum</h3>
+<p>Avant même de chercher des entrées, vérifie que ton couple stop-objectif tient la route. Je rappelle souvent cette formule : « un win rate minimum est égal à 1 divisé par 1 plus le RR » (<a href="https://www.youtube.com/watch?v=3YvoeD-_BEc&amp;t=201s">3e minute</a>).</p>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Rapport gain/risque</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Taux de réussite minimum</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Exemple sur l&#39;or (MGC)</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">1 pour 1</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">50 %</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">stop 4 $, objectif 4 $</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">2 pour 1</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">33 %</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">stop 4 $, objectif 8 $</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">3 pour 1</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">25 %</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">stop 4 $, objectif 12 $</td></tr></tbody></table></div>
+<p>Ce taux est le seuil où tu ne perds ni ne gagnes, avant frais. Les commissions et le glissement le remontent un peu.</p>
+<h3>Ajouter des contrats : seulement dans le bon sens</h3>
+<p>Dans la même vidéo, sur un trade qui allait déjà dans mon sens, je montre comment j&#39;ai ajouté des contrats en les rentrant « deux par deux » (<a href="https://www.youtube.com/watch?v=3YvoeD-_BEc&amp;t=2104s">35e minute</a>). Ce n&#39;est pas une règle d&#39;entrée : c&#39;est ce que j&#39;ai fait sur une position gagnante, jamais sur une perdante. Et la règle d&#39;or : « ne jamais sur-tailler des entrées pour te refaire » (<a href="https://www.youtube.com/watch?v=3YvoeD-_BEc&amp;t=2268s">37e minute</a>). Sur l&#39;or, où une seule bougie de 14 h 30 peut faire 10 $, doubler pour se refaire est le chemin le plus court vers la fin du compte.</p>
+<p>Pour aller plus loin sur ce point, lis mon article sur le <a href="https://basstrading.fr/blog/stop-loss-trading/">stop loss en trading</a> et celui sur la <a href="https://basstrading.fr/blog/perte-maximale-journaliere-trading/">perte maximale journalière</a>, la limite qui coupe la journée avant qu&#39;elle ne dérape.</p>
+<p><b>À retenir</b></p>
+<ul><li>Taille = risque accepté ÷ perte d&#39;un contrat au stop.</li><li>Le stop se pose sur le graphique, le nombre de contrats s&#39;adapte.</li><li>Avec un petit compte, le GC est presque toujours trop gros.</li><li>Taux de réussite minimum = 1 ÷ (1 + RR).</li></ul>
+<p>Toute ma méthode de gestion du risque, avec des séances commentées pas à pas, est dans ma <a href="https://basstrading.fr/l/OJOnKA">formation offerte</a>. C&#39;est la suite logique de cette partie si tu veux l&#39;appliquer sur ton propre compte.</p>
+<p>Le trading de contrats à terme comporte un risque élevé de perte, pouvant dépasser la mise initiale. Contenu éducatif, pas un conseil en investissement.</p>
+
+    <hr>
+
+    <h2 id="echeances-symboles-et-roll-comment-ne-pa">Échéances, symboles et roll : comment ne pas se faire piéger ?</h2>
+    <p>Les gold futures ont des échéances ; les plus échangées sont février, avril, juin, août, octobre et décembre. Le contrat le plus actif n&#39;est pas toujours le plus proche : il faut passer au suivant (le « roll ») avant la fin de vie du contrat.</p>
+<h3>Lire un symbole</h3>
+<p>Un symbole de futures se compose de la racine, de la lettre du mois et de l&#39;année. Pour l&#39;or :</p>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Mois</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Lettre</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Exemple</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Février</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">G</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">GCG27, MGCG27</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Avril</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">J</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">GCJ27, MGCJ27</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Juin</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">M</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">GCM27, MGCM27</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Août</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Q</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">GCQ27, MGCQ27</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Octobre</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">V</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">GCV27, MGCV27</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Décembre</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Z</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">GCZ26, MGCZ26</td></tr></tbody></table></div>
+<p>Selon ta plateforme, tu verras « GCZ6 », « GC 12-26 » ou « GCZ2026 » : c&#39;est le même contrat.</p>
+<h3>Le premier jour d&#39;avis : la date à ne pas rater</h3>
+<p>Le GC et le MGC sont des contrats à livraison physique. Le CME indique sur sa présentation des Micro Gold que la livraison du MGC passe par un certificat représentant 10 % d&#39;un lingot de 100 onces. Tu n&#39;as évidemment aucune envie de recevoir de l&#39;or.</p>
+<p>La plupart des courtiers grand public ferment d&#39;office les positions avant le premier jour d&#39;avis (first notice day), qui tombe à la fin du mois précédant l&#39;échéance. Pour le contrat de décembre 2026, c&#39;est fin novembre : le volume bascule alors vers février 2027 (GCG27). Vérifie la date exacte dans le calendrier du contrat sur les <a href="https://www.cmegroup.com/markets/metals/precious/gold-futures.contractSpecs.html">spécifications du CME</a> et dans les règles de ton courtier, elles diffèrent.</p>
+<h3>Le réflexe à prendre</h3>
+<p>Avant chaque séance, regarde quel contrat a le plus de volume. Si ton graphique affiche encore l&#39;ancienne échéance alors que tout le monde est passé à la suivante, tes niveaux, ton VWAP et ton profil de volume sont faux. C&#39;est une erreur bête que je vois souvent chez les traders qui découvrent les futures.</p>
+<p>Une fois le bon contrat sur ton écran, il te faut une plateforme et un flux de données capables d&#39;afficher ce qui se passe vraiment.</p>
+
+    <hr>
+
+    <h2 id="quelle-plateforme-et-quel-courtier-pour-">Quelle plateforme et quel courtier pour trader les gold futures ?</h2>
+    <p>N&#39;importe quelle plateforme de futures sérieuse donne accès au GC et au MGC ; la vraie question est la qualité du flux de données et des outils d&#39;analyse du volume. Je n&#39;ai aucun partenariat avec les plateformes citées ici.</p>
+<p>Pour ma part, je trade sur Sierra Chart, avec le Market Profile, le VWAP et le CVD. Mais il existe d&#39;autres solutions solides, selon ton budget et ton niveau.</p>
+<h3>Les options courantes</h3>
+<ul><li>Tradovate : plateforme en ligne simple, populaire chez les débutants et en prop firm. J&#39;en ai fait un <a href="https://basstrading.fr/blog/tradovate-avis/">avis détaillé sur Tradovate</a>.</li><li>NinjaTrader : très répandu, nombreux indicateurs, gestion des ordres avancée. Voir mon <a href="https://basstrading.fr/blog/ninjatrader-avis/">avis sur NinjaTrader</a>.</li><li>Sierra Chart : austère mais très rapide et précis pour l&#39;order flow. C&#39;est mon outil de tous les jours.</li><li>TradingView : excellent pour l&#39;analyse, plus limité pour l&#39;exécution en futures et pour le carnet d&#39;ordres.</li></ul>
+<h3>Le flux de données compte autant que la plateforme</h3>
+<p>Pour lire le volume réel, il te faut un flux de données de marché CME, souvent via Rithmic ou CQG. Les données du COMEX sont payantes séparément chez la plupart des fournisseurs : vérifie que l&#39;abonnement « métaux » est inclus avant de t&#39;étonner d&#39;un graphique vide. Je détaille le rôle du connecteur dans <a href="https://basstrading.fr/blog/rithmic-futures/">mon article sur Rithmic</a>.</p>
+<h3>Mes critères pour choisir</h3>
+<ul><li>Les données du COMEX sont-elles disponibles, en temps réel, à un prix connu ?</li><li>Peux-tu poser un stop et un objectif automatiquement dès l&#39;entrée (ordre OCO ou bracket) ?</li><li>La plateforme affiche-t-elle un carnet d&#39;ordres et un profil de volume lisibles ?</li><li>Les commissions par contrat MGC sont-elles claires, aller-retour compris ?</li></ul>
+<p>Avec la bonne plateforme, tu peux faire sur l&#39;or ce que je fais sur le Nasdaq : lire le flux d&#39;ordres.</p>
+
+    <hr>
+
+    <h2 id="peut-on-lire-l-order-flow-sur-les-gold-f">Peut-on lire l&#39;order flow sur les gold futures ?</h2>
+    <p>Oui : comme tout futures coté au CME, l&#39;or affiche un volume centralisé, donc le volume, le CVD, le carnet d&#39;ordres et le VWAP y fonctionnent. C&#39;est même l&#39;argument le plus fort du futures face au CFD.</p>
+<h3>Les outils qui se transposent</h3>
+<ul><li>Le VWAP : le prix moyen pondéré par le volume de la séance. Je m&#39;en sers comme repère de valeur sur le Nasdaq, et il joue le même rôle sur l&#39;or. Je l&#39;explique dans mon guide du <a href="https://basstrading.fr/blog/vwap-trading/">VWAP en trading</a>.</li><li>Le profil de volume : il montre où le volume s&#39;est concentré. Les zones de fort volume servent souvent d&#39;aimant ou de support. La différence avec le Market Profile, que j&#39;utilise tous les jours, est expliquée dans <a href="https://basstrading.fr/blog/market-profile-vs-volume-profile/">Market Profile ou Volume Profile</a>.</li><li>Le CVD (delta cumulé) : il montre si ce sont les acheteurs ou les vendeurs qui agressent le marché au fil de la séance. C&#39;est ce que je regarde, avec le carnet, pour juger si un niveau tient.</li><li>Le carnet d&#39;ordres (DOM) : utile surtout sur le GC, plus épais. Je l&#39;explique dans <a href="https://basstrading.fr/blog/carnet-ordres-dom-futures/">lire le carnet d&#39;ordres (DOM) en futures</a>.</li><li>Le footprint : beaucoup de traders l&#39;utilisent pour voir le volume acheteur et vendeur à chaque prix. Ce n&#39;est pas mon outil, mais si tu veux l&#39;essayer sans payer de logiciel, regarde <a href="https://basstrading.fr/blog/footprint-tradingview/">comment afficher un footprint sur TradingView</a>.</li></ul>
+<h3>Ce qui change par rapport au Nasdaq</h3>
+<p>L&#39;or n&#39;a pas le même rythme. Il peut rester calme pendant des heures, puis bouger de plusieurs dollars en quelques secondes sur une statistique. Les niveaux de volume restent valables, mais les mouvements à travers ces niveaux sont souvent plus secs.</p>
+<p>Autre différence : sur le MGC, le carnet est plus fin que sur le GC. Pour lire le flux, beaucoup de traders regardent le GC et passent leurs ordres sur le MGC. Les deux contrats suivent le même prix : c&#39;est une façon simple d&#39;avoir une meilleure lecture sans prendre la taille du gros contrat.</p>
+<h3>Par où commencer</h3>
+<p>Si l&#39;order flow est nouveau pour toi, ne commence pas par l&#39;or. Apprends d&#39;abord sur un marché plus régulier, puis transpose. Mon guide de l&#39;<a href="https://basstrading.fr/blog/order-flow-trading-france/">order flow en trading depuis la France</a> pose les bases.</p>
+<p>La lecture ne suffit pas. Ce qui fait perdre de l&#39;argent sur l&#39;or, ce sont surtout quelques erreurs qui reviennent tout le temps.</p>
+
+    <hr>
+
+    <h2 id="quelles-erreurs-coutent-le-plus-cher-sur">Quelles erreurs coûtent le plus cher sur l&#39;or ?</h2>
+    <p>L&#39;erreur numéro un est de prendre le GC avec un petit compte ; la deuxième, d&#39;être en position à 14 h 30 sans l&#39;avoir décidé. Les autres en découlent.</p>
+<h3>1. Choisir la taille avant le stop</h3>
+<p>Le débutant ouvre « un contrat » parce que c&#39;est le minimum, puis cherche où mettre son stop pour que la perte reste supportable. Résultat : un stop trop serré, placé n&#39;importe où, qui saute au premier bruit. Le stop se décide sur le graphique, le nombre de contrats ensuite.</p>
+<h3>2. Oublier les annonces</h3>
+<p>Tu es en position tranquille à 14 h 25, et à 14 h 30 l&#39;inflation américaine sort. L&#39;or saute de 10 $ en une bougie, ton stop est exécuté avec plusieurs ticks de glissement. Regarde le calendrier économique avant chaque séance, c&#39;est cinq minutes.</p>
+<h3>3. Garder les réflexes du Nasdaq</h3>
+<p>Un point d&#39;or (10 $ sur un MGC) ne vaut pas un point de Nasdaq (2 $ sur un MNQ). Si tu passes d&#39;un marché à l&#39;autre, refais ton calcul de taille, à chaque fois.</p>
+<h3>4. Trader la mauvaise échéance</h3>
+<p>Ton graphique affiche encore décembre alors que le marché est passé à février : niveaux faux, volume faible, spread plus large. Vérifie le contrat actif chaque semaine en période de roll.</p>
+<h3>5. Doubler pour se refaire</h3>
+<p>Après une perte, l&#39;envie de « récupérer » en prenant plus gros est la plus dangereuse de toutes. Sur un marché capable de faire −3,5 % en une séance, elle peut finir un compte en une journée.</p>
+<h3>6. Confondre trading et conviction</h3>
+<p>« L&#39;or va monter, les banques centrales achètent. » Peut-être, sur des années. Ça ne t&#39;aide pas à placer un stop à 15 h 10. Ceux qui étaient sûrs de l&#39;or à 5 500 $ en janvier 2026 l&#39;ont vu sous 3 900 $ en octobre. En intraday, ton avis sur le long terme est souvent un handicap : il t&#39;empêche de couper.</p>
+<p><b>À retenir</b></p>
+<ul><li>Stop d&#39;abord, taille ensuite.</li><li>Calendrier économique avant chaque séance.</li><li>Recalcule ta taille à chaque changement de marché.</li><li>Jamais de taille augmentée après une perte.</li></ul>
+<p>Et parfois, la meilleure décision est de ne pas trader l&#39;or du tout.</p>
+
+    <hr>
+
+    <h2 id="quand-vaut-il-mieux-ne-pas-trader-l-or">Quand vaut-il mieux ne pas trader l&#39;or ?</h2>
+    <p>Si ton compte ne permet pas de respecter ton risque même avec un seul MGC et un stop logique, ne trade pas l&#39;or pour l&#39;instant. Ce n&#39;est pas un échec, c&#39;est de la gestion du risque.</p>
+<h3>Les situations où je reste à l&#39;écart</h3>
+<ul><li>Le stop logique est trop large pour ton budget. Si ton idée n&#39;est fausse qu&#39;à 15 $ de ton entrée, un MGC te coûte 150 $ au stop. Avec un risque de 80 $, la réponse est simple : pas de trade.</li><li>Les journées d&#39;annonces majeures (décision de la Fed, inflation, emploi) si tu n&#39;as pas un plan précis pour elles. Être à plat est une position.</li><li>La nuit asiatique, pour un débutant : moins de volume, plus d&#39;erratique, et de la fatigue.</li><li>Les jours de roll, quand le volume est partagé entre deux échéances.</li><li>Après ta perte maximale du jour. La séance est finie, quel que soit le marché.</li></ul>
+<h3>Les limites de cet article</h3>
+<p>Je t&#39;ai donné les chiffres officiels et ma méthode de risque. Je ne t&#39;ai pas donné de stratégie d&#39;entrée « clé en main » pour l&#39;or, et c&#39;est volontaire : l&#39;or n&#39;est pas mon marché principal, et je ne vais pas te vendre un système que je ne trade pas tous les jours. Ce que je transpose, c&#39;est ce qui marche partout : la lecture du volume et le calcul du risque.</p>
+<p>Les cours cités datent d&#39;octobre et novembre 2026. Les marges, les règles de ton courtier et les dates d&#39;échéance changent : vérifie-les toujours au moment où tu trades.</p>
+<h3>Et si tu débutes complètement</h3>
+<p>Commence par un seul marché, en simulation ou en micro, et tiens un journal. Le <a href="https://basstrading.fr/blog/day-trading-futures/">day trading sur les futures</a> demande d&#39;abord de la régularité. L&#39;or viendra après, si tu en as envie.</p>
+
+    <hr>
+
+    <h2 id="ce-qu-il-faut-retenir-sur-les-gold-futur">Ce qu&#39;il faut retenir sur les gold futures</h2>
+    <p>Si tu dois garder cinq choses de cet article :</p>
+<ul><li>Le GC représente 100 onces, le MGC 10 onces : 1 $ de mouvement vaut 100 $ sur l&#39;un, 10 $ sur l&#39;autre.</li><li>Pour un petit compte, c&#39;est le MGC, et la taille se calcule à partir du stop, jamais de la marge.</li><li>14 h 30 heure de Paris est l&#39;heure à surveiller : les statistiques américaines y font les plus gros mouvements.</li><li>Le futures passe par une bourse : vrai volume, coûts clairs, order flow lisible. Le CFD XAUUSD n&#39;offre rien de tout ça.</li><li>Vérifie l&#39;échéance active avant chaque séance, surtout fin novembre, fin janvier, et ainsi de suite.</li></ul>
+<h3>Ce soir, sur ton graphique</h3>
+<p>Ouvre un graphique du MGC sur l&#39;échéance la plus échangée. Repère le dernier plus bas significatif de la journée, mesure en dollars la distance entre le prix actuel et ce niveau, multiplie par 10 : c&#39;est ce que te coûterait un contrat si tu entrais maintenant avec un stop logique. Compare ce montant à 1 % de ton compte. Tu sauras immédiatement si l&#39;or est un marché pour toi aujourd&#39;hui.</p>
+<p>Ensuite, si tu viens du Nasdaq ou si tu veux un marché plus régulier pour apprendre l&#39;order flow, lis mon <a href="https://basstrading.fr/blog/nasdaq-futures-nq-mnq/">guide complet du Nasdaq futures NQ et MNQ</a> : c&#39;est le marché sur lequel je travaille tous les jours.</p>
+
+    <p><a href="https://www.youtube.com/watch?v=3YvoeD-_BEc" target="_blank" rel="noopener">▶ Voir la vidéo de Sébastien sur ce sujet</a></p>
+
+    <div class="cta-card cta-aimant">
+      <div class="cta-card-label">Gratuit</div>
+      <h3>Tu viens de lire la théorie. Regarde-⁠la en vrai.</h3>
+      <p>Je trade une séance complète sur le Nasdaq et je dis à voix haute ce que je regarde. 35 minutes, gratuit.</p>
+      <a href="https://basstrading.fr/p/formation-offerte/?src=blog-gold-futures-gc-mgc" class="btn-p">Je regarde la séance →</a>
+    </div>
+    
+  </article>
+</div>
+
+<!-- FAQ -->
+<section class="faq-sec">
+  <div class="sec-center"><div class="sec-label">FAQ</div><h2 class="sec-title">Questions fréquentes</h2></div>
+  <div class="faq-list">
+    <div class="fi"><button class="fq" onclick="tf(this)">Quelle est la différence entre GC et MGC ? <span class="fq-icon">+</span></button><div class="fa"><p>Le GC est le contrat standard sur l&#39;or au COMEX : 100 onces troy, un tick de 0,10 $ vaut 10 $, un mouvement de 1 $ vaut 100 $. Le MGC (Micro Gold) porte sur 10 onces : le tick vaut 1 $ et 1 $ de mouvement vaut 10 $. Les deux suivent exactement le même prix, sur la même bourse et aux mêmes horaires. Seule la taille change, et donc la marge et le risque par contrat.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Combien faut-il pour trader l&#39;or en futures ? <span class="fq-icon">+</span></button><div class="fa"><p>Il n&#39;y a pas de montant magique. La bonne question est : combien acceptes-tu de perdre par trade ? Si tu risques 1 % de ton compte et que ton stop logique est à 5 $ de ton entrée, un MGC te coûte 50 $ au stop, il te faut donc environ 5 000 $ pour un contrat. La marge exigée par le courtier n&#39;est qu&#39;une vérification finale, jamais la base du calcul.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">À quelle heure les gold futures sont-ils ouverts en France ? <span class="fq-icon">+</span></button><div class="fa"><p>Les gold futures cotent sur Globex du dimanche soir au vendredi soir, presque 23 heures sur 24. En heure d&#39;hiver des deux côtés de l&#39;Atlantique, la cotation va de minuit à 23 h à Paris, avec une pause d&#39;une heure entre 23 h et minuit. Les moments les plus actifs sont 14 h 30 (statistiques américaines) et 15 h 30 (ouverture de Wall Street).</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Vaut-il mieux trader l&#39;or en futures ou en CFD XAUUSD ? <span class="fq-icon">+</span></button><div class="fa"><p>Pour du trading à court terme, je préfère le futures : il passe par une bourse centrale (le COMEX), affiche le vrai volume, et ses coûts sont clairs. Le CFD est un contrat de gré à gré chez ton courtier, souvent ta contrepartie, avec un levier plafonné à 20 pour 1 par l&#39;ESMA pour les particuliers et des frais de nuit. Le futures permet aussi de lire l&#39;order flow, impossible en CFD.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Que se passe-t-il si je garde un gold futures jusqu&#39;à l&#39;échéance ? <span class="fq-icon">+</span></button><div class="fa"><p>Le GC et le MGC sont à livraison physique. La plupart des courtiers grand public ferment d&#39;office ta position avant le premier jour d&#39;avis, à la fin du mois qui précède l&#39;échéance. Pour éviter toute surprise, passe à l&#39;échéance suivante (le roll) quelques jours avant, et vérifie les règles exactes de ton courtier dans ta plateforme.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Peut-on trader les gold futures en prop firm ? <span class="fq-icon">+</span></button><div class="fa"><p>Oui, beaucoup de prop firms futures donnent accès au GC et au MGC. La contrainte principale devient le drawdown maximal du compte : l&#39;or peut bouger de plus de 100 $ l&#39;once en une séance, ce qui consomme vite un drawdown sur un GC. Commence en MGC, avec une taille calculée à partir de ton stop et du drawdown restant, pas à partir du nombre de contrats autorisé.</p></div></div>
+  </div>
+</section>
+
+<!-- Related -->
+<section class="related-sec">
+  <div class="sec-center"><div class="sec-label">Continuer la lecture</div><h2 class="sec-title">Articles connexes</h2></div>
+  <div class="related-grid">
+    <a href="/blog/market-profile-guide-complet/" class="related-card"><div class="related-cat">Guide</div><h3>Market Profile : le guide complet pour débutants</h3><p>Value Area, POC, types de journées — tout pour commencer.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/order-flow-trading-france/" class="related-card"><div class="related-cat">Méthode</div><h3>Order Flow Trading : pourquoi personne ne l'enseigne en France</h3><p>Le carnet d'ordres et le flux institutionnel décryptés.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/sierra-chart-configuration/" class="related-card"><div class="related-cat">Tutoriel</div><h3>Sierra Chart : configuration complète</h3><p>Le setup pas à pas pour le Market Profile et le Footprint.</p><span class="related-link">Lire &rarr;</span></a>
+  </div>
+</section>
+
+<!-- serie:debut --><style>.serie-w{background:#FFF;color:#1D1D1F;border-top:1px solid #F5F5F7}.serie{max-width:1060px;margin:0 auto;padding:56px 24px;font-family:inherit;box-sizing:border-box}.serie-l{font-size:.6rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#0066FF;margin-bottom:8px}.serie-w .serie h2{font-size:1.4rem;font-weight:800;letter-spacing:-.5px;color:#1D1D1F!important;margin:0 0 18px;font-family:inherit}.serie ul{list-style:none;padding:0;margin:0 0 22px;display:grid;grid-template-columns:repeat(2,1fr);gap:8px 24px}.serie-w .serie li a{color:#1D1D1F!important;font-size:.9rem;line-height:1.45;text-decoration:none;border-bottom:1px solid #D2D2D7}.serie li a:hover{color:#0066FF}.serie li.pil a{font-weight:700}.serie-o{background:#F5F5F7;border-radius:14px;padding:18px 20px;font-size:.88rem;line-height:1.55;color:#1D1D1F}.serie-w .serie-o a{color:#0066FF!important;font-weight:700}@media(max-width:700px){.serie ul{grid-template-columns:1fr}}</style><div class="serie-w"><aside class="serie" aria-label="Dans la même série"><div class="serie-l">Dans la même série</div><h2>Futures du Nasdaq et plateformes</h2><ul><li class="pil"><a href="/blog/nasdaq-futures-nq-mnq/">NQ et MNQ : les futures Nasdaq expliqués simplement</a></li><li class=""><a href="/blog/nq-ou-mnq/">NQ ou MNQ : quel contrat Nasdaq choisir pour débuter ?</a></li><li class=""><a href="/blog/horaires-futures-nasdaq-heure-paris/">Horaires des futures Nasdaq (NQ, MNQ) en heure de Paris</a></li><li class=""><a href="/blog/day-trading-futures/">Day trading : à quoi ressemble une journée sur les futures</a></li><li class=""><a href="/blog/vwap-trading/">VWAP trading : définition, calcul et lecture sur le Nasdaq</a></li><li class=""><a href="/blog/ninjatrader-avis/">NinjaTrader avis : prix, France, order flow et limites</a></li><li class=""><a href="/blog/tradovate-avis/">Tradovate avis : prix, démo, France et limites (2026)</a></li><li class=""><a href="/blog/sierra-chart-configuration/">Sierra Chart : configurer Market Profile, footprint et CVD</a></li><li class=""><a href="/blog/rithmic-futures/">Rithmic : c'est quoi, R Trader Pro, prop firms et Mac</a></li><li class=""><a href="/blog/sp-500-futures-es-mes/">S&amp;P 500 futures : ES ou MES, valeur du point et horaires</a></li><li class=""><a href="/blog/vwap-tradingview/">VWAP TradingView : réglages, bandes et VWAP ancrée (guide)</a></li></ul><div class="serie-o"><a href="/formations/">Toutes les formations de Bass</a> : plus de 250 leçons vidéo, du débutant au Market Profile avancé. Pour commencer sans payer : <a href="/p/formation-offerte/?src=serie-gold-futures-gc-mgc">la formation offerte</a> (7 leçons vidéo).</div></aside></div><!-- serie:fin -->
+<footer class="footer">
+  <div class="ft-top"><div class="ft-logo">BASS</div><div class="ft-cols">
+    <div class="ft-col"><div class="ft-col-title">Programme</div><a href="/formations/">Toutes les formations</a><a href="https://basstrading.fr/#methode">Méthode</a><a href="https://basstrading.fr/#programme">Programme</a><a href="https://basstrading.fr/p/formation-offerte/?src=blog-gold-futures-gc-mgc-pied">Formation offerte</a></div>
+    <div class="ft-col"><div class="ft-col-title">Ressources</div><a href="/blog/market-profile-guide-complet/">Market Profile</a><a href="/blog/footprint-chart-trading/">Footprint Chart</a><a href="/blog/order-flow-trading-france/">Order Flow</a></div>
+  </div></div>
+  <div class="ft-bottom"><span>&copy; 2026 BASS — Sébastien Constant</span><div><a href="/mentions-legales/">Mentions légales</a><a href="/confidentialite/">Confidentialité</a><a href="/cgv/">CGV</a><a href="mailto:contact@basstrading.fr">Contact</a></div></div>
+</footer>
+<div class="disclaimer">Le trading comporte des risques de perte en capital. Les performances passées ne préjugent pas des performances futures. Ce site ne constitue pas un conseil en investissement.</div>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+const lenis=new Lenis({duration:1.2,easing:t=>Math.min(1,1.001-Math.pow(2,-10*t))});
+function raf(t){lenis.raf(t);requestAnimationFrame(raf)}requestAnimationFrame(raf);
+lenis.on('scroll',ScrollTrigger.update);gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0);
+const tl=gsap.timeline();
+tl.to('.pre-word span',{y:0,opacity:1,duration:.5,stagger:.1,ease:'power3.out',delay:.3}).to('#preLine',{width:'80px',duration:.7,ease:'power2.inOut'},'<+.2').to('.preloader',{yPercent:-100,duration:.8,ease:'power3.inOut',delay:.4}).set('.preloader',{display:'none'}).to('#nav',{opacity:1,y:0,duration:.5},'<+.1');
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);const h=document.documentElement.scrollHeight-window.innerHeight;document.getElementById('readingProgress').style.width=(window.scrollY/h*100)+'%'});
+const tocLinks=document.querySelectorAll('.toc a');const sections=Array.from(tocLinks).map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+window.addEventListener('scroll',()=>{let c='';sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)c=s.id});tocLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+c)})});
+function tf(b){const i=b.closest('.fi'),a=b.nextElementSibling,o=i.classList.contains('active');document.querySelectorAll('.fi').forEach(x=>{x.classList.remove('active');x.querySelector('.fa').classList.remove('open')});if(!o){i.classList.add('active');a.classList.add('open')}}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();lenis.scrollTo(t,{offset:-60})}})});
+</script>
+<script src="/v.js" defer></script>
+</body>
+</html>
