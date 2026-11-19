@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Order flow trading : le guide complet en français (2026) — BASS Trading</title>
-  <meta name="description" content="Order flow : lire qui achète et qui vend vraiment, avec le carnet d'ordres, le Time &amp; Sales et le footprint. Définition, outils et exemples sur le Nasdaq.">
-  <meta property="og:title" content="Order flow trading : le guide complet en français (2026)">
-  <meta property="og:description" content="Order flow : lire qui achète et qui vend vraiment, avec le carnet d'ordres, le Time &amp; Sales et le footprint. Définition, outils et exemples sur le Nasdaq.">
+  <title>Order flow trading : c&#39;est quoi et comment le lire (guide)</title>
+  <meta name="description" content="L&#39;order flow montre qui achète et qui vend vraiment : carnet d&#39;ordres, Time &amp; Sales, footprint, delta. Définition, outils et une lecture pas à pas sur le Nasdaq.">
+  <meta property="og:title" content="Order flow trading : c&#39;est quoi et comment le lire (guide)">
+  <meta property="og:description" content="L&#39;order flow montre qui achète et qui vend vraiment : carnet d&#39;ordres, Time &amp; Sales, footprint, delta. Définition, outils et une lecture pas à pas sur le Nasdaq.">
   <meta property="og:image" content="https://basstrading.fr/images/og-basstrading.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -16,14 +16,14 @@
   <meta property="og:url" content="https://basstrading.fr/blog/order-flow-trading-france/">
   <meta property="og:site_name" content="BASS Trading">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Order flow trading : le guide complet en français (2026)">
-  <meta name="twitter:description" content="Order flow : lire qui achète et qui vend vraiment, avec le carnet d'ordres, le Time &amp; Sales et le footprint. Définition, outils et exemples sur le Nasdaq.">
+  <meta name="twitter:title" content="Order flow trading : c&#39;est quoi et comment le lire (guide)">
+  <meta name="twitter:description" content="L&#39;order flow montre qui achète et qui vend vraiment : carnet d&#39;ordres, Time &amp; Sales, footprint, delta. Définition, outils et une lecture pas à pas sur le Nasdaq.">
   <link rel="canonical" href="https://basstrading.fr/blog/order-flow-trading-france/">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "@id": "https://basstrading.fr/blog/order-flow-trading-france/#article", "headline": "Order flow trading : le guide complet en français (2026)", "description": "Guide complet sur l'Order Flow Trading : carnet d'ordres, Time & Sales, DOM, flux institutionnel.", "datePublished": "2026-03-27", "dateModified": "2026-03-27", "inLanguage": "fr-FR", "image": "https://basstrading.fr/images/og-basstrading.jpg", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://basstrading.fr/blog/order-flow-trading-france/"}, "isPartOf": {"@type": "WebSite", "@id": "https://basstrading.fr/#website", "name": "BASS Trading", "url": "https://basstrading.fr/"}, "author": {"@type": "Person", "@id": "https://basstrading.fr/#sebastien-constant", "name": "Sébastien Constant", "url": "https://basstrading.fr/auteur/sebastien-constant/"}, "publisher": {"@type": "Organization", "@id": "https://basstrading.fr/#organisation", "name": "BASS Trading", "url": "https://basstrading.fr/", "logo": {"@type": "ImageObject", "url": "https://basstrading.fr/images/logo-basstrading.png", "width": 512, "height": 512}}, "keywords": ["order flow", "trading", "carnet d'ordres", "DOM", "time and sales", "tape reading", "flux institutionnel", "formation trading"]}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "@id": "https://basstrading.fr/blog/order-flow-trading-france/#article", "headline": "Order flow trading : c'est quoi et comment le lire (guide)", "description": "L'order flow montre qui achète et qui vend vraiment : carnet d'ordres, Time & Sales, footprint, delta. Définition, outils et une lecture pas à pas sur le Nasdaq.", "datePublished": "2026-03-27", "dateModified": "2026-11-19", "inLanguage": "fr-FR", "image": "https://basstrading.fr/images/og-basstrading.jpg", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://basstrading.fr/blog/order-flow-trading-france/"}, "isPartOf": {"@type": "WebSite", "@id": "https://basstrading.fr/#website", "name": "BASS Trading", "url": "https://basstrading.fr/"}, "author": {"@type": "Person", "@id": "https://basstrading.fr/#sebastien-constant", "name": "Sébastien Constant", "url": "https://basstrading.fr/auteur/sebastien-constant/"}, "publisher": {"@type": "Organization", "@id": "https://basstrading.fr/#organisation", "name": "BASS Trading", "url": "https://basstrading.fr/", "logo": {"@type": "ImageObject", "url": "https://basstrading.fr/images/logo-basstrading.png", "width": 512, "height": 512}}, "keywords": ["order flow", "order flow trading", "flux d'ordres", "carnet d'ordres", "DOM", "time and sales", "footprint", "delta", "CVD", "absorption", "imbalance", "Nasdaq futures"]}</script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://basstrading.fr"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://basstrading.fr/blog/"}, {"@type": "ListItem", "position": 3, "name": "Order Flow Trading"}]}</script>
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "C'est quoi l'Order Flow en trading ?", "acceptedAnswer": {"@type": "Answer", "text": "L'Order Flow est l'analyse du flux réel des ordres — qui achète, qui vend, à quel prix, et avec quelle agressivité. Contrairement à l'analyse technique classique qui regarde le prix passé, l'Order Flow lit l'activité en temps réel via le carnet d'ordres, le Time & Sales et le Footprint Chart."}}, {"@type": "Question", "name": "Pourquoi l'Order Flow reste rare en France ?", "acceptedAnswer": {"@type": "Answer", "text": "L'Order Flow reste peu répandu en France car la culture trading est dominée par l'analyse technique classique et le Forex retail. Les données professionnelles (CME) et les logiciels comme Sierra Chart créent une barrière d'entrée que peu franchissent."}}, {"@type": "Question", "name": "Quel logiciel pour trader en Order Flow ?", "acceptedAnswer": {"@type": "Answer", "text": "Sierra Chart est le standard professionnel. Il offre le Footprint, le DOM, le Numbers Bars et le CVD avec une fiabilité inégalée. Le mentorat BASS Trading fournit les templates Sierra Chart pré-configurés."}}, {"@type": "Question", "name": "L'Order Flow fonctionne-t-il sur le Forex ?", "acceptedAnswer": {"@type": "Answer", "text": "Le Forex spot est décentralisé — il n'y a pas de carnet d'ordres centralisé. L'Order Flow fonctionne mieux sur les Futures (ES, NQ, CL) où toutes les transactions passent par un exchange centralisé (CME)."}}, {"@type": "Question", "name": "Combien de temps pour maîtriser l'Order Flow ?", "acceptedAnswer": {"@type": "Answer", "text": "Avec un accompagnement structuré (mentorat BASS), comptez 3 à 6 mois. Sans mentorat, la courbe d'apprentissage peut prendre 1 à 2 ans. Les sessions live quotidiennes accélèrent considérablement le processus."}}]}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "C'est quoi l'order flow en trading ?", "acceptedAnswer": {"@type": "Answer", "text": "L'order flow (flux d'ordres) est l'analyse des ordres réellement exécutés et des ordres en attente : qui achète au marché, qui vend au marché, à quel prix, en quelle quantité et avec quelle urgence. On le lit avec le carnet d'ordres (DOM), le Time & Sales, le footprint et le delta. Il ne remplace pas les niveaux : il montre ce qui se passe quand le prix y arrive."}}, {"@type": "Question", "name": "Quelle différence entre order flow et analyse technique ?", "acceptedAnswer": {"@type": "Answer", "text": "L'analyse technique travaille sur le résultat, le prix, et sert à repérer les zones intéressantes. L'order flow travaille sur ce qui produit le prix, les ordres, et montre comment acheteurs et vendeurs se comportent sur ces zones. Les deux se complètent : le niveau d'abord, le flux ensuite."}}, {"@type": "Question", "name": "Quel logiciel pour faire de l'order flow ?", "acceptedAnswer": {"@type": "Answer", "text": "Il faut une plateforme qui affiche un vrai footprint bid × ask, le carnet d'ordres et le delta : Sierra Chart (celle que j'utilise pour le footprint et le Market Profile), ATAS, Quantower, NinjaTrader, MotiveWave ou DeepCharts, par exemple. Il faut aussi un flux de données en temps réel du CME, facturé à part."}}, {"@type": "Question", "name": "Peut-on faire de l'order flow gratuitement ?", "acceptedAnswer": {"@type": "Answer", "text": "En partie. Plusieurs plateformes ont une version gratuite ou un rejeu gratuit, et TradingView donne les données CME avec 10 minutes de retard : c'est suffisant pour comprendre la logique. Pour lire le flux au moment où il se produit, il faut des données en temps réel, donc un abonnement."}}, {"@type": "Question", "name": "L'order flow fonctionne-t-il sur le forex ?", "acceptedAnswer": {"@type": "Answer", "text": "Pas sur le forex au comptant ni sur les CFD : il n'y a pas de bourse centrale, et le volume affiché est celui de ton courtier ou un volume de ticks. Pour lire l'order flow d'une devise, utilise le future correspondant du CME, comme l'Euro FX (6E), dont toutes les transactions passent par une seule bourse."}}, {"@type": "Question", "name": "Peut-on faire de l'order flow sur l'or ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui, sur les futures du COMEX : le GC (100 onces, tick de 0,10 $ qui vaut 10 $) et le micro MGC (10 onces, tick qui vaut 1 $). Le XAU/USD en CFD n'a pas de volume centralisé, son order flow n'est pas fiable."}}, {"@type": "Question", "name": "Quelle différence entre le carnet d'ordres et le footprint ?", "acceptedAnswer": {"@type": "Answer", "text": "Le carnet d'ordres (DOM) montre les ordres limites en attente, avant qu'ils soient exécutés. Le footprint montre ce qui a été exécuté, prix par prix, au bid et à l'ask, dans chaque bougie. Le premier montre la contrepartie disponible, le second qui l'a consommée."}}, {"@type": "Question", "name": "L'order flow fonctionne-t-il sur TradingView ?", "acceptedAnswer": {"@type": "Answer", "text": "En partie. Le footprint natif de TradingView est payant et reconstruit le côté des transactions à partir de petites bougies : c'est une estimation, pas un vrai bid × ask. Il sert à apprendre la logique ; pour exécuter, une plateforme qui lit le flux tick par tick est plus fiable."}}, {"@type": "Question", "name": "Sur quel marché débuter l'order flow ?", "acceptedAnswer": {"@type": "Answer", "text": "Sur un future centralisé et liquide : le Nasdaq (NQ ou son micro MNQ, 2 $ le point) ou le S&P 500 (ES ou MES). L'ES est plus lent avec un carnet épais, le NQ plus rapide. Choisis un seul marché et restes-y pour apprendre ce qui y est normal."}}, {"@type": "Question", "name": "Par où commencer pour apprendre l'order flow ?", "acceptedAnswer": {"@type": "Answer", "text": "Comprends d'abord la mécanique (agresseur, passif, bid, ask), prépare des niveaux, puis commence par le footprint avant le carnet d'ordres et le Time & Sales. Entraîne-toi en rejeu, tiens un journal avec des captures, puis passe en simulation et en petite taille."}}]}</script>
 
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -175,8 +175,8 @@
       <span>Order Flow Trading</span>
     </nav>
     <div class="blog-hero-cat">Order Flow</div>
-    <h1 class="blog-hero-title">Order flow trading :<br>le guide complet en français</h1>
-    <p class="blog-hero-desc">Le carnet d'ordres, le Time & Sales, le DOM, le flux institutionnel. L'Order Flow est la méthode la plus puissante pour comprendre le marché — et encore méconnue en France. Décryptage complet.</p>
+    <h1 class="blog-hero-title">Order flow trading :<br>c&#39;est quoi et comment le lire</h1>
+    <p class="blog-hero-desc">L&#39;order flow te montre qui achète et qui vend vraiment, prix par prix. Je t&#39;explique le carnet d&#39;ordres, le Time &amp; Sales, le footprint, le delta, l&#39;absorption et les imbalances, les outils gratuits ou payants, et une lecture complète pas à pas sur les futures du Nasdaq.</p>
     <div class="blog-meta">
       <div class="blog-meta-author">
         <div class="blog-meta-avatar"><img src="../../images/bass-presenting.jpg" alt="Sébastien Constant" loading="lazy"></div>
@@ -186,7 +186,7 @@
         </div>
       </div>
       <div class="blog-meta-sep"></div>
-      <div class="blog-meta-info"><span>Mars 2026</span><span>10 min de lecture</span></div>
+      <div class="blog-meta-info"><span>Mis à jour le 19 novembre 2026</span><span>20 min de lecture</span></div>
     </div>
   </div>
 </section>
@@ -196,167 +196,322 @@
     <div class="toc">
       <div class="toc-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/></svg> Sommaire</div>
       <ol>
-        <li><a href="#definition">Qu'est-ce que l'Order Flow ?</a></li>
-        <li><a href="#france">Pourquoi c'est méconnu en France</a></li>
-        <li><a href="#institutionnel">Le flux institutionnel</a></li>
-        <li><a href="#outils">Les outils de l'Order Flow</a></li>
-        <li><a href="#vs-at">Order Flow vs Analyse Technique</a></li>
-        <li><a href="#carnet">Le carnet d'ordres en pratique</a></li>
-        <li><a href="#commencer">Comment commencer</a></li>
-        <li><a href="#bass">BASS Trading et l'Order Flow</a></li>
+        <li><a href="#c-est-quoi-l-order-flow">C'est quoi l'order flow ?</a></li>
+        <li><a href="#order-flow-ou-analyse-technique">Order flow ou analyse technique ?</a></li>
+        <li><a href="#carnet-d-ordres-dom">Que montre le carnet d'ordres (DOM) ?</a></li>
+        <li><a href="#time-and-sales">À quoi sert le Time &amp; Sales (le « tape ») ?</a></li>
+        <li><a href="#footprint">Comment lire un footprint chart ?</a></li>
+        <li><a href="#delta-cvd">Delta et CVD : que mesurent-ils vraiment ?</a></li>
+        <li><a href="#absorption">Qu'est-ce que l'absorption en order flow ?</a></li>
+        <li><a href="#imbalances">Qu'est-ce qu'une imbalance (et une stacked imbalance) ?</a></li>
+        <li><a href="#exemple-nasdaq">Exemple : comment je lis l'order flow sur le Nasdaq, pas à pas</a></li>
+        <li><a href="#outils-order-flow">Quels outils order flow, gratuits ou payants ?</a></li>
+        <li><a href="#forex-or">L'order flow marche-t-il sur le forex et l'or ?</a></li>
+        <li><a href="#quel-marche">Sur quel marché débuter l'order flow : NQ, MNQ ou ES ?</a></li>
+        <li><a href="#erreurs">Quelles erreurs font les débutants en order flow ?</a></li>
+        <li><a href="#apprendre">Comment apprendre l'order flow : par où commencer ?</a></li>
+        <li><a href="#serie-order-flow">La série order flow : les guides pour aller plus loin</a></li>
       </ol>
     </div>
   </aside>
 
   <article class="article-body">
-    <h2 id="definition">Qu'est-ce que l'Order Flow ?</h2>
-    <p>L'Order Flow, c'est la lecture du flux réel des ordres sur le marché. Pas des chandeliers. Pas des moyennes mobiles. Pas des patterns graphiques que tout le monde voit au même moment. <strong>Le flux brut : qui achète, qui vend, à quel prix, et avec quelle agressivité.</strong></p>
-    <p>Chaque transaction sur un marché financier est le résultat d'un acheteur et d'un vendeur qui se rencontrent. L'Order Flow analyse cette rencontre en temps réel. Quand un acheteur décide de "taper" l'Ask (acheter au prix vendeur), c'est un ordre agressif — il paie le spread pour entrer immédiatement. Cette agressivité, visible dans le Time & Sales et le Footprint Chart, révèle les intentions réelles des participants.</p>
+    <div class="info-box">
+      <div class="info-box-title">Réponse courte</div>
+      <p>L'order flow, c'est la lecture des ordres qui passent vraiment sur le marché : qui achète au marché, qui vend au marché, à quel prix, en quelle quantité, et quels ordres attendent dans le carnet. On le lit avec quatre outils : le carnet d'ordres (DOM), le Time &amp; Sales, le footprint et le delta (avec sa version cumulée, le CVD). Il ne remplace pas tes niveaux : il te dit ce qui se passe quand le prix y arrive. Il se lit proprement sur les futures (Nasdaq, S&amp;P 500, or, pétrole), parce que toutes les transactions passent par une seule bourse. Sur le forex au comptant et les CFD, il n'y a pas de volume centralisé.</p>
+    </div>
+
+    <p>Tu as sûrement déjà vécu ça : un beau support, une belle bougie de retournement, tu achètes… et le prix traverse ton niveau comme s'il n'existait pas. Le graphique ne t'a pas menti, il t'a juste caché l'essentiel : ce qui se passait à l'intérieur de la bougie. Qui vendait, avec quelle force, et s'il y avait vraiment quelqu'un en face pour acheter.</p>
+    <p>C'est ça, l'order flow. Dans ce guide, je te donne la définition simple, les briques une par une (carnet d'ordres, Time &amp; Sales, footprint, delta, absorption, imbalances), les outils gratuits et payants, la vérité sur le forex et l'or, et une lecture complète pas à pas sur les futures du Nasdaq, le marché que je trade tous les jours.</p>
+
+    <h2 id="c-est-quoi-l-order-flow">C'est quoi l'order flow ?</h2>
+    <p><strong>L'order flow (en français, le flux d'ordres) est l'analyse des ordres réellement exécutés et des ordres en attente sur un marché : qui achète, qui vend, à quel prix, en quelle quantité et avec quelle urgence.</strong></p>
+    <p>Pour le comprendre, il faut partir d'une règle que beaucoup de débutants ignorent : sur un marché, il y a toujours autant de contrats achetés que de contrats vendus. Chaque transaction, c'est un acheteur et un vendeur pour la même quantité. Dire « il y avait plus d'acheteurs que de vendeurs » n'a donc pas de sens. Ce qui change d'une transaction à l'autre, c'est <strong>qui a pris l'initiative</strong>.</p>
+
+    <h3>L'agresseur et le passif</h3>
+    <p>Il existe deux grandes façons d'entrer sur un marché :</p>
+    <ul>
+      <li><strong>L'ordre limite (passif).</strong> Tu dis « j'achète à tel prix » et tu attends dans le carnet. Tu offres de la contrepartie aux autres.</li>
+      <li><strong>L'ordre au marché (agressif).</strong> Tu dis « j'achète tout de suite, au meilleur prix disponible ». Tu prends la contrepartie qui attend en face.</li>
+    </ul>
+    <p>Un acheteur agressif achète à l'<strong>ask</strong> (le prix demandé par les vendeurs passifs). Un vendeur agressif vend au <strong>bid</strong> (le prix proposé par les acheteurs passifs). L'order flow classe chaque transaction de ce côté-là : achat agressif ou vente agressive.</p>
 
     <div class="key-concept">
       <div class="key-concept-label">Concept clé</div>
-      <h4>Le prix ne bouge pas à cause des indicateurs</h4>
-      <p>Le prix bouge parce que des ordres sont exécutés. L'Order Flow est la seule méthode qui lit directement cette mécanique — tout le reste est dérivé, retardé, ou filtré.</p>
+      <h4>Le prix bouge quand la contrepartie est épuisée</h4>
+      <p>Le prix monte quand les acheteurs agressifs ont consommé tous les ordres de vente posés à un prix et doivent aller chercher le prix suivant. Il baisse dans le cas inverse. La liquidité, c'est cette contrepartie : les ordres limites posés en face. L'order flow te montre les deux côtés de cette bagarre en direct.</p>
     </div>
 
-    <p>Contrairement à l'analyse technique qui interprète le passé (le prix a fait X, donc il fera Y), l'Order Flow lit le présent. Vous voyez l'agressivité des acheteurs et vendeurs <strong>au moment où elle se produit</strong>, pas après coup.</p>
-    <p>L'Order Flow regroupe plusieurs outils complémentaires : le <strong>DOM</strong> (Depth of Market), le <strong>Time & Sales</strong> (ou Tape), le <strong>Footprint Chart</strong>, et le <strong>CVD</strong> (Cumulative Volume Delta). Ensemble, ils offrent une vision complète de l'activité réelle du marché.</p>
+    <h3>Ce que l'order flow te montre, et ce qu'il ne montre pas</h3>
+    <p>Il te montre des faits : combien de contrats se sont échangés à chaque prix, de quel côté, à quel rythme, et quelles quantités sont affichées dans le carnet. Il ne te montre pas l'identité des intervenants, ni leurs intentions, ni l'avenir. Un gros vendeur peut être un fonds qui couvre un portefeuille, un trader qui coupe une perte ou un algorithme qui exécute par petits bouts. Tu lis une trace, pas une pensée.</p>
+    <p>C'est pour ça que je ne présente jamais l'order flow comme une boule de cristal. C'est une loupe. Elle est très utile au bon endroit, et inutile au milieu de nulle part.</p>
 
-    <hr>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/flux-ordres-tradingview/blog-flux-ordres-tradingview-1.webp" width="1600" height="900" alt="Comparaison entre une bougie, qui donne quatre prix, et l&#39;order flow, qui montre les volumes par prix et par agresseur" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Une bougie te donne quatre prix. L'order flow ouvre la bougie et te montre ce qui s'est échangé à chaque prix.</figcaption>
+    </figure>
 
-    <h2 id="france">Pourquoi l'Order Flow reste méconnu en France</h2>
-    <p>La France a une culture trading dominée par l'analyse technique classique, le Forex retail et les CFDs. Trois facteurs qui rendent l'Order Flow encore rare et sous-représenté dans l'Hexagone.</p>
-
-    <h3>1. La domination du Forex retail</h3>
-    <p>Le Forex spot est un marché décentralisé. Il n'y a <strong>pas de carnet d'ordres centralisé</strong>. Le volume affiché par votre broker Forex ne représente que sa propre liquidité, pas le marché réel. Résultat : l'Order Flow est structurellement limité sur le Forex. Et comme 80% des traders particuliers français tradent le Forex, l'Order Flow n'existe tout simplement pas dans leur vocabulaire.</p>
-
-    <h3>2. La barrière technique</h3>
-    <p>L'Order Flow nécessite des <strong>données de marché professionnelles</strong> — les flux CME, les données de profondeur Level 2. Ces données coûtent entre 50 et 150$ par mois. Ajoutez Sierra Chart (le logiciel de référence) et vous avez une barrière d'entrée que la plupart des débutants ne franchissent jamais.</p>
-
-    <h3>3. Peu de formateurs qualifiés</h3>
-    <p>Enseigner l'Order Flow demande de le pratiquer quotidiennement sur des marchés réels avec des outils professionnels. En France, la majorité des formateurs trading viennent du Forex ou de l'analyse technique classique. <strong>Les formateurs qui tradent réellement en Order Flow au quotidien se comptent sur les doigts d'une main.</strong></p>
-
-    <div class="info-box">
-      <div class="info-box-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg> Bon à savoir</div>
-      <p>Aux États-Unis, l'Order Flow est enseigné dans les prop firms et les desks institutionnels depuis les années 2000. En France, c'est resté confidentiel jusqu'à très récemment. BASS Trading est l'un des rares programmes à l'enseigner de manière structurée.</p>
-    </div>
-
-    <hr>
-
-    <h2 id="institutionnel">Le flux institutionnel</h2>
-    <p>Les institutionnels — banques, hedge funds, market makers — ne tradent pas comme vous. Ils ne posent pas des ordres limites visibles et n'achètent pas au marché d'un coup. Leur objectif : <strong>accumuler ou distribuer des positions massives sans déplacer le prix contre eux.</strong></p>
-
-    <h3>Les ordres Iceberg</h3>
-    <p>Un iceberg est un ordre dont seule une fraction est visible dans le carnet d'ordres. Un institutionnel veut acheter 5 000 contrats ES ? Il affiche 50 lots, se fait remplir, et recharge automatiquement. Dans le DOM, vous voyez 50 lots disparaître et réapparaître instantanément au même prix. <strong>C'est un signal d'absorption massif.</strong></p>
-
-    <h3>Le Spoofing</h3>
-    <p>Le spoofing consiste à placer de gros ordres limites sans intention de les exécuter, pour créer une fausse impression de support ou résistance. Bien qu'illégal depuis le Dodd-Frank Act, il reste présent. L'Order Flow vous apprend à le détecter — un gros bid qui disparaît dès que le prix s'en approche est un signal clair.</p>
-
-    <h3>L'absorption</h3>
-    <p>L'absorption se produit quand un gros volume est échangé à un niveau de prix <strong>sans que le prix ne bouge</strong>. C'est le signe qu'un participant massif absorbe toute la pression opposée. Si le prix est en chute et que l'absorption apparaît, c'est souvent le signal d'un retournement imminent.</p>
-
-    <hr>
-
-    <h2 id="outils">Les outils de l'Order Flow</h2>
-
-    <table class="compare-table">
-      <thead><tr><th>Outil</th><th>Ce qu'il montre</th><th>Utilisation</th></tr></thead>
-      <tbody>
-        <tr><td>DOM (Depth of Market)</td><td>Ordres limites en attente à chaque niveau de prix</td><td>Lire la liquidité en temps réel, détecter les icebergs</td></tr>
-        <tr><td>Time & Sales (Tape)</td><td>Chaque transaction exécutée avec prix, volume et agresseur</td><td>Tape Reading — lire le rythme et l'urgence du marché</td></tr>
-        <tr><td>Footprint Chart</td><td>Volume bid/ask par niveau de prix dans chaque bougie</td><td>Déséquilibres, absorption, delta par niveau</td></tr>
-        <tr><td>CVD (Cumulative Volume Delta)</td><td>Différence cumulée entre volume acheteur et vendeur</td><td>Divergences prix/volume, confirmation de tendance</td></tr>
-        <tr><td>Numbers Bars</td><td>Bid × Ask à chaque niveau de prix dans la bougie</td><td>Analyse fine de l'activité par tick</td></tr>
-      </tbody>
-    </table>
-
-    <p>Ces outils ne sont pas des indicateurs au sens classique. Ils ne calculent rien à partir du prix — ils <strong>affichent directement l'activité réelle</strong>. C'est la différence fondamentale entre l'Order Flow et l'analyse technique.</p>
-
-    <hr>
-
-    <h2 id="vs-at">Order Flow vs Analyse Technique classique</h2>
-    <p>L'analyse technique classique — chandeliers, supports/résistances, RSI, MACD — analyse le <strong>résultat</strong> de l'activité du marché (le prix). L'Order Flow analyse la <strong>cause</strong> (les ordres eux-mêmes).</p>
-
-    <table class="compare-table">
-      <thead><tr><th>Critère</th><th>Analyse Technique</th><th>Order Flow</th></tr></thead>
-      <tbody>
-        <tr><td>Données analysées</td><td>Prix passé (OHLC)</td><td>Ordres exécutés en temps réel</td></tr>
-        <tr><td>Timing</td><td>Retardé (confirme après coup)</td><td>Temps réel (anticipe)</td></tr>
-        <tr><td>Volume</td><td>Barres de volume agrégées</td><td>Volume décomposé bid/ask par niveau</td></tr>
-        <tr><td>Qui l'utilise</td><td>Retail, swing traders</td><td>Prop firms, desks institutionnels, scalpers</td></tr>
-        <tr><td>Barrière d'entrée</td><td>Faible (MT4 gratuit)</td><td>Moyenne (Sierra Chart + données CME)</td></tr>
-        <tr><td>Edge réel</td><td>Diminue (tout le monde voit les mêmes patterns)</td><td>Durable (peu de traders le maîtrisent)</td></tr>
-      </tbody>
-    </table>
-
-    <div class="key-concept">
-      <div class="key-concept-label">Réalité du marché</div>
-      <h4>Les patterns graphiques ne font pas bouger le prix</h4>
-      <p>Un "double bottom" n'existe pas dans la mécanique du marché. Ce qui existe, c'est une zone où les vendeurs ont été absorbés deux fois par des acheteurs plus puissants. L'Order Flow vous montre cette absorption — le pattern n'est que sa conséquence visuelle.</p>
-    </div>
-
-    <p>L'analyse technique n'est pas inutile — elle donne un cadre. Mais utilisée seule, elle n'offre aucun avantage compétitif. Quand tout le monde voit la même résistance, le même pattern, le même signal RSI — <strong>où est votre edge ?</strong> L'Order Flow apporte cette couche de lecture que la plupart des traders particuliers n'ont pas.</p>
-
-    <hr>
-
-    <h2 id="carnet">Le carnet d'ordres en pratique</h2>
-    <p>Le carnet d'ordres (DOM) affiche les ordres limites en attente de chaque côté du prix actuel. Côté Bid (acheteurs), côté Ask (vendeurs). La dynamique entre ces deux côtés détermine la direction du prix.</p>
-
-    <h3>Lire la pression en temps réel</h3>
-    <p>Quand les ordres Ask sont systématiquement "tapés" (acheteurs agressifs) et que les ordres Bid se remplissent lentement, <strong>la pression est acheteuse</strong>. Le prix monte parce que les acheteurs acceptent de payer des prix de plus en plus élevés — ils sont urgents.</p>
-    <p>À l'inverse, quand les Bids sont attaqués par des vendeurs agressifs et que les Ask restent intacts, la pression est vendeuse. Le prix descend.</p>
-
-    <h3>La liquidité comme aimant</h3>
-    <p>Les gros paquets d'ordres limites agissent comme des aimants pour le prix. Si 2 000 lots sont posés en Bid à un niveau précis, le prix a tendance à migrer vers ce niveau. Pourquoi ? Parce que les algorithmes et les institutionnels cherchent la liquidité pour remplir leurs ordres. <strong>Le prix va là où la liquidité se trouve.</strong></p>
-
-    <h3>Le "Pull" et le "Stack"</h3>
-    <p>Quand un gros ordre limite est retiré juste avant que le prix ne l'atteigne (pull), c'est un signal que le support ou la résistance était fictif. Quand des ordres limites s'empilent progressivement à un niveau (stack), c'est un signal de conviction réelle.</p>
-
-    <hr>
-
-    <h2 id="commencer">Comment commencer l'Order Flow</h2>
-    <p>L'Order Flow a une courbe d'apprentissage. Voici un chemin structuré pour démarrer.</p>
-
-    <ol>
-      <li><strong>Choisir les bons marchés</strong> — Commencez par les Futures (ES, NQ). Marchés centralisés, données fiables, liquidité suffisante.</li>
-      <li><strong>Installer Sierra Chart</strong> — C'est le standard. Configurez le Footprint Chart et le DOM. Le mentorat BASS fournit les templates pré-configurés.</li>
-      <li><strong>Abonnement données CME</strong> — Indispensable pour les données Level 2 et le Footprint en temps réel.</li>
-      <li><strong>Observer avant de trader</strong> — Passez 2 à 4 semaines à observer le DOM et le Tape sans prendre de position. Notez les patterns récurrents.</li>
-      <li><strong>Se former avec un mentor</strong> — L'Order Flow ne s'apprend pas seul. Sans feedback, vous interprétez mal les signaux et développez de mauvaises habitudes.</li>
-    </ol>
-
-    <div class="info-box">
-      <div class="info-box-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg> Erreur courante</div>
-      <p>Ne commencez pas par le Tape Reading pur. C'est la compétence la plus avancée de l'Order Flow. Commencez par le Footprint Chart — il offre une vue structurée et plus lisible du flux. Le Tape viendra naturellement avec l'expérience.</p>
-    </div>
-
-    <hr>
-
-    <h2 id="bass">BASS Trading et l'Order Flow</h2>
-    <p>Le mentorat BASS Trading est le programme le plus complet en France pour apprendre l'Order Flow. 70 heures de formation structurée, des sessions live quotidiennes, et un setup Sierra Chart pré-configuré.</p>
-
-    <p>Ce que vous apprenez :</p>
+    <h3>Le vocabulaire minimum</h3>
     <ul>
-      <li><strong>Market Profile</strong> — La structure du marché, les niveaux clés, les types de journées</li>
-      <li><strong>Footprint Chart</strong> — Delta, imbalances, absorption, stacked imbalances</li>
-      <li><strong>CVD et Tape Reading</strong> — Divergences, confirmation, lecture du flux en temps réel</li>
-      <li><strong>DOM et carnet d'ordres</strong> — Liquidité, icebergs, pression directionnelle</li>
-      <li><strong>Prop Firms</strong> — Préparation spécifique aux challenges, avec une règle de risque écrite avant d'entrer</li>
+      <li><strong>Bid</strong> : le meilleur prix auquel quelqu'un accepte d'acheter en ce moment.</li>
+      <li><strong>Ask</strong> : le meilleur prix auquel quelqu'un accepte de vendre en ce moment.</li>
+      <li><strong>Tick</strong> : le plus petit écart de prix possible. Sur les futures du Nasdaq (NQ et MNQ), un tick vaut 0,25 point.</li>
+      <li><strong>Lot ou contrat</strong> : l'unité échangée. Sur le NQ, un point vaut 20 $ par contrat (donc 5 $ par tick) ; sur le micro MNQ, un point vaut 2 $ (0,50 $ par tick).</li>
+      <li><strong>Print</strong> : une transaction exécutée, telle qu'elle s'affiche dans le Time &amp; Sales.</li>
+    </ul>
+    <p>Si ces contrats ne te parlent pas encore, lis d'abord mon guide sur <a href="/blog/nasdaq-futures-nq-mnq/">les futures Nasdaq NQ et MNQ</a> : tout ce qui suit s'appuie dessus.</p>
+
+    <hr>
+
+    <h2 id="order-flow-ou-analyse-technique">Order flow ou analyse technique ?</h2>
+    <p>On te présente souvent les deux comme des ennemis. Dans ma pratique, ce sont deux étages de la même maison. L'analyse du contexte te dit <strong>où</strong> regarder. L'order flow te dit <strong>ce qui se passe</strong> quand le prix y arrive.</p>
+    <p>L'analyse technique classique (chandeliers, supports, moyennes mobiles, RSI) travaille sur le résultat : le prix. L'order flow travaille sur ce qui a produit ce prix : les ordres. Un « double bas », par exemple, n'est qu'un dessin. Ce qui se cache dessous, c'est peut-être une zone où les vendeurs agressifs ont tapé deux fois sans réussir à faire baisser le prix, parce qu'un acheteur passif absorbait tout. Le footprint te montre cette absorption. Le dessin, lui, ne te dit pas si elle a eu lieu.</p>
+
+    <table class="compare-table">
+      <thead><tr><th>Critère</th><th>Analyse technique et contexte</th><th>Order flow</th></tr></thead>
+      <tbody>
+        <tr><td>Question posée</td><td>Où sont les zones intéressantes ?</td><td>Que font les acheteurs et les vendeurs à cette zone ?</td></tr>
+        <tr><td>Données</td><td>Prix (ouverture, plus haut, plus bas, clôture), volume total</td><td>Volume par prix et par côté, ordres en attente, rythme des transactions</td></tr>
+        <tr><td>Moment d'usage</td><td>Avant la séance et entre deux trades</td><td>Au moment où le prix touche ton niveau</td></tr>
+        <tr><td>Marchés</td><td>Tous (actions, forex, crypto, futures)</td><td>Fiable surtout sur les marchés centralisés (futures)</td></tr>
+        <tr><td>Piège principal</td><td>Voir des figures partout</td><td>Se noyer dans les chiffres sans niveau préparé</td></tr>
+      </tbody>
+    </table>
+
+    <p>Moi, mes niveaux viennent du <a href="/blog/market-profile-guide-complet/">Market Profile</a> et du <a href="/blog/volume-profile-guide/">Volume Profile</a> : la <a href="/blog/value-area-trading/">value area</a> de la veille, le POC, les plus hauts et plus bas de la nuit, la <a href="/blog/vwap-trading/">VWAP</a>. Ces outils décrivent où le marché a accepté des prix et où il les a rejetés (c'est toute la logique de l'<a href="/blog/auction-market-theory/">Auction Market Theory</a>). Ensuite seulement, j'ouvre l'order flow.</p>
+
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/flux-ordres-tradingview/blog-flux-ordres-tradingview-5.webp" width="1600" height="900" alt="Règle d&#39;order flow : le niveau d&#39;abord, le flux ensuite" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Ma règle : ne jamais trader au milieu de rien.</figcaption>
+    </figure>
+
+    <p>Si tu viens de l'<a href="/blog/price-action-trading/">action des prix</a>, tu n'as rien à jeter : garde tes zones, et ajoute l'order flow pour valider ou refuser ce qui s'y passe. C'est souvent là que les traders arrêtent d'acheter des supports qui cèdent.</p>
+
+    <hr>
+
+    <h2 id="carnet-d-ordres-dom">Que montre le carnet d'ordres (DOM) ?</h2>
+    <p>Le carnet d'ordres, ou DOM (Depth of Market), affiche les ordres limites en attente au-dessus et en dessous du prix. D'un côté les acheteurs passifs (bid), de l'autre les vendeurs passifs (ask), prix par prix. C'est l'endroit où tu vois la contrepartie disponible avant qu'elle soit consommée.</p>
+
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/formation-carnet-d-ordres/carnet-dom-atas.webp" width="640" height="909" alt="Le carnet d&#39;ordres Smart DOM d&#39;ATAS sur le future Nasdaq (NQ), avec les colonnes bid, prix, ask, volume et Insight Print numérotées de 1 à 5" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Le Smart DOM d'ATAS sur le NQ, capture tirée de ma formation carnet d'ordres. Les prix avancent de 0,25 en 0,25 : un tick.</figcaption>
+    </figure>
+
+    <p>Sur cette capture, les colonnes se lisent ainsi : <strong>1</strong>, les ordres d'achat en attente (bid) ; <strong>2</strong>, l'échelle des prix ; <strong>3</strong>, les ordres de vente en attente (ask) ; <strong>4</strong>, le volume échangé à chaque prix ; <strong>5</strong>, les achats et ventes agressifs récents à chaque prix. Chaque plateforme a sa présentation, mais la logique reste la même.</p>
+
+    <h3>Ce que je regarde dans le DOM</h3>
+    <ul>
+      <li><strong>Les quantités inhabituelles</strong> à un prix précis, surtout quand elles coïncident avec un de mes niveaux.</li>
+      <li><strong>Ce qu'elles deviennent à l'approche du prix.</strong> Une grosse quantité qui reste, ou qui grossit (on dit qu'elle s'empile, le « stack »), montre que quelqu'un veut vraiment traiter à ce prix. Une quantité qui disparaît juste avant le contact (le « pull ») était là pour être vue, pas pour être exécutée.</li>
+      <li><strong>Ce qui se passe au contact.</strong> Si les agressifs mangent la quantité et que le prix passe, le niveau a cédé. Si la quantité se reconstitue à chaque fois au même prix, tu as peut-être un ordre iceberg : un gros ordre dont seule une petite partie est affichée, rechargée au fil des exécutions.</li>
     </ul>
 
-    <p>20 places par session pour garantir un accompagnement personnalisé.</p>
+    <h3>Les limites du DOM</h3>
+    <p>Un ordre affiché n'est pas une promesse. Il peut être retiré en une fraction de seconde. Poser de gros ordres sans intention de les exécuter pour tromper les autres s'appelle le spoofing : c'est interdit aux États-Unis, mais tu dois toujours te méfier d'un mur trop beau. À l'inverse, les icebergs cachent la vraie taille. Le DOM ne suffit donc jamais seul : il faut le croiser avec ce qui s'exécute vraiment, c'est-à-dire le Time &amp; Sales et le footprint.</p>
+    <p>Retiens aussi pourquoi les gros intervenants surveillent ces zones : quelqu'un qui doit acheter beaucoup a besoin de vendeurs en face. Il trouve cette contrepartie là où des ordres sont posés, et là où des stops vont se déclencher. C'est ce que j'explique dans l'article sur <a href="/blog/chasse-aux-stops-trading/">la chasse aux stops</a>.</p>
+    <p>Pour aller plus loin : mon guide complet du <a href="/blog/carnet-ordres-dom-futures/">carnet d'ordres DOM sur les futures</a>, et celui sur <a href="/blog/bookmap-heatmap/">la heatmap Bookmap</a>, qui affiche l'historique du carnet sous forme de couleurs.</p>
+
     <hr>
-    <h2 id="serie-order-flow">La série Order Flow : les 8 guides pour aller plus loin</h2>
-    <p>Chaque notion de ce guide a son article détaillé, avec des exemples sur le Nasdaq et le S&amp;P 500. Lis-les dans cet ordre si tu débutes (et pour apprendre à lire le carnet en vidéo : ma <a href="/formation-carnet-d-ordres/">formation carnet d'ordres</a>) :</p>
+
+    <h2 id="time-and-sales">À quoi sert le Time &amp; Sales (le « tape ») ?</h2>
+    <p>Le Time &amp; Sales est la liste de toutes les transactions, dans l'ordre où elles se produisent : l'heure, le prix, la quantité, et le côté (exécutée à l'ask, donc achat agressif, ou au bid, donc vente agressive). C'est la matière brute de l'order flow. Le footprint et le delta ne sont que des façons de la ranger.</p>
+    <p>Lire le Time &amp; Sales, c'est le tape reading. Trois choses comptent :</p>
     <ol>
-      <li><a href="/blog/absorption-order-flow/">Absorption en Order Flow : Quand les Institutionnels Mangent les Ordres</a> — Guide complet de l&#x27;absorption en order flow : mécanismes, identification sur le Footprint, patterns bullish et bearish, exemples sur ES et…</li>
-      <li><a href="/blog/auction-market-theory/">Auction Market Theory : Comprendre la Logique du Marché</a> — L&#x27;Auction Market Theory (AMT) explique pourquoi le marché se comporte comme il le fait. Acceptation, rejet, équilibre, déséquilibre — la…</li>
-      <li><a href="/blog/carnet-ordres-dom-futures/">Carnet d&#x27;Ordres DOM Futures : Guide Complet du Depth of Market</a> — Maîtrisez le DOM (Depth of Market) en trading futures : structure du carnet d&#x27;ordres, murs d&#x27;achat/vente, DOM dynamique, spoofing et…</li>
-      <li><a href="/blog/cvd-cumulative-volume-delta/">CVD (Cumulative Volume Delta) : Détecter la Conviction des Traders</a> — Guide complet du CVD (Cumulative Volume Delta) : calcul, divergences, interprétation. Apprenez à utiliser le delta cumulatif pour mesurer…</li>
-      <li><a href="/blog/delta-footprint-trading/">Delta en Trading : Mesurer la Pression Directionnelle sur les Marchés</a> — Guide complet du Delta en trading : delta positif/négatif, divergences, delta absorbé, naked delta. Apprenez à mesurer la pression…</li>
-      <li><a href="/blog/imbalance-footprint/">Imbalance Footprint : Guide Complet des Déséquilibres de Volume</a> — Maîtrisez les imbalances Footprint : déséquilibres bid/ask, stacked imbalances, zones non remplies et ratios. Guide expert pour trader les…</li>
-      <li><a href="/blog/tape-reading-flux-ordres/">Tape Reading : Lire le Flux d&#x27;Ordres en Temps Réel</a> — Guide complet du tape reading : lire le Time &amp; Sales, identifier les gros joueurs, détecter le spoofing. Apprenez à lire le flux d&#x27;ordres…</li>
-      <li><a href="/blog/volume-profile-guide/">Volume Profile : Guide Complet pour Traders (2026)</a> — Guide complet du Volume Profile : VAH, VAL, POC, HVN, LVN, VWAP. Apprenez à identifier les niveaux qui comptent vraiment et à trader avec…</li>
+      <li><strong>Le rythme.</strong> Quand les transactions défilent soudain beaucoup plus vite, l'urgence monte. Un mouvement sans accélération du tape est souvent un mouvement sans conviction.</li>
+      <li><strong>La taille des prints.</strong> Une série de gros prints du même côté ne ressemble pas à une pluie de petits ordres. La plupart des plateformes te laissent filtrer pour n'afficher que les prints au-dessus d'une taille choisie.</li>
+      <li><strong>La répétition au même prix.</strong> Des ventes agressives qui frappent encore et encore le même bid sans que le prix descende, c'est le signe que quelqu'un absorbe en face.</li>
+    </ol>
+    <p>Sur le NQ, à l'ouverture du marché américain (15 h 30, heure de Paris, hors semaines de décalage horaire), le tape défile si vite qu'il devient presque illisible à l'œil nu. C'est pour ça que je conseille de commencer par le footprint, plus structuré, et de garder le tape pour plus tard. Mon guide du <a href="/blog/tape-reading-flux-ordres/">tape reading</a> détaille la méthode, et tu trouveras les horaires exacts dans l'article sur <a href="/blog/horaires-futures-nasdaq-heure-paris/">les horaires des futures Nasdaq en heure de Paris</a>.</p>
+
+    <hr>
+
+    <h2 id="footprint">Comment lire un footprint chart ?</h2>
+    <p>Le footprint, c'est une bougie ouverte. Au lieu de quatre prix, tu vois à chaque prix de la bougie deux chiffres : à gauche les contrats vendus au bid (ventes agressives), à droite les contrats achetés à l'ask (achats agressifs). On parle de footprint « bid × ask ».</p>
+
+    <h3>Les quatre lectures de base</h3>
+    <ul>
+      <li><strong>Le delta de la bougie</strong> : achats agressifs moins ventes agressives. Il dit qui a poussé le plus fort pendant la bougie.</li>
+      <li><strong>Le POC de la bougie</strong> : le prix où il s'est échangé le plus de contrats. Un POC en bas d'une bougie haussière ne raconte pas la même histoire qu'un POC en haut.</li>
+      <li><strong>La lecture en diagonale</strong> : on compare les achats agressifs à un prix avec les ventes agressives un tick plus bas. C'est la base des imbalances, que je détaille plus bas.</li>
+      <li><strong>Les extrémités</strong> : ce qui s'est échangé au plus haut et au plus bas. Un zéro d'un côté indique une enchère terminée ; des contrats des deux côtés, une enchère inachevée, un prix que je garde en tête.</li>
+    </ul>
+
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/footprint-tradingview/blog-footprint-tradingview-3.webp" width="1600" height="900" alt="Tableau comparant le footprint de TradingView et un footprint bid × ask sur Sierra Chart ou ATAS" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Tous les footprints ne se valent pas : certains estiment le côté de chaque transaction au lieu de le lire.</figcaption>
+    </figure>
+
+    <p>Attention à la source. Un vrai footprint lit le côté de chaque transaction, tick par tick. Le footprint natif de TradingView, lui, reconstruit l'information à partir de petites bougies et classe le volume selon le sens du prix : c'est une estimation. Je l'explique avec un exemple chiffré dans <a href="/blog/footprint-tradingview/">footprint TradingView : est-ce un vrai bid × ask ?</a></p>
+    <p>Je lis le footprint sur Sierra Chart, en séance comme dans mes formations. ATAS affiche aussi un vrai footprint bid × ask : les notions sont les mêmes, seuls les menus changent. Le guide complet est ici : <a href="/blog/footprint-chart-trading/">comment lire un footprint chart</a>, et le réglage pas à pas dans <a href="/blog/sierra-chart-configuration/">la configuration de Sierra Chart</a>.</p>
+
+    <hr>
+
+    <h2 id="delta-cvd">Delta et CVD : que mesurent-ils vraiment ?</h2>
+    <p>Le <strong>delta</strong> est la différence entre les contrats achetés à l'ask et les contrats vendus au bid, sur une bougie ou sur un prix. Delta positif : les acheteurs agressifs ont dominé. Delta négatif : les vendeurs agressifs ont dominé.</p>
+    <p>Le <strong>CVD</strong> (Cumulative Volume Delta) additionne ces deltas depuis un point de départ, en général le début de la séance. Il trace une courbe qui montre, dans la durée, quel camp agressif a pris le dessus.</p>
+
+    <h3>Comment je m'en sers</h3>
+    <ul>
+      <li><strong>Confirmation</strong> : le prix monte et le CVD monte avec lui. Les acheteurs agressifs portent le mouvement.</li>
+      <li><strong>Divergence</strong> : le prix fait un nouveau plus haut, mais le CVD ne suit pas. La hausse se fait avec moins d'agressivité acheteuse. Ce n'est pas un signal de vente en soi, c'est une question à poser.</li>
+      <li><strong>Effort sans résultat</strong> : un delta très négatif sur une bougie qui ne baisse presque pas. Les vendeurs ont tapé fort pour rien : quelqu'un absorbait.</li>
+    </ul>
+
+    <h3>Le piège du delta</h3>
+    <p>Le delta mesure l'agressivité, pas la direction future. Un gros delta négatif peut très bien précéder une hausse, justement quand tous ces vendeurs agressifs se font absorber et se retrouvent piégés. Lire « delta rouge, donc je vends » est l'erreur la plus courante. Le delta n'a de sens qu'avec le prix et le niveau où il se produit.</p>
+    <p>Les deux guides de la série : <a href="/blog/delta-footprint-trading/">le delta en trading</a> et <a href="/blog/cvd-cumulative-volume-delta/">le CVD (Cumulative Volume Delta)</a>.</p>
+
+    <hr>
+
+    <h2 id="absorption">Qu'est-ce que l'absorption en order flow ?</h2>
+    <p>L'absorption, c'est quand des ordres agressifs frappent un prix en grande quantité sans réussir à le faire bouger, parce qu'un ou plusieurs intervenants passifs prennent tout en face. Les vendeurs vident leurs munitions, le prix tient.</p>
+    <p>Tu la repères sur chaque outil :</p>
+    <ul>
+      <li><strong>Dans le Time &amp; Sales</strong> : des ventes agressives répétées au même prix, sans que le prix descende.</li>
+      <li><strong>Dans le DOM</strong> : une quantité au bid qui se reconstitue à mesure qu'elle est consommée.</li>
+      <li><strong>Dans le footprint</strong> : un gros volume au bid sur les prix du bas de la bougie, un delta fortement négatif, et une bougie qui clôture loin de son plus bas.</li>
+    </ul>
+    <p>L'absorption est l'une des lectures les plus utiles de l'order flow, à deux conditions. D'abord, elle doit se produire sur un niveau préparé, pas au milieu de nulle part. Ensuite, elle doit être suivie d'une réaction : si le prix ne repart pas, ce n'était qu'une pause, et l'absorbeur peut finir par céder. L'absorption se lit dans les deux sens : des acheteurs agressifs absorbés sous un sommet, c'est le même mécanisme à l'envers.</p>
+    <p>Le guide détaillé : <a href="/blog/absorption-order-flow/">l'absorption en order flow</a>.</p>
+
+    <hr>
+
+    <h2 id="imbalances">Qu'est-ce qu'une imbalance (et une stacked imbalance) ?</h2>
+    <p>Une imbalance, c'est un déséquilibre fort entre acheteurs et vendeurs agressifs, mesuré en diagonale sur le footprint. On compare les achats à l'ask à un prix avec les ventes au bid un tick plus bas. Si les achats sont beaucoup plus gros, par exemple trois fois plus (un seuil de 300 %), la plateforme colore la case : imbalance acheteuse. Même logique dans l'autre sens pour une imbalance vendeuse. Le seuil est un réglage de ta plateforme, pas une loi du marché.</p>
+    <p>Une <strong>stacked imbalance</strong>, c'est plusieurs imbalances du même côté sur des prix qui se suivent (le réglage courant est au moins trois). Elle montre des agressifs prêts à payer de plus en plus cher, ou à vendre de moins en moins cher, sans attendre. Quand le prix revient plus tard sur cette zone, je regarde si elle tient.</p>
+    <p>Deux précautions : filtre les imbalances sur un volume minimum, sinon une case à 3 contrats contre 1 s'allume pour rien ; et méfie-toi des moments où le marché est mince (la nuit, juste avant une annonce), où quelques lots suffisent à créer des déséquilibres qui ne veulent rien dire. Tout est expliqué dans le guide <a href="/blog/imbalance-footprint/">imbalance footprint et stacked imbalance</a>.</p>
+
+    <hr>
+
+    <h2 id="exemple-nasdaq">Exemple : comment je lis l'order flow sur le Nasdaq, pas à pas</h2>
+    <p>Voici la façon dont j'enchaîne les outils sur le NQ quand le prix arrive sur un niveau. C'est un exemple d'école : les prix sont arrondis pour montrer la mécanique, ce n'est pas le récit d'un trade précis, et rien ne garantit que ce schéma fonctionne la prochaine fois. Le but est que tu voies dans quel ordre on regarde, et pourquoi.</p>
+
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/formation-carnet-d-ordres/carnet-seance-graphique.webp" width="1088" height="864" alt="Une séance de la formation : le carnet d&#39;ordres ATAS à gauche, et à droite le graphique du Nasdaq avec son profil de volume" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Une vraie séance : le DOM à gauche, le NQ en 5 minutes à droite avec son profil de volume (vPOC et VAL tracés). Le niveau est sur le graphique, la lecture se fait dans le carnet.</figcaption>
+    </figure>
+
+    <h3>Étape 1 : préparer le niveau avant l'ouverture</h3>
+    <p>Avant la séance, je trace mes niveaux : value area de la veille (haut, bas, POC), plus haut et plus bas de la nuit, VWAP. Disons que le bas de la value area de la veille est à 25 000,00. C'est mon niveau du jour : si le prix y vient, je regarde ; s'il n'y vient pas, je ne fais rien.</p>
+
+    <h3>Étape 2 : laisser passer les annonces</h3>
+    <p>Les chiffres américains tombent souvent à 14 h 30, heure de Paris, et le marché cash ouvre à 15 h 30. Pendant ces minutes, le flux est violent et les carnets se vident. Je ne lis pas l'order flow dans ce bruit. J'attends que le prix approche de mon niveau dans un marché redevenu lisible.</p>
+
+    <h3>Étape 3 : le DOM à l'approche du niveau</h3>
+    <p>Le prix descend vers 25 000,00. Dans le carnet, je regarde ce qui est posé au bid sur ce prix et juste en dessous. Est-ce que les quantités restent quand le prix approche, ou est-ce qu'elles reculent ? Ici, elles restent, et elles se reconstituent après chaque attaque. Premier indice, pas encore une raison d'agir.</p>
+
+    <h3>Étape 4 : le Time &amp; Sales au contact</h3>
+    <p>Au contact, les ventes agressives accélèrent : des prints au bid s'enchaînent sur 25 000,00, plus gros que ceux de la dernière demi-heure. Pourtant, le prix ne cote pas plus bas, ou seulement d'un tick, et revient. Les vendeurs agressifs frappent, mais la contrepartie est toujours là.</p>
+
+    <h3>Étape 5 : le footprint confirme l'absorption</h3>
+    <p>Sur le footprint en 1 minute, la bougie au niveau montre un gros volume au bid sur ses deux ou trois prix du bas, un delta nettement négatif, et une clôture dans le haut de la bougie. C'est l'effort sans résultat : beaucoup de ventes agressives, aucune baisse. Les vendeurs qui viennent d'entrer sont maintenant sous l'eau si le prix remonte.</p>
+
+    <h3>Étape 6 : le CVD donne une divergence</h3>
+    <p>Le prix revient tester 25 000,00 une seconde fois. Il ne fait pas plus bas que la première fois, mais le CVD, lui, descend plus bas : les vendeurs agressifs ont tapé encore plus fort sans faire baisser le prix. C'est cohérent avec ce que montrent le carnet et le footprint. Trois outils racontent la même histoire : c'est ça que je cherche.</p>
+
+    <h3>Étape 7 : le déclencheur et le risque</h3>
+    <p>J'attends que les acheteurs passent à l'attaque à leur tour : la bougie suivante repart au-dessus du niveau, le delta redevient positif et des imbalances acheteuses s'empilent. Dans cet exemple, l'entrée à l'achat se fait vers 25 004,00, avec un stop sous la zone d'absorption, à 24 996,00, soit 8 points de risque.</p>
+    <p>Fais toujours le calcul en dollars avant d'entrer : 8 points × 20 $ = <strong>160 $ par contrat NQ</strong>, ou 8 points × 2 $ = <strong>16 $ par contrat MNQ</strong>. C'est ce chiffre, comparé à ton capital ou à la perte journalière permise par ta prop firm, qui fixe le nombre de contrats. Jamais l'inverse. Mes articles sur <a href="/blog/combien-risquer-par-trade/">combien risquer par trade</a> et sur <a href="/blog/stop-loss-trading/">le placement du stop loss</a> détaillent ce calcul.</p>
+
+    <h3>Étape 8 : l'invalidation et la sortie</h3>
+    <p>Le scénario est faux si le prix revient s'installer sous 25 000,00 et que, cette fois, les ventes agressives passent : la quantité au bid n'est plus rechargée, le footprint montre des imbalances vendeuses sous le niveau. Je sors, sans discuter. S'il fonctionne, mon objectif est le niveau préparé suivant (le POC de la veille ou la VWAP), pas un chiffre rêvé.</p>
+    <p>Retiens surtout ceci : dans la plupart des séances, ce scénario propre ne se présente pas à ton niveau. Le prix le traverse, ou tourne autour sans rien montrer. Ces jours-là, la bonne lecture de l'order flow, c'est de ne pas trader.</p>
+
+    <hr>
+
+    <h2 id="outils-order-flow">Quels outils order flow, gratuits ou payants ?</h2>
+    <p>Pour faire de l'order flow sur les futures, il te faut deux choses : <strong>un logiciel</strong> qui affiche le DOM, le footprint et le delta, et <strong>un flux de données en temps réel du CME</strong>, tick par tick. Le second est facturé à part, en général via ton courtier, ta prop firm ou un fournisseur comme Rithmic. Sans lui, même le meilleur logiciel n'affiche que des données différées.</p>
+
+    <table class="compare-table">
+      <thead><tr><th>Outil</th><th>Version gratuite ?</th><th>Order flow</th><th>Mon avis</th></tr></thead>
+      <tbody>
+        <tr><td>Sierra Chart</td><td>Non, abonnement</td><td>Footprint, DOM, delta, CVD, Market Profile</td><td>Ma plateforme de tous les jours ; austère mais très complète</td></tr>
+        <tr><td>ATAS</td><td>Période d'essai, puis payant</td><td>Footprint, Smart DOM, delta, CVD</td><td>Plus accessible visuellement ; c'est l'outil de ma formation carnet d'ordres</td></tr>
+        <tr><td>Quantower</td><td>Oui, version Free sans footprint</td><td>Footprint et Volume Profile dans les formules payantes</td><td><a href="/blog/quantower-avis/">Mon avis sur Quantower</a></td></tr>
+        <tr><td>MotiveWave</td><td>Oui, version Community</td><td>Selon l'édition</td><td><a href="/blog/motivewave-avis/">Mon avis sur MotiveWave</a></td></tr>
+        <tr><td>NinjaTrader</td><td>Oui pour les graphiques, la simulation et le rejeu</td><td>Module order flow payant</td><td><a href="/blog/ninjatrader-avis/">Mon avis sur NinjaTrader</a></td></tr>
+        <tr><td>DeepCharts</td><td>Non (flux différé pour découvrir)</td><td>Footprint, heatmap en option</td><td><a href="/blog/deepcharts-avis/">Mon avis sur DeepCharts</a></td></tr>
+        <tr><td>GoCharting</td><td>Oui, formule gratuite</td><td>Footprint et DOM dans le navigateur</td><td><a href="/blog/gocharting-avis/">Mon avis sur GoCharting</a></td></tr>
+        <tr><td>Bookmap</td><td>Gratuit seulement sur la crypto</td><td>Heatmap du carnet</td><td><a href="/blog/bookmap-heatmap/">Lire la heatmap Bookmap</a></td></tr>
+        <tr><td>TradingView</td><td>Données CME gratuites avec 10 minutes de retard</td><td>Footprint natif payant et estimé, pas un vrai bid × ask</td><td><a href="/blog/flux-ordres-tradingview/">L'order flow sur TradingView</a></td></tr>
+      </tbody>
+    </table>
+
+    <p>Je ne te mets volontairement aucun prix dans ce tableau : ils changent souvent, et chaque avis ci-dessus donne le détail relevé à sa date. Vérifie toujours sur le site officiel avant de t'abonner.</p>
+
+    <h3>Peut-on apprendre l'order flow sans rien payer ?</h3>
+    <p>En partie. Les versions gratuites et les flux différés suffisent pour comprendre l'interface et la logique, surtout avec un mode de rejeu (NinjaTrader propose le rejeu de séances gratuitement). Pour lire le flux au moment où il se produit, il te faut des données en temps réel, donc un abonnement. Côté connexion, mes articles sur <a href="/blog/rithmic-futures/">Rithmic</a> et sur <a href="/blog/tradovate-avis/">Tradovate</a> t'expliquent qui fournit quoi. Et si tu passes par une prop firm, renseigne-toi sur ce qui est inclus dans ton évaluation (voir mon guide <a href="/blog/prop-firm-funded-trader/">prop firm et funded trader</a>).</p>
+
+    <hr>
+
+    <h2 id="forex-or">L'order flow marche-t-il sur le forex et l'or ?</h2>
+    <p>Réponse honnête : <strong>pas sur le forex au comptant, oui sur les futures de devises et d'or.</strong></p>
+
+    <h3>Le forex au comptant : pas de volume centralisé</h3>
+    <p>Le forex spot (EUR/USD chez ton courtier, par exemple) n'a pas de bourse centrale. Les échanges se font entre banques, plateformes et courtiers, chacun dans son coin. Le « volume » affiché par ta plateforme est en général un volume de ticks (le nombre de changements de prix) ou le flux propre à ton courtier. Ce n'est pas le marché. Un footprint ou un delta calculé là-dessus n'a pas la même valeur que sur un marché centralisé. Même chose pour les CFD : tu trades contre ton courtier, pas dans un carnet commun.</p>
+
+    <h3>Les futures de devises : oui</h3>
+    <p>Si tu veux lire l'order flow de l'euro, regarde le future <strong>Euro FX (6E)</strong> du CME. Toutes ses transactions passent par une seule bourse : le carnet, le Time &amp; Sales et le footprint sont complets. Même logique pour la livre (6B) ou le yen (6J). Le spot et le future bougent ensemble, mais seul le second te donne un vrai flux.</p>
+
+    <h3>L'or : le GC et le MGC, pas le XAU/USD en CFD</h3>
+    <p>Pour l'or, l'order flow se lit sur les futures du COMEX (groupe CME) : le <strong>GC</strong>, contrat standard de 100 onces (un tick de 0,10 $ vaut 10 $), et le <strong>MGC</strong>, le micro de 10 onces (un tick vaut 1 $). Le XAU/USD de ton courtier en CFD n'a pas de volume centralisé. L'or bouge vite et peut parcourir de grandes distances en une séance : calcule ton risque en dollars avant tout. Tout est dans mon guide <a href="/blog/gold-futures-gc-mgc/">gold futures : GC ou MGC</a>.</p>
+
+    <h3>Et la crypto, les actions ?</h3>
+    <p>En crypto, chaque plateforme a son propre carnet : tu lis le flux d'une plateforme, pas du marché entier. Sur les actions américaines, les échanges sont répartis entre plusieurs bourses et une partie se fait hors bourse : le flux visible est incomplet. Ce n'est pas inutile, mais c'est moins propre. Pour apprendre, les futures restent le terrain le plus net.</p>
+
+    <hr>
+
+    <h2 id="quel-marche">Sur quel marché débuter l'order flow : NQ, MNQ ou ES ?</h2>
+    <p>Je trade le Nasdaq (NQ), donc tous mes exemples viennent de là. Mais il faut savoir ce que tu choisis :</p>
+    <ul>
+      <li><strong>Le NQ</strong> bouge vite et beaucoup. Le flux y est très lisible quand on a l'habitude, mais il pardonne peu : un point vaut 20 $ par contrat.</li>
+      <li><strong>Le MNQ</strong> est le micro du NQ : un point vaut 2 $, ce qui permet de trader avec un risque dix fois plus petit. Il a son propre carnet, moins fourni que celui du NQ. Beaucoup de traders lisent donc le flux du NQ et exécutent sur le MNQ. Je compare les deux dans <a href="/blog/nq-ou-mnq/">NQ ou MNQ</a>.</li>
+      <li><strong>L'ES</strong> (S&amp;P 500) est plus lent, avec un carnet très épais : un point vaut 50 $ (12,50 $ par tick de 0,25), et son micro, le MES, 5 $ par point. Son carnet calme en fait un bon terrain pour apprendre à lire le DOM. Voir <a href="/blog/sp-500-futures-es-mes/">les futures S&amp;P 500 ES et MES</a>.</li>
+    </ul>
+    <p>Mon conseil : choisis un seul marché et restes-y plusieurs mois. L'order flow, c'est une question d'habitude : tu dois savoir ce qu'est une quantité « normale » sur ton contrat pour repérer ce qui ne l'est pas. Si tu hésites encore sur le style, lis <a href="/blog/day-trading-futures/">le day trading sur futures</a> et <a href="/blog/scalping-trading/">le scalping</a>.</p>
+
+    <hr>
+
+    <h2 id="erreurs">Quelles erreurs font les débutants en order flow ?</h2>
+    <ol>
+      <li><strong>Lire le flux sans niveau.</strong> L'absorption au milieu de nulle part ne veut rien dire. Prépare tes zones avant la séance.</li>
+      <li><strong>Croire chaque mur du DOM.</strong> Une grosse quantité affichée peut disparaître en une fraction de seconde. Regarde ce qui s'exécute, pas seulement ce qui s'affiche.</li>
+      <li><strong>Confondre delta et direction.</strong> Un delta négatif ne veut pas dire que le prix va baisser. Il veut dire que les vendeurs agressifs ont dominé : il reste à voir s'ils ont gagné.</li>
+      <li><strong>Empiler les outils.</strong> DOM, tape, footprint, CVD, heatmap, tous ouverts dès le premier jour : tu ne vois plus rien. Commence par le footprint, ajoute le reste un par un.</li>
+      <li><strong>Faire confiance à des données estimées.</strong> Un footprint reconstruit à partir de bougies, ou du volume forex de ton courtier, ce n'est pas le flux réel.</li>
+      <li><strong>Trader pendant les annonces.</strong> À 14 h 30 les jours de chiffres, les carnets se vident et les lectures habituelles ne tiennent plus.</li>
+      <li><strong>Oublier le risque.</strong> Une lecture parfaite avec une taille trop grosse reste un mauvais trade. Fixe le stop et la taille avant d'entrer, et respecte ta <a href="/blog/perte-maximale-journaliere-trading/">perte maximale journalière</a>.</li>
+    </ol>
+
+    <hr>
+
+    <h2 id="apprendre">Comment apprendre l'order flow : par où commencer ?</h2>
+    <p>Voici l'ordre que je recommande, et que je suis moi-même avec mes élèves :</p>
+    <ol>
+      <li><strong>Comprendre la mécanique.</strong> Agresseur, passif, contrepartie, bid, ask, tick. Si ces mots sont clairs, le reste suit.</li>
+      <li><strong>Préparer des niveaux.</strong> Value area, POC, VWAP, plus haut et plus bas de la nuit. Sans eux, l'order flow tourne à vide.</li>
+      <li><strong>Commencer par le footprint.</strong> C'est l'outil le plus structuré : delta, imbalances et absorption s'y voient bougie par bougie.</li>
+      <li><strong>Ajouter le DOM, puis le tape.</strong> Le carnet t'apprend la contrepartie disponible, le tape le rythme. Ce sont les compétences les plus fines.</li>
+      <li><strong>S'entraîner en rejeu.</strong> Rejoue les mêmes moments de séance (ouverture, niveaux clés) jusqu'à reconnaître ce qui est normal et ce qui ne l'est pas.</li>
+      <li><strong>Tenir un journal.</strong> Une capture du footprint et du DOM pour chaque trade, avec ce que tu as vu et ce qui s'est passé ensuite.</li>
+      <li><strong>Passer en simulation, puis en petite taille.</strong> Le MNQ ou le MES permettent de mettre de l'argent réel en jeu avec un risque réduit.</li>
+    </ol>
+    <p>Si tu pars de zéro, mon guide pour <a href="/blog/debuter-trading-zero-guide/">débuter le trading</a> pose les bases. Si tu veux être accompagné, j'ai deux formations sur ces outils : la <a href="/formation-footprint/">formation footprint</a>, tournée sur Sierra Chart, et la <a href="/formation-carnet-d-ordres/">formation carnet d'ordres</a>, tournée sur ATAS. Et pour voir la lecture en direct avant de décider quoi que ce soit, la <a href="https://basstrading.fr/p/formation-offerte/?src=blog-order-flow-trading-france-texte">formation offerte</a> te montre une séance complète sur le Nasdaq.</p>
+    <p>Une dernière chose : l'order flow ne rend personne rentable par magie. Il donne une information plus précise. Ce que tu en fais dépend de ta préparation, de ta gestion du risque et de ta discipline.</p>
+
+    <hr>
+    <h2 id="serie-order-flow">La série order flow : les guides pour aller plus loin</h2>
+    <p>Chaque brique de ce guide a son article détaillé, avec des exemples sur le Nasdaq et le S&amp;P 500. Lis-les dans cet ordre si tu débutes :</p>
+    <ol>
+      <li><a href="/blog/footprint-chart-trading/">Footprint chart : comment le lire</a> : bid × ask, delta, POC de la bougie et outils.</li>
+      <li><a href="/blog/delta-footprint-trading/">Le delta en trading</a> : mesurer qui a poussé le plus fort, et ses pièges.</li>
+      <li><a href="/blog/imbalance-footprint/">Imbalance footprint et stacked imbalance</a> : la lecture en diagonale et les réglages.</li>
+      <li><a href="/blog/absorption-order-flow/">L'absorption en order flow</a> : repérer l'effort sans résultat.</li>
+      <li><a href="/blog/cvd-cumulative-volume-delta/">Le CVD (Cumulative Volume Delta)</a> : confirmations et divergences.</li>
+      <li><a href="/blog/carnet-ordres-dom-futures/">Le carnet d'ordres DOM sur les futures</a> : lire la contrepartie disponible.</li>
+      <li><a href="/blog/tape-reading-flux-ordres/">Le tape reading</a> : lire le Time &amp; Sales en temps réel.</li>
+      <li><a href="/blog/volume-profile-guide/">Le Volume Profile</a> et <a href="/blog/market-profile-vs-volume-profile/">ses différences avec le Market Profile</a> : préparer les niveaux.</li>
+      <li><a href="/blog/auction-market-theory/">L'Auction Market Theory</a> : la logique qui relie tout le reste.</li>
     </ol>
 
 
@@ -373,11 +528,16 @@
 <section class="faq-sec">
   <div class="sec-center"><div class="sec-label">FAQ</div><h2 class="sec-title">Questions fréquentes</h2></div>
   <div class="faq-list">
-    <div class="fi"><button class="fq" onclick="tf(this)">C'est quoi l'Order Flow en trading ? <span class="fq-icon">+</span></button><div class="fa"><p>L'Order Flow est l'analyse du flux réel des ordres — qui achète, qui vend, à quel prix, et avec quelle agressivité. Contrairement à l'analyse technique classique qui regarde le prix passé, l'Order Flow lit l'activité en temps réel via le carnet d'ordres, le Time & Sales et le Footprint Chart.</p></div></div>
-    <div class="fi"><button class="fq" onclick="tf(this)">Pourquoi l'Order Flow reste rare en France ? <span class="fq-icon">+</span></button><div class="fa"><p>L'Order Flow reste peu répandu en France car la culture trading est dominée par l'analyse technique classique et le Forex retail. Les données professionnelles (CME) et les logiciels comme Sierra Chart créent une barrière d'entrée que peu franchissent.</p></div></div>
-    <div class="fi"><button class="fq" onclick="tf(this)">Quel logiciel pour trader en Order Flow ? <span class="fq-icon">+</span></button><div class="fa"><p>Sierra Chart est le standard professionnel. Il offre le Footprint, le DOM, le Numbers Bars et le CVD avec une fiabilité inégalée. Le mentorat BASS Trading fournit les templates Sierra Chart pré-configurés.</p></div></div>
-    <div class="fi"><button class="fq" onclick="tf(this)">L'Order Flow fonctionne-t-il sur le Forex ? <span class="fq-icon">+</span></button><div class="fa"><p>Le Forex spot est décentralisé — il n'y a pas de carnet d'ordres centralisé. L'Order Flow fonctionne mieux sur les Futures (ES, NQ, CL) où toutes les transactions passent par un exchange centralisé (CME).</p></div></div>
-    <div class="fi"><button class="fq" onclick="tf(this)">Combien de temps pour maîtriser l'Order Flow ? <span class="fq-icon">+</span></button><div class="fa"><p>Avec un accompagnement structuré (mentorat BASS), comptez 3 à 6 mois. Sans mentorat, la courbe d'apprentissage peut prendre 1 à 2 ans. Les sessions live quotidiennes accélèrent considérablement le processus.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">C&#39;est quoi l&#39;order flow en trading ? <span class="fq-icon">+</span></button><div class="fa"><p>L&#39;order flow (flux d&#39;ordres) est l&#39;analyse des ordres réellement exécutés et des ordres en attente : qui achète au marché, qui vend au marché, à quel prix, en quelle quantité et avec quelle urgence. On le lit avec le carnet d&#39;ordres (DOM), le Time &amp; Sales, le footprint et le delta. Il ne remplace pas les niveaux : il montre ce qui se passe quand le prix y arrive.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Quelle différence entre order flow et analyse technique ? <span class="fq-icon">+</span></button><div class="fa"><p>L&#39;analyse technique travaille sur le résultat, le prix, et sert à repérer les zones intéressantes. L&#39;order flow travaille sur ce qui produit le prix, les ordres, et montre comment acheteurs et vendeurs se comportent sur ces zones. Les deux se complètent : le niveau d&#39;abord, le flux ensuite.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Quel logiciel pour faire de l&#39;order flow ? <span class="fq-icon">+</span></button><div class="fa"><p>Il faut une plateforme qui affiche un vrai footprint bid × ask, le carnet d&#39;ordres et le delta : Sierra Chart (celle que j&#39;utilise pour le footprint et le Market Profile), ATAS, Quantower, NinjaTrader, MotiveWave ou DeepCharts, par exemple. Il faut aussi un flux de données en temps réel du CME, facturé à part.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Peut-on faire de l&#39;order flow gratuitement ? <span class="fq-icon">+</span></button><div class="fa"><p>En partie. Plusieurs plateformes ont une version gratuite ou un rejeu gratuit, et TradingView donne les données CME avec 10 minutes de retard : c&#39;est suffisant pour comprendre la logique. Pour lire le flux au moment où il se produit, il faut des données en temps réel, donc un abonnement.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">L&#39;order flow fonctionne-t-il sur le forex ? <span class="fq-icon">+</span></button><div class="fa"><p>Pas sur le forex au comptant ni sur les CFD : il n&#39;y a pas de bourse centrale, et le volume affiché est celui de ton courtier ou un volume de ticks. Pour lire l&#39;order flow d&#39;une devise, utilise le future correspondant du CME, comme l&#39;Euro FX (6E), dont toutes les transactions passent par une seule bourse.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Peut-on faire de l&#39;order flow sur l&#39;or ? <span class="fq-icon">+</span></button><div class="fa"><p>Oui, sur les futures du COMEX : le GC (100 onces, tick de 0,10 $ qui vaut 10 $) et le micro MGC (10 onces, tick qui vaut 1 $). Le XAU/USD en CFD n&#39;a pas de volume centralisé, son order flow n&#39;est pas fiable.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Quelle différence entre le carnet d&#39;ordres et le footprint ? <span class="fq-icon">+</span></button><div class="fa"><p>Le carnet d&#39;ordres (DOM) montre les ordres limites en attente, avant qu&#39;ils soient exécutés. Le footprint montre ce qui a été exécuté, prix par prix, au bid et à l&#39;ask, dans chaque bougie. Le premier montre la contrepartie disponible, le second qui l&#39;a consommée.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">L&#39;order flow fonctionne-t-il sur TradingView ? <span class="fq-icon">+</span></button><div class="fa"><p>En partie. Le footprint natif de TradingView est payant et reconstruit le côté des transactions à partir de petites bougies : c&#39;est une estimation, pas un vrai bid × ask. Il sert à apprendre la logique ; pour exécuter, une plateforme qui lit le flux tick par tick est plus fiable.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Sur quel marché débuter l&#39;order flow ? <span class="fq-icon">+</span></button><div class="fa"><p>Sur un future centralisé et liquide : le Nasdaq (NQ ou son micro MNQ, 2 $ le point) ou le S&amp;P 500 (ES ou MES). L&#39;ES est plus lent avec un carnet épais, le NQ plus rapide. Choisis un seul marché et restes-y pour apprendre ce qui y est normal.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Par où commencer pour apprendre l&#39;order flow ? <span class="fq-icon">+</span></button><div class="fa"><p>Comprends d&#39;abord la mécanique (agresseur, passif, bid, ask), prépare des niveaux, puis commence par le footprint avant le carnet d&#39;ordres et le Time &amp; Sales. Entraîne-toi en rejeu, tiens un journal avec des captures, puis passe en simulation et en petite taille.</p></div></div>
   </div>
 </section>
 

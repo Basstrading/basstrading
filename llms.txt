@@ -36,7 +36,7 @@
 ## Tous les guides, par thème
 
 ### Market Profile
-- [Market Profile trading : guide complet en français (TPO, POC, VA)](https://basstrading.fr/blog/market-profile-guide-complet/) (guide pilier): Market Profile expliqué par un trader de futures : TPO, POC, Value Area, Initial Balance, types de journée. Lire le marché et trader avec, exemples à l'appui.
+- [Market Profile : le guide complet en français (TPO, POC)](https://basstrading.fr/blog/market-profile-guide-complet/) (guide pilier): Lire un Market Profile pas à pas : TPO, POC, Value Area, Initial Balance, formes de profil et types de journée, avec des exemples pas à pas sur le Nasdaq.
 - [Volume Profile : POC, VAH, VAL et niveaux clés (guide 2026)](https://basstrading.fr/blog/volume-profile-guide/): Le Volume Profile montre le volume échangé à chaque prix. Lire le POC, la Value Area (VAH, VAL), les HVN et LVN, et s'en servir pour trader.
 - [Value Area : définition, calcul à 70 % et règle des 80 %](https://basstrading.fr/blog/value-area-trading/): Value Area en trading : VAH, VAL et POC, calcul à 70 % pas à pas, ouverture dans ou hors de la valeur et règle des 80 % expliquée sur le Nasdaq.
 - [Market Profile vs Volume Profile : les vraies différences](https://basstrading.fr/blog/market-profile-vs-volume-profile/): Market Profile ou Volume Profile ? Temps contre volume, deux POC, les divergences et quand utiliser lequel, avec un exemple réel sur le Nasdaq futures.
@@ -45,7 +45,7 @@
 - Formation liée : [La formation Market Profile](https://basstrading.fr/marketprofile/), 16 leçons vidéo pour lire un profil TPO, 57 €.
 
 ### Order flow et carnet d'ordres
-- [Order flow trading : le guide complet en français (2026)](https://basstrading.fr/blog/order-flow-trading-france/) (guide pilier): Order flow : lire qui achète et qui vend vraiment, avec le carnet d'ordres, le Time & Sales et le footprint. Définition, outils et exemples sur le Nasdaq.
+- [Order flow trading : c'est quoi et comment le lire (guide)](https://basstrading.fr/blog/order-flow-trading-france/) (guide pilier): L'order flow montre qui achète et qui vend vraiment : carnet d'ordres, Time & Sales, footprint, delta. Définition, outils et une lecture pas à pas sur le Nasdaq.
 - [Carnet d'Ordres DOM Futures : Guide Complet du Depth of Market](https://basstrading.fr/blog/carnet-ordres-dom-futures/): Maîtrisez le DOM (Depth of Market) en trading futures : structure du carnet d'ordres, murs d'achat/vente, DOM dynamique, spoofing et confluence Footprint. Guide expert complet.
 - [Tape reading : lire le Time & Sales en temps réel](https://basstrading.fr/blog/tape-reading-flux-ordres/): Le tape reading, c'est lire le Time & Sales : chaque transaction, sa taille, son côté. Repérer les gros ordres, l'accélération du flux et les pièges.
 - [Absorption en Order Flow : Quand les Institutionnels Mangent les Ordres](https://basstrading.fr/blog/absorption-order-flow/): Guide complet de l'absorption en order flow : mécanismes, identification sur le Footprint, patterns bullish et bearish, exemples sur ES et NQ. Apprenez à détecter quand les gros joueurs absorbent silencieusement. Par Sébastien Constant.
@@ -55,7 +55,7 @@
 - Formation liée : [La formation carnet d'ordres](https://basstrading.fr/formation-carnet-d-ordres/), Carnet d'ordre Mastery, pour lire le DOM et le flux d'ordres.
 
 ### Footprint
-- [Footprint chart : comment le lire (delta, imbalance, outils)](https://basstrading.fr/blog/footprint-chart-trading/) (guide pilier): Le footprint affiche les achats et les ventes à chaque prix de la bougie. Lire le bid × ask, le delta, les imbalances, l'absorption, et quels outils utiliser.
+- [Footprint trading : lire un footprint chart (guide + outils)](https://basstrading.fr/blog/footprint-chart-trading/) (guide pilier): Lire un footprint chart : bid × ask, delta, imbalances, absorption. Les outils footprint comparés (Sierra, ATAS, TradingView) et 3 lectures sur le Nasdaq.
 - [Imbalance footprint et stacked imbalance : le guide de lecture](https://basstrading.fr/blog/imbalance-footprint/): Imbalance et stacked imbalance sur le footprint : comment se calcule le déséquilibre en diagonale bid × ask, comment le lire sur les futures, les pièges.
 - [Delta en Trading : Mesurer la Pression Directionnelle sur les Marchés](https://basstrading.fr/blog/delta-footprint-trading/): Guide complet du Delta en trading : delta positif/négatif, divergences, delta absorbé, naked delta. Apprenez à mesurer la pression directionnelle réelle bougie par bougie sur le Footprint Chart. Par Sébastien Constant.
 - [Absorption en Order Flow : Quand les Institutionnels Mangent les Ordres](https://basstrading.fr/blog/absorption-order-flow/): Guide complet de l'absorption en order flow : mécanismes, identification sur le Footprint, patterns bullish et bearish, exemples sur ES et NQ. Apprenez à détecter quand les gros joueurs absorbent silencieusement. Par Sébastien Constant.
@@ -67,7 +67,7 @@
 - [Méthode de trading : comment trouver celle qui te correspond](https://basstrading.fr/blog/methode-de-trading/) (guide pilier): Méthode de trading : pourquoi celle d'un autre échoue sur toi, les deux traits qui décident de la tienne et comment la tester sans te mentir.
 - [Les Types de Trading : Lequel Choisir Selon Votre Profil ? (2026)](https://basstrading.fr/blog/types-trading-differences/): Scalping, day trading, swing trading, position trading et Order Flow : comparatif complet des 5 styles de trading. Quel type correspond à votre profil, capital et disponibilité ?
 - [Débuter le trading de zéro : par où commencer (guide 2026)](https://basstrading.fr/blog/debuter-trading-zero-guide/): Débuter le trading sans te brûler : quoi apprendre et dans quel ordre, combien de temps compter, la démo, le risque. Mon parcours semaine par semaine.
-- [Devenir trader sans diplôme ni formation : le vrai parcours](https://basstrading.fr/blog/devenir-trader-sans-diplome/): Ni diplôme ni formation payante ne sont exigés pour trader ton propre argent. Le vrai parcours : méthode, temps d'écran, risque maîtrisé, étape par étape.
+- [Devenir trader sans diplôme ni formation : 5 étapes réalistes](https://basstrading.fr/blog/devenir-trader-sans-diplome/): Aucun diplôme n'est exigé pour trader ton argent. Les 5 étapes concrètes : méthode, risque par trade, temps d'écran, compte démo, puis prop firm ou réel.
 - [Livre trading : les meilleurs pour apprendre (et l'ordre)](https://basstrading.fr/blog/livre-trading/): Livre trading : les classiques pour apprendre (psychologie, Market Profile, analyse technique), l'ordre de lecture et comment les tester vraiment.
 - [Formation trading : contenu, prix, CPF et pièges à éviter](https://basstrading.fr/blog/formation-trading/): Formation trading : contenu, prix, CPF, en ligne ou en salle, arnaques à éviter. Le guide honnête d'un trader avec plus de dix ans d'expérience des marchés.
 - [Formation trading gratuite : ce qu'on apprend sans payer](https://basstrading.fr/blog/formation-trading-gratuite/): Formation trading gratuite : où apprendre sans payer (AMF, CME, démo, YouTube), comment trier le gratuit et où il s'arrête. Mon parcours en 8 semaines.
@@ -89,9 +89,9 @@
 - Formation liée : [Toutes les formations de Bass](https://basstrading.fr/formations/), plus de 250 leçons vidéo, du débutant au Market Profile avancé.
 
 ### Futures du Nasdaq et plateformes
-- [NQ et MNQ : les futures Nasdaq expliqués simplement](https://basstrading.fr/blog/nasdaq-futures-nq-mnq/) (guide pilier): NQ à 20 $ le point, MNQ à 2 $ : les futures Nasdaq-100 du CME expliqués simplement, ce qucontent=
+- [NQ et MNQ : les futures Nasdaq expliqués (valeur du point)](https://basstrading.fr/blog/nasdaq-futures-nq-mnq/) (guide pilier): NQ = 20 $ le point, MNQ = 2 $ : ce que sont les futures Nasdaq-100 du CME, échéances, rollover, horaires et différence avec un CFD. Guide de trader.
 - [NQ ou MNQ : quel contrat Nasdaq choisir pour débuter ?](https://basstrading.fr/blog/nq-ou-mnq/): NQ ou MNQ pour débuter sur le Nasdaq : capital par contrat, exposition, marges, liquidité, order flow et le bon moment pour passer au NQ.
-- [Horaires des futures Nasdaq (NQ, MNQ) en heure de Paris](https://basstrading.fr/blog/horaires-futures-nasdaq-heure-paris/): Horaires du Nasdaq futures (NQ, MNQ) en heure de Paris : ouverture, pause, annonces, jours fériés et semaine décalée du 26 au 30 octobre 2026.
+- [Horaires futures Nasdaq (NQ) en heure de Paris : 2026-2027](https://basstrading.fr/blog/horaires-futures-nasdaq-heure-paris/): Ouverture, pause, cash US à 15 h 30, annonces, jours fériés CME (Thanksgiving fin novembre) et semaine décalée de mars 2027, en heure de Paris.
 - [Day trading : à quoi ressemble une journée sur les futures](https://basstrading.fr/blog/day-trading-futures/): Day trading : ma journée type sur les futures du Nasdaq heure par heure, les vrais coûts, les chiffres officiels des pertes et les règles pour durer.
 - [VWAP trading : définition, calcul et lecture sur le Nasdaq](https://basstrading.fr/blog/vwap-trading/): La VWAP expliquée par un trader futures : formule avec exemple chiffré, bandes d'écart-type, VWAP ancrée et lecture sur le Nasdaq, pas à pas.
 - [NinjaTrader avis : prix, France, order flow et limites](https://basstrading.fr/blog/ninjatrader-avis/): NinjaTrader avis : ce que vaut la plateforme pour les futures, son arrivée en Europe, ses prix, son order flow, Mac et débutant, et ses vraies limites.

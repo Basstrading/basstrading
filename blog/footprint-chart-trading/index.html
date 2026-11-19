@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Footprint chart : comment le lire (delta, imbalance, outils) — BASS Trading</title>
-  <meta name="description" content="Le footprint affiche les achats et les ventes à chaque prix de la bougie. Lire le bid × ask, le delta, les imbalances, l'absorption, et quels outils utiliser.">
-  <meta property="og:title" content="Footprint chart : comment le lire (delta, imbalance, outils)">
-  <meta property="og:description" content="Le footprint affiche les achats et les ventes à chaque prix de la bougie. Lire le bid × ask, le delta, les imbalances, l'absorption, et quels outils utiliser.">
+  <title>Footprint trading : lire un footprint chart (guide + outils)</title>
+  <meta name="description" content="Lire un footprint chart : bid × ask, delta, imbalances, absorption. Les outils footprint comparés (Sierra, ATAS, TradingView) et 3 lectures sur le Nasdaq.">
+  <meta property="og:title" content="Footprint trading : lire un footprint chart (guide + outils)">
+  <meta property="og:description" content="Lire un footprint chart : bid × ask, delta, imbalances, absorption. Les outils footprint comparés (Sierra, ATAS, TradingView) et 3 lectures sur le Nasdaq.">
   <meta property="og:image" content="https://basstrading.fr/images/og-basstrading.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -16,12 +16,14 @@
   <meta property="og:url" content="https://basstrading.fr/blog/footprint-chart-trading/">
   <meta property="og:site_name" content="BASS Trading">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Footprint trading : lire un footprint chart (guide + outils)">
+  <meta name="twitter:description" content="Lire un footprint chart : bid × ask, delta, imbalances, absorption. Les outils footprint comparés (Sierra, ATAS, TradingView) et 3 lectures sur le Nasdaq.">
   <link rel="canonical" href="https://basstrading.fr/blog/footprint-chart-trading/">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "@id": "https://basstrading.fr/blog/footprint-chart-trading/#article", "headline": "Footprint chart : comment le lire (delta, imbalance, outils)", "description": "Guide complet du Footprint Chart : delta, déséquilibres, absorption, CVD.", "datePublished": "2026-03-27", "dateModified": "2026-10-28", "inLanguage": "fr-FR", "image": "https://basstrading.fr/images/og-basstrading.jpg", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://basstrading.fr/blog/footprint-chart-trading/"}, "isPartOf": {"@type": "WebSite", "@id": "https://basstrading.fr/#website", "name": "BASS Trading", "url": "https://basstrading.fr/"}, "author": {"@type": "Person", "@id": "https://basstrading.fr/#sebastien-constant", "name": "Sébastien Constant", "url": "https://basstrading.fr/auteur/sebastien-constant/"}, "publisher": {"@type": "Organization", "@id": "https://basstrading.fr/#organisation", "name": "BASS Trading", "url": "https://basstrading.fr/", "logo": {"@type": "ImageObject", "url": "https://basstrading.fr/images/logo-basstrading.png", "width": 512, "height": 512}}, "keywords": ["footprint chart", "delta", "imbalance", "absorption", "CVD", "order flow", "volume", "trading"]}</script>
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://basstrading.fr"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://basstrading.fr/blog/"}, {"@type": "ListItem", "position": 3, "name": "Footprint Chart"}]}</script>
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "C'est quoi un Footprint Chart ?", "acceptedAnswer": {"@type": "Answer", "text": "Un graphique avancé qui décompose chaque bougie en montrant le volume Bid et Ask à chaque niveau de prix. Il révèle les déséquilibres de force entre acheteurs et vendeurs — invisible sur un chandelier classique."}}, {"@type": "Question", "name": "Quelle différence avec les chandeliers classiques ?", "acceptedAnswer": {"@type": "Answer", "text": "Les chandeliers montrent uniquement OHLC et le volume total. Le Footprint montre le volume décomposé Bid/Ask à CHAQUE niveau de prix. Vous voyez exactement où les acheteurs et vendeurs ont été agressifs."}}, {"@type": "Question", "name": "C'est quoi un déséquilibre (imbalance) ?", "acceptedAnswer": {"@type": "Answer", "text": "Un déséquilibre se produit quand le volume d'un côté dépasse largement l'autre — typiquement un ratio de 300%+. Les stacked imbalances sur 3+ niveaux consécutifs signalent une forte conviction directionnelle."}}, {"@type": "Question", "name": "Quel logiciel pour le Footprint ?", "acceptedAnswer": {"@type": "Answer", "text": "Sierra Chart est le standard professionnel. Il offre le Numbers Bars natif avec personnalisation complète. Le mentorat BASS fournit les templates pré-configurés."}}, {"@type": "Question", "name": "Le Footprint remplace-t-il le Market Profile ?", "acceptedAnswer": {"@type": "Answer", "text": "Non, ils sont complémentaires. Le Market Profile donne le contexte macro (où trader), le Footprint donne le timing micro (quand entrer). Les professionnels utilisent les deux."}}]}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "@id": "https://basstrading.fr/blog/footprint-chart-trading/#article", "headline": "Footprint trading : lire un footprint chart (guide + outils)", "description": "Lire un footprint chart : bid × ask, delta, imbalances, absorption. Les outils footprint comparés (Sierra, ATAS, TradingView) et 3 lectures sur le Nasdaq.", "datePublished": "2026-03-27", "dateModified": "2026-11-19", "inLanguage": "fr-FR", "image": "https://basstrading.fr/images/og-basstrading.jpg", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://basstrading.fr/blog/footprint-chart-trading/"}, "isPartOf": {"@type": "WebSite", "@id": "https://basstrading.fr/#website", "name": "BASS Trading", "url": "https://basstrading.fr/"}, "author": {"@type": "Person", "@id": "https://basstrading.fr/#sebastien-constant", "name": "Sébastien Constant", "url": "https://basstrading.fr/auteur/sebastien-constant/"}, "publisher": {"@type": "Organization", "@id": "https://basstrading.fr/#organisation", "name": "BASS Trading", "url": "https://basstrading.fr/", "logo": {"@type": "ImageObject", "url": "https://basstrading.fr/images/logo-basstrading.png", "width": 512, "height": 512}}, "keywords": ["footprint trading", "footprint chart", "outils footprint", "analyse footprint", "bid ask", "delta", "imbalance", "absorption", "CVD", "order flow", "Nasdaq"]}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://basstrading.fr"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://basstrading.fr/blog/"}, {"@type": "ListItem", "position": 3, "name": "Footprint trading", "item": "https://basstrading.fr/blog/footprint-chart-trading/"}]}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "C'est quoi le footprint trading ?", "acceptedAnswer": {"@type": "Answer", "text": "C'est trader en lisant ce qui s'échange à l'intérieur de chaque bougie. Le footprint chart affiche, à chaque niveau de prix, le volume exécuté au bid (ventes agressives) et à l'ask (achats agressifs). On y lit le delta, les imbalances et l'absorption, sur des données tick par tick d'un marché centralisé comme les futures du Nasdaq."}}, {"@type": "Question", "name": "Comment lire un footprint chart ?", "acceptedAnswer": {"@type": "Answer", "text": "Lis chaque ligne en bid × ask : à gauche les contrats vendus agressivement, à droite ceux achetés agressivement. Regarde ensuite le delta (ask moins bid), les imbalances en diagonale (l'ask d'un prix comparé au bid du prix juste en dessous) et les gros volumes qui ne font plus avancer le prix. Et lis-le toujours sur un niveau préparé à l'avance, jamais au milieu de rien."}}, {"@type": "Question", "name": "C'est quoi une imbalance sur un footprint ?", "acceptedAnswer": {"@type": "Answer", "text": "C'est un niveau où un côté écrase l'autre en diagonale : par exemple l'ask d'un prix au moins trois fois plus gros que le bid du prix juste en dessous, avec un seuil de 300 % qui reste un réglage de ta plateforme. Trois imbalances ou plus sur des prix consécutifs forment une stacked imbalance, souvent réutilisée comme zone de repère."}}, {"@type": "Question", "name": "Comment repérer l'absorption sur un footprint ?", "acceptedAnswer": {"@type": "Answer", "text": "Cherche un gros volume agressif d'un côté, un delta qui va dans le sens de la poussée, et un prix qui n'avance plus. Par exemple, des centaines de contrats vendus au bid sur un plus bas qui ne cède pas. L'absorption ne se confirme qu'avec un peu de recul : tant que le niveau n'a pas tenu, ce n'est qu'un gros volume."}}, {"@type": "Question", "name": "Quel est le meilleur outil footprint ?", "acceptedAnswer": {"@type": "Answer", "text": "J'utilise Sierra Chart (Numbers Bars), le plus réglable. ATAS est plus visuel et facile à prendre en main. DeepCharts, NinjaTrader, Quantower et MotiveWave font aussi un vrai footprint bid × ask, GoCharting dans le navigateur. Le plus important n'est pas le logiciel mais les données : il faut un flux tick par tick des futures du CME."}}, {"@type": "Question", "name": "Le footprint de TradingView est-il fiable ?", "acceptedAnswer": {"@type": "Answer", "text": "Pour découvrir le footprint, il suffit. Mais TradingView classe le volume en achat ou en vente selon la direction du prix à l'intérieur de petites unités de temps, et non selon le côté réel de chaque transaction. Le delta, la diagonale et les zéros peuvent donc différer d'un vrai footprint bid × ask, ce qui compte quand tu trades avec des stops de quelques ticks."}}, {"@type": "Question", "name": "Peut-on faire du footprint sur le Forex ou les CFD ?", "acceptedAnswer": {"@type": "Answer", "text": "Pas de façon fiable. Le Forex au comptant et les CFD n'ont pas de carnet central : le volume affiché est celui de ton courtier, pas celui du marché. Pour un footprint propre sur une devise ou un indice, passe par le contrat future correspondant, dont toutes les transactions passent par une seule bourse."}}, {"@type": "Question", "name": "Le footprint remplace-t-il le Market Profile ?", "acceptedAnswer": {"@type": "Answer", "text": "Non, ils se complètent. Le Market Profile donne le contexte de la séance et les niveaux (où trader), le footprint montre ce qui se passe sur ces niveaux (quand entrer). Je prépare mes niveaux avec le profil, puis je lis le footprint quand le prix arrive dessus."}}]}</script>
 
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -149,18 +151,18 @@
     <nav class="breadcrumb" aria-label="Fil d'Ariane">
       <a href="https://basstrading.fr">Accueil</a><span class="sep">/</span>
       <a href="https://basstrading.fr/blog/">Blog</a><span class="sep">/</span>
-      <span>Footprint Chart</span>
+      <span>Footprint trading</span>
     </nav>
     <div class="blog-hero-cat">Analyse</div>
-    <h1 class="blog-hero-title">Footprint chart :<br>comment lire le volume dans la bougie</h1>
-    <p class="blog-hero-desc">Le Footprint Chart décompose chaque bougie pour révéler ce que les chandeliers classiques cachent : qui achète, qui vend, et où se trouvent les déséquilibres de force. Guide complet.</p>
+    <h1 class="blog-hero-title">Footprint trading :<br>lire un footprint chart</h1>
+    <p class="blog-hero-desc">Le footprint chart ouvre chaque bougie : qui achète, qui vend, à quel prix. Je te montre comment lire le bid × ask, le delta, les imbalances et l'absorption, quels outils footprint choisir, et trois lectures pas à pas sur le Nasdaq.</p>
     <div class="blog-meta">
       <div class="blog-meta-author">
         <div class="blog-meta-avatar"><img src="../../images/bass-presenting.jpg" alt="Sébastien Constant" loading="lazy"></div>
         <div><div class="blog-meta-name"><a href="/auteur/sebastien-constant/" rel="author" style="color:inherit;text-decoration:none">Sébastien Constant</a></div><div class="blog-meta-role">Trader & Formateur Order Flow</div></div>
       </div>
       <div class="blog-meta-sep"></div>
-      <div class="blog-meta-info"><span>Mars 2026</span><span>12 min de lecture</span></div>
+      <div class="blog-meta-info"><span>Mis à jour le 19 novembre 2026</span><span>18 min de lecture</span></div>
     </div>
   </div>
 </section>
@@ -170,158 +172,262 @@
     <div class="toc">
       <div class="toc-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/></svg> Sommaire</div>
       <ol>
-        <li><a href="#definition">Qu'est-ce qu'un Footprint ?</a></li>
-        <li><a href="#composants">Les composants du Footprint</a></li>
-        <li><a href="#imbalances">Lire les déséquilibres</a></li>
-        <li><a href="#absorption">L'absorption</a></li>
-        <li><a href="#cvd">Le Delta cumulatif (CVD)</a></li>
-        <li><a href="#patterns">Patterns concrets</a></li>
-        <li><a href="#logiciel">Quels outils pour le footprint</a></li>
-        <li><a href="#vs-mp">Footprint vs Market Profile</a></li>
-        <li><a href="#bass">Apprendre avec BASS</a></li>
+        <li><a href="#definition">C'est quoi le footprint trading ?</a></li>
+        <li><a href="#composants">Comment lire bid × ask, delta et volume ?</a></li>
+        <li><a href="#imbalances">C'est quoi une imbalance ?</a></li>
+        <li><a href="#absorption">Comment repérer l'absorption ?</a></li>
+        <li><a href="#cvd">Delta et CVD : à quoi ça sert ?</a></li>
+        <li><a href="#lectures">Analyse footprint : 3 lectures sur le Nasdaq</a></li>
+        <li><a href="#patterns">Quels patterns reconnaître ?</a></li>
+        <li><a href="#logiciel">Quels outils footprint ?</a></li>
+        <li><a href="#reglages">Quels réglages sur le Nasdaq ?</a></li>
+        <li><a href="#vs-mp">Footprint ou Market Profile ?</a></li>
+        <li><a href="#erreurs">Quelles erreurs éviter ?</a></li>
+        <li><a href="#bass">Par où commencer ?</a></li>
       </ol>
     </div>
   </aside>
 
   <article class="article-body">
-    <h2 id="definition">Qu'est-ce qu'un Footprint Chart ?</h2>
+    <h2 id="definition">C'est quoi le footprint trading ?</h2>
     <!-- reponse:debut --><style>.reponse-courte strong,.reponse-courte p{color:#1D1D1F!important}</style><div class="reponse-courte" style="border-left:3px solid #0066FF;background:#F5F5F7;border-radius:0 12px 12px 0;padding:18px 20px;margin:0 0 28px;font-size:.95rem;line-height:1.65;color:#1D1D1F;max-width:100%;box-sizing:border-box"><div style="font-size:.6rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#0066FF;margin-bottom:6px">Réponse courte</div><p style="margin:0;color:#1D1D1F">Un footprint chart découpe chaque bougie en niveaux de prix et affiche, à chaque niveau, le volume exécuté à la vente (bid) et à l'achat (ask). On y lit le <strong>delta</strong> (achats agressifs moins ventes agressives), les <strong>imbalances</strong> (un côté qui écrase l'autre en diagonale) et l'<strong>absorption</strong> (beaucoup de volume sans que le prix avance). Il se lit sur des données tick par tick d'un marché centralisé, comme les futures du Nasdaq.</p></div><!-- reponse:fin -->
-<p>Un chandelier classique vous montre 4 chiffres : Open, High, Low, Close. Et le volume total de la bougie. C'est comme regarder le score final d'un match de foot sans avoir vu le match. Vous savez qui a gagné, mais pas <strong>comment</strong>.</p>
-    <p>Le Footprint Chart ouvre la bougie. Il décompose le volume échangé à <strong>chaque niveau de prix</strong>, séparé entre les ordres exécutés côté Bid (vendeurs agressifs) et côté Ask (acheteurs agressifs). Vous voyez la bataille tick par tick — qui pousse, qui absorbe, où la force bascule.</p>
+<p>Le footprint trading, c'est prendre tes décisions en lisant ce qui s'échange <strong>à l'intérieur</strong> de chaque bougie. Un chandelier classique te montre quatre prix (ouverture, plus haut, plus bas, clôture) et un volume total. C'est comme lire le score final d'un match sans l'avoir regardé : tu sais qui a gagné, pas <strong>comment</strong>.</p>
+    <p>Le footprint chart ouvre la bougie. Il décompose le volume échangé à <strong>chaque niveau de prix</strong>, en séparant les transactions exécutées au bid (des vendeurs agressifs ont frappé les acheteurs en attente) et celles exécutées à l'ask (des acheteurs agressifs ont pris les vendeurs en attente). Tu vois la bataille tick par tick : qui pousse, qui encaisse, et où la force bascule.</p>
 
     <div class="key-concept">
       <div class="key-concept-label">Concept clé</div>
-      <h4>Le Footprint révèle l'intention derrière le prix</h4>
-      <p>Une bougie verte ne signifie pas que les acheteurs ont gagné partout. Le Footprint peut montrer une forte absorption vendeuse dans le haut de la bougie — signe que le rallye est en train de s'essouffler. L'apparence trompe. Le volume ne ment pas.</p>
+      <h4>Le footprint montre ce qu'il y a derrière le prix</h4>
+      <p>Une bougie verte ne veut pas dire que les acheteurs ont gagné partout. Le footprint peut montrer de gros vendeurs passifs qui encaissent tout dans le haut de la bougie : le signe qu'une hausse s'essouffle. L'apparence d'une bougie trompe souvent ; le détail des échanges, beaucoup moins.</p>
     </div>
 
-    <p>Développé pour les marchés Futures (CME), le Footprint est devenu l'outil de référence des traders professionnels qui ont besoin de lire le flux d'ordres avec précision. Aujourd'hui, il est accessible à tout trader équipé de Sierra Chart et de données CME.</p>
+    <p>Le footprint se lit sur les marchés à terme, parce que la bourse y publie chaque transaction avec son prix, sa taille et le côté de l'agresseur. Sur les futures du Nasdaq (NQ et micro MNQ), tout passe par le CME : le volume que tu vois est celui de tout le marché. C'est pour ça que je lis le footprint sur les futures, et pas sur des CFD.</p>
+
+    <p>Ce guide est la porte d'entrée de la série footprint. Chaque notion a ensuite son guide détaillé : <a href="/blog/imbalance-footprint/">les imbalances</a>, <a href="/blog/absorption-order-flow/">l'absorption</a>, <a href="/blog/delta-footprint-trading/">le delta</a> et <a href="/blog/cvd-cumulative-volume-delta/">le CVD</a>.</p>
 
     <hr>
 
-    <h2 id="composants">Les composants du Footprint</h2>
+    <h2 id="composants">Comment lire un footprint : bid × ask, delta et volume ?</h2>
 
-    <h3>Bid et Ask</h3>
-    <p>À chaque niveau de prix dans une bougie, le Footprint affiche deux chiffres : le volume exécuté au <strong>Bid</strong> (ordres de vente agressifs — le vendeur "tape" le Bid) et le volume exécuté à l'<strong>Ask</strong> (ordres d'achat agressifs — l'acheteur "tape" l'Ask).</p>
-    <p>Format typique : <strong>Bid × Ask</strong>. Par exemple, <strong>245 × 892</strong> signifie que 245 contrats ont été vendus agressivement et 892 achetés agressivement à ce niveau de prix. Le déséquilibre est clair — les acheteurs dominent.</p>
+    <h3>Bid × ask</h3>
+    <p>À chaque niveau de prix d'une bougie, le footprint affiche deux chiffres : le volume exécuté au <strong>bid</strong> (ventes agressives : le vendeur « tape » le bid) et le volume exécuté à l'<strong>ask</strong> (achats agressifs : l'acheteur « prend » l'ask).</p>
+    <p>Le format le plus courant est <strong>bid × ask</strong>. Par exemple, <strong>245 × 892</strong> veut dire que 245 contrats ont été vendus agressivement et 892 achetés agressivement à ce prix. À ce niveau, les acheteurs ont été bien plus agressifs que les vendeurs.</p>
+    <p>Retiens bien ceci : en face de chaque agresseur, il y a un ordre passif. Les 892 contrats achetés à l'ask ont été vendus par des vendeurs qui attendaient avec des ordres limites. Le footprint ne te dit pas qui « a raison » ; il te dit qui a pris l'initiative, et comment le prix a réagi.</p>
 
-    <h3>Le Delta</h3>
-    <p>Le delta est la différence entre le volume Ask et le volume Bid à un niveau de prix donné. <strong>Delta = Ask - Bid</strong>. Un delta positif signifie plus d'achats agressifs. Un delta négatif, plus de ventes agressives.</p>
-    <p>Le delta total de la bougie (somme de tous les deltas par niveau) indique la pression nette. Mais attention : <strong>le delta total peut cacher des réalités opposées</strong> à différents niveaux de prix. C'est pour ça qu'on regarde le Footprint niveau par niveau.</p>
+    <h3>Le delta</h3>
+    <p>Le delta, c'est la différence entre le volume à l'ask et le volume au bid. <strong>Delta = ask − bid.</strong> Un delta positif veut dire plus d'achats agressifs, un delta négatif plus de ventes agressives.</p>
+    <p>Le delta de la bougie (la somme des deltas de chaque niveau) donne la pression nette. Mais attention : <strong>un delta global peut cacher des choses opposées</strong> selon les niveaux. C'est pour ça qu'on lit le footprint ligne par ligne, et pas seulement son total. Le guide complet : <a href="/blog/delta-footprint-trading/">le delta en trading</a>.</p>
 
-    <h3>Le volume par niveau de prix</h3>
-    <p>Le volume total à chaque niveau (Bid + Ask) révèle où l'activité est concentrée. Les niveaux avec le plus de volume sont souvent des <strong>niveaux d'intérêt institutionnel</strong> — des prix où les gros participants ont accumulé ou distribué.</p>
+    <h3>Le volume par niveau et le POC de la bougie</h3>
+    <p>Le volume total à chaque niveau (bid + ask) montre où l'activité s'est concentrée. Le prix où il s'est échangé le plus de contrats dans la bougie s'appelle le POC de la bougie. Un POC en haut d'une bougie haussière, un POC en bas d'une bougie baissière : ce sont des détails qui disent où le gros du volume a accepté de travailler.</p>
+
+    <h3>Ce que vaut un tick sur le Nasdaq</h3>
+    <p>Sur le NQ, le prix avance par tick de 0,25 point, et un tick vaut 5 $ par contrat (20 $ le point). Sur le MNQ, le même tick vaut 0,50 $ (2 $ le point). Une ligne de footprint réglée à 1 tick représente donc 5 $ sur le NQ. Je compare les deux contrats dans <a href="/blog/nq-ou-mnq/">NQ ou MNQ : quel contrat choisir</a>.</p>
 
     <hr>
 
-    <h2 id="imbalances">Lire les déséquilibres (Imbalances)</h2>
-    <p>Un déséquilibre (imbalance) se produit quand le ratio entre le volume Ask et le volume Bid (ou inversement) dépasse un seuil significatif — généralement <strong>300% ou plus</strong> (ratio 3:1).</p>
+    <h2 id="imbalances">C'est quoi une imbalance dans un footprint ?</h2>
+    <p>Une imbalance (déséquilibre) apparaît quand un côté écrase l'autre. Sur un footprint bid × ask, la comparaison se fait <strong>en diagonale</strong> : tu compares le volume à l'ask d'un prix avec le volume au bid du prix juste en dessous. Pourquoi en diagonale ? Parce qu'à un instant donné, le meilleur ask est un tick au-dessus du meilleur bid : ce sont ces deux chiffres-là qui se font face.</p>
 
-    <h3>Comment les repérer</h3>
-    <p>Sierra Chart colore automatiquement les cellules déséquilibrées. Un déséquilibre acheteur (Ask >> Bid) apparaît quand le volume Ask à un niveau de prix est au moins 3 fois supérieur au volume Bid du niveau juste en dessous. L'inverse pour un déséquilibre vendeur.</p>
+    <h3>Le seuil</h3>
+    <p>Un réglage courant est <strong>300 %</strong> : l'ask doit être au moins trois fois plus gros que le bid en diagonale (ou l'inverse pour une imbalance vendeuse). C'est un réglage de ta plateforme, pas une loi. Ajoute un volume minimum, sinon un « 9 contre 3 » sur une ligne vide s'allume comme une vraie imbalance.</p>
 
-    <h3>Stacked Imbalances</h3>
-    <p>Quand 3 déséquilibres ou plus sont empilés sur des niveaux de prix consécutifs, c'est un <strong>stacked imbalance</strong> — un signal de forte conviction directionnelle. C'est l'équivalent d'une troupe qui avance sur tous les fronts simultanément.</p>
+    <h3>Les stacked imbalances</h3>
+    <p>Quand trois imbalances ou plus s'empilent sur des niveaux consécutifs, on parle de <strong>stacked imbalances</strong>. Un camp a frappé fort sur plusieurs prix d'affilée. Ces zones servent souvent de repère ensuite : si le prix revient dessus et que le même camp défend, la lecture tient ; si l'autre camp les traverse, elle est fausse.</p>
 
     <div class="info-box">
       <div class="info-box-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg> En pratique</div>
-      <p>Les stacked imbalances acheteurs en bas d'une bougie, combinés à une zone de Value Area Low du Market Profile, sont un des setups les plus fiables en intraday. C'est la convergence entre la structure macro (Market Profile) et l'action micro (Footprint).</p>
+      <p>Des stacked imbalances acheteuses au bas d'une bougie, sur une VAL du Market Profile, c'est une lecture que je prends au sérieux en intraday : la structure (le profil) et l'action (le footprint) disent la même chose. Seule, au milieu de nulle part, la même imbalance ne me dit presque rien.</p>
     </div>
 
     <p><strong>Pour aller plus loin :</strong> <a href="/blog/imbalance-footprint/">les imbalances du footprint, pas à pas</a>.</p>
     <hr>
 
-    <h2 id="absorption">L'absorption</h2>
-    <p>L'absorption est le phénomène inverse du déséquilibre. Elle se produit quand un <strong>gros volume est échangé à un niveau de prix sans que le prix ne bouge significativement</strong>.</p>
-    <p>Concrètement : le prix arrive à un niveau, les vendeurs attaquent massivement (gros volume Bid), mais le prix ne descend pas. Quelqu'un absorbe toute cette pression vendeuse. C'est généralement un institutionnel qui accumule une position acheteuse.</p>
+    <h2 id="absorption">Comment repérer l'absorption sur un footprint ?</h2>
+    <p>L'absorption, c'est l'inverse d'une imbalance qui fait avancer le prix. C'est <strong>beaucoup de volume agressif d'un côté, sans que le prix avance</strong>.</p>
+    <p>Concrètement : le prix arrive sur un niveau, les vendeurs frappent le bid en masse, mais le prix ne descend plus. Quelqu'un en face achète tout ce qui se présente avec des ordres limites. Les vendeurs agressifs se vident, et quand ils s'arrêtent, il n'y a plus personne pour pousser le prix vers le bas.</p>
 
-    <h3>Absorption et retournement</h3>
-    <p>L'absorption en bas d'un mouvement baissier est souvent le <strong>premier signal d'un retournement</strong>. Le prix a été poussé vers le bas, les vendeurs agressifs ont vidé leur énergie, et un acheteur massif a tout absorbé. Le prochain mouvement sera probablement haussier.</p>
-    <p>Identifiez l'absorption dans le Footprint : un niveau de prix avec un volume total très élevé, un delta proche de zéro ou légèrement positif, et un prix qui refuse de descendre davantage.</p>
+    <h3>Les trois indices</h3>
+    <ul>
+      <li><strong>Un volume très au-dessus des niveaux voisins</strong>, souvent à l'extrême de la bougie.</li>
+      <li><strong>Un delta qui va dans le sens de la poussée</strong> (fortement négatif sur une absorption acheteuse), mais un prix qui ne suit plus.</li>
+      <li><strong>Un niveau qui tient</strong> : les bougies suivantes ne cassent pas le prix où le volume s'est écrasé.</li>
+    </ul>
+    <p>L'absorption ne se voit qu'avec un peu de recul : tant que le niveau n'a pas tenu, ce n'est qu'un gros volume. Sur le NQ, une partie de ces ordres passifs sont des icebergs, des ordres dont seule une petite partie s'affiche dans le carnet. Le carnet ne te les montre pas ; le footprint, si, une fois qu'ils ont été exécutés.</p>
 
     <p><strong>Pour aller plus loin :</strong> <a href="/blog/absorption-order-flow/">l'absorption en order flow, avec des exemples</a>.</p>
     <hr>
 
-    <h2 id="cvd">Le Delta cumulatif (CVD)</h2>
-    <p>Le CVD (Cumulative Volume Delta) est le total cumulé de tous les deltas dans le temps. Il trace une courbe qui montre la pression nette acheteur/vendeur sur la durée.</p>
+    <h2 id="cvd">Delta et CVD : à quoi ça sert dans le footprint ?</h2>
+    <p>Le CVD (Cumulative Volume Delta) additionne les deltas dans le temps. Il trace une courbe qui montre la pression nette acheteuse ou vendeuse sur la durée, bougie après bougie.</p>
 
-    <h3>Divergences prix/CVD</h3>
-    <p>La divergence est le signal le plus puissant du CVD. Si le prix fait de nouveaux plus hauts mais que le CVD fait des plus bas, cela signifie que <strong>le rallye n'est plus soutenu par de vrais acheteurs agressifs</strong>. Le prix monte par manque de vendeurs, pas par force acheteuse. C'est un signe d'épuisement.</p>
-    <p>L'inverse est vrai : si le prix fait de nouveaux plus bas mais que le CVD remonte, les vendeurs perdent leur force — un retournement haussier est probable.</p>
+    <h3>Les divergences entre le prix et le delta</h3>
+    <p>Si le prix fait un nouveau plus haut mais que le delta ou le CVD ne suit pas, <strong>la hausse n'est plus portée par des acheteurs agressifs</strong>. Le prix monte surtout parce que les vendeurs se retirent. C'est un signe d'essoufflement, pas un ordre de vente.</p>
+    <p>L'inverse se lit de la même façon : un nouveau plus bas avec un CVD qui remonte montre des vendeurs qui perdent leur force.</p>
 
-    <h3>Confirmation de tendance</h3>
-    <p>Quand le prix et le CVD évoluent dans la même direction, la tendance est saine. Les acheteurs (ou vendeurs) agressifs soutiennent activement le mouvement. C'est la configuration où il faut suivre la tendance, pas la contrer.</p>
+    <h3>La confirmation d'un mouvement</h3>
+    <p>Quand le prix et le CVD vont dans le même sens, le mouvement est sain : les agresseurs le soutiennent. C'est une configuration où je cherche à suivre, pas à contrer.</p>
 
     <p><strong>Pour aller plus loin :</strong> <a href="/blog/cvd-cumulative-volume-delta/">le guide complet du CVD</a> et <a href="/blog/delta-footprint-trading/">le delta en trading</a>.</p>
     <hr>
 
-    <h2 id="patterns">Patterns concrets</h2>
+    <h2 id="lectures">Analyse footprint : 3 lectures pas à pas sur le Nasdaq</h2>
+    <p>Voici trois lectures que je fais tout le temps sur le future Nasdaq. Les chiffres sont ronds pour que tu puisses refaire chaque calcul (exemples pédagogiques, pas des relevés de marché). Une ligne = 1 tick = 0,25 point. Dans les trois cas, le niveau vient d'abord : je ne lis jamais un footprint « au milieu de rien ».</p>
+
+    <h3>Lecture 1 : des imbalances empilées qui cassent la VAH</h3>
+    <p><strong>Le contexte.</strong> Le marché a ouvert dans la Value Area de la veille et remonte vers sa borne haute, la VAH, à 25 020,00. Si les acheteurs sont sérieux, je dois les voir prendre ce prix avec agressivité. Voici la bougie qui le casse :</p>
+    <table class="compare-table">
+      <thead><tr><th>Prix</th><th>Bid × ask</th><th>Lecture</th></tr></thead>
+      <tbody>
+        <tr><td>25 021,50</td><td>12 × 18</td><td></td></tr>
+        <tr><td>25 021,25</td><td>20 × 35</td><td></td></tr>
+        <tr><td>25 021,00</td><td>31 × 110</td><td>Imbalance acheteuse : 110 contre 28 en diagonale</td></tr>
+        <tr><td>25 020,75</td><td>28 × 96</td><td>Imbalance acheteuse : 96 contre 25</td></tr>
+        <tr><td>25 020,50</td><td>25 × 88</td><td>Imbalance acheteuse : 88 contre 22</td></tr>
+        <tr><td>25 020,25</td><td>22 × 40</td><td></td></tr>
+        <tr><td>25 020,00</td><td>45 × 38</td><td>La VAH de la veille</td></tr>
+      </tbody>
+    </table>
+    <p><strong>Le calcul.</strong> En diagonale, l'ask de 25 021,00 (110) se compare au bid de 25 020,75 (28) : près de 4 fois plus. Même chose pour 96 contre 25 et 88 contre 22. Trois imbalances acheteuses d'affilée : une stacked imbalance de 25 020,50 à 25 021,00. Le delta de la bougie : 425 contrats à l'ask, 183 au bid, soit +242.</p>
+    <p><strong>Ce que j'en conclus.</strong> Les acheteurs n'ont pas seulement touché la VAH, ils l'ont prise de force. La zone 25 020,50 – 25 021,00 devient mon repère. Tant que le prix reste au-dessus, la lecture « valeur qui monte » tient. Si le prix revient dessous et que le bid domine sur ces mêmes prix, ma lecture est fausse : je sors, sans discuter. De la VAH au bas de la zone, il y a 2 ticks, 10 $ sur un NQ : c'est ce genre de précision que le footprint permet.</p>
+
+    <h3>Lecture 2 : l'absorption sur la VAL</h3>
+    <p><strong>Le contexte.</strong> Le prix descend vers la VAL de la veille, à 24 950,00. Les vendeurs accélèrent. Voici la bougie qui touche le niveau :</p>
+    <table class="compare-table">
+      <thead><tr><th>Prix</th><th>Bid × ask</th><th>Lecture</th></tr></thead>
+      <tbody>
+        <tr><td>24 951,00</td><td>40 × 22</td><td></td></tr>
+        <tr><td>24 950,75</td><td>65 × 30</td><td>Clôture de la bougie</td></tr>
+        <tr><td>24 950,50</td><td>120 × 41</td><td></td></tr>
+        <tr><td>24 950,25</td><td>310 × 60</td><td>Gros volume vendeur</td></tr>
+        <tr><td>24 950,00</td><td>420 × 85</td><td>Plus bas, sur la VAL : le plus gros volume</td></tr>
+      </tbody>
+    </table>
+    <p><strong>Le calcul.</strong> 955 contrats vendus agressivement, 238 achetés : un delta de −717. Sur les deux derniers ticks, 730 contrats ont frappé le bid. Et pourtant, le prix ne fait pas un tick de plus vers le bas, et la bougie clôture 3 ticks au-dessus de son plus bas.</p>
+    <p><strong>Ce que j'en conclus.</strong> Quelqu'un a acheté en passif tout ce que les vendeurs ont envoyé sur la VAL. Je ne me précipite pas : j'attends la bougie suivante. Si elle ne casse pas 24 950,00 et que l'ask commence à dominer, l'absorption est confirmée et j'ai un risque clair, quelques ticks sous le plus bas. Si 24 950,00 cède avec le bid qui continue, l'acheteur passif a été vidé : la lecture est annulée.</p>
+
+    <h3>Lecture 3 : un nouveau plus haut sans acheteurs</h3>
+    <p><strong>Le contexte.</strong> Le prix monte vers le plus haut de la veille. Une première bougie fait un plus haut à 25 060,00 avec un delta de +180. La bougie suivante va un peu plus haut, à 25 060,50. Voici le haut de cette deuxième bougie :</p>
+    <table class="compare-table">
+      <thead><tr><th>Prix</th><th>Bid × ask</th><th>Lecture</th></tr></thead>
+      <tbody>
+        <tr><td>25 060,50</td><td>35 × 0</td><td>Plus haut : zéro à l'ask</td></tr>
+        <tr><td>25 060,25</td><td>48 × 6</td><td></td></tr>
+        <tr><td>25 060,00</td><td>52 × 15</td><td>L'ancien plus haut</td></tr>
+        <tr><td>25 059,75</td><td>30 × 22</td><td></td></tr>
+      </tbody>
+    </table>
+    <p><strong>Le calcul.</strong> Au plus haut, aucun acheteur n'a pris l'ask : zéro. Les deux ticks au-dessus de l'ancien plus haut n'ont attiré que 6 contrats à l'ask, contre 83 au bid. Le delta de cette bougie est de −40, alors que la précédente faisait +180 pour un plus haut plus bas : le prix monte, le delta baisse. C'est une divergence.</p>
+    <p><strong>Ce que j'en conclus.</strong> Personne n'a voulu payer plus cher : l'enchère s'est arrêtée là. On parle d'enchère terminée (finished auction). À l'inverse, s'il y avait eu du volume des deux côtés au plus haut, on parlerait d'enchère non terminée (unfinished business), et le marché revient souvent la finir. Ce n'est pas un signal de vente à lui seul. Sur un niveau préparé, comme ce plus haut de la veille, c'est une idée de trade, avec une invalidation simple : un retour au-dessus de 25 060,50 avec des acheteurs agressifs.</p>
+
+    <div class="key-concept">
+      <div class="key-concept-label">À retenir</div>
+      <h4>Le niveau d'abord, le footprint ensuite</h4>
+      <p>Dans les trois lectures, le footprint ne m'a pas dit quoi faire tout seul. Il m'a dit si un niveau préparé à l'avance (VAH, VAL, plus haut de la veille) était accepté, défendu ou abandonné. Une lecture sans niveau, c'est du bruit.</p>
+    </div>
+
+    <hr>
+
+    <h2 id="patterns">Quels patterns de footprint reconnaître ?</h2>
 
     <table class="compare-table">
-      <thead><tr><th>Pattern</th><th>Ce qu'il montre</th><th>Signal</th></tr></thead>
+      <thead><tr><th>Pattern</th><th>Ce qu'on voit</th><th>Ce que ça peut indiquer</th></tr></thead>
       <tbody>
-        <tr><td>Stacked Imbalances (acheteur)</td><td>3+ déséquilibres Ask consécutifs</td><td>Forte pression acheteuse, continuation haussière probable</td></tr>
-        <tr><td>Stacked Imbalances (vendeur)</td><td>3+ déséquilibres Bid consécutifs</td><td>Forte pression vendeuse, continuation baissière probable</td></tr>
-        <tr><td>Exhaustion</td><td>Gros volume + delta extrême en fin de mouvement</td><td>Épuisement de la tendance, retournement imminent</td></tr>
-        <tr><td>Absorption Reversal</td><td>Gros volume, delta faible, prix stable</td><td>Un participant massif absorbe — retournement probable</td></tr>
-        <tr><td>Divergence CVD</td><td>Prix fait des nouveaux extrêmes, CVD diverge</td><td>Mouvement non soutenu, retournement à anticiper</td></tr>
-        <tr><td>Unfinished Business</td><td>Niveau avec très peu de volume dans le Footprint</td><td>Le marché reviendra tester ce niveau (gap de liquidité)</td></tr>
+        <tr><td>Stacked imbalances acheteuses</td><td>3 imbalances ou plus à l'ask, sur des prix consécutifs</td><td>Pression acheteuse forte ; zone de repère si le prix y revient</td></tr>
+        <tr><td>Stacked imbalances vendeuses</td><td>3 imbalances ou plus au bid, sur des prix consécutifs</td><td>Pression vendeuse forte ; zone de repère si le prix y revient</td></tr>
+        <tr><td>Absorption</td><td>Gros volume agressif d'un côté, prix qui n'avance plus</td><td>Un intervenant passif encaisse ; retournement possible si le niveau tient</td></tr>
+        <tr><td>Épuisement</td><td>Volume qui fond à l'extrême d'un mouvement, zéro à l'ask au plus haut (ou au bid au plus bas)</td><td>Plus personne pour pousser ; le mouvement s'essouffle</td></tr>
+        <tr><td>Divergence de delta</td><td>Nouvel extrême du prix, delta ou CVD qui ne suit pas</td><td>Mouvement moins soutenu ; à confirmer sur un niveau</td></tr>
+        <tr><td>Enchère non terminée</td><td>Volume des deux côtés à l'extrême d'une bougie</td><td>Le marché revient souvent tester ce prix</td></tr>
       </tbody>
     </table>
 
     <hr>
 
-    <h2 id="logiciel">Quels outils pour afficher un footprint ?</h2>
+    <h2 id="logiciel">Quels outils footprint ? Le comparatif</h2>
     <p><strong>Réponse courte :</strong> il te faut deux choses, une plateforme qui dessine le footprint et des données <strong>tick par tick</strong> d'un marché centralisé (les futures du CME, comme le NQ ou le MNQ). Sans la seconde, la plus belle plateforme affiche un footprint approximatif.</p>
-    <p>Sur le forex au comptant ou les CFD, il n'y a pas de carnet central : le volume affiché est celui de ton courtier, pas celui du marché. C'est pour cela que je lis le footprint sur les futures.</p>
+    <p>Sur le Forex au comptant ou les CFD, il n'y a pas de carnet central : le volume affiché est celui de ton courtier, pas celui du marché. C'est pour ça que je lis le footprint sur les futures.</p>
 
     <table class="compare-table">
-      <thead><tr><th>Plateforme</th><th>Nom du footprint</th><th>Ce qu'il faut savoir</th></tr></thead>
+      <thead><tr><th>Outil</th><th>Nom du footprint</th><th>Ce qu'il faut savoir</th><th>Mon avis</th></tr></thead>
       <tbody>
-        <tr><td>Sierra Chart</td><td>Numbers Bars</td><td>Le plus réglable (couleurs par delta, seuils d'imbalance, bid × ask). Interface austère, mais rapide et fiable.</td></tr>
-        <tr><td>ATAS</td><td>Cluster chart</td><td>Très visuel, pensé pour l'order flow. Bon point de départ si Sierra Chart te rebute.</td></tr>
-        <tr><td>NinjaTrader 8</td><td>Volumetric Bars</td><td>Fourni avec le module Order Flow+, selon la licence. <a href="/blog/ninjatrader-avis/">Mon avis complet sur NinjaTrader</a>.</td></tr>
-        <tr><td>Quantower</td><td>Cluster chart</td><td>Un bon compromis multi-courtiers, avec DOM et footprint dans le même logiciel.</td></tr>
-        <tr><td>TradingView</td><td>Volume footprint</td><td>Réservé aux abonnements payants, et différent d'un vrai bid × ask tick par tick. <a href="/blog/footprint-tradingview/">Ce que vaut le footprint de TradingView</a>.</td></tr>
-        <tr><td>Bookmap</td><td>Heatmap de liquidité</td><td>Montre surtout le carnet d'ordres dans le temps, plus qu'un footprint classique. Utile en complément.</td></tr>
+        <tr><td>Sierra Chart</td><td>Numbers Bars</td><td>Le plus réglable (couleurs par delta, seuils d'imbalance, bid × ask). Interface austère, mais rapide et fiable. Windows.</td><td><a href="/blog/sierra-chart-configuration/">Ma configuration Sierra Chart</a></td></tr>
+        <tr><td>ATAS</td><td>Cluster chart</td><td>Très visuel, pensé pour l'order flow. Bon point de départ si Sierra Chart te rebute. Version Mac (ATAS X) encore en bêta.</td><td>Pas encore d'avis publié</td></tr>
+        <tr><td>DeepCharts</td><td>Footprint</td><td>Spécialisé order flow, rapide à prendre en main ; heatmap (DeepDom) en option. Windows uniquement.</td><td><a href="/blog/deepcharts-avis/">Mon avis sur DeepCharts</a></td></tr>
+        <tr><td>GoCharting</td><td>Footprint</td><td>Tourne dans le navigateur, donc sur Mac. Le footprint en temps réel demande l'abonnement Premium et les données CME.</td><td><a href="/blog/gocharting-avis/">Mon avis sur GoCharting</a></td></tr>
+        <tr><td>TradingView</td><td>Volume footprint</td><td>Réservé aux abonnements payants. Le côté acheteur ou vendeur est estimé à partir des mouvements du prix, pas relevé transaction par transaction.</td><td><a href="/blog/footprint-tradingview/">Le footprint de TradingView</a></td></tr>
+        <tr><td>NinjaTrader 8</td><td>Volumetric Bars</td><td>Fourni avec le module Order Flow+, selon la licence. Windows.</td><td><a href="/blog/ninjatrader-avis/">Mon avis sur NinjaTrader</a></td></tr>
+        <tr><td>Quantower</td><td>Cluster chart</td><td>Multi-courtiers, DOM et footprint dans le même logiciel. Pas de footprint dans la version gratuite.</td><td><a href="/blog/quantower-avis/">Mon avis sur Quantower</a></td></tr>
+        <tr><td>MotiveWave</td><td>Volume Imprint</td><td>À partir de l'édition Order Flow. Tourne nativement sur Mac.</td><td><a href="/blog/motivewave-avis/">Mon avis sur MotiveWave</a></td></tr>
+        <tr><td>Bookmap</td><td>Heatmap de liquidité</td><td>Montre surtout le carnet d'ordres dans le temps, plus qu'un footprint classique. Utile en complément.</td><td><a href="/blog/bookmap-heatmap/">Mon avis sur Bookmap</a></td></tr>
       </tbody>
     </table>
 
-    <p>Mon choix, en séance, c'est Sierra Chart. Si tu pars de zéro, la configuration pas à pas est ici : <a href="/blog/sierra-chart-configuration/">configurer Sierra Chart (Market Profile, footprint, CVD)</a>. Si tu trades déjà avec Tradovate, lis <a href="/blog/tradovate-avis/">mon avis sur Tradovate</a> avant de choisir ta plateforme de lecture.</p>
+    <p>Les tarifs de ces logiciels changent souvent : je les donne, avec leur date de relevé, dans chaque avis. Mon choix, en séance, c'est Sierra Chart. Si tu pars de zéro, la configuration pas à pas est ici : <a href="/blog/sierra-chart-configuration/">configurer Sierra Chart (Market Profile, footprint, CVD)</a>. Si tu trades déjà avec Tradovate, lis <a href="/blog/tradovate-avis/">mon avis sur Tradovate</a> avant de choisir ta plateforme de lecture.</p>
 
     <h3>Comment choisir sans te tromper</h3>
     <ul>
       <li><strong>Les données d'abord :</strong> vérifie que ton flux de données est tick par tick et non agrégé. Un footprint construit sur des données échantillonnées ment sur le delta.</li>
-      <li><strong>Le marché ensuite :</strong> un footprint sur le NQ ou le MNQ se lit très différemment d'un footprint sur une action peu échangée. Teste sur le marché que tu vas vraiment trader.</li>
+      <li><strong>Ta machine ensuite :</strong> sur Mac, tes options natives sont GoCharting, MotiveWave et TradingView, plus Bookmap pour la heatmap ; ATAS a une version Mac encore en bêta ; les autres demandent Windows ou une machine virtuelle.</li>
+      <li><strong>Le marché :</strong> un footprint sur le NQ ou le MNQ se lit très différemment d'un footprint sur une action peu échangée. Teste sur le marché que tu vas vraiment trader.</li>
       <li><strong>Le confort en dernier :</strong> la plateforme la plus belle ne sert à rien si tu ne sais pas quoi y lire. Les imbalances, le delta et l'absorption se lisent pareil partout.</li>
     </ul>
 
     <hr>
 
-    <h2 id="vs-mp">Footprint vs Market Profile</h2>
+    <h2 id="reglages">Quels réglages pour un footprint sur le Nasdaq ?</h2>
+    <p>Il n'y a pas de réglage magique, mais il y a des réglages qui rendent le NQ lisible ou illisible. Voici par où je te conseille de commencer.</p>
+    <ul>
+      <li><strong>La périodicité.</strong> Une bougie de quelques minutes est un bon départ : assez de volume par bougie pour que les chiffres veuillent dire quelque chose, assez de bougies pour suivre la séance. Les bougies en volume ou en nombre de ticks existent aussi ; teste-les une fois que la lecture en minutes est acquise.</li>
+      <li><strong>La hauteur des lignes.</strong> À 1 tick, tu vois tout, mais quand le Nasdaq accélère, la bougie devient trop haute pour l'écran. Regrouper 2 à 4 ticks par ligne rend la lecture plus calme, au prix d'un peu de précision. Ce que tu gagnes en lisibilité, tu le perds en finesse sur les imbalances.</li>
+      <li><strong>L'affichage.</strong> Commence en bid × ask. Le mode delta et le mode volume seul sont pratiques, mais ils cachent la diagonale.</li>
+      <li><strong>Les imbalances.</strong> 300 % avec un volume minimum, puis ajuste après quelques semaines de lecture.</li>
+      <li><strong>La séance.</strong> Le gros du volume du Nasdaq arrive avec l'ouverture de New York (15 h 30 heure de Paris, hors semaines de décalage d'heure). Les détails sont dans mon guide des <a href="/blog/horaires-futures-nasdaq-heure-paris/">horaires des futures Nasdaq</a>.</li>
+    </ul>
+
+    <hr>
+
+    <h2 id="vs-mp">Footprint ou Market Profile : lequel utiliser ?</h2>
 
     <table class="compare-table">
       <thead><tr><th>Critère</th><th>Market Profile</th><th>Footprint Chart</th></tr></thead>
       <tbody>
-        <tr><td>Échelle de temps</td><td>Session entière (macro)</td><td>Bougie par bougie (micro)</td></tr>
-        <tr><td>Ce qu'il montre</td><td>Structure du marché, acceptation du prix</td><td>Flux d'ordres, agressivité acheteur/vendeur</td></tr>
-        <tr><td>Utilisation principale</td><td>Identifier les niveaux clés et le contexte</td><td>Timer les entrées et lire la force en temps réel</td></tr>
-        <tr><td>Analogie</td><td>La carte du territoire</td><td>Les mouvements des troupes sur le terrain</td></tr>
-        <tr><td>Complémentarité</td><td>Donne le "où" trader</td><td>Donne le "quand" entrer</td></tr>
+        <tr><td>Échelle de temps</td><td>Séance entière</td><td>Bougie par bougie</td></tr>
+        <tr><td>Ce qu'il montre</td><td>Structure de la séance, acceptation du prix</td><td>Flux d'ordres, agressivité acheteuse ou vendeuse</td></tr>
+        <tr><td>Utilisation principale</td><td>Trouver les niveaux clés et le contexte</td><td>Choisir le moment d'entrer et lire la force en direct</td></tr>
+        <tr><td>Analogie</td><td>La carte du terrain</td><td>Les mouvements des troupes sur le terrain</td></tr>
+        <tr><td>Question</td><td>Où trader ?</td><td>Quand entrer ?</td></tr>
       </tbody>
     </table>
 
-    <p>Les deux outils ne sont pas en compétition — ils sont <strong>complémentaires</strong>. Le Market Profile vous dit "le marché est en rotation autour du POC, la Value Area Low est un support important". Le Footprint vous dit "sur ce support, je vois de l'absorption acheteuse avec des stacked imbalances — c'est le moment d'entrer long".</p>
+    <p>Les deux outils ne sont pas en concurrence : ils se <strong>complètent</strong>. Le Market Profile te dit « le marché tourne autour du POC, la VAL est un niveau important ». Le footprint te dit « sur cette VAL, je vois de l'absorption acheteuse et des stacked imbalances : il se passe quelque chose ». Pour la partie contexte, commence par mon <a href="/blog/market-profile-guide-complet/">guide complet du Market Profile</a> et mon <a href="/blog/volume-profile-guide/">guide du Volume Profile</a>.</p>
 
     <hr>
 
-    <h2 id="bass">Apprendre le Footprint avec BASS Trading</h2>
-    <p>Le Footprint ne s'apprend pas en lisant un article. Il se pratique, se vit en temps réel, et nécessite un feedback constant. C'est un outil qui demande de l'entraînement visuel — comme apprendre à lire une radio médicale.</p>
-    <p>Le mentorat BASS Trading consacre des modules entiers au Footprint Chart, avec des séances en direct où Sébastien lit le flux en temps réel, commente les déséquilibres et explique ses décisions d'entrée et de sortie.</p>
+    <h2 id="erreurs">Quelles erreurs éviter avec le footprint ?</h2>
+    <ol>
+      <li><strong>Lire le footprint au milieu de rien.</strong> Une imbalance hors de tout niveau ne vaut presque rien. Prépare tes niveaux avant la séance.</li>
+      <li><strong>Prendre chaque imbalance pour un signal.</strong> Sur le NQ, il y en a des dizaines par séance. Seules celles qui apparaissent sur un niveau, ou qui s'empilent, méritent ton attention.</li>
+      <li><strong>Lire un footprint sur des données estimées.</strong> CFD, Forex au comptant, données agrégées : le delta et la diagonale y sont approximatifs. Sur des stops de quelques ticks, l'erreur se paie vite.</li>
+      <li><strong>Confondre gros volume et absorption.</strong> Tant que le niveau n'a pas tenu, ce n'est qu'un gros volume. Attends la bougie suivante.</li>
+      <li><strong>Oublier ton risque.</strong> Le footprint te dit où ta lecture est fausse. Mets ton stop là, avec une taille de position que tu peux assumer. Mon guide pour savoir <a href="/blog/combien-risquer-par-trade/">combien risquer par trade</a> t'aide à la calculer.</li>
+    </ol>
 
-    <p><strong>Ce guide fait partie de la série Order Flow.</strong> Pour la vue d'ensemble, commence par <a href="/blog/order-flow-trading-france/">le guide complet de l'order flow</a>.</p>
+    <hr>
 
-    <p><strong>Apprendre le footprint avec moi :</strong> <a href="/formation-footprint/">la formation Footprint (Footprint Mastery)</a>, 23 leçons vidéo et 17 classes virtuelles.</p>
+    <h2 id="bass">Footprint trading : par où commencer ?</h2>
+    <p>Le footprint ne s'apprend pas en lisant un article. Il se pratique, en direct, avec un retour régulier sur tes lectures. C'est un entraînement de l'œil, un peu comme apprendre à lire une radio médicale.</p>
+    <p>Voici l'ordre que je te conseille dans la série :</p>
+    <ol>
+      <li>La vue d'ensemble : <a href="/blog/order-flow-trading-france/">le guide complet de l'order flow</a>.</li>
+      <li>Ce qui attend dans le marché : <a href="/blog/carnet-ordres-dom-futures/">le carnet d'ordres (DOM)</a> et <a href="/blog/tape-reading-flux-ordres/">le tape reading</a>.</li>
+      <li>Ce qui s'exécute : ce guide, puis <a href="/blog/imbalance-footprint/">les imbalances</a>, <a href="/blog/absorption-order-flow/">l'absorption</a>, <a href="/blog/delta-footprint-trading/">le delta</a> et <a href="/blog/cvd-cumulative-volume-delta/">le CVD</a>.</li>
+      <li>Le contexte qui donne les niveaux : <a href="/blog/market-profile-guide-complet/">le Market Profile</a> et <a href="/blog/volume-profile-guide/">le Volume Profile</a>.</li>
+    </ol>
+    <p>Ce soir, ouvre un footprint du NQ sur la dernière séance. Note trois niveaux (la VAH, la VAL et le plus haut de la veille), puis cherche ce qui s'est passé dans les bougies qui les ont touchés : imbalances, absorption, zéro à un extrême. Trois niveaux relus de cette façon, chaque soir pendant une semaine, t'apprendront plus que des heures de vidéos.</p>
+
+    <p><strong>Apprendre le footprint avec moi :</strong> <a href="/formation-footprint/">la formation Footprint (Footprint Mastery)</a>, 23 leçons vidéo et 17 classes virtuelles enregistrées, sur les futures du Nasdaq.</p>
+
+    <p><em>Le trading de contrats à terme comporte un risque de perte en capital qui peut dépasser ta mise ; rien ici n'est un conseil personnalisé.</em></p>
 
     <div class="cta-card cta-aimant">
       <div class="cta-card-label">Gratuit</div>
@@ -336,11 +442,14 @@
 <section class="faq-sec">
   <div class="sec-center"><div class="sec-label">FAQ</div><h2 class="sec-title">Questions fréquentes</h2></div>
   <div class="faq-list">
-    <div class="fi"><button class="fq" onclick="tf(this)">C'est quoi un Footprint Chart ? <span class="fq-icon">+</span></button><div class="fa"><p>Un graphique avancé qui décompose chaque bougie en montrant le volume Bid et Ask à chaque niveau de prix. Il révèle les déséquilibres de force entre acheteurs et vendeurs — invisible sur un chandelier classique.</p></div></div>
-    <div class="fi"><button class="fq" onclick="tf(this)">Quelle différence avec les chandeliers classiques ? <span class="fq-icon">+</span></button><div class="fa"><p>Les chandeliers montrent uniquement OHLC et le volume total. Le Footprint montre le volume décomposé Bid/Ask à CHAQUE niveau de prix. Vous voyez exactement où les acheteurs et vendeurs ont été agressifs.</p></div></div>
-    <div class="fi"><button class="fq" onclick="tf(this)">C'est quoi un déséquilibre (imbalance) ? <span class="fq-icon">+</span></button><div class="fa"><p>Un déséquilibre se produit quand le volume d'un côté dépasse largement l'autre — typiquement un ratio de 300%+. Les stacked imbalances sur 3+ niveaux consécutifs signalent une forte conviction directionnelle.</p></div></div>
-    <div class="fi"><button class="fq" onclick="tf(this)">Quel logiciel pour le Footprint ? <span class="fq-icon">+</span></button><div class="fa"><p>Sierra Chart est le standard professionnel. Il offre le Numbers Bars natif avec personnalisation complète. Le mentorat BASS fournit les templates pré-configurés.</p></div></div>
-    <div class="fi"><button class="fq" onclick="tf(this)">Le Footprint remplace-t-il le Market Profile ? <span class="fq-icon">+</span></button><div class="fa"><p>Non, ils sont complémentaires. Le Market Profile donne le contexte macro (où trader), le Footprint donne le timing micro (quand entrer). Les professionnels utilisent les deux.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">C'est quoi le footprint trading ? <span class="fq-icon">+</span></button><div class="fa"><p>C'est trader en lisant ce qui s'échange à l'intérieur de chaque bougie. Le footprint chart affiche, à chaque niveau de prix, le volume exécuté au bid (ventes agressives) et à l'ask (achats agressifs). On y lit le delta, les imbalances et l'absorption, sur des données tick par tick d'un marché centralisé comme les futures du Nasdaq.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Comment lire un footprint chart ? <span class="fq-icon">+</span></button><div class="fa"><p>Lis chaque ligne en bid × ask : à gauche les contrats vendus agressivement, à droite ceux achetés agressivement. Regarde ensuite le delta (ask moins bid), les imbalances en diagonale (l'ask d'un prix comparé au bid du prix juste en dessous) et les gros volumes qui ne font plus avancer le prix. Et lis-le toujours sur un niveau préparé à l'avance, jamais au milieu de rien.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">C'est quoi une imbalance sur un footprint ? <span class="fq-icon">+</span></button><div class="fa"><p>C'est un niveau où un côté écrase l'autre en diagonale : par exemple l'ask d'un prix au moins trois fois plus gros que le bid du prix juste en dessous, avec un seuil de 300 % qui reste un réglage de ta plateforme. Trois imbalances ou plus sur des prix consécutifs forment une stacked imbalance, souvent réutilisée comme zone de repère.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Comment repérer l'absorption sur un footprint ? <span class="fq-icon">+</span></button><div class="fa"><p>Cherche un gros volume agressif d'un côté, un delta qui va dans le sens de la poussée, et un prix qui n'avance plus. Par exemple, des centaines de contrats vendus au bid sur un plus bas qui ne cède pas. L'absorption ne se confirme qu'avec un peu de recul : tant que le niveau n'a pas tenu, ce n'est qu'un gros volume.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Quel est le meilleur outil footprint ? <span class="fq-icon">+</span></button><div class="fa"><p>J'utilise Sierra Chart (Numbers Bars), le plus réglable. ATAS est plus visuel et facile à prendre en main. DeepCharts, NinjaTrader, Quantower et MotiveWave font aussi un vrai footprint bid × ask, GoCharting dans le navigateur. Le plus important n'est pas le logiciel mais les données : il faut un flux tick par tick des futures du CME.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Le footprint de TradingView est-il fiable ? <span class="fq-icon">+</span></button><div class="fa"><p>Pour découvrir le footprint, il suffit. Mais TradingView classe le volume en achat ou en vente selon la direction du prix à l'intérieur de petites unités de temps, et non selon le côté réel de chaque transaction. Le delta, la diagonale et les zéros peuvent donc différer d'un vrai footprint bid × ask, ce qui compte quand tu trades avec des stops de quelques ticks.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Peut-on faire du footprint sur le Forex ou les CFD ? <span class="fq-icon">+</span></button><div class="fa"><p>Pas de façon fiable. Le Forex au comptant et les CFD n'ont pas de carnet central : le volume affiché est celui de ton courtier, pas celui du marché. Pour un footprint propre sur une devise ou un indice, passe par le contrat future correspondant, dont toutes les transactions passent par une seule bourse.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Le footprint remplace-t-il le Market Profile ? <span class="fq-icon">+</span></button><div class="fa"><p>Non, ils se complètent. Le Market Profile donne le contexte de la séance et les niveaux (où trader), le footprint montre ce qui se passe sur ces niveaux (quand entrer). Je prépare mes niveaux avec le profil, puis je lis le footprint quand le prix arrive dessus.</p></div></div>
   </div>
 </section>
 
