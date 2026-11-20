@@ -86,6 +86,7 @@
 - [RSI trading : réglages, divergences et limites (guide)](https://basstrading.fr/blog/rsi-trading/): RSI en trading : calcul, réglage 14, surachat 70/30, divergences, faux signaux et ce que le flux d'ordres montre avant lui. Guide pratique et exemple réel.
 - [Take profit : où placer ton objectif sur les futures (exemples MNQ)](https://basstrading.fr/blog/take-profit-trading/): Take profit en trading : définition, différence avec le stop loss, où placer ton objectif sur la structure et comment sortir par paliers sur le MNQ.
 - [Topstep avis : règles, drawdown et payout expliqués (2026)](https://basstrading.fr/blog/topstep/): Topstep expliqué par un trader futures : Combine, perte maximale suiveuse, cohérence 55 %, payouts depuis la France et méthode pour passer l'évaluation.
+- [Tradeify avis 2026 : règles, drawdown, payouts et pièges](https://basstrading.fr/blog/tradeify/): Mon avis sur Tradeify : comptes Growth, Select et Lightning, prix, drawdown, cohérence, payouts et accès depuis la France, vérifiés le 20/11/2026.
 - Formation liée : [Toutes les formations de Bass](https://basstrading.fr/formations/), plus de 250 leçons vidéo, du débutant au Market Profile avancé.
 
 ### Futures du Nasdaq et plateformes

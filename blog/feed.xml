@@ -6,8 +6,16 @@
   <link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
   <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/"/>
   <id>https://basstrading.fr/blog/</id>
-  <updated>2026-11-19T00:00:00Z</updated>
+  <updated>2026-11-20T00:00:00Z</updated>
   <author><name>Sébastien Constant (Bass)</name><uri>https://basstrading.fr/auteur/sebastien-constant/</uri></author>
+  <entry>
+    <title>Tradeify avis 2026 : règles, drawdown, payouts et pièges</title>
+    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/tradeify/"/>
+    <id>https://basstrading.fr/blog/tradeify/</id>
+    <published>2026-11-20T00:00:00Z</published>
+    <updated>2026-11-20T00:00:00Z</updated>
+    <summary>Mon avis sur Tradeify : comptes Growth, Select et Lightning, prix, drawdown, cohérence, payouts et accès depuis la France, vérifiés le 20/11/2026.</summary>
+  </entry>
   <entry>
     <title>Gold futures : GC ou MGC, valeur du point et risque</title>
     <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/gold-futures-gc-mgc/"/>
