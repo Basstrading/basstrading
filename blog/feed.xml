@@ -6,8 +6,16 @@
   <link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
   <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/"/>
   <id>https://basstrading.fr/blog/</id>
-  <updated>2026-11-20T00:00:00Z</updated>
+  <updated>2026-11-21T00:00:00Z</updated>
   <author><name>Sébastien Constant (Bass)</name><uri>https://basstrading.fr/auteur/sebastien-constant/</uri></author>
+  <entry>
+    <title>Ichimoku : comment lire le nuage, ses signaux et ses limites</title>
+    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/ichimoku-trading/"/>
+    <id>https://basstrading.fr/blog/ichimoku-trading/</id>
+    <published>2026-11-21T00:00:00Z</published>
+    <updated>2026-11-21T00:00:00Z</updated>
+    <summary>Ichimoku expliqué simplement : les 5 lignes, le nuage, les signaux, le réglage TradingView, ce que disent les études et ses limites en day trading.</summary>
+  </entry>
   <entry>
     <title>Tradeify avis 2026 : règles, drawdown, payouts et pièges</title>
     <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/tradeify/"/>
