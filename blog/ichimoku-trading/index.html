@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ichimoku : comment lire le nuage, ses signaux et ses limites — BASS Trading</title>
+  <meta name="description" content="Ichimoku expliqué simplement : les 5 lignes, le nuage, les signaux, le réglage TradingView, ce que disent les études et ses limites en day trading.">
+  <meta property="og:title" content="Ichimoku : comment lire le nuage, ses signaux et ses limites — BASS Trading">
+  <meta property="og:description" content="Ichimoku expliqué simplement : les 5 lignes, le nuage, les signaux, le réglage TradingView, ce que disent les études et ses limites en day trading.">
+  <meta property="og:image" content="https://basstrading.fr/blog/ichimoku-trading/blog-ichimoku-trading-1.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://basstrading.fr/blog/ichimoku-trading/blog-ichimoku-trading-1.webp">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://basstrading.fr/blog/ichimoku-trading/">
+  <meta property="og:site_name" content="BASS Trading">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Footprint trading : lire un footprint chart (guide + outils)">
+  <meta name="twitter:description" content="Lire un footprint chart : bid × ask, delta, imbalances, absorption. Les outils footprint comparés (Sierra, ATAS, TradingView) et 3 lectures sur le Nasdaq.">
+  <link rel="canonical" href="https://basstrading.fr/blog/ichimoku-trading/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","@id":"https://basstrading.fr/blog/ichimoku-trading/#article","headline":"Ichimoku : comment lire le nuage, ses signaux et ses limites","description":"Ichimoku expliqué simplement : les 5 lignes, le nuage, les signaux, le réglage TradingView, ce que disent les études et ses limites en day trading.","datePublished":"2026-11-21","dateModified":"2026-11-21","inLanguage":"fr-FR","image":"https://basstrading.fr/blog/ichimoku-trading/blog-ichimoku-trading-1.webp","mainEntityOfPage":"https://basstrading.fr/blog/ichimoku-trading/","isPartOf":{"@type":"WebSite","@id":"https://basstrading.fr/#website","name":"BASS Trading","url":"https://basstrading.fr/"},"author":{"@type":"Person","@id":"https://basstrading.fr/#sebastien-constant","name":"Sébastien Constant","url":"https://basstrading.fr/auteur/sebastien-constant/"},"publisher":{"@type":"Organization","@id":"https://basstrading.fr/#organisation","name":"BASS Trading","url":"https://basstrading.fr/","logo":{"@type":"ImageObject","url":"https://basstrading.fr/images/logo-basstrading.png","width":512,"height":512}}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://basstrading.fr"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://basstrading.fr/blog/"},{"@type":"ListItem","position":3,"name":"Ichimoku","item":"https://basstrading.fr/blog/ichimoku-trading/"}]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Ichimoku, c'est quoi en trading ?","acceptedAnswer":{"@type":"Answer","text":"L'Ichimoku Kinko Hyo est un indicateur de tendance japonais créé par Goichi Hosoda et publié à la fin des années 1960. Il trace cinq lignes calculées sur les plus hauts et plus bas récents : Tenkan, Kijun, Senkou A et B (qui forment le nuage) et Chikou. Il indique si le marché est en tendance haussière, baissière ou en hésitation, et situe des supports et résistances."}},{"@type":"Question","name":"Comment lire le nuage Ichimoku ?","acceptedAnswer":{"@type":"Answer","text":"Regarde d'abord où est le prix : au-dessus du nuage, la tendance est haussière ; en dessous, baissière ; dedans, le marché hésite. Ensuite, la couleur du nuage devant le prix : vert quand Span A est au-dessus de Span B, rouge sinon. Enfin son épaisseur : un nuage épais est difficile à traverser, un nuage fin se casse facilement."}},{"@type":"Question","name":"Quels sont les meilleurs réglages Ichimoku ?","acceptedAnswer":{"@type":"Answer","text":"Les réglages d'origine sont 9, 26 et 52, avec un décalage de 26. Ils ont été pensés pour des graphiques journaliers, à une époque où la Bourse japonaise cotait six jours par semaine. Certains traders crypto utilisent 10, 30, 60 ou 20, 60, 120. Garde le réglage d'origine tant que tu n'as pas une raison mesurée d'en changer : optimiser sur le passé crée de faux espoirs."}},{"@type":"Question","name":"L'Ichimoku fonctionne-t-il en day trading ?","acceptedAnswer":{"@type":"Answer","text":"Il fonctionne mal sur les petites unités de temps. En 1 minute, la Kijun ne mesure que 26 minutes de marché et le nuage change sans arrêt. Les séances de nuit faussent aussi le calcul et les ranges multiplient les faux croisements. En intraday, sers-t'en au mieux pour lire le contexte sur le journalier, et prends tes décisions sur des niveaux de volume et le VWAP."}},{"@type":"Question","name":"L'Ichimoku est-il adapté au swing trading ?","acceptedAnswer":{"@type":"Answer","text":"Oui, c'est son terrain naturel : sur le journalier ou le 4 heures, les réglages 9, 26 et 52 mesurent les durées pour lesquelles ils ont été pensés. Il sert à identifier la tendance et des niveaux de support comme la Kijun plate ou le bord du nuage. Attends une réaction sur la zone avant d'ouvrir une position, et adapte la taille au stop, souvent large."}},{"@type":"Question","name":"L'Ichimoku est-il fiable ?","acceptedAnswer":{"@type":"Answer","text":"Aucune étude sérieuse ne montre un avantage stable. Une étude publiée en 2021 a trouvé des règles rentables sur indices et devises dans une sous-période, mais pas dans la suivante, et aucune sur les devises en changeant les paramètres. Un indicateur ne remplace pas une méthode : il faut des niveaux, un plan de risque et des règles d'entrée et de sortie."}}]}
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{--bk:#1D1D1F;--bk2:#111;--bk3:#0A0A0A;--g1:#6E6E73;--g2:#86868B;--g3:#D2D2D7;--g4:#F5F5F7;--wh:#FBFBFD;--pure:#FFF;--green:#00B67A;--blue:#0066FF}
+    html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}
+    body{font-family:'DM Sans',sans-serif;color:var(--bk);background:var(--pure);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+    .preloader{position:fixed;inset:0;background:var(--bk3);z-index:10001;display:flex;align-items:center;justify-content:center}
+    .pre-word{font-family:'Outfit',sans-serif;font-size:clamp(3rem,8vw,5rem);font-weight:900;letter-spacing:16px;text-transform:uppercase;color:var(--pure);overflow:hidden}
+    .pre-word span{display:inline-block;transform:translateY(110%);opacity:0}
+    .pre-line{width:0;height:1px;background:rgba(255,255,255,.3);margin-top:20px}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 48px;display:flex;align-items:center;justify-content:space-between;background:rgba(245,245,247,.85);backdrop-filter:blur(20px) saturate(1.8);border-bottom:1px solid rgba(0,0,0,.04);transition:background .4s}
+    .nav-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase;color:var(--bk)}
+    .nav-links{display:flex;gap:28px;list-style:none}.nav-links a{font-size:.74rem;font-weight:500;letter-spacing:.3px;color:var(--g1);transition:color .3s}.nav-links a:hover{color:var(--bk)}
+    .nav-cta{padding:8px 20px;background:var(--bk);color:var(--pure);border:none;border-radius:980px;font-size:.72rem;font-weight:600;transition:all .3s;cursor:pointer;text-decoration:none;display:inline-block}.nav-cta:hover{background:var(--bk2)}
+    .blog-hero{padding:160px 48px 80px;background:var(--g4);position:relative;overflow:hidden}
+    .blog-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,transparent,var(--g4));pointer-events:none}
+    .blog-hero-inner{max-width:720px;margin:0 auto}
+    .breadcrumb{display:flex;gap:8px;align-items:center;margin-bottom:28px;flex-wrap:wrap}
+    .breadcrumb a,.breadcrumb span{font-size:.68rem;font-weight:500;letter-spacing:.3px;color:var(--g2);transition:color .3s}.breadcrumb a:hover{color:var(--bk)}.breadcrumb .sep{color:var(--g3)}
+    .blog-hero-cat{display:inline-block;padding:5px 14px;border:1px solid rgba(0,102,255,.15);border-radius:980px;font-size:.6rem;font-weight:700;color:var(--blue);letter-spacing:2px;text-transform:uppercase;margin-bottom:20px}
+    .blog-hero-title{font-family:'Outfit',sans-serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:900;line-height:1.05;letter-spacing:-2px;color:var(--bk);margin-bottom:20px}
+    .blog-hero-desc{font-size:.95rem;color:var(--g1);line-height:1.8;max-width:560px;margin-bottom:28px}
+    .blog-meta{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+    .blog-meta-author{display:flex;align-items:center;gap:10px}
+    .blog-meta-avatar{width:36px;height:36px;border-radius:50%;background:var(--bk3);overflow:hidden;flex-shrink:0}.blog-meta-avatar img{width:100%;height:100%;object-fit:cover}
+    .blog-meta-name{font-size:.78rem;font-weight:600;color:var(--bk)}.blog-meta-role{font-size:.65rem;color:var(--g2)}
+    .blog-meta-sep{width:1px;height:24px;background:var(--g3)}
+    .blog-meta-info{font-size:.7rem;color:var(--g2)}.blog-meta-info span{margin-right:16px}
+    .toc{position:sticky;top:90px;background:var(--pure);border:1px solid rgba(0,0,0,.04);border-radius:14px;padding:24px;margin-bottom:32px}
+    .toc-title{font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.5px;color:var(--bk);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+    .toc ol{list-style:none;counter-reset:toc}.toc li{counter-increment:toc}
+    .toc li a{display:flex;align-items:baseline;gap:8px;padding:6px 0;font-size:.76rem;color:var(--g1);transition:color .3s;border-bottom:1px solid rgba(0,0,0,.03)}.toc li a:hover{color:var(--blue)}
+    .toc li a::before{content:counter(toc,decimal-leading-zero);font-family:'Outfit',sans-serif;font-size:.65rem;font-weight:700;color:var(--g3);min-width:18px}
+    .toc li:last-child a{border-bottom:none}.toc li a.active{color:var(--blue);font-weight:600}.toc li a.active::before{color:var(--blue)}
+    .article-wrap{display:grid;grid-template-columns:220px 1fr;gap:40px;max-width:1020px;margin:0 auto;padding:60px 48px 120px}
+    .article-sidebar{position:relative}.article-body{max-width:700px}
+    .article-body h2{font-family:'Outfit',sans-serif;font-size:clamp(1.4rem,2.5vw,1.8rem);font-weight:800;line-height:1.1;letter-spacing:-1px;color:var(--bk);margin:56px 0 16px;padding-top:20px}.article-body h2:first-of-type{margin-top:0}
+    .article-body h3{font-family:'Outfit',sans-serif;font-size:1.05rem;font-weight:700;line-height:1.25;letter-spacing:-.3px;color:var(--bk);margin:36px 0 10px}
+    .article-body p{font-size:.9rem;color:var(--g1);line-height:1.85;margin-bottom:18px}
+    .article-body strong{color:var(--bk);font-weight:600}
+    .article-body ul,.article-body ol{margin:0 0 20px 0;padding-left:20px}
+    .article-body li{font-size:.88rem;color:var(--g1);line-height:1.8;margin-bottom:6px}.article-body li strong{color:var(--bk)}
+    .article-body blockquote{margin:28px 0;padding:20px 24px;background:var(--g4);border-left:3px solid var(--bk);border-radius:0 12px 12px 0;font-size:.88rem;color:var(--g1);line-height:1.8;font-style:italic}
+    .article-body blockquote strong{color:var(--bk);font-style:normal}
+    .article-body hr{border:none;border-top:1px solid var(--g4);margin:48px 0}
+    .info-box{margin:28px 0;padding:24px;background:rgba(0,102,255,.03);border:1px solid rgba(0,102,255,.08);border-radius:14px}
+    .info-box-title{font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:700;color:var(--blue);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+    .info-box p{font-size:.82rem;color:var(--g1);line-height:1.7;margin-bottom:0}
+    .key-concept{margin:32px 0;padding:28px;background:var(--bk3);border-radius:16px;color:var(--pure)}
+    .key-concept-label{font-size:.55rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:10px}
+    .key-concept h4{font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:800;letter-spacing:-.3px;margin-bottom:8px}
+    .key-concept p{font-size:.85rem;color:rgba(255,255,255,.5);line-height:1.8;margin-bottom:0}
+    .compare-table{width:100%;margin:24px 0 28px;border-collapse:collapse;border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,.06)}
+    .compare-table th{background:var(--bk3);color:var(--pure);font-family:'Outfit',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:14px 16px;text-align:left}
+    .compare-table td{padding:12px 16px;font-size:.82rem;color:var(--g1);line-height:1.6;border-bottom:1px solid rgba(0,0,0,.04);background:var(--pure)}
+    .compare-table tr:last-child td{border-bottom:none}.compare-table td:first-child{font-weight:600;color:var(--bk)}
+    .cta-card{margin:48px 0;padding:40px;background:var(--bk3);border-radius:20px;text-align:center;position:relative;overflow:hidden}
+    .cta-card::before{content:'';position:absolute;top:-50%;right:-30%;width:400px;height:400px;background:radial-gradient(circle,rgba(0,102,255,.08) 0%,transparent 70%);pointer-events:none}
+    .cta-card-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:12px}
+    .cta-card h3{font-family:'Outfit',sans-serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:800;color:var(--pure);letter-spacing:-.5px;margin-bottom:8px}
+    .cta-card p{font-size:.85rem;color:rgba(255,255,255,.4);line-height:1.7;max-width:380px;margin:0 auto 24px}
+    .cta-card .btn-p{background:var(--pure);color:var(--bk)}.cta-card .btn-p:hover{box-shadow:0 8px 30px rgba(255,255,255,.15)}
+    .faq-sec{padding:80px 48px 100px;background:var(--g4)}
+    .faq-list{max-width:680px;margin:40px auto 0}.fi{border-bottom:1px solid rgba(0,0,0,.06)}
+    .fq{width:100%;text-align:left;padding:18px 0;background:none;border:none;font-size:.85rem;font-weight:600;font-family:'DM Sans',sans-serif;color:var(--bk);display:flex;justify-content:space-between;align-items:center;cursor:pointer;gap:16px;transition:color .3s}.fq:hover{color:var(--g1)}
+    .fq-icon{width:22px;height:22px;border-radius:50%;background:rgba(0,0,0,.04);display:flex;align-items:center;justify-content:center;font-size:.75rem;transition:all .4s;flex-shrink:0;color:var(--g2)}
+    .fa{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1)}.fa.open{max-height:280px;padding-bottom:14px}
+    .fa p{font-size:.8rem;color:var(--g1);line-height:1.7;margin-bottom:0}.fi.active .fq-icon{background:var(--bk);color:var(--pure);transform:rotate(45deg)}
+    .related-sec{padding:80px 48px;background:var(--pure);border-top:1px solid var(--g4)}
+    .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1060px;margin:40px auto 0}
+    .related-card{display:block;padding:28px;background:var(--g4);border-radius:16px;transition:all .4s;text-decoration:none;color:var(--bk)}
+    .related-card:hover{background:var(--pure);box-shadow:0 8px 30px rgba(0,0,0,.06);transform:translateY(-2px)}
+    .related-cat{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+    .related-card h3{font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:700;line-height:1.3;letter-spacing:-.3px;margin-bottom:8px}
+    .related-card p{font-size:.78rem;color:var(--g1);line-height:1.6;margin-bottom:14px}
+    .related-link{font-size:.72rem;font-weight:600;color:var(--blue);letter-spacing:.3px}
+    .footer{background:var(--bk3);color:var(--pure);padding:56px 48px 28px}
+    .ft-top{display:flex;justify-content:space-between;align-items:start;margin-bottom:48px;flex-wrap:wrap;gap:32px}
+    .ft-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase}
+    .ft-cols{display:flex;gap:80px}
+    .ft-col-title{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:12px}
+    .ft-col a{display:block;font-size:.78rem;color:rgba(255,255,255,.5);margin-bottom:8px;transition:color .3s}.ft-col a:hover{color:var(--pure)}
+    .ft-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:20px;display:flex;justify-content:space-between;align-items:center;font-size:.6rem;color:rgba(255,255,255,.2)}
+    .ft-bottom a{color:rgba(255,255,255,.2);transition:color .3s;margin-left:20px}.ft-bottom a:hover{color:rgba(255,255,255,.5)}
+    .disclaimer{padding:12px 48px;background:var(--bk3);font-size:.58rem;color:rgba(255,255,255,.12);text-align:center;line-height:1.6;border-top:1px solid rgba(255,255,255,.03)}
+    .sec-center{text-align:center;max-width:680px;margin:0 auto}
+    .sec-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--g2);margin-bottom:10px}
+    .sec-title{font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;line-height:1.05;letter-spacing:-1.5px;color:var(--bk);margin-bottom:16px}
+    .btn-p{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--bk);color:var(--pure);border-radius:980px;font-size:.85rem;font-weight:600;transition:all .3s;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;text-decoration:none}
+    .btn-p:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(0,0,0,.1)}
+    .btn-p svg{width:13px;height:13px;transition:transform .3s}.btn-p:hover svg{transform:translateX(3px)}
+    .reading-progress{position:fixed;top:0;left:0;height:2px;background:var(--blue);z-index:9999;width:0;transition:width .1s linear}
+    @media(max-width:900px){.nav{padding:14px 20px}.nav-links{display:none}.blog-hero{padding:120px 20px 60px}.article-wrap{grid-template-columns:1fr;padding:40px 20px 80px}.article-sidebar{display:none}.related-grid{grid-template-columns:1fr}.related-sec,.faq-sec{padding:60px 20px}.ft-cols{flex-direction:column;gap:28px}.footer{padding:40px 20px 20px}.disclaimer{padding:10px 16px}.cta-card{padding:28px 20px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  .article-body a{color:var(--blue);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;font-weight:500}.article-body a:hover{text-decoration-thickness:2px}
+</style>
+<style>/* 28/10/2026 : débordement mobile (colonne de grille sans min-width) */.article-wrap>*,.article-layout>*{min-width:0}.article-body table,.compare-table{display:block;overflow-x:auto;max-width:100%}.article-body pre{overflow-x:auto}.article-body img{max-width:100%;height:auto}</style>
+</head>
+<body>
+
+<div class="preloader" id="preloader"><div style="text-align:center"><div class="pre-word"><span>B</span><span>A</span><span>S</span><span>S</span></div><div class="pre-line" id="preLine"></div></div></div>
+<div class="reading-progress" id="readingProgress"></div>
+
+<nav class="nav" id="nav">
+  <a href="https://basstrading.fr" class="nav-logo">BASS</a>
+  <ul class="nav-links">
+    <li><a href="https://basstrading.fr/#methode">Méthode</a></li>
+    <li><a href="https://basstrading.fr#resultats">Résultats</a></li>
+    <li><a href="https://basstrading.fr#avis">Avis</a></li>
+    <li><a href="https://basstrading.fr#faq">FAQ</a></li>
+    <li><a href="/formations/">Formations</a></li>
+    <li><a href="https://basstrading.fr/blog/">Blog</a></li>
+  </ul>
+  <a href="https://basstrading.fr/p/formation-offerte/?src=blog-ichimoku-trading-menu" class="nav-cta">Formation offerte</a>
+</nav>
+
+<section class="blog-hero">
+  <div class="blog-hero-inner">
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <a href="https://basstrading.fr">Accueil</a><span class="sep">/</span>
+      <a href="https://basstrading.fr/blog/">Blog</a><span class="sep">/</span>
+      <span>Ichimoku</span>
+    </nav>
+    <div class="blog-hero-cat">Analyse technique</div>
+    <h1 class="blog-hero-title">Ichimoku : comment lire le nuage, ses signaux et ses limites</h1>
+    <p class="blog-hero-desc">L&#39;Ichimoku est un indicateur japonais de tendance : 5 lignes, dont 2 forment un nuage projeté dans le futur. Il dit si le marché monte, baisse ou hésite, et où se trouvent des supports. Il ne dit pas où entrer. Je t&#39;explique comment le lire, ce que valent ses signaux d&#39;après les études, et pourquoi je préfère mes niveaux de volume en intraday.</p>
+    <div class="blog-meta">
+      <div class="blog-meta-author">
+        <div class="blog-meta-avatar"><img src="../../images/bass-presenting.jpg" alt="Sébastien Constant" loading="lazy"></div>
+        <div><div class="blog-meta-name"><a href="/auteur/sebastien-constant/" rel="author" style="color:inherit;text-decoration:none">Sébastien Constant</a></div><div class="blog-meta-role">Trader & Formateur Order Flow</div></div>
+      </div>
+      <div class="blog-meta-sep"></div>
+      <div class="blog-meta-info"><span>Novembre 2026</span><span>23 min de lecture</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="article-wrap">
+  <aside class="article-sidebar">
+    <div class="toc">
+      <div class="toc-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/></svg> Sommaire</div>
+      <ol>
+        <li><a href="#ichimoku-c-est-quoi-exactement">Ichimoku, c&#39;est quoi exactement ?</a></li>
+        <li><a href="#d-ou-vient-l-ichimoku-et-pourquoi-les-re">D&#39;où vient l&#39;Ichimoku et pourquoi les réglages 9, 26 et 52 ?</a></li>
+        <li><a href="#comment-se-calculent-les-5-lignes-de-l-i">Comment se calculent les 5 lignes de l&#39;Ichimoku ?</a></li>
+        <li><a href="#comment-lire-le-nuage-ichimoku">Comment lire le nuage Ichimoku ?</a></li>
+        <li><a href="#quels-signaux-l-ichimoku-donne-t-il-et-l">Quels signaux l&#39;Ichimoku donne-t-il, et lesquels sont les plus solides ?</a></li>
+        <li><a href="#comment-installer-et-regler-l-ichimoku-s">Comment installer et régler l&#39;Ichimoku sur TradingView ?</a></li>
+        <li><a href="#exemple-une-tendance-haussiere-puis-un-r">Exemple : une tendance haussière puis un retournement lus avec l&#39;Ichimoku</a></li>
+        <li><a href="#l-ichimoku-marche-t-il-vraiment-ce-que-d">L&#39;Ichimoku marche-t-il vraiment ? Ce que disent les études</a></li>
+        <li><a href="#l-ichimoku-est-il-fait-pour-le-swing-tra">L&#39;Ichimoku est-il fait pour le swing trading ?</a></li>
+        <li><a href="#peut-on-utiliser-l-ichimoku-en-day-tradi">Peut-on utiliser l&#39;Ichimoku en day trading et en scalping sur les futures ?</a></li>
+        <li><a href="#comment-combiner-l-ichimoku-avec-des-niv">Comment combiner l&#39;Ichimoku avec des niveaux de volume, le VWAP et le Market Profile ?</a></li>
+        <li><a href="#quelles-sont-les-erreurs-les-plus-freque">Quelles sont les erreurs les plus fréquentes avec l&#39;Ichimoku ?</a></li>
+        <li><a href="#les-limites-de-l-ichimoku-quand-vaut-il-">Les limites de l&#39;Ichimoku : quand vaut-il mieux s&#39;en passer ?</a></li>
+        <li><a href="#ce-qu-il-faut-retenir-sur-l-ichimoku">Ce qu&#39;il faut retenir sur l&#39;Ichimoku</a></li>
+      </ol>
+    </div>
+  </aside>
+
+  <article class="article-body">
+    <h2 id="ichimoku-c-est-quoi-exactement">Ichimoku, c&#39;est quoi exactement ?</h2>
+    <p>Tu as ajouté l&#39;Ichimoku sur ton graphique, et d&#39;un coup tu vois cinq lignes, un nuage vert et rouge, et plus du tout le prix. Tu te demandes ce que tout ça raconte, et surtout si ça peut t&#39;aider à prendre de meilleurs trades.</p>
+<p>À la fin de cet article, tu sauras lire un Ichimoku en moins de dix secondes, tu connaîtras ses vrais signaux, ce que les études en disent, et tu sauras quand le ranger.</p>
+<p>L&#39;Ichimoku Kinko Hyo est un indicateur de tendance japonais composé de cinq lignes calculées sur les plus hauts et plus bas récents, dont deux forment un nuage projeté 26 périodes dans le futur pour situer supports et résistances.</p>
+<p>Son nom veut dire, à peu près, « graphique d&#39;équilibre en un coup d&#39;œil ». C&#39;est exactement sa promesse : en un regard, tu sais si le marché est au-dessus de son équilibre (tendance haussière), en dessous (tendance baissière) ou dedans (hésitation).</p>
+<h3>Ce que l&#39;Ichimoku fait bien</h3>
+<p>Il rassemble sur un seul graphique trois informations que d&#39;autres outils d&#39;analyse technique séparent :</p>
+<ul><li>la tendance : le prix est-il au-dessus ou en dessous du nuage ?</li><li>l&#39;élan : la ligne rapide est-elle au-dessus de la ligne lente ?</li><li>les zones de réaction : où se trouvent les bords du nuage et la ligne de base, qui servent souvent de niveaux de support ou de résistance.</li></ul>
+<h3>Ce qu&#39;il ne fait pas</h3>
+<p>Il ne te donne ni ton point d&#39;entrée précis, ni ton stop, ni la taille de ta position. Et comme toutes ses lignes sont calculées sur le passé, il arrive toujours après le mouvement. Comme je le dis dans ma vidéo sur le trading sans indicateur, <a href="https://www.youtube.com/watch?v=zUSZ9dfr3x0&amp;t=55s">« la plupart des indicateurs sont juste en retard »</a>. L&#39;Ichimoku n&#39;échappe pas à la règle, même si son nuage décalé vers l&#39;avant donne l&#39;impression de voir le futur.</p>
+<p>Alors d&#39;où vient cet outil, et pourquoi ces réglages bizarres de 9, 26 et 52 ?</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/ichimoku-trading/blog-ichimoku-trading-1.webp" alt="Façade de la Bourse de Tokyo, berceau de l&#39;analyse technique japonaise d&#39;où vient l&#39;Ichimoku" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">L&#39;Ichimoku est né au Japon à la fin des années 1960, pensé pour des graphiques journaliers.<br><span style="font-size:.85em">Photo : <a href="https://commons.wikimedia.org/wiki/File:Outside_Tokyo_Stock_Exchange_(59463).jpg" rel="noopener" target="_blank">Syced</a>, <a href="http://creativecommons.org/publicdomain/zero/1.0/deed.en" rel="noopener license" target="_blank">CC0</a></span></figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="d-ou-vient-l-ichimoku-et-pourquoi-les-re">D&#39;où vient l&#39;Ichimoku et pourquoi les réglages 9, 26 et 52 ?</h2>
+    <p>L&#39;Ichimoku a été mis au point par un journaliste financier japonais, Goichi Hosoda, qui signait sous le pseudonyme Ichimoku Sanjin. Il a travaillé sa méthode pendant des années avant de la publier à la fin des années 1960, comme le rappelle <a href="https://www.tradingview.com/support/solutions/43000589152-ichimoku-cloud/">l&#39;aide officielle de TradingView sur l&#39;Ichimoku Cloud</a>.</p>
+<p>L&#39;outil est donc né dans un autre monde : graphiques tracés à la main, marchés actions japonais, et unités de temps journalières. C&#39;est un point clé pour la suite de l&#39;article.</p>
+<h3>Pourquoi 9, 26 et 52 ?</h3>
+<p>L&#39;explication qu&#39;on retrouve le plus souvent : à l&#39;époque, la Bourse japonaise ouvrait six jours par semaine.</p>
+<ul><li>9 périodes = une semaine et demie de cotation ;</li><li>26 périodes = environ un mois de cotation ;</li><li>52 périodes = environ deux mois.</li></ul>
+<p>Autrement dit, ces chiffres n&#39;ont rien de magique. Ce sont des repères de calendrier pensés pour des bougies journalières. Quand tu poses l&#39;Ichimoku sur un graphique en 1 minute, ton « mois » devient 26 minutes. Ça ne veut pas dire que l&#39;outil est faux, ça veut dire qu&#39;il ne mesure plus la même chose.</p>
+<h3>Les autres réglages qu&#39;on croise</h3>
+<p>Certains traders crypto, dont le marché tourne 7 jours sur 7, utilisent 10, 30 et 60 ou même 20, 60 et 120. Tu verras aussi des réglages « accélérés » pour l&#39;intraday.</p>
+<p>Mon conseil : garde le réglage d&#39;origine tant que tu n&#39;as pas une raison mesurée d&#39;en changer. Changer les paramètres jusqu&#39;à ce que le passé paraisse parfait, c&#39;est le meilleur moyen de te mentir à toi-même (on en reparle dans la partie sur les études).</p>
+<h3>À retenir</h3>
+<ul><li>L&#39;Ichimoku vient du Japon, de la fin des années 1960, et a été pensé pour des graphiques journaliers.</li><li>9, 26 et 52 sont des repères de calendrier, pas des nombres secrets.</li><li>Sur une petite unité de temps, les mêmes réglages mesurent des durées très courtes.</li></ul>
+<p>Maintenant, voyons ce que calcule chaque ligne : c&#39;est la seule façon de ne plus subir le graphique.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/ichimoku-trading/blog-ichimoku-trading-2.webp" alt="Réglages Ichimoku 9, 26 et 52 expliqués : une semaine et demie, un mois et deux mois de cotation" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Les réglages d&#39;origine sont des repères de calendrier pour des bougies journalières.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="comment-se-calculent-les-5-lignes-de-l-i">Comment se calculent les 5 lignes de l&#39;Ichimoku ?</h2>
+    <p>Bonne nouvelle : ce ne sont pas des moyennes mobiles classiques. Quatre des cinq lignes sont des milieux de fourchette : on prend le plus haut et le plus bas sur une période, et on fait la moyenne des deux. La cinquième est simplement le cours de clôture décalé.</p>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Ligne</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Calcul</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Ce qu&#39;elle montre</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Tenkan-sen (conversion)</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">(plus haut 9 + plus bas 9) / 2</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">L&#39;équilibre à court terme</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Kijun-sen (base)</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">(plus haut 26 + plus bas 26) / 2</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">L&#39;équilibre à moyen terme</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Senkou Span A</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">(Tenkan + Kijun) / 2, décalée de 26 en avant</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Le bord rapide du nuage</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Senkou Span B</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">(plus haut 52 + plus bas 52) / 2, décalée de 26 en avant</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Le bord lent du nuage</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Chikou Span (retard)</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Clôture actuelle, décalée de 26 en arrière</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Le prix d&#39;aujourd&#39;hui comparé à celui d&#39;il y a 26 périodes</td></tr></tbody></table></div>
+<h3>Tenkan-sen et Kijun-sen : deux milieux de range</h3>
+<p>La Tenkan, c&#39;est le milieu du range des 9 dernières bougies. La Kijun, le milieu du range des 26 dernières. Ça a une conséquence directe : lorsque le prix ne fait pas de nouveau plus haut ni de nouveau plus bas, ces lignes restent parfaitement plates.</p>
+<p>C&#39;est pour ça qu&#39;une Kijun plate attire souvent le prix : elle marque le milieu d&#39;une zone où acheteurs et vendeurs se sont équilibrés. C&#39;est exactement l&#39;idée que je développe quand je parle de range : en bas tu cherches des acheteurs, en haut des vendeurs, et dans ma vidéo je dis que <a href="https://www.youtube.com/watch?v=zUSZ9dfr3x0&amp;t=1040s">« au milieu c&#39;est hyper dangereux »</a>. La Kijun plate, c&#39;est ce milieu.</p>
+<h3>Senkou Span A et B : le nuage (Kumo)</h3>
+<p>Les deux lignes Senkou sont tracées 26 périodes dans le futur. L&#39;espace entre les deux est colorié : c&#39;est le Kumo, le nuage.</p>
+<ul><li>quand Span A est au-dessus de Span B, le nuage est vert (lecture haussière) ;</li><li>quand Span A passe sous Span B, il devient rouge (lecture baissière).</li></ul>
+<p>Attention : le nuage est « dans le futur » seulement en apparence. Il est calculé avec des données passées, puis dessiné plus loin à droite. Il ne prédit rien : il te montre où se trouveront les milieux de range actuels si le marché ne bouge plus.</p>
+<h3>Chikou Span : le prix vu avec du recul</h3>
+<p>La Chikou est la plus mal comprise. C&#39;est juste la clôture du jour, recopiée 26 bougies en arrière. Elle répond à une question simple : le prix actuel est-il plus haut ou plus bas qu&#39;il y a 26 périodes, et a-t-il de l&#39;espace libre devant lui ? Si la Chikou est au-dessus du prix passé et que rien ne la gêne, la tendance haussière a de l&#39;air.</p>
+<p>Tu as les cinq lignes. La vraie question maintenant : comment lire tout ça sans te noyer ?</p>
+
+    <hr>
+
+    <h2 id="comment-lire-le-nuage-ichimoku">Comment lire le nuage Ichimoku ?</h2>
+    <p>Pour lire un nuage Ichimoku, pose trois questions dans l&#39;ordre : où est le prix par rapport au nuage, de quelle couleur est le nuage devant, et à quel point il est épais. Le reste vient après.</p>
+<h3>1. Où est le prix ?</h3>
+<ul><li>au-dessus du nuage : le marché est au-dessus de son équilibre, la tendance est haussière ;</li><li>en dessous : la tendance est baissière ;</li><li>dans le nuage : le marché hésite. C&#39;est la zone où la plupart des signaux Ichimoku perdent leur valeur.</li></ul>
+<h3>2. Quelle couleur devant ?</h3>
+<p>Regarde la partie du nuage projetée à droite du dernier prix. Un nuage vert devant un prix au-dessus confirme la lecture. Un nuage qui vient de changer de couleur (on parle de Kumo twist, quand Span A croise Span B) signale que l&#39;équilibre à moyen terme bascule.</p>
+<h3>3. Quelle épaisseur ?</h3>
+<p>Un nuage épais est une zone difficile à traverser ; un nuage fin se traverse facilement. C&#39;est logique : l&#39;épaisseur mesure l&#39;écart entre deux milieux de range. Plus l&#39;écart est grand, plus il y a eu de mouvement et de positions ouvertes entre ces deux niveaux.</p>
+<p>Cette idée de zone difficile à traverser, je l&#39;explique avec une image : un samedi après-midi de décembre sur les Champs-Élysées, impossible de sprinter, il y a trop de monde ; un dimanche matin, la voie est libre (je le raconte <a href="https://www.youtube.com/watch?v=zUSZ9dfr3x0&amp;t=600s">à la 10e minute de ma vidéo</a>). Sauf que moi, cette foule, je ne la devine pas avec un nuage : je la vois directement dans le volume échangé à chaque prix.</p>
+<h3>Le nuage comme support ou résistance</h3>
+<p>Dans une tendance haussière, le bord supérieur du nuage sert souvent de support lors des replis. Dans une tendance baissière, son bord inférieur sert de résistance. La Senkou B, quand elle est plate, joue souvent le rôle de niveau « aimant », pour la même raison que la Kijun plate.</p>
+<h3>À retenir</h3>
+<ul><li>Lis toujours dans l&#39;ordre : position du prix, couleur devant, épaisseur.</li><li>Prix dans le nuage = hésitation : la plupart des signaux ne valent rien.</li><li>Nuage épais = zone difficile à franchir ; nuage fin = zone fragile.</li><li>Les lignes plates sont des milieux de range, donc des aimants à prix.</li></ul>
+<p>Une fois le contexte posé, l&#39;Ichimoku propose plusieurs signaux d&#39;entrée. Lesquels tiennent la route ?</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/ichimoku-trading/blog-ichimoku-trading-3.webp" alt="Les trois questions pour lire le nuage Ichimoku : position du prix, couleur du nuage, épaisseur" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Toujours dans cet ordre : sans contexte, un signal Ichimoku ne vaut rien.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="quels-signaux-l-ichimoku-donne-t-il-et-l">Quels signaux l&#39;Ichimoku donne-t-il, et lesquels sont les plus solides ?</h2>
+    <p>L&#39;Ichimoku produit quatre grands types de signaux. Aucun n&#39;est fiable seul : un signal Ichimoku prend de la valeur quand il va dans le sens de la position du prix par rapport au nuage.</p>
+<h3>Le croisement Tenkan / Kijun (TK cross)</h3>
+<p>C&#39;est le signal le plus connu. Quand la Tenkan passe au-dessus de la Kijun, l&#39;élan de court terme devient haussier ; en dessous, baissier. La tradition japonaise le classe en trois forces :</p>
+<ul><li>fort : croisement haussier au-dessus du nuage (ou baissier en dessous) ;</li><li>neutre : croisement dans le nuage ;</li><li>faible : croisement haussier sous le nuage (ou baissier au-dessus).</li></ul>
+<p>C&#39;est aussi le signal qui se déclenche le plus souvent en range, donc celui qui fait le plus de faux départs.</p>
+<h3>La cassure du nuage (Kumo breakout)</h3>
+<p>Le prix sort du nuage par le haut ou par le bas. Plus le nuage était épais, plus la sortie a de sens. Le piège : sur une petite unité de temps, le prix entre et sort du nuage plusieurs fois par séance.</p>
+<h3>Le rebond sur la Kijun ou sur le bord du nuage</h3>
+<p>Dans une tendance installée, le prix revient toucher la Kijun ou le haut du nuage, puis repart. C&#39;est le signal le plus proche de ma façon de penser, parce qu&#39;il s&#39;agit d&#39;acheter un repli sur une zone, pas de courir après une bougie. Mais il reste une zone calculée, pas une zone où l&#39;on a vu des ordres.</p>
+<h3>La Chikou qui se libère</h3>
+<p>Quand la Chikou passe au-dessus des prix d&#39;il y a 26 périodes et n&#39;a plus d&#39;obstacle devant elle, c&#39;est une confirmation. On l&#39;utilise en filtre, rarement en déclencheur.</p>
+<h3>L&#39;ordre de solidité, en pratique</h3>
+<ul><li>le contexte (prix hors du nuage, nuage dans le même sens) ;</li><li>le rebond sur la Kijun ou le nuage dans ce contexte ;</li><li>la cassure d&#39;un nuage épais ;</li><li>le croisement TK isolé, en dernier.</li></ul>
+<h3>Erreur fréquente : empiler les confirmations</h3>
+<p>Beaucoup de débutants attendent que les cinq conditions soient réunies : prix au-dessus, nuage vert, TK haussier, Chikou libre, cassure. Résultat, ils entrent quand le mouvement est presque fini. Plus tu ajoutes de conditions calculées sur le passé, plus tu entres tard. C&#39;est le même piège qu&#39;avec le <a href="https://basstrading.fr/blog/rsi-trading/">RSI en trading</a> : un indicateur confirme, il n&#39;anticipe pas.</p>
+<p>Passons à la pratique : comment l&#39;afficher et le régler proprement.</p>
+
+    <hr>
+
+    <h2 id="comment-installer-et-regler-l-ichimoku-s">Comment installer et régler l&#39;Ichimoku sur TradingView ?</h2>
+    <p>Sur TradingView, l&#39;indicateur s&#39;appelle Ichimoku Cloud et il est gratuit. Il faut moins d&#39;une minute pour l&#39;installer.</p>
+<h3>Les étapes</h3>
+<ul><li>Ouvre un graphique de l&#39;actif que tu suis, clique sur Indicateurs en haut.</li><li>Tape « Ichimoku » et choisis Ichimoku Cloud (l&#39;indicateur intégré, pas un script de la communauté).</li><li>Dans les Paramètres, onglet « Entrées », tu trouves : longueur de la ligne de conversion (9), de la ligne de base (26), de la Leading Span B (52) et le décalage (26).</li><li>Onglet « Style » : garde des couleurs nettes pour le nuage, et baisse l&#39;opacité pour que les bougies restent lisibles.</li></ul>
+<p>TradingView appelle les lignes par leur nom anglais : Conversion Line (Tenkan), Base Line (Kijun), Leading Span A et B (Senkou), Lagging Span (Chikou). L&#39;aide de TradingView précise que les Spans A et B sont tracées 26 périodes dans le futur et la Lagging Span 26 périodes dans le passé.</p>
+<h3>Mes réglages d&#39;affichage pour garder un graphique lisible</h3>
+<ul><li>masque la Chikou si elle te gêne : elle n&#39;apporte qu&#39;une confirmation ;</li><li>épaissis la Kijun : c&#39;est la ligne la plus utile pour repérer un milieu de range ;</li><li>garde le nuage transparent : tu dois toujours voir les bougies d&#39;abord.</li></ul>
+<p>Dans ma vidéo, je résume ce que je pense des graphiques surchargés : on n&#39;a pas besoin de lignes qui couvrent le prix, on a besoin d&#39;observer (je le dis <a href="https://www.youtube.com/watch?v=zUSZ9dfr3x0&amp;t=1290s">vers la 21e minute</a>). Si ton Ichimoku cache tes bougies, il te dessert.</p>
+<p>Sur la même plateforme, tu peux aussi afficher des outils construits avec le volume : je montre comment régler le <a href="https://basstrading.fr/blog/vwap-tradingview/">VWAP sur TradingView</a> et ce qu&#39;on peut voir du <a href="https://basstrading.fr/blog/flux-ordres-tradingview/">flux d&#39;ordres sur TradingView</a>. Garde-les en tête, on s&#39;en sert plus bas.</p>
+<h3>Quelle unité de temps ?</h3>
+<p>L&#39;outil a été pensé pour le journalier. Sur le daily et le 4 heures, il donne une lecture de tendance claire. En dessous d&#39;une heure, il devient nerveux (on y revient dans la partie sur le day trading).</p>
+<p>Voyons maintenant comment tout cela se lit sur un cas concret, à la hausse puis à la baisse.</p>
+
+    <hr>
+
+    <h2 id="exemple-une-tendance-haussiere-puis-un-r">Exemple : une tendance haussière puis un retournement lus avec l&#39;Ichimoku</h2>
+    <p>L&#39;exemple qui suit est fictif et volontairement simplifié, avec des chiffres ronds, pour te montrer la logique de lecture. Ce n&#39;est ni un trade que j&#39;ai pris, ni un conseil.</p>
+<h3>Le contexte haussier</h3>
+<p>Imagine un graphique journalier d&#39;un indice. Depuis trois semaines, le prix est au-dessus du nuage. Le nuage devant est vert et épais. La Tenkan est au-dessus de la Kijun. La Chikou est au-dessus des prix passés, sans obstacle.</p>
+<p>Lecture : tendance haussière installée. Dans ce contexte, je ne cherche pas à vendre : je cherche où le prix pourrait reprendre son souffle.</p>
+<h3>Le repli</h3>
+<p>Le prix recule pendant quatre séances et vient toucher la Kijun, plate depuis plusieurs jours à 100. Une Kijun plate, c&#39;est le milieu du range des 26 dernières séances. Le prix y marque une mèche basse, puis clôture au-dessus.</p>
+<p>Un trader Ichimoku « classique » verrait ici un rebond sur la Kijun dans une tendance haussière : un des signaux les plus solides de l&#39;outil. Son stop logique se placerait sous le bord haut du nuage, à 96 par exemple. Et pour la sortie, le haut du range ou un niveau de volume font un objectif plus lisible qu&#39;une ligne Ichimoku : je l&#39;explique dans mon article sur le <a href="https://basstrading.fr/blog/take-profit-trading/">take profit</a>. Si le stop est large, la seule bonne réponse est de réduire la taille de position, pas de rapprocher le stop au hasard (je l&#39;explique dans mon article sur <a href="https://basstrading.fr/blog/combien-risquer-par-trade/">combien risquer par trade</a>).</p>
+<h3>Le retournement</h3>
+<p>Deux mois plus tard, le décor change. Le prix ne fait plus de nouveau plus haut. La Tenkan passe sous la Kijun alors que le prix est encore au-dessus du nuage : un croisement baissier faible. Puis le prix entre dans le nuage : hésitation. Le nuage devant s&#39;amincit, puis la Span A croise la Span B : Kumo twist, le nuage devient rouge.</p>
+<p>Enfin, le prix sort du nuage par le bas, la Chikou passe sous les prix passés. La lecture Ichimoku est maintenant baissière.</p>
+<h3>Ce que montre cet exemple</h3>
+<ul><li>l&#39;Ichimoku a décrit correctement chaque phase ;</li><li>mais la confirmation baissière complète est arrivée après une bonne partie de la baisse ;</li><li>et pendant le passage dans le nuage, il n&#39;y avait rien à faire.</li></ul>
+<p>C&#39;est la nature de l&#39;outil : il est très clair pour décrire, beaucoup moins pour décider vite. Ce qui pose une vraie question : est-ce que ça marche, quand on le teste sérieusement ?</p>
+<p>Le trading de contrats à terme comporte un risque élevé de perte, pouvant dépasser la mise initiale. Contenu éducatif, pas un conseil en investissement.</p>
+
+    <hr>
+
+    <h2 id="l-ichimoku-marche-t-il-vraiment-ce-que-d">L&#39;Ichimoku marche-t-il vraiment ? Ce que disent les études</h2>
+    <p>Les études sur l&#39;Ichimoku donnent des résultats mitigés : certaines règles ont fonctionné sur certaines périodes et certains marchés, mais rien ne montre un avantage stable partout. Il y a peu de travaux sérieux, et c&#39;est déjà une information.</p>
+<h3>Une étude universitaire sur les indices et les devises</h3>
+<p>L&#39;étude la plus citée a été publiée en octobre 2021 dans l&#39;International Journal of Finance &amp; Economics (<a href="https://ideas.repec.org/a/wly/ijfiec/v26y2021i4p5321-5336.html">fiche de l&#39;article sur IDEAS/RePEc</a>). Les auteurs ont testé des règles Ichimoku sur quatre grands indices boursiers de 1995 à 2018 et sur quatre paires de devises de 2003 à 2018.</p>
+<p>Ce qu&#39;ils trouvent :</p>
+<ul><li>avec les réglages d&#39;origine (9, 26, 52), plusieurs stratégies étaient rentables sur la première sous-période ;</li><li>sur la seconde, ces mêmes stratégies n&#39;ont pas réussi à créer de la valeur de façon régulière ;</li><li>en balayant d&#39;autres paramètres, quelques stratégies semblaient pouvoir marcher sur les indices, aucune sur les devises.</li></ul>
+<p>Traduction : ce qui marchait hier n&#39;a pas forcément tenu ensuite, et le résultat dépend du marché.</p>
+<h3>Le cas des 194 % qui ne tiennent pas</h3>
+<p>Une autre étude (Gurrib, 2020) annonçait qu&#39;une stratégie Ichimoku simple sur les dix plus grosses actions de l&#39;énergie américaine faisait passer le rendement moyen de 21,5 % à 194 % sur sept ans. La plateforme QuantConnect a refait le test en limitant le biais d&#39;anticipation, celui qui consiste à utiliser sans le vouloir une donnée qu&#39;on n&#39;avait pas encore au moment du trade (<a href="https://www.quantconnect.com/research/9031/ichimoku-clouds-in-the-energy-sector/">réplication publiée par QuantConnect</a>).</p>
+<p>Résultat de cette réplication, de janvier 2015 à août 2020 : la stratégie ne bat pas l&#39;ETF du secteur de l&#39;énergie, avec un ratio de Sharpe de -0,31 contre -0,083 pour l&#39;ETF. La seule période où elle bat l&#39;ETF est le krach de février-mars 2020, une fenêtre de cinq semaines. Ce travail n&#39;est pas relu par des pairs, mais il montre à quel point un chiffre impressionnant peut fondre quand on corrige la méthode.</p>
+<h3>Ce que j&#39;en retiens</h3>
+<ul><li>un indicateur n&#39;est pas une méthode : les résultats changent selon le marché, la période et les règles autour (entrée, sortie, stop) ;</li><li>optimiser les réglages sur le passé donne de beaux tableaux et de mauvaises surprises ensuite ;</li><li>aucune étude sérieuse ne promet un taux de réussite à l&#39;Ichimoku, et personne ne devrait te le vendre ainsi.</li></ul>
+<p>Ce constat vaut d&#39;autant plus que la majorité des particuliers perdent déjà sur les produits à effet de levier : l&#39;ESMA, le régulateur européen, rapportait en mars 2018 que 74 à 89 % des comptes de particuliers perdent de l&#39;argent sur les CFD (<a href="https://www.esma.europa.eu/node/84933">communiqué de l&#39;ESMA du 27/03/2018</a>). Un outil de plus sur le graphique ne change pas ce chiffre ; une méthode et une gestion du risque, si.</p>
+<p>Et selon ton style, swing ou day trading, que vaut vraiment l&#39;Ichimoku ?</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/ichimoku-trading/blog-ichimoku-trading-4.webp" alt="Résultats des études sur l&#39;Ichimoku : rentable sur une sous-période, pas sur la suivante, aucun avantage sur les devises" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Sources : Deng et al., IJFE 2021 ; réplication QuantConnect de Gurrib (2020).</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="l-ichimoku-est-il-fait-pour-le-swing-tra">L&#39;Ichimoku est-il fait pour le swing trading ?</h2>
+    <p>Oui : le swing trading, c&#39;est son terrain naturel. Garder une position plusieurs jours ou plusieurs semaines sur des bougies journalières ou en 4 heures, c&#39;est exactement le cadre pour lequel les réglages 9, 26 et 52 ont été pensés. Ce n&#39;est pas mon style (je suis day trader), mais c&#39;est là que l&#39;outil est le plus honnête.</p>
+<h3>Pourquoi ça colle mieux</h3>
+<ul><li>les durées ont du sens : sur le journalier, la Kijun mesure vraiment un mois de marché, la Senkou B deux mois ;</li><li>le bruit est filtré : une bougie journalière lisse les à-coups de l&#39;ouverture et des annonces ;</li><li>le rythme est compatible : tu analyses le soir, tu n&#39;as pas besoin de décider en quelques secondes.</li></ul>
+<h3>Une routine swing simple pour identifier la tendance</h3>
+<ul><li>Identifier le contexte sur l&#39;hebdomadaire ou le journalier : prix au-dessus ou en dessous du nuage, couleur du nuage devant.</li><li>Repérer les niveaux de support dans ce contexte : Kijun plate, bord haut du nuage, Senkou B plate. Lorsque le prix revient dessus, la zone mérite ton attention.</li><li>Attendre une réaction sur la zone avant d&#39;ouvrir une position, plutôt que d&#39;acheter au milieu du mouvement.</li><li>Placer le stop au-delà de la zone et calculer la taille de position à partir de cette distance.</li></ul>
+<h3>Le piège du swing sur les futures</h3>
+<p>Sur un actif à effet de levier comme les contrats sur indices, tenir plusieurs nuits veut dire subir les écarts d&#39;ouverture et les annonces. Un stop sous le nuage journalier peut représenter des centaines de points sur le Nasdaq. Si tu regardes plutôt le S&amp;P 500, je compare les tailles de contrats dans mon article sur les <a href="https://basstrading.fr/blog/sp-500-futures-es-mes/">S&amp;P 500 futures (ES et MES)</a> : le micro-contrat est souvent la seule façon de garder un risque raisonnable avec un stop large.</p>
+<h3>À retenir</h3>
+<ul><li>En swing, l&#39;Ichimoku retrouve les durées pour lesquelles il a été conçu.</li><li>Il sert à identifier la tendance et des zones ; l&#39;entrée se fait sur une réaction.</li><li>Stop large = taille réduite, surtout sur les futures tenus la nuit.</li></ul>
+<p>Et quand on descend en intraday, sur des bougies d&#39;une minute, que reste-t-il de tout ça ?</p>
+
+    <hr>
+
+    <h2 id="peut-on-utiliser-l-ichimoku-en-day-tradi">Peut-on utiliser l&#39;Ichimoku en day trading et en scalping sur les futures ?</h2>
+    <p>On peut, mais en intraday l&#39;Ichimoku perd une bonne partie de ce qui fait sa force, et c&#39;est là que je vois le plus d&#39;élèves se faire piéger.</p>
+<h3>Le problème des durées</h3>
+<p>Je trade le Nasdaq futures en 1 minute sur Sierra Chart, avec le Market Profile, le VWAP et le CVD (et le carnet d&#39;ordres). Si je posais un Ichimoku d&#39;origine sur ce graphique :</p>
+<ul><li>la Kijun mesurerait le milieu des 26 dernières minutes ;</li><li>la Senkou B, le milieu des 52 dernières minutes ;</li><li>le nuage serait projeté 26 minutes devant.</li></ul>
+<p>On est très loin du « mois » et des « deux mois » pensés par Hosoda. Sur un marché qui peut parcourir des dizaines de points en quelques minutes à l&#39;ouverture américaine, ces lignes changent sans arrêt.</p>
+<h3>Le problème des séances</h3>
+<p>Les futures cotent presque 24 heures sur 24, mais la séance qui compte pour moi est la séance américaine. L&#39;Ichimoku, lui, mélange dans son calcul la nuit calme et l&#39;ouverture agitée. Résultat : au moment où la séance démarre vraiment, ton nuage est construit avec des bougies de la nuit qui n&#39;ont plus grand-chose à dire.</p>
+<h3>Le problème des ranges</h3>
+<p>Une grande partie d&#39;une séance se passe en équilibre, dans un range. Dans cette phase, le prix traverse le nuage plusieurs fois, la Tenkan et la Kijun se croisent sans cesse, et chaque croisement est un faux signal potentiel. C&#39;est précisément la phase où je préfère ne rien faire au milieu et attendre les extrémités.</p>
+<h3>Ce qui reste utile</h3>
+<ul><li>sur le journalier ou le 4 heures, l&#39;Ichimoku peut te donner le sens du contexte avant ta séance ;</li><li>la Kijun plate sur une unité de temps supérieure peut coïncider avec un niveau que tu surveilles déjà ;</li><li>en intraday pur, pour le <a href="https://basstrading.fr/blog/day-trading-futures/">day trading des futures</a> ou le <a href="https://basstrading.fr/blog/scalping-trading/">scalping</a>, il vaut mieux t&#39;appuyer sur des niveaux construits avec le volume.</li></ul>
+<p>Si tu trades le Nasdaq, le choix du contrat compte aussi beaucoup pour ton risque : je compare les deux dans mon article <a href="https://basstrading.fr/blog/nq-ou-mnq/">NQ ou MNQ</a>.</p>
+<p>Alors, concrètement, comment je m&#39;y prendrais si un élève tenait absolument à garder son Ichimoku ?</p>
+
+    <hr>
+
+    <h2 id="comment-combiner-l-ichimoku-avec-des-niv">Comment combiner l&#39;Ichimoku avec des niveaux de volume, le VWAP et le Market Profile ?</h2>
+    <p>Ma réponse est simple : l&#39;Ichimoku peut te dire dans quel sens regarder, jamais où cliquer. Pour le où, je regarde où le marché a réellement échangé.</p>
+<p>Comme je le dis souvent, <a href="https://www.youtube.com/watch?v=zUSZ9dfr3x0&amp;t=485s">« le but du marché, c&#39;est simplement en fait de trouver des zones où il y a de la liquidité »</a>. Ces zones ne se calculent pas avec des plus hauts et des plus bas : elles se voient dans le volume.</p>
+<h3>Ce que chaque outil t&#39;apporte</h3>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Outil</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Ce qu&#39;il mesure</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Quand il sert</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Ichimoku</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Milieux de range passés</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Contexte de tendance, unité haute</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">VWAP</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Prix moyen pondéré par le volume</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Juger le prix de la séance</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Market Profile</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Temps passé à chaque prix</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Zone de valeur, extrêmes de la séance</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Volume Profile</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Volume échangé à chaque prix</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Niveaux où le marché ralentit</td></tr></tbody></table></div>
+<h3>Une routine en trois temps</h3>
+<ul><li>Avant la séance, sur le journalier : prix au-dessus ou en dessous du nuage ? Tu notes le sens du contexte, rien de plus.</li><li>Tu traces tes niveaux de volume : la zone de valeur de la veille et son point de contrôle (je détaille la méthode dans mon <a href="https://basstrading.fr/blog/market-profile-guide-complet/">guide complet du Market Profile</a> et mon <a href="https://basstrading.fr/blog/volume-profile-guide/">guide du Volume Profile</a>), plus le <a href="https://basstrading.fr/blog/vwap-trading/">VWAP</a> de la séance.</li><li>Pendant la séance : tu ne trades que sur ces niveaux, et de préférence dans le sens du contexte. Si une Kijun journalière plate tombe au même endroit qu&#39;un niveau de volume, la zone mérite encore plus d&#39;attention.</li></ul>
+<h3>Ce que je regarde sur le niveau</h3>
+<p>Arrivé sur un niveau, ce n&#39;est pas un croisement de lignes qui me fait entrer. C&#39;est ce que font les acheteurs et les vendeurs à ce prix : est-ce que les ordres agressifs sont absorbés, est-ce que le prix est rejeté ? Je l&#39;explique dans ma vidéo : je préfère attendre la confirmation plutôt que d&#39;entrer au milieu du bruit, parce que <a href="https://www.youtube.com/watch?v=zUSZ9dfr3x0&amp;t=1225s">« je suis pas devin »</a>.</p>
+<h3>Le vrai sujet : la méthode qui te va</h3>
+<p>Certains traders ont besoin d&#39;un cadre visuel rassurant, et l&#39;Ichimoku leur en donne un sur les grandes unités de temps. D&#39;autres, comme moi, ont besoin de voir le marché au plus près. Il n&#39;y a pas de bon outil universel : il y a une <a href="https://basstrading.fr/blog/methode-de-trading/">méthode de trading</a> qui correspond à ton caractère, à ton temps disponible et à ton rapport au risque.</p>
+<p>Si tu veux voir comment je construis ces niveaux et comment je les trade en direct, tout est expliqué pas à pas dans ma <a href="https://basstrading.fr/l/RfjNxw?src=blog&amp;a=ichimoku-trading">formation offerte</a>.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/ichimoku-trading/blog-ichimoku-trading-5.webp" alt="Règle de combinaison : l&#39;Ichimoku donne le sens du contexte, les niveaux de volume et le VWAP donnent l&#39;endroit du trade" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Un outil de contexte, des niveaux construits avec le volume, un plan de risque.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="quelles-sont-les-erreurs-les-plus-freque">Quelles sont les erreurs les plus fréquentes avec l&#39;Ichimoku ?</h2>
+    <p>Ce sont presque toujours les mêmes, et elles coûtent cher parce que l&#39;Ichimoku donne une impression de maîtrise.</p>
+<h3>1. Trader dans le nuage</h3>
+<p>Le prix est dans le nuage, mais un croisement TK apparaît et on entre. Dans le nuage, le marché hésite : c&#39;est l&#39;endroit où les signaux ont le moins de valeur. Prix dans le nuage = tu observes, tu ne trades pas sur l&#39;Ichimoku.</p>
+<h3>2. Prendre le nuage futur pour une prédiction</h3>
+<p>Le nuage dessiné à droite n&#39;est que la projection des milieux de range actuels. Si le marché accélère, ce nuage n&#39;aura plus aucun rapport avec le prix quand on y arrivera.</p>
+<h3>3. Utiliser les réglages d&#39;origine en 1 minute sans s&#39;en rendre compte</h3>
+<p>Tu crois lire une tendance « de fond » alors que tu lis 26 minutes de marché. Si tu utilises l&#39;Ichimoku, sache toujours quelle durée réelle mesure chaque ligne.</p>
+<h3>4. Optimiser les paramètres jusqu&#39;au résultat parfait</h3>
+<p>Tu changes 9, 26, 52 jusqu&#39;à ce que le passé soit magnifique. Les études montrent justement qu&#39;une règle qui marche sur une période peut cesser de marcher sur la suivante.</p>
+<h3>5. Placer le stop selon l&#39;indicateur, pas selon le risque</h3>
+<p>Le stop « sous le nuage » peut être énorme. La taille de la position doit s&#39;adapter à cette distance, sinon un seul trade peut abîmer ton compte. Je détaille comment placer un <a href="https://basstrading.fr/blog/stop-loss-trading/">stop-loss en trading</a> qui a du sens.</p>
+<h3>6. Empiler l&#39;Ichimoku avec d&#39;autres indicateurs</h3>
+<p>Ichimoku, plus RSI, plus MACD, plus <a href="https://basstrading.fr/blog/fibonacci-trading/">Fibonacci</a> : le graphique devient illisible et toutes ces lignes, calculées sur les mêmes prix passés, disent souvent la même chose. Un outil de contexte, des niveaux, un plan de risque : ça suffit.</p>
+<h3>À retenir</h3>
+<ul><li>Pas de trade quand le prix est dans le nuage.</li><li>Le nuage projeté n&#39;est pas une prévision.</li><li>Connais la durée réelle de chaque ligne sur ton unité de temps.</li><li>La taille de position suit le stop, jamais l&#39;inverse.</li></ul>
+<p>Reste une question honnête : dans quels cas vaut-il mieux ne pas utiliser l&#39;Ichimoku du tout ?</p>
+
+    <hr>
+
+    <h2 id="les-limites-de-l-ichimoku-quand-vaut-il-">Les limites de l&#39;Ichimoku : quand vaut-il mieux s&#39;en passer ?</h2>
+    <p>L&#39;Ichimoku est un bon outil de description de tendance, mais il devient inutile, voire trompeur, dans quatre situations.</p>
+<h3>Quand le marché est en range</h3>
+<p>C&#39;est sa plus grande faiblesse. Un indicateur de tendance dans un marché sans tendance produit des signaux contradictoires. L&#39;aide de TradingView le reconnaît elle-même : l&#39;Ichimoku est basé sur des données passées et ne prédit pas les tendances futures.</p>
+<h3>Quand le prix est loin du nuage depuis longtemps</h3>
+<p>Dans une tendance très forte, le prix s&#39;éloigne tellement du nuage que celui-ci ne sert plus de repère. TradingView note que dans ce cas, la Tenkan et la Kijun deviennent plus utiles parce qu&#39;elles suivent le prix de plus près.</p>
+<h3>Quand une annonce économique tombe</h3>
+<p>Un chiffre d&#39;inflation ou une décision de la Fed peut faire traverser un nuage épais en une bougie. L&#39;Ichimoku ne connaît pas le calendrier. Toi, tu dois le connaître.</p>
+<h3>Quand tu as besoin d&#39;une précision au tick</h3>
+<p>En scalping sur les futures, l&#39;écart entre deux lignes Ichimoku peut représenter beaucoup de ticks. Pour une entrée chirurgicale, il te faut un niveau précis et une lecture de ce qui s&#39;échange à ce niveau, pas une bande colorée.</p>
+<h3>La limite de fond</h3>
+<p>Cette limite vaut pour tout indicateur : l&#39;Ichimoku résume le prix passé avec une formule ; il ne voit ni les ordres, ni le volume, ni les participants. Il peut décrire un mouvement, il ne peut pas te dire qui le fait ni s&#39;il va tenir. C&#39;est pour ça que, dans mon trading, je pars du volume et du <a href="https://basstrading.fr/blog/price-action-trading/">price action</a>, et que je n&#39;ai pas besoin d&#39;un nuage pour savoir où le marché a envie de s&#39;arrêter.</p>
+
+    <hr>
+
+    <h2 id="ce-qu-il-faut-retenir-sur-l-ichimoku">Ce qu&#39;il faut retenir sur l&#39;Ichimoku</h2>
+    <p>Si tu ne gardes que cinq idées de cet article :</p>
+<ul><li>L&#39;Ichimoku est un indicateur de tendance à cinq lignes, dont deux forment un nuage décalé de 26 périodes vers l&#39;avant.</li><li>Lis-le dans l&#39;ordre : position du prix par rapport au nuage, couleur du nuage devant, épaisseur. Prix dans le nuage = pas de trade sur l&#39;Ichimoku.</li><li>Ses signaux les plus solides sont ceux qui vont dans le sens du contexte, comme le rebond sur une Kijun plate dans une tendance installée.</li><li>Les études sont mitigées : des règles ont marché sur certaines périodes et certains marchés, sans avantage stable démontré.</li><li>C&#39;est un outil de swing sur le journalier ; en intraday sur les futures, sers-t&#39;en au mieux pour le contexte, et prends tes décisions sur des niveaux de volume.</li></ul>
+<h3>Ton action ce soir</h3>
+<p>Ouvre ton graphique journalier du Nasdaq ou de l&#39;indice que tu trades. Ajoute l&#39;Ichimoku Cloud, note en une phrase où est le prix par rapport au nuage. Puis enlève l&#39;indicateur, trace la zone de valeur de la veille et le VWAP, et regarde si ces niveaux racontent la même histoire. Tu verras très vite lequel des deux t&#39;aide à décider.</p>
+<p>Si tu veux aller plus loin, la suite logique est mon article sur le <a href="https://basstrading.fr/blog/vwap-trading/">VWAP en trading</a> : c&#39;est le niveau que je regarde à chaque séance, et il est construit avec ce que l&#39;Ichimoku ignore, le volume.</p>
+<p>Le trading de contrats à terme comporte un risque élevé de perte, pouvant dépasser la mise initiale. Contenu éducatif, pas un conseil en investissement.</p>
+
+    <p><a href="https://www.youtube.com/watch?v=zUSZ9dfr3x0" target="_blank" rel="noopener">▶ Voir la vidéo de Sébastien sur ce sujet</a></p>
+
+    <div class="cta-card cta-aimant">
+      <div class="cta-card-label">Gratuit</div>
+      <h3>Tu viens de lire la théorie. Regarde-⁠la en vrai.</h3>
+      <p>Je trade une séance complète sur le Nasdaq et je dis à voix haute ce que je regarde. 35 minutes, gratuit.</p>
+      <a href="https://basstrading.fr/p/formation-offerte/?src=blog-ichimoku-trading" class="btn-p">Je regarde la séance →</a>
+    </div>
+    
+  </article>
+</div>
+
+<!-- FAQ -->
+<section class="faq-sec">
+  <div class="sec-center"><div class="sec-label">FAQ</div><h2 class="sec-title">Questions fréquentes</h2></div>
+  <div class="faq-list">
+    <div class="fi"><button class="fq" onclick="tf(this)">Ichimoku, c&#39;est quoi en trading ? <span class="fq-icon">+</span></button><div class="fa"><p>L&#39;Ichimoku Kinko Hyo est un indicateur de tendance japonais créé par Goichi Hosoda et publié à la fin des années 1960. Il trace cinq lignes calculées sur les plus hauts et plus bas récents : Tenkan, Kijun, Senkou A et B (qui forment le nuage) et Chikou. Il indique si le marché est en tendance haussière, baissière ou en hésitation, et situe des supports et résistances.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Comment lire le nuage Ichimoku ? <span class="fq-icon">+</span></button><div class="fa"><p>Regarde d&#39;abord où est le prix : au-dessus du nuage, la tendance est haussière ; en dessous, baissière ; dedans, le marché hésite. Ensuite, la couleur du nuage devant le prix : vert quand Span A est au-dessus de Span B, rouge sinon. Enfin son épaisseur : un nuage épais est difficile à traverser, un nuage fin se casse facilement.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Quels sont les meilleurs réglages Ichimoku ? <span class="fq-icon">+</span></button><div class="fa"><p>Les réglages d&#39;origine sont 9, 26 et 52, avec un décalage de 26. Ils ont été pensés pour des graphiques journaliers, à une époque où la Bourse japonaise cotait six jours par semaine. Certains traders crypto utilisent 10, 30, 60 ou 20, 60, 120. Garde le réglage d&#39;origine tant que tu n&#39;as pas une raison mesurée d&#39;en changer : optimiser sur le passé crée de faux espoirs.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">L&#39;Ichimoku fonctionne-t-il en day trading ? <span class="fq-icon">+</span></button><div class="fa"><p>Il fonctionne mal sur les petites unités de temps. En 1 minute, la Kijun ne mesure que 26 minutes de marché et le nuage change sans arrêt. Les séances de nuit faussent aussi le calcul et les ranges multiplient les faux croisements. En intraday, sers-t&#39;en au mieux pour lire le contexte sur le journalier, et prends tes décisions sur des niveaux de volume et le VWAP.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">L&#39;Ichimoku est-il adapté au swing trading ? <span class="fq-icon">+</span></button><div class="fa"><p>Oui, c&#39;est son terrain naturel : sur le journalier ou le 4 heures, les réglages 9, 26 et 52 mesurent les durées pour lesquelles ils ont été pensés. Il sert à identifier la tendance et des niveaux de support comme la Kijun plate ou le bord du nuage. Attends une réaction sur la zone avant d&#39;ouvrir une position, et adapte la taille au stop, souvent large.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">L&#39;Ichimoku est-il fiable ? <span class="fq-icon">+</span></button><div class="fa"><p>Aucune étude sérieuse ne montre un avantage stable. Une étude publiée en 2021 a trouvé des règles rentables sur indices et devises dans une sous-période, mais pas dans la suivante, et aucune sur les devises en changeant les paramètres. Un indicateur ne remplace pas une méthode : il faut des niveaux, un plan de risque et des règles d&#39;entrée et de sortie.</p></div></div>
+  </div>
+</section>
+
+<!-- Related -->
+<section class="related-sec">
+  <div class="sec-center"><div class="sec-label">Continuer la lecture</div><h2 class="sec-title">Articles connexes</h2></div>
+  <div class="related-grid">
+    <a href="/blog/market-profile-guide-complet/" class="related-card"><div class="related-cat">Guide</div><h3>Market Profile : le guide complet pour débutants</h3><p>Value Area, POC, types de journées — tout pour commencer.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/order-flow-trading-france/" class="related-card"><div class="related-cat">Méthode</div><h3>Order Flow Trading : pourquoi personne ne l'enseigne en France</h3><p>Le carnet d'ordres et le flux institutionnel décryptés.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/sierra-chart-configuration/" class="related-card"><div class="related-cat">Tutoriel</div><h3>Sierra Chart : configuration complète</h3><p>Le setup pas à pas pour le Market Profile et le Footprint.</p><span class="related-link">Lire &rarr;</span></a>
+  </div>
+</section>
+
+<!-- serie:debut --><style>.serie-w{background:#FFF;color:#1D1D1F;border-top:1px solid #F5F5F7}.serie{max-width:1060px;margin:0 auto;padding:56px 24px;font-family:inherit;box-sizing:border-box}.serie-l{font-size:.6rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#0066FF;margin-bottom:8px}.serie-w .serie h2{font-size:1.4rem;font-weight:800;letter-spacing:-.5px;color:#1D1D1F!important;margin:0 0 18px;font-family:inherit}.serie ul{list-style:none;padding:0;margin:0 0 22px;display:grid;grid-template-columns:repeat(2,1fr);gap:8px 24px}.serie-w .serie li a{color:#1D1D1F!important;font-size:.9rem;line-height:1.45;text-decoration:none;border-bottom:1px solid #D2D2D7}.serie li a:hover{color:#0066FF}.serie li.pil a{font-weight:700}.serie-o{background:#F5F5F7;border-radius:14px;padding:18px 20px;font-size:.88rem;line-height:1.55;color:#1D1D1F}.serie-w .serie-o a{color:#0066FF!important;font-weight:700}@media(max-width:700px){.serie ul{grid-template-columns:1fr}}</style><div class="serie-w"><aside class="serie" aria-label="Dans la même série"><div class="serie-l">Dans la même série</div><h2>Trouver sa méthode de trading</h2><ul><li class="pil"><a href="/blog/methode-de-trading/">Méthode de trading : comment trouver celle qui te correspond</a></li><li class=""><a href="/blog/types-trading-differences/">Les Types de Trading : Lequel Choisir Selon Votre Profil ? (2026)</a></li><li class=""><a href="/blog/debuter-trading-zero-guide/">Débuter le trading de zéro : par où commencer (guide 2026)</a></li><li class=""><a href="/blog/devenir-trader-sans-diplome/">Devenir trader sans diplôme ni formation : 5 étapes réalistes</a></li><li class=""><a href="/blog/livre-trading/">Livre trading : les meilleurs pour apprendre (et l'ordre)</a></li><li class=""><a href="/blog/formation-trading/">Formation trading : contenu, prix, CPF et pièges à éviter</a></li><li class=""><a href="/blog/formation-trading-gratuite/">Formation trading gratuite : ce qu'on apprend sans payer</a></li><li class=""><a href="/blog/quelle-formation-trading-choisir/">Quelle formation trading choisir en 2026 ? 7 critères pour comparer</a></li><li class=""><a href="/blog/arnaque-trading/">Arnaque au trading : les 7 pièges et que faire si tu es victime</a></li><li class=""><a href="/blog/bookmap-heatmap/">Bookmap : lire la heatmap, prix réels et avis de trader</a></li><li class=""><a href="/blog/deepcharts-avis/">DeepCharts avis : prix, Mac, MBO et limites (2026)</a></li><li class=""><a href="/blog/fibonacci-trading/">Fibonacci trading : niveaux, tracé et ce qui tient vraiment</a></li><li class=""><a href="/blog/flux-ordres-tradingview/">Order flow sur TradingView : ce qu'on voit vraiment (et ses limites)</a></li><li class=""><a href="/blog/gocharting-avis/">GoCharting : mon avis sur l'order flow dans le navigateur</a></li><li class=""><a href="/blog/lucid-trading/">Lucid Trading avis : règles, drawdown et payout (2026)</a></li><li class=""><a href="/blog/methode-wyckoff/">Méthode Wyckoff : accumulation, distribution et spring</a></li><li class=""><a href="/blog/motivewave-avis/">MotiveWave avis : prix, version gratuite, Mac et order flow</a></li><li class=""><a href="/blog/price-action-trading/">Price action : ce que c'est, et ce que la bougie ne montre pas</a></li><li class=""><a href="/blog/quantower-avis/">Quantower avis : version gratuite, footprint, Mac et prix (2026)</a></li><li class=""><a href="/blog/rsi-trading/">RSI trading : réglages, divergences et limites (guide)</a></li><li class=""><a href="/blog/take-profit-trading/">Take profit : où placer ton objectif sur les futures (exemples MNQ)</a></li><li class=""><a href="/blog/topstep/">Topstep avis : règles, drawdown et payout expliqués (2026)</a></li><li class=""><a href="/blog/tradeify/">Tradeify avis 2026 : règles, drawdown, payouts et pièges</a></li></ul><div class="serie-o"><a href="/formations/">Toutes les formations de Bass</a> : plus de 250 leçons vidéo, du débutant au Market Profile avancé. Pour commencer sans payer : <a href="/p/formation-offerte/?src=serie-ichimoku-trading">la formation offerte</a> (7 leçons vidéo).</div></aside></div><!-- serie:fin -->
+<footer class="footer">
+  <div class="ft-top"><div class="ft-logo">BASS</div><div class="ft-cols">
+    <div class="ft-col"><div class="ft-col-title">Programme</div><a href="/formations/">Toutes les formations</a><a href="https://basstrading.fr/#methode">Méthode</a><a href="https://basstrading.fr/#programme">Programme</a><a href="https://basstrading.fr/p/formation-offerte/?src=blog-ichimoku-trading-pied">Formation offerte</a></div>
+    <div class="ft-col"><div class="ft-col-title">Ressources</div><a href="/blog/market-profile-guide-complet/">Market Profile</a><a href="/blog/footprint-chart-trading/">Footprint Chart</a><a href="/blog/order-flow-trading-france/">Order Flow</a></div>
+  </div></div>
+  <div class="ft-bottom"><span>&copy; 2026 BASS — Sébastien Constant</span><div><a href="/mentions-legales/">Mentions légales</a><a href="/confidentialite/">Confidentialité</a><a href="/cgv/">CGV</a><a href="mailto:contact@basstrading.fr">Contact</a></div></div>
+</footer>
+<div class="disclaimer">Le trading comporte des risques de perte en capital. Les performances passées ne préjugent pas des performances futures. Ce site ne constitue pas un conseil en investissement.</div>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+const lenis=new Lenis({duration:1.2,easing:t=>Math.min(1,1.001-Math.pow(2,-10*t))});
+function raf(t){lenis.raf(t);requestAnimationFrame(raf)}requestAnimationFrame(raf);
+lenis.on('scroll',ScrollTrigger.update);gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0);
+const tl=gsap.timeline();
+tl.to('.pre-word span',{y:0,opacity:1,duration:.5,stagger:.1,ease:'power3.out',delay:.3}).to('#preLine',{width:'80px',duration:.7,ease:'power2.inOut'},'<+.2').to('.preloader',{yPercent:-100,duration:.8,ease:'power3.inOut',delay:.4}).set('.preloader',{display:'none'}).to('#nav',{opacity:1,y:0,duration:.5},'<+.1');
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);const h=document.documentElement.scrollHeight-window.innerHeight;document.getElementById('readingProgress').style.width=(window.scrollY/h*100)+'%'});
+const tocLinks=document.querySelectorAll('.toc a');const sections=Array.from(tocLinks).map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+window.addEventListener('scroll',()=>{let c='';sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)c=s.id});tocLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+c)})});
+function tf(b){const i=b.closest('.fi'),a=b.nextElementSibling,o=i.classList.contains('active');document.querySelectorAll('.fi').forEach(x=>{x.classList.remove('active');x.querySelector('.fa').classList.remove('open')});if(!o){i.classList.add('active');a.classList.add('open')}}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();lenis.scrollTo(t,{offset:-60})}})});
+</script>
+<script src="/v.js" defer></script>
+</body>
+</html>
