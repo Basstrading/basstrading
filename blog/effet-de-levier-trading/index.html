@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Effet de levier en trading : calcul, risques et quel levier choisir — BASS Trading</title>
+  <meta name="description" content="Effet de levier en trading : la formule, des exemples chiffrés sur le Nasdaq futures, les plafonds AMF et ESMA, et comment je dose mon levier.">
+  <meta property="og:title" content="Effet de levier en trading : calcul, risques et quel levier choisir — BASS Trading">
+  <meta property="og:description" content="Effet de levier en trading : la formule, des exemples chiffrés sur le Nasdaq futures, les plafonds AMF et ESMA, et comment je dose mon levier.">
+  <meta property="og:image" content="https://basstrading.fr/blog/effet-de-levier-trading/blog-effet-de-levier-trading-1.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://basstrading.fr/blog/effet-de-levier-trading/blog-effet-de-levier-trading-1.webp">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://basstrading.fr/blog/effet-de-levier-trading/">
+  <meta property="og:site_name" content="BASS Trading">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Footprint trading : lire un footprint chart (guide + outils)">
+  <meta name="twitter:description" content="Lire un footprint chart : bid × ask, delta, imbalances, absorption. Les outils footprint comparés (Sierra, ATAS, TradingView) et 3 lectures sur le Nasdaq.">
+  <link rel="canonical" href="https://basstrading.fr/blog/effet-de-levier-trading/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","@id":"https://basstrading.fr/blog/effet-de-levier-trading/#article","headline":"Effet de levier en trading : calcul, risques et quel levier choisir","description":"Effet de levier en trading : la formule, des exemples chiffrés sur le Nasdaq futures, les plafonds AMF et ESMA, et comment je dose mon levier.","datePublished":"2026-11-22","dateModified":"2026-11-22","inLanguage":"fr-FR","image":"https://basstrading.fr/blog/effet-de-levier-trading/blog-effet-de-levier-trading-1.webp","mainEntityOfPage":"https://basstrading.fr/blog/effet-de-levier-trading/","isPartOf":{"@type":"WebSite","@id":"https://basstrading.fr/#website","name":"BASS Trading","url":"https://basstrading.fr/"},"author":{"@type":"Person","@id":"https://basstrading.fr/#sebastien-constant","name":"Sébastien Constant","url":"https://basstrading.fr/auteur/sebastien-constant/"},"publisher":{"@type":"Organization","@id":"https://basstrading.fr/#organisation","name":"BASS Trading","url":"https://basstrading.fr/","logo":{"@type":"ImageObject","url":"https://basstrading.fr/images/logo-basstrading.png","width":512,"height":512}}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://basstrading.fr"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://basstrading.fr/blog/"},{"@type":"ListItem","position":3,"name":"Effet de levier en trading","item":"https://basstrading.fr/blog/effet-de-levier-trading/"}]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Quel effet de levier choisir quand on débute en trading ?","acceptedAnswer":{"@type":"Answer","text":"Ne choisis pas un ratio : fixe d'abord ta perte maximale par trade (souvent 0,5 à 1 % du compte), place ton stop sur le graphique, puis calcule ta taille. Sur le Nasdaq futures, ça donne presque toujours un ou deux micros (MNQ) pour un débutant, jamais un contrat plein. Le levier qui en découle est le bon pour ton compte."}},{"@type":"Question","name":"Comment calculer l'effet de levier ?","acceptedAnswer":{"@type":"Answer","text":"Divise la valeur totale de ta position par le capital de ton compte. Sur un contrat à terme, la valeur de la position = cours de l'indice × valeur du point × nombre de contrats. Exemple : 1 MNQ à 20 000 points vaut 40 000 $ ; sur un compte de 5 000 $, le levier est de 8:1. Calcule aussi ton risque au stop : points × valeur du point × contrats."}},{"@type":"Question","name":"C'est quoi le levier financier ?","acceptedAnswer":{"@type":"Answer","text":"Le levier financier consiste à utiliser de l'argent emprunté ou une garantie partielle afin de s'exposer à un actif pour une valeur supérieure à ses propres fonds. En entreprise, c'est s'endetter pour investir ; en trading, c'est la marge qui te permet de contrôler une position plus grosse que ton capital. Gains et pertes sont amplifiés de la même façon."}},{"@type":"Question","name":"Peut-on perdre plus que sa mise avec l'effet de levier ?","acceptedAnswer":{"@type":"Answer","text":"Sur les futures, oui : un mouvement brutal ou un gap peut créer une perte supérieure au capital du compte, et tu restes redevable de la différence envers ton courtier. Sur les CFD vendus aux particuliers dans l'Union européenne, une protection contre le solde négatif empêche le compte de passer sous zéro, mais le risque de tout perdre reste réel."}},{"@type":"Question","name":"Quel est l'effet de levier maximum autorisé en France ?","acceptedAnswer":{"@type":"Answer","text":"Pour les CFD vendus aux particuliers, les règles de l'ESMA reprises par l'AMF fixent 30:1 sur les paires de devises majeures, 20:1 sur les indices majeurs et l'or, 10:1 sur les matières premières et autres indices, 5:1 sur les actions et 2:1 sur les cryptomonnaies. Les futures n'ont pas de ratio réglementaire : c'est la marge exigée qui détermine le levier."}},{"@type":"Question","name":"Quels sont les inconvénients de l'effet de levier ?","acceptedAnswer":{"@type":"Answer","text":"Il amplifie les pertes autant que les gains, peut faire perdre plus que la mise sur les futures, rend chaque glissement et chaque gap plus coûteux, et pèse lourd sur la psychologie : une taille trop grosse fait couper les gains trop tôt et laisser filer les pertes. Les marges peuvent aussi être relevées quand la volatilité monte."}},{"@type":"Question","name":"Quelle est la différence entre levier et marge ?","acceptedAnswer":{"@type":"Answer","text":"La marge est la somme que ton courtier bloque en garantie pour te laisser ouvrir une position. Le levier est le rapport entre la valeur de cette position et ton capital. Ils sont liés par une formule simple : levier maximum = 1 ÷ taux de marge. Une marge de 5 % permet donc un levier maximum de 20:1."}},{"@type":"Question","name":"Comment réduire son effet de levier ?","acceptedAnswer":{"@type":"Answer","text":"Sur les futures, le levier se règle par la taille : passe du contrat plein (NQ) au micro (MNQ), réduis le nombre de contrats ou augmente le capital du compte. Règle aussi la quantité par défaut de ta fenêtre d'ordres sur 1 micro. Dans tous les cas, le vrai réglage reste ton risque en dollars au stop."}}]}
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{--bk:#1D1D1F;--bk2:#111;--bk3:#0A0A0A;--g1:#6E6E73;--g2:#86868B;--g3:#D2D2D7;--g4:#F5F5F7;--wh:#FBFBFD;--pure:#FFF;--green:#00B67A;--blue:#0066FF}
+    html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}
+    body{font-family:'DM Sans',sans-serif;color:var(--bk);background:var(--pure);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+    .preloader{position:fixed;inset:0;background:var(--bk3);z-index:10001;display:flex;align-items:center;justify-content:center}
+    .pre-word{font-family:'Outfit',sans-serif;font-size:clamp(3rem,8vw,5rem);font-weight:900;letter-spacing:16px;text-transform:uppercase;color:var(--pure);overflow:hidden}
+    .pre-word span{display:inline-block;transform:translateY(110%);opacity:0}
+    .pre-line{width:0;height:1px;background:rgba(255,255,255,.3);margin-top:20px}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 48px;display:flex;align-items:center;justify-content:space-between;background:rgba(245,245,247,.85);backdrop-filter:blur(20px) saturate(1.8);border-bottom:1px solid rgba(0,0,0,.04);transition:background .4s}
+    .nav-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase;color:var(--bk)}
+    .nav-links{display:flex;gap:28px;list-style:none}.nav-links a{font-size:.74rem;font-weight:500;letter-spacing:.3px;color:var(--g1);transition:color .3s}.nav-links a:hover{color:var(--bk)}
+    .nav-cta{padding:8px 20px;background:var(--bk);color:var(--pure);border:none;border-radius:980px;font-size:.72rem;font-weight:600;transition:all .3s;cursor:pointer;text-decoration:none;display:inline-block}.nav-cta:hover{background:var(--bk2)}
+    .blog-hero{padding:160px 48px 80px;background:var(--g4);position:relative;overflow:hidden}
+    .blog-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,transparent,var(--g4));pointer-events:none}
+    .blog-hero-inner{max-width:720px;margin:0 auto}
+    .breadcrumb{display:flex;gap:8px;align-items:center;margin-bottom:28px;flex-wrap:wrap}
+    .breadcrumb a,.breadcrumb span{font-size:.68rem;font-weight:500;letter-spacing:.3px;color:var(--g2);transition:color .3s}.breadcrumb a:hover{color:var(--bk)}.breadcrumb .sep{color:var(--g3)}
+    .blog-hero-cat{display:inline-block;padding:5px 14px;border:1px solid rgba(0,102,255,.15);border-radius:980px;font-size:.6rem;font-weight:700;color:var(--blue);letter-spacing:2px;text-transform:uppercase;margin-bottom:20px}
+    .blog-hero-title{font-family:'Outfit',sans-serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:900;line-height:1.05;letter-spacing:-2px;color:var(--bk);margin-bottom:20px}
+    .blog-hero-desc{font-size:.95rem;color:var(--g1);line-height:1.8;max-width:560px;margin-bottom:28px}
+    .blog-meta{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+    .blog-meta-author{display:flex;align-items:center;gap:10px}
+    .blog-meta-avatar{width:36px;height:36px;border-radius:50%;background:var(--bk3);overflow:hidden;flex-shrink:0}.blog-meta-avatar img{width:100%;height:100%;object-fit:cover}
+    .blog-meta-name{font-size:.78rem;font-weight:600;color:var(--bk)}.blog-meta-role{font-size:.65rem;color:var(--g2)}
+    .blog-meta-sep{width:1px;height:24px;background:var(--g3)}
+    .blog-meta-info{font-size:.7rem;color:var(--g2)}.blog-meta-info span{margin-right:16px}
+    .toc{position:sticky;top:90px;background:var(--pure);border:1px solid rgba(0,0,0,.04);border-radius:14px;padding:24px;margin-bottom:32px}
+    .toc-title{font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.5px;color:var(--bk);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+    .toc ol{list-style:none;counter-reset:toc}.toc li{counter-increment:toc}
+    .toc li a{display:flex;align-items:baseline;gap:8px;padding:6px 0;font-size:.76rem;color:var(--g1);transition:color .3s;border-bottom:1px solid rgba(0,0,0,.03)}.toc li a:hover{color:var(--blue)}
+    .toc li a::before{content:counter(toc,decimal-leading-zero);font-family:'Outfit',sans-serif;font-size:.65rem;font-weight:700;color:var(--g3);min-width:18px}
+    .toc li:last-child a{border-bottom:none}.toc li a.active{color:var(--blue);font-weight:600}.toc li a.active::before{color:var(--blue)}
+    .article-wrap{display:grid;grid-template-columns:220px 1fr;gap:40px;max-width:1020px;margin:0 auto;padding:60px 48px 120px}
+    .article-sidebar{position:relative}.article-body{max-width:700px}
+    .article-body h2{font-family:'Outfit',sans-serif;font-size:clamp(1.4rem,2.5vw,1.8rem);font-weight:800;line-height:1.1;letter-spacing:-1px;color:var(--bk);margin:56px 0 16px;padding-top:20px}.article-body h2:first-of-type{margin-top:0}
+    .article-body h3{font-family:'Outfit',sans-serif;font-size:1.05rem;font-weight:700;line-height:1.25;letter-spacing:-.3px;color:var(--bk);margin:36px 0 10px}
+    .article-body p{font-size:.9rem;color:var(--g1);line-height:1.85;margin-bottom:18px}
+    .article-body strong{color:var(--bk);font-weight:600}
+    .article-body ul,.article-body ol{margin:0 0 20px 0;padding-left:20px}
+    .article-body li{font-size:.88rem;color:var(--g1);line-height:1.8;margin-bottom:6px}.article-body li strong{color:var(--bk)}
+    .article-body blockquote{margin:28px 0;padding:20px 24px;background:var(--g4);border-left:3px solid var(--bk);border-radius:0 12px 12px 0;font-size:.88rem;color:var(--g1);line-height:1.8;font-style:italic}
+    .article-body blockquote strong{color:var(--bk);font-style:normal}
+    .article-body hr{border:none;border-top:1px solid var(--g4);margin:48px 0}
+    .info-box{margin:28px 0;padding:24px;background:rgba(0,102,255,.03);border:1px solid rgba(0,102,255,.08);border-radius:14px}
+    .info-box-title{font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:700;color:var(--blue);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+    .info-box p{font-size:.82rem;color:var(--g1);line-height:1.7;margin-bottom:0}
+    .key-concept{margin:32px 0;padding:28px;background:var(--bk3);border-radius:16px;color:var(--pure)}
+    .key-concept-label{font-size:.55rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:10px}
+    .key-concept h4{font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:800;letter-spacing:-.3px;margin-bottom:8px}
+    .key-concept p{font-size:.85rem;color:rgba(255,255,255,.5);line-height:1.8;margin-bottom:0}
+    .compare-table{width:100%;margin:24px 0 28px;border-collapse:collapse;border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,.06)}
+    .compare-table th{background:var(--bk3);color:var(--pure);font-family:'Outfit',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:14px 16px;text-align:left}
+    .compare-table td{padding:12px 16px;font-size:.82rem;color:var(--g1);line-height:1.6;border-bottom:1px solid rgba(0,0,0,.04);background:var(--pure)}
+    .compare-table tr:last-child td{border-bottom:none}.compare-table td:first-child{font-weight:600;color:var(--bk)}
+    .cta-card{margin:48px 0;padding:40px;background:var(--bk3);border-radius:20px;text-align:center;position:relative;overflow:hidden}
+    .cta-card::before{content:'';position:absolute;top:-50%;right:-30%;width:400px;height:400px;background:radial-gradient(circle,rgba(0,102,255,.08) 0%,transparent 70%);pointer-events:none}
+    .cta-card-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:12px}
+    .cta-card h3{font-family:'Outfit',sans-serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:800;color:var(--pure);letter-spacing:-.5px;margin-bottom:8px}
+    .cta-card p{font-size:.85rem;color:rgba(255,255,255,.4);line-height:1.7;max-width:380px;margin:0 auto 24px}
+    .cta-card .btn-p{background:var(--pure);color:var(--bk)}.cta-card .btn-p:hover{box-shadow:0 8px 30px rgba(255,255,255,.15)}
+    .faq-sec{padding:80px 48px 100px;background:var(--g4)}
+    .faq-list{max-width:680px;margin:40px auto 0}.fi{border-bottom:1px solid rgba(0,0,0,.06)}
+    .fq{width:100%;text-align:left;padding:18px 0;background:none;border:none;font-size:.85rem;font-weight:600;font-family:'DM Sans',sans-serif;color:var(--bk);display:flex;justify-content:space-between;align-items:center;cursor:pointer;gap:16px;transition:color .3s}.fq:hover{color:var(--g1)}
+    .fq-icon{width:22px;height:22px;border-radius:50%;background:rgba(0,0,0,.04);display:flex;align-items:center;justify-content:center;font-size:.75rem;transition:all .4s;flex-shrink:0;color:var(--g2)}
+    .fa{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1)}.fa.open{max-height:280px;padding-bottom:14px}
+    .fa p{font-size:.8rem;color:var(--g1);line-height:1.7;margin-bottom:0}.fi.active .fq-icon{background:var(--bk);color:var(--pure);transform:rotate(45deg)}
+    .related-sec{padding:80px 48px;background:var(--pure);border-top:1px solid var(--g4)}
+    .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1060px;margin:40px auto 0}
+    .related-card{display:block;padding:28px;background:var(--g4);border-radius:16px;transition:all .4s;text-decoration:none;color:var(--bk)}
+    .related-card:hover{background:var(--pure);box-shadow:0 8px 30px rgba(0,0,0,.06);transform:translateY(-2px)}
+    .related-cat{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+    .related-card h3{font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:700;line-height:1.3;letter-spacing:-.3px;margin-bottom:8px}
+    .related-card p{font-size:.78rem;color:var(--g1);line-height:1.6;margin-bottom:14px}
+    .related-link{font-size:.72rem;font-weight:600;color:var(--blue);letter-spacing:.3px}
+    .footer{background:var(--bk3);color:var(--pure);padding:56px 48px 28px}
+    .ft-top{display:flex;justify-content:space-between;align-items:start;margin-bottom:48px;flex-wrap:wrap;gap:32px}
+    .ft-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase}
+    .ft-cols{display:flex;gap:80px}
+    .ft-col-title{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:12px}
+    .ft-col a{display:block;font-size:.78rem;color:rgba(255,255,255,.5);margin-bottom:8px;transition:color .3s}.ft-col a:hover{color:var(--pure)}
+    .ft-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:20px;display:flex;justify-content:space-between;align-items:center;font-size:.6rem;color:rgba(255,255,255,.2)}
+    .ft-bottom a{color:rgba(255,255,255,.2);transition:color .3s;margin-left:20px}.ft-bottom a:hover{color:rgba(255,255,255,.5)}
+    .disclaimer{padding:12px 48px;background:var(--bk3);font-size:.58rem;color:rgba(255,255,255,.12);text-align:center;line-height:1.6;border-top:1px solid rgba(255,255,255,.03)}
+    .sec-center{text-align:center;max-width:680px;margin:0 auto}
+    .sec-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--g2);margin-bottom:10px}
+    .sec-title{font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;line-height:1.05;letter-spacing:-1.5px;color:var(--bk);margin-bottom:16px}
+    .btn-p{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--bk);color:var(--pure);border-radius:980px;font-size:.85rem;font-weight:600;transition:all .3s;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;text-decoration:none}
+    .btn-p:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(0,0,0,.1)}
+    .btn-p svg{width:13px;height:13px;transition:transform .3s}.btn-p:hover svg{transform:translateX(3px)}
+    .reading-progress{position:fixed;top:0;left:0;height:2px;background:var(--blue);z-index:9999;width:0;transition:width .1s linear}
+    @media(max-width:900px){.nav{padding:14px 20px}.nav-links{display:none}.blog-hero{padding:120px 20px 60px}.article-wrap{grid-template-columns:1fr;padding:40px 20px 80px}.article-sidebar{display:none}.related-grid{grid-template-columns:1fr}.related-sec,.faq-sec{padding:60px 20px}.ft-cols{flex-direction:column;gap:28px}.footer{padding:40px 20px 20px}.disclaimer{padding:10px 16px}.cta-card{padding:28px 20px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  .article-body a{color:var(--blue);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;font-weight:500}.article-body a:hover{text-decoration-thickness:2px}
+</style>
+<style>/* 28/10/2026 : débordement mobile (colonne de grille sans min-width) */.article-wrap>*,.article-layout>*{min-width:0}.article-body table,.compare-table{display:block;overflow-x:auto;max-width:100%}.article-body pre{overflow-x:auto}.article-body img{max-width:100%;height:auto}</style>
+</head>
+<body>
+
+<div class="preloader" id="preloader"><div style="text-align:center"><div class="pre-word"><span>B</span><span>A</span><span>S</span><span>S</span></div><div class="pre-line" id="preLine"></div></div></div>
+<div class="reading-progress" id="readingProgress"></div>
+
+<nav class="nav" id="nav">
+  <a href="https://basstrading.fr" class="nav-logo">BASS</a>
+  <ul class="nav-links">
+    <li><a href="https://basstrading.fr/#methode">Méthode</a></li>
+    <li><a href="https://basstrading.fr#resultats">Résultats</a></li>
+    <li><a href="https://basstrading.fr#avis">Avis</a></li>
+    <li><a href="https://basstrading.fr#faq">FAQ</a></li>
+    <li><a href="/formations/">Formations</a></li>
+    <li><a href="https://basstrading.fr/blog/">Blog</a></li>
+  </ul>
+  <a href="https://basstrading.fr/p/formation-offerte/?src=blog-effet-de-levier-trading-menu" class="nav-cta">Formation offerte</a>
+</nav>
+
+<section class="blog-hero">
+  <div class="blog-hero-inner">
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <a href="https://basstrading.fr">Accueil</a><span class="sep">/</span>
+      <a href="https://basstrading.fr/blog/">Blog</a><span class="sep">/</span>
+      <span>Effet de levier en trading</span>
+    </nav>
+    <div class="blog-hero-cat">Gestion du risque</div>
+    <h1 class="blog-hero-title">Effet de levier en trading : calcul, risques et quel levier choisir</h1>
+    <p class="blog-hero-desc">L&#39;effet de levier, c&#39;est contrôler une position plus grosse que ton capital. Il se calcule en divisant la valeur de la position par ton capital. Un micro Nasdaq vaut des dizaines de milliers de dollars : sur un petit compte, un seul contrat est déjà un levier. Le bon levier ne se choisit pas comme un ratio. Il découle de ton stop et de ce que tu acceptes de perdre.</p>
+    <div class="blog-meta">
+      <div class="blog-meta-author">
+        <div class="blog-meta-avatar"><img src="../../images/bass-presenting.jpg" alt="Sébastien Constant" loading="lazy"></div>
+        <div><div class="blog-meta-name"><a href="/auteur/sebastien-constant/" rel="author" style="color:inherit;text-decoration:none">Sébastien Constant</a></div><div class="blog-meta-role">Trader & Formateur Order Flow</div></div>
+      </div>
+      <div class="blog-meta-sep"></div>
+      <div class="blog-meta-info"><span>Novembre 2026</span><span>16 min de lecture</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="article-wrap">
+  <aside class="article-sidebar">
+    <div class="toc">
+      <div class="toc-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/></svg> Sommaire</div>
+      <ol>
+        <li><a href="#qu-est-ce-que-l-effet-de-levier-en-tradi">Qu&#39;est-ce que l&#39;effet de levier en trading ?</a></li>
+        <li><a href="#comment-calculer-l-effet-de-levier-formu">Comment calculer l&#39;effet de levier ? (formule et exemples)</a></li>
+        <li><a href="#levier-et-marge-quelle-est-la-difference">Levier et marge : quelle est la différence ?</a></li>
+        <li><a href="#pourquoi-l-effet-de-levier-multiplie-t-i">Pourquoi l&#39;effet de levier multiplie-t-il aussi tes pertes ?</a></li>
+        <li><a href="#quel-est-l-effet-de-levier-maximum-en-fr">Quel est l&#39;effet de levier maximum en France ?</a></li>
+        <li><a href="#quel-effet-de-levier-sur-les-futures-nas">Quel effet de levier sur les futures Nasdaq NQ et MNQ ?</a></li>
+        <li><a href="#quel-effet-de-levier-choisir-quand-on-de">Quel effet de levier choisir quand on débute ?</a></li>
+        <li><a href="#le-levier-cache-des-comptes-de-prop-firm">Le levier caché des comptes de prop firm</a></li>
+        <li><a href="#ma-methode-comment-je-dose-mon-levier-en">Ma méthode : comment je dose mon levier en séance</a></li>
+        <li><a href="#les-erreurs-de-levier-que-je-vois-le-plu">Les erreurs de levier que je vois le plus souvent</a></li>
+        <li><a href="#sur-quels-produits-et-quels-marches-trou">Sur quels produits et quels marchés trouve-t-on de l&#39;effet de levier ?</a></li>
+        <li><a href="#quels-sont-les-inconvenients-de-l-effet-">Quels sont les inconvénients de l&#39;effet de levier, et son vrai intérêt ?</a></li>
+        <li><a href="#en-resume-ce-que-tu-dois-retenir-sur-l-e">En résumé : ce que tu dois retenir sur l&#39;effet de levier</a></li>
+      </ol>
+    </div>
+  </aside>
+
+  <article class="article-body">
+    <h2 id="qu-est-ce-que-l-effet-de-levier-en-tradi">Qu&#39;est-ce que l&#39;effet de levier en trading ?</h2>
+    <p>L&#39;effet de levier est le mécanisme qui permet de contrôler une position dont la valeur dépasse le capital déposé sur ton compte : gains et pertes sont calculés sur la valeur totale de la position, pas sur ton dépôt.</p>
+<p>C&#39;est tout. Le reste de cet article sert à comprendre ce que cette phrase implique pour ton compte, parce que c&#39;est là que la plupart des débutants se brûlent.</p>
+<p>Prends un exemple simple. Tu as 5 000 $ sur ton compte et tu ouvres une position qui vaut 40 000 $. Ton effet de levier est de 8 (on l&#39;écrit aussi 8:1 ou x8). Si le marché monte de 1 %, ta position gagne 400 $, soit 8 % de ton compte. S&#39;il baisse de 1 %, tu perds 400 $, soit 8 % de ton compte. Le levier ne choisit pas son camp : il multiplie dans les deux sens.</p>
+<p>Ce mécanisme existe sur la plupart des actifs financiers qu&#39;on peut trader : indices boursiers, devises, matières premières, actions, taux. Plus l&#39;effet de levier est fort, plus les écarts de prix, même petits, deviennent importants sur ton compte.</p>
+<h3>D&#39;où vient le levier ?</h3>
+<p>Tu ne paies pas la valeur totale de la position. Tu déposes une marge, une garantie que ton courtier ou la chambre de compensation bloque pour couvrir les pertes possibles. Sur les contrats à terme (futures), cette marge ne représente qu&#39;une petite fraction de la valeur du contrat. C&#39;est ce qui crée le levier, que tu le veuilles ou non.</p>
+<p>Je trade le Nasdaq futures en 1 minute sur Sierra Chart, avec le Market Profile, le VWAP et le CVD (et le carnet d&#39;ordres). Sur ce marché, le levier n&#39;est pas une option qu&#39;on active dans un menu : il est inscrit dans le contrat lui-même. Comme je le dis souvent en live : « pense aux pertes avant de penser aux gains ». Le levier, c&#39;est exactement là qu&#39;il faut y penser.</p>
+<h3>Pour qui est cet article ?</h3>
+<p>Pour toi si tu débutes et que tu te demandes quel levier choisir, comment le calculer, ou pourquoi ton compte a fondu alors que le marché n&#39;a bougé que de quelques points. Je te montre les calculs sur des contrats réels, les règles européennes, et la façon dont je dose ma taille en séance.</p>
+<p>Avant de regarder les risques, il faut savoir faire le calcul. C&#39;est l&#39;objet de la partie suivante.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/effet-de-levier-trading/blog-effet-de-levier-trading-1.webp" alt="Balançoire à bascule de square, image de l&#39;effet de levier qui amplifie un petit mouvement" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Comme une bascule, le levier transforme un petit déplacement en grand mouvement, dans les deux sens.<br><span style="font-size:.85em">Photo : <a href="https://commons.wikimedia.org/wiki/File:Stand-up_seesaw_playground_Achim.jpg" rel="noopener" target="_blank">RogerWiki</a>, <a href="http://creativecommons.org/publicdomain/zero/1.0/deed.en" rel="noopener license" target="_blank">CC0</a></span></figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="comment-calculer-l-effet-de-levier-formu">Comment calculer l&#39;effet de levier ? (formule et exemples)</h2>
+    <p>La formule est : effet de levier = valeur totale de la position ÷ capital de ton compte. La valeur totale d&#39;une position s&#39;appelle la valeur notionnelle. Sur un contrat à terme, elle se calcule ainsi : cours de l&#39;indice × valeur d&#39;un point × nombre de contrats.</p>
+<h3>La valeur d&#39;un contrat Nasdaq</h3>
+<p>D&#39;après la <a href="https://www.cmegroup.com/markets/equities/nasdaq/micro-e-mini-nasdaq-100.contractSpecs.html">fiche officielle du CME pour le Micro E-mini Nasdaq-100</a>, un point de MNQ vaut 2 $ et le plus petit mouvement (un tick de 0,25 point) vaut 0,50 $. Sur le <a href="https://www.cmegroup.com/markets/equities/nasdaq/e-mini-nasdaq-100.contractSpecs.html">contrat E-mini Nasdaq-100</a> (NQ), le point vaut 20 $, dix fois plus.</p>
+<p>Pour garder des calculs lisibles, je prends dans tout l&#39;article un indice à 20 000 points (un chiffre rond, pas le cours du jour : refais le calcul avec le cours que tu vois sur ton écran).</p>
+<ul><li>1 MNQ = 20 000 × 2 $ = 40 000 $ de valeur notionnelle.</li><li>1 NQ = 20 000 × 20 $ = 400 000 $ de valeur notionnelle.</li></ul>
+<h3>Trois calculs de levier</h3>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Compte</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Position</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Effet de levier</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">5 000 $</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">1 MNQ (40 000 $)</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">8:1</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">5 000 $</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">3 MNQ (120 000 $)</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">24:1</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">5 000 $</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">1 NQ (400 000 $)</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">80:1</td></tr></tbody></table></div>
+<p>Tu vois le problème : avec le même compte, passer d&#39;un micro à un contrat plein multiplie ton levier par dix, d&#39;un seul clic.</p>
+<h3>La formule qui compte vraiment : le risque en dollars</h3>
+<p>Le ratio de levier est utile pour comprendre, mais ce n&#39;est pas lui que je regarde avant d&#39;entrer. Je regarde combien je perds si mon stop est touché :</p>
+<p><b>Risque = distance du stop en points × valeur du point × nombre de contrats.</b></p>
+<p>Dans ma vidéo sur le risque par trade, je fais ce calcul en direct : deux micros avec un stop à 20 points, c&#39;est 20 × 2 $ × 2 = 80 $ de risque (<a href="https://www.youtube.com/watch?v=3YvoeD-_BEc&amp;t=2074s">à la 35e minute</a>). Ce chiffre-là, tu peux le comparer à ton compte et à ta limite de perte du jour. Le ratio 16:1, lui, ne te dit pas grand-chose tant que tu ne sais pas où est ton stop.</p>
+<p>Une fois ce risque connu, il reste à décider où tu prends tes gains : je le détaille dans mon article sur le <a href="https://basstrading.fr/blog/take-profit-trading/">take profit en trading</a>, qui complète le calcul du risque par l&#39;objectif de gain.</p>
+<p>Et on peut retourner la formule pour trouver sa taille :</p>
+<p><b>Nombre de contrats = risque accepté en dollars ÷ (stop en points × valeur du point).</b></p>
+<p>Avec 5 000 $ de compte, 1 % de risque (50 $) et un stop de 20 points sur le MNQ (40 $ par contrat), tu ne peux prendre qu&#39;un seul micro. J&#39;explique en détail comment fixer ce pourcentage dans mon guide <a href="https://basstrading.fr/blog/combien-risquer-par-trade/">combien risquer par trade</a>.</p>
+<h3>À retenir</h3>
+<ul><li>Levier = valeur notionnelle ÷ capital du compte.</li><li>Valeur notionnelle d&#39;un futures = cours × valeur du point × nombre de contrats.</li><li>Le chiffre qui protège ton compte, c&#39;est le risque en dollars au stop, pas le ratio.</li><li>La taille se déduit du stop, jamais l&#39;inverse.</li></ul>
+<p>Mais si tu n&#39;as déposé que 5 000 $, comment peux-tu détenir une position de 40 000 $ ? La réponse s&#39;appelle la marge.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/effet-de-levier-trading/blog-effet-de-levier-trading-2.webp" alt="Formule de l&#39;effet de levier en trading : valeur de la position divisée par le capital du compte" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">La formule du levier, et celle de la taille de position qui en découle.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="levier-et-marge-quelle-est-la-difference">Levier et marge : quelle est la différence ?</h2>
+    <p>La marge est la somme que ton courtier bloque pour te laisser ouvrir une position ; le levier est le rapport entre la valeur de cette position et ton capital. Les deux sont liés : plus la marge exigée est faible par rapport à la valeur du contrat, plus le levier disponible est élevé.</p>
+<h3>La marge sur les futures</h3>
+<p>Sur les contrats à terme, la marge n&#39;est pas un prêt. Le CME la décrit comme un dépôt de garantie (performance bond) qui couvre les pertes possibles des positions ouvertes. Il existe deux niveaux :</p>
+<ul><li>la marge initiale, exigée pour ouvrir la position ;</li><li>la marge de maintien, le minimum à garder sur le compte tant que la position est ouverte.</li></ul>
+<p>Si tes pertes font passer ton compte sous la marge de maintien, ton courtier te demande de remettre de l&#39;argent (appel de marge) ou coupe tes positions lui-même. Les montants changent selon le contrat, la volatilité du moment et le courtier : vérifie-les toujours chez le tien avant de trader, ils ne sont jamais gravés dans le marbre.</p>
+<h3>Marge intraday et marge overnight</h3>
+<p>Beaucoup de courtiers futures proposent une marge intraday bien plus basse que la marge du CME, à condition de fermer ta position avant la fin de la séance. C&#39;est là que le piège se referme sur les débutants. Une marge intraday basse ne veut pas dire que le trade est moins risqué. Ça veut dire que le courtier t&#39;autorise à prendre une position démesurée par rapport à la taille de ton compte, pour reprendre mes mots en vidéo (<a href="https://www.youtube.com/watch?v=3YvoeD-_BEc&amp;t=1330s">à 22 min</a>).</p>
+<p>C&#39;est typiquement le terrain du scalping, où l&#39;on ouvre et ferme vite des positions : je décris ses règles et ses pièges dans mon guide du <a href="https://basstrading.fr/blog/scalping-trading/">scalping en trading</a>, où la taille de position compte autant que l&#39;entrée.</p>
+<p>Chez mon courtier, Interactive Brokers, il faut un montant de l&#39;ordre de 5 000 $ sur le compte pour avoir le droit d&#39;ouvrir un seul micro (je crois, comme je le dis dans la vidéo : <a href="https://www.youtube.com/watch?v=3YvoeD-_BEc&amp;t=1345s">à 22 min 30</a> ; vérifie le montant exact chez le tien). Et franchement, c&#39;est une bonne chose : ça empêche de surcharger un petit compte.</p>
+<h3>La marge sur les CFD</h3>
+<p>Sur les CFD, la logique est la même mais le cadre est différent : en Europe, c&#39;est la réglementation qui fixe la marge minimale pour les particuliers (on la détaille plus bas). Une marge de 5 % correspond à un levier maximum de 20:1 (1 ÷ 0,05 = 20).</p>
+<h3>La formule de conversion</h3>
+<p><b>Levier maximum = 1 ÷ taux de marge.</b></p>
+<ul><li>Marge de 3,33 % → levier 30:1.</li><li>Marge de 5 % → levier 20:1.</li><li>Marge de 10 % → levier 10:1.</li><li>Marge de 20 % → levier 5:1.</li></ul>
+<p>C&#39;est pour ça que tu peux entendre « levier » et « marge » utilisés l&#39;un pour l&#39;autre. Mais attention : le levier maximum autorisé n&#39;est pas le levier que tu dois utiliser. Le premier est une limite technique ; le second est une décision de gestion du risque.</p>
+<h3>À retenir</h3>
+<ul><li>La marge est une garantie bloquée, pas le prix de la position.</li><li>Marge initiale pour ouvrir, marge de maintien pour rester.</li><li>Marge intraday basse = permission de surcharger, pas protection.</li><li>Levier maximum = 1 ÷ taux de marge.</li></ul>
+<p>Pourquoi tout ça compte autant ? Parce qu&#39;un mouvement minuscule du marché devient énorme sur ton compte. Voyons les chiffres.</p>
+
+    <hr>
+
+    <h2 id="pourquoi-l-effet-de-levier-multiplie-t-i">Pourquoi l&#39;effet de levier multiplie-t-il aussi tes pertes ?</h2>
+    <p>Parce que la perte se calcule sur la valeur totale de la position, alors que c&#39;est ton capital qui la paie. Avec un levier de 20, une baisse de 5 % du marché efface 100 % de ton compte.</p>
+<h3>Le Nasdaq bouge de 1 % : ce que ça fait à ton compte</h3>
+<p>Toujours avec un indice à 20 000 points, un mouvement de 1 % représente 200 points. Voilà ce que ça donne :</p>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Position</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Gain ou perte pour 1 %</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Sur un compte de 5 000 $</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">1 MNQ</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">400 $</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">8 % du compte</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">3 MNQ</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">1 200 $</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">24 % du compte</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">1 NQ</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">4 000 $</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">80 % du compte</td></tr></tbody></table></div>
+<p>Un mouvement de 1 % sur le Nasdaq dans une journée, ça arrive régulièrement. Avec un contrat plein sur un compte de 5 000 $, une journée ordinaire peut emporter les quatre cinquièmes du capital. Ce n&#39;est pas le marché qui est dangereux, c&#39;est la taille.</p>
+<h3>La règle mathématique qui fait mal</h3>
+<p>Les pertes et les gains ne sont pas symétriques. Si tu perds 50 % de ton compte, il te faut +100 % pour revenir au point de départ. Si tu perds 80 %, il te faut +400 %. Le levier rend ces trous importants possibles en quelques minutes, et il faut ensuite des mois pour les combler, quand c&#39;est possible.</p>
+<h3>Peut-on perdre plus que sa mise ?</h3>
+<p>Sur les futures, oui. Si le marché part violemment contre toi (une annonce économique, un gap à l&#39;ouverture), ta perte peut dépasser le capital du compte, et tu restes redevable de la différence envers ton courtier. C&#39;est pour ça que je répète : le trading de contrats à terme comporte un risque élevé de perte, pouvant dépasser la mise initiale.</p>
+<p>Sur les CFD vendus aux particuliers dans l&#39;Union européenne, la réglementation impose une protection contre le solde négatif : ton compte ne peut pas passer sous zéro. Ça ne rend pas le produit moins risqué, ça plafonne seulement la catastrophe.</p>
+<h3>Ce que les chiffres officiels disent</h3>
+<p>La <a href="https://eur-lex.europa.eu/eli/dec/2018/796/oj/fra">décision (UE) 2018/796 de l&#39;ESMA</a> impose aux vendeurs de CFD un avertissement sur les risques, mais pas le même pourcentage pour tous. Son annexe II prévoit que chaque fournisseur affiche <b>son propre pourcentage</b> de comptes de détail perdants : il est calculé tous les trois mois sur les 12 mois précédents (sections B et C), sous la forme « % de comptes d&#39;investisseurs de détail perdent de l&#39;argent lors de la négociation de CFD » chez ce fournisseur.</p>
+<p>La phrase la plus citée, « Entre 74 et 89 % des comptes de clients de détail perdent de l&#39;argent lors de la négociation de CFD », est l&#39;avertissement standard des sections D et E. Elle ne s&#39;applique qu&#39;à un fournisseur qui n&#39;a ouvert aucune position CFD pour des clients de détail au cours des 12 derniers mois. Les deux versions disent la même chose : la majorité des particuliers perdent. En France, l&#39;<a href="https://www.amf-france.org/sites/institutionnel/files/contenu_simple/rapport_etude_analyse/epargne_prestataire/Etude%20des%20resultats%20des%20investisseurs%20particuliers%20sur%20le%20trading%20de%20CFD%20et%20de%20Forex%20en%20France.pdf">étude de l&#39;AMF sur les résultats des particuliers en CFD et Forex</a> arrivait à 89 % de clients perdants. Le levier élevé fait partie des causes que le régulateur a voulu limiter.</p>
+<h3>La scène que je connais par cœur</h3>
+<p>J&#39;ai vécu ce moment, et je le raconte dans ma vidéo (<a href="https://www.youtube.com/watch?v=3YvoeD-_BEc&amp;t=1685s">à 28 min</a>) : après une grosse perte, une petite voix te dit « foutu pour foutu », et tu rentres plus lourd pour te refaire. C&#39;est exactement là que le levier transforme une mauvaise journée en compte détruit. Le levier n&#39;est jamais aussi dangereux que quand tu es en colère.</p>
+<p>Alors, combien de levier le régulateur autorise-t-il en France ? Ça dépend du produit.</p>
+
+    <hr>
+
+    <h2 id="quel-est-l-effet-de-levier-maximum-en-fr">Quel est l&#39;effet de levier maximum en France ?</h2>
+    <p>Pour les CFD vendus aux particuliers, le levier maximum va de 30:1 sur les grandes paires de devises à 2:1 sur les cryptomonnaies, selon les règles européennes reprises par l&#39;AMF. Pour les futures, il n&#39;y a pas de ratio fixe : c&#39;est la marge exigée par la chambre de compensation et le courtier qui le détermine.</p>
+<h3>Les plafonds des CFD (ESMA, puis AMF)</h3>
+<p>En 2018, l&#39;ESMA a restreint la vente de CFD aux particuliers dans toute l&#39;Union européenne (<a href="https://eur-lex.europa.eu/legal-content/FR/TXT/HTML/?uri=CELEX:32018X0601%2802%29">décision (UE) 2018/796, publiée au Journal officiel le 1er juin 2018</a>). L&#39;AMF a ensuite repris ces mesures de façon durable en France ; elle présente leur logique dans son <a href="https://www.amf-france.org/fr/actualites-publications/actualites/interdiction-des-options-binaires-restriction-des-cfd-le-grand-public-europeen-mieux-protege-des-le">actualité du 1er juin 2018</a>. Le texte fixe une marge initiale minimale en pourcentage de la valeur notionnelle, ce qui donne ces leviers maximums :</p>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Sous-jacent du CFD</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Marge minimale</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Levier maximum</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Paires de devises majeures</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">3,33 %</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">30:1</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Indices majeurs, or, autres devises</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">5 %</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">20:1</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Matières premières, autres indices</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">10 %</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">10:1</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Actions</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">20 %</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">5:1</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Cryptomonnaies</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">50 %</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">2:1</td></tr></tbody></table></div>
+<p>Le même texte prévoit trois autres protections : la clôture automatique des positions quand la marge tombe à 50 % de la marge initiale requise, la protection contre le solde négatif, et l&#39;avertissement sur la part de comptes perdants.</p>
+<p>Un CFD sur le Nasdaq 100 est donc limité à 20:1 pour un particulier. Les clients classés « professionnels » peuvent avoir plus, mais ce statut a des conditions strictes et fait perdre les protections.</p>
+<p>Je ne trade pas de CFD et je ne te les recommande pas : je les cite parce que tu tomberas forcément sur ces chiffres, et qu&#39;il faut savoir les lire.</p>
+<h3>Et sur les futures ?</h3>
+<p>Les contrats à terme sont négociés sur un marché organisé (le CME pour le Nasdaq) et le cadre n&#39;est pas celui des CFD. Il n&#39;existe pas de « levier 20:1 » affiché : le levier découle de la marge fixée par la chambre de compensation, que le courtier peut relever (il ne peut pas la baisser pour une position conservée la nuit). En intraday, comme on l&#39;a vu, certains courtiers descendent beaucoup plus bas.</p>
+<p>Résultat : le levier disponible sur les futures peut être bien plus élevé que sur un CFD. Un contrat plein sur un petit compte dépasse vite le 50:1. Personne ne t&#39;empêchera de le faire. C&#39;est à toi de t&#39;en empêcher.</p>
+<h3>À retenir</h3>
+<ul><li>CFD particuliers : 30:1 au plus sur les devises majeures, 20:1 sur les indices majeurs.</li><li>Clôture automatique à 50 % de la marge initiale et solde négatif interdit sur les CFD.</li><li>Futures : pas de ratio réglementaire, c&#39;est la marge qui fixe le levier.</li><li>Levier autorisé ≠ levier raisonnable.</li></ul>
+<p>Passons maintenant au marché que je trade tous les jours, pour voir le levier en vrai.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/effet-de-levier-trading/blog-effet-de-levier-trading-3.webp" alt="Tableau des plafonds d&#39;effet de levier sur les CFD pour les particuliers en Europe selon l&#39;ESMA et l&#39;AMF" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Plafonds fixés par la décision (UE) 2018/796 de l&#39;ESMA, repris par l&#39;AMF en France.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="quel-effet-de-levier-sur-les-futures-nas">Quel effet de levier sur les futures Nasdaq NQ et MNQ ?</h2>
+    <p>Un seul MNQ représente en dollars environ deux fois la valeur de l&#39;indice (2 $ par point), un NQ vingt fois : sur un compte de quelques milliers de dollars, un micro est déjà un levier de plusieurs fois le capital, et un contrat plein un levier extrême.</p>
+<p>Dans ma vidéo, je le rappelle simplement : « un lot plein je te rappelle c&#39;est 20 dollars le point sur le nasdaq, sur les s&amp;p c&#39;est 50 dollars le point » (<a href="https://www.youtube.com/watch?v=3YvoeD-_BEc&amp;t=1312s">à 21 min 50</a>). Vingt dollars par point, sur un marché qui peut faire 100 points en quelques minutes à l&#39;ouverture, ça fait 2 000 $ de variation par contrat.</p>
+<h3>Micro ou plein : le même trade, deux leviers</h3>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Contrat</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Valeur du point</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Stop de 20 points</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">MNQ (micro)</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">2 $</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">40 $</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">NQ (plein)</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">20 $</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">400 $</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">MES (micro S&amp;P)</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">5 $</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">100 $</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">ES (plein S&amp;P)</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">50 $</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">1 000 $</td></tr></tbody></table></div>
+<p>Les valeurs du point du S&amp;P 500 viennent elles aussi du CME ; je les compare au Nasdaq dans mon article sur les <a href="https://basstrading.fr/blog/sp-500-futures-es-mes/">contrats S&amp;P 500 ES et MES</a>.</p>
+<p>Le micro existe précisément pour ça : il te permet de trader exactement le même marché, avec le même graphique et les mêmes niveaux, avec dix fois moins de levier. Je détaille le choix entre les deux dans <a href="https://basstrading.fr/blog/nq-ou-mnq/">NQ ou MNQ : quel contrat choisir</a>, et le fonctionnement complet des contrats dans mon guide des <a href="https://basstrading.fr/blog/nasdaq-futures-nq-mnq/">futures Nasdaq NQ et MNQ</a>.</p>
+<h3>Pourquoi je ne raisonne pas en ratio sur le Nasdaq</h3>
+<p>Sur un compte de 5 000 $, un MNQ fait un levier d&#39;environ 8. Ça a l&#39;air énorme. Pourtant, avec un stop de 20 points, le trade ne risque que 40 $, moins de 1 % du compte. À l&#39;inverse, un levier de 3 avec un stop placé n&#39;importe où (ou pas de stop du tout) peut te coûter bien plus.</p>
+<p>Le ratio te dit quelle force tu manipules ; le stop te dit combien tu peux perdre. Les deux sont utiles, mais c&#39;est le second qui décide si tu seras encore là demain. C&#39;est pour ça que tout mon travail de placement du stop se fait sur le graphique, sur des zones précises : je l&#39;explique dans mon guide du <a href="https://basstrading.fr/blog/stop-loss-trading/">stop loss en trading</a>.</p>
+<h3>Le cas des annonces économiques</h3>
+<p>Le levier se paie surtout dans les moments où le prix saute plusieurs niveaux d&#39;un coup : chiffres de l&#39;emploi américain, inflation, décisions de la Fed. Ton stop peut alors être exécuté plusieurs points plus loin que prévu (glissement). Avec un micro, quelques points de glissement coûtent quelques dollars. Avec plusieurs contrats pleins, la facture peut doubler ton risque prévu. Plus ton levier est fort, plus le glissement te coûte cher.</p>
+<p>Vient alors la question que tout le monde me pose : concrètement, quel levier prendre quand on commence ?</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/effet-de-levier-trading/blog-effet-de-levier-trading-4.webp" alt="Chiffres clés du levier sur les futures Nasdaq : valeur du point et risque pour un stop de 20 points en MNQ et NQ" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Même stop de 20 points, même marché : le contrat plein risque dix fois plus que le micro.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="quel-effet-de-levier-choisir-quand-on-de">Quel effet de levier choisir quand on débute ?</h2>
+    <p>Ne choisis pas un ratio : choisis un risque. Fixe d&#39;abord une perte maximale par trade (une petite fraction de ton compte), place ton stop sur le graphique, puis déduis ta taille. Le levier qui en sort est le bon. Pour un débutant sur le Nasdaq, ça veut presque toujours dire un ou deux micros, jamais un contrat plein.</p>
+<h3>La méthode en quatre étapes</h3>
+<ul><li>Fixe ton risque par trade en dollars. Beaucoup de traders retiennent de 0,5 % à 1 % du compte. Sur 5 000 $, c&#39;est 25 à 50 $.</li><li>Place ton stop là où ton idée est fausse, sur le graphique, pas là où il « coûte moins cher ».</li><li>Calcule ta taille : risque ÷ (stop en points × valeur du point). Si le résultat est inférieur à 1 micro, tu ne prends pas le trade ou tu cherches un stop plus serré qui ait du sens.</li><li>Vérifie ta limite du jour : si trois stops d&#39;affilée dépassent ta <a href="https://basstrading.fr/blog/perte-maximale-journaliere-trading/">perte maximale journalière</a>, ta taille est trop grosse.</li></ul>
+<h3>Pourquoi un ratio fixe ne marche pas</h3>
+<p>Tu lis partout « débutant : levier de 1:5 ou 1:10 maximum ». L&#39;intention est bonne, mais ça ne te protège pas. Un levier de 1:10 avec un stop deux fois trop large te fait perdre deux fois plus qu&#39;un levier de 1:10 avec un stop bien placé. Et sur les futures, le ratio bouge tout seul avec le cours de l&#39;indice : à niveau égal de contrats, ton levier augmente quand le Nasdaq monte.</p>
+<h3>Le compte épais, la vraie protection</h3>
+<p>Une phrase que je dis à tous mes élèves : « au plus ton compte de trading est épais et au moins tu prends de risque » (<a href="https://www.youtube.com/watch?v=3YvoeD-_BEc&amp;t=1384s">à 23 min</a>). Un même micro représente un risque énorme sur un compte de 1 000 $ et un risque raisonnable sur un compte de 10 000 $. Si ton compte est petit, la solution n&#39;est pas d&#39;augmenter le levier pour « que ça vaille le coup » : c&#39;est de trader le plus petit contrat possible et d&#39;accepter que les gains soient petits au début.</p>
+<h3>Erreur fréquente : choisir le levier d&#39;après le gain espéré</h3>
+<p>Le débutant se dit : « avec un micro, je gagne 40 $ sur 20 points, ça ne vaut pas le coup ; avec un plein, je gagne 400 $ ». Il raisonne à l&#39;envers. La bonne question est : « si j&#39;ai tort, combien je perds, et combien de fois de suite je peux avoir tort ? ». Dix stops de 400 $ d&#39;affilée, ça arrive à tout le monde, et ça fait 4 000 $.</p>
+<h3>À retenir</h3>
+<ul><li>Risque par trade fixé à l&#39;avance, en dollars.</li><li>Stop placé sur le graphique, taille calculée ensuite.</li><li>Débutant sur le Nasdaq : un ou deux micros.</li><li>Un petit compte ne justifie jamais un gros levier.</li></ul>
+<p>Il existe un endroit où ce raisonnement est souvent oublié : les comptes de prop firm. Le levier y est caché, et il est énorme.</p>
+
+    <hr>
+
+    <h2 id="le-levier-cache-des-comptes-de-prop-firm">Le levier caché des comptes de prop firm</h2>
+    <p>Sur un compte de prop firm, le chiffre affiché (50 000 $, 100 000 $) n&#39;est pas ton capital réel : ton vrai capital, c&#39;est la perte maximale autorisée avant d&#39;échouer, souvent quelques milliers de dollars. Le levier réel se calcule sur ce montant-là.</p>
+<p>Je le dis sans détour dans ma vidéo : le compte de 50 000, « c&#39;est du marketing », et « la vraie réalité c&#39;est que tu as un compte à 2000 » (<a href="https://www.youtube.com/watch?v=3YvoeD-_BEc&amp;t=1270s">à 21 min</a>). Si ta perte maximale autorisée est de 2 000 $, c&#39;est ça que tu peux perdre, pas 50 000 $.</p>
+<h3>Le calcul qui change tout</h3>
+<p>Prends un compte « 50 000 $ » avec 2 000 $ de perte maximale autorisée, et une position d&#39;un NQ (400 000 $ de valeur notionnelle avec notre indice à 20 000) :</p>
+<ul><li>levier apparent : 400 000 ÷ 50 000 = 8:1 ;</li><li>levier réel sur ton capital de risque : 400 000 ÷ 2 000 = 200:1.</li></ul>
+<p>Avec un NQ, il suffit de 100 points contre toi pour perdre les 2 000 $ et le compte. Sur le Nasdaq, 100 points, c&#39;est parfois quelques minutes. Et la prop firm t&#39;autorise souvent plusieurs contrats pleins sur ce compte.</p>
+<h3>Comment je raisonne sur un compte financé</h3>
+<p>Je fais exactement le même calcul que sur mon compte personnel, mais avec la perte maximale autorisée comme capital. Si je ne veux jamais risquer plus de 10 % de ce coussin sur un trade, ça fait 200 $ : avec un stop de 20 points, c&#39;est 5 MNQ au maximum, pas 5 NQ. Le fonctionnement de cette limite (fixe, suiveuse, de fin de journée) est expliqué dans mon article sur le <a href="https://basstrading.fr/blog/drawdown-prop-firm-futures/">drawdown des prop firms futures</a>.</p>
+<h3>La prop firm, une voie parmi d&#39;autres</h3>
+<p>Je ne te dis pas que la prop firm est une mauvaise idée, ni qu&#39;elle est la seule voie. C&#39;est une façon de trader le Nasdaq avec un capital limité, à condition de comprendre ce qu&#39;on achète. Ce que je travaille avec mes élèves, c&#39;est de trouver le trading qui leur correspond : leur horaire, leur tempérament, leur capital. Pour certains, ça passe par un compte financé ; pour d&#39;autres, par un petit compte personnel en micros. Dans les deux cas, la règle sur le levier est la même.</p>
+<h3>À retenir</h3>
+<ul><li>Ton capital réel en prop firm = la perte maximale autorisée.</li><li>Calcule ton levier sur ce montant, pas sur le chiffre affiché.</li><li>Un NQ sur un compte « 50 000 $ » avec 2 000 $ de marge d&#39;erreur, c&#39;est un levier de 200.</li><li>Taille en micros tant que le coussin est petit.</li></ul>
+<p>Tu as maintenant toute la théorie. Voici comment je l&#39;applique, concrètement, pendant une séance.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/effet-de-levier-trading/blog-effet-de-levier-trading-5.webp" alt="Les étapes de ma méthode pour doser l&#39;effet de levier pendant une séance de trading sur le Nasdaq" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Le levier grandit avec le gain déjà acquis, jamais avec l&#39;espoir.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="ma-methode-comment-je-dose-mon-levier-en">Ma méthode : comment je dose mon levier en séance</h2>
+    <p>J&#39;entre petit, avec un ou deux micros, et je n&#39;augmente ma taille que lorsque le marché me donne raison ; je ne renforce jamais une position perdante. C&#39;est ce que je montre dans ma vidéo sur le risque par trade, <a href="https://www.youtube.com/watch?v=3YvoeD-_BEc&amp;t=2104s">à 35 min</a>.</p>
+<h3>Étape 1 : le stop avant l&#39;entrée</h3>
+<p>Avant de cliquer, je sais où est mon stop, et donc combien je perds s&#39;il est touché. Le stop se place « en fonction du capital qu&#39;on est prêt à perdre » (<a href="https://www.youtube.com/watch?v=3YvoeD-_BEc&amp;t=2212s">à 36 min 50</a>), et sur une zone qui a du sens sur le graphique. Si les deux ne collent pas, je ne prends pas le trade.</p>
+<h3>Étape 2 : une petite première entrée</h3>
+<p>J&#39;ouvre avec un ou deux micros. Mon levier de départ est faible, volontairement : si je me trompe, la perte est petite et je reste lucide pour la suite de la séance.</p>
+<h3>Étape 3 : j&#39;ajoute seulement dans le gain</h3>
+<p>Quand le prix part dans mon sens et valide mon idée, j&#39;ajoute des micros deux par deux, et je remonte mon stop pour que l&#39;ensemble de la position reste protégé. Sur un coussin de prop firm de 2 000 $, je m&#39;arrête dès que le risque cumulé de la position dépasse ce que mon coussin supporte, avec toujours une marge de sécurité. Le levier augmente avec le gain déjà acquis, jamais avec l&#39;espoir. C&#39;est ce qu&#39;on appelle pyramider : je détaille la technique dans mon article <a href="https://basstrading.fr/blog/pyramider-position-trading/">pyramider une position en trading</a>.</p>
+<h3>Étape 4 : jamais de renfort à contre-sens</h3>
+<p>Ajouter des contrats sur une position perdante pour « améliorer son prix moyen », c&#39;est augmenter son levier au pire moment. Je ne le fais pas. Comme je le dis en vidéo : « ne jamais sur-tailler des entrées pour te refaire » (<a href="https://www.youtube.com/watch?v=3YvoeD-_BEc&amp;t=2268s">à 37 min 50</a>).</p>
+<h3>Étape 5 : je m&#39;arrête à ma limite du jour</h3>
+<p>Quand ma perte maximale du jour est atteinte, je ferme la plateforme. Le levier n&#39;a aucune chance de devenir dangereux si je ne suis plus devant l&#39;écran.</p>
+<h3>Ce que ça change dans la tête</h3>
+<p>Cette façon de faire inverse le problème du levier. Au lieu de chercher le bon ratio au départ, je laisse le marché me dire si je mérite plus de taille. Le jour où je me trompe, je perds peu. Le jour où j&#39;ai raison, ma position grossit avec le mouvement.</p>
+<p>Ce dosage du risque, avec la lecture du marché qui va avec (Market Profile, VWAP, CVD), c&#39;est la base de ce que j&#39;enseigne. Je l&#39;explique pas à pas, avec mes séances commentées, dans <a href="https://basstrading.fr/l/2wnmhg">ma formation offerte</a>. Tu peux la suivre à ton rythme, avant de risquer le moindre dollar.</p>
+<h3>À retenir</h3>
+<ul><li>Stop d&#39;abord, taille ensuite.</li><li>Petite entrée, un ou deux micros.</li><li>On ajoute dans le gain, deux par deux, stop remonté.</li><li>Jamais de renfort sur une position perdante.</li></ul>
+<p>Reste à voir les erreurs qui reviennent le plus. Tu en reconnaîtras sûrement une.</p>
+
+    <hr>
+
+    <h2 id="les-erreurs-de-levier-que-je-vois-le-plu">Les erreurs de levier que je vois le plus souvent</h2>
+    <p>La plupart des comptes ne sautent pas à cause d&#39;une mauvaise analyse, mais à cause d&#39;une taille trop grosse au mauvais moment. Voici les erreurs que je corrige le plus souvent chez mes élèves.</p>
+<h3>1. Confondre marge disponible et risque acceptable</h3>
+<p>Ta plateforme affiche que tu peux ouvrir 10 micros ? Ça ne veut pas dire que tu dois. La marge disponible dit ce que le courtier autorise, pas ce que ton compte supporte. Calcule toujours ton risque au stop avant de regarder ta marge disponible.</p>
+<h3>2. Augmenter la taille après une perte</h3>
+<p>C&#39;est l&#39;erreur du « foutu pour foutu ». Tu as perdu 200 $, tu doubles la taille pour te refaire en un trade. Si ça marche, tu prends une mauvaise habitude ; si ça rate, tu perds 600 $ au lieu de 200 $. Une règle simple : après une perte, la taille reste la même ou baisse, jamais elle ne monte.</p>
+<h3>3. Garder la même taille quand la volatilité explose</h3>
+<p>Un stop de 20 points le matin calme et un stop de 20 points pendant une annonce de la Fed n&#39;ont pas la même probabilité d&#39;être touchés. Quand le marché s&#39;agite, j&#39;élargis mon stop si la structure l&#39;exige, et je baisse ma taille pour garder le même risque en dollars.</p>
+<h3>4. Oublier le levier qui grandit avec le cours</h3>
+<p>Sur les futures, la valeur d&#39;un contrat suit l&#39;indice. Si le Nasdaq prend 10 %, ton micro vaut 10 % de plus, et ton levier aussi, sans que tu aies rien changé. Refais ton calcul de temps en temps.</p>
+<h3>5. Trader sans stop « parce que c&#39;est un petit levier »</h3>
+<p>Un levier de 3 sans stop reste une perte illimitée en théorie. Le levier faible ne remplace jamais le stop. Je l&#39;explique dans mon article sur le <a href="https://basstrading.fr/blog/stop-loss-trading/">stop loss en trading</a>.</p>
+<h3>6. Croire que le levier fait gagner plus</h3>
+<p>Le levier ne crée aucun avantage. Si ta façon de trader perd de l&#39;argent avec un micro, elle en perdra dix fois plus avec un contrat plein. Si elle en gagne, le levier ne fait qu&#39;accélérer les deux colonnes de ton journal. D&#39;abord une méthode qui tient sur la durée, ensuite la taille.</p>
+<h3>À retenir</h3>
+<ul><li>Marge disponible ≠ risque acceptable.</li><li>Après une perte, jamais plus gros.</li><li>Volatilité plus forte = taille plus petite.</li><li>Le levier ne remplace ni le stop ni la méthode.</li></ul>
+<p>Mais au fait, le levier n&#39;existe pas que sur les futures. Sur quels produits le trouve-t-on, et faut-il régler quelque chose sur sa plateforme ?</p>
+
+    <hr>
+
+    <h2 id="sur-quels-produits-et-quels-marches-trou">Sur quels produits et quels marchés trouve-t-on de l&#39;effet de levier ?</h2>
+    <p>Le levier financier existe partout où tu peux prendre position sur un actif sans en payer la valeur entière : contrats à terme, CFD, options, achat d&#39;actions à crédit, et certains fonds indiciels dits « à levier ». Le mécanisme change d&#39;un produit à l&#39;autre, le principe reste le même : le levier permet une exposition plus grande que les fonds que tu engages.</p>
+<h3>Levier financier : ce que le mot signifie</h3>
+<p>En finance d&#39;entreprise, le levier financier signifie s&#39;endetter afin d&#39;investir plus que ses propres fonds : si la rentabilité de l&#39;investissement dépasse le coût de la dette, le rendement des fonds propres augmente ; sinon, il s&#39;effondre. En trading, c&#39;est la même idée appliquée à une position : tu t&#39;exposes à des actifs financiers pour une valeur supérieure à ton capital, grâce à la marge ou au crédit de ton courtier.</p>
+<h3>Les principaux produits à effet de levier</h3>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Produit</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">D&#39;où vient le levier</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Perte possible</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Contrats à terme (futures)</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Marge déposée</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Peut dépasser le compte</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">CFD</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Marge minimale réglementée</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Limitée au compte (particuliers UE)</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Achat d&#39;options</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Prime payée</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">La prime entière</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Actions à crédit (compte sur marge)</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Crédit du courtier</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Peut dépasser l&#39;apport</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Fonds indiciels à levier</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Levier géré dans le fonds</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Le montant investi</td></tr></tbody></table></div>
+<p>Chaque produit a ses pièges. Les fonds à levier, par exemple, recalculent leur exposition chaque jour : sur plusieurs semaines agitées, leur performance peut s&#39;écarter nettement de « deux ou trois fois l&#39;indice ». Les options ont un coût qui fond avec le temps. Les CFD, je ne les trade pas et je ne te les recommande pas. De mon côté, je ne trade que les futures, parce que le marché est centralisé, les prix et les volumes sont publics, et la valeur d&#39;un point est fixée par le contrat.</p>
+<h3>Sur quels marchés ?</h3>
+<p>Tu trouves du levier sur presque tous les grands marchés et sur la plupart des actifs : indices boursiers (Nasdaq, S&amp;P 500, DAX), devises, matières premières (pétrole, or), taux d&#39;intérêt, actions et cryptomonnaies. Ce qui est important, c&#39;est la volatilité de l&#39;actif : plus un actif bouge, plus le levier doit être faible. Les plafonds européens suivent d&#39;ailleurs cette logique, de 30:1 sur les grandes devises à 2:1 sur les cryptomonnaies.</p>
+<h3>Quels réglages faire sur ta plateforme ?</h3>
+<p>Ton levier ne se règle pas seulement dans ta tête. Avant ta première séance, prends dix minutes pour :</p>
+<ul><li>régler la quantité par défaut de ta fenêtre d&#39;ordres sur le plus petit contrat (1 micro), afin qu&#39;un clic trop rapide ne t&#39;envoie jamais un contrat plein ;</li><li>attacher un stop automatique à chaque entrée, pour qu&#39;aucune position ne reste sans protection ;</li><li>activer, si ton courtier le propose, une limite de perte journalière côté serveur ;</li><li>sur un compte CFD, choisir un levier maximum plus bas que celui proposé par défaut, quand c&#39;est possible.</li></ul>
+<p>Vérifie aussi les informations de marge publiées par ton courtier : elles changent avec la volatilité, et tout produit à levier comporte des risques que ces chiffres te rappellent.</p>
+<h3>À retenir</h3>
+<ul><li>Le levier existe sur les futures, les CFD, les options, les actions à crédit et les fonds à levier.</li><li>La perte possible n&#39;est pas la même selon le produit.</li><li>Plus l&#39;actif est volatil, plus le levier doit être faible.</li><li>Quantité par défaut sur 1 micro et stop automatique : deux réglages qui sauvent des comptes.</li></ul>
+<p>Dernière question : le levier est-il toujours un ennemi ? Pas forcément.</p>
+
+    <hr>
+
+    <h2 id="quels-sont-les-inconvenients-de-l-effet-">Quels sont les inconvénients de l&#39;effet de levier, et son vrai intérêt ?</h2>
+    <p>Le levier est un outil : son inconvénient majeur est d&#39;amplifier les pertes, mais il a un vrai intérêt quand le risque est maîtrisé. Il permet de trader un marché comme le Nasdaq avec un capital raisonnable, au lieu de devoir déposer la valeur entière d&#39;un contrat. Le danger ne vient pas du levier lui-même, mais d&#39;une taille décidée sans stop ni limite.</p>
+<h3>Ce que le levier rend possible</h3>
+<p>Sans levier, trader un MNQ demanderait des dizaines de milliers de dollars par contrat. Grâce à la marge, un compte de quelques milliers de dollars suffit. Pour un trader qui place des stops précis sur le graphique, c&#39;est ce qui rend le day trading accessible. Si tu veux voir à quoi ressemble une journée sur ce marché, je la décris dans mon article sur le <a href="https://basstrading.fr/blog/day-trading-futures/">day trading des futures</a>.</p>
+<h3>Les inconvénients à garder en tête</h3>
+<ul><li>Le glissement : ton stop n&#39;est pas un prix garanti. Sur une annonce, il peut être exécuté plus loin, et le levier amplifie l&#39;écart.</li><li>Les gaps : si tu gardes une position la nuit ou le week-end, le prix peut ouvrir bien au-delà de ton stop. C&#39;est une des raisons pour lesquelles je trade en intraday.</li><li>La psychologie : plus la taille est grosse par rapport au compte, plus chaque tick pèse sur tes décisions. Un levier trop fort te fait couper tes gains trop tôt et laisser courir tes pertes.</li><li>La marge qui change : le CME et les courtiers relèvent les marges quand la volatilité monte. Une position tenable hier peut provoquer un appel de marge aujourd&#39;hui.</li></ul>
+<h3>Le bon réflexe</h3>
+<p>Avant chaque séance, pose-toi ces trois questions : combien je risque par trade en dollars ? Combien je m&#39;autorise à perdre aujourd&#39;hui ? Combien de contrats ça me donne avec mon stop habituel ? Si tu as les trois réponses, ton levier est sous contrôle, quel que soit le ratio affiché.</p>
+<p>Le trading de contrats à terme comporte un risque élevé de perte, pouvant dépasser la mise initiale. Ce contenu est éducatif : ce n&#39;est pas un conseil en investissement ni une recommandation d&#39;acheter ou de vendre.</p>
+
+    <hr>
+
+    <h2 id="en-resume-ce-que-tu-dois-retenir-sur-l-e">En résumé : ce que tu dois retenir sur l&#39;effet de levier</h2>
+    <p>Voici l&#39;essentiel, à garder sous les yeux :</p>
+<ul><li>L&#39;effet de levier = valeur de la position ÷ capital. Un MNQ vaut environ 40 000 $ avec un Nasdaq à 20 000 points, un NQ dix fois plus.</li><li>Le levier multiplie les pertes autant que les gains. Avec un contrat plein sur un compte de 5 000 $, 1 % de mouvement peut coûter 80 % du compte.</li><li>Les CFD sont plafonnés (20:1 sur les indices majeurs pour un particulier), les futures ne le sont pas : c&#39;est la marge qui fixe ce que tu peux ouvrir, et c&#39;est à toi de te limiter.</li><li>Le bon levier se déduit de ton stop et de ton risque en dollars, jamais d&#39;un ratio choisi à l&#39;avance ni du gain espéré.</li><li>En prop firm, ton vrai capital est la perte maximale autorisée. Calcule ton levier dessus.</li></ul>
+<h3>Ta prochaine action</h3>
+<p>Ce soir, prends ton dernier trade (ou le prochain que tu prépares). Note la distance de ton stop en points, multiplie-la par la valeur du point et par ton nombre de contrats. Compare ce chiffre à ton compte. S&#39;il dépasse 1 à 2 %, tu sais quoi réduire demain.</p>
+<p>Pour aller plus loin, l&#39;article le plus logique à lire maintenant est mon guide <a href="https://basstrading.fr/blog/combien-risquer-par-trade/">combien risquer par trade</a> : il transforme ce calcul en règle fixe pour chaque séance.</p>
+<p>Cet article est tiré de mes vidéos et de mes séances de trading. Il a été mis en forme avec l&#39;aide d&#39;une IA, puis relu par moi.</p>
+
+    <p><a href="https://www.youtube.com/watch?v=3YvoeD-_BEc" target="_blank" rel="noopener">▶ Voir la vidéo de Sébastien sur ce sujet</a></p>
+
+    <div class="cta-card cta-aimant">
+      <div class="cta-card-label">Gratuit</div>
+      <h3>Tu viens de lire la théorie. Regarde-⁠la en vrai.</h3>
+      <p>Je trade une séance complète sur le Nasdaq et je dis à voix haute ce que je regarde. 35 minutes, gratuit.</p>
+      <a href="https://basstrading.fr/p/formation-offerte/?src=blog-effet-de-levier-trading" class="btn-p">Je regarde la séance →</a>
+    </div>
+    
+  </article>
+</div>
+
+<!-- FAQ -->
+<section class="faq-sec">
+  <div class="sec-center"><div class="sec-label">FAQ</div><h2 class="sec-title">Questions fréquentes</h2></div>
+  <div class="faq-list">
+    <div class="fi"><button class="fq" onclick="tf(this)">Quel effet de levier choisir quand on débute en trading ? <span class="fq-icon">+</span></button><div class="fa"><p>Ne choisis pas un ratio : fixe d&#39;abord ta perte maximale par trade (souvent 0,5 à 1 % du compte), place ton stop sur le graphique, puis calcule ta taille. Sur le Nasdaq futures, ça donne presque toujours un ou deux micros (MNQ) pour un débutant, jamais un contrat plein. Le levier qui en découle est le bon pour ton compte.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Comment calculer l&#39;effet de levier ? <span class="fq-icon">+</span></button><div class="fa"><p>Divise la valeur totale de ta position par le capital de ton compte. Sur un contrat à terme, la valeur de la position = cours de l&#39;indice × valeur du point × nombre de contrats. Exemple : 1 MNQ à 20 000 points vaut 40 000 $ ; sur un compte de 5 000 $, le levier est de 8:1. Calcule aussi ton risque au stop : points × valeur du point × contrats.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">C&#39;est quoi le levier financier ? <span class="fq-icon">+</span></button><div class="fa"><p>Le levier financier consiste à utiliser de l&#39;argent emprunté ou une garantie partielle afin de s&#39;exposer à un actif pour une valeur supérieure à ses propres fonds. En entreprise, c&#39;est s&#39;endetter pour investir ; en trading, c&#39;est la marge qui te permet de contrôler une position plus grosse que ton capital. Gains et pertes sont amplifiés de la même façon.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Peut-on perdre plus que sa mise avec l&#39;effet de levier ? <span class="fq-icon">+</span></button><div class="fa"><p>Sur les futures, oui : un mouvement brutal ou un gap peut créer une perte supérieure au capital du compte, et tu restes redevable de la différence envers ton courtier. Sur les CFD vendus aux particuliers dans l&#39;Union européenne, une protection contre le solde négatif empêche le compte de passer sous zéro, mais le risque de tout perdre reste réel.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Quel est l&#39;effet de levier maximum autorisé en France ? <span class="fq-icon">+</span></button><div class="fa"><p>Pour les CFD vendus aux particuliers, les règles de l&#39;ESMA reprises par l&#39;AMF fixent 30:1 sur les paires de devises majeures, 20:1 sur les indices majeurs et l&#39;or, 10:1 sur les matières premières et autres indices, 5:1 sur les actions et 2:1 sur les cryptomonnaies. Les futures n&#39;ont pas de ratio réglementaire : c&#39;est la marge exigée qui détermine le levier.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Quels sont les inconvénients de l&#39;effet de levier ? <span class="fq-icon">+</span></button><div class="fa"><p>Il amplifie les pertes autant que les gains, peut faire perdre plus que la mise sur les futures, rend chaque glissement et chaque gap plus coûteux, et pèse lourd sur la psychologie : une taille trop grosse fait couper les gains trop tôt et laisser filer les pertes. Les marges peuvent aussi être relevées quand la volatilité monte.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Quelle est la différence entre levier et marge ? <span class="fq-icon">+</span></button><div class="fa"><p>La marge est la somme que ton courtier bloque en garantie pour te laisser ouvrir une position. Le levier est le rapport entre la valeur de cette position et ton capital. Ils sont liés par une formule simple : levier maximum = 1 ÷ taux de marge. Une marge de 5 % permet donc un levier maximum de 20:1.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Comment réduire son effet de levier ? <span class="fq-icon">+</span></button><div class="fa"><p>Sur les futures, le levier se règle par la taille : passe du contrat plein (NQ) au micro (MNQ), réduis le nombre de contrats ou augmente le capital du compte. Règle aussi la quantité par défaut de ta fenêtre d&#39;ordres sur 1 micro. Dans tous les cas, le vrai réglage reste ton risque en dollars au stop.</p></div></div>
+  </div>
+</section>
+
+<!-- Related -->
+<section class="related-sec">
+  <div class="sec-center"><div class="sec-label">Continuer la lecture</div><h2 class="sec-title">Articles connexes</h2></div>
+  <div class="related-grid">
+    <a href="/blog/market-profile-guide-complet/" class="related-card"><div class="related-cat">Guide</div><h3>Market Profile : le guide complet pour débutants</h3><p>Value Area, POC, types de journées — tout pour commencer.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/order-flow-trading-france/" class="related-card"><div class="related-cat">Méthode</div><h3>Order Flow Trading : pourquoi personne ne l'enseigne en France</h3><p>Le carnet d'ordres et le flux institutionnel décryptés.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/sierra-chart-configuration/" class="related-card"><div class="related-cat">Tutoriel</div><h3>Sierra Chart : configuration complète</h3><p>Le setup pas à pas pour le Market Profile et le Footprint.</p><span class="related-link">Lire &rarr;</span></a>
+  </div>
+</section>
+
+<!-- serie:debut --><style>.serie-w{background:#FFF;color:#1D1D1F;border-top:1px solid #F5F5F7}.serie{max-width:1060px;margin:0 auto;padding:56px 24px;font-family:inherit;box-sizing:border-box}.serie-l{font-size:.6rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#0066FF;margin-bottom:8px}.serie-w .serie h2{font-size:1.4rem;font-weight:800;letter-spacing:-.5px;color:#1D1D1F!important;margin:0 0 18px;font-family:inherit}.serie ul{list-style:none;padding:0;margin:0 0 22px;display:grid;grid-template-columns:repeat(2,1fr);gap:8px 24px}.serie-w .serie li a{color:#1D1D1F!important;font-size:.9rem;line-height:1.45;text-decoration:none;border-bottom:1px solid #D2D2D7}.serie li a:hover{color:#0066FF}.serie li.pil a{font-weight:700}.serie-o{background:#F5F5F7;border-radius:14px;padding:18px 20px;font-size:.88rem;line-height:1.55;color:#1D1D1F}.serie-w .serie-o a{color:#0066FF!important;font-weight:700}@media(max-width:700px){.serie ul{grid-template-columns:1fr}}</style><div class="serie-w"><aside class="serie" aria-label="Dans la même série"><div class="serie-l">Dans la même série</div><h2>Trouver sa méthode de trading</h2><ul><li class="pil"><a href="/blog/methode-de-trading/">Méthode de trading : comment trouver celle qui te correspond</a></li><li class=""><a href="/blog/types-trading-differences/">Les Types de Trading : Lequel Choisir Selon Votre Profil ? (2026)</a></li><li class=""><a href="/blog/debuter-trading-zero-guide/">Débuter le trading de zéro : par où commencer (guide 2026)</a></li><li class=""><a href="/blog/devenir-trader-sans-diplome/">Devenir trader sans diplôme ni formation : 5 étapes réalistes</a></li><li class=""><a href="/blog/livre-trading/">Livre trading : les meilleurs pour apprendre (et l'ordre)</a></li><li class=""><a href="/blog/formation-trading/">Formation trading : contenu, prix, CPF et pièges à éviter</a></li><li class=""><a href="/blog/formation-trading-gratuite/">Formation trading gratuite : ce qu'on apprend sans payer</a></li><li class=""><a href="/blog/quelle-formation-trading-choisir/">Quelle formation trading choisir en 2026 ? 7 critères pour comparer</a></li><li class=""><a href="/blog/arnaque-trading/">Arnaque au trading : les 7 pièges et que faire si tu es victime</a></li><li class=""><a href="/blog/bookmap-heatmap/">Bookmap : lire la heatmap, prix réels et avis de trader</a></li><li class=""><a href="/blog/deepcharts-avis/">DeepCharts avis : prix, Mac, MBO et limites (2026)</a></li><li class=""><a href="/blog/fibonacci-trading/">Fibonacci trading : niveaux, tracé et ce qui tient vraiment</a></li><li class=""><a href="/blog/flux-ordres-tradingview/">Order flow sur TradingView : ce qu'on voit vraiment (et ses limites)</a></li><li class=""><a href="/blog/gocharting-avis/">GoCharting : mon avis sur l'order flow dans le navigateur</a></li><li class=""><a href="/blog/ichimoku-trading/">Ichimoku : comment lire le nuage, ses signaux et ses limites</a></li><li class=""><a href="/blog/lucid-trading/">Lucid Trading avis : règles, drawdown et payout (2026)</a></li><li class=""><a href="/blog/methode-wyckoff/">Méthode Wyckoff : accumulation, distribution et spring</a></li><li class=""><a href="/blog/motivewave-avis/">MotiveWave avis : prix, version gratuite, Mac et order flow</a></li><li class=""><a href="/blog/price-action-trading/">Price action : ce que c'est, et ce que la bougie ne montre pas</a></li><li class=""><a href="/blog/quantower-avis/">Quantower avis : version gratuite, footprint, Mac et prix (2026)</a></li><li class=""><a href="/blog/rsi-trading/">RSI trading : réglages, divergences et limites (guide)</a></li><li class=""><a href="/blog/take-profit-trading/">Take profit : où placer ton objectif sur les futures (exemples MNQ)</a></li><li class=""><a href="/blog/topstep/">Topstep avis : règles, drawdown et payout expliqués (2026)</a></li><li class=""><a href="/blog/tradeify/">Tradeify avis 2026 : règles, drawdown, payouts et pièges</a></li></ul><div class="serie-o"><a href="/formations/">Toutes les formations de Bass</a> : plus de 250 leçons vidéo, du débutant au Market Profile avancé. Pour commencer sans payer : <a href="/p/formation-offerte/?src=serie-effet-de-levier-trading">la formation offerte</a> (7 leçons vidéo).</div></aside></div><!-- serie:fin -->
+<footer class="footer">
+  <div class="ft-top"><div class="ft-logo">BASS</div><div class="ft-cols">
+    <div class="ft-col"><div class="ft-col-title">Programme</div><a href="/formations/">Toutes les formations</a><a href="https://basstrading.fr/#methode">Méthode</a><a href="https://basstrading.fr/#programme">Programme</a><a href="https://basstrading.fr/p/formation-offerte/?src=blog-effet-de-levier-trading-pied">Formation offerte</a></div>
+    <div class="ft-col"><div class="ft-col-title">Ressources</div><a href="/blog/market-profile-guide-complet/">Market Profile</a><a href="/blog/footprint-chart-trading/">Footprint Chart</a><a href="/blog/order-flow-trading-france/">Order Flow</a></div>
+  </div></div>
+  <div class="ft-bottom"><span>&copy; 2026 BASS — Sébastien Constant</span><div><a href="/mentions-legales/">Mentions légales</a><a href="/confidentialite/">Confidentialité</a><a href="/cgv/">CGV</a><a href="mailto:contact@basstrading.fr">Contact</a></div></div>
+</footer>
+<div class="disclaimer">Le trading comporte des risques de perte en capital. Les performances passées ne préjugent pas des performances futures. Ce site ne constitue pas un conseil en investissement.</div>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+const lenis=new Lenis({duration:1.2,easing:t=>Math.min(1,1.001-Math.pow(2,-10*t))});
+function raf(t){lenis.raf(t);requestAnimationFrame(raf)}requestAnimationFrame(raf);
+lenis.on('scroll',ScrollTrigger.update);gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0);
+const tl=gsap.timeline();
+tl.to('.pre-word span',{y:0,opacity:1,duration:.5,stagger:.1,ease:'power3.out',delay:.3}).to('#preLine',{width:'80px',duration:.7,ease:'power2.inOut'},'<+.2').to('.preloader',{yPercent:-100,duration:.8,ease:'power3.inOut',delay:.4}).set('.preloader',{display:'none'}).to('#nav',{opacity:1,y:0,duration:.5},'<+.1');
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);const h=document.documentElement.scrollHeight-window.innerHeight;document.getElementById('readingProgress').style.width=(window.scrollY/h*100)+'%'});
+const tocLinks=document.querySelectorAll('.toc a');const sections=Array.from(tocLinks).map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+window.addEventListener('scroll',()=>{let c='';sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)c=s.id});tocLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+c)})});
+function tf(b){const i=b.closest('.fi'),a=b.nextElementSibling,o=i.classList.contains('active');document.querySelectorAll('.fi').forEach(x=>{x.classList.remove('active');x.querySelector('.fa').classList.remove('open')});if(!o){i.classList.add('active');a.classList.add('open')}}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();lenis.scrollTo(t,{offset:-60})}})});
+</script>
+<script src="/v.js" defer></script>
+</body>
+</html>
