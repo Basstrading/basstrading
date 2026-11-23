@@ -16,14 +16,16 @@
   <meta property="og:url" content="https://basstrading.fr/blog/sp-500-futures-es-mes/">
   <meta property="og:site_name" content="BASS Trading">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Footprint trading : lire un footprint chart (guide + outils)">
+  <meta name="twitter:description" content="Lire un footprint chart : bid × ask, delta, imbalances, absorption. Les outils footprint comparés (Sierra, ATAS, TradingView) et 3 lectures sur le Nasdaq.">
   <link rel="canonical" href="https://basstrading.fr/blog/sp-500-futures-es-mes/">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Article","@id":"https://basstrading.fr/blog/sp-500-futures-es-mes/#article","headline":"S&P 500 futures : ES ou MES, valeur du point et horaires","description":"S&P 500 futures : ES ou MES, valeur du point et du tick, horaires en heure de Paris, marge, échéances et choix face au Nasdaq. Exemples chiffrés.","datePublished":"2026-11-16","dateModified":"2026-11-16","inLanguage":"fr-FR","image":"https://basstrading.fr/blog/sp-500-futures-es-mes/blog-sp-500-futures-es-mes-1.webp","mainEntityOfPage":"https://basstrading.fr/blog/sp-500-futures-es-mes/","isPartOf":{"@type":"WebSite","@id":"https://basstrading.fr/#website","name":"BASS Trading","url":"https://basstrading.fr/"},"author":{"@type":"Person","@id":"https://basstrading.fr/#sebastien-constant","name":"Sébastien Constant","url":"https://basstrading.fr/auteur/sebastien-constant/"},"publisher":{"@type":"Organization","@id":"https://basstrading.fr/#organisation","name":"BASS Trading","url":"https://basstrading.fr/","logo":{"@type":"ImageObject","url":"https://basstrading.fr/images/logo-basstrading.png","width":512,"height":512}}}
+  {"@context":"https://schema.org","@type":"Article","@id":"https://basstrading.fr/blog/sp-500-futures-es-mes/#article","headline":"S&P 500 futures : ES ou MES, valeur du point et horaires","description":"S&P 500 futures : ES ou MES, valeur du point et du tick, horaires en heure de Paris, marge, échéances et choix face au Nasdaq. Exemples chiffrés.","datePublished":"2026-11-16","dateModified":"2026-11-23","inLanguage":"fr-FR","image":"https://basstrading.fr/blog/sp-500-futures-es-mes/blog-sp-500-futures-es-mes-1.webp","mainEntityOfPage":"https://basstrading.fr/blog/sp-500-futures-es-mes/","isPartOf":{"@type":"WebSite","@id":"https://basstrading.fr/#website","name":"BASS Trading","url":"https://basstrading.fr/"},"author":{"@type":"Person","@id":"https://basstrading.fr/#sebastien-constant","name":"Sébastien Constant","url":"https://basstrading.fr/auteur/sebastien-constant/"},"publisher":{"@type":"Organization","@id":"https://basstrading.fr/#organisation","name":"BASS Trading","url":"https://basstrading.fr/","logo":{"@type":"ImageObject","url":"https://basstrading.fr/images/logo-basstrading.png","width":512,"height":512}}}
   </script>
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://basstrading.fr"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://basstrading.fr/blog/"},{"@type":"ListItem","position":3,"name":"S&P 500 futures : ES ou MES","item":"https://basstrading.fr/blog/sp-500-futures-es-mes/"}]}
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://basstrading.fr"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://basstrading.fr/blog/"},{"@type":"ListItem","position":3,"name":"S&P 500 futures ES et MES","item":"https://basstrading.fr/blog/sp-500-futures-es-mes/"}]}
   </script>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Combien vaut un point sur le S&P 500 futures ?","acceptedAnswer":{"@type":"Answer","text":"Un point vaut 50 $ sur l'E-mini S&P 500 (ES) et 5 $ sur le Micro E-mini (MES), selon les spécifications du CME. Le plus petit mouvement, le tick, fait 0,25 point : 12,50 $ sur l'ES et 1,25 $ sur le MES. Pour connaître ton risque, multiplie la distance de ton stop en points par la valeur du point et par le nombre de contrats."}},{"@type":"Question","name":"Quelle est la différence entre ES et MES ?","acceptedAnswer":{"@type":"Answer","text":"Les deux contrats suivent le même indice, au même prix et aux mêmes heures. Le MES, lancé par le CME en mai 2019, vaut un dixième de l'ES : 5 $ le point au lieu de 50 $. Dix MES représentent donc la même exposition qu'un ES. Le MES permet d'ajuster finement sa taille de position avec un petit compte."}},{"@type":"Question","name":"À quelle heure ouvre le S&P 500 futures en France ?","acceptedAnswer":{"@type":"Answer","text":"Le contrat cote de la nuit de dimanche à lundi (minuit, heure de Paris) au vendredi 23 h, avec une pause chaque jour de 23 h à minuit. La séance la plus active commence à 15 h 30, à l'ouverture de Wall Street. Pendant les semaines de décalage des changements d'heure (mars, fin octobre), l'ouverture américaine passe à 14 h 30 à Paris."}},{"@type":"Question","name":"Quel capital faut-il pour trader le MES ?","acceptedAnswer":{"@type":"Answer","text":"Il n'y a pas de montant universel : la marge dépend du courtier et change avec la volatilité. Le bon calcul part de ta règle de risque. Avec 1 % de risque par trade et un stop de 8 points (40 $ par MES), il faut au moins 4 000 $ pour un contrat. Si ton compte est plus petit, entraîne-toi d'abord en simulation."}},{"@type":"Question","name":"Qu'est-ce qui fait bouger le prix du S&P 500 futures ?","acceptedAnswer":{"@type":"Answer","text":"Les décisions de la Fed et les anticipations de taux, les statistiques américaines (inflation, emploi), publiées souvent à 14 h 30 heure de Paris, et les résultats des plus grosses entreprises de l'indice. Pendant la séance, le flux d'ordres montre si un mouvement est accepté ou rejeté par le marché."}},{"@type":"Question","name":"Vaut-il mieux trader le S&P 500 ou le Nasdaq futures ?","acceptedAnswer":{"@type":"Answer","text":"Aucun n'est meilleur dans l'absolu. Le S&P 500 a un carnet d'ordres plus épais et des mouvements plus progressifs ; le Nasdaq a un carnet plus léger et bouge plus vite. Si la vitesse du Nasdaq te fait prendre de mauvaises décisions, le S&P peut mieux te convenir. Teste les deux en simulation avant de choisir."}}]}
@@ -155,7 +157,7 @@
     <nav class="breadcrumb" aria-label="Fil d'Ariane">
       <a href="https://basstrading.fr">Accueil</a><span class="sep">/</span>
       <a href="https://basstrading.fr/blog/">Blog</a><span class="sep">/</span>
-      <span>S&amp;P 500 futures : ES ou MES</span>
+      <span>S&amp;P 500 futures ES et MES</span>
     </nav>
     <div class="blog-hero-cat">Futures</div>
     <h1 class="blog-hero-title">S&amp;P 500 futures : ES ou MES, valeur du point et horaires</h1>
@@ -166,7 +168,7 @@
         <div><div class="blog-meta-name"><a href="/auteur/sebastien-constant/" rel="author" style="color:inherit;text-decoration:none">Sébastien Constant</a></div><div class="blog-meta-role">Trader & Formateur Order Flow</div></div>
       </div>
       <div class="blog-meta-sep"></div>
-      <div class="blog-meta-info"><span>Novembre 2026</span><span>24 min de lecture</span></div>
+      <div class="blog-meta-info"><span>Mis à jour en novembre 2026</span><span>24 min de lecture</span></div>
     </div>
   </div>
 </section>
@@ -196,7 +198,7 @@
   <article class="article-body">
     <h2 id="qu-est-ce-que-le-s-p-500-futures">Qu&#39;est-ce que le S&amp;P 500 futures ?</h2>
     <p>Tu veux trader le S&amp;P 500 sans passer par un CFD, mais tu tombes sur ES, MES, ticks, échéances et marges, le tout en anglais. Résultat : tu ne sais même pas combien te coûte un point. À la fin de cet article, tu sauras lire une fiche de contrat, calculer ton risque en dollars et choisir entre l&#39;ES et le MES.</p>
-<p>Le S&amp;P 500 futures est un contrat à terme coté au CME de Chicago dont le prix suit l&#39;indice S&amp;P 500 ; il existe en taille E-mini (ES, 50 $ par point) et Micro E-mini (MES, 5 $ par point).</p>
+<p><b>Le S&amp;P 500 futures est un contrat à terme coté au CME de Chicago dont le prix suit l&#39;indice S&amp;P 500 ; il existe en taille E-mini (ES, 50 $ par point) et Micro E-mini (MES, 5 $ par point).</b></p>
 <p>Concrètement, tu n&#39;achètes pas d&#39;actions. Tu prends une position sur la valeur future de l&#39;indice, avec un contrat standardisé, échangé sur la plateforme électronique Globex du CME. Le contrat est réglé en espèces : à l&#39;échéance, personne ne te livre 500 actions, on solde simplement la différence en dollars.</p>
 <h3>Pourquoi les traders particuliers s&#39;y intéressent</h3>
 <p>Le future a trois avantages concrets sur un CFD :</p>
@@ -214,13 +216,13 @@
     <hr>
 
     <h2 id="es-ou-mes-quelle-difference-entre-les-de">ES ou MES : quelle différence entre les deux contrats ?</h2>
-    <p>L&#39;ES et le MES suivent exactement le même indice, au même prix, aux mêmes heures. La seule vraie différence est la taille : le MES vaut un dixième de l&#39;ES.</p>
+    <p>L&#39;ES et le MES suivent exactement le même indice, au même prix, aux mêmes heures. <b>La seule vraie différence est la taille : le MES vaut un dixième de l&#39;ES.</b></p>
 <p>Le CME a lancé les Micro E-mini en mai 2019 sur le S&amp;P 500, le Nasdaq-100, le Russell 2000 et le Dow Jones, avec une taille d&#39;« un dixième » des E-mini existants (<a href="https://www.prnewswire.com/news-releases/cme-group-makes-global-equity-benchmarks-more-accessible-to-active-traders-with-launch-of-micro-e-mini-futures-300809869.html">communiqué du CME Group, 11/03/2019</a>). L&#39;objectif affiché : permettre à des traders de toutes tailles d&#39;ajuster leur exposition plus finement.</p>
 <h3>La fiche des deux contrats côte à côte</h3>
 <p>Voici ce qu&#39;indiquent les spécifications officielles du CME pour l&#39;<a href="https://www.cmegroup.com/markets/equities/sp/e-mini-sandp500.contractSpecs.html">E-mini S&amp;P 500</a> et le <a href="https://www.cmegroup.com/markets/equities/sp/micro-e-mini-sandp-500.contractSpecs.html">Micro E-mini S&amp;P 500</a> :</p>
 <div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Élément</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">ES (E-mini)</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">MES (Micro)</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Valeur d&#39;un point</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">50 $</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">5 $</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Tick minimal</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">0,25 point</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">0,25 point</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Valeur d&#39;un tick</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">12,50 $</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">1,25 $</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Échéances</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Mars, juin, sept., déc.</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Mars, juin, sept., déc.</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Règlement</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">En espèces</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">En espèces</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Équivalence</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">1 ES</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">10 MES</td></tr></tbody></table></div>
 <h3>Ce que ça change pour toi</h3>
-<p>Avec 10 MES, tu as exactement la même exposition qu&#39;avec 1 ES. Mais l&#39;inverse n&#39;est pas vrai : avec un ES, tu ne peux pas « prendre la moitié ». Le MES te donne donc une chose précieuse quand tu débutes : la granularité. Tu peux trader 1, 2 ou 3 MES et ajuster ta taille au millimètre selon ton stop.</p>
+<p>Avec 10 MES, tu as exactement la même exposition qu&#39;avec 1 ES. Mais l&#39;inverse n&#39;est pas vrai : avec un ES, tu ne peux pas « prendre la moitié ». <b>Le MES te donne donc une chose précieuse quand tu débutes : la granularité.</b> Tu peux trader 1, 2 ou 3 MES et ajuster ta taille au millimètre selon ton stop.</p>
 <p>L&#39;ES garde un intérêt pour les comptes plus gros : une seule commission au lieu de dix, et un carnet encore plus profond. Mais tant que ton compte ne permet pas de risquer plusieurs centaines de dollars par trade sans dépasser ta règle de risque, l&#39;ES n&#39;est pas pour toi.</p>
 <p>J&#39;ai fait le même raisonnement pour le Nasdaq dans mon article <a href="https://basstrading.fr/blog/nq-ou-mnq/">NQ ou MNQ : quel contrat choisir pour débuter</a> : la logique est identique, seuls les montants changent.</p>
 <h3>À retenir</h3>
@@ -230,7 +232,7 @@
     <hr>
 
     <h2 id="combien-vaut-un-point-et-un-tick-sur-l-e">Combien vaut un point et un tick sur l&#39;ES et le MES ?</h2>
-    <p>Un point de S&amp;P 500 vaut 50 $ sur l&#39;ES et 5 $ sur le MES ; le plus petit mouvement possible, le tick, fait 0,25 point, soit 12,50 $ sur l&#39;ES et 1,25 $ sur le MES.</p>
+    <p><b>Un point de S&amp;P 500 vaut 50 $ sur l&#39;ES et 5 $ sur le MES ; le plus petit mouvement possible, le tick, fait 0,25 point, soit 12,50 $ sur l&#39;ES et 1,25 $ sur le MES.</b></p>
 <p>Comme je le rappelle dans ma vidéo sur la gestion du risque, <a href="https://www.youtube.com/watch?v=3YvoeD-_BEc&amp;t=1316s">« un lot plein, je te rappelle, c&#39;est 20 dollars le point sur le Nasdaq »</a>, et <a href="https://www.youtube.com/watch?v=3YvoeD-_BEc&amp;t=1321s">sur le S&amp;P c&#39;est 50 dollars</a> le point. Beaucoup de débutants pensent que le S&amp;P est « plus calme », donc moins risqué. En dollars par point, c&#39;est l&#39;inverse.</p>
 <h3>La formule à connaître par cœur</h3>
 <p>Ton résultat sur un trade se calcule toujours de la même façon :</p>
@@ -243,7 +245,7 @@
 <p>Tu ne déposes pas cette somme : tu déposes une marge (on y vient plus bas). C&#39;est précisément l&#39;effet de levier. Et c&#39;est pour ça qu&#39;un mouvement normal de l&#39;indice peut te coûter bien plus que ce que tu imaginais.</p>
 <h3>Une journée ordinaire, traduite en dollars</h3>
 <p>Un mouvement de 1 % du S&amp;P 500, à 7 500 points, c&#39;est 75 points. Sur 1 MES, ça fait 375 $. Sur 1 ES, 3 750 $. Pas besoin d&#39;un krach : une journée de publication d&#39;inflation ou de décision de la Fed suffit pour ce genre d&#39;amplitude.</p>
-<p>Avant de cliquer, tu dois toujours savoir combien tu perds en dollars si ton stop est touché. Si tu ne peux pas répondre en deux secondes, tu n&#39;es pas prêt à prendre le trade.</p>
+<p><b>Avant de cliquer, tu dois toujours savoir combien tu perds en dollars si ton stop est touché.</b> Si tu ne peux pas répondre en deux secondes, tu n&#39;es pas prêt à prendre le trade.</p>
 <h3>À retenir</h3>
 <ul><li>ES : 50 $ le point, 12,50 $ le tick. MES : 5 $ le point, 1,25 $ le tick.</li><li>Résultat = points × valeur du point × contrats.</li><li>1 ES expose à environ 375 000 $ quand l&#39;indice est vers 7 500.</li></ul>
 <p>Tu connais maintenant le prix d&#39;un point. Encore faut-il savoir à quelle heure ces points bougent.</p>
@@ -251,7 +253,7 @@
     <hr>
 
     <h2 id="a-quelle-heure-trader-le-s-p-500-futures">À quelle heure trader le S&amp;P 500 futures depuis la France ?</h2>
-    <p>Le S&amp;P 500 futures s&#39;échange sur Globex du dimanche soir au vendredi soir, presque sans interruption : de minuit à 23 h, heure de Paris, avec une pause d&#39;une heure chaque soir.</p>
+    <p><b>Le S&amp;P 500 futures s&#39;échange sur Globex du dimanche soir au vendredi soir, presque sans interruption : de minuit à 23 h, heure de Paris, avec une pause d&#39;une heure chaque soir.</b></p>
 <p>Le CME publie ses horaires en heure de Chicago (CT) : ouverture le dimanche à 17 h CT, clôture le vendredi à 16 h CT, avec un arrêt quotidien de 16 h à 17 h CT (<a href="https://www.cmegroup.com/markets/equities/sp/e-mini-sandp500.contractSpecs.html">spécifications de l&#39;E-mini S&amp;P 500, CME</a>). Chicago a 7 heures de retard sur Paris la plupart de l&#39;année.</p>
 <h3>Les quatre heures qui comptent vraiment</h3>
 <ul><li>minuit (nuit de dimanche à lundi) : réouverture de Globex après le week-end ;</li><li>15 h 30 : ouverture de la Bourse de New York, le volume explose ;</li><li>22 h : clôture de Wall Street, le marché se calme ;</li><li>23 h à minuit : la pause quotidienne du contrat.</li></ul>
@@ -260,7 +262,7 @@
 <p>Les États-Unis et l&#39;Europe ne changent pas d&#39;heure le même jour. Pendant environ deux semaines en mars, et une semaine entre fin octobre et début novembre, l&#39;écart tombe à 6 heures : l&#39;ouverture de Wall Street passe à 14 h 30 à Paris. Chaque année, des débutants ratent leur séance ou entrent au mauvais moment pour cette seule raison.</p>
 <p>J&#39;ai détaillé tous ces cas, semaine par semaine, dans mon article sur les <a href="https://basstrading.fr/blog/horaires-futures-nasdaq-heure-paris/">horaires des futures Nasdaq en heure de Paris</a> : ils s&#39;appliquent tels quels au S&amp;P 500, puisque les deux contrats partagent le même calendrier sur Globex.</p>
 <h3>Quand regarder le S&amp;P dans ta journée</h3>
-<p>Ma fenêtre de travail, c&#39;est l&#39;ouverture américaine. Avant, je prépare mes niveaux, et j&#39;attends. Comme je l&#39;ai écrit un matin : « Zone de vente devant moi. Je ne clique pas. J&#39;attends l&#39;ouverture. » C&#39;est là que le volume est le plus fort et que le carnet d&#39;ordres raconte quelque chose. Un marché sans participants ne te donne pas d&#39;information fiable.</p>
+<p>Ma fenêtre de travail, c&#39;est l&#39;ouverture américaine. Avant, je prépare mes niveaux, et j&#39;attends. Comme je l&#39;ai écrit un matin : « Zone de vente devant moi. Je ne clique pas. J&#39;attends l&#39;ouverture. » C&#39;est là que le volume est le plus fort et que le carnet d&#39;ordres raconte quelque chose. <b>Un marché sans participants ne te donne pas d&#39;information fiable.</b></p>
 <h3>À retenir</h3>
 <ul><li>Globex : de minuit à 23 h, heure de Paris, du dimanche soir au vendredi soir.</li><li>15 h 30 : ouverture de Wall Street, la fenêtre la plus active.</li><li>Attention aux semaines de décalage horaire en mars et fin octobre.</li></ul>
 <p>Tu sais quand trader. Reste à savoir combien ton courtier va bloquer sur ton compte pour te laisser ouvrir une position.</p>
@@ -272,14 +274,14 @@
     <hr>
 
     <h2 id="quelle-marge-faut-il-pour-trader-l-es-ou">Quelle marge faut-il pour trader l&#39;ES ou le MES ?</h2>
-    <p>La marge est le dépôt de garantie que ton courtier bloque quand tu ouvres une position ; elle ne correspond ni à ton risque réel ni à la somme que tu peux perdre.</p>
+    <p><b>La marge est le dépôt de garantie que ton courtier bloque quand tu ouvres une position ; elle ne correspond ni à ton risque réel ni à la somme que tu peux perdre.</b></p>
 <p>Il existe deux marges différentes, et la confusion entre les deux est à l&#39;origine de beaucoup de comptes vidés.</p>
 <h3>Marge de la chambre de compensation et marge intraday</h3>
 <ul><li>La marge de maintien est fixée par le CME. Elle s&#39;applique si tu gardes ta position après la clôture. Le CME la modifie quand la volatilité change.</li><li>La marge intraday est fixée par ton courtier (le broker), pour les positions ouvertes et fermées dans la journée. Certains courtiers la mettent très bas pour attirer les traders. C&#39;est un argument commercial, pas un conseil.</li></ul>
 <p>Je ne te donne volontairement aucun montant : il change selon le courtier, selon le moment et selon la volatilité. Vérifie toujours le chiffre du jour chez le tien. Sur les grandes plateformes de futures, la page tarifaire l&#39;indique ; je montre où la trouver dans mon <a href="https://basstrading.fr/blog/tradovate-avis/">avis sur Tradovate</a> et dans mon <a href="https://basstrading.fr/blog/ninjatrader-avis/">avis sur NinjaTrader</a>.</p>
 <h3>Pourquoi une marge faible est un piège</h3>
 <p>Une marge intraday basse te permet d&#39;ouvrir un ES avec quelques centaines de dollars. Ça ne veut pas dire que tu dois le faire. Reprends le calcul : un mouvement ordinaire de 1 % du S&amp;P coûte 3 750 $ sur un ES. Si ton compte en contient 2 000, le problème est évident.</p>
-<p>La marge te dit ce que tu peux ouvrir. Ta règle de risque te dit ce que tu dois ouvrir. Ce n&#39;est pas la même chose, et c&#39;est toujours la seconde qui gagne.</p>
+<p><b>La marge te dit ce que tu peux ouvrir. Ta règle de risque te dit ce que tu dois ouvrir.</b> Ce n&#39;est pas la même chose, et c&#39;est toujours la seconde qui gagne.</p>
 <h3>Et si la perte dépasse le dépôt ?</h3>
 <p>Sur les futures, la perte peut dépasser ce que tu as déposé. Si un mouvement violent traverse ton stop (un gap à l&#39;ouverture, une annonce imprévue), ton courtier peut te demander de remettre de l&#39;argent. C&#39;est rare en intraday avec un stop placé, mais ça existe. Règle simple : ne mets jamais sur un compte de trading de l&#39;argent dont tu as besoin.</p>
 <h3>À retenir</h3>
@@ -289,16 +291,16 @@
     <hr>
 
     <h2 id="comment-fonctionnent-les-echeances-et-le">Comment fonctionnent les échéances et le rollover ?</h2>
-    <p>Le S&amp;P 500 futures expire quatre fois par an, en mars, juin, septembre et décembre ; avant l&#39;échéance, les traders passent au contrat suivant : c&#39;est le rollover.</p>
+    <p><b>Le S&amp;P 500 futures expire quatre fois par an, en mars, juin, septembre et décembre ; avant l&#39;échéance, les traders passent au contrat suivant : c&#39;est le rollover.</b></p>
 <p>Chaque échéance porte une lettre : H pour mars, M pour juin, U pour septembre, Z pour décembre. Ajoute l&#39;année, et tu obtiens le symbole. ESZ26, c&#39;est l&#39;E-mini S&amp;P 500 de décembre 2026 ; MESH27, le Micro de mars 2027.</p>
 <h3>Les dates à connaître</h3>
 <p>Selon les spécifications du CME, la cotation d&#39;un contrat s&#39;arrête le troisième vendredi du mois d&#39;échéance, à l&#39;ouverture de New York. Concrètement :</p>
 <ul><li>le contrat de décembre 2026 expire le vendredi 18 décembre 2026 ;</li><li>celui de mars 2027 expire le vendredi 19 mars 2027.</li></ul>
 <h3>Quand passer au contrat suivant</h3>
 <p>Tu n&#39;attends pas le dernier jour. Environ une semaine avant l&#39;échéance, le volume bascule sur le contrat suivant : les gros participants roulent leurs positions. À partir de là, l&#39;ancien contrat devient moins liquide, et ses mouvements sont moins représentatifs.</p>
-<p><b>Repère pratique :</b> dès que le volume du contrat suivant dépasse celui du contrat en cours, change de symbole sur tous tes graphiques. Un contrat continu peut le faire tout seul sur la plupart des plateformes, mais vérifie à la main la semaine du rollover.</p>
+<p>Repère pratique : dès que le volume du contrat suivant dépasse celui du contrat en cours, change de symbole sur tous tes graphiques. Un contrat continu peut le faire tout seul sur la plupart des plateformes, mais vérifie à la main la semaine du rollover.</p>
 <h3>Le piège de l&#39;écart entre deux échéances</h3>
-<p>Le contrat de mars ne cote pas au même prix que celui de décembre : l&#39;écart reflète les taux d&#39;intérêt et les dividendes attendus. Si tu as tracé tes niveaux (zone de valeur, VWAP de la veille, plus haut de la semaine) sur l&#39;ancien contrat, ils sont décalés sur le nouveau. Retrace-les. C&#39;est une erreur fréquente chez les débutants : des niveaux justes, mais sur le mauvais contrat.</p>
+<p>Le contrat de mars ne cote pas au même prix que celui de décembre : l&#39;écart reflète les taux d&#39;intérêt et les dividendes attendus. Si tu as tracé tes niveaux (zone de valeur, VWAP de la veille, plus haut de la semaine) sur l&#39;ancien contrat, ils sont décalés sur le nouveau. <b>Retrace-les.</b> C&#39;est une erreur fréquente chez les débutants : des niveaux justes, mais sur le mauvais contrat.</p>
 <h3>À retenir</h3>
 <ul><li>Quatre échéances par an : H, M, U, Z.</li><li>Fin de cotation le troisième vendredi du mois d&#39;échéance.</li><li>On roule environ une semaine avant, quand le volume bascule.</li></ul>
 <p>Tu as maintenant toute la mécanique. La vraie question arrive : pourquoi choisir le S&amp;P plutôt que le Nasdaq, ou l&#39;inverse ?</p>
@@ -306,7 +308,7 @@
     <hr>
 
     <h2 id="s-p-500-ou-nasdaq-futures-lequel-choisir">S&amp;P 500 ou Nasdaq futures : lequel choisir ?</h2>
-    <p>Le S&amp;P 500 futures a un carnet d&#39;ordres plus épais et des mouvements plus progressifs ; le Nasdaq futures a un carnet plus léger et des mouvements plus nerveux. Le bon choix dépend de ton tempérament, pas d&#39;une supériorité de l&#39;un sur l&#39;autre.</p>
+    <p><b>Le S&amp;P 500 futures a un carnet d&#39;ordres plus épais et des mouvements plus progressifs ; le Nasdaq futures a un carnet plus léger et des mouvements plus nerveux.</b> Le bon choix dépend de ton tempérament, pas d&#39;une supériorité de l&#39;un sur l&#39;autre.</p>
 <p>Je le montre en direct dans un de mes lives, en comparant les deux carnets : <a href="https://www.youtube.com/watch?v=PjrSce8-VgQ&amp;t=2897s">« Vous voyez, les tailles de position sont pas les mêmes, hein, quand vous regardez le Nasdaq ou le S&amp;P. »</a> Et juste après : « C&#39;est un marché qu&#39;on appelle à carnet léger, alors que le S&amp;P, c&#39;est un carnet lourd. »</p>
 <h3>Ce que veut dire « carnet lourd »</h3>
 <p>Sur le S&amp;P, à chaque niveau de prix, il y a beaucoup plus de contrats en attente que sur le Nasdaq. Pour faire bouger le prix d&#39;un tick, il faut donc consommer davantage d&#39;ordres. Conséquences directes :</p>
@@ -314,7 +316,7 @@
 <p>Sur ce dernier point, je le dis ainsi dans ma <a href="https://www.youtube.com/watch?v=FLBONXJWCoM&amp;t=2930s">formation footprint</a> : « si vous étiez sur un marché plus lourd comme le S&amp;P, vous allez avoir des chiffres plus gros ; faut toujours que ce soit proportionnel à ce que vous regardez, au marché que vous traitez, et également au volume traité dans la bougie ». Si tu lis le footprint du S&amp;P avec les repères du Nasdaq, tu verras des signaux partout. Mon guide du <a href="https://basstrading.fr/blog/footprint-chart-trading/">footprint chart</a> détaille cette lecture.</p>
 <h3>Pourquoi je trade le Nasdaq et pas le S&amp;P</h3>
 <p>Mon choix est personnel. Le Nasdaq bouge plus vite, et sur un graphique en 1 minute, ce rythme me convient : le carnet léger réagit vite, les absorptions et les accélérations se voient nettement. Le S&amp;P demande plus de patience et une lecture du carnet différente.</p>
-<p>Pour d&#39;autres traders, c&#39;est exactement l&#39;inverse. Celui qui panique quand le prix fait 20 points en 30 secondes se sentira souvent mieux sur le S&amp;P. C&#39;est le principe de base de ma façon d&#39;enseigner : il n&#39;y a pas un bon marché, il y a le marché qui correspond à ta personnalité.</p>
+<p>Pour d&#39;autres traders, c&#39;est exactement l&#39;inverse. Celui qui panique quand le prix fait 20 points en 30 secondes se sentira souvent mieux sur le S&amp;P. <b>C&#39;est le principe de base de ma façon d&#39;enseigner : il n&#39;y a pas un bon marché, il y a le marché qui correspond à ta personnalité.</b> Je t&#39;aide à trouver la tienne dans mon guide de la <a href="https://basstrading.fr/blog/methode-de-trading/">méthode de trading</a> : la méthode de trading qui marche est celle qui colle à ton caractère, et le choix du marché en découle.</p>
 <h3>Les critères pour décider</h3>
 <ul><li>Ta tolérance à la vitesse : si les accélérations du Nasdaq te font sortir trop tôt ou trop tard, teste le S&amp;P.</li><li>Ton capital : en micro, 1 point vaut 5 $ sur le MES contre 2 $ sur le MNQ. Mais le Nasdaq fait beaucoup plus de points dans une journée, donc le risque en dollars se rapproche.</li><li>Ta méthode : la lecture du carnet est plus exigeante sur le S&amp;P, le Market Profile y fonctionne très bien.</li><li>Ce que tu observes déjà : si tu suis les deux, regarde lequel tu comprends le mieux après un mois de pratique en simulation.</li></ul>
 <p>Pour la fiche complète du Nasdaq, lis mon guide des <a href="https://basstrading.fr/blog/nasdaq-futures-nq-mnq/">futures Nasdaq NQ et MNQ</a>.</p>
@@ -329,12 +331,12 @@
     <hr>
 
     <h2 id="qu-est-ce-qui-fait-bouger-le-s-p-500-fut">Qu&#39;est-ce qui fait bouger le S&amp;P 500 futures ?</h2>
-    <p>Le S&amp;P 500 futures bouge d&#39;abord avec les taux d&#39;intérêt américains, les statistiques économiques et les résultats des plus grosses entreprises de l&#39;indice, puis avec le flux d&#39;ordres du jour, qui décide où le prix s&#39;arrête.</p>
+    <p><b>Le S&amp;P 500 futures bouge d&#39;abord avec les taux d&#39;intérêt américains, les statistiques économiques et les résultats des plus grosses entreprises de l&#39;indice, puis avec le flux d&#39;ordres du jour, qui décide où le prix s&#39;arrête.</b></p>
 <p>Tu n&#39;as pas besoin d&#39;être économiste pour trader l&#39;ouverture. Mais tu dois savoir quels jours le marché risque de sauter d&#39;un coup.</p>
 <h3>Les grands moteurs</h3>
 <ul><li>La Fed et les taux : une décision ou un discours qui change les anticipations de taux déplace tout l&#39;indice. Les jours de décision, la réaction arrive le soir, heure de Paris.</li><li>Les statistiques américaines : inflation, emploi, ventes au détail. Elles tombent souvent à 14 h 30, heure de Paris, une heure avant l&#39;ouverture.</li><li>Les résultats des grosses capitalisations : l&#39;indice est pondéré par la taille des entreprises. Quand une géante de la tech publie, le S&amp;P peut bouger presque autant que le Nasdaq.</li><li>Le contexte de la nuit : ce qui s&#39;est passé en Asie et en Europe se voit déjà dans le prix du future avant 15 h 30.</li></ul>
 <h3>Ce que je regarde, moi</h3>
-<p>Je consulte le calendrier économique le matin pour savoir à quelle heure les annonces tombent. Ensuite, je ne cherche pas à deviner la réaction. Comme je le répète : « Je ne cherche pas où le prix va aller, je cherche où il s&#39;arrête. » La nouvelle donne l&#39;élan, mais c&#39;est dans le carnet et le volume que tu vois si le mouvement est accepté ou rejeté.</p>
+<p>Je consulte le calendrier économique le matin pour savoir à quelle heure les annonces tombent. Ensuite, je ne cherche pas à deviner la réaction. Comme je le répète : « Je ne cherche pas où le prix va aller, je cherche où il s&#39;arrête. » <b>La nouvelle donne l&#39;élan, mais c&#39;est dans le carnet et le volume que tu vois si le mouvement est accepté ou rejeté.</b></p>
 <h3>À retenir</h3>
 <ul><li>Taux, statistiques et résultats des géantes font les grands mouvements.</li><li>Les annonces de 14 h 30 peuvent faire sauter le prix avant l&#39;ouverture.</li><li>Le flux d&#39;ordres dit où le mouvement s&#39;arrête.</li></ul>
 <p>Justement, voyons comment je lirais ce flux sur le S&amp;P.</p>
@@ -342,7 +344,7 @@
     <hr>
 
     <h2 id="comment-lire-le-s-p-500-futures-avec-le-">Comment lire le S&amp;P 500 futures avec le Market Profile et le VWAP ?</h2>
-    <p>Sur le S&amp;P 500 futures, j&#39;utiliserais la même grille que sur le Nasdaq : la zone de valeur de la veille, le VWAP de la séance et le delta cumulé, avec des repères adaptés à un carnet plus lourd.</p>
+    <p><b>Sur le S&amp;P 500 futures, j&#39;utiliserais la même grille que sur le Nasdaq : la zone de valeur de la veille, le VWAP de la séance et le delta cumulé, avec des repères adaptés à un carnet plus lourd.</b></p>
 <p>Voici la routine que je suivrais sur un graphique de MES ou d&#39;ES, avant et pendant l&#39;ouverture américaine. Sierra Chart, NinjaTrader ou TradingView affichent tous le VWAP et un profil de volume ; ce qui compte, c&#39;est la lecture.</p>
 <h3>Avant l&#39;ouverture : les niveaux de la veille</h3>
 <p>Avant 15 h 30, je trace trois choses sur la séance précédente :</p>
@@ -355,7 +357,7 @@
 <ul><li>prix au-dessus du VWAP et qui y rebondit : les acheteurs contrôlent ;</li><li>prix sous le VWAP et qui y bute : les vendeurs contrôlent ;</li><li>prix qui le traverse dans les deux sens toutes les dix minutes : pas de direction, je ne force rien.</li></ul>
 <p>Tout est détaillé dans mon guide du <a href="https://basstrading.fr/blog/vwap-trading/">VWAP en trading</a>.</p>
 <h3>La confirmation : le carnet et le delta</h3>
-<p>C&#39;est là que le S&amp;P diffère le plus. Comme le carnet est lourd, un gros ordre affiché à un prix rond n&#39;est pas une preuve en soi : il peut disparaître dès que le prix approche. Ce que je regarde, c&#39;est ce qui s&#39;exécute vraiment. Si le prix arrive sur un niveau de la veille, que le delta devient fortement vendeur, mais que le prix ne descend plus, il y a absorption : quelqu&#39;un achète tout ce qui se vend.</p>
+<p>C&#39;est là que le S&amp;P diffère le plus. Comme le carnet est lourd, un gros ordre affiché à un prix rond n&#39;est pas une preuve en soi : il peut disparaître dès que le prix approche. <b>Ce que je regarde, c&#39;est ce qui s&#39;exécute vraiment.</b> Si le prix arrive sur un niveau de la veille, que le delta devient fortement vendeur, mais que le prix ne descend plus, il y a absorption : quelqu&#39;un achète tout ce qui se vend.</p>
 <p>Pour aller plus loin sur ce point, j&#39;ai écrit un guide sur le <a href="https://basstrading.fr/blog/carnet-ordres-dom-futures/">carnet d&#39;ordres et le DOM sur les futures</a>.</p>
 <h3>À retenir</h3>
 <ul><li>Avant 15 h 30 : zone de valeur, extrêmes et VWAP de la veille.</li><li>Pendant la séance : le VWAP comme arbitre de la direction.</li><li>Sur un carnet lourd, on juge ce qui s&#39;exécute, pas ce qui s&#39;affiche.</li></ul>
@@ -364,7 +366,7 @@
     <hr>
 
     <h2 id="quelle-taille-de-position-avec-un-petit-">Quelle taille de position avec un petit compte ?</h2>
-    <p>Ta taille de position se calcule à partir de ton stop et de ton risque maximal par trade, jamais à partir de la marge disponible ou de l&#39;envie du moment.</p>
+    <p><b>Ta taille de position se calcule à partir de ton stop et de ton risque maximal par trade, jamais à partir de la marge disponible ou de l&#39;envie du moment.</b></p>
 <p>Voici la méthode, appliquée au MES, avec un exemple chiffré.</p>
 <h3>Étape 1 : fixer le risque en dollars</h3>
 <p>Un repère prudent quand tu débutes : ne pas risquer plus de 1 % du compte sur un trade. Sur un compte de 5 000 $, ça fait 50 $ par trade. Pas plus, même si le trade « a l&#39;air parfait ». J&#39;explique comment choisir et ajuster ce chiffre dans mon article <a href="https://basstrading.fr/blog/combien-risquer-par-trade/">combien risquer par trade</a>.</p>
@@ -372,14 +374,14 @@
 <p>Le stop ne se place pas à un nombre de points arbitraire. Il se place là où ton idée de trade est invalidée : sous la zone d&#39;absorption, sous le bas de la veille, de l&#39;autre côté du VWAP. Disons que ton stop logique est à 8 points de ton entrée. La sortie se prépare de la même façon : je détaille la méthode pour <a href="https://basstrading.fr/blog/take-profit-trading/">placer ton take profit</a> dans un article dédié.</p>
 <h3>Étape 3 : en déduire le nombre de contrats</h3>
 <ul><li>8 points × 5 $ = 40 $ par MES ;</li><li>50 $ ÷ 40 $ = 1,25, arrondi à l&#39;inférieur : 1 MES.</li></ul>
-<p>Avec un ES, le même stop coûterait 8 × 50 $ = 400 $, soit 8 % du compte sur un seul trade. C&#39;est huit fois ta règle. Le calcul suffit à répondre à la question « ES ou MES » pour un compte de cette taille.</p>
+<p>Avec un ES, le même stop coûterait 8 × 50 $ = 400 $, soit 8 % du compte sur un seul trade. C&#39;est huit fois ta règle. <b>Le calcul suffit à répondre à la question « ES ou MES » pour un compte de cette taille.</b></p>
 <h3>Étape 4 : accepter de ne pas trader</h3>
 <p>Si ton stop logique est à 15 points, 1 MES te coûte 75 $ : c&#39;est au-dessus de ta limite. La bonne réponse n&#39;est pas de rapprocher le stop pour « faire rentrer » le trade. La bonne réponse est de laisser passer le trade. Un stop trop serré, placé là où le marché passe régulièrement, est le meilleur moyen de te faire sortir juste avant que le prix parte dans ton sens. J&#39;en parle dans mon article sur la <a href="https://basstrading.fr/blog/chasse-aux-stops-trading/">chasse aux stops</a>.</p>
 <h3>La limite de la journée</h3>
 <p>Ajoute une deuxième règle : une perte maximale par jour, par exemple trois trades perdants ou 2 % du compte. Une fois atteinte, tu fermes la plateforme. Je détaille cette règle dans mon article sur la <a href="https://basstrading.fr/blog/perte-maximale-journaliere-trading/">perte maximale journalière</a>.</p>
 <h3>Pour aller plus loin</h3>
 <p>La lecture du marché à l&#39;ouverture, la gestion du risque et la construction de ta propre méthode selon ton profil, je les explique pas à pas dans ma formation offerte : <a href="https://basstrading.fr/l/0t8C_A">accéder à la formation gratuite</a>.</p>
-<p>Le trading de contrats à terme comporte un risque élevé de perte, pouvant dépasser la mise initiale. Contenu éducatif, pas un conseil en investissement.</p>
+<p><em>Le trading de contrats à terme comporte un risque élevé de perte, pouvant dépasser la mise initiale. Contenu éducatif, pas un conseil en investissement.</em></p>
 <h3>À retenir</h3>
 <ul><li>Risque par trade fixé en dollars avant tout.</li><li>Stop placé là où l&#39;idée est invalidée, puis taille calculée.</li><li>Si la taille ne rentre pas, on ne prend pas le trade.</li></ul>
     <figure style="margin:28px 0;text-align:center">
@@ -390,12 +392,12 @@
     <hr>
 
     <h2 id="quelles-erreurs-eviter-sur-l-es-et-le-me">Quelles erreurs éviter sur l&#39;ES et le MES ?</h2>
-    <p>Les erreurs les plus coûteuses sur le S&amp;P 500 futures ne viennent pas de l&#39;analyse : elles viennent de la taille, du calendrier et de la lecture du carnet.</p>
+    <p><b>Les erreurs les plus coûteuses sur le S&amp;P 500 futures ne viennent pas de l&#39;analyse : elles viennent de la taille, du calendrier et de la lecture du carnet.</b></p>
 <p>Voici celles qui reviennent le plus souvent, et ce qu&#39;il faut faire à la place.</p>
 <h3>Commencer directement sur l&#39;ES</h3>
 <p>C&#39;est l&#39;erreur numéro un. Le débutant voit une marge intraday basse et se dit qu&#39;il peut ouvrir un ES. Trois trades perdants de 8 points, et le compte a perdu 1 200 $. Commence en MES. Passe à l&#39;ES seulement quand ton stop habituel en ES reste sous ta règle de risque.</p>
 <h3>Oublier la valeur du point en changeant de marché</h3>
-<p>Tu viens du Nasdaq et tu as l&#39;habitude de 2 $ le point en MNQ ? Sur le MES, c&#39;est 5 $. Un trader qui garde la même taille en passant d&#39;un micro à l&#39;autre multiplie son risque par point par 2,5 sans s&#39;en rendre compte. Recalcule ta taille à chaque changement de contrat.</p>
+<p>Tu viens du Nasdaq et tu as l&#39;habitude de 2 $ le point en MNQ ? Sur le MES, c&#39;est 5 $. Un trader qui garde la même taille en passant d&#39;un micro à l&#39;autre multiplie son risque par point par 2,5 sans s&#39;en rendre compte. <b>Recalcule ta taille à chaque changement de contrat.</b></p>
 <h3>Lire le carnet du S&amp;P comme celui du Nasdaq</h3>
 <p>Un mur de 800 contrats sur le Nasdaq attire l&#39;œil. Sur le S&amp;P, des quantités de ce genre sont courantes à chaque niveau. Si tu prends chaque gros chiffre pour un signal, tu vas trader en permanence. Adapte tes seuils à la profondeur normale du marché que tu regardes.</p>
 <h3>Trader les statistiques de 14 h 30</h3>
@@ -415,14 +417,14 @@
     <hr>
 
     <h2 id="quand-le-s-p-500-futures-n-est-il-pas-fa">Quand le S&amp;P 500 futures n&#39;est-il pas fait pour toi ?</h2>
-    <p>Le S&amp;P 500 futures n&#39;est pas adapté si ton compte ne permet pas de respecter ta règle de risque même en MES, si tu ne peux pas être devant l&#39;écran à l&#39;ouverture américaine, ou si tu cherches un placement plutôt qu&#39;une activité.</p>
+    <p><b>Le S&amp;P 500 futures n&#39;est pas adapté si ton compte ne permet pas de respecter ta règle de risque même en MES, si tu ne peux pas être devant l&#39;écran à l&#39;ouverture américaine, ou si tu cherches un placement plutôt qu&#39;une activité.</b></p>
 <p>Je préfère te le dire clairement plutôt que de te laisser essayer pour rien.</p>
 <h3>Si ton compte est trop petit pour ton stop</h3>
 <p>Avec un stop logique de 10 points, 1 MES te coûte 50 $. Si ta règle de 1 % te limite à 20 $, même le plus petit contrat est trop gros. Dans ce cas, la bonne étape est la simulation, pas un compte réel sous-dimensionné. Certains traders passent par une prop firm pour accéder à un capital plus important : c&#39;est une voie possible parmi d&#39;autres, avec ses propres règles. Je t&#39;explique les pièges du <a href="https://basstrading.fr/blog/drawdown-prop-firm-futures/">drawdown en prop firm</a> avant de te lancer.</p>
 <h3>Si tu ne peux pas trader à 15 h 30</h3>
 <p>Le S&amp;P cote presque toute la journée, mais la séance où le volume est le plus fort, c&#39;est l&#39;ouverture américaine. Si ton travail t&#39;empêche d&#39;être disponible à ce moment-là, le day trading de ce contrat sera compliqué. Le swing trading ou une autre méthode peut te convenir mieux : c&#39;est justement ce qu&#39;on cherche à identifier quand on construit une méthode adaptée à son profil.</p>
 <h3>Si tu veux investir sur le long terme</h3>
-<p>Un future se renouvelle quatre fois par an, avec un effet de levier et un risque de perte supérieur au dépôt. Pour placer de l&#39;argent sur le S&amp;P 500 pendant des années, ce n&#39;est pas l&#39;outil le plus simple. Le future est un instrument de trading.</p>
+<p>Un future se renouvelle quatre fois par an, avec un effet de levier et un risque de perte supérieur au dépôt. Pour placer de l&#39;argent sur le S&amp;P 500 pendant des années, ce n&#39;est pas l&#39;outil le plus simple. <b>Le future est un instrument de trading.</b></p>
 <h3>La limite de mon exemple</h3>
 <p>Mes chiffres de taille de position sont un exemple de calcul, pas une recommandation pour ton compte. Les marges, les commissions et la volatilité changent. Vérifie toujours les données du jour chez ton courtier et sur les spécifications du CME.</p>
 <h3>À retenir</h3>
@@ -434,9 +436,9 @@
     <p>Tu as maintenant tout ce qu&#39;il faut pour regarder le S&amp;P 500 futures sans te perdre dans le jargon. Le récapitulatif :</p>
 <ul><li>Deux contrats : l&#39;ES à 50 $ le point, le MES à 5 $. Dix MES valent un ES.</li><li>Un tick de 0,25 point : 12,50 $ sur l&#39;ES, 1,25 $ sur le MES.</li><li>Les horaires : Globex de minuit à 23 h, heure de Paris ; la séance active démarre à 15 h 30.</li><li>Le calendrier : échéances en mars, juin, septembre et décembre, rollover une semaine avant.</li><li>La taille : le stop d&#39;abord, le risque en dollars ensuite, et le MES tant que ton compte n&#39;autorise pas l&#39;ES.</li></ul>
 <h3>Ton action de ce soir</h3>
-<p>Ouvre un graphique du MES de l&#39;échéance en cours, en simulation. Trace la zone de valeur et le VWAP de la séance d&#39;aujourd&#39;hui. Puis note, pour trois trades fictifs, la distance du stop en points et la perte en dollars. Fais la même chose demain sur le MNQ. En deux soirs, tu sauras lequel des deux marchés tu comprends le mieux.</p>
+<p>Ouvre un graphique du MES de l&#39;échéance en cours, en simulation. Trace la zone de valeur et le VWAP de la séance d&#39;aujourd&#39;hui. Puis note, pour trois trades fictifs, la distance du stop en points et la perte en dollars. Fais la même chose demain sur le MNQ. <b>En deux soirs, tu sauras lequel des deux marchés tu comprends le mieux.</b></p>
 <p>Ensuite, la suite logique, c&#39;est de comparer en détail les deux contrats du Nasdaq dans mon article <a href="https://basstrading.fr/blog/nq-ou-mnq/">NQ ou MNQ</a>, puis de fixer ta règle de risque avec <a href="https://basstrading.fr/blog/combien-risquer-par-trade/">combien risquer par trade</a>. Et si tu veux un parcours structuré pour apprendre gratuitement, j&#39;ai rassemblé les meilleures ressources dans mon guide de la <a href="https://basstrading.fr/blog/formation-trading-gratuite/">formation trading gratuite</a>.</p>
-<p>Le trading de contrats à terme comporte un risque élevé de perte, pouvant dépasser la mise initiale. Contenu éducatif, pas un conseil en investissement.</p>
+<p><em>Le trading de contrats à terme comporte un risque élevé de perte, pouvant dépasser la mise initiale. Contenu éducatif, pas un conseil en investissement.</em></p>
 
     <p><a href="https://www.youtube.com/watch?v=PjrSce8-VgQ" target="_blank" rel="noopener">▶ Voir la vidéo de Sébastien sur ce sujet</a></p>
 
