@@ -16,11 +16,13 @@
   <meta property="og:url" content="https://basstrading.fr/blog/premier-payout-prop-firm/">
   <meta property="og:site_name" content="BASS Trading">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Footprint trading : lire un footprint chart (guide + outils)">
+  <meta name="twitter:description" content="Lire un footprint chart : bid × ask, delta, imbalances, absorption. Les outils footprint comparés (Sierra, ATAS, TradingView) et 3 lectures sur le Nasdaq.">
   <link rel="canonical" href="https://basstrading.fr/blog/premier-payout-prop-firm/">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Article","@id":"https://basstrading.fr/blog/premier-payout-prop-firm/#article","headline":"Premier payout en prop firm : coussin, cohérence et retrait","description":"Premier payout prop firm : monter le coussin avant de retirer, calculer la règle de cohérence, savoir combien de temps valider. Vu en live.","datePublished":"2026-10-26","dateModified":"2026-10-26","inLanguage":"fr-FR","image":"https://basstrading.fr/blog/premier-payout-prop-firm/blog-premier-payout-prop-firm-1.webp","mainEntityOfPage":"https://basstrading.fr/blog/premier-payout-prop-firm/","isPartOf":{"@type":"WebSite","@id":"https://basstrading.fr/#website","name":"BASS Trading","url":"https://basstrading.fr/"},"author":{"@type":"Person","@id":"https://basstrading.fr/#sebastien-constant","name":"Sébastien Constant","url":"https://basstrading.fr/auteur/sebastien-constant/"},"publisher":{"@type":"Organization","@id":"https://basstrading.fr/#organisation","name":"BASS Trading","url":"https://basstrading.fr/","logo":{"@type":"ImageObject","url":"https://basstrading.fr/images/logo-basstrading.png","width":512,"height":512}}}
+  {"@context":"https://schema.org","@type":"Article","@id":"https://basstrading.fr/blog/premier-payout-prop-firm/#article","headline":"Premier payout en prop firm : coussin, cohérence et retrait","description":"Premier payout prop firm : monter le coussin avant de retirer, calculer la règle de cohérence, savoir combien de temps valider. Vu en live.","datePublished":"2026-10-26","dateModified":"2026-11-23","inLanguage":"fr-FR","image":"https://basstrading.fr/blog/premier-payout-prop-firm/blog-premier-payout-prop-firm-1.webp","mainEntityOfPage":"https://basstrading.fr/blog/premier-payout-prop-firm/","isPartOf":{"@type":"WebSite","@id":"https://basstrading.fr/#website","name":"BASS Trading","url":"https://basstrading.fr/"},"author":{"@type":"Person","@id":"https://basstrading.fr/#sebastien-constant","name":"Sébastien Constant","url":"https://basstrading.fr/auteur/sebastien-constant/"},"publisher":{"@type":"Organization","@id":"https://basstrading.fr/#organisation","name":"BASS Trading","url":"https://basstrading.fr/","logo":{"@type":"ImageObject","url":"https://basstrading.fr/images/logo-basstrading.png","width":512,"height":512}}}
   </script>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://basstrading.fr"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://basstrading.fr/blog/"},{"@type":"ListItem","position":3,"name":"Premier payout prop firm","item":"https://basstrading.fr/blog/premier-payout-prop-firm/"}]}
@@ -166,7 +168,7 @@
         <div><div class="blog-meta-name"><a href="/auteur/sebastien-constant/" rel="author" style="color:inherit;text-decoration:none">Sébastien Constant</a></div><div class="blog-meta-role">Trader & Formateur Order Flow</div></div>
       </div>
       <div class="blog-meta-sep"></div>
-      <div class="blog-meta-info"><span>Octobre 2026</span><span>15 min de lecture</span></div>
+      <div class="blog-meta-info"><span>Mis à jour en novembre 2026</span><span>15 min de lecture</span></div>
     </div>
   </div>
 </section>
@@ -193,13 +195,13 @@
 
   <article class="article-body">
     <h2 id="l-essentiel-un-premier-payout-se-prepare">L&#39;essentiel : un premier payout se prépare dès le challenge</h2>
-    <p><em>Le trading de futures, même via une prop firm, comporte un risque réel de perte : les frais de challenge sont perdus si tu échoues, et un compte financé peut être fermé en une séance. Rien sur cette page n&#39;est un conseil personnalisé ni une promesse de gain.</em></p>
+    <p>Le trading de futures, même via une prop firm, comporte un risque réel de perte : les frais de challenge sont perdus si tu échoues, et un compte financé peut être fermé en une séance. Rien sur cette page n&#39;est un conseil personnalisé ni une promesse de gain.</p>
 <p><b>Pour toucher ton premier payout en prop firm, retire tard, retire peu et retire selon les règles</b> : laisse d&#39;abord grossir ton coussin (l&#39;écart entre ton solde et ton seuil de perte), respecte la règle de cohérence jour après jour, puis demande le plafond de retrait autorisé, pas plus.</p>
 <p>C&#39;est exactement ce que j&#39;ai expliqué pendant l&#39;épisode 14 de ma série « De 0 au Payout », en direct, à un spectateur qui me demandait combien de temps je mets pour valider un compte et me faire payer :</p>
 <aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p>« J&#39;essaye d&#39;y aller tranquillement. Tu vois, je ne fais pas le ouf au niveau du challenge. Je suis sur des micros. » (<a href="https://www.youtube.com/watch?v=PjrSce8-VgQ&amp;t=1860">voir le passage, min 31</a>)</p></aside>
 <p>Dans ce même live, j&#39;ai coupé un trade gagnant sur le DAX alors qu&#39;il pouvait encore monter. Pas par peur. À cause d&#39;une règle qu&#39;il vaut mieux connaître avant de commencer : la règle de cohérence. On va la décortiquer, calcul à l&#39;appui.</p>
 <p>Si tu ne sais pas encore ce qu&#39;est une prop firm ni comment marche un challenge, commence par <a href="https://basstrading.fr/blog/prop-firm-funded-trader/">mon guide sur les prop firms et le funded trader</a>. Ici, je pars du principe que tu as un challenge en cours ou un compte financé, et que la question est : comment arriver au premier retrait sans tout casser en route ?</p>
-<h3>À retenir</h3>
+<p><b>À retenir</b></p>
 <ul><li>Le payout n&#39;est pas une récompense qu&#39;on va chercher.</li><li>C&#39;est la conséquence d&#39;un compte qu&#39;on a protégé.</li></ul>
     <figure style="margin:28px 0;text-align:center">
       <img src="/blog/premier-payout-prop-firm/blog-premier-payout-prop-firm-1.webp" alt="Les quatre étapes du challenge au premier payout en prop firm : valider sans délai, monter le coussin, respecter la cohérence, retirer le plafond" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
@@ -209,15 +211,16 @@
     <hr>
 
     <h2 id="payout-en-prop-firm-de-quoi-on-parle-vra">Payout en prop firm : de quoi on parle vraiment</h2>
-    <p><b>Un payout, c&#39;est le retrait d&#39;une partie du profit réalisé sur un compte financé.</b> Tu ne retires jamais le capital affiché : tu retires ta part des gains, selon un partage fixé par la firme (90 % pour le trader chez la firme dont j&#39;ai lu le règlement le 24/10/2026 ; vérifie chez la tienne) et selon des conditions écrites dans son règlement.</p>
+    <p>Un payout, c&#39;est le retrait d&#39;une partie du profit réalisé sur un compte financé. Tu ne retires jamais le capital affiché : tu retires ta part des gains, selon un partage fixé par la firme (90 % pour le trader chez la firme dont j&#39;ai lu le règlement le 24/10/2026 ; vérifie chez la tienne) et selon des conditions écrites dans son règlement.</p>
 <p>Ces conditions varient d&#39;une firme à l&#39;autre, et même d&#39;un type de compte à l&#39;autre chez une même firme. Dans les règlements, on retrouve ces familles de règles :</p>
 <ul><li>un nombre minimum de jours de trading, ou de jours gagnants au-dessus d&#39;un certain montant, avant le premier retrait ;</li><li>un plafond sur le montant du premier retrait (parfois aussi des suivants) ;</li><li>une règle de cohérence : aucun jour ne doit peser trop lourd dans ton profit total ;</li><li>un seuil de perte (le drawdown) qui ne doit jamais être touché, sinon le compte est fermé et le payout disparaît avec.</li></ul>
+<p>Pour voir ces familles de règles appliquées à de vraies firmes, j&#39;ai décortiqué <a href="https://basstrading.fr/blog/topstep/">le payout chez Topstep</a> et les conditions de retrait dans mon <a href="https://basstrading.fr/blog/apex-trader-funding/">avis sur Apex Trader Funding</a> : tu y verras que deux firmes qui se ressemblent sur leur page d&#39;accueil n&#39;ont presque jamais le même règlement de retrait.</p>
 <p>Je le dis dans ma vidéo sur la taille de position : sur un compte à 50 000, les 50 000 c&#39;est du vent, c&#39;est du marketing. <b>La vraie taille de ton compte, c&#39;est ton drawdown.</b> Un compte « 50K » avec quelques milliers de dollars de perte maximale autorisée, c&#39;est un compte de quelques milliers de dollars, pas de cinquante mille. Tout ce qui suit découle de cette idée.</p>
 <h3>Le coussin, expliqué simplement</h3>
 <p>Le coussin, c&#39;est la distance entre ton solde actuel et le niveau où le compte est fermé. Au départ, il est égal à ton drawdown autorisé.</p>
 <p>À chaque gain, il grossit (sauf si ton drawdown suit tes plus hauts, ce qu&#39;on appelle un drawdown suiveur, dit « trailing », qui ronge une partie de cette avance). À chaque perte, il fond.</p>
-<p><b>Retirer de l&#39;argent, c&#39;est retirer du coussin.</b> C&#39;est pour ça que l&#39;ordre des étapes compte autant.</p>
-<h3>À retenir</h3>
+<p>Retirer de l&#39;argent, c&#39;est retirer du coussin. C&#39;est pour ça que l&#39;ordre des étapes compte autant.</p>
+<p><b>À retenir</b></p>
 <ul><li>Un payout se lit dans le règlement de ta firme, pas sur sa page d&#39;accueil.</li><li>Lis les conditions de retrait avant d&#39;acheter le challenge, pas après l&#39;avoir validé.</li></ul>
 
     <hr>
@@ -225,16 +228,18 @@
     <h2 id="coussin-d-abord-pourquoi-je-ne-retire-pa">Coussin d&#39;abord : pourquoi je ne retire pas tout de suite</h2>
     <p>Une fois le challenge validé, la tentation est énorme : prendre son argent le plus vite possible, pour « prouver » que ça marche. Je fais l&#39;inverse. Voici ce que j&#39;ai dit en live, mot pour mot :</p>
 <aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p>« Une fois que c&#39;est validé, je vais trader, pareil, de la même manière que sur mon challenge. Je vais y aller tranquille. L&#39;idée, c&#39;est de monter directement, en fait, mon coussin. D&#39;avoir de la latitude, de ne pas me retrouver serré. » (<a href="https://www.youtube.com/watch?v=PjrSce8-VgQ&amp;t=1920">min 32</a>)</p></aside>
-<p><b>« De la même manière »</b> : je ne change rien entre le challenge et le compte financé. Même taille, mêmes setups, même lecture du flux d&#39;ordres. Le compte financé n&#39;est pas une promotion qui autorise à trader plus gros.</p>
-<p><b>« Latitude »</b> : avec un coussin épais, une journée perdante est une journée perdante. Avec un coussin fin, une journée perdante peut être la dernière.</p>
-<p><b>« Pas serré »</b> : un trader serré coupe ses gagnants trop tôt, garde ses perdants trop longtemps, et finit par surtailler pour se refaire. Je l&#39;ai vécu moi-même.</p>
+<p>« De la même manière » : je ne change rien entre le challenge et le compte financé. Même taille, mêmes setups, même lecture du flux d&#39;ordres. Le compte financé n&#39;est pas une promotion qui autorise à trader plus gros.</p>
+<p>« Latitude » : avec un coussin épais, une journée perdante est une journée perdante. Avec un coussin fin, une journée perdante peut être la dernière.</p>
+<p>« Pas serré » : un trader serré coupe ses gagnants trop tôt, garde ses perdants trop longtemps, et finit par surtailler pour se refaire. Je l&#39;ai vécu moi-même.</p>
 <h3>Ce que ça change concrètement</h3>
 <p>Prenons un exemple inventé, juste pour visualiser. Un compte avec 2 000 $ de drawdown autorisé : au départ, ton coussin vaut 2 000 $.</p>
 <p>Tu gagnes 600 $. Avec un drawdown fixe, ton coussin passe à 2 600 $.</p>
-<p>Si tu retires ces 600 $ tout de suite (en supposant que la firme l&#39;autorise), ton coussin redescend à 2 000 $, voire moins si ton drawdown est suiveur et a monté avec tes gains. Tu repars au bord du précipice. <b>Si tu laisses ces 600 $ dans le compte, tu gardes 2 600 $ d&#39;air.</b></p>
+<p>Si tu retires ces 600 $ tout de suite (en supposant que la firme l&#39;autorise), ton coussin redescend à 2 000 $, voire moins si ton drawdown est suiveur et a monté avec tes gains. Tu repars au bord du précipice. Si tu laisses ces 600 $ dans le compte, tu gardes 2 600 $ d&#39;air.</p>
 <p>C&#39;est le même principe que la taille de position : on <a href="https://basstrading.fr/blog/combien-risquer-par-trade/">pense aux pertes avant de penser aux gains</a>. Le coussin, c&#39;est la version « compte » de cette règle.</p>
-<h3>À retenir</h3>
+<p><b>À retenir</b></p>
 <ul><li>Le premier argent gagné sur un compte financé sert à acheter de l&#39;air.</li><li>Le retrait vient après.</li></ul>
+<p><b>Le payout se prépare avant le premier trade</b></p>
+<p>Coussin, cohérence, plafond : ce sont des règles. Ce qui les rend tenables, c&#39;est de comprendre, à l&#39;instant présent, qui fait quoi sur le marché. <a href="https://basstrading.fr/l/UPZVCw">Ouvrir la leçon 1, gratuitement →</a></p>
 
     <hr>
 
@@ -244,13 +249,13 @@
     <p>Deuxième chose à connaître : chez certaines firmes, le premier retrait est plafonné. Peu importe le profit accumulé, tu ne peux demander qu&#39;un montant maximum, après un nombre minimum de jours.</p>
 <p>En live, je l&#39;ai résumé ainsi à propos de mon propre compte :</p>
 <aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p>« Pendant 10 jours, tu dois trader 10 jours. Et ensuite, tu peux demander que [le plafond]. Donc, même si tu as fait [beaucoup plus], tu es bloqué. » (<a href="https://www.youtube.com/watch?v=PjrSce8-VgQ&amp;t=1980">min 33</a>)</p></aside>
-<p><b>Ma conclusion tenait en une formule : coussin plus le plafond de retrait.</b> Mon objectif sur le compte n&#39;est pas « le plus possible ». C&#39;est : un coussin confortable, plus exactement le montant que la firme me laissera retirer.</p>
+<p>Ma conclusion tenait en une formule : <b>coussin plus le plafond de retrait</b>. Mon objectif sur le compte n&#39;est pas « le plus possible ». C&#39;est : un coussin confortable, plus exactement le montant que la firme me laissera retirer.</p>
 <p>Tout ce qui dépasse ne sert à rien pour ce premier retrait, et peut même me nuire.</p>
 <h3>Un exemple de règlement vérifié</h3>
 <p>Pour te montrer à quoi ressemblent ces règles, j&#39;ai lu le 24 octobre 2026 le centre d&#39;aide d&#39;une grande firme de futures américaine (ce n&#39;est pas une recommandation, et ces règles peuvent changer).</p>
 <p>Sur un type de compte financé, le premier retrait demandait 5 jours gagnants au-dessus d&#39;un montant minimum, avec un plafond par retrait, et un partage de 90 % pour le trader.</p>
-<p>Le plafond dépend de la taille du compte et du type de compte financé, et il est détaillé sur une page à part du règlement. <b>Moralité : lis le règlement en entier, et pose tes questions au support par écrit.</b></p>
-<h3>À retenir</h3>
+<p>Le plafond dépend de la taille du compte et du type de compte financé, et il est détaillé sur une page à part du règlement. Moralité : lis le règlement en entier, et pose tes questions au support par écrit. Si tu veux le détail compte par compte, je l&#39;ai mis à plat dans <a href="https://basstrading.fr/blog/topstep/">mon avis sur Topstep</a>.</p>
+<p><b>À retenir</b></p>
 <ul><li>Ton objectif avant le premier payout : coussin plus plafond.</li><li>Pas « le maximum ».</li></ul>
     <figure style="margin:28px 0;text-align:center">
       <img src="/blog/premier-payout-prop-firm/blog-premier-payout-prop-firm-2.webp" alt="Comparaison entre pousser le compte au maximum et monter le coussin avant le premier retrait en prop firm" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
@@ -271,9 +276,9 @@
 <p>L&#39;idée de la firme est simple : elle veut financer des traders réguliers, pas des coups de poker. Un trader qui fait tout son profit en une séance ressemble plus à quelqu&#39;un qui a eu de la chance qu&#39;à quelqu&#39;un qui a une méthode.</p>
 <h3>Le seuil change selon la firme et le compte</h3>
 <p>Sur le centre d&#39;aide que j&#39;ai lu le 24 octobre 2026, la même firme appliquait 55 % pendant l&#39;évaluation et 40 % sur un de ses types de compte financé (pendant l&#39;évaluation, le calcul se fait sur l&#39;objectif de profit, pas sur le profit total). Son autre type de compte financé n&#39;a pas de seuil, mais demande 5 jours gagnants de 150 $ ou plus avant un retrait.</p>
-<p>D&#39;autres firmes ont leurs propres seuils. <b>Le seul chiffre qui compte, c&#39;est celui de ton règlement.</b></p>
+<p>D&#39;autres firmes ont leurs propres seuils. Le seul chiffre qui compte, c&#39;est celui de ton règlement.</p>
 <p>Ce qui est frustrant, et je ne vais pas te mentir : couper un bon trade parce qu&#39;un règlement l&#39;impose, ça pique. Mais c&#39;est le jeu que tu as accepté en prenant le capital de quelqu&#39;un d&#39;autre.</p>
-<h3>À retenir</h3>
+<p><b>À retenir</b></p>
 <ul><li>Sur un compte de prop firm, un trade peut être bon pour le marché et mauvais pour le compte.</li><li>C&#39;est le règlement qui tranche.</li></ul>
     <figure style="margin:28px 0;text-align:center">
       <img src="/blog/premier-payout-prop-firm/blog-premier-payout-prop-firm-3.webp" alt="Exemple de seuils de règle de cohérence lus sur le centre d&#39;aide d&#39;une firme de futures le 24 octobre 2026" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
@@ -289,14 +294,14 @@
 <h3>Exemple inventé avec un seuil de 40 %</h3>
 <p>Tu as fait quatre journées positives : 300 $, 200 $, 500 $ et 1 000 $. Profit total : 2 000 $. Meilleur jour : 1 000 $.</p>
 <div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Étape</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Calcul</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Verdict</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Ratio actuel</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">1 000 ÷ 2 000 = 50 %</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">au-dessus de 40 %</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Profit total requis</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">1 000 ÷ 0,40 = 2 500 $</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">il manque 500 $</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Après +500 $ en deux jours</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">1 000 ÷ 2 500 = 40 %</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">conforme</td></tr></tbody></table></div>
-<p><b>La formule à garder : profit total minimum = meilleur jour ÷ seuil.</b></p>
+<p>La formule à garder : <b>profit total minimum = meilleur jour ÷ seuil</b>.</p>
 <p>Il te manque donc 500 $, à faire sur d&#39;autres journées, sans en créer une nouvelle encore plus grosse (sinon le meilleur jour change et le calcul recommence).</p>
 <h3>Le piège : le gros jour qui t&#39;oblige à forcer</h3>
 <p>C&#39;est là que la règle devient dangereuse. Après un très gros jour, il te « manque » du profit. Tu te mets à forcer des trades pour combler l&#39;écart. Tu en perds deux. Le profit total baisse, le ratio s&#39;aggrave, et ton coussin aussi.</p>
-<p>C&#39;est exactement pour ça que je coupe avant. <b>Mieux vaut quatre journées moyennes et régulières qu&#39;une journée exceptionnelle qui t&#39;enferme.</b></p>
+<p>C&#39;est exactement pour ça que je coupe avant. Mieux vaut quatre journées moyennes et régulières qu&#39;une journée exceptionnelle qui t&#39;enferme.</p>
 <h3>Deux réflexes pratiques</h3>
 <ul><li><b>Connais ton plafond du jour.</b> Avant la séance, calcule le gain au-delà duquel ta journée deviendrait trop lourde. Quand tu t&#39;en approches, allège ou coupe.</li><li><b>Vérifie la règle de calcul exacte.</b> Certaines firmes comptent le profit net, d&#39;autres le brut, certaines remettent le compteur à zéro après un retrait, d&#39;autres non. Le règlement fait foi.</li></ul>
-<h3>À retenir</h3>
+<p><b>À retenir</b></p>
 <ul><li>La règle de cohérence se gère avant le gros jour, pas après.</li></ul>
     <figure style="margin:28px 0;text-align:center">
       <img src="/blog/premier-payout-prop-firm/blog-premier-payout-prop-firm-4.webp" alt="Formule de la règle de cohérence en prop firm : profit total minimum égal au meilleur jour divisé par le seuil" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
@@ -308,14 +313,14 @@
     <h2 id="combien-de-temps-pour-valider-un-challen">Combien de temps pour valider un challenge ?</h2>
     <p>C&#39;était la question de départ du spectateur. Ma réponse honnête :</p>
 <aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p>« Ça va me prendre, je ne sais pas, en moyenne peut-être une semaine. Tu vois, mais je ne me donne pas de délai. Tu vois, je ne me mets pas de pression. Donc, en fait, je trade ce qu&#39;il y a à trader. Des fois, ça peut aller plus vite. Tu vois, si tu es dans une journée en tendance, tu peux aller super vite. Des fois, ça peut être plus mou. » (<a href="https://www.youtube.com/watch?v=PjrSce8-VgQ&amp;t=1920">min 32</a>)</p></aside>
-<p>La phrase importante n&#39;est pas « en moyenne peut-être une semaine ». <b>C&#39;est « je ne me donne pas de délai ».</b> Ma moyenne n&#39;est pas la tienne, et c&#39;est normal.</p>
+<p>La phrase importante n&#39;est pas « en moyenne peut-être une semaine ». C&#39;est <b>« je ne me donne pas de délai »</b>. Ma moyenne n&#39;est pas la tienne, et c&#39;est normal.</p>
 <h3>Ce que fixent les firmes</h3>
 <p>Les règlements fixent parfois un nombre minimum de jours de trading, parfois une durée maximale, parfois ni l&#39;un ni l&#39;autre. La firme que j&#39;ai lue le 24 octobre 2026 ne fixait pas de durée limite sur son évaluation. Ailleurs, c&#39;est différent : vérifie toujours.</p>
 <h3>Trader ce que le marché donne</h3>
 <p>Un délai transforme chaque journée calme en journée « perdue » qu&#39;on veut rattraper, avec des setups moyens et une taille trop grosse. Le marché n&#39;a aucune obligation de te donner une tendance cette semaine.</p>
 <p>Les jours de tendance, la validation avance vite. Les jours mous, je trade peu, ou pas du tout. Pour juger si la journée est directionnelle ou en range, <a href="https://basstrading.fr/blog/vwap-trading/">la VWAP</a> est un bon repère. Et si tu trades le Nasdaq, <a href="https://basstrading.fr/blog/horaires-futures-nasdaq-heure-paris/">les horaires du Nasdaq à l&#39;heure de Paris</a> t&#39;aident à te concentrer sur les heures où il se passe vraiment quelque chose.</p>
 <p>Si tu débutes complètement, la vraie question n&#39;est pas la durée du challenge mais celle de l&#39;apprentissage : j&#39;en parle dans <a href="https://basstrading.fr/blog/combien-temps-apprendre-trading/">combien de temps pour apprendre le trading</a>.</p>
-<h3>À retenir</h3>
+<p><b>À retenir</b></p>
 <ul><li>La vitesse de validation, c&#39;est le marché qui la décide.</li><li>Toi, tu décides seulement de ne pas forcer.</li></ul>
 
     <hr>
@@ -326,7 +331,7 @@
 <p>Je suis sur des micros. En live, je le disais au spectateur : je ne « fais pas le ouf ». J&#39;entre avec une petite taille, typiquement 2 micros, et j&#39;ajoute seulement quand la position va dans mon sens. Si tu hésites entre contrat standard et micro, j&#39;ai détaillé <a href="https://basstrading.fr/blog/nq-ou-mnq/">la différence entre NQ et MNQ</a>.</p>
 <h3>2. Risquer peu par trade</h3>
 <aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p>« Il ne faut pas risquer plus de 0,5, voire 1 % sur un trade. » (<a href="https://www.youtube.com/watch?v=PjrSce8-VgQ&amp;t=4740">min 79</a>)</p></aside>
-<p>Sur une prop firm, <b>ce pourcentage se calcule sur le drawdown, pas sur le capital affiché.</b> Plus il y a de volatilité, plus je réduis. Et comme je l&#39;ai dit dans le même live, si tu te dis « c&#39;est risqué, j&#39;ai une chance sur deux que ça passe », réduis ton risque (<a href="https://www.youtube.com/watch?v=PjrSce8-VgQ&amp;t=4800">min 80</a>). Tout le calcul est dans <a href="https://basstrading.fr/blog/combien-risquer-par-trade/">combien risquer par trade</a>.</p>
+<p>Sur une prop firm, ce pourcentage se calcule sur le drawdown, pas sur le capital affiché. Plus il y a de volatilité, plus je réduis. Et comme je l&#39;ai dit dans le même live, si tu te dis « c&#39;est risqué, j&#39;ai une chance sur deux que ça passe », réduis ton risque (<a href="https://www.youtube.com/watch?v=PjrSce8-VgQ&amp;t=4800">min 80</a>). Tout le calcul est dans <a href="https://basstrading.fr/blog/combien-risquer-par-trade/">combien risquer par trade</a>.</p>
 <h3>3. Ne jamais ajouter à une position perdante</h3>
 <p>Ajouter quand c&#39;est gagnant, oui. Ajouter quand c&#39;est perdant pour « améliorer son prix », jamais. C&#39;est la façon la plus rapide de transformer une petite perte en compte fermé.</p>
 <h3>4. Ne jamais surtailler pour se refaire</h3>
@@ -334,9 +339,9 @@
 <h3>5. Ne jamais toucher au coussin pour « tenter un coup »</h3>
 <p>Le coussin n&#39;est pas une réserve de munitions. C&#39;est ta marge de survie.</p>
 <aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p>« Tout est dans la gestion du risque. » (<a href="https://www.youtube.com/watch?v=PjrSce8-VgQ&amp;t=4860">min 81</a>)</p></aside>
-<p>Ces règles ne te donnent aucun avantage sur le marché. <b>Elles t&#39;évitent seulement de mourir avant que ta méthode ait eu le temps de jouer.</b></p>
+<p>Ces règles ne te donnent aucun avantage sur le marché. Elles t&#39;évitent seulement de mourir avant que ta méthode ait eu le temps de jouer.</p>
 <p>L&#39;avantage, il vient de ta lecture : comprendre qui achète, qui vend, et qui est piégé. Un exemple typique : <a href="https://basstrading.fr/blog/chasse-aux-stops-trading/">la chasse aux stops</a>, où le prix va chercher les ordres des autres avant de repartir. Pour voir ces échanges niveau par niveau, il faut un vrai outil : je compare les options dans <a href="https://basstrading.fr/blog/footprint-tradingview/">mon article sur le footprint TradingView</a>.</p>
-<h3>À retenir</h3>
+<p><b>À retenir</b></p>
 <ul><li>Jusqu&#39;au premier payout, ton travail n&#39;est pas de gagner beaucoup.</li><li>C&#39;est de ne rien casser.</li></ul>
 
     <hr>
@@ -344,18 +349,18 @@
     <h2 id="quand-ca-echoue-quatre-facons-de-rater-s">Quand ça échoue : quatre façons de rater son premier payout</h2>
     <p>Je préfère te montrer comment ça rate. C&#39;est là qu&#39;on apprend le plus.</p>
 <h3>1. Le « foutu pour foutu »</h3>
-<p>Tu as perdu une bonne partie du coussin. Tu te dis : foutu pour foutu, je tente un gros trade pour me refaire. Comme je le dis dans ma vidéo sur la taille de position, c&#39;est souvent là qu&#39;on meurt. Je l&#39;ai vécu. <b>Le danger n&#39;est pas le trade normal : c&#39;est le trade de vengeance qui suit.</b></p>
+<p>Tu as perdu une bonne partie du coussin. Tu te dis : foutu pour foutu, je tente un gros trade pour me refaire. Comme je le dis dans ma vidéo sur la taille de position, c&#39;est souvent là qu&#39;on meurt. Je l&#39;ai vécu. Le danger n&#39;est pas le trade normal : c&#39;est le trade de vengeance qui suit.</p>
 <h3>2. Le gros jour qui bloque tout</h3>
 <p>Tu fais une journée énorme, la règle de cohérence bloque ton retrait, tu forces pour diluer et ton coussin fond : c&#39;est le piège décrit plus haut, et la raison pour laquelle j&#39;ai coupé mon trade sur le DAX.</p>
 <h3>3. Le retrait trop tôt, sur un coussin trop fin</h3>
-<p>Tu retires dès que c&#39;est permis. Ton coussin redevient mince. Deux journées perdantes normales et le compte est fermé. <b>Tu as touché un payout, mais tu as perdu le compte qui devait t&#39;en verser d&#39;autres.</b></p>
+<p>Tu retires dès que c&#39;est permis. Ton coussin redevient mince. Deux journées perdantes normales et le compte est fermé. Tu as touché un payout, mais tu as perdu le compte qui devait t&#39;en verser d&#39;autres.</p>
 <h3>4. La règle oubliée</h3>
 <p>Un jour minimum mal compté, une position gardée au-delà de l&#39;horaire autorisé, une taille maximale dépassée. Le règlement ne pardonne pas l&#39;oubli.</p>
 <h3>Et la mauvaise nouvelle honnête</h3>
 <p>Même en faisant tout bien, tu peux échouer. Tu peux enchaîner des journées perdantes normales et toucher ton seuil. C&#39;est le métier : on ne maîtrise pas le résultat. Comme je l&#39;ai dit au tout début du live :</p>
 <aside class="encadre" style="border-left:4px solid #ffd600;background:rgba(255,214,0,.07);padding:14px 18px;margin:22px 0;border-radius:8px"><p>« Le seul facteur que vous maîtrisez, c&#39;est la perte. » (<a href="https://www.youtube.com/watch?v=PjrSce8-VgQ&amp;t=0">min 0</a>)</p></aside>
 <p>En fin de live, j&#39;ai dit qu&#39;il faut accepter d&#39;avoir tort. Julien a complété dans le chat : savoir prendre sa perte. Je lui ai répondu : « 100 % d&#39;accord avec toi, Julien. » (<a href="https://www.youtube.com/watch?v=PjrSce8-VgQ&amp;t=6360">min 106</a>)</p>
-<h3>À retenir</h3>
+<p><b>À retenir</b></p>
 <ul><li>Dans ces quatre scénarios, ce n&#39;est pas le marché qui fait rater le payout.</li><li>C&#39;est ce qu&#39;on fait après une perte, ou après un gain.</li></ul>
 
     <hr>
@@ -365,15 +370,15 @@
 <ul><li><b>Ton coussin est-il confortable ?</b> Tu peux encaisser plusieurs journées perdantes normales sans toucher ton seuil, même après le retrait.</li><li><b>As-tu le nombre de jours requis ?</b> Jours de trading ou jours gagnants au-dessus du minimum, selon ton règlement.</li><li><b>Ta règle de cohérence est-elle respectée ?</b> Calculée exactement comme ta firme la calcule.</li><li><b>Demandes-tu le plafond, pas plus ?</b> Le surplus attend le retrait suivant.</li><li><b>Ton identité est-elle vérifiée ?</b> Certaines firmes demandent une vérification avant le premier paiement : fais-la en avance.</li><li><b>Que fais-tu demain ?</b> Même taille, même méthode, même prudence. Le compte ne sait pas que tu viens d&#39;être payé.</li></ul>
 <p>Puis retire, et recommence à monter le coussin.</p>
 <p>Comme je le disais en fin de live, le but n&#39;est pas d&#39;avoir raison sur le marché, ça flatte l&#39;ego. Le but, c&#39;est de comprendre, à l&#39;instant présent, qui fait quoi, et de prendre les meilleures décisions (<a href="https://www.youtube.com/watch?v=PjrSce8-VgQ&amp;t=5760">min 96</a>). Pour comprendre qui fait vraiment bouger le prix, j&#39;ai réuni 7 leçons gratuites dans <a href="https://basstrading.fr/l/UPZVCw">ma formation offerte</a>.</p>
-<h3>À retenir</h3>
+<p><b>À retenir</b></p>
 <ul><li>Le premier payout, c&#39;est une étape.</li><li>Le vrai objectif, c&#39;est le deuxième, le troisième, et un compte toujours ouvert.</li></ul>
 <p>Ce soir, ouvre le règlement de ta firme et note trois chiffres : ton plafond de retrait, ton seuil de cohérence et ta manière de calculer le drawdown. Ensuite, si ton seuil de perte bouge avec tes gains, lis la suite logique : <a href="https://basstrading.fr/blog/prop-firm-funded-trader/">le guide des prop firms</a>.</p>
 
     <hr>
 
     <h2 id="comment-cette-page-est-faite">Comment cette page est faite</h2>
-    <ul><li>Source principale : mon live « De 0 au Payout », épisode 14, où je trade en direct un challenge de prop firm. Chaque citation est tirée de sa transcription, avec le lien vers la minute exacte. J&#39;ai retiré des citations les montants et le nom de la firme : cette page ne parle pas de gains et ne recommande aucune firme.</li><li>Pratiques complémentaires : celles que j&#39;explique dans ma vidéo sur la taille de position, reprises dans <a href="https://basstrading.fr/blog/combien-risquer-par-trade/">combien risquer par trade</a>.</li><li>Règles de firmes : lues le 24 octobre 2026 sur le centre d&#39;aide officiel d&#39;une grande firme de futures américaine, pages <a href="https://help.topstep.com/en/articles/8284208-consistency-at-topstep">sur la règle de cohérence</a> et <a href="https://help.topstep.com/en/articles/8284233-topstep-payout-policy">sur les retraits</a>. Elles servent d&#39;exemple de règlement, pas de recommandation, et peuvent changer à tout moment.</li><li>Exemples chiffrés : tous les montants des calculs sont inventés pour illustrer.</li><li>Pour aller plus loin : <a href="https://basstrading.fr/blog/debuter-trading-zero-guide/">débuter le trading de zéro</a> et <a href="https://basstrading.fr/blog/order-flow-trading-france/">l&#39;order flow en France</a>.</li></ul>
-<p><em>Rappel : le trading de futures comporte un risque de perte en capital, y compris via une prop firm (frais de challenge, compte fermé). Ce contenu est éducatif et ne constitue pas un conseil en investissement personnalisé.</em></p>
+    <ul><li>Source principale : mon live « De 0 au Payout », épisode 14, où je trade en direct un challenge de prop firm. Chaque citation est tirée de sa transcription, avec le lien vers la minute exacte. J&#39;ai retiré des citations les montants et le nom de la firme : cette page ne parle pas de gains et ne recommande aucune firme.</li><li>Pratiques complémentaires : celles que j&#39;explique dans ma vidéo sur la taille de position, reprises dans <a href="https://basstrading.fr/blog/combien-risquer-par-trade/">combien risquer par trade</a>.</li><li>Règles de firmes : lues le 24 octobre 2026 sur le centre d&#39;aide officiel d&#39;une grande firme de futures américaine, pages <a href="https://help.topstep.com/en/articles/8284208-consistency-at-topstep">sur la règle de cohérence</a> et <a href="https://help.topstep.com/en/articles/8284233-topstep-payout-policy">sur les retraits</a>. Elles servent d&#39;exemple de règlement, pas de recommandation, et peuvent changer à tout moment.</li><li>Mise à jour du 23 novembre 2026 : ajout des liens vers mes avis détaillés sur deux prop firms de futures, pour comparer leurs règles de retrait.</li><li>Exemples chiffrés : tous les montants des calculs sont inventés pour illustrer.</li><li>Pour aller plus loin : <a href="https://basstrading.fr/blog/debuter-trading-zero-guide/">débuter le trading de zéro</a> et <a href="https://basstrading.fr/blog/order-flow-trading-france/">l&#39;order flow en France</a>.</li></ul>
+<p>Rappel : le trading de futures comporte un risque de perte en capital, y compris via une prop firm (frais de challenge, compte fermé). Ce contenu est éducatif et ne constitue pas un conseil en investissement personnalisé.</p>
 
     <p><a href="https://www.youtube.com/watch?v=PjrSce8-VgQ" target="_blank" rel="noopener">▶ Voir la vidéo de Sébastien sur ce sujet</a></p>
 
@@ -381,7 +386,7 @@
       <div class="cta-card-label">Gratuit</div>
       <h3>Tu viens de lire la théorie. Regarde-⁠la en vrai.</h3>
       <p>Je trade une séance complète sur le Nasdaq et je dis à voix haute ce que je regarde. 35 minutes, gratuit.</p>
-      <a href="https://basstrading.fr/l/UPZVCw" class="btn-p">Je regarde la séance →</a>
+      <a href="https://basstrading.fr/p/formation-offerte/?src=blog-premier-payout-prop-firm" class="btn-p">Je regarde la séance →</a>
     </div>
     
   </article>
