@@ -6,8 +6,16 @@
   <link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
   <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/"/>
   <id>https://basstrading.fr/blog/</id>
-  <updated>2026-11-22T00:00:00Z</updated>
+  <updated>2026-11-23T00:00:00Z</updated>
   <author><name>Sébastien Constant (Bass)</name><uri>https://basstrading.fr/auteur/sebastien-constant/</uri></author>
+  <entry>
+    <title>Apex Trader Funding avis : règles 4.0, drawdown et payouts (2026)</title>
+    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/apex-trader-funding/"/>
+    <id>https://basstrading.fr/blog/apex-trader-funding/</id>
+    <published>2026-11-23T00:00:00Z</published>
+    <updated>2026-11-23T00:00:00Z</updated>
+    <summary>Apex Trader Funding expliqué par un trader futures : règles 4.0, drawdown EOD ou intraday, cohérence 50 %, payouts, France et ma méthode.</summary>
+  </entry>
   <entry>
     <title>Effet de levier en trading : calcul, risques et quel levier choisir</title>
     <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/effet-de-levier-trading/"/>
