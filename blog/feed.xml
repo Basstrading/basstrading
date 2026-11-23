@@ -17,6 +17,14 @@
     <summary>Apex Trader Funding expliqué par un trader futures : règles 4.0, drawdown EOD ou intraday, cohérence 50 %, payouts, France et ma méthode.</summary>
   </entry>
   <entry>
+    <title>Order flow sur TradingView : ce qu&#x27;on voit vraiment (et ses limites)</title>
+    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/flux-ordres-tradingview/"/>
+    <id>https://basstrading.fr/blog/flux-ordres-tradingview/</id>
+    <published>2026-11-13T00:00:00Z</published>
+    <updated>2026-11-23T00:00:00Z</updated>
+    <summary>Order flow sur TradingView : Volume Profile, CVD, footprint, TPO, DOM et données CME. Ce que chaque outil montre vraiment, mon réglage et ses limites.</summary>
+  </entry>
+  <entry>
     <title>Premier payout en prop firm : coussin, cohérence et retrait</title>
     <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/premier-payout-prop-firm/"/>
     <id>https://basstrading.fr/blog/premier-payout-prop-firm/</id>
@@ -159,14 +167,6 @@
     <published>2026-11-14T00:00:00Z</published>
     <updated>2026-11-14T00:00:00Z</updated>
     <summary>Scalping trading : ce que c&#x27;est, ce que coûtent les frais, ce que disent les études et comment je scalpe le Nasdaq au carnet d&#x27;ordres. Est-ce pour toi ?</summary>
-  </entry>
-  <entry>
-    <title>Order flow sur TradingView : ce qu&#x27;on voit vraiment (et ses limites)</title>
-    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/flux-ordres-tradingview/"/>
-    <id>https://basstrading.fr/blog/flux-ordres-tradingview/</id>
-    <published>2026-11-13T00:00:00Z</published>
-    <updated>2026-11-13T00:00:00Z</updated>
-    <summary>Order flow sur TradingView : Volume Profile, CVD, footprint, TPO, DOM et données CME. Ce que chaque outil montre vraiment, mon réglage et ses limites.</summary>
   </entry>
   <entry>
     <title>Topstep avis : règles, drawdown et payout expliqués (2026)</title>

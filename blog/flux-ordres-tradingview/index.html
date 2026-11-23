@@ -16,11 +16,13 @@
   <meta property="og:url" content="https://basstrading.fr/blog/flux-ordres-tradingview/">
   <meta property="og:site_name" content="BASS Trading">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Footprint trading : lire un footprint chart (guide + outils)">
+  <meta name="twitter:description" content="Lire un footprint chart : bid × ask, delta, imbalances, absorption. Les outils footprint comparés (Sierra, ATAS, TradingView) et 3 lectures sur le Nasdaq.">
   <link rel="canonical" href="https://basstrading.fr/blog/flux-ordres-tradingview/">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Article","@id":"https://basstrading.fr/blog/flux-ordres-tradingview/#article","headline":"Order flow sur TradingView : ce qu'on voit vraiment (et ses limites)","description":"Order flow sur TradingView : Volume Profile, CVD, footprint, TPO, DOM et données CME. Ce que chaque outil montre vraiment, mon réglage et ses limites.","datePublished":"2026-11-13","dateModified":"2026-11-13","inLanguage":"fr-FR","image":"https://basstrading.fr/blog/flux-ordres-tradingview/blog-flux-ordres-tradingview-1.webp","mainEntityOfPage":"https://basstrading.fr/blog/flux-ordres-tradingview/","isPartOf":{"@type":"WebSite","@id":"https://basstrading.fr/#website","name":"BASS Trading","url":"https://basstrading.fr/"},"author":{"@type":"Person","@id":"https://basstrading.fr/#sebastien-constant","name":"Sébastien Constant","url":"https://basstrading.fr/auteur/sebastien-constant/"},"publisher":{"@type":"Organization","@id":"https://basstrading.fr/#organisation","name":"BASS Trading","url":"https://basstrading.fr/","logo":{"@type":"ImageObject","url":"https://basstrading.fr/images/logo-basstrading.png","width":512,"height":512}}}
+  {"@context":"https://schema.org","@type":"Article","@id":"https://basstrading.fr/blog/flux-ordres-tradingview/#article","headline":"Order flow sur TradingView : ce qu'on voit vraiment (et ses limites)","description":"Order flow sur TradingView : Volume Profile, CVD, footprint, TPO, DOM et données CME. Ce que chaque outil montre vraiment, mon réglage et ses limites.","datePublished":"2026-11-13","dateModified":"2026-11-23","inLanguage":"fr-FR","image":"https://basstrading.fr/blog/flux-ordres-tradingview/blog-flux-ordres-tradingview-1.webp","mainEntityOfPage":"https://basstrading.fr/blog/flux-ordres-tradingview/","isPartOf":{"@type":"WebSite","@id":"https://basstrading.fr/#website","name":"BASS Trading","url":"https://basstrading.fr/"},"author":{"@type":"Person","@id":"https://basstrading.fr/#sebastien-constant","name":"Sébastien Constant","url":"https://basstrading.fr/auteur/sebastien-constant/"},"publisher":{"@type":"Organization","@id":"https://basstrading.fr/#organisation","name":"BASS Trading","url":"https://basstrading.fr/","logo":{"@type":"ImageObject","url":"https://basstrading.fr/images/logo-basstrading.png","width":512,"height":512}}}
   </script>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://basstrading.fr"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://basstrading.fr/blog/"},{"@type":"ListItem","position":3,"name":"Order flow sur TradingView","item":"https://basstrading.fr/blog/flux-ordres-tradingview/"}]}
@@ -166,7 +168,7 @@
         <div><div class="blog-meta-name"><a href="/auteur/sebastien-constant/" rel="author" style="color:inherit;text-decoration:none">Sébastien Constant</a></div><div class="blog-meta-role">Trader & Formateur Order Flow</div></div>
       </div>
       <div class="blog-meta-sep"></div>
-      <div class="blog-meta-info"><span>Novembre 2026</span><span>20 min de lecture</span></div>
+      <div class="blog-meta-info"><span>Mis à jour en novembre 2026</span><span>19 min de lecture</span></div>
     </div>
   </div>
 </section>
@@ -293,7 +295,7 @@
 <h3>La VWAP</h3>
 <p>La VWAP (prix moyen pondéré par les volumes) est un calcul simple et transparent : TradingView l&#39;a en natif, avec ses bandes d&#39;écart-type, et l&#39;ancrage à la séance. C&#39;est l&#39;un des niveaux que je regarde le plus sur le Nasdaq, parce que beaucoup d&#39;acteurs l&#39;utilisent comme référence de prix moyen.</p>
 <p>Un exemple que je montre <a href="https://www.youtube.com/watch?v=FLBONXJWCoM&amp;t=3480s">vers la 58e minute de ma formation</a> : le prix revient sur la VWAP, le footprint montre une absorption (des vendeurs agressifs qui frappent sans faire baisser le prix), et l&#39;entrée se fait avec un stop de 4 à 5 points. Le niveau vient d&#39;abord, le flux confirme ensuite. Sans la VWAP, cette absorption n&#39;aurait été qu&#39;un détail parmi d&#39;autres.</p>
-<p>Tout est dans mon article sur la <a href="https://basstrading.fr/blog/vwap-trading/">VWAP en trading</a>.</p>
+<p>Tout est dans mon article sur la <a href="https://basstrading.fr/blog/vwap-trading/">VWAP en trading</a>. Et pour l&#39;installer sur ton graphique sans te tromper de source ni d&#39;ancrage, je montre pas à pas comment <a href="https://basstrading.fr/blog/vwap-tradingview/">régler la VWAP sur TradingView</a>, bandes d&#39;écart-type comprises.</p>
 <h3>À retenir</h3>
 <ul><li>TPO et VWAP sont fiables sur TradingView, car ils ne dépendent pas de l&#39;agresseur.</li><li>Ton plan se construit avec eux, avant la séance.</li><li>Un signal d&#39;order flow sans niveau n&#39;a pas de valeur pour moi.</li></ul>
 <p>Reste l&#39;outil que tout le monde associe à l&#39;order flow : le carnet d&#39;ordres. Et là, TradingView a une condition.</p>
@@ -341,7 +343,7 @@
 <h3>Étape 2 : les niveaux de la veille</h3>
 <p>Trace le plus haut et le plus bas de la séance précédente. Ce sont des niveaux que tout le monde regarde. Si tu ne connais pas les heures de séance depuis la France, mon article sur les <a href="https://basstrading.fr/blog/horaires-futures-nasdaq-heure-paris/">horaires des futures Nasdaq à l&#39;heure de Paris</a> les donne.</p>
 <h3>Étape 3 : la VWAP de séance</h3>
-<p>VWAP ancrée à la séance, avec une seule bande d&#39;écart-type au départ. Tu verras vite si le prix est « cher » ou « bon marché » par rapport à la moyenne du jour.</p>
+<p>VWAP ancrée à la séance, avec une seule bande d&#39;écart-type au départ. Tu verras vite si le prix est « cher » ou « bon marché » par rapport à la moyenne du jour. Si tu veux aussi suivre une <a href="https://basstrading.fr/blog/vwap-tradingview/">VWAP ancrée sur TradingView</a> depuis un plus haut ou une annonce, j&#39;y montre où je la pose et pourquoi.</p>
 <h3>Étape 4 : le Volume Profile de session</h3>
 <p>Un profil par séance, pour lire le POC et la value area de la veille. Si ta formule ne l&#39;inclut pas, le TPO en type de graphique te donne une value area en temps, très proche dans l&#39;esprit.</p>
 <h3>Étape 5 : le CVD, en confirmation seulement</h3>
