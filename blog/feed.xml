@@ -6,8 +6,16 @@
   <link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
   <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/"/>
   <id>https://basstrading.fr/blog/</id>
-  <updated>2026-11-23T00:00:00Z</updated>
+  <updated>2026-11-24T00:00:00Z</updated>
   <author><name>Sébastien Constant (Bass)</name><uri>https://basstrading.fr/auteur/sebastien-constant/</uri></author>
+  <entry>
+    <title>Krach boursier : comment ça se passe et que faire en trading</title>
+    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/krach-boursier/"/>
+    <id>https://basstrading.fr/blog/krach-boursier/</id>
+    <published>2026-11-24T00:00:00Z</published>
+    <updated>2026-11-24T00:00:00Z</updated>
+    <summary>Krach boursier : définition, les grands krachs (1929, 1987, 2008, 2024), pourquoi les marchés chutent si vite et comment j&#x27;adapte mon trading de futures.</summary>
+  </entry>
   <entry>
     <title>Apex Trader Funding avis : règles 4.0, drawdown et payouts (2026)</title>
     <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/apex-trader-funding/"/>
@@ -497,11 +505,11 @@
     <summary>Configurer Sierra Chart pas à pas : profil TPO, Volume Profile, footprint (Numbers Bars) et CVD, pour lire les futures du Nasdaq.</summary>
   </entry>
   <entry>
-    <title>Devenir Funded Trader : La méthode qui fonctionne vraiment</title>
+    <title>Funded trader en prop firm : passer le challenge et garder le compte</title>
     <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/prop-firm-funded-trader/"/>
     <id>https://basstrading.fr/blog/prop-firm-funded-trader/</id>
     <published>2026-03-27T00:00:00Z</published>
     <updated>2026-03-27T00:00:00Z</updated>
-    <summary>Guide complet pour devenir funded trader en prop firm : FTMO, TopStep, Apex. Méthode, gestion du risque, préparation.</summary>
+    <summary>Devenir funded trader : comment marche le challenge d&#x27;une prop firm, pourquoi la plupart échouent, quel capital prévoir et comment garder son compte.</summary>
   </entry>
 </feed>
