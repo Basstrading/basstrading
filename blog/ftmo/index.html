@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FTMO avis : règles futures, drawdown et payouts (2026) — BASS Trading</title>
+  <meta name="description" content="FTMO Futures en 2026 : prix Growth et Pro, drawdown en fin de journée, cohérence, payouts, plateformes. Mon avis de trader, sans lien affilié.">
+  <meta property="og:title" content="FTMO avis : règles futures, drawdown et payouts (2026) — BASS Trading">
+  <meta property="og:description" content="FTMO Futures en 2026 : prix Growth et Pro, drawdown en fin de journée, cohérence, payouts, plateformes. Mon avis de trader, sans lien affilié.">
+  <meta property="og:image" content="https://basstrading.fr/blog/ftmo/blog-ftmo-1.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://basstrading.fr/blog/ftmo/blog-ftmo-1.webp">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://basstrading.fr/blog/ftmo/">
+  <meta property="og:site_name" content="BASS Trading">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Footprint trading : lire un footprint chart (guide + outils)">
+  <meta name="twitter:description" content="Lire un footprint chart : bid × ask, delta, imbalances, absorption. Les outils footprint comparés (Sierra, ATAS, TradingView) et 3 lectures sur le Nasdaq.">
+  <link rel="canonical" href="https://basstrading.fr/blog/ftmo/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","@id":"https://basstrading.fr/blog/ftmo/#article","headline":"FTMO avis : règles futures, drawdown et payouts (2026)","description":"FTMO Futures en 2026 : prix Growth et Pro, drawdown en fin de journée, cohérence, payouts, plateformes. Mon avis de trader, sans lien affilié.","datePublished":"2026-11-25","dateModified":"2026-11-25","inLanguage":"fr-FR","image":"https://basstrading.fr/blog/ftmo/blog-ftmo-1.webp","mainEntityOfPage":"https://basstrading.fr/blog/ftmo/","isPartOf":{"@type":"WebSite","@id":"https://basstrading.fr/#website","name":"BASS Trading","url":"https://basstrading.fr/"},"author":{"@type":"Person","@id":"https://basstrading.fr/#sebastien-constant","name":"Sébastien Constant","url":"https://basstrading.fr/auteur/sebastien-constant/"},"publisher":{"@type":"Organization","@id":"https://basstrading.fr/#organisation","name":"BASS Trading","url":"https://basstrading.fr/","logo":{"@type":"ImageObject","url":"https://basstrading.fr/images/logo-basstrading.png","width":512,"height":512}}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://basstrading.fr"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://basstrading.fr/blog/"},{"@type":"ListItem","position":3,"name":"FTMO avis","item":"https://basstrading.fr/blog/ftmo/"}]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"FTMO Futures est-il fiable ?","acceptedAnswer":{"@type":"Answer","text":"FTMO est une société tchèque fondée en 2015 à Prague, qui a racheté le courtier réglementé OANDA en décembre 2025 et publie ses règles en détail. Ce n'est pas une arnaque, mais ce n'est pas un courtier : les comptes d'évaluation et Sim-Funded sont des comptes de démonstration avec des fonds fictifs. Tu achètes un service d'évaluation, et l'offre futures est encore en phase bêta, comme FTMO le dit sur sa page dédiée."}},{"@type":"Question","name":"À qui s'adresse FTMO Futures ?","acceptedAnswer":{"@type":"Answer","text":"FTMO Futures s'adresse au trader qui a déjà une méthode testée et des journées régulières : la règle de cohérence plafonne les grosses journées et les payouts demandent plusieurs jours qualifiants. Il convient moins au débutant qui apprend en payant des évaluations, et au trader qui vit de quelques très grosses journées par mois. Il faut aussi trader sur NinjaTrader, Tradovate ou TradingView."}},{"@type":"Question","name":"Growth ou Pro : quel compte FTMO choisir ?","acceptedAnswer":{"@type":"Answer","text":"Le Growth convient si tes journées sont encore irrégulières : pas de perte journalière en évaluation, mais une cohérence à 40 % et seulement 50 % du profit retirable. Le Pro donne plus de drawdown, une cohérence à 50 % et 100 % du profit retirable, mais une perte journalière dure qui fait échouer l'évaluation ou termine le compte. Choisis le Pro seulement si ta discipline journalière est déjà solide."}},{"@type":"Question","name":"Que se passe-t-il si j'échoue l'évaluation FTMO Futures ?","acceptedAnswer":{"@type":"Answer","text":"Si tu touches le plancher du drawdown, ou la perte journalière sur un compte Pro, l'évaluation échoue. Tu peux payer un reset (109 $ pour un Growth 50K, 129 $ pour un Pro 50K, tarifs du 25/11/2026) ou laisser l'abonnement se renouveler. Dépasser la règle de cohérence, en revanche, ne fait pas échouer : tu dois simplement continuer à trader jusqu'à respecter le ratio."}},{"@type":"Question","name":"Peut-on trader les annonces économiques chez FTMO Futures ?","acceptedAnswer":{"@type":"Answer","text":"Oui, le trading pendant les news est autorisé chez FTMO Futures selon sa page officielle, lue le 25/11/2026. Ce n'est pas le cas chez toutes les prop firms. Autorisé ne veut pas dire conseillé : sur le Nasdaq, les publications comme le CPI ou le NFP provoquent du glissement et des mouvements violents. Je ne suis jamais en position au moment d'une annonce."}},{"@type":"Question","name":"Peut-on utiliser FTMO Futures depuis la France ?","acceptedAnswer":{"@type":"Answer","text":"Oui, la France n'est pas dans la liste des pays exclus, ni la Belgique, la Suisse ou le Canada (lu le 25/11/2026). Certains pays francophones sont exclus, comme la Côte d'Ivoire, la Tunisie, Monaco ou le Mali. Les plateformes proposées sont NinjaTrader, Tradovate et TradingView ; Sierra Chart n'est pas disponible."}},{"@type":"Question","name":"Combien de comptes FTMO Futures peut-on avoir ?","acceptedAnswer":{"@type":"Answer","text":"Tu peux détenir jusqu'à 3 comptes Sim-Funded, pour un capital simulé total de 450 000 $ au maximum, et jusqu'à 3 comptes Live Funded. Les inscriptions multiples sont interdites. Une fois passé en Live Funded, tes comptes d'évaluation et Sim-Funded sont fermés ; FTMO rembourse le dernier abonnement payé, mais pas les resets."}},{"@type":"Question","name":"Combien de temps faut-il, de l'évaluation au premier payout ?","acceptedAnswer":{"@type":"Answer","text":"FTMO n'impose ni durée minimum ni limite de temps : l'évaluation dure tant que tu paies l'abonnement mensuel. Sur un 50K, l'objectif de 3 000 $ avec la cohérence à 40 % demande au moins trois journées, plutôt cinq à huit. Il faut ensuite 4 jours qualifiants en Growth (5 en Pro) avant le premier payout. Un à deux mois au total est un horizon réaliste."}}]}
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{--bk:#1D1D1F;--bk2:#111;--bk3:#0A0A0A;--g1:#6E6E73;--g2:#86868B;--g3:#D2D2D7;--g4:#F5F5F7;--wh:#FBFBFD;--pure:#FFF;--green:#00B67A;--blue:#0066FF}
+    html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}
+    body{font-family:'DM Sans',sans-serif;color:var(--bk);background:var(--pure);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+    .preloader{position:fixed;inset:0;background:var(--bk3);z-index:10001;display:flex;align-items:center;justify-content:center}
+    .pre-word{font-family:'Outfit',sans-serif;font-size:clamp(3rem,8vw,5rem);font-weight:900;letter-spacing:16px;text-transform:uppercase;color:var(--pure);overflow:hidden}
+    .pre-word span{display:inline-block;transform:translateY(110%);opacity:0}
+    .pre-line{width:0;height:1px;background:rgba(255,255,255,.3);margin-top:20px}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 48px;display:flex;align-items:center;justify-content:space-between;background:rgba(245,245,247,.85);backdrop-filter:blur(20px) saturate(1.8);border-bottom:1px solid rgba(0,0,0,.04);transition:background .4s}
+    .nav-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase;color:var(--bk)}
+    .nav-links{display:flex;gap:28px;list-style:none}.nav-links a{font-size:.74rem;font-weight:500;letter-spacing:.3px;color:var(--g1);transition:color .3s}.nav-links a:hover{color:var(--bk)}
+    .nav-cta{padding:8px 20px;background:var(--bk);color:var(--pure);border:none;border-radius:980px;font-size:.72rem;font-weight:600;transition:all .3s;cursor:pointer;text-decoration:none;display:inline-block}.nav-cta:hover{background:var(--bk2)}
+    .blog-hero{padding:160px 48px 80px;background:var(--g4);position:relative;overflow:hidden}
+    .blog-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,transparent,var(--g4));pointer-events:none}
+    .blog-hero-inner{max-width:720px;margin:0 auto}
+    .breadcrumb{display:flex;gap:8px;align-items:center;margin-bottom:28px;flex-wrap:wrap}
+    .breadcrumb a,.breadcrumb span{font-size:.68rem;font-weight:500;letter-spacing:.3px;color:var(--g2);transition:color .3s}.breadcrumb a:hover{color:var(--bk)}.breadcrumb .sep{color:var(--g3)}
+    .blog-hero-cat{display:inline-block;padding:5px 14px;border:1px solid rgba(0,102,255,.15);border-radius:980px;font-size:.6rem;font-weight:700;color:var(--blue);letter-spacing:2px;text-transform:uppercase;margin-bottom:20px}
+    .blog-hero-title{font-family:'Outfit',sans-serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:900;line-height:1.05;letter-spacing:-2px;color:var(--bk);margin-bottom:20px}
+    .blog-hero-desc{font-size:.95rem;color:var(--g1);line-height:1.8;max-width:560px;margin-bottom:28px}
+    .blog-meta{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+    .blog-meta-author{display:flex;align-items:center;gap:10px}
+    .blog-meta-avatar{width:36px;height:36px;border-radius:50%;background:var(--bk3);overflow:hidden;flex-shrink:0}.blog-meta-avatar img{width:100%;height:100%;object-fit:cover}
+    .blog-meta-name{font-size:.78rem;font-weight:600;color:var(--bk)}.blog-meta-role{font-size:.65rem;color:var(--g2)}
+    .blog-meta-sep{width:1px;height:24px;background:var(--g3)}
+    .blog-meta-info{font-size:.7rem;color:var(--g2)}.blog-meta-info span{margin-right:16px}
+    .toc{position:sticky;top:90px;background:var(--pure);border:1px solid rgba(0,0,0,.04);border-radius:14px;padding:24px;margin-bottom:32px}
+    .toc-title{font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.5px;color:var(--bk);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+    .toc ol{list-style:none;counter-reset:toc}.toc li{counter-increment:toc}
+    .toc li a{display:flex;align-items:baseline;gap:8px;padding:6px 0;font-size:.76rem;color:var(--g1);transition:color .3s;border-bottom:1px solid rgba(0,0,0,.03)}.toc li a:hover{color:var(--blue)}
+    .toc li a::before{content:counter(toc,decimal-leading-zero);font-family:'Outfit',sans-serif;font-size:.65rem;font-weight:700;color:var(--g3);min-width:18px}
+    .toc li:last-child a{border-bottom:none}.toc li a.active{color:var(--blue);font-weight:600}.toc li a.active::before{color:var(--blue)}
+    .article-wrap{display:grid;grid-template-columns:220px 1fr;gap:40px;max-width:1020px;margin:0 auto;padding:60px 48px 120px}
+    .article-sidebar{position:relative}.article-body{max-width:700px}
+    .article-body h2{font-family:'Outfit',sans-serif;font-size:clamp(1.4rem,2.5vw,1.8rem);font-weight:800;line-height:1.1;letter-spacing:-1px;color:var(--bk);margin:56px 0 16px;padding-top:20px}.article-body h2:first-of-type{margin-top:0}
+    .article-body h3{font-family:'Outfit',sans-serif;font-size:1.05rem;font-weight:700;line-height:1.25;letter-spacing:-.3px;color:var(--bk);margin:36px 0 10px}
+    .article-body p{font-size:.9rem;color:var(--g1);line-height:1.85;margin-bottom:18px}
+    .article-body strong{color:var(--bk);font-weight:600}
+    .article-body ul,.article-body ol{margin:0 0 20px 0;padding-left:20px}
+    .article-body li{font-size:.88rem;color:var(--g1);line-height:1.8;margin-bottom:6px}.article-body li strong{color:var(--bk)}
+    .article-body blockquote{margin:28px 0;padding:20px 24px;background:var(--g4);border-left:3px solid var(--bk);border-radius:0 12px 12px 0;font-size:.88rem;color:var(--g1);line-height:1.8;font-style:italic}
+    .article-body blockquote strong{color:var(--bk);font-style:normal}
+    .article-body hr{border:none;border-top:1px solid var(--g4);margin:48px 0}
+    .info-box{margin:28px 0;padding:24px;background:rgba(0,102,255,.03);border:1px solid rgba(0,102,255,.08);border-radius:14px}
+    .info-box-title{font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:700;color:var(--blue);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+    .info-box p{font-size:.82rem;color:var(--g1);line-height:1.7;margin-bottom:0}
+    .key-concept{margin:32px 0;padding:28px;background:var(--bk3);border-radius:16px;color:var(--pure)}
+    .key-concept-label{font-size:.55rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:10px}
+    .key-concept h4{font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:800;letter-spacing:-.3px;margin-bottom:8px}
+    .key-concept p{font-size:.85rem;color:rgba(255,255,255,.5);line-height:1.8;margin-bottom:0}
+    .compare-table{width:100%;margin:24px 0 28px;border-collapse:collapse;border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,.06)}
+    .compare-table th{background:var(--bk3);color:var(--pure);font-family:'Outfit',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:14px 16px;text-align:left}
+    .compare-table td{padding:12px 16px;font-size:.82rem;color:var(--g1);line-height:1.6;border-bottom:1px solid rgba(0,0,0,.04);background:var(--pure)}
+    .compare-table tr:last-child td{border-bottom:none}.compare-table td:first-child{font-weight:600;color:var(--bk)}
+    .cta-card{margin:48px 0;padding:40px;background:var(--bk3);border-radius:20px;text-align:center;position:relative;overflow:hidden}
+    .cta-card::before{content:'';position:absolute;top:-50%;right:-30%;width:400px;height:400px;background:radial-gradient(circle,rgba(0,102,255,.08) 0%,transparent 70%);pointer-events:none}
+    .cta-card-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:12px}
+    .cta-card h3{font-family:'Outfit',sans-serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:800;color:var(--pure);letter-spacing:-.5px;margin-bottom:8px}
+    .cta-card p{font-size:.85rem;color:rgba(255,255,255,.4);line-height:1.7;max-width:380px;margin:0 auto 24px}
+    .cta-card .btn-p{background:var(--pure);color:var(--bk)}.cta-card .btn-p:hover{box-shadow:0 8px 30px rgba(255,255,255,.15)}
+    .faq-sec{padding:80px 48px 100px;background:var(--g4)}
+    .faq-list{max-width:680px;margin:40px auto 0}.fi{border-bottom:1px solid rgba(0,0,0,.06)}
+    .fq{width:100%;text-align:left;padding:18px 0;background:none;border:none;font-size:.85rem;font-weight:600;font-family:'DM Sans',sans-serif;color:var(--bk);display:flex;justify-content:space-between;align-items:center;cursor:pointer;gap:16px;transition:color .3s}.fq:hover{color:var(--g1)}
+    .fq-icon{width:22px;height:22px;border-radius:50%;background:rgba(0,0,0,.04);display:flex;align-items:center;justify-content:center;font-size:.75rem;transition:all .4s;flex-shrink:0;color:var(--g2)}
+    .fa{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1)}.fa.open{max-height:280px;padding-bottom:14px}
+    .fa p{font-size:.8rem;color:var(--g1);line-height:1.7;margin-bottom:0}.fi.active .fq-icon{background:var(--bk);color:var(--pure);transform:rotate(45deg)}
+    .related-sec{padding:80px 48px;background:var(--pure);border-top:1px solid var(--g4)}
+    .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1060px;margin:40px auto 0}
+    .related-card{display:block;padding:28px;background:var(--g4);border-radius:16px;transition:all .4s;text-decoration:none;color:var(--bk)}
+    .related-card:hover{background:var(--pure);box-shadow:0 8px 30px rgba(0,0,0,.06);transform:translateY(-2px)}
+    .related-cat{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+    .related-card h3{font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:700;line-height:1.3;letter-spacing:-.3px;margin-bottom:8px}
+    .related-card p{font-size:.78rem;color:var(--g1);line-height:1.6;margin-bottom:14px}
+    .related-link{font-size:.72rem;font-weight:600;color:var(--blue);letter-spacing:.3px}
+    .footer{background:var(--bk3);color:var(--pure);padding:56px 48px 28px}
+    .ft-top{display:flex;justify-content:space-between;align-items:start;margin-bottom:48px;flex-wrap:wrap;gap:32px}
+    .ft-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase}
+    .ft-cols{display:flex;gap:80px}
+    .ft-col-title{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:12px}
+    .ft-col a{display:block;font-size:.78rem;color:rgba(255,255,255,.5);margin-bottom:8px;transition:color .3s}.ft-col a:hover{color:var(--pure)}
+    .ft-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:20px;display:flex;justify-content:space-between;align-items:center;font-size:.6rem;color:rgba(255,255,255,.2)}
+    .ft-bottom a{color:rgba(255,255,255,.2);transition:color .3s;margin-left:20px}.ft-bottom a:hover{color:rgba(255,255,255,.5)}
+    .disclaimer{padding:12px 48px;background:var(--bk3);font-size:.58rem;color:rgba(255,255,255,.12);text-align:center;line-height:1.6;border-top:1px solid rgba(255,255,255,.03)}
+    .sec-center{text-align:center;max-width:680px;margin:0 auto}
+    .sec-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--g2);margin-bottom:10px}
+    .sec-title{font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;line-height:1.05;letter-spacing:-1.5px;color:var(--bk);margin-bottom:16px}
+    .btn-p{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--bk);color:var(--pure);border-radius:980px;font-size:.85rem;font-weight:600;transition:all .3s;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;text-decoration:none}
+    .btn-p:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(0,0,0,.1)}
+    .btn-p svg{width:13px;height:13px;transition:transform .3s}.btn-p:hover svg{transform:translateX(3px)}
+    .reading-progress{position:fixed;top:0;left:0;height:2px;background:var(--blue);z-index:9999;width:0;transition:width .1s linear}
+    @media(max-width:900px){.nav{padding:14px 20px}.nav-links{display:none}.blog-hero{padding:120px 20px 60px}.article-wrap{grid-template-columns:1fr;padding:40px 20px 80px}.article-sidebar{display:none}.related-grid{grid-template-columns:1fr}.related-sec,.faq-sec{padding:60px 20px}.ft-cols{flex-direction:column;gap:28px}.footer{padding:40px 20px 20px}.disclaimer{padding:10px 16px}.cta-card{padding:28px 20px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  .article-body a{color:var(--blue);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;font-weight:500}.article-body a:hover{text-decoration-thickness:2px}
+</style>
+<style>/* 28/10/2026 : débordement mobile (colonne de grille sans min-width) */.article-wrap>*,.article-layout>*{min-width:0}.article-body table,.compare-table{display:block;overflow-x:auto;max-width:100%}.article-body pre{overflow-x:auto}.article-body img{max-width:100%;height:auto}</style>
+</head>
+<body>
+
+<div class="preloader" id="preloader"><div style="text-align:center"><div class="pre-word"><span>B</span><span>A</span><span>S</span><span>S</span></div><div class="pre-line" id="preLine"></div></div></div>
+<div class="reading-progress" id="readingProgress"></div>
+
+<nav class="nav" id="nav">
+  <a href="https://basstrading.fr" class="nav-logo">BASS</a>
+  <ul class="nav-links">
+    <li><a href="https://basstrading.fr/#methode">Méthode</a></li>
+    <li><a href="https://basstrading.fr#resultats">Résultats</a></li>
+    <li><a href="https://basstrading.fr#avis">Avis</a></li>
+    <li><a href="https://basstrading.fr#faq">FAQ</a></li>
+    <li><a href="/formations/">Formations</a></li>
+    <li><a href="https://basstrading.fr/blog/">Blog</a></li>
+  </ul>
+  <a href="https://basstrading.fr/p/formation-offerte/?src=blog-ftmo-menu" class="nav-cta">Formation offerte</a>
+</nav>
+
+<section class="blog-hero">
+  <div class="blog-hero-inner">
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <a href="https://basstrading.fr">Accueil</a><span class="sep">/</span>
+      <a href="https://basstrading.fr/blog/">Blog</a><span class="sep">/</span>
+      <span>FTMO avis</span>
+    </nav>
+    <div class="blog-hero-cat">Prop firm</div>
+    <h1 class="blog-hero-title">FTMO avis : règles futures, drawdown et payouts (2026)</h1>
+    <p class="blog-hero-desc">FTMO Futures, c&#39;est une évaluation en une seule phase (Growth ou Pro, de 50K à 150K), avec un drawdown calculé en fin de journée et des payouts à 90/10. C&#39;est sérieux sur le papier. Mais le produit est encore en phase bêta, Sierra Chart n&#39;est pas proposé, et la règle de cohérence piège beaucoup de monde. Voici mon avis de trader Nasdaq, règle par règle.</p>
+    <div class="blog-meta">
+      <div class="blog-meta-author">
+        <div class="blog-meta-avatar"><img src="../../images/bass-presenting.jpg" alt="Sébastien Constant" loading="lazy"></div>
+        <div><div class="blog-meta-name"><a href="/auteur/sebastien-constant/" rel="author" style="color:inherit;text-decoration:none">Sébastien Constant</a></div><div class="blog-meta-role">Trader & Formateur Order Flow</div></div>
+      </div>
+      <div class="blog-meta-sep"></div>
+      <div class="blog-meta-info"><span>Novembre 2026</span><span>24 min de lecture</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="article-wrap">
+  <aside class="article-sidebar">
+    <div class="toc">
+      <div class="toc-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/></svg> Sommaire</div>
+      <ol>
+        <li><a href="#ftmo-futures-c-est-quoi-mon-avis-en-30-s">FTMO Futures, c&#39;est quoi ? Mon avis en 30 secondes</a></li>
+        <li><a href="#quels-comptes-ftmo-futures-existent-et-q">Quels comptes FTMO Futures existent et que contiennent-ils ?</a></li>
+        <li><a href="#combien-coute-vraiment-une-evaluation-ft">Combien coûte vraiment une évaluation FTMO ?</a></li>
+        <li><a href="#comment-marche-le-drawdown-fin-de-journe">Comment marche le drawdown fin de journée de FTMO ?</a></li>
+        <li><a href="#perte-journaliere-quelle-difference-entr">Perte journalière : quelle différence entre Growth et Pro ?</a></li>
+        <li><a href="#la-regle-de-coherence-de-40-ou-50-commen">La règle de cohérence de 40 % ou 50 % : comment la gérer ?</a></li>
+        <li><a href="#comment-se-passent-les-payouts-et-les-re">Comment se passent les payouts et les retraits chez FTMO Futures ?</a></li>
+        <li><a href="#quelles-regles-font-perdre-un-compte-ftm">Quelles règles font perdre un compte FTMO Futures ?</a></li>
+        <li><a href="#peut-on-trader-ftmo-futures-depuis-la-fr">Peut-on trader FTMO Futures depuis la France, et sur quelle plateforme ?</a></li>
+        <li><a href="#ftmo-est-il-fiable-ou-est-ce-une-arnaque">FTMO est-il fiable ou est-ce une arnaque ?</a></li>
+        <li><a href="#a-qui-s-adresse-ftmo-growth-ou-pro-selon">À qui s&#39;adresse FTMO : Growth ou Pro selon ton profil de trader ?</a></li>
+        <li><a href="#comment-je-passerais-l-evaluation-ftmo-f">Comment je passerais l&#39;évaluation FTMO Futures</a></li>
+        <li><a href="#ftmo-face-aux-autres-prop-firms-futures-">FTMO face aux autres prop firms futures : ce qu&#39;il fait mieux et moins bien</a></li>
+        <li><a href="#les-limites-de-mon-avis-sur-ftmo">Les limites de mon avis sur FTMO</a></li>
+        <li><a href="#ce-qu-il-faut-retenir-de-ftmo-futures">Ce qu&#39;il faut retenir de FTMO Futures</a></li>
+      </ol>
+    </div>
+  </aside>
+
+  <article class="article-body">
+    <h2 id="ftmo-futures-c-est-quoi-mon-avis-en-30-s">FTMO Futures, c&#39;est quoi ? Mon avis en 30 secondes</h2>
+    <p>FTMO Futures est le programme futures de FTMO, une prop firm fondée à Prague en 2015 : tu paies un abonnement mensuel pour passer une évaluation sur compte simulé, et si tu respectes les règles, tu reçois une part des profits simulés.</p>
+<p>Beaucoup de traders parlent encore du « challenge FTMO » : c&#39;est le nom historique de l&#39;évaluation sur l&#39;offre CFD. Sur les futures, FTMO parle simplement d&#39;évaluation, en une seule phase.</p>
+<p>Je le dis tout de suite pour que tu lises la suite en confiance : je ne suis pas partenaire de FTMO, je n&#39;ai aucun code promo, et il n&#39;y a aucun lien affilié sur cette page. Je trade le Nasdaq futures en 1 minute sur Sierra Chart, avec le Market Profile, le VWAP et le CVD (et le carnet d&#39;ordres). Je regarde les prop firms avec l&#39;œil de quelqu&#39;un qui doit vivre avec leurs règles pendant une séance.</p>
+<h3>Mon avis court</h3>
+<ul><li><b>Ce qui est bien</b> : le drawdown est calculé en fin de journée (pas en temps réel), il se bloque au capital de départ, il n&#39;y a pas de frais d&#39;activation, et les règles sont publiées en détail.</li><li><b>Ce qui me gêne</b> : le produit est encore en phase bêta (<a href="https://ftmo.com/en/futures/beta-description/">FTMO le dit sur sa page dédiée</a>), le paiement est un abonnement qui tourne tant que tu n&#39;as pas réussi, la règle de cohérence oblige parfois à continuer après avoir atteint l&#39;objectif, et ma plateforme (Sierra Chart) n&#39;est pas dans la liste.</li><li><b>Pour qui</b> : un trader régulier, qui fait des journées moyennes et répétables. Pas pour celui qui vit de deux grosses journées par mois.</li></ul>
+<p>Cette page de FTMO écrit que les futures sont « in the Beta phase », avec les prix, les objectifs et les détails de comptes déjà publiés, et que les règles ne changent pas rétroactivement pour les comptes actifs. Elle ne précise pas ce que la bêta change concrètement : je n&#39;en déduis rien de plus.</p>
+<h3>Le parcours en trois étapes</h3>
+<p>D&#39;abord l&#39;évaluation (une seule phase) : tu atteins un objectif de profit sans casser le drawdown. Ensuite le compte Sim-Funded, le compte « financé » simulé, où tu peux demander des payouts. Enfin, sur invitation, le compte Live Funded, avec des payouts quotidiens.</p>
+<p>Tout ce qui suit a été lu sur les pages officielles de FTMO le 25/11/2026. Les règles des prop firms changent souvent : vérifie toujours la <a href="https://ftmo.com/en/futures/trading-objectives-and-rules">page des règles FTMO Futures</a> avant de payer.</p>
+<p>Première question logique : combien coûte chaque compte, et qu&#39;est-ce qu&#39;on y gagne en règles ?</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/ftmo/blog-ftmo-1.webp" alt="Schéma du parcours FTMO Futures : évaluation en une phase, compte Sim-Funded, puis Live Funded sur invitation" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Trois niveaux : on ne demande des payouts qu&#39;à partir du Sim-Funded, et le Live n&#39;est accessible que sur invitation.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="quels-comptes-ftmo-futures-existent-et-q">Quels comptes FTMO Futures existent et que contiennent-ils ?</h2>
+    <p>FTMO propose deux produits, Growth et Pro, chacun en trois tailles : 50K, 100K et 150K. Les objectifs de profit sont les mêmes ; ce qui change, c&#39;est le prix, le drawdown, la perte journalière et les payouts.</p>
+<p>Voici les chiffres du <a href="https://ftmo.com/en/futures/comparison-table">tableau comparatif officiel</a>, lus le 25/11/2026.</p>
+<h3>Les comptes Growth</h3>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Élément</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">50K</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">100K et 150K</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Abonnement mensuel</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">119 $</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">169 $ et 229 $</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Reset</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">109 $</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">159 $ et 219 $</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Objectif de profit</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">3 000 $</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">6 000 $ et 9 000 $</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Drawdown fin de journée</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">2 000 $</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">3 000 $ et 4 500 $</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Contrats maximum</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">5 minis</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">10 et 15 minis</td></tr></tbody></table></div>
+<h3>Les comptes Pro</h3>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Élément</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">50K</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">100K et 150K</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Abonnement mensuel</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">139 $</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">199 $ et 269 $</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Reset</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">129 $</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">189 $ et 259 $</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Objectif de profit</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">3 000 $</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">6 000 $ et 9 000 $</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Drawdown fin de journée</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">3 000 $</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">4 500 $ et 6 000 $</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Contrats maximum</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">5 minis</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">10 et 15 minis</td></tr></tbody></table></div>
+<p><b>Pourquoi tu as peut-être vu d&#39;autres chiffres ailleurs.</b> Dans sa <a href="https://ftmo.com/en/futures/blog/trading-updates/futures-trading-update-5-nov-2026/">mise à jour du 5/11/2026</a>, FTMO a fait passer le drawdown du Growth 100K de 3 500 à 3 000 $ et celui du Growth 150K de 5 000 à 4 500 $. Le gain minimum d&#39;un jour qualifiant est passé de 250 à 300 $ (100K) et de 300 à 450 $ (150K). Ces valeurs concernent les évaluations créées à partir du 5/11 à 4 h 30 (heure de New York) ; les comptes plus anciens gardent les anciennes. Les tableaux ci-dessus donnent donc les valeurs actuelles.</p>
+<p>Il n&#39;y a pas de frais d&#39;activation quand tu passes en Sim-Funded, sur aucun des deux produits. C&#39;est un vrai point positif : chez plusieurs concurrents, l&#39;activation est une deuxième facture.</p>
+<h3>Minis et micros : la règle des 10 pour 1</h3>
+<p>Chez FTMO, 10 micros comptent comme 1 mini. Sur un 50K, tu peux donc prendre 5 NQ ou jusqu&#39;à 50 MNQ. En Sim-Funded, tu démarres plus bas (2, 4 ou 6 contrats selon la taille) et le maximum se débloque au fil des profits.</p>
+<p>Sur le Nasdaq, je conseille de commencer en micro. Le <a href="https://www.cmegroup.com/markets/equities/nasdaq/micro-e-mini-nasdaq-100.contractSpecs.html">contrat MNQ</a> vaut 2 $ le point (0,50 $ le tick de 0,25 point) selon le CME, dix fois moins que le NQ. Si tu hésites : <a href="https://basstrading.fr/blog/nq-ou-mnq/">NQ ou MNQ</a>. Si tu regardes aussi le S&amp;P 500, j&#39;ai détaillé les contrats dans mon article sur les <a href="https://basstrading.fr/blog/sp-500-futures-es-mes/">futures S&amp;P 500, ES et MES</a>.</p>
+<h3>Ni durée minimum ni limite de temps</h3>
+<p>Les pages officielles n&#39;indiquent ni nombre minimum de jours de trading en évaluation, ni date limite. En pratique, la limite, c&#39;est ton portefeuille : l&#39;abonnement repart chaque mois.</p>
+<p>Et c&#39;est justement là qu&#39;il faut sortir la calculette.</p>
+
+    <hr>
+
+    <h2 id="combien-coute-vraiment-une-evaluation-ft">Combien coûte vraiment une évaluation FTMO ?</h2>
+    <p>Le prix affiché n&#39;est pas le coût réel. Le coût réel, c&#39;est l&#39;abonnement multiplié par le nombre de mois, plus chaque reset.</p>
+<p>FTMO l&#39;écrit lui-même : si tu n&#39;as pas réussi à la fin du cycle, l&#39;évaluation « continues into the next billing cycle », autrement dit l&#39;abonnement se renouvelle.</p>
+<h3>Trois scénarios sur un Growth 50K (mon calcul)</h3>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Scénario</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Calcul</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Coût total</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Réussite le premier mois</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">1 × 119 $</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">119 $</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Deux mois, un reset</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">2 × 119 $ + 109 $</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">347 $</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Quatre mois, deux resets</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">4 × 119 $ + 2 × 109 $</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">694 $</td></tr></tbody></table></div>
+<p>Ces chiffres sont fictifs, pour l&#39;exemple. Ils montrent une chose : le modèle par abonnement récompense celui qui va vite et punit celui qui traîne. Et celui qui traîne, souvent, c&#39;est celui qui n&#39;a pas encore de méthode stable.</p>
+<h3>Ce que je conseille avant de payer</h3>
+<p>Dans ma vidéo sur les prop firms, je le disais simplement : <a href="https://www.youtube.com/watch?v=JdMuB0ay37Y&amp;t=448s">« Partez sur quelque chose qui n&#39;est pas cher. Comme ça, vous savez que vous avez un risque qui est très faible. »</a> Je n&#39;ai pas changé d&#39;avis.</p>
+<ul><li>Prends le plus petit compte (50K) tant que tu n&#39;as pas passé une évaluation.</li><li>Fixe-toi un budget total avant de commencer (par exemple trois mois d&#39;abonnement), et pas un euro de plus.</li><li>Teste ta méthode en simulation gratuite d&#39;abord : payer une évaluation pour découvrir sa méthode, c&#39;est la manière la plus chère d&#39;apprendre.</li></ul>
+<h3>Le vrai risque n&#39;est pas l&#39;argent</h3>
+<p>Dix évaluations ratées coûtent plus cher en confiance qu&#39;en dollars. Comme je le dis souvent en live : <a href="https://www.youtube.com/watch?v=JdMuB0ay37Y&amp;t=89s">« ce n&#39;est pas parce que tu vas faire un payout de temps en temps que tu es rentable »</a>. Compte tes dépenses totales en prop firm, pas seulement tes retraits.</p>
+<p>Maintenant, la règle qui décide de tout : le drawdown.</p>
+
+    <hr>
+
+    <h2 id="comment-marche-le-drawdown-fin-de-journe">Comment marche le drawdown fin de journée de FTMO ?</h2>
+    <p>Le drawdown de FTMO Futures est un « End of Day trailing drawdown » : la limite de perte suit ta plus haute clôture de la journée, se recalcule une fois par jour, et ne descend jamais. Elle se bloque ensuite au capital de départ.</p>
+<p>C&#39;est la règle la plus importante de l&#39;article. Si tu la comprends, tu évites la majorité des comptes perdus.</p>
+<h3>L&#39;exemple officiel de FTMO</h3>
+<p>FTMO donne ses exemples sur un compte 50K avec 3 000 $ de drawdown (la page ne dit pas s&#39;il s&#39;agit du Growth ou du Pro), en deux versions. Voici celle du <b>compte Sim-Funded</b> :</p>
+<ul><li>Jour 1 : le compte vaut 50 000 $, le plancher est à 47 000 $.</li><li>Clôture à 51 500 $ : le plancher monte à 48 500 $.</li><li>Clôture à 53 500 $ : le calcul donnerait 50 500 $, mais le plancher se bloque à 50 000 $, le capital de départ. Il ne bougera plus.</li></ul>
+<p>La version <b>évaluation</b> suit la même logique avec d&#39;autres chiffres : une première clôture à 52 000 $ fait monter le plancher à 49 000 $ dès le jour 2, et il se bloque à 50 000 $ au jour 4.</p>
+<p>Si ton solde touche le plancher, le compte est terminé. Pas d&#39;avertissement, pas de seconde chance sur ce compte.</p>
+<h3>Fin de journée ou temps réel : la différence en chiffres (mon calcul)</h3>
+<p>Prenons un Growth 50K (2 000 $ de drawdown). Le plancher démarre à 48 000 $.</p>
+<ul><li>Jour 1 : tu clôtures à 50 800 $. Le plancher monte à 48 800 $.</li><li>Jour 2 : pendant la séance, tu montes jusqu&#39;à 51 500 $, puis tu rends une partie et tu clôtures à 50 600 $.</li></ul>
+<p>Avec le drawdown fin de journée de FTMO, le plancher reste à 48 800 $ : ton pic de 51 500 $ en cours de séance ne compte pas. Avec un drawdown intraday (en temps réel), comme chez certains concurrents, le plancher serait monté à 49 500 $ dès que tu touchais 51 500 $. Tu aurais perdu 700 $ de marge sans même avoir clôturé.</p>
+<p>Pour comprendre les deux familles en détail, lis mon guide du <a href="https://basstrading.fr/blog/drawdown-prop-firm-futures/">drawdown en prop firm futures</a>.</p>
+<h3>Quand le plancher se bloque-t-il ?</h3>
+<p>Sur ce même Growth 50K, il faut une clôture à 52 000 $ (capital + drawdown) pour que le plancher atteigne 50 000 $ et se bloque. Avant ce seuil, chaque bonne clôture rapproche le plancher de toi.</p>
+<h3>Le piège du fin de journée</h3>
+<p>Pendant la séance, rien ne t&#39;arrête. Tu peux perdre 1 900 $ dans la journée sur un Growth en évaluation sans qu&#39;aucune règle ne coupe (il n&#39;y a pas de perte journalière, on y vient). C&#39;est pour ça que je mets toujours mon propre stop journalier, plus serré que la règle.</p>
+<p><b>À retenir</b> : le plancher suit ta plus haute clôture (pas ton plus haut de séance), ne descend jamais, se bloque au capital de départ, et le toucher, c&#39;est perdre le compte.</p>
+<p>Reste une question : qu&#39;est-ce qui t&#39;arrête pendant une mauvaise journée ? La réponse dépend de ton produit.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/ftmo/blog-ftmo-2.webp" alt="Comparaison du drawdown fin de journée FTMO et d&#39;un drawdown intraday sur un compte Growth 50K" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Mon calcul, chiffres fictifs : en fin de journée, un pic de séance non conservé ne fait pas monter le plancher.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="perte-journaliere-quelle-difference-entr">Perte journalière : quelle différence entre Growth et Pro ?</h2>
+    <p>C&#39;est la différence la plus importante entre les deux produits, et beaucoup de traders la lisent trop vite.</p>
+<h3>Sur un compte Growth</h3>
+<ul><li>En évaluation : aucune perte journalière. Seul le drawdown fin de journée compte.</li><li>En Sim-Funded : une perte journalière « soft » de 1 000 $, 2 000 $ ou 3 000 $ selon la taille. Si tu l&#39;atteins, tes positions sont fermées et ta journée s&#39;arrête, mais le compte n&#39;est pas terminé. Tu reprends le lendemain.</li></ul>
+<h3>Sur un compte Pro</h3>
+<ul><li>Une perte journalière « hard » de 1 000 $, 1 500 $ ou 2 000 $ selon la taille.</li><li>En évaluation, l&#39;atteindre fait échouer l&#39;évaluation.</li><li>En Sim-Funded, l&#39;atteindre termine définitivement le compte.</li></ul>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Règle</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Growth</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Pro</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Perte journalière en évaluation</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Aucune</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Hard : échec</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Perte journalière en Sim-Funded</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Soft : journée suspendue</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Hard : compte terminé</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Drawdown sur un 50K</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">2 000 $</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">3 000 $</td></tr></tbody></table></div>
+<h3>Ce que ça change dans ta séance</h3>
+<p>Le Pro donne plus de drawdown, mais avec une perte journalière dure. Le Growth donne moins de drawdown, mais te laisse respirer dans la journée.</p>
+<p>Sur un Pro 50K, la perte journalière de 1 000 $ est la vraie limite, bien avant les 3 000 $ de drawdown. Une seule journée de revenge trading et c&#39;est fini. Mon stop journalier personnel, sur un Pro, serait donc nettement plus bas que 1 000 $, pour garder une marge sur le glissement et les ordres en cours. Si tu ne sais pas où placer ta propre limite, j&#39;ai écrit un article dédié : <a href="https://basstrading.fr/blog/perte-maximale-journaliere-trading/">la perte maximale journalière en trading</a>.</p>
+<p>Une règle dure n&#39;est pas un problème si ta règle est plus dure encore. Le problème, c&#39;est le trader qui découvre la limite de la prop firm en la touchant.</p>
+<p>Passons à la règle qui surprend le plus de monde chez FTMO : la cohérence.</p>
+
+    <hr>
+
+    <h2 id="la-regle-de-coherence-de-40-ou-50-commen">La règle de cohérence de 40 % ou 50 % : comment la gérer ?</h2>
+    <p>La règle de cohérence de FTMO Futures impose que ta meilleure journée ne représente pas plus de 40 % de ton profit total en Growth, ou 50 % en Pro, pendant l&#39;évaluation. Elle ne s&#39;applique pas en Sim-Funded.</p>
+<h3>Ce que la règle n&#39;est pas</h3>
+<p>Dépasser la cohérence n&#39;est pas une infraction. Ton compte n&#39;est pas perdu. Simplement, tu ne valides pas l&#39;évaluation tant que le ratio n&#39;est pas respecté : tu dois continuer à trader et accumuler du profit.</p>
+<h3>L&#39;exemple officiel (40 %)</h3>
+<p>Tu fais 2 000 $ le premier jour, puis 1 000 $ le deuxième. Total : 3 000 $, l&#39;objectif est atteint. Mais ta meilleure journée pèse 66,7 % du total. Tu dois aller jusqu&#39;à 5 000 $ de profit total pour que 2 000 $ ne représentent plus que 40 %.</p>
+<h3>Le calcul rapide à garder en tête (mon calcul)</h3>
+<p>Profit total nécessaire = meilleure journée ÷ 0,40 (Growth) ou ÷ 0,50 (Pro). Une meilleure journée à 2 000 $ exige 5 000 $ de profit total en Growth, 4 000 $ en Pro.</p>
+<h3>Pourquoi c&#39;est un piège</h3>
+<p>Le piège, c&#39;est la grosse journée du début. Tu fais 2 500 $ un jour où le Nasdaq part en tendance, tu es fier, et tu viens de te condamner à faire 6 250 $ au total en Growth au lieu de 3 000 $. Pendant ce temps, l&#39;abonnement tourne et le drawdown te suit.</p>
+<p>La solution est contre-intuitive : sur une évaluation FTMO, une très bonne journée se coupe. Sur un Growth 50K, je m&#39;arrêterais avant 1 200 $ de profit dans la journée : 1 200 $, c&#39;est 40 % de 3 000 $.</p>
+<p>Dans ma vidéo, je parlais de ces journées où la prop firm te freine : <a href="https://www.youtube.com/watch?v=JdMuB0ay37Y&amp;t=667s">« vous allez peut-être des fois être limité sur des journées qui sont très riches »</a>. C&#39;est exactement ça. Accepte-le avant de commencer, ou choisis une autre prop firm.</p>
+<p><b>À retenir</b> : 40 % en Growth, 50 % en Pro, en évaluation seulement ; dépasser n&#39;élimine pas, ça rallonge ; plafonne tes journées à objectif ÷ 2,5 en Growth, objectif ÷ 2 en Pro.</p>
+<p>Une fois l&#39;évaluation passée, la question devient : comment est-on payé ?</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/ftmo/blog-ftmo-3.webp" alt="Règle de cohérence FTMO Futures : meilleure journée limitée à 40 % du profit en Growth et 50 % en Pro" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Une journée à 2 000 $ impose 5 000 $ de profit total en Growth, 4 000 $ en Pro.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="comment-se-passent-les-payouts-et-les-re">Comment se passent les payouts et les retraits chez FTMO Futures ?</h2>
+    <p>En Sim-Funded, tu gardes 90 % des profits retirés, FTMO garde 10 %. Mais tu ne retires pas tout ce que tu veux, quand tu veux : il y a des jours qualifiants, une part retirable et un plafond.</p>
+<h3>Les conditions, produit par produit</h3>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Condition</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Growth</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Pro</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Part retirable du profit disponible</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">50 %</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">100 %</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Plafond par demande (50K à 150K)</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">2 500 à 4 000 $</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">5 000 à 8 000 $</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Jours qualifiants</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">4 jours</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">5 jours</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Seuil d&#39;un jour qualifiant</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">150 à 450 $</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">200 à 500 $</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Fréquence</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Tous les 4 jours</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Tous les 5 jours</td></tr></tbody></table></div>
+<p>Autres règles lues sur le site officiel le 25/11/2026 :</p>
+<ul><li>minimum 20 $ par demande ;</li><li>au moins 50 % du montant demandé doit être du profit nouveau depuis le dernier payout ;</li><li>la demande de payout ferme tes positions ouvertes ;</li><li>3 comptes Sim-Funded au maximum, jusqu&#39;à 450 000 $ de capital simulé au total.</li></ul>
+<h3>Un exemple concret sur un Growth 50K (mon calcul)</h3>
+<p>Ton solde est à 52 400 $. Le profit disponible au-dessus du capital de départ est de 2 400 $. En Growth, tu peux en demander 50 %, soit 1 200 $. Tu touches 90 % : 1 080 $. Les 1 200 $ restants restent sur le compte et continuent de te protéger du drawdown.</p>
+<p>C&#39;est voulu : le Growth te force à laisser un coussin. Le Pro te laisse tout retirer, mais avec une perte journalière dure.</p>
+<h3>Le premier payout est un test de patience</h3>
+<p>Quatre ou cinq jours qualifiants, ce n&#39;est pas beaucoup. Mais il faut les faire sans casser le drawdown et, en Pro, sans toucher la perte journalière. J&#39;explique comment je préparerais ce moment dans mon article sur <a href="https://basstrading.fr/blog/premier-payout-prop-firm/">le premier payout en prop firm</a>.</p>
+<h3>Et le compte Live Funded ?</h3>
+<p>Si tu as eu au moins un payout approuvé en Sim-Funded, FTMO peut t&#39;inviter en Live Funded : payouts quotidiens, jusqu&#39;à 100 % du solde au-dessus du capital, toujours à 90/10, sans plafond, et pas de perte journalière. Il faut d&#39;abord dépasser un coussin appelé « Safety Net ».</p>
+<p>Attention : une fois en Live, tes autres comptes d&#39;évaluation et Sim-Funded sont fermés. FTMO rembourse le dernier abonnement payé, mais pas les resets. Les données de marché du CME sont alors payées par FTMO.</p>
+<p>Ces règles sont claires. Ce qui fait perdre un compte, ce sont rarement elles : ce sont les détails.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/ftmo/blog-ftmo-4.webp" alt="Chiffres clés des payouts FTMO Futures : partage 90/10, 50 % retirable en Growth, jours qualifiants, minimum de 20 dollars" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Conditions lues sur le site officiel de FTMO le 25/11/2026.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="quelles-regles-font-perdre-un-compte-ftm">Quelles règles font perdre un compte FTMO Futures ?</h2>
+    <p>Voici la liste des situations qui terminent un compte ou bloquent une évaluation, de la plus fréquente à la plus bête.</p>
+<h3>1. Toucher le plancher du drawdown</h3>
+<p>C&#39;est la cause numéro un, chez FTMO comme partout. Avec un drawdown de 2 000 $ sur un Growth 50K, trois trades à 700 $ de perte suffisent. D&#39;où ma règle : un risque par trade autour de 10 % du drawdown, pas plus. J&#39;en parle en détail dans <a href="https://basstrading.fr/blog/combien-risquer-par-trade/">combien risquer par trade</a>.</p>
+<h3>2. Toucher la perte journalière d&#39;un Pro</h3>
+<p>Sur un Pro, une seule journée à −1 000 $ (50K) fait échouer l&#39;évaluation ou termine le compte Sim-Funded. C&#39;est la règle qui punit le revenge trading.</p>
+<h3>3. Trader trop gros</h3>
+<p>Le nombre de contrats est plafonné : 5, 10 ou 15 minis selon la taille, avec 10 micros pour 1 mini, et un départ plus bas en Sim-Funded. Si tu ajoutes des contrats en cours de trade, lis d&#39;abord <a href="https://basstrading.fr/blog/pyramider-position-trading/">comment pyramider une position</a>.</p>
+<h3>4. Laisser une position ouverte trop tard</h3>
+<p>La journée de trading FTMO Futures va de 18 h à 16 h 10, heure de New York, soit 22 h 10 à Paris la plupart de l&#39;année (21 h 10 pendant les quelques semaines où les changements d&#39;heure ne tombent pas le même jour en Europe et aux États-Unis).</p>
+<p>La page des règles que j&#39;ai lue ne détaille pas ce qui arrive à une position encore ouverte à cette heure-là. Par prudence, je ne garde rien d&#39;ouvert après 22 h à Paris. Pour les horaires du Nasdaq en heure française : <a href="https://basstrading.fr/blog/horaires-futures-nasdaq-heure-paris/">les horaires des futures Nasdaq</a>.</p>
+<h3>5. Demander un payout avec une position ouverte</h3>
+<p>La demande ferme tes positions. Demande ton payout quand tu es à plat, pas au milieu d&#39;un trade.</p>
+<h3>6. Ouvrir plusieurs inscriptions</h3>
+<p>Les inscriptions multiples sont interdites. Un compte client, trois comptes Sim-Funded au maximum.</p>
+<h3>Et les news ?</h3>
+<p>Le trading pendant les annonces économiques est autorisé chez FTMO Futures (c&#39;est écrit sur la page principale). Ce n&#39;est pas le cas partout. Dans ma vidéo, je rappelais qu&#39;<a href="https://www.youtube.com/watch?v=JdMuB0ay37Y&amp;t=686s">« il y a également les news »</a> chez certaines prop firms, avec des interdictions <a href="https://www.youtube.com/watch?v=JdMuB0ay37Y&amp;t=690s">« 5 minutes avant, 5 minutes après »</a>.</p>
+<p>Autorisé ne veut pas dire conseillé. Le CPI ou le NFP sur le Nasdaq, c&#39;est du glissement et des mèches de 50 points. Moi, je ne suis jamais en position à l&#39;annonce.</p>
+<p>Reste la question pratique : peut-on faire tout ça depuis la France ?</p>
+
+    <hr>
+
+    <h2 id="peut-on-trader-ftmo-futures-depuis-la-fr">Peut-on trader FTMO Futures depuis la France, et sur quelle plateforme ?</h2>
+    <p>Oui : la France n&#39;est pas exclue. FTMO indique que son offre futures est disponible « globally », avec une liste de pays exclus. Je l&#39;ai lue sur la <a href="https://ftmo.com/en/futures/faq/who-can-use-ftmo-futures">page « Who can use FTMO Futures »</a> le 25/11/2026.</p>
+<h3>Les pays francophones</h3>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Pays ou territoire</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Statut lu le 25/11/2026</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">France, Belgique, Suisse, Canada</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Non exclus</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Maroc, Algérie, Sénégal, Cameroun</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Absents de la liste d&#39;exclusion</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Côte d&#39;Ivoire, Tunisie, Monaco</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Exclus</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Mayotte, Saint-Barthélemy</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Exclus</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Burkina Faso, Gabon, Togo, Niger</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Exclus</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Guinée, Mali, Comores, Djibouti</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Exclus</td></tr></tbody></table></div>
+<p>Sont aussi exclus, entre autres, l&#39;Australie, l&#39;Ukraine, la Russie, la Chine, cinq États américains, et les moins de 18 ans. La liste change : vérifie ton pays au moment de payer.</p>
+<h3>Les plateformes proposées</h3>
+<p>FTMO Futures propose trois plateformes (page des plateformes lue le 25/11/2026) :</p>
+<ul><li>NinjaTrader (Windows, web, mobile) ;</li><li>Tradovate (Windows, Mac, web, mobile) ;</li><li>TradingView, en te connectant avec tes identifiants Tradovate.</li></ul>
+<p>Sierra Chart n&#39;est pas dans la liste. Pour moi, c&#39;est un vrai point faible : c&#39;est ma plateforme de travail, avec mes outils d&#39;analyse du volume et du carnet, et je ne changerais pas d&#39;outil pour une prop firm. Si tu utilises déjà NinjaTrader ou Tradovate, aucun problème. Mes avis détaillés : <a href="https://basstrading.fr/blog/tradovate-avis/">Tradovate</a> et <a href="https://basstrading.fr/blog/ninjatrader-avis/">NinjaTrader</a>.</p>
+<h3>Fiscalité</h3>
+<p>Un payout de prop firm n&#39;est pas un gain de bourse classique, puisque les comptes sont simulés. Le régime dépend de ta situation. Je ne donne pas de conseil fiscal : pose la question à un professionnel avant ton premier retrait.</p>
+<p>Mais une question revient sans cesse sous mes vidéos : est-ce que FTMO paie vraiment ?</p>
+
+    <hr>
+
+    <h2 id="ftmo-est-il-fiable-ou-est-ce-une-arnaque">FTMO est-il fiable ou est-ce une arnaque ?</h2>
+    <p>FTMO n&#39;est pas une arnaque au sens d&#39;une société qui disparaît avec ton argent : c&#39;est une entreprise installée depuis 2015, qui publie ses règles en détail et qui a racheté un courtier réglementé. Mais il faut comprendre ce que tu achètes.</p>
+<h3>Ce que FTMO est</h3>
+<ul><li>Une société tchèque, FTMO s.r.o., fondée en 2015 à Prague. Son directeur général et cofondateur est Otakar Šuffner.</li><li>Une prop firm née sur les CFD et le forex (MetaTrader), qui a ouvert une offre futures encore en phase bêta, comme FTMO le précise sur sa <a href="https://ftmo.com/en/futures/beta-description/">page dédiée</a>.</li><li>Le nouveau propriétaire d&#39;OANDA, courtier réglementé : le rachat au fonds CVC a été finalisé le 1er décembre 2025, selon le <a href="https://www.oanda.com/group/press-release/oanda-acquired-by-ftmo/">communiqué officiel d&#39;OANDA</a>.</li></ul>
+<h3>Ce que FTMO n&#39;est pas</h3>
+<p>FTMO n&#39;est pas ton courtier et ne te prête pas d&#39;argent. Ses propres conditions le disent : tous les comptes d&#39;évaluation et Sim-Funded sont des « demo accounts with fictitious funds », des comptes de démonstration avec des fonds fictifs. Tu paies un service d&#39;évaluation ; tes payouts sont une rémunération versée par FTMO.</p>
+<p>J&#39;ai vérifié les <a href="https://www.amf-france.org/fr/espace-epargnants/proteger-son-epargne/listes-noires-et-mises-en-garde">listes noires et mises en garde de l&#39;AMF</a> le 25/11/2026 : je n&#39;y ai pas trouvé FTMO. Ces listes ne sont pas exhaustives, ce n&#39;est donc pas un label.</p>
+<h3>Le vrai risque : le modèle</h3>
+<p>Une prop firm gagne d&#39;abord de l&#39;argent avec les abonnements et les resets des traders qui échouent. Ce n&#39;est pas une arnaque, c&#39;est un modèle économique. Mais il faut l&#39;avoir en tête.</p>
+<p>Et rappelle-toi d&#39;où vient FTMO : les CFD. Selon l&#39;<a href="https://www.esma.europa.eu/press-news/esma-news/esma-agrees-prohibit-binary-options-and-restrict-cfds-protect-retail-investors">ESMA</a>, entre 74 % et 89 % des comptes de particuliers perdent de l&#39;argent sur ces produits (chiffres de 2018). En France, une <a href="https://www.amf-france.org/sites/institutionnel/files/contenu_simple/rapport_etude_analyse/epargne_prestataire/Etude%20des%20resultats%20des%20investisseurs%20particuliers%20sur%20le%20trading%20de%20CFD%20et%20de%20Forex%20en%20France.pdf">étude de l&#39;AMF</a> comptait 89,4 % de clients perdants sur 14 799 comptes entre 2009 et 2012. Une prop firm ne change pas ces statistiques : elle change seulement combien tu peux perdre (le prix de l&#39;évaluation).</p>
+<p>Comme je le dis souvent en live sur ceux qui exhibent leurs payouts : <a href="https://www.youtube.com/watch?v=JdMuB0ay37Y&amp;t=1278s">« ces gens-là, ils ne vous montrent pas les pertes qu&#39;ils génèrent »</a>.</p>
+<p>Pour repérer les vraies arnaques (faux gestionnaires, signaux payants, promesses de rendement), j&#39;ai écrit un guide : <a href="https://basstrading.fr/blog/arnaque-trading/">arnaque trading, les signes qui ne trompent pas</a>.</p>
+<p>Fiable, donc. Mais adapté à toi ? Ça dépend de ton profil.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/ftmo/blog-ftmo-5.webp" alt="Vue panoramique de Prague, ville où la prop firm FTMO a été fondée en 2015" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">FTMO est une société tchèque, fondée à Prague en 2015.<br><span style="font-size:.85em">Photo : <a href="https://commons.wikimedia.org/wiki/File:Prague_Castle_from_Charles_Bridge_panorama.JPG" rel="noopener" target="_blank">Janmad</a>, <a href="https://creativecommons.org/licenses/by/3.0" rel="noopener license" target="_blank">CC BY 3.0</a></span></figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="a-qui-s-adresse-ftmo-growth-ou-pro-selon">À qui s&#39;adresse FTMO : Growth ou Pro selon ton profil de trader ?</h2>
+    <p>Je ne crois pas qu&#39;une méthode marche pour tout le monde. Je crois qu&#39;il faut trouver ton trading, celui qui colle à ton caractère. Et ton caractère décide aussi de la prop firm et du compte qui te conviennent.</p>
+<p>En deux phrases : FTMO Futures s&#39;adresse au trader régulier, qui a déjà une méthode testée et des journées de taille comparable. Il ne s&#39;adresse pas au débutant qui cherche à apprendre en payant des évaluations.</p>
+<p>Dans ma vidéo, je le disais : <a href="https://www.youtube.com/watch?v=JdMuB0ay37Y&amp;t=1129s">« Vous n&#39;allez pas trader chaque prop firm de la même manière »</a>. J&#39;ajoute : chaque trader ne vivra pas FTMO de la même manière.</p>
+<h3>Les quatre profils que j&#39;utilise</h3>
+<ul><li>le Sniper : il a besoin d&#39;action et coupe vite ;</li><li>le Marchand : il est à l&#39;aise contre tout le monde et il tient ;</li><li>le Guetteur : il attend des heures et laisse courir jusqu&#39;à son objectif ;</li><li>l&#39;Horloger : même routine chaque jour, des niveaux objectifs, des objectifs modestes et une sortie rapide.</li></ul>
+<p>Sur le papier, FTMO Futures récompense la régularité : la cohérence plafonne les grosses journées, les payouts demandent plusieurs jours qualifiants, et le Pro punit la mauvaise journée.</p>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Profil</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Ce qui l&#39;aide chez FTMO</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Ce qui le gêne</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Horloger</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Journées modestes et répétables</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Peu de chose</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Sniper</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Coupe vite, protège le drawdown</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Perte journalière dure du Pro</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Marchand</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Drawdown fin de journée</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Le trailing pousse à couper</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Guetteur</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Drawdown fin de journée</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Cohérence sur ses grosses journées</td></tr></tbody></table></div>
+<h3>Growth ou Pro, concrètement</h3>
+<ul><li><b>Growth</b> si tu as encore des journées irrégulières : pas de perte journalière en évaluation, une perte journalière « soft » ensuite. Mais une cohérence plus stricte (40 %) et seulement 50 % du profit retirable.</li><li><b>Pro</b> si ta discipline journalière est déjà solide : plus de drawdown, 100 % du profit retirable, cohérence à 50 %. Mais une seule mauvaise journée peut tout terminer.</li></ul>
+<p>Le trailing drawdown a un effet que je décrivais dans la vidéo : <a href="https://www.youtube.com/watch?v=JdMuB0ay37Y&amp;t=1140s">« Le trailing drawdown, par exemple, ça va vous obliger à couper vos trades assez rapidement. »</a> Si ton caractère te pousse à tenir longtemps, ce cadre va te frustrer. Ce n&#39;est pas un défaut de toi, c&#39;est un mauvais assortiment. J&#39;explique comment construire une <a href="https://basstrading.fr/blog/methode-de-trading/">méthode de trading</a> qui te ressemble, avant de choisir le moindre compte.</p>
+<p>Voici maintenant, concrètement, comment je m&#39;y prendrais.</p>
+
+    <hr>
+
+    <h2 id="comment-je-passerais-l-evaluation-ftmo-f">Comment je passerais l&#39;évaluation FTMO Futures</h2>
+    <p>Voici mon plan sur un Growth 50K, en MNQ. C&#39;est un exemple de méthode, pas une recette garantie : beaucoup de traders échouent en respectant un plan, parce que le marché ne demande la permission de personne.</p>
+<h3>1. Le risque par trade</h3>
+<p>Je risque environ 10 % du drawdown, soit 200 $ par trade. En MNQ, un stop de 20 points coûte 40 $ par contrat (20 × 2 $). Je prends donc 5 MNQ. Ça me laisse une dizaine de trades perdants avant de toucher le plancher, et c&#39;est voulu.</p>
+<h3>2. Le stop journalier personnel</h3>
+<p>Le Growth n&#39;a pas de perte journalière en évaluation. Moi, si. Je m&#39;arrête à −400 $ dans la journée, deux trades perdants. Le lendemain, je reprends avec la même taille. Je garde une taille de position similaire chaque jour, comme je le conseillais dans <a href="https://www.youtube.com/watch?v=JdMuB0ay37Y&amp;t=1187s">ma vidéo</a> : c&#39;est la régularité qui protège le compte.</p>
+<h3>3. Le plafond de gain journalier</h3>
+<p>Pour respecter les 40 % de cohérence, je vise des journées de 300 à 600 $ et je coupe avant 1 200 $. Quatre à huit bonnes journées suffisent pour atteindre 3 000 $, sans jamais rallonger l&#39;évaluation.</p>
+<h3>4. La séance</h3>
+<p>Je ne trade que la partie de la séance que je connais : l&#39;ouverture de New York, à 15 h 30 à Paris. Je laisse passer le premier mouvement, je prends mes niveaux de la veille sur le Market Profile, je regarde le VWAP et le CVD, et je n&#39;entre que sur mes configurations. Rien d&#39;ouvert après 22 h à Paris, et jamais de position pendant une annonce.</p>
+<h3>5. La cadence</h3>
+<p>Dans ma vidéo, j&#39;utilisais l&#39;image de la tortue : <a href="https://www.youtube.com/watch?v=JdMuB0ay37Y&amp;t=1258s">« c&#39;est d&#39;y aller doucement »</a>. Avec un abonnement mensuel, la tentation est de se presser pour ne pas payer un deuxième mois. C&#39;est un mauvais calcul : un deuxième mois coûte 119 $, un compte cassé par précipitation coûte 109 $ de reset et ta confiance.</p>
+<h3>Combien de temps au total ?</h3>
+<p>De l&#39;inscription au premier retrait, compte au minimum une à deux semaines si tout se passe bien : quelques journées pour l&#39;objectif, puis 4 jours qualifiants en Growth (5 en Pro) sur le compte Sim-Funded. En pratique, avec des journées plates et des pauses, un à deux mois est un horizon plus réaliste (mon estimation, pas une donnée de FTMO).</p>
+<h3>Sur un compte Pro</h3>
+<p>Le plan change sur un point : la perte journalière « hard » de 1 000 $ fait échouer. Mon stop journalier personnel resterait autour de 400 $, très loin de la limite, pour ne jamais dépendre d&#39;un glissement.</p>
+<h3>Pourquoi les règles sont une chance</h3>
+<p>Je le disais dans la vidéo : <a href="https://www.youtube.com/watch?v=JdMuB0ay37Y&amp;t=430s">« Mais vous avez des règles et un cadre. Et ça, c&#39;est important pour votre carrière par la suite. »</a> Une évaluation bien passée t&#39;apprend plus sur ta discipline que sur ta méthode. Et <a href="https://www.youtube.com/watch?v=JdMuB0ay37Y&amp;t=1368s">« tout ça, c&#39;est en amont de la prop firm »</a> : la méthode se construit avant de payer.</p>
+<p>Si tu veux apprendre à lire le marché pas à pas avant de passer la moindre évaluation, j&#39;ai mis une <a href="https://basstrading.fr/l/mJW-cg">formation offerte</a> : sept leçons et une démo Market Profile de 35 minutes.</p>
+<p>Le trading de contrats à terme comporte un risque élevé de perte, pouvant dépasser la mise initiale. Contenu éducatif, pas un conseil en investissement.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/ftmo/blog-ftmo-6.webp" alt="Mon plan pour passer l&#39;évaluation FTMO Futures sur un Growth 50K en micro Nasdaq MNQ" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Exemple de méthode, pas une garantie : le risque reste réel.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="ftmo-face-aux-autres-prop-firms-futures-">FTMO face aux autres prop firms futures : ce qu&#39;il fait mieux et moins bien</h2>
+    <p>J&#39;ai écrit un avis complet sur chacune des grandes prop firms futures. Plutôt que d&#39;aligner des chiffres qui changent chaque mois, voici ce qui distingue FTMO quand on les compare.</p>
+<p><b>Mieux</b> : un drawdown fin de journée bloqué au capital, pas de frais d&#39;activation, les news autorisées, des règles détaillées avec exemples chiffrés, et une société ancienne propriétaire d&#39;un courtier réglementé.</p>
+<p><b>Moins bien</b> : un abonnement mensuel qui coûte cher si tu traînes, pas de Sierra Chart ni de Rithmic dans la liste des plateformes, une cohérence à 40 % en Growth (l&#39;une des plus strictes que j&#39;aie lues) et seulement 50 % du profit retirable.</p>
+<p>Si tu compares, lis aussi mes avis sur <a href="https://basstrading.fr/blog/topstep/">Topstep</a>, <a href="https://basstrading.fr/blog/apex-trader-funding/">Apex Trader Funding</a>, <a href="https://basstrading.fr/blog/lucid-trading/">Lucid Trading</a> et <a href="https://basstrading.fr/blog/tradeify/">Tradeify</a>. Si tu découvres le principe, commence par mon guide <a href="https://basstrading.fr/blog/prop-firm-funded-trader/">prop firm et funded trader</a>.</p>
+<p>Dans ma vidéo, je disais aux traders financés : <a href="https://www.youtube.com/watch?v=JdMuB0ay37Y&amp;t=999s">« vous gardez peut-être deux ou trois comptes »</a>, pas dix. Je dirais pareil pour les prop firms : une ou deux, que tu connais par cœur, plutôt que cinq dont tu mélanges les règles. Le jour où tu confonds la perte journalière de l&#39;une avec celle de l&#39;autre, tu perds un compte.</p>
+<p>Et maintenant, les limites de cet avis.</p>
+
+    <hr>
+
+    <h2 id="les-limites-de-mon-avis-sur-ftmo">Les limites de mon avis sur FTMO</h2>
+    <p>Je préfère être clair sur ce que cet article ne peut pas te dire.</p>
+<h3>Je n&#39;ai pas passé l&#39;évaluation FTMO Futures</h3>
+<p>Cet avis repose sur la lecture complète des règles officielles, sur mon expérience du Nasdaq futures et sur ce que je vois chez les traders que j&#39;accompagne. Je n&#39;ai pas de compte FTMO Futures et je ne peux pas témoigner de la rapidité des paiements.</p>
+<h3>Le produit bouge</h3>
+<p>FTMO Futures est encore en phase bêta (<a href="https://ftmo.com/en/futures/beta-description/">page dédiée de FTMO</a>), et FTMO a déjà modifié des valeurs le 5/11/2026. Les prix, les drawdowns, la cohérence ou la liste des plateformes peuvent changer. Les chiffres de cet article sont ceux du 25/11/2026 : si tu lis cette page plus tard, vérifie sur le site officiel avant de payer.</p>
+<h3>Les avis en ligne</h3>
+<p>FTMO est très bien noté sur Trustpilot, mais ces notes portent surtout sur l&#39;offre historique (CFD et forex), pas sur les futures, qui sont récents. Un avis de trader satisfait ne dit rien de ta propre probabilité de réussite.</p>
+<h3>Ce qu&#39;une prop firm ne remplace pas</h3>
+<p>Une prop firm ne t&#39;apprend pas à trader. Elle te met un cadre et elle mesure. Si tu échoues trois évaluations de suite, le problème n&#39;est pas la prop firm : c&#39;est la méthode, ou l&#39;assortiment entre ta méthode et ton caractère.</p>
+<p>Dans ma vidéo, je comparais le trailing drawdown à <a href="https://www.youtube.com/watch?v=JdMuB0ay37Y&amp;t=695s">« une épée de Damoclès sur la tête »</a>. Elle ne tombe que sur ceux qui n&#39;ont pas de règles à eux.</p>
+<p>Si tu débutes vraiment, commence par le <a href="https://basstrading.fr/blog/day-trading-futures/">day trading des futures</a> et l&#39;<a href="https://basstrading.fr/blog/effet-de-levier-trading/">effet de levier</a> avant de regarder la moindre prop firm.</p>
+
+    <hr>
+
+    <h2 id="ce-qu-il-faut-retenir-de-ftmo-futures">Ce qu&#39;il faut retenir de FTMO Futures</h2>
+    <p><b>À retenir</b></p>
+<ul><li>Une évaluation en une phase, Growth ou Pro, de 50K à 150K, dès 119 $ par mois (Growth 50K).</li><li>Un drawdown fin de journée qui se bloque au capital de départ ; cohérence à 40 % (Growth) ou 50 % (Pro) ; payouts à 90/10.</li><li>Possible depuis la France sur NinjaTrader, Tradovate ou TradingView, pas sur Sierra Chart.</li></ul>
+<h3>Ta prochaine action</h3>
+<p>Ce soir, prends ta dernière semaine de trading (réelle ou simulée) et pose-toi trois questions :</p>
+<ul><li>Ma meilleure journée pèse-t-elle plus de 40 % de mon profit de la semaine ?</li><li>Ai-je eu une journée à plus de −1 000 $ (ou l&#39;équivalent à ma taille) ?</li><li>Mes trades tiennent-ils dans un drawdown de 2 000 $ ?</li></ul>
+<p>Si tu réponds oui, oui, non : FTMO n&#39;est pas encore pour toi, et c&#39;est une bonne nouvelle, tu viens d&#39;économiser 119 $. Travaille d&#39;abord ta <a href="https://basstrading.fr/blog/stop-loss-trading/">gestion du stop-loss</a>, puis reviens.</p>
+<p>Pour la suite logique, je te conseille mon guide du <a href="https://basstrading.fr/blog/drawdown-prop-firm-futures/">drawdown en prop firm futures</a> : c&#39;est la règle qui décide de la plupart des comptes perdus.</p>
+<h3>Comment cette page est faite</h3>
+<p>Cet article est écrit à partir de ma pratique du Nasdaq futures et de ma vidéo sur les prop firms (citations horodatées dans le texte). Les règles de FTMO Futures ont été lues directement sur le site officiel le 25/11/2026 : <a href="https://ftmo.com/en/futures/">la page principale</a>, <a href="https://ftmo.com/en/futures/how-it-works">le fonctionnement</a>, <a href="https://ftmo.com/en/futures/trading-objectives-and-rules">les règles</a>, <a href="https://ftmo.com/en/futures/comparison-table">le tableau comparatif</a> et <a href="https://ftmo.com/en/futures/trading-platforms">les plateformes</a>.</p>
+<p>Les exemples marqués « mon calcul » utilisent des chiffres fictifs, pour illustrer une règle. Le texte a été mis en forme avec l&#39;aide d&#39;une IA, puis relu et validé par moi. Je ne suis pas partenaire de FTMO, je ne touche aucune commission, et cette page ne contient aucun lien affilié ni code promo. Tous mes articles sur les prop firms, les contrats et la méthode sont réunis sur <a href="https://basstrading.fr/blog/">le blog</a>.</p>
+
+    <p><a href="https://www.youtube.com/watch?v=JdMuB0ay37Y" target="_blank" rel="noopener">▶ Voir la vidéo de Sébastien sur ce sujet</a></p>
+
+    <div class="cta-card cta-aimant">
+      <div class="cta-card-label">Gratuit</div>
+      <h3>Tu viens de lire la théorie. Regarde-⁠la en vrai.</h3>
+      <p>Je trade une séance complète sur le Nasdaq et je dis à voix haute ce que je regarde, mon stop journalier compris. 35 minutes, gratuit.</p>
+      <a href="https://basstrading.fr/p/formation-offerte/?src=blog-ftmo" class="btn-p">Je regarde la séance →</a>
+    </div>
+    
+  </article>
+</div>
+
+<!-- FAQ -->
+<section class="faq-sec">
+  <div class="sec-center"><div class="sec-label">FAQ</div><h2 class="sec-title">Questions fréquentes</h2></div>
+  <div class="faq-list">
+    <div class="fi"><button class="fq" onclick="tf(this)">FTMO Futures est-il fiable ? <span class="fq-icon">+</span></button><div class="fa"><p>FTMO est une société tchèque fondée en 2015 à Prague, qui a racheté le courtier réglementé OANDA en décembre 2025 et publie ses règles en détail. Ce n&#39;est pas une arnaque, mais ce n&#39;est pas un courtier : les comptes d&#39;évaluation et Sim-Funded sont des comptes de démonstration avec des fonds fictifs. Tu achètes un service d&#39;évaluation, et l&#39;offre futures est encore en phase bêta, comme FTMO le dit sur sa page dédiée.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">À qui s&#39;adresse FTMO Futures ? <span class="fq-icon">+</span></button><div class="fa"><p>FTMO Futures s&#39;adresse au trader qui a déjà une méthode testée et des journées régulières : la règle de cohérence plafonne les grosses journées et les payouts demandent plusieurs jours qualifiants. Il convient moins au débutant qui apprend en payant des évaluations, et au trader qui vit de quelques très grosses journées par mois. Il faut aussi trader sur NinjaTrader, Tradovate ou TradingView.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Growth ou Pro : quel compte FTMO choisir ? <span class="fq-icon">+</span></button><div class="fa"><p>Le Growth convient si tes journées sont encore irrégulières : pas de perte journalière en évaluation, mais une cohérence à 40 % et seulement 50 % du profit retirable. Le Pro donne plus de drawdown, une cohérence à 50 % et 100 % du profit retirable, mais une perte journalière dure qui fait échouer l&#39;évaluation ou termine le compte. Choisis le Pro seulement si ta discipline journalière est déjà solide.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Que se passe-t-il si j&#39;échoue l&#39;évaluation FTMO Futures ? <span class="fq-icon">+</span></button><div class="fa"><p>Si tu touches le plancher du drawdown, ou la perte journalière sur un compte Pro, l&#39;évaluation échoue. Tu peux payer un reset (109 $ pour un Growth 50K, 129 $ pour un Pro 50K, tarifs du 25/11/2026) ou laisser l&#39;abonnement se renouveler. Dépasser la règle de cohérence, en revanche, ne fait pas échouer : tu dois simplement continuer à trader jusqu&#39;à respecter le ratio.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Peut-on trader les annonces économiques chez FTMO Futures ? <span class="fq-icon">+</span></button><div class="fa"><p>Oui, le trading pendant les news est autorisé chez FTMO Futures selon sa page officielle, lue le 25/11/2026. Ce n&#39;est pas le cas chez toutes les prop firms. Autorisé ne veut pas dire conseillé : sur le Nasdaq, les publications comme le CPI ou le NFP provoquent du glissement et des mouvements violents. Je ne suis jamais en position au moment d&#39;une annonce.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Peut-on utiliser FTMO Futures depuis la France ? <span class="fq-icon">+</span></button><div class="fa"><p>Oui, la France n&#39;est pas dans la liste des pays exclus, ni la Belgique, la Suisse ou le Canada (lu le 25/11/2026). Certains pays francophones sont exclus, comme la Côte d&#39;Ivoire, la Tunisie, Monaco ou le Mali. Les plateformes proposées sont NinjaTrader, Tradovate et TradingView ; Sierra Chart n&#39;est pas disponible.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Combien de comptes FTMO Futures peut-on avoir ? <span class="fq-icon">+</span></button><div class="fa"><p>Tu peux détenir jusqu&#39;à 3 comptes Sim-Funded, pour un capital simulé total de 450 000 $ au maximum, et jusqu&#39;à 3 comptes Live Funded. Les inscriptions multiples sont interdites. Une fois passé en Live Funded, tes comptes d&#39;évaluation et Sim-Funded sont fermés ; FTMO rembourse le dernier abonnement payé, mais pas les resets.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Combien de temps faut-il, de l&#39;évaluation au premier payout ? <span class="fq-icon">+</span></button><div class="fa"><p>FTMO n&#39;impose ni durée minimum ni limite de temps : l&#39;évaluation dure tant que tu paies l&#39;abonnement mensuel. Sur un 50K, l&#39;objectif de 3 000 $ avec la cohérence à 40 % demande au moins trois journées, plutôt cinq à huit. Il faut ensuite 4 jours qualifiants en Growth (5 en Pro) avant le premier payout. Un à deux mois au total est un horizon réaliste.</p></div></div>
+  </div>
+</section>
+
+<!-- Related -->
+<section class="related-sec">
+  <div class="sec-center"><div class="sec-label">Continuer la lecture</div><h2 class="sec-title">Articles connexes</h2></div>
+  <div class="related-grid">
+    <a href="/blog/market-profile-guide-complet/" class="related-card"><div class="related-cat">Guide</div><h3>Market Profile : le guide complet pour débutants</h3><p>Value Area, POC, types de journées — tout pour commencer.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/order-flow-trading-france/" class="related-card"><div class="related-cat">Méthode</div><h3>Order Flow Trading : pourquoi personne ne l'enseigne en France</h3><p>Le carnet d'ordres et le flux institutionnel décryptés.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/sierra-chart-configuration/" class="related-card"><div class="related-cat">Tutoriel</div><h3>Sierra Chart : configuration complète</h3><p>Le setup pas à pas pour le Market Profile et le Footprint.</p><span class="related-link">Lire &rarr;</span></a>
+  </div>
+</section>
+
+<!-- serie:debut --><style>.serie-w{background:#FFF;color:#1D1D1F;border-top:1px solid #F5F5F7}.serie{max-width:1060px;margin:0 auto;padding:56px 24px;font-family:inherit;box-sizing:border-box}.serie-l{font-size:.6rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#0066FF;margin-bottom:8px}.serie-w .serie h2{font-size:1.4rem;font-weight:800;letter-spacing:-.5px;color:#1D1D1F!important;margin:0 0 18px;font-family:inherit}.serie ul{list-style:none;padding:0;margin:0 0 22px;display:grid;grid-template-columns:repeat(2,1fr);gap:8px 24px}.serie-w .serie li a{color:#1D1D1F!important;font-size:.9rem;line-height:1.45;text-decoration:none;border-bottom:1px solid #D2D2D7}.serie li a:hover{color:#0066FF}.serie li.pil a{font-weight:700}.serie-o{background:#F5F5F7;border-radius:14px;padding:18px 20px;font-size:.88rem;line-height:1.55;color:#1D1D1F}.serie-w .serie-o a{color:#0066FF!important;font-weight:700}@media(max-width:700px){.serie ul{grid-template-columns:1fr}}</style><div class="serie-w"><aside class="serie" aria-label="Dans la même série"><div class="serie-l">Dans la même série</div><h2>Trouver sa méthode de trading</h2><ul><li class="pil"><a href="/blog/methode-de-trading/">Méthode de trading : 4 profils pour trouver celle qui te va</a></li><li class=""><a href="/blog/types-trading-differences/">Les Types de Trading : Lequel Choisir Selon Votre Profil ? (2026)</a></li><li class=""><a href="/blog/debuter-trading-zero-guide/">Débuter le trading de zéro : par où commencer (guide 2026)</a></li><li class=""><a href="/blog/devenir-trader-sans-diplome/">Devenir trader sans diplôme ni formation : 5 étapes réalistes</a></li><li class=""><a href="/blog/livre-trading/">Livre trading : les meilleurs pour apprendre (et l'ordre)</a></li><li class=""><a href="/blog/formation-trading/">Formation trading : contenu, prix, CPF et pièges à éviter</a></li><li class=""><a href="/blog/formation-trading-gratuite/">Formation trading gratuite : ce qu'on apprend sans payer</a></li><li class=""><a href="/blog/quelle-formation-trading-choisir/">Meilleure formation trading en ligne : 7 critères pour choisir</a></li><li class=""><a href="/blog/arnaque-trading/">Arnaque au trading : les 7 pièges et que faire si tu es victime</a></li><li class=""><a href="/blog/apex-trader-funding/">Apex Trader Funding avis : règles 4.0, drawdown et payouts (2026)</a></li><li class=""><a href="/blog/bookmap-heatmap/">Bookmap : lire la heatmap, prix réels et avis de trader</a></li><li class=""><a href="/blog/deepcharts-avis/">DeepCharts avis : prix, Mac, MBO et limites (2026)</a></li><li class=""><a href="/blog/effet-de-levier-trading/">Effet de levier en trading : calcul, risques et quel levier choisir</a></li><li class=""><a href="/blog/fibonacci-trading/">Fibonacci trading : niveaux, tracé et ce qui tient vraiment</a></li><li class=""><a href="/blog/flux-ordres-tradingview/">Order flow sur TradingView : ce qu'on voit vraiment (et ses limites)</a></li><li class=""><a href="/blog/gocharting-avis/">GoCharting : mon avis sur l'order flow dans le navigateur</a></li><li class=""><a href="/blog/ichimoku-trading/">Ichimoku : comment lire le nuage, ses signaux et ses limites</a></li><li class=""><a href="/blog/krach-boursier/">Krach boursier : comment ça se passe et que faire en trading</a></li><li class=""><a href="/blog/lucid-trading/">Lucid Trading avis : règles, drawdown et payout (2026)</a></li><li class=""><a href="/blog/methode-wyckoff/">Méthode Wyckoff : accumulation, distribution et spring</a></li><li class=""><a href="/blog/motivewave-avis/">MotiveWave avis : prix, version gratuite, Mac et order flow</a></li><li class=""><a href="/blog/price-action-trading/">Price action : ce que c'est, et ce que la bougie ne montre pas</a></li><li class=""><a href="/blog/quantower-avis/">Quantower avis : version gratuite, footprint, Mac et prix (2026)</a></li><li class=""><a href="/blog/rsi-trading/">RSI trading : réglages, divergences et limites (guide)</a></li><li class=""><a href="/blog/take-profit-trading/">Take profit : où placer ton objectif sur les futures (exemples MNQ)</a></li><li class=""><a href="/blog/topstep/">Topstep avis : règles, drawdown et payout expliqués (2026)</a></li><li class=""><a href="/blog/tradeify/">Tradeify avis 2026 : règles, drawdown, payouts et pièges</a></li></ul><div class="serie-o"><a href="/formations/">Toutes les formations de Bass</a> : plus de 250 leçons vidéo, du débutant au Market Profile avancé. Pour commencer sans payer : <a href="/p/formation-offerte/?src=serie-ftmo">la formation offerte</a> (7 leçons vidéo).</div></aside></div><!-- serie:fin -->
+<footer class="footer">
+  <div class="ft-top"><div class="ft-logo">BASS</div><div class="ft-cols">
+    <div class="ft-col"><div class="ft-col-title">Programme</div><a href="/formations/">Toutes les formations</a><a href="https://basstrading.fr/#methode">Méthode</a><a href="https://basstrading.fr/#programme">Programme</a><a href="https://basstrading.fr/p/formation-offerte/?src=blog-ftmo-pied">Formation offerte</a></div>
+    <div class="ft-col"><div class="ft-col-title">Ressources</div><a href="/blog/market-profile-guide-complet/">Market Profile</a><a href="/blog/footprint-chart-trading/">Footprint Chart</a><a href="/blog/order-flow-trading-france/">Order Flow</a></div>
+  </div></div>
+  <div class="ft-bottom"><span>&copy; 2026 BASS — Sébastien Constant</span><div><a href="/mentions-legales/">Mentions légales</a><a href="/confidentialite/">Confidentialité</a><a href="/cgv/">CGV</a><a href="mailto:contact@basstrading.fr">Contact</a></div></div>
+</footer>
+<div class="disclaimer">Le trading comporte des risques de perte en capital. Les performances passées ne préjugent pas des performances futures. Ce site ne constitue pas un conseil en investissement.</div>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+const lenis=new Lenis({duration:1.2,easing:t=>Math.min(1,1.001-Math.pow(2,-10*t))});
+function raf(t){lenis.raf(t);requestAnimationFrame(raf)}requestAnimationFrame(raf);
+lenis.on('scroll',ScrollTrigger.update);gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0);
+const tl=gsap.timeline();
+tl.to('.pre-word span',{y:0,opacity:1,duration:.5,stagger:.1,ease:'power3.out',delay:.3}).to('#preLine',{width:'80px',duration:.7,ease:'power2.inOut'},'<+.2').to('.preloader',{yPercent:-100,duration:.8,ease:'power3.inOut',delay:.4}).set('.preloader',{display:'none'}).to('#nav',{opacity:1,y:0,duration:.5},'<+.1');
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);const h=document.documentElement.scrollHeight-window.innerHeight;document.getElementById('readingProgress').style.width=(window.scrollY/h*100)+'%'});
+const tocLinks=document.querySelectorAll('.toc a');const sections=Array.from(tocLinks).map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+window.addEventListener('scroll',()=>{let c='';sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)c=s.id});tocLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+c)})});
+function tf(b){const i=b.closest('.fi'),a=b.nextElementSibling,o=i.classList.contains('active');document.querySelectorAll('.fi').forEach(x=>{x.classList.remove('active');x.querySelector('.fa').classList.remove('open')});if(!o){i.classList.add('active');a.classList.add('open')}}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();lenis.scrollTo(t,{offset:-60})}})});
+</script>
+<script src="/v.js" defer></script>
+</body>
+</html>
