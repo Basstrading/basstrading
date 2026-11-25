@@ -6,8 +6,16 @@
   <link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
   <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/"/>
   <id>https://basstrading.fr/blog/</id>
-  <updated>2026-11-24T00:00:00Z</updated>
+  <updated>2026-11-25T00:00:00Z</updated>
   <author><name>Sébastien Constant (Bass)</name><uri>https://basstrading.fr/auteur/sebastien-constant/</uri></author>
+  <entry>
+    <title>FTMO avis : règles futures, drawdown et payouts (2026)</title>
+    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/ftmo/"/>
+    <id>https://basstrading.fr/blog/ftmo/</id>
+    <published>2026-11-25T00:00:00Z</published>
+    <updated>2026-11-25T00:00:00Z</updated>
+    <summary>FTMO Futures en 2026 : prix Growth et Pro, drawdown en fin de journée, cohérence, payouts, plateformes. Mon avis de trader, sans lien affilié.</summary>
+  </entry>
   <entry>
     <title>Krach boursier : comment ça se passe et que faire en trading</title>
     <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/krach-boursier/"/>
