@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Delta en Trading : Mesurer la Pression Directionnelle sur les Marchés — BASS Trading</title>
-  <meta name="description" content="Guide complet du Delta en trading : delta positif/négatif, divergences, delta absorbé, naked delta. Apprenez à mesurer la pression directionnelle réelle bougie par bougie sur le Footprint Chart. Par Sébastien Constant.">
+  <meta name="description" content="Guide complet du Delta en trading : delta positif/négatif, divergences, delta absorbé, naked delta. Apprends à mesurer la pression directionnelle réelle bougie par bougie sur le Footprint Chart. Par Sébastien Constant.">
   <meta property="og:title" content="Delta : Mesurer la Pression Directionnelle — BASS Trading">
   <meta property="og:description" content="Delta positif, négatif, divergences, absorption — tout comprendre du delta en order flow pour trader avec la pression directionnelle réelle du marché.">
   <meta property="og:image" content="https://basstrading.fr/images/og-basstrading.jpg">
@@ -205,7 +205,7 @@
     <p>L'erreur classique des débutants : croire qu'un delta positif = bougie haussière et delta négatif = bougie baissière. C'est faux, et cette confusion coûte cher : elle fait acheter au moment où des vendeurs passifs absorbent tout.</p>
 
     <h3>Delta positif + bougie haussière = confirmation saine</h3>
-    <p>Le prix monte, les acheteurs agressifs dominent. La tendance est saine — portée par une conviction réelle. Les ordres market buy confirment le mouvement. C'est le pattern à suivre en tendance : restez long, trailing stop.</p>
+    <p>Le prix monte, les acheteurs agressifs dominent. La tendance est saine — portée par une conviction réelle. Les ordres market buy confirment le mouvement. C'est le pattern à suivre en tendance : reste long, trailing stop.</p>
 
     <h3>Delta positif + bougie baissière = signal d'alerte</h3>
     <p>Plus d'acheteurs agressifs que de vendeurs, mais le prix baisse quand même. Ce paradoxe apparent s'explique : des <strong>vendeurs passifs massifs</strong> (limit orders) absorbent chaque achat agressif et font descendre le prix. C'est de la distribution institutionnelle. Les retail achètent en pensant que le marché va monter — les mains fortes vendent en limitant contre eux. Signal baissier puissant.</p>
@@ -214,7 +214,7 @@
     <p>Le prix monte mais les vendeurs agressifs dominent. Des <strong>acheteurs passifs massifs</strong> absorbent les ventes et poussent le prix vers le haut. C'est de l'accumulation institutionnelle silencieuse. Signal haussier caché.</p>
 
     <h3>Delta négatif + bougie baissière = confirmation saine</h3>
-    <p>Le prix baisse, les vendeurs agressifs dominent. La tendance baissière est portée par une conviction réelle. Restez short, trailing stop.</p>
+    <p>Le prix baisse, les vendeurs agressifs dominent. La tendance baissière est portée par une conviction réelle. Reste short, trailing stop.</p>
 
     <!-- appel-offre:debut --><aside class="appel-offre" aria-label="Formation offerte" style="border-left:4px solid #0066FF;background:#F5F5F7;border-radius:0 14px 14px 0;padding:20px 22px;margin:32px 0;max-width:100%;box-sizing:border-box"><div style="font-size:.6rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#0066FF;margin-bottom:8px">Formation offerte · 7 leçons gratuites</div><p style="margin:0 0 8px;color:#1D1D1F!important;font-weight:700;font-size:1.02rem;line-height:1.45">Le delta mesure l&#39;agressivité. Reste à savoir qui est en face.</p><p style="margin:0 0 16px;color:#1D1D1F!important;font-size:.9rem;line-height:1.65">Chaque contrat acheté au marché a trouvé un vendeur en face. Comprendre qui fait bouger le prix, c&#39;est la base de ma formation offerte : 7 leçons vidéo gratuites, dont une démo Market Profile de 35 minutes. Sans carte bancaire.</p><a href="https://basstrading.fr/l/EJn1dA" style="display:inline-block;background:#0066FF;color:#FFF!important;font-weight:700;font-size:.9rem;line-height:1.2;padding:12px 22px;border-radius:980px;text-decoration:none!important;border:0!important">Ouvrir la leçon 1, gratuitement →</a></aside><!-- appel-offre:fin -->
 
@@ -242,7 +242,7 @@
     <p>Inverse : −6 000 delta, prix monte de 1 tick. Des acheteurs institutionnels absorbent toutes les ventes agressives. Le plancher est défendu. Signal haussier de haute conviction — c'est exactement ici que les mains fortes accumulent. Surveiller le retournement.</p>
 
     <h3>Comment quantifier l'absorption</h3>
-    <p>La règle empirique des professionnels : si le delta est supérieur à 2-3x le mouvement de prix habituel de la session sans déplacement correspondant du prix, vous avez de l'absorption. Sur Sierra Chart, vous pouvez afficher le "Delta per Tick" pour normaliser cette mesure.</p>
+    <p>La règle empirique des professionnels : si le delta est supérieur à 2-3x le mouvement de prix habituel de la session sans déplacement correspondant du prix, tu as de l'absorption. Sur Sierra Chart, tu peux afficher le "Delta per Tick" pour normaliser cette mesure.</p>
 
     <h2 id="delta-footprint">Comment le delta s'affiche dans le Footprint</h2>
     <p>Dans le <a href="/blog/footprint-chart-trading/">Footprint Chart</a>, le delta n'est pas un seul chiffre — il est décomposé <strong>niveau par niveau</strong>. Chaque cellule du Footprint montre le volume Ask et Bid à ce prix précis. Le delta de chaque cellule est la différence.</p>
@@ -254,7 +254,7 @@
     </ul>
 
     <h2 id="max-delta">Max delta et retournements intrabougie</h2>
-    <p>Le <strong>max delta</strong> est le delta maximum atteint pendant la formation de la bougie — pas le delta de clôture. La différence entre le max delta et le delta de clôture vous dit combien de pression directionnelle a été <em>absorbée</em> pendant la formation de la bougie.</p>
+    <p>Le <strong>max delta</strong> est le delta maximum atteint pendant la formation de la bougie — pas le delta de clôture. La différence entre le max delta et le delta de clôture te dit combien de pression directionnelle a été <em>absorbée</em> pendant la formation de la bougie.</p>
     <p>Exemple : une bougie a atteint un delta de +12 000 contrats en cours de formation, mais clôture à +2 000. Cela signifie que 10 000 contrats de pression acheteuse ont été absorbés. C'est un signal de résistance forte dans cette bougie — les vendeurs passifs ont tenu leur position.</p>
     <p>Le max delta est disponible dans Sierra Chart sous forme d'étude additionnelle. C'est l'un des outils les plus utilisés par les traders BASS pour qualifier la force réelle d'un mouvement.</p>
 
@@ -269,7 +269,7 @@
       </tbody>
     </table>
 
-    <p>En pratique, utilisez le <a href="/blog/cvd-cumulative-volume-delta/">CVD</a> pour le biais directionnel de la session et le delta par bougie pour qualifier chaque signal d'entrée individuel. Le delta Footprint (niveau par niveau) est votre outil de précision pour les entrées et les stops.</p>
+    <p>En pratique, utilise le <a href="/blog/cvd-cumulative-volume-delta/">CVD</a> pour le biais directionnel de la session et le delta par bougie pour qualifier chaque signal d'entrée individuel. Le delta Footprint (niveau par niveau) est ton outil de précision pour les entrées et les stops.</p>
 
     <h2 id="seuils">Seuils et calibration du delta</h2>
     <p>Un delta de +500 contrats est-il significatif ? Tout dépend du marché et de la période. La calibration est essentielle.</p>
@@ -278,7 +278,7 @@
       <li><strong>NQ (Nasdaq Futures) :</strong> volumes naturellement plus faibles. 2 000 à 3 000 contrats sur 5 min est déjà significatif.</li>
       <li><strong>CL (Crude Oil) :</strong> très liquide en session US, delta significatif à partir de 500-1 000 contrats sur 5 min.</li>
     </ul>
-    <p>La règle pratique : comparez le delta actuel aux deltas des bougies récentes. Un delta 2x à 3x supérieur à la moyenne des 10 dernières bougies est un signal à surveiller, quel que soit le marché.</p>
+    <p>La règle pratique : compare le delta actuel aux deltas des bougies récentes. Un delta 2x à 3x supérieur à la moyenne des 10 dernières bougies est un signal à surveiller, quel que soit le marché.</p>
 
     <h2 id="bass">Apprendre à lire le delta avec BASS Trading</h2>
     <p>Le delta est l'ADN de chaque bougie dans l'analyse order flow. Avant une entrée, pose-toi trois questions : la pression directionnelle confirme-t-elle le setup ? Y a-t-il de l'absorption ? La divergence est-elle sur un niveau structurel ?</p>

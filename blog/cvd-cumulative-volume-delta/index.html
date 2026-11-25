@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CVD (Cumulative Volume Delta) : Détecter la Conviction des Traders — BASS Trading</title>
-  <meta name="description" content="Guide complet du CVD (Cumulative Volume Delta) : calcul, divergences, interprétation. Apprenez à utiliser le delta cumulatif pour mesurer la pression directionnelle réelle du marché. Par Sébastien Constant.">
+  <meta name="description" content="Guide complet du CVD (Cumulative Volume Delta) : calcul, divergences, interprétation. Apprends à utiliser le delta cumulatif pour mesurer la pression directionnelle réelle du marché. Par Sébastien Constant.">
   <meta property="og:title" content="CVD : Le Détecteur de Conviction des Traders — BASS Trading">
   <meta property="og:description" content="CVD, divergences prix/delta, absorption — utiliser le Cumulative Volume Delta pour lire la pression directionnelle réelle et anticiper les retournements.">
   <meta property="og:image" content="https://basstrading.fr/images/og-basstrading.jpg">
@@ -190,8 +190,8 @@
     <!-- reponse:debut --><style>.reponse-courte strong,.reponse-courte p{color:#1D1D1F!important}</style><div class="reponse-courte" style="border-left:3px solid #0066FF;background:#F5F5F7;border-radius:0 12px 12px 0;padding:18px 20px;margin:0 0 28px;font-size:.95rem;line-height:1.65;color:#1D1D1F;max-width:100%;box-sizing:border-box"><div style="font-size:.6rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#0066FF;margin-bottom:6px">Réponse courte</div><p style="margin:0;color:#1D1D1F">Le CVD (<em>Cumulative Volume Delta</em>) additionne, transaction après transaction, les achats agressifs (exécutés à l'ask) moins les ventes agressives (exécutées au bid), depuis un point de départ, souvent l'ouverture de la séance. Sa courbe montre quel camp pousse. Le signal le plus lu est la <strong>divergence</strong> : le prix fait un nouveau plus haut sans que le CVD suive, ou l'inverse.</p></div><!-- reponse:fin -->
 <p><strong>Ce guide fait partie de la série Order Flow.</strong> Pour la vue d'ensemble, commence par <a href="/blog/order-flow-trading-france/">le guide complet de l'order flow en France</a>.</p>
     <h2 id="definition">Qu'est-ce que le CVD ?</h2>
-    <p>Imaginez une balance. D'un côté, tous les ordres d'achat agressifs de la session (les market buy orders, qui frappent l'Ask). De l'autre, tous les ordres de vente agressifs (les market sell orders, qui frappent le Bid). Le <strong>CVD</strong> (Cumulative Volume Delta) est le solde de cette balance, mis à jour en continu depuis l'ouverture.</p>
-    <p>Un CVD positif et croissant dit : depuis l'ouverture, les acheteurs agressifs ont dominé. Un CVD négatif et décroissant dit : les vendeurs agressifs ont pris le dessus. Ce n'est pas le prix qui vous dit ça — c'est le <strong>flux d'ordres brut</strong>, sans filtre.</p>
+    <p>Imagine une balance. D'un côté, tous les ordres d'achat agressifs de la session (les market buy orders, qui frappent l'Ask). De l'autre, tous les ordres de vente agressifs (les market sell orders, qui frappent le Bid). Le <strong>CVD</strong> (Cumulative Volume Delta) est le solde de cette balance, mis à jour en continu depuis l'ouverture.</p>
+    <p>Un CVD positif et croissant dit : depuis l'ouverture, les acheteurs agressifs ont dominé. Un CVD négatif et décroissant dit : les vendeurs agressifs ont pris le dessus. Ce n'est pas le prix qui te dit ça — c'est le <strong>flux d'ordres brut</strong>, sans filtre.</p>
     <p>La puissance du CVD ne vient pas de sa valeur absolue, mais de sa <strong>relation avec le prix</strong>. Quand les deux convergent (CVD monte, prix monte), la tendance est saine. Quand ils divergent (CVD baisse, prix monte), quelque chose cloche — et c'est là que les meilleurs trades se cachent.</p>
 
     <div class="key-concept">
@@ -209,7 +209,7 @@
       <li>Bougie avec 4 000 contrats Ask et 9 000 contrats Bid → Delta = −5 000 (pression vendeuse)</li>
       <li>Bougie avec 6 000 Ask et 6 000 Bid → Delta = 0 (équilibre parfait)</li>
     </ul>
-    <p>Le CVD accumule ces deltas : CVD(n) = CVD(n-1) + Delta(bougie n). Le reset du CVD dépend de votre configuration — généralement à chaque nouvelle session (00:00 UTC ou ouverture de la session principale).</p>
+    <p>Le CVD accumule ces deltas : CVD(n) = CVD(n-1) + Delta(bougie n). Le reset du CVD dépend de ta configuration — généralement à chaque nouvelle session (00:00 UTC ou ouverture de la session principale).</p>
 
     <h2 id="delta-vs-cvd">Delta par bougie vs CVD : deux lectures différentes</h2>
 
@@ -221,7 +221,7 @@
       </tbody>
     </table>
 
-    <p>Pensez-y comme ceci : le delta par bougie est comme regarder chaque coup individuel dans une partie de boxe. Le CVD est comme regarder le score du combat en temps réel. Les deux sont nécessaires. Le delta vous dit qui gagne la bougie actuelle. Le CVD vous dit qui gagne le match de la journée.</p>
+    <p>Pense-y comme ceci : le delta par bougie est comme regarder chaque coup individuel dans une partie de boxe. Le CVD est comme regarder le score du combat en temps réel. Les deux sont nécessaires. Le delta te dit qui gagne la bougie actuelle. Le CVD te dit qui gagne le match de la journée.</p>
 
     <h2 id="divergences">Les divergences CVD/Prix : le signal d'alerte ultime</h2>
     <p>Les divergences entre le CVD et le prix sont les signaux les plus puissants que l'analyse de l'order flow peut produire. Elles indiquent un <strong>épuisement</strong> de la tendance — le prix avance, mais la conviction derrière ce mouvement faiblit.</p>
@@ -234,7 +234,7 @@
 
     <div class="info-box">
       <div class="info-box-title">⚠️ Important : la divergence ne suffit pas seule</div>
-      <p>Une divergence CVD/Prix est un signal d'alerte, pas un signal d'entrée en soi. Elle indique que la tendance est potentiellement fragile. Combinez-la avec un niveau technique significatif (VAH, POC, résistance), un <a href="/blog/footprint-chart-trading/">Footprint</a> montrant de l'absorption, et un <a href="/blog/carnet-ordres-dom-futures/">DOM</a> avec des murs passifs. La convergence de ces signaux transforme la divergence en trade de haute probabilité.</p>
+      <p>Une divergence CVD/Prix est un signal d'alerte, pas un signal d'entrée en soi. Elle indique que la tendance est potentiellement fragile. Combine-la avec un niveau technique significatif (VAH, POC, résistance), un <a href="/blog/footprint-chart-trading/">Footprint</a> montrant de l'absorption, et un <a href="/blog/carnet-ordres-dom-futures/">DOM</a> avec des murs passifs. La convergence de ces signaux transforme la divergence en trade de haute probabilité.</p>
     </div>
 
     <h2 id="absorption">CVD et absorption : quand les institutionnels se cachent</h2>
@@ -261,7 +261,7 @@
     </blockquote>
 
     <h2 id="sierra">Configuration Sierra Chart pour le CVD</h2>
-    <p>Sierra Chart permet d'afficher le CVD comme sous-graphique directement sous vos chandeliers. Voici la configuration recommandée :</p>
+    <p>Sierra Chart permet d'afficher le CVD comme sous-graphique directement sous tes chandeliers. Voici la configuration recommandée :</p>
     <ul>
       <li><strong>Étude :</strong> "Cumulative Delta Bars" ou "Volume by Price (Cumulative Delta)" selon la version</li>
       <li><strong>Type d'affichage :</strong> Ligne ou histogramme — la ligne est plus lisible pour les divergences</li>
@@ -269,7 +269,7 @@
       <li><strong>Couleurs :</strong> Vert pour CVD positif, rouge pour CVD négatif — ou une seule couleur avec ligne de zéro</li>
       <li><strong>Combinaison recommandée :</strong> CVD en sous-graphique 1 + Volume delta par bougie en sous-graphique 2</li>
     </ul>
-    <p>Pour une configuration détaillée, consultez notre guide <a href="/blog/sierra-chart-configuration/">Sierra Chart : configuration complète</a>.</p>
+    <p>Pour une configuration détaillée, consulte notre guide <a href="/blog/sierra-chart-configuration/">Sierra Chart : configuration complète</a>.</p>
 
     <h2 id="bass">Apprendre à utiliser le CVD avec BASS Trading</h2>
     <p>Le CVD est l'un des outils les plus mal utilisés en trading. La plupart des traders qui l'emploient regardent juste si il monte ou descend — ce qui revient à regarder le prix avec un outil différent. La vraie puissance est dans les divergences, les extrêmes, et la relation avec l'absorption aux niveaux structurels.</p>

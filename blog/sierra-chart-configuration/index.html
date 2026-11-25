@@ -119,15 +119,15 @@
 
     <h3>Téléchargement et licence</h3>
     <ol>
-      <li>Téléchargez Sierra Chart sur le site officiel (sierrachart.com)</li>
-      <li>Installez le logiciel (Windows uniquement, fonctionne sous Wine/Parallels sur Mac)</li>
-      <li>Créez un compte et choisissez le <strong>Package 3</strong> ($46/mois) — c'est celui qui inclut le Market Profile, les Numbers Bars et le CVD</li>
-      <li>Activez le service de données <strong>Denali Exchange</strong> — c'est le flux CME natif de Sierra Chart</li>
+      <li>Télécharge Sierra Chart sur le site officiel (sierrachart.com)</li>
+      <li>Installe le logiciel (Windows uniquement, fonctionne sous Wine/Parallels sur Mac)</li>
+      <li>Crée un compte et choisis le <strong>Package 3</strong> ($46/mois) — c'est celui qui inclut le Market Profile, les Numbers Bars et le CVD</li>
+      <li>Active le service de données <strong>Denali Exchange</strong> — c'est le flux CME natif de Sierra Chart</li>
     </ol>
 
     <h3>Connexion aux données</h3>
-    <p>Une fois le package activé, connectez-vous : <strong>File > Data/Trade Service Settings</strong>. Sélectionnez "SC Data - All Services" et entrez vos identifiants. La connexion est automatique.</p>
-    <p>Pour les données CME (Futures ES, NQ, CL, etc.), vous devrez accepter les accords d'échange CME. Coût : <strong>~$9/mois pour les non-professionnels</strong> (CME Non-Professional Market Data).</p>
+    <p>Une fois le package activé, connecte-toi : <strong>File > Data/Trade Service Settings</strong>. Sélectionne "SC Data - All Services" et entre tes identifiants. La connexion est automatique.</p>
+    <p>Pour les données CME (Futures ES, NQ, CL, etc.), tu devras accepter les accords d'échange CME. Coût : <strong>~$9/mois pour les non-professionnels</strong> (CME Non-Professional Market Data).</p>
 
     <div class="info-box">
       <div class="info-box-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg> Coût total</div>
@@ -141,9 +141,9 @@
 
     <h3>Créer un nouveau graphique TPO</h3>
     <ol>
-      <li><strong>File > Find Symbol</strong> — Tapez le symbole (ex: ESH26.CME pour l'E-mini S&P 500)</li>
-      <li><strong>Chart > Chart Settings</strong> — Dans "Chart Type", sélectionnez "TPO Profile Chart"</li>
-      <li>Réglez la période TPO sur <strong>30 minutes</strong> (standard pour les Futures US)</li>
+      <li><strong>File > Find Symbol</strong> — Tape le symbole (ex: ESH26.CME pour l'E-mini S&P 500)</li>
+      <li><strong>Chart > Chart Settings</strong> — Dans "Chart Type", sélectionne "TPO Profile Chart"</li>
+      <li>Règle la période TPO sur <strong>30 minutes</strong> (standard pour les Futures US)</li>
     </ol>
 
     <h3>Paramètres essentiels</h3>
@@ -160,19 +160,19 @@
     </table>
 
     <h3>Couleurs et lisibilité</h3>
-    <p>Le défaut de Sierra Chart est moche. Personnalisez : fond noir ou gris très foncé, TPO en couleur par période (lettres colorées), POC en trait rouge ou blanc épais, Value Area en zone semi-transparente. <strong>La lisibilité prime sur l'esthétique.</strong></p>
+    <p>Le défaut de Sierra Chart est moche. Personnalise : fond noir ou gris très foncé, TPO en couleur par période (lettres colorées), POC en trait rouge ou blanc épais, Value Area en zone semi-transparente. <strong>La lisibilité prime sur l'esthétique.</strong></p>
 
     <hr>
 
     <h2 id="volume-profile">Configurer le Volume Profile</h2>
     <p>Le Volume Profile complète le TPO en montrant le <strong>volume réel échangé</strong> à chaque niveau de prix (pas le temps passé).</p>
-    <p>Dans Sierra Chart : <strong>Studies > Add Study > Volume by Price</strong>. Configurez :</p>
+    <p>Dans Sierra Chart : <strong>Studies > Add Study > Volume by Price</strong>. Configure :</p>
     <ul>
       <li><strong>VPOC (Volume Point of Control)</strong> — Le prix avec le plus grand volume</li>
       <li><strong>Value Area High/Low</strong> — La zone de 70% du volume total</li>
       <li><strong>Histogramme</strong> — Barres horizontales montrant la distribution du volume</li>
     </ul>
-    <p>Astuce : affichez le TPO et le Volume Profile sur le même graphique, l'un à gauche et l'autre à droite. La convergence entre le POC du TPO et le VPOC est un signal de haute conviction.</p>
+    <p>Astuce : affiche le TPO et le Volume Profile sur le même graphique, l'un à gauche et l'autre à droite. La convergence entre le POC du TPO et le VPOC est un signal de haute conviction.</p>
 
     <hr>
 
@@ -181,17 +181,17 @@
 
     <h3>Activation</h3>
     <ol>
-      <li><strong>Chart > Chart Settings > Chart Type</strong> — Sélectionnez un graphique en bougies classique (pas TPO)</li>
+      <li><strong>Chart > Chart Settings > Chart Type</strong> — Sélectionne un graphique en bougies classique (pas TPO)</li>
       <li><strong>Studies > Add Study > Numbers Bars Calculated Values</strong></li>
-      <li>Dans les settings, choisissez le mode <strong>"AskVol x BidVol"</strong> — c'est le format Footprint standard</li>
+      <li>Dans les settings, choisis le mode <strong>"AskVol x BidVol"</strong> — c'est le format Footprint standard</li>
     </ol>
 
     <h3>Paramètres clés</h3>
     <ul>
-      <li><strong>Imbalance Ratio</strong> — Réglez sur 300% (3:1). C'est le seuil standard pour détecter les déséquilibres.</li>
+      <li><strong>Imbalance Ratio</strong> — Règle sur 300% (3:1). C'est le seuil standard pour détecter les déséquilibres.</li>
       <li><strong>Couleurs</strong> — Ask en vert/bleu, Bid en rouge, imbalances surlignées en couleur vive</li>
-      <li><strong>Delta total</strong> — Activez l'affichage du delta cumulé en bas de chaque bougie</li>
-      <li><strong>Volume total</strong> — Affichez le volume total par bougie à côté du delta</li>
+      <li><strong>Delta total</strong> — Active l'affichage du delta cumulé en bas de chaque bougie</li>
+      <li><strong>Volume total</strong> — Affiche le volume total par bougie à côté du delta</li>
     </ul>
 
     <hr>
@@ -209,18 +209,18 @@
       </tbody>
     </table>
 
-    <p>Pour commencer, utilisez <strong>"AskVol x BidVol"</strong>. C'est le mode le plus lisible et le plus utile pour repérer les imbalances et l'absorption.</p>
+    <p>Pour commencer, utilise <strong>"AskVol x BidVol"</strong>. C'est le mode le plus lisible et le plus utile pour repérer les imbalances et l'absorption.</p>
 
     <hr>
 
     <h2 id="cvd">Configurer le CVD</h2>
     <p>Le CVD (Cumulative Volume Delta) trace la somme cumulée de tous les deltas dans le temps. C'est un indicateur de momentum basé sur le flux réel.</p>
-    <p>Configuration : <strong>Studies > Add Study > Cumulative Delta Bars - Volume</strong>. Affichez-le dans un sous-graphique séparé sous votre graphique principal.</p>
+    <p>Configuration : <strong>Studies > Add Study > Cumulative Delta Bars - Volume</strong>. Affiche-le dans un sous-graphique séparé sous ton graphique principal.</p>
     <p>Paramètres recommandés :</p>
     <ul>
       <li><strong>Reset period</strong> — Daily (reset à chaque session)</li>
       <li><strong>Display</strong> — Barres colorées (vert si delta positif, rouge si négatif)</li>
-      <li><strong>MA overlay</strong> — Ajoutez une moyenne mobile 20 périodes pour lisser le signal</li>
+      <li><strong>MA overlay</strong> — Ajoute une moyenne mobile 20 périodes pour lisser le signal</li>
     </ul>
 
     <div class="key-concept">
@@ -248,11 +248,11 @@
       <li><strong>Droite</strong> — Time & Sales / Tape</li>
     </ul>
 
-    <p>Sauvegardez votre workspace : <strong>File > Save Chartbook As</strong>. Créez des templates pour chaque marché (ES, NQ, CL) que vous tradez.</p>
+    <p>Sauvegarde ton workspace : <strong>File > Save Chartbook As</strong>. Crée des templates pour chaque marché (ES, NQ, CL) que tu trades.</p>
 
     <div class="info-box">
       <div class="info-box-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg> Templates BASS</div>
-      <p>Le mentorat BASS Trading fournit un Chartbook Sierra Chart complet avec tous les graphiques pré-configurés : Market Profile, Footprint, CVD, DOM. Vous l'importez et tout est opérationnel en 5 minutes — sans passer 3 jours à configurer.</p>
+      <p>Le mentorat BASS Trading fournit un Chartbook Sierra Chart complet avec tous les graphiques pré-configurés : Market Profile, Footprint, CVD, DOM. Tu l'importes et tout est opérationnel en 5 minutes — sans passer 3 jours à configurer.</p>
     </div>
 
     <hr>
@@ -260,19 +260,19 @@
     <h2 id="erreurs">Erreurs courantes de configuration</h2>
 
     <h3>1. Trop d'indicateurs</h3>
-    <p>Sierra Chart permet d'ajouter des centaines d'études. <strong>N'en abusez pas.</strong> Market Profile + Footprint + CVD + DOM = suffisant. Chaque indicateur supplémentaire ajoute du bruit, pas du signal.</p>
+    <p>Sierra Chart permet d'ajouter des centaines d'études. <strong>N'en abuse pas.</strong> Market Profile + Footprint + CVD + DOM = suffisant. Chaque indicateur supplémentaire ajoute du bruit, pas du signal.</p>
 
     <h3>2. Mauvaise période TPO</h3>
-    <p>30 minutes est le standard pour les Futures US. Ne passez pas à 15 minutes ou 1 heure sans raison — vous perdez la comparabilité avec les autres traders et les études historiques.</p>
+    <p>30 minutes est le standard pour les Futures US. Ne passe pas à 15 minutes ou 1 heure sans raison — tu perds la comparabilité avec les autres traders et les études historiques.</p>
 
     <h3>3. Seuil d'imbalance trop bas</h3>
-    <p>Un seuil de 150% génère trop de faux signaux. Gardez <strong>300% minimum</strong>. Mieux vaut moins de signaux mais de meilleure qualité.</p>
+    <p>Un seuil de 150% génère trop de faux signaux. Garde <strong>300% minimum</strong>. Mieux vaut moins de signaux mais de meilleure qualité.</p>
 
     <h3>4. Ne pas sauvegarder les templates</h3>
-    <p>Sierra Chart peut planter (rarement, mais ça arrive). Sauvegardez vos Chartbooks régulièrement et faites un backup de votre dossier Sierra Chart.</p>
+    <p>Sierra Chart peut planter (rarement, mais ça arrive). Sauvegarde tes Chartbooks régulièrement et fais un backup de ton dossier Sierra Chart.</p>
 
     <h3>5. Données retardées sans le savoir</h3>
-    <p>Si vous n'avez pas activé les données CME en temps réel, vous tradez avec un retard de 10-15 minutes. Vérifiez : <strong>Window > Message Log</strong> — si vous voyez "delayed data", activez les données CME Non-Professional.</p>
+    <p>Si tu n'as pas activé les données CME en temps réel, tu trades avec un retard de 10-15 minutes. Vérifie : <strong>Window > Message Log</strong> — si tu vois "delayed data", active les données CME Non-Professional.</p>
 
     <p><strong>Ce tutoriel fait partie de la série Market Profile.</strong> Pour la lecture des profils, commence par <a href="/blog/market-profile-guide-complet/">le guide complet du Market Profile</a>, puis <a href="/blog/volume-profile-guide/">le guide du Volume Profile</a>. Pour apprendre à lire tes profils en vidéo : ma <a href="/marketprofile/">formation Market Profile</a>.</p>
 

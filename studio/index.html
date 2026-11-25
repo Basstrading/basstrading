@@ -394,7 +394,7 @@ async function contacts(params) {
     <button class="btn dang" id="sup">Supprimer</button>
     <div class="pts" id="pa"><button class="btn sec" style="background:#fff;letter-spacing:0;font:600 15px Outfit;padding:10px 18px;border-radius:6px;color:var(--txt)">Plus d'actions ⌃</button><div class="sous" style="top:auto;bottom:calc(100% + 8px)">
       <button data-a="add">Ajouter un tag</button><button data-a="remove">Supprimer le tag</button><button data-a="inscrire_campagne">Inscrire à la campagne</button>
-      <button data-a="desabonner_campagne">Se désabonner de la campagne</button><button data-a="reinscrire">Réinscrire à votre liste email</button>
+      <button data-a="desabonner_campagne">Se désabonner de la campagne</button><button data-a="reinscrire">Réinscrire à ta liste email</button>
       <button data-a="desinscrire">Se désinscrire des emails marketing</button><button data-a="exporter">Exporter</button></div></div>
     <span id="choix" hidden style="display:flex;gap:8px"><select id="cl" style="width:auto;min-width:220px"></select><button class="btn" id="cg">Appliquer</button></span><span class="msg" id="sm"></span></div>`;
   // mise en page : panneau de filtres à gauche sur grand écran
@@ -414,7 +414,7 @@ async function contacts(params) {
     document.getElementById("res").innerHTML = `<div class="wrap"><table><tr><th style="width:56px"><button class="coche" id="tout" title="Tout sélectionner"></button></th><th>Ajouté le</th><th>Email du client</th><th>Tags</th></tr>
       ${d.contacts.map(c => `<tr><td><button class="coche ${choisis.has(c.id) ? "on" : ""}" data-id="${c.id}" data-e="${esc(c.email)}"></button></td><td style="white-space:nowrap">${dmyh(c.cree)}</td>
         <td><div class="mail">${ROND}<div>${lienContact(c.id, c.email)}${c.statut !== "enabled" ? ` <span class="pill err">Désinscrit</span>` : ""}<div class="mute">${esc(c.prenom || c.nom)}</div></div></div></td>
-        <td>${(T => T.slice(0, 5).map(x => `<span class="tagp">${esc(x.nom)}</span>`).join("") + (T.length > 5 ? `<span class="mute">+${T.length - 5}</span>` : ""))(c.listes.filter(x => x.statut !== "unsubscribed" && !TECHNIQUE(x.nom)))}</td></tr>`).join("") || `<tr><td colspan="4" class="vide">Oups ! Il semble que votre écran soit vide.</td></tr>`}
+        <td>${(T => T.slice(0, 5).map(x => `<span class="tagp">${esc(x.nom)}</span>`).join("") + (T.length > 5 ? `<span class="mute">+${T.length - 5}</span>` : ""))(c.listes.filter(x => x.statut !== "unsubscribed" && !TECHNIQUE(x.nom)))}</td></tr>`).join("") || `<tr><td colspan="4" class="vide">Oups ! Il semble que ton écran soit vide.</td></tr>`}
       </table></div>
       <div class="row" style="margin-top:14px;justify-content:space-between">${page > 1 ? `<button class="btn sec" id="prev" style="flex:0">← Précédents</button>` : "<span></span>"}<span class="mute" style="flex:0;white-space:nowrap;align-self:center">Page ${page} / ${Math.max(1, Math.ceil(d.total / 50))}</span>${d.total > page * 50 ? `<button class="btn sec" id="next" style="flex:0">Suivants →</button>` : "<span></span>"}</div>`;
     document.querySelectorAll("#res .coche[data-id]").forEach(b => b.onclick = () => { const i = +b.dataset.id; choisis.has(i) ? choisis.delete(i) : choisis.set(i, b.dataset.e); b.classList.toggle("on"); majSel(); });
@@ -734,7 +734,7 @@ async function emails() {
       <td>${l.envoyes.toLocaleString("fr-FR")}</td><td>${taux(l.ouverts, l.envoyes)}</td><td>${taux(l.clics, l.envoyes)}</td>
       <td><span class="pill ${l.statut[1]}">${l.statut[0]}</span></td>
       <td style="text-align:right">${points([`<a href="${l.lien}">${l.sio ? "Voir et statistiques" : "Ouvrir"}</a>`, l.sio ? `<button data-dup="${l.sio}">Dupliquer</button>` : ""])}</td></tr>`).join("")
-      || `<tr><td colspan="7" class="vide">Oups ! Il semble que votre écran soit vide.</td></tr>`;
+      || `<tr><td colspan="7" class="vide">Oups ! Il semble que ton écran soit vide.</td></tr>`;
     document.getElementById("plus").style.display = V.length > n ? "" : "none";
     document.querySelectorAll("[data-dup]").forEach(b => b.onclick = async () => { const r = await post(`/studio/newsletters-sio/${b.dataset.dup}/dupliquer`, {}); location.hash = "#/emails/" + r.id; });
   };
@@ -770,7 +770,7 @@ async function tunnels() {
   const dessiner = () => { const t = document.getElementById("tq").value.trim().toLowerCase(), e = document.getElementById("te").value;
     document.getElementById("tl").innerHTML = T.filter(x => (!t || x.nom.toLowerCase().includes(t)) && (e === "" || +x.active === +e)).map(x => `<tr><td><a href="#/tunnels/${x.id}">${esc(x.nom)}</a></td>
       <td>${statut(x.active)}</td><td>${x.nb_etapes}</td><td>${dmyh(x.created_at)}</td>
-      <td style="text-align:right">${points([`<a href="#/tunnels/${x.id}">Ouvrir</a>`, x.url ? `<a href="${esc(x.url)}" target="_blank">Voir le tunnel</a>` : ""])}</td></tr>`).join("") || `<tr><td colspan="5" class="vide">Oups ! Il semble que votre écran soit vide.</td></tr>`; };
+      <td style="text-align:right">${points([`<a href="#/tunnels/${x.id}">Ouvrir</a>`, x.url ? `<a href="${esc(x.url)}" target="_blank">Voir le tunnel</a>` : ""])}</td></tr>`).join("") || `<tr><td colspan="5" class="vide">Oups ! Il semble que ton écran soit vide.</td></tr>`; };
   document.getElementById("tf").onclick = dessiner; document.getElementById("tq").oninput = dessiner; document.getElementById("te").onchange = dessiner; dessiner();
 }
 async function tunnel(id, etapeId) {
@@ -1296,8 +1296,8 @@ async function reglesListe() {
   app.innerHTML = `${entete("Règles d'automatisation", R.length, "", `<button class="btn" id="nr">⊕ &nbsp;Créer</button>`)}
   <div class="deux" style="grid-template-columns:minmax(0,1fr)">
     <div class="card filtres"><div class="onglets"><span class="on">Filtrer par</span></div><div style="padding:20px 24px;display:grid;gap:14px">
-      <select id="fd"><option value="">Choisissez le type de déclencheur</option>${Object.entries(O.declencheurs).map(([k, v]) => `<option value="${k}">${v}</option>`).join("")}</select>
-      <select id="fa"><option value="">Choisissez le type d'action</option>${Object.entries(O.actions).map(([k, v]) => `<option value="${k}">${v}</option>`).join("")}</select>
+      <select id="fd"><option value="">Choisis le type de déclencheur</option>${Object.entries(O.declencheurs).map(([k, v]) => `<option value="${k}">${v}</option>`).join("")}</select>
+      <select id="fa"><option value="">Choisis le type d'action</option>${Object.entries(O.actions).map(([k, v]) => `<option value="${k}">${v}</option>`).join("")}</select>
       <select id="fe"><option value="">Actif(ve) ou non</option><option value="1">Actif(ve)</option><option value="0">Inactif(ve)</option></select>
       <button class="btn" id="ff">⏷ &nbsp;Filtre</button></div></div>
     <div id="rl"></div></div>
@@ -1310,7 +1310,7 @@ async function reglesListe() {
       ${V.map(r => `<tr><td>${statut(r.active)}${r.sio_active !== null ? `<div class="mute" style="margin-top:4px"><span class="pastille-r ${r.sio_active ? "on" : ""}"></span>Systeme.io</div>` : ""}</td><td style="white-space:nowrap">${dmyh(r.created_at)}</td>
         <td><a href="#/regles/${r.id}">${r.declencheurs.map(x => `<b style="font-weight:600">${esc(x.nom)}</b>${x.detail ? `<div class="mute">${esc(x.detail)}</div>` : ""}`).join("")}</a></td>
         <td>${r.actions.map(x => `<div>${esc(x.nom)}${x.detail ? ` <span class="mute">« ${esc(x.detail)} »</span>` : ""}</div>`).join("")}</td>
-        <td style="text-align:right">${points([`<a href="#/regles/${r.id}">Editer</a>`, `<button data-act="${r.id}">${r.active ? "Désactiver" : "Activer"}</button>`, `<button data-sup="${r.id}" style="color:var(--err)">Supprimer</button>`])}</td></tr>`).join("") || `<tr><td colspan="5" class="vide">Oups ! Il semble que votre écran soit vide.</td></tr>`}</table></div>`;
+        <td style="text-align:right">${points([`<a href="#/regles/${r.id}">Editer</a>`, `<button data-act="${r.id}">${r.active ? "Désactiver" : "Activer"}</button>`, `<button data-sup="${r.id}" style="color:var(--err)">Supprimer</button>`])}</td></tr>`).join("") || `<tr><td colspan="5" class="vide">Oups ! Il semble que ton écran soit vide.</td></tr>`}</table></div>`;
     document.querySelectorAll("[data-act]").forEach(b => b.onclick = async () => { const r = R.find(x => x.id === +b.dataset.act);
       if (!r.active && !confirm("Activer cette règle ? Elle agira sur les nouveaux événements à partir de maintenant.")) return;
       await put("/studio/regles/" + r.id, {active: !r.active, declencheurs: r.declencheurs, actions: r.actions}); reglesListe(); });
@@ -1359,7 +1359,7 @@ async function workflowsListe() {
   <div class="wrap"><table><tr><th>Nom</th><th>Statut</th><th>Contacts en cours</th><th>Date de création</th><th></th></tr>
   ${W.map(w => `<tr><td><a href="#/workflows/${w.id}">${esc(w.nom)}</a>${w.sio_active !== null ? `<div class="mute"><span class="pastille-r ${w.sio_active ? "on" : ""}"></span>Systeme.io : ${w.sio_active ? "actif" : "inactif"}</div>` : ""}</td>
     <td><span class="pill ${w.active ? "ok" : ""}">${w.active ? "• Actif(ve)" : "• Inactif(ve)"}</span></td><td>${w.en_cours} <span class="mute">/ ${w.entres} entrés</span></td><td>${dmyh(w.created_at)}</td>
-    <td style="text-align:right">${points([`<button data-act="${w.id}">${w.active ? "Désactiver" : "Activer"}</button>`, `<a href="#/workflows/${w.id}">Editer</a>`, `<button data-sup="${w.id}" style="color:var(--err)">Supprimer</button>`])}</td></tr>`).join("") || `<tr><td colspan="5" class="vide">Oups ! Il semble que votre écran soit vide.</td></tr>`}</table></div>
+    <td style="text-align:right">${points([`<button data-act="${w.id}">${w.active ? "Désactiver" : "Activer"}</button>`, `<a href="#/workflows/${w.id}">Editer</a>`, `<button data-sup="${w.id}" style="color:var(--err)">Supprimer</button>`])}</td></tr>`).join("") || `<tr><td colspan="5" class="vide">Oups ! Il semble que ton écran soit vide.</td></tr>`}</table></div>
   <p class="mute" style="margin-top:14px">Workflows importés de Systeme.io : désactivés ici tant que Systeme.io tourne.</p>`;
   document.getElementById("nw").onclick = async () => { const r = await post("/studio/workflows", {nom: "Nouveau workflow", active: false, declencheurs: [], etapes: []}); location.hash = "#/workflows/" + r.id; };
   document.querySelectorAll("[data-act]").forEach(b => b.onclick = async () => { const w = await api("/studio/workflows/" + b.dataset.act);
