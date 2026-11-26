@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CFD : c&#39;est quoi, comment ça marche, et CFD ou futures ? — BASS Trading</title>
+  <meta name="description" content="CFD : définition simple, fonctionnement, frais, levier autorisé en France et qui est en face de ton ordre. Puis CFD ou futures : les vraies différences.">
+  <meta property="og:title" content="CFD : c&#39;est quoi, comment ça marche, et CFD ou futures ? — BASS Trading">
+  <meta property="og:description" content="CFD : définition simple, fonctionnement, frais, levier autorisé en France et qui est en face de ton ordre. Puis CFD ou futures : les vraies différences.">
+  <meta property="og:image" content="https://basstrading.fr/blog/cfd-trading/blog-cfd-trading-1.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://basstrading.fr/blog/cfd-trading/blog-cfd-trading-1.webp">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://basstrading.fr/blog/cfd-trading/">
+  <meta property="og:site_name" content="BASS Trading">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Footprint trading : lire un footprint chart (guide + outils)">
+  <meta name="twitter:description" content="Lire un footprint chart : bid × ask, delta, imbalances, absorption. Les outils footprint comparés (Sierra, ATAS, TradingView) et 3 lectures sur le Nasdaq.">
+  <link rel="canonical" href="https://basstrading.fr/blog/cfd-trading/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","@id":"https://basstrading.fr/blog/cfd-trading/#article","headline":"CFD : c'est quoi, comment ça marche, et CFD ou futures ?","description":"CFD : définition simple, fonctionnement, frais, levier autorisé en France et qui est en face de ton ordre. Puis CFD ou futures : les vraies différences.","datePublished":"2026-11-26","dateModified":"2026-11-26","inLanguage":"fr-FR","image":"https://basstrading.fr/blog/cfd-trading/blog-cfd-trading-1.webp","mainEntityOfPage":"https://basstrading.fr/blog/cfd-trading/","isPartOf":{"@type":"WebSite","@id":"https://basstrading.fr/#website","name":"BASS Trading","url":"https://basstrading.fr/"},"author":{"@type":"Person","@id":"https://basstrading.fr/#sebastien-constant","name":"Sébastien Constant","url":"https://basstrading.fr/auteur/sebastien-constant/"},"publisher":{"@type":"Organization","@id":"https://basstrading.fr/#organisation","name":"BASS Trading","url":"https://basstrading.fr/","logo":{"@type":"ImageObject","url":"https://basstrading.fr/images/logo-basstrading.png","width":512,"height":512}}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://basstrading.fr"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://basstrading.fr/blog/"},{"@type":"ListItem","position":3,"name":"CFD trading","item":"https://basstrading.fr/blog/cfd-trading/"}]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Peut-on perdre plus que la somme déposée sur son compte CFD ?","acceptedAnswer":{"@type":"Answer","text":"Pas en tant que particulier chez un prestataire européen : depuis 2018, la protection contre le solde négatif imposée par l'ESMA limite ta perte à l'argent déposé sur ton compte CFD. Tu peux en revanche perdre la totalité de ce dépôt très vite à cause du levier. Les clients classés professionnels ou les entités hors UE n'ont pas forcément cette protection."}},{"@type":"Question","name":"Quel est le levier maximum sur les CFD en France ?","acceptedAnswer":{"@type":"Answer","text":"Pour un particulier : 30 pour 1 sur les devises majeures, 20 pour 1 sur les grands indices, l'or et les autres devises, 10 pour 1 sur les autres matières premières et indices non majeurs, 5 pour 1 sur les actions et 2 pour 1 sur les cryptomonnaies. Ces plafonds viennent des mesures européennes de 2018 appliquées en France par l'AMF."}},{"@type":"Question","name":"Les CFD sont-ils légaux en France ?","acceptedAnswer":{"@type":"Answer","text":"Oui. Les CFD sont autorisés en France, mais leur commercialisation auprès des particuliers est encadrée : levier plafonné, coupure à 50 % de la marge, protection contre le solde négatif, avertissement de risque obligatoire. Vérifie toujours que ton prestataire est autorisé en consultant les listes de l'AMF avant d'ouvrir un compte."}},{"@type":"Question","name":"Quelle différence entre un CFD et un future ?","acceptedAnswer":{"@type":"Answer","text":"Un future est négocié sur une bourse réglementée (le CME pour le Nasdaq), avec une chambre de compensation et un carnet d'ordres public ; tu vois les vrais volumes. Un CFD est un contrat privé avec ton courtier, sans échéance mais avec un financement de nuit. Le CFD offre des tailles plus souples ; le future offre la transparence."}},{"@type":"Question","name":"Les CFD conviennent-ils à un débutant ?","acceptedAnswer":{"@type":"Answer","text":"Ils sont faciles d'accès, et c'est justement le piège : un dépôt faible et un levier élevé permettent de prendre des positions trop grosses sans méthode. L'étude de l'AMF a montré 89 % de particuliers perdants. Si tu débutes, apprends d'abord à calculer ton risque par trade, quel que soit l'instrument."}},{"@type":"Question","name":"Qu'est-ce que le B-book d'un courtier CFD ?","acceptedAnswer":{"@type":"Answer","text":"C'est le modèle où le courtier garde ton ordre au lieu de le transmettre à un fournisseur de liquidité : il prend la position inverse de la tienne. Il gagne alors le spread, les frais et aussi tes pertes. Le B-book est autorisé et encadré, mais il crée un conflit d'intérêts qu'il vaut mieux connaître."}}]}
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{--bk:#1D1D1F;--bk2:#111;--bk3:#0A0A0A;--g1:#6E6E73;--g2:#86868B;--g3:#D2D2D7;--g4:#F5F5F7;--wh:#FBFBFD;--pure:#FFF;--green:#00B67A;--blue:#0066FF}
+    html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}
+    body{font-family:'DM Sans',sans-serif;color:var(--bk);background:var(--pure);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+    .preloader{position:fixed;inset:0;background:var(--bk3);z-index:10001;display:flex;align-items:center;justify-content:center}
+    .pre-word{font-family:'Outfit',sans-serif;font-size:clamp(3rem,8vw,5rem);font-weight:900;letter-spacing:16px;text-transform:uppercase;color:var(--pure);overflow:hidden}
+    .pre-word span{display:inline-block;transform:translateY(110%);opacity:0}
+    .pre-line{width:0;height:1px;background:rgba(255,255,255,.3);margin-top:20px}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 48px;display:flex;align-items:center;justify-content:space-between;background:rgba(245,245,247,.85);backdrop-filter:blur(20px) saturate(1.8);border-bottom:1px solid rgba(0,0,0,.04);transition:background .4s}
+    .nav-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase;color:var(--bk)}
+    .nav-links{display:flex;gap:28px;list-style:none}.nav-links a{font-size:.74rem;font-weight:500;letter-spacing:.3px;color:var(--g1);transition:color .3s}.nav-links a:hover{color:var(--bk)}
+    .nav-cta{padding:8px 20px;background:var(--bk);color:var(--pure);border:none;border-radius:980px;font-size:.72rem;font-weight:600;transition:all .3s;cursor:pointer;text-decoration:none;display:inline-block}.nav-cta:hover{background:var(--bk2)}
+    .blog-hero{padding:160px 48px 80px;background:var(--g4);position:relative;overflow:hidden}
+    .blog-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,transparent,var(--g4));pointer-events:none}
+    .blog-hero-inner{max-width:720px;margin:0 auto}
+    .breadcrumb{display:flex;gap:8px;align-items:center;margin-bottom:28px;flex-wrap:wrap}
+    .breadcrumb a,.breadcrumb span{font-size:.68rem;font-weight:500;letter-spacing:.3px;color:var(--g2);transition:color .3s}.breadcrumb a:hover{color:var(--bk)}.breadcrumb .sep{color:var(--g3)}
+    .blog-hero-cat{display:inline-block;padding:5px 14px;border:1px solid rgba(0,102,255,.15);border-radius:980px;font-size:.6rem;font-weight:700;color:var(--blue);letter-spacing:2px;text-transform:uppercase;margin-bottom:20px}
+    .blog-hero-title{font-family:'Outfit',sans-serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:900;line-height:1.05;letter-spacing:-2px;color:var(--bk);margin-bottom:20px}
+    .blog-hero-desc{font-size:.95rem;color:var(--g1);line-height:1.8;max-width:560px;margin-bottom:28px}
+    .blog-meta{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+    .blog-meta-author{display:flex;align-items:center;gap:10px}
+    .blog-meta-avatar{width:36px;height:36px;border-radius:50%;background:var(--bk3);overflow:hidden;flex-shrink:0}.blog-meta-avatar img{width:100%;height:100%;object-fit:cover}
+    .blog-meta-name{font-size:.78rem;font-weight:600;color:var(--bk)}.blog-meta-role{font-size:.65rem;color:var(--g2)}
+    .blog-meta-sep{width:1px;height:24px;background:var(--g3)}
+    .blog-meta-info{font-size:.7rem;color:var(--g2)}.blog-meta-info span{margin-right:16px}
+    .toc{position:sticky;top:90px;background:var(--pure);border:1px solid rgba(0,0,0,.04);border-radius:14px;padding:24px;margin-bottom:32px}
+    .toc-title{font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.5px;color:var(--bk);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+    .toc ol{list-style:none;counter-reset:toc}.toc li{counter-increment:toc}
+    .toc li a{display:flex;align-items:baseline;gap:8px;padding:6px 0;font-size:.76rem;color:var(--g1);transition:color .3s;border-bottom:1px solid rgba(0,0,0,.03)}.toc li a:hover{color:var(--blue)}
+    .toc li a::before{content:counter(toc,decimal-leading-zero);font-family:'Outfit',sans-serif;font-size:.65rem;font-weight:700;color:var(--g3);min-width:18px}
+    .toc li:last-child a{border-bottom:none}.toc li a.active{color:var(--blue);font-weight:600}.toc li a.active::before{color:var(--blue)}
+    .article-wrap{display:grid;grid-template-columns:220px 1fr;gap:40px;max-width:1020px;margin:0 auto;padding:60px 48px 120px}
+    .article-sidebar{position:relative}.article-body{max-width:700px}
+    .article-body h2{font-family:'Outfit',sans-serif;font-size:clamp(1.4rem,2.5vw,1.8rem);font-weight:800;line-height:1.1;letter-spacing:-1px;color:var(--bk);margin:56px 0 16px;padding-top:20px}.article-body h2:first-of-type{margin-top:0}
+    .article-body h3{font-family:'Outfit',sans-serif;font-size:1.05rem;font-weight:700;line-height:1.25;letter-spacing:-.3px;color:var(--bk);margin:36px 0 10px}
+    .article-body p{font-size:.9rem;color:var(--g1);line-height:1.85;margin-bottom:18px}
+    .article-body strong{color:var(--bk);font-weight:600}
+    .article-body ul,.article-body ol{margin:0 0 20px 0;padding-left:20px}
+    .article-body li{font-size:.88rem;color:var(--g1);line-height:1.8;margin-bottom:6px}.article-body li strong{color:var(--bk)}
+    .article-body blockquote{margin:28px 0;padding:20px 24px;background:var(--g4);border-left:3px solid var(--bk);border-radius:0 12px 12px 0;font-size:.88rem;color:var(--g1);line-height:1.8;font-style:italic}
+    .article-body blockquote strong{color:var(--bk);font-style:normal}
+    .article-body hr{border:none;border-top:1px solid var(--g4);margin:48px 0}
+    .info-box{margin:28px 0;padding:24px;background:rgba(0,102,255,.03);border:1px solid rgba(0,102,255,.08);border-radius:14px}
+    .info-box-title{font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:700;color:var(--blue);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+    .info-box p{font-size:.82rem;color:var(--g1);line-height:1.7;margin-bottom:0}
+    .key-concept{margin:32px 0;padding:28px;background:var(--bk3);border-radius:16px;color:var(--pure)}
+    .key-concept-label{font-size:.55rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:10px}
+    .key-concept h4{font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:800;letter-spacing:-.3px;margin-bottom:8px}
+    .key-concept p{font-size:.85rem;color:rgba(255,255,255,.5);line-height:1.8;margin-bottom:0}
+    .compare-table{width:100%;margin:24px 0 28px;border-collapse:collapse;border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,.06)}
+    .compare-table th{background:var(--bk3);color:var(--pure);font-family:'Outfit',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:14px 16px;text-align:left}
+    .compare-table td{padding:12px 16px;font-size:.82rem;color:var(--g1);line-height:1.6;border-bottom:1px solid rgba(0,0,0,.04);background:var(--pure)}
+    .compare-table tr:last-child td{border-bottom:none}.compare-table td:first-child{font-weight:600;color:var(--bk)}
+    .cta-card{margin:48px 0;padding:40px;background:var(--bk3);border-radius:20px;text-align:center;position:relative;overflow:hidden}
+    .cta-card::before{content:'';position:absolute;top:-50%;right:-30%;width:400px;height:400px;background:radial-gradient(circle,rgba(0,102,255,.08) 0%,transparent 70%);pointer-events:none}
+    .cta-card-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:12px}
+    .cta-card h3{font-family:'Outfit',sans-serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:800;color:var(--pure);letter-spacing:-.5px;margin-bottom:8px}
+    .cta-card p{font-size:.85rem;color:rgba(255,255,255,.4);line-height:1.7;max-width:380px;margin:0 auto 24px}
+    .cta-card .btn-p{background:var(--pure);color:var(--bk)}.cta-card .btn-p:hover{box-shadow:0 8px 30px rgba(255,255,255,.15)}
+    .faq-sec{padding:80px 48px 100px;background:var(--g4)}
+    .faq-list{max-width:680px;margin:40px auto 0}.fi{border-bottom:1px solid rgba(0,0,0,.06)}
+    .fq{width:100%;text-align:left;padding:18px 0;background:none;border:none;font-size:.85rem;font-weight:600;font-family:'DM Sans',sans-serif;color:var(--bk);display:flex;justify-content:space-between;align-items:center;cursor:pointer;gap:16px;transition:color .3s}.fq:hover{color:var(--g1)}
+    .fq-icon{width:22px;height:22px;border-radius:50%;background:rgba(0,0,0,.04);display:flex;align-items:center;justify-content:center;font-size:.75rem;transition:all .4s;flex-shrink:0;color:var(--g2)}
+    .fa{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1)}.fa.open{max-height:280px;padding-bottom:14px}
+    .fa p{font-size:.8rem;color:var(--g1);line-height:1.7;margin-bottom:0}.fi.active .fq-icon{background:var(--bk);color:var(--pure);transform:rotate(45deg)}
+    .related-sec{padding:80px 48px;background:var(--pure);border-top:1px solid var(--g4)}
+    .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1060px;margin:40px auto 0}
+    .related-card{display:block;padding:28px;background:var(--g4);border-radius:16px;transition:all .4s;text-decoration:none;color:var(--bk)}
+    .related-card:hover{background:var(--pure);box-shadow:0 8px 30px rgba(0,0,0,.06);transform:translateY(-2px)}
+    .related-cat{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+    .related-card h3{font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:700;line-height:1.3;letter-spacing:-.3px;margin-bottom:8px}
+    .related-card p{font-size:.78rem;color:var(--g1);line-height:1.6;margin-bottom:14px}
+    .related-link{font-size:.72rem;font-weight:600;color:var(--blue);letter-spacing:.3px}
+    .footer{background:var(--bk3);color:var(--pure);padding:56px 48px 28px}
+    .ft-top{display:flex;justify-content:space-between;align-items:start;margin-bottom:48px;flex-wrap:wrap;gap:32px}
+    .ft-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase}
+    .ft-cols{display:flex;gap:80px}
+    .ft-col-title{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:12px}
+    .ft-col a{display:block;font-size:.78rem;color:rgba(255,255,255,.5);margin-bottom:8px;transition:color .3s}.ft-col a:hover{color:var(--pure)}
+    .ft-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:20px;display:flex;justify-content:space-between;align-items:center;font-size:.6rem;color:rgba(255,255,255,.2)}
+    .ft-bottom a{color:rgba(255,255,255,.2);transition:color .3s;margin-left:20px}.ft-bottom a:hover{color:rgba(255,255,255,.5)}
+    .disclaimer{padding:12px 48px;background:var(--bk3);font-size:.58rem;color:rgba(255,255,255,.12);text-align:center;line-height:1.6;border-top:1px solid rgba(255,255,255,.03)}
+    .sec-center{text-align:center;max-width:680px;margin:0 auto}
+    .sec-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--g2);margin-bottom:10px}
+    .sec-title{font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;line-height:1.05;letter-spacing:-1.5px;color:var(--bk);margin-bottom:16px}
+    .btn-p{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--bk);color:var(--pure);border-radius:980px;font-size:.85rem;font-weight:600;transition:all .3s;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;text-decoration:none}
+    .btn-p:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(0,0,0,.1)}
+    .btn-p svg{width:13px;height:13px;transition:transform .3s}.btn-p:hover svg{transform:translateX(3px)}
+    .reading-progress{position:fixed;top:0;left:0;height:2px;background:var(--blue);z-index:9999;width:0;transition:width .1s linear}
+    @media(max-width:900px){.nav{padding:14px 20px}.nav-links{display:none}.blog-hero{padding:120px 20px 60px}.article-wrap{grid-template-columns:1fr;padding:40px 20px 80px}.article-sidebar{display:none}.related-grid{grid-template-columns:1fr}.related-sec,.faq-sec{padding:60px 20px}.ft-cols{flex-direction:column;gap:28px}.footer{padding:40px 20px 20px}.disclaimer{padding:10px 16px}.cta-card{padding:28px 20px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  .article-body a{color:var(--blue);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;font-weight:500}.article-body a:hover{text-decoration-thickness:2px}
+</style>
+<style>/* 28/10/2026 : débordement mobile (colonne de grille sans min-width) */.article-wrap>*,.article-layout>*{min-width:0}.article-body table,.compare-table{display:block;overflow-x:auto;max-width:100%}.article-body pre{overflow-x:auto}.article-body img{max-width:100%;height:auto}</style>
+<style>/* 25/11/2026 : h4 passés en h3 (niveaux de titres sans saut), même rendu */.article-body h3.hh4{font-family:inherit;font-size:1em;font-weight:700;color:inherit;margin:0;line-height:inherit}.key-concept h3.hh4{font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:800;letter-spacing:-.3px;margin-bottom:8px}</style>
+</head>
+<body>
+
+<div class="preloader" id="preloader"><div style="text-align:center"><div class="pre-word"><span>B</span><span>A</span><span>S</span><span>S</span></div><div class="pre-line" id="preLine"></div></div></div>
+<div class="reading-progress" id="readingProgress"></div>
+
+<nav class="nav" id="nav">
+  <a href="https://basstrading.fr" class="nav-logo">BASS</a>
+  <ul class="nav-links">
+    <li><a href="https://basstrading.fr/#methode">Méthode</a></li>
+    <li><a href="https://basstrading.fr#resultats">Résultats</a></li>
+    <li><a href="https://basstrading.fr#avis">Avis</a></li>
+    <li><a href="https://basstrading.fr#faq">FAQ</a></li>
+    <li><a href="/formations/">Formations</a></li>
+    <li><a href="https://basstrading.fr/blog/">Blog</a></li>
+  </ul>
+  <a href="https://basstrading.fr/p/formation-offerte/?src=blog-cfd-trading-menu" class="nav-cta">Formation offerte</a>
+</nav>
+<main id="contenu">
+
+<section class="blog-hero">
+  <div class="blog-hero-inner">
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <a href="https://basstrading.fr">Accueil</a><span class="sep">/</span>
+      <a href="https://basstrading.fr/blog/">Blog</a><span class="sep">/</span>
+      <span>CFD trading</span>
+    </nav>
+    <div class="blog-hero-cat">Débuter</div>
+    <h1 class="blog-hero-title">CFD : c&#39;est quoi, comment ça marche, et CFD ou futures ?</h1>
+    <p class="blog-hero-desc">Un CFD est un contrat passé avec ton courtier : il te verse ou te réclame l&#39;écart de prix d&#39;un actif, sans que tu possèdes cet actif. C&#39;est simple d&#39;accès et ça demande peu de capital, mais ton ordre n&#39;arrive jamais sur la vraie bourse. Je t&#39;explique comment il fonctionne, ce qu&#39;il coûte, qui est en face de toi, et pourquoi je trade les futures à la place.</p>
+    <div class="blog-meta">
+      <div class="blog-meta-author">
+        <div class="blog-meta-avatar"><img src="../../images/bass-presenting.jpg" alt="Sébastien Constant" loading="lazy"></div>
+        <div><div class="blog-meta-name"><a href="/auteur/sebastien-constant/" rel="author" style="color:inherit;text-decoration:none">Sébastien Constant</a></div><div class="blog-meta-role">Trader & Formateur Order Flow</div></div>
+      </div>
+      <div class="blog-meta-sep"></div>
+      <div class="blog-meta-info"><span>Novembre 2026</span><span>22 min de lecture</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="article-wrap">
+  <aside class="article-sidebar">
+    <div class="toc">
+      <div class="toc-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/></svg> Sommaire</div>
+      <ol>
+        <li><a href="#qu-est-ce-qu-un-cfd">Qu&#39;est-ce qu&#39;un CFD ?</a></li>
+        <li><a href="#comment-fonctionne-un-cfd-concretement">Comment fonctionne un CFD, concrètement ?</a></li>
+        <li><a href="#sur-quels-actifs-peut-on-trader-des-cfd">Sur quels actifs peut-on trader des CFD ?</a></li>
+        <li><a href="#quels-sont-les-avantages-des-cfd-et-sont">Quels sont les avantages des CFD, et sont-ils faits pour toi ?</a></li>
+        <li><a href="#combien-coute-un-cfd-spread-commission-e">Combien coûte un CFD ? Spread, commission et financement</a></li>
+        <li><a href="#qui-est-en-face-de-ton-ordre-a-book-et-b">Qui est en face de ton ordre ? A-book et B-book</a></li>
+        <li><a href="#quel-effet-de-levier-est-autorise-sur-le">Quel effet de levier est autorisé sur les CFD en France ?</a></li>
+        <li><a href="#combien-de-particuliers-perdent-de-l-arg">Combien de particuliers perdent de l&#39;argent avec les CFD ?</a></li>
+        <li><a href="#cfd-ou-futures-quelles-differences">CFD ou futures : quelles différences ?</a></li>
+        <li><a href="#pourquoi-je-trade-les-futures-plutot-que">Pourquoi je trade les futures plutôt que les CFD</a></li>
+        <li><a href="#quelles-erreurs-eviter-avec-les-cfd">Quelles erreurs éviter avec les CFD ?</a></li>
+        <li><a href="#les-cfd-sont-ils-adaptes-au-long-terme">Les CFD sont-ils adaptés au long terme ?</a></li>
+        <li><a href="#ce-que-tu-retiens-et-par-quoi-commencer-">Ce que tu retiens, et par quoi commencer ce soir</a></li>
+      </ol>
+    </div>
+  </aside>
+
+  <article class="article-body">
+    <h2 id="qu-est-ce-qu-un-cfd">Qu&#39;est-ce qu&#39;un CFD ?</h2>
+    <p>Un CFD (contrat sur la différence, « contract for difference ») est un instrument financier dérivé, conclu de gré à gré entre toi et ton courtier : il te paie ou te facture l&#39;écart de prix de son sous-jacent entre l&#39;ouverture et la clôture, sans que tu possèdes cet actif.</p>
+<p>Tu n&#39;achètes donc ni l&#39;action, ni l&#39;indice, ni le baril de pétrole. Tu prends une position sur la variation de son prix. Si le prix va dans ton sens, le courtier te verse la différence. Sinon, c&#39;est toi qui la paies.</p>
+<p>Voici comment je le résume à mes élèves quand ils me demandent ce qu&#39;est le trading CFD : c&#39;est une position sur un prix, encadrée par un contrat, et passée avec une seule entreprise, ton courtier. Il n&#39;y a pas de bourse au milieu.</p>
+<h3>Un contrat « synthétique » : ce que ça change</h3>
+<p>C&#39;est le point que presque aucun article ne pose dès le départ, alors je le pose. Comme je l&#39;explique dans <a href="https://www.youtube.com/watch?v=maUJP-BZ4fY&amp;t=293s">ma vidéo sur le forex et les CFD</a> : « Quand tu trades en CFD, par exemple sur le DAX, tu n&#39;achètes pas réellement un contrat du DAX sur le marché Eurex. C&#39;est un contrat entre toi et ton broker. C&#39;est un contrat synthétique qui réplique le vrai marché. »</p>
+<p>Le prix que tu vois sur ton écran suit le vrai marché. Il n&#39;est pas le vrai marché. Ton ordre ne rencontre pas les ordres des autres participants : il reste chez ton courtier.</p>
+<p>J&#39;utilise souvent une image : une Ferrari et une Renault repeinte en rouge. « En apparence, c&#39;est les mêmes. Mais sous le capot, ça n&#39;a strictement rien à voir. » Le graphique d&#39;un CFD sur le Nasdaq ressemble à s&#39;y méprendre à celui du Nasdaq futures. La mécanique derrière est différente.</p>
+<h3>Le compte CFD, c&#39;est quoi ?</h3>
+<p>Un compte CFD est un compte de trading ouvert chez un prestataire autorisé à proposer ces contrats (en France, un prestataire agréé ou passeporté, que tu peux vérifier sur les listes de l&#39;AMF). Tu y déposes de l&#39;argent qui sert de marge, c&#39;est-à-dire de garantie, pour ouvrir des positions bien plus grosses que ton dépôt. Ce mécanisme, c&#39;est l&#39;effet de levier, et c&#39;est lui qui rend les CFD à la fois attirants et dangereux.</p>
+<p>Avant d&#39;aller plus loin, une question simple que tout le monde devrait se poser : si ton ordre ne part pas en bourse, comment ton gain ou ta perte est-il calculé ? C&#39;est l&#39;objet de la partie suivante.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/cfd-trading/blog-cfd-trading-1.webp" alt="Table de roulette dans un casino, image de la contrepartie dans le trading de CFD" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Chez un courtier en B-book, la maison est en face de toi, comme au casino : c&#39;est ce que tu dois savoir avant de trader un CFD.<br><span style="font-size:.85em">Photo : <a href="https://commons.wikimedia.org/wiki/File:Roulette-Tisch.jpg" rel="noopener" target="_blank">Sozi</a>, <a href="https://commons.wikimedia.org/wiki/File:Roulette-Tisch.jpg" rel="noopener license" target="_blank">Public domain</a></span></figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="comment-fonctionne-un-cfd-concretement">Comment fonctionne un CFD, concrètement ?</h2>
+    <p>Tu ouvres une position à l&#39;achat (si tu penses que le prix va monter) ou à la vente (s&#39;il va baisser), tu bloques une marge, et à la clôture tu encaisses ou tu paies l&#39;écart multiplié par ta taille.</p>
+<p>Le fonctionnement de fond est toujours le même :</p>
+<p>résultat = (prix de clôture − prix d&#39;ouverture) × taille de la position − frais</p>
+<p>Pour une vente, on inverse le sens : tu fais un profit si le prix baisse.</p>
+<h3>Un exemple chiffré (fictif, pour comprendre)</h3>
+<p>Prenons un exemple illustratif, avec des chiffres ronds qui ne correspondent à aucun courtier précis :</p>
+<ul><li>tu achètes 1 CFD sur un indice qui reproduit le Nasdaq-100, à 25 000 points ;</li><li>chez ton courtier, 1 CFD vaut 1 € par point ;</li><li>la valeur de ta position (son nominal) est donc de 25 000 € ;</li><li>avec un levier de 20 pour 1, la marge bloquée est de 5 % : 1 250 €.</li></ul>
+<p>Si l&#39;indice monte à 25 100 points, tu gagnes 100 points, soit 100 € avant frais. S&#39;il descend à 24 900, tu perds 100 €. Sur 1 250 € de marge, une variation de 100 points représente 8 % de ton argent engagé, alors que l&#39;indice n&#39;a bougé que de 0,4 %. C&#39;est ça, le levier : il grossit tout, dans les deux sens.</p>
+<h3>Achat, vente, et pas de date de fin</h3>
+<p>Deux caractéristiques distinguent le CFD d&#39;une action achetée en bourse :</p>
+<ul><li>tu peux vendre sans rien posséder : prendre une position à la baisse est aussi simple qu&#39;à la hausse ;</li><li>le contrat n&#39;a pas d&#39;échéance (pour les CFD au comptant, le cas le plus courant) : tu peux garder la position des jours ou des mois, mais tu paies alors des frais de financement chaque nuit. On va voir combien ça coûte.</li></ul>
+<h3>Quand la marge ne suffit plus</h3>
+<p>Si le marché part contre toi, ta marge fond. En Europe, les règles imposent au courtier de couper automatiquement ta position quand ton argent disponible tombe à 50 % de la marge exigée. Dans notre exemple, avec 1 250 € de marge et rien d&#39;autre sur le compte, la coupure tombe vers 625 € de perte, soit environ 625 points de baisse. Sur le Nasdaq, ça peut arriver dans une séance agitée.</p>
+<p>Je détaille la mécanique du levier, avec d&#39;autres calculs, dans mon guide de l&#39;<a href="https://basstrading.fr/blog/effet-de-levier-trading/">effet de levier en trading</a>. Ici, retiens surtout que la taille d&#39;une position se décide à partir du risque, jamais à partir du levier offert.</p>
+<h3>À retenir</h3>
+<ul><li>Un CFD paie ou facture l&#39;écart de prix, multiplié par ta taille.</li><li>Tu peux acheter ou vendre, sans échéance.</li><li>La marge n&#39;est pas le risque : le risque, c&#39;est la distance de ton stop multipliée par ta taille.</li><li>Ton courtier coupe la position à 50 % de la marge exigée.</li></ul>
+<p>Reste à savoir sur quoi on peut prendre ces positions, et c&#39;est là que le CFD séduit.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/cfd-trading/blog-cfd-trading-2.webp" alt="Schéma des quatre étapes d&#39;un trade sur CFD : ouvrir, déposer la marge, payer le financement, clôturer" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Le cycle d&#39;un CFD : la marge bloque ton argent, chaque nuit coûte des intérêts, la clôture règle l&#39;écart de prix.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="sur-quels-actifs-peut-on-trader-des-cfd">Sur quels actifs peut-on trader des CFD ?</h2>
+    <p>Presque tout ce qui a un prix : indices boursiers, actions, devises (forex), matières premières, obligations et cryptomonnaies. C&#39;est l&#39;un des grands arguments commerciaux des CFD : un seul compte, des milliers de marchés.</p>
+<h3>Les grandes familles</h3>
+<ul><li>Indices : Nasdaq-100, S&amp;P 500, DAX, CAC 40. Ce sont souvent les CFD les plus traités par les particuliers.</li><li>Actions : Apple, LVMH, Tesla… Tu prends position sur le cours sans devenir actionnaire : pas de droit de vote, et les dividendes sont seulement ajustés sur ton compte.</li><li>Devises : EUR/USD, GBP/USD. Le forex de détail passe très souvent par des CFD.</li><li>Matières premières : or, pétrole, gaz.</li><li>Cryptomonnaies : bitcoin, ether, avec les plafonds de levier les plus bas.</li></ul>
+<p>Bonne nouvelle si un indice ou l&#39;or t&#39;intéresse : ils existent aussi en futures, négociés en bourse. Je présente le contrat du <a href="https://basstrading.fr/blog/sp-500-futures-es-mes/">S&amp;P 500 en futures (ES et MES)</a> et celui de l&#39;<a href="https://basstrading.fr/blog/gold-futures-gc-mgc/">or en futures (GC et MGC)</a> dans deux guides dédiés.</p>
+<h3>Le revers de la médaille</h3>
+<p>Plus le choix est large, plus la tentation est grande de sauter d&#39;un marché à l&#39;autre. C&#39;est une erreur que je vois chez beaucoup de débutants : un jour l&#39;or, le lendemain le bitcoin, puis une action à la mode. Personne ne lit correctement vingt marchés. Moi, je trade un seul marché, le Nasdaq futures, que j&#39;ai appris à connaître séance après séance.</p>
+<p>Il y a aussi une différence technique importante. Sur un CFD d&#39;indice, ton courtier fabrique son propre prix à partir du marché de référence (souvent le contrat à terme). Sur un CFD d&#39;action, il s&#39;appuie sur le cours de la bourse concernée. Dans les deux cas, le volume que tu vois éventuellement sur ta plateforme n&#39;est pas celui de la bourse : c&#39;est, au mieux, l&#39;activité chez ton courtier.</p>
+<p>Avant de parler de ce que tout ça coûte, soyons honnêtes : si autant de gens utilisent des CFD, c&#39;est qu&#39;ils ont de vrais atouts.</p>
+
+    <hr>
+
+    <h2 id="quels-sont-les-avantages-des-cfd-et-sont">Quels sont les avantages des CFD, et sont-ils faits pour toi ?</h2>
+    <p>Les CFD ont trois vrais avantages : un petit capital suffit, la vente à découvert est aussi simple que l&#39;achat, et un seul compte permet d&#39;accéder à des centaines de marchés. Ce sont aussi, exactement, les trois raisons pour lesquelles un débutant s&#39;y brûle.</p>
+<h3>Pourquoi négocier des CFD ?</h3>
+<ul><li>L&#39;accès : quelques centaines d&#39;euros permettent d&#39;ouvrir un compte et de prendre une position sur le Nasdaq ou le DAX.</li><li>La souplesse de taille : tu peux trader une fraction de point, là où les futures imposent une taille minimale.</li><li>La baisse comme la hausse : vendre un indice ne demande aucune démarche particulière.</li><li>La simplicité : une plateforme, une seule interface, pas d&#39;échéance à surveiller.</li><li>La protection du dépôt : en Europe, un particulier ne peut pas perdre plus que l&#39;argent déposé.</li></ul>
+<p>Si tu veux utiliser un CFD, garde en tête qu&#39;une stratégie de trading se juge sur la durée, pas sur un trade : l&#39;accès facile ne remplace jamais la méthode. Combien ce « raccourci » coûte-t-il vraiment, trade après trade ?</p>
+
+    <hr>
+
+    <h2 id="combien-coute-un-cfd-spread-commission-e">Combien coûte un CFD ? Spread, commission et financement</h2>
+    <p>Un CFD coûte de trois façons : le spread (écart entre prix d&#39;achat et prix de vente), parfois une commission, et des frais de financement chaque nuit où ta position reste ouverte.</p>
+<h3>1. Le spread</h3>
+<p>Tu achètes un peu plus cher que le prix du milieu et tu revends un peu moins cher. Sur un CFD d&#39;indice, le spread se compte souvent en points. Avec 1,5 point d&#39;écart et une taille de 1 € par point, tu paies 1,50 € à chaque aller-retour. Ça semble peu, mais pour un trader qui fait dix trades par jour, ça devient une ligne de dépense réelle. Et un spread peut s&#39;élargir fortement à l&#39;ouverture, lors d&#39;une annonce économique ou la nuit.</p>
+<h3>2. La commission</h3>
+<p>Certains courtiers ne prennent que le spread. D&#39;autres affichent un spread plus serré et ajoutent une commission (fréquent sur les CFD d&#39;actions, souvent en pourcentage du nominal).</p>
+<h3>3. Le financement de nuit</h3>
+<p>C&#39;est le coût que les débutants découvrent trop tard. Quand tu gardes une position à l&#39;achat après la clôture du jour, ton courtier considère qu&#39;il t&#39;a prêté la différence entre le nominal et ta marge. Il te facture donc des intérêts, en général un taux de référence plus une marge du courtier.</p>
+<p>Reprenons notre exemple fictif : 25 000 € de nominal et un taux annuel de 6 % (taux de référence plus marge du courtier, chiffre rond pour l&#39;exemple).</p>
+<ul><li>par nuit : 25 000 × 6 % ÷ 365 ≈ 4,10 € ;</li><li>sur un mois : environ 123 € ;</li><li>sur un an : environ 1 500 €, soit plus que la marge de 1 250 € que tu avais bloquée.</li></ul>
+<p>Ce chiffre change tout pour celui qui voulait « garder sa position quelques mois ». Le financement grignote ton résultat même quand le marché ne bouge pas. Les taux exacts sont publiés dans la grille tarifaire de chaque courtier : lis-la avant d&#39;ouvrir un compte.</p>
+<h3>Les coûts cachés</h3>
+<p>Ajoute à ça la conversion de devise (un CFD sur le Nasdaq est souvent coté en dollars), des frais d&#39;inactivité chez certains prestataires, et le glissement : l&#39;écart entre le prix que tu voulais et le prix obtenu. Sur un CFD, ce glissement dépend de ton courtier, pas d&#39;un carnet d&#39;ordres public.</p>
+<p>Et c&#39;est justement la question qui fâche : quand tu cliques sur « Acheter », qui te vend ?</p>
+
+    <hr>
+
+    <h2 id="qui-est-en-face-de-ton-ordre-a-book-et-b">Qui est en face de ton ordre ? A-book et B-book</h2>
+    <p>Sur un CFD, ta contrepartie est ton courtier. Soit il transmet ton risque à un fournisseur de liquidité (A-book), soit il le garde pour lui (B-book) : dans ce cas, il gagne quand tu perds.</p>
+<p>C&#39;est le cœur de <a href="https://www.youtube.com/watch?v=maUJP-BZ4fY&amp;t=256s">ma vidéo sur le forex et les CFD</a>, et je commence toujours par cette phrase : « A-book et B-book. Deux mots qui déterminent tout. »</p>
+<h3>Le modèle A-book</h3>
+<p>Ton ordre est transmis à un fournisseur de liquidité : un grand teneur de marché. Le courtier se rémunère sur le spread et la commission. Il n&#39;a pas d&#39;intérêt direct à ce que tu perdes.</p>
+<p>Mais même là, tu n&#39;es pas dans le marché. Ces fournisseurs compensent les ordres entre eux en interne, et ils ne vont pas systématiquement se couvrir en bourse. Comme je le dis dans <a href="https://www.youtube.com/watch?v=maUJP-BZ4fY&amp;t=360s">la vidéo</a> : ton prix « est censé suivre le vrai marché, mais […] tu n&#39;es pas dans le vrai marché ». J&#39;ajoute aussitôt, pour être juste : « C&#39;est le modèle le plus sain et le plus propre que tu puisses trouver sur les CFD. »</p>
+<h3>Le modèle B-book</h3>
+<p>Ici, le courtier garde ton ordre et prend la position inverse. Il devient ton adversaire direct. Ses revenus viennent alors de quatre sources : le spread, la commission, le financement de nuit, et le résultat de la contrepartie elle-même, autrement dit tes pertes. Je le compare dans la vidéo à quelque chose qui fonctionne « un petit peu comme un casino géant ».</p>
+<p>Prends le cas que je donne à <a href="https://www.youtube.com/watch?v=maUJP-BZ4fY&amp;t=689s">la 11e minute</a> : « Vous perdez vos 500 dollars. Qui les gagne ? […] c&#39;est bel et bien le courtier. »</p>
+<h3>Est-ce illégal ? Non. Est-ce neutre ? Non plus</h3>
+<p>Le B-book est une pratique autorisée et encadrée. Un courtier peut aussi mélanger les deux modèles selon les clients et les positions. Ce n&#39;est pas un secret, c&#39;est un modèle d&#39;affaires, et la réglementation l&#39;oblige à gérer ce conflit d&#39;intérêts.</p>
+<p>Il existe aussi des outils de gestion côté courtier qui peuvent retarder une exécution, écarter un spread ou générer du glissement. J&#39;en parle dans la vidéo, avec une précision importante que je répète ici : « ça ne veut pas dire que tous les courtiers font ça ». Je ne t&#39;apprends pas à te méfier de tout le monde ; je t&#39;apprends à savoir dans quel système tu joues.</p>
+<h3>Et les grandes affaires du forex ?</h3>
+<p>Le marché des changes a déjà connu des manipulations, mais il faut être précis sur qui était en cause. Le 20 mai 2015, la <a href="https://www.federalreserve.gov/newsevents/pressreleases/enforcement20150520a.htm">Réserve fédérale américaine a annoncé plus de 1,8 milliard de dollars d&#39;amendes</a> contre six grands établissements : des traders s&#39;entendaient pour manipuler des cours de référence des devises. Ce n&#39;était pas un courtier CFD de détail qui trichait avec ses clients : c&#39;était le sommet du marché. La leçon reste la même : un prix fabriqué loin de toi n&#39;est pas forcément un prix neutre.</p>
+<h3>À retenir</h3>
+<ul><li>En CFD, ton courtier est toujours ta contrepartie juridique.</li><li>A-book : il transmet ton risque ; B-book : il le garde.</li><li>En B-book, tes pertes sont une partie de son revenu.</li><li>Ce n&#39;est pas illégal, mais tu dois le savoir avant de cliquer.</li></ul>
+<p>Vient alors la question que les régulateurs se sont posée eux-mêmes : faut-il limiter ce que les particuliers peuvent faire avec ces produits ?</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/cfd-trading/blog-cfd-trading-3.webp" alt="Comparaison des modèles A-book et B-book d&#39;un courtier CFD : contrepartie, revenus, intérêt du courtier" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">A-book ou B-book : la même plateforme peut cacher deux modèles d&#39;affaires opposés.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="quel-effet-de-levier-est-autorise-sur-le">Quel effet de levier est autorisé sur les CFD en France ?</h2>
+    <p>Depuis le 1er août 2018, un particulier en Europe ne peut pas dépasser un levier de 30 pour 1 sur les CFD, et moins selon l&#39;actif : 20 pour 1 sur les grands indices et l&#39;or, 10 pour 1 sur les autres matières premières et indices non majeurs, 5 pour 1 sur les actions, 2 pour 1 sur les cryptomonnaies.</p>
+<p>Ces plafonds viennent de la <a href="https://eur-lex.europa.eu/eli/dec/2018/796/oj/fra">décision (UE) 2018/796 de l&#39;ESMA</a>, l&#39;autorité européenne des marchés financiers. L&#39;<a href="https://www.amf-france.org/fr/actualites-publications/actualites/interdiction-des-options-binaires-restriction-des-cfd-le-grand-public-europeen-mieux-protege-des-le">AMF a présenté ces mesures en juin 2018</a>, en même temps que l&#39;interdiction des options binaires pour le grand public. Ces restrictions, d&#39;abord temporaires au niveau européen, sont depuis appliquées de façon durable par les régulateurs nationaux, dont l&#39;AMF.</p>
+<h3>Les plafonds, actif par actif</h3>
+<p> | Actif | Levier maximal | Marge minimale</p>
+<p> | Devises majeures (EUR/USD…) | 30:1 | 3,33 %</p>
+<p> | Grands indices, or, autres devises | 20:1 | 5 %</p>
+<p> | Autres matières premières et indices non majeurs | 10:1 | 10 %</p>
+<p> | Actions et autres | 5:1 | 20 %</p>
+<p> | Cryptomonnaies | 2:1 | 50 %</p>
+<h3>Les autres protections de 2018</h3>
+<p>La décision européenne ne s&#39;arrête pas au levier. Elle impose aussi :</p>
+<ul><li>la coupure automatique de la position quand ton argent tombe à 50 % de la marge exigée ;</li><li>la protection contre le solde négatif : en tant que particulier, tu ne peux pas perdre plus que l&#39;argent déposé sur ton compte CFD ;</li><li>la fin des bonus et cadeaux pour inciter à trader ;</li><li>un avertissement de risque standardisé avec le pourcentage de comptes perdants du courtier.</li></ul>
+<h3>Et le levier à 100 ou 500 qu&#39;on voit en ligne ?</h3>
+<p>Dans ma vidéo, j&#39;évoque des courtiers qui prêtent « 100 fois le montant ». C&#39;est la réalité de certaines entités situées hors de l&#39;Union européenne, ou des clients classés « professionnels ». Un particulier français chez un prestataire européen est plafonné à 30 pour 1. Si un site te propose 500 pour 1 en tant que particulier, pose-toi la question de son autorisation : c&#39;est l&#39;un des signaux que je décris dans mon article sur les <a href="https://basstrading.fr/blog/arnaque-trading/">arnaques au trading</a>.</p>
+<p>Ces protections existent pour une raison chiffrée. Et c&#39;est là que ça devient vraiment instructif.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/cfd-trading/blog-cfd-trading-4.webp" alt="Plafonds de levier sur les CFD pour les particuliers en Europe : devises, indices, matières premières, actions, cryptomonnaies" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Plafonds de levier pour particuliers en Europe (ESMA 2018/796) : 30:1 devises majeures, 20:1 indices majeurs et or, 10:1 autres matières premières et indices non majeurs, 5:1 actions, 2:1 cryptos.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="combien-de-particuliers-perdent-de-l-arg">Combien de particuliers perdent de l&#39;argent avec les CFD ?</h2>
+    <p>La grande majorité. L&#39;étude de l&#39;AMF sur les particuliers français a montré que 89 % d&#39;entre eux avaient perdu de l&#39;argent sur quatre ans, et chaque courtier européen doit aujourd&#39;hui publier son propre pourcentage de comptes perdants.</p>
+<h3>L&#39;étude de l&#39;AMF</h3>
+<p>L&#39;AMF a analysé les résultats réels des clients de plusieurs prestataires sur la période 2009-2012. Conclusion de son <a href="https://www.amf-france.org/sites/institutionnel/files/contenu_simple/rapport_etude_analyse/epargne_prestataire/Etude%20des%20resultats%20des%20investisseurs%20particuliers%20sur%20le%20trading%20de%20CFD%20et%20de%20Forex%20en%20France.pdf">étude sur le trading de CFD et de Forex en France</a> : 89 % des clients particuliers étaient perdants sur la période.</p>
+<h3>Le pourcentage affiché par chaque courtier</h3>
+<p>Depuis 2018, l&#39;annexe de la décision européenne oblige chaque prestataire à afficher son propre pourcentage de comptes de détail perdants, recalculé tous les trois mois sur les douze derniers mois. C&#39;est la phrase que tu vois en bas de toutes les publicités CFD : « X % des comptes d&#39;investisseurs particuliers perdent de l&#39;argent ». Une fourchette standard (entre 74 % et 89 %) n&#39;est utilisée que par un prestataire nouveau qui n&#39;a pas encore cet historique.</p>
+<p>Regarde ce chiffre avant d&#39;ouvrir un compte. C&#39;est le seul chiffre de la page qui n&#39;a pas été écrit par le service marketing.</p>
+<h3>Pourquoi autant de perdants ?</h3>
+<p>Pour moi, l&#39;explication tient en trois points, et aucun ne dépend de la seule « malhonnêteté » des courtiers :</p>
+<ul><li>le levier mal compris : on choisit sa taille d&#39;après la marge disponible, pas d&#39;après le risque ;</li><li>l&#39;absence de stratégie : on entre sur un signal vu dans une vidéo, sans savoir pourquoi le prix devrait aller quelque part ;</li><li>la sur-activité : chaque aller-retour coûte un spread, et un courtier payé au spread n&#39;a aucune raison de te freiner. Ceux qui enchaînent les petits trades sans plan, souvent en <a href="https://basstrading.fr/blog/scalping-trading/">scalping</a>, paient ce coût des dizaines de fois par jour.</li></ul>
+<p>La vraie réponse n&#39;est donc pas de changer d&#39;instrument pour changer d&#39;instrument. C&#39;est d&#39;apprendre à décider combien tu risques avant chaque trade. Je l&#39;explique, calcul à l&#39;appui, dans <a href="https://basstrading.fr/blog/combien-risquer-par-trade/">combien risquer par trade</a>.</p>
+<p>Cela dit, l&#39;instrument n&#39;est pas neutre non plus. Si tu veux trader un indice comme le Nasdaq, il existe une autre porte : les futures.</p>
+
+    <hr>
+
+    <h2 id="cfd-ou-futures-quelles-differences">CFD ou futures : quelles différences ?</h2>
+    <p>Un future (contrat à terme) se négocie sur une bourse réglementée, avec une chambre de compensation au milieu et un carnet d&#39;ordres public. Un CFD reste un contrat privé avec ton courtier. Pour le prix affiché, ils se ressemblent. Pour tout le reste, non.</p>
+<p>Comme je le dis dans <a href="https://www.youtube.com/watch?v=maUJP-BZ4fY&amp;t=1053s">la vidéo</a> : « Mais vous avez le choix et la possibilité de trader sur les marchés futurs qui, eux, sont les marchés réels. »</p>
+<h3>Le comparatif</h3>
+<p> | Critère | CFD | Futures</p>
+<p> | Lieu de négociation | Chez ton courtier, de gré à gré | Bourse réglementée (CME pour le Nasdaq)</p>
+<p> | Contrepartie | Ton courtier | La chambre de compensation</p>
+<p> | Volumes visibles | Ceux du courtier | Ceux de toute la bourse</p>
+<p> | Échéance | Aucune, financement chaque nuit | Trimestrielle, sans financement de nuit</p>
+<p> | Taille minimale | Très souple (fractions de point) | Fixe : 2 $ par point sur le MNQ</p>
+<p> | Perte au-delà du dépôt | Impossible pour un particulier en UE | Possible</p>
+<h3>La taille : l&#39;argument honnête en faveur des CFD</h3>
+<p>Le plus réel des avantages du CFD, c&#39;est la souplesse de taille. Avec un petit compte, tu peux prendre une position à 0,10 € par point. Sur les futures, la plus petite unité du Nasdaq est le micro MNQ, à <a href="https://www.cmegroup.com/markets/equities/nasdaq/micro-e-mini-nasdaq-100.contractSpecs.html">2 dollars par point selon les spécifications du CME</a>, avec un pas minimum de 0,25 point, soit 0,50 $. Le grand contrat, le <a href="https://www.cmegroup.com/markets/equities/nasdaq/e-mini-nasdaq-100.contractSpecs.html">NQ, vaut 20 $ par point</a>. Je compare les deux dans <a href="https://basstrading.fr/blog/nq-ou-mnq/">NQ ou MNQ : quel contrat choisir</a>.</p>
+<p>À 25 000 points, un MNQ représente 50 000 $ de nominal, et un NQ environ 500 000 $ : c&#39;est l&#39;ordre de grandeur que je donne dans la vidéo pour un contrat Nasdaq. Ça impressionne, mais la marge n&#39;est qu&#39;une fraction de ce nominal, un peu comme l&#39;apport demandé pour un prêt immobilier. Ce qui compte, encore une fois, c&#39;est la distance de ton stop.</p>
+<h3>La protection contre le solde négatif : l&#39;autre avantage du CFD</h3>
+<p>Sur un CFD, en tant que particulier européen, ta perte s&#39;arrête à ton dépôt. Sur un future, une perte peut dépasser l&#39;argent déposé lors d&#39;un mouvement violent. C&#39;est pour ça que je ne trade jamais sans stop et que je calcule ma taille avant d&#39;entrer (voir <a href="https://basstrading.fr/blog/stop-loss-trading/">où placer son stop loss</a>).</p>
+<h3>Le reste penche vers les futures</h3>
+<ul><li>Transparence : ton ordre entre dans le même carnet d&#39;ordres que celui des grands acteurs.</li><li>Neutralité : je résume ça dans la vidéo par « votre courtier, il n&#39;est ni pour vous ni contre vous ». Il prend sa commission, point.</li><li>Coût de garde : pas de financement de nuit ; le coût du temps est déjà intégré dans le prix du contrat.</li><li>Données réelles : volumes, carnet, delta, et c&#39;est là que tout se joue pour moi.</li></ul>
+<p>Pour découvrir les deux contrats du Nasdaq pas à pas, commence par mon guide <a href="https://basstrading.fr/blog/nasdaq-futures-nq-mnq/">Nasdaq futures : le NQ et le MNQ expliqués</a>. Et si tu te demandes à quoi ressemble concrètement un compte futures, j&#39;ai testé une plateforme dans mon <a href="https://basstrading.fr/blog/tradovate-avis/">avis sur Tradovate</a>.</p>
+
+    <hr>
+
+    <h2 id="pourquoi-je-trade-les-futures-plutot-que">Pourquoi je trade les futures plutôt que les CFD</h2>
+    <p>Parce que ma méthode repose sur les volumes réels de la bourse, et qu&#39;un CFD ne me les donne pas. Ce n&#39;est pas une question de morale, c&#39;est une question d&#39;information.</p>
+<h3>Mon quotidien de trader</h3>
+<p>Je trade le Nasdaq futures en 1 minute sur Sierra Chart, avec le Market Profile, le VWAP et le CVD (et le carnet d&#39;ordres). Chacun de ces outils mesure quelque chose qui se passe réellement dans la bourse :</p>
+<ul><li>le <a href="https://basstrading.fr/blog/market-profile-guide-complet/">Market Profile</a> me montre où le marché a accepté ou refusé des prix ;</li><li>le <a href="https://basstrading.fr/blog/cvd-cumulative-volume-delta/">CVD, ou delta cumulé</a>, me dit qui a été le plus agressif, les acheteurs ou les vendeurs ;</li><li>le <a href="https://basstrading.fr/blog/carnet-ordres-dom-futures/">carnet d&#39;ordres</a> me montre les ordres en attente autour du prix ;</li><li>le <a href="https://basstrading.fr/blog/vwap-trading/">VWAP</a> me donne le prix moyen pondéré par les volumes de la séance.</li></ul>
+<p>Sur un CFD, le volume affiché est, au mieux, celui de ton courtier. Tu ne vois pas ce que font les autres participants de la bourse, parce que tu n&#39;es pas dans la bourse.</p>
+<p>Comme je le répète dans <a href="https://www.youtube.com/watch?v=maUJP-BZ4fY&amp;t=1394s">la vidéo</a> : « C&#39;est les volumes qui font bouger le marché. Le prix ne se déplace pas tout seul. »</p>
+<h3>Ce que le prix seul ne te dit pas</h3>
+<p>Imagine une cassure nette sur un graphique CFD du Nasdaq. Le prix passe au-dessus d&#39;un sommet, la bougie est belle, tu as envie d&#39;acheter. Sur un écran futures, tu peux vérifier une chose de plus : est-ce que des acheteurs agressifs poussent vraiment, ou est-ce que des vendeurs absorbent chaque montée ? Si le CVD ne suit pas, la cassure est fragile. Le graphique CFD ne ment pas sur le prix ; il est simplement muet sur la cause.</p>
+<h3>Ce que ça change pour toi</h3>
+<p>Si tu veux apprendre à lire qui achète et qui vend, l&#39;<a href="https://basstrading.fr/blog/order-flow-trading-france/">order flow</a>, tu as besoin de données de bourse. Et ces données, tu les as avec les futures. Tu peux trader les mêmes indices, avec une taille adaptée grâce aux micros, et avec un courtier qui n&#39;a aucun intérêt à ce que tu perdes.</p>
+<h3>Envie d&#39;aller plus loin ?</h3>
+<p>Toute ma méthode, avec mes séances commentées sur le Nasdaq futures, est dans ma formation offerte. Tu y vois comment je lis le Market Profile, le VWAP et le CVD avant de prendre une décision : <a href="https://basstrading.fr/l/bjGgSA">accéder à la formation offerte</a>.</p>
+<p>Avant de choisir, il reste à éviter les pièges dans lesquels je vois tomber la plupart des débutants en CFD.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/cfd-trading/blog-cfd-trading-5.webp" alt="Règle de lecture du marché : ce sont les volumes réels qui font bouger le prix, d&#39;où l&#39;intérêt des futures" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Sur les futures, tu vois les volumes de toute la bourse ; sur un CFD, seulement le prix.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="quelles-erreurs-eviter-avec-les-cfd">Quelles erreurs éviter avec les CFD ?</h2>
+    <p>Au-delà de la taille, du financement et de la multiplication des marchés (traités plus haut), trois erreurs reviennent chez les débutants en CFD.</p>
+<h3>1. Trader sans stop</h3>
+<p>La coupure automatique à 50 % de la marge n&#39;est pas un stop : c&#39;est un filet de dernière seconde, placé à un endroit qui n&#39;a aucun sens pour ton analyse.</p>
+<h3>2. Prendre un prestataire non autorisé</h3>
+<p>Avant d&#39;envoyer de l&#39;argent, vérifie que le prestataire figure sur les listes officielles de l&#39;AMF et qu&#39;il n&#39;apparaît pas sur ses listes noires. Un levier de 200 pour 1 proposé à un particulier, un « conseiller » qui t&#39;appelle, un bonus de dépôt : ce sont des signaux d&#39;alarme.</p>
+<h3>3. Croire que les publicités montrent la réalité</h3>
+<p>Un graphique qui monte, un sourire, une plage. Puis, en petit : « 7X % des comptes perdent de l&#39;argent ». Lis la petite ligne, pas la grande image.</p>
+<p>Si tu veux aussi fixer une limite de perte par jour, je l&#39;explique dans <a href="https://basstrading.fr/blog/perte-maximale-journaliere-trading/">perte maximale journalière</a>.</p>
+
+    <hr>
+
+    <h2 id="les-cfd-sont-ils-adaptes-au-long-terme">Les CFD sont-ils adaptés au long terme ?</h2>
+    <p>Non, pas pour un investissement de plusieurs années : le financement de nuit s&#39;accumule et finit par dépasser le capital engagé (voir le calcul plus haut : environ 1 500 € par an pour une marge de 1 250 €). Les CFD servent aux positions courtes, de quelques minutes à quelques jours, et pour un trader formé. Pour le long terme, des actions détenues en direct ou des fonds indiciels te rendent propriétaire sans intérêts à payer ; un professionnel agréé peut t&#39;aider à choisir. Les futures n&#39;ont pas de financement de nuit mais une échéance trimestrielle : ils servent eux aussi au trading court, comme je le raconte dans <a href="https://basstrading.fr/blog/day-trading-futures/">day trading sur les futures</a>.</p>
+
+    <hr>
+
+    <h2 id="ce-que-tu-retiens-et-par-quoi-commencer-">Ce que tu retiens, et par quoi commencer ce soir</h2>
+    <p>Un CFD est un contrat privé qui réplique un prix : pratique, accessible, mais il te place face à ton courtier et loin des données de la bourse.</p>
+<h3>Le récapitulatif</h3>
+<ul><li>Définition : un CFD te paie ou te facture l&#39;écart de prix d&#39;un actif, sans que tu le possèdes, dans un contrat avec ton courtier.</li><li>Coûts : spread, commission éventuelle et financement chaque nuit ; ce dernier rend les CFD inadaptés au long terme.</li><li>Contrepartie : en A-book, ton risque est transmis ; en B-book, ton courtier gagne quand tu perds.</li><li>Règles : levier plafonné à 30 pour 1 pour un particulier en Europe, coupure à 50 % de la marge, protection contre le solde négatif.</li><li>Résultats : 89 % de perdants dans l&#39;étude de l&#39;AMF ; regarde le pourcentage publié par ton courtier.</li><li>Alternative : les futures, négociés en bourse, avec volumes et carnet d&#39;ordres réels ; plus exigeants sur la taille et le risque.</li></ul>
+<h3>Ta prochaine action</h3>
+<p>Ce soir, ouvre la page d&#39;un courtier CFD que tu connais et cherche trois choses : son pourcentage de comptes perdants, son taux de financement de nuit sur l&#39;indice que tu regardes, et la mention de son autorisation. Puis refais le calcul de cet article avec ses vrais chiffres. Tu sauras en dix minutes si ce produit te convient.</p>
+<p>Si tu penses plutôt aux futures, la suite logique est de comprendre comment calibrer ton risque sur le Nasdaq : mon guide <a href="https://basstrading.fr/blog/combien-risquer-par-trade/">combien risquer par trade</a> part de là. Et si tu débutes de zéro, mon article sur la <a href="https://basstrading.fr/blog/formation-trading-gratuite/">formation trading gratuite</a> t&#39;aide à trier ce qui vaut ton temps.</p>
+<p>Les CFD sont des instruments complexes. À cause de l&#39;effet de levier, ils présentent un risque élevé de perte rapide en capital. Selon le courtier, 74 à 89 % des comptes de particuliers perdent de l&#39;argent. Les contrats à terme comportent aussi un risque de perte important. Ceci n&#39;est pas un conseil en investissement. Les exemples chiffrés de cet article sont fictifs et servent à comprendre le calcul.</p>
+<p>Cet article est tiré de mes vidéos et de mes séances de trading. Il a été mis en forme avec l&#39;aide d&#39;une IA, puis relu par moi.</p>
+
+    <p><a href="https://www.youtube.com/watch?v=maUJP-BZ4fY" target="_blank" rel="noopener">▶ Voir la vidéo de Sébastien sur ce sujet</a></p>
+
+    <div class="cta-card cta-aimant">
+      <div class="cta-card-label">Gratuit</div>
+      <h3>Tu viens de lire la théorie. Regarde-⁠la en vrai.</h3>
+      <p>Je trade une séance complète sur le Nasdaq et je dis à voix haute ce que je regarde. 35 minutes, gratuit.</p>
+      <a href="https://basstrading.fr/p/formation-offerte/?src=blog-cfd-trading" class="btn-p">Je regarde la séance →</a>
+    </div>
+    
+  </article>
+</div>
+
+<!-- FAQ -->
+<section class="faq-sec">
+  <div class="sec-center"><div class="sec-label">FAQ</div><h2 class="sec-title">Questions fréquentes</h2></div>
+  <div class="faq-list">
+    <div class="fi"><button class="fq" onclick="tf(this)">Peut-on perdre plus que la somme déposée sur son compte CFD ? <span class="fq-icon">+</span></button><div class="fa"><p>Pas en tant que particulier chez un prestataire européen : depuis 2018, la protection contre le solde négatif imposée par l&#39;ESMA limite ta perte à l&#39;argent déposé sur ton compte CFD. Tu peux en revanche perdre la totalité de ce dépôt très vite à cause du levier. Les clients classés professionnels ou les entités hors UE n&#39;ont pas forcément cette protection.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Quel est le levier maximum sur les CFD en France ? <span class="fq-icon">+</span></button><div class="fa"><p>Pour un particulier : 30 pour 1 sur les devises majeures, 20 pour 1 sur les grands indices, l&#39;or et les autres devises, 10 pour 1 sur les autres matières premières et indices non majeurs, 5 pour 1 sur les actions et 2 pour 1 sur les cryptomonnaies. Ces plafonds viennent des mesures européennes de 2018 appliquées en France par l&#39;AMF.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Les CFD sont-ils légaux en France ? <span class="fq-icon">+</span></button><div class="fa"><p>Oui. Les CFD sont autorisés en France, mais leur commercialisation auprès des particuliers est encadrée : levier plafonné, coupure à 50 % de la marge, protection contre le solde négatif, avertissement de risque obligatoire. Vérifie toujours que ton prestataire est autorisé en consultant les listes de l&#39;AMF avant d&#39;ouvrir un compte.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Quelle différence entre un CFD et un future ? <span class="fq-icon">+</span></button><div class="fa"><p>Un future est négocié sur une bourse réglementée (le CME pour le Nasdaq), avec une chambre de compensation et un carnet d&#39;ordres public ; tu vois les vrais volumes. Un CFD est un contrat privé avec ton courtier, sans échéance mais avec un financement de nuit. Le CFD offre des tailles plus souples ; le future offre la transparence.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Les CFD conviennent-ils à un débutant ? <span class="fq-icon">+</span></button><div class="fa"><p>Ils sont faciles d&#39;accès, et c&#39;est justement le piège : un dépôt faible et un levier élevé permettent de prendre des positions trop grosses sans méthode. L&#39;étude de l&#39;AMF a montré 89 % de particuliers perdants. Si tu débutes, apprends d&#39;abord à calculer ton risque par trade, quel que soit l&#39;instrument.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Qu&#39;est-ce que le B-book d&#39;un courtier CFD ? <span class="fq-icon">+</span></button><div class="fa"><p>C&#39;est le modèle où le courtier garde ton ordre au lieu de le transmettre à un fournisseur de liquidité : il prend la position inverse de la tienne. Il gagne alors le spread, les frais et aussi tes pertes. Le B-book est autorisé et encadré, mais il crée un conflit d&#39;intérêts qu&#39;il vaut mieux connaître.</p></div></div>
+  </div>
+</section>
+
+<!-- Related -->
+<section class="related-sec">
+  <div class="sec-center"><div class="sec-label">Continuer la lecture</div><h2 class="sec-title">Articles connexes</h2></div>
+  <div class="related-grid">
+    <a href="/blog/market-profile-guide-complet/" class="related-card"><div class="related-cat">Guide</div><h3>Market Profile : le guide complet pour débutants</h3><p>Value Area, POC, types de journées — tout pour commencer.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/order-flow-trading-france/" class="related-card"><div class="related-cat">Méthode</div><h3>Order Flow Trading : pourquoi personne ne l'enseigne en France</h3><p>Le carnet d'ordres et le flux institutionnel décryptés.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/sierra-chart-configuration/" class="related-card"><div class="related-cat">Tutoriel</div><h3>Sierra Chart : configuration complète</h3><p>Le setup pas à pas pour le Market Profile et le Footprint.</p><span class="related-link">Lire &rarr;</span></a>
+  </div>
+</section>
+
+</main>
+<!-- serie:debut --><style>.serie-w{background:#FFF;color:#1D1D1F;border-top:1px solid #F5F5F7}.serie{max-width:1060px;margin:0 auto;padding:56px 24px;font-family:inherit;box-sizing:border-box}.serie-l{font-size:.6rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#0066FF;margin-bottom:8px}.serie-w .serie h2{font-size:1.4rem;font-weight:800;letter-spacing:-.5px;color:#1D1D1F!important;margin:0 0 18px;font-family:inherit}.serie ul{list-style:none;padding:0;margin:0 0 22px;display:grid;grid-template-columns:repeat(2,1fr);gap:8px 24px}.serie-w .serie li a{color:#1D1D1F!important;font-size:.9rem;line-height:1.45;text-decoration:none;border-bottom:1px solid #D2D2D7}.serie li a:hover{color:#0066FF}.serie li.pil a{font-weight:700}.serie-o{background:#F5F5F7;border-radius:14px;padding:18px 20px;font-size:.88rem;line-height:1.55;color:#1D1D1F}.serie-w .serie-o a{color:#0066FF!important;font-weight:700}@media(max-width:700px){.serie ul{grid-template-columns:1fr}}</style><div class="serie-w"><aside class="serie" aria-label="Dans la même série"><div class="serie-l">Dans la même série</div><h2>Trouver sa méthode de trading</h2><ul><li class="pil"><a href="/blog/methode-de-trading/">Méthode de trading : 4 profils pour trouver celle qui te va</a></li><li class=""><a href="/blog/types-trading-differences/">Les Types de Trading : Lequel Choisir Selon Ton Profil ? (2026)</a></li><li class=""><a href="/blog/debuter-trading-zero-guide/">Débuter le trading de zéro : par où commencer (guide 2026)</a></li><li class=""><a href="/blog/devenir-trader-sans-diplome/">Devenir trader sans diplôme ni formation : 5 étapes réalistes</a></li><li class=""><a href="/blog/livre-trading/">Livre trading : les meilleurs pour apprendre (et l'ordre)</a></li><li class=""><a href="/blog/formation-trading/">Formation trading : contenu, prix, CPF et pièges à éviter</a></li><li class=""><a href="/blog/formation-trading-gratuite/">Formation trading gratuite : ce qu'on apprend sans payer</a></li><li class=""><a href="/blog/quelle-formation-trading-choisir/">Meilleure formation trading en ligne : 7 critères pour choisir</a></li><li class=""><a href="/blog/arnaque-trading/">Arnaque au trading : les 7 pièges et que faire si tu es victime</a></li><li class=""><a href="/blog/apex-trader-funding/">Apex Trader Funding avis : règles 4.0, drawdown et payouts (2026)</a></li><li class=""><a href="/blog/bookmap-heatmap/">Bookmap : lire la heatmap, prix réels et avis de trader</a></li><li class=""><a href="/blog/deepcharts-avis/">DeepCharts avis : prix, Mac, MBO et limites (2026)</a></li><li class=""><a href="/blog/effet-de-levier-trading/">Effet de levier en trading : calcul, risques et quel levier choisir</a></li><li class=""><a href="/blog/fibonacci-trading/">Fibonacci trading : niveaux, tracé et ce qui tient vraiment</a></li><li class=""><a href="/blog/flux-ordres-tradingview/">Order flow sur TradingView : ce qu'on voit vraiment (et ses limites)</a></li><li class=""><a href="/blog/ftmo/">FTMO avis : règles futures, drawdown et payouts (2026)</a></li><li class=""><a href="/blog/gocharting-avis/">GoCharting : mon avis sur l'order flow dans le navigateur</a></li><li class=""><a href="/blog/ichimoku-trading/">Ichimoku : comment lire le nuage, ses signaux et ses limites</a></li><li class=""><a href="/blog/krach-boursier/">Krach boursier : comment ça se passe et que faire en trading</a></li><li class=""><a href="/blog/lucid-trading/">Lucid Trading avis : règles, drawdown et payout (2026)</a></li><li class=""><a href="/blog/methode-wyckoff/">Méthode Wyckoff : accumulation, distribution et spring</a></li><li class=""><a href="/blog/motivewave-avis/">MotiveWave avis : prix, version gratuite, Mac et order flow</a></li><li class=""><a href="/blog/price-action-trading/">Price action : ce que c'est, et ce que la bougie ne montre pas</a></li><li class=""><a href="/blog/quantower-avis/">Quantower avis : version gratuite, footprint, Mac et prix (2026)</a></li><li class=""><a href="/blog/rsi-trading/">RSI trading : réglages, divergences et limites (guide)</a></li><li class=""><a href="/blog/take-profit-trading/">Take profit : où placer ton objectif sur les futures (exemples MNQ)</a></li><li class=""><a href="/blog/topstep/">Topstep avis : règles, drawdown et payout expliqués (2026)</a></li><li class=""><a href="/blog/tradeify/">Tradeify avis 2026 : règles, drawdown, payouts et pièges</a></li></ul><div class="serie-o"><a href="/formations/">Toutes les formations de Bass</a> : plus de 250 leçons vidéo, du débutant au Market Profile avancé. Pour commencer sans payer : <a href="/p/formation-offerte/?src=serie-cfd-trading">la formation offerte</a> (7 leçons vidéo).</div></aside></div><!-- serie:fin -->
+<footer class="footer">
+  <div class="ft-top"><div class="ft-logo">BASS</div><div class="ft-cols">
+    <div class="ft-col"><div class="ft-col-title">Programme</div><a href="/formations/">Toutes les formations</a><a href="https://basstrading.fr/#methode">Méthode</a><a href="https://basstrading.fr/#programme">Programme</a><a href="https://basstrading.fr/p/formation-offerte/?src=blog-cfd-trading-pied">Formation offerte</a></div>
+    <div class="ft-col"><div class="ft-col-title">Ressources</div><a href="/blog/market-profile-guide-complet/">Market Profile</a><a href="/blog/footprint-chart-trading/">Footprint Chart</a><a href="/blog/order-flow-trading-france/">Order Flow</a></div>
+  </div></div>
+  <div class="ft-bottom"><span>&copy; 2026 BASS — Sébastien Constant</span><div><a href="/mentions-legales/">Mentions légales</a><a href="/confidentialite/">Confidentialité</a><a href="/cgv/">CGV</a><a href="mailto:contact@basstrading.fr">Contact</a></div></div>
+</footer>
+<div class="disclaimer">Le trading comporte des risques de perte en capital. Les performances passées ne préjugent pas des performances futures. Ce site ne constitue pas un conseil en investissement.</div>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+const lenis=new Lenis({duration:1.2,easing:t=>Math.min(1,1.001-Math.pow(2,-10*t))});
+function raf(t){lenis.raf(t);requestAnimationFrame(raf)}requestAnimationFrame(raf);
+lenis.on('scroll',ScrollTrigger.update);gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0);
+const tl=gsap.timeline();
+tl.to('.pre-word span',{y:0,opacity:1,duration:.5,stagger:.1,ease:'power3.out',delay:.3}).to('#preLine',{width:'80px',duration:.7,ease:'power2.inOut'},'<+.2').to('.preloader',{yPercent:-100,duration:.8,ease:'power3.inOut',delay:.4}).set('.preloader',{display:'none'}).to('#nav',{opacity:1,y:0,duration:.5},'<+.1');
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);const h=document.documentElement.scrollHeight-window.innerHeight;document.getElementById('readingProgress').style.width=(window.scrollY/h*100)+'%'});
+const tocLinks=document.querySelectorAll('.toc a');const sections=Array.from(tocLinks).map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+window.addEventListener('scroll',()=>{let c='';sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)c=s.id});tocLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+c)})});
+function tf(b){const i=b.closest('.fi'),a=b.nextElementSibling,o=i.classList.contains('active');document.querySelectorAll('.fi').forEach(x=>{x.classList.remove('active');x.querySelector('.fa').classList.remove('open')});if(!o){i.classList.add('active');a.classList.add('open')}}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();lenis.scrollTo(t,{offset:-60})}})});
+</script>
+<script src="/v.js" defer></script>
+</body>
+</html>
