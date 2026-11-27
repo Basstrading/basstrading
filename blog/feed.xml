@@ -6,8 +6,16 @@
   <link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
   <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/"/>
   <id>https://basstrading.fr/blog/</id>
-  <updated>2026-11-26T00:00:00Z</updated>
+  <updated>2026-11-27T00:00:00Z</updated>
   <author><name>Sébastien Constant (Bass)</name><uri>https://basstrading.fr/auteur/sebastien-constant/</uri></author>
+  <entry>
+    <title>TQQQ : l&#x27;ETF x3 sur le Nasdaq-100 expliqué simplement</title>
+    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/tqqq-etf-levier/"/>
+    <id>https://basstrading.fr/blog/tqqq-etf-levier/</id>
+    <published>2026-11-27T00:00:00Z</published>
+    <updated>2026-11-27T00:00:00Z</updated>
+    <summary>TQQQ : comment l&#x27;ETF x3 du Nasdaq-100 fonctionne vraiment, pourquoi il perd quand le marché hésite, et ce qui le distingue d&#x27;un micro-future MNQ.</summary>
+  </entry>
   <entry>
     <title>CFD : c&#x27;est quoi, comment ça marche, et CFD ou futures ?</title>
     <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/cfd-trading/"/>
