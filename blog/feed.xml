@@ -6,8 +6,16 @@
   <link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
   <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/"/>
   <id>https://basstrading.fr/blog/</id>
-  <updated>2026-11-27T00:00:00Z</updated>
+  <updated>2026-11-28T00:00:00Z</updated>
   <author><name>Sébastien Constant (Bass)</name><uri>https://basstrading.fr/auteur/sebastien-constant/</uri></author>
+  <entry>
+    <title>Stochastique : calcul, réglages, divergences et limites (guide)</title>
+    <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/stochastique-trading/"/>
+    <id>https://basstrading.fr/blog/stochastique-trading/</id>
+    <published>2026-11-28T00:00:00Z</published>
+    <updated>2026-11-28T00:00:00Z</updated>
+    <summary>Stochastique : calcul de %K et %D, réglages 14-3-3 et 5-3-3, surachat, divergences, et ce que l&#x27;oscillateur vaut vraiment en 1 minute sur le Nasdaq.</summary>
+  </entry>
   <entry>
     <title>TQQQ : l&#x27;ETF x3 sur le Nasdaq-100 expliqué simplement</title>
     <link rel="alternate" type="text/html" href="https://basstrading.fr/blog/tqqq-etf-levier/"/>
