@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stochastique : calcul, réglages, divergences et limites (guide) — BASS Trading</title>
+  <meta name="description" content="Stochastique : calcul de %K et %D, réglages 14-3-3 et 5-3-3, surachat, divergences, et ce que l&#39;oscillateur vaut vraiment en 1 minute sur le Nasdaq.">
+  <meta property="og:title" content="Stochastique : calcul, réglages, divergences et limites (guide) — BASS Trading">
+  <meta property="og:description" content="Stochastique : calcul de %K et %D, réglages 14-3-3 et 5-3-3, surachat, divergences, et ce que l&#39;oscillateur vaut vraiment en 1 minute sur le Nasdaq.">
+  <meta property="og:image" content="https://basstrading.fr/blog/stochastique-trading/blog-stochastique-trading-1.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://basstrading.fr/blog/stochastique-trading/blog-stochastique-trading-1.webp">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://basstrading.fr/blog/stochastique-trading/">
+  <meta property="og:site_name" content="BASS Trading">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Footprint trading : lire un footprint chart (guide + outils)">
+  <meta name="twitter:description" content="Lire un footprint chart : bid × ask, delta, imbalances, absorption. Les outils footprint comparés (Sierra, ATAS, TradingView) et 3 lectures sur le Nasdaq.">
+  <link rel="canonical" href="https://basstrading.fr/blog/stochastique-trading/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","@id":"https://basstrading.fr/blog/stochastique-trading/#article","headline":"Stochastique : calcul, réglages, divergences et limites (guide)","description":"Stochastique : calcul de %K et %D, réglages 14-3-3 et 5-3-3, surachat, divergences, et ce que l'oscillateur vaut vraiment en 1 minute sur le Nasdaq.","datePublished":"2026-11-28","dateModified":"2026-11-28","inLanguage":"fr-FR","image":"https://basstrading.fr/blog/stochastique-trading/blog-stochastique-trading-1.webp","mainEntityOfPage":"https://basstrading.fr/blog/stochastique-trading/","isPartOf":{"@type":"WebSite","@id":"https://basstrading.fr/#website","name":"BASS Trading","url":"https://basstrading.fr/"},"author":{"@type":"Person","@id":"https://basstrading.fr/#sebastien-constant","name":"Sébastien Constant","url":"https://basstrading.fr/auteur/sebastien-constant/"},"publisher":{"@type":"Organization","@id":"https://basstrading.fr/#organisation","name":"BASS Trading","url":"https://basstrading.fr/","logo":{"@type":"ImageObject","url":"https://basstrading.fr/images/logo-basstrading.png","width":512,"height":512}}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://basstrading.fr"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://basstrading.fr/blog/"},{"@type":"ListItem","position":3,"name":"Stochastique en trading","item":"https://basstrading.fr/blog/stochastique-trading/"}]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Quel est le meilleur réglage pour le stochastique ?","acceptedAnswer":{"@type":"Answer","text":"Le réglage standard 14-3-3 (14 périodes pour %K, lissage de 3, %D sur 3) est le point de départ le plus raisonnable. Le 5-3-3 donne plus de signaux, pas de meilleurs signaux. Il n'existe pas de réglage magique : un réglage optimisé sur le passé ne garantit rien sur le marché de demain. Choisis-en un, teste-le sur 20 séances sans le modifier, puis juge."}},{"@type":"Question","name":"Que signifie un stochastique au-dessus de 80 ?","acceptedAnswer":{"@type":"Answer","text":"Au-dessus de 80, la clôture se fait près du plus haut des 14 dernières bougies : le marché est fort. On parle de surachat, mais ce n'est pas un signal de vente. Dans une tendance haussière, l'oscillateur peut rester au-dessus de 80 très longtemps. La lecture plus prudente consiste à attendre qu'il ressorte de la zone, et à n'agir que dans le sens de la tendance."}},{"@type":"Question","name":"Quelle est la différence entre %K et %D ?","acceptedAnswer":{"@type":"Answer","text":"%K est la ligne principale : elle situe la clôture dans la fourchette haut-bas de la période, de 0 à 100. %D est une moyenne mobile simple de %K, généralement sur 3 bougies : c'est la ligne lente, dite ligne de signal. Un croisement de %K au-dessus de %D est appelé croisement haussier, l'inverse croisement baissier."}},{"@type":"Question","name":"Stochastique ou RSI, lequel est le plus fiable ?","acceptedAnswer":{"@type":"Answer","text":"Aucun des deux n'a montré d'avantage durable utilisé seul. Le stochastique compare la clôture à la fourchette de la période et réagit vite ; le RSI compare les hausses aux baisses et bouge plus calmement. Si tu veux un oscillateur pour lire le momentum, prends-en un seul et apprends-le à fond, au lieu d'empiler des outils qui disent la même chose."}},{"@type":"Question","name":"Le stochastique marche-t-il sur le Nasdaq en 1 minute ?","acceptedAnswer":{"@type":"Answer","text":"C'est l'usage où je le trouve le moins utile. Sur 1 minute, un réglage de 14 couvre 14 minutes de marché : l'oscillateur réagit au bruit, multiplie les croisements et reste collé en zone extrême pendant les accélérations de l'ouverture américaine. Je préfère lire les zones de volume, le VWAP et le delta cumulé."}},{"@type":"Question","name":"Peut-on utiliser le stochastique sur le CAC 40 ?","acceptedAnswer":{"@type":"Answer","text":"Oui, le calcul fonctionne sur tout marché qui a un plus haut, un plus bas et une clôture, donc sur le CAC 40 comme sur le Nasdaq ou une action. La limite est la même partout : un indice en tendance garde l'oscillateur en zone extrême longtemps. Sur le CAC 40 en journalier, regarde surtout les sorties de survente dans le sens de la tendance de fond."}},{"@type":"Question","name":"Qu'est-ce qu'une divergence cachée sur le stochastique ?","acceptedAnswer":{"@type":"Answer","text":"Une divergence cachée haussière apparaît dans une tendance haussière quand le prix fait un plus bas plus haut alors que le stochastique fait un plus bas plus bas : le repli a été fort sur l'oscillateur mais faible sur le prix, la tendance peut reprendre. La version baissière est l'inverse. Comme toute divergence, elle demande une confirmation par le prix."}}]}
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{--bk:#1D1D1F;--bk2:#111;--bk3:#0A0A0A;--g1:#6E6E73;--g2:#86868B;--g3:#D2D2D7;--g4:#F5F5F7;--wh:#FBFBFD;--pure:#FFF;--green:#00B67A;--blue:#0066FF}
+    html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}
+    body{font-family:'DM Sans',sans-serif;color:var(--bk);background:var(--pure);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+    .preloader{position:fixed;inset:0;background:var(--bk3);z-index:10001;display:flex;align-items:center;justify-content:center}
+    .pre-word{font-family:'Outfit',sans-serif;font-size:clamp(3rem,8vw,5rem);font-weight:900;letter-spacing:16px;text-transform:uppercase;color:var(--pure);overflow:hidden}
+    .pre-word span{display:inline-block;transform:translateY(110%);opacity:0}
+    .pre-line{width:0;height:1px;background:rgba(255,255,255,.3);margin-top:20px}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 48px;display:flex;align-items:center;justify-content:space-between;background:rgba(245,245,247,.85);backdrop-filter:blur(20px) saturate(1.8);border-bottom:1px solid rgba(0,0,0,.04);transition:background .4s}
+    .nav-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase;color:var(--bk)}
+    .nav-links{display:flex;gap:28px;list-style:none}.nav-links a{font-size:.74rem;font-weight:500;letter-spacing:.3px;color:var(--g1);transition:color .3s}.nav-links a:hover{color:var(--bk)}
+    .nav-cta{padding:8px 20px;background:var(--bk);color:var(--pure);border:none;border-radius:980px;font-size:.72rem;font-weight:600;transition:all .3s;cursor:pointer;text-decoration:none;display:inline-block}.nav-cta:hover{background:var(--bk2)}
+    .blog-hero{padding:160px 48px 80px;background:var(--g4);position:relative;overflow:hidden}
+    .blog-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,transparent,var(--g4));pointer-events:none}
+    .blog-hero-inner{max-width:720px;margin:0 auto}
+    .breadcrumb{display:flex;gap:8px;align-items:center;margin-bottom:28px;flex-wrap:wrap}
+    .breadcrumb a,.breadcrumb span{font-size:.68rem;font-weight:500;letter-spacing:.3px;color:var(--g2);transition:color .3s}.breadcrumb a:hover{color:var(--bk)}.breadcrumb .sep{color:var(--g3)}
+    .blog-hero-cat{display:inline-block;padding:5px 14px;border:1px solid rgba(0,102,255,.15);border-radius:980px;font-size:.6rem;font-weight:700;color:var(--blue);letter-spacing:2px;text-transform:uppercase;margin-bottom:20px}
+    .blog-hero-title{font-family:'Outfit',sans-serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:900;line-height:1.05;letter-spacing:-2px;color:var(--bk);margin-bottom:20px}
+    .blog-hero-desc{font-size:.95rem;color:var(--g1);line-height:1.8;max-width:560px;margin-bottom:28px}
+    .blog-meta{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+    .blog-meta-author{display:flex;align-items:center;gap:10px}
+    .blog-meta-avatar{width:36px;height:36px;border-radius:50%;background:var(--bk3);overflow:hidden;flex-shrink:0}.blog-meta-avatar img{width:100%;height:100%;object-fit:cover}
+    .blog-meta-name{font-size:.78rem;font-weight:600;color:var(--bk)}.blog-meta-role{font-size:.65rem;color:var(--g2)}
+    .blog-meta-sep{width:1px;height:24px;background:var(--g3)}
+    .blog-meta-info{font-size:.7rem;color:var(--g2)}.blog-meta-info span{margin-right:16px}
+    .toc{position:sticky;top:90px;background:var(--pure);border:1px solid rgba(0,0,0,.04);border-radius:14px;padding:24px;margin-bottom:32px}
+    .toc-title{font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.5px;color:var(--bk);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+    .toc ol{list-style:none;counter-reset:toc}.toc li{counter-increment:toc}
+    .toc li a{display:flex;align-items:baseline;gap:8px;padding:6px 0;font-size:.76rem;color:var(--g1);transition:color .3s;border-bottom:1px solid rgba(0,0,0,.03)}.toc li a:hover{color:var(--blue)}
+    .toc li a::before{content:counter(toc,decimal-leading-zero);font-family:'Outfit',sans-serif;font-size:.65rem;font-weight:700;color:var(--g3);min-width:18px}
+    .toc li:last-child a{border-bottom:none}.toc li a.active{color:var(--blue);font-weight:600}.toc li a.active::before{color:var(--blue)}
+    .article-wrap{display:grid;grid-template-columns:220px 1fr;gap:40px;max-width:1020px;margin:0 auto;padding:60px 48px 120px}
+    .article-sidebar{position:relative}.article-body{max-width:700px}
+    .article-body h2{font-family:'Outfit',sans-serif;font-size:clamp(1.4rem,2.5vw,1.8rem);font-weight:800;line-height:1.1;letter-spacing:-1px;color:var(--bk);margin:56px 0 16px;padding-top:20px}.article-body h2:first-of-type{margin-top:0}
+    .article-body h3{font-family:'Outfit',sans-serif;font-size:1.05rem;font-weight:700;line-height:1.25;letter-spacing:-.3px;color:var(--bk);margin:36px 0 10px}
+    .article-body p{font-size:.9rem;color:var(--g1);line-height:1.85;margin-bottom:18px}
+    .article-body strong{color:var(--bk);font-weight:600}
+    .article-body ul,.article-body ol{margin:0 0 20px 0;padding-left:20px}
+    .article-body li{font-size:.88rem;color:var(--g1);line-height:1.8;margin-bottom:6px}.article-body li strong{color:var(--bk)}
+    .article-body blockquote{margin:28px 0;padding:20px 24px;background:var(--g4);border-left:3px solid var(--bk);border-radius:0 12px 12px 0;font-size:.88rem;color:var(--g1);line-height:1.8;font-style:italic}
+    .article-body blockquote strong{color:var(--bk);font-style:normal}
+    .article-body hr{border:none;border-top:1px solid var(--g4);margin:48px 0}
+    .info-box{margin:28px 0;padding:24px;background:rgba(0,102,255,.03);border:1px solid rgba(0,102,255,.08);border-radius:14px}
+    .info-box-title{font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:700;color:var(--blue);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+    .info-box p{font-size:.82rem;color:var(--g1);line-height:1.7;margin-bottom:0}
+    .key-concept{margin:32px 0;padding:28px;background:var(--bk3);border-radius:16px;color:var(--pure)}
+    .key-concept-label{font-size:.55rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:10px}
+    .key-concept h4{font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:800;letter-spacing:-.3px;margin-bottom:8px}
+    .key-concept p{font-size:.85rem;color:rgba(255,255,255,.5);line-height:1.8;margin-bottom:0}
+    .compare-table{width:100%;margin:24px 0 28px;border-collapse:collapse;border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,.06)}
+    .compare-table th{background:var(--bk3);color:var(--pure);font-family:'Outfit',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:14px 16px;text-align:left}
+    .compare-table td{padding:12px 16px;font-size:.82rem;color:var(--g1);line-height:1.6;border-bottom:1px solid rgba(0,0,0,.04);background:var(--pure)}
+    .compare-table tr:last-child td{border-bottom:none}.compare-table td:first-child{font-weight:600;color:var(--bk)}
+    .cta-card{margin:48px 0;padding:40px;background:var(--bk3);border-radius:20px;text-align:center;position:relative;overflow:hidden}
+    .cta-card::before{content:'';position:absolute;top:-50%;right:-30%;width:400px;height:400px;background:radial-gradient(circle,rgba(0,102,255,.08) 0%,transparent 70%);pointer-events:none}
+    .cta-card-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:12px}
+    .cta-card h3{font-family:'Outfit',sans-serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:800;color:var(--pure);letter-spacing:-.5px;margin-bottom:8px}
+    .cta-card p{font-size:.85rem;color:rgba(255,255,255,.4);line-height:1.7;max-width:380px;margin:0 auto 24px}
+    .cta-card .btn-p{background:var(--pure);color:var(--bk)}.cta-card .btn-p:hover{box-shadow:0 8px 30px rgba(255,255,255,.15)}
+    .faq-sec{padding:80px 48px 100px;background:var(--g4)}
+    .faq-list{max-width:680px;margin:40px auto 0}.fi{border-bottom:1px solid rgba(0,0,0,.06)}
+    .fq{width:100%;text-align:left;padding:18px 0;background:none;border:none;font-size:.85rem;font-weight:600;font-family:'DM Sans',sans-serif;color:var(--bk);display:flex;justify-content:space-between;align-items:center;cursor:pointer;gap:16px;transition:color .3s}.fq:hover{color:var(--g1)}
+    .fq-icon{width:22px;height:22px;border-radius:50%;background:rgba(0,0,0,.04);display:flex;align-items:center;justify-content:center;font-size:.75rem;transition:all .4s;flex-shrink:0;color:var(--g2)}
+    .fa{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1)}.fa.open{max-height:280px;padding-bottom:14px}
+    .fa p{font-size:.8rem;color:var(--g1);line-height:1.7;margin-bottom:0}.fi.active .fq-icon{background:var(--bk);color:var(--pure);transform:rotate(45deg)}
+    .related-sec{padding:80px 48px;background:var(--pure);border-top:1px solid var(--g4)}
+    .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1060px;margin:40px auto 0}
+    .related-card{display:block;padding:28px;background:var(--g4);border-radius:16px;transition:all .4s;text-decoration:none;color:var(--bk)}
+    .related-card:hover{background:var(--pure);box-shadow:0 8px 30px rgba(0,0,0,.06);transform:translateY(-2px)}
+    .related-cat{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+    .related-card h3{font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:700;line-height:1.3;letter-spacing:-.3px;margin-bottom:8px}
+    .related-card p{font-size:.78rem;color:var(--g1);line-height:1.6;margin-bottom:14px}
+    .related-link{font-size:.72rem;font-weight:600;color:var(--blue);letter-spacing:.3px}
+    .footer{background:var(--bk3);color:var(--pure);padding:56px 48px 28px}
+    .ft-top{display:flex;justify-content:space-between;align-items:start;margin-bottom:48px;flex-wrap:wrap;gap:32px}
+    .ft-logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:5px;text-transform:uppercase}
+    .ft-cols{display:flex;gap:80px}
+    .ft-col-title{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:12px}
+    .ft-col a{display:block;font-size:.78rem;color:rgba(255,255,255,.5);margin-bottom:8px;transition:color .3s}.ft-col a:hover{color:var(--pure)}
+    .ft-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:20px;display:flex;justify-content:space-between;align-items:center;font-size:.6rem;color:rgba(255,255,255,.2)}
+    .ft-bottom a{color:rgba(255,255,255,.2);transition:color .3s;margin-left:20px}.ft-bottom a:hover{color:rgba(255,255,255,.5)}
+    .disclaimer{padding:12px 48px;background:var(--bk3);font-size:.58rem;color:rgba(255,255,255,.12);text-align:center;line-height:1.6;border-top:1px solid rgba(255,255,255,.03)}
+    .sec-center{text-align:center;max-width:680px;margin:0 auto}
+    .sec-label{font-size:.55rem;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--g2);margin-bottom:10px}
+    .sec-title{font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;line-height:1.05;letter-spacing:-1.5px;color:var(--bk);margin-bottom:16px}
+    .btn-p{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--bk);color:var(--pure);border-radius:980px;font-size:.85rem;font-weight:600;transition:all .3s;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;text-decoration:none}
+    .btn-p:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(0,0,0,.1)}
+    .btn-p svg{width:13px;height:13px;transition:transform .3s}.btn-p:hover svg{transform:translateX(3px)}
+    .reading-progress{position:fixed;top:0;left:0;height:2px;background:var(--blue);z-index:9999;width:0;transition:width .1s linear}
+    @media(max-width:900px){.nav{padding:14px 20px}.nav-links{display:none}.blog-hero{padding:120px 20px 60px}.article-wrap{grid-template-columns:1fr;padding:40px 20px 80px}.article-sidebar{display:none}.related-grid{grid-template-columns:1fr}.related-sec,.faq-sec{padding:60px 20px}.ft-cols{flex-direction:column;gap:28px}.footer{padding:40px 20px 20px}.disclaimer{padding:10px 16px}.cta-card{padding:28px 20px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  .article-body a{color:var(--blue);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;font-weight:500}.article-body a:hover{text-decoration-thickness:2px}
+</style>
+<style>/* 28/10/2026 : débordement mobile (colonne de grille sans min-width) */.article-wrap>*,.article-layout>*{min-width:0}.article-body table,.compare-table{display:block;overflow-x:auto;max-width:100%}.article-body pre{overflow-x:auto}.article-body img{max-width:100%;height:auto}</style>
+<style>/* 25/11/2026 : h4 passés en h3 (niveaux de titres sans saut), même rendu */.article-body h3.hh4{font-family:inherit;font-size:1em;font-weight:700;color:inherit;margin:0;line-height:inherit}.key-concept h3.hh4{font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:800;letter-spacing:-.3px;margin-bottom:8px}</style>
+</head>
+<body>
+
+<div class="preloader" id="preloader"><div style="text-align:center"><div class="pre-word"><span>B</span><span>A</span><span>S</span><span>S</span></div><div class="pre-line" id="preLine"></div></div></div>
+<div class="reading-progress" id="readingProgress"></div>
+
+<nav class="nav" id="nav">
+  <a href="https://basstrading.fr" class="nav-logo">BASS</a>
+  <ul class="nav-links">
+    <li><a href="https://basstrading.fr/#methode">Méthode</a></li>
+    <li><a href="https://basstrading.fr#resultats">Résultats</a></li>
+    <li><a href="https://basstrading.fr#avis">Avis</a></li>
+    <li><a href="https://basstrading.fr#faq">FAQ</a></li>
+    <li><a href="/formations/">Formations</a></li>
+    <li><a href="https://basstrading.fr/blog/">Blog</a></li>
+  </ul>
+  <a href="https://basstrading.fr/p/formation-offerte/?src=blog-stochastique-trading-menu" class="nav-cta">Formation offerte</a>
+</nav>
+<main id="contenu">
+
+<section class="blog-hero">
+  <div class="blog-hero-inner">
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <a href="https://basstrading.fr">Accueil</a><span class="sep">/</span>
+      <a href="https://basstrading.fr/blog/">Blog</a><span class="sep">/</span>
+      <span>Stochastique en trading</span>
+    </nav>
+    <div class="blog-hero-cat">Analyse technique</div>
+    <h1 class="blog-hero-title">Stochastique : calcul, réglages, divergences et limites (guide)</h1>
+    <p class="blog-hero-desc">Le stochastique situe la dernière clôture dans la fourchette des 14 dernières bougies, sur une échelle de 0 à 100. Au-dessus de 80, le prix clôture près des plus hauts. Ce n&#39;est pas un signal de vente. Je t&#39;explique le calcul, les réglages et les divergences, puis ce que l&#39;oscillateur vaut vraiment en 1 minute sur le Nasdaq futures.</p>
+    <div class="blog-meta">
+      <div class="blog-meta-author">
+        <div class="blog-meta-avatar"><img src="../../images/bass-presenting.jpg" alt="Sébastien Constant" loading="lazy"></div>
+        <div><div class="blog-meta-name"><a href="/auteur/sebastien-constant/" rel="author" style="color:inherit;text-decoration:none">Sébastien Constant</a></div><div class="blog-meta-role">Trader & Formateur Order Flow</div></div>
+      </div>
+      <div class="blog-meta-sep"></div>
+      <div class="blog-meta-info"><span>Novembre 2026</span><span>20 min de lecture</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="article-wrap">
+  <aside class="article-sidebar">
+    <div class="toc">
+      <div class="toc-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/></svg> Sommaire</div>
+      <ol>
+        <li><a href="#qu-est-ce-que-le-stochastique-en-trading">Qu&#39;est-ce que le stochastique en trading ?</a></li>
+        <li><a href="#comment-se-calcule-le-stochastique-k-et-">Comment se calcule le stochastique (%K et %D) ?</a></li>
+        <li><a href="#quels-reglages-choisir-14-3-3-5-3-3-rapi">Quels réglages choisir : 14-3-3, 5-3-3, rapide, lent ou complet ?</a></li>
+        <li><a href="#comment-interpreter-le-stochastique-sura">Comment interpréter le stochastique : surachat, survente et croisements ?</a></li>
+        <li><a href="#comment-reperer-une-divergence-stochasti">Comment repérer une divergence stochastique ?</a></li>
+        <li><a href="#stochastique-ou-rsi-quelle-difference-et">Stochastique ou RSI : quelle différence et lequel choisir ?</a></li>
+        <li><a href="#le-stochastique-est-il-fiable-ce-que-dis">Le stochastique est-il fiable ? Ce que disent les études</a></li>
+        <li><a href="#que-devient-le-stochastique-en-1-minute-">Que devient le stochastique en 1 minute sur le Nasdaq futures ?</a></li>
+        <li><a href="#quelle-unite-de-temps-pour-le-stochastiq">Quelle unité de temps pour le stochastique selon ton style ?</a></li>
+        <li><a href="#quelles-erreurs-eviter-avec-le-stochasti">Quelles erreurs éviter avec le stochastique ?</a></li>
+        <li><a href="#ce-que-je-regarde-a-la-place-du-stochast">Ce que je regarde à la place du stochastique</a></li>
+        <li><a href="#comment-tester-le-stochastique-ce-soir-s">Comment tester le stochastique ce soir, sans te raconter d&#39;histoires ?</a></li>
+      </ol>
+    </div>
+  </aside>
+
+  <article class="article-body">
+    <h2 id="qu-est-ce-que-le-stochastique-en-trading">Qu&#39;est-ce que le stochastique en trading ?</h2>
+    <p>L&#39;oscillateur stochastique est un indicateur d&#39;analyse technique qui mesure où se situe la dernière clôture dans la fourchette haut-bas d&#39;un nombre donné de bougies, sur une échelle de 0 à 100, pour juger la force du mouvement.</p>
+<p>C&#39;est la définition à garder en tête. Le stochastique ne prédit rien : il répond à une seule question, « le prix clôture-t-il près des plus hauts ou près des plus bas de la période ? ».</p>
+<p>Une valeur de 90 veut dire que la clôture est tout près du plus haut des 14 dernières bougies. Une valeur de 10 veut dire qu&#39;elle est tout près du plus bas. Une valeur de 50 veut dire qu&#39;elle est au milieu de la fourchette.</p>
+<h3>D&#39;où vient le stochastique ?</h3>
+<p>L&#39;outil est attribué à George Lane, un analyste américain, qui l&#39;a développé dans les années 1950. La <a href="https://www.tradingview.com/support/solutions/43000502332-stochastic-stoch/">page d&#39;aide officielle de TradingView sur le stochastique</a> le rappelle et le classe parmi les indicateurs de momentum : il mesure la vitesse et la force du mouvement, pas sa direction future.</p>
+<p>L&#39;idée de départ est simple. Dans une tendance haussière, les clôtures ont tendance à se faire près des plus hauts. Dans une tendance baissière, près des plus bas. Quand ce comportement change, le momentum faiblit.</p>
+<h3>Pourquoi j&#39;écris ce guide</h3>
+<p>Je trade le Nasdaq futures en 1 minute sur Sierra Chart, avec le Market Profile, le VWAP et le CVD (et le carnet d&#39;ordres), avec plus de dix ans d&#39;expérience des marchés. Le stochastique n&#39;est pas dans mes outils.</p>
+<p>Pourtant, presque tous les débutants que j&#39;accompagne l&#39;ont affiché un jour sur leur graphique. Ils l&#39;ont souvent lu à l&#39;envers : « au-dessus de 80, je vends ». Ce guide t&#39;explique le calcul exact, les bons réglages, les vrais signaux d&#39;achat et de vente que les traders en tirent, et pourquoi je ne m&#39;en sers pas pour cliquer.</p>
+<p>Avant de juger un outil, il faut savoir ce qu&#39;il calcule. On commence par là.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/stochastique-trading/blog-stochastique-trading-1.webp" alt="Un oscillateur va et vient entre deux bornes, comme le stochastique entre 0 et 100" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Un oscillateur va et vient entre deux bornes, comme le stochastique entre 0 et 100 : il décrit le mouvement, il ne le prédit pas.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="comment-se-calcule-le-stochastique-k-et-">Comment se calcule le stochastique (%K et %D) ?</h2>
+    <p>Le stochastique se compose de deux lignes : %K, la ligne principale, et %D, sa moyenne mobile. Les deux se calculent à partir des plus hauts, des plus bas et des clôtures.</p>
+<h3>La formule de %K</h3>
+<p>La <a href="https://www.metatrader5.com/fr/terminal/help/indicators/oscillators/so">documentation officielle de MetaTrader 5 sur l&#39;oscillateur stochastique</a> donne la formule suivante :</p>
+<p>%K = (Clôture − plus bas de la période) / (plus haut de la période − plus bas de la période) × 100</p>
+<p>La « période » vaut 14 bougies par défaut. Le plus bas est le plus bas des 14 dernières bougies, le plus haut le plus haut des 14 dernières bougies.</p>
+<h3>La formule de %D</h3>
+<p>%D est simplement une moyenne mobile simple de %K, en général sur 3 bougies. C&#39;est la ligne lente, celle qui sert de « signal » quand %K la croise.</p>
+<h3>Un exemple chiffré à la hausse</h3>
+<p>Prenons un exemple fictif, avec des chiffres ronds pour suivre le calcul.</p>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Étape</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Calcul</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Résultat</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Plus haut des 14 bougies</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">relevé sur le graphique</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">105</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Plus bas des 14 bougies</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">relevé sur le graphique</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">95</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Dernière clôture</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">relevé sur le graphique</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">103</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Écart clôture − plus bas</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">103 − 95</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">8</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Fourchette haut − bas</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">105 − 95</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">10</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">%K brut</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">8 / 10 × 100</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">80</td></tr></tbody></table></div>
+<p>La clôture est à 80 % de la fourchette : elle se fait dans le haut de la période. Les acheteurs dominent la clôture.</p>
+<h3>Le même exemple à la baisse</h3>
+<p>Gardons la même fourchette (95 à 105) mais avec une clôture à 96.</p>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Étape</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Calcul</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Résultat</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Écart clôture − plus bas</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">96 − 95</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">1</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Fourchette haut − bas</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">105 − 95</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">10</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">%K brut</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">1 / 10 × 100</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">10</td></tr></tbody></table></div>
+<p>La clôture est à 10 % de la fourchette, tout près du plus bas : les vendeurs dominent la clôture.</p>
+<h3>Le lissage, l&#39;étape qu&#39;on oublie</h3>
+<p>Sur TradingView, le réglage par défaut est « %K 14, Smooth 3, %D 3 ». Le « Smooth » est un lissage de %K : on fait la moyenne des 3 derniers %K bruts.</p>
+<p>Si les trois derniers %K bruts valent 80, 70 et 75, le %K lissé vaut (80 + 70 + 75) / 3 = 75. Puis %D fait la moyenne des 3 derniers %K lissés : avec 75, 68 et 61, %D vaut 68.</p>
+<p>Retiens que %K lissé avec 3 et %D sur 3, c&#39;est déjà deux moyennes empilées : l&#39;oscillateur réagit avec retard. On y revient plus bas.</p>
+<p>Maintenant que le calcul est clair, la vraie question arrive : quels réglages choisir ?</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/stochastique-trading/blog-stochastique-trading-2.webp" alt="Formule du stochastique %K : clôture moins plus bas, divisé par plus haut moins plus bas, fois 100" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">%K situe la clôture dans la fourchette des 14 dernières bougies. %D est sa moyenne sur 3 bougies.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="quels-reglages-choisir-14-3-3-5-3-3-rapi">Quels réglages choisir : 14-3-3, 5-3-3, rapide, lent ou complet ?</h2>
+    <p>Le réglage standard est 14-3-3 : 14 périodes pour %K, 3 pour le lissage, 3 pour %D. C&#39;est celui que TradingView propose par défaut.</p>
+<h3>Stochastique rapide, lent et complet</h3>
+<p>On rencontre trois noms, qui désignent en fait le même calcul avec plus ou moins de lissage.</p>
+<ul><li>Stochastique rapide (fast) : %K brut, sans lissage (Smooth = 1). Très nerveux, beaucoup de signaux, beaucoup de faux signaux.</li><li>Stochastique lent (slow) : %K lissé sur 3 bougies, et %D sur 3. C&#39;est la version la plus utilisée. MetaTrader 5 l&#39;indique : un lissage de 1 donne la version rapide, un lissage de 3 la version lente.</li><li>Stochastique complet (full) : les trois paramètres sont libres (par exemple 21-5-5). C&#39;est ce que propose TradingView par défaut, puisqu&#39;on peut tout régler.</li></ul>
+<h3>Que signifient les paramètres 14-3-3 et 5-3-3 ?</h3>
+<p>Le premier chiffre est le nombre de bougies sur lequel on cherche le plus haut et le plus bas. Le deuxième est le lissage de %K. Le troisième est la longueur de la moyenne qui donne %D.</p>
+<p>Le 14-3-3 regarde donc 14 bougies. Il est plus calme et filtre une partie du bruit.</p>
+<p>Le 5-3-3 regarde seulement les 5 dernières bougies. Il touche plus souvent 80 et 20, il croise plus souvent : il plaît aux scalpeurs qui veulent « de l&#39;action ».</p>
+<p>Aucun des deux n&#39;est « meilleur » dans l&#39;absolu. Raccourcir la période augmente le nombre de signaux, pas leur qualité. Plus tu as de signaux, plus tu as de frais, de décisions et d&#39;occasions de te tromper.</p>
+<h3>Les réglages sur TradingView, pas à pas</h3>
+<ul><li>Ouvre ton graphique, clique sur « Indicateurs » et tape « Stochastique » (ou « Stochastic »).</li><li>Dans les paramètres, tu trouves « Longueur %K » (14), « Lissage %K » (3) et « Lissage %D » (3).</li><li>Dans l&#39;onglet « Style », tu peux changer les bornes (80 et 20 par défaut).</li><li>Garde les valeurs par défaut pour tes premiers tests : tu compareras ensuite.</li></ul>
+<p>Un piège : sur certaines plateformes, l&#39;ordre des paramètres n&#39;est pas le même. MetaTrader 5 parle de « Périodes %K », « Périodes %K de Lissage » et « Périodes %D ». Vérifie toujours ce que représente chaque case avant de comparer tes chiffres avec ceux d&#39;un autre trader.</p>
+<h3>À retenir</h3>
+<ul><li>Réglage standard : 14-3-3 (14 périodes, lissage 3, %D 3).</li><li>Rapide = sans lissage ; lent = lissage 3 ; complet = tout réglable.</li><li>Une période plus courte donne plus de signaux, pas de meilleurs signaux.</li></ul>
+<p>Avec ces réglages en place, voyons comment on lit vraiment les lignes.</p>
+
+    <hr>
+
+    <h2 id="comment-interpreter-le-stochastique-sura">Comment interpréter le stochastique : surachat, survente et croisements ?</h2>
+    <p>Les deux lectures classiques sont les zones extrêmes (80 et 20) et le croisement de %K avec %D. Les deux sont souvent mal comprises.</p>
+<h3>Surachat et survente : ce que disent vraiment 80 et 20</h3>
+<p>Au-dessus de 80, on parle de surachat ; au-dessous de 20, de survente. L&#39;erreur la plus répandue consiste à vendre dès que le stochastique passe au-dessus de 80.</p>
+<p>TradingView l&#39;écrit noir sur blanc dans sa documentation : « overbought does not always mean a bearish move just like oversold does not always mean a bullish move ». Un stochastique en surachat ne veut pas dire baissier, une survente ne veut pas dire haussier.</p>
+<p>Relis la définition : au-dessus de 80, le prix clôture près de ses plus hauts. C&#39;est exactement ce que fait un marché en tendance haussière forte. Dans une vraie tendance, le stochastique peut rester collé au-dessus de 80 pendant des dizaines de bougies. Vendre là, c&#39;est vendre contre la force.</p>
+<h3>La lecture plus sérieuse des zones extrêmes</h3>
+<p>Les règles décrites par MetaTrader 5 sont plus prudentes : elles indiquent d&#39;attendre que la ligne descende sous 20 puis remonte au-dessus avant de considérer un achat, et l&#39;inverse pour une vente.</p>
+<p>Autrement dit, ce n&#39;est pas la présence en zone qui compte, c&#39;est la sortie de la zone. C&#39;est déjà moins mauvais, mais ça reste un signal tardif.</p>
+<h3>Les croisements %K / %D</h3>
+<p>Quand %K (la ligne rapide) passe au-dessus de %D (la ligne lente), on parle de croisement haussier. Quand elle passe en dessous, c&#39;est un croisement baissier.</p>
+<p>Un croisement au milieu de l&#39;échelle, vers 50, ne vaut pas grand-chose : le marché hésite et les lignes s&#39;entremêlent. Les manuels préfèrent les croisements en zone extrême : un croisement haussier sous 20, un croisement baissier au-dessus de 80.</p>
+<h3>Tendance haussière, tendance baissière : suivre le sens</h3>
+<p>La même page de TradingView donne un conseil que peu de débutants appliquent : il vaut mieux trader le stochastique dans le sens de la tendance. En tendance haussière, on ne regarde que les sorties de survente (des replis qui se terminent), pas les surachats.</p>
+<p>Le stochastique ne te permet pas d&#39;identifier la tendance : c&#39;est à toi de la définir avant, avec la structure du prix. Je l&#39;explique en détail dans mon guide du <a href="https://basstrading.fr/blog/price-action-trading/">price action</a>.</p>
+<p>Il reste une lecture que beaucoup considèrent comme la plus fine : la divergence.</p>
+
+    <hr>
+
+    <h2 id="comment-reperer-une-divergence-stochasti">Comment repérer une divergence stochastique ?</h2>
+    <p>Une divergence apparaît quand le prix et le stochastique ne racontent pas la même histoire : le prix fait un nouveau sommet, l&#39;oscillateur non, ou l&#39;inverse.</p>
+<h3>La divergence classique (de retournement)</h3>
+<ul><li>Divergence haussière : le prix fait un plus bas plus bas, mais le stochastique fait un plus bas plus haut. Le mouvement baissier s&#39;essouffle.</li><li>Divergence baissière : le prix fait un plus haut plus haut, mais le stochastique fait un plus haut plus bas. Le mouvement haussier s&#39;essouffle.</li></ul>
+<p>Les divergences indiquent que le momentum faiblit. Elles ne disent pas quand le prix va tourner, ni s&#39;il va tourner. Un marché peut aligner trois ou quatre divergences baissières de suite en continuant de monter.</p>
+<h3>La divergence cachée (de continuation)</h3>
+<p>Il existe aussi une divergence dite cachée, qui annonce plutôt une continuation de la tendance :</p>
+<ul><li>Divergence cachée haussière : dans une tendance haussière, le prix fait un plus bas plus haut (un repli sain), mais le stochastique fait un plus bas plus bas. Le repli a été plus violent sur l&#39;oscillateur que sur le prix : la tendance a des chances de reprendre.</li><li>Divergence cachée baissière : l&#39;inverse dans une tendance baissière.</li></ul>
+<h3>Comment la tracer sans se mentir</h3>
+<ul><li>Repère deux sommets (ou deux creux) nets sur le prix, pas deux petites bougies.</li><li>Trace une ligne entre eux sur le prix, puis une ligne entre les deux points correspondants sur le stochastique.</li><li>Si les deux lignes vont dans des sens opposés, tu as une divergence.</li><li>Attends une confirmation par le prix (une cassure de structure) avant toute décision.</li></ul>
+<p>L&#39;erreur classique : chercher la divergence après coup, sur un graphique où l&#39;on sait déjà ce qui s&#39;est passé. Sur un graphique en direct, tu verras des dizaines de divergences qui n&#39;ont mené nulle part.</p>
+<p>C&#39;est la même logique que pour le RSI, dont j&#39;ai décrit les divergences dans mon <a href="https://basstrading.fr/blog/rsi-trading/">guide du RSI en trading</a>. D&#39;ailleurs, quelle différence entre les deux ?</p>
+
+    <hr>
+
+    <h2 id="stochastique-ou-rsi-quelle-difference-et">Stochastique ou RSI : quelle différence et lequel choisir ?</h2>
+    <p>Les deux oscillateurs vont de 0 à 100 et parlent de surachat et de survente. Ils ne mesurent pourtant pas la même chose.</p>
+<h3>Ce que chacun mesure</h3>
+<ul><li>Le stochastique compare la clôture à la fourchette haut-bas de la période. Il répond à : « où clôture-t-on dans la fourchette ? ».</li><li>Le RSI compare la moyenne des hausses à la moyenne des baisses de clôture à clôture. Il répond à : « les bougies haussières sont-elles plus fortes que les baissières ? ».</li></ul>
+<p>Conséquence : le stochastique est plus nerveux. Une seule bougie qui clôture sur son plus haut peut l&#39;envoyer de 50 à 90. Le RSI bouge plus lentement.</p>
+<h3>Le tableau comparatif</h3>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Critère</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Stochastique</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">RSI</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Ce qu&#39;il mesure</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Clôture dans la fourchette</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Hausses contre baisses</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Réglage standard</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">14-3-3</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">14</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Seuils habituels</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">80 et 20</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">70 et 30</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Nombre de lignes</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Deux (%K et %D)</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Une</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Réactivité</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Forte, beaucoup de signaux</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Plus calme</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Créateur</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">George Lane</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">J. Welles Wilder</td></tr></tbody></table></div>
+<h3>Et le stochastique RSI ?</h3>
+<p>Le Stoch RSI applique la formule du stochastique… au RSI, au lieu du prix. On obtient un oscillateur d&#39;oscillateur, encore plus nerveux, qui passe son temps à toucher 0 et 100. Je le déconseille aux débutants : il multiplie les signaux sans ajouter d&#39;informations sur le marché.</p>
+<h3>Lequel choisir ?</h3>
+<p>Si tu veux utiliser un oscillateur pour comprendre le momentum, prends-en un seul, et apprends-le à fond. Mettre le stochastique, le RSI et le MACD ensemble, c&#39;est regarder trois fois le même prix passé par trois formules.</p>
+<p>Mais la question plus importante est ailleurs : est-ce que ces outils donnent un avantage mesurable ? Voyons ce que disent les études.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/stochastique-trading/blog-stochastique-trading-3.webp" alt="Tableau comparatif entre le stochastique et le RSI : mesure, réglage, seuils et réactivité" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Deux oscillateurs de 0 à 100 qui ne mesurent pas la même chose : la place de la clôture contre la force des hausses.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="le-stochastique-est-il-fiable-ce-que-dis">Le stochastique est-il fiable ? Ce que disent les études</h2>
+    <p>C&#39;est la question que me posent le plus souvent ceux qui ont testé l&#39;oscillateur pendant quelques semaines. La réponse honnête : aucune étude sérieuse ne montre un avantage durable pour le stochastique utilisé seul.</p>
+<h3>La grande revue de Park et Irwin</h3>
+<p>En 2007, Cheol-Ho Park et Scott Irwin ont publié dans le Journal of Economic Surveys une revue de la recherche sur la rentabilité de l&#39;analyse technique (<a href="https://ideas.repec.org/a/bla/jecsur/v21y2007i4p786-826.html">la fiche de l&#39;étude « What Do We Know About the Profitability of Technical Analysis? »</a>).</p>
+<p>Sur 95 études modernes, 56 trouvaient des résultats positifs, 20 négatifs et 19 mitigés. Mais les auteurs soulignent les problèmes de la plupart de ces tests : règles choisies après avoir vu les données, recherche à l&#39;aveugle de la meilleure combinaison, coûts de transaction mal estimés. Et les profits mesurés se concentrent surtout sur les périodes antérieures au début des années 1990.</p>
+<p>Cette revue ne porte pas sur le stochastique en particulier : elle couvre l&#39;analyse technique en général. Elle donne quand même le cadre : un indicateur qui « marchait » sur un historique ne garantit rien sur le marché de demain.</p>
+<h3>Pourquoi le stochastique est structurellement en retard</h3>
+<p>Reprends le calcul : une fourchette sur 14 bougies, puis une moyenne sur 3, puis une autre moyenne sur 3. Tout est fait avec des prix déjà passés.</p>
+<p>Comme je le dis dans ma vidéo sur le trading sans indicateur : « la plupart des indicateurs sont juste en retard ». Le stochastique n&#39;est pas une exception. Il peut t&#39;aider à décrire ce qui vient de se passer, pas à anticiper ce qui va se passer.</p>
+<h3>Est-ce un indicateur avancé ?</h3>
+<p>On lit parfois que le stochastique est un « indicateur avancé » parce que le momentum ralentit avant que le prix ne tourne. C&#39;est vrai parfois, sur les graphiques qu&#39;on montre en exemple. C&#39;est faux souvent, sur les graphiques qu&#39;on ne montre pas. Un indicateur calculé sur le passé ne devient pas avancé parce qu&#39;il a eu raison une fois.</p>
+<h3>Le rappel qui va avec</h3>
+<p>Le trading de contrats à terme comporte un risque élevé de perte, pouvant dépasser la mise initiale. Contenu éducatif, pas un conseil en investissement.</p>
+<p>Sur les produits à effet de levier proposés aux particuliers, les chiffres officiels sont sévères : l&#39;AMF rappelait le 11/09/2018, données de l&#39;ESMA à l&#39;appui, qu&#39;entre 74 % et 89 % des comptes de particuliers sur CFD étaient perdants (<a href="https://www.amf-france.org/fr/actualites-publications/communiques/communiques-de-lamf/cfd-et-options-binaires-lamf-rappelle-aux-epargnants-que-les-mesures-de-restriction-decidees-par">communiqué de l&#39;AMF sur les CFD et les options binaires</a>). Un oscillateur n&#39;y change rien.</p>
+<p>Tout ça devient encore plus concret quand on pose le stochastique sur un graphique 1 minute du Nasdaq.</p>
+
+    <hr>
+
+    <h2 id="que-devient-le-stochastique-en-1-minute-">Que devient le stochastique en 1 minute sur le Nasdaq futures ?</h2>
+    <p>George Lane travaillait surtout sur des graphiques journaliers. Avec un réglage de 14, il regardait les 14 dernières séances, presque trois semaines de marché.</p>
+<p>Sur un graphique 1 minute, le même réglage de 14 regarde les 14 dernières minutes. Ce n&#39;est plus du tout le même outil.</p>
+<h3>Ce que j&#39;observe à l&#39;ouverture américaine</h3>
+<p>À l&#39;ouverture de Wall Street, à 15 h 30 heure de Paris, le Nasdaq futures accélère souvent. Les volumes explosent, le prix peut avancer dans un sens pendant de longues minutes.</p>
+<p>Sur le 1 minute, le stochastique passe alors son temps au-dessus de 80 (ou au-dessous de 20). Celui qui vend « parce que c&#39;est en surachat » se met en face du mouvement le plus puissant de la journée. C&#39;est exactement là que les débutants se font sortir, et c&#39;est pour ça que je déconseille l&#39;oscillateur comme signal d&#39;entrée sur le Nasdaq.</p>
+<h3>Ce qui se passe en milieu de séance</h3>
+<p>Plus tard, le marché se pose souvent dans une fourchette. Là, le stochastique alterne gentiment entre 20 et 80, et les croisements semblent « marcher ».</p>
+<p>Le problème : tu ne sais pas à l&#39;avance si tu es dans une phase de fourchette ou au début d&#39;un nouveau mouvement. L&#39;oscillateur ne te le dit pas. Les zones de volume, si.</p>
+<h3>Le bruit des petites unités de temps</h3>
+<p>Sur une minute, une seule mèche peut créer un nouveau plus haut de période et faire plonger %K. L&#39;oscillateur réagit au bruit autant qu&#39;au mouvement. Pour comprendre ce qui se passe vraiment dans ces minutes-là, je regarde le volume et le VWAP, que j&#39;explique dans mon guide du <a href="https://basstrading.fr/blog/vwap-trading/">VWAP en trading</a>. Si tu travailles sur TradingView, je montre comment y régler le VWAP dans <a href="https://basstrading.fr/blog/vwap-tradingview/">le VWAP sur TradingView</a>.</p>
+<p>Si tu trades le Nasdaq et que tu hésites encore sur le contrat, je compare les deux options dans <a href="https://basstrading.fr/blog/nq-ou-mnq/">NQ ou MNQ</a> : avec un indicateur nerveux, un contrat plus petit limite au moins la casse pendant tes tests.</p>
+<h3>À retenir</h3>
+<ul><li>Un réglage de 14 en 1 minute = 14 minutes de marché, pas 14 jours.</li><li>À l&#39;ouverture, le stochastique reste souvent collé en zone extrême : vendre le surachat, c&#39;est vendre la force.</li><li>En fourchette, il semble marcher, mais il ne t&#39;annonce pas la sortie de la fourchette.</li></ul>
+<p>Tout dépend donc de ton horizon. Voyons ce qu&#39;il vaut selon ta façon de trader.</p>
+
+    <hr>
+
+    <h2 id="quelle-unite-de-temps-pour-le-stochastiq">Quelle unité de temps pour le stochastique selon ton style ?</h2>
+    <p>Il n&#39;existe pas de « meilleure unité de temps » universelle. Il y a des usages plus ou moins cohérents selon ton horizon.</p>
+<h3>En swing trading (journalier, 4 heures)</h3>
+<p>C&#39;est l&#39;usage d&#39;origine. Sur le journalier, le 14-3-3 décrit environ trois semaines de marché. Les sorties de survente dans une tendance haussière de fond peuvent servir à repérer la fin d&#39;un repli.</p>
+<p>C&#39;est l&#39;usage le plus défendable, à condition de définir la tendance avant, sur une unité de temps plus grande (hebdomadaire).</p>
+<h3>En day trading (5 à 15 minutes)</h3>
+<p>Sur le 5 ou le 15 minutes, l&#39;oscillateur devient plus nerveux. Il peut servir de thermomètre : est-ce que le repli en cours a perdu de la force ? Mais il ne doit jamais décider seul de ton entrée.</p>
+<p>J&#39;ai décrit à quoi ressemble concrètement une séance dans <a href="https://basstrading.fr/blog/day-trading-futures/">le day trading sur les futures</a> : tu verras que les décisions viennent des niveaux de prix, pas d&#39;une ligne qui croise une autre.</p>
+<h3>En scalping futures (1 minute et moins)</h3>
+<p>C&#39;est l&#39;usage où le stochastique est le moins utile. Trop de bruit, trop de signaux, des frais à chaque aller-retour. En <a href="https://basstrading.fr/blog/scalping-trading/">scalping</a>, l&#39;information utile est dans le flux d&#39;ordres, pas dans une moyenne de moyenne.</p>
+<h3>Et sur un indice comme le CAC 40 ?</h3>
+<p>Oui, le calcul fonctionne sur n&#39;importe quel marché qui a un plus haut, un plus bas et une clôture : CAC 40, Nasdaq, actions, matières premières.</p>
+<p>La limite reste la même : les indices passent de longues périodes en tendance, et l&#39;oscillateur y reste collé en zone extrême. Sur un indice, ce sont surtout les sorties de survente dans le sens de la tendance de fond qui ont du sens.</p>
+<h3>Le tableau récapitulatif</h3>
+<div style="overflow-x:auto;margin:22px 0"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Horizon</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Unité de temps</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Usage possible</th><th style="text-align:left;padding:10px;border-bottom:2px solid #ffd600">Mon avis</th></tr></thead><tbody><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Swing</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Journalier, 4 h</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Fin de repli en tendance</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Le plus défendable</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Day trading</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">5 à 15 min</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Thermomètre du repli</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Jamais seul</td></tr><tr><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Scalping</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">1 min</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">Signaux d&#39;entrée</td><td style="padding:10px;border-bottom:1px solid rgba(128,128,128,.25)">À éviter</td></tr></tbody></table></div>
+<p>Quelle que soit l&#39;unité de temps, les mêmes erreurs reviennent. Les voici.</p>
+
+    <hr>
+
+    <h2 id="quelles-erreurs-eviter-avec-le-stochasti">Quelles erreurs éviter avec le stochastique ?</h2>
+    <p>Ce sont les erreurs que je vois le plus souvent chez ceux qui me montrent leurs graphiques. Chacune coûte de l&#39;argent.</p>
+<h3>1. Vendre le surachat en tendance haussière</h3>
+<p>C&#39;est l&#39;erreur numéro un. Au-dessus de 80, le marché est fort, il n&#39;est pas « trop haut ». Ne prends jamais un trade contre la tendance au seul motif que l&#39;oscillateur est en zone extrême.</p>
+<h3>2. Prendre chaque croisement</h3>
+<p>Sur un graphique 1 minute, %K croise %D des dizaines de fois par séance. Prendre chaque croisement, c&#39;est multiplier les frais et les petites pertes.</p>
+<h3>3. Optimiser les réglages sur le passé</h3>
+<p>Tester 5-3-3, puis 8-3-3, puis 21-5-5 jusqu&#39;à trouver le réglage qui « aurait marché » le mois dernier, c&#39;est exactement le biais que pointent Park et Irwin. Le réglage idéal d&#39;hier ne vaut rien demain.</p>
+<h3>4. Empiler les oscillateurs</h3>
+<p>Stochastique, RSI, MACD et CCI sur le même graphique : quatre lignes qui disent la même chose avec un léger décalage. Tu n&#39;as pas quatre confirmations, tu as une seule information répétée.</p>
+<h3>5. Oublier le stop</h3>
+<p>Un signal d&#39;oscillateur ne te dit pas où tu as tort. Ton stop se place sur la structure du prix, là où ton idée est invalidée, comme je le montre dans <a href="https://basstrading.fr/blog/stop-loss-trading/">où placer son stop loss</a>.</p>
+<h3>6. Ignorer le contexte</h3>
+<p>Une survente à 15 h 30, au moment de l&#39;ouverture américaine et d&#39;une publication de chiffres, n&#39;a rien à voir avec une survente à 19 h dans un marché calme. L&#39;oscillateur ne connaît ni l&#39;heure ni les annonces.</p>
+<h3>À retenir</h3>
+<ul><li>Surachat ne veut pas dire vente.</li><li>Un réglage optimisé sur le passé ne prouve rien.</li><li>Le stop vient du prix, jamais de l&#39;oscillateur.</li></ul>
+<p>Si l&#39;oscillateur ne décide pas, qu&#39;est-ce qui décide ? Voilà ce que je regarde, moi.</p>
+
+    <hr>
+
+    <h2 id="ce-que-je-regarde-a-la-place-du-stochast">Ce que je regarde à la place du stochastique</h2>
+    <p>Dans ma vidéo « Trader sans indicateur », je montre comment je lis un graphique sans aucun oscillateur. Voici la logique, appliquée à mon marché, le Nasdaq futures.</p>
+<h3>1. Je dézoome d&#39;abord</h3>
+<p>Une fois par semaine, je regarde le graphique hebdomadaire. Je repère où le marché a passé beaucoup de temps et où il est passé vite. Les petites unités de temps servent ensuite à cliquer, pas à analyser.</p>
+<h3>2. Je cherche les zones de volume</h3>
+<p>Là où il y a beaucoup de bougies, il y a beaucoup de volume. Ces zones attirent le prix. Comme je le dis dans la vidéo : « le but du marché en fait c&#39;est pas de te piéger, le but du marché c&#39;est simplement en fait de trouver des zones où il y a de la liquidité ».</p>
+<p>J&#39;utilise le Market Profile pour ça : il me montre la zone de valeur, où s&#39;est échangée la majorité du volume, et ses bords.</p>
+<h3>3. Je n&#39;agis pas au milieu</h3>
+<p>Entre deux zones de volume, le prix peut aller n&#39;importe où. Dans la vidéo, je le résume ainsi : « au milieu c&#39;est hyper dangereux ». Je travaille sur les bords des zones, là où mon stop a un sens.</p>
+<h3>4. J&#39;attends que le prix me montre quelque chose</h3>
+<p>Par exemple un double sommet sur un bord de zone, puis la cassure du petit range qui suit. Mon entrée vient de ce que fait le prix à un niveau, pas d&#39;une ligne qui croise une autre.</p>
+<h3>5. J&#39;adapte la taille au stop</h3>
+<p>Si le stop logique est large, je réduis la taille pour garder le même risque. C&#39;est la base, détaillée dans mon article sur <a href="https://basstrading.fr/blog/take-profit-trading/">le take profit</a> pour la partie objectif.</p>
+<h3>Et le VWAP, le CVD ?</h3>
+<p>En séance, j&#39;ajoute le VWAP (le prix moyen pondéré par le volume) et le CVD, le delta cumulé, qui me dit si les acheteurs ou les vendeurs agressifs prennent la main. Ces outils partent du volume réellement échangé, là où le stochastique ne voit que trois prix par bougie : le haut, le bas et la clôture.</p>
+<p>Si tu ne sais pas encore quelle approche te correspond, mon guide <a href="https://basstrading.fr/blog/methode-de-trading/">méthode de trading</a> t&#39;aide à trouver la tienne, selon ton profil.</p>
+<p>La méthode complète, avec mes séances commentées sur le Nasdaq, est dans ma <a href="https://basstrading.fr/l/qsF_lw/">formation gratuite</a>.</p>
+    <figure style="margin:28px 0;text-align:center">
+      <img src="/blog/stochastique-trading/blog-stochastique-trading-4.webp" alt="Les étapes de ma lecture du Nasdaq sans stochastique : dézoomer, zones de volume, éviter le milieu, attendre le prix" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px">
+      <figcaption style="font-size:.9em;opacity:.75;margin-top:8px">Ma lecture sans oscillateur : les décisions viennent des niveaux de volume et de ce que fait le prix à ces niveaux.</figcaption>
+    </figure>
+
+    <hr>
+
+    <h2 id="comment-tester-le-stochastique-ce-soir-s">Comment tester le stochastique ce soir, sans te raconter d&#39;histoires ?</h2>
+    <p>Si tu veux quand même te faire ton avis (et c&#39;est une bonne idée), teste-le proprement plutôt que de le croire sur parole, moi compris.</p>
+<h3>Le protocole simple</h3>
+<ul><li>Ouvre un graphique en 5 minutes du marché que tu trades, avec le stochastique 14-3-3.</li><li>Remonte de 20 séances. Pour chaque croisement haussier sous 20, note sur une feuille : la tendance de fond, l&#39;heure, ce que fait le prix dans les 30 minutes suivantes.</li><li>Fais la même chose pour les croisements baissiers au-dessus de 80.</li><li>Compte les cas où le signal allait contre la tendance. Regarde ce qu&#39;ils ont donné.</li><li>Ne change pas les réglages en cours de route : sinon tu mesures ton imagination, pas l&#39;outil.</li></ul>
+<p>Tu verras vite que le résultat dépend surtout de où le signal apparaît : sur un niveau important, ou au milieu de nulle part. C&#39;est le niveau qui travaille, pas l&#39;oscillateur.</p>
+<h3>Ce que tu dois retenir</h3>
+<ul><li>Le stochastique situe la clôture dans la fourchette des 14 dernières bougies, de 0 à 100.</li><li>%K est la ligne principale, %D sa moyenne : deux lissages, donc du retard.</li><li>Surachat et survente décrivent la force du mouvement, pas un retournement.</li><li>Les divergences signalent un essoufflement, jamais un timing.</li><li>Aucune étude ne montre d&#39;avantage durable pour l&#39;oscillateur seul ; les niveaux de volume, le VWAP et le Market Profile en disent davantage.</li></ul>
+<h3>Ta prochaine action</h3>
+<p>Ce soir, sur ton graphique, masque tous tes oscillateurs. Repère simplement les deux zones où le prix a passé le plus de temps cette semaine, et regarde comment il s&#39;y comporte demain.</p>
+<p>Si tu veux continuer dans la même logique, lis mon guide de <a href="https://basstrading.fr/blog/fibonacci-trading/">Fibonacci en trading</a> : tu verras pourquoi un niveau ne vaut que par le volume qui s&#39;y trouve.</p>
+
+    <p><a href="https://www.youtube.com/watch?v=zUSZ9dfr3x0" target="_blank" rel="noopener">▶ Voir la vidéo de Sébastien sur ce sujet</a></p>
+
+    <div class="cta-card cta-aimant">
+      <div class="cta-card-label">Gratuit</div>
+      <h3>Tu viens de lire la théorie. Regarde-⁠la en vrai.</h3>
+      <p>Je trade une séance complète sur le Nasdaq et je dis à voix haute ce que je regarde. 35 minutes, gratuit.</p>
+      <a href="https://basstrading.fr/p/formation-offerte/?src=blog-stochastique-trading" class="btn-p">Je regarde la séance →</a>
+    </div>
+    
+  </article>
+</div>
+
+<!-- FAQ -->
+<section class="faq-sec">
+  <div class="sec-center"><div class="sec-label">FAQ</div><h2 class="sec-title">Questions fréquentes</h2></div>
+  <div class="faq-list">
+    <div class="fi"><button class="fq" onclick="tf(this)">Quel est le meilleur réglage pour le stochastique ? <span class="fq-icon">+</span></button><div class="fa"><p>Le réglage standard 14-3-3 (14 périodes pour %K, lissage de 3, %D sur 3) est le point de départ le plus raisonnable. Le 5-3-3 donne plus de signaux, pas de meilleurs signaux. Il n&#39;existe pas de réglage magique : un réglage optimisé sur le passé ne garantit rien sur le marché de demain. Choisis-en un, teste-le sur 20 séances sans le modifier, puis juge.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Que signifie un stochastique au-dessus de 80 ? <span class="fq-icon">+</span></button><div class="fa"><p>Au-dessus de 80, la clôture se fait près du plus haut des 14 dernières bougies : le marché est fort. On parle de surachat, mais ce n&#39;est pas un signal de vente. Dans une tendance haussière, l&#39;oscillateur peut rester au-dessus de 80 très longtemps. La lecture plus prudente consiste à attendre qu&#39;il ressorte de la zone, et à n&#39;agir que dans le sens de la tendance.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Quelle est la différence entre %K et %D ? <span class="fq-icon">+</span></button><div class="fa"><p>%K est la ligne principale : elle situe la clôture dans la fourchette haut-bas de la période, de 0 à 100. %D est une moyenne mobile simple de %K, généralement sur 3 bougies : c&#39;est la ligne lente, dite ligne de signal. Un croisement de %K au-dessus de %D est appelé croisement haussier, l&#39;inverse croisement baissier.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Stochastique ou RSI, lequel est le plus fiable ? <span class="fq-icon">+</span></button><div class="fa"><p>Aucun des deux n&#39;a montré d&#39;avantage durable utilisé seul. Le stochastique compare la clôture à la fourchette de la période et réagit vite ; le RSI compare les hausses aux baisses et bouge plus calmement. Si tu veux un oscillateur pour lire le momentum, prends-en un seul et apprends-le à fond, au lieu d&#39;empiler des outils qui disent la même chose.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Le stochastique marche-t-il sur le Nasdaq en 1 minute ? <span class="fq-icon">+</span></button><div class="fa"><p>C&#39;est l&#39;usage où je le trouve le moins utile. Sur 1 minute, un réglage de 14 couvre 14 minutes de marché : l&#39;oscillateur réagit au bruit, multiplie les croisements et reste collé en zone extrême pendant les accélérations de l&#39;ouverture américaine. Je préfère lire les zones de volume, le VWAP et le delta cumulé.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Peut-on utiliser le stochastique sur le CAC 40 ? <span class="fq-icon">+</span></button><div class="fa"><p>Oui, le calcul fonctionne sur tout marché qui a un plus haut, un plus bas et une clôture, donc sur le CAC 40 comme sur le Nasdaq ou une action. La limite est la même partout : un indice en tendance garde l&#39;oscillateur en zone extrême longtemps. Sur le CAC 40 en journalier, regarde surtout les sorties de survente dans le sens de la tendance de fond.</p></div></div>
+    <div class="fi"><button class="fq" onclick="tf(this)">Qu&#39;est-ce qu&#39;une divergence cachée sur le stochastique ? <span class="fq-icon">+</span></button><div class="fa"><p>Une divergence cachée haussière apparaît dans une tendance haussière quand le prix fait un plus bas plus haut alors que le stochastique fait un plus bas plus bas : le repli a été fort sur l&#39;oscillateur mais faible sur le prix, la tendance peut reprendre. La version baissière est l&#39;inverse. Comme toute divergence, elle demande une confirmation par le prix.</p></div></div>
+  </div>
+</section>
+
+<!-- Related -->
+<section class="related-sec">
+  <div class="sec-center"><div class="sec-label">Continuer la lecture</div><h2 class="sec-title">Articles connexes</h2></div>
+  <div class="related-grid">
+    <a href="/blog/market-profile-guide-complet/" class="related-card"><div class="related-cat">Guide</div><h3>Market Profile : le guide complet pour débutants</h3><p>Value Area, POC, types de journées — tout pour commencer.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/order-flow-trading-france/" class="related-card"><div class="related-cat">Méthode</div><h3>Order Flow Trading : pourquoi personne ne l'enseigne en France</h3><p>Le carnet d'ordres et le flux institutionnel décryptés.</p><span class="related-link">Lire &rarr;</span></a>
+    <a href="/blog/sierra-chart-configuration/" class="related-card"><div class="related-cat">Tutoriel</div><h3>Sierra Chart : configuration complète</h3><p>Le setup pas à pas pour le Market Profile et le Footprint.</p><span class="related-link">Lire &rarr;</span></a>
+  </div>
+</section>
+
+</main>
+<!-- serie:debut --><style>.serie-w{background:#FFF;color:#1D1D1F;border-top:1px solid #F5F5F7}.serie{max-width:1060px;margin:0 auto;padding:56px 24px;font-family:inherit;box-sizing:border-box}.serie-l{font-size:.6rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#0066FF;margin-bottom:8px}.serie-w .serie h2{font-size:1.4rem;font-weight:800;letter-spacing:-.5px;color:#1D1D1F!important;margin:0 0 18px;font-family:inherit}.serie ul{list-style:none;padding:0;margin:0 0 22px;display:grid;grid-template-columns:repeat(2,1fr);gap:8px 24px}.serie-w .serie li a{color:#1D1D1F!important;font-size:.9rem;line-height:1.45;text-decoration:none;border-bottom:1px solid #D2D2D7}.serie li a:hover{color:#0066FF}.serie li.pil a{font-weight:700}.serie-o{background:#F5F5F7;border-radius:14px;padding:18px 20px;font-size:.88rem;line-height:1.55;color:#1D1D1F}.serie-w .serie-o a{color:#0066FF!important;font-weight:700}@media(max-width:700px){.serie ul{grid-template-columns:1fr}}</style><div class="serie-w"><aside class="serie" aria-label="Dans la même série"><div class="serie-l">Dans la même série</div><h2>Trouver sa méthode de trading</h2><ul><li class="pil"><a href="/blog/methode-de-trading/">Méthode de trading : 4 profils pour trouver celle qui te va</a></li><li class=""><a href="/blog/types-trading-differences/">Les Types de Trading : Lequel Choisir Selon Ton Profil ? (2026)</a></li><li class=""><a href="/blog/debuter-trading-zero-guide/">Débuter le trading de zéro : par où commencer (guide 2026)</a></li><li class=""><a href="/blog/devenir-trader-sans-diplome/">Devenir trader sans diplôme ni formation : 5 étapes réalistes</a></li><li class=""><a href="/blog/livre-trading/">Livre trading : les meilleurs pour apprendre (et l'ordre)</a></li><li class=""><a href="/blog/formation-trading/">Formation trading : contenu, prix, CPF et pièges à éviter</a></li><li class=""><a href="/blog/formation-trading-gratuite/">Formation trading gratuite : ce qu'on apprend sans payer</a></li><li class=""><a href="/blog/quelle-formation-trading-choisir/">Meilleure formation trading en ligne : 7 critères pour choisir</a></li><li class=""><a href="/blog/arnaque-trading/">Arnaque au trading : les 7 pièges et que faire si tu es victime</a></li><li class=""><a href="/blog/apex-trader-funding/">Apex Trader Funding avis : règles 4.0, drawdown et payouts (2026)</a></li><li class=""><a href="/blog/bookmap-heatmap/">Bookmap : lire la heatmap, prix réels et avis de trader</a></li><li class=""><a href="/blog/cfd-trading/">CFD : c'est quoi, comment ça marche, et CFD ou futures ?</a></li><li class=""><a href="/blog/deepcharts-avis/">DeepCharts avis : prix, Mac, MBO et limites (2026)</a></li><li class=""><a href="/blog/effet-de-levier-trading/">Effet de levier en trading : calcul, risques et quel levier choisir</a></li><li class=""><a href="/blog/fibonacci-trading/">Fibonacci trading : niveaux, tracé et ce qui tient vraiment</a></li><li class=""><a href="/blog/flux-ordres-tradingview/">Order flow sur TradingView : ce qu'on voit vraiment (et ses limites)</a></li><li class=""><a href="/blog/ftmo/">FTMO avis : règles futures, drawdown et payouts (2026)</a></li><li class=""><a href="/blog/gocharting-avis/">GoCharting : mon avis sur l'order flow dans le navigateur</a></li><li class=""><a href="/blog/ichimoku-trading/">Ichimoku : comment lire le nuage, ses signaux et ses limites</a></li><li class=""><a href="/blog/krach-boursier/">Krach boursier : comment ça se passe et que faire en trading</a></li><li class=""><a href="/blog/lucid-trading/">Lucid Trading avis : règles, drawdown et payout (2026)</a></li><li class=""><a href="/blog/methode-wyckoff/">Méthode Wyckoff : accumulation, distribution et spring</a></li><li class=""><a href="/blog/motivewave-avis/">MotiveWave avis : prix, version gratuite, Mac et order flow</a></li><li class=""><a href="/blog/price-action-trading/">Price action : ce que c'est, et ce que la bougie ne montre pas</a></li><li class=""><a href="/blog/quantower-avis/">Quantower avis : version gratuite, footprint, Mac et prix (2026)</a></li><li class=""><a href="/blog/rsi-trading/">RSI trading : réglages, divergences et limites (guide)</a></li><li class=""><a href="/blog/take-profit-trading/">Take profit : où placer ton objectif sur les futures (exemples MNQ)</a></li><li class=""><a href="/blog/topstep/">Topstep avis : règles, drawdown et payout expliqués (2026)</a></li><li class=""><a href="/blog/tqqq-etf-levier/">TQQQ : l'ETF x3 sur le Nasdaq-100 expliqué simplement</a></li><li class=""><a href="/blog/tradeify/">Tradeify avis 2026 : règles, drawdown, payouts et pièges</a></li></ul><div class="serie-o"><a href="/formations/">Toutes les formations de Bass</a> : plus de 250 leçons vidéo, du débutant au Market Profile avancé. Pour commencer sans payer : <a href="/p/formation-offerte/?src=serie-stochastique-trading">la formation offerte</a> (7 leçons vidéo).</div></aside></div><!-- serie:fin -->
+<footer class="footer">
+  <div class="ft-top"><div class="ft-logo">BASS</div><div class="ft-cols">
+    <div class="ft-col"><div class="ft-col-title">Programme</div><a href="/formations/">Toutes les formations</a><a href="https://basstrading.fr/#methode">Méthode</a><a href="https://basstrading.fr/#programme">Programme</a><a href="https://basstrading.fr/p/formation-offerte/?src=blog-stochastique-trading-pied">Formation offerte</a></div>
+    <div class="ft-col"><div class="ft-col-title">Ressources</div><a href="/blog/market-profile-guide-complet/">Market Profile</a><a href="/blog/footprint-chart-trading/">Footprint Chart</a><a href="/blog/order-flow-trading-france/">Order Flow</a></div>
+  </div></div>
+  <div class="ft-bottom"><span>&copy; 2026 BASS — Sébastien Constant</span><div><a href="/mentions-legales/">Mentions légales</a><a href="/confidentialite/">Confidentialité</a><a href="/cgv/">CGV</a><a href="mailto:contact@basstrading.fr">Contact</a></div></div>
+</footer>
+<div class="disclaimer">Le trading comporte des risques de perte en capital. Les performances passées ne préjugent pas des performances futures. Ce site ne constitue pas un conseil en investissement.</div>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+const lenis=new Lenis({duration:1.2,easing:t=>Math.min(1,1.001-Math.pow(2,-10*t))});
+function raf(t){lenis.raf(t);requestAnimationFrame(raf)}requestAnimationFrame(raf);
+lenis.on('scroll',ScrollTrigger.update);gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0);
+const tl=gsap.timeline();
+tl.to('.pre-word span',{y:0,opacity:1,duration:.5,stagger:.1,ease:'power3.out',delay:.3}).to('#preLine',{width:'80px',duration:.7,ease:'power2.inOut'},'<+.2').to('.preloader',{yPercent:-100,duration:.8,ease:'power3.inOut',delay:.4}).set('.preloader',{display:'none'}).to('#nav',{opacity:1,y:0,duration:.5},'<+.1');
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);const h=document.documentElement.scrollHeight-window.innerHeight;document.getElementById('readingProgress').style.width=(window.scrollY/h*100)+'%'});
+const tocLinks=document.querySelectorAll('.toc a');const sections=Array.from(tocLinks).map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+window.addEventListener('scroll',()=>{let c='';sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)c=s.id});tocLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+c)})});
+function tf(b){const i=b.closest('.fi'),a=b.nextElementSibling,o=i.classList.contains('active');document.querySelectorAll('.fi').forEach(x=>{x.classList.remove('active');x.querySelector('.fa').classList.remove('open')});if(!o){i.classList.add('active');a.classList.add('open')}}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();lenis.scrollTo(t,{offset:-60})}})});
+</script>
+<script src="/v.js" defer></script>
+</body>
+</html>
